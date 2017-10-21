@@ -164,10 +164,10 @@ function calculatecr() {
 	$("#monsterfeatures input:checked").each(function() {
 		var trait = 0;
 		if ($(this).siblings("input[type=number]").length) trait = $(this).siblings("input[type=number]").val();
-		if ($(this).attr("data-hp") !== "") hp += parseInt(eval($(this).attr("data-hp")));
-		if ($(this).attr("data-ac") !== "") ac += parseInt(eval($(this).attr("data-ac")));
-		if ($(this).attr("data-dpr") !== "") dpr += parseInt(eval($(this).attr("data-dpr")));
-		if (!usesavedc && $(this).attr("data-attackbonus") !== "") attackbonus += parseInt($(this).attr("data-attackbonus"));
+		if ($(this).attr("data-hp") !== "") hp += Number(eval($(this).attr("data-hp")));
+		if ($(this).attr("data-ac") !== "") ac += Number(eval($(this).attr("data-ac")));
+		if ($(this).attr("data-dpr") !== "") dpr += Number(eval($(this).attr("data-dpr")));
+		if (!usesavedc && $(this).attr("data-attackbonus") !== "") attackbonus += Number($(this).attr("data-attackbonus"));
 	})
 
 	hp = Math.floor (hp);
@@ -251,7 +251,7 @@ function calculatecr() {
 	$("#croutput").append("<p>Offensive CR: "+offensiveCR+"</p>");
 	$("#croutput").append("<p>Defensive CR: "+defensiveCR+"</p>");
 	$("#croutput").append("<p>Proficiency Bonus: +"+msbcr.cr[finalcr].pb+"</p>");
-	$("#croutput").append("<p>Effective HP: "+effectivehp+" ("+hitdice+hitdicesize+(conmod<0?"":"+")+(conmod*hitdice)+")</p>");
+	$("#croutput").append("<p>Effective HP: "+effectivehp+" ("+hitdice+hitdicesize+(conmod<0?"":"+")+conmod*hitdice+")</p>");
 	$("#croutput").append("<p>Effective AC: "+ac+"</p>");
 	$("#croutput").append("<p>Average Damage Per Round: "+effectivedpr+"</p>");
 	$("#croutput").append("<p>"+(usesavedc?"Save DC: ":"Effective Attack Bonus: +")+attackbonus+"</p>");

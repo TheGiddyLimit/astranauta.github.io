@@ -1,5 +1,6 @@
 const STR_EMPTY = "";
 const STR_VOID_LINK = "javascript:void(0)";
+const STR_SLUG_DASH = "-";
 
 const TYP_STRING = "string";
 const TYP_NUMBER = "number";

@@ -1,4 +1,3 @@
-const STR_SLUG_DASH = "-";
 const STR_JOIN_MODE_LIST = ",";
 const STR_JOIN_MODE_TITLE_BRACKET_PART_LIST = "; ";
 const STR_JOIN_MODE_TITLE = " ";
@@ -21,9 +20,11 @@ const TMP_MODE_TITLE_BRACKET_PART = "({0})";
 const TMP_MODE_TITLE_COST = "{0} psi";
 const TMP_MODE_TITLE_COST_RANGE = "{0}-{1}";
 const TMP_MODE_TITLE_CONCENTRATION = "conc., {0} {1}.";
+const TMP_LIST_ITEM_HREF = "#{0}";
 
 const ID_PSIONICS_LIST = "psionicsList";
 const ID_SEARCH_BAR = "filter-search-input-group";
+const ID_RESET_BUTTON = "reset";
 const ID_STATS_NAME = "name";
 const ID_STATS_ORDER_AND_TYPE = "orderAndType";
 const ID_STATS_DURATION = "duration";
@@ -76,9 +77,10 @@ window.onload = function load() {
 		for (let i = 0; i < PSIONIC_LIST.length; ++i) {
 			let psionic = PSIONIC_LIST[i];
 
-			const link = document.createElement('a');
+			const link = document.createElement(ELE_A);
 			link.setAttribute(ATB_ID, String(i));
-			link.href = '#' +  utils_nameToDataLink(psionic[JSON_ITEM_NAME]);
+			link.setAttribute(ATB_HREF, TMP_LIST_ITEM_HREF.formatUnicorn(utils_nameToDataLink(psionic[JSON_ITEM_NAME])));
+			link.setAttribute(ATB_TITLE, psionic[JSON_ITEM_NAME]);
 			link.appendChild(getNameSpan(psionic));
 			link.appendChild(getSourceSpan(psionic));
 			link.appendChild(getTypeSpan(psionic));
@@ -165,6 +167,7 @@ window.onload = function load() {
 		populateFilterSets();
 		sortFilterSets();
 		let filterBox = initFilters();
+		initResetButton(filterBox);
 
 		function populateFilterSets() {
 			for (let i = 0; i < PSIONIC_LIST.length; ++i) {
@@ -243,7 +246,15 @@ window.onload = function load() {
 
 			return filterBox;
 		}
+	}
 
+	function initResetButton(listView, filterBox) {
+		const RESET_BUTTON = document.getElementById(ID_RESET_BUTTON);
+		RESET_BUTTON.addEventListener(EVNT_CLICK, resetButtonClick, false);
+
+		function resetButtonClick(event) {
+			filterBox.reset();
+		}
 	}
 
 	function initListLibrary() {
@@ -272,7 +283,7 @@ window.onload = function load() {
 
 	function selectInitialPsionic() {
 		if (window.location.hash.length === 0) {
-			let listItems = TABLE_VIEW.getElementsByTagName(ELE_LI);
+			let listItems = TABLE_VIEW.getElementsByTagName(ELE_A);
 			if (listItems.length > 0) {
 				listItems[0].click();
 			}
