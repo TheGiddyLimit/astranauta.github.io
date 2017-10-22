@@ -223,6 +223,11 @@ function doStuff(data) {
 						if (ff._optional !== "YES" && ff.subclass !== undefined) console.log(ff); // never happens
 
 						if (ff._optional === "YES" && ff.subclass !== undefined) {
+							if (ff.name === undefined) console.log(ff)
+							let nom = ff.name.split(":").slice(1).join(":");
+							if (clss.subClasses[nom] === undefined) clss.subClasses[nom] = []
+							let subC = clss.subClasses[nom];
+
 							// SUBCLASS FEATURES
 							// TODO
 							// setAdd(SETERINO, ff.subclass)
@@ -274,7 +279,7 @@ function doStuff(data) {
 										}
 									}
 
-									let fOb = getFeatureObj(ff, null);
+									let fOb = getFeatureObj(ff, null); // no source cuz not optional, always part of the feature
 									lastEntry.entries.push(fOb)
 								} else {
 									// SHIT WITHOUT PARENT FEATURES
