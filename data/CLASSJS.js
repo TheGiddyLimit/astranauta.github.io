@@ -55,8 +55,6 @@ function doStuff(data) {
 	for (let i = 0; i < classes.length; i++) {
 		let clss = classes[i];
 
-		clss.classTable = {};
-
 		// fix proficiency
 		clss.proficiency = clss.proficiency.split(", ");
 		for (let j = 0; j < clss.proficiency.length; j++) {
@@ -72,7 +70,7 @@ function doStuff(data) {
 		clss.hd = {"number": 1, "faces": clss.hd}
 
 		let cols = [];
-		clss.classTable = {};
+		clss.classTable = {"groups": {}};
 		clss.spellcasting = {};
 
 		for (let j = 0; j < clss.autolevel.length; j++) {
@@ -81,6 +79,7 @@ function doStuff(data) {
 			// spell slots and table data
 			if (!t.feature) {
 
+				// TODO have these be part of classTable -- make
 				// SPELLS ==============================================================================================
 				// SLOTS ===============================================================================================
 				if (t.slots) {
@@ -129,15 +128,15 @@ function doStuff(data) {
 				if (t.rages) {
 					if (!cols.includes("rages")) {
 						cols.push("rages");
-						clss.classTable.cols = [{"col": 3, "name": "Rages"}, {"col": 4, "name": "Rage Damage"}]
-						clss.classTable.rows = []
+						clss.classTable.groups = {}
+						clss.classTable.groups["3"] = {"title": null, "cols": [{"name": "Rages"}, {"name": "Rage Damage"}], "rows": []}
 					}
 
-					clss.classTable.rows[t._level-1] =
-						{"cells": [
-							{"col": 3, "type": "string", "value": t.rages},
-							{"col": 4, "type": "bonus", "value": Number(t.ragedamage)}
-						]}
+					clss.classTable.groups["3"].rows[t._level-1] =
+						[
+							{"type": "string", "value": t.rages},
+							{"type": "bonus", "value": Number(t.ragedamage)}
+						]
 				}
 				if (t.martialarts && t.kipoints && t.unarmoredmovement) {
 					if (!cols.includes("martialarts")) {
@@ -211,7 +210,6 @@ function doStuff(data) {
 
 				if (isFeature(t)) {
 					if (clss.classFeatures === undefined) clss.classFeatures = []
-					if (clss.subclasses === undefined) clss.subclasses = {}
 
 					if (clss.classFeatures[t._level-1]) console.log("already defd") // never happens :)
 					else clss.classFeatures[t._level-1] = []
@@ -223,7 +221,8 @@ function doStuff(data) {
 						if (ff._optional !== "YES" && ff.subclass !== undefined) console.log(ff); // never happens
 
 						if (ff._optional === "YES" && ff.subclass !== undefined) {
-							clss.subclassTitle = ff.subclass.split(":")[0].trim();
+							if (clss.subclassTitle === undefined) clss.subclassTitle = ff.subclass.split(":")[0].trim();
+							if (clss.subclasses === undefined) clss.subclasses = {}
 							let nom = ff.subclass.split(":").slice(1).join(":").trim();
 							if (clss.subclasses[nom] === undefined) clss.subclasses[nom] = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
 
@@ -460,6 +459,18 @@ function doStuff(data) {
 				if (spot === undefined) {
 					clss.classFeatures[j] = []
 				}
+			}
+		}
+
+		// MOVE SPELLS TO A TABLE GROUP
+		if (clss.spellcasting.slots !== undefined) {
+			// TODO
+			if (clss.name === "Fighter") {
+
+			} else if (clss.name === "Rogue") {
+
+			} else {
+
 			}
 		}
 
