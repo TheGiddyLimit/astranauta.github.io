@@ -211,6 +211,7 @@ function doStuff(data) {
 
 				if (isFeature(t)) {
 					if (clss.classFeatures === undefined) clss.classFeatures = []
+					if (clss.subClasses === undefined) clss.subClasses = {}
 
 					if (clss.classFeatures[t._level-1]) console.log("already defd") // never happens :)
 					else clss.classFeatures[t._level-1] = []
@@ -219,9 +220,14 @@ function doStuff(data) {
 					for (let ii = 0; ii < t.feature.length; ii++) {
 						let ff = t.feature[ii]
 
-						if (ff._optional === "YES") {
-
+						if (ff._optional === "YES" && ff.subclass !== undefined) {
+							// SUBCLASS FEATURES
+							if (ff.subclass === undefined || ff.subclass === null) console.log(ff.name)
+							// setAdd(SETERINO, ff.subclass)
 						} else {
+							if (ff._optional === "YES" && ff.parent === undefined) console.log(ff.name)
+
+							// CLASS FEATURES
 							let fOb = {}
 							fOb.name = ff.name
 							fOb.entries = []
@@ -254,13 +260,25 @@ function doStuff(data) {
 												"rows": fTxt.tbody
 											}
 										)
-									} else if (fTxt.hassavedc === "YES" && fTxt.hasattackmod === "YES") {
-										console.log()
-										console.log("both")
-									} else if (fTxt.hassavedc === "YES") {
-										console.log("dc")
-									} else if (fTxt.hasattackmod === "YES") {
-										console.log("atk")
+									} else if (fTxt.hassavedc === "YES" || fTxt.hasattackmod === "YES") {
+										if (fTxt.hassavedc === "YES") {
+											fOb.entries.push(
+												{
+													"type": "abilityDc",
+													"name": fTxt.name,
+													"attributes": fTxt.attributes
+												}
+											)
+										}
+										if (fTxt.hasattackmod === "YES") {
+											fOb.entries.push(
+												{
+													"type": "abilityAttackMod",
+													"name": fTxt.name,
+													"attributes": fTxt.attributes
+												}
+											)
+										}
 									}
 								}
 							}
@@ -386,7 +404,6 @@ function doStuff(data) {
 		if (clss.spellcasting.spellsKnown !== undefined) {
 			for (let j = 0; j < clss.spellcasting.spellsKnown.length; j++) {
 				let spot = clss.spellcasting.spellsKnown[j];
-				if (spot !== undefined) console.log(spot.known)
 				if (spot === undefined || spot.known === undefined || spot.known === null || isNaN(spot.known)) {
 					clss.spellcasting.spellsKnown[j] = {"known": 0}
 				}
