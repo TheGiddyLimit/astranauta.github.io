@@ -211,7 +211,7 @@ function doStuff(data) {
 
 				if (isFeature(t)) {
 					if (clss.classFeatures === undefined) clss.classFeatures = []
-					if (clss.subClasses === undefined) clss.subClasses = {}
+					if (clss.subclasses === undefined) clss.subclasses = {}
 
 					if (clss.classFeatures[t._level-1]) console.log("already defd") // never happens :)
 					else clss.classFeatures[t._level-1] = []
@@ -223,17 +223,18 @@ function doStuff(data) {
 						if (ff._optional !== "YES" && ff.subclass !== undefined) console.log(ff); // never happens
 
 						if (ff._optional === "YES" && ff.subclass !== undefined) {
+							clss.subclassTitle = ff.subclass.split(":")[0].trim();
 							let nom = ff.subclass.split(":").slice(1).join(":").trim();
-							if (clss.subClasses[nom] === undefined) clss.subClasses[nom] = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+							if (clss.subclasses[nom] === undefined) clss.subclasses[nom] = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
 
 							// SUBCLASS FEATURES
 							if (ff.suboption !== undefined) {
 								// NON-OPTIONAL SHIT WITH PARENT FEATURES
-								let lastFeature = clss.subClasses[nom][Number(t._level) - 1][clss.subClasses[nom][Number(t._level) - 1].length-1];
+								let lastFeature = clss.subclasses[nom][Number(t._level) - 1][clss.subclasses[nom][Number(t._level) - 1].length-1];
 								if (lastFeature === undefined) {
-									if (clss.subClasses[nom][Number(t._level) - 1].length === 0) {
+									if (clss.subclasses[nom][Number(t._level) - 1].length === 0) {
 										lastFeature = {"entries": [{"type": "entries", "entries": []}], "source": getSrc(ff.subclass, clss, ff.subclass)}
-										clss.subClasses[nom][Number(t._level) - 1].push(lastFeature)
+										clss.subclasses[nom][Number(t._level) - 1].push(lastFeature)
 									}
 								}
 								let lastEntry = lastFeature.entries[lastFeature.entries.length-1]
@@ -265,7 +266,7 @@ function doStuff(data) {
 
 								let fOb = getFeatureObj(ff, src)
 
-								clss.subClasses[nom][Number(t._level) - 1].push(fOb)
+								clss.subclasses[nom][Number(t._level) - 1].push(fOb)
 							}
 
 
@@ -593,60 +594,61 @@ let UA_MAP =
 		"Divine Domain: City (UA)": 									"UAModernMagic",
 		"Divine Domain: Knowledge (PSA)": 								"PSA",
 		"Divine Domain: Forge (UA)": 									"UAClericDivineDomains",
-		"Divine Domain: Grave (UA)": 									"",
-		"Divine Domain: Protection (UA)": 								"",
+		"Divine Domain: Forge": 										"XGE",
+		"Divine Domain: Grave (UA)": 									"UAClericDivineDomains",
+		"Divine Domain: Protection (UA)": 								"UAClericDivineDomains",
 		"Divine Domain: Solidarity (PSA)": 								"PSA",
 		"Divine Domain: Strength (PSA)": 								"PSA",
 		"Divine Domain: Ambition (PSA)": 								"PSA",
 		"Divine Domain: Zeal (PSA)": 									"PSA",
-		"Druid Circle: Circle of Dreams (UA)": 							"",
-		"Druid Circle: Circle of the Shepherd (UA)": 					"",
-		"Druid Circle: Circle of the Shepherd v2 (UA)": 				"",
-		"Druid Circle: Circle of Twilight (UA)": 						"",
+		"Druid Circle: Circle of Dreams (UA)": 							"UADruid",
+		"Druid Circle: Circle of the Shepherd (UA)": 					"UADruid",
+		"Druid Circle: Circle of the Shepherd v2 (UA)": 				"UARevisedClassOptions",
+		"Druid Circle: Circle of Twilight (UA)": 						"UADruid",
 		"Martial Archetype: Cavalier (UA)": 							"UAKitsOfOld",
-		"Martial Archetype: Cavalier v2 (UA)": 							"",
-		"Martial Archetype: Monster Hunter (UA)": 						"",
-		"Martial Archetype: Purple Dragon Knight (Banneret)": 			"",
+		"Martial Archetype: Cavalier v2 (UA)": 							"UARevisedClassOptions",
+		"Martial Archetype: Monster Hunter (UA)": 						"UAGothicHeroes",
+		"Martial Archetype: Purple Dragon Knight (Banneret)": 			"SCAG",
 		"Martial Archetype: Scout (UA)": 								"UAKitsOfOld",
-		"Martial Archetype: Arcane Archer (UA)": 						"",
+		"Martial Archetype: Arcane Archer (UA)": 						"UAFighter",
 		"Martial Archetype: Arcane Archer v2 (UA)": 					"UARevisedSubclasses",
-		"Martial Archetype: Knight (UA)": 								"",
-		"Martial Archetype: Samurai (UA)": 								"",
-		"Martial Archetype: Sharpshooter (UA)": 						"",
-		"Monastic Tradition: Way of the Kensei (UA)": 					"",
+		"Martial Archetype: Knight (UA)": 								"UAFighter",
+		"Martial Archetype: Samurai (UA)": 								"UAFighter",
+		"Martial Archetype: Sharpshooter (UA)": 						"UAFighter",
+		"Monastic Tradition: Way of the Kensei (UA)": 					"UAMonk",
 		"Monastic Tradition: Way of the Kensei v2 (UA)": 				"UARevisedSubclasses",
-		"Monastic Tradition: Way of Tranquility (UA)": 					"",
-		"Monastic Tradition: Way of the Drunken Master (UA)": 			"",
-		"Sacred Oath: Oath of Conquest (UA)": 							"",
-		"Sacred Oath: Oath of Conquest v2 (UA)": 						"",
-		"Sacred Oath: Oath of Treachery (UA)": 							"",
-		"Sacred Oath: Oath of Redemption (UA)": 						"",
-		"Ranger Archetype: Deep Stalker (UA)": 							"",
-		"Ranger Archetype: Horizon Walker (UA)": 						"",
-		"Ranger Archetype: Primeval Guardian (UA)": 					"",
-		"Ranger Archetype: Monster Slayer (UA)": 						"",
-		"Ranger Conclave: Deep Stalker (UA)": 							"",
-		"Ranger Conclave: Horizon Walker (UA)": 						"",
-		"Ranger Conclave: Primeval Guardian (UA)": 						"",
-		"Ranger Conclave: Monster Slayer (UA)": 						"",
-		"Roguish Archetype: Inquisitive (UA)": 							"",
-		"Roguish Archetype: Scout (UA)": 								"",
-		"Sorcerous Origin: Favored Soul (UA)": 							"",
-		"Sorcerous Origin: Favored Soul v2 (UA)": 						"",
+		"Monastic Tradition: Way of Tranquility (UA)": 					"UAMonk",
+		"Monastic Tradition: Way of the Drunken Master (UA)": 			"UAATrioOfSubclasses",
+		"Sacred Oath: Oath of Conquest (UA)": 							"UAPaladin",
+		"Sacred Oath: Oath of Conquest v2 (UA)": 						"UARevisedClassOptions",
+		"Sacred Oath: Oath of Treachery (UA)": 							"UAPaladin",
+		"Sacred Oath: Oath of Redemption (UA)": 						"UAATrioOfSubclasses",
+		"Ranger Archetype: Deep Stalker (UA)": 							"UALightDarkUnderdark",
+		"Ranger Archetype: Horizon Walker (UA)": 						"UARangerAndRogue",
+		"Ranger Archetype: Primeval Guardian (UA)": 					"UARangerAndRogue",
+		"Ranger Archetype: Monster Slayer (UA)": 						"UAATrioOfSubclasses",
+		"Ranger Conclave: Deep Stalker (UA)": 							"UALightDarkUnderdark",
+		"Ranger Conclave: Horizon Walker (UA)": 						"UARangerAndRogue",
+		"Ranger Conclave: Primeval Guardian (UA)": 						"UARangerAndRogue",
+		"Ranger Conclave: Monster Slayer (UA)": 						"UAATrioOfSubclasses",
+		"Roguish Archetype: Inquisitive (UA)": 							"UAGothicHeroes",
+		"Roguish Archetype: Scout (UA)": 								"UARangerAndRogue",
+		"Sorcerous Origin: Favored Soul (UA)": 							"UAModifyingClasses",
+		"Sorcerous Origin: Favored Soul v2 (UA)": 						"UASorcerer",
 		"Sorcerous Origin: Favored Soul v3 (UA)": 						"UARevisedSubclasses",
-		"Sorcerous Origin: Shadow (UA)": 								"",
-		"Sorcerous Origin: Phoenix (UA)": 								"",
-		"Sorcerous Origin: Sea (UA)": 									"",
-		"Sorcerous Origin: Stone (UA)": 								"",
+		"Sorcerous Origin: Shadow (UA)": 								"UALightDarkUnderdark",
+		"Sorcerous Origin: Phoenix (UA)": 								"UASorcerer",
+		"Sorcerous Origin: Sea (UA)": 									"UASorcerer",
+		"Sorcerous Origin: Stone (UA)": 								"UASorcerer",
 		"Sorcerous Origin: Pyromancer (PSK)": 							"PSK",
-		"Otherworldly Patron: Ghost in the Machine (UA)": 				"",
-		"Otherworldly Patron: The Undying Light (UA)": 					"",
-		"Otherworldly Patron: The Celestial (UA)": 						"",
-		"Otherworldly Patron: The Seeker (UA)": 						"",
-		"Otherworldly Patron: The Raven Queen (UA)": 					"",
-		"Otherworldly Patron: The Hexblade (UA)": 						"",
-		"Arcane Tradition: Technomancy (UA)": 							"",
-		"Arcane Tradition: Theurgy (UA)": 								"",
-		"Arcane Tradition: War Magic (UA)": 							"",
-		"Arcane Tradition: Lore Mastery (UA)": 							""
+		"Otherworldly Patron: Ghost in the Machine (UA)": 				"UAModernMagic",
+		"Otherworldly Patron: The Undying Light (UA)": 					"UALightDarkUnderdark",
+		"Otherworldly Patron: The Celestial (UA)": 						"UARevisedClassOptions",
+		"Otherworldly Patron: The Seeker (UA)": 						"UATheFaithful",
+		"Otherworldly Patron: The Raven Queen (UA)": 					"UAWarlockAndWizard",
+		"Otherworldly Patron: The Hexblade (UA)": 						"UAWarlockAndWizard",
+		"Arcane Tradition: Technomancy (UA)": 							"UAModernMagic",
+		"Arcane Tradition: Theurgy (UA)": 								"UATheFaithful",
+		"Arcane Tradition: War Magic (UA)": 							"UAWizardRevisited",
+		"Arcane Tradition: Lore Mastery (UA)": 							"UAWarlockAndWizard"
 	}
