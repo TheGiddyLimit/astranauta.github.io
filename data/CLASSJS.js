@@ -220,71 +220,42 @@ function doStuff(data) {
 					for (let ii = 0; ii < t.feature.length; ii++) {
 						let ff = t.feature[ii]
 
+						if (ff._optional !== "YES" && ff.subclass !== undefined) console.log(ff); // never happens
+
 						if (ff._optional === "YES" && ff.subclass !== undefined) {
 							// SUBCLASS FEATURES
-							if (ff.subclass === undefined || ff.subclass === null) console.log(ff.name)
+							// TODO
 							// setAdd(SETERINO, ff.subclass)
 						} else {
-							if (ff._optional === "YES" && ff.parent === undefined) console.log(ff.name)
+							if (ff.suboption === "2") console.log(ff.name)
 
 							// CLASS FEATURES
-							let fOb = {}
-							fOb.name = ff.name
-							fOb.entries = []
+							if (ff._optional === "YES" && ff.parent === undefined) console.log(ff.name) // never happens
 
-							for (let k = 0; k < ff.text.length; k++) {
-								let fTxt = ff.text[k];
 
-								// STRINGS
-								if (typeof fTxt === "string") {
-									if (fTxt.trim().charCodeAt(0) === DOT_CODE) {
-										let toIns = fTxt.substr(1).trim()
-										if (fOb.entries.length > 0 && fOb.entries[fOb.entries.length-1].type === "list") {
-											fOb.entries[fOb.entries.length-1].items.push(toIns)
-										} else {
-											fOb.entries.push({"type": "list", "items": [toIns]})
-										}
-									} else {
-										fOb.entries.push({"type": "text", "value": fTxt.trim()})
-									}
+							if (ff._optional === "YES" && ff.parent !== undefined) {
+								// SHIT WITH PARENT FEATURES
+								let pa = clss.classFeatures[Number(t._level) - 1];
+								let lastItem = pa[pa.length-1];
+								let lastEntry = lastItem.entries[lastItem.entries.length-1]
+								if (lastEntry.type !== "options") {
+									let newLast = {"type": "options", "entries": []}
+									lastItem.entries.push(newLast)
+									lastEntry = newLast
 								}
-								// OBJECTS
-								else {
-									if (fTxt.istable === "YES") {
-										fOb.entries.push(
-											{
-												"type": "table",
-												"caption": fTxt.caption,
-												"cols": fTxt.thead,
-												"colStyles": fTxt.thstyleclass,
-												"rows": fTxt.tbody
-											}
-										)
-									} else if (fTxt.hassavedc === "YES" || fTxt.hasattackmod === "YES") {
-										if (fTxt.hassavedc === "YES") {
-											fOb.entries.push(
-												{
-													"type": "abilityDc",
-													"name": fTxt.name,
-													"attributes": fTxt.attributes
-												}
-											)
-										}
-										if (fTxt.hasattackmod === "YES") {
-											fOb.entries.push(
-												{
-													"type": "abilityAttackMod",
-													"name": fTxt.name,
-													"attributes": fTxt.attributes
-												}
-											)
-										}
-									}
-								}
+								let isUa = ff.name.includes("(UA)")
+
+								let fOb = getFeatureObj(ff, isUa);
+
+								lastEntry.entries.push(fOb)
+							} else {
+								// SHIT WITHOUT PARENT FEATURES
+								let isUa = ff.name.includes("(UA)")
+
+								let fOb = getFeatureObj(ff, isUa)
+
+								clss.classFeatures[Number(t._level) - 1].push(fOb)
 							}
-
-
-							clss.classFeatures[Number(t._level)-1].push(fOb)
 						}
 					}
 
@@ -426,6 +397,66 @@ function doStuff(data) {
 	console.log(SETERINO)
 	o.value = JSON.stringify(data, null, "\t")
 		.replace("\u2014", "\\u2014").replace("\u2011", "\\u2011"); // maintain unicode stuff
+}
+
+function getFeatureObj(ff, isUa) { // pass in a feature object
+	let fOb = {}
+	fOb.name = ff.name.replace("(UA)", "").trim();
+	fOb.entries = []
+	fOb.source = isUa ? "UA" : "PHB";
+
+	for (let k = 0; k < ff.text.length; k++) {
+		let fTxt = ff.text[k];
+
+		// STRINGS
+		if (typeof fTxt === "string") {
+			if (fTxt.trim().charCodeAt(0) === DOT_CODE) {
+				let toIns = fTxt.substr(1).trim()
+				if (fOb.entries.length > 0 && fOb.entries[fOb.entries.length - 1].type === "list") {
+					fOb.entries[fOb.entries.length - 1].items.push(toIns)
+				} else {
+					fOb.entries.push({"type": "list", "items": [toIns]})
+				}
+			} else {
+				fOb.entries.push({"type": "text", "value": fTxt.trim()})
+			}
+		}
+		// OBJECTS
+		else {
+			if (fTxt.istable === "YES") {
+				fOb.entries.push(
+					{
+						"type": "table",
+						"caption": fTxt.caption,
+						"cols": fTxt.thead,
+						"colStyles": fTxt.thstyleclass,
+						"rows": fTxt.tbody
+					}
+				)
+			} else if (fTxt.hassavedc === "YES" || fTxt.hasattackmod === "YES") {
+				if (fTxt.hassavedc === "YES") {
+					fOb.entries.push(
+						{
+							"type": "abilityDc",
+							"name": fTxt.name,
+							"attributes": fTxt.attributes
+						}
+					)
+				}
+				if (fTxt.hasattackmod === "YES") {
+					fOb.entries.push(
+						{
+							"type": "abilityAttackMod",
+							"name": fTxt.name,
+							"attributes": fTxt.attributes
+						}
+					)
+				}
+			}
+		}
+	}
+
+	return fOb;
 }
 
 function isFeature(t) {
