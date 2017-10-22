@@ -79,7 +79,6 @@ function doStuff(data) {
 			// spell slots and table data
 			if (!t.feature) {
 
-				// TODO have these be part of classTable -- make
 				// SPELLS ==============================================================================================
 				// SLOTS ===============================================================================================
 				if (t.slots) {
@@ -110,25 +109,21 @@ function doStuff(data) {
 				if (t.invocationsknown && t.slotlevel) {
 					if (!cols.includes("invocations")) {
 						cols.push("invocations");
-						clss.classTable.cols = [
-							{"col": 7, "name": "Slot Level"},
-							{"col": 8, "name": "Invocations Known"}
-						]
-						clss.classTable.rows = []
+						clss.classTable.groups["3"] = {"title": null, "cols": [{"name": "Spell Slots"}, {"name": "Slot Level"}, {"name": "Invocations Known"}], "rows": []}
 					}
 
 					let slRe = /(\d+).*?/
 					let slM = slRe.exec(t.slotlevel);
 
-					clss.classTable.rows[t._level-1] = {"cells": [
-						{"col": 7, "type": "level", "value": Number(slM[1])},
-						{"col": 8, "type": "number", "value": isNaN(t.invocationsknown) ? 0 : Number(t.invocationsknown)}
-						]}
+					clss.classTable.groups["3"].rows[t._level-1] = [
+						{"type": "level", "value": Number(t.spellslots)},
+						{"type": "level", "value": Number(slM[1])},
+						{"type": "number", "value": isNaN(t.invocationsknown) ? 0 : Number(t.invocationsknown)}
+					];
 				}
 				if (t.rages) {
 					if (!cols.includes("rages")) {
 						cols.push("rages");
-						clss.classTable.groups = {}
 						clss.classTable.groups["3"] = {"title": null, "cols": [{"name": "Rages"}, {"name": "Rage Damage"}], "rows": []}
 					}
 
@@ -141,12 +136,7 @@ function doStuff(data) {
 				if (t.martialarts && t.kipoints && t.unarmoredmovement) {
 					if (!cols.includes("martialarts")) {
 						cols.push("martialarts");
-						clss.classTable.cols = [
-							{"col": 3, "name": "Martial Arts"},
-							{"col": 4, "name": "Ki Points"},
-							{"col": 5, "name": "Unarmored Movement"}
-						]
-						clss.classTable.rows = []
+						clss.classTable.groups["2"] = {"title": null, "cols": [{"name": "Martial Arts"}, {"name": "Ki Points"}, {"name": "Unarmored Movement"}], "rows": []}
 					}
 
 					let mrtRe = /^(\d+)d(\d+)$/
@@ -155,56 +145,48 @@ function doStuff(data) {
 					let umRe = /^\+(\d+) ft\.$/
 					let umM = umRe.exec(t.unarmoredmovement)
 
-					clss.classTable.rows[t._level-1] =
-						{"cells": [
-								{"col": 3, "type": "dice", "number": mrtM[1], "faces": mrtM[2]},
-								{"col": 4, "type": "number", "value": isNaN(t.kipoints) ? 0 : Number(t.kipoints)},
-								{"col": 5, "type": "bonusSpeed", "value": umM ? Number(umM[1]) : 0},
-							]}
-
+					clss.classTable.groups["2"].rows[t._level-1] =
+						[
+							{"type": "dice", "number": mrtM[1], "faces": mrtM[2]},
+							{"type": "number", "value": isNaN(t.kipoints) ? 0 : Number(t.kipoints)},
+							{"type": "bonusSpeed", "value": umM ? Number(umM[1]) : 0},
+						]
 				}
 				if (t.sneakattack) {
 					if (!cols.includes("sneakatk")) {
 						cols.push("sneakatk");
-						clss.classTable.cols = [{"col": 3, "name": "Sneak Attack"}]
-						clss.classTable.rows = []
+						clss.classTable.groups["2"] = {"title": null, "cols": [{"name": "Sneak Attack"}], "rows": []}
 					}
 
 					let mrtRe = /^(\d+)d(\d+)$/
 					let mrtM = mrtRe.exec(t.sneakattack)
 
-					clss.classTable.rows[t._level-1] =
-						{"cells": [
-								{"col": 3, "type": "dice", "number": mrtM[1], "faces": mrtM[2]},
-							]}
+					clss.classTable.groups["2"].rows[t._level-1] = [{"type": "dice", "number": mrtM[1], "faces": mrtM[2]}]
 				}
 				if (t.sorcerypoints) {
 					if (!cols.includes("sorcerypoints")) {
 						cols.push("sorcerypoints");
-						clss.classTable.cols = [{"col": 3, "name": "Sorcery Points"}]
-						clss.classTable.rows = []
+						clss.classTable.groups["2"] = {"title": null, "cols": [{"name": "Sorcery Points"}], "rows": []}
 					}
 
-					clss.classTable.rows[t._level-1] = {"cells": [{"col": 3, "type": "number", "value": isNaN(t.sorcerypoints) ? 0 : Number(t.sorcerypoints)}]}
+					clss.classTable.groups["2"].rows[t._level-1] = [
+						{"type": "number", "value": isNaN(t.sorcerypoints) ? 0 : Number(t.sorcerypoints)}
+					]
 				}
 				if (t.psilimit && t.psipoints && t.disciplinesknown && t.talentsknown) {
 					if (!cols.includes("psionics")) {
 						cols.push("psionics");
-						clss.classTable.cols = [
-							{"col": 4, "name": "Talents Known"},
-							{"col": 5, "name": "Disciplines Known"},
-							{"col": 6, "name": "Psi Points"},
-							{"col": 7, "name": "Psi Limit"}
-						]
-						clss.classTable.rows = []
+						clss.classTable.groups["3"] = {"title": null, "cols": [
+							{"name": "Talents Known"}, {"name": "Disciplines Known"}, {"name": "Psi Points"}, {"name": "Psi Limit"}
+							], "rows": []}
 					}
 
-					clss.classTable.rows[t._level-1] = {"cells": [
-						{"col": 4, "type": "number", "value": Number(t.talentsknown)},
-						{"col": 5, "type": "number", "value": Number(t.talentsknown)},
-						{"col": 6, "type": "number", "value": Number(t.psipoints)},
-						{"col": 7, "type": "number", "value": Number(t.psilimit)}
-					]}
+					clss.classTable.groups["3"].rows[t._level-1] = [
+						{"type": "number", "value": Number(t.talentsknown)},
+						{"type": "number", "value": Number(t.talentsknown)},
+						{"type": "number", "value": Number(t.psipoints)},
+						{"type": "number", "value": Number(t.psilimit)}
+					]
 				}
 			} else {
 
@@ -257,13 +239,13 @@ function doStuff(data) {
 									}
 								}
 
-								let fOb = getFeatureObj(ff, null); // no source cuz not optional, always part of the feature
+								let fOb = getFeatureObj(ff, null, clss.subclassTitle); // no source cuz not optional, always part of the feature
 								lastEntry.entries.push(fOb)
 							} else {
 								// SHIT WITHOUT PARENT FEATURES
 								let src = getSrc(ff.subclass, clss, ff.subclass)
 
-								let fOb = getFeatureObj(ff, src)
+								let fOb = getFeatureObj(ff, src, clss.subclassTitle)
 
 								clss.subclasses[nom][Number(t._level) - 1].push(fOb)
 							}
@@ -464,16 +446,116 @@ function doStuff(data) {
 
 		// MOVE SPELLS TO A TABLE GROUP
 		if (clss.spellcasting.slots !== undefined) {
-			// TODO
+			let spellClump;
+			let groupTitle = "Spell Slots per Spell Level"
+			let subclass = null;
+
 			if (clss.name === "Fighter") {
-
+				subclass = "Eldritch Knight"
+				spellClump = 3
 			} else if (clss.name === "Rogue") {
+				subclass = "Arcane Trickster"
+				spellClump = 4
+			} else if (clss.name === "Bard") {
+				spellClump = 3
+			} else if (clss.name === "Cleric") {
+				spellClump = 3
+			} else if (clss.name === "Druid") {
+				spellClump = 3
+			} else if (clss.name === "Paladin") {
+				spellClump = 3
+			} else if (clss.name === "Ranger") {
+				spellClump = 3
+			} else if (clss.name === "Ranger (Revised)") {
+				spellClump = 3
+			} else if (clss.name === "Sorcerer") {
+				spellClump = 4
+			} else if (clss.name === "Warlock") {
+				groupTitle = null;
+				spellClump = 3
+			} else if (clss.name === "Wizard") {
+				spellClump = 3
+			} else if (clss.name === "Artificer") {
+				spellClump = 3
+			}
 
-			} else {
 
+			if (clss.spellcasting.cantripsKnown !== undefined || clss.spellcasting.spellsKnown !== undefined) {
+
+				let kentGrp = {"title": null, "cols": [], "rows": []};
+
+				for (let j = 0; j < 20; j++) {
+					let r = []
+					if (clss.spellcasting.cantripsKnown !== undefined) {
+						let c = clss.spellcasting.cantripsKnown[j];
+						r.push({"type": "number", "value": c.known})
+					}
+					if (clss.spellcasting.spellsKnown !== undefined) {
+						let s = clss.spellcasting.spellsKnown[j];
+						r.push({"type": "number", "value": s.known})
+					}
+					kentGrp.rows.push(r)
+				}
+
+				if (clss.spellcasting.cantripsKnown !== undefined) {
+					kentGrp.cols.push({"name": "Cantrips Known"})
+				}
+				if (clss.spellcasting.spellsKnown !== undefined) {
+					kentGrp.cols.push({"name": "Spells Known"})
+				}
+
+				if (clss.classTable.groups[spellClump] === undefined) {
+					clss.classTable.groups[spellClump] = kentGrp;
+				} else {
+					let oldGroup = clss.classTable.groups[spellClump];
+
+					kentGrp.cols = kentGrp.cols.concat(oldGroup.cols)
+
+					for (let j = 0; j < 20; j++) {
+						kentGrp.rows[j]= kentGrp.rows[j].concat(oldGroup.rows[j])
+					}
+
+					clss.classTable.groups[spellClump] = kentGrp;
+				}
+				spellClump++;
+			}
+
+			let slotsGroup = {"title": groupTitle, "cols": [], "rows": []};
+
+			if (clss.name !== "Warlock") {
+				let highest = clss.spellcasting.slots[19].slots
+				let maxSlot = 0;
+				for (let j = 1; j <= 9; j++) {
+					let slot = highest[j];
+					if (slot !== undefined && j > maxSlot) {
+						maxSlot = j
+					}
+				}
+
+				for (let j = 0; j < 20; j++) {
+					let r = []
+					let slts = clss.spellcasting.slots[j].slots
+
+					for (let k = 1; k <= maxSlot; k++) {
+						let lvlSlot = slts[k];
+
+						if (lvlSlot === undefined) {
+							r[k - 1] = {"type": "number", "value": 0}
+						} else {
+							r[k - 1] = {"type": "number", "value": lvlSlot}
+						}
+					}
+					slotsGroup.rows.push(r)
+				}
+
+				for (let j = 1; j <= maxSlot; j++) {
+					slotsGroup.cols.push({"name": getXthNumber(j)})
+				}
+				clss.classTable.groups[spellClump] = slotsGroup;
 			}
 		}
 
+		delete clss.spellcasting
 		delete clss.autolevel;
 	}
 
@@ -491,9 +573,10 @@ function doStuff(data) {
 		.replace("\u2014", "\\u2014").replace("\u2011", "\\u2011"); // maintain unicode stuff
 }
 
-function getFeatureObj(ff, src) { // pass in a feature object
+function getFeatureObj(ff, src, subclassTitle) { // pass in a feature object
 	let fOb = {}
 	fOb.name = ff.name.replace("(UA)", "").replace("(PSA)").trim();
+	if (subclassTitle !== undefined) fOb.name = fOb.name.replace(subclassTitle, "").trim()
 	fOb.entries = []
 	if (src !== null) {
 		fOb.source = src;
@@ -594,6 +677,13 @@ function setAdd(set, item) {
 	function helper(x) {
 		if (!set.includes(x)) set.push(x)
 	}
+}
+
+function getXthNumber(num) {
+	if (num === 1) return "1st"
+	if (num === 2) return "2nd"
+	if (num === 3) return "3rd"
+	return num + "th"
 }
 
 const SRC_MAP =
