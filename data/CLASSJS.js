@@ -467,12 +467,13 @@ function doStuff(data) {
 	}
 
 	console.log(SETERINO)
-	let setR = {}
-	for (let i = 0; i < SETERINO.length; i++) {
-		let xd = SETERINO[i];
-		setR[xd] = ""
-	}
-	console.log(JSON.stringify(setR, null, 4))
+	// PRINTS THE SET AS A SET
+	// let setR = {}
+	// for (let i = 0; i < SETERINO.length; i++) {
+	// 	let xd = SETERINO[i];
+	// 	setR[xd] = ""
+	// }
+	// console.log(JSON.stringify(setR, null, 4))
 
 	o.value = JSON.stringify(data, null, "\t")
 		.replace("  ", " ") // collapse double spaces
@@ -542,10 +543,14 @@ function getFeatureObj(ff, src) { // pass in a feature object
 }
 
 function getSrc(text, parent, optSubclass) {
-	if (optSubclass !== undefined && text.endsWith(")")) {
-		setAdd(SETERINO, optSubclass)
-
-
+	if (optSubclass !== undefined) {
+		if (!text.endsWith(")")) {
+			if (SRC_MAP[optSubclass] === undefined) console.log(optSubclass)
+			return SRC_MAP[optSubclass]
+		} else {
+			if (UA_MAP[optSubclass] === undefined) console.log(optSubclass)
+			return UA_MAP[optSubclass]
+		}
 	}
 
 	return text.includes("(UA)") ? "UA" : text.includes("(PSA)") ? "PSA" : text.includes("(PSK)") ? "PSK": parent.source;
@@ -580,7 +585,75 @@ function setAdd(set, item) {
 	}
 }
 
-let UA_MAP =
+const SRC_MAP =
+	{
+		"Primal Path: Path of the Berserker": 							"PHB",
+		"Primal Path: Path of the Totem Warrior": 						"PHB",
+		"Primal Path: Path of the Battlerager": 						"SCAG",
+		"Bard College: College of Lore": 								"PHB",
+		"Bard College: College of Valor": 								"PHB",
+		"Divine Domain: Arcana": 										"PHB",
+		"Divine Domain: Death": 										"DMG",
+		"Divine Domain: Knowledge": 									"PHB",
+		"Divine Domain: Life": 											"PHB",
+		"Divine Domain: Light": 										"PHB",
+		"Divine Domain: Nature": 										"PHB",
+		"Divine Domain: Tempest": 										"PHB",
+		"Divine Domain: Trickery": 										"PHB",
+		"Divine Domain: War": 											"PHB",
+		"Divine Domain: Forge": 										"XGE",
+		"Druid Circle: Circle of the Land": 							"PHB",
+		"Druid Circle: Circle of the Moon": 							"PHB",
+		"Martial Archetype: Champion": 									"PHB",
+		"Martial Archetype: Battle Master": 							"PHB",
+		"Martial Archetype: Eldritch Knight": 							"PHB",
+		"Monastic Tradition: Way of Shadow": 							"PHB",
+		"Monastic Tradition: Way of the Open Hand": 					"PHB",
+		"Monastic Tradition: Way of the Four Elements": 				"PHB",
+		"Monastic Tradition: Way of the Long Death": 					"SCAG",
+		"Monastic Tradition: Way of the Sun Soul": 						"SCAG",
+		"Sacred Oath: Oath of the Ancients": 							"PHB",
+		"Sacred Oath: Oath of Devotion": 								"PHB",
+		"Sacred Oath: Oath of Vengeance": 								"PHB",
+		"Sacred Oath: Oathbreaker": 									"DMG",
+		"Sacred Oath: Oath of the Crown": 								"SCAG",
+		"Ranger Archetype: Hunter": 									"PHB",
+		"Ranger Archetype: Beast Master": 								"PHB",
+		"Ranger Conclave: Beast Conclave": 								"UATRR",
+		"Ranger Conclave: Hunter": 										"UATRR",
+		"Roguish Archetype: Arcane Trickster": 							"PHB",
+		"Roguish Archetype: Assassin": 									"PHB",
+		"Roguish Archetype: Mastermind": 								"SCAG",
+		"Roguish Archetype: Swashbuckler": 								"SCAG",
+		"Roguish Archetype: Thief": 									"PHB",
+		"Sorcerous Origin: Draconic Bloodline": 						"PHB",
+		"Sorcerous Origin: Wild Magic": 								"PHB",
+		"Sorcerous Origin: Storm": 										"SCAG",
+		"Otherworldly Patron: The Archfey": 							"PHB",
+		"Otherworldly Patron: The Fiend": 								"PHB",
+		"Otherworldly Patron: The Great Old One": 						"PHB",
+		"Otherworldly Patron: The Undying": 							"SCAG",
+		"Arcane Tradition: Artificer": 									"UAEBerron",
+		"Arcane Tradition: Abjuration": 								"PHB",
+		"Arcane Tradition: Bladesinger": 								"SCAG",
+		"Arcane Tradition: Conjuration": 								"PHB",
+		"Arcane Tradition: Divination": 								"PHB",
+		"Arcane Tradition: Enchantment": 								"PHB",
+		"Arcane Tradition: Evocation": 									"PHB",
+		"Arcane Tradition: Illusion": 									"PHB",
+		"Arcane Tradition: Transmutation": 								"PHB",
+		"Arcane Tradition: Necromancy": 								"PHB",
+		"Artificer Specialist: Alchemist": 								"UAA",
+		"Artificer Specialist: Gunsmith": 								"UAA",
+		"Mystic Order: Order of the Avatar": 							"UATMC",
+		"Mystic Order: Order of the Awakened": 							"UATMC",
+		"Mystic Order: Order of the Immortal": 							"UATMC",
+		"Mystic Order: Order of the Nomad": 							"UATMC",
+		"Mystic Order: Order of the Soul Knife": 						"UATMC",
+		"Mystic Order: Order of the Wu Jen": 							"UATMC"
+	}
+
+const UA_MAP =
 	{
 		"Primal Path: Path of the Ancestral Guardian (UA)": 			"UABarbarianPrimalPaths",
 		"Primal Path: Path of the Ancestral Guardian v2 (UA)": 			"UARevisedSubclasses",
