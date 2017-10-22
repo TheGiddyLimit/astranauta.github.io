@@ -223,14 +223,52 @@ function doStuff(data) {
 						if (ff._optional !== "YES" && ff.subclass !== undefined) console.log(ff); // never happens
 
 						if (ff._optional === "YES" && ff.subclass !== undefined) {
-							if (ff.name === undefined) console.log(ff)
-							let nom = ff.name.split(":").slice(1).join(":");
-							if (clss.subClasses[nom] === undefined) clss.subClasses[nom] = []
-							let subC = clss.subClasses[nom];
+							let nom = ff.subclass.split(":").slice(1).join(":").trim();
+							if (clss.subClasses[nom] === undefined) clss.subClasses[nom] = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
 
 							// SUBCLASS FEATURES
-							// TODO
-							// setAdd(SETERINO, ff.subclass)
+							if (ff.suboption !== undefined) {
+								// NON-OPTIONAL SHIT WITH PARENT FEATURES
+								let lastFeature = clss.subClasses[nom][Number(t._level) - 1][clss.subClasses[nom][Number(t._level) - 1].length-1];
+								if (lastFeature === undefined) {
+									if (clss.subClasses[nom][Number(t._level) - 1].length === 0) {
+										lastFeature = {"entries": [{"type": "entries", "entries": []}], "source": getSrc(ff.subclass, clss, ff.subclass)}
+										clss.subClasses[nom][Number(t._level) - 1].push(lastFeature)
+									}
+								}
+								let lastEntry = lastFeature.entries[lastFeature.entries.length-1]
+								if (ff.suboption === "1") {
+									if (lastEntry.type !== "entries") {
+										let newLast = {"type": "entries", "entries": []}
+										lastFeature.entries.push(newLast)
+										lastEntry = newLast
+									}
+
+								}
+
+								if (ff.suboption === "2") { // ve go van deepah
+									if (lastEntry.type === "entries") {
+										lastEntry = lastEntry.entries[lastEntry.entries.length-1]
+										let newLast = {"type": "entries", "entries": []}
+										lastEntry.entries.push(newLast)
+										lastEntry = newLast
+									} else {
+										console.log(ff.name, "no parent entries list with suboption 2!!") // never happens
+									}
+								}
+
+								let fOb = getFeatureObj(ff, null); // no source cuz not optional, always part of the feature
+								lastEntry.entries.push(fOb)
+							} else {
+								// SHIT WITHOUT PARENT FEATURES
+								let src = getSrc(ff.subclass, clss, ff.subclass)
+
+								let fOb = getFeatureObj(ff, src)
+
+								clss.subClasses[nom][Number(t._level) - 1].push(fOb)
+							}
+
+
 						} else {
 
 							// CLASS FEATURES
@@ -248,10 +286,9 @@ function doStuff(data) {
 									lastFeature.entries.push(newLast)
 									lastEntry = newLast
 								}
-								let isUa = ff.name.includes("(UA)")
-								// if (!isUa) console.log(clss.name, ff.name) // FIXME use this
+								let src = getSrc(ff.name, clss)
 
-								let fOb = getFeatureObj(ff, isUa);
+								let fOb = getFeatureObj(ff, src);
 
 								lastEntry.entries.push(fOb)
 							} else {
@@ -283,9 +320,9 @@ function doStuff(data) {
 									lastEntry.entries.push(fOb)
 								} else {
 									// SHIT WITHOUT PARENT FEATURES
-									let isUa = ff.name.includes("(UA)")
+									let src = getSrc(ff.name, clss)
 
-									let fOb = getFeatureObj(ff, isUa)
+									let fOb = getFeatureObj(ff, src)
 
 									clss.classFeatures[Number(t._level) - 1].push(fOb)
 								}
@@ -429,16 +466,24 @@ function doStuff(data) {
 	}
 
 	console.log(SETERINO)
+	let setR = {}
+	for (let i = 0; i < SETERINO.length; i++) {
+		let xd = SETERINO[i];
+		setR[xd] = ""
+	}
+	console.log(JSON.stringify(setR, null, 4))
+
 	o.value = JSON.stringify(data, null, "\t")
+		.replace("  ", " ") // collapse double spaces
 		.replace("\u2014", "\\u2014").replace("\u2011", "\\u2011"); // maintain unicode stuff
 }
 
-function getFeatureObj(ff, isUa) { // pass in a feature object
+function getFeatureObj(ff, src) { // pass in a feature object
 	let fOb = {}
-	fOb.name = ff.name.replace("(UA)", "").trim();
+	fOb.name = ff.name.replace("(UA)", "").replace("(PSA)").trim();
 	fOb.entries = []
-	if (isUa !== null) {
-		fOb.source = isUa ? "UA" : "PHB";
+	if (src !== null) {
+		fOb.source = src;
 	}
 
 	for (let k = 0; k < ff.text.length; k++) {
@@ -495,6 +540,16 @@ function getFeatureObj(ff, isUa) { // pass in a feature object
 	return fOb;
 }
 
+function getSrc(text, parent, optSubclass) {
+	if (optSubclass !== undefined && text.endsWith(")")) {
+		setAdd(SETERINO, optSubclass)
+
+
+	}
+
+	return text.includes("(UA)") ? "UA" : text.includes("(PSA)") ? "PSA" : text.includes("(PSK)") ? "PSK": parent.source;
+}
+
 function isFeature(t) {
 	if (t.feature.length !== 2) return true
 	let titleMatch = true;
@@ -523,3 +578,75 @@ function setAdd(set, item) {
 		if (!set.includes(x)) set.push(x)
 	}
 }
+
+let UA_MAP =
+	{
+		"Primal Path: Path of the Ancestral Guardian (UA)": 			"UABarbarianPrimalPaths",
+		"Primal Path: Path of the Ancestral Guardian v2 (UA)": 			"UARevisedSubclasses",
+		"Primal Path: Path of the Storm Herald (UA)": 					"UABarbarianPrimalPaths",
+		"Primal Path: Path of the Zealot (UA)": 						"UABarbarianPrimalPaths",
+		"Bard College: College of Glamour (UA)": 						"UABardBardColleges",
+		"Bard College: College of Whispers (UA)": 						"UABardBardColleges",
+		"Bard College: College of Swords (UA)": 						"UAKitsOfOld",
+		"Bard College: College of Swords v2 (UA)": 						"UARevisedSubclasses",
+		"Bard College: College of Satire (UA)": 						"UAKitsOfOld",
+		"Divine Domain: City (UA)": 									"UAModernMagic",
+		"Divine Domain: Knowledge (PSA)": 								"PSA",
+		"Divine Domain: Forge (UA)": 									"UAClericDivineDomains",
+		"Divine Domain: Grave (UA)": 									"",
+		"Divine Domain: Protection (UA)": 								"",
+		"Divine Domain: Solidarity (PSA)": 								"PSA",
+		"Divine Domain: Strength (PSA)": 								"PSA",
+		"Divine Domain: Ambition (PSA)": 								"PSA",
+		"Divine Domain: Zeal (PSA)": 									"PSA",
+		"Druid Circle: Circle of Dreams (UA)": 							"",
+		"Druid Circle: Circle of the Shepherd (UA)": 					"",
+		"Druid Circle: Circle of the Shepherd v2 (UA)": 				"",
+		"Druid Circle: Circle of Twilight (UA)": 						"",
+		"Martial Archetype: Cavalier (UA)": 							"UAKitsOfOld",
+		"Martial Archetype: Cavalier v2 (UA)": 							"",
+		"Martial Archetype: Monster Hunter (UA)": 						"",
+		"Martial Archetype: Purple Dragon Knight (Banneret)": 			"",
+		"Martial Archetype: Scout (UA)": 								"UAKitsOfOld",
+		"Martial Archetype: Arcane Archer (UA)": 						"",
+		"Martial Archetype: Arcane Archer v2 (UA)": 					"UARevisedSubclasses",
+		"Martial Archetype: Knight (UA)": 								"",
+		"Martial Archetype: Samurai (UA)": 								"",
+		"Martial Archetype: Sharpshooter (UA)": 						"",
+		"Monastic Tradition: Way of the Kensei (UA)": 					"",
+		"Monastic Tradition: Way of the Kensei v2 (UA)": 				"UARevisedSubclasses",
+		"Monastic Tradition: Way of Tranquility (UA)": 					"",
+		"Monastic Tradition: Way of the Drunken Master (UA)": 			"",
+		"Sacred Oath: Oath of Conquest (UA)": 							"",
+		"Sacred Oath: Oath of Conquest v2 (UA)": 						"",
+		"Sacred Oath: Oath of Treachery (UA)": 							"",
+		"Sacred Oath: Oath of Redemption (UA)": 						"",
+		"Ranger Archetype: Deep Stalker (UA)": 							"",
+		"Ranger Archetype: Horizon Walker (UA)": 						"",
+		"Ranger Archetype: Primeval Guardian (UA)": 					"",
+		"Ranger Archetype: Monster Slayer (UA)": 						"",
+		"Ranger Conclave: Deep Stalker (UA)": 							"",
+		"Ranger Conclave: Horizon Walker (UA)": 						"",
+		"Ranger Conclave: Primeval Guardian (UA)": 						"",
+		"Ranger Conclave: Monster Slayer (UA)": 						"",
+		"Roguish Archetype: Inquisitive (UA)": 							"",
+		"Roguish Archetype: Scout (UA)": 								"",
+		"Sorcerous Origin: Favored Soul (UA)": 							"",
+		"Sorcerous Origin: Favored Soul v2 (UA)": 						"",
+		"Sorcerous Origin: Favored Soul v3 (UA)": 						"UARevisedSubclasses",
+		"Sorcerous Origin: Shadow (UA)": 								"",
+		"Sorcerous Origin: Phoenix (UA)": 								"",
+		"Sorcerous Origin: Sea (UA)": 									"",
+		"Sorcerous Origin: Stone (UA)": 								"",
+		"Sorcerous Origin: Pyromancer (PSK)": 							"PSK",
+		"Otherworldly Patron: Ghost in the Machine (UA)": 				"",
+		"Otherworldly Patron: The Undying Light (UA)": 					"",
+		"Otherworldly Patron: The Celestial (UA)": 						"",
+		"Otherworldly Patron: The Seeker (UA)": 						"",
+		"Otherworldly Patron: The Raven Queen (UA)": 					"",
+		"Otherworldly Patron: The Hexblade (UA)": 						"",
+		"Arcane Tradition: Technomancy (UA)": 							"",
+		"Arcane Tradition: Theurgy (UA)": 								"",
+		"Arcane Tradition: War Magic (UA)": 							"",
+		"Arcane Tradition: Lore Mastery (UA)": 							""
+	}
