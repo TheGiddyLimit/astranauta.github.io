@@ -2,7 +2,7 @@ window.onload = loadpage;
 
 function loadpage() {
 	for (let i = 0; i < msbcr.cr.length; i++) {
-		var curcr = msbcr.cr[i];
+		let curcr = msbcr.cr[i];
 		$("#msbcr").append("<tr><td>"+curcr._cr+"</td><td>"+parsecr (curcr._cr)+"</td><td>"+curcr.pb+"</td><td>"+curcr.ac+"</td><td>"+curcr.hpmin+"-"+curcr.hpmax+"</td><td>"+curcr.attackbonus+"</td><td>"+curcr.dprmin+"-"+curcr.dprmax+"</td><td>"+curcr.savedc+"</td></tr>")
 	}
 
@@ -19,14 +19,14 @@ function loadpage() {
 	})
 
 	$("#saveinstead").change(function() {
-		var curval = parseInt($("#attackbonus").val());
+		let curval = parseInt($("#attackbonus").val());
 		if (!$(this).is(":checked")) $("#attackbonus").val(curval-10);
 		if ($(this).is(":checked")) $("#attackbonus").val(curval+10);
 		calculatecr();
 	});
 
 	$("select#size").change(function() {
-		var newsize = $(this).val();
+		let newsize = $(this).val();
 		if (newsize == "Tiny") $("#hdval").html("d4")
 		if (newsize == "Small") $("#hdval").html("d6")
 		if (newsize == "Medium") $("#hdval").html("d8")
@@ -44,8 +44,8 @@ function loadpage() {
 
 	$("#msbcr tr").not(":has(th)").click(function() {
 		$("#expectedcr").val($(this).children("td:eq(0)").html());
-		var minhp = parseInt($(this).children("td:eq(4)").html().split("-")[0]);
-		var maxhp = parseInt($(this).children("td:eq(4)").html().split("-")[1]);
+		let minhp = parseInt($(this).children("td:eq(4)").html().split("-")[0]);
+		let maxhp = parseInt($(this).children("td:eq(4)").html().split("-")[1]);
 		$("#hp").val(minhp + (maxhp - minhp) / 2)
 		$("#hd").val(calculatehd());
 		$("#ac").val($(this).children("td:eq(3)").html())
@@ -76,7 +76,7 @@ function loadpage() {
 	// parse url
 	function parseurl() {
 		if (window.location.hash) {
-			var curdata = window.location.hash.split("#")[1].split(",")
+			let curdata = window.location.hash.split("#")[1].split(",")
 			$("#expectedcr").val(curdata[0]);
 			$("#hp").val(curdata[1]);
 			$("#hp").val(calculatehp());
@@ -109,8 +109,8 @@ function loadpage() {
 	$("#monsterfeatures tr td").not(":has(input)").click(function() {
 		$(this).siblings().children("input").click();
 
-		var curfeature = $(this).siblings("td").children("input").attr("id");
-		var curnumber="";
+		let curfeature = $(this).siblings("td").children("input").attr("id");
+		let curnumber="";
 		if ($(this).siblings("td").children("input[type=number]").length) curnumber = ":"+$(this).siblings("td").children("input[type=number]").val();
 		window.location = window.location.hash+","+curfeature+curnumber;
 
@@ -135,9 +135,9 @@ function loadpage() {
 }
 
 function calculatecr() {
-	var expectedcr = parseInt($("#expectedcr").val());
+	let expectedcr = parseInt($("#expectedcr").val());
 
-	var hp = parseInt($("#crcalc #hp").val()) ;
+	let hp = parseInt($("#crcalc #hp").val()) ;
 
 	if ($("#resistances").val() === "res") {
 		if (expectedcr >= 0 && expectedcr <= 4) hp *= 2;
@@ -151,18 +151,18 @@ function calculatecr() {
 		if (expectedcr >= 17) hp *= 1.25;
 	}
 
-	var ac = parseInt($("#crcalc #ac").val()) + parseInt($("#saveprofs").val()) + parseInt($("#flying").prop("checked")*2);
-	var dpr = parseInt($("#crcalc #dpr").val());
+	let ac = parseInt($("#crcalc #ac").val()) + parseInt($("#saveprofs").val()) + parseInt($("#flying").prop("checked")*2);
+	let dpr = parseInt($("#crcalc #dpr").val());
 
-	var attackbonus = parseInt($("#crcalc #attackbonus").val());
-	var usesavedc = $("#saveinstead").prop("checked");
+	let attackbonus = parseInt($("#crcalc #attackbonus").val());
+	let usesavedc = $("#saveinstead").prop("checked");
 
-	var offensiveCR = -1;
-	var defensiveCR = -1;
+	let offensiveCR = -1;
+	let defensiveCR = -1;
 
 	// go through monster features
 	$("#monsterfeatures input:checked").each(function() {
-		var trait = 0;
+		let trait = 0;
 		if ($(this).siblings("input[type=number]").length) trait = $(this).siblings("input[type=number]").val();
 		if ($(this).attr("data-hp") !== "") hp += Number(eval($(this).attr("data-hp")));
 		if ($(this).attr("data-ac") !== "") ac += Number(eval($(this).attr("data-ac")));
@@ -173,17 +173,17 @@ function calculatecr() {
 	hp = Math.floor (hp);
 	dpr = Math.floor (dpr);
 
-	var effectivehp = hp;
-	var effectivedpr = dpr;
+	let effectivehp = hp;
+	let effectivedpr = dpr;
 
 	// make sure you don't break the CR
 	if (hp > 850) hp = 850;
 	if (dpr > 320) dpr = 320;
 
 	for (let i = 0; i < msbcr.cr.length; i++) {
-		var curcr = msbcr.cr[i];
+		let curcr = msbcr.cr[i];
 		if (hp >= parseInt(curcr.hpmin) && hp <= parseInt(curcr.hpmax)) {
-			var defensedifference = parseInt(curcr.ac) - ac;
+			let defensedifference = parseInt(curcr.ac) - ac;
 			if (defensedifference > 0) defensedifference = Math.floor(defensedifference / 2);
 			if (defensedifference < 0) defensedifference = Math.ceil(defensedifference / 2);
 			defensedifference = i - defensedifference;
@@ -192,9 +192,9 @@ function calculatecr() {
 			defensiveCR = msbcr.cr[defensedifference]._cr;
 		}
 		if (dpr >= curcr.dprmin && dpr <= curcr.dprmax) {
-			var adjuster = parseInt(curcr.attackbonus);
+			let adjuster = parseInt(curcr.attackbonus);
 			if (usesavedc) adjuster = parseInt(curcr.savedc);
-			var attackdifference = adjuster - attackbonus;
+			let attackdifference = adjuster - attackbonus;
 			if (attackdifference > 0) attackdifference = Math.floor(attackdifference / 2);
 			if (attackdifference < 0) attackdifference = Math.ceil(attackdifference / 2);
 			attackdifference = i - attackdifference;
@@ -204,7 +204,7 @@ function calculatecr() {
 		}
 	}
 
-	var cr = ((eval(offensiveCR) + eval(defensiveCR)) / 2).toString();
+	let cr = ((eval(offensiveCR) + eval(defensiveCR)) / 2).toString();
 
 	if (cr == "0.5625") cr = "1/2"
 	if (cr == "0.5") cr = "1/2"
@@ -216,7 +216,7 @@ function calculatecr() {
 	if (cr == "0.0625") cr = "1/8"
 	if (cr.indexOf(".") !== -1) cr = Math.round(cr).toString();
 
-	var finalcr = 0;
+	let finalcr = 0;
 	for (let i = 0; i < msbcr.cr.length; i++) {
 		if (msbcr.cr[i]._cr === cr) {
 			finalcr = i;
@@ -224,10 +224,10 @@ function calculatecr() {
 		}
 	}
 
-	var hitdice = calculatehd();
-	var hitdicesize = $("#hdval").html();
-	var conmod = Math.floor(($("#con").val() - 10) / 2);
-	var hash = "#";
+	let hitdice = calculatehd();
+	let hitdicesize = $("#hdval").html();
+	let conmod = Math.floor(($("#con").val() - 10) / 2);
+	let hash = "#";
 	hash += $("#expectedcr").val()+"," // 0
 	hash += $("#hp").val()+"," // 1
 	hash += $("#ac").val()+"," // 2
@@ -242,7 +242,7 @@ function calculatecr() {
 	hash += $("#flying").prop("checked")+"," // 11
 	hash += $("#saveprofs").val()+"," // 12
 	hash += "traits:";
-	var hastraits = window.location.hash.split("traits:")[1];
+	let hastraits = window.location.hash.split("traits:")[1];
 	if (hastraits !== "undefined") hash += hastraits;
 
 	window.location = hash;
@@ -259,15 +259,15 @@ function calculatecr() {
 }
 
 function calculatehd() {
-	var avghp = $("#hdval").html().split("d")[1]/2+0.5;
-	var conmod = Math.floor(($("#con").val() - 10) / 2);
-	var curhd = Math.floor(parseInt($("#hp").val()) / (avghp + conmod));
+	let avghp = $("#hdval").html().split("d")[1]/2+0.5;
+	let conmod = Math.floor(($("#con").val() - 10) / 2);
+	let curhd = Math.floor(parseInt($("#hp").val()) / (avghp + conmod));
 	if (!curhd) curhd = 1;
 	return curhd;
 }
 
 function calculatehp() {
-	var avghp = $("#hdval").html().split("d")[1] / 2 + 0.5;
-	var conmod = Math.floor(($("#con").val() - 10) / 2);
+	let avghp = $("#hdval").html().split("d")[1] / 2 + 0.5;
+	let conmod = Math.floor(($("#con").val() - 10) / 2);
 	return Math.round ((avghp + conmod) * $("#hd").val());
 }

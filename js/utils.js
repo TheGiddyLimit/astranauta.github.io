@@ -39,11 +39,11 @@ const STL_DISPLAY_NONE = "display: none";
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
 function () {
 	"use strict";
-	var str = this.toString();
+	let str = this.toString();
 	if (arguments.length) {
-		var t = typeof arguments[0];
-		var key;
-		var args = (TYP_STRING === t || TYP_NUMBER === t) ?
+		let t = typeof arguments[0];
+		let key;
+		let args = TYP_STRING === t || TYP_NUMBER === t ?
 			Array.prototype.slice.call(arguments)
 			: arguments[0];
 
@@ -186,11 +186,11 @@ function utils_makeAttChoose(attList) {
 }
 
 function makeTableThClassText(tableObject, i) {
-	return (tableObject.thstyleclass === undefined || i >= tableObject.thstyleclass.length ? "" : " class=\"" + tableObject.thstyleclass[i] + "\"")
+	return tableObject.thstyleclass === undefined || i >= tableObject.thstyleclass.length ? "" : " class=\"" + tableObject.thstyleclass[i] + "\"";
 }
 function makeTableTdClassText(tableObject, i) {
 	if (tableObject.tdstyleclass !== undefined) {
-		return (tableObject.tdstyleclass === undefined || i >= tableObject.tdstyleclass.length ? "" : " class=\"" + tableObject.tdstyleclass[i] + "\"")
+		return tableObject.tdstyleclass === undefined || i >= tableObject.tdstyleclass.length ? "" : " class=\"" + tableObject.tdstyleclass[i] + "\"";
 	} else {
 		return makeTableThClassText(tableObject, i);
 	}
@@ -413,7 +413,7 @@ function getAbilityModifier (abilityScore) {
 }
 
 function addCommas(intNum) {
-	return (intNum + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+	return (intNum + "").replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 }
 
 const xpchart = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 102000, 135000, 155000]
@@ -544,13 +544,13 @@ function search(options) {
 // SORTING =============================================================================================================
 
 function asc_sort(a, b){
-	return ($(b).text()) < ($(a).text()) ? 1 : -1;
+	return $(b).text() < $(a).text() ? 1 : -1;
 }
 
 function asc_sort_range(a, b){
-	return (parseInt(b.value)) < parseInt((a.value)) ? 1 : -1;
+	return parseInt(b.value) < parseInt(a.value) ? 1 : -1;
 }
 
 function desc_sort(a, b){
-	return ($(b).text()) > ($(a).text()) ? 1 : -1;
+	return $(b).text() > $(a).text() ? 1 : -1;
 }
