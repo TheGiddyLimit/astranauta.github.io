@@ -109,7 +109,7 @@ function doStuff(data) {
 				if (t.invocationsknown && t.slotlevel) {
 					if (!cols.includes("invocations")) {
 						cols.push("invocations");
-						clss.classTable.groups["3"] = {"title": null, "cols": [{"name": "Spell Slots"}, {"name": "Slot Level"}, {"name": "Invocations Known"}], "rows": []}
+						clss.classTable.groups["3"] = {"title": null, "subclasses": null, "cols": [{"name": "Spell Slots"}, {"name": "Slot Level"}, {"name": "Invocations Known"}], "rows": []}
 					}
 
 					let slRe = /(\d+).*?/
@@ -124,7 +124,7 @@ function doStuff(data) {
 				if (t.rages) {
 					if (!cols.includes("rages")) {
 						cols.push("rages");
-						clss.classTable.groups["3"] = {"title": null, "cols": [{"name": "Rages"}, {"name": "Rage Damage"}], "rows": []}
+						clss.classTable.groups["3"] = {"title": null, "subclasses": null, "cols": [{"name": "Rages"}, {"name": "Rage Damage"}], "rows": []}
 					}
 
 					clss.classTable.groups["3"].rows[t._level-1] =
@@ -136,7 +136,7 @@ function doStuff(data) {
 				if (t.martialarts && t.kipoints && t.unarmoredmovement) {
 					if (!cols.includes("martialarts")) {
 						cols.push("martialarts");
-						clss.classTable.groups["2"] = {"title": null, "cols": [{"name": "Martial Arts"}, {"name": "Ki Points"}, {"name": "Unarmored Movement"}], "rows": []}
+						clss.classTable.groups["2"] = {"title": null, "subclasses": null, "cols": [{"name": "Martial Arts"}, {"name": "Ki Points"}, {"name": "Unarmored Movement"}], "rows": []}
 					}
 
 					let mrtRe = /^(\d+)d(\d+)$/
@@ -155,7 +155,7 @@ function doStuff(data) {
 				if (t.sneakattack) {
 					if (!cols.includes("sneakatk")) {
 						cols.push("sneakatk");
-						clss.classTable.groups["2"] = {"title": null, "cols": [{"name": "Sneak Attack"}], "rows": []}
+						clss.classTable.groups["2"] = {"title": null, "subclasses": null, "cols": [{"name": "Sneak Attack"}], "rows": []}
 					}
 
 					let mrtRe = /^(\d+)d(\d+)$/
@@ -166,7 +166,7 @@ function doStuff(data) {
 				if (t.sorcerypoints) {
 					if (!cols.includes("sorcerypoints")) {
 						cols.push("sorcerypoints");
-						clss.classTable.groups["2"] = {"title": null, "cols": [{"name": "Sorcery Points"}], "rows": []}
+						clss.classTable.groups["2"] = {"title": null, "subclasses": null, "cols": [{"name": "Sorcery Points"}], "rows": []}
 					}
 
 					clss.classTable.groups["2"].rows[t._level-1] = [
@@ -176,7 +176,7 @@ function doStuff(data) {
 				if (t.psilimit && t.psipoints && t.disciplinesknown && t.talentsknown) {
 					if (!cols.includes("psionics")) {
 						cols.push("psionics");
-						clss.classTable.groups["3"] = {"title": null, "cols": [
+						clss.classTable.groups["3"] = {"title": null, "subclasses": null, "cols": [
 							{"name": "Talents Known"}, {"name": "Disciplines Known"}, {"name": "Psi Points"}, {"name": "Psi Limit"}
 							], "rows": []}
 					}
@@ -482,7 +482,7 @@ function doStuff(data) {
 
 			if (clss.spellcasting.cantripsKnown !== undefined || clss.spellcasting.spellsKnown !== undefined) {
 
-				let kentGrp = {"title": null, "cols": [], "rows": []};
+				let kentGrp = {"title": null, "subclasses": subclass === null ? null : [subclass], "cols": [], "rows": []};
 
 				for (let j = 0; j < 20; j++) {
 					let r = []
@@ -520,7 +520,7 @@ function doStuff(data) {
 				spellClump++;
 			}
 
-			let slotsGroup = {"title": groupTitle, "cols": [], "rows": []};
+			let slotsGroup = {"title": groupTitle, "subclasses": subclass === null ? null : [subclass], "cols": [], "rows": []};
 
 			if (clss.name !== "Warlock") {
 				let highest = clss.spellcasting.slots[19].slots
