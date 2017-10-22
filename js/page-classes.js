@@ -342,7 +342,6 @@ function loadsub(sub) {
 			$("._class_feature").show();
 			$(".subclass-prefix").show();
 			$el.removeClass("active");
-
 		}
 
 		$("#subclasses .active").removeClass("active");
