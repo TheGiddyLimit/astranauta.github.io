@@ -338,12 +338,12 @@ function loadsub(sub) {
 			}
 		}
 
-	if ($el.hasClass("active")) {
-		$("._class_feature").show();
-		$(".subclass-prefix").show();
-		$el.removeClass("active");
+		if ($el.hasClass("active")) {
+			$("._class_feature").show();
+			$(".subclass-prefix").show();
+			$el.removeClass("active");
 
-	}
+		}
 
 		$("#subclasses .active").removeClass("active");
 		$el.addClass("active");
