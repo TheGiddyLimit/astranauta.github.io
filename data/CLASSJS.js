@@ -227,34 +227,63 @@ function doStuff(data) {
 							// TODO
 							// setAdd(SETERINO, ff.subclass)
 						} else {
-							if (ff.suboption === "2") console.log(ff.name)
 
 							// CLASS FEATURES
 							if (ff._optional === "YES" && ff.parent === undefined) console.log(ff.name) // never happens
 
 
 							if (ff._optional === "YES" && ff.parent !== undefined) {
-								// SHIT WITH PARENT FEATURES
+								if (ff.suboption === "2") console.log(ff.name) // never happens
+								// OPTIONAL SHIT WITH PARENT FEATURES
 								let pa = clss.classFeatures[Number(t._level) - 1];
-								let lastItem = pa[pa.length-1];
-								let lastEntry = lastItem.entries[lastItem.entries.length-1]
+								let lastFeature = pa[pa.length-1];
+								let lastEntry = lastFeature.entries[lastFeature.entries.length-1]
 								if (lastEntry.type !== "options") {
 									let newLast = {"type": "options", "entries": []}
-									lastItem.entries.push(newLast)
+									lastFeature.entries.push(newLast)
 									lastEntry = newLast
 								}
 								let isUa = ff.name.includes("(UA)")
+								// if (!isUa) console.log(clss.name, ff.name) // FIXME use this
 
 								let fOb = getFeatureObj(ff, isUa);
 
 								lastEntry.entries.push(fOb)
 							} else {
-								// SHIT WITHOUT PARENT FEATURES
-								let isUa = ff.name.includes("(UA)")
+								if (ff.suboption !== undefined) {
+									// NON-OPTIONAL SHIT WITH PARENT FEATURES
+									let lastFeature = clss.classFeatures[Number(t._level) - 1][clss.classFeatures[Number(t._level) - 1].length-1];
+									let lastEntry = lastFeature.entries[lastFeature.entries.length-1]
+									if (ff.suboption === "1") {
+										if (lastEntry.type !== "entries") {
+											let newLast = {"type": "entries", "entries": []}
+											lastFeature.entries.push(newLast)
+											lastEntry = newLast
+										}
 
-								let fOb = getFeatureObj(ff, isUa)
+									}
 
-								clss.classFeatures[Number(t._level) - 1].push(fOb)
+									if (ff.suboption === "2") { // ve go van deepah
+										if (lastEntry.type === "entries") {
+											lastEntry = lastEntry.entries[lastEntry.entries.length-1]
+											let newLast = {"type": "entries", "entries": []}
+											lastEntry.entries.push(newLast)
+											lastEntry = newLast
+										} else {
+											console.log(ff.name, "no parent entries list with suboption 2!!") // never happens
+										}
+									}
+
+									let fOb = getFeatureObj(ff, null);
+									lastEntry.entries.push(fOb)
+								} else {
+									// SHIT WITHOUT PARENT FEATURES
+									let isUa = ff.name.includes("(UA)")
+
+									let fOb = getFeatureObj(ff, isUa)
+
+									clss.classFeatures[Number(t._level) - 1].push(fOb)
+								}
 							}
 						}
 					}
@@ -403,7 +432,9 @@ function getFeatureObj(ff, isUa) { // pass in a feature object
 	let fOb = {}
 	fOb.name = ff.name.replace("(UA)", "").trim();
 	fOb.entries = []
-	fOb.source = isUa ? "UA" : "PHB";
+	if (isUa !== null) {
+		fOb.source = isUa ? "UA" : "PHB";
+	}
 
 	for (let k = 0; k < ff.text.length; k++) {
 		let fTxt = ff.text[k];
