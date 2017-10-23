@@ -8,11 +8,11 @@ window.onload = function load() {
 		var curreward = rewardlist[i];
 		var name = curreward.name;
 		let displayName = curreward.type === "Demonic" ? "Demonic Boon: " + curreward.name : curreward.name;
-		$("ul.rewards").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name'>"+displayName+"</span></a></li>");
+		$("ul.rewards").append("<li class='row'><a id='"+i+"' href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-10'>"+displayName+"</span> <span class='source col-xs-2' title=\""+parse_sourceJsonToFull(curreward.source)+"\">"+parse_sourceJsonToAbv(curreward.source)+"</span></a></li>");
 	}
 
 	const list = search({
-		valueNames: ['name'],
+		valueNames: ["name", "source"],
 		listClass: "rewards"
 	});
 
@@ -35,7 +35,7 @@ function loadhash (id) {
 	var curreward = rewardlist[id];
 
 	var name = curreward.type === "Demonic" ? "Demonic Boon: " + curreward.name : curreward.name;
-	$("th#name").html(name);
+	$("th#name").html("<span title=\""+parse_sourceJsonToFull(curreward.source)+"\" class='source source"+parse_sourceJsonToAbv(curreward.source)+"'>"+parse_sourceJsonToAbv(curreward.source)+"</span> "+name);
 
 	$("tr.text").remove();
 
