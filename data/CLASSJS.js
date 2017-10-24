@@ -744,14 +744,14 @@ const SRC_MAP =
 		"Arcane Tradition: Illusion": 									"PHB",
 		"Arcane Tradition: Transmutation": 								"PHB",
 		"Arcane Tradition: Necromancy": 								"PHB",
-		"Artificer Specialist: Alchemist": 								"UAA",
-		"Artificer Specialist: Gunsmith": 								"UAA",
-		"Mystic Order: Order of the Avatar": 							"UATMC",
-		"Mystic Order: Order of the Awakened": 							"UATMC",
-		"Mystic Order: Order of the Immortal": 							"UATMC",
-		"Mystic Order: Order of the Nomad": 							"UATMC",
-		"Mystic Order: Order of the Soul Knife": 						"UATMC",
-		"Mystic Order: Order of the Wu Jen": 							"UATMC"
+		"Artificer Specialist: Alchemist": 								"UAArtificer",
+		"Artificer Specialist: Gunsmith": 								"UAArtificer",
+		"Mystic Order: Order of the Avatar": 							"UATheMysticClass",
+		"Mystic Order: Order of the Awakened": 							"UATheMysticClass",
+		"Mystic Order: Order of the Immortal": 							"UATheMysticClass",
+		"Mystic Order: Order of the Nomad": 							"UATheMysticClass",
+		"Mystic Order: Order of the Soul Knife": 						"UATheMysticClass",
+		"Mystic Order: Order of the Wu Jen": 							"UATheMysticClass"
 	}
 
 const UA_MAP =
