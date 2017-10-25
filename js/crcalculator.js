@@ -3,7 +3,7 @@ window.onload = loadpage;
 function loadpage() {
 	for (let i = 0; i < msbcr.cr.length; i++) {
 		let curcr = msbcr.cr[i];
-		$("#msbcr").append("<tr><td>"+curcr._cr+"</td><td>"+parsecr (curcr._cr)+"</td><td>"+curcr.pb+"</td><td>"+curcr.ac+"</td><td>"+curcr.hpmin+"-"+curcr.hpmax+"</td><td>"+curcr.attackbonus+"</td><td>"+curcr.dprmin+"-"+curcr.dprmax+"</td><td>"+curcr.savedc+"</td></tr>")
+		$("#msbcr").append("<tr><td>"+curcr._cr+"</td><td>"+parse_crToXp (curcr._cr)+"</td><td>"+curcr.pb+"</td><td>"+curcr.ac+"</td><td>"+curcr.hpmin+"-"+curcr.hpmax+"</td><td>"+curcr.attackbonus+"</td><td>"+curcr.dprmin+"-"+curcr.dprmax+"</td><td>"+curcr.savedc+"</td></tr>")
 	}
 
 	$("input#calculate").click(function() {
@@ -255,7 +255,7 @@ function calculatecr() {
 	$("#croutput").append("<p>Effective AC: "+ac+"</p>");
 	$("#croutput").append("<p>Average Damage Per Round: "+effectivedpr+"</p>");
 	$("#croutput").append("<p>"+(usesavedc?"Save DC: ":"Effective Attack Bonus: +")+attackbonus+"</p>");
-	$("#croutput").append("<p>Experience Points: "+parsecr (msbcr.cr[finalcr]._cr)+"</p>");
+	$("#croutput").append("<p>Experience Points: "+parse_crToXp (msbcr.cr[finalcr]._cr)+"</p>");
 }
 
 function calculatehd() {

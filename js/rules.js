@@ -27,9 +27,7 @@ window.onload = function load() {
 		}).appendTo(this);
 	});
 
-	if (window.location.hash.length) {
-		window.onhashchange();
-	} else $("#listcontainer a").get(0).click();
+	initHistory()
 
 	// reset button
 	$("button#reset").click(function() {

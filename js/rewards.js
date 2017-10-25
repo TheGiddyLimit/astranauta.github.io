@@ -8,8 +8,13 @@ window.onload = function load() {
 		var curreward = rewardlist[i];
 		var name = curreward.name;
 		let displayName = curreward.type === "Demonic" ? "Demonic Boon: " + curreward.name : curreward.name;
-		$("ul.rewards").append("<li class='row'><a id='"+i+"' href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-10'>"+displayName+"</span> <span class='source col-xs-2' title=\""+parse_sourceJsonToFull(curreward.source)+"\">"+parse_sourceJsonToAbv(curreward.source)+"</span></a></li>");
+		$("ul.rewards").append("<li class='row' "+FLTR_SOURCE+"='"+curreward.source+"'><a id='"+i+"' href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-10'>"+displayName+"</span> <span class='source col-xs-2' title='"+parse_sourceJsonToFull(curreward.source)+"'>"+parse_sourceJsonToAbv(curreward.source)+"</span></a></li>");
+
+		addDropdownOption($("select.sourcefilter"), curreward.source, parse_sourceJsonToFull(curreward.source));
 	}
+
+	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
+	$("select.sourcefilter").val("All");
 
 	const list = search({
 		valueNames: ["name", "source"],
@@ -17,16 +22,17 @@ window.onload = function load() {
 	});
 
 	$("#filtertools select").change(function(e) {
-		const type = this.value
-		if (type === "All")
-			return list.filter()
+		const typeFilter = $("select.typefilter").val();
+		const sourceFilter = $("select.sourcefilter").val();
 
-		list.filter(item => item.values().name.startsWith(type))
+		list.filter(item => {
+			const rightType = typeFilter === "All" || item.values().name.startsWith(typeFilter);
+			const rightSource = sourceFilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourceFilter;
+			return rightType && rightSource;
+		})
 	})
 
-	if (window.location.hash.length) {
-		window.onhashchange();
-	} else $("#listcontainer a").get(0).click();
+	initHistory()
 }
 
 function loadhash (id) {

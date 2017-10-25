@@ -1,26 +1,3 @@
-function parsesource (src) {
-	let source = src.trim();
-	if (source === "Curse of Strahd") source = "CoS";
-	if (source === "Dungeon Master's Guide") source = "DMG";
-	if (source === "Elemental Evil PDF supplement") source = "EEPC";
-	if (source === "Hoard of the Dragon Queen") source = "HotDQ";
-	if (source === "Lost Mines of Phandelver") source = "LMoP";
-	if (source === "Monster Manual") source = "MM";
-	if (source === "Out of the Abyss") source = "OotA";
-	if (source === "Player's Handbook") source = "PHB";
-	if (source === "Princes of the Apocalypse") source = "PotA";
-	if (source === "Rise of Tiamat Online Supplement") source = "RoT";
-	if (source === "Storm King's Thunder") source = "SKT";
-	if (source === "Sword Coast Adventurer's Guide") source = "SCAG";
-	if (source === "Tales from the Yawning Portal") source = "TYP";
-	if (source === "The Rise of Tiamat") source = "RoT";
-	if (source === "Tomb of Annihilation") source = "ToA";
-	if (source === "Tyranny of Dragons") source = "ToD";
-	if (source === "Unearthed Arcana Modern Magic") source = "UAMM";
-	if (source === "Volo's Guide to Monsters") source = "VGM";
-	return source;
-}
-
 function parsetype (type) {
 	if (type === "G") return "Adventuring Gear";
 	if (type === "SCF") return "Spellcasting Focus";
@@ -90,6 +67,7 @@ window.onload = function load() {
 
 		var curitem = itemlist[i];
 		var name = curitem.name;
+		var source = curitem.source;
 
 		var type = curitem.type.split(",");
 		if (type[0] === "$") continue;
@@ -101,12 +79,8 @@ window.onload = function load() {
 			}
 		}
 
-		var source = curitem.text[curitem.text.length-1].split(",")[0].split(":")[1].trim();
-
 		var rarity = curitem.rarity;
-		if (!rarity) {
-			rarity = "None";
-		} else rarity = rarity.replace("Rarity: ", "");
+		if (!rarity) rarity = "None";
 
 		var destinationlist = "ul.list.mundane";
 		curitemstring = JSON.stringify (curitem);
@@ -114,11 +88,10 @@ window.onload = function load() {
 			destinationlist = "ul.list.magic";
 		}
 
+		$(destinationlist).append("<li><a id='"+i+"' href=\"#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"\" title=\""+name+"\"><span class='name col-xs-4'>"+name+"</span> <span class='type col-xs-3'>"+type.join(", ")+"</span> <span class='sourcename col-xs-2' title=\""+parse_sourceJsonToFull(source)+"\"><span class='source'>"+parse_sourceJsonToAbv(source)+"</span></span> <span class='rarity col-xs-3'>"+rarity+"</span></a></li>");
 
-		$(destinationlist).append("<li><a id='"+i+"' href=\"#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"\" title=\""+name+"\"><span class='name col-xs-4'>"+name+"</span> <span class='type col-xs-3'>"+type.join(", ")+"</span> <span class='sourcename col-xs-2' title=\""+source+"\"><span class='source'>"+parsesource(source)+"</span></span> <span class='rarity col-xs-3'>"+rarity+"</span></a></li>");
-
-		if (!$("select.sourcefilter option[value='"+parsesource(source)+"']").length) {
-			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parsesource(source)+"'>"+source+"</option>")
+		if (!$("select.sourcefilter option[value='"+parse_sourceJsonToAbv(source)+"']").length) {
+			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parse_sourceJsonToAbv(source)+"'>"+parse_sourceJsonToFull(source)+"</option>")
 		}
 		$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
 		$("select.sourcefilter").val("All");
@@ -137,15 +110,12 @@ window.onload = function load() {
 	$("select.typefilter option[value=All]").prependTo(".typefilter");
 	$(".typefilter").val("All");
 
-	if (window.location.hash.length) {
-		window.onhashchange();
-	} else $("#listcontainer a").get(0).click();
+	initHistory()
 
 	$("form#filtertools select").change(function(){
 		var typefilter = $("select.typefilter").val();
 		var sourcefilter = $("select.sourcefilter").val().replace(" ","");
 		var rarityfilter = $("select.rarityfilter").val();
-
 
 		mundanelist.filter(function(item) {
 			var righttype = false;
@@ -170,7 +140,6 @@ window.onload = function load() {
 		});
 
 	});
-
 
 	$("#filtertools button.sort").on("click", function() {
 		if ($(this).attr("sortby") === "asc") {
@@ -199,43 +168,45 @@ window.onload = function load() {
 	});
 }
 
+function rarityValue(rarity) {
+	if (rarity === "None") return 0;
+	if (rarity === "Common") return 1;
+	if (rarity === "Uncommon") return 2;
+	if (rarity === "Rare") return 3;
+	if (rarity === "Very Rare") return 4;
+	if (rarity === "Legendary") return 5;
+	if (rarity === "Artifact") return 6;
+	if (rarity === "Unknown") return 7;
+	return 0;
+}
+
 function sortitems(a, b, o) {
 	if (o.valueName === "name") {
 		return ((b._values.name.toLowerCase()) > (a._values.name.toLowerCase())) ? 1 : -1;
 	}
 
 	if (o.valueName === "type") {
+		if (b._values.type === a._values.type) return compareNames(a, b);
 		return ((b._values.type.toLowerCase()) > (a._values.type.toLowerCase())) ? 1 : -1;
 	}
 
 	if (o.valueName === "source") {
+		if (b._values.source === a._values.source) return compareNames(a, b);
 		return ((b._values.source.toLowerCase()) > (a._values.source.toLowerCase())) ? 1 : -1;
 	}
 
 	if (o.valueName === "rarity") {
-		let ararity = a._values.rarity.replace("Rarity: ", "");
-		let brarity = b._values.rarity.replace("Rarity: ", "");
-		if (ararity === "None") ararity = "0";
-		if (brarity === "None") brarity = "0";
-		if (ararity === "Common") ararity = "1";
-		if (brarity === "Common") brarity = "1";
-		if (ararity === "Uncommon") ararity = "2";
-		if (brarity === "Uncommon") brarity = "2";
-		if (ararity === "Rare") ararity = "3";
-		if (brarity === "Rare") brarity = "3";
-		if (ararity === "Very Rare") ararity = "4";
-		if (brarity === "Very Rare") brarity = "4";
-		if (ararity === "Legendary") ararity = "5";
-		if (brarity === "Legendary") brarity = "5";
-		if (ararity === "Artifact") ararity = "6";
-		if (brarity === "Artifact") brarity = "6";
-		if (ararity === "Unknown") ararity = "7";
-		if (brarity === "Unknown") brarity = "7";
-		return ((b._values.rarity) > (a._values.rarity)) ? 1 : -1;
+		if (b._values.rarity === a._values.rarity) return compareNames(a, b);
+		return (rarityValue(b._values.rarity) > rarityValue(a._values.rarity)) ? 1 : -1;
 	}
 
 	return 1;
 
+	function compareNames(a, b) {
+		if (b._values.name.toLowerCase() === a._values.name.toLowerCase()) return 0;
+		else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
+		else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
+	}
 }
 
 function loadhash (id) {
@@ -244,10 +215,11 @@ function loadhash (id) {
 	var curitem = itemlist[id];
 
 	var name = curitem.name;
-	var source = (curitem.source) ? curitem.source : curitem.text[curitem.text.length-1].split(",")[0].split(":")[1];
+	var source = curitem.source;
 
-	sourceshort = parsesource(source);
-	$("th#name").html("<span title=\""+source+"\" class='source source"+sourceshort+"'>"+sourceshort+"</span> "+name);
+	sourceshort = parse_sourceJsonToAbv(source);
+	sourcefull = parse_sourceJsonToFull(source);
+	$("th#name").html("<span title=\""+sourcefull+"\" class='source source"+sourceshort+"'>"+sourceshort+"</span> "+name);
 
 	$("td span#type").html("");
 	$("span#damage").html("");
@@ -272,8 +244,6 @@ function loadhash (id) {
 	$("td span#rarity").html("");
 	var rarity = curitem.rarity;
 	if (rarity) $("td span#rarity").html(", "+rarity);
-
-
 
 	$("span#properties").html("");
 	if (curitem.property) {
@@ -323,20 +293,11 @@ function loadhash (id) {
 		if (textlist[n].istable === "YES") {
 			texthtml += utils_makeTable(textlist[n]);
 		} else {
-			// FIXME this data should be included in the JSON
+			// FIXME this data should be included in the JSON; the same is probably true for properties as there is lots of repetition within "text"
+			// Consider also adding Legendary Resistance, Luck, and Wish to the properites
+			// Potentially split Ammunition into two: get half-back vs. get none back
 			if (curtextstring.indexOf("Requires Attunement") !== -1) {
-				$("td span#attunement").html("(" + textlist[n] + ")");
-				continue;
-			}
-			if (textlist[n].indexOf(", common") > 0) continue;
-			if (textlist[n].indexOf(", uncommon") > 0) continue;
-			if (textlist[n].indexOf(", rare") > 0) continue;
-			if (textlist[n].indexOf(", very rare") > 0) continue;
-			if (textlist[n].indexOf(", legendary") > 0) continue;
-			if (textlist[n].indexOf("(requires attunement)") > 0) continue;
-			if (textlist[n].split("Rarity:")[1]) continue;
-			if (textlist[n].split("Source:")[1]) {
-				$("td#source span").html(textlist[n].split("Source:")[1]);
+				$("td span#attunement").html(" (" + textlist[n] + ")");
 				continue;
 			}
 
@@ -344,7 +305,7 @@ function loadhash (id) {
 			texthtml = texthtml + "<p>"+finaltext+"</p>";
 		}
 	}
-
 	$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
+	$("td#source span").html(sourcefull+", page "+curitem.page);
 
 }

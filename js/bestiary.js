@@ -11,52 +11,38 @@ window.onload = function load() {
 		var type = monsters[i].type;
 		var cr = monsters[i].cr;
 
-		source = parse_sourceJsonToAbv(source);
+		let abvSource = parse_sourceJsonToAbv(source);
+		let is3pp = source.includes("3pp");
 
-		$("ul#monsters").append("<li><a id="+i+" href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-4 col-xs-4-2'>"+name+"</span> <span title=\""+fullsource+"\" class='col-xs-1 col-xs-1-8 source source"+source+"'>"+source+"</span> <span class='type col-xs-4 col-xs-4-3'>"+type+"</span> <span class='col-xs-1 col-xs-1-7 text-align-center cr'>"+cr+"</span></a></li>");
+		$("ul#monsters").append("<li "+FLTR_TYPE+"='"+type+"' "+FLTR_SOURCE+"='"+source+"' "+FLTR_CR+"='"+cr+"' "+FLTR_3PP+"='"+is3pp+"'><a id="+i+" href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-4 col-xs-4-2'>"+name+"</span> <span title=\""+fullsource+"\" class='col-xs-1 col-xs-1-8 source source"+abvSource+"'>"+abvSource+"</span> <span class='type col-xs-4 col-xs-4-3'>"+type+"</span> <span class='col-xs-1 col-xs-1-7 text-align-center cr'>"+cr+"</span></a></li>");
 
-		if (!$("select.typefilter:contains('"+type+"')").length && !$("select.typefilter:contains('"+type+" \\(')").length) {
-			$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")
-		}
-		if (!$("select.sourcefilter option[value='"+source+"']").length) {
-			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+source+"'>"+fullsource+"</option>")
-		}
+		addDropdownOption($("select.typefilter"), type, parse_sourceJsonToFull(type));
+		addDropdownOption($("select.sourcefilter"), source, fullsource);
+		addDropdownOption($("select.crfilter"), cr, cr);
+
 		$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
 		$("select.sourcefilter").val("All");
-		if (!$("select.crfilter option[value='"+cr+"']").length) {
-			$("select.crfilter").append("<option title=\""+cr+"\" value='"+cr+"'>"+cr+"</option>")
-		}
 	}
 
-	$("select.typefilter").append("<option value='fiend'>fiend</option>")
-	$("select.typefilter").append("<option value='giant'>giant</option>")
-	$("select.typefilter").append("<option value='humanoid'>humanoid</option>")
 	$("select.typefilter option").sort(asc_sort).appendTo('select.typefilter');
 	$("select.typefilter").val("All");
 
-	$("select.crfilter option").sort(asc_sort).appendTo('select.crfilter');
-	for (var b = 9; b > 1; b--) {
-		$("select.crfilter option[value=1]").after($("select.crfilter option[value="+b+"]"))
-	}
-	$("select.crfilter option[value=1]").before($("select.crfilter option[value='1/8']"))
-	$("select.crfilter option[value=1]").before($("select.crfilter option[value='1/4']"))
-	$("select.crfilter option[value=1]").before($("select.crfilter option[value='1/2']"))
-	$("select.crfilter option[value=0]").before($("select.crfilter option[value=All]"))
+	$("select.crfilter option").sort(asc_sort_cr).appendTo('select.crfilter');
+	$("select.crfilter option[value=0]").before($("select.crfilter option[value=All]"));
+	$("select.crfilter").val("All");
 
 	const list = search({
 		valueNames: ["name", "source", "type", "cr"]
-	})
+	});
 
-	if (window.location.hash.length) {
-		window.onhashchange();
-	} else $("#listcontainer a").get(0).click();
+	initHistory();
 
 	// filtering
 	$("form#filtertools select").change(function(){
 		var typefilter = $("select.typefilter").val();
 		var sourcefilter = $("select.sourcefilter").val();
 		var crfilter = $("select.crfilter").val();
-		var thirdpartyfilter = $("select.3ppfilter").val();
+		var thirdpartyfilter = $("select.pp3filter").val();
 
 		list.filter(function(item) {
 			var righttype = false;
@@ -64,12 +50,12 @@ window.onload = function load() {
 			var rightcr = false;
 			var rightparty = false;
 
-			if (typefilter === "All" || item.values().type === typefilter) righttype = true;
-			if (sourcefilter === "All" || item.values().source === sourcefilter) rightsource = true;
-			if (crfilter === "All" || item.values().cr === crfilter) rightcr = true;
+			if (typefilter === "All" || item.elm.getAttribute(FLTR_TYPE) === typefilter) righttype = true;
+			if (sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter) rightsource = true;
+			if (crfilter === "All" || item.elm.getAttribute(FLTR_CR) === crfilter) rightcr = true;
 			if (thirdpartyfilter === "All") rightparty = true;
-			if (thirdpartyfilter === "None" && item.values().source.indexOf("3pp") === -1) rightparty = true;
-			if (thirdpartyfilter === "Only" && item.values().source.indexOf("3pp") !== -1) rightparty = true;
+			if (thirdpartyfilter === "None" && item.elm.getAttribute(FLTR_3PP) === "false") rightparty = true;
+			if (thirdpartyfilter === "Only" && item.elm.getAttribute(FLTR_3PP) === "true") rightparty = true;
 			if (righttype && rightsource && rightcr && rightparty) return true;
 			return false;
 		});
@@ -245,7 +231,7 @@ function loadhash (id) {
 
 	var cr = mon.cr;
 	$("td span#cr").html(cr);
-	$("td span#xp").html(parsecr(cr));
+	$("td span#xp").html(parse_crToXp(cr));
 
 	var traits = mon.trait;
 	$("tr.trait").remove();

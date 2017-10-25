@@ -35,6 +35,22 @@ const ATB_ONCLICK = "onclick";
 const STL_DISPLAY_INITIAL = "display: initial";
 const STL_DISPLAY_NONE = "display: none";
 
+const FLTR_SOURCE = "filterSource";
+const FLTR_TYPE = "filterType";
+const FLTR_CR = "filterCr";
+const FLTR_3PP = "filter3pp";
+const FLTR_ABILITIES = "filterAbilities";
+const FLTR_ORDER = "filterOrder";
+const FLTR_ABILITIES_CHOOSE = "filterAbilitiesChoose";
+const FLTR_SIZE = "filterSize";
+const FLTR_LEVEL = "filterLevel";
+const FLTR_SCHOOL = "filterSchool";
+const FLTR_RANGE = "filterRange";
+const FLTR_CLASS = "filterClass";
+const FLTR_META = "filterMeta";
+const FLTR_ACTION = "filterAction";
+const FLTR_LIST_SEP = ";";
+
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
@@ -267,55 +283,64 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 	}
 }
 
-function utils_getAttributeText(attObj) {
-	const ATTRIBUTES = ["Str", "Dex", "Con", "Int", "Wis", "Cha"];
-	let mainAtts = [];
-	let atts = [];
-	if (attObj !== undefined) {
-		handleAllAttributes(attObj);
-		handleAttributesChoose();
-		return atts.join("; ");
+class AbilityData {
+	constructor(asText, asCollection) {
+		this.asText = asText;
+		this.asCollection = asCollection;
+		this.asFilterCollection = asCollection.join(FLTR_LIST_SEP);
 	}
-	return "";
+}
+function utils_getAbilityData(abObj) {
+	const ABILITIES = ["Str", "Dex", "Con", "Int", "Wis", "Cha"];
+	let mainAbs = [];
+	let allAbs = [];
+	let abs = [];
+	if (abObj !== undefined) {
+		handleAllAbilities(abObj);
+		handleAbilitiesChoose();
+		return new AbilityData(abs.join("; "), allAbs);
+	}
+	return new AbilityData("", []);
 
-	function handleAllAttributes(abilityList) {
-		for (let a = 0; a < ATTRIBUTES.length; ++a) {
-			handleAttribute(abilityList, ATTRIBUTES[a])
+	function handleAllAbilities(abilityList) {
+		for (let a = 0; a < ABILITIES.length; ++a) {
+			handleAbility(abilityList, ABILITIES[a])
 		}
 	}
 
-	function handleAttribute(parent, att) {
-		if (parent[att.toLowerCase()] !== undefined) {
-			atts.push(att + " " + (parent[att.toLowerCase()] < 0 ? "" : "+") + parent[att.toLowerCase()]);
-			mainAtts.push(att);
+	function handleAbility(parent, ab) {
+		if (parent[ab.toLowerCase()] !== undefined) {
+			abs.push(ab + " " + (parent[ab.toLowerCase()] < 0 ? "" : "+") + parent[ab.toLowerCase()]);
+			mainAbs.push(ab);
+			allAbs.push(ab.toLowerCase());
 		}
 	}
 
-	function handleAttributesChoose() {
-		if (attObj.choose !== undefined) {
-			for (let i = 0; i < attObj.choose.length; ++i) {
-				let item = attObj.choose[i];
+	function handleAbilitiesChoose() {
+		if (abObj.choose !== undefined) {
+			for (let i = 0; i < abObj.choose.length; ++i) {
+				let item = abObj.choose[i];
 				let outStack = "Choose ";
 				if (item.predefined !== undefined) {
 					for (let j = 0; j < item.predefined.length; ++j) {
-						let subAtts = [];
-						handleAllAttributes(subAtts, item.predefined[j]);
-						outStack += subAtts.join(", ") + (j === item.predefined.length - 1 ? "" : " or ");
+						let subAbs = [];
+						handleAllAbilities(subAbs, item.predefined[j]);
+						outStack += subAbs.join(", ") + (j === item.predefined.length - 1 ? "" : " or ");
 					}
 				} else {
-					let allAttributes = item.from.length === 6;
-					let allAttributesWithParent = isAllAttributesWithParent(item);
+					let allAbilities = item.from.length === 6;
+					let allAbilitiesWithParent = isAllAbilitiesWithParent(item);
 					let amount = item.amount === undefined ? 1 : item.amount;
 					amount = (amount < 0 ? "" : "+") + amount;
-					if (allAttributes) {
+					if (allAbilities) {
 						outStack += "any ";
-					} else if (allAttributesWithParent) {
+					} else if (allAbilitiesWithParent) {
 						outStack += "any other ";
 					}
 					if (item.count !== undefined && item.count > 1) {
 						outStack += getNumberString(item.count) + " ";
 					}
-					if (allAttributes || allAttributesWithParent) {
+					if (allAbilities || allAbilitiesWithParent) {
 						outStack += amount;
 					} else {
 						for (let j = 0; j < item.from.length; ++j) {
@@ -337,24 +362,23 @@ function utils_getAttributeText(attObj) {
 						}
 					}
 				}
-				atts.push(outStack)
+				abs.push(outStack)
 			}
 
 		}
 	}
 
-	function isAllAttributesWithParent(item) {
-		let tempAttributes = [];
-		for (let i = 0; i < mainAtts.length; ++i) {
-			tempAttributes.push(mainAtts[i].toLowerCase());
+	function isAllAbilitiesWithParent(chooseAbs) {
+		let tempAbilities = [];
+		for (let i = 0; i < mainAbs.length; ++i) {
+			tempAbilities.push(mainAbs[i].toLowerCase());
 		}
-		for (let i = 0; i < item.from.length; ++i) {
-			let attb = item.from[i].toLowerCase();
-			if (!tempAttributes.includes(attb)) {
-				tempAttributes.push(attb)
-			}
+		for (let i = 0; i < chooseAbs.from.length; ++i) {
+			let ab = chooseAbs.from[i].toLowerCase();
+			if (!tempAbilities.includes(ab)) tempAbilities.push(ab);
+			if (!allAbs.includes(ab.toLowerCase)) allAbs.push(ab.toLowerCase());
 		}
-		return tempAttributes.length === 6;
+		return tempAbilities.length === 6;
 	}
 	function getNumberString(amount) {
 		if (amount === 1) return "one";
@@ -417,14 +441,20 @@ function addCommas(intNum) {
 	return (intNum + "").replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 }
 
-const xpchart = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 102000, 135000, 155000]
+const XP_CHART = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 102000, 135000, 155000]
+function parse_crToXp (cr) {
+	if (cr === "0") return "0 or 10";
+	if (cr === "1/8") return "25";
+	if (cr === "1/4") return "50";
+	if (cr === "1/2") return "100";
+	return addCommas (XP_CHART[parseInt(cr)-1]);
+}
 
-function parsecr (cr) {
-	if (cr === "0") return "0 or 10"
-	if (cr === "1/8") return "25"
-	if (cr === "1/4") return "50"
-	if (cr === "1/2") return "100"
-	return addCommas (xpchart[parseInt(cr)-1]);
+function parse_crToNumber (cr) {
+	let parts = cr.trim().split("/");
+	if (parts.length === 1) return Number(parts[0]);
+	else if (parts.length === 2) return Number(parts[0]) / Number(parts[1]);
+	else return 0;
 }
 
 const ARMOR_ABV_TO_FULL = {
@@ -436,77 +466,95 @@ function parse_armorFullToAbv(armor) {
 	return _parse_bToA(ARMOR_ABV_TO_FULL, armor);
 }
 
-const SRC_CoS="curse of strahd";
+const SRC_CoS = "CoS";
 const SRC_DMG = "DMG";
 const SRC_EEPC = "EEPC";
-const SRC_LMoP="lost mine of phandelver";
-const SRC_MM="monster manual";
-const SRC_OotA="out of the abyss";
+const SRC_HotDQ = "HotDQ";
+const SRC_LMoP = "LMoP";
+const SRC_MM = "MM";
+const SRC_OotA = "OotA";
 const SRC_PHB = "PHB";
-const SRC_PotA="elemental evil";
-const SRC_SKT="storm kings thunder";
-const SRC_SCAG = "SCAG";
-const SRC_TYP="Tales from the Yawning Portal";
-const SRC_TTP="The Tortle Package";
-const SRC_ToA="Tomb of Annihilation";
-const SRC_ToD="tyranny of dragons";
-const SRC_VGM="Volo's Guide";
-const SRC_PSA="Plane Shift Amonkhet";
-const SRC_PSI="Plane Shift Innistrad";
+const SRC_PotA = "PotA";
+const SRC_PSA = "PSA";
+const SRC_PSI = "PSI";
 const SRC_PSK = "PSK";
-const SRC_PSKa = "Plane Shift Kaladesh";
-const SRC_PSZ="Plane Shift Zendikar";
-const SRC_UAA = "UAA";
-const SRC_UAEBB = "UAEB";
-const SRC_UAFT = "UAFT";
-const SRC_UAFFS = "UAFFS";
-const SRC_UAFFR = "UAFFR";
+const SRC_PSZ = "PSZ";
+const SRC_RoT = "RoT";
+const SRC_RoTOS = "RoTOS";
+const SRC_SCAG = "SCAG";
+const SRC_SKT = "SKT";
+const SRC_ToA = "ToA";
+const SRC_ToD = "ToD";
+const SRC_TTP = "TTP";
+const SRC_TYP = "TftYP";
+const SRC_VGM = "VGM";
+
+const SRC_ALCoS = "ALCurseOfStrahd";
+const SRC_ALEE = "ALElementalEvil";
+const SRC_ALRoD = "ALRageOfDemons";
+
+const SRC_UAA = "UAArtificer";
+const SRC_UAEAG = "UAEladrinAndGith";
+const SRC_UAEBB = "UAEberron";
+const SRC_UAFFR = "UAFeatsForRaces";
+const SRC_UAFFS = "UAFeatsForSkills";
 const SRC_UAFO = "UAFiendishOptions";
+const SRC_UAFT = "UAFeats";
+const SRC_UAGH = "UAGothicHeroes";
 const SRC_UAModern = "UAModern";
 const SRC_UAStarterSpells = "UAStarterSpells";
-const SRC_UATOBM = "UATOBM";
-const SRC_UATMC = "UATMC";
-const SRC_UAMystic = "UAMystic";
-const SRC_UATRR = "UATRR";
-const SRC_BOLS_3PP = "BoLS 3pp";
-const SRC_ToB_3PP="tome of beasts";
+const SRC_UATMC = "UATheMysticClass";
+const SRC_UATOBM = "UAThatOldBlackMagic";
+const SRC_UATRR = "UATheRangerRevised";
+const SRC_UAWA = "UAWaterborneAdventures";
 
-const UA_PREFIX = "Unearthed Arcana: ";
+const SRC_BOLS_3PP = "BoLS 3pp";
+const SRC_ToB_3PP = "ToB 3pp";
+
+const AL_PREFIX = "Adventurers League: ";
 const PS_PREFIX = "Plane Shift: ";
+const UA_PREFIX = "Unearthed Arcana: ";
 
 const SOURCE_JSON_TO_FULL = {};
 SOURCE_JSON_TO_FULL[SRC_CoS] = "Curse of Strahd";
 SOURCE_JSON_TO_FULL[SRC_DMG] = "Dungeon Master's Guide";
 SOURCE_JSON_TO_FULL[SRC_EEPC] = "Elemental Evil Player's Companion";
+SOURCE_JSON_TO_FULL[SRC_HotDQ] = "Hoard of the Dragon Queen";
 SOURCE_JSON_TO_FULL[SRC_LMoP] = "Lost Mine of Phandelver";
 SOURCE_JSON_TO_FULL[SRC_MM] = "Monster Manual";
 SOURCE_JSON_TO_FULL[SRC_OotA] = "Out of the Abyss";
 SOURCE_JSON_TO_FULL[SRC_PHB] = "Player's Handbook";
 SOURCE_JSON_TO_FULL[SRC_PotA] = "Princes of the Apocalypse";
-SOURCE_JSON_TO_FULL[SRC_SKT] = "Storm King's Thunder";
+SOURCE_JSON_TO_FULL[SRC_RoT] = "The Rise of Tiamat";
+SOURCE_JSON_TO_FULL[SRC_RoTOS] = "The Rise of Tiamat Online Supplement";
 SOURCE_JSON_TO_FULL[SRC_SCAG] = "Sword Coast Adventurer's Guide";
-SOURCE_JSON_TO_FULL[SRC_TYP] = "Tales from the Yawning Portal";
-SOURCE_JSON_TO_FULL[SRC_TTP] = "The Tortle Package";
+SOURCE_JSON_TO_FULL[SRC_SKT] = "Storm King's Thunder";
 SOURCE_JSON_TO_FULL[SRC_ToA] = "Tomb of Annihilation";
 SOURCE_JSON_TO_FULL[SRC_ToD] = "Tyranny of Dragons";
+SOURCE_JSON_TO_FULL[SRC_TTP] = "The Tortle Package";
+SOURCE_JSON_TO_FULL[SRC_TYP] = "Tales from the Yawning Portal";
 SOURCE_JSON_TO_FULL[SRC_VGM] = "Volo's Guide to Monsters";
+SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
+SOURCE_JSON_TO_FULL[SRC_ALEE] = AL_PREFIX + "Elemental Evil";
+SOURCE_JSON_TO_FULL[SRC_ALRoD] = AL_PREFIX + "Rage of Demons";
 SOURCE_JSON_TO_FULL[SRC_PSA] = PS_PREFIX + "Amonkhet";
 SOURCE_JSON_TO_FULL[SRC_PSI] = PS_PREFIX + "Innistrad";
 SOURCE_JSON_TO_FULL[SRC_PSK] = PS_PREFIX + "Kaladesh";
-SOURCE_JSON_TO_FULL[SRC_PSKa] = PS_PREFIX + "Kaladesh";
 SOURCE_JSON_TO_FULL[SRC_PSZ] = PS_PREFIX + "Zendikar";
 SOURCE_JSON_TO_FULL[SRC_UAA] = UA_PREFIX + "Artificer";
+SOURCE_JSON_TO_FULL[SRC_UAEAG] = UA_PREFIX + "Eladrin and Gith";
 SOURCE_JSON_TO_FULL[SRC_UAEBB] = UA_PREFIX + "Eberron";
-SOURCE_JSON_TO_FULL[SRC_UAFT] = UA_PREFIX + "Feats";
-SOURCE_JSON_TO_FULL[SRC_UAFFS] = UA_PREFIX + "Feats for Skills";
 SOURCE_JSON_TO_FULL[SRC_UAFFR] = UA_PREFIX + "Feats for Races";
+SOURCE_JSON_TO_FULL[SRC_UAFFS] = UA_PREFIX + "Feats for Skills";
 SOURCE_JSON_TO_FULL[SRC_UAFO] = UA_PREFIX + "Fiendish Options";
+SOURCE_JSON_TO_FULL[SRC_UAFT] = UA_PREFIX + "Feats";
+SOURCE_JSON_TO_FULL[SRC_UAGH] = UA_PREFIX + "Gothic Heroes";
 SOURCE_JSON_TO_FULL[SRC_UAModern] = UA_PREFIX + "Modern Magic";
 SOURCE_JSON_TO_FULL[SRC_UAStarterSpells] = UA_PREFIX + "Starter Spells";
-SOURCE_JSON_TO_FULL[SRC_UATOBM] = UA_PREFIX + "That Old Black Magic";
 SOURCE_JSON_TO_FULL[SRC_UATMC] = UA_PREFIX + "The Mystic Class";
-SOURCE_JSON_TO_FULL[SRC_UAMystic] = UA_PREFIX + "The Mystic Class";
+SOURCE_JSON_TO_FULL[SRC_UATOBM] = UA_PREFIX + "That Old Black Magic";
 SOURCE_JSON_TO_FULL[SRC_UATRR] = UA_PREFIX + "The Ranger, Revised";
+SOURCE_JSON_TO_FULL[SRC_UAWA] = UA_PREFIX + "Waterborne Adventures";
 SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] = "Book of Lost Spells (3pp)";
 SOURCE_JSON_TO_FULL[SRC_ToB_3PP] = "Tome of Beasts (3pp)";
 
@@ -514,36 +562,43 @@ const SOURCE_JSON_TO_ABV = {};
 SOURCE_JSON_TO_ABV[SRC_CoS] = "CoS";
 SOURCE_JSON_TO_ABV[SRC_DMG] = "DMG";
 SOURCE_JSON_TO_ABV[SRC_EEPC] = "EEPC";
+SOURCE_JSON_TO_ABV[SRC_HotDQ] = "HotDQ";
 SOURCE_JSON_TO_ABV[SRC_LMoP] = "LMoP";
 SOURCE_JSON_TO_ABV[SRC_MM] = "MM";
 SOURCE_JSON_TO_ABV[SRC_OotA] = "OotA";
 SOURCE_JSON_TO_ABV[SRC_PHB] = "PHB";
 SOURCE_JSON_TO_ABV[SRC_PotA] = "PotA";
-SOURCE_JSON_TO_ABV[SRC_SKT] = "SKT";
+SOURCE_JSON_TO_ABV[SRC_RoT] = "RoT";
+SOURCE_JSON_TO_ABV[SRC_RoTOS] = "RoTOS";
 SOURCE_JSON_TO_ABV[SRC_SCAG] = "SCAG";
-SOURCE_JSON_TO_ABV[SRC_TYP] = "TYP";
-SOURCE_JSON_TO_ABV[SRC_TTP] = "TTP";
+SOURCE_JSON_TO_ABV[SRC_SKT] = "SKT";
 SOURCE_JSON_TO_ABV[SRC_ToA] = "ToA";
 SOURCE_JSON_TO_ABV[SRC_ToD] = "ToD";
+SOURCE_JSON_TO_ABV[SRC_TTP] = "TTP";
+SOURCE_JSON_TO_ABV[SRC_TYP] = "TftYP";
 SOURCE_JSON_TO_ABV[SRC_VGM] = "VGM";
+SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
+SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
+SOURCE_JSON_TO_ABV[SRC_ALRoD] = "ALRoD";
 SOURCE_JSON_TO_ABV[SRC_PSA] = "PSA";
 SOURCE_JSON_TO_ABV[SRC_PSI] = "PSI";
 SOURCE_JSON_TO_ABV[SRC_PSK] = "PSK";
-SOURCE_JSON_TO_ABV[SRC_PSKa] = "PSK";
 SOURCE_JSON_TO_ABV[SRC_PSZ] = "PSZ";
 SOURCE_JSON_TO_ABV[SRC_UAA] = "UAA";
+SOURCE_JSON_TO_ABV[SRC_UAEAG] = "UAEaG";
 SOURCE_JSON_TO_ABV[SRC_UAEBB] = "UAEB";
-SOURCE_JSON_TO_ABV[SRC_UAFT] = "UAFT";
-SOURCE_JSON_TO_ABV[SRC_UAFFS] = "UAFFS";
 SOURCE_JSON_TO_ABV[SRC_UAFFR] = "UAFFR";
+SOURCE_JSON_TO_ABV[SRC_UAFFS] = "UAFFS";
 SOURCE_JSON_TO_ABV[SRC_UAFO] = "UAFO";
+SOURCE_JSON_TO_ABV[SRC_UAFT] = "UAFT";
+SOURCE_JSON_TO_ABV[SRC_UAGH] = "UAGH";
 SOURCE_JSON_TO_ABV[SRC_UAModern] = "UAMM";
 SOURCE_JSON_TO_ABV[SRC_UAStarterSpells] = "UASS";
-SOURCE_JSON_TO_ABV[SRC_UATOBM] = "UAOBM";
 SOURCE_JSON_TO_ABV[SRC_UATMC] = "UAM";
-SOURCE_JSON_TO_ABV[SRC_UAMystic] = "UAM";
+SOURCE_JSON_TO_ABV[SRC_UATOBM] = "UAOBM";
 SOURCE_JSON_TO_ABV[SRC_UATRR] = "UATRR";
-SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BLS";
+SOURCE_JSON_TO_ABV[SRC_UAWA] = "UAWA";
+SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BolS (3pp)";
 SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
 
 function parse_sourceJsonToFull (source) {
@@ -599,16 +654,39 @@ function search(options) {
 	return list
 }
 
+function addDropdownOption(dropdown, optionVal, optionText) {
+	let inOptions = false;
+	dropdown.find("option").each(function() {
+		if (this.value === optionVal) {
+			inOptions = true;
+			return false;
+		}
+	});
+	if (!inOptions) {
+		dropdown.append("<option value='" + optionVal + "'>" + optionText + "</option>");
+	}
+}
+
 // SORTING =============================================================================================================
 
 function asc_sort(a, b){
+	if ($(b).text() === $(a).text()) return 0;
 	return $(b).text() < $(a).text() ? 1 : -1;
 }
 
 function asc_sort_range(a, b){
+	if (parseInt(b.value) === parseInt(a.value)) return 0;
 	return parseInt(b.value) < parseInt(a.value) ? 1 : -1;
 }
 
 function desc_sort(a, b){
+	if ($(b).text() === $(a).text()) return 0;
 	return $(b).text() > $(a).text() ? 1 : -1;
+}
+
+function asc_sort_cr(a, b) {
+	let aNum = parse_crToNumber($(a).text());
+	let bNum = parse_crToNumber($(b).text());
+	if (aNum === bNum) return 0;
+	return bNum < aNum ? 1 : -1;
 }
