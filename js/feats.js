@@ -17,7 +17,7 @@ window.onload = function load() {
 		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
 		$("ul.feats").append("<li "+FLTR_SOURCE+"='"+curfeat.source+"' "+FLTR_ABILITIES+"='"+ability.asFilterCollection+"' "+FLTR_ABILITIES_CHOOSE+"='"+isAbilityChoose+"'><a id='" + i + "' href='#" + encodeURI(name).toLowerCase() + "' title='" + name + "'><span class='" + CLS_COL_1 + "'>" + name + "</span> <span class='" + CLS_COL_2 + "' title='" + parse_sourceJsonToFull(curfeat.source) + "'>" + parse_sourceJsonToAbv(curfeat.source) + "</span> <span class='" + CLS_COL_3 + "'>" + ability.asText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></a></li>");
 
-		addDropdownOption($("select.sourcefilter"), parse_sourceJsonToAbv(curfeat.source), parse_sourceJsonToFull(curfeat.source));
+		addDropdownOption($("select.sourcefilter"), curfeat.source, parse_sourceJsonToFull(curfeat.source));
 	}
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
 	$("select.sourcefilter").val("All");

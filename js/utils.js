@@ -441,7 +441,8 @@ function addCommas(intNum) {
 	return (intNum + "").replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 }
 
-const XP_CHART = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 102000, 135000, 155000]
+const XP_CHART = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 102000, 135000, 155000];
+
 function parse_crToXp (cr) {
 	if (cr === "0") return "0 or 10";
 	if (cr === "1/8") return "25";
@@ -612,6 +613,77 @@ function parse_stringToSlug(str) {
 	return str.toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
 }
 
+const ITEM_TYPE_JSON_TO_ABV = {
+	"A": "Ammunition",
+	"AF": "Ammunition", //Firearms
+	"AT": "Artisan Tool",
+	"EXP": "Explosive",
+	"FUT": "Futuristic",
+	"G": "Adventuring Gear",
+	"GS": "Gaming Set",
+	"GUN": "Firearm",
+	"HA": "Heavy Armor",
+	"INS": "Instrument",
+	"LA": "Light Armor",
+	"M": "Melee Weapon",
+	"MA": "Medium Armor",
+	"MARW": "Martial Weapon",
+	"MNT": "Mount",
+	"MOD": "Modern",
+	"P": "Potion",
+	"R": "Ranged Weapon",
+	"RD": "Rod",
+	"REN": "Renaissance",
+	"RG": "Ring",
+	"S": "Shield",
+	"SC": "Scroll",
+	"SCF": "Spellcasting Focus",
+	"SIMW": "Simple Weapon",
+	"ST": "Staff",
+	"T": "Tool",
+	"TAH": "Tack and Harness",
+	"TG": "Trade Good",
+	"VEH": "Vehicle",
+	"W": "Wondrous Item",
+	"WD": "Wand"
+};
+
+function parse_itemTypeToAbv (type) {
+	return _parse_aToB(ITEM_TYPE_JSON_TO_ABV, type);
+}
+
+const DMGTYPE_JSON_TO_FULL = {
+	"B": "bludgeoning",
+	"N": "necrotic",
+	"P": "piercing",
+	"R": "radiant",
+	"S": "slashing"
+};
+
+function parse_dmgTypeToFull (dmgType) {
+	return _parse_aToB(DMGTYPE_JSON_TO_FULL, dmgType);
+}
+
+const PROPERTY_JSON_TO_ABV = {
+	"2H": "two-handed",
+	"A": "ammunition",
+	"AF": "ammunition", //Firearms
+	"BF": "burst fire",
+	"F": "finesse",
+	"H": "heavy",
+	"L": "light",
+	"LD": "loading",
+	"R": "reach",
+	"RLD": "reload",
+	"S": "special",
+	"T": "thrown",
+	"V": "versatile"
+};
+
+function parse_propertyToAbv (property) {
+	return _parse_aToB(PROPERTY_JSON_TO_ABV, property);
+}
+
 // DATA LINKS ==========================================================================================================
 function utils_nameToDataLink(name) {
 	return encodeURIComponent(name.toLowerCase()).replace("'","%27");
@@ -674,6 +746,13 @@ function asc_sort(a, b){
 	return $(b).text() < $(a).text() ? 1 : -1;
 }
 
+function asc_sort_cr(a, b) {
+	let aNum = parse_crToNumber($(a).text());
+	let bNum = parse_crToNumber($(b).text());
+	if (aNum === bNum) return 0;
+	return bNum < aNum ? 1 : -1;
+}
+
 function asc_sort_range(a, b){
 	if (parseInt(b.value) === parseInt(a.value)) return 0;
 	return parseInt(b.value) < parseInt(a.value) ? 1 : -1;
@@ -684,9 +763,8 @@ function desc_sort(a, b){
 	return $(b).text() > $(a).text() ? 1 : -1;
 }
 
-function asc_sort_cr(a, b) {
-	let aNum = parse_crToNumber($(a).text());
-	let bNum = parse_crToNumber($(b).text());
-	if (aNum === bNum) return 0;
-	return bNum < aNum ? 1 : -1;
+function compareNames(a, b) {
+	if (b._values.name.toLowerCase() === a._values.name.toLowerCase()) return 0;
+	else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
+	else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
 }

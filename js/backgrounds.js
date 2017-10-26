@@ -9,7 +9,7 @@ window.onload = function load () {
 		var name = curbg.name;
 		$("ul.backgrounds").append("<li "+FLTR_SOURCE+"='"+curbg.source+"'><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-9'>"+name.replace("Variant ","")+"</span> <span class='source col-xs-3' title='"+parse_sourceJsonToFull(curbg.source)+"'>"+parse_sourceJsonToAbv(curbg.source)+"</span></a></li>");
 
-		addDropdownOption($("select.sourcefilter"), parse_sourceJsonToAbv(curbg.source), parse_sourceJsonToFull(curbg.source))
+		addDropdownOption($("select.sourcefilter"), curbg.source, parse_sourceJsonToFull(curbg.source))
 	}
 
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');

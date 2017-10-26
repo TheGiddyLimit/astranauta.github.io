@@ -213,12 +213,6 @@ function sortspells(a, b, o) {
 	}
 
 	return 0;
-
-	function compareNames(a, b) {
-		if (b._values.name.toLowerCase() === a._values.name.toLowerCase()) return 0;
-		else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
-		else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
-	}
 }
 
 function loadhash (id) {
