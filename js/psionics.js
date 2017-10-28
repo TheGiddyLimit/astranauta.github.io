@@ -7,7 +7,6 @@ const STR_TYPE_TALENT = "Talent";
 const STR_TYPE_DISCIPLINE = "Discipline";
 const STR_ORDER_NONE = "None";
 
-const TMP_WINDOW_HASH = "#{0}";
 const TMP_TYPE_ORDER = "{0} {1}";
 const TMP_DISCIPLINE_TEXT = "{0}{1}{2}";
 const TMP_DESCRIPTION = "<p>{0}</p>";
@@ -87,15 +86,19 @@ window.onload = function load() {
 			link.appendChild(getOrderSpan(psionic));
 			link.appendChild(getHiddenModeSpan(psionic));
 
-			let listItem = getListItem(psionic, i);
+			let listItem = getListItem(psionic);
 			listItem.appendChild(link);
 			TABLE_VIEW.appendChild(listItem);
 		}
 
-		function getListItem(psionic, i) {
+		function getListItem(psionic) {
 			let listItem = document.createElement(ELE_LI);
 			listItem.setAttribute(ATB_CLASS, CLS_ROW);
 			listItem.setAttribute(ATB_TITLE, psionic[JSON_ITEM_NAME]);
+			listItem.setAttribute(FLTR_SOURCE, psionic[JSON_ITEM_SOURCE]);
+			listItem.setAttribute(FLTR_TYPE, psionic[JSON_ITEM_TYPE]);
+			const order = psionic[JSON_ITEM_ORDER] === undefined ? STR_ORDER_NONE : psionic[JSON_ITEM_ORDER];
+			listItem.setAttribute(FLTR_ORDER, order);
 			return listItem;
 		}
 		function getNameSpan(psionic) {
@@ -109,6 +112,7 @@ window.onload = function load() {
 			let span = document.createElement(ELE_SPAN);
 			span.classList.add(LIST_SOURCE);
 			span.classList.add(CLS_COL2);
+			span.setAttribute(ATB_TITLE, parse_sourceJsonToFull(psionic[JSON_ITEM_SOURCE]));
 			span.innerHTML = parse_sourceJsonToAbv(psionic[JSON_ITEM_SOURCE]);
 			return span;
 		}
@@ -220,23 +224,18 @@ window.onload = function load() {
 				FilterBox.EVNT_VALCHANGE,
 				function (event) {
 					listView.filter(function(item) {
-						let f = filterBox.getValues();
-						let v = item.values();
+						const f = filterBox.getValues();
 
-						return filterMatches(HDR_SOURCE, LIST_SOURCE) && filterMatches(HDR_TYPE, LIST_TYPE) && filterMatches(HDR_ORDER, LIST_ORDER);
+						return filterMatches(HDR_SOURCE, FLTR_SOURCE) && filterMatches(HDR_TYPE, FLTR_TYPE) && filterMatches(HDR_ORDER, FLTR_ORDER);
 
-						function filterMatches(header, listAttrib) {
+						function filterMatches(header, filterProperty) {
 							for (let t in f[header]) {
 								if (!f[header].hasOwnProperty(t)) continue;
 								if (t === FilterBox.VAL_SELECT_ALL && f[header][t]) return true;
 								if (!f[header][t]) continue;
 
-								let originalList = filters[header].list;
-								for (let i = 0; i < originalList.length; ++i) {
-									if (parse_stringToSlug(originalList[i]) === t) {
-										if (v[listAttrib] === filters[header].renderer(originalList[i])) return true;
-									}
-								}
+
+								if (f[header][parse_stringToSlug(item.elm.getAttribute(filterProperty))] && parse_stringToSlug(item.elm.getAttribute(filterProperty)) === t) return true;
 							}
 							return false;
 						}
@@ -282,14 +281,7 @@ window.onload = function load() {
 	}
 
 	function selectInitialPsionic() {
-		if (window.location.hash.length === 0) {
-			let listItems = TABLE_VIEW.getElementsByTagName(ELE_A);
-			if (listItems.length > 0) {
-				listItems[0].click();
-			}
-		} else {
-			window.onhashchange();
-		}
+		initHistory();
 	}
 };
 

@@ -1,44 +1,3 @@
-function parsesource (src) {
-	let source = src.trim();
-	if (source === "monster manual") source = "MM";
-	if (source === "Volo's Guide") source = "VGM";
-	if (source === "elemental evil") source = "PotA";
-	if (source === "storm kings thunder") source = "SKT";
-	if (source === "tyranny of dragons") source = "ToD";
-	if (source === "out of the abyss") source = "OotA";
-	if (source === "curse of strahd") source = "CoS";
-	if (source === "lost mine of phandelver") source = "LMoP";
-	if (source === "Tales from the Yawning Portal") source = "TYP";
-	if (source === "tome of beasts") source = "ToB 3pp";
-	if (source === "Plane Shift Amonkhet") source = "PSA";
-	if (source === "Plane Shift Innistrad") source = "PSI";
-	if (source === "Plane Shift Kaladesh") source = "PSK";
-	if (source === "Plane Shift Zendikar") source = "PSZ";
-	if (source === "Tomb of Annihilation") source = "ToA";
-	if (source === "The Tortle Package") source = "TTP";
-	return source;
-}
-
-function parsesourcename (src) {
-	let source = src.trim();
-	if (source === "monster manual") source = "Monster Manual";
-	if (source === "Volo's Guide") source = "Volo's Guide to Monsters";
-	if (source === "elemental evil") source = "Princes of the Apocalypse";
-	if (source === "storm kings thunder") source = "Storm King's Thunder";
-	if (source === "tyranny of dragons") source = "Tyranny of Dragons";
-	if (source === "out of the abyss") source = "Out of the Abyss";
-	if (source === "curse of strahd") source = "Curse of Strahd";
-	if (source === "lost mine of phandelver") source = "Lost Mine of Phandelver";
-	if (source === "tome of beasts") source = "Tome of Beasts (3pp)";
-	if (source === "Tales from the Yawning Portal") source = "Tales from the Yawning Portal";
-	if (source === "Plane Shift Amonkhet") source = "Plane Shift Amonkhet";
-	if (source === "Plane Shift Innistrad") source = "Plane Shift Innistrad";
-	if (source === "Plane Shift Kaladesh") source = "Plane Shift Kaladesh";
-	if (source === "Plane Shift Zendikar") source = "Plane Shift Zendikar";
-	if (source === "Tomb of Annihilation") source = "Tomb of Annihilation";
-	return source;
-}
-
 window.onload = function load() {
 	tabledefault = $("#stats").html();
 
@@ -47,69 +6,43 @@ window.onload = function load() {
 	// parse all the monster data
 	for (var i = 0; i < monsters.length; i++) {
 		var name = monsters[i].name;
-
-		var source = "";
-		var origsource = "";
-		var type = "";
-		if (monsters[i].source === undefined) {
-			source = monsters[i].type.split(",");
-			type = source.slice(0, source.length-1).join(",")
-			type = type.split(", Volo's Guide")[0];
-			source = source[source.length - 1];
-		} else {
-			source = monsters[i].source;
-			type = monsters[i].type;
-		}
-		origsource = parsesourcename(source);
-		source = parsesource(source);
-
+		var source = monsters[i].source;
+		var fullsource = parse_sourceJsonToFull(source);
+		var type = monsters[i].type;
 		var cr = monsters[i].cr;
 
+		let abvSource = parse_sourceJsonToAbv(source);
+		let is3pp = source.includes("3pp");
 
-		$("ul#monsters").append("<li><a id="+i+" href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span title=\""+origsource+"\" class='col-xs-2 source source"+source+"'>("+source+")</span> <span class='type col-xs-3'>"+type+"</span> <span class='col-xs-3 cr'>CR "+cr+" </span></a></li>");
+		$("ul#monsters").append("<li "+FLTR_TYPE+"='"+type+"' "+FLTR_SOURCE+"='"+source+"' "+FLTR_CR+"='"+cr+"' "+FLTR_3PP+"='"+is3pp+"'><a id="+i+" href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-4 col-xs-4-2'>"+name+"</span> <span title=\""+fullsource+"\" class='col-xs-1 col-xs-1-8 source source"+abvSource+"'>"+abvSource+"</span> <span class='type col-xs-4 col-xs-4-3'>"+type+"</span> <span class='col-xs-1 col-xs-1-7 text-align-center cr'>"+cr+"</span></a></li>");
 
-		if (!$("select.typefilter:contains('"+type+"')").length && !$("select.typefilter:contains('"+type+" \\(')").length) {
-			$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")
-		}
-		if (!$("select.sourcefilter option[value='"+parsesource(source)+"']").length) {
-			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parsesource(source)+"'>"+origsource+"</option>")
-		}
+		addDropdownOption($("select.typefilter"), type, parse_sourceJsonToFull(type));
+		addDropdownOption($("select.sourcefilter"), source, fullsource);
+		addDropdownOption($("select.crfilter"), cr, cr);
+
 		$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
 		$("select.sourcefilter").val("All");
-		if (!$("select.crfilter option[value='"+cr+"']").length) {
-			$("select.crfilter").append("<option title=\""+cr+"\" value='"+cr+"'>"+cr+"</option>")
-		}
 	}
 
-	$("select.typefilter").append("<option value='fiend'>fiend</option>")
-	$("select.typefilter").append("<option value='giant'>giant</option>")
-	$("select.typefilter").append("<option value='humanoid'>humanoid</option>")
 	$("select.typefilter option").sort(asc_sort).appendTo('select.typefilter');
 	$("select.typefilter").val("All");
 
-	$("select.crfilter option").sort(asc_sort).appendTo('select.crfilter');
-	for (var b = 9; b > 1; b--) {
-		$("select.crfilter option[value=1]").after($("select.crfilter option[value="+b+"]"))
-	}
-	$("select.crfilter option[value=1]").before($("select.crfilter option[value='1/8']"))
-	$("select.crfilter option[value=1]").before($("select.crfilter option[value='1/4']"))
-	$("select.crfilter option[value=1]").before($("select.crfilter option[value='1/2']"))
-	$("select.crfilter option[value=0]").before($("select.crfilter option[value=All]"))
+	$("select.crfilter option").sort(asc_sort_cr).appendTo('select.crfilter');
+	$("select.crfilter option[value=0]").before($("select.crfilter option[value=All]"));
+	$("select.crfilter").val("All");
 
 	const list = search({
-		valueNames: ['name', 'source', 'type', 'cr']
-	})
+		valueNames: ["name", "source", "type", "cr"]
+	});
 
-	if (window.location.hash.length) {
-		window.onhashchange();
-	} else $("#listcontainer a").get(0).click();
+	initHistory();
 
 	// filtering
 	$("form#filtertools select").change(function(){
 		var typefilter = $("select.typefilter").val();
 		var sourcefilter = $("select.sourcefilter").val();
-		var crfilter = "CR "+$("select.crfilter").val()+" ";
-		var thirdpartyfilter = $("select.3ppfilter").val();
+		var crfilter = $("select.crfilter").val();
+		var thirdpartyfilter = $("select.pp3filter").val();
 
 		list.filter(function(item) {
 			var righttype = false;
@@ -117,12 +50,12 @@ window.onload = function load() {
 			var rightcr = false;
 			var rightparty = false;
 
-			if (typefilter === "All" || item.values().type === typefilter) righttype = true;
-			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")") rightsource = true;
-			if (crfilter === "CR All " || item.values().cr === crfilter) rightcr = true;
+			if (typefilter === "All" || item.elm.getAttribute(FLTR_TYPE) === typefilter) righttype = true;
+			if (sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter) rightsource = true;
+			if (crfilter === "All" || item.elm.getAttribute(FLTR_CR) === crfilter) rightcr = true;
 			if (thirdpartyfilter === "All") rightparty = true;
-			if (thirdpartyfilter === "None" && item.values().source.indexOf("3pp") === -1) rightparty = true;
-			if (thirdpartyfilter === "Only" && item.values().source.indexOf("3pp") !== -1) rightparty = true;
+			if (thirdpartyfilter === "None" && item.elm.getAttribute(FLTR_3PP) === "false") rightparty = true;
+			if (thirdpartyfilter === "Only" && item.elm.getAttribute(FLTR_3PP) === "true") rightparty = true;
 			if (righttype && rightsource && rightcr && rightparty) return true;
 			return false;
 		});
@@ -148,7 +81,6 @@ window.onload = function load() {
 		return;
 	})
 }
-
 
 // sorting for form filtering
 function sortmonsters(a, b, o) {
@@ -185,24 +117,12 @@ function sortmonsters(a, b, o) {
 // load selected monster stat block
 function loadhash (id) {
 	$("#stats").html(tabledefault);
-	monsters = monsterdata.compendium.monster;
-	var mon = monsters[id];
-
+	var mon = monsterdata.compendium.monster[id];
 	var name = mon.name;
-	var source = "";
-	var origsource = "";
-	var type = "";
-	if (mon.source === undefined) {
-		source = mon.type.split(",");
-		type = source.slice(0, source.length-1).join(",")
-		type = type.split(", Volo's Guide")[0];
-		source = source[source.length - 1];
-	} else {
-		source = mon.source;
-		type = mon.type;
-	}
-	origsource = parsesourcename(source);
-	source = parsesource(source);
+	var source = mon.source;
+	var fullsource = parse_sourceJsonToFull(source);
+	var type = mon.type;
+	source = parse_sourceJsonToAbv(source);
 
 	imgError = function(x) {
 		$(x).parent().siblings(".source").css("margin-right", "-4.8em");
@@ -210,7 +130,7 @@ function loadhash (id) {
 		return;
 	}
 
-	$("th#name").html("<span title=\""+origsource+"\" class='source source"+source+"'>"+source+"<br></span> <a href='img/"+source+"/"+name+".png' target='_blank'><img src='img/"+source+"/"+name+".png' class='token' onerror='imgError(this)'></a>"+name);
+	$("th#name").html("<span title=\""+fullsource+"\" class='source source"+source+"'>"+source+"<br></span> <a href='img/"+source+"/"+name+".png' target='_blank'><img src='img/"+source+"/"+name+".png' class='token' onerror='imgError(this)'></a>"+name);
 
 	$("td span#size").html(parse_sizeAbvToFull (mon.size));
 
@@ -311,7 +231,7 @@ function loadhash (id) {
 
 	var cr = mon.cr;
 	$("td span#cr").html(cr);
-	$("td span#xp").html(parsecr(cr));
+	$("td span#xp").html(parse_crToXp(cr));
 
 	var traits = mon.trait;
 	$("tr.trait").remove();
@@ -358,7 +278,6 @@ function loadhash (id) {
 
 	if (actions && actions.length) for (let i = actions.length-1; i >= 0; i--) {
 		let actionname = actions[i].name;
-
 		let actiontext = actions[i].text;
 		let actiontexthtml = "";
 		let renderedcount = 0;
@@ -386,7 +305,6 @@ function loadhash (id) {
 
 		if (!reactions.length) {
 			let reactionname = reactions.name;
-
 			let reactiontext = reactions.text;
 			let reactiontexthtml = "";
 			let renderedcount = 0
@@ -418,7 +336,6 @@ function loadhash (id) {
 		}
 	}
 
-
 	let legendaries = mon.legendary;
 	$("tr.legendary").remove();
 	$("tr#legendaries").hide();
@@ -435,7 +352,6 @@ function loadhash (id) {
 			if (legendaries[i].name) {
 				legendaryname = legendaries[i].name+".";
 			}
-
 
 			let renderedcount = 0
 			for (let n = 0; n < legendarytext.length; n++) {
@@ -454,9 +370,7 @@ function loadhash (id) {
 
 		if ($("tr.legendary").length && !$("tr.legendary span.name:empty").length && !$("tr.legendary span.name:contains(Legendary Actions)").length) {
 			$("tr#legendaries").after("<tr class='legendary'><td colspan='6' class='legendary0'><span class='name'></span> <span>"+name+" can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. "+name+" regains spent legendary actions at the start of his turn.</span></td></tr>");
-
 		}
-
 
 	}
 
@@ -472,9 +386,7 @@ function loadhash (id) {
 	// inline rollers
 	$("#stats p, #stats span#hp").each(function() {
 		$(this).html($(this).html().replace(/\d+d\d+(\s?(\-|\+)\s?\d+\s?)?/g, "<span class='roller' data-roll='$&'>$&</span>"));
-
 		$(this).html($(this).html().replace(/(\-|\+)\d+(?= to hit)/g, "<span class='roller' data-roll='1d20$&'>$&</span>"))
-
 	});
 
 	$(".spells span.roller").contents().unwrap();

@@ -77,27 +77,29 @@
 
 		<div class="row">
 			<div class="col-sm-6" id="listcontainer">
-
 				<div class="input-group">
 					<input type="search" id="search" class="search form-control" placeholder="Find reward...">
 					<span class="input-group-btn">
-							<button class="btn btn-default" type="button" id="reset">Reset</button>
-						</span>
+						<button class="btn btn-default" type="button" id="reset">Reset</button>
+					</span>
 				</div>
-				<br>
 				<form id="filtertools">
-					<select name="type">
+					<select name="type" class="typefilter">
 						<option value="All">All Types</option>
-						<option>Blessing</option>
-						<option>Boon</option>
-						<option>Charm</option>
-						<option>Demonic</option>
+						<option value="Blessing">Blessing</option>
+						<option value="Boon">Boon</option>
+						<option value="Charm">Charm</option>
+						<option value="Demonic Boon">Demonic Boon</option>
+					</select>
+					<select class="sourcefilter">
+						<option value="All">All Sources</option>
 					</select>
 					<span class="sortlabel btn-group">
-							<button class="col-xs-12 sort btn btn-default btn-xs" type="button" data-sort="name" sortby="asc">Name</button>
-						</span>
+						<button class="col-xs-10 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+						<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+					</span>
 				</form>
-				<ul class="list rewards" style="height: 100%; max-height: 600px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
+				<ul class="list rewards">
 
 				</ul>
 			</div>
@@ -129,11 +131,11 @@
 
 	<script type="text/javascript" src="js/history.js"></script>
 	<script type="text/javascript" src="js/utils.js"></script>
-	<script type="text/javascript" src="js/page-rewards.js"></script>
+	<script type="text/javascript" src="js/rewards.js"></script>
 	<script type="text/javascript" src="data/rewards.json"></script>
-	<script type="text/javascript" src="js/list.js"></script>
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="lib/list.js"></script>
+	<script type="text/javascript" src="lib/jquery.js"></script>
+	<script type="text/javascript" src="lib/bootstrap.js"></script>
 
 </body>
 

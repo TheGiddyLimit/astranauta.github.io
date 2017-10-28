@@ -61,8 +61,11 @@ function normaliserange(range) {
 }
 
 function trimcastingtime(time) {
-	return time.indexOf(", which you take") > -1 ? time.substr(0,time.indexOf(", which you take"))+" ..." : time;
+	return time.indexOf(", which you take") > -1 ? time.substr(0, time.indexOf(", which you take")).trim()+" ..." : time.trim();
 }
+
+const META_RITUAL = "Rituals";
+const META_TECHNOMAGIC = "Technomagic";
 
 window.onload = function load() {
 	tabledefault = $("#stats").html();
@@ -77,36 +80,27 @@ window.onload = function load() {
 		if (curspell.technomagic === "YES") leveltext += " (tech.)";
 		if (!curspell.source) curspell.source = "PHB";
 		if (!curspell.range) curspell.range = "Varies";
-		let toadd = "<li class='row'><a id='"+i+"' href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-3 col-xs-3-5'>"+name+"</span> <span class='source col-xs-1' title=\""+parse_sourceJsonToFull(curspell.source)+"\">"+parse_sourceJsonToAbv(curspell.source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='time col-xs-1 col-xs-1-7'>"+trimcastingtime(curspell.time)+"</span> <span class='school col-xs-1 col-xs-1-7'>"+parseschool(curspell.school)+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-2 col-xs-2-4'>"+curspell.range+"</span></a></li>";
+		const classlist = curspell.classes.split(",");
+		for (let a = 0; a < classlist.length; a++) {
+			addDropdownOption($("select.classfilter"), parse_stringToSlug(classlist[a].trim()), classlist[a].trim());
+			classlist[a] = parse_stringToSlug(classlist[a].trim());
+		}
+		const classFilterList = classlist.join(FLTR_LIST_SEP);
+		const metaTags = [];
+		if (curspell.ritual === "YES") metaTags.push(META_RITUAL);
+		if (curspell.technomagic === "YES") metaTags.push(META_TECHNOMAGIC);
+		const metaTagsString = metaTags.join(FLTR_LIST_SEP);
+		let action = trimcastingtime(curspell.time).split(" ")[1];
+		if (action.charAt(action.length-1) === "s") action = action.substr(0, action.length-1);
+
+		let toadd = "<li class='row' "+FLTR_LEVEL+"='"+curspell.level+"' "+FLTR_SCHOOL+"='"+curspell.school+"' "+FLTR_SOURCE+"='"+curspell.source+"' "+FLTR_RANGE+"='"+normaliserange(curspell.range)+"' "+FLTR_CLASS+"='"+classFilterList+"' "+FLTR_META+"='"+metaTagsString+"' "+FLTR_ACTION+"='"+action+"'><a id='"+i+"' href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title=\""+name+"\"><span class='name col-xs-3 col-xs-3-5'>"+name+"</span> <span class='source col-xs-1' title=\""+parse_sourceJsonToFull(curspell.source)+"\">"+parse_sourceJsonToAbv(curspell.source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='time col-xs-1 col-xs-1-7'>"+trimcastingtime(curspell.time)+"</span> <span class='school col-xs-1 col-xs-1-7'>"+parseschool(curspell.school)+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-2 col-xs-2-4'>"+curspell.range+"</span></a></li>";
 		$("ul.spells").append(toadd);
 
-		if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
-			let levelFilterText = parsespelllevel(curspell.level);
-			if (levelFilterText !== "cantrip") {
-				levelFilterText = levelFilterText + " level";
-			}
-			$("select.levelfilter").append("<option value='"+curspell.level+"'>"+levelFilterText+"</option>");
-		}
-
-		if (!$("select.schoolfilter:contains('"+parseschool (curspell.school)+"')").length) {
-			$("select.schoolfilter").append("<option value='"+parseschool (curspell.school)+"'>"+parseschool (curspell.school)+"</option>");
-		}
-
-		if (!$("select.sourcefilter:contains(\""+parse_sourceJsonToFull(curspell.source)+"\")").length) {
-			$("select.sourcefilter").append("<option value='"+parse_sourceJsonToAbv(curspell.source)+"'>"+parse_sourceJsonToFull(curspell.source)+"</option>");
-		}
-
-		let classlist = curspell.classes.split(",");
-		for (let a = 0; a < classlist.length; a++) {
-			if (classlist[a][0] === " ") classlist[a] = classlist[a].replace(/^\s+|\s+$/g, "")
-			if (!$("select.classfilter option[value='"+classlist[a]+"']").length) {
-				$("select.classfilter").append("<option title=\""+classlist[a]+"\" value='"+classlist[a]+"'>"+classlist[a]+"</option>")
-			}
-		}
-
-		if (!$("select.rangefilter:contains(\""+curspell.range+"\")").length) {
-			$("select.rangefilter").append("<option value='"+normaliserange(curspell.range)+"'>"+curspell.range+"</option>");
-		}
+		const spellFilterText = parsespelllevel(curspell.level) === "cantrip" ? parsespelllevel(curspell.level) : parsespelllevel(curspell.level) + " level";
+		addDropdownOption($("select.levelfilter"), curspell.level, spellFilterText);
+		addDropdownOption($("select.schoolfilter"), curspell.school, parseschool(curspell.school));
+		addDropdownOption($("select.sourcefilter"), curspell.source, parse_sourceJsonToFull(curspell.source));
+		addDropdownOption($("select.rangefilter"), normaliserange(curspell.range).toString(), curspell.range);
 	}
 
 	// Sort the filter boxes, and select "All"
@@ -132,23 +126,15 @@ window.onload = function load() {
 		listClass: "spells"
 	});
 
-	if (window.location.hash.length) {
-		window.onhashchange();
-	} else $("#listcontainer a").get(0).click();
+	initHistory();
 
 	$("form#filtertools select").change(function(){
 		let sourcefilter = $("select.sourcefilter").val();
 		let levelfilter = $("select.levelfilter").val();
-		if (levelfilter !== "All") {
-
-			if (levelfilter[0] !== "d" && levelfilter[0] !== "t") {
-				levelfilter = parsespelllevel (levelfilter);
-				if ($(".ritualfilter").val() === "Rituals") levelfilter = levelfilter + " (ritual)"
-			}
-		} else if ($(".ritualfilter").val() === "Rituals") levelfilter = "(ritual)"
 		let timefilter = $("select.timefilter").val();
 		let schoolfilter = $("select.schoolfilter").val();
-		let rangefilter = parseInt($("select.rangefilter").val()) || "All";
+		let rangefilter = $("select.rangefilter").val();
+		let metaFilter = $("select.metafilter").val();
 		let classfilter = $("select.classfilter").val();
 		//let thirdpartyfilter = $("select.3ppfilter").val();
 
@@ -158,23 +144,28 @@ window.onload = function load() {
 			let righttime = false;
 			let rightschool = false;
 			let rightrange = false;
+			let rightMeta = false;
 			let rightclass = false;
 			let rightparty = true;
 
-			if (sourcefilter === "All" || item.values().source === sourcefilter) rightsource = true;
-			if (levelfilter === "All" || item.values().level.indexOf(levelfilter) !== -1) rightlevel = true;
-			if (timefilter === "All" || item.values().time.indexOf(timefilter) !== -1) righttime = true;
-			if (schoolfilter === "All" || item.values().school === schoolfilter) rightschool = true;
-			if (rangefilter === "All" || normaliserange(item.values().range) === rangefilter) rightrange = true;
-			let classes = item.values().classes.split(", ");
+			if (sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter) rightsource = true;
+			if (levelfilter === "All" || item.elm.getAttribute(FLTR_LEVEL) === levelfilter) rightlevel = true;
+			if (timefilter === "All" || item.elm.getAttribute(FLTR_ACTION) === timefilter) righttime = true;
+			if (schoolfilter === "All" || item.elm.getAttribute(FLTR_SCHOOL) === schoolfilter) rightschool = true;
+			if (rangefilter === "All" || item.elm.getAttribute(FLTR_RANGE).toString() === rangefilter) rightrange = true;
+			if (metaFilter === "All" || item.elm.getAttribute(FLTR_META).split(FLTR_LIST_SEP).includes(metaFilter)) rightMeta = true;
+
+
+			let classes = item.elm.getAttribute(FLTR_CLASS).split(FLTR_LIST_SEP);
 			for (let c = 0; c < classes.length; c++) {
 				if (classes[c] === classfilter) rightclass = true;
 			}
 			if (classfilter === "All") rightclass = true;
+
 			//if (thirdpartyfilter === "All") rightparty = true;
 			//if (thirdpartyfilter === "None" && item.values().source.indexOf("3pp") === -1) rightparty = true;
 			//if (thirdpartyfilter === "Only" && item.values().source.indexOf("3pp") !== -1) rightparty = true;
-			if (rightsource && rightlevel && righttime && rightschool && rightrange && rightclass && rightparty) return true;
+			if (rightsource && rightlevel && righttime && rightschool && rightrange && rightclass && rightparty && rightMeta) return true;
 			return false;
 		});
 	});
@@ -222,12 +213,6 @@ function sortspells(a, b, o) {
 	}
 
 	return 0;
-
-	function compareNames(a, b) {
-		if (b._values.name.toLowerCase() === a._values.name.toLowerCase()) return 0;
-		else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
-		else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
-	}
 }
 
 function loadhash (id) {

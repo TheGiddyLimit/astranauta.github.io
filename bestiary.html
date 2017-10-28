@@ -91,7 +91,7 @@
 					<select class="sourcefilter">
 						<option value="All">All Sources</option>
 					</select>
-					<select class="3ppfilter">
+					<select class="pp3filter">
 						<option value="All">Third Party</option>
 						<option value="None">No Third Party</option>
 						<option value="Only">Third Party Only</option>
@@ -103,11 +103,11 @@
 						<option value="All">All Types</option>
 					</select>
 					<span class="sortlabel btn-group">
-							<button class="col-xs-4 sort btn btn-default btn-xs" type="button" sort="name" sortby="asc">Name</button>
-							<button class="col-xs-2 sort btn btn-default btn-xs" type="button" sort="source" sortby="asc">Source</button>
-							<button class="col-xs-3 sort btn btn-default btn-xs" type="button" sort="type" sortby="asc">Type</button>
-							<button class="col-xs-3 sort btn btn-default btn-xs" type="button" sort="cr" sortby="asc">CR</button>
-						</span>
+						<button class="col-xs-4 col-xs-4-2 sort btn btn-default btn-xs" type="button" sort="name" sortby="asc">Name</button>
+						<button class="col-xs-1 col-xs-1-8 sort btn btn-default btn-xs" type="button" sort="source" sortby="asc">Source</button>
+						<button class="col-xs-4 col-xs-4-3 sort btn btn-default btn-xs" type="button" sort="type" sortby="asc">Type</button>
+						<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" sort="cr" sortby="asc">CR</button>
+					</span>
 				</form>
 				<ul id="monsters" class="list">
 
@@ -122,9 +122,9 @@
 					</tr>
 					<tr>
 						<th id="name" colspan="6">Name <span class="source" title="Source book">SRC</span></th>
-							</tr>
-							<tr>
-								<td id="sizetypealignment" colspan="6"><span id="size">Size</span> <span id="type">type</span>, <span id="alignment">alignment</span></td>
+					</tr>
+					<tr>
+						<td id="sizetypealignment" colspan="6"><span id="size">Size</span> <span id="type">type</span>, <span id="alignment">alignment</span></td>
 					</tr>
 					<tr>
 						<td class="divider" colspan="6">
@@ -146,12 +146,12 @@
 						</td>
 					</tr>
 					<tr id="abilitynames">
-						<th>STR </th>
-						<th>DEX </th>
-						<th>CON </th>
-						<th>INT </th>
-						<th>WIS </th>
-						<th>CHA </th>
+						<th>STR</th>
+						<th>DEX</th>
+						<th>CON</th>
+						<th>INT</th>
+						<th>WIS</th>
+						<th>CHA</th>
 					</tr>
 					<tr id="abilityscores">
 						<td id="str"><span class="score">10</span> (<span class="mod">0</span>)</td>
@@ -235,12 +235,12 @@
 
 	<script type="text/javascript" src="js/history.js"></script>
 	<script type="text/javascript" src="js/utils.js"></script>
-	<script type="text/javascript" src="js/page-bestiary.js"></script>
+	<script type="text/javascript" src="js/bestiary.js"></script>
 	<script type="text/javascript" src="data/bestiary.json"></script>
 	<script type="text/javascript" src="data/bestiary-tob.json"></script>
-	<script type="text/javascript" src="js/droll.js"></script>
-	<script type="text/javascript" src="js/list.js"></script>
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="lib/droll.js"></script>
+	<script type="text/javascript" src="lib/list.js"></script>
+	<script type="text/javascript" src="lib/jquery.js"></script>
+	<script type="text/javascript" src="lib/bootstrap.js"></script>
 </body>
 </html>

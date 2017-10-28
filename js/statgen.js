@@ -2,8 +2,8 @@ let amount, count
 
 window.onload = function load() {
 	$("#rollbutton").click(rollstats);
-	$(".base").on('input', changeBase);
-	$("input.choose").on('change', choose);
+	$(".base").on("input", changeBase);
+	$("input.choose").on("change", choose);
 
 	const names = racedata.compendium.race.map(x => x.name).sort()
 	const options = names.map(name => `<option>${name}</option>`).join()
@@ -48,7 +48,7 @@ function changeRace() {
 		$(`#${key} .racial`).val(stats[key])
 
 	changeTotal()
-	$(".choose").hide().prop('checked', false)
+	$(".choose").hide().prop("checked", false)
 
 	if (!stats.choose)
 		return
