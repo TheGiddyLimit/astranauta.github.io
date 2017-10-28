@@ -486,7 +486,8 @@ function doStuff(data) {
 
 			if (clss.spellcasting.cantripsKnown !== undefined || clss.spellcasting.spellsKnown !== undefined) {
 
-				let kentGrp = {"title": null, "subclasses": subclass === null ? null : [subclass], "cols": [], "rows": []};
+				let kentGrp = {"subclasses": subclass === null ? null : [subclass], "cols": [], "rows": []};
+				if (kentGrp.subclasses === null) delete kentGrp.subclasses;
 
 				for (let j = 0; j < 20; j++) {
 					let r = []
@@ -525,6 +526,7 @@ function doStuff(data) {
 			}
 
 			let slotsGroup = {"title": groupTitle, "subclasses": subclass === null ? null : [subclass], "cols": [], "rows": []};
+			if (slotsGroup.subclasses === null) delete slotsGroup.subclasses;
 
 			if (clss.name !== "Warlock") {
 				let highest = clss.spellcasting.slots[19].slots
