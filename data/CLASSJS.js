@@ -70,7 +70,7 @@ function doStuff(data) {
 		clss.hd = {"number": 1, "faces": clss.hd}
 
 		let cols = [];
-		clss.classTable = {"groups": {}};
+		clss.classTable = {"groups": []};
 		clss.spellcasting = {};
 
 		for (let j = 0; j < clss.autolevel.length; j++) {
@@ -109,34 +109,34 @@ function doStuff(data) {
 				if (t.invocationsknown && t.slotlevel) {
 					if (!cols.includes("invocations")) {
 						cols.push("invocations");
-						clss.classTable.groups["3"] = {"title": null, "subclasses": null, "cols": [{"name": "Spell Slots"}, {"name": "Slot Level"}, {"name": "Invocations Known"}], "rows": []}
+						clss.classTable.groups[0] = {"title": null, "subclasses": null, "cols": [{"name": "Spell Slots"}, {"name": "Slot Level"}, {"name": "Invocations Known"}], "rows": []}
 					}
 
 					let slRe = /(\d+).*?/
 					let slM = slRe.exec(t.slotlevel);
 
-					clss.classTable.groups["3"].rows[t._level-1] = [
+					clss.classTable.groups[0].rows[t._level-1] = [
 						{"type": "level", "value": Number(t.spellslots)},
 						{"type": "level", "value": Number(slM[1])},
-						{"type": "number", "value": isNaN(t.invocationsknown) ? 0 : Number(t.invocationsknown)}
+						isNaN(t.invocationsknown) ? 0 : Number(t.invocationsknown)
 					];
 				}
 				if (t.rages) {
 					if (!cols.includes("rages")) {
 						cols.push("rages");
-						clss.classTable.groups["3"] = {"title": null, "subclasses": null, "cols": [{"name": "Rages"}, {"name": "Rage Damage"}], "rows": []}
+						clss.classTable.groups[0] = {"title": null, "subclasses": null, "cols": [{"name": "Rages"}, {"name": "Rage Damage"}], "rows": []}
 					}
 
-					clss.classTable.groups["3"].rows[t._level-1] =
+					clss.classTable.groups[0].rows[t._level-1] =
 						[
-							{"type": "string", "value": t.rages},
+							t.rages,
 							{"type": "bonus", "value": Number(t.ragedamage)}
 						]
 				}
 				if (t.martialarts && t.kipoints && t.unarmoredmovement) {
 					if (!cols.includes("martialarts")) {
 						cols.push("martialarts");
-						clss.classTable.groups["2"] = {"title": null, "subclasses": null, "cols": [{"name": "Martial Arts"}, {"name": "Ki Points"}, {"name": "Unarmored Movement"}], "rows": []}
+						clss.classTable.groups[0] = {"title": null, "subclasses": null, "cols": [{"name": "Martial Arts"}, {"name": "Ki Points"}, {"name": "Unarmored Movement"}], "rows": []}
 					}
 
 					let mrtRe = /^(\d+)d(\d+)$/
@@ -145,47 +145,47 @@ function doStuff(data) {
 					let umRe = /^\+(\d+) ft\.$/
 					let umM = umRe.exec(t.unarmoredmovement)
 
-					clss.classTable.groups["2"].rows[t._level-1] =
+					clss.classTable.groups[0].rows[t._level-1] =
 						[
 							{"type": "dice", "number": mrtM[1], "faces": mrtM[2]},
-							{"type": "number", "value": isNaN(t.kipoints) ? 0 : Number(t.kipoints)},
+							isNaN(t.kipoints) ? 0 : Number(t.kipoints),
 							{"type": "bonusSpeed", "value": umM ? Number(umM[1]) : 0},
 						]
 				}
 				if (t.sneakattack) {
 					if (!cols.includes("sneakatk")) {
 						cols.push("sneakatk");
-						clss.classTable.groups["2"] = {"title": null, "subclasses": null, "cols": [{"name": "Sneak Attack"}], "rows": []}
+						clss.classTable.groups[0] = {"title": null, "subclasses": null, "cols": [{"name": "Sneak Attack"}], "rows": []}
 					}
 
 					let mrtRe = /^(\d+)d(\d+)$/
 					let mrtM = mrtRe.exec(t.sneakattack)
 
-					clss.classTable.groups["2"].rows[t._level-1] = [{"type": "dice", "number": mrtM[1], "faces": mrtM[2]}]
+					clss.classTable.groups[0].rows[t._level-1] = [{"type": "dice", "number": mrtM[1], "faces": mrtM[2]}]
 				}
 				if (t.sorcerypoints) {
 					if (!cols.includes("sorcerypoints")) {
 						cols.push("sorcerypoints");
-						clss.classTable.groups["2"] = {"title": null, "subclasses": null, "cols": [{"name": "Sorcery Points"}], "rows": []}
+						clss.classTable.groups[0] = {"title": null, "subclasses": null, "cols": [{"name": "Sorcery Points"}], "rows": []}
 					}
 
-					clss.classTable.groups["2"].rows[t._level-1] = [
-						{"type": "number", "value": isNaN(t.sorcerypoints) ? 0 : Number(t.sorcerypoints)}
+					clss.classTable.groups[0].rows[t._level-1] = [
+						isNaN(t.sorcerypoints) ? 0 : Number(t.sorcerypoints)
 					]
 				}
 				if (t.psilimit && t.psipoints && t.disciplinesknown && t.talentsknown) {
 					if (!cols.includes("psionics")) {
 						cols.push("psionics");
-						clss.classTable.groups["3"] = {"title": null, "subclasses": null, "cols": [
+						clss.classTable.groups[0] = {"title": null, "subclasses": null, "cols": [
 							{"name": "Talents Known"}, {"name": "Disciplines Known"}, {"name": "Psi Points"}, {"name": "Psi Limit"}
 							], "rows": []}
 					}
 
-					clss.classTable.groups["3"].rows[t._level-1] = [
-						{"type": "number", "value": Number(t.talentsknown)},
-						{"type": "number", "value": Number(t.talentsknown)},
-						{"type": "number", "value": Number(t.psipoints)},
-						{"type": "number", "value": Number(t.psilimit)}
+					clss.classTable.groups[0].rows[t._level-1] = [
+						Number(t.talentsknown),
+						Number(t.talentsknown),
+						Number(t.psipoints),
+						Number(t.psilimit)
 					]
 				}
 			} else {
@@ -452,31 +452,31 @@ function doStuff(data) {
 
 			if (clss.name === "Fighter") {
 				subclass = "Eldritch Knight"
-				spellClump = 3
+				spellClump = 0
 			} else if (clss.name === "Rogue") {
 				subclass = "Arcane Trickster"
-				spellClump = 4
+				spellClump = 1
 			} else if (clss.name === "Bard") {
-				spellClump = 3
+				spellClump = 0
 			} else if (clss.name === "Cleric") {
-				spellClump = 3
+				spellClump = 0
 			} else if (clss.name === "Druid") {
-				spellClump = 3
+				spellClump = 0
 			} else if (clss.name === "Paladin") {
-				spellClump = 3
+				spellClump = 0
 			} else if (clss.name === "Ranger") {
-				spellClump = 3
+				spellClump = 0
 			} else if (clss.name === "Ranger (Revised)") {
-				spellClump = 3
+				spellClump = 0
 			} else if (clss.name === "Sorcerer") {
-				spellClump = 4
+				spellClump = 1
 			} else if (clss.name === "Warlock") {
 				groupTitle = null;
-				spellClump = 3
+				spellClump = 0
 			} else if (clss.name === "Wizard") {
-				spellClump = 3
+				spellClump = 0
 			} else if (clss.name === "Artificer") {
-				spellClump = 3
+				spellClump = 0
 			}
 
 
@@ -488,11 +488,11 @@ function doStuff(data) {
 					let r = []
 					if (clss.spellcasting.cantripsKnown !== undefined) {
 						let c = clss.spellcasting.cantripsKnown[j];
-						r.push({"type": "number", "value": c.known})
+						r.push(c.known)
 					}
 					if (clss.spellcasting.spellsKnown !== undefined) {
 						let s = clss.spellcasting.spellsKnown[j];
-						r.push({"type": "number", "value": s.known})
+						r.push(s.known)
 					}
 					kentGrp.rows.push(r)
 				}
@@ -540,9 +540,9 @@ function doStuff(data) {
 						let lvlSlot = slts[k];
 
 						if (lvlSlot === undefined) {
-							r[k - 1] = {"type": "number", "value": 0}
+							r[k - 1] = 0
 						} else {
-							r[k - 1] = {"type": "number", "value": lvlSlot}
+							r[k - 1] = lvlSlot
 						}
 					}
 					slotsGroup.rows.push(r)
@@ -568,7 +568,7 @@ function doStuff(data) {
 	// }
 	// console.log(JSON.stringify(setR, null, 4))
 
-	o.value = JSON.stringify(data, null, "\t")
+	o.value = JSON.stringify(data.class, null, "\t")
 		.replace("  ", " ") // collapse double spaces
 		.replace("\u2014", "\\u2014").replace("\u2011", "\\u2011"); // maintain unicode stuff
 }
