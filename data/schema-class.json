@@ -1,0 +1,213 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+
+	"title": "Class",
+	"type": "object",
+
+
+	"definitions": {
+		"entry": {
+			"properties": {
+				"type": {
+					"type": "string",
+					"enum": ["table", "list", "bonus", "bonusSpeed", "dice", "entries", "options", "abilityDc", "abilityAttackMod"]
+				}
+			},
+			"required": [
+				"type"
+			]
+		},
+		"entryTable": {
+			// TODO
+		},
+		"classTableGroup": {
+			"properties": {
+				"title": {
+					"type": "string"
+				},
+				"subclasses": {
+					"type": "array",
+					"items": {
+						"anyOf": [{"type": "string"}]
+					}
+				},
+				"cols": {
+					"type": "array",
+					"items": {
+						"anyOf": [{"type": "string"}]
+					}
+				},
+				"rows": {
+					"type": "array",
+					"items": {
+						"type": "array",
+						"items": {
+							"anyOf": [{ "$ref": "#/definitions/entry"}, {"type": "string"}, {"type": "integer"}]
+						}
+					}
+				}
+			},
+			"required": [
+				"cols",
+				"rows"
+			]
+		},
+		"subclass": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"subclassFeatures": {
+					"type": "array",
+					"items": { "$ref": "#/definitions/entry"}
+				}
+			},
+			"required": [
+				"name",
+				"subclassFeatures"
+			]
+		}
+	},
+
+
+	"properties": {
+		"name": {
+			"type": "string"
+		},
+		"source": {
+			"type": "string"
+		},
+		"hd": {
+			"type": "object",
+			"properties": {
+				"number": {
+					"type": "integer"
+				},
+				"faces": {
+					"type": "integer"
+				}
+			},
+			"required": [
+				"number",
+				"faces"
+			]
+		},
+		"proficiency": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"enum": ["str", "dex", "con", "int", "wis", "cha"]
+			}
+		},
+		"classTableGroups": {
+			"type": "array",
+			"items": { "$ref": "#/definitions/classTableGroup"}
+		},
+		"startingProficiencies": {
+			"type": "object",
+			"properties": {
+				"armor": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"weapons": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"tools": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"skills": {
+					"type": "object",
+					"properties": {
+						"choose": {
+							"type": "integer"
+						},
+						"from": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"enum": [
+									"Acrobatics",
+									"Animal Handling",
+									"Arcana",
+									"Athletics",
+									"Deception",
+									"History",
+									"Insight",
+									"Intimidation",
+									"Investigation",
+									"Medicine",
+									"Nature",
+									"Perception",
+									"Performance",
+									"Persuasion",
+									"Religion",
+									"Sleight of Hand",
+									"Stealth",
+									"Survival"
+								]
+							}
+						}
+					},
+					"required": [
+						"choose",
+						"from"
+					]
+				}
+			}
+		},
+		"startingEquipment": {
+			"type": "object",
+			"properties": {
+				"additionalFromBackground": {
+					"type": "boolean"
+				},
+				"default": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"goldAlternative": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"additionalFromBackground",
+				"default"
+			]
+		},
+		"classFeatures": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/entry"}
+		},
+		"subclassTitle": {
+			"type": "string"
+		},
+		"subclasses": {
+			"type": "array",
+			"items": { "$ref": "#/definitions/subclass"}
+		}
+	},
+	"required": [
+		"name",
+		"source",
+		"hd",
+		"proficiency",
+		"classTableGroups",
+		"startingProficiencies",
+		"startingEquipment",
+		"classFeatures",
+		"subclassTitle",
+		"subclasses"
+	],
+	"additionalProperties": false
+}
