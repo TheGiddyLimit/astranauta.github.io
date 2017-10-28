@@ -70,7 +70,7 @@ function doStuff(data) {
 		clss.hd = {"number": 1, "faces": Number(clss.hd)}
 
 		let cols = [];
-		clss.classTable = {"groups": []};
+		clss.classTableGroups = [];
 		clss.spellcasting = {};
 
 		for (let j = 0; j < clss.autolevel.length; j++) {
@@ -109,25 +109,25 @@ function doStuff(data) {
 				if (t.invocationsknown && t.slotlevel) {
 					if (!cols.includes("invocations")) {
 						cols.push("invocations");
-						clss.classTable.groups[0] = {"title": null, "subclasses": null, "cols": [{"name": "Spell Slots"}, {"name": "Slot Level"}, {"name": "Invocations Known"}], "rows": []}
+						clss.classTableGroups[0] = {"cols": ["Spell Slots", "Slot Level", "Invocations Known"], "rows": []}
 					}
 
 					let slRe = /(\d+).*?/
 					let slM = slRe.exec(t.slotlevel);
 
-					clss.classTable.groups[0].rows[t._level-1] = [
-						{"type": "level", "value": Number(t.spellslots)},
-						{"type": "level", "value": Number(slM[1])},
+					clss.classTableGroups[0].rows[t._level-1] = [
+						Number(t.spellslots),
+						Number(slM[1]),
 						isNaN(t.invocationsknown) ? 0 : Number(t.invocationsknown)
 					];
 				}
 				if (t.rages) {
 					if (!cols.includes("rages")) {
 						cols.push("rages");
-						clss.classTable.groups[0] = {"title": null, "subclasses": null, "cols": [{"name": "Rages"}, {"name": "Rage Damage"}], "rows": []}
+						clss.classTableGroups[0] = {"cols": ["Rages", "Rage Damage"], "rows": []}
 					}
 
-					clss.classTable.groups[0].rows[t._level-1] =
+					clss.classTableGroups[0].rows[t._level-1] =
 						[
 							t.rages,
 							{"type": "bonus", "value": Number(t.ragedamage)}
@@ -136,7 +136,7 @@ function doStuff(data) {
 				if (t.martialarts && t.kipoints && t.unarmoredmovement) {
 					if (!cols.includes("martialarts")) {
 						cols.push("martialarts");
-						clss.classTable.groups[0] = {"title": null, "subclasses": null, "cols": [{"name": "Martial Arts"}, {"name": "Ki Points"}, {"name": "Unarmored Movement"}], "rows": []}
+						clss.classTableGroups[0] = {"cols": ["Martial Arts", "Ki Points", "Unarmored Movement"], "rows": []}
 					}
 
 					let mrtRe = /^(\d+)d(\d+)$/
@@ -145,7 +145,7 @@ function doStuff(data) {
 					let umRe = /^\+(\d+) ft\.$/
 					let umM = umRe.exec(t.unarmoredmovement)
 
-					clss.classTable.groups[0].rows[t._level-1] =
+					clss.classTableGroups[0].rows[t._level-1] =
 						[
 							{"type": "dice", "number": mrtM[1], "faces": mrtM[2]},
 							isNaN(t.kipoints) ? 0 : Number(t.kipoints),
@@ -155,33 +155,33 @@ function doStuff(data) {
 				if (t.sneakattack) {
 					if (!cols.includes("sneakatk")) {
 						cols.push("sneakatk");
-						clss.classTable.groups[0] = {"title": null, "subclasses": null, "cols": [{"name": "Sneak Attack"}], "rows": []}
+						clss.classTableGroups[0] = {"cols": ["Sneak Attack"], "rows": []}
 					}
 
 					let mrtRe = /^(\d+)d(\d+)$/
 					let mrtM = mrtRe.exec(t.sneakattack)
 
-					clss.classTable.groups[0].rows[t._level-1] = [{"type": "dice", "number": mrtM[1], "faces": mrtM[2]}]
+					clss.classTableGroups[0].rows[t._level-1] = [{"type": "dice", "number": mrtM[1], "faces": mrtM[2]}]
 				}
 				if (t.sorcerypoints) {
 					if (!cols.includes("sorcerypoints")) {
 						cols.push("sorcerypoints");
-						clss.classTable.groups[0] = {"title": null, "subclasses": null, "cols": [{"name": "Sorcery Points"}], "rows": []}
+						clss.classTableGroups[0] = {"cols": ["Sorcery Points"], "rows": []}
 					}
 
-					clss.classTable.groups[0].rows[t._level-1] = [
+					clss.classTableGroups[0].rows[t._level-1] = [
 						isNaN(t.sorcerypoints) ? 0 : Number(t.sorcerypoints)
 					]
 				}
 				if (t.psilimit && t.psipoints && t.disciplinesknown && t.talentsknown) {
 					if (!cols.includes("psionics")) {
 						cols.push("psionics");
-						clss.classTable.groups[0] = {"title": null, "subclasses": null, "cols": [
-							{"name": "Talents Known"}, {"name": "Disciplines Known"}, {"name": "Psi Points"}, {"name": "Psi Limit"}
+						clss.classTableGroups[0] = {"cols": [
+							"Talents Known", "Disciplines Known", "Psi Points", "Psi Limit"
 							], "rows": []}
 					}
 
-					clss.classTable.groups[0].rows[t._level-1] = [
+					clss.classTableGroups[0].rows[t._level-1] = [
 						Number(t.talentsknown),
 						Number(t.talentsknown),
 						Number(t.psipoints),
@@ -508,10 +508,10 @@ function doStuff(data) {
 					kentGrp.cols.push({"name": "Spells Known"})
 				}
 
-				if (clss.classTable.groups[spellClump] === undefined) {
-					clss.classTable.groups[spellClump] = kentGrp;
+				if (clss.classTableGroups[spellClump] === undefined) {
+					clss.classTableGroups[spellClump] = kentGrp;
 				} else {
-					let oldGroup = clss.classTable.groups[spellClump];
+					let oldGroup = clss.classTableGroups[spellClump];
 
 					kentGrp.cols = kentGrp.cols.concat(oldGroup.cols)
 
@@ -519,7 +519,7 @@ function doStuff(data) {
 						kentGrp.rows[j]= kentGrp.rows[j].concat(oldGroup.rows[j])
 					}
 
-					clss.classTable.groups[spellClump] = kentGrp;
+					clss.classTableGroups[spellClump] = kentGrp;
 				}
 				spellClump++;
 			}
@@ -555,7 +555,7 @@ function doStuff(data) {
 				for (let j = 1; j <= maxSlot; j++) {
 					slotsGroup.cols.push({"name": getXthNumber(j)})
 				}
-				clss.classTable.groups[spellClump] = slotsGroup;
+				clss.classTableGroups[spellClump] = slotsGroup;
 			}
 		}
 
@@ -583,24 +583,20 @@ function doStuff(data) {
 			}
 		}
 
-		// FIXME remove
-		for (let j = 0; j < clss.startingProficiencies.skills.from.length; j++) {
-			let obj = clss.startingProficiencies.skills.from[j];
-			setAdd(SETERINO, obj)
-		}
-
 		delete clss.spellcasting
 		delete clss.autolevel;
 	}
 
 	console.log(SETERINO)
 	// PRINTS THE SET AS A SET
-	let setR = {}
+/*	let setR = {}
 	for (let i = 0; i < SETERINO.length; i++) {
 		let xd = SETERINO[i];
 		setR[xd] = ""
 	}
-	console.log(JSON.stringify(setR, null, 4))
+	console.log(JSON.stringify(setR, null, 4))*/
+	// PRINTS THE SET AS A LIST
+	/*console.log(JSON.stringify(SETERINO.sort(), null, 4))*/
 
 	o.value = JSON.stringify(data.class, null, "\t")
 		.replace("  ", " ") // collapse double spaces
@@ -633,7 +629,7 @@ function getFeatureObj(ff, src, subclassTitle) { // pass in a feature object
 					fOb.entries.push({"type": "list", "items": [toIns]})
 				}
 			} else {
-				fOb.entries.push({"type": "text", "value": fTxt.trim()})
+				fOb.entries.push(fTxt.trim())
 			}
 		}
 		// OBJECTS
