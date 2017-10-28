@@ -62,7 +62,7 @@ function loadhash (id) {
 	if (size === "") $("td#size").hide();
 
 	var ability = utils_getAbilityData(currace.ability);
-	$("td#ability span").html(ability);
+	$("td#ability span").html(ability.asText);
 
 	var speed = currace.speed + (currace.speed === "Varies" ? "" : "ft. ");
 	$("td#speed span").html(speed);
