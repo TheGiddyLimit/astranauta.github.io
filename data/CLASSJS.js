@@ -503,10 +503,10 @@ function doStuff(data) {
 				}
 
 				if (clss.spellcasting.cantripsKnown !== undefined) {
-					kentGrp.cols.push({"name": "Cantrips Known"})
+					kentGrp.colLabels.push({"name": "Cantrips Known"})
 				}
 				if (clss.spellcasting.spellsKnown !== undefined) {
-					kentGrp.cols.push({"name": "Spells Known"})
+					kentGrp.colLabels.push({"name": "Spells Known"})
 				}
 
 				if (clss.classTableGroups[spellClump] === undefined) {
@@ -514,7 +514,7 @@ function doStuff(data) {
 				} else {
 					let oldGroup = clss.classTableGroups[spellClump];
 
-					kentGrp.cols = kentGrp.cols.concat(oldGroup.cols)
+					kentGrp.colLabels = kentGrp.colLabels.concat(oldGroup.colLabels)
 
 					for (let j = 0; j < 20; j++) {
 						kentGrp.rows[j]= kentGrp.rows[j].concat(oldGroup.rows[j])
@@ -555,7 +555,7 @@ function doStuff(data) {
 				}
 
 				for (let j = 1; j <= maxSlot; j++) {
-					slotsGroup.cols.push({"name": getXthNumber(j)})
+					slotsGroup.colLabels.push({"name": getXthNumber(j)})
 				}
 				clss.classTableGroups[spellClump] = slotsGroup;
 			}
@@ -575,6 +575,14 @@ function doStuff(data) {
 		}
 		clss.subclasses = subclassList
 
+		// FIX CLASS FEATURE SOURCE
+		for (let j = 0; j < clss.classFeatures.length; j++) {
+			let lvlArray = clss.classFeatures[j];
+			for (let k = 0; k < lvlArray.length; k++) {
+				let cfItem = lvlArray[k];
+				if (cfItem.source) console.log(cfItem.source)
+			}
+		}
 		// FIX SUBCLASS SOURCES
 		let sauce = clss.source;
 		for (let j = 0; j < clss.classFeatures.length; j++) {
