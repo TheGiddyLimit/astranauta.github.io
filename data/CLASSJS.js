@@ -109,7 +109,7 @@ function doStuff(data) {
 				if (t.invocationsknown && t.slotlevel) {
 					if (!cols.includes("invocations")) {
 						cols.push("invocations");
-						clss.classTableGroups[0] = {"cols": ["Spell Slots", "Slot Level", "Invocations Known"], "rows": []}
+						clss.classTableGroups[0] = {"colLabels": ["Spell Slots", "Slot Level", "Invocations Known"], "rows": []}
 					}
 
 					let slRe = /(\d+).*?/
@@ -124,7 +124,7 @@ function doStuff(data) {
 				if (t.rages) {
 					if (!cols.includes("rages")) {
 						cols.push("rages");
-						clss.classTableGroups[0] = {"cols": ["Rages", "Rage Damage"], "rows": []}
+						clss.classTableGroups[0] = {"colLabels": ["Rages", "Rage Damage"], "rows": []}
 					}
 
 					clss.classTableGroups[0].rows[t._level-1] =
@@ -136,7 +136,7 @@ function doStuff(data) {
 				if (t.martialarts && t.kipoints && t.unarmoredmovement) {
 					if (!cols.includes("martialarts")) {
 						cols.push("martialarts");
-						clss.classTableGroups[0] = {"cols": ["Martial Arts", "Ki Points", "Unarmored Movement"], "rows": []}
+						clss.classTableGroups[0] = {"colLabels": ["Martial Arts", "Ki Points", "Unarmored Movement"], "rows": []}
 					}
 
 					let mrtRe = /^(\d+)d(\d+)$/
@@ -155,7 +155,7 @@ function doStuff(data) {
 				if (t.sneakattack) {
 					if (!cols.includes("sneakatk")) {
 						cols.push("sneakatk");
-						clss.classTableGroups[0] = {"cols": ["Sneak Attack"], "rows": []}
+						clss.classTableGroups[0] = {"colLabels": ["Sneak Attack"], "rows": []}
 					}
 
 					let mrtRe = /^(\d+)d(\d+)$/
@@ -166,7 +166,7 @@ function doStuff(data) {
 				if (t.sorcerypoints) {
 					if (!cols.includes("sorcerypoints")) {
 						cols.push("sorcerypoints");
-						clss.classTableGroups[0] = {"cols": ["Sorcery Points"], "rows": []}
+						clss.classTableGroups[0] = {"colLabels": ["Sorcery Points"], "rows": []}
 					}
 
 					clss.classTableGroups[0].rows[t._level-1] = [
@@ -176,7 +176,7 @@ function doStuff(data) {
 				if (t.psilimit && t.psipoints && t.disciplinesknown && t.talentsknown) {
 					if (!cols.includes("psionics")) {
 						cols.push("psionics");
-						clss.classTableGroups[0] = {"cols": [
+						clss.classTableGroups[0] = {"colLabels": [
 							"Talents Known", "Disciplines Known", "Psi Points", "Psi Limit"
 							], "rows": []}
 					}
@@ -486,7 +486,7 @@ function doStuff(data) {
 
 			if (clss.spellcasting.cantripsKnown !== undefined || clss.spellcasting.spellsKnown !== undefined) {
 
-				let kentGrp = {"subclasses": subclass === null ? null : [subclass], "cols": [], "rows": []};
+				let kentGrp = {"subclasses": subclass === null ? null : [subclass], "colLabels": [], "rows": []};
 				if (kentGrp.subclasses === null) delete kentGrp.subclasses;
 
 				for (let j = 0; j < 20; j++) {
@@ -525,7 +525,7 @@ function doStuff(data) {
 				spellClump++;
 			}
 
-			let slotsGroup = {"title": groupTitle, "subclasses": subclass === null ? null : [subclass], "cols": [], "rows": []};
+			let slotsGroup = {"title": groupTitle, "subclasses": subclass === null ? null : [subclass], "colLabels": [], "rows": []};
 			if (slotsGroup.subclasses === null) delete slotsGroup.subclasses;
 
 			if (clss.name !== "Warlock") {
@@ -647,7 +647,7 @@ function getFeatureObj(ff, src, subclassTitle) { // pass in a feature object
 					{
 						"type": "table",
 						"caption": fTxt.caption,
-						"cols": fTxt.thead,
+						"colLabels": fTxt.thead,
 						"colStyles": fTxt.thstyleclass,
 						"rows": fTxt.tbody
 					}
