@@ -67,7 +67,7 @@ function doStuff(data) {
 		}
 
 		// fix hd (in case of e.g. 2d6)
-		clss.hd = {"number": 1, "faces": clss.hd}
+		clss.hd = {"number": 1, "faces": Number(clss.hd)}
 
 		let cols = [];
 		clss.classTable = {"groups": []};
@@ -560,6 +560,7 @@ function doStuff(data) {
 		}
 
 		// COMPACT SUBCLASS TABLE
+		let subclassList = []
 		for (let sub in clss.subclasses) {
 			if (!clss.subclasses.hasOwnProperty(sub)) continue;
 			let subclassArray = clss.subclasses[sub];
@@ -568,7 +569,24 @@ function doStuff(data) {
 				let levelStuff = subclassArray[j];
 				if (levelStuff.length !== 0) outSubclassArray.push(levelStuff)
 			}
-			clss.subclasses[sub] = outSubclassArray
+			subclassList.push({"name": sub, "subclassFeatures": outSubclassArray})
+		}
+		clss.subclasses = subclassList
+
+		// FIX SUBCLASS SOURCES
+		let sauce = clss.source;
+		for (let j = 0; j < clss.classFeatures.length; j++) {
+			let featureList = clss.classFeatures[j];
+			for (let k = 0; k < featureList.length; k++) {
+				let ftr = featureList[k];
+				// TODO
+			}
+		}
+
+		// FIXME remove
+		for (let j = 0; j < clss.startingProficiencies.skills.from.length; j++) {
+			let obj = clss.startingProficiencies.skills.from[j];
+			setAdd(SETERINO, obj)
 		}
 
 		delete clss.spellcasting
@@ -577,16 +595,20 @@ function doStuff(data) {
 
 	console.log(SETERINO)
 	// PRINTS THE SET AS A SET
-	// let setR = {}
-	// for (let i = 0; i < SETERINO.length; i++) {
-	// 	let xd = SETERINO[i];
-	// 	setR[xd] = ""
-	// }
-	// console.log(JSON.stringify(setR, null, 4))
+	let setR = {}
+	for (let i = 0; i < SETERINO.length; i++) {
+		let xd = SETERINO[i];
+		setR[xd] = ""
+	}
+	console.log(JSON.stringify(setR, null, 4))
 
 	o.value = JSON.stringify(data.class, null, "\t")
 		.replace("  ", " ") // collapse double spaces
 		.replace("\u2014", "\\u2014").replace("\u2011", "\\u2011"); // maintain unicode stuff
+}
+
+function purgeSource(parentSource, entries) {
+
 }
 
 function getFeatureObj(ff, src, subclassTitle) { // pass in a feature object
