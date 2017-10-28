@@ -585,6 +585,12 @@ function doStuff(data) {
 			}
 		}
 
+		// COMPACT STARTING PROFS
+		for (let profArray in clss.startingProficiencies) {
+			if (!clss.startingProficiencies.hasOwnProperty(profArray)) continue;
+			if (clss.startingProficiencies[profArray].length === 0) delete clss.startingProficiencies[profArray];
+		}
+
 		delete clss.spellcasting
 		delete clss.autolevel;
 	}
