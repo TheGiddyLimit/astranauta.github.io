@@ -193,8 +193,10 @@ function doStuff(data) {
 				if (isFeature(t)) {
 					if (clss.classFeatures === undefined) clss.classFeatures = []
 
-					if (clss.classFeatures[t._level-1]) console.log("already defd") // never happens :)
-					else clss.classFeatures[t._level-1] = []
+					let featureIndex = Number(t._level) - 1;
+
+					if (clss.classFeatures[featureIndex]) console.log("already defd") // never happens :)
+					else clss.classFeatures[featureIndex] = []
 
 					// Fix class features
 					for (let ii = 0; ii < t.feature.length; ii++) {
@@ -211,11 +213,11 @@ function doStuff(data) {
 							// SUBCLASS FEATURES
 							if (ff.suboption !== undefined) {
 								// NON-OPTIONAL SHIT WITH PARENT FEATURES
-								let lastFeature = clss.subclasses[nom][Number(t._level) - 1][clss.subclasses[nom][Number(t._level) - 1].length-1];
+								let lastFeature = clss.subclasses[nom][featureIndex][clss.subclasses[nom][featureIndex].length-1];
 								if (lastFeature === undefined) {
-									if (clss.subclasses[nom][Number(t._level) - 1].length === 0) {
+									if (clss.subclasses[nom][featureIndex].length === 0) {
 										lastFeature = {"entries": [{"type": "entries", "entries": []}], "source": getSrc(ff.subclass, clss, ff.subclass)}
-										clss.subclasses[nom][Number(t._level) - 1].push(lastFeature)
+										clss.subclasses[nom][featureIndex].push(lastFeature)
 									}
 								}
 								let lastEntry = lastFeature.entries[lastFeature.entries.length-1]
@@ -247,7 +249,7 @@ function doStuff(data) {
 
 								let fOb = getFeatureObj(ff, src, clss.subclassTitle)
 
-								clss.subclasses[nom][Number(t._level) - 1].push(fOb)
+								clss.subclasses[nom][featureIndex].push(fOb)
 							}
 
 
@@ -305,6 +307,8 @@ function doStuff(data) {
 									let src = getSrc(ff.name, clss)
 
 									let fOb = getFeatureObj(ff, src)
+
+									if (checkIfSubclassFeature(ff.name)) fOb.gainSubclassFeature = true
 
 									clss.classFeatures[Number(t._level) - 1].push(fOb)
 								}
@@ -555,6 +559,18 @@ function doStuff(data) {
 			}
 		}
 
+		// COMPACT SUBCLASS TABLE
+		for (let sub in clss.subclasses) {
+			if (!clss.subclasses.hasOwnProperty(sub)) continue;
+			let subclassArray = clss.subclasses[sub];
+			let outSubclassArray = []
+			for (let j = 0; j < subclassArray.length; j++) {
+				let levelStuff = subclassArray[j];
+				if (levelStuff.length !== 0) outSubclassArray.push(levelStuff)
+			}
+			clss.subclasses[sub] = outSubclassArray
+		}
+
 		delete clss.spellcasting
 		delete clss.autolevel;
 	}
@@ -685,6 +701,17 @@ function getXthNumber(num) {
 	if (num === 3) return "3rd"
 	return num + "th"
 }
+
+function checkIfSubclassFeature(featureName) {
+	const toMatch = featureName.trim().toLowerCase();
+
+	for (let i = 0; i < SUBCLASS_LEVEL_TITLES.length; i++) {
+		let feature = SUBCLASS_LEVEL_TITLES[i].trim().toLowerCase();
+		if (feature === toMatch) return true;
+	}
+	return false;
+}
+const SUBCLASS_LEVEL_TITLES = ["Artificer Specialist", "Masterwork Feature", "\tPrimal Path", "\tPath Feature", "\tBard College", "Bard College feature", "Divine Domain", "Divine Domain feature", "Druid Circle", "\tDruid Circle feature", "\tMartial Archetype", "\tMartial Archetype feature", "Monastic Tradition", "Monastic Tradition feature", "Mystic Order", "\tMystic Order feature", " Sacred Oath", "\tSacred Oath feature", "\tRanger Archetype", "\tRanger Archetype feature", "Ranger Conclave", "\tRanger Conclave feature", "\tRoguish Archetype", "Roguish Archetype feature", " Sorcerous Origin", "\tSorcerous Origin feature", "Otherworldly Patron", "\tOtherworldly Patron feature", "Arcane Tradition", "Arcane Tradition feature"]
 
 const SRC_MAP =
 	{
