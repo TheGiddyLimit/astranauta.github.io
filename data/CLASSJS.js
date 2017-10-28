@@ -580,7 +580,11 @@ function doStuff(data) {
 			let lvlArray = clss.classFeatures[j];
 			for (let k = 0; k < lvlArray.length; k++) {
 				let cfItem = lvlArray[k];
-				if (cfItem.source) console.log(cfItem.source)
+				if (cfItem.source === clss.source) delete cfItem.source
+				for (let l = 0; l < cfItem.entries.length; l++) {
+					let entry = cfItem.entries[l];
+					purgeSource(clss.source, entry)
+				}
 			}
 		}
 		// FIX SUBCLASS SOURCES
@@ -619,12 +623,24 @@ function doStuff(data) {
 		.replace("\u2014", "\\u2014").replace("\u2011", "\\u2011"); // maintain unicode stuff
 }
 
-function purgeSource(parentSource, entries) {
-
+function purgeSource(parentSource, entry) {
+	if (entry.source === parentSource) delete entry.source;
+	if (entry.type === "list") {
+		for (let j = 0; j < entry.items.length; j++) {
+			let subEntry = entry.items[j];
+			purgeSource(parentSource, subEntry)
+		}
+	} else if (entry.type === "options" || entry.type === "entries") {
+		for (let j = 0; j < entry.entries.length; j++) {
+			let subEntry = entry.entries[j];
+			purgeSource(parentSource, subEntry)
+		}
+	}
 }
 
 function getFeatureObj(ff, src, subclassTitle) { // pass in a feature object
 	let fOb = {}
+	fOb.type = "entries";
 	fOb.name = ff.name.replace("(UA)", "").replace("(PSA)").trim();
 	if (subclassTitle !== undefined) fOb.name = fOb.name.replace(subclassTitle, "").trim()
 	fOb.entries = []
