@@ -122,7 +122,7 @@
 						"anyOf": [{"type": "string"}]
 					}
 				},
-				"cols": {
+				"colLabels": {
 					"type": "array",
 					"items": {
 						"anyOf": [{"type": "string"}]
@@ -139,11 +139,61 @@
 				}
 			},
 			"required": [
-				"cols",
+				"colLabels",
 				"rows"
 			],
 			"additionalProperties": false
 		},
+
+		"abstractClassFeature": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"anyOf": [{"$ref": "#/definitions/entry"}, {"type": "string"}, {"type": "integer"}]
+					}
+				}
+			},
+			"required": [
+				"name",
+				"entries"
+			],
+			"additionalProperties": false
+		},
+		"classFeature": {
+			"allOf" : [
+				{"$ref" : "#/definitions/abstractClassFeature"},
+				{
+					"properties": {
+						"gainSubclassFeature": {
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				}
+			]
+		},
+		"subclassFeature": {
+			"allOf" : [
+				{"$ref" : "#/definitions/abstractClassFeature"},
+				{
+					"properties": {
+						"source": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"source"
+					],
+					"additionalProperties": false
+				}
+			]
+		},
+
 		"subclass": {
 			"properties": {
 				"name": {
@@ -151,7 +201,11 @@
 				},
 				"subclassFeatures": {
 					"type": "array",
-					"items": {"$ref": "#/definitions/entry"}
+					"items": {
+						"type": "array",
+						"items": {"$ref": "#/definitions/subclassFeature"}
+					},
+					"maxItems": 20
 				}
 			},
 			"required": [
@@ -286,26 +340,7 @@
 			"items": {
 				"type": "array",
 				"items": {
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"anyOf": [{"$ref": "#/definitions/entry"}, {"type": "string"}, {"type": "integer"}]
-							}
-						},
-						"gainSubclassFeature": {
-							"type": "boolean"
-						}
-					},
-					"required": [
-						"name",
-						"entries"
-					],
-					"additionalProperties": false
+					"items": {"$ref": "#/definitions/classFeature"}
 				}
 			},
 			"minItems": 20,

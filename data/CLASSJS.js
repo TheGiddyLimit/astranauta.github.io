@@ -603,6 +603,29 @@ function doStuff(data) {
 			if (clss.startingProficiencies[profArray].length === 0) delete clss.startingProficiencies[profArray];
 		}
 
+		// REMOVE TYPE FROM classFeatures/subclassFeatures
+		for (let j = 0; j < clss.classFeatures.length; j++) {
+			let arr = clss.classFeatures[j];
+			for (let k = 0; k < arr.length; k++) {
+				let item = arr[k];
+				if (item.type !== undefined) {
+					delete item.type;
+				}
+			}
+		}
+		for (let j = 0; j < clss.subclasses.length; j++) {
+			let sc = clss.subclasses[j];
+			for (let k = 0; k < sc.subclassFeatures.length; k++) {
+				let arr = sc.subclassFeatures[k];
+				for (let l = 0; l < arr.length; l++) {
+					let item = arr[l];
+					if (item.type !== undefined) {
+						delete item.type;
+					}
+				}
+			}
+		}
+
 		delete clss.spellcasting
 		delete clss.autolevel;
 	}
@@ -642,7 +665,10 @@ function getFeatureObj(ff, src, subclassTitle) { // pass in a feature object
 	let fOb = {}
 	fOb.type = "entries";
 	fOb.name = ff.name.replace("(UA)", "").replace("(PSA)").trim();
-	if (subclassTitle !== undefined) fOb.name = fOb.name.replace(subclassTitle, "").trim()
+	if (subclassTitle !== undefined) {
+		fOb.name = fOb.name.replace(subclassTitle, "").trim()
+		if (fOb.name[0] === ":") fOb.name = fOb.name.slice(1).trim();
+	}
 	fOb.entries = []
 	if (src !== null) {
 		fOb.source = src;
