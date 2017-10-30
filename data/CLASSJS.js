@@ -147,7 +147,7 @@ function doStuff(data) {
 
 					clss.classTableGroups[0].rows[t._level-1] =
 						[
-							{"type": "dice", "number": mrtM[1], "faces": mrtM[2]},
+							{"type": "dice", "number": Number(mrtM[1]), "faces": Number(mrtM[2])},
 							isNaN(t.kipoints) ? 0 : Number(t.kipoints),
 							{"type": "bonusSpeed", "value": umM ? Number(umM[1]) : 0},
 						]
@@ -161,7 +161,7 @@ function doStuff(data) {
 					let mrtRe = /^(\d+)d(\d+)$/
 					let mrtM = mrtRe.exec(t.sneakattack)
 
-					clss.classTableGroups[0].rows[t._level-1] = [{"type": "dice", "number": mrtM[1], "faces": mrtM[2]}]
+					clss.classTableGroups[0].rows[t._level-1] = [{"type": "dice", "number": Number(mrtM[1]), "faces": Number(mrtM[2])}]
 				}
 				if (t.sorcerypoints) {
 					if (!cols.includes("sorcerypoints")) {
