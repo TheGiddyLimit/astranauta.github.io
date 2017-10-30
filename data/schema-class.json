@@ -9,17 +9,108 @@
 		"entry": {
 			"properties": {
 				"type": {
-					"type": "string",
-					"enum": ["table", "list", "bonus", "bonusSpeed", "dice", "entries", "options", "abilityDc", "abilityAttackMod"]
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
 				}
 			},
 			"required": [
 				"type"
 			]
 		},
-		"entryTable": {
-			// TODO
+
+		"entryEntries": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "entries"},
+						"name": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"anyOf": [{"$ref": "#/definitions/entry"}, {"type": "string"}, {"type": "integer"}]
+							}
+						}
+					},
+					"required": ["entries"],
+					"additionalProperties": false
+				}
+			]
 		},
+		"entryTable": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "table"},
+						"caption": {"type" : "string"},
+						"colLabels": {
+							"type": "array",
+							"items": {"type" : "string"}
+						},
+						"colStyles": {
+							"type": "array",
+							"items": {"type" : "string"}
+						},
+						"rowLabels": {
+							"type": "array",
+							"items": {"type": "string"}
+						},
+						"rowStyles": {
+							"type": "array",
+							"items": {"type" : "string"}
+						},
+						"rows": {
+							"type": "array",
+							"items": {
+								"anyOf": [{"$ref": "#/definitions/entry"}, {"type": "string"}, {"type": "integer"}]
+							}
+						}
+					},
+					"required": ["rows"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryList": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "list"},
+						"items": {
+							"type": "array",
+							"items": {
+								"anyOf": [{"$ref": "#/definitions/entry"}, {"type": "string"}, {"type": "integer"}]
+							}
+						}
+					},
+					"required": ["items"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryBonus": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "bonus"},
+						"value": {
+							"type": ["string", "integer"]
+						}
+					},
+					"required": ["value"],
+					"additionalProperties": false
+				}
+			]
+		},
+
+
 		"classTableGroup": {
 			"properties": {
 				"title": {
@@ -42,7 +133,7 @@
 					"items": {
 						"type": "array",
 						"items": {
-							"anyOf": [{ "$ref": "#/definitions/entry"}, {"type": "string"}, {"type": "integer"}]
+							"anyOf": [{"$ref": "#/definitions/entry"}, {"type": "string"}, {"type": "integer"}]
 						}
 					}
 				}
@@ -50,7 +141,8 @@
 			"required": [
 				"cols",
 				"rows"
-			]
+			],
+			"additionalProperties": false
 		},
 		"subclass": {
 			"properties": {
@@ -59,13 +151,14 @@
 				},
 				"subclassFeatures": {
 					"type": "array",
-					"items": { "$ref": "#/definitions/entry"}
+					"items": {"$ref": "#/definitions/entry"}
 				}
 			},
 			"required": [
 				"name",
 				"subclassFeatures"
-			]
+			],
+			"additionalProperties": false
 		}
 	},
 
@@ -90,7 +183,8 @@
 			"required": [
 				"number",
 				"faces"
-			]
+			],
+			"additionalProperties": false
 		},
 		"proficiency": {
 			"type": "array",
@@ -160,7 +254,8 @@
 					"required": [
 						"choose",
 						"from"
-					]
+					],
+					"additionalProperties": false
 				}
 			}
 		},
@@ -183,18 +278,45 @@
 			"required": [
 				"additionalFromBackground",
 				"default"
-			]
+			],
+			"additionalProperties": false
 		},
 		"classFeatures": {
 			"type": "array",
-			"items": {"$ref": "#/definitions/entry"}
+			"items": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"anyOf": [{"$ref": "#/definitions/entry"}, {"type": "string"}, {"type": "integer"}]
+							}
+						},
+						"gainSubclassFeature": {
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"name",
+						"entries"
+					],
+					"additionalProperties": false
+				}
+			},
+			"minItems": 20,
+			"maxItems": 20
 		},
 		"subclassTitle": {
 			"type": "string"
 		},
 		"subclasses": {
 			"type": "array",
-			"items": { "$ref": "#/definitions/subclass"}
+			"items": {"$ref": "#/definitions/subclass"}
 		}
 	},
 	"required": [
