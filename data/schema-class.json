@@ -1,8 +1,8 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
 
-	"title": "Class",
-	"type": "object",
+	"title": "ClassArray",
+	"type": "array",
 
 
 	"definitions": {
@@ -119,7 +119,7 @@
 				"subclasses": {
 					"type": "array",
 					"items": {
-						"anyOf": [{"type": "string"}]
+						"type": "string"
 					}
 				},
 				"colLabels": {
@@ -145,8 +145,7 @@
 			"additionalProperties": false
 		},
 
-		"abstractClassFeature": {
-			"type": "object",
+		"classFeature": {
 			"properties": {
 				"name": {
 					"type": "string"
@@ -156,6 +155,9 @@
 					"items": {
 						"anyOf": [{"$ref": "#/definitions/entry"}, {"type": "string"}, {"type": "integer"}]
 					}
+				},
+				"gainSubclassFeature": {
+					"type": "boolean"
 				}
 			},
 			"required": [
@@ -164,34 +166,26 @@
 			],
 			"additionalProperties": false
 		},
-		"classFeature": {
-			"allOf" : [
-				{"$ref" : "#/definitions/abstractClassFeature"},
-				{
-					"properties": {
-						"gainSubclassFeature": {
-							"type": "boolean"
-						}
-					},
-					"additionalProperties": false
-				}
-			]
-		},
 		"subclassFeature": {
-			"allOf" : [
-				{"$ref" : "#/definitions/abstractClassFeature"},
-				{
-					"properties": {
-						"source": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"source"
-					],
-					"additionalProperties": false
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"anyOf": [{"$ref": "#/definitions/entry"}, {"type": "string"}, {"type": "integer"}]
+					}
+				},
+				"source": {
+					"type": "string"
 				}
-			]
+			},
+			"required": [
+				"entries",
+				"source"
+			],
+			"additionalProperties": false
 		},
 
 		"subclass": {
@@ -213,158 +207,164 @@
 				"subclassFeatures"
 			],
 			"additionalProperties": false
-		}
-	},
+		},
 
 
-	"properties": {
-		"name": {
-			"type": "string"
-		},
-		"source": {
-			"type": "string"
-		},
-		"hd": {
-			"type": "object",
+		"class": {
+			"description" : "A character class",
+
 			"properties": {
-				"number": {
-					"type": "integer"
+				"name": {
+					"type": "string"
 				},
-				"faces": {
-					"type": "integer"
-				}
-			},
-			"required": [
-				"number",
-				"faces"
-			],
-			"additionalProperties": false
-		},
-		"proficiency": {
-			"type": "array",
-			"items": {
-				"type": "string",
-				"enum": ["str", "dex", "con", "int", "wis", "cha"]
-			}
-		},
-		"classTableGroups": {
-			"type": "array",
-			"items": { "$ref": "#/definitions/classTableGroup"}
-		},
-		"startingProficiencies": {
-			"type": "object",
-			"properties": {
-				"armor": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+				"source": {
+					"type": "string"
 				},
-				"weapons": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"tools": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"skills": {
+				"hd": {
 					"type": "object",
 					"properties": {
-						"choose": {
+						"number": {
 							"type": "integer"
 						},
-						"from": {
-							"type": "array",
-							"items": {
-								"type": "string",
-								"enum": [
-									"Acrobatics",
-									"Animal Handling",
-									"Arcana",
-									"Athletics",
-									"Deception",
-									"History",
-									"Insight",
-									"Intimidation",
-									"Investigation",
-									"Medicine",
-									"Nature",
-									"Perception",
-									"Performance",
-									"Persuasion",
-									"Religion",
-									"Sleight of Hand",
-									"Stealth",
-									"Survival"
-								]
-							}
+						"faces": {
+							"type": "integer"
 						}
 					},
 					"required": [
-						"choose",
-						"from"
+						"number",
+						"faces"
 					],
 					"additionalProperties": false
-				}
-			}
-		},
-		"startingEquipment": {
-			"type": "object",
-			"properties": {
-				"additionalFromBackground": {
-					"type": "boolean"
 				},
-				"default": {
+				"proficiency": {
 					"type": "array",
 					"items": {
-						"type": "string"
+						"type": "string",
+						"enum": ["str", "dex", "con", "int", "wis", "cha"]
 					}
 				},
-				"goldAlternative": {
+				"classTableGroups": {
+					"type": "array",
+					"items": { "$ref": "#/definitions/classTableGroup"}
+				},
+				"startingProficiencies": {
+					"type": "object",
+					"properties": {
+						"armor": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"weapons": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"tools": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"skills": {
+							"type": "object",
+							"properties": {
+								"choose": {
+									"type": "integer"
+								},
+								"from": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"enum": [
+											"Acrobatics",
+											"Animal Handling",
+											"Arcana",
+											"Athletics",
+											"Deception",
+											"History",
+											"Insight",
+											"Intimidation",
+											"Investigation",
+											"Medicine",
+											"Nature",
+											"Perception",
+											"Performance",
+											"Persuasion",
+											"Religion",
+											"Sleight of Hand",
+											"Stealth",
+											"Survival"
+										]
+									}
+								}
+							},
+							"required": [
+								"choose",
+								"from"
+							],
+							"additionalProperties": false
+						}
+					}
+				},
+				"startingEquipment": {
+					"type": "object",
+					"properties": {
+						"additionalFromBackground": {
+							"type": "boolean"
+						},
+						"default": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"goldAlternative": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"additionalFromBackground",
+						"default"
+					],
+					"additionalProperties": false
+				},
+				"classFeatures": {
+					"type": "array",
+					"items": {
+						"type": "array",
+						"items": {
+							"items": {"$ref": "#/definitions/classFeature"}
+						}
+					},
+					"minItems": 20,
+					"maxItems": 20
+				},
+				"subclassTitle": {
 					"type": "string"
+				},
+				"subclasses": {
+					"type": "array",
+					"items": {"$ref": "#/definitions/subclass"}
 				}
 			},
 			"required": [
-				"additionalFromBackground",
-				"default"
+				"name",
+				"source",
+				"hd",
+				"proficiency",
+				"classTableGroups",
+				"startingProficiencies",
+				"startingEquipment",
+				"classFeatures",
+				"subclassTitle",
+				"subclasses"
 			],
 			"additionalProperties": false
-		},
-		"classFeatures": {
-			"type": "array",
-			"items": {
-				"type": "array",
-				"items": {
-					"items": {"$ref": "#/definitions/classFeature"}
-				}
-			},
-			"minItems": 20,
-			"maxItems": 20
-		},
-		"subclassTitle": {
-			"type": "string"
-		},
-		"subclasses": {
-			"type": "array",
-			"items": {"$ref": "#/definitions/subclass"}
 		}
 	},
-	"required": [
-		"name",
-		"source",
-		"hd",
-		"proficiency",
-		"classTableGroups",
-		"startingProficiencies",
-		"startingEquipment",
-		"classFeatures",
-		"subclassTitle",
-		"subclasses"
-	],
-	"additionalProperties": false
+
+	"items": {"$ref": "#/definitions/class"}
 }

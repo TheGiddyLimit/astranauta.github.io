@@ -63,7 +63,7 @@ function doStuff(data) {
 
 		// fix spellability
 		if (clss.spellAbility) {
-			clss.spellAbility = parse_attFullToAbv(clss.spellAbility)
+			delete clss.spellAbility
 		}
 
 		// fix hd (in case of e.g. 2d6)
@@ -503,10 +503,10 @@ function doStuff(data) {
 				}
 
 				if (clss.spellcasting.cantripsKnown !== undefined) {
-					kentGrp.colLabels.push({"name": "Cantrips Known"})
+					kentGrp.colLabels.push("Cantrips Known")
 				}
 				if (clss.spellcasting.spellsKnown !== undefined) {
-					kentGrp.colLabels.push({"name": "Spells Known"})
+					kentGrp.colLabels.push("Spells Known")
 				}
 
 				if (clss.classTableGroups[spellClump] === undefined) {
@@ -555,7 +555,7 @@ function doStuff(data) {
 				}
 
 				for (let j = 1; j <= maxSlot; j++) {
-					slotsGroup.colLabels.push({"name": getXthNumber(j)})
+					slotsGroup.colLabels.push(getXthNumber(j))
 				}
 				clss.classTableGroups[spellClump] = slotsGroup;
 			}
