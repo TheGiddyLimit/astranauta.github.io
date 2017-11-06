@@ -1,0 +1,229 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+
+	"title": "Entry",
+	"id": "/Entry",
+	"description": "A recursively renderable object.",
+	"type": ["string", "integer", "object"],
+
+	"definitions" : {
+		"entry": {
+			"properties": {
+				"type": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"type"
+			]
+		},
+
+		"entryEntries": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "entries"},
+						"name": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								
+							}
+						}
+					},
+					"required": ["entries"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryOptions": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "options"},
+						"name": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "#"
+							}
+						}
+					},
+					"required": ["entries"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryTable": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "table"},
+						"caption": {"type" : "string"},
+						"colLabels": {
+							"type": "array",
+							"items": {"type" : "string"}
+						},
+						"colStyles": {
+							"type": "array",
+							"items": {"type" : "string"}
+						},
+						"rowLabels": {
+							"type": "array",
+							"items": {"type": "string"}
+						},
+						"rowStyles": {
+							"type": "array",
+							"items": {"type" : "string"}
+						},
+						"rows": {
+							"type": "array",
+							"items": {
+								"type": "array",
+								"items": {
+									"$ref": "#"
+								}
+							}
+						}
+					},
+					"required": ["rows"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryList": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "list"},
+						"items": {
+							"type": "array",
+							"items": {
+								"$ref": "#"
+							}
+						}
+					},
+					"required": ["items"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryBonus": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "bonus"},
+						"value": {
+							"type": "integer"
+						}
+					},
+					"required": ["value"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryBonusSpeed": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "bonusSpeed"},
+						"value": {
+							"type": "integer"
+						}
+					},
+					"required": ["value"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryDice": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "dice"},
+						"number": {
+							"type": "integer"
+						},
+						"faces": {
+							"type": "integer"
+						}
+					},
+					"required": ["number", "faces"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryAbilityDc": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "abilityDc"},
+						"name": {
+							"type": "string"
+						},
+						"attributes": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"enum": ["str", "dex", "con", "int", "wis", "cha"]
+							}
+						}
+					},
+					"required": ["name", "attributes"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryAbilityAttackMod": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "abilityAttackMod"},
+						"name": {
+							"type": "string"
+						},
+						"attributes": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"enum": ["str", "dex", "con", "int", "wis", "cha"]
+							}
+						}
+					},
+					"required": ["name", "attributes"],
+					"additionalProperties": false
+				}
+			]
+		}
+	},
+
+	"anyOf": [
+		{"$ref": "#/definitions/entryEntries"},
+		{"$ref": "#/definitions/entryOptions"},
+		{"$ref": "#/definitions/entryTable"},
+		{"$ref": "#/definitions/entryList"},
+		{"$ref": "#/definitions/entryBonus"},
+		{"$ref": "#/definitions/entryBonusSpeed"},
+		{"$ref": "#/definitions/entryDice"},
+		{"$ref": "#/definitions/entryAbilityDc"},
+		{"$ref": "#/definitions/entryAbilityAttackMod"},
+		{"type": "string"},
+		{"type": "integer"}
+	]
+}
