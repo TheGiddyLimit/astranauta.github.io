@@ -9,21 +9,22 @@ function validateSchema(){
 	const validator = new Validator();
 	attachHelperSchemaTo(validator);
 
-	const errors = [];
+	let errors = [];
+	const results = [];
 
 	// Push all validation results here
-	results.push(validateClasses());
+	results.push(validateClassesWith(validator));
 
 	results.forEach( (result) => {
 		if(!result.valid){
-			errors.concat(result.errors);
+			errors = errors.concat(result.errors);
 		}
 	});
 
 
 	// Reporting
 	if(errors.length > 0){
-		console.error(classResult.errors);
+		console.error(errors);
 		console.warn(`Tests failed: ${errors.length}`);
 		process.exit(TESTS_FAILED);
 	}
@@ -48,7 +49,7 @@ function attachHelperSchemaTo(validator){
  * Validates classes.json using its corresponding schema
  * @return {jsonschema.Result} The result of the validation.
  */
-function validateClasses(){
+function validateClassesWith(validator){
 	const classesSchema = require("./schema/classes.json");
 	const classes = require("../data/classes.json")
 	return validator.validate(classes, classesSchema);
