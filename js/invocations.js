@@ -1,6 +1,6 @@
 "use strict";
 
-const JSON_URL = "data/invocations-test.json";
+const JSON_URL = "data/invocations.json";
 
 const STR_JOIN_MODE_LIST = ",";
 const STR_JOIN_MODE_TITLE_BRACKET_PART_LIST = "; ";
