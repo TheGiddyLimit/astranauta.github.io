@@ -17161,7 +17161,89 @@
 			]
 		},
 		{
-			"name": "Lizard King/Queen",
+			"name": "Lizard King",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"lizardfolk"
+				]
+			},
+			"source": "MM",
+			"alignment": "chaotic evil",
+			"ac": "15 (natural armor)",
+			"hp": "78 (12d8+24)",
+			"speed": "30 ft., swim 30 ft.",
+			"str": "17",
+			"dex": "12",
+			"con": "15",
+			"int": "11",
+			"wis": "11",
+			"cha": "15",
+			"save": "Con +4, Wis +2",
+			"skill": {
+				"perception": "+4",
+				"stealth": "+5",
+				"survival": "+4"
+			},
+			"conditionImmune": "frightened",
+			"senses": "darkvision 60 ft.",
+			"passive": "14",
+			"languages": "Abyssal, Draconic",
+			"cr": "4",
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"text": [
+						"The lizardfolk can hold its breath for 15 minutes."
+					]
+				},
+				{
+					"name": "Skewer",
+					"text": [
+						"Once per turn, when the lizardfolk makes a melee attack with its trident and hits, the target takes an extra 10 (3d6) damage, and the lizardfolk gains temporary hit points equal to the extra damage dealt."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The lizardfolk makes two attacks: one with its bite and one with its claws or trident or two melee attacks with its trident."
+					]
+				},
+				{
+					"name": "Bite",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage."
+					],
+					"attack": [
+						"Bite|5|1d6+3"
+					]
+				},
+				{
+					"name": "Claws",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4+3) slashing damage."
+					],
+					"attack": [
+						"Claws|5|1d4+3"
+					]
+				},
+				{
+					"name": "Trident",
+					"text": [
+						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 (1d6+3) piercing damage, or 7 (1d8+3) piercing damage if used with two hands to make a melee attack."
+					],
+					"attack": [
+						"One Handed|5|1d6+3",
+						"Two Handed|5|1d8+3"
+					]
+				}
+			]
+		},
+		{
+			"name": "Lizard Queen",
 			"size": "M",
 			"type": {
 				"type": "humanoid",
