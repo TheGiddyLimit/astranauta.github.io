@@ -1,0 +1,79 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"title": "NameArray",
+	"type": "object",
+
+	"definitions": {
+		"nameTableRow": {
+			"properties": {
+				"min": {
+					"type": "integer"
+				},
+				"max": {
+					"type": "integer"
+				},
+				"enc": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"min",
+				"max",
+				"enc"
+			],
+			"additionalProperties": false
+		},
+
+		"nameTable": {
+			"properties": {
+				"option": {
+					"type": "string"
+				},
+				"table": {
+					"type": "array",
+					"items": "#/definitions/nameTableRow"
+				}
+			},
+			"required": [
+				"option",
+				"table"
+			],
+			"additionalProperties": false
+		},
+
+		"name": {
+			"properties": {
+				"race": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"tables": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/nameTable"
+					}
+				}
+			},
+			"required": [
+				"race",
+				"source",
+				"tables"
+			],
+			"additionalProperties": false
+		}
+	},
+
+	"properties": {
+		"name": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/name"
+			}
+		}
+	},
+
+	"required": "name",
+	"additionalProperties": false
+}

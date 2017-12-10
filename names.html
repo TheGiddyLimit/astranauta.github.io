@@ -6,15 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!--
-	XML data was compiled by a reddit community for use with the "Fight Club 5" app.
-	Google "5e xml files" for more info.
-
-	Feel free to use, edit, and redistribute this as you wish.
-	I don't own any of the XML data anyway.
--->
-
-	<title>Feats - 5etools</title>
+	<title>Encounters - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -23,15 +15,84 @@
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<style id="dynamicStyle"></style> <!-- populated with JS -->
 	<script type="text/javascript" src="js/styleswitch.js"></script>
+
+	<style>
+		#listcontainer > ul > li {
+			max-height: initial;
+		}
+
+		ul.list li:hover {
+			background: inherit;
+		}
+
+		ul.list li:active {
+			color: inherit;
+		}
+
+		ul.list a:hover {
+			background: lightgrey;
+		}
+
+		ul {
+			margin-left: 0;
+			padding-left: 0px;
+		}
+
+		ul.list li {
+			max-height: none;
+		}
+
+		span.name {
+			user-select: none;
+			font-weight: bold;
+			font-size: 1.2em;
+		}
+
+		ul.names > li {
+			border-bottom: none;
+			margin-bottom: 5px;
+		}
+		ul.names > li > ul > li:last-child {
+			border-bottom: none;
+		}
+
+		#listcontainer {
+			flex: 3;
+		}
+
+		#tablecontainer {
+			flex: 7;
+			display: flex;
+			flex-direction: column;
+		}
+
+		#statscontainer {
+			overflow-y: auto;
+		}
+
+		.search-box {
+			flex-shrink: 0;
+			margin-bottom: 5px;
+		}
+
+		#output {
+			display: block;
+			flex-shrink: 0;
+			flex-grow: 0;
+		}
+
+		.rolltable {
+			display: flex;
+		}
+	</style>
 </head>
 
 <body>
 	<div class="viewport-wrapper">
 		<header class="hidden-xs hidden-sm">
 			<div class="container">
-
-				<h1>Feats List</h1>
-				<p>Search by name on the left, click feat name to display on the right.</p>
+				<h1>Names</h1>
+				<p>You want to name your character what now?!</p>
 			</div>
 		</header>
 		<nav class="container">
@@ -39,17 +100,17 @@
 				<li role="presentation"><a href="5etools.html">5eTools</a></li>
 				<li role="presentation"><a href="rules.html">Rules</a></li>
 				<li role="presentation" class="dropdown active">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options <span class="caret"></span></a>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li role="presentation"><a href="classes.html">Classes</a></li>
 						<li role="presentation"><a href="backgrounds.html">Backgrounds</a></li>
-						<li role="presentation" class="active"><a href="feats.html">Feats</a></li>
+						<li role="presentation"><a href="feats.html">Feats</a></li>
 						<li role="presentation"><a href="races.html">Races</a></li>
-						<li role="presentation"><a href="names.html">Names</a></li>
+						<li role="presentation" class="active"><a href="names.html">Names</a></li>
 					</ul>
 				</li>
 				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">DM Tools <span class="caret"></span></a>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">DM Tools<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li role="presentation"><a href="crcalculator.html">CR Calculator</a></li>
 						<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
@@ -58,7 +119,7 @@
 					</ul>
 				</li>
 				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References <span class="caret"></span></a>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li role="presentation"><a href="bestiary.html">Bestiary</a></li>
 						<li role="presentation"><a href="conditions.html">Conditions</a></li>
@@ -84,54 +145,46 @@
 			</ul>
 		</nav>
 
+
 		<div class="container view-col-wrapper">
 			<div class="view-col" id="listcontainer">
-				<div class="input-group" id="filter-search-input-group">
-					<input type="search" id="search" class="search form-control" placeholder="Find feat...">
+				<div class="input-group search-box">
+					<input type="search" id="search" class="search form-control" placeholder="Find race...">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button" id="reset">Reset</button>
+						<button class="btn btn-default reset" id="reset" type="button">Reset</button>
 					</span>
 				</div>
-				<div id="filtertools" class="sortlabel btn-group">
-					<button class="col-xs-3 col-xs-3-8 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-					<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
-					<button class="col-xs-3 col-xs-3-5 sort btn btn-default btn-xs" type="button" data-sort="ability">Ability</button>
-					<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="prerequisite">Prerequisite</button>
-				</div>
 
-				<ul class="list feats"></ul>
+				<ul class="list names">
+					<!-- populate with JS -->
+				</ul>
 			</div>
-			<div id="statscontainer" class="view-col">
-				<table id="stats">
-					<tr>
-						<th class="border" colspan="6"></th>
-					</tr>
-					<tr>
-						<th id="name" colspan="6">Name</th>
-					</tr>
-					<tr>
-						<td id="prerequisite" colspan="6">Prerequisite</td>
-					</tr>
-					<tr id="text">
-						<td class="divider" colspan="6">
-							<div></div>
-						</td>
-					</tr>
-					<tr>
-						<th class="border" colspan="6"></th>
-					</tr>
-				</table>
+
+			<div class="view-col" id="tablecontainer">
+				<div id="output">
+					<span><br></span>
+					<span><br></span>
+					<span><br></span>
+					<span><br></span>
+					<span><br></span>
+				</div>
+				<div class="rolltable" id="statscontainer">
+					<table id="stats">
+						<!-- populate with JS -->
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<script type="text/javascript" src="js/utils.js"></script>
-	<script type="text/javascript" src="js/filter.js"></script>
-	<script type="text/javascript" src="js/history.js"></script>
-	<script type="text/javascript" src="js/feats.js"></script>
-	<script type="text/javascript" src="lib/list.js"></script>
-	<script type="text/javascript" src="lib/jquery.js"></script>
-	<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/history.js"></script>
+<script type="text/javascript" src="js/names.js"></script>
+<script type="text/javascript" src="lib/droll.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
 
 </body>
 
