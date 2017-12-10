@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Eldritch Invocations - 5etools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script type="text/javascript" src="lib/js-cookie.js"></script>
+	<style id="dynamicStyle"></style> <!-- populated with JS -->
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<style> .col-xs-4 {  padding-right: 12px;}</style>
+</head>
+
+<body>
+	<div class="viewport-wrapper">
+		<header class="hidden-xs hidden-sm">
+			<div class="container">
+
+				<h1>Eldritch Invocation List</h1>
+				<p>Search by name on the left, click invocation name to display on the right.</p>
+			</div>
+		</header>
+		<nav class="container">
+			<ul class="nav nav-pills ">
+				<li role="presentation"><a href="5etools.html">5eTools</a></li>
+				<li role="presentation"><a href="rules.html">Rules</a></li>
+				<li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="classes.html">Classes</a></li>
+						<li role="presentation"><a href="backgrounds.html">Backgrounds</a></li>
+						<li role="presentation"><a href="feats.html">Feats</a></li>
+						<li role="presentation"><a href="races.html">Races</a></li>
+					</ul>
+				</li>
+				<li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">DM Tools <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="crcalculator.html">CR Calculator</a></li>
+						<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
+						<li role="presentation"><a href="encountergen.html">Encounter Generator</a></li>
+						<li role="presentation"><a href="lootgen.html">Loot Generator</a></li>
+					</ul>
+				</li>
+				<li role="presentation" class="dropdown active">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="bestiary.html">Bestiary</a></li>
+						<li role="presentation"><a href="conditions.html">Conditions</a></li>
+						<li role="presentation"><a href="cults.html">Cults</a></li>
+						<li role="presentation"><a href="items.html">Items</a></li>
+						<li role="presentation"><a href="rewards.html">Other Rewards</a></li>
+						<li role="presentation" ><a href="psionics.html">Psionics</a></li>
+						<li role="presentation" class="active"><a href="invocations.html">Invocations</a></li>
+						<li role="presentation"><a href="spells.html">Spells</a></li>
+						<li role="presentation"><a href="variantrules.html">Variant Rules</a></li>
+					</ul>
+				</li>
+				<li role="presentation"><a href="statgen.html">Statgen</a></li>
+				<li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Utilities<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="converter.html">Stat Block to JSON</a></li>
+						<li role="presentation"><a href="editor.html">WYSIWYG Editor</a></li>
+					</ul>
+				</li>
+				<li role="presentation">
+					<a class="nightModeToggle" href="#" onclick="styleSwitcher.toggleActiveStyleSheet(); return false;"><script>document.write(styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_DAY ? "Night Mode" : "Day Mode")</script></a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="container view-col-wrapper">
+			<div class="view-col" id="listcontainer">
+				<div class="input-group" id="filter-search-input-group">
+					<input type="search" id="search" class="search form-control" placeholder="Find invocation...">
+					<span class="input-group-btn"><button class="btn btn-default" type="button" id="reset">Reset</button></span>
+				</div>
+				<div id="filtertools" class="sortlabel btn-group">
+					<button class="col-xs-4 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+					<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+					<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="pact">Pact</button>
+					<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="patron">Patron</button>
+				</div>
+
+				<ul id="invocationsList" class="list invocations">
+					<!-- populated by javascript -->
+				</ul>
+			</div>
+
+			<div id="statscontainer" class="view-col">
+				<table id="stats">
+					<tr>
+						<th class="border" colspan="6"></th>
+					</tr>
+					<tr>
+						<th id="name" colspan="6">Name</th>
+					</tr>
+					<tr>
+						<td id="prerequisites" colspan="6" class="psi-order-and-talent">Prerequisites: <span id="order"></span> <span id="type"></span></td>
+					</tr>
+					<tr><td class="divider" colspan="6"><div></div></td></tr>
+					<tr>
+						<td colspan="6" id="text"></td>
+					</tr>
+					<tr>
+						<th class="border" colspan="6"></th>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/filter.js"></script>
+	<script type="text/javascript" src="js/history.js"></script>
+	<script type="text/javascript" src="js/invocations.js"></script>
+	<script type="text/javascript" src="lib/list.js"></script>
+	<script type="text/javascript" src="lib/jquery.js"></script>
+	<script type="text/javascript" src="lib/bootstrap.js"></script>
+
+</body>
+
+</html>
