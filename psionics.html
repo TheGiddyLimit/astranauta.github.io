@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<style id="dynamicStyle"></style> <!-- populated with JS -->
 	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="lib/navigation.js"></script>
 </head>
 
 <body>
@@ -26,53 +27,13 @@
 				<p>Search by name on the left, click psionic name to display on the right.</p>
 			</div>
 		</header>
-		<nav class="container">
-			<ul class="nav nav-pills ">
-				<li role="presentation"><a href="5etools.html">5eTools</a></li>
-				<li role="presentation"><a href="rules.html">Rules</a></li>
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li role="presentation"><a href="backgrounds.html">Backgrounds</a></li>
-						<li role="presentation"><a href="classes.html">Classes</a></li>
-						<li role="presentation"><a href="feats.html">Feats</a></li>
-						<li role="presentation"><a href="names.html">Names</a></li>
-						<li role="presentation"><a href="races.html">Races</a></li>
-					</ul>
-				</li>
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">DM Tools <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li role="presentation"><a href="crcalculator.html">CR Calculator</a></li>
-						<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
-						<li role="presentation"><a href="encountergen.html">Encounter Generator</a></li>
-						<li role="presentation"><a href="lootgen.html">Loot Generator</a></li>
-					</ul>
-				</li>
-				<li role="presentation" class="dropdown active">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li role="presentation"><a href="bestiary.html">Bestiary</a></li>
-						<li role="presentation"><a href="conditions.html">Conditions</a></li>
-						<li role="presentation"><a href="cults.html">Cults</a></li>
-						<li role="presentation"><a href="invocations.html">Invocations</a></li>
-						<li role="presentation"><a href="items.html">Items</a></li>
-						<li role="presentation"><a href="rewards.html">Other Rewards</a></li>
-						<li role="presentation" class="active"><a href="psionics.html">Psionics</a></li>
-						<li role="presentation"><a href="spells.html">Spells</a></li>
-						<li role="presentation"><a href="variantrules.html">Variant Rules</a></li>
-					</ul>
-				</li>
-				<li role="presentation"><a href="statgen.html">Statgen</a></li>
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Utilities<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li role="presentation"><a href="converter.html">Stat Block to JSON</a></li>
-						<li role="presentation"><a href="editor.html">WYSIWYG Editor</a></li>
-					</ul>
-				</li>
-				<li role="presentation">
-					<a class="nightModeToggle" href="#" onclick="styleSwitcher.toggleActiveStyleSheet(); return false;"><script>document.write(styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_DAY ? "Night Mode" : "Day Mode")</script></a>
+		<nav class="container" id="navigation">
+			<ul class="nav nav-pills" id="navbar">
+				<!-- Navbar is populated with JS -->
+				<li role="presentation" id="daynightMode">
+					<a class="nightModeToggle" href="#" onclick="styleSwitcher.toggleActiveStyleSheet(); return false;">
+						<script>document.write(styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_DAY ? "Night Mode" : "Day Mode")</script>
+					</a>
 				</li>
 			</ul>
 		</nav>
