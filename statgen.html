@@ -23,7 +23,7 @@
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<style id="dynamicStyle"></style> <!-- populated with JS -->
 	<script type="text/javascript" src="js/styleswitch.js"></script>
-	<script type="text/javascript" src="lib/navigation.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
 </head>
 
 <body>
@@ -33,16 +33,10 @@
 			<p>Change method on the left, refer to method that appears on the right.</p>
 		</div>
 	</header>
-	<nav class="container" id="navigation">
-		<ul class="nav nav-pills" id="navbar">
-			<!-- Navbar is populated with JS -->
-			<li role="presentation" id="daynightMode">
-				<a class="nightModeToggle" href="#" onclick="styleSwitcher.toggleActiveStyleSheet(); return false;">
-					<script>document.write(styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_DAY ? "Night Mode" : "Day Mode")</script>
-				</a>
-			</li>
-		</ul>
-	</nav>
+<nav class="container" id="navigation">
+    <ul class="nav nav-pills" id="navbar">
+    </ul>
+</nav>
 	<main class="container bodyContent">
 
 		<div class="row">

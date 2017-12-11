@@ -57,7 +57,7 @@ function navigation() {
 	LI('ul_utils','converter.html','Stat Block to JSON');
 	LI('ul_utils','editor.html','WYSIWYG Editor');
 
-	LISwitcher();
+	LISwitcher('navbar','daynightMode','nightModeToggle','#','styleSwitcher.toggleActiveStyleSheet(); return false;');
 
 	function A(append_to_id, _id, _class, _datatoggle, _href, _role, _ariahaspop, _ariaexpanded, _text){
 		var a = document.createElement('a');
@@ -122,11 +122,20 @@ function navigation() {
 		var appendTo = document.getElementById(append_to_id);
 		appendTo.appendChild(li);
 	}
-
-	function LISwitcher(){
-		var daynightMode = document.getElementById("daynightMode");
-		var ul = document.getElementById("navbar");
-		ul.removeChild(daynightMode);
-		ul.appendChild(daynightMode);
+	
+	function LISwitcher(append_to_id, li_id, a_class, a_href, a_onclick){
+		var a = document.createElement('a');
+		a.href = a_href;
+		a.className = a_class;
+		a.setAttribute('onclick',a_onclick);
+		a.innerHTML = styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_DAY ? "Night Mode" : "Day Mode";
+		
+		var li = document.createElement('li');
+		li.id = li_id;
+		li.setAttribute('role','presentation');
+		li.appendChild(a);
+		
+		var appendTo = document.getElementById(append_to_id);
+		appendTo.appendChild(li);
 	}
 }
