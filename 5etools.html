@@ -2,154 +2,154 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-	<!--
-	XML data was compiled by a reddit community for use with the "Fight Club 5" app.
-	Google "5e xml files" for more info.
+    <!--
+    XML data was compiled by a reddit community for use with the "Fight Club 5" app.
+    Google "5e xml files" for more info.
 
-	Feel free to use, edit, and redistribute this as you wish.
-	I don't own any of the XML data anyway.
+    Feel free to use, edit, and redistribute this as you wish.
+    I don't own any of the XML data anyway.
 
 -->
 
-	<title>5etools</title>
+    <title>5etools</title>
 
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
-	<style id="dynamicStyle"></style> <!-- populated with JS -->
-	<script type="text/javascript" src="js/styleswitch.js"></script>
+    <script type="text/javascript" src="lib/js-cookie.js"></script>
+    <style id="dynamicStyle"></style> <!-- populated with JS -->
+    <script type="text/javascript" src="js/styleswitch.js"></script>
+    <script type="text/javascript" src="js/navigation.js"></script>
 </head>
 
-<body>
-	<header class="hidden-xs hidden-sm">
-		<div class="container">
+<header class="hidden-xs hidden-sm">
+    <div class="container">
 
-			<h1>5etools</h1>
-			<p>A suite of tools for 5e D&amp;D players.</p>
-		</div>
-	</header>
-	<nav class="container">
-		<ul class="nav nav-pills ">
-			<li role="presentation" class="active"><a href="5etools.html">5eTools</a></li>
-			<li role="presentation"><a href="rules.html">Rules</a></li>
-			<li role="presentation" class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li role="presentation"><a href="backgrounds.html">Backgrounds</a></li>
-					<li role="presentation"><a href="classes.html">Classes</a></li>
-					<li role="presentation"><a href="feats.html">Feats</a></li>
-					<li role="presentation"><a href="names.html">Names</a></li>
-					<li role="presentation"><a href="races.html">Races</a></li>
-				</ul>
-			</li>
-			<li role="presentation" class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">DM Tools <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li role="presentation"><a href="crcalculator.html">CR Calculator</a></li>
-					<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
-					<li role="presentation"><a href="encountergen.html">Encounter Generator</a></li>
-					<li role="presentation"><a href="lootgen.html">Loot Generator</a></li>
-				</ul>
-			</li>
-			<li role="presentation" class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li role="presentation"><a href="bestiary.html">Bestiary</a></li>
-					<li role="presentation"><a href="conditions.html">Conditions</a></li>
-					<li role="presentation"><a href="cults.html">Cults</a></li>
-					<li role="presentation"><a href="invocations.html">Invocations</a></li>
-					<li role="presentation"><a href="items.html">Items</a></li>
-					<li role="presentation"><a href="rewards.html">Other Rewards</a></li>
-					<li role="presentation"><a href="psionics.html">Psionics</a></li>
-					<li role="presentation"><a href="spells.html">Spells</a></li>
-					<li role="presentation"><a href="variantrules.html">Variant Rules</a></li>
-				</ul>
-			</li>
-			<li role="presentation"><a href="statgen.html">Statgen</a></li>
-			<li role="presentation" class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Utilities<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li role="presentation"><a href="converter.html">Stat Block to JSON</a></li>
-					<li role="presentation"><a href="editor.html">WYSIWYG Editor</a></li>
-				</ul>
-			</li>
-			<li role="presentation">
-				<a class="nightModeToggle" href="#" onclick="styleSwitcher.toggleActiveStyleSheet(); return false;"><script>document.write(styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_DAY ? "Night Mode" : "Day Mode")</script></a>
-			</li>
-		</ul>
-	</nav>
-	<main class="container bodyContent">
-		<div class="row">
-			<div class="col-sm-12">
-				<p>5etools is a suite of HTML-and-JavaScript tools for players and DMs of D&amp;D 5e. You can find and download the project on <a href="https://github.com/TheGiddyLimit/TheGiddyLimit.github.io">GitHub</a>. Simply download the project as a zip, extract it all to a folder,
-					open the .html files in a browser, and it's ready to go! You can also host your own mirror, or contribute to the project via GitHub. With all the Unearthed Arcana material released, data entry is appreciated!</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-6">
-				<h4><a href="classes.html">Classes</a></h4>
-				<p>Classes.html allows you to quickly browse each of the official classes in 5e. You can also filter for the class' specific subclasses for easier reference, sharing the produced URL for quick-access.</p>
-				<h4><a href="backgrounds.html">Backgrounds</a></h4>
-				<p>Backgrounds.html lists the official backgrounds in D&amp;D 5e, including those from supplement material.</p>
-				<h4><a href="feats.html">Feats</a></h4>
-				<p>Feats.html provides a quick-use list of the feats in D&amp;D 5e, including those from Unearthed Arcana and supplements.</p>
-				<h4><a href="races.html">Races</a></h4>
-				<p>Races.html lists each of the races in D&amp;D 5e, including subraces and variants.</p>
-				<h4><a href="names.html">Names</a></h4>
-				<p>Names.html lists a name roller for each of the races in D&amp;D 5e.</p>
-				<h4><a href="crcalculator.html">CR Calculator</a></h4>
-				<p>CRcalculator.html provides a verbose, in-depth Challenge Rating calculator, for determining the CR of custom monsters made for D&amp;D 5e.</p>
-				<h4><a href="lootgen.html">Loot Generator</a></h4>
-				<p>Lootgen.html is a random loot generator for both individual and hoard treasure based on CR for D&amp;D 5e.</p>
-				<h4><a href="invocations.html">Eldritch Invocations</a></h4>
-				<p>Invocations.html lists all of the official Eldritch Invocations for the Warlock Class in D&amp;D 5e, from the PHB, XGE, and various UA. Filterable by prerequisites, and entries can be shared through the generated URL.</p>
+        <h1>5etools</h1>
+        <p>A suite of tools for 5e D&amp;D players.</p>
+    </div>
+</header>
+<nav class="container" id="navigation">
+    <ul class="nav nav-pills" id="navbar">
+    </ul>
+</nav>
+<main class="container bodyContent">
+    <div class="row">
+        <div class="col-sm-12">
+            <p>5etools is a suite of HTML-and-JavaScript tools for players and DMs of D&amp;D 5e. You can find and
+                download the project on <a href="https://github.com/TheGiddyLimit/TheGiddyLimit.github.io">GitHub</a>.
+                Simply download the project as a zip, extract it all to a folder,
+                open the .html files in a browser, and it's ready to go! You can also host your own mirror, or
+                contribute to the project via GitHub. With all the Unearthed Arcana material released, data entry is
+                appreciated!</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <h4><a href="classes.html">Classes</a></h4>
+            <p>Classes.html allows you to quickly browse each of the official classes in 5e. You can also filter for the
+                class' specific subclasses for easier reference, sharing the produced URL for quick-access.</p>
+            <h4><a href="backgrounds.html">Backgrounds</a></h4>
+            <p>Backgrounds.html lists the official backgrounds in D&amp;D 5e, including those from supplement
+                material.</p>
+            <h4><a href="feats.html">Feats</a></h4>
+            <p>Feats.html provides a quick-use list of the feats in D&amp;D 5e, including those from Unearthed Arcana
+                and supplements.</p>
+            <h4><a href="races.html">Races</a></h4>
+            <p>Races.html lists each of the races in D&amp;D 5e, including subraces and variants.</p>
+            <h4><a href="names.html">Names</a></h4>
+            <p>Names.html lists a name roller for each of the races in D&amp;D 5e.</p>
+            <h4><a href="crcalculator.html">CR Calculator</a></h4>
+            <p>CRcalculator.html provides a verbose, in-depth Challenge Rating calculator, for determining the CR of
+                custom monsters made for D&amp;D 5e.</p>
+            <h4><a href="lootgen.html">Loot Generator</a></h4>
+            <p>Lootgen.html is a random loot generator for both individual and hoard treasure based on CR for D&amp;D
+                5e.</p>
+        </div>
+        <div class="col-sm-6">
+            <h4><a href="bestiary.html">Bestiary</a></h4>
+            <p>Bestiary.html provides a searchable, filterable list of the more than 830 stat blocks in D&amp;D 5e. You
+                can display them and each attack and damage roll can be done in-line with just a click.</p>
+            <h4><a href="conditions.html">Conditions</a>/<a href="cults.html">Cults</a></h4>
+            <p>Conditions.html lists all the conditions in D&amp;D 5e. Cults.html lists all cults in the UA: Fiendish
+                Options.</p>
+            <h4><a href="items.html">Items</a></h4>
+            <p>Items.html lists the mundane and magical items currently in D&amp;D 5e, allowing quick access to their
+                properties.</p>
+            <h4><a href="rewards.html">Other Rewards</a></h4>
+            <p>Rewards.html lists the blessings, boons, and charms currently in D&amp;D 5e, allowing quick access to
+                their properties.</p>
+            <h4><a href="spells.html">Spells</a>/<a href="psionics.html">Psionics</a></h4>
+            <p>Spells.html lists all of the official spells in D&amp;D 5e. Psionics.html lists all psionics in the UA:
+                The Mystic Class. Both lists can be easily searched and filtered and the entries can be shared through
+                the generated URL.</p>
+            <h4><a href="variantrules.html">Variant Rules</a></h4>
+            <p>Variantrules.html lists the variant and optional rules in D&amp;D 5e.</p>
+			<h4><a href="invocations.html">Eldritch Invocations</a></h4>
+			<p>Invocations.html lists all of the official Eldritch Invocations for the Warlock Class in D&amp;D 5e, from the PHB, XGE, and various UA. Filterable by prerequisites, and entries can be shared through the generated URL.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Use Roll20?</h3>
+            <p>Get Greasemonkey (Firefox) or Tampermonkey (Chrome). Install the script using this <a
+                    href="https://github.com/TheGiddyLimit/5etoolsR20/raw/master/5etoolsR20.user.js">link</a>! This
+                userscript allows you to import much of 5etools' data without paying a dime. If you are using the Shaped
+                sheet, be sure to open up the NPC sheets and let them convert before using it. NOTE: It only imports
+                when you're a DM.</p>
+            <h3>Use Discord?</h3>
+            <p>Now you can join our server using <a href="https://discord.gg/v3AXzcW">this</a> link!</p>
+            <h3>FAQ / Help</h3>
+            <p><b>Browser Support.</b> We aim to fully support <b>all</b> commonly used browsers, i.e. Chrome and
+                Firefox. We have no plans to support any Microsoft browsers. Other browsers, e.g. Safari and Opera,
+                might work OK but you may wish to upgrade to a better browser in order to have a better experience when
+                using the internet.</p>
+            <p><b>Device Support.</b> We aim to support Windows and Android; mainly because they're the devices we
+                usually have access to. Due to the amount of information displayed we typically aim for the best
+                look-and-feel when using a monitor rather than a smartphone screen. Similar to our browser support, you
+                may wish to upgrade to a better supported device in order to have a more secure / better experience when
+                using the internet.</p>
+            <p><b>Filtering.</b> On most of the pages we have filters. By default we include and/or exclude certain
+                things. The filter will include anything that's blue and exclude anything that's red. For example, if
+                you want to see all spells from Xanathar's Guide to Everything that a Warlock can use but can't be used
+                by a Wizard then you need to have "Xanathar's Guide to Everything" and "Warlock" in blue and "Wizard" in
+                red - when you're in the Filter drop-down clicking an icon cycles the color from white (it doesn't
+                matter either way) to blue (include these things) to red (exclude these things). If you get lost then
+                simply click the Reset button and the filtering will go back to the default for that page.</p>
+            <p><b>Everything keeps changing.</b> Yes - it does; that's because we want to keep improving this site. We
+                rarely delete data, but it may appear to be "missing"; that's often due to the filter settings. If you
+                find entries are wrong then please let us know, e.g. using Discord or raise an issue in GitHub; we're
+                typically very responsive. Similarly, if you have any good suggestions for improvements then we're up
+                for that too! No change is too small to tell us about, e.g. spelling mistakes and links not working, but
+                the bigger changes might take some time to get to the top of our priority list.</p>
+            <p><b>Links.</b> Much of the content includes hyperlinks to other parts of our site. Similarly, other things
+                may look like links but they're often die-rollers, e.g. click on a 1d4+2 and we'll do the dice rolling
+                for you and the results appear at the bottom of the screen. If in doubt, give it a click and see what it
+                does!</p>
+            <p><b>Day/Night Mode.</b> Night Mode, with a dark background and lighter text, is a relatively recent new
+                feature and we're still putting the finishing touches to its look-and-feel.</p>
+            <p><b>Sorting.</b> If you click on the column name in a table then the data in that column is sorted;
+                clicking on it again will reverse the sort direction. Where possible, we've tried to be logical about
+                the sorting, e.g. Self then touch then various distances then Unlimited and Special at the far end; some
+                of the sorting is still work-in-progress - if you have any good ideas on how to improve it please let us
+                know, e.g. sorting by Ability in Feats.</p>
+            <p><b>Hover.</b> Some of the things on the page will pop-up a tooltip if you hover the mouse over them, e.g.
+                our source abbreviations will pop-up with the full name of the source. Actions and skill checks also
+                have tooltips on some pages.</p>
+        </div>
+    </div>
+</main>
+<footer class="container">
+</footer>
 
-			</div>
-			<div class="col-sm-6">
-				<h4><a href="bestiary.html">Bestiary</a></h4>
-				<p>Bestiary.html provides a searchable, filterable list of the more than 830 stat blocks in D&amp;D 5e. You can display them and each attack and damage roll can be done in-line with just a click.</p>
-				<h4><a href="conditions.html">Conditions</a>/<a href="cults.html">Cults</a></h4>
-				<p>Conditions.html lists all the conditions in D&amp;D 5e. Cults.html lists all cults in the UA: Fiendish Options.</p>
-				<h4><a href="items.html">Items</a></h4>
-				<p>Items.html lists the mundane and magical items currently in D&amp;D 5e, allowing quick access to their properties.</p>
-				<h4><a href="rewards.html">Other Rewards</a></h4>
-				<p>Rewards.html lists the blessings, boons, and charms currently in D&amp;D 5e, allowing quick access to their properties.</p>
-				<h4><a href="spells.html">Spells</a>/<a href="psionics.html">Psionics</a></h4>
-				<p>Spells.html lists all of the official spells in D&amp;D 5e. Psionics.html lists all psionics in the UA: The Mystic Class. Both lists can be easily searched and filtered and the entries can be shared through the generated URL.</p>
-				<h4><a href="variantrules.html">Variant Rules</a></h4>
-				<p>Variantrules.html lists the variant and optional rules in D&amp;D 5e.</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<h3>Use Roll20?</h3>
-				<p>Get Greasemonkey (Firefox) or Tampermonkey (Chrome). Install the script using this <a href="https://github.com/TheGiddyLimit/5etoolsR20/raw/master/5etoolsR20.user.js">link</a>! This userscript allows you to import much of 5etools' data without paying a dime. If you are using the Shaped sheet, be sure to open up the NPC sheets and let them convert before using it. NOTE: It only imports when you're a DM.</p>
-				<h3>Use Discord?</h3>
-				<p>Now you can join our server using <a href="https://discord.gg/B2J9gM9">this</a> link!</p>
-				<h3>FAQ / Help</h3>
-				<p><b>Browser Support.</b> We aim to fully support <b>all</b> commonly used browsers, i.e. Chrome and Firefox. We have no plans to support any Microsoft browsers. Other browsers, e.g. Safari and Opera, might work OK but you may wish to upgrade to a better browser in order to have a better experience when using the internet.</p>
-				<p><b>Device Support.</b> We aim to support Windows and Android; mainly because they're the devices we usually have access to. Due to the amount of information displayed we typically aim for the best look-and-feel when using a monitor rather than a smartphone screen. Similar to our browser support, you may wish to upgrade to a better supported device in order to have a more secure / better experience when using the internet.</p>
-				<p><b>Filtering.</b> On most of the pages we have filters. By default we include and/or exclude certain things. The filter will include anything that's blue and exclude anything that's red. For example, if you want to see all spells from Xanathar's Guide to Everything that a Warlock can use but can't be used by a Wizard then you need to have "Xanathar's Guide to Everything" and "Warlock" in blue and "Wizard" in red - when you're in the Filter drop-down clicking an icon cycles the color from white (it doesn't matter either way) to blue (include these things) to red (exclude these things). If you get lost then simply click the Reset button and the filtering will go back to the default for that page.</p>
-				<p><b>Everything keeps changing.</b> Yes - it does; that's because we want to keep improving this site. We rarely delete data, but it may appear to be "missing"; that's often due to the filter settings. If you find entries are wrong then please let us know, e.g. using Discord or raise an issue in GitHub; we're typically very responsive. Similarly, if you have any good suggestions for improvements then we're up for that too! No change is too small to tell us about, e.g. spelling mistakes and links not working, but the bigger changes might take some time to get to the top of our priority list.</p>
-				<p><b>Links.</b> Much of the content includes hyperlinks to other parts of our site. Similarly, other things may look like links but they're often die-rollers, e.g. click on a 1d4+2 and we'll do the dice rolling for you and the results appear at the bottom of the screen. If in doubt, give it a click and see what it does!</p>
-				<p><b>Day/Night Mode.</b> Night Mode, with a dark background and lighter text, is a relatively recent new feature and we're still putting the finishing touches to its look-and-feel.</p>
-				<p><b>Sorting.</b> If you click on the column name in a table then the data in that column is sorted; clicking on it again will reverse the sort direction. Where possible, we've tried to be logical about the sorting, e.g. Self then touch then various distances then Unlimited and Special at the far end; some of the sorting is still work-in-progress - if you have any good ideas on how to improve it please let us know, e.g. sorting by Ability in Feats.</p>
-				<p><b>Hover.</b> Some of the things on the page will pop-up a tooltip if you hover the mouse over them, e.g. our source abbreviations will pop-up with the full name of the source. Actions and skill checks also have tooltips on some pages.</p>
-			</div>
-		</div>
-	</main>
-	<footer class="container">
-	</footer>
-
-	<script type="text/javascript" src="js/utils.js"></script>
-	<script type="text/javascript" src="lib/jquery.js"></script>
-	<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
 </body>
 </html>

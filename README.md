@@ -1,7 +1,7 @@
 ## 5e Tools
 [Go to 5etools](5etools.html)
 
-[Join the 5etools Discord here!](https://discord.gg/B2J9gM9)
+[Join the 5etools Discord here!](https://discord.gg/v3AXzcW)
 
 ## Running 5etools Locally (Offline Copy)
 There are several options for running a local/offline copy of 5etools, including:

@@ -312,6 +312,7 @@ function populateTablesAndFilters() {
 		})
 	});
 
+	addListShowHide();
 	initHistory();
 	handleFilterChange();
 }
