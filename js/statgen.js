@@ -18,6 +18,16 @@ function onJsonLoad (data) {
 	raceData = data.race;
 
 	$("#rollbutton").click(rollstats);
+	
+	$(function() {
+		$("#reset").click(function() {
+			$(".base").val(8)
+			$(".choose").prop("checked", false)
+			changeTotal()
+			changeRemaining()
+        });
+	});
+
 	$(".base").on("input", changeBase);
 	$("input.choose").on("change", choose);
 
@@ -32,19 +42,20 @@ function onJsonLoad (data) {
 const STATS_MIN = 8;
 const STATS_MAX = 15;
 
-function prevent () {
-	for (let i = 1; i < 7; ++i) {
-		const input = $(`#inputBox${i}`);
-		input.on("change", function (e) {
+function prevent() {
+	$(`.base`).each((i, ele) => {
+		const input = $(ele);
+		input.on("change", function(e) {
 			let num = parseInt(this.value);
 			if (isNaN(num)) {
 				this.value = 8;
-			} else {
+			}
+			else {
 				this.value = Math.max(Math.min(num, STATS_MAX), STATS_MIN);
 			}
 			changeTotal();
 		})
-	}
+	});
 }
 
 window.onhashchange = function hashchange () {
@@ -96,15 +107,19 @@ function changeTotal () {
 	})
 }
 
+function changeRemaining () {
+	const rempoints = Number($("#remaining").val(budget - cost));
+}
+
 function changeBase (e) {
 	const budget = Number($("#budget").val());
 
 	let cost = 0;
 	$(".base").each((i, el) => cost += getCost(Number(el.value)));
 
-	if (cost > budget) return this.value;
+	if (cost > budget) return this.value = this.dataset.prev;
 
-	$("#remaining").val(budget - cost);
+	changeRemaining()
 
 	changeTotal()
 }
