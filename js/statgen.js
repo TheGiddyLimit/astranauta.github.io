@@ -102,9 +102,8 @@ function changeBase (e) {
 	let cost = 0;
 	$(".base").each((i, el) => cost += getCost(Number(el.value)));
 
-	if (cost > budget) return this.value = this.dataset.prev;
+	if (cost > budget) return this.value;
 
-	this.dataset.prev = this.value;
 	$("#remaining").val(budget - cost);
 
 	changeTotal()
