@@ -35,12 +35,23 @@ body {
 }
 
 header {
-	margin-bottom: 3px;
-	padding: 0 15px;
+	margin-bottom: 2px;
+	padding: 2px 15px;
 }
 
 header h1 {
-	margin-top: 3px;
+	margin-right: 10px;
+	display: inline;
+}
+
+header h1::after {
+	content: ".";
+}
+
+header p {
+	display: inline;
+	font-style: italic;
+	color: #d0d0d0;
 }
 
 .viewport-wrapper {
@@ -310,7 +321,7 @@ table#stats table caption {
 }
 
 th.border {
-	height: 10px;
+	height: 4px;
 }
 
 td.divider div {
@@ -1199,10 +1210,18 @@ table#stats p.subtrait {
 	display: block;
 }
 
+.mini-view .mini-pill[state=yes].default-sel {
+	background: #48637a;
+}
+
 .mini-view .mini-pill[state=no] {
 	background: #922610;
 	color: white;
 	display: block;
+}
+
+.mini-view .mini-pill[state=no].default-desel {
+	background: #7a564f;
 }
 
 .dropdown-menu-filter .pill-grid {

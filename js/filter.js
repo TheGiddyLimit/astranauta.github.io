@@ -78,7 +78,7 @@ class FilterBox {
 
 		const $outer = makeOuterList();
 		for (let i = 0; i < this.filterList.length; ++i) {
-			$outer.append(makeOuterItem(i, this, this.filterList[i], this.$miniView));
+			$outer.append(makeOuterItem(this, this.filterList[i], this.$miniView));
 			if (i < this.filterList.length - 1) $outer.append(makeDivider());
 		}
 		$inputGroup.prepend($filterButton);
@@ -100,19 +100,9 @@ class FilterBox {
 			const $buttonWrapper = $(`<div id="filter-toggle-btn"/>`);
 			$buttonWrapper.addClass(FilterBox.CLS_INPUT_GROUP_BUTTON);
 
-			const filterButton = getFilterButton();
-			$buttonWrapper.append(filterButton);
+			const $filterButton = $(`<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Filter <span class="caret"></span></button>`);
+			$buttonWrapper.append($filterButton);
 			return $buttonWrapper;
-
-			function getFilterButton () {
-				const button = document.createElement(ELE_BUTTON);
-				button.classList.add("btn");
-				button.classList.add("btn-default");
-				button.classList.add("dropdown-toggle");
-				button.setAttribute("data-toggle", "dropdown");
-				button.innerHTML = "Filter <span class='caret'></span>";
-				return button;
-			}
 		}
 
 		function getMiniView () {
@@ -126,23 +116,32 @@ class FilterBox {
 			return $outL;
 		}
 
-		function makeOuterItem (i, self, filter, $miniView) {
-			const $outI = $("<li/>");
-			$outI.addClass("filter-item");
+		function makeOuterItem (self, filter, $miniView, namePrefix) {
+			if (filter instanceof MultiFilter) {
+				const $parent = $(`<div/>`);
+				for (const child of filter.filters) {
+					const $ch = makeOuterItem(self, child, $miniView, filter.categoryName);
+					$parent.append($ch);
+				}
+				return $parent;
+			} else {
+				const $outI = $("<li/>");
+				$outI.addClass("filter-item");
 
-			const $grid = makePillGrid();
-			const $innerListHeader = makeHeaderLine();
+				const $grid = makePillGrid();
+				const $innerListHeader = makeHeaderLine($grid);
 
-			$outI.append($innerListHeader);
-			$outI.append($grid);
+				$outI.append($innerListHeader);
+				$outI.append($grid);
 
-			self.headers[filter.header] = {index: i, ele: $grid, outer: $outI, filter: filter};
+				self.headers[filter.header] = {ele: $grid, outer: $outI, filter: filter};
 
-			return $outI;
+				return $outI;
+			}
 
-			function makeHeaderLine () {
+			function makeHeaderLine ($grid) {
 				const $line = $(`<div class="h-wrap"/>`);
-				const $label = `<div>${filter.header}</div>`;
+				const $label = `<div>${namePrefix ? `<span class="text-muted">${namePrefix}: </span>` : ""}${filter.header}</div>`;
 				$line.append($label);
 
 				const $quickBtns = $(`<span class="btn-group" style="margin-left: auto;"/>`);
@@ -253,7 +252,7 @@ class FilterBox {
 					const iChangeFn = item instanceof FilterItem ? item.changeFn : null;
 
 					const $pill = $(`<div class="filter-pill"/>`);
-					const $miniPill = $(`<div class="mini-pill group${i}"/>`);
+					const $miniPill = $(`<div class="mini-pill"/>`);
 
 					const display = filter.displayFn ? filter.displayFn(iText) : iText;
 
@@ -308,9 +307,20 @@ class FilterBox {
 						_resetter($pill, $miniPill, iText, iChangeFn, true);
 					}
 
+					// add a class to mark any items that are default deselected (used to add visual difference)
+					tagDefaults($miniPill, iText);
+
 					$grid.append($pill);
 					$miniView.append($miniPill);
 					$pills.push($pill);
+				}
+
+				function tagDefaults ($miniPill, iText) {
+					if (filter.deselFn && filter.deselFn(iText)) {
+						$miniPill.addClass("default-desel");
+					} else if (filter.selFn && filter.selFn(iText)) {
+						$miniPill.addClass("default-sel");
+					}
 				}
 
 				// allows silent (pill change function not triggered) sets
@@ -608,6 +618,35 @@ class FilterItem {
 	constructor (item, changeFn) {
 		this.item = item;
 		this.changeFn = changeFn;
+	}
+}
+
+class MultiFilter {
+	/**
+	 * A group of multiple `Filter`s, which are OR'd together
+	 * @param categoryName a prefix to display before the filter headers
+	 * @param filters the list of filters
+	 */
+	constructor (categoryName, ...filters) {
+		this.categoryName = categoryName;
+		this.filters = filters;
+	}
+
+	/**
+	 * For each `toChecks` tc, calls `Filter.toDisplay(valObj, tc)` and OR's the result, returning it. See the
+	 * `Filter.toDisplay` docs.
+	 * @param valObj `FilterBox.getValues()` returned object
+	 * @param toChecks a list of objects to pass to the underlying filters, which must be the same length as the number
+	 * of filters
+	 * @returns {boolean} OR'd results of the underling `Filter.toDisplay` results
+	 * @throws an error if the `toChecks` list did not match the length of `this.filters`
+	 */
+	toDisplay (valObj, ...toChecks) {
+		if (this.filters.length !== toChecks.length) throw new Error("Number of filters and number of toChecks did not match");
+		for (let i = 0; i < this.filters.length; ++i) {
+			if (this.filters[i].toDisplay(valObj, toChecks[i])) return true;
+		}
+		return false;
 	}
 }
 
