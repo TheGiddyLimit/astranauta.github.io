@@ -1,0 +1,151 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+	"properties": {
+		"variant": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"properties": {}
+						}
+					},
+					"requires": {
+						"type": "object",
+						"properties": {
+							"ammunition": {
+								"type": "boolean"
+							},
+							"armor": {
+								"type": "boolean"
+							},
+							"axe": {
+								"type": "boolean"
+							},
+							"sword": {
+								"type": "boolean"
+							},
+							"weapon": {
+								"type": "boolean"
+							},
+							"dmgType": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"type": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false
+					},
+					"inherits": {
+						"type": "object",
+						"properties": {
+							"genericBonus": {
+								"type": "string"
+							},
+							"tier": {
+								"type": "string"
+							},
+							"rarity": {
+								"type": "string"
+							},
+							"source": {
+								"type": "string"
+							},
+							"page": {
+								"type": "string"
+							},
+							"namePrefix": {
+								"type": "string"
+							},
+							"nameSuffix": {
+								"type": "string"
+							},
+							"reqAttune": {
+								"type": "string"
+							},
+							"resist": {
+								"type": "string"
+							},
+							"stealth": {
+								"type": "boolean"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"properties": {}
+								}
+							},
+							"modifier": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"_category": {
+											"type": "string"
+										},
+										"__text": {
+											"type": "string"
+										},
+										"toString": {
+											"type": "array"
+										}
+									},
+									"required": [
+										"_category",
+										"__text",
+										"toString"
+									],
+									"additionalProperties": false
+								}
+							}
+						},
+						"required": [
+							"rarity",
+							"source",
+							"page"
+						],
+						"additionalProperties": false
+					},
+					"excludes": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"page": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false
+					},
+					"noDisplay": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"name",
+					"inherits"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"required": [
+		"variant"
+	],
+	"additionalProperties": false
+}

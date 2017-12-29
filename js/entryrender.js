@@ -430,6 +430,10 @@ function EntryRenderer () {
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_MM;
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
+							case "@condition":
+								fauxEntry.href.path = "conditions.html";
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
 						}
 					}
 				} else {

@@ -1,0 +1,178 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+	"properties": {
+		"psionic": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"focus": {
+						"type": "string"
+					},
+					"order": {
+						"type": "string"
+					},
+					"modes": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"type": "object",
+							"properties": {
+								"cost": {
+									"type": "object",
+									"properties": {
+										"min": {
+											"type": "integer"
+										},
+										"max": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"min",
+										"max"
+									],
+									"additionalProperties": false
+								},
+								"concentration": {
+									"type": "object",
+									"properties": {
+										"duration": {
+											"type": "integer"
+										},
+										"unit": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"duration",
+										"unit"
+									],
+									"additionalProperties": false
+								},
+								"title": {
+									"type": "string"
+								},
+								"text": {
+									"type": "array",
+									"uniqueItems": true,
+									"items": {
+										"anyOf": [
+											{
+												"type": "object",
+												"properties": {
+													"istable": {
+														"type": "string"
+													},
+													"thead": {
+														"type": "array",
+														"uniqueItems": true
+													},
+													"thstyleclass": {
+														"type": "array"
+													},
+													"tbody": {
+														"type": "array",
+														"uniqueItems": true,
+														"items": {
+															"type": "array"
+														}
+													}
+												},
+												"required": [
+													"istable",
+													"thead",
+													"thstyleclass",
+													"tbody"
+												],
+												"additionalProperties": false
+											},
+											{"type": "string"}
+										]
+									}
+								},
+								"submodes": {
+									"type": "array",
+									"uniqueItems": true,
+									"items": {
+										"type": "object",
+										"properties": {
+											"cost": {
+												"type": "object",
+												"properties": {
+													"min": {
+														"type": "integer"
+													},
+													"max": {
+														"type": "integer"
+													}
+												},
+												"required": [
+													"min",
+													"max"
+												],
+												"additionalProperties": false
+											},
+											"title": {
+												"type": "string"
+											},
+											"text": {
+												"type": "array",
+												"uniqueItems": true,
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"cost",
+											"title",
+											"text"
+										],
+										"additionalProperties": false
+									}
+								}
+							},
+							"required": [
+								"title",
+								"text"
+							],
+							"additionalProperties": false
+						}
+					},
+					"text": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"type": "string"
+						}
+					}
+				},
+				"required": [
+					"name",
+					"source",
+					"type"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"required": [
+		"psionic"
+	],
+	"additionalProperties": false
+}

@@ -1,246 +1,235 @@
-var monsterfeatures = [
-	{
-		"name": "Aggressive",
-		"example": "Orc",
-		"effect": "As a bonus action, the creature can move up to its speed toward a hostile creature it can see.",
-		"hp": "",
-		"ac": "",
-		"dpr": "2",
-		"attackbonus": ""
-	},
-	{
-		"name": "Ambusher",
-		"example": "Doppelganger",
-		"effect": "The creature has advantage on attack rolls against any creature it has surprised.",
-		"hp": "",
-		"ac": "",
-		"dpr": "",
-		"attackbonus": "1"
-	},
-	{
-		"name": "Angelic Weapons",
-		"example": "Deva",
-		"effect": "The creature's weapon attacks are magical. When the creature hits with any weapon, the weapon deals extra radiant damage. Input this extra damage per round.",
-		"hp": "",
-		"ac": "",
-		"dpr": "trait",
-		"attackbonus": "",
-		"numbox": "YES"
-	},
-	{
-		"name": "Avoidance",
-		"example": "Demilich",
-		"effect": "If the creature is subjected to an effect that allows it to make a saving throw to only take half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails.",
-		"hp": "",
-		"ac": "1",
-		"dpr": "",
-		"attackbonus": ""
-	},
-	{
-		"name": "Blood Frenzy",
-		"example": "Sahuagin",
-		"effect": "The creature has advantage on melee attack rolls against any creature that doesn't have all its hit points.",
-		"hp": "",
-		"ac": "",
-		"dpr": "",
-		"attackbonus": "4"
-	},
-	{
-		"name": "Constrict",
-		"example": "Giant Constrictor Snake",
-		"effect": "The creature has the ability to restrain and/or grapple a target as part of an attack.",
-		"hp": "",
-		"ac": "1",
-		"dpr": "",
-		"attackbonus": ""
-	},
-	{
-		"name": "Damage Transfer",
-		"example": "Cloaker",
-		"effect": "While attached or grappling a creature, the creature takes only half damage dealt to it (rounded down), and the other creature takes the other half.",
-		"hp": "hp",
-		"ac": "",
-		"dpr": "hp * 0.33",
-		"attackbonus": ""
-	},
-	{
-		"name": "Enlarge",
-		"example": "Duergar",
-		"effect": "The creature magically increases in size, along with anything it is wearing or carrying. Input the extra damage inflicted per round whilst enlarged.",
-		"hp": "",
-		"ac": "",
-		"dpr": "trait",
-		"attackbonus": "",
-		"numbox": "YES"
-	},
-	{
-		"name": "Frightful Presence",
-		"example": "Ancient Gold Dragon",
-		"effect": "Each creature of the creature's choice within range must make a Wisdom saving throw or be frightened for 1 minute.",
-		"hp": "Math.floor((expectedcr <= 10) ? hp * 0.25 : 0)",
-		"ac": "",
-		"dpr": "",
-		"attackbonus": ""
-	},
-	{
-		"name": "Heated Body",
-		"example": "Azer",
-		"effect": "Touching or hitting the creature while within 5 ft. of it causes damage.",
-		"hp": "",
-		"ac": "",
-		"dpr": "trait",
-		"attackbonus": "",
-		"numbox": "YES"
-	},
-	{
-		"name": "Horrifying Visage",
-		"example": "Banshee",
-		"effect": "Each non-undead creature of the creature's choice within range must make a Wisdom saving throw or be frightened for 1 minute.",
-		"hp": "Math.floor((expectedcr <= 10) ? hp * 0.25 : 0)",
-		"ac": "",
-		"dpr": "",
-		"attackbonus": ""
-	},
-	{
-		"name": "Legendary Resistance",
-		"example": "Tarrasque",
-		"effect": "If the creature fails a saving throw, it can choose to succeed instead. Input the number of uses per day.",
-		"hp": "((expectedcr >= 0 && expectedcr <= 4) ? 10*trait : ((expectedcr >= 5 && expectedcr <= 10) ? 20*trait : ((expectedcr >= 11) ? 30*trait : 0)))",
-		"ac": "",
-		"dpr": "",
-		"attackbonus": "",
-		"numbox": "YES"
-	},
-	{
-		"name": "Magic Resistance",
-		"example": "Balor",
-		"effect": "The creature has advantage on saving throws against spells and other magical effects.",
-		"hp": "",
-		"ac": "2",
-		"dpr": "",
-		"attackbonus": ""
-	},
-	{
-		"name": "Martial Advantage",
-		"example": "Hobgoblin",
-		"effect": "The creature can deal extra damage to a creature it hits if that creature is with in 5 ft. of an ally of the creature that isn't incapacitated. Input the extra damage inflicted per round.",
-		"hp": "",
-		"ac": "",
-		"dpr": "trait",
-		"attackbonus": "",
-		"numbox": "YES"
-	},
-	{
-		"name": "Nimble Escape",
-		"example": "Goblin",
-		"effect": "The creature can take the Disengage or Hide action as a bonus action on each of its turns.",
-		"hp": "",
-		"ac": "4",
-		"dpr": "",
-		"attackbonus": "4"
-	},
-	{
-		"name": "Pack Tactics",
-		"example": "Kobold",
-		"effect": "The creature has advantage on an attack roll against a creature if at least one of the creature's allies is within 5 feet of the creature and the ally isn't incapacitated.",
-		"hp": "",
-		"ac": "",
-		"dpr": "",
-		"attackbonus": "1"
-	},
-	{
-		"name": "Parry",
-		"example": "Hobgoblin warlord",
-		"effect": "The creature adds its proficiency bonus to its AC against one melee attack that would hit it as a reaction.",
-		"hp": "",
-		"ac": "1",
-		"dpr": "",
-		"attackbonus": ""
-	},
-	{
-		"name": "Possession",
-		"example": "Ghost",
-		"effect": "The creature can control another creature, during which time it cannot be targeted by nearly any effect.",
-		"hp": "hp",
-		"ac": "",
-		"dpr": "",
-		"attackbonus": ""
-	},
-	{
-		"name": "Regeneration",
-		"example": "Troll",
-		"effect": "At the beginning of the creature's turn, it regains hit points and cannot be killed until this effect is mitigated in some way, usually through acid or fire damage. Input how many hit points it regains at the beginning of its turn.",
-		"hp": "trait*3",
-		"ac": "",
-		"dpr": "",
-		"attackbonus": "",
-		"numbox": "YES"
-	},
-	{
-		"name": "Relentless",
-		"example": "Boar",
-		"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1.",
-		"hp": "((expectedcr >= 0 && expectedcr <= 4) ? 7 : ((expectedcr >= 5 && expectedcr <= 10) ? 14 : ((expectedcr >= 11 && expectedcr <= 16) ? 21 : ((expectedcr >= 17) ? 28 : 0))))",
-		"ac": "",
-		"dpr": "",
-		"attackbonus": ""
-	},
-	{
-		"name": "Shadow Stealth",
-		"example": "Shadow Demon",
-		"effect": "While in dim light or darkness, the creature can take the Hide action as a bonus action.",
-		"hp": "",
-		"ac": "4",
-		"dpr": "",
-		"attackbonus": ""
-	},
-	{
-		"name": "Stench",
-		"example": "Troglodyte",
-		"effect": "Any creature other than the monster within 5 feet of it must make a saving throw or be poisoned.",
-		"hp": "",
-		"ac": "1",
-		"dpr": "",
-		"attackbonus": ""
-	},
-	{
-		"name": "Superior Invisibility",
-		"example": "Imp",
-		"effect": "The creature can turn invisible as an action or bonus action.",
-		"hp": "",
-		"ac": "2",
-		"dpr": "",
-		"attackbonus": ""
-	},
-	{
-		"name": "Undead Fortitude",
-		"example": "Zombie",
-		"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1. This feature is negated if the damage is from radiant nature.",
-		"hp": "((expectedcr >= 0 && expectedcr <= 4) ? 7 : ((expectedcr >= 5 && expectedcr <= 10) ? 14 : ((expectedcr >= 11 && expectedcr <= 16) ? 21 : ((expectedcr >= 17) ? 28 : 0))))",
-		"ac": "",
-		"dpr": "",
-		"attackbonus": ""
-	},
-	{
-		"name": "Web",
-		"example": "Giant Spider",
-		"effect": "Ranged Weapon Attack that restrains the target on a hit.",
-		"hp": "",
-		"ac": "1",
-		"dpr": "",
-		"attackbonus": ""
-	}
-]
-;
-
-/*{
-"name": "",
-"example": "",
-"effect": "",
-"hp": "",
-"ac": "",
-"dpr": "",
-"attackbonus": ""
-},
-*/
-
+{
+	"monsterfeatures": [
+		{
+			"name": "Aggressive",
+			"example": "Orc",
+			"effect": "As a bonus action, the creature can move up to its speed toward a hostile creature it can see.",
+			"hp": "",
+			"ac": "",
+			"dpr": "2",
+			"attackbonus": ""
+		},
+		{
+			"name": "Ambusher",
+			"example": "Doppelganger",
+			"effect": "The creature has advantage on attack rolls against any creature it has surprised.",
+			"hp": "",
+			"ac": "",
+			"dpr": "",
+			"attackbonus": "1"
+		},
+		{
+			"name": "Angelic Weapons",
+			"example": "Deva",
+			"effect": "The creature's weapon attacks are magical. When the creature hits with any weapon, the weapon deals extra radiant damage. Input this extra damage per round.",
+			"hp": "",
+			"ac": "",
+			"dpr": "trait",
+			"attackbonus": "",
+			"numbox": "YES"
+		},
+		{
+			"name": "Avoidance",
+			"example": "Demilich",
+			"effect": "If the creature is subjected to an effect that allows it to make a saving throw to only take half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails.",
+			"hp": "",
+			"ac": "1",
+			"dpr": "",
+			"attackbonus": ""
+		},
+		{
+			"name": "Blood Frenzy",
+			"example": "Sahuagin",
+			"effect": "The creature has advantage on melee attack rolls against any creature that doesn't have all its hit points.",
+			"hp": "",
+			"ac": "",
+			"dpr": "",
+			"attackbonus": "4"
+		},
+		{
+			"name": "Constrict",
+			"example": "Giant Constrictor Snake",
+			"effect": "The creature has the ability to restrain and/or grapple a target as part of an attack.",
+			"hp": "",
+			"ac": "1",
+			"dpr": "",
+			"attackbonus": ""
+		},
+		{
+			"name": "Damage Transfer",
+			"example": "Cloaker",
+			"effect": "While attached or grappling a creature, the creature takes only half damage dealt to it (rounded down), and the other creature takes the other half.",
+			"hp": "hp",
+			"ac": "",
+			"dpr": "hp * 0.33",
+			"attackbonus": ""
+		},
+		{
+			"name": "Enlarge",
+			"example": "Duergar",
+			"effect": "The creature magically increases in size, along with anything it is wearing or carrying. Input the extra damage inflicted per round whilst enlarged.",
+			"hp": "",
+			"ac": "",
+			"dpr": "trait",
+			"attackbonus": "",
+			"numbox": "YES"
+		},
+		{
+			"name": "Frightful Presence",
+			"example": "Ancient Gold Dragon",
+			"effect": "Each creature of the creature's choice within range must make a Wisdom saving throw or be frightened for 1 minute.",
+			"hp": "Math.floor((expectedcr <= 10) ? hp * 0.25 : 0)",
+			"ac": "",
+			"dpr": "",
+			"attackbonus": ""
+		},
+		{
+			"name": "Heated Body",
+			"example": "Azer",
+			"effect": "Touching or hitting the creature while within 5 ft. of it causes damage.",
+			"hp": "",
+			"ac": "",
+			"dpr": "trait",
+			"attackbonus": "",
+			"numbox": "YES"
+		},
+		{
+			"name": "Horrifying Visage",
+			"example": "Banshee",
+			"effect": "Each non-undead creature of the creature's choice within range must make a Wisdom saving throw or be frightened for 1 minute.",
+			"hp": "Math.floor((expectedcr <= 10) ? hp * 0.25 : 0)",
+			"ac": "",
+			"dpr": "",
+			"attackbonus": ""
+		},
+		{
+			"name": "Legendary Resistance",
+			"example": "Tarrasque",
+			"effect": "If the creature fails a saving throw, it can choose to succeed instead. Input the number of uses per day.",
+			"hp": "((expectedcr >= 0 && expectedcr <= 4) ? 10*trait : ((expectedcr >= 5 && expectedcr <= 10) ? 20*trait : ((expectedcr >= 11) ? 30*trait : 0)))",
+			"ac": "",
+			"dpr": "",
+			"attackbonus": "",
+			"numbox": "YES"
+		},
+		{
+			"name": "Magic Resistance",
+			"example": "Balor",
+			"effect": "The creature has advantage on saving throws against spells and other magical effects.",
+			"hp": "",
+			"ac": "2",
+			"dpr": "",
+			"attackbonus": ""
+		},
+		{
+			"name": "Martial Advantage",
+			"example": "Hobgoblin",
+			"effect": "The creature can deal extra damage to a creature it hits if that creature is with in 5 ft. of an ally of the creature that isn't incapacitated. Input the extra damage inflicted per round.",
+			"hp": "",
+			"ac": "",
+			"dpr": "trait",
+			"attackbonus": "",
+			"numbox": "YES"
+		},
+		{
+			"name": "Nimble Escape",
+			"example": "Goblin",
+			"effect": "The creature can take the Disengage or Hide action as a bonus action on each of its turns.",
+			"hp": "",
+			"ac": "4",
+			"dpr": "",
+			"attackbonus": "4"
+		},
+		{
+			"name": "Pack Tactics",
+			"example": "Kobold",
+			"effect": "The creature has advantage on an attack roll against a creature if at least one of the creature's allies is within 5 feet of the creature and the ally isn't incapacitated.",
+			"hp": "",
+			"ac": "",
+			"dpr": "",
+			"attackbonus": "1"
+		},
+		{
+			"name": "Parry",
+			"example": "Hobgoblin warlord",
+			"effect": "The creature adds its proficiency bonus to its AC against one melee attack that would hit it as a reaction.",
+			"hp": "",
+			"ac": "1",
+			"dpr": "",
+			"attackbonus": ""
+		},
+		{
+			"name": "Possession",
+			"example": "Ghost",
+			"effect": "The creature can control another creature, during which time it cannot be targeted by nearly any effect.",
+			"hp": "hp",
+			"ac": "",
+			"dpr": "",
+			"attackbonus": ""
+		},
+		{
+			"name": "Regeneration",
+			"example": "Troll",
+			"effect": "At the beginning of the creature's turn, it regains hit points and cannot be killed until this effect is mitigated in some way, usually through acid or fire damage. Input how many hit points it regains at the beginning of its turn.",
+			"hp": "trait*3",
+			"ac": "",
+			"dpr": "",
+			"attackbonus": "",
+			"numbox": "YES"
+		},
+		{
+			"name": "Relentless",
+			"example": "Boar",
+			"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1.",
+			"hp": "((expectedcr >= 0 && expectedcr <= 4) ? 7 : ((expectedcr >= 5 && expectedcr <= 10) ? 14 : ((expectedcr >= 11 && expectedcr <= 16) ? 21 : ((expectedcr >= 17) ? 28 : 0))))",
+			"ac": "",
+			"dpr": "",
+			"attackbonus": ""
+		},
+		{
+			"name": "Shadow Stealth",
+			"example": "Shadow Demon",
+			"effect": "While in dim light or darkness, the creature can take the Hide action as a bonus action.",
+			"hp": "",
+			"ac": "4",
+			"dpr": "",
+			"attackbonus": ""
+		},
+		{
+			"name": "Stench",
+			"example": "Troglodyte",
+			"effect": "Any creature other than the monster within 5 feet of it must make a saving throw or be poisoned.",
+			"hp": "",
+			"ac": "1",
+			"dpr": "",
+			"attackbonus": ""
+		},
+		{
+			"name": "Superior Invisibility",
+			"example": "Imp",
+			"effect": "The creature can turn invisible as an action or bonus action.",
+			"hp": "",
+			"ac": "2",
+			"dpr": "",
+			"attackbonus": ""
+		},
+		{
+			"name": "Undead Fortitude",
+			"example": "Zombie",
+			"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1. This feature is negated if the damage is from radiant nature.",
+			"hp": "((expectedcr >= 0 && expectedcr <= 4) ? 7 : ((expectedcr >= 5 && expectedcr <= 10) ? 14 : ((expectedcr >= 11 && expectedcr <= 16) ? 21 : ((expectedcr >= 17) ? 28 : 0))))",
+			"ac": "",
+			"dpr": "",
+			"attackbonus": ""
+		},
+		{
+			"name": "Web",
+			"example": "Giant Spider",
+			"effect": "Ranged Weapon Attack that restrains the target on a hit.",
+			"hp": "",
+			"ac": "1",
+			"dpr": "",
+			"attackbonus": ""
+		}
+	]
+}

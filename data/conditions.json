@@ -40,17 +40,16 @@
 			"entries": [
 				"Some special abilities and environmental hazards, such as starvation and the long-term effects of freezing or scorching temperatures, can lead to a special condition called exhaustion. Exhaustion is measured in six levels. An effect can give a creature one or more levels of exhaustion, as specified in the effect's description.",
 				{
-					"istable": "YES",
-					"caption": "Exhaustion",
-					"thead": [
+					"type": "table",
+					"colLabels": [
 						"Level",
 						"Effect"
 					],
-					"thstyleclass": [
+					"colStyles": [
 						"col-xs-1 text-align-center",
 						"col-xs-11"
 					],
-					"tbody": [
+					"rows": [
 						[
 							"1",
 							"Disadvantage on ability checks"
@@ -102,22 +101,7 @@
 					"type": "list",
 					"items": [
 						"A grappled creature's speed becomes 0, and it can't benefit from any bonus to its speed.",
-						[
-							"The condition ends if the grappler is ",
-							{
-								"type": "link",
-								"href": {
-									"type": "internal",
-									"path": "conditions.html",
-									"hash": {
-										"type": "constant",
-										"value": "incapacitated"
-									}
-								},
-								"text": "incapacitated"
-							},
-							"."
-						],
+						"The condition ends if the grappler is {@condition incapacitated}.",
 						"The condition also ends if an effect removes the grappled creature from the reach of the grappler or grappling effect, such as when a creature is hurled away by the thunder-wave spell."
 					]
 				}
@@ -152,22 +136,7 @@
 				{
 					"type": "list",
 					"items": [
-						[
-							"A paralyzed creature is ",
-							{
-								"type": "link",
-								"href": {
-									"type": "internal",
-									"path": "conditions.html",
-									"hash": {
-										"type": "constant",
-										"value": "incapacitated"
-									}
-								},
-								"text": "incapacitated"
-							},
-							" and can't move or speak."
-						],
+						"A paralyzed creature is {@condition incapacitated} and can't move or speak.",
 						"The creature automatically fails Strength and Dexterity saving throws. Attack rolls against the creature have advantage.",
 						"Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature."
 					]
@@ -181,22 +150,7 @@
 					"type": "list",
 					"items": [
 						"A petrified creature is transformed, along with any nonmagical object it is wearing or carrying, into a solid inanimate substance (usually stone). Its weight increases by a factor of ten, and it ceases aging.",
-						[
-							"The creature is ",
-							{
-								"type": "link",
-								"href": {
-									"type": "internal",
-									"path": "conditions.html",
-									"hash": {
-										"type": "constant",
-										"value": "incapacitated"
-									}
-								},
-								"text": "incapacitated"
-							},
-							", can't move or speak, and is unaware of its surroundings."
-						],
+						"The creature is {@condition incapacitated}, can't move or speak, and is unaware of its surroundings.",
 						"Attack rolls against the creature have advantage.",
 						"The creature automatically fails Strength and Dexterity saving throws.",
 						"The creature has resistance to all damage.",
@@ -248,22 +202,7 @@
 				{
 					"type": "list",
 					"items": [
-						[
-							"A stunned creature is ",
-							{
-								"type": "link",
-								"href": {
-									"type": "internal",
-									"path": "conditions.html",
-									"hash": {
-										"type": "constant",
-										"value": "incapacitated"
-									}
-								},
-								"text": "incapacitated"
-							},
-							", can't move, and can speak only falteringly."
-						],
+						"A stunned creature is {@condition incapacitated}, can't move, and can speak only falteringly.",
 						"The creature automatically fails Strength and Dexterity saving throws.",
 						"Attack rolls against the creature have advantage."
 					]
@@ -276,22 +215,7 @@
 				{
 					"type": "list",
 					"items": [
-						[
-							"An unconscious creature is ",
-							{
-								"type": "link",
-								"href": {
-									"type": "internal",
-									"path": "conditions.html",
-									"hash": {
-										"type": "constant",
-										"value": "incapacitated"
-									}
-								},
-								"text": "incapacitated"
-							},
-							", can't move or speak, and is unaware of its surroundings."
-						],
+						"An unconscious creature is {@condition incapacitated}, can't move or speak, and is unaware of its surroundings.",
 						"The creature drops whatever it's holding and falls prone.",
 						"The creature automatically fails Strength and Dexterity saving throws.",
 						"Attack rolls against the creature have advantage.",

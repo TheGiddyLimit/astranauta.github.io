@@ -1,0 +1,85 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+	"properties": {
+		"reward": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"ability": {
+						"type": "object",
+						"properties": {
+							"text": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"text"
+						],
+						"additionalProperties": false
+					},
+					"signaturespells": {
+						"type": "object",
+						"properties": {
+							"text": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false
+					},
+					"text": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"anyOf": [
+								{
+									"type": "object",
+									"properties": {
+										"hassubtitle": {
+											"type": "string"
+										},
+										"title": {
+											"type": "string"
+										},
+										"text": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"hassubtitle",
+										"title",
+										"text"
+									],
+									"additionalProperties": false
+								},
+								{"type": "string"}
+							]
+						}
+					}
+				},
+				"required": [
+					"name",
+					"source",
+					"type",
+					"text"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"required": [
+		"reward"
+	],
+	"additionalProperties": false
+}

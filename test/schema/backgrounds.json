@@ -1,0 +1,73 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+	"properties": {
+		"background": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"proficiency": {
+						"type": "string"
+					},
+					"trait": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"text": {
+									"type": "array"
+								},
+								"subtrait": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"text": {
+												"type": "array"
+											}
+										},
+										"required": [
+											"name",
+											"text"
+										],
+										"additionalProperties": false
+									}
+								}
+							},
+							"required": [
+								"name",
+								"text"
+							],
+							"additionalProperties": false
+						}
+					}
+				},
+				"required": [
+					"name",
+					"source",
+					"proficiency",
+					"trait"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"required": [
+		"background"
+	],
+	"additionalProperties": false
+}

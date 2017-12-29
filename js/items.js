@@ -48,6 +48,8 @@ function mergeBasicItems (variantData) {
 		variantList[i].page = variantList[i].inherits.page;
 		if (!variantList[i].entries && variantList[i].inherits.entries) variantList[i].entries = JSON.parse(JSON.stringify(variantList[i].inherits.entries));
 		if (variantList[i].requires.armor) variantList[i].armor = variantList[i].requires.armor
+		if (variantList[i].inherits.resist) variantList[i].resist = variantList[i].inherits.resist;
+		if (variantList[i].inherits.reqAttune) variantList[i].reqAttune = variantList[i].inherits.reqAttune;
 	}
 	itemList = itemList.concat(variantList);
 	for (let i = 0; i < basicItemList.length; i++) {
@@ -134,7 +136,7 @@ function enhanceItems () {
 	populateTablesAndFilters();
 }
 
-function rarityValue (rarity) { // Ordered by most frequently occuring rarities in the JSON
+function rarityValue (rarity) { // Ordered by most frequently occurring rarities in the JSON
 	if (rarity === "Rare") return 3;
 	if (rarity === "None") return 0;
 	if (rarity === "Uncommon") return 2;

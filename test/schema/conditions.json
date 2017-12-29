@@ -1,0 +1,33 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+	"properties": {
+		"condition": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				},
+				"required": [
+					"name",
+					"entries"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"required": [
+		"condition"
+	],
+	"additionalProperties": false
+}

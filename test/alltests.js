@@ -28,7 +28,7 @@ fs.readdirSync(`./test/schema`)
 		const schemas = fs.readdirSync(`./test/schema/${category}`);
 		fs.readdirSync(`./data/${category}`).forEach(dataFile => {
 			schemas.filter(schema => dataFile.startsWith(schema.split(".")[0])).forEach(schema => {
-				console.log(`Testing data/${category}/${dataFile}`.padEnd(50), ` against schema/${category}/${schema}`);
+				console.log(`Testing data/${category}/${dataFile}`.padEnd(50), `against schema/${category}/${schema}`);
 				const result = validator.validate(require(`../data/${category}/${dataFile}`), require(`./schema/${category}/${schema}`));
 				checkHandleError(result);
 				results.push(result);

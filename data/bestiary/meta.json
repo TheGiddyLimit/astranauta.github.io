@@ -27,6 +27,13 @@
 			]
 		},
 		{
+			"name": "Aerisi Kalinoth",
+			"lairActions": [
+				"If Aerisi is in the air node while {@creature Yan-C-Bin|PotA} isn't, Aerisi can take lair actions. On initiative count 20 (losing initiative ties), Aerisi uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Aerisi can take no other lair actions while concentrating on a spell cast as a lair action.",
+				"If Aerisi casts {@spell invisibility} using this lair action, she also draws the power of the air node into herself. By doing so, she regains 15 (3d8+2) hit points."
+			]
+		},
+		{
 			"name": "Baphomet",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), Baphomet can take a lair action to cause one of the following magical effects; he can't use the same effect two rounds in a row:",
@@ -365,6 +372,32 @@
 			]
 		},
 		{
+			"name": "Elder Brain",
+			"lairActions": [
+				"When fighting inside its lair, an elder brain can use lair actions. On initiative count 20 (losing initiative ties), an elder brain can take one lair action to cause one of the following effects; the elder brain can't use the same lair action two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"The elder brain casts {@spell wall of force}.",
+						"The elder brain targets one friendly creature it can sense within 120 feet of it. The target has a flash of inspiration and gains advantage on one attack roll, ability check, or saving throw it makes before the end of its next turn. If the target doesn't or can't use this benefit in that time, the inspiration is lost.",
+						"The elder brain targets one creature it can sense within 120 feet of it and anchors it by sheer force of will. The target must succeed on a DC 18 Charisma saving throw or be unable to leave its current space. It can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The territory within 5 miles of an elder brain is altered by the creature's psionic presence, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Creatures within 5 miles of an elder brain feel as if they are being followed, even when they are not.",
+						"The elder brain can overhear any telepathic conversation happening within 5 miles of it. The creature that initiated the telepathic conversation makes a DC 18 Wisdom (Insight) check when telepathic contact is first established. If the check succeeds, the creature is aware that something is eavesdropping on the conversation. The nature of the eavesdropper isn't revealed, and the elder brain can't participate in the telepathic conversation unless it has formed a psychic link with the creature that initiated it.",
+						"Any creature with which the elder brain has formed a psychic link hears faint, incomprehensible whispers in the deepest recesses of its mind. This psychic detritus consists of the elder brain's stray thoughts commingled with those of other creatures to which it is linked."
+					]
+				},
+				"If the elder brain dies, these effects immediately end."
+			]
+		},
+		{
 			"name": "Fraz-Urb'luu",
 			"lairActions": [
 				"On Initiative count 20 (losing initiative ties), Fraz-Urb'luu can take a lair action to cause one of the following effects: he can't use the same effect two rounds in a row:",
@@ -429,6 +462,13 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"name": "Gar Shatterkeel",
+			"lairActions": [
+				"If Gar is in the water node while {@creature Olhydra|PotA} isn't, he can take lair actions. On initiative count 20 (losing initiative ties), Gar uses a lair action to use his Multiattack or cast one of his spells, up to 3rd level, without using components or a spell slot. He can't cast the same spell two rounds in a row, but he can continue to concentrate on a spell he previously cast using a lair action. He can take no other lair actions while concentrating on a spell cast as a lair action. His favorite use of this capability is casting {@spell inflict wounds} or {@spell call lightning}.",
+				"If Gar casts {@spell cure wounds} using this lair action, he regains the maximum number of hit points from the spell (28)."
 			]
 		},
 		{
@@ -554,6 +594,33 @@
 			]
 		},
 		{
+			"name": "Imix",
+			"lairActions": [
+				"Imix is master of heat and flames in his vicinity. He can take lair actions on the Elemental Plane of Fire, or in any elemental fire node (such as the Weeping Colossus in chapter 5). On initiative count 20 (losing initiative ties), Imix uses his lair action to cause one of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Any fires in the lair flare up drastically, quadrupling in size (for example, a fire blazing in a 5-foot by 5-foot area expands to a 10-foot by 10-foot area). Pools or streams of lava or other molten material are also affected. Creatures caught in the area of an expanded fire are subject to the normal damage for entering or being in the fire. Creatures caught by a sudden flood of lava must succeed on a DC 20 Strength saving throw or be knocked prone, in addition to the normal damage for contact with molten rock.",
+						"A thick cloud of black smoke and burning embers fills a 40-foot-radius sphere within 120 feet of Imix, lasting until initiative count 20 of the next round. Creatures and objects within or beyond the smoke are heavily obscured. A creature that enters the cloud of embers for the first time on a turn or starts its turn there takes 10 (3d6) fire damage.",
+						"A wave of searing heat fills the lair in a 300-foot radius around Imix for an instant. Each creature other than Imix in the area must succeed on a DC 15 Constitution saving throw or take 1d8 fire damage. Creatures that take fire damage from this effect gain one level of exhaustion. In addition, there is a fifty percent chance that any container of fluid held or carried by an affected creature (for example, a magic potion) is destroyed."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The region containing an elemental node in which Imix is present becomes vulnerable to the influence of fire. This creates the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"A dry, baking heat wave strikes the region within 10 miles of Imix's location. At first, effects are minor - grass turns brown, animals become listless, work and travel become very tiring. The longer Imix remains, the worse the heat becomes; after 5 days, crops die and ponds dry up; after 10 days, unprotected livestock dies, and wells and small rivers dry up; after 20 days, large lakes and rivers are reduced in depth by 20 feet and shrink accordingly.",
+						"Wildfires erupt within a 5-mile radius of Imix's lair. Every hour, there is a ten percent chance that characters in this area are caught in the path of a wildfire moving 50 feet per round. Each character must succeed on a DC 21 Constitution saving throw or take 10 (3d6) fire damage. A wildfire continues to threaten the characters for 1d10 rounds or until they get out of its path. Wooden structures caught in the wildfire are destroyed.",
+						"Lava fountains erupt from the ground within 1 mile of Imix's lair. Every hour, there is a ten percent chance that characters in this area are close enough to an erupting lava fountain to be in danger. A lava fountain creates a vent 20 feet in diameter, and hurls globs of lava up to 200 feet away. Each character within this area must succeed on a DC 21 Dexterity saving throw or take 11 (2d10) bludgeoning damage plus 17 (5d6) fire damage. A fountain lasts for 2d10 rounds before subsiding.",
+						"Wildfires or volcanic fissures within 1 mile of Imix's lair form intermittent portals to the Elemental Plane of Fire, allowing elemental creatures into the mortal world to dwell near those points."
+					]
+				},
+				"If Imix is destroyed or banished back to his home plane, the regional effects fade over the next 1d10 days."
+			]
+		},
+		{
 			"name": "Juiblex",
 			"lairActions": [
 				"On Initiative count 20 (losing initiative ties), Juiblex can take a lair action to cause one of the following effects: he can't use the same effect two rounds in a row:",
@@ -620,6 +687,26 @@
 			]
 		},
 		{
+			"name": "Ki-rin",
+			"lairActions": [
+				"Inside its lair, a ki-rin has the power to conjure objects up to three times per day, using each of the following versions of the power once. One version permanently creates enough objects made of soft, plant-based material - including manufactured objects such as cloth, pillows, rope, blankets, and clothing - to fill a cube 20 feet on a side. The second version enough objects made of wood, or similarly hard plant-based material, to fill a cube 10 feet on a side. The third version creates enough objects made of stone or metal to fill a cube 2 feet on a side, but any materials created in this way last for only 1 hour."
+			],
+			"regionalEffects": [
+				"The ki-rin's celestial nature transforms the region around its lair. Any of the following magical effects is possible for travelers to encounter in the vicinity:",
+				{
+					"type": "list",
+					"items": [
+						"Water flows pure within 3 miles of a ki-rin's lair. Any purposeful corruption of the water lasts for no longer than 3 minutes.",
+						"Animals, plants, and good creatures within 3 miles of the ki-rin's lair gain vigor as they evolve toward an idealized form. Such creatures are rarely aggressive toward others that aren't normally prey. Evil creatures can't tolerate the holy atmosphere within the same distance, and usually choose to live much farther from the domain of a ki-rin.",
+						"Curses, diseases, and poisons affecting good-aligned creatures are suppressed when those creatures are within 3 miles of the lair.",
+						"A ki-rin can cast {@spell control weather} while it is within 3 miles of its lair. The spell's point of origin is always the point outdoors closest to the center of its lair. The ki-rin doesn't need to maintain a clear path to the sky or to concentrate for the change in weather to persist.",
+						"Within 3 miles of the lair, winds buoy non-evil creatures that fall due to no act of the ki-rin or its allies. Such creatures descend at a rate of 60 feet per round and take no falling damage."
+					]
+				},
+				"When the ki-rin dies, all these effects disappear immediately, although the invigorating effect on flora and fauna remains for 3 years."
+			]
+		},
+		{
 			"name": "Kraken",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the kraken takes a lair action to cause one of the following magical effects:",
@@ -660,6 +747,13 @@
 			]
 		},
 		{
+			"name": "Marlos Urnrayle",
+			"lairActions": [
+				"If Marlos is in the earth node while {@creature Ogremoch|PotA|Ogr\u00e9moch} isn't, the medusa can take lair actions. On initiative count 20 (losing initiative ties), Marlos uses a lair action to cast {@spell earthquake} without using components. As long as he maintains concentration on {@spell earthquake}, initiative count 20 is the start of Marlos's turn for the purpose of the spell. He can take no other lair actions while concentrating on {@spell earthquake}.",
+				"Marlos's second option for a lair action is to draw power from the earth node to heal. When he does so, he regains 30 (6d8+3) hit points."
+			]
+		},
+		{
 			"name": "Mummy Lord",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the mummy lord takes a lair action to cause one of the following effects; the mummy lord can't use the same effect two rounds in a row:",
@@ -683,6 +777,60 @@
 					]
 				},
 				"If the mummy lord is destroyed, these regional effects end immediately."
+			]
+		},
+		{
+			"name": "Ogremoch",
+			"lairActions": [
+				"Ogr\u00e9moch can assert his dominion over the rock and stone around him to take lair actions on the Elemental Plane of Earth, or in any elemental earth node (including the Black Geode, described in chapter 5). On initiative count 20 (losing initiative ties), Ogr\u00e9moch uses his lair action to cause one of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"A 10-foot-radius area of rocky or earthy ground within 60 feet of Ogr\u00e9moch turns to sticky mud. Any creature on the ground in the area must succeed on a DC 15 Dexterity saving throw or sink 5 feet into the mud and be restrained. A creature can take an action to make a DC 15 Strength check, ending the effect on itself or another creature within its reach on a success.",
+						"Crystalline spikes grow from the ground in a 20-foot-radius area within 60 feet of Ogr\u00e9moch. The area becomes difficult terrain. A creature that moves through the affected area takes 1d8 piercing damage for every 5 feet it moves there. Creatures that are knocked prone in the area also take this damage.",
+						"A violent tremor shakes the lair in a 120-foot-radius around Ogr\u00e9moch. Each creature other than Ogr\u00e9moch on the ground in the area must succeed on a DC 15 Strength or Dexterity saving throw (target's choice) or be knocked prone."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The region containing an elemental node in which Ogr\u00e9moch is present is seriously affected, becoming geologically unstable. This creates the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Earth tremors strike the region within 10 miles of Ogr\u00e9moch's location every 2d12 hours, each lasting 1d10 rounds. At first, damage is minor—broken windows, cracked plaster, items toppled off shelves. The longer Ogr\u00e9moch remains, the stronger the tremors become. After 5 days, the tremors are strong enough to destroy flimsy structures. After 10 days, they are strong enough to destroy ordinary wooden buildings. After 20 days, they can seriously damage or destroy reinforced or fortified structures.",
+						"Magnetic disturbances within 10 miles of Ogr\u00e9moch prevent compasses from functioning there.",
+						"Hidden sinkholes and fissures form within 1 mile of Ogr\u00e9moch's location. A hidden sinkhole can be spotted from a safe distance by any creature with a passive Wisdom (Perception) score of 15 or higher or spotted with a successful DC 15 Wisdom (Survival) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall 1d6 x 10 feet into the sinkhole or fissure.",
+						"Natural caves and tunnels within 1 mile of Ogr\u00e9moch's lair form intermittent portals to the Elemental Plane of Earth, allowing elemental creatures into the mortal world to dwell near those points."
+					]
+				},
+				"If Ogr\u00e9moch is destroyed or banished back to his home plane, the regional effects fade over the next 1d10 days."
+			]
+		},
+		{
+			"name": "Olhydra",
+			"lairActions": [
+				"Olhydra can command the waters around herself to take lair actions on the Elemental Plane of Water, or in any elemental water node (such as the Plunging Torrents, described in chapter 5). On initiative count 20 (losing initiative ties), Olhydra uses her lair action to cause one of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Pools of water in the lair surge outward in a grasping tide. Any creature within 20 feet of such a pool must succeed on a DC 20 Strength saving throw or be pulled up to 20 feet into the water and knocked prone.",
+						"Water within 120 feet of Olhydra becomes murky and opaque until initiative count 20 of the next round. A creature with darkvision can't see through the water, and light can't illuminate it.",
+						"A freezing fog fills a 40-foot-radius sphere within 120 feet of Olhydra, lasting until initiative count 20 of the next round. Creatures and objects within or beyond the fog are heavily obscured. A creature that enters the freezing cloud for the first time on a turn or starts its turn there takes 10 (3d6) cold damage."
+					]
+				}
+			],
+			"regionalEffects": [
+				"Olhydra's presence in an elemental node creates a number of widespread effects—bad weather, strong tides, and increasing aggression from dangerous sea life.",
+				{
+					"type": "list",
+					"items": [
+						"Violent downpours become frequent within 10 miles of the lair. A downpour occurs once every 2d12 hours, and lasts 1d3 hours. Downpours are so heavy that creatures moving overland travel at half normal speed",
+						"Within 5 miles of the lair, currents and tides are exceptionally strong and treacherous. Any ability checks made to safely navigate or control a vessel moving through these waters has disadvantage.",
+						"Aquatic creatures that have an Intelligence score of 2 or lower within 1 mile of the lair must succeed on a DC 15 Wisdom saving throw when they enter the area. If the saving throw succeeds, the creature is frightened and attempts to leave the area, remaining frightened while within it. On a failure, the creature becomes highly aggressive and remains in the area for 24 hours. While in this state, the creature gains advantage on saving throws against charm and fear effects.",
+						"Natural springs and pools within 1 mile of the lair form intermittent portals to the Elemental Plane of Water, allowing elemental creatures into the mortal world to dwell near those points."
+					]
+				},
+				"If Olhydra is destroyed or banished back to her home plane, the regional effects fade over the next 1d10 days."
 			]
 		},
 		{
@@ -819,6 +967,32 @@
 			]
 		},
 		{
+			"name": "Storm Giant Quintessent",
+			"lairActions": [
+				"A storm giant quintessent can use lair actions in giant form and while transformed into a storm. On initiative count 20 (losing initiative ties), the giant can take a lair action to cause one of the following effects; the giant can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"The giant creates a thunderclap centered on a point anywhere in its lair. Each creature within 20 feet of that point must succeed on a DC 18 Constitution saving throw or be deafened until the end of its next turn.",
+						"The giant creates a 20-foot-radius sphere of fog (or murky water within water) centered on a point anywhere in its lair. The sphere spreads around corners, and its area is heavily obscured. The fog lasts until the giant disperses it (no action required), and it can't be dispersed by wind.",
+						"The giant creates a 60-foot-long, 10-foot-wide line of strong wind ( or strong current within water) originating from a point anywhere in its lair. Each creature in that line must succeed on a DC 18 Strength saving throw or be pushed 15 feet in the direction the wind is blowing. The gust disperses gas or vapor, and it extinguishes candles, torches, and similar unprotected flames in its area. Protected flames, such as those of lanterns, have a 50 percent chance of being extinguished."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The region containing a storm giant quintessent's lair is warped by the giant's presence, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"High wind blows within 1 mile of the lair, making it impossible to light a fire unless the location where the fire is lit is protected from the wind.",
+						"Rain, snow, or blowing dust or sand (whichever is most appropriate) is constant within 1 mile of the lair. Rain causes rivers and streams to fill or overflow their banks; snow, dust, or sand form deep drifts or dunes.",
+						"Flashes of lightning and peals of thunder are continual, day and night, within 5 miles of the lair."
+					]
+				},
+				"If the giant dies, the lightning, thunder, and high wind regional effects end immediately. Rain, snow, and blowing dust abate gradually within 1d8 days."
+			]
+		},
+		{
 			"name": "Strahd von Zarovich",
 			"lairActions": [
 				"While Strahd is in Castle Ravenloft, he can take lair actions as long as he isn't incapacitated.",
@@ -848,6 +1022,13 @@
 					]
 				},
 				"If the unicorn dies, these effects end immediately."
+			]
+		},
+		{
+			"name": "Vanifer",
+			"lairActions": [
+				"If Vanifer is in the fire node while {@creature Imix|PotA} isn't, the tiefling can take lair actions. On initiative count 20 (losing initiative ties), Vanifer uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Vanifer can take no other lair actions while concentrating on a spell cast as a lair action. Her favorite use of this capability is casting {@spell fireball} or {@spell hypnotic pattern}.",
+				"If Vanifer casts {@spell misty step} using this lair action, she also draws the power of the fire node into herself. By doing so, she regains 15 (3d8+2) hit points."
 			]
 		},
 		{
@@ -890,6 +1071,33 @@
 					]
 				},
 				"If the dragon dies, the fog and precipitation fade within 1 day. The ice walls melt over the course of 1d10 days."
+			]
+		},
+		{
+			"name": "Yan-C-Bin",
+			"lairActions": [
+				"Yan-C-Bin dwells in a palace of air on the Elemental Plane of Air. In his palace and in air nodes on the Material Plane (including the Howling Caves, described in chapter 5), Yan-C-Bin is master. He can use the following actions in his lair. On initiative count 20 (losing initiative ties), Yan-C-Bin takes a lair action to cause one of the following effects; he can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"Yan-C-Bin drops the temperature of the air, covering all surfaces with ice. This effect is identical to the {@spell sleet storm} spell.",
+						"Yan-C-Bin controls the surrounding air as an extension of himself. Each creature Yan-C-Bin designates must succeed at a DC 24 Constitution saving throw or be hoisted or flung 3d6 x 10 feet through the air. A creature smashed into a solid object or released in mid-air takes 1d6 bludgeoning damage for every 10 feet moved or fallen.",
+						"Yan-C-Bin creates a torrent of debris within 120 feet of him that lasts until initiative count 20 on the next round. The debris lightly obscures every creature and object in the area for the duration. All creatures in the area must succeed at a DC 24 Wisdom saving throw or be blinded until initiative count 20 on the next round."
+					]
+				}
+			],
+			"regionalEffects": [
+				"When Yan-C-Bin inhabits an elemental node, the air is at his command. Temperatures fluctuate from blistering hot to freezing cold; thunder rolls and lightning cracks; powerful gales bear heavy creatures and objects aloft and hurl them with incredible force; cyclones touch down randomly, obliterating whatever they touch.",
+				{
+					"type": "list",
+					"items": [
+						"Gale force winds tear across the landscape in a 5-mile radius, whisking away small or light objects, dismantling roofs and fences, tearing branches from trees, and making flight impossible. Small and Medium creatures move at half speed through the wind; Tiny creatures exposed to the wind are carried away with it at a rate of 40 feet per round unless they succeed at a DC 15 Strength (Athletics) check.",
+						"Thunderstorms erupt in a 5-mile radius centered on Yan-C-Bin's lair, creating deafening cracks of thunder and constant lightning. Every ten minutes the storm rages, creatures standing beneath the open sky have a five percent chance of being struck by lightning. A creature struck by lightning must make a DC 21 Constitution saving throw, taking 21 (6d6) lightning damage on a failed save, or half as much damage on a successful one.",
+						"Cyclones touch down within a 5-mile radius of Yan-C-Bin's lair. Every hour, there is a five percent chance that characters in this area are caught in the path of a cyclone moving 250 feet per round. Each character must succeed on a DC 21 Constitution saving throw or take 33 (6d10) bludgeoning damage. Wooden or flimsy structures in the path of the cyclone are destroyed.",
+						"Natural caverns and windblown canyons within 1 mile of the lair form intermittent portals to the Elemental Plane of Air, allowing elemental creatures into the mortal world to dwell near those locations."
+					]
+				},
+				"If Yan-C-Bin is destroyed or banished back to his home plane, the regional effects fade over the next 1d10 days."
 			]
 		},
 		{

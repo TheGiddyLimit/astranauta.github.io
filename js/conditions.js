@@ -1,5 +1,6 @@
 "use strict";
 const JSON_URL = "data/conditions.json";
+const entryRenderer = new EntryRenderer();
 let tableDefault;
 let conditionList;
 
@@ -37,5 +38,8 @@ function loadhash (id) {
 	const curcondition = conditionList[id];
 	$("th#name").html(curcondition.name);
 	$("tr.text").remove();
-	$("tr#text").after("<tr class='text'><td colspan='6'>" + utils_combineText(curcondition.entries, "p") + "</td></tr>");
+	const entryList = {type: "entries", entries: curcondition.entries};
+	const textStack = [];
+	entryRenderer.recursiveEntryRender(entryList, textStack);
+	$("tr#text").after("<tr class='text'><td colspan='6'>" + textStack.join("") + "</td></tr>");
 }
