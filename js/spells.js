@@ -386,7 +386,7 @@ function addSpells (data) {
 					<span class='time col-xs-1 col-xs-1-7' title="${Parser.spTimeListToFull(spell.time)}">${getTblTimeStr(spell.time[0])}</span>
 					<span class='school col-xs-1 col-xs-1-2 school_${spell.school}' title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToShort(spell.school)}</span>
 					<span class='range col-xs-2 col-xs-2-4'>${Parser.spRangeToFull(spell.range)}</span>
-					
+
 					<span class='classes' style='display: none'>${Parser.spClassesToFull(spell.classes)}</span>
 				</a>
 			</li>`;
