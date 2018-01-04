@@ -286,19 +286,18 @@ function populateTablesAndFilters () {
 		handleFilterChange
 	);
 
-	function listFilter (item) {
-		const f = filterBox.getValues();
-		const i = itemList[$(item.elm).attr(FLTR_ID)];
-
-		return sourceFilter.toDisplay(f, i.source) &&
-			typeFilter.toDisplay(f, i._fTypes) &&
-			tierFilter.toDisplay(f, i._fTier) &&
-			rarityFilter.toDisplay(f, i.rarity) &&
-			attunementFilter.toDisplay(f, i._fAttunement) &&
-			categoryFilter.toDisplay(f, i.category);
-	}
-
 	function handleFilterChange () {
+		const f = filterBox.getValues();
+		function listFilter (item) {
+			const i = itemList[$(item.elm).attr(FLTR_ID)];
+
+			return sourceFilter.toDisplay(f, i.source) &&
+				typeFilter.toDisplay(f, i._fTypes) &&
+				tierFilter.toDisplay(f, i._fTier) &&
+				rarityFilter.toDisplay(f, i.rarity) &&
+				attunementFilter.toDisplay(f, i._fAttunement) &&
+				categoryFilter.toDisplay(f, i.category);
+		}
 		mundanelist.filter(listFilter);
 		magiclist.filter(listFilter);
 

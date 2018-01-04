@@ -309,8 +309,8 @@ function pageInit (loadedSources) {
 }
 
 function handleFilterChange () {
+	const f = filterBox.getValues();
 	list.filter(function (item) {
-		const f = filterBox.getValues();
 		const s = spellList[$(item.elm).attr(FLTR_ID)];
 
 		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classAndSubclassFilter.toDisplay(f, s._fClasses, s._fSubclasses);
@@ -386,7 +386,7 @@ function addSpells (data) {
 					<span class='time col-xs-1 col-xs-1-7' title="${Parser.spTimeListToFull(spell.time)}">${getTblTimeStr(spell.time[0])}</span>
 					<span class='school col-xs-1 col-xs-1-2 school_${spell.school}' title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToShort(spell.school)}</span>
 					<span class='range col-xs-2 col-xs-2-4'>${Parser.spRangeToFull(spell.range)}</span>
-					
+
 					<span class='classes' style='display: none'>${Parser.spClassesToFull(spell.classes)}</span>
 				</a>
 			</li>`;

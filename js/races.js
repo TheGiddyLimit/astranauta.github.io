@@ -81,8 +81,8 @@ function onJsonLoad (data) {
 	);
 
 	function handleFilterChange () {
+		const f = filterBox.getValues();
 		list.filter(function (item) {
-			const f = filterBox.getValues();
 			const r = raceList[$(item.elm).attr(FLTR_ID)];
 
 			const rightSource = sourceFilter.toDisplay(f, r.source);

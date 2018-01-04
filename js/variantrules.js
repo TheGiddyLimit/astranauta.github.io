@@ -57,8 +57,8 @@ function onJsonLoad (data) {
 	);
 
 	function handleFilterChange () {
+		const f = filterBox.getValues();
 		list.filter(function (item) {
-			const f = filterBox.getValues();
 			const r = rulesList[$(item.elm).attr(FLTR_ID)];
 
 			return sourceFilter.toDisplay(f, r.source);
