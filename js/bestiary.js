@@ -135,8 +135,8 @@ function pageInit (loadedSources) {
 }
 
 function handleFilterChange () {
+	const f = filterBox.getValues();
 	list.filter(function (item) {
-		const f = filterBox.getValues();
 		const m = monsters[$(item.elm).attr(FLTR_ID)];
 
 		return sourceFilter.toDisplay(f, m.source) &&

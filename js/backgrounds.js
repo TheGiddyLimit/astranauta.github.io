@@ -24,7 +24,7 @@ function onJsonLoad (data) {
 		tempString +=
 			`<li ${FLTR_ID}="${i}">
 				<a id='${i}' href='#${UrlUtil.autoEncodeHash(bg)}' title='${bg.name}'>
-					<span class='name col-xs-9'>${bg.name.replace("Variant ", "")}</span> 
+					<span class='name col-xs-9'>${bg.name.replace("Variant ", "")}</span>
 					<span class='source col-xs-3 source${bg.source}' title='${Parser.sourceJsonToFull(bg.source)}'>${Parser.sourceJsonToAbv(bg.source)}</span>
 				</a>
 			</li>`;
@@ -50,8 +50,8 @@ function onJsonLoad (data) {
 	);
 
 	function handleFilterChange () {
+		const f = filterBox.getValues();
 		list.filter(function (item) {
-			const f = filterBox.getValues();
 			const bg = bgList[$(item.elm).attr(FLTR_ID)];
 
 			return sourceFilter.toDisplay(f, bg.source);

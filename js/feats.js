@@ -72,8 +72,8 @@ function onJsonLoad (data) {
 
 	// filtering function
 	function handleFilterChange () {
+		const f = filterBox.getValues();
 		list.filter(function (item) {
-			const f = filterBox.getValues();
 			const ft = featlist[$(item.elm).attr(FLTR_ID)];
 
 			return sourceFilter.toDisplay(f, ft.source) && asiFilter.toDisplay(f, ft._fAbility);
