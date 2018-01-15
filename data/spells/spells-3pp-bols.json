@@ -7028,7 +7028,7 @@
 			},
 			"entries": [
 				"A willing creature you touch becomes wrapped in a silky cocoon. While in the cocoon, the subject doesn't need to eat or drink. At the end of the hour, it emerges from the cocoon as if it had just completed a long rest. While within the cocoon, however, the creature is helpless and can do nothing. If awakened before the end of the spell's duration, the subject can break free from the cocoon as an action, but this does provoke opportunity attacks from adjacent enemies. The creature has tactical disadvantage on Wisdom (Perception) checks while cocooned.",
-				"The chrysalis has 1 hit point and AC 10. If it is destroyed, the spell ends and the creature is stunned until the end of its next turn."
+				"The chrysalis has 1 hit point and AC 10. If it is destroyed, the spell ends and the creature is {@condition stunned} until the end of its next turn."
 			]
 		},
 		{
@@ -8285,7 +8285,7 @@
 						],
 						[
 							"2-6",
-							"The creature is stunned until the start of your next turn."
+							"The creature is {@condition stunned} until the start of your next turn."
 						],
 						[
 							"7-8",
@@ -8427,7 +8427,7 @@
 			},
 			"entries": [
 				"You unleash cataclysmic forces of nature over a vast area. The area affected is an entire geographic region within sight of the caster, such as a valley, the caverns beneath a mountain, or a lake from shore to shore. If the geographical area is especially large (a great plain, an ocean, etc.), then even this spell can't affect it entirely. Assume a maximum 1-mile-radius area of effect centered on a point chosen by the caster. To properly channel the massive energy this spell requires, the caster must be within the area of effect, if only at its periphery.",
-				"The entire chosen region becomes a nightmare of natural disasters. Scalding geysers erupt. Caverns collapse. Crevasses split wide open. All structures and living creatures in the area of effect sustain 5d6 points of bludgeoning damage, or half damage with a successful Dexterity saving throw. You are knocked prone and stunned for 2d6 rounds immediately after casting creation's fury, and you can't cast any spells except cantrips for 30 days afterward.",
+				"The entire chosen region becomes a nightmare of natural disasters. Scalding geysers erupt. Caverns collapse. Crevasses split wide open. All structures and living creatures in the area of effect sustain 5d6 points of bludgeoning damage, or half damage with a successful Dexterity saving throw. You are knocked prone and {@condition stunned} for 2d6 rounds immediately after casting creation's fury, and you can't cast any spells except cantrips for 30 days afterward.",
 				"The exact effect of the destruction wrought by this spell must be determined by the GM."
 			],
 			"damageInflict": [
@@ -9366,7 +9366,7 @@
 				]
 			},
 			"entries": [
-				"Using an ancient evil spell, you stab yourself in the chest and magically spread the pain over a wide area, potentially bringing death to sleeping creatures as far as a mile away. You take 5d8 piercing damage (which can't be reduced) and are stunned for 5 rounds. Sleeping creatures with fewer than 25 hit points within 1 mile of you die instantly unless they make successful Constitution saving throws. Survivors, as well as creatures with more than 25 hit points, awaken suddenly from a nightmare that included the figure of Death looming over them and trying to slay them."
+				"Using an ancient evil spell, you stab yourself in the chest and magically spread the pain over a wide area, potentially bringing death to sleeping creatures as far as a mile away. You take 5d8 piercing damage (which can't be reduced) and are {@condition stunned} for 5 rounds. Sleeping creatures with fewer than 25 hit points within 1 mile of you die instantly unless they make successful Constitution saving throws. Survivors, as well as creatures with more than 25 hit points, awaken suddenly from a nightmare that included the figure of Death looming over them and trying to slay them."
 			],
 			"damageInflict": [
 				"piercing"
@@ -26706,7 +26706,7 @@
 						[
 							"7",
 							"Indigo",
-							"2d6 thunder damage and stunned (Constitution save negates speed stun)"
+							"2d6 thunder damage and {@condition stunned} (Constitution save negates speed stun)"
 						],
 						[
 							"8",
@@ -26821,7 +26821,7 @@
 						[
 							"7",
 							"Indigo",
-							"1d6 thunder damage and stunned (Constitution save negates speed stun)"
+							"1d6 thunder damage and {@condition stunned} (Constitution save negates speed stun)"
 						],
 						[
 							"8",
@@ -29867,7 +29867,7 @@
 				"The melodious song causes one side of the wall that you choose to emit a pleasing melody that entrances those that can hear it; the other side is silent. Every creature within 30 feet of the melodious side of the wall that can hear the song must make a Wisdom saving throw at the beginning of each of its turns. If the saving throw fails, the creature must move toward the wall by the shortest, safest route until it is within the wall.",
 				"A creature that enters the melodious wall or ends its turn inside it must make a Wisdom saving throw. If this saving throw fails, the creature falls unconscious for as long as it's inside the wall. If it takes damage, it can repeat the saving throw; it awakens on a successful save. A creature never needs to make more than one saving throw against the wall's effect per turn.",
 				"The cacophonous song causes one side of the wall to emit thunderous, damaging vibrations while the other side remains silent. Each creature that ends its turn within 30 feet of the wall takes 3d8 thunder damage and is deafened until the start of its next turn, or half damage with no deafening if it makes a successful Constitution saving throw. Being unable to hear the wall doesn't protect a creature against the damage, which is caused by vibrations affecting the creature's whole body.",
-				"The interior of the cacophonous wall is even more dangerous; any creature that enters the wall or ends its turn there must make a Constitution saving throw (no more than one saving throw per turn). If the saving throw fails, the creature takes 8d6 thunder damage, is permanently deafened, and is stunned until the beginning of its next turn. A successful save halves the damage and the creature is not deafened or stunned. Creatures that are already deaf are immune to the stunning but still take the damage."
+				"The interior of the cacophonous wall is even more dangerous; any creature that enters the wall or ends its turn there must make a Constitution saving throw (no more than one saving throw per turn). If the saving throw fails, the creature takes 8d6 thunder damage, is permanently deafened, and is {@condition stunned} until the beginning of its next turn. A successful save halves the damage and the creature is not deafened or {@condition stunned}. Creatures that are already deaf are immune to the stunning but still take the damage."
 			],
 			"damageInflict": [
 				"thunder"
@@ -30005,7 +30005,7 @@
 				]
 			},
 			"entries": [
-				"You send waves of negative energy coursing through the body of one creature you touch as you cast this spell. The target must make a Constitution saving throw. If the saving throw fails, it loses 1d6 points of Charisma and is incapacitated for 1 round for every point of Charisma it lost; it recovers at the beginning of your turn after the appropriate number of rounds. (For example, if the creature lost 1 point of Charisma, it is stunned until the beginning of your next turn.)"
+				"You send waves of negative energy coursing through the body of one creature you touch as you cast this spell. The target must make a Constitution saving throw. If the saving throw fails, it loses 1d6 points of Charisma and is incapacitated for 1 round for every point of Charisma it lost; it recovers at the beginning of your turn after the appropriate number of rounds. (For example, if the creature lost 1 point of Charisma, it is {@condition stunned} until the beginning of your next turn.)"
 			]
 		},
 		{
@@ -30093,8 +30093,8 @@
 				]
 			},
 			"entries": [
-				"You cause negative energy to fill a 40-foot-radius sphere around a point within range, which claws at the souls of all creatures exposed to it. Each living creature in the affected area must make a Wisdom saving throw. If the saving throw fails, the creature takes 8d10 necrotic damage and is stunned for 1d4 rounds; on a successful save, the creature takes half damage and is not stunned.",
-				"A stunned creature makes a Constitution saving throw at the end of each of its turns; a successful save ends the stun.",
+				"You cause negative energy to fill a 40-foot-radius sphere around a point within range, which claws at the souls of all creatures exposed to it. Each living creature in the affected area must make a Wisdom saving throw. If the saving throw fails, the creature takes 8d10 necrotic damage and is {@condition stunned} for 1d4 rounds; on a successful save, the creature takes half damage and is not {@condition stunned}.",
+				"A {@condition stunned} creature makes a Constitution saving throw at the end of each of its turns; a successful save ends the stun.",
 				"A creature killed by soul strike can't be raised by any magic less powerful than an 8th-level spell."
 			],
 			"damageInflict": [
@@ -31094,7 +31094,7 @@
 				]
 			},
 			"entries": [
-				"You conjure numerous steel butterflies, which you release in a 30-foot cone. Each creature in the cone takes 10d4 slashing damage, or half damage with a successful Dexterity saving throw. Fey creatures have tactical disadvantage on the saving throw, and they are also stunned until the end of your next turn if the saving throw fails."
+				"You conjure numerous steel butterflies, which you release in a 30-foot cone. Each creature in the cone takes 10d4 slashing damage, or half damage with a successful Dexterity saving throw. Fey creatures have tactical disadvantage on the saving throw, and they are also {@condition stunned} until the end of your next turn if the saving throw fails."
 			],
 			"entriesHigherLevel": [
 				{
