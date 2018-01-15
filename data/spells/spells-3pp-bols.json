@@ -2430,7 +2430,7 @@
 				]
 			},
 			"entries": [
-				"You release a hoarse cry that reverberates in a 30-foot cone in front of you. Each creature in the cone must make a Constitution saving throw. If the saving throw fails, the creature drops everything it is holding, is incapacitated until the end of its next turn, and is frightened. A frightened creature can make a Wisdom saving throw at the end of each of its turns; a successful save ends the fright."
+				"You release a hoarse cry that reverberates in a 30-foot cone in front of you. Each creature in the cone must make a Constitution saving throw. If the saving throw fails, the creature drops everything it is holding, is {@condition incapacitated} until the end of its next turn, and is frightened. A frightened creature can make a Wisdom saving throw at the end of each of its turns; a successful save ends the fright."
 			]
 		},
 		{
@@ -6313,11 +6313,11 @@
 					"rows": [
 						[
 							"1",
-							"Creature is incapacitated and moves as far as it can in a random direction."
+							"Creature is {@condition incapacitated} and moves as far as it can in a random direction."
 						],
 						[
 							"2-6",
-							"Creature is incapacitated and can't move."
+							"Creature is {@condition incapacitated} and can't move."
 						],
 						[
 							"7-8",
@@ -8281,7 +8281,7 @@
 					"rows": [
 						[
 							"1",
-							"Creature is incapacitated until the start of your next turn. If it moves, it must move as far as it can in a random direction."
+							"Creature is {@condition incapacitated} until the start of your next turn. If it moves, it must move as far as it can in a random direction."
 						],
 						[
 							"2-6",
@@ -9418,7 +9418,7 @@
 				]
 			},
 			"entries": [
-				"Your pupils reshape to resemble skulls. When a creature starts its turn within 30 feet of you, you can force it to make a Constitution saving throw if it can see your eyes and you can see it. If the saving throw fails, the creature takes 6d8 necrotic damage and is incapacitated until the start of its next turn.",
+				"Your pupils reshape to resemble skulls. When a creature starts its turn within 30 feet of you, you can force it to make a Constitution saving throw if it can see your eyes and you can see it. If the saving throw fails, the creature takes 6d8 necrotic damage and is {@condition incapacitated} until the start of its next turn.",
 				"A creature that isn't surprised can avoid the saving throw by averting its gaze at the start of its turn. It takes the normal penalty for attacking an unseen target if it attacks you before the start of its next turn.",
 				"If you meet your own gaze through a reflection, you must also make the saving throw."
 			],
@@ -13578,7 +13578,7 @@
 					"type": "entries",
 					"name": "Pack Tactics",
 					"entries": [
-						" You have tactical advantage on attack rolls against creatures that are within 5 feet of at least one of your non-incapacitated allies."
+						" You have tactical advantage on attack rolls against creatures that are within 5 feet of at least one of your non-{@condition incapacitated} allies."
 					]
 				},
 				{
@@ -13967,7 +13967,7 @@
 				]
 			},
 			"entries": [
-				"A creature that you touch must make a successful Wisdom saving throw or be overwhelmed by feelings of bliss and euphoria. The creature has tactical disadvantage on attack rolls, ability checks, and skill checks, and it must make a Wisdom saving throw at the beginning of each of its turns. If the saving throw fails, the creature loses 1 point of Wisdom and is incapacitated until the start of its next turn. The spell ends when the creature makes two successful saves, which don't need to be consecutive."
+				"A creature that you touch must make a successful Wisdom saving throw or be overwhelmed by feelings of bliss and euphoria. The creature has tactical disadvantage on attack rolls, ability checks, and skill checks, and it must make a Wisdom saving throw at the beginning of each of its turns. If the saving throw fails, the creature loses 1 point of Wisdom and is {@condition incapacitated} until the start of its next turn. The spell ends when the creature makes two successful saves, which don't need to be consecutive."
 			]
 		},
 		{
@@ -15387,7 +15387,7 @@
 				]
 			},
 			"entries": [
-				"Flames spiral out from you to fill a 30-foot-radius sphere. Each creature apart from you in the area must make a Dexterity saving throw. If the saving throw fails, the creature takes 6d6 fire damage and is incapacitated until the end of your next turn. If the save succeeds, the creature takes half damage and is not incapacitated. Creatures with resistance or immunity to fire are never incapacitated by a flame spiral."
+				"Flames spiral out from you to fill a 30-foot-radius sphere. Each creature apart from you in the area must make a Dexterity saving throw. If the saving throw fails, the creature takes 6d6 fire damage and is {@condition incapacitated} until the end of your next turn. If the save succeeds, the creature takes half damage and is not {@condition incapacitated}. Creatures with resistance or immunity to fire are never {@condition incapacitated} by a flame spiral."
 			],
 			"entriesHigherLevel": [
 				{
@@ -16126,8 +16126,8 @@
 				]
 			},
 			"entries": [
-				"One creature you can see must make a Dexterity saving throw to evade a hammer and anvil of pure force that are trying to crush it. If the saving throw fails, the creature takes 10d10 force damage and is incapacitated. On a successful save, the creature takes half damage and is not otherwise affected.",
-				"An incapacitated creature can repeat the saving throw at the end of each of its turns; a successful save ends the incapacitation."
+				"One creature you can see must make a Dexterity saving throw to evade a hammer and anvil of pure force that are trying to crush it. If the saving throw fails, the creature takes 10d10 force damage and is {@condition incapacitated}. On a successful save, the creature takes half damage and is not otherwise affected.",
+				"An {@condition incapacitated} creature can repeat the saving throw at the end of each of its turns; a successful save ends the incapacitation."
 			],
 			"damageInflict": [
 				"force"
@@ -16584,7 +16584,7 @@
 				]
 			},
 			"entries": [
-				"One creature you can see must make a Constitution saving throw. If the saving throw fails, it takes 2d10 cold damage and is incapacitated until the end of its next turn. On a successful save, it takes half damage and is not incapacitated."
+				"One creature you can see must make a Constitution saving throw. If the saving throw fails, it takes 2d10 cold damage and is {@condition incapacitated} until the end of its next turn. On a successful save, it takes half damage and is not {@condition incapacitated}."
 			],
 			"entriesHigherLevel": [
 				{
@@ -16805,7 +16805,7 @@
 				]
 			},
 			"entries": [
-				"One creature you can see within range must make a successful Constitution saving throw or its joints fuse into near-immobility. The creature's Dexterity is reduced to 1, it is incapacitated, and it can't move. The spell doesn't affect creatures without bones. Its effect can be removed only by heal or wish."
+				"One creature you can see within range must make a successful Constitution saving throw or its joints fuse into near-immobility. The creature's Dexterity is reduced to 1, it is {@condition incapacitated}, and it can't move. The spell doesn't affect creatures without bones. Its effect can be removed only by heal or wish."
 			]
 		},
 		{
@@ -18464,7 +18464,7 @@
 				]
 			},
 			"entries": [
-				"A living creature of your choice that you can see is overcome with grief unless it makes a successful Wisdom saving throw. A grief-stricken creature falls prone and can't stand up, and is incapacitated for the duration of the spell.",
+				"A living creature of your choice that you can see is overcome with grief unless it makes a successful Wisdom saving throw. A grief-stricken creature falls prone and can't stand up, and is {@condition incapacitated} for the duration of the spell.",
 				"At the end of each of its turns, and each time it takes damage, the creature can repeat the saving throw. On a successful save, the spell ends."
 			]
 		},
@@ -19431,7 +19431,7 @@
 			},
 			"entries": [
 				"You conjure a \"wall\" of stinging hornets. The wall is 5 feet thick, 10 feet high, and up to 40 feet long. The wall must be contiguous and at least 5 feet thick along its entire length. A simple way to envision this is as eight sections, each covering a square of ground that's 5 feet by 5 feet, and 10 feet high. You select where the wall appears, but the entire length must be within your line of sight and within the spell's range from you.",
-				"A creature that starts its turn inside the hornet wall or that enters the wall during its turn must make a Constitution saving throw against poison. If the saving throw fails, the creature takes 6d6 poison damage and is incapacitated; if the saving throw succeeds, it takes half damage and no additional effect."
+				"A creature that starts its turn inside the hornet wall or that enters the wall during its turn must make a Constitution saving throw against poison. If the saving throw fails, the creature takes 6d6 poison damage and is {@condition incapacitated}; if the saving throw succeeds, it takes half damage and no additional effect."
 			],
 			"damageInflict": [
 				"poison"
@@ -27160,7 +27160,7 @@
 				]
 			},
 			"entries": [
-				"Your voice creates a reverberating, 30-foot cone of dissonance. Every creature in the cone is incapacitated unless it makes a successful Constitution saving throw. An incapacitated creature can repeat the saving throw at the end of each of its turns; a successful save ends the effect on that creature."
+				"Your voice creates a reverberating, 30-foot cone of dissonance. Every creature in the cone is {@condition incapacitated} unless it makes a successful Constitution saving throw. An {@condition incapacitated} creature can repeat the saving throw at the end of each of its turns; a successful save ends the effect on that creature."
 			]
 		},
 		{
@@ -28997,7 +28997,7 @@
 				]
 			},
 			"entries": [
-				"One creature you can see within range casts no shadow. If the target of the spell is a shadow creature, it is incapacitated unless it makes a successful Constitution saving throw. It can repeat the saving throw at the end of each of its turns; a successful save ends the spell."
+				"One creature you can see within range casts no shadow. If the target of the spell is a shadow creature, it is {@condition incapacitated} unless it makes a successful Constitution saving throw. It can repeat the saving throw at the end of each of its turns; a successful save ends the spell."
 			]
 		},
 		{
@@ -30005,7 +30005,7 @@
 				]
 			},
 			"entries": [
-				"You send waves of negative energy coursing through the body of one creature you touch as you cast this spell. The target must make a Constitution saving throw. If the saving throw fails, it loses 1d6 points of Charisma and is incapacitated for 1 round for every point of Charisma it lost; it recovers at the beginning of your turn after the appropriate number of rounds. (For example, if the creature lost 1 point of Charisma, it is stunned until the beginning of your next turn.)"
+				"You send waves of negative energy coursing through the body of one creature you touch as you cast this spell. The target must make a Constitution saving throw. If the saving throw fails, it loses 1d6 points of Charisma and is {@condition incapacitated} for 1 round for every point of Charisma it lost; it recovers at the beginning of your turn after the appropriate number of rounds. (For example, if the creature lost 1 point of Charisma, it is stunned until the beginning of your next turn.)"
 			]
 		},
 		{
@@ -31302,7 +31302,7 @@
 				]
 			},
 			"entries": [
-				"You create a compressed globule of vitriol at a point you can see within range, which then bursts into a 200-foot-sphere of caustic acid, corroding and dissolving anything in the area. Each creature in the affected area takes 6d10+20 acid damage, or half damage with a successful Dexterity saving throw. Each creature must also make a Constitution saving throw; if it fails, they are incapacitated for 1d4 rounds by the burning fumes. Creatures who don't breathe or that are immune to acid damage are unaffected by the second effect."
+				"You create a compressed globule of vitriol at a point you can see within range, which then bursts into a 200-foot-sphere of caustic acid, corroding and dissolving anything in the area. Each creature in the affected area takes 6d10+20 acid damage, or half damage with a successful Dexterity saving throw. Each creature must also make a Constitution saving throw; if it fails, they are {@condition incapacitated} for 1d4 rounds by the burning fumes. Creatures who don't breathe or that are immune to acid damage are unaffected by the second effect."
 			],
 			"damageInflict": [
 				"acid"
@@ -31656,7 +31656,7 @@
 				]
 			},
 			"entries": [
-				"You create a metal dagger in your hand that is treated as a magical dagger +1. Upon striking a creature, the blade breaks off and remains stuck in the creature. The affected creature must make a Constitution saving throw at the start of each of its turns. If the saving throw fails, the creature takes 2d6 piercing damage and is incapacitated until the end of its turn. If the saving throw succeeds, the blade drops out of the wound and disappears, ending the spell."
+				"You create a metal dagger in your hand that is treated as a magical dagger +1. Upon striking a creature, the blade breaks off and remains stuck in the creature. The affected creature must make a Constitution saving throw at the start of each of its turns. If the saving throw fails, the creature takes 2d6 piercing damage and is {@condition incapacitated} until the end of its turn. If the saving throw succeeds, the blade drops out of the wound and disappears, ending the spell."
 			],
 			"damageInflict": [
 				"piercing"
@@ -33834,7 +33834,7 @@
 						],
 						[
 							"3",
-							"The creature is incapacitated and can't move. It can repeat the saving throw at the end of each of its turns; a successful save ends the effect."
+							"The creature is {@condition incapacitated} and can't move. It can repeat the saving throw at the end of each of its turns; a successful save ends the effect."
 						],
 						[
 							"4",
@@ -33887,7 +33887,7 @@
 				]
 			},
 			"entries": [
-				"You perform a piece of haunting music that sends those who hear it into states of deep depression. Each humanoid creature within range and capable of hearing the music must make a Wisdom saving throw. If the saving throw fails, the creature suffers crushing sadness; it is incapacitated, unable to move, and it has a 50% chance of dropping everything it is holding. While the effect lasts, the creature can do nothing but lament its misfortune.",
+				"You perform a piece of haunting music that sends those who hear it into states of deep depression. Each humanoid creature within range and capable of hearing the music must make a Wisdom saving throw. If the saving throw fails, the creature suffers crushing sadness; it is {@condition incapacitated}, unable to move, and it has a 50% chance of dropping everything it is holding. While the effect lasts, the creature can do nothing but lament its misfortune.",
 				"The spell ends if an affected creature is attacked. If any action is taken that would normally cause a creature to react violently, it make another Wisdom save to break free of the spell."
 			]
 		},
@@ -33980,7 +33980,7 @@
 			},
 			"entries": [
 				"Blood pours from your hands and forms into a heaving, queasy, crimson wall of blood. The flat, vertical, 12-inch-thick barrier appears where you designate; its entire lower edge must be supported by a solid, reasonably flat surface. The entire wall must be within the spell's range, and it must be 1 foot thick and 20 feet high along its whole length. Within those restrictions, it can bend however the caster chooses.",
-				"Objects and creatures can pass through the liquid wall. It lightly obscures everything behind it. Anything that passes through it becomes coated with thick, slippery fluid. Any creature that passes through the wall must make both a Dexterity saving throw and a Constitution saving throw. If the Dexterity saving throw fails, the creature drops any items it is holding. If the Constitution saving throw fails, the creature is nauseated by the experience; it becomes incapacitated until the end of its next turn. Creatures that enjoy the taste of blood or that have no sense of taste and smell are immune to the nauseating effect."
+				"Objects and creatures can pass through the liquid wall. It lightly obscures everything behind it. Anything that passes through it becomes coated with thick, slippery fluid. Any creature that passes through the wall must make both a Dexterity saving throw and a Constitution saving throw. If the Dexterity saving throw fails, the creature drops any items it is holding. If the Constitution saving throw fails, the creature is nauseated by the experience; it becomes {@condition incapacitated} until the end of its next turn. Creatures that enjoy the taste of blood or that have no sense of taste and smell are immune to the nauseating effect."
 			]
 		},
 		{
@@ -35092,7 +35092,7 @@
 				]
 			},
 			"entries": [
-				"When uttered, the words of thunder rises to a tremendous pitch and wash outward as a tangible boom of sound in a 60-foot radius centered on you. All other creatures in the sphere with 30 or fewer hit points are permanently deafened and are incapacitated until the end of your next turn, with no saving throw. Creatures with 31 to 60 hit points are deafened for 1 minute, but not incapacitated. Creatures with more than 60 hit points are unaffected.",
+				"When uttered, the words of thunder rises to a tremendous pitch and wash outward as a tangible boom of sound in a 60-foot radius centered on you. All other creatures in the sphere with 30 or fewer hit points are permanently deafened and are {@condition incapacitated} until the end of your next turn, with no saving throw. Creatures with 31 to 60 hit points are deafened for 1 minute, but not {@condition incapacitated}. Creatures with more than 60 hit points are unaffected.",
 				"You can cast words of thunder even if you are in a zone of magical silence. In this case, the spell destroys the silence effect but has no effect on creatures."
 			]
 		},
@@ -35417,7 +35417,7 @@
 			},
 			"entries": [
 				"You send a zephyr that whispers hate and despair in a 100-foot cone. Each creature in the cone takes 4d8 necrotic damage and must make a Wisdom saving throw. If the saving throw fails, the whispers gather around the creature and it is frightened of you for the duration. The whispers gnaw at the creature's mind, attempting to drive it to death.",
-				"While a creature is frightened by the zephyr of death, it must make a Wisdom saving throw at the start of each of its turns. If the saving throw fails, the creature takes 4d8 necrotic damage and is incapacitated until the start of its next turn. On a successful save, it remains frightened, takes half damage, and is not incapacitated. A creature that makes three successful saves, which don't need to be consecutive, overcomes the spell and the effect ends for them."
+				"While a creature is frightened by the zephyr of death, it must make a Wisdom saving throw at the start of each of its turns. If the saving throw fails, the creature takes 4d8 necrotic damage and is {@condition incapacitated} until the start of its next turn. On a successful save, it remains frightened, takes half damage, and is not {@condition incapacitated}. A creature that makes three successful saves, which don't need to be consecutive, overcomes the spell and the effect ends for them."
 			],
 			"damageInflict": [
 				"necrotic"
