@@ -1767,7 +1767,7 @@
 			},
 			"entries": [
 				"When you cast this spell, rocks, boulders, and other large stones are summoned from the Elemental Plane of Earth and rain down on the area of effect, which can be up to 1,200 square feet (twelve 10-by-10-foot squares). The area can be laid out as you wish, but it must be contiguous, at least 10 feet across at every point, entirely within the spell's range, and entirely within your line of sight.",
-				"Each creature in the area must make a Dexterity saving throw. If the saving throw fails, the creature takes 8d8 bludgeoning damage, falls prone, and is restrained beneath boulders until they escape or the stones disappear. A successful save means the creature takes half damage and isn't knocked prone or restrained. A restrained creature can escape from under the boulders by using an action and making a successful Strength (Athletics) check against your spell saving throw DC.",
+				"Each creature in the area must make a Dexterity saving throw. If the saving throw fails, the creature takes 8d8 bludgeoning damage, falls {@condition prone}, and is restrained beneath boulders until they escape or the stones disappear. A successful save means the creature takes half damage and isn't knocked {@condition prone} or restrained. A restrained creature can escape from under the boulders by using an action and making a successful Strength (Athletics) check against your spell saving throw DC.",
 				"The stones remain on the ground for 1 minute after they fall, making the area difficult terrain and providing plenty of places to find cover."
 			],
 			"damageInflict": [
@@ -8427,7 +8427,7 @@
 			},
 			"entries": [
 				"You unleash cataclysmic forces of nature over a vast area. The area affected is an entire geographic region within sight of the caster, such as a valley, the caverns beneath a mountain, or a lake from shore to shore. If the geographical area is especially large (a great plain, an ocean, etc.), then even this spell can't affect it entirely. Assume a maximum 1-mile-radius area of effect centered on a point chosen by the caster. To properly channel the massive energy this spell requires, the caster must be within the area of effect, if only at its periphery.",
-				"The entire chosen region becomes a nightmare of natural disasters. Scalding geysers erupt. Caverns collapse. Crevasses split wide open. All structures and living creatures in the area of effect sustain 5d6 points of bludgeoning damage, or half damage with a successful Dexterity saving throw. You are knocked prone and stunned for 2d6 rounds immediately after casting creation's fury, and you can't cast any spells except cantrips for 30 days afterward.",
+				"The entire chosen region becomes a nightmare of natural disasters. Scalding geysers erupt. Caverns collapse. Crevasses split wide open. All structures and living creatures in the area of effect sustain 5d6 points of bludgeoning damage, or half damage with a successful Dexterity saving throw. You are knocked {@condition prone} and stunned for 2d6 rounds immediately after casting creation's fury, and you can't cast any spells except cantrips for 30 days afterward.",
 				"The exact effect of the destruction wrought by this spell must be determined by the GM."
 			],
 			"damageInflict": [
@@ -11422,7 +11422,7 @@
 				]
 			},
 			"entries": [
-				"Until the end of the round, your movement speed is doubled and, as long as you move only in a straight line, you can make a normal melee attack against each creature you move adjacent to. If your attack hits, the creature is knocked prone in addition to other effects. You do not provoke opportunity attacks while moving in this fashion."
+				"Until the end of the round, your movement speed is doubled and, as long as you move only in a straight line, you can make a normal melee attack against each creature you move adjacent to. If your attack hits, the creature is knocked {@condition prone} in addition to other effects. You do not provoke opportunity attacks while moving in this fashion."
 			]
 		},
 		{
@@ -12325,7 +12325,7 @@
 				]
 			},
 			"entries": [
-				"You touch the ground and send a furrow of displaced earth 5 feet wide toward a point you can see. Upon reaching the target point, the earth erupts in a cylinder 30 feet in radius and 30 feet high. Creatures that were standing on top of the furrow as it passed underfoot are knocked prone unless they make successful Dexterity saving throws. Creatures in the area of the eruption take 7d6 bludgeoning damage and are knocked prone, or take half damage and are not knocked prone with a successful Dexterity saving throw."
+				"You touch the ground and send a furrow of displaced earth 5 feet wide toward a point you can see. Upon reaching the target point, the earth erupts in a cylinder 30 feet in radius and 30 feet high. Creatures that were standing on top of the furrow as it passed underfoot are knocked {@condition prone} unless they make successful Dexterity saving throws. Creatures in the area of the eruption take 7d6 bludgeoning damage and are knocked {@condition prone}, or take half damage and are not knocked {@condition prone} with a successful Dexterity saving throw."
 			],
 			"entriesHigherLevel": [
 				{
@@ -12500,7 +12500,7 @@
 			},
 			"entries": [
 				"You select one creature you can see within range. The creature must make a Dexterity saving throw. If the saving throw fails, the creature disappears as it is sucked into a small, spherical, extraplanar trap just large enough to hold the creature while allowing it to turn around.",
-				"The trap is surrounded by earthen walls that are not impervious to attacks; they have AC 14, 100 hit points, and are immune to all but bludgeoning, piercing, slashing, force, and thunder damage. When the spell ends or the creature destroys the walls, the trapped creature takes 4d6 force damage and returns to the space it originally occupied or the nearest unoccupied space, where it falls prone."
+				"The trap is surrounded by earthen walls that are not impervious to attacks; they have AC 14, 100 hit points, and are immune to all but bludgeoning, piercing, slashing, force, and thunder damage. When the spell ends or the creature destroys the walls, the trapped creature takes 4d6 force damage and returns to the space it originally occupied or the nearest unoccupied space, where it falls {@condition prone}."
 			],
 			"damageInflict": [
 				"force"
@@ -12988,7 +12988,7 @@
 					"type": "entries",
 					"name": "Scimitar of Air",
 					"entries": [
-						" A creature struck by the scimitar must make a successful Strength saving throw or be pushed up to 30 feet in the direction of your choice and knocked prone. The scimitar's attacks score critical hits on a natural roll of 19 or 20."
+						" A creature struck by the scimitar must make a successful Strength saving throw or be pushed up to 30 feet in the direction of your choice and knocked {@condition prone}. The scimitar's attacks score critical hits on a natural roll of 19 or 20."
 					]
 				},
 				{
@@ -13585,7 +13585,7 @@
 					"type": "entries",
 					"name": "Pounce",
 					"entries": [
-						" If you move at least 20 feet straight toward a creature immediately before hitting it with a melee attack, the creature must make a Strength saving throw or be knocked prone. If the creature is knocked prone, you can use a bonus action to make a melee attack against it."
+						" If you move at least 20 feet straight toward a creature immediately before hitting it with a melee attack, the creature must make a Strength saving throw or be knocked {@condition prone}. If the creature is knocked {@condition prone}, you can use a bonus action to make a melee attack against it."
 					]
 				},
 				{
@@ -15978,7 +15978,7 @@
 				]
 			},
 			"entries": [
-				"You attempt to wrap one incorporeal creature you can see within a physical shell. The creature makes a Constitution saving throw. If the saving throw fails, the creature becomes corporeal. While under the effect of this spell, it can't make use of incorporeal movement and it loses all resistance and vulnerability to weapon damage and to being grappled, paralyzed, petrified, prone, and restrained. It also can't enter the Ethereal Plane.",
+				"You attempt to wrap one incorporeal creature you can see within a physical shell. The creature makes a Constitution saving throw. If the saving throw fails, the creature becomes corporeal. While under the effect of this spell, it can't make use of incorporeal movement and it loses all resistance and vulnerability to weapon damage and to being grappled, paralyzed, petrified, {@condition prone}, and restrained. It also can't enter the Ethereal Plane.",
 				"The creature can repeat the saving throw at the end of each of its turns. The spell ends when the creature makes its second successful save. The two successes don't need to be consecutive."
 			]
 		},
@@ -16760,7 +16760,7 @@
 				]
 			},
 			"entries": [
-				"One creature you can see becomes cursed with clumsiness if it fails a Wisdom saving throw. While cursed, the creature must make a Dexterity saving throw whenever it moves 20 feet or farther during its turn. If the saving throw fails, the creature falls prone at the end of the movement. It also must make a Dexterity saving throw at the end of each of its turns in which it attacked with a hand-held weapon. If the saving throw fails, it drops the weapon.",
+				"One creature you can see becomes cursed with clumsiness if it fails a Wisdom saving throw. While cursed, the creature must make a Dexterity saving throw whenever it moves 20 feet or farther during its turn. If the saving throw fails, the creature falls {@condition prone} at the end of the movement. It also must make a Dexterity saving throw at the end of each of its turns in which it attacked with a hand-held weapon. If the saving throw fails, it drops the weapon.",
 				"The spell ends if the creature rolls a natural 20 on any of the saving throws required by the spell."
 			]
 		},
@@ -17932,7 +17932,7 @@
 				]
 			},
 			"entries": [
-				"You project a blast of water from your hand at one creature you can see. Make a ranged spell attack against that creature. If it hits, the creature takes 5d10 bludgeoning damage and is knocked prone."
+				"You project a blast of water from your hand at one creature you can see. Make a ranged spell attack against that creature. If it hits, the creature takes 5d10 bludgeoning damage and is knocked {@condition prone}."
 			],
 			"entriesHigherLevel": [
 				{
@@ -18212,7 +18212,7 @@
 				]
 			},
 			"entries": [
-				"You send a burst of air against one creature you can see. The creature must make a Strength saving throw. If the saving throw fails, it is pushed 10 feet away from you and knocked prone."
+				"You send a burst of air against one creature you can see. The creature must make a Strength saving throw. If the saving throw fails, it is pushed 10 feet away from you and knocked {@condition prone}."
 			]
 		},
 		{
@@ -18464,7 +18464,7 @@
 				]
 			},
 			"entries": [
-				"A living creature of your choice that you can see is overcome with grief unless it makes a successful Wisdom saving throw. A grief-stricken creature falls prone and can't stand up, and is incapacitated for the duration of the spell.",
+				"A living creature of your choice that you can see is overcome with grief unless it makes a successful Wisdom saving throw. A grief-stricken creature falls {@condition prone} and can't stand up, and is incapacitated for the duration of the spell.",
 				"At the end of each of its turns, and each time it takes damage, the creature can repeat the saving throw. On a successful save, the spell ends."
 			]
 		},
@@ -20644,7 +20644,7 @@
 				]
 			},
 			"entries": [
-				"Electrical sparks wreathe your body for the duration of the spell. Whenever a creature that's within 5 feet of you hits you with a melee attack, the creature takes 4d8 lightning damage. If the creature is wearing metal armor, it also is knocked prone unless it make a successful Constitution saving throw. You can end the spell early with an action."
+				"Electrical sparks wreathe your body for the duration of the spell. Whenever a creature that's within 5 feet of you hits you with a melee attack, the creature takes 4d8 lightning damage. If the creature is wearing metal armor, it also is knocked {@condition prone} unless it make a successful Constitution saving throw. You can end the spell early with an action."
 			],
 			"damageInflict": [
 				"lightning"
@@ -21289,7 +21289,7 @@
 				]
 			},
 			"entries": [
-				"You conjure five 2-inch-diameter iron balls into the air next to you. On each of your turns, you can launch one iron ball at a creature within 60 feet and line of sight. Make a ranged spell attack against that creature. If it hits, a ball does 2d6 bludgeoning damage and the target is knocked prone. Unused iron balls move with you as you move. Balls disappear after they attack or when the spell ends."
+				"You conjure five 2-inch-diameter iron balls into the air next to you. On each of your turns, you can launch one iron ball at a creature within 60 feet and line of sight. Make a ranged spell attack against that creature. If it hits, a ball does 2d6 bludgeoning damage and the target is knocked {@condition prone}. Unused iron balls move with you as you move. Balls disappear after they attack or when the spell ends."
 			],
 			"damageInflict": [
 				"bludgeoning"
@@ -21700,7 +21700,7 @@
 			},
 			"entries": [
 				"Landslide can only be used in snowy, mountainous regions. You create a fast-moving wall of snow, 20 feet high, 10 feet thick, and 120 feet long. The entire wall must be within 400 feet of you. When you cast the spell and again at the beginning of each of your turns, the landslide moves 60 feet under your control; it must always move downhill, but it can move sideways at the same time.",
-				"Any creature engulfed by the wall must make a Dexterity saving throw. If the saving throw fails, the creature takes 12d6 cold damage and is knocked prone and buried by snow; a successful save results in half damage and no other effect. Buried creatures are considered prone and restrained until they escape, even if the spell has ended. A restrained creature can escape if it uses an action and makes a successful Strength (Athletics) check against your spell saving throw DC.",
+				"Any creature engulfed by the wall must make a Dexterity saving throw. If the saving throw fails, the creature takes 12d6 cold damage and is knocked {@condition prone} and buried by snow; a successful save results in half damage and no other effect. Buried creatures are considered {@condition prone} and restrained until they escape, even if the spell has ended. A restrained creature can escape if it uses an action and makes a successful Strength (Athletics) check against your spell saving throw DC.",
 				"The wall disappears when it can no longer move downhill or when the spell ends, but a heavy dusting of snow will still cover the ground."
 			],
 			"damageInflict": [
@@ -22921,8 +22921,8 @@
 			},
 			"entries": [
 				"You create an enormous, glowing, blue-white foot of magical force in an unoccupied space that you can see within range. The Medium-size foot hovers in the air, 3 to 4 feet above the ground. At the beginning of your turn, you can use a bonus action to move it up to 60 feet to an unoccupied space. The foot is immune to damage and all conditions.",
-				"As an action, you can direct the foot to stomp on a creature adjacent to it. Make a melee spell attack against that creature. If it hits, the foot does 10d8 force damage, knocks the target prone, and restrains it. A successful Strength saving throw halves the damage and prevents the target from being knocked prone or restrained. A restrained creature takes 4d8 force damage at the end of each of its turns. The restraint ends automatically if the foot moves or attacks again. Otherwise, a restrained creature can escape by using an action to make a successful Strength check against your spell saving throw DC.",
-				"Instead of stomping, you can also command the foot to kick; this also does 10d8 force damage, but instead of being knocked prone and restrained, the target is pushed up to 60 feet. A successful Strength saving throw by the target creature halves the damage and negates the push effect.",
+				"As an action, you can direct the foot to stomp on a creature adjacent to it. Make a melee spell attack against that creature. If it hits, the foot does 10d8 force damage, knocks the target {@condition prone}, and restrains it. A successful Strength saving throw halves the damage and prevents the target from being knocked {@condition prone} or restrained. A restrained creature takes 4d8 force damage at the end of each of its turns. The restraint ends automatically if the foot moves or attacks again. Otherwise, a restrained creature can escape by using an action to make a successful Strength check against your spell saving throw DC.",
+				"Instead of stomping, you can also command the foot to kick; this also does 10d8 force damage, but instead of being knocked {@condition prone} and restrained, the target is pushed up to 60 feet. A successful Strength saving throw by the target creature halves the damage and negates the push effect.",
 				"The foot is big enough to provide cover and to prevent movement through its space."
 			],
 			"damageInflict": [
@@ -23875,7 +23875,7 @@
 				]
 			},
 			"entries": [
-				"You cause the features of a creature you can see within range to blur slightly, obscuring the details of its appearance. Anyone relying on sight has tactical disadvantage on ability checks to recognize or remember the affected creature. The illusion is subtle, so observers are prone to think something is wrong with their eyesight (dust blew into their eyes, or their eyes are watering) rather than that the creature has been masked in any way."
+				"You cause the features of a creature you can see within range to blur slightly, obscuring the details of its appearance. Anyone relying on sight has tactical disadvantage on ability checks to recognize or remember the affected creature. The illusion is subtle, so observers are {@condition prone} to think something is wrong with their eyesight (dust blew into their eyes, or their eyes are watering) rather than that the creature has been masked in any way."
 			]
 		},
 		{
@@ -27489,7 +27489,7 @@
 				]
 			},
 			"entries": [
-				"You create a rock and throw it at a creature you can see within range. Make a ranged spell attack roll against the target. If it hits, the spell does 4d6 bludgeoning damage and the creature must make a Strength saving throw or be knocked prone."
+				"You create a rock and throw it at a creature you can see within range. Make a ranged spell attack roll against the target. If it hits, the spell does 4d6 bludgeoning damage and the creature must make a Strength saving throw or be knocked {@condition prone}."
 			],
 			"entriesHigherLevel": [
 				{
@@ -30190,7 +30190,7 @@
 			},
 			"entries": [
 				"You can communicate telepathically with objects, whether they are inanimate or animated objects and constructs. You can ask questions and receive answers from objects. An inanimate object's sense of its surroundings is quite limited, so it can't give detailed descriptions of creatures, recognize specific individuals, or answer questions about events outside its immediate vicinity. They are most attuned to sound (vibration) and touch, but have very limited or nonexistent vision. They can sense powerful smells, but nothing subtle. Inanimate objects seldom volunteer information; they only respond to direct questions.",
-				"The spell doesn't make animated objects or constructs more friendly or cooperative than normal. Furthermore, they don't lead interesting inner lives and they're prone to making comments that seem inane to sentient creatures (but might make sense within the confines of some unfamiliar logic). If an animated object or construct is friendly toward the caster, it probably is willing to do a favor or service for the caster, within its limited ability (as determined by the GM)."
+				"The spell doesn't make animated objects or constructs more friendly or cooperative than normal. Furthermore, they don't lead interesting inner lives and they're {@condition prone} to making comments that seem inane to sentient creatures (but might make sense within the confines of some unfamiliar logic). If an animated object or construct is friendly toward the caster, it probably is willing to do a favor or service for the caster, within its limited ability (as determined by the GM)."
 			]
 		},
 		{
@@ -31046,7 +31046,7 @@
 				]
 			},
 			"entries": [
-				"You call up a billowing cloud of superheated water in a 20-foot-radius sphere within range. The area of the cloud is lightly obscured. Each creature that starts its turn in the cloud or enters the cloud takes 4d6 fire damage, or half damage with a successful Constitution saving throw. The area of the cloud is also quite slippery; any creature moving through it on the ground must make a successful Dexterity saving throw when it begins its move or fall prone.",
+				"You call up a billowing cloud of superheated water in a 20-foot-radius sphere within range. The area of the cloud is lightly obscured. Each creature that starts its turn in the cloud or enters the cloud takes 4d6 fire damage, or half damage with a successful Constitution saving throw. The area of the cloud is also quite slippery; any creature moving through it on the ground must make a successful Dexterity saving throw when it begins its move or fall {@condition prone}.",
 				"At the beginning of each of your turns, the cloud moves 10 feet directly away from you. The cloud lasts for the duration of the spell or until a strong wind disperses it."
 			],
 			"damageInflict": [
@@ -33022,7 +33022,7 @@
 				]
 			},
 			"entries": [
-				"You touch the ground at your feet and cause it to ripple in a 60-foot cone away from you in the direction of your choice. For the duration of the spell, the ground continues rippling and shaking. The area is treated as difficult terrain and every creature in the area must make a successful Dexterity saving throw at the end of its turn or fall prone. Objects fall over, but structures and rooted plants are unaffected."
+				"You touch the ground at your feet and cause it to ripple in a 60-foot cone away from you in the direction of your choice. For the duration of the spell, the ground continues rippling and shaking. The area is treated as difficult terrain and every creature in the area must make a successful Dexterity saving throw at the end of its turn or fall {@condition prone}. Objects fall over, but structures and rooted plants are unaffected."
 			]
 		},
 		{
@@ -33498,7 +33498,7 @@
 			},
 			"entries": [
 				"You create up to four vines that spring from your fingers and attempt to wrap themselves around creatures you can see within range. You select each creature that will be affected. A creature be targeted by more than one vine.",
-				"Each target must make a Dexterity saving throw for each vine that attacks it. If the saving throw fails, the creature is restrained and falls prone; it is wrapped up securely by the vine.",
+				"Each target must make a Dexterity saving throw for each vine that attacks it. If the saving throw fails, the creature is restrained and falls {@condition prone}; it is wrapped up securely by the vine.",
 				"A creature restrained by a vine can escape by using an action to make a Strength (Athletics) or Dexterity (Acrobatics) check against your spell save DC. Each restraining vine must be escaped individually. Vines can also be cut; each one has AC 15 and 10 hit points, and they are immune to all but slashing, acid, and fire damage.",
 				"Vines that miss their targets or that the target escapes from quickly wither and turn to dust, as do all remaining vines when the spell ends."
 			],
@@ -34669,7 +34669,7 @@
 					"type": "entries",
 					"name": "Dionysian Geyser",
 					"entries": [
-						" You slam your staff or another object onto the ground and cause a 10-foot tall, 5-foot diameter cylinder of wine to gush from a point on the ground within range. If the space is occupied by a creature, it must make a successful Dexterity saving throw to avoid taking 4d6 bludgeoning damage and being knocked prone and pushed 10 feet away from the geyser in a direction you choose. The same saving throw must be made by any creature that starts its turn in the geyser or that enters it."
+						" You slam your staff or another object onto the ground and cause a 10-foot tall, 5-foot diameter cylinder of wine to gush from a point on the ground within range. If the space is occupied by a creature, it must make a successful Dexterity saving throw to avoid taking 4d6 bludgeoning damage and being knocked {@condition prone} and pushed 10 feet away from the geyser in a direction you choose. The same saving throw must be made by any creature that starts its turn in the geyser or that enters it."
 					]
 				},
 				"The geyser can be maintained with concentration for up to 3 rounds."
@@ -34902,7 +34902,7 @@
 				]
 			},
 			"entries": [
-				"Choose a limb (either arm or leg) of one creature you can see. The creature must make a Constitution saving throw. If the saving throw fails, the limb withers, drops from the creature's body, and crumbles to dust. A creature with only one leg drops prone and its speed is reduced to 5 feet per round.",
+				"Choose a limb (either arm or leg) of one creature you can see. The creature must make a Constitution saving throw. If the saving throw fails, the limb withers, drops from the creature's body, and crumbles to dust. A creature with only one leg drops {@condition prone} and its speed is reduced to 5 feet per round.",
 				"The limb can be regrown by use of the regenerate spell or comparable magic."
 			]
 		},
