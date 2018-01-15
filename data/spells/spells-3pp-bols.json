@@ -2732,7 +2732,7 @@
 				]
 			},
 			"entries": [
-				"A small bead of concentrated sound travels from your hand to a point within range that you select, where it explodes in a 15-foot-radius sphere. Each creature in the radius takes 5d8 thunder damage and is deafened for 1 minute, or takes half damage and is not deafened with a successful Constitution saving throw."
+				"A small bead of concentrated sound travels from your hand to a point within range that you select, where it explodes in a 15-foot-radius sphere. Each creature in the radius takes 5d8 thunder damage and is {@condition deafened} for 1 minute, or takes half damage and is not {@condition deafened} with a successful Constitution saving throw."
 			],
 			"entriesHigherLevel": [
 				{
@@ -5686,7 +5686,7 @@
 				]
 			},
 			"entries": [
-				"You create a great burst of sound emanating from a point you can see. All creatures within 20 feet of that point are deafened for 10 minutes unless they make successful Constitution saving throws. Brittle objects and creatures made of crystal also take 6d6 thunder damage, or half damage with a successful saving throw."
+				"You create a great burst of sound emanating from a point you can see. All creatures within 20 feet of that point are {@condition deafened} for 10 minutes unless they make successful Constitution saving throws. Brittle objects and creatures made of crystal also take 6d6 thunder damage, or half damage with a successful saving throw."
 			],
 			"damageInflict": [
 				"thunder"
@@ -8558,8 +8558,8 @@
 				]
 			},
 			"entries": [
-				"You give a piercing scream that vibrates in a 40-foot radius sphere centered on you. Unattended crystal or glass items in the affected area take 7d6 thunder damage. Each creature in the area takes 7d6 thunder damage and is deafened, or takes half damage and is not deafened with a successful Constitution saving throw.",
-				"A deafened creature can repeat the saving throw at the end of each of its turns; a successful save restores its hearing."
+				"You give a piercing scream that vibrates in a 40-foot radius sphere centered on you. Unattended crystal or glass items in the affected area take 7d6 thunder damage. Each creature in the area takes 7d6 thunder damage and is {@condition deafened}, or takes half damage and is not {@condition deafened} with a successful Constitution saving throw.",
+				"A {@condition deafened} creature can repeat the saving throw at the end of each of its turns; a successful save restores its hearing."
 			],
 			"entriesHigherLevel": [
 				{
@@ -12008,7 +12008,7 @@
 			},
 			"entries": [
 				"You create sound vibrations in a 40-foot cone that produce deep feelings of dread in target creatures. Each creature in the cone must make a Wisdom saving throw. If the saving throw fails, the creature becomes frightened of you for the duration of the spell. On a successful save, the creature isn't frightened but does suffer a -2 penalty on saving throws against fright for the duration of the spell. Affected creatures can repeat the saving throw at the ends of their turns; a successful save ends the effect on that creature.",
-				"Although this spell is based on sound, it is vibrations that cause the fear effect. Deaf or deafened creatures are not immune, but they do get tactical advantage on their Wisdom saving throws."
+				"Although this spell is based on sound, it is vibrations that cause the fear effect. Deaf or {@condition deafened} creatures are not immune, but they do get tactical advantage on their Wisdom saving throws."
 			]
 		},
 		{
@@ -22214,7 +22214,7 @@
 				]
 			},
 			"entries": [
-				"You throw a wheel of ferocious electrical energy at one creature you can see. The creature takes 3d10+10 lightning damage plus 3d10+10 thunder damage, or half damage with a successful Dexterity saving throw, as the wheel detonates with a shattering crack of thunder. Every creature within 20 feet of the target must make a successful Constitution saving throw or be deafened for 1 minute."
+				"You throw a wheel of ferocious electrical energy at one creature you can see. The creature takes 3d10+10 lightning damage plus 3d10+10 thunder damage, or half damage with a successful Dexterity saving throw, as the wheel detonates with a shattering crack of thunder. Every creature within 20 feet of the target must make a successful Constitution saving throw or be {@condition deafened} for 1 minute."
 			],
 			"damageInflict": [
 				"lightning",
@@ -29866,8 +29866,8 @@
 				"When you cast the spell, you choose whether the song is melodious or cacophonous.",
 				"The melodious song causes one side of the wall that you choose to emit a pleasing melody that entrances those that can hear it; the other side is silent. Every creature within 30 feet of the melodious side of the wall that can hear the song must make a Wisdom saving throw at the beginning of each of its turns. If the saving throw fails, the creature must move toward the wall by the shortest, safest route until it is within the wall.",
 				"A creature that enters the melodious wall or ends its turn inside it must make a Wisdom saving throw. If this saving throw fails, the creature falls unconscious for as long as it's inside the wall. If it takes damage, it can repeat the saving throw; it awakens on a successful save. A creature never needs to make more than one saving throw against the wall's effect per turn.",
-				"The cacophonous song causes one side of the wall to emit thunderous, damaging vibrations while the other side remains silent. Each creature that ends its turn within 30 feet of the wall takes 3d8 thunder damage and is deafened until the start of its next turn, or half damage with no deafening if it makes a successful Constitution saving throw. Being unable to hear the wall doesn't protect a creature against the damage, which is caused by vibrations affecting the creature's whole body.",
-				"The interior of the cacophonous wall is even more dangerous; any creature that enters the wall or ends its turn there must make a Constitution saving throw (no more than one saving throw per turn). If the saving throw fails, the creature takes 8d6 thunder damage, is permanently deafened, and is stunned until the beginning of its next turn. A successful save halves the damage and the creature is not deafened or stunned. Creatures that are already deaf are immune to the stunning but still take the damage."
+				"The cacophonous song causes one side of the wall to emit thunderous, damaging vibrations while the other side remains silent. Each creature that ends its turn within 30 feet of the wall takes 3d8 thunder damage and is {@condition deafened} until the start of its next turn, or half damage with no deafening if it makes a successful Constitution saving throw. Being unable to hear the wall doesn't protect a creature against the damage, which is caused by vibrations affecting the creature's whole body.",
+				"The interior of the cacophonous wall is even more dangerous; any creature that enters the wall or ends its turn there must make a Constitution saving throw (no more than one saving throw per turn). If the saving throw fails, the creature takes 8d6 thunder damage, is permanently {@condition deafened}, and is stunned until the beginning of its next turn. A successful save halves the damage and the creature is not {@condition deafened} or stunned. Creatures that are already deaf are immune to the stunning but still take the damage."
 			],
 			"damageInflict": [
 				"thunder"
@@ -33563,7 +33563,7 @@
 				]
 			},
 			"entries": [
-				"You scream and emit a 30-foot cone of damaging sound. Each creature in the cone takes 8d8 thunder damage and is deafened for one minute, or takes half damage and is not deafened with a successful Constitution saving throw."
+				"You scream and emit a 30-foot cone of damaging sound. Each creature in the cone takes 8d8 thunder damage and is {@condition deafened} for one minute, or takes half damage and is not {@condition deafened} with a successful Constitution saving throw."
 			],
 			"entriesHigherLevel": [
 				{
@@ -33830,7 +33830,7 @@
 					"rows": [
 						[
 							"1, 2",
-							"The creature is permanently deafened."
+							"The creature is permanently {@condition deafened}."
 						],
 						[
 							"3",
@@ -35092,7 +35092,7 @@
 				]
 			},
 			"entries": [
-				"When uttered, the words of thunder rises to a tremendous pitch and wash outward as a tangible boom of sound in a 60-foot radius centered on you. All other creatures in the sphere with 30 or fewer hit points are permanently deafened and are incapacitated until the end of your next turn, with no saving throw. Creatures with 31 to 60 hit points are deafened for 1 minute, but not incapacitated. Creatures with more than 60 hit points are unaffected.",
+				"When uttered, the words of thunder rises to a tremendous pitch and wash outward as a tangible boom of sound in a 60-foot radius centered on you. All other creatures in the sphere with 30 or fewer hit points are permanently {@condition deafened} and are incapacitated until the end of your next turn, with no saving throw. Creatures with 31 to 60 hit points are {@condition deafened} for 1 minute, but not incapacitated. Creatures with more than 60 hit points are unaffected.",
 				"You can cast words of thunder even if you are in a zone of magical silence. In this case, the spell destroys the silence effect but has no effect on creatures."
 			]
 		},
