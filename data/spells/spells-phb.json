@@ -9171,8 +9171,8 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The next time you hit a creature with a weapon attack before this spell ends, a writhing mass of thorny vines appears at the point of impact, and the target must succeed on a Strength saving throw or be restrained by the magical vines until the spell ends. A Large or larger creature has advantage on this saving throw. If the target succeeds on the save, the vines shrivel away.",
-				"While restrained by this spell, the target takes 1d6 piercing damage at the start of each of its turns. A creature restrained by the vines or one that can touch the creature can use its action to make a Strength check against your spell save DC. On a success, the target is freed."
+				"The next time you hit a creature with a weapon attack before this spell ends, a writhing mass of thorny vines appears at the point of impact, and the target must succeed on a Strength saving throw or be {@condition restrained} by the magical vines until the spell ends. A Large or larger creature has advantage on this saving throw. If the target succeeds on the save, the vines shrivel away.",
+				"While {@condition restrained} by this spell, the target takes 1d6 piercing damage at the start of each of its turns. A creature {@condition restrained} by the vines or one that can touch the creature can use its action to make a Strength check against your spell save DC. On a success, the target is freed."
 			],
 			"entriesHigherLevel": [
 				{
@@ -9252,7 +9252,7 @@
 			"source": "PHB",
 			"entries": [
 				"Grasping weeds and vines sprout from the ground in a 20-foot square starting from a point within range. For the duration, these plants turn the ground in the area into difficult terrain.",
-				"A creature in the area when you cast the spell must succeed on a Strength saving throw or be restrained by the entangling plants until the spell ends. A creature restrained by the plants can use its action to make a Strength check against your spell save DC. On a success, it frees itself.",
+				"A creature in the area when you cast the spell must succeed on a Strength saving throw or be {@condition restrained} by the entangling plants until the spell ends. A creature {@condition restrained} by the plants can use its action to make a Strength check against your spell save DC. On a success, it frees itself.",
 				"When the spell ends, the conjured plants wilt away."
 			],
 			"page": 238
@@ -9436,8 +9436,8 @@
 			"source": "PHB",
 			"entries": [
 				"Squirming, ebony tentacles fill a 20-foot square on ground that you can see within range. For the duration, these tentacles turn the ground in the area into difficult terrain.",
-				"When a creature enters the affected area for the first time on a turn or starts its turn there, the creature must succeed on a Dexterity saving throw or take 3d6 bludgeoning damage and be restrained by the tentacles until the spell ends. A creature that starts its turn in the area and is already restrained by the tentacles takes 3d6 bludgeoning damage.",
-				"A creature restrained by the tentacles can use its action to make a Strength or Dexterity check (its choice) against your spell save DC. On a success, it frees itself."
+				"When a creature enters the affected area for the first time on a turn or starts its turn there, the creature must succeed on a Dexterity saving throw or take 3d6 bludgeoning damage and be {@condition restrained} by the tentacles until the spell ends. A creature that starts its turn in the area and is already {@condition restrained} by the tentacles takes 3d6 bludgeoning damage.",
+				"A creature {@condition restrained} by the tentacles can use its action to make a Strength or Dexterity check (its choice) against your spell save DC. On a success, it frees itself."
 			],
 			"page": 238,
 			"damageInflict": [
@@ -11032,8 +11032,8 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You attempt to turn one creature that you can see within range into stone. If the targets body is made of flesh, the creature must make a Constitution saving throw. On a failed save, it is restrained as its flesh begins to harden. On a successful save, the creature isn't affected.",
-				"A creature restrained by this spell must make another Constitution saving throw at the end of each of its turns. If it successfully saves against this spell three times, the spell ends. If it fails saves three times, it is turned to stone and subjected to the petrified condition for the duration. The successes and failures don't need to be consecutive, keep track of both until the target collects three of a kind.",
+				"You attempt to turn one creature that you can see within range into stone. If the targets body is made of flesh, the creature must make a Constitution saving throw. On a failed save, it is {@condition restrained} as its flesh begins to harden. On a successful save, the creature isn't affected.",
+				"A creature {@condition restrained} by this spell must make another Constitution saving throw at the end of each of its turns. If it successfully saves against this spell three times, the spell ends. If it fails saves three times, it is turned to stone and subjected to the petrified condition for the duration. The successes and failures don't need to be consecutive, keep track of both until the target collects three of a kind.",
 				"If the creature is physically broken while petrified, it suffers from similar deformities if it reverts to its original state.",
 				"If you maintain your concentration on this spell for the entire possible duration, the creature is turned to stone until the effect is removed."
 			],
@@ -11495,7 +11495,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You touch a willing creature. For the duration, the target's movement is unaffected by difficult terrain, and spells and other magical effects can neither reduce the target's speed nor cause the target to be paralyzed or restrained.",
+				"You touch a willing creature. For the duration, the target's movement is unaffected by difficult terrain, and spells and other magical effects can neither reduce the target's speed nor cause the target to be paralyzed or {@condition restrained}.",
 				"The target can also spend 5 feet of movement to automatically escape from nonmagical restraints, such as manacles or a creature that has it grappled. Finally, being underwater imposes no penalties on the target's movement or attacks."
 			],
 			"page": 244
@@ -14594,7 +14594,7 @@
 					"type": "entries",
 					"name": "Chaining",
 					"entries": [
-						"Heavy chains, firmly rooted in the ground, hold the target in place. The target is restrained until the spell ends, and it can't move or be moved by any means until then."
+						"Heavy chains, firmly rooted in the ground, hold the target in place. The target is {@condition restrained} until the spell ends, and it can't move or be moved by any means until then."
 					]
 				},
 				"The special component for this version of the spell is a fine chain of precious metal.",
@@ -19565,7 +19565,7 @@
 					"type": "entries",
 					"name": "6-Indigo",
 					"entries": [
-						"On a failed save, the target is restrained. It must then make a Constitution saving throw at the end of each of its turns. If it successfully saves three times, the spell ends. If it fails its save three times, it permanently turns to stone and is subjected to the petrified condition. The successes and failures don't need to be consecutive, keep track of both until the target collects three of a kind."
+						"On a failed save, the target is {@condition restrained}. It must then make a Constitution saving throw at the end of each of its turns. If it successfully saves three times, the spell ends. If it fails its save three times, it permanently turns to stone and is subjected to the petrified condition. The successes and failures don't need to be consecutive, keep track of both until the target collects three of a kind."
 					]
 				},
 				{
@@ -19675,7 +19675,7 @@
 					"type": "entries",
 					"name": "Indigo",
 					"entries": [
-						"On a failed save, the creature is restrained. It must then make a Constitution saving throw at the end of each of its turns. If it successfully saves three times, the spell ends. If it fails its save three times, it permanently turns to stone and is subjected to the petrified condition. The successes and failures don't need to be consecutive, keep track of both until the creature collects three of a kind. While this layer is in place, spells can't be cast through the wall. The layer is destroyed by bright light shed by a daylight spell or a similar spell of equal or higher level."
+						"On a failed save, the creature is {@condition restrained}. It must then make a Constitution saving throw at the end of each of its turns. If it successfully saves three times, the spell ends. If it fails its save three times, it permanently turns to stone and is subjected to the petrified condition. The successes and failures don't need to be consecutive, keep track of both until the creature collects three of a kind. While this layer is in place, spells can't be cast through the wall. The layer is destroyed by bright light shed by a daylight spell or a similar spell of equal or higher level."
 					]
 				},
 				{
@@ -23106,7 +23106,7 @@
 				"You can also turn difficult terrain caused by plant growth (such as thickets and undergrowth) into ordinary terrain that lasts for the duration. Or you can turn ordinary terrain where plants are present into difficult terrain that lasts for the duration, causing vines and branches to hinder pursuers, for example.",
 				"Plants might be able to perform other tasks on your behalf, at the DM's discretion. The spell doesn't enable plants to uproot themselves and move about, but they can freely move branches, tendrils, and stalks.",
 				"If a plant creature is in the area, you can communicate with it as if you shared a common language, but you gain no magical ability to influence it.",
-				"This spell can cause the plants created by the entangle spell to release a restrained creature."
+				"This spell can cause the plants created by the entangle spell to release a {@condition restrained} creature."
 			],
 			"page": 277
 		},
@@ -24445,7 +24445,7 @@
 					"type": "entries",
 					"name": "Creature",
 					"entries": [
-						"You can try to move a Huge or smaller creature. Make an ability check with your spellcasting ability contested by the creature's Strength check. If you win the contest, you move the creature up to 30 feet in any direction, including upward but not beyond the range of this spell. Until the end of your next turn, the creature is restrained in your telekinetic grip. A creature lifted upward is suspended in mid-air."
+						"You can try to move a Huge or smaller creature. Make an ability check with your spellcasting ability contested by the creature's Strength check. If you win the contest, you move the creature up to 30 feet in any direction, including upward but not beyond the range of this spell. Until the end of your next turn, the creature is {@condition restrained} in your telekinetic grip. A creature lifted upward is suspended in mid-air."
 					]
 				},
 				"On subsequent rounds, you can use your action to attempt to maintain your telekinetic grip on the creature by repeating the contest.",
@@ -26498,8 +26498,8 @@
 			"entries": [
 				"You conjure a mass of thick, sticky webbing at a point of your choice within range. The webs fill a 20-foot cube from that point for the duration. The webs are difficult terrain and lightly obscure their area.",
 				"If the webs aren't anchored between two solid masses (such as walls or trees) or layered across a floor, wall, or ceiling, the conjured web collapses on itself, and the spell ends at the start of your next turn. Webs layered over a flat surface have a depth of 5 feet.",
-				"Each creature that starts its turn in the webs or that enters them during its turn must make a Dexterity saving throw. On a failed save, the creature is restrained as long as it remains in the webs or until it breaks free.",
-				"A creature restrained by the webs can use its actions to make a Strength check against your spell save DC. If it succeeds, it is no longer restrained.",
+				"Each creature that starts its turn in the webs or that enters them during its turn must make a Dexterity saving throw. On a failed save, the creature is {@condition restrained} as long as it remains in the webs or until it breaks free.",
+				"A creature {@condition restrained} by the webs can use its actions to make a Strength check against your spell save DC. If it succeeds, it is no longer {@condition restrained}.",
 				"The webs are flammable. Any 5-foot cube of webs exposed to fire burns away in 1 round, dealing 2d4 fire damage to any creature that starts its turn in the fire."
 			],
 			"page": 287,

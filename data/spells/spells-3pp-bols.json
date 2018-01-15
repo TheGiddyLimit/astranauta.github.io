@@ -1767,7 +1767,7 @@
 			},
 			"entries": [
 				"When you cast this spell, rocks, boulders, and other large stones are summoned from the Elemental Plane of Earth and rain down on the area of effect, which can be up to 1,200 square feet (twelve 10-by-10-foot squares). The area can be laid out as you wish, but it must be contiguous, at least 10 feet across at every point, entirely within the spell's range, and entirely within your line of sight.",
-				"Each creature in the area must make a Dexterity saving throw. If the saving throw fails, the creature takes 8d8 bludgeoning damage, falls prone, and is restrained beneath boulders until they escape or the stones disappear. A successful save means the creature takes half damage and isn't knocked prone or restrained. A restrained creature can escape from under the boulders by using an action and making a successful Strength (Athletics) check against your spell saving throw DC.",
+				"Each creature in the area must make a Dexterity saving throw. If the saving throw fails, the creature takes 8d8 bludgeoning damage, falls prone, and is {@condition restrained} beneath boulders until they escape or the stones disappear. A successful save means the creature takes half damage and isn't knocked prone or {@condition restrained}. A {@condition restrained} creature can escape from under the boulders by using an action and making a successful Strength (Athletics) check against your spell saving throw DC.",
 				"The stones remain on the ground for 1 minute after they fall, making the area difficult terrain and providing plenty of places to find cover."
 			],
 			"damageInflict": [
@@ -3300,7 +3300,7 @@
 			"entries": [
 				"You conjure four hooked chains that burst out of the ground at a spot you can see. The chains lash at one creature within 10 feet of their location in an attempt to hook into its flesh, clothing, or gear. Each chain has AC 18, 10 hit points, resistance to bludgeoning, piercing and slashing damage from non-adamantine weapons, and immunity to fire, necrotic, poison, psychic, and radiant damage. A chain disappears if it is reduced to 0 hit points.",
 				"The creature being attacked by the chains must make a Dexterity saving throw. If the saving throw fails, all four chains attach themselves to the creature and restrain it. At the beginning of each of the creature's turns, it takes 1d6 piercing damage per chain attached to it. As an action, a creature can make a Strength check against your spell save DC to break free from the chains; the DC increases by 1 for each chain attached to the victim. If the victim escapes, the spell ends.",
-				"If the targeted creature avoids the chains, every other creature within reach of the chains must make a successful Dexterity saving throw or be hooked and restrained by one chain, with effects as described above."
+				"If the targeted creature avoids the chains, every other creature within reach of the chains must make a successful Dexterity saving throw or be hooked and {@condition restrained} by one chain, with effects as described above."
 			],
 			"damageInflict": [
 				"radiant"
@@ -5343,7 +5343,7 @@
 				]
 			},
 			"entries": [
-				"You cause an underwater creature you can see within range to be wrapped in a magical net of air bubbles that rises to the water's surface. The creature must make a Dexterity saving throw. If the saving throw fails, the creature is restrained by the net and it rises 120 feet toward the surface at the end of each of its turns. Once the net reaches the surface, it remains there and keeps the creature restrained. As an action, a restrained creature can make a Strength or Dexterity check against your spell save DC to escape from the net. If the save succeeds, the net disappears and the spell ends."
+				"You cause an underwater creature you can see within range to be wrapped in a magical net of air bubbles that rises to the water's surface. The creature must make a Dexterity saving throw. If the saving throw fails, the creature is {@condition restrained} by the net and it rises 120 feet toward the surface at the end of each of its turns. Once the net reaches the surface, it remains there and keeps the creature {@condition restrained}. As an action, a {@condition restrained} creature can make a Strength or Dexterity check against your spell save DC to escape from the net. If the save succeeds, the net disappears and the spell ends."
 			]
 		},
 		{
@@ -9879,8 +9879,8 @@
 				]
 			},
 			"entries": [
-				"You touch a creature and attempt to freeze its body. The creature must make a Constitution saving throw. If the saving throw fails, the creature is restrained for the duration as its body becomes covered in ice, and it takes 3d8 cold damage at the start of each of its turns. On a successful save, it takes 5d8 cold damage immediately but suffers no other effect.",
-				"A creature restrained by the spell repeats the saving throw at the end of each of its turns. If the saving throw fails, the creature completely freezes and becomes ice; treat it as petrified. If the creature makes three successful saving throws (which don't need to be consecutive), the spell ends and it is no longer restrained. Note that the creature continues making Constitution saving throws even while petrified, unless the condition becomes permanent (see below).",
+				"You touch a creature and attempt to freeze its body. The creature must make a Constitution saving throw. If the saving throw fails, the creature is {@condition restrained} for the duration as its body becomes covered in ice, and it takes 3d8 cold damage at the start of each of its turns. On a successful save, it takes 5d8 cold damage immediately but suffers no other effect.",
+				"A creature {@condition restrained} by the spell repeats the saving throw at the end of each of its turns. If the saving throw fails, the creature completely freezes and becomes ice; treat it as petrified. If the creature makes three successful saving throws (which don't need to be consecutive), the spell ends and it is no longer {@condition restrained}. Note that the creature continues making Constitution saving throws even while petrified, unless the condition becomes permanent (see below).",
 				"If the caster maintains concentration for the full minute, a creature turned to ice is permanently frozen in that form; it stops making Constitution saving throws to end the effect. It remains frozen, however, only if the ambient temperature is below freezing. The creature can be returned to normal by being gradually thawed."
 			],
 			"damageInflict": [
@@ -12995,7 +12995,7 @@
 					"type": "entries",
 					"name": "Scimitar of Earth",
 					"entries": [
-						" A creature struck by the scimitar must make a successful Constitution saving or become restrained. It repeats the saving throw at the end of its next turn; a successful save ends the effect, but a failure results in the creature becoming petrified. A petrified creature repeats the saving throw at the end of each of its turns; a successful save ends the petrification."
+						" A creature struck by the scimitar must make a successful Constitution saving or become {@condition restrained}. It repeats the saving throw at the end of its next turn; a successful save ends the effect, but a failure results in the creature becoming petrified. A petrified creature repeats the saving throw at the end of each of its turns; a successful save ends the petrification."
 					]
 				},
 				{
@@ -14863,7 +14863,7 @@
 				]
 			},
 			"entries": [
-				"You cause a great tendril, 20 feet long, to lash out from an existing source of fire you can see. The tendril tries to wrap around a creature within its reach (20 feet) that you can also see. The creature must make a Dexterity saving throw. If it fails, it takes 6d6 fire damage and is restrained until the spell ends. At the end of each of its turns, it can repeat the saving throw; it escapes if the save succeeds, but it takes another 6d6 fire damage if the saving throw fails.",
+				"You cause a great tendril, 20 feet long, to lash out from an existing source of fire you can see. The tendril tries to wrap around a creature within its reach (20 feet) that you can also see. The creature must make a Dexterity saving throw. If it fails, it takes 6d6 fire damage and is {@condition restrained} until the spell ends. At the end of each of its turns, it can repeat the saving throw; it escapes if the save succeeds, but it takes another 6d6 fire damage if the saving throw fails.",
 				"At the beginning of your turn, if the tendril is not restraining a creature, it can attack a creature within reach that you can see, the same as the initial attack."
 			],
 			"entriesHigherLevel": [
@@ -15978,7 +15978,7 @@
 				]
 			},
 			"entries": [
-				"You attempt to wrap one incorporeal creature you can see within a physical shell. The creature makes a Constitution saving throw. If the saving throw fails, the creature becomes corporeal. While under the effect of this spell, it can't make use of incorporeal movement and it loses all resistance and vulnerability to weapon damage and to being grappled, paralyzed, petrified, prone, and restrained. It also can't enter the Ethereal Plane.",
+				"You attempt to wrap one incorporeal creature you can see within a physical shell. The creature makes a Constitution saving throw. If the saving throw fails, the creature becomes corporeal. While under the effect of this spell, it can't make use of incorporeal movement and it loses all resistance and vulnerability to weapon damage and to being grappled, paralyzed, petrified, prone, and {@condition restrained}. It also can't enter the Ethereal Plane.",
 				"The creature can repeat the saving throw at the end of each of its turns. The spell ends when the creature makes its second successful save. The two successes don't need to be consecutive."
 			]
 		},
@@ -21700,7 +21700,7 @@
 			},
 			"entries": [
 				"Landslide can only be used in snowy, mountainous regions. You create a fast-moving wall of snow, 20 feet high, 10 feet thick, and 120 feet long. The entire wall must be within 400 feet of you. When you cast the spell and again at the beginning of each of your turns, the landslide moves 60 feet under your control; it must always move downhill, but it can move sideways at the same time.",
-				"Any creature engulfed by the wall must make a Dexterity saving throw. If the saving throw fails, the creature takes 12d6 cold damage and is knocked prone and buried by snow; a successful save results in half damage and no other effect. Buried creatures are considered prone and restrained until they escape, even if the spell has ended. A restrained creature can escape if it uses an action and makes a successful Strength (Athletics) check against your spell saving throw DC.",
+				"Any creature engulfed by the wall must make a Dexterity saving throw. If the saving throw fails, the creature takes 12d6 cold damage and is knocked prone and buried by snow; a successful save results in half damage and no other effect. Buried creatures are considered prone and {@condition restrained} until they escape, even if the spell has ended. A {@condition restrained} creature can escape if it uses an action and makes a successful Strength (Athletics) check against your spell saving throw DC.",
 				"The wall disappears when it can no longer move downhill or when the spell ends, but a heavy dusting of snow will still cover the ground."
 			],
 			"damageInflict": [
@@ -22921,8 +22921,8 @@
 			},
 			"entries": [
 				"You create an enormous, glowing, blue-white foot of magical force in an unoccupied space that you can see within range. The Medium-size foot hovers in the air, 3 to 4 feet above the ground. At the beginning of your turn, you can use a bonus action to move it up to 60 feet to an unoccupied space. The foot is immune to damage and all conditions.",
-				"As an action, you can direct the foot to stomp on a creature adjacent to it. Make a melee spell attack against that creature. If it hits, the foot does 10d8 force damage, knocks the target prone, and restrains it. A successful Strength saving throw halves the damage and prevents the target from being knocked prone or restrained. A restrained creature takes 4d8 force damage at the end of each of its turns. The restraint ends automatically if the foot moves or attacks again. Otherwise, a restrained creature can escape by using an action to make a successful Strength check against your spell saving throw DC.",
-				"Instead of stomping, you can also command the foot to kick; this also does 10d8 force damage, but instead of being knocked prone and restrained, the target is pushed up to 60 feet. A successful Strength saving throw by the target creature halves the damage and negates the push effect.",
+				"As an action, you can direct the foot to stomp on a creature adjacent to it. Make a melee spell attack against that creature. If it hits, the foot does 10d8 force damage, knocks the target prone, and restrains it. A successful Strength saving throw halves the damage and prevents the target from being knocked prone or {@condition restrained}. A {@condition restrained} creature takes 4d8 force damage at the end of each of its turns. The restraint ends automatically if the foot moves or attacks again. Otherwise, a {@condition restrained} creature can escape by using an action to make a successful Strength check against your spell saving throw DC.",
+				"Instead of stomping, you can also command the foot to kick; this also does 10d8 force damage, but instead of being knocked prone and {@condition restrained}, the target is pushed up to 60 feet. A successful Strength saving throw by the target creature halves the damage and negates the push effect.",
 				"The foot is big enough to provide cover and to prevent movement through its space."
 			],
 			"damageInflict": [
@@ -24529,8 +24529,8 @@
 			},
 			"entries": [
 				"You create a net of seaweed that encloses a 10-foot-radius sphere around a point you can see. The target point must be underwater, but the entire sphere need not be. Each creature in the affected area when the spell is cast is caught inside the net and can't leave the netted area unless it uses an action on its turn to make a Strength saving throw; if the save succeeds, the creature breaks out of the net.",
-				"At the start of your next turn, the net collapses inward. All creatures inside it are restrained unless they make a successful Dexterity saving throw.",
-				"All trapped or restrained creatures are released at the end of the spell's duration."
+				"At the start of your next turn, the net collapses inward. All creatures inside it are {@condition restrained} unless they make a successful Dexterity saving throw.",
+				"All trapped or {@condition restrained} creatures are released at the end of the spell's duration."
 			]
 		},
 		{
@@ -27447,8 +27447,8 @@
 				]
 			},
 			"entries": [
-				"You fill a 60-foot sphere centered on a point you can see with bitter, freezing cold. Each creature in the affected area must make a Constitution saving throw. If the saving throw fails, the creature takes 8d6+20 damage and is restrained until it escapes or the spell ends, as it is encased in ice. On a successful save, the creature takes half damage and is restrained until the end of its next turn.",
-				"A restrained creature can escape by using an action and making a successful Strength check against your spell saving throw DC.",
+				"You fill a 60-foot sphere centered on a point you can see with bitter, freezing cold. Each creature in the affected area must make a Constitution saving throw. If the saving throw fails, the creature takes 8d6+20 damage and is {@condition restrained} until it escapes or the spell ends, as it is encased in ice. On a successful save, the creature takes half damage and is {@condition restrained} until the end of its next turn.",
+				"A {@condition restrained} creature can escape by using an action and making a successful Strength check against your spell saving throw DC.",
 				"A creature reduced to 0 hit points by this spell dies instantly when its body shatters into frozen chunks."
 			]
 		},
@@ -28086,7 +28086,7 @@
 						],
 						[
 							"6 - Indigo",
-							"The target is restrained if the Dexterity saving throw fails. A restrained creature makes a Constitution saving throw at the end of each of its turns. The restraint ends when it accumulates three successes, or it becomes petrified when it accumulates three failures, whichever happens first. Successes and failures don't need to be consecutive."
+							"The target is {@condition restrained} if the Dexterity saving throw fails. A {@condition restrained} creature makes a Constitution saving throw at the end of each of its turns. The restraint ends when it accumulates three successes, or it becomes petrified when it accumulates three failures, whichever happens first. Successes and failures don't need to be consecutive."
 						],
 						[
 							"7 - Violet",
@@ -32925,7 +32925,7 @@
 				]
 			},
 			"entries": [
-				"You create a powerful undertow in a 20-foot cube centered on a point you can see. Any creature swimming in the area must make a successful Strength saving throw or be pulled underwater and restrained. A creature can use its action to make a Strength (Athletics) or Dexterity (Acrobatics) check against your spell save DC; it breaks free from the restraint if the check succeeds, but it becomes restrained again if it's still in the undertow at the end of its turn."
+				"You create a powerful undertow in a 20-foot cube centered on a point you can see. Any creature swimming in the area must make a successful Strength saving throw or be pulled underwater and {@condition restrained}. A creature can use its action to make a Strength (Athletics) or Dexterity (Acrobatics) check against your spell save DC; it breaks free from the restraint if the check succeeds, but it becomes {@condition restrained} again if it's still in the undertow at the end of its turn."
 			]
 		},
 		{
@@ -33498,8 +33498,8 @@
 			},
 			"entries": [
 				"You create up to four vines that spring from your fingers and attempt to wrap themselves around creatures you can see within range. You select each creature that will be affected. A creature be targeted by more than one vine.",
-				"Each target must make a Dexterity saving throw for each vine that attacks it. If the saving throw fails, the creature is restrained and falls prone; it is wrapped up securely by the vine.",
-				"A creature restrained by a vine can escape by using an action to make a Strength (Athletics) or Dexterity (Acrobatics) check against your spell save DC. Each restraining vine must be escaped individually. Vines can also be cut; each one has AC 15 and 10 hit points, and they are immune to all but slashing, acid, and fire damage.",
+				"Each target must make a Dexterity saving throw for each vine that attacks it. If the saving throw fails, the creature is {@condition restrained} and falls prone; it is wrapped up securely by the vine.",
+				"A creature {@condition restrained} by a vine can escape by using an action to make a Strength (Athletics) or Dexterity (Acrobatics) check against your spell save DC. Each restraining vine must be escaped individually. Vines can also be cut; each one has AC 15 and 10 hit points, and they are immune to all but slashing, acid, and fire damage.",
 				"Vines that miss their targets or that the target escapes from quickly wither and turn to dust, as do all remaining vines when the spell ends."
 			],
 			"damageInflict": [
@@ -34365,8 +34365,8 @@
 			},
 			"entries": [
 				"You project a small, gray glob of fluid from your hand at a creature you can see. The creature is struck by the glob unless it makes a successful Dexterity saving throw.",
-				"When it hits its target, the glob expands into a small net of sticky webbing as strong as fine steel wire. A Large or smaller creature struck by the net is restrained. A restrained creature can use its action to make a Strength check against your spell save DC; if the Strength check succeeds, the webs burst and the spell ends.",
-				"A thin line of webbing trails from the net to your hand. As an action, you can make an opposed Strength contest against the restrained creature. If you win the contest, you pull the creature 10 feet closer to you; otherwise, it remains where it is. In either case, the creature remains restrained."
+				"When it hits its target, the glob expands into a small net of sticky webbing as strong as fine steel wire. A Large or smaller creature struck by the net is {@condition restrained}. A {@condition restrained} creature can use its action to make a Strength check against your spell save DC; if the Strength check succeeds, the webs burst and the spell ends.",
+				"A thin line of webbing trails from the net to your hand. As an action, you can make an opposed Strength contest against the {@condition restrained} creature. If you win the contest, you pull the creature 10 feet closer to you; otherwise, it remains where it is. In either case, the creature remains {@condition restrained}."
 			]
 		},
 		{
