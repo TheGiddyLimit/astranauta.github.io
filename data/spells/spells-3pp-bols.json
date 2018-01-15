@@ -9880,7 +9880,7 @@
 			},
 			"entries": [
 				"You touch a creature and attempt to freeze its body. The creature must make a Constitution saving throw. If the saving throw fails, the creature is restrained for the duration as its body becomes covered in ice, and it takes 3d8 cold damage at the start of each of its turns. On a successful save, it takes 5d8 cold damage immediately but suffers no other effect.",
-				"A creature restrained by the spell repeats the saving throw at the end of each of its turns. If the saving throw fails, the creature completely freezes and becomes ice; treat it as petrified. If the creature makes three successful saving throws (which don't need to be consecutive), the spell ends and it is no longer restrained. Note that the creature continues making Constitution saving throws even while petrified, unless the condition becomes permanent (see below).",
+				"A creature restrained by the spell repeats the saving throw at the end of each of its turns. If the saving throw fails, the creature completely freezes and becomes ice; treat it as {@condition petrified}. If the creature makes three successful saving throws (which don't need to be consecutive), the spell ends and it is no longer restrained. Note that the creature continues making Constitution saving throws even while {@condition petrified}, unless the condition becomes permanent (see below).",
 				"If the caster maintains concentration for the full minute, a creature turned to ice is permanently frozen in that form; it stops making Constitution saving throws to end the effect. It remains frozen, however, only if the ambient temperature is below freezing. The creature can be returned to normal by being gradually thawed."
 			],
 			"damageInflict": [
@@ -12995,7 +12995,7 @@
 					"type": "entries",
 					"name": "Scimitar of Earth",
 					"entries": [
-						" A creature struck by the scimitar must make a successful Constitution saving or become restrained. It repeats the saving throw at the end of its next turn; a successful save ends the effect, but a failure results in the creature becoming petrified. A petrified creature repeats the saving throw at the end of each of its turns; a successful save ends the petrification."
+						" A creature struck by the scimitar must make a successful Constitution saving or become restrained. It repeats the saving throw at the end of its next turn; a successful save ends the effect, but a failure results in the creature becoming {@condition petrified}. A {@condition petrified} creature repeats the saving throw at the end of each of its turns; a successful save ends the petrification."
 					]
 				},
 				{
@@ -15978,7 +15978,7 @@
 				]
 			},
 			"entries": [
-				"You attempt to wrap one incorporeal creature you can see within a physical shell. The creature makes a Constitution saving throw. If the saving throw fails, the creature becomes corporeal. While under the effect of this spell, it can't make use of incorporeal movement and it loses all resistance and vulnerability to weapon damage and to being grappled, paralyzed, petrified, prone, and restrained. It also can't enter the Ethereal Plane.",
+				"You attempt to wrap one incorporeal creature you can see within a physical shell. The creature makes a Constitution saving throw. If the saving throw fails, the creature becomes corporeal. While under the effect of this spell, it can't make use of incorporeal movement and it loses all resistance and vulnerability to weapon damage and to being grappled, paralyzed, {@condition petrified}, prone, and restrained. It also can't enter the Ethereal Plane.",
 				"The creature can repeat the saving throw at the end of each of its turns. The spell ends when the creature makes its second successful save. The two successes don't need to be consecutive."
 			]
 		},
@@ -28086,7 +28086,7 @@
 						],
 						[
 							"6 - Indigo",
-							"The target is restrained if the Dexterity saving throw fails. A restrained creature makes a Constitution saving throw at the end of each of its turns. The restraint ends when it accumulates three successes, or it becomes petrified when it accumulates three failures, whichever happens first. Successes and failures don't need to be consecutive."
+							"The target is restrained if the Dexterity saving throw fails. A restrained creature makes a Constitution saving throw at the end of each of its turns. The restraint ends when it accumulates three successes, or it becomes {@condition petrified} when it accumulates three failures, whichever happens first. Successes and failures don't need to be consecutive."
 						],
 						[
 							"7 - Violet",

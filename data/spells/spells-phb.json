@@ -11033,8 +11033,8 @@
 			"source": "PHB",
 			"entries": [
 				"You attempt to turn one creature that you can see within range into stone. If the targets body is made of flesh, the creature must make a Constitution saving throw. On a failed save, it is restrained as its flesh begins to harden. On a successful save, the creature isn't affected.",
-				"A creature restrained by this spell must make another Constitution saving throw at the end of each of its turns. If it successfully saves against this spell three times, the spell ends. If it fails saves three times, it is turned to stone and subjected to the petrified condition for the duration. The successes and failures don't need to be consecutive, keep track of both until the target collects three of a kind.",
-				"If the creature is physically broken while petrified, it suffers from similar deformities if it reverts to its original state.",
+				"A creature restrained by this spell must make another Constitution saving throw at the end of each of its turns. If it successfully saves against this spell three times, the spell ends. If it fails saves three times, it is turned to stone and subjected to the {@condition petrified} condition for the duration. The successes and failures don't need to be consecutive, keep track of both until the target collects three of a kind.",
+				"If the creature is physically broken while {@condition petrified}, it suffers from similar deformities if it reverts to its original state.",
 				"If you maintain your concentration on this spell for the entire possible duration, the creature is turned to stone until the effect is removed."
 			],
 			"page": 243
@@ -12490,7 +12490,7 @@
 				{
 					"type": "list",
 					"items": [
-						"One effect that charmed or petrified the target",
+						"One effect that charmed or {@condition petrified} the target",
 						"One curse, including the target's attunement to a cursed magic item",
 						"Any reduction to one of the target's ability scores",
 						"One effect reducing the target's hit point maximum"
@@ -19565,7 +19565,7 @@
 					"type": "entries",
 					"name": "6-Indigo",
 					"entries": [
-						"On a failed save, the target is restrained. It must then make a Constitution saving throw at the end of each of its turns. If it successfully saves three times, the spell ends. If it fails its save three times, it permanently turns to stone and is subjected to the petrified condition. The successes and failures don't need to be consecutive, keep track of both until the target collects three of a kind."
+						"On a failed save, the target is restrained. It must then make a Constitution saving throw at the end of each of its turns. If it successfully saves three times, the spell ends. If it fails its save three times, it permanently turns to stone and is subjected to the {@condition petrified} condition. The successes and failures don't need to be consecutive, keep track of both until the target collects three of a kind."
 					]
 				},
 				{
@@ -19675,7 +19675,7 @@
 					"type": "entries",
 					"name": "Indigo",
 					"entries": [
-						"On a failed save, the creature is restrained. It must then make a Constitution saving throw at the end of each of its turns. If it successfully saves three times, the spell ends. If it fails its save three times, it permanently turns to stone and is subjected to the petrified condition. The successes and failures don't need to be consecutive, keep track of both until the creature collects three of a kind. While this layer is in place, spells can't be cast through the wall. The layer is destroyed by bright light shed by a daylight spell or a similar spell of equal or higher level."
+						"On a failed save, the creature is restrained. It must then make a Constitution saving throw at the end of each of its turns. If it successfully saves three times, the spell ends. If it fails its save three times, it permanently turns to stone and is subjected to the {@condition petrified} condition. The successes and failures don't need to be consecutive, keep track of both until the creature collects three of a kind. While this layer is in place, spells can't be cast through the wall. The layer is destroyed by bright light shed by a daylight spell or a similar spell of equal or higher level."
 					]
 				},
 				{
