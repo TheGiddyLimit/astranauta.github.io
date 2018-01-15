@@ -2430,7 +2430,7 @@
 				]
 			},
 			"entries": [
-				"You release a hoarse cry that reverberates in a 30-foot cone in front of you. Each creature in the cone must make a Constitution saving throw. If the saving throw fails, the creature drops everything it is holding, is incapacitated until the end of its next turn, and is frightened. A frightened creature can make a Wisdom saving throw at the end of each of its turns; a successful save ends the fright."
+				"You release a hoarse cry that reverberates in a 30-foot cone in front of you. Each creature in the cone must make a Constitution saving throw. If the saving throw fails, the creature drops everything it is holding, is incapacitated until the end of its next turn, and is {@condition frightened}. A {@condition frightened} creature can make a Wisdom saving throw at the end of each of its turns; a successful save ends the fright."
 			]
 		},
 		{
@@ -8615,7 +8615,7 @@
 				]
 			},
 			"entries": [
-				"You choose a creature you can see and name an object. The creature instantly develops a powerful phobia of that object unless it makes a successful Wisdom saving throw against curses. If the creature can see the object it fears at the start of its turn, it must make a successful Wisdom saving throw or become frightened until the start of its next turn.",
+				"You choose a creature you can see and name an object. The creature instantly develops a powerful phobia of that object unless it makes a successful Wisdom saving throw against curses. If the creature can see the object it fears at the start of its turn, it must make a successful Wisdom saving throw or become {@condition frightened} until the start of its next turn.",
 				"The curse can be ended only by magic that lifts a curse."
 			]
 		},
@@ -9078,7 +9078,7 @@
 			"entries": [
 				"You create a dark curtain that must stand on a solid surface within range. You can form it into a hemispherical dome or a sphere with a radius of up to 10 feet, or you can shape a flat surface made of up to ten 10-foot-square panels. Each panel must be contiguous with another panel. In all forms, the curtain is 1 inch thick and lasts for the duration of the spell.",
 				"Each creature in the area of the curtain when it appears is pushed to one side of the curtain and takes 4d6 necrotic damage, or half damage with a successful Dexterity saving throw.",
-				"The dark curtain blocks all vision through it. Any creature trying to pass through the curtain takes 4d6 necrotic damage and must make a Constitution saving throw. If the saving throw fails, the creature fails to pass through the curtain and becomes frightened of it until the end of its next turn."
+				"The dark curtain blocks all vision through it. Any creature trying to pass through the curtain takes 4d6 necrotic damage and must make a Constitution saving throw. If the saving throw fails, the creature fails to pass through the curtain and becomes {@condition frightened} of it until the end of its next turn."
 			],
 			"damageInflict": [
 				"necrotic"
@@ -9231,7 +9231,7 @@
 			},
 			"entries": [
 				"You animate up to three trees you can see within 40 feet. The trees are treated as awakened trees (per the awaken spell). The trees won't attack you, but they are not under your control and they do attack all other living creatures in the area without distinction.",
-				"The dark and angry power animating these trees also creates an aura of panic. Every creature that starts its turn within 40 feet of one of these trees becomes frightened unless it makes a successful Wisdom saving throw. A frightened creature must take the Dash action and move out of the area by the safest path. If it starts its turn more than 40 feet from a darkly awakened tree, a frightened creature can repeat the saving throw; a successful save ends the fright and leaves the creature immune to the fright effect from this batch of trees for 24 hours."
+				"The dark and angry power animating these trees also creates an aura of panic. Every creature that starts its turn within 40 feet of one of these trees becomes {@condition frightened} unless it makes a successful Wisdom saving throw. A {@condition frightened} creature must take the Dash action and move out of the area by the safest path. If it starts its turn more than 40 feet from a darkly awakened tree, a {@condition frightened} creature can repeat the saving throw; a successful save ends the fright and leaves the creature immune to the fright effect from this batch of trees for 24 hours."
 			]
 		},
 		{
@@ -11141,56 +11141,56 @@
 					"type": "entries",
 					"name": "Lawful Good",
 					"entries": [
-						" You gain +2 AC, 30 temporary hit points, and resistance to bludgeoning, piercing, and slashing damage. Chaotic Evil creatures must make a successful Wisdom saving throw when they first see you or become frightened for the duration of the spell."
+						" You gain +2 AC, 30 temporary hit points, and resistance to bludgeoning, piercing, and slashing damage. Chaotic Evil creatures must make a successful Wisdom saving throw when they first see you or become {@condition frightened} for the duration of the spell."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Neutral Good",
 					"entries": [
-						" As a bonus action, three times during the duration of this spell, you can provide 5d6 points of healing to all allies within 30 feet of you. Creatures attempting to attack you or include you in the area of an offensive spell must make a Charisma saving throw; if the saving throw fails, they can take no action that turn. Neutral Evil creatures must make a successful Wisdom saving throw when they first see you or become frightened for the duration of the spell."
+						" As a bonus action, three times during the duration of this spell, you can provide 5d6 points of healing to all allies within 30 feet of you. Creatures attempting to attack you or include you in the area of an offensive spell must make a Charisma saving throw; if the saving throw fails, they can take no action that turn. Neutral Evil creatures must make a successful Wisdom saving throw when they first see you or become {@condition frightened} for the duration of the spell."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Chaotic Good",
 					"entries": [
-						" You get tactical advantage on ranged attacks, and ranged attacks against you have tactical disadvantage. Lawful Evil creatures must make a successful Wisdom saving throw when they first see you or become frightened for the duration of the spell."
+						" You get tactical advantage on ranged attacks, and ranged attacks against you have tactical disadvantage. Lawful Evil creatures must make a successful Wisdom saving throw when they first see you or become {@condition frightened} for the duration of the spell."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Lawful Neutral",
 					"entries": [
-						" You gain +4 AC and are immune to charm, fright, and exhaustion. Chaotic Neutral creatures must make a successful Wisdom saving throw when they first see you or become frightened for the duration of the spell."
+						" You gain +4 AC and are immune to charm, fright, and exhaustion. Chaotic Neutral creatures must make a successful Wisdom saving throw when they first see you or become {@condition frightened} for the duration of the spell."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Chaotic Neutral",
 					"entries": [
-						" You add 1d4 to your saving throws, ability checks, skill checks, and attack rolls, as you become infused with unpredictable luck. You can detect Law at will, and Lawful Neutral creatures must make a successful Wisdom saving throw when they first see you or become frightened for the duration of the spell."
+						" You add 1d4 to your saving throws, ability checks, skill checks, and attack rolls, as you become infused with unpredictable luck. You can detect Law at will, and Lawful Neutral creatures must make a successful Wisdom saving throw when they first see you or become {@condition frightened} for the duration of the spell."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Lawful Evil",
 					"entries": [
-						" You gain a 2d6 bonus on melee damage rolls, and your weapon is considered magical. Chaotic Good creatures must make a successful Wisdom saving throw when they first see you or become frightened for the duration of the spell."
+						" You gain a 2d6 bonus on melee damage rolls, and your weapon is considered magical. Chaotic Good creatures must make a successful Wisdom saving throw when they first see you or become {@condition frightened} for the duration of the spell."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Neutral Evil",
 					"entries": [
-						" While the spell lasts, you can use an action to make a melee spell attack against a creature you can reach. If the attack hits, the creature takes 5d8 necrotic damage and must make a successful Constitution saving throw or become paralyzed. A paralyzed creature can repeat the saving throw at the end of each of its turns; a successful save ends the paralysis. Neutral Good creatures must make a successful Wisdom saving throw when they first see you or become frightened for the duration of the spell."
+						" While the spell lasts, you can use an action to make a melee spell attack against a creature you can reach. If the attack hits, the creature takes 5d8 necrotic damage and must make a successful Constitution saving throw or become paralyzed. A paralyzed creature can repeat the saving throw at the end of each of its turns; a successful save ends the paralysis. Neutral Good creatures must make a successful Wisdom saving throw when they first see you or become {@condition frightened} for the duration of the spell."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Chaotic Evil",
 					"entries": [
-						" You are surrounded by hot flames as the spell fire shield. As an action, you can cause the flames to flare briefly around you; each creature within 20 feet of you takes 6d8 fire damage, or half damage with a successful Dexterity saving throw. Lawful Good creatures must make a successful Wisdom saving throw when they first see you or become frightened for the duration of the spell."
+						" You are surrounded by hot flames as the spell fire shield. As an action, you can cause the flames to flare briefly around you; each creature within 20 feet of you takes 6d8 fire damage, or half damage with a successful Dexterity saving throw. Lawful Good creatures must make a successful Wisdom saving throw when they first see you or become {@condition frightened} for the duration of the spell."
 					]
 				},
 				{
@@ -12007,7 +12007,7 @@
 				]
 			},
 			"entries": [
-				"You create sound vibrations in a 40-foot cone that produce deep feelings of dread in target creatures. Each creature in the cone must make a Wisdom saving throw. If the saving throw fails, the creature becomes frightened of you for the duration of the spell. On a successful save, the creature isn't frightened but does suffer a -2 penalty on saving throws against fright for the duration of the spell. Affected creatures can repeat the saving throw at the ends of their turns; a successful save ends the effect on that creature.",
+				"You create sound vibrations in a 40-foot cone that produce deep feelings of dread in target creatures. Each creature in the cone must make a Wisdom saving throw. If the saving throw fails, the creature becomes {@condition frightened} of you for the duration of the spell. On a successful save, the creature isn't {@condition frightened} but does suffer a -2 penalty on saving throws against fright for the duration of the spell. Affected creatures can repeat the saving throw at the ends of their turns; a successful save ends the effect on that creature.",
 				"Although this spell is based on sound, it is vibrations that cause the fear effect. Deaf or deafened creatures are not immune, but they do get tactical advantage on their Wisdom saving throws."
 			]
 		},
@@ -12680,7 +12680,7 @@
 				]
 			},
 			"entries": [
-				"You select one creature you can see; the creature is engulfed in an aura of black flames. At the beginning of each of its turns, the creature must make a Constitution saving throw. If the saving throw fails, the creature takes 3d10 necrotic damage and is frightened; on its turn, it must move as far away from the caster as it can. The spell and the fright effect end only when the spell's duration expires.",
+				"You select one creature you can see; the creature is engulfed in an aura of black flames. At the beginning of each of its turns, the creature must make a Constitution saving throw. If the saving throw fails, the creature takes 3d10 necrotic damage and is {@condition frightened}; on its turn, it must move as far away from the caster as it can. The spell and the fright effect end only when the spell's duration expires.",
 				"Ebonflame can't be cast on a target that's underwater. The flames follow the affected creature when it moves, but if it is magically transported out of the flames, such as by teleportation, the spell ends."
 			],
 			"damageInflict": [
@@ -19131,7 +19131,7 @@
 				]
 			},
 			"entries": [
-				"A shield that you touch gains a shimmering aura in the shape of a wyrm that inspires whoever wields it. Whenever a creature wielding the shield strikes another creature with a melee attack, the target of the attack must make a successful Wisdom saving throw or become frightened for the spell's duration."
+				"A shield that you touch gains a shimmering aura in the shape of a wyrm that inspires whoever wields it. Whenever a creature wielding the shield strikes another creature with a melee attack, the target of the attack must make a successful Wisdom saving throw or become {@condition frightened} for the spell's duration."
 			]
 		},
 		{
@@ -25090,7 +25090,7 @@
 				]
 			},
 			"entries": [
-				"You fill the air with a powerful song of glory that inspires your allies and bolsters their spirit. Choose any number of willing creatures within range. For the duration of the spell, an affected creature gets tactical advantage on saving throws against being frightened; it adds 1d4 to its attack rolls; and whenever it makes a damage roll and dislikes the result, it can reroll the dice and choose to use either the first or second result."
+				"You fill the air with a powerful song of glory that inspires your allies and bolsters their spirit. Choose any number of willing creatures within range. For the duration of the spell, an affected creature gets tactical advantage on saving throws against being {@condition frightened}; it adds 1d4 to its attack rolls; and whenever it makes a damage roll and dislikes the result, it can reroll the dice and choose to use either the first or second result."
 			]
 		},
 		{
@@ -34461,7 +34461,7 @@
 				]
 			},
 			"entries": [
-				"You create a great storm of blood and gore in a 15-foot radius, 40-foot high cylinder at a point you can see. Every creature in the storm must make a Wisdom saving throw; if it fails, the creature becomes frightened of the storm for the spell's duration.",
+				"You create a great storm of blood and gore in a 15-foot radius, 40-foot high cylinder at a point you can see. Every creature in the storm must make a Wisdom saving throw; if it fails, the creature becomes {@condition frightened} of the storm for the spell's duration.",
 				"The area of the storm is heavily obscured.",
 				"Every creature that starts its turn inside the storm or that enters the storm must make a Constitution saving throw. If the saving throw fails, the creature takes 2d8 acid damage and is blinded until the start of its next turn. If the save succeeds, the creature takes half damage and is not blinded."
 			],
@@ -34999,7 +34999,7 @@
 			},
 			"entries": [
 				"You howl like a wolf, frightening beasts within 50 feet of you. Roll 8d8; the result is how many hit points of beasts can be affected by the spell. Beasts with 1 hit die must be affected first, then beasts with 2 hit dice, then 3 hit dice, and so on. Within that restriction, you choose the order that beasts are affected.",
-				"Each beast affected by the spell becomes frightened until the start of your next turn, and must spend its turn moving as far away from you as it can."
+				"Each beast affected by the spell becomes {@condition frightened} until the start of your next turn, and must spend its turn moving as far away from you as it can."
 			]
 		},
 		{
@@ -35196,11 +35196,11 @@
 					"rows": [
 						[
 							"1",
-							"The target is frightened of you."
+							"The target is {@condition frightened} of you."
 						],
 						[
 							"2",
-							"The target develops a severe phobia to a common object. Anytime the target is within 15 feet of the object and is able to perceive it, he or she becomes frightened until the object is again more than 15 feet away. You choose the subject of the phobia. The object should be common, but not ubiquitous. For example, \"wooden spoons\" would be an appropriate subject, but \"shoes\" would not."
+							"The target develops a severe phobia to a common object. Anytime the target is within 15 feet of the object and is able to perceive it, he or she becomes {@condition frightened} until the object is again more than 15 feet away. You choose the subject of the phobia. The object should be common, but not ubiquitous. For example, \"wooden spoons\" would be an appropriate subject, but \"shoes\" would not."
 						],
 						[
 							"3",
@@ -35416,8 +35416,8 @@
 				]
 			},
 			"entries": [
-				"You send a zephyr that whispers hate and despair in a 100-foot cone. Each creature in the cone takes 4d8 necrotic damage and must make a Wisdom saving throw. If the saving throw fails, the whispers gather around the creature and it is frightened of you for the duration. The whispers gnaw at the creature's mind, attempting to drive it to death.",
-				"While a creature is frightened by the zephyr of death, it must make a Wisdom saving throw at the start of each of its turns. If the saving throw fails, the creature takes 4d8 necrotic damage and is incapacitated until the start of its next turn. On a successful save, it remains frightened, takes half damage, and is not incapacitated. A creature that makes three successful saves, which don't need to be consecutive, overcomes the spell and the effect ends for them."
+				"You send a zephyr that whispers hate and despair in a 100-foot cone. Each creature in the cone takes 4d8 necrotic damage and must make a Wisdom saving throw. If the saving throw fails, the whispers gather around the creature and it is {@condition frightened} of you for the duration. The whispers gnaw at the creature's mind, attempting to drive it to death.",
+				"While a creature is {@condition frightened} by the zephyr of death, it must make a Wisdom saving throw at the start of each of its turns. If the saving throw fails, the creature takes 4d8 necrotic damage and is incapacitated until the start of its next turn. On a successful save, it remains {@condition frightened}, takes half damage, and is not incapacitated. A creature that makes three successful saves, which don't need to be consecutive, overcomes the spell and the effect ends for them."
 			],
 			"damageInflict": [
 				"necrotic"
