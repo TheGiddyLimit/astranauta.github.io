@@ -9615,9 +9615,9 @@
 				]
 			},
 			"entries": [
-				"The magic you weave around one living creature makes it believe it has died. It falls unconscious unless it makes a successful Charisma saving throw.",
-				"At the end of each of its turns, the creature can repeat the saving throw. If the saving throw succeeds, it wakes up and the spell ends. Otherwise, it takes 4d8 necrotic damage, remains unconscious, and the spell continues. If an adjacent creature spends an action trying to awaken the affected creature, it gets tactical advantage on its next saving throw.",
-				"If the creature remains unconscious but alive for ten rounds (1 minute, the spell's full duration), it must make a Constitution saving throw at the end of its turn instead of a Charisma saving throw. If the Constitution saving throw fails, the creature dies.",
+				"The magic you weave around one living creature makes it believe it has died. It falls {@condition unconscious} unless it makes a successful Charisma saving throw.",
+				"At the end of each of its turns, the creature can repeat the saving throw. If the saving throw succeeds, it wakes up and the spell ends. Otherwise, it takes 4d8 necrotic damage, remains {@condition unconscious}, and the spell continues. If an adjacent creature spends an action trying to awaken the affected creature, it gets tactical advantage on its next saving throw.",
+				"If the creature remains {@condition unconscious} but alive for ten rounds (1 minute, the spell's full duration), it must make a Constitution saving throw at the end of its turn instead of a Charisma saving throw. If the Constitution saving throw fails, the creature dies.",
 				"The creature instantly awakes when the spell ends. Creatures immune to charming are not affected by death's imposition."
 			],
 			"damageInflict": [
@@ -9984,7 +9984,7 @@
 				]
 			},
 			"entries": [
-				"You give one willing creature you can see the ability to keep fighting despite near-lethal wounds. When the creature drops to 0 hit points without being instantly killed, it does not become unconscious but can keep acting normally. The creature still makes death saving throws and dies if it fails three times or if it takes enough damage to cause instant death. The creature does not automatically fail death saving throws when it takes damage. Delay death has no effect on a creature already at 0 hit points when the spell is cast."
+				"You give one willing creature you can see the ability to keep fighting despite near-lethal wounds. When the creature drops to 0 hit points without being instantly killed, it does not become {@condition unconscious} but can keep acting normally. The creature still makes death saving throws and dies if it fails three times or if it takes enough damage to cause instant death. The creature does not automatically fail death saving throws when it takes damage. Delay death has no effect on a creature already at 0 hit points when the spell is cast."
 			]
 		},
 		{
@@ -11266,11 +11266,11 @@
 					"rows": [
 						[
 							"Red",
-							"Falling unconscious during combat"
+							"Falling {@condition unconscious} during combat"
 						],
 						[
 							"Orange",
-							"Falling unconscious outside of combat"
+							"Falling {@condition unconscious} outside of combat"
 						],
 						[
 							"Yellow",
@@ -18612,7 +18612,7 @@
 			},
 			"entries": [
 				"A shield that you touch gains a shimmering aura in the shape of a boar that inspires whoever wields it. A creature wielding the shield has tactical advantage on attack rolls, ability checks, and skill checks based on Strength or Constitution. In addition, the creature does 1d6 additional damage with melee weapons. At the beginning of each of the creature's rounds, it gains 10 temporary hit points. The temporary hit points vanish if the shield is relinquished or when the spell ends.",
-				"When a creature wielding the shield drops to 0 hit points, it does not drop unconscious, but can keep acting normally. The creature must make death saving throws, however, and it dies if it fails three times. It can't be stabilized while it continues fighting and casting offensive spells at 0 hit points, either by a Wisdom (Medicine) skill check or by a third successful death saving throw. If it relinquishes the shield or the spell ends, the creature drops to 0 hit points and all normal rules for that situation take over."
+				"When a creature wielding the shield drops to 0 hit points, it does not drop {@condition unconscious}, but can keep acting normally. The creature must make death saving throws, however, and it dies if it fails three times. It can't be stabilized while it continues fighting and casting offensive spells at 0 hit points, either by a Wisdom (Medicine) skill check or by a third successful death saving throw. If it relinquishes the shield or the spell ends, the creature drops to 0 hit points and all normal rules for that situation take over."
 			]
 		},
 		{
@@ -29865,7 +29865,7 @@
 				"You cause the air to vibrate with music concentrated in a wall up to 80 feet long, 20 feet high, and 5 feet wide. The wall forms in an area you choose within range. It must be straight along its entire length. Creatures in the area occupied by the wall when it's created make Dexterity saving throws. A successful saving throw indicates the creature can immediately move to an adjacent unoccupied space; if the saving throw fails or the creature has nowhere to go, the wall forms around it. The wall doesn't obscure vision or block movement physically.",
 				"When you cast the spell, you choose whether the song is melodious or cacophonous.",
 				"The melodious song causes one side of the wall that you choose to emit a pleasing melody that entrances those that can hear it; the other side is silent. Every creature within 30 feet of the melodious side of the wall that can hear the song must make a Wisdom saving throw at the beginning of each of its turns. If the saving throw fails, the creature must move toward the wall by the shortest, safest route until it is within the wall.",
-				"A creature that enters the melodious wall or ends its turn inside it must make a Wisdom saving throw. If this saving throw fails, the creature falls unconscious for as long as it's inside the wall. If it takes damage, it can repeat the saving throw; it awakens on a successful save. A creature never needs to make more than one saving throw against the wall's effect per turn.",
+				"A creature that enters the melodious wall or ends its turn inside it must make a Wisdom saving throw. If this saving throw fails, the creature falls {@condition unconscious} for as long as it's inside the wall. If it takes damage, it can repeat the saving throw; it awakens on a successful save. A creature never needs to make more than one saving throw against the wall's effect per turn.",
 				"The cacophonous song causes one side of the wall to emit thunderous, damaging vibrations while the other side remains silent. Each creature that ends its turn within 30 feet of the wall takes 3d8 thunder damage and is deafened until the start of its next turn, or half damage with no deafening if it makes a successful Constitution saving throw. Being unable to hear the wall doesn't protect a creature against the damage, which is caused by vibrations affecting the creature's whole body.",
 				"The interior of the cacophonous wall is even more dangerous; any creature that enters the wall or ends its turn there must make a Constitution saving throw (no more than one saving throw per turn). If the saving throw fails, the creature takes 8d6 thunder damage, is permanently deafened, and is stunned until the beginning of its next turn. A successful save halves the damage and the creature is not deafened or stunned. Creatures that are already deaf are immune to the stunning but still take the damage."
 			],
