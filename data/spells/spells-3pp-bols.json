@@ -3767,7 +3767,7 @@
 				]
 			},
 			"entries": [
-				"One willing creature you touch sprouts long, sharp spurs of bone all over its body. The creature does 2d6 piercing damage to its target when it successfully initiates a grapple. It does another 2d6 damage at the start of its turn to any creature it has grappled."
+				"One willing creature you touch sprouts long, sharp spurs of bone all over its body. The creature does 2d6 piercing damage to its target when it successfully initiates a grapple. It does another 2d6 damage at the start of its turn to any creature it has {@condition grappled}."
 			],
 			"damageInflict": [
 				"piercing"
@@ -4571,8 +4571,8 @@
 			},
 			"entries": [
 				"When you cast this spell, tentacles of blood erupt from the bodies of all dead or dying creatures within 30 feet of you. A dying creature must make a Constitution saving throw; a successful save negates the effect for that creature, but a failure results in the creature dying immediately as its blood erupts from inside it.",
-				"Each tentacle has AC 15, 10 hit points, reach 5 ft., and your saving throw modifiers. At the beginning of your turn, each tentacle attacks one creature within 10 feet of it using your spell attack bonus. You choose the targets if you can see the tentacles; otherwise they attack the closest creature, friend or foe. A successful hit does 1d8+4 bludgeoning damage and the target creature is grappled. A tentacle doesn't attack any other target while it's grappling a creature.",
-				"A grappled creature can't breathe, and is suffocating. A creature can escape from a tentacle by using an action and making a successful Strength (Athletics) check against your spell save DC. Tentacles disappear when they are reduced to 0 hit points.",
+				"Each tentacle has AC 15, 10 hit points, reach 5 ft., and your saving throw modifiers. At the beginning of your turn, each tentacle attacks one creature within 10 feet of it using your spell attack bonus. You choose the targets if you can see the tentacles; otherwise they attack the closest creature, friend or foe. A successful hit does 1d8+4 bludgeoning damage and the target creature is {@condition grappled}. A tentacle doesn't attack any other target while it's grappling a creature.",
+				"A {@condition grappled} creature can't breathe, and is suffocating. A creature can escape from a tentacle by using an action and making a successful Strength (Athletics) check against your spell save DC. Tentacles disappear when they are reduced to 0 hit points.",
 				"If no enemies are in reach, the tentacles retreat inside their hosts and remain dormant until a creature approaches. The tentacles never attack you."
 			],
 			"damageInflict": [
@@ -15978,7 +15978,7 @@
 				]
 			},
 			"entries": [
-				"You attempt to wrap one incorporeal creature you can see within a physical shell. The creature makes a Constitution saving throw. If the saving throw fails, the creature becomes corporeal. While under the effect of this spell, it can't make use of incorporeal movement and it loses all resistance and vulnerability to weapon damage and to being grappled, paralyzed, petrified, prone, and restrained. It also can't enter the Ethereal Plane.",
+				"You attempt to wrap one incorporeal creature you can see within a physical shell. The creature makes a Constitution saving throw. If the saving throw fails, the creature becomes corporeal. While under the effect of this spell, it can't make use of incorporeal movement and it loses all resistance and vulnerability to weapon damage and to being {@condition grappled}, paralyzed, petrified, prone, and restrained. It also can't enter the Ethereal Plane.",
 				"The creature can repeat the saving throw at the end of each of its turns. The spell ends when the creature makes its second successful save. The two successes don't need to be consecutive."
 			]
 		},
@@ -31196,8 +31196,8 @@
 			},
 			"entries": [
 				"You transform the tongue of a willing creature so it becomes long and sticky, like the tongue of a frog.",
-				"For the duration, the creature can use a bonus action to make a melee weapon attack against one target within 10 feet. If the attack hits, the target is grappled. The tongue can grapple only one creature at a time, and a creature using its tongue to maintain a grapple can't speak or attack anything else with its tongue.",
-				"The grappled target can use an action to make a Strength (Athletics) or Dexterity (Acrobatics) check against your spell save DC to escape."
+				"For the duration, the creature can use a bonus action to make a melee weapon attack against one target within 10 feet. If the attack hits, the target is {@condition grappled}. The tongue can grapple only one creature at a time, and a creature using its tongue to maintain a grapple can't speak or attack anything else with its tongue.",
+				"The {@condition grappled} target can use an action to make a Strength (Athletics) or Dexterity (Acrobatics) check against your spell save DC to escape."
 			],
 			"entriesHigherLevel": [
 				{
@@ -31710,7 +31710,7 @@
 			},
 			"entries": [
 				"You create a portal to an eldritch realm inside a 10-foot circle that opens in the floor centered on a point you can see. Creatures standing on the portal when it opens can make a Dexterity saving throw to jump to the nearest safe space and avoid being drawn through the portal inadvertently.",
-				"Immediately after the portal appears, four 30-foot-long tendrils emerge from it. When you cast the spell and at the beginning of each of your turns, each tendril tries to grapple one creature; you select the targets. Make a melee spell attack for each tendril. If it hits, the target is grappled and dragged 10 feet toward the portal. Instead of attacking, a tendril that already has a creature grappled drags it another 10 feet closer to the portal. Grappled creatures can escape by making appropriate ability checks against your spell saving throw DC.",
+				"Immediately after the portal appears, four 30-foot-long tendrils emerge from it. When you cast the spell and at the beginning of each of your turns, each tendril tries to grapple one creature; you select the targets. Make a melee spell attack for each tendril. If it hits, the target is {@condition grappled} and dragged 10 feet toward the portal. Instead of attacking, a tendril that already has a creature {@condition grappled} drags it another 10 feet closer to the portal. Grappled creatures can escape by making appropriate ability checks against your spell saving throw DC.",
 				"Creatures that fall or are pulled into the portal no longer exist on the plane where tendrils of night was cast; they are inside the eldritch realm where the tendrils originate. They must make Constitution saving throws at the start of each of their turns. If the saving throw fails, the creature takes 4d6 necrotic damage and its maximum hit points are reduced by the same number. As an action, the creature can try to escape by making a Strength check against your spell saving throw DC; if it succeeds, it appears in the unoccupied space closest to the portal.",
 				"When the spell ends, creatures pulled through the portal reappear in the portal's space, alive or dead."
 			],
