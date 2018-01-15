@@ -11183,7 +11183,7 @@
 					"type": "entries",
 					"name": "Neutral Evil",
 					"entries": [
-						" While the spell lasts, you can use an action to make a melee spell attack against a creature you can reach. If the attack hits, the creature takes 5d8 necrotic damage and must make a successful Constitution saving throw or become paralyzed. A paralyzed creature can repeat the saving throw at the end of each of its turns; a successful save ends the paralysis. Neutral Good creatures must make a successful Wisdom saving throw when they first see you or become frightened for the duration of the spell."
+						" While the spell lasts, you can use an action to make a melee spell attack against a creature you can reach. If the attack hits, the creature takes 5d8 necrotic damage and must make a successful Constitution saving throw or become {@condition paralyzed}. A {@condition paralyzed} creature can repeat the saving throw at the end of each of its turns; a successful save ends the paralysis. Neutral Good creatures must make a successful Wisdom saving throw when they first see you or become frightened for the duration of the spell."
 					]
 				},
 				{
@@ -15978,7 +15978,7 @@
 				]
 			},
 			"entries": [
-				"You attempt to wrap one incorporeal creature you can see within a physical shell. The creature makes a Constitution saving throw. If the saving throw fails, the creature becomes corporeal. While under the effect of this spell, it can't make use of incorporeal movement and it loses all resistance and vulnerability to weapon damage and to being grappled, paralyzed, petrified, prone, and restrained. It also can't enter the Ethereal Plane.",
+				"You attempt to wrap one incorporeal creature you can see within a physical shell. The creature makes a Constitution saving throw. If the saving throw fails, the creature becomes corporeal. While under the effect of this spell, it can't make use of incorporeal movement and it loses all resistance and vulnerability to weapon damage and to being grappled, {@condition paralyzed}, petrified, prone, and restrained. It also can't enter the Ethereal Plane.",
 				"The creature can repeat the saving throw at the end of each of its turns. The spell ends when the creature makes its second successful save. The two successes don't need to be consecutive."
 			]
 		},
@@ -17822,7 +17822,7 @@
 				]
 			},
 			"entries": [
-				"One plant creature you can see becomes paralyzed for the duration of the spell unless it makes a successful Wisdom saving throw. An affected plant can repeat the saving throw at the end of each of its turns to end the spell."
+				"One plant creature you can see becomes {@condition paralyzed} for the duration of the spell unless it makes a successful Wisdom saving throw. An affected plant can repeat the saving throw at the end of each of its turns to end the spell."
 			],
 			"entriesHigherLevel": [
 				{
@@ -26114,7 +26114,7 @@
 				]
 			},
 			"entries": [
-				"For the duration of this spell, the target creature is immune to paralysis. If it was already paralyzed, its paralysis ends while the spell is in effect."
+				"For the duration of this spell, the target creature is immune to paralysis. If it was already {@condition paralyzed}, its paralysis ends while the spell is in effect."
 			]
 		},
 		{
@@ -33154,7 +33154,7 @@
 				]
 			},
 			"entries": [
-				"Your eyes glitter with unholy fury. For the duration of the spell, each non-evil creature within 30 feet of you that can see you must make a successful Constitution saving throw or be paralyzed until the start of its next turn. Unless surprised, a creature can avert its gaze to avoid the saving throw, but it suffers the usual penalties for attacking an unseen target if it attacks you before the start of its next turn."
+				"Your eyes glitter with unholy fury. For the duration of the spell, each non-evil creature within 30 feet of you that can see you must make a successful Constitution saving throw or be {@condition paralyzed} until the start of its next turn. Unless surprised, a creature can avert its gaze to avoid the saving throw, but it suffers the usual penalties for attacking an unseen target if it attacks you before the start of its next turn."
 			]
 		},
 		{
@@ -35265,7 +35265,7 @@
 			},
 			"entries": [
 				"You create a bank of swirling, nearly insubstantial haze that quickly takes the shape of a wyvern in an unoccupied space you can see. The wyvern is Large and has a reach of 10 feet, but it can't leave the space where it was created.",
-				"When a creature moves into or starts its turn in the reach of the wyvern, the wyvern guard attacks it. Make a melee spell attack against the target. If it hits, the target takes 1d8 piercing damage and is paralyzed. A paralyzed creature makes a Constitution saving throw at the end of each of its turns; the paralysis ends on a successful save.",
+				"When a creature moves into or starts its turn in the reach of the wyvern, the wyvern guard attacks it. Make a melee spell attack against the target. If it hits, the target takes 1d8 piercing damage and is {@condition paralyzed}. A {@condition paralyzed} creature makes a Constitution saving throw at the end of each of its turns; the paralysis ends on a successful save.",
 				"The wyvern guard disappears and the spell ends when the wyvern makes a successful attack.",
 				"In areas of bright light, the wyvern is clearly visible. In dim light, a DC 15 Perception check is needed to notice the wyvern at distances of 30 feet or more. In darkness, the wyvern is effectively invisible."
 			],
