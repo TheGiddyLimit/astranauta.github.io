@@ -226,7 +226,7 @@
 				"Save": "Constitution",
 				"Damage": "3d8",
 				"Damage Type": "Radiant",
-				"Save Success": "Not blinded"
+				"Save Success": "Not {@condition blinded}"
 			}
 		},
 		{
@@ -2207,7 +2207,7 @@
 			"data": {
 				"Save": "Constitution",
 				"Target": "Each creature that is completely within the cloud at the start of its turn",
-				"Save Success": "Half damage and not blinded"
+				"Save Success": "Half damage and not {@condition blinded}"
 			}
 		},
 		{
@@ -2245,7 +2245,7 @@
 				"Damage": "6d8",
 				"Target": "Each creature in the line",
 				"Damage Type": "Radiant",
-				"Save Success": "Half damage and not blinded"
+				"Save Success": "Half damage and not {@condition blinded}"
 			}
 		},
 		{
@@ -2256,7 +2256,7 @@
 				"Damage": "12d6",
 				"Target": "Each creature in a 60-foot radius centered on a point within range",
 				"Damage Type": "Radiant",
-				"Save Success": "Half damage and not blinded"
+				"Save Success": "Half damage and not {@condition blinded}"
 			}
 		},
 		{
@@ -3134,7 +3134,7 @@
 				"Damage": "4d8",
 				"Damage Type": "Radiant",
 				"Target": "Each creature of your choice that you can see within 30 feet of you",
-				"Save Success": "Half damage and not blinded",
+				"Save Success": "Half damage and not {@condition blinded}",
 				"Secondary Damage": "2d8",
 				"Secondary Damage Type": "Radiant"
 			}
@@ -3620,7 +3620,7 @@
 				"Damage": "4d8",
 				"Damage Type": "Radiant",
 				"Target": "Each creature in the wall's area",
-				"Save Success": "Half damage and not blinded",
+				"Save Success": "Half damage and not {@condition blinded}",
 				"Secondary Damage": "4d8",
 				"Secondary Damage Type": "Radiant"
 			}

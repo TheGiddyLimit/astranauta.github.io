@@ -337,7 +337,7 @@
 				]
 			},
 			"entries": [
-				"You call forth a breeze full of stinging acid droplets from your outstretched hand. Each creature in a 15-foot cube originating from you must make a Constitution saving throw. On a failed save, a creature takes 2d6 acid damage and is blinded until the end of your next turn. On a successful save, the creature takes half as much damage and isn't blinded."
+				"You call forth a breeze full of stinging acid droplets from your outstretched hand. Each creature in a 15-foot cube originating from you must make a Constitution saving throw. On a failed save, a creature takes 2d6 acid damage and is {@condition blinded} until the end of your next turn. On a successful save, the creature takes half as much damage and isn't {@condition blinded}."
 			],
 			"entriesHigherLevel": [
 				{
@@ -4141,7 +4141,7 @@
 				]
 			},
 			"entries": [
-				"By covering the eyes of a previously constructed spirit doll, you force the creature linked to that doll to make a Constitution saving throw. If the saving throw fails, the creature is blinded for the duration of the spell. If the save succeeds, the creature's sight is impaired so that it has a -2 penalty on Wisdom (Perception) checks for the spell's duration. Either effect can be removed by any magic that cures blindness, such as lesser restoration."
+				"By covering the eyes of a previously constructed spirit doll, you force the creature linked to that doll to make a Constitution saving throw. If the saving throw fails, the creature is {@condition blinded} for the duration of the spell. If the save succeeds, the creature's sight is impaired so that it has a -2 penalty on Wisdom (Perception) checks for the spell's duration. Either effect can be removed by any magic that cures blindness, such as lesser restoration."
 			]
 		},
 		{
@@ -4243,7 +4243,7 @@
 				]
 			},
 			"entries": [
-				"You enchant an arrow or bolt you can see. The projectile erupts in a burst of light when it strikes a solid object or at the height of its arc (your choice). Anyone within 30 feet of this eruption who can see it must make a Constitution saving throw or be blinded. A blinded creature can repeat the saving throw at the end of each of its turns; a successful save ends the blindness."
+				"You enchant an arrow or bolt you can see. The projectile erupts in a burst of light when it strikes a solid object or at the height of its arc (your choice). Anyone within 30 feet of this eruption who can see it must make a Constitution saving throw or be {@condition blinded}. A {@condition blinded} creature can repeat the saving throw at the end of each of its turns; a successful save ends the blindness."
 			]
 		},
 		{
@@ -4288,7 +4288,7 @@
 				]
 			},
 			"entries": [
-				"One creature that you can see must make a Constitution saving throw. If the saving throw fails, the creature suffers 3d8 necrotic damage and is blinded for 1 round as blood spurts from its eyes, ears, mouth, and nose. If the saving throw succeeds, it takes half damage and is not blinded."
+				"One creature that you can see must make a Constitution saving throw. If the saving throw fails, the creature suffers 3d8 necrotic damage and is {@condition blinded} for 1 round as blood spurts from its eyes, ears, mouth, and nose. If the saving throw succeeds, it takes half damage and is not {@condition blinded}."
 			],
 			"damageInflict": [
 				"necrotic"
@@ -15770,7 +15770,7 @@
 				]
 			},
 			"entries": [
-				"A bright light flashes from a point you can see within range. All creatures in a 10-foot radius sphere centered on that point are blinded until the end of your next turn unless they make a successful Constitution saving throw."
+				"A bright light flashes from a point you can see within range. All creatures in a 10-foot radius sphere centered on that point are {@condition blinded} until the end of your next turn unless they make a successful Constitution saving throw."
 			]
 		},
 		{
@@ -27402,7 +27402,7 @@
 				]
 			},
 			"entries": [
-				"You create a shining, silver-white cloak of energy that surrounds and protects you. For the duration of the spell, whenever you or an allied creature within 30 feet of you makes an attack roll or a saving throw, add 1d4 to the roll. In addition, any creature that strikes you with a melee attack is blinded until the end of its next turn unless it makes a successful Constitution saving throw."
+				"You create a shining, silver-white cloak of energy that surrounds and protects you. For the duration of the spell, whenever you or an allied creature within 30 feet of you makes an attack roll or a saving throw, add 1d4 to the roll. In addition, any creature that strikes you with a melee attack is {@condition blinded} until the end of its next turn unless it makes a successful Constitution saving throw."
 			]
 		},
 		{
@@ -27788,7 +27788,7 @@
 				]
 			},
 			"entries": [
-				"Hot sand blasts in a 30-foot cone from your outstretched hand. Every creature in the cone must make a Dexterity saving throw. If the saving throw fails, the creature takes 6d6 fire damage and is blinded until the start of your next turn. If the saving throw succeeds, the creature takes half damage and is not blinded. The blast extinguishes open flames such as candles, torches, and even small fires in the cone."
+				"Hot sand blasts in a 30-foot cone from your outstretched hand. Every creature in the cone must make a Dexterity saving throw. If the saving throw fails, the creature takes 6d6 fire damage and is {@condition blinded} until the start of your next turn. If the saving throw succeeds, the creature takes half damage and is not {@condition blinded}. The blast extinguishes open flames such as candles, torches, and even small fires in the cone."
 			],
 			"damageInflict": [
 				"fire"
@@ -28090,7 +28090,7 @@
 						],
 						[
 							"7 - Violet",
-							"The target is blinded if the Dexterity saving throw fails. At the start of your next turn, it must make a Wisdom saving throw; a successful save ends the effect, but a failed saving throw transports the blind creature to a plane of the GM's choosing."
+							"The target is {@condition blinded} if the Dexterity saving throw fails. At the start of your next turn, it must make a Wisdom saving throw; a successful save ends the effect, but a failed saving throw transports the blind creature to a plane of the GM's choosing."
 						],
 						[
 							"8 - Two rays",
@@ -28195,7 +28195,7 @@
 				]
 			},
 			"entries": [
-				"One creature you can see within range must make a Constitution saving throw as a bright bolt of light streaks from your hand to its eyes. If the saving throw fails, the creature takes 8d6+20 radiant damage and is permanently blinded; on a successful save, it takes half damage and is not blinded."
+				"One creature you can see within range must make a Constitution saving throw as a bright bolt of light streaks from your hand to its eyes. If the saving throw fails, the creature takes 8d6+20 radiant damage and is permanently {@condition blinded}; on a successful save, it takes half damage and is not {@condition blinded}."
 			],
 			"damageInflict": [
 				"radiant"
@@ -29706,7 +29706,7 @@
 				]
 			},
 			"entries": [
-				"You summon a vertical column of divine fire from the heavens. Each creature in a 15-foot-radius, 60-foot-tall cylinder centered on a point within range takes 6d6 fire damage plus 6d6 radiant damage, or half damage with a successful Dexterity saving throw. Each creature in the cylinder or within 15 feet of it that can see the fire is permanently blinded unless it makes a successful Constitution saving throw.",
+				"You summon a vertical column of divine fire from the heavens. Each creature in a 15-foot-radius, 60-foot-tall cylinder centered on a point within range takes 6d6 fire damage plus 6d6 radiant damage, or half damage with a successful Dexterity saving throw. Each creature in the cylinder or within 15 feet of it that can see the fire is permanently {@condition blinded} unless it makes a successful Constitution saving throw.",
 				"The light from the solar flare affects creatures as if it were true sunlight."
 			],
 			"damageInflict": [
@@ -29805,7 +29805,7 @@
 				]
 			},
 			"entries": [
-				"A bolt of light streaks from your hand to a creature you can see. Make a ranged spell attack against that creature. If you hit, the creature takes 5d8 radiant damage and must make a Constitution saving throw. If the saving throw fails, the creature is blinded. A blinded creature can repeat the saving throw at the end of each of its turns; a successful save ends the blindness."
+				"A bolt of light streaks from your hand to a creature you can see. Make a ranged spell attack against that creature. If you hit, the creature takes 5d8 radiant damage and must make a Constitution saving throw. If the saving throw fails, the creature is {@condition blinded}. A {@condition blinded} creature can repeat the saving throw at the end of each of its turns; a successful save ends the blindness."
 			],
 			"entriesHigherLevel": [
 				{
@@ -34463,7 +34463,7 @@
 			"entries": [
 				"You create a great storm of blood and gore in a 15-foot radius, 40-foot high cylinder at a point you can see. Every creature in the storm must make a Wisdom saving throw; if it fails, the creature becomes frightened of the storm for the spell's duration.",
 				"The area of the storm is heavily obscured.",
-				"Every creature that starts its turn inside the storm or that enters the storm must make a Constitution saving throw. If the saving throw fails, the creature takes 2d8 acid damage and is blinded until the start of its next turn. If the save succeeds, the creature takes half damage and is not blinded."
+				"Every creature that starts its turn inside the storm or that enters the storm must make a Constitution saving throw. If the saving throw fails, the creature takes 2d8 acid damage and is {@condition blinded} until the start of its next turn. If the save succeeds, the creature takes half damage and is not {@condition blinded}."
 			],
 			"damageInflict": [
 				"acid"
