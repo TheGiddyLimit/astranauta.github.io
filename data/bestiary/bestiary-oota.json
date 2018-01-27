@@ -3317,6 +3317,77 @@
 			"page": 131
 		},
 		{
+			"name": "Spider King",
+			"size": "L",
+			"type": "beast",
+			"source": "OotA",
+			"alignment": "unaligned",
+			"ac": "14 (natural armor)",
+			"hp": "44 (4d10+22)",
+			"speed": "30 ft., climb 30 ft.",
+			"str": 14,
+			"dex": 16,
+			"con": 12,
+			"int": 2,
+			"wis": 11,
+			"cha": 4,
+			"save": "Con +3, Wis +2",
+			"skill": {
+					"stealth": "+7",
+					"perception": "+4"
+			},
+			"senses": "blindsight 10 ft., darkvision 60 ft.",
+			"passive": 14,
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Two Heads",
+						"text": [
+								"Because of its two heads, the Spider King has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious."
+										]
+				},
+				{
+					"name": "Spider Climb",
+					"text": [
+						"The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				},
+				{
+					"name": "Web Sense",
+					"text": [
+						"While in contact with a web, the spider knows the exact location of any other creature in contact with the same web."
+					]
+				},
+				{
+					"name": "Web Walker",
+					"text": [
+						"The spider ignores movement restrictions caused by webbing."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 7 (1d8+3) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 9 (2d8) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way."
+					],
+					"attack": [
+						"Bite|5|1d8+3"
+					]
+				},
+				{
+					"name": "Web (Recharge 5-6)",
+					"text": [
+						"Ranged Weapon Attack: +5 to hit, range 30/60 ft., one creature. Hit: The target is restrained by webbing. As an action, the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
+					],
+					"attack": [
+						"Web|5|0"
+					]
+				}
+			],
+			"page": 74
+		},
+		{
 			"name": "Zuggtmoy",
 			"size": "L",
 			"type": {
