@@ -3262,6 +3262,116 @@
 			"page": 233
 		},
 		{
+			"name": "Deepking Horgar Steelshadow V",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"source": "OotA",
+			"alignment": "lawful evil",
+			"ac": "20 (dwarven plate)",
+			"hp": "52 (8d8+16)",
+			"speed": "30 ft.",
+			"str": 19,
+			"dex": 11,
+			"con": 14,
+			"int": 11,
+			"wis": 11,
+			"cha": 15,
+			"save": "Con +4, Wis +2",
+			"passive": 10,
+			"languages": "Draconic, Giant, and Dwarvish",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "(Optional) Indefinite Madness",
+					"text": [
+						"Horgar has been affected by the demon lords let loose in the Abyss during the Rage of Demons storyline. Roll on the Indefinite Madness table to determine Horgar's flaw."
+					]
+				},
+				{
+					"name": "Duergar Resilience",
+					"text": [
+						"Horgar has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"text": [
+						"While in sunlight, Horgar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+					]
+				},
+				{
+					"name": "Gauntlets of Ogre Power",
+					"text": [
+						"Horgar wields Gauntlets of Ogre Power giving him a Strength score of 19 (+4)."
+					]
+				},
+				{
+					"name": "Brave",
+					"text": [
+						"Horgar has advantage on saving throws against being frightened."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Enlarge (Recharges after a Short or Long Rest)",
+					"text": [
+						"For 1 minute, Horgar magically increases in size, along with anything he is wearing or carrying. While enlarged, Horgar is Large, doubles his damage dice on Strength-based weapon attacks (included in the attacks), and makes Strength checks and Strength saving throws with advantage. If Horgar lacks the room to become Large, he attains the maximum size possible in the space available."
+					]
+				},
+				{
+					"name": "Invisibility (Recharges after a Short or Long Rest)",
+					"text": [
+						"Horgar magically turns invisible until he attacks, casts a spell, or uses his Enlarge, or until his concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment Horgar wears or carries is invisible with him."
+					]
+				},
+				{
+					"name": "Multiattack",
+					"text": [
+						"Horgar makes two melee attacks."
+					]
+				},
+				{
+					"name": "+2 Warhammer",
+					"text": [
+						"Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 10 (1d8+6) bludgeoning damage, or 11 (1d10+6) bludgeoning damage if used with two hands. While Horgar is enlarged, the damage increases to 15 (2d8+6) or 17 (2d10+6) bludgeoning damage, respectively."
+					],
+					"attack": [
+						"|5|2d6+3"
+					]
+				},
+				{
+					"name": "Heavy Crossbow",
+					"text": [
+						"Ranged Weapon Attack: +2 to hit, range 100/400 ft., one target. Hit: 5 (1d10) piercing damage."
+					],
+					"attack": [
+						"|2|1d10"
+					]
+				},
+				{
+					"name": "Leadership (Recharges after a Short or Long Rest)",
+					"text": [
+						"For 1 minute, Horgar can utter a special command or warning whenever a nonhostile creature that he can see within 30 ft. of Horgar makes an attack roll or a saving throw. The creature can add a d4 to its roll provided it can hear and understand Horgar. A creature can benefit from only one Leadership die at a time. This effect ends if Horgar is incapacitated."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Parry",
+					"text": [
+						"Horgar adds 2 to its AC against one melee attack that would hit him. To do so, Horgar must see the attacker and be wielding a melee weapon."
+					]
+				}
+			],
+			"page": 82
+		},
+		{
 			"source": "OotA",
 			"name": "Zhentarim Thug",
 			"size": "M",
