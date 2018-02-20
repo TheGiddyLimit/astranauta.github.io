@@ -326,7 +326,7 @@
 				"entry": "Up to a +4 bonus to Strength, Wisdom, or both"
 			},
 			"signaturespells": {
-				"entry": "Hunter's mark (1st level), beast sense (2nd level), slow (3rd level)"
+				"entry": "{@spell Hunter's mark} (1st level), {@spell beast sense} (2nd level), {@spell slow} (3rd level)"
 			},
 			"entries": [
 				"Baphomet grants the gifts of cunning and physical power. He grants his rank and file followers the Unerring Tracker trait, and cult leaders gain the Incite the Hunters trait. All of his devotees also gain the Labyrinthine Recall trait.",
@@ -334,7 +334,7 @@
 					"type": "entries",
 					"name": "Unerring Tracker",
 					"entries": [
-						"As a bonus action, this creature magically creates a psychic link with one creature it can see. For the next hour, as a bonus action this creature learns the current distance and direction to the target if it is on the same plane of existence. The link ends if this creature is incapacitated or if it uses this ability on a different target."
+						"As a bonus action, this creature magically creates a psychic link with one creature it can see. For the next hour, as a bonus action this creature learns the current distance and direction to the target if it is on the same plane of existence. The link ends if this creature is {@condition incapacitated} or if it uses this ability on a different target."
 					]
 				},
 				{
@@ -361,7 +361,7 @@
 				"entry": "Up to a +4 bonus to Strength, Charisma, or both"
 			},
 			"signaturespells": {
-				"entry": "Charm person (1st level), enlarge/reduce (2nd level), vampiric touch (3rd level)"
+				"entry": "{@spell Charm person} (1st level), {@spell enlarge/reduce} (2nd level), {@spell vampiric touch} (3rd level)"
 			},
 			"entries": [
 				"Demogorgon's followers are typically lone killers driven by the whispering voice of their master. His most blessed followers gain the Two Minds of Madness trait.",
@@ -382,7 +382,7 @@
 				"entry": "Up to a +4 bonus to Wisdom, Charisma, or both"
 			},
 			"signaturespells": {
-				"entry": "Minor illusion (cantrip), disguise self (1st level), invisibility (2nd level), hypnotic pattern (3rd level)"
+				"entry": "{@spell Minor illusion} (cantrip), {@spell disguise self} (1st level), {@spell invisibility} (2nd level), {@spell hypnotic pattern} (3rd level)"
 			},
 			"entries": [
 				"As a master of deceit, Fraz-Urb'luu teaches his initiates the secrets of lies and illusions. They can also gain the Liar's Eye trait.",
@@ -403,7 +403,7 @@
 				"entry": "Up to a +4 bonus to Constitution, Charisma, or both"
 			},
 			"signaturespells": {
-				"entry": "False life (1st level), hold person (2nd level), fear (3rd level)"
+				"entry": "{@spell False life} (1st level), {@spell hold person} (2nd level), {@spell fear} (3rd level)"
 			},
 			"entries": [
 				"The Lord of Forbidden Pleasures grants his cultists the ability to transform even the most hideous pain into pleasure. His cultists gain the Joy from Pain trait, while his cult leaders gain the Master of Pleasures trait.",
@@ -456,7 +456,7 @@
 				"entry": "Up to a +4 bonus to Intelligence, Wisdom, or both"
 			},
 			"signaturespells": {
-				"entry": "False life (1st level), ray of enfeeblement (2nd level), animate dead (3rd level)"
+				"entry": "{@spell False life} (1st level), {@spell ray of enfeeblement} (2nd level), {@spell animate dead} (3rd level)"
 			},
 			"entries": [
 				"In most cases, Orcus transforms his followers into undead creatures such as ghouls and wights. Sometimes he needs his followers to retain their mortal forms, to more easily infiltrate a kingdom or city. He grants rank and file cultists the Undying Soul trait, and his cult leaders gain the Aura of Death trait.",
@@ -471,7 +471,7 @@
 					"type": "entries",
 					"name": "Aura of Death",
 					"entries": [
-						"This creature emanates a deathly aura that extends 30 feet in every direction from its space while it isn't incapacitated. The aura is blocked by total cover. While in the aura, the creature and any friendly undead are immune to the frightened condition and have resistance to radiant damage. Enemies suffer disadvantage on death saving throws while in the aura."
+						"This creature emanates a deathly aura that extends 30 feet in every direction from its space while it isn't {@condition incapacitated}. The aura is blocked by total cover. While in the aura, the creature and any friendly undead are immune to the {@condition frightened} condition and have resistance to radiant damage. Enemies suffer disadvantage on death saving throws while in the aura."
 					]
 				}
 			],
@@ -484,7 +484,7 @@
 				"entry": "Up to a +4 bonus to Strength and Dexterity, with an equal penalty to Intelligence and Charisma"
 			},
 			"signaturespells": {
-				"entry": "Tasha's hideous laughter (1st level), crown of madness (2nd level), fear (3rd level)"
+				"entry": "{@spell Tasha's hideous laughter} (1st level), {@spell crown of madness} (2nd level), {@spell fear} (3rd level)"
 			},
 			"entries": [
 				"Yeenoghu's followers form roving packs of cannibalistic marauders. They grow more like gnolls in temperament and action with each passing day. His most devoted followers gain the Gnashing Jaws action option and the Rampage trait, while cult leaders gain the Aura of Bloodthirst trait.",
@@ -506,7 +506,7 @@
 					"type": "entries",
 					"name": "Aura of Bloodthirst",
 					"entries": [
-						"If this creature isn't incapacitated, any creature with the Rampage trait can make its Gnashing Jaws attack as a bonus action while within 10 feet of this creature."
+						"If this creature isn't {@condition incapacitated}, any creature with the Rampage trait can make its Gnashing Jaws attack as a bonus action while within 10 feet of this creature."
 					]
 				}
 			],
@@ -524,7 +524,7 @@
 					"type": "entries",
 					"name": "Spore Kissed",
 					"entries": [
-						"This creature is immune to the charmed and frightened conditions. In addition, if it is reduced to 0 hit points, each creature within 10 feet of it takes poison damage equal to its number of Hit Dice."
+						"This creature is immune to the {@condition charmed} and {@condition frightened} conditions. In addition, if it is reduced to 0 hit points, each creature within 10 feet of it takes poison damage equal to its number of Hit Dice."
 					]
 				}
 			],
