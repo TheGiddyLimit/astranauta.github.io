@@ -1592,6 +1592,16 @@
 		},
 		{
 			"name": "Morkoth",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), the morkoth takes a lair action to cause one of the effects described below:",
+				{
+					"type": "list",
+					"items": [
+						"The morkoth uses its Hypnosis action, originating at a point within 120 feet of itself. It doesn't need to see the effect's point of origin.",
+						"The morkoth casts {@spell darkness}, {@spell dispel magic}, or {@spell misty step}, using Intelligence as its spellcasting ability and without expending a spell slot."
+					]
+				}
+			],
 			"regionalEffects": [
 				"The island surrounding a morkoth's lair is warped by the creature's presence, creating the following effects:",
 				{
