@@ -1,0 +1,1722 @@
+{
+	"monster": [
+		{
+			"source": "AL 3pp",
+			"name": "Krenshar",
+			"size": "M",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "13",
+			"hp": "28 (8d6)",
+			"speed": {
+				"walk": 40
+			},
+			"str": 14,
+			"dex": 16,
+			"con": 11,
+			"int": 2,
+			"wis": 12,
+			"cha": 4,
+			"passive": 11,
+			"cr": "2",
+			"senses": "darkvision 60 ft.",
+			"skill": {
+				"intimidation": "+5"
+			},
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The krenshar makes two attacks: one with its bite and one with its claws."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) slashing damage."
+					]
+				},
+				{
+					"name": "Frightening Roar",
+					"entries": [
+						"Creatures other than krenshar within 60 feet of a krenshar when it roars must succeed on a DC 11 Charisma saving throw or fall prone and become frightened for 1 minute. Creatures cannot stand from prone while frightened by the krenshar. At the end of their turns, affected creatures can attempt another DC 11 Charisma saving throw to end the frightened condition. When a creature makes the saving throw or the effect ends, the creature is immune to all krenshars’ Frightening Roar for the next 24 hours."
+					]
+				}
+			]			
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Kes'thak the Lizard King",
+			"size": "L",
+			"type": "humanoid (lizardfolk)",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": "17 (natural armor)",
+			"hp": "133 (14d10+56)",
+			"speed": {
+				"walk": 40,
+				"swim": 40
+			},
+			"str": 18,
+			"dex": 13,
+			"con": 18,
+			"int": 12,
+			"wis": 13,
+			"cha": 15,
+			"passive": 14,
+			"cr": "6",
+			"senses": "darkvision 60 ft., truesight 30 ft.",
+			"languages": "Abyssal, Common, Draconic",
+			"skill": {
+				"athletics": "+7",
+				"deception": "+5",
+				"perception": "+4"
+			},
+			"save": "Con +7, Wis +4, Cha +5",
+			"trait": [
+				{
+					"name": "Demonic Head",
+					"entries": [
+						"Kes’thak has advantage on Wisdom (Perception) checks and cannot be blinded, charmed, deafened, frightened, stunned, or knocked unconscious."
+					]
+				},
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"Kes’thak can hold his breath for 15 minutes."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"If Kes’thak fails a saving throw, he can choose to succeed instead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Kes’thak makes three attacks: one with his claws and two with his bite."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) piercing damage."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 11 (2d6+4) slashing damage."
+					]
+				},
+				{
+					"name": "Demonic Shout (Recharge 6)",
+					"entries": [
+						"Kes’thak unleashes a terrible shout. Each creature within 10 feet of Kes’thak must make a DC 14 Constitution saving throw, taking 45 (10d8) force damage on a failed saving throw, or half as much damage on a successful one."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Demonic Claw",
+					"entries": [
+						"When an adjacent creature targets Kes’thak with a melee attack, he can use a reaction to make his claws attack against that creature."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Oak Wilden Clubber",
+			"size": "M",
+			"type": "humanoid",
+			"alignment": [
+				"N"
+			],
+			"ac": "13 (natural armor)",
+			"hp": "32 (5d8+10)",
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 10,
+			"con": 15,
+			"int": 10,
+			"wis": 11,
+			"cha": 9,
+			"skill": {
+				"athletics": "+5",
+				"intimidation": "+1"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": 10,
+			"languages": "Common, Elven, Sylvan",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Brute",
+					"entries": [
+						"A melee weapon deals one extra die of damage when the oak wilden clubber hits with it (included in the attacks)."
+					]
+				},
+				{
+					"name": "Nature’s Fortification",
+					"entries": [
+						"When an adjacent ally is reduced to 0 hit points, the oak wilden clubber gains 5 temporary hit points. This ability refreshes after a short or long rest."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Greatclub",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 12 (2d8+3) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Javelin",
+					"entries": [
+						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 30/120, one target. Hit: 10 (2d6+3) piercing damage in melee or 6 (1d6+3) piercing damage at range."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Oak Wilden Punisher",
+			"size": "M",
+			"type": "humanoid",
+			"alignment": [
+				"N"
+			],
+			"ac": "13 (natural armor)",
+			"hp": "65 (10d8+20)",
+			"speed": {
+				"walk": 30
+			},
+			"str": 18,
+			"dex": 10,
+			"con": 15,
+			"int": 10,
+			"wis": 11,
+			"cha": 9,
+			"skill": {
+				"athletics": "+6",
+				"intimidation": "+1"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": 10,
+			"languages": "Common, Elven, Sylvan",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Brute",
+					"entries": [
+						"A melee weapon deals one extra die of damage when the oak wilden punisher hits with it (included in the attacks)."
+					]
+				},
+				{
+					"name": "Nature’s Fortification",
+					"entries": [
+						"When an adjacent ally is reduced to 0 hit points, the oak wilden punisher gains 10 temporary hit points. This ability refreshes after a short or long rest."
+					]
+				},
+				{
+					"name": "Oak’s Resolve",
+					"entries": [
+						"The oak wilden punisher has advantage on Wisdom, Intelligence, and Charisma saving throws."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The oak wilden punisher makes two melee attacks."
+					]
+				},
+				{
+					"name": "Greatclub",
+					"entries": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Javelin",
+					"entries": [
+						"Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 30/120, one target. Hit: 11 (2d6+4) piercing damage in melee or 7 (1d6+4) piercing damage at range."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Pine Wilden Warrior",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"fey"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"ac": "13",
+			"hp": "22 (5d8)",
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 16,
+			"con": 11,
+			"int": 12,
+			"wis": 15,
+			"cha": 10,
+			"skill": {
+				"perception": "+4",
+				"survival": "+4"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": 14,
+			"languages": "Common, Elven, Sylvan",
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Nature’s Fortification",
+					"entries": [
+						"When an adjacent ally is reduced to 0 hit points, the pine wilden warrior gains 5 temporary hit points. This ability refreshes after a short or long rest."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Rapier",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or 20/60 ft., one target. Hit: 5 (1d4+3) piercing damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Wrathful Needles",
+					"entries": [
+						"When an adjacent enemy hits an ally of the pine wilden warrior with a melee attack, the warrior can use a reaction to deal 3 (1d6) points of piercing damage unless the enemy succeeds on a DC 11 Dexterity saving throw."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Pine Wilden Ranger",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"fey"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"ac": "14",
+			"hp": "55 (10d8+10)",
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 18,
+			"con": 12,
+			"int": 12,
+			"wis": 17,
+			"cha": 10,
+			"skill": {
+				"perception": "+5",
+				"stealth": "+6",
+				"survival": "+5"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": 15,
+			"languages": "Common, Elven, Sylvan",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Nature’s Fortification",
+					"entries": [
+						"When an adjacent ally is reduced to 0 hit points, the pine wilden ranger gains 10 temporary hit points. This ability refreshes after a short or long rest."
+					]
+				},
+				{
+					"name": "Wrathful Mark",
+					"entries": [
+						"As a bonus action, a pine wilden ranger can chose one enemy as its mark. Once per turn, the pine wilden ranger does an extra 3 (1d6) damage to their marked enemy when they hit with a melee or ranged weapon attack."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The pine wilden ranger makes two attacks, either with its rapier or its daggers."
+					]
+				},
+				{
+					"name": "Rapier",
+					"entries": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) piercing damage."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or 20/60 ft., one target. Hit: 6 (1d4+4) piercing damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Wrathful Needles",
+					"entries": [
+						"When an adjacent enemy hits an ally of the pine wilden ranger with a melee attack, the ranger can use a reaction to deal 5 (2d4) points of piercing damage unless the enemy succeeds on a DC 12 Dexterity saving throw."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Willow Wilden Watcher",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"fey"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"ac": "12",
+			"hp": "11 (2d8+2)",
+			"speed": {
+				"walk": 30
+			},
+			"str": 8,
+			"dex": 14,
+			"con": 13,
+			"int": 12,
+			"wis": 16,
+			"cha": 12,
+			"skill": {
+				"nature": "+3",
+				"perception": "+5"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": 15,
+			"languages": "Common, Elven, Sylvan",
+			"cr": "1/4",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The willow wilden watcher is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 13, {@hit 5} to hit with spell attacks). The watcher has the following spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell druidcraft}",
+								"{@spell shillelagh}",
+								"{@spell thorn whip}"
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								"{@spell cure wounds}",
+								"{@spell faerie fire}",
+								"{@spell longstrider}"
+							]
+						}
+					}
+				}
+			],
+			"trait": [
+				{
+					"name": "Nature’s Fortification",
+					"entries": [
+						"When an adjacent ally is reduced to 0 hit points, the willow wilden watcher gains 3 temporary hit points. This ability refreshes after a short or long rest."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Club",
+					"entries": [
+						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Shillelagh",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) bludgeoning damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Willow Wilden Sentinel",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"fey"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"ac": "12 (16 with barkskin)",
+			"hp": "66 (12d8+12)",
+			"speed": {
+				"walk": 30
+			},
+			"str": 8,
+			"dex": 14,
+			"con": 13,
+			"int": 14,
+			"wis": 18,
+			"cha": 15,
+			"skill": {
+				"arcana": "+4",
+				"nature": "+4",
+				"perception": "+6",
+				"religion": "+4"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": 16,
+			"languages": "Common, Elven, Sylvan",
+			"cr": "4",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The willow wilden sentinel is an 8th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, +6 to hit with spell attacks). The sentinel has the following spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell druidcraft}",
+								"{@spell shillelagh}",
+								"{@spell thorn whip}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell cure wounds}",
+								"{@spell faerie fire}",
+								"{@spell longstrider}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell barkskin}",
+								"{@spell heat metal}",
+								"{@spell hold person}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell call lightning}",
+								"{@spell dispel magic}",
+								"{@spell wind wall}"
+							]
+						},
+						"4": {
+							"slots": 2,
+							"spells": [
+								"{@spell confusion}",
+								"{@spell ice storm}"
+							]
+						}
+					}
+				}
+			],
+			"trait": [
+				{
+					"name": "Nature’s Fortification",
+					"entries": [
+						"When an adjacent ally is reduced to 0 hit points, the willow wilden sentinel gains 15 temporary hit points. This ability refreshes after a short or long rest."
+					]
+				},
+				{
+					"name": "Nature’s Watchfulness",
+					"entries": [
+						"A willow wilden sentinel cannot be surprised and gains advantage on its initiative rolls."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Club",
+					"entries": [
+						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Shillelagh",
+					"entries": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Chameleon Lizardfolk Snoop",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"lizardfolk"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"ac": "12",
+			"hp": "16 (3d8+3)",
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 10,
+			"dex": 14,
+			"con": 12,
+			"int": 13,
+			"wis": 11,
+			"cha": 15,
+			"skill": {
+				"deception": "+4",
+				"persuasion": "+4",
+				"stealth": "+4"
+			},
+			"senses": "",
+			"passive": 10,
+			"languages": "Common, Draconic",
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Camouflage",
+					"entries": [
+						"The chameleon lizardfolk snoop can use a bonus action to gain advantage on the next Stealth check it makes on that turn."
+					]
+				},
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The chameleon lizardfolk snoop can hold its breath for 15 minutes."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 3 (1d6) slashing damage."
+					]
+				},
+				{
+					"name": "Short Sword",
+					"entries": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage. If the chameleon lizardfolk snoop has advantage on the attack roll, the attack deals an extra 3 (1d6) piercing damage."
+					]
+				},
+				{
+					"name": "Sling",
+					"entries": [
+						"Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target. Hit: 4 (1d4+2) bludgeoning damage. If the chameleon lizardfolk snoop has advantage on the attack roll, the attack deals an extra 3 (1d6) bludgeoning damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Sudden Blur",
+					"entries": [
+						"When the chameleon lizardfolk snoop is targeted by a ranged attack, it can use its reaction to change color. That ranged attack is made at disadvantage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Chameleon Lizardfolk Spy",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"lizardfolk"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"ac": "14",
+			"hp": "33 (6d8+6)",
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 10,
+			"dex": 18,
+			"con": 12,
+			"int": 13,
+			"wis": 11,
+			"cha": 17,
+			"skill": {
+				"deception": "+5",
+				"persuasion": "+5",
+				"stealth": "+6"
+			},
+			"senses": "",
+			"passive": 10,
+			"languages": "Common, Draconic",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Distracting Tail",
+					"entries": [
+						"The chameleon lizardfolk spy can use a bonus action to distract one adjacent enemy with its tail. The next melee attack against that enemy on that turn is made with advantage."
+					]
+				},
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The chameleon lizardfolk spy can hold its breath for 15 minutes."
+					]
+				},
+				{
+					"name": "Uncanny Camouflage",
+					"entries": [
+						"The chameleon lizardfolk spy has advantage on Stealth checks."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The chameleon lizardfolk spy makes two melee attacks with its short sword or two ranged attacks with its sling."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 3 (1d6) slashing damage."
+					]
+				},
+				{
+					"name": "Short Sword",
+					"entries": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage. If the chameleon lizardfolk spy has advantage on the attack roll, the attack deals an extra 7 (2d6) piercing damage."
+					]
+				},
+				{
+					"name": "Sling",
+					"entries": [
+						"Ranged Weapon Attack: +6 to hit, range 30/120 ft., one target. Hit: 6 (1d4+4) bludgeoning damage. If the chameleon lizardfolk spy has advantage on the attack roll, the attack deals an extra 7 (2d6) bludgeoning damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Expert Dodger",
+					"entries": [
+						"When the chameleon lizardfolk spy is targeted by a ranged attack, it can use its reaction to change color. All ranged attacks made against the chameleon lizardfolk spy until the start of its next turn are made at disadvantage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Gecko Lizardfolk Scout",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"lizardfolk"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"ac": "14 (natural armor)",
+			"hp": "17 (3d8+3)",
+			"speed": {
+				"walk": 40,
+				"climb": 40,
+				"swim": 40
+			},
+			"str": 8,
+			"dex": 15,
+			"con": 12,
+			"int": 15,
+			"wis": 14,
+			"cha": 11,
+			"skill": {
+				"acrobatics": "+4",
+				"perception": "+4",
+				"survival": "+4"
+			},
+			"senses": "",
+			"passive": 14,
+			"languages": "Common, Draconic",
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The gecko lizardfolk scout can hold its breath for 15 minutes."
+					]
+				},
+				{
+					"name": "Quick Escape",
+					"entries": [
+						"The gecko lizardfolk scout can take the Disengage action as a bonus action in each of its turns."
+					]
+				},
+				{
+					"name": "Toe Pads",
+					"entries": [
+						"The gecko lizardfolk scout can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) slashing damage."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"Melee or Ranged Attack: +4 to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 4 (1d4+2) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Gecko Lizardfolk Infiltrator",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"lizardfolk"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"ac": "14 (natural armor)",
+			"hp": "27 (5d8+5)",
+			"speed": {
+				"walk": 40,
+				"climb": 40,
+				"swim": 40
+			},
+			"str": 8,
+			"dex": 16,
+			"con": 12,
+			"int": 15,
+			"wis": 14,
+			"cha": 11,
+			"skill": {
+				"acrobatics": "+5",
+				"perception": "+4",
+				"stealth": "+5",
+				"survival": "+4"
+			},
+			"senses": "",
+			"passive": 14,
+			"languages": "Common, Draconic",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The gecko lizardfolk infiltrator can hold its breath for 15 minutes."
+					]
+				},
+				{
+					"name": "Quick Escape",
+					"entries": [
+						"The gecko lizardfolk infiltrator can take the Disengage or Hide action as a bonus action in each of its turns."
+					]
+				},
+				{
+					"name": "Toe Pads",
+					"entries": [
+						"The gecko lizardfolk infiltrator can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The gecko lizardfolk infiltrator makes two attacks with its daggers."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) slashing damage."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"Melee or Ranged Attack: +5 to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 5 (1d4+3) piercing damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Lightning Retort",
+					"entries": [
+						"The gecko lizardfolk infiltrator can make a dagger attack against an adjacent enemy who hits it with a melee attack. If this dagger attack hits, it does an additional 3 (1d6) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Gila Lizardfolk Brute",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"lizardfolk"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": "16 (natural armor, shield)",
+			"hp": "27 (5d8+5)",
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 15,
+			"dex": 12,
+			"con": 13,
+			"int": 7,
+			"wis": 14,
+			"cha": 7,
+			"skill": {
+				"athletics": "+4",
+				"perception": "+4",
+				"survival": "+4"
+			},
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"senses": "",
+			"passive": 14,
+			"languages": "Draconic",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The gila lizardfolk brute can hold its breath for 15 minutes."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) slashing damage, and the target must make a DC 11 Constitution saving throw, taking 7 (2d6) poison damage on a failed save. If the poison reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Gila Lizardfolk Savage",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"lizardfolk"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": "16 (natural armor, shield)",
+			"hp": "65 (10d8+20)",
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 18,
+			"dex": 12,
+			"con": 15,
+			"int": 7,
+			"wis": 14,
+			"cha": 7,
+			"skill": {
+				"athletics": "+6",
+				"perception": "+4",
+				"survival": "+4"
+			},
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"senses": "",
+			"passive": 14,
+			"languages": "Draconic",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Bloodlust",
+					"entries": [
+						"The gila lizardfolk savage can use a bonus action to take the Dash action on its turn. If at the end of the Dash action the gila lizardfolk savage is adjacent to an enemy, it can take a bite attack at disadvantage."
+					]
+				},
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The gila lizardfolk savage can hold its breath for 15 minutes."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The gila lizardfolk savage makes two melee attacks: one with its bite and one with its claws."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) slashing damage, and the target must make a DC 12 Constitution saving throw, taking 14 (4d6) poison damage on a failed save. If the poison reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Komodo Lizardfolk Sentry",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"lizardfolk"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"ac": "14 (natural armor)",
+			"hp": "32 (5d8+10)",
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 17,
+			"dex": 10,
+			"con": 15,
+			"int": 7,
+			"wis": 12,
+			"cha": 11,
+			"skill": {
+				"athletics": "+5",
+				"intimidation": "+2",
+				"perception": "+3"
+			},
+			"senses": "",
+			"passive": 13,
+			"languages": "Common, Draconic",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The komodo lizardfolk sentry can hold its breath for 15 minutes."
+					]
+				},
+				{
+					"name": "Keen Senses",
+					"entries": [
+						"When the komodo lizardfolk sentry can rely on its sense of smell or taste, it has advantage on Perception checks."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The komodo lizardfolk sentry makes two melee attacks: one with its bite and one with its spear."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) slashing damage."
+					]
+				},
+				{
+					"name": "Spear",
+					"entries": [
+						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 (1d6+3) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Komodo Lizardfolk Champion",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"lizardfolk"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"ac": "14 (natural armor, shield)",
+			"hp": "65 (10d8+20)",
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 18,
+			"dex": 10,
+			"con": 15,
+			"int": 7,
+			"wis": 14,
+			"cha": 11,
+			"skill": {
+				"athletics": "+6",
+				"intimidation": "+2",
+				"perception": "+4"
+			},
+			"senses": "",
+			"passive": 14,
+			"languages": "Common, Draconic",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The komodo lizardfolk champion can hold its breath for 15 minutes."
+					]
+				},
+				{
+					"name": "Keen Senses",
+					"entries": [
+						"When the komodo lizardfolk champion can rely on its sense of smell or taste, it has advantage on Perception checks."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The komodo lizardfolk champion makes three melee attacks: one with its bite and two with its spear."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d8+4) slashing damage."
+					]
+				},
+				{
+					"name": "Spear",
+					"entries": [
+						"Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 (1d6+4) piercing damage."
+					]
+				},
+				{
+					"name": "Deliberate Bite",
+					"entries": [
+						"The komodo lizardfolk champion makes one bite attack. This attack is made with advantage, and on a hit the target takes an additional 9 (2d8) bludgeoning damage and is restrained until the start of its next turn."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Abyssal Giant Lizard",
+			"size": "L",
+			"type": {
+				"type": "fiend",
+				"tags": [
+					"demon"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": "11 (natural armor)",
+			"hp": "37 (5d10+10)",
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 15,
+			"dex": 10,
+			"con": 15,
+			"int": 4,
+			"wis": 10,
+			"cha": 4,
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"poisoned"
+			],
+			"senses": "darkvision 60 ft.",
+			"passive": 10,
+			"languages": "understands Abyssal or Draconic but cannot speak",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Rampage",
+					"entries": [
+						"When it reduces a creature to 0 hit points with a melee attack on its turn, the abyssal giant lizard can take a bonus action to make a bite attack against a different creature in reach."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 10 ft., one target. Hit: 8 (1d10+3) piercing damage, plus 5 (2d4) poison damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Giant Spitting Lizard",
+			"size": "L",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "12 (natural armor)",
+			"hp": "45 (6d10+12)",
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 16,
+			"dex": 11,
+			"con": 14,
+			"int": 2,
+			"wis": 13,
+			"cha": 4,
+			"senses": "darkvision 30 ft.",
+			"passive": 11,
+			"cr": "2",
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) bludgeoning damage, plus 5 (2d4) poison damage. If the target is a Large or smaller creature, it is grappled (escape DC 13). Until the grapple ends, the giant spitting lizard can only bite the grappled creature and has advantage on attack rolls to do so."
+					]
+				},
+				{
+					"name": "Poison Spit",
+					"entries": [
+						"Ranged Weapon Attack: +5 to hit, range 30 ft., two adjacent targets. Hit: 13 (3d6+3) poison damage. The giant spitting lizard cannot make this attack if it has a creature grappled."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Tail",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 10 ft., one target. This attack is triggered when a creature attempts to move adjacent to the giant spitting lizard. Hit: The target is pushed 10 feet and knocked prone, ending that creature’s movement."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Mutated Crocodile",
+			"size": "L",
+			"type": "beast",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": "12 (natural armor)",
+			"hp": "60 (8d10+16)",
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 17,
+			"dex": 10,
+			"con": 15,
+			"int": 2,
+			"wis": 13,
+			"cha": 4,
+			"vulnerable": [
+				"fire"
+			],
+			"immune": [
+				"cold"
+			],
+			"conditionImmune": [
+				"charmed"
+			],
+			"senses": "darkvision 30 ft.",
+			"passive": 11,
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Drink Blood",
+					"entries": [
+						"If a mutated crocodile has a living creature grappled, it can use a bonus action to have the eel tentacles on its face drain the grappled creature’s blood. This reduces the maximum hits points of the creature by 3. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+					]
+				},
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The crocodile can hold its breath for 15 minutes."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 11 (2d8+2) piercing damage, and the target is grappled (escape DC 13). Until this grapple ends, the target is restrained, and the crocodile can’t bite another target."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Mutated Hunting Dogs",
+			"size": "M",
+			"type": "beast",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": "14 (natural armor)",
+			"hp": "39 (6d8+12)",
+			"speed": {
+				"walk": 40
+			},
+			"str": 15,
+			"dex": 13,
+			"con": 15,
+			"int": 2,
+			"wis": 13,
+			"cha": 4,
+			"immune": [
+				"cold"
+			],
+			"vulnerable": [
+				"fire"
+			],
+			"conditionImmune": [
+				"charmed"
+			],
+			"skill": {
+				"perception": "+3"
+			},
+			"senses": "darkvision 30 ft.",
+			"passive": 13,
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Drink Blood",
+					"entries": [
+						"If a mutated hunting dog hits a creature with a bite attack while it has advantage on that attack, it can use a bonus action to have the eel tentacles on its face drain the target’s blood. This reduces the maximum hits points of the creature by 1. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+					]
+				},
+				{
+					"name": "Keen Hearing and Smell",
+					"entries": [
+						"The mutated hunting dog has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+					]
+				},
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"The mutated hunting dog has advantage on an attack roll against a creature if at least one of the dog’s allies is within 5 feet of the creature and the ally isn’t incapacitated."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) piercing damage. If the target is a creature, it must succeed on a DC 12 Strength saving throw or be knocked prone."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Mutated Giant Vultures",
+			"size": "L",
+			"type": "beast",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": "10",
+			"hp": "37 (5d10+10)",
+			"speed": {
+				"walk": 10,
+				"fly": 60
+			},
+			"str": 15,
+			"dex": 10,
+			"con": 15,
+			"int": 6,
+			"wis": 12,
+			"cha": 7,
+			"immune": [
+				"cold"
+			],
+			"vulnerable": [
+				"fire"
+			],
+			"conditionImmune": [
+				"charmed"
+			],
+			"skill": {
+				"perception": "+3"
+			},
+			"senses": "darkvision 30 ft.",
+			"passive": 13,
+			"languages": "understands Common but can’t speak it",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Drink Blood",
+					"entries": [
+						"If a mutated giant vulture hits a creature with a beak attack, it can use a bonus action to have the eel tentacles on its face drain the target’s blood. This reduces the maximum hits points of the creature by 2. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+					]
+				},
+				{
+					"name": "Keen Hearing and Smell",
+					"entries": [
+						"The mutated giant vulture has advantage on Wisdom (Perception) checks that rely on sight or smell."
+					]
+				},
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"The mutated giant vulture has advantage on an attack roll against a creature if at least one of the vulture’s allies is within 5 feet of the creature and the ally isn’t incapacitated."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The vulture makes two attacks: one with its beak and one with its talons."
+					]
+				},
+				{
+					"name": "Beak",
+					"entries": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4+2) piercing damage."
+					]
+				},
+				{
+					"name": "Talons",
+					"entries": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) slashing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Ilsadun, Mutated Dwarf",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": "16 (chainmail)",
+			"hp": "85 (10d8+40)",
+			"speed": {
+				"walk": 25
+			},
+			"str": 18,
+			"dex": 10,
+			"con": 18,
+			"int": 11,
+			"wis": 11,
+			"cha": 12,
+			"save": "Str +6, Con +6",
+			"immune": [
+				"cold"
+			],
+			"vulnerable": [
+				"fire"
+			],
+			"conditionImmune": [
+				"charmed"
+			],
+			"senses": "darkvision 60 ft.",
+			"passive": 10,
+			"languages": "Common, Dwarf",
+			"cr": "4",
+			"trait": [
+				{
+					"name": "Drink Blood",
+					"entries": [
+						"If Ilsadun hits the same creature with two greatclub attacks on the same turn, she can use a bonus action to have the eel tentacles on her face drain the target’s blood. This reduces the maximum hits points of the creature by 4. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Ilsadun makes two greatclub attacks."
+					]
+				},
+				{
+					"name": "Greatclub",
+					"entries": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Frantic Surge (1/Day)",
+					"entries": [
+						"Ilsadun makes two greatclub attacks against each adjacent creature. Until the start of her next turn, all melee attacks against Ilsadun are made with advantage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Qamala, Lizardfolk Priestess",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"lizardfolk"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": "13 (natural armor)",
+			"hp": "27 (5d8+5)",
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 14,
+			"dex": 10,
+			"con": 13,
+			"int": 11,
+			"wis": 17,
+			"cha": 14,
+			"skill": {
+				"": "perception+5",
+				"religion": "+2",
+				"survival": "+5"
+			},
+			"senses": "",
+			"passive": 15,
+			"languages": "Common, Draconic",
+			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Qamala is a 5th-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 13, +5 to hit with spell attacks). She has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell light}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell cure wounds}",
+								"{@spell guiding bolt}",
+								"{@spell inflict wounds}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell lesser restoration}",
+								"{@spell spiritual weapon}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell spirit guardians}"
+							]
+						}
+					}
+				}
+			],
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"Qamala can hold her breath for 15 minutes."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Divine Guidance",
+					"entries": [
+						"Qamala can use her reaction each round to guide the weapon attacks of her allies. When an ally is about to attack, Qamala spends a level 1 spell slot to grant that ally an extra 5 (2d4) damage of the type done. If she expends a spell slot of level 2 or higher, the extra damage increases by 1d4 for each level about 1st."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"name": "Alchemist",
+			"size": "M",
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": "13",
+			"hp": "55 (10d8+10)",
+			"speed": "30 ft.",
+			"str": 11,
+			"dex": 16,
+			"con": 13,
+			"int": 17,
+			"wis": 13,
+			"cha": 10,
+			"skill": {
+				"arcana": "+5",
+				"medicine": "+3",
+				"nature": "+5"
+			},
+			"senses": "",
+			"passive": 11,
+			"languages": "any one language (usually Common)",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Poisoned Dagger (3/Day)",
+					"entries": [
+						"As a bonus action, the alchemist can add 1d10 poison damage to its next damage roll with a dagger."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The alchemist makes two attacks with its dagger."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 (1d4+3) piercing damage."
+					]
+				},
+				{
+					"name": "Caustic Spray (Recharge 5-6)",
+					"entries": [
+						"The alchemist mixes chemicals to cause a 15-foot cone of acid to shoot forth. Each creature in that area must make a DC 13 Dexterity saving throw, taking 22 (4d10) acid damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			]
+		}
+	]
+}
