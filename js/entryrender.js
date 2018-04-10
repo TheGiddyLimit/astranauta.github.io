@@ -815,12 +815,16 @@ EntryRenderer.utils = {
 		return `<tr><td class="divider" colspan="6"><div></div></td></tr>`;
 	},
 
+	getSourceSubText (it) {
+		return it.sourceSub ? ` \u2014 ${it.sourceSub}` : "";
+	},
+
 	getNameTr: (it, addPageNum, prefix, suffix) => {
 		return `<tr>
 					<th class="name" colspan="6">
 						<div class="name-inner">
 							<span class="stats-name">${prefix || ""}${it.name}${suffix || ""}</span>
-							<span class="stats-source source${it.source}" title="${Parser.sourceJsonToFull(it.source)}">
+							<span class="stats-source source${it.source}" title="${Parser.sourceJsonToFull(it.source)}${EntryRenderer.utils.getSourceSubText(it)}">
 								${Parser.sourceJsonToAbv(it.source)}${addPageNum && it.page ? ` p${it.page}` : ""}
 							</span>
 						</div>
@@ -834,7 +838,8 @@ EntryRenderer.utils = {
 
 	_getPageTrText: (it) => {
 		const addSourceText = it.additionalSources && it.additionalSources.length ? `. Additional information from ${it.additionalSources.map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}.` : "";
-		return it.page ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</i>, page ${it.page}${addSourceText}` : ""
+		const sourceSub = EntryRenderer.utils.getSourceSubText(it);
+		return it.page ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}${addSourceText}` : ""
 	},
 
 	tabButton: (label, funcChange, funcPopulate) => {

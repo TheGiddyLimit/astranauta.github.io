@@ -1225,6 +1225,7 @@ SRC_UATSC = SRC_UA_PREFIX + "ThreeSubclasses";
 SRC_UAOD = SRC_UA_PREFIX + "OrderDomain";
 
 SRC_3PP_SUFFIX = " 3pp";
+SRC_AL_3PP = "AL" + SRC_3PP_SUFFIX;
 SRC_BOLS_3PP = "BoLS" + SRC_3PP_SUFFIX;
 SRC_CC_3PP = "CC" + SRC_3PP_SUFFIX;
 SRC_FEF_3PP = "FEF" + SRC_3PP_SUFFIX;
@@ -1319,6 +1320,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UA3PE] = UA_PREFIX + "Three-Pillar Experience";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAGHI] = UA_PREFIX + "Greyhawk Initiative";
 Parser.SOURCE_JSON_TO_FULL[SRC_UATSC] = UA_PREFIX + "Three Subclasses";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAOD] = UA_PREFIX + "Order Domain";
+Parser.SOURCE_JSON_TO_FULL[SRC_AL_3PP] = "Adventurers League" + PP3_SUFFIX;
 Parser.SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] = "Book of Lost Spells" + PP3_SUFFIX;
 Parser.SOURCE_JSON_TO_FULL[SRC_CC_3PP] = "Critter Compendium" + PP3_SUFFIX;
 Parser.SOURCE_JSON_TO_FULL[SRC_FEF_3PP] = "Fifth Edition Foes" + PP3_SUFFIX;
@@ -1403,6 +1405,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UA3PE] = "UA3PE";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAGHI] = "UAGHI";
 Parser.SOURCE_JSON_TO_ABV[SRC_UATSC] = "UATSC";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAOD] = "UAOD";
+Parser.SOURCE_JSON_TO_ABV[SRC_AL_3PP] = "AL (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BoLS (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_CC_3PP] = "CC (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_FEF_3PP] = "FEF (3pp)";
@@ -2799,6 +2802,7 @@ BrewUtil = {
 
 			$brewList.empty();
 			if (BrewUtil.homebrew) {
+				// TODO improve layout
 				$brewList.append(`
 					<div class="row">
 						<span class="col-xs-5">Source</span>
@@ -2905,6 +2909,7 @@ BrewUtil = {
 			}
 
 			refreshBrewList();
+			// TODO ensure source(s) are displayed in filter
 		}
 
 		BrewUtil.addBrewRemote = (ele, jsonUrl) => {
