@@ -1772,6 +1772,311 @@
 					]
 				}
 			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "DDIA-XGE Underworld Speculation",
+			"page": 14,
+			"name": "Algaepygmy",
+			"size": "S",
+			"type": "plant",
+			"alignment": [
+				"N"
+			],
+			"ac": "13 (natural armor)",
+			"hp": "9 (2d6+2)",
+			"speed": {
+				"walk": 5,
+				"swim": 30
+			},
+			"str": 7,
+			"dex": 14,
+			"con": 13,
+			"int": 6,
+			"wis": 11,
+			"cha": 7,
+			"skill": {
+				"perception": "+2",
+				"stealth": "+4"
+			},
+			"resist": [
+				"lightning",
+				"piercing"
+			],
+			"senses": "darkvision 60 ft.",
+			"passive": 12,
+			"languages": "Algaepygmy",
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"The algaepygmy can breathe both air and water."
+					]
+				},
+				{
+					"name": "Plant Camouflage",
+					"entries": [
+						"The algaepygmy has advantage on Dexterity (Stealth) checks it makes in any terrain with ample obscuring plant life."
+					]
+				},
+				{
+					"name": "Regeneration",
+					"entries": [
+						"The algaepygmy regains 3 hit points at the start of its turn. If it takes cold, fire, or necrotic damage, this trait doesn’t function at the start of the algaepygmy’s next turn. The algaepygmy dies only if it starts its turn with 0 hit points and doesn’t regenerate."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Claws",
+					"entries": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) slashing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "DDIA-XGE Underworld Speculation",
+			"page": 15,
+			"name": "Giant Clam",
+			"size": "M",
+			"type": "beast",
+			"alignment": [
+				"N"
+			],
+			"ac": "12 inside; 18 shell (natural armor)",
+			"hp": "58 (9d8+18)",
+			"speed": {
+				"walk": 5
+			},
+			"str": 17,
+			"dex": 12,
+			"con": 15,
+			"int": null,
+			"wis": null,
+			"cha": null,
+			"conditionImmune": [
+				"blind",
+				"prone"
+			],
+			"senses": "tremorsense 60 ft.",
+			"passive": 11,
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Adhesive (Inside Only)",
+					"entries": [
+						"The giant clam adheres to anything that touches it. A Large or smaller creature adhered to the giant clam is also grappled by it (escape DC 13). Ability checks made to escape this grapple have disadvantage."
+					]
+				},
+				{
+					"name": "Grappler",
+					"entries": [
+						"The giant clam has advantage on attack rolls against any creature grappled by it."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Pseudopod",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) bludgeoning damage. The target is subjected to its Adhesive trait."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) bludgeoning damage plus 4 (1d8) acid damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "DDIA-XGE Underworld Speculation",
+			"page": 16,
+			"name": "Sylgar",
+			"size": "H",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "13 (natural armor)",
+			"hp": "126 (11d12+55)",
+			"speed": {
+				"walk": 0,
+				"swim": 50
+			},
+			"str": 23,
+			"dex": 11,
+			"con": 21,
+			"int": 1,
+			"wis": 10,
+			"cha": 5,
+			"skill": {
+				"perception": "+3"
+			},
+			"senses": "blindsight 60 ft.",
+			"passive": 13,
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Blood Frenzy",
+					"entries": [
+						"Sylgar has advantage on melee attack rolls against any creature that doesn’t have all its hit points."
+					]
+				},
+				{
+					"name": "Water Breathing",
+					"entries": [
+						"Sylgar can breathe only underwater."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 22 (3d10+6) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "DDAL-07-01 A City on the Edge",
+			"page": 49,
+			"name": "Yuan-Ti Broodling",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"yuan-ti"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": "10",
+			"hp": "13 (2d8+4)",
+			"speed": {
+				"walk": 30
+			},
+			"str": 13,
+			"dex": 10,
+			"con": 15,
+			"int": 2,
+			"wis": 12,
+			"cha": 5,
+			"senses": "darkvision 30 ft.",
+			"passive": 11,
+			"languages": "Common, Abyssal, Draconic",
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Keen Smell",
+					"entries": [
+						"The broodling has advantage on Wisdom (Perception) checks that rely on smell."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The broodling makes two attacks, one with its bite and one with its claws."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) piercing damage."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 6 (2d4+1) slashing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "CCC-SFBAY-01-01 Plots in Motion",
+			"page": 21,
+			"name": "Huge Chuul",
+			"size": "Huge",
+			"type": {
+				"type": "aberration"
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": "17 (natural armor)",
+			"hp": "171 (18d10+72)",
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 20,
+			"dex": 10,
+			"con": 18,
+			"int": 6,
+			"wis": 11,
+			"cha": 6,
+			"skill": {
+				"perception": "+6"
+			},
+			"save": "Str +8",
+			"senses": "darkvision 60 ft.",
+			"passive": 16,
+			"languages": "understands Deep Speech but can't speak",
+			"cr": "7",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"The chuul can breathe air and water."
+					]
+				},
+				{
+					"name": "Sense Magic",
+					"entries": [
+						"The chuul senses magic within 120 feet of it at will. This trait otherwise works like the detect magic spell but isn’t itself magical."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The chuul makes two pincer attacks. If the chuul is grappling a creature, the chuul can also use its tentacles once."
+					]
+				},
+				{
+					"name": "Pincer",
+					"entries": [
+						"Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 18 (3d8 + 5) bludgeoning damage. The target is grappled (escape DC 15) if it is a huge or smaller creature and the chuul doesn't have two other creatures grappled."
+					]
+				},
+				{
+					"name": "Tentacles",
+					"entries": [
+						"One creature grappled by the chuul must succeed on a DC 15 Constitution saving throw or be poisoned for 1 minute. Until this poison ends, the target is paralyzed. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+					]
+				}
+			]
 		}
 	]
 }
