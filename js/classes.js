@@ -791,11 +791,12 @@ function loadsub (sub) {
 					navClass = "n3";
 					break;
 			}
-
-			$(`<div class="nav-item ${navClass}">${displayText}</div>`).on("click", () => {
-				const $it = $(`[data-title-index="${scrollTo}"]`);
-				if ($it.get()[0]) $it.get()[0].scrollIntoView();
-			}).appendTo($nav);
+			if (typeof navClass != 'undefined') {
+				$(`<div class="nav-item ${navClass}">${displayText}</div>`).on("click", () => {
+					const $it = $(`[data-title-index="${scrollTo}"]`);
+					if ($it.get()[0]) $it.get()[0].scrollIntoView();
+				}).appendTo($nav);
+			}
 		}
 
 		if (!CollectionUtil.arrayEq(prevSub, sub)) { // checking array equality is faster than hitting the DOM
