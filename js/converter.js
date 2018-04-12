@@ -36,6 +36,7 @@ function tryGetStat (strLine) {
 	}
 }
 
+// Tries to parse immunities, resistances, and vulnerabilities
 function tryParseSpecialDamage (strDamage, damageType) {
 	const splSemi = strDamage.toLowerCase().split(";");
 	const newDamage = [];
@@ -388,6 +389,17 @@ function loadparser (data) {
 						if (onlegendaries) stats.legendary.push(curtrait);
 					}
 					curtrait = {};
+				}
+
+				// Remove keys if they are empty
+				if (stats.trait.length === 0) {
+					delete stats.trait;
+				}
+				if (stats.reaction.length === 0) {
+					delete stats.reaction;
+				}
+				if (stats.legendary.length === 0) {
+					delete stats.legendary;
 				}
 			}
 		}
