@@ -2077,6 +2077,763 @@
 					]
 				}
 			]
-		}
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "Encounters in the Jungles of Chult",
+			"page": 18,
+			"name": "Monkey Stone Golem",
+			"size": "M",
+			"type": "construct",
+			"alignment": [
+				"U"
+			],
+			"ac": "17 (natural armor)",
+			"hp": "49 (9d6+18)",
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"str": 16,
+			"dex": 9,
+			"con": 16,
+			"int": 3,
+			"wis": 11,
+			"cha": 1,
+			"immune": [
+				"poison",
+				"psychic",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks not made with adamantine weapons"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"senses": "darkvision 120 ft.",
+			"passive": 12,
+			"cr": "4",
+			"trait": [],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The golem makes two slam attacks."
+					]
+				},
+				{
+					"name": "Slam",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target, Hit: 12 (2d8+3) bludgeoning damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "Beasts of the Jungle Rot",
+			"page": 3,
+			"name": "Archelon",
+			"size": "L",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "14 (natural armor)",
+			"hp": "26 (4d8+8)",
+			"speed": {
+				"walk": 10,
+				"swim": 40
+			},
+			"str": 16,
+			"dex": 13,
+			"con": 14,
+			"int": 2,
+			"wis": 12,
+			"cha": 5,
+			"skill": {
+				"perception": "+3"
+			},
+			"senses": "",
+			"passive": 13,
+			"languages": "-",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The archelon can hold its breath for 6 hours."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 12 (2d8+3) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "Beasts of the Jungle Rot",
+			"page": 3,
+			"name": "Brachiosaurus",
+			"size": "G",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "16 (natural armor)",
+			"hp": "145 (10d20+40)",
+			"speed": {
+				"walk": 30
+			},
+			"str": 24,
+			"dex": 8,
+			"con": 19,
+			"int": 2,
+			"wis": 10,
+			"cha": 7,
+			"save": "Con +7",
+			"senses": "",
+			"passive": 10,
+			"languages": "-",
+			"cr": "6",
+			"trait": [],
+			"action": [
+				{
+					"name": "Stomp",
+					"entries": [
+						"Melee Weapon Attack: +10 to hit, reach 20 ft., one target. Hit: 34 (5d10+7) bludgeoning damage, and the target must succeed on a DC 15 Strength saving throw or be knocked prone."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"Melee Weapon Attack: +10 to hit, reach 20 ft., one target. Hit: 40 (6d10+7) bludgeoning damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "Beasts of the Jungle Rot",
+			"page": 3,
+			"name": "Dilophosaurus",
+			"size": "M",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "13 (natural armor)",
+			"hp": "26 (4d8+4)",
+			"speed": {
+				"walk": 30
+			},
+			"str": 13,
+			"dex": 15,
+			"con": 14,
+			"int": 2,
+			"wis": 12,
+			"cha": 5,
+			"skill": {
+				"perception": "+3"
+			},
+			"senses": "",
+			"passive": 13,
+			"languages": "-",
+			"cr": "1",
+			"trait": [],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage."
+					]
+				},
+				{
+					"name": "Venomous Spit",
+					"entries": [
+						"Ranged Weapon Attack: +4 to hit, range 10/20 ft., one target. Hit: The target must succeed on a DC 12 Constitution saving throw or become blinded for 1 minute. A blinded creature must repeat the saving throw at the end of its next turn, becoming paralyzed for as long as it remains blinded on a failure or ending the blinded condition on a success. A blinded and paralyzed creature can repeat the saving throw at the end of its turn, ending both conditions on a success. Creatures immune to the poisoned condition are immune to this effect."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "Beasts of the Jungle Rot",
+			"page": 4,
+			"name": "Giganotosaurus",
+			"size": "G",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "14 (natural armor)",
+			"hp": "217 (14d20+70)",
+			"speed": {
+				"walk": 60
+			},
+			"str": 26,
+			"dex": 8,
+			"con": 21,
+			"int": 2,
+			"wis": 12,
+			"cha": 10,
+			"skill": {
+				"perception": "+5"
+			},
+			"senses": "",
+			"passive": 15,
+			"languages": "-",
+			"cr": "10",
+			"trait": [],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The giganotosaurus can make two attacks: one with its bite and one with its tail. It can use Swallow instead of its bite."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +12 to hit, reach 15 ft., one target. Hit: 34 (4d12+8) piercing damage. If the target is a Large or smaller creature, it is grappled (escape DC 18). Until this grapple ends, the target is restrained, and the giganotosaurus can't bite another target."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"Melee Weapon Attack: +12 to hit, reach 20 ft., one target. Hit: 26 (4d8+8) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Swallow",
+					"entries": [
+						"The giganotosaurus makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, the target takes the bite's damage, the target is swallowed, and the grapple ends.", "While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the giganotosaurus, and it takes 21 (6d6) acid damage at the start of each of the giganotosaurus' turns.",
+						"If the giganotosaurus takes 30 damage or more on a single turn from a creature inside it, the giganotosaurus must succeed on a DC 15 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of the giganotosaurus. If the giganotosaurus dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 30 feet of movement, exiting prone."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Momentum",
+					"entries": [
+						"The giganotosaurus moves its speed. Tail Sweep. (2 Actions) The giganotosaurus sweeps its tail in a 20-foot cone. Each creature in the cone must succeed on a DC 17 Strength saving throw or be knocked prone."
+					]
+				},
+				{
+					"name": "Roar (3 Actions)",
+					"entries": [
+						"Creatures within 20 feet of the giganotosaurus that can hear it must succeed on a DC 17 Wisdom saving throw or be frightened of the giganotosaurus until the end of its next turn."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "Beasts of the Jungle Rot",
+			"page": 5,
+			"name": "Mosasaurus",
+			"size": "G",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "13 (natural armor)",
+			"hp": "159 (11d20+44)",
+			"speed": {
+				"walk": 0,
+				"swim": 50
+			},
+			"str": 24,
+			"dex": 12,
+			"con": 19,
+			"int": 2,
+			"wis": 12,
+			"cha": 7,
+			"skill": {
+				"perception": "+4"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": 14,
+			"languages": "-",
+			"cr": "8",
+			"trait": [
+				{
+					"name": "Water Breathing",
+					"entries": [
+						"The mosasaurus can breathe only underwater."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 33 (4d12+7) piercing damage. If the target is a creature, it is grappled (escape DC 17). Until this grapple ends, the target is restrained, and the mosasaurus can't bite another target."
+					]
+				},
+				{
+					"name": "Swallow",
+					"entries": [
+						"The mosasaurus makes one bite attack against a Medium or smaller creature it is grappling. If the attack hits, the target takes the bite's damage, the target is swallowed, and the grapple ends.",
+						"While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the mosasaurus, and it takes 17 (5d6) acid damage at the start of each of the mosasaurus' turns.",
+						"If the mosasaurus takes 25 damage or more on a single turn from a creature inside it, the mosasaurus must succeed on a DC 15 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of the mosasaurus. If the mosasaurus dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 30 feet of movement, exiting prone."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "Beasts of the Jungle Rot",
+			"page": 5,
+			"name": "Nemicolopterus",
+			"size": "T",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "12",
+			"hp": "1 (1d4-1)",
+			"speed": {
+				"walk": 5,
+				"fly": 50
+			},
+			"str": 2,
+			"dex": 14,
+			"con": 8,
+			"int": 2,
+			"wis": 13,
+			"cha": 7,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"senses": "",
+			"passive": 13,
+			"languages": "-",
+			"cr": "0",
+			"trait": [
+				{
+					"name": "Jungle Camouflage",
+					"entries": [
+						"The nemicolopterus has advantage on Dexterity (Stealth) checks made to hide in jungle and forest terrain."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 1 piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "Beasts of the Jungle Rot",
+			"page": 6,
+			"name": "Swarm Of Nemicolopterus",
+			"size": "M",
+			"type": {
+				"type": "beast",
+				"swarmSize": "T"
+			},
+			"alignment": [
+				"U"
+			],
+			"ac": "12",
+			"hp": "24 (7d8-7)",
+			"speed": {
+				"walk": 5,
+				"fly": 50
+			},
+			"str": 7,
+			"dex": 14,
+			"con": 8,
+			"int": 2,
+			"wis": 13,
+			"cha": 7,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"resist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"grappled",
+				"paralyzed",
+				"petrified",
+				"prone",
+				"restrained",
+				"stunned"
+			],
+			"senses": "",
+			"passive": 13,
+			"languages": "-",
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Jungle Camouflage",
+					"entries": [
+						"The swarm has advantage on Dexterity (Stealth) checks made to hide in jungle and forest terrain."
+					]
+				},
+				{
+					"name": "Swarm",
+					"entries": [
+						"The swarm can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny nemicolopterus. The swarm can't regain hit points or gain temporary hit points."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d6) piercing damage, or 3 (1d6) piercing damage if the swarm has half of its hit points or fewer."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "Beasts of the Jungle Rot",
+			"page": 6,
+			"name": "Pachycephalosaurus",
+			"size": "L",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "13 (natural armor)",
+			"hp": "68 (8d10+24)",
+			"speed": {
+				"walk": 40
+			},
+			"str": 18,
+			"dex": 14,
+			"con": 16,
+			"int": 2,
+			"wis": 10,
+			"cha": 5,
+			"senses": "",
+			"passive": 10,
+			"languages": "-",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Charge",
+					"entries": [
+						"If the pachycephalosaurus moves at least 20 feet straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 5 (2d4) bludgeoning damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Ram",
+					"entries": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "Beasts of the Jungle Rot",
+			"page": 7,
+			"name": "Sarcosuchus",
+			"size": "G",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "15 (natural armor)",
+			"hp": "137 (10d20+32)",
+			"speed": {
+				"walk": 40,
+				"swim": 50
+			},
+			"str": 23,
+			"dex": 8,
+			"con": 18,
+			"int": 2,
+			"wis": 12,
+			"cha": 9,
+			"skill": {
+				"perception": "+4",
+				"stealth": "+5"
+			},
+			"senses": "",
+			"passive": 14,
+			"languages": "-",
+			"cr": "7",
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The sarcosuchus can hold its breath for 1",
+						"hour."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The sarcosuchus can make two attacks: one with its bite and one with its tail."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 28 (4d10+6) piercing damage. If the target is a creature, it is grappled (escape DC 16). Until this grapple ends, the target is restrained, and the sarcosuchus can't bite another target."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"Melee Weapon Attack: +9 to hit, reach 15 ft., one target. Hit: 19 (3d8+6) bludgeoning damage. If the target is a creature, it must succeed on a DC 17 Strength saving throw or be knocked prone."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "Beasts of the Jungle Rot",
+			"page": 7,
+			"name": "Therizinosaurus",
+			"size": "H",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "14 (natural armor)",
+			"hp": "104 (11d12+33)",
+			"speed": {
+				"walk": 30
+			},
+			"str": 19,
+			"dex": 10,
+			"con": 17,
+			"int": 2,
+			"wis": 11,
+			"cha": 7,
+			"senses": "",
+			"passive": 10,
+			"languages": "-",
+			"cr": "5",
+			"trait": [],
+			"action": [
+				{
+					"name": "Mutltiattack",
+					"entries": [
+						"The therizinosaurus makes two claw attacks."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 17 (3d8+4) slashing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "Beasts of the Jungle Rot",
+			"page": 8,
+			"name": "Titanosaurus",
+			"size": "G",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "17 (natural armor)",
+			"hp": "201 (13d20+65)",
+			"speed": {
+				"walk": 30
+			},
+			"str": 30,
+			"dex": 7,
+			"con": 20,
+			"int": 2,
+			"wis": 10,
+			"cha": 7,
+			"save": "Con +8",
+			"senses": "",
+			"passive": 10,
+			"languages": "-",
+			"cr": "7",
+			"trait": [],
+			"action": [
+				{
+					"name": "Stomp",
+					"entries": [
+						"Melee Weapon Attack: +13 to hit, reach 20 ft., one target. Hit: 40 (6d10+7) bludgeoning damage, and the target must succeed on a DC 16 Strength saving throw or be knocked prone."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"Melee Weapon Attack: +13 to hit, reach 20 ft., one target. Hit: 45 (7d10+7) bludgeoning damage."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Momentum",
+					"entries": [
+						"The titanosaurus moves half its speed without provoking opportunity attacks."
+					]
+				},
+				{
+					"name": "Tough Defense",
+					"entries": [
+						"(2 Actions) The titanosaurus picks one of the following damage types and is resistant to that type of damage until the start of its next turn: bludgeoning, piercing, or slashing."
+					]
+				},
+				{
+					"name": "Tail Thunder",
+					"entries": [
+						"(3 Actions) The titanosaurus makes a tail attack with disadvantage against each creature in a 20-foot cone."
+					]
+				}
+			]
+		},
+		{
+			"source": "AL 3pp",
+			"sourceSub": "Beasts of the Jungle Rot",
+			"page": 8,
+			"name": "Troodon",
+			"size": "S",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": "13 (natural armor)",
+			"hp": "22 (4d6+8)",
+			"speed": {
+				"walk": 30
+			},
+			"str": 12,
+			"dex": 15,
+			"con": 14,
+			"int": 4,
+			"wis": 14,
+			"cha": 10,
+			"skill": {
+				"perception": "+4",
+				"stealth": "+4"
+			},
+			"senses": "",
+			"passive": 14,
+			"languages": "-",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Improved Critical",
+					"entries": [
+						"The troodon scores a critical hit with its bite on a roll of 19 or 20."
+					]
+				},
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"The troodon has advantage on an attack roll against a creature if at least one of the troodon’s allies is within 5 feet of the creature and the ally isn’t incapacitated."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10+2) piercing damage."
+					]
+				}
+			]
+		},
+	{
+		"source": "AL 3pp",
+		"sourceSub": "Beasts of the Jungle Rot",
+		"page": 9,
+		"name": "Zealoraptor",
+		"size": "L",
+		"type": "beast",
+		"alignment": [
+			"U"
+		],
+		"ac": "15 (natural armor)",
+		"hp": "52 (7d10+14)",
+		"speed": {
+			"walk": 50
+		},
+		"str": 16,
+		"dex": 18,
+		"con": 15,
+		"int": 3,
+		"wis": 12,
+		"cha": 10,
+		"skill": {
+			"perception": "+3",
+			"stealth": "+6"
+		},
+		"senses": "",
+		"passive": 13,
+		"languages": "-",
+		"cr": "2",
+		"trait": [
+			{
+				"name": "Pounce",
+				"entries": [
+					"If the zealoraptor moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the zealoraptor can make one bite attack against it as a bonus action."
+				]
+			},
+			{
+				"name": "Pack Tactics",
+				"entries": [
+					"The zealoraptor has advantage on an attack roll against a creature if at least one of the zealoraptor’s allies is within 5 feet of the creature and the ally isn’t incapacitated."
+				]
+			}
+		],
+		"action": [
+			{
+				"name": "Multiattack",
+				"entries": [
+					"The zealoraptor makes one bite and one claw attack."
+				]
+			},
+			{
+				"name": "Bite",
+				"entries": [
+					"Melee Weapon Attack. +6 to hit, reach 5 ft., one target. Hit: 9 (1d10+4) piercing damage."
+				]
+			},
+			{
+				"name": "Claw",
+				"entries": [
+					"Melee Weapon Attack. +6 to hit, reach 5 ft., one target. Hit. 9 (1d10+4) slashing damage."
+				]
+			}
+		]
+	}
 	]
 }
