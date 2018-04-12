@@ -36,10 +36,55 @@ function tryGetStat (strLine) {
 	}
 }
 
+function tryParseSpecialDamage (strDamage, damageType) {
+	const splSemi = strDamage.toLowerCase().split(";");
+	const newDamage = [];
+	try {
+		splSemi.forEach(section => {
+			const tempDamage = {};
+			let pushArray = newDamage;
+			if (section.includes("from")) {
+				tempDamage[damageType] = [];
+				pushArray = tempDamage[damageType];
+				tempDamage["note"] = /from .*/.exec(section)[0];
+				section = /(.*) from /.exec(section)[1];
+			}
+			section = section.replace(/and/g, '');
+			section.split(",").forEach(s => {
+				pushArray.push(s.trim());
+			});
+			if ("note" in tempDamage)
+				newDamage.push(tempDamage)
+		});
+		return newDamage;
+	} catch (ignored) {
+		return strDamage;
+	}
+}
+
 const SKILL_SPACE_MAP = {
 	"sleightofhand": "sleight of hand",
 	"animalhandling": "animal handling"
 };
+
+const ALIGNMENT_MAP = {
+	"any non-good alignment": ["L", "NX", "C", "NY", "E"],
+	"any non-lawful alignment": ["NX", "C", "G", "NY", "E"],
+	"any chaotic alignment": ["C", "G", "NY", "E"],
+	"any evil alignment": ["L", "NX", "C", "E"],
+	"any alignment": ["A"],
+	"unaligned": ["U"],
+	"neutral": ["N"],
+	"chaotic evil": ["C", "E"],
+	"chaotic neutral": ["C", "N"],
+	"chaotic good": ["C", "G"],
+	"neutral good": ["N", "G"],
+	"neutral good": ["N", "G"],
+	"lawful evil": ["L", "E"],
+	"lawful neutral": ["L", "N"],
+	"lawful good": ["L", "G"],
+};
+
 
 function loadSources () {
 	DataUtil.loadJSON(JSON_URL, loadparser)
@@ -108,6 +153,8 @@ function loadparser (data) {
 		const stats = {};
 
 		stats.source = $srcSel.val();
+		// for the user to fill out
+		stats.page = 0;
 
 		let prevLine = null;
 		let curline = null;
@@ -132,6 +179,7 @@ function loadparser (data) {
 				stats.type = tryParseType(stats.type);
 
 				stats.alignment = curline.split(", ")[1].toLowerCase();
+				stats.alignment = ALIGNMENT_MAP[stats.alignment] || stats.alignment;
 				continue;
 			}
 
@@ -149,7 +197,23 @@ function loadparser (data) {
 
 			// speed
 			if (i === 4) {
-				stats.speed = curline.split("Speed ")[1];
+				stats.speed = curline.toLowerCase();
+				const split = stats.speed.split(",");
+				const newSpeeds = {};
+				try {
+					split.forEach(s => {
+						const splSpace = s.trim().split(" ");
+						let name = splSpace.shift().trim();
+						const val = tryConvertNumber(splSpace.shift().trim());
+						if (name == "speed")
+							name = "walk";
+						newSpeeds[name] = val;
+					});
+					stats.speed = newSpeeds;
+				} catch (ignored) {
+					// because the linter doesn't like empty blocks...
+					continue;
+				}
 				continue;
 			}
 
@@ -225,18 +289,22 @@ function loadparser (data) {
 			// damage resistances (optional)
 			if (!curline.indexOf("Damage Resistances ")) {
 				stats.resist = curline.split("Resistances ")[1];
+				stats.resist = tryParseSpecialDamage(stats.resist, "resist");
 				continue;
 			}
 
 			// damage immunities (optional)
 			if (!curline.indexOf("Damage Immunities ")) {
 				stats.immune = curline.split("Immunities ")[1];
+				stats.immune = tryParseSpecialDamage(stats.immune, "immune");
 				continue;
 			}
 
 			// condition immunities (optional)
 			if (!curline.indexOf("Condition Immunities ")) {
 				stats.conditionImmune = curline.split("Immunities ")[1];
+				stats.conditionImmune = tryParseSpecialDamage(
+								stats.conditionImmune, "conditionImmune");
 				continue;
 			}
 
@@ -322,8 +390,6 @@ function loadparser (data) {
 				}
 			}
 		}
-		// for the user to fill out
-		stats.page = 0;
 
 		let out = JSON.stringify(stats, null, "\t");
 		out = out.replace(/([1-9]\d*)?d([1-9]\d*)(\s?)([+-])(\s?)(\d+)?/g, "$1d$2$4$6");
