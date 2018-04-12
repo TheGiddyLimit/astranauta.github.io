@@ -53,8 +53,9 @@ function tryParseSpecialDamage (strDamage, damageType) {
 			section.split(",").forEach(s => {
 				pushArray.push(s.trim());
 			});
-			if ("note" in tempDamage)
+			if ("note" in tempDamage) {
 				newDamage.push(tempDamage)
+			}
 		});
 		return newDamage;
 	} catch (ignored) {
@@ -79,12 +80,11 @@ const ALIGNMENT_MAP = {
 	"chaotic neutral": ["C", "N"],
 	"chaotic good": ["C", "G"],
 	"neutral good": ["N", "G"],
-	"neutral good": ["N", "G"],
+	"neutral evil": ["N", "E"],
 	"lawful evil": ["L", "E"],
 	"lawful neutral": ["L", "N"],
-	"lawful good": ["L", "G"],
+	"lawful good": ["L", "G"]
 };
-
 
 function loadSources () {
 	DataUtil.loadJSON(JSON_URL, loadparser)
@@ -205,8 +205,9 @@ function loadparser (data) {
 						const splSpace = s.trim().split(" ");
 						let name = splSpace.shift().trim();
 						const val = tryConvertNumber(splSpace.shift().trim());
-						if (name == "speed")
+						if (name === "speed") {
 							name = "walk";
+						}
 						newSpeeds[name] = val;
 					});
 					stats.speed = newSpeeds;
@@ -304,7 +305,7 @@ function loadparser (data) {
 			if (!curline.indexOf("Condition Immunities ")) {
 				stats.conditionImmune = curline.split("Immunities ")[1];
 				stats.conditionImmune = tryParseSpecialDamage(
-								stats.conditionImmune, "conditionImmune");
+					stats.conditionImmune, "conditionImmune");
 				continue;
 			}
 
