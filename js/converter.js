@@ -842,7 +842,7 @@ function loadparser (data) {
 			curLine = stripQuote(curLine).trim();
 			if (curLine === "") continue;
 			else if (
-				(curLine === "___" && prevBlank) ||  // handle nicely separated blocks
+				(curLine === "___" && prevBlank) || // handle nicely separated blocks
 				curLineRaw === "___" // lines multiple stacked blocks
 			) {
 				if (stats !== null) hasMultipleBlocks = true;
