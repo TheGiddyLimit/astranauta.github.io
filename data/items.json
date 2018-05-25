@@ -10905,8 +10905,20 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This staff can be wielded as a magic quarterstaff that grants a +2 bonus to attack and damage rolls made with it. It also has the following additional properties. When one of these properties is used, it can't be used again until the next dawn.",
-				"Lightning. When you hit with a melee attack using the staff, you can cause the target to take an extra 2d6 lightning damage.",
-				"Thunder. When you hit with a melee attack using the staff, you can cause the staff to emit a crack of thunder, audible out to 300 feet. The target you hit must succeed on a DC 17 Constitution saving throw or become {@condition stunned} until the end of your next turn.",
+				{
+				    "type": "entries",
+				    "name": "Lightning",
+				    "entries": [
+				    	"When you hit with a melee attack using the staff, you can cause the target to take an extra 2d6 lightning damage."
+				    ]
+				},
+				{
+				    "type": "entries",
+				    "name": "Thunder",
+				    "entries": [
+						"When you hit with a melee attack using the staff, you can cause the staff to emit a crack of thunder, audible out to 300 feet. The target you hit must succeed on a DC 17 Constitution saving throw or become {@condition stunned} until the end of your next turn."
+				    ]
+				},
 				{
 				    "type": "entries",
 				    "name": "Lightning Strike",
