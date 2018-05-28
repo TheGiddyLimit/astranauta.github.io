@@ -2357,22 +2357,22 @@ UrlUtil.bindLinkExportButton = (filterBox) => {
 	$btn.addClass("btn-copy-effect")
 		.off("click")
 		.on("click", (evt) => {
-            let url = window.location.href;
+			let url = window.location.href;
 
-            const toHash = filterBox.getAsSubHashes();
-            parts = Object.keys(toHash).map(hK => {
-                const hV = toHash[hK];
-                return UrlUtil.packSubHash(hK, hV, true);
-            });
-            if (evt.shiftKey) {
-                const toEncode = JSON.stringify(ListUtil._getExportableSublist());
-                const part2 = UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], true);
-                parts = parts.concat(part2);
-            }
-            parts.unshift(url);
+			const toHash = filterBox.getAsSubHashes();
+			parts = Object.keys(toHash).map(hK => {
+				const hV = toHash[hK];
+				return UrlUtil.packSubHash(hK, hV, true);
+			});
+			if (evt.shiftKey) {
+				const toEncode = JSON.stringify(ListUtil._getExportableSublist());
+				const part2 = UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], true);
+				parts = parts.concat(part2);
+			}
+			parts.unshift(url);
 
-            copyText(parts.join(HASH_PART_SEP));
-            showCopiedEffect($btn);
+			copyText(parts.join(HASH_PART_SEP));
+			showCopiedEffect($btn);
 		})
 		.attr("title", "Get Link to Filters (SHIFT adds List)")
 };
