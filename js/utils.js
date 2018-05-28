@@ -2356,20 +2356,25 @@ UrlUtil.bindLinkExportButton = (filterBox) => {
 	const $btn = ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
 	$btn.addClass("btn-copy-effect")
 		.off("click")
-		.on("click", () => {
-			let url = window.location.href;
+		.on("click", (evt) => {
+            let url = window.location.href;
 
-			const toHash = filterBox.getAsSubHashes();
-			const parts = Object.keys(toHash).map(hK => {
-				const hV = toHash[hK];
-				return UrlUtil.packSubHash(hK, hV, true);
-			});
-			parts.unshift(url);
+            const toHash = filterBox.getAsSubHashes();
+            parts = Object.keys(toHash).map(hK => {
+                const hV = toHash[hK];
+                return UrlUtil.packSubHash(hK, hV, true);
+            });
+            if (evt.shiftKey) {
+                const toEncode = JSON.stringify(ListUtil._getExportableSublist());
+                const part2 = UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], true);
+                parts = parts.concat(part2);
+            }
+            parts.unshift(url);
 
-			copyText(parts.join(HASH_PART_SEP));
-			showCopiedEffect($btn);
+            copyText(parts.join(HASH_PART_SEP));
+            showCopiedEffect($btn);
 		})
-		.attr("title", "Get Link (Including Filters)")
+		.attr("title", "Get Link to Filters (SHIFT adds List)")
 };
 
 if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
