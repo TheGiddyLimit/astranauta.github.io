@@ -1,0 +1,383 @@
+// TODO have the roller section be placeable in the grid as a special tile
+// TODO have custom tiles for e.g. plaintext notes?
+
+class Board {
+	constructor () {
+		this.width = 5;
+		this.height = 3;
+		this.panels = {}; // flat panel structure because I'm a fucking maniac
+		this.$creen = $(`.dm-screen`);
+
+		this.nextId = 1;
+
+		this.hoveringPanel = null;
+	}
+
+	getNextId () {
+		return this.nextId++;
+	}
+
+	get$creen () {
+		return this.$creen;
+	}
+
+	getWidth () {
+		return this.width;
+	}
+
+	getHeight () {
+		return this.height;
+	}
+
+	setWidth (width) {
+		this.width = Math.min(width, 1);
+		this.doCullPanels();
+	}
+
+	setHeight (height) {
+		this.height = Math.min(height, 1);
+		this.doCullPanels();
+	}
+
+	/**
+	 * Destroys any panels completely outside the viewing area, and shrinks any partially outside
+	 */
+	doCullPanels () {
+
+	}
+
+	initialise () {
+		for (let x = 0; x < this.width; x++) {
+			for (let y = 0; y < this.height; ++y) {
+				const pnl = new Panel(this, x, y);
+
+				// TODO dummy content
+				if (pnl.id === 8) {
+					const fireball = data.spell.find(it => it.name === "Fireball");
+					pnl.set$Content($(`<div class="panel-content-wrapper-inner"><table class="stats">${EntryRenderer.spell.getCompactRenderedString(fireball)}</table></div>`));
+				} else {
+					pnl.set$Content($(`<div class="dummy-content">${pnl.id}</div>`));
+				}
+
+				this.panels[`${x}--${y}`] = pnl;
+			}
+		}
+		Object.values(this.panels).forEach(p => p.render());
+	}
+
+	getPanel (x, y) {
+		return this.panels[`${x}--${y}`];
+	}
+
+	setHoveringPanel (panel) {
+		this.hoveringPanel = panel;
+	}
+
+	destroyPanel (id) {
+		const panelK = Object.keys(this.panels).find(k => this.panels[k].id === id);
+		if (panelK) delete this.panels[panelK];
+	}
+}
+
+class Panel {
+	constructor (board, x, y) {
+		this.id = board.getNextId();
+		this.board = board;
+		this.x = x;
+		this.y = y;
+		this.width = 1;
+		this.height = 1;
+		this.isDirty = true;
+		this.isContentDirty = false;
+		this.isLocked = false;
+
+		this.$content = null;
+
+		this.$pnl = null;
+		this.$pnlWrpContent = null;
+	}
+
+	hasSpaceRight () {
+		const rightmost = this.x + this.width;
+		const isColumnRight = rightmost < this.board.getWidth();
+
+		const hasLockedNeighbourRight = [...new Array(this.height)].map((blank, i) => i + this.y).map(y => this.board.getPanel(rightmost, y)).filter(p => p.isLocked()).length;
+
+		return isColumnRight && !hasLockedNeighbourRight;
+	}
+
+	hasSpaceLeft () {
+		return (this.x + this.width) < this.board.getWidth();
+	}
+
+	hasSpaceTop () {
+		const isRowAbove = this.y > 0;
+
+		return isRowAbove && true // todo check if any above are locked
+	}
+
+	hasSpaceBottom () {
+
+	}
+
+	getEmpty () {
+		return this.$content == null;
+	}
+
+	getLocked () {
+		return this.isLocked;
+	}
+
+	setDirty (dirty) {
+		this.isDirty = dirty;
+	}
+
+	setContentDirty (dirty) {
+		this.setDirty.bind(this)(dirty);
+		this.isContentDirty = true;
+	}
+
+	render () {
+		function doApplyPosCss ($ele) {
+			// indexed from 1 instead of zero...
+			return $ele.css({
+				gridColumnStart: String(this.x + 1),
+				gridColumnEnd: String(this.x + 1 + this.width),
+
+				gridRowStart: String(this.y + 1),
+				gridRowEnd: String(this.y + 1 + this.height),
+			});
+		}
+
+		function doInitialRender () {
+			/*
+			TODO controls... hm... let me see...
+			- delete (really an "Empty") - X in the top-right of the title bar?
+			- move it about by click-dragging?
+			- resize it by click-dragging edge regions?
+
+			LOCKS ARE BAD - THEY REQUIRE YOU TO REMEMBER TO LOCK/UNLOCK
+			RADIAL MENU
+			 */
+
+			const $pnl = $(`<div class="dm-screen-panel"/>`);
+			const $ctrlBar = $(`<div class="panel-control-bar"/>`).appendTo($pnl);
+
+			const $ctrlEmpty = $(`<div class="delete-icon glyphicon glyphicon-remove"/>`).appendTo($ctrlBar);
+			$ctrlEmpty.on("click", () => {
+				this.set$Content(null, true);
+			});
+
+			$pnl.on("mouseover", () => {
+				this.board.setHoveringPanel(this);
+			});
+
+			const $ctrlCenter = $(`<div class="panel-control panel-control-middle"/>`);
+			const $ctrlUp = $(`<div class="panel-control panel-control-top"/>`);
+
+			$ctrlCenter.on("mousedown", (e) => {
+				if (!this.$content) return;
+
+				const w = this.$content.width();
+				const h = this.$content.height();
+				const offset = this.$content.offset();
+				const offsetX = e.clientX - offset.left;
+				const offsetY = e.clientY - offset.top;
+
+				$(`body`).append(this.$content);
+				$ctrlCenter.css("display", "none");
+				$ctrlUp.css("display", "none");
+				this.$content.css({
+					width: w,
+					height: h,
+					position: "fixed",
+					top: e.clientY,
+					left: e.clientX,
+					zIndex: 102,
+					pointerEvents: "none",
+					boxShadow: "0 0 12px 0 #000000a0"
+			});
+
+				$(document).off("mousemove").off("mouseup");
+
+				$(document).on("mousemove", (e) => {
+					this.$content.css({
+						top: e.clientY - offsetY,
+						left: e.clientX - offsetX
+					});
+				});
+
+				$(document).on("mouseup", (e) => {
+					$(document).off("mousemove").off("mouseup");
+
+					$ctrlCenter.css("display", "");
+					$ctrlUp.css("display", "");
+					this.$content.css({
+						width: "",
+						height: "",
+						position: "",
+						top: "",
+						left: "",
+						zIndex: "",
+						pointerEvents: "",
+						boxShadow: ""
+					});
+
+					if (!this.board.hoveringPanel || this.id === this.board.hoveringPanel.id) {
+						this.$pnlWrpContent.append(this.$content);
+					} else {
+						const her = this.board.hoveringPanel;
+						if (her.getEmpty()) {
+							her.set$Content(this.$content, true);
+							this.set$Content(null, true);
+							this.$content = null;
+						} else {
+							const $herContent = her.get$Content();
+							const $myContent = this.$content;
+							her.set$Content($myContent, true);
+							this.set$Content($herContent, true);
+						}
+					}
+				});
+			});
+			$ctrlUp.on("click", () => {
+				if (!this.hasSpaceTop()) return; // TODO flare locked
+
+				const neighbours = [...new Array(this.width)]
+					.map((blank, i) => i + this.x).map(x => this.board.getPanel(x, this.y - 1))
+					.filter(p => p); // can be undefined if there's a hole in the grid
+				neighbours.forEach(p => p.destroy());
+				this.height += 1;
+				this.y -= 1;
+				this.setDirty(true);
+				this.render();
+			});
+
+			$pnl.append($ctrlCenter).append($ctrlUp);
+
+			const $wrpContent = $(`<div class="panel-content-wrapper"/>`).appendTo($pnl);
+			this.$pnlWrpContent = $wrpContent;
+
+			if (this.$content) $wrpContent.append(this.$content);
+
+			this.$pnl = doApplyPosCss.bind(this)($pnl)
+				.appendTo(this.board.get$creen());
+		}
+
+		if (this.isDirty) {
+			if (!this.$pnl) doInitialRender.bind(this)();
+			else {
+				doApplyPosCss.bind(this)(this.$pnl);
+
+				if (this.isContentDirty) {
+					this.$pnlWrpContent.clear();
+					if (this.$content) this.$pnlWrpContent.append(this.$content);
+					this.isContentDirty = false;
+				}
+			}
+			this.isDirty = false;
+		}
+	}
+
+	// TODO everything
+	set$Content ($content, doUpdateElements) {
+		this.$content = $content;
+		if (doUpdateElements) {
+			if (!$content) this.$pnlWrpContent.empty();
+			else this.$pnlWrpContent.append($content);
+		}
+	}
+
+	get$Content () {
+		return this.$content
+	}
+
+	destroy () {
+		if (this.$pnl) this.$pnl.remove();
+		this.board.destroyPanel(this.id);
+	}
+}
+
+// radial shit
+class Menu {
+	constructor (x, y) {
+		this.x = x;
+		this.y = y;
+		this.currentChild = null;
+	}
+
+	open () {
+
+	}
+
+	close () {
+		if (this.currentChild) this.closeChild();
+	}
+
+	openChild (child) {
+		this.currentChild = child();
+		child.open();
+	}
+
+	closeChild () {
+		if (this.currentChild) this.currentChild.close();
+		this.currentChild = null;
+	}
+}
+
+const data = {};
+window.addEventListener("load", () => {
+	// FIXME have a better method of doing this -- callbacks for content to individual panels?
+	const FILES = [
+		"backgrounds.json",
+		"classes.json",
+		"cultsboons.json",
+		"deities.json",
+		"feats.json",
+		"invocations.json",
+		"objects.json",
+		"psionics.json",
+		"races.json",
+		"rewards.json",
+		"trapshazards.json",
+		"variantrules.json"
+	];
+	function mergeData (fromRec) {
+		Object.keys(fromRec).forEach(k => data[k] ? data[k] = data[k].concat(fromRec[k]) : data[k] = fromRec[k])
+	}
+	DataUtil.promiseJSON(`data/bestiary/index.json`)
+		.then(index => Promise.all(Object.values(index).map(f => DataUtil.promiseJSON(`data/bestiary/${f}`))))
+		.then(monData => {
+			monData.forEach(d => {
+				mergeData(d);
+			});
+			Promise.resolve();
+		}).then(() => DataUtil.promiseJSON(`data/spells/index.json`))
+		.then(index => Promise.all(Object.values(index).map(f => DataUtil.promiseJSON(`data/spells/${f}`))))
+		.then(spellData => {
+			spellData.forEach(d => {
+				mergeData(d);
+			});
+			Promise.resolve();
+		}).then(() => {
+		const promises = FILES.map(url => DataUtil.promiseJSON(`data/${url}`));
+		promises.push(EntryRenderer.item.promiseData());
+		return Promise.all(promises).then(retData => {
+			retData.forEach(d => {
+				if (d.race) d.race = EntryRenderer.race.mergeSubraces(d.race);
+				if (d.class) {
+					d.class.forEach(c => c.subclasses.forEach(sc => sc.class = c.name));
+					d.subclass = d.subclass || [];
+					d.class.forEach(c => {
+						d.subclass = d.subclass.concat(c.subclasses)
+					});
+				}
+				mergeData(d);
+			});
+
+
+			const screen = new Board();
+			screen.initialise();
+		})
+	});
+});
