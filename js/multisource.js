@@ -12,7 +12,7 @@ const JSON_SRC_INDEX = "index.json";
  */
 function multisourceLoad (jsonDir, jsonListName, pageInitFn, dataFn, cbOpt) {
 	// load the index
-	DataUtil.loadJSON(jsonDir + JSON_SRC_INDEX, function (index) {
+	DataUtil.loadJSON(jsonDir + JSON_SRC_INDEX).then(function (index) {
 		_onIndexLoad(index, jsonDir, jsonListName, pageInitFn, dataFn, cbOpt)
 	});
 }
@@ -88,7 +88,7 @@ function loadSource (jsonListName, dataFn) {
 	return function (src, val) {
 		const toLoad = loadedSources[src] || loadedSources[Object.keys(loadedSources).find(k => k.toLowerCase() === src)];
 		if (!toLoad.loaded && val === "yes") {
-			DataUtil.loadJSON(toLoad.url, function (data) {
+			DataUtil.loadJSON(toLoad.url).then(function (data) {
 				dataFn(data[jsonListName]);
 				toLoad.loaded = true;
 			});

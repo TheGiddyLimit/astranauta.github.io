@@ -186,12 +186,12 @@ function getSpellSource (spellName) {
 }
 
 function loadSources () {
-	DataUtil.promiseJSON(`data/spells/index.json`)
-		.then(index => Promise.all(Object.values(index).map(f => DataUtil.promiseJSON(`data/spells/${f}`))))
+	DataUtil.loadJSON(`data/spells/index.json`)
+		.then(index => Promise.all(Object.values(index).map(f => DataUtil.loadJSON(`data/spells/${f}`))))
 		.then(spellData => {
 			// reversed so official sources take precedence over 3pp
 			spellData.reverse().forEach(d => d.spell.forEach(s => SPELL_SRC_MAP[s.name.toLowerCase()] = s.source));
-			DataUtil.loadJSON(JSON_URL, loadparser);
+			DataUtil.loadJSON(JSON_URL).then(loadparser);
 		});
 }
 

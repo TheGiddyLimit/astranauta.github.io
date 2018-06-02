@@ -1176,7 +1176,7 @@ let tableDefault = $("#pagecontent").html();
 let statsProfDefault = $("#statsprof").html();
 let classTableDefault = $("#classtable").html();
 
-DataUtil.loadJSON(jsonURL, (data) => {
+DataUtil.loadJSON(jsonURL).then((data) => {
 	addClassData(data);
 
 	BrewUtil.addBrewData((homebrew) => {

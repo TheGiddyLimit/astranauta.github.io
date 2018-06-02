@@ -232,7 +232,7 @@ const Omnisearch = {
 	doSearchLoad: function () {
 		if (Omnisearch._loadingSearch) return;
 		Omnisearch._loadingSearch = true;
-		DataUtil.loadJSON("search/index.json", (data) => {
+		DataUtil.loadJSON("search/index.json").then((data) => {
 			Omnisearch.onSearchLoad(data);
 			Omnisearch._onFirstLoad();
 			Omnisearch._loadingSearch = false;

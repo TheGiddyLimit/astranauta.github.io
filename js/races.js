@@ -4,7 +4,7 @@ const JSON_FLUFF_URL = "data/fluff-races.json";
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
-	DataUtil.loadJSON(JSON_URL, onJsonLoad)
+	DataUtil.loadJSON(JSON_URL).then(onJsonLoad)
 };
 
 function getAbilityObjs (abils) {
@@ -289,7 +289,7 @@ function loadhash (id) {
 			$pgContent.append($tr);
 			$pgContent.append(EntryRenderer.utils.getBorderTr());
 
-			DataUtil.loadJSON(JSON_FLUFF_URL, (data) => {
+			DataUtil.loadJSON(JSON_FLUFF_URL).then((data) => {
 				function renderMeta (prop) {
 					let $tr2 = get$Tr();
 					let $td2 = get$Td().appendTo($tr2);

@@ -252,7 +252,7 @@ const BookUtil = {
 
 	_renderer: new EntryRenderer(),
 	loadBook: (fromIndex, bookId, hashParts) => {
-		DataUtil.loadJSON(`${BookUtil.baseDataUrl}${bookId.toLowerCase()}.json`, function (data) {
+		DataUtil.loadJSON(`${BookUtil.baseDataUrl}${bookId.toLowerCase()}.json`).then(function (data) {
 			const allContents = $(`.contents-item`);
 			BookUtil.thisContents = allContents.filter(`[data-bookid="${UrlUtil.encodeForHash(bookId)}"]`);
 			BookUtil.thisContents.show();

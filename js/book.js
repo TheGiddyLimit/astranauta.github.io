@@ -12,7 +12,7 @@ window.onload = function load () {
 	else BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message">Select a book to begin</td></tr>`);
 	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
-	DataUtil.loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
 function onJsonLoad (data) {

@@ -2455,47 +2455,48 @@ SortUtil = {
 DataUtil = {
 	_loaded: {},
 
-	loadJSON: function (url, onLoadFunction, ...otherData) {
-		function handleAlreadyLoaded (url) {
-			onLoadFunction(DataUtil._loaded[url], otherData);
-		}
-
-		if (this._loaded[url]) {
-			handleAlreadyLoaded(url);
-			return;
-		}
-
-		const procUrl = UrlUtil.link(url);
-		if (this._loaded[procUrl]) {
-			handleAlreadyLoaded(procUrl);
-			return;
-		}
-
-		const request = getRequest(procUrl);
-		if (procUrl !== url) {
-			request.onerror = function () {
-				const fallbackRequest = getRequest(url);
-				fallbackRequest.send();
-			};
-		}
-		request.send();
-
-		function getRequest (toUrl) {
-			const request = new XMLHttpRequest();
-			request.open("GET", toUrl, true);
-			request.overrideMimeType("application/json");
-			request.onload = function () {
-				const data = JSON.parse(this.response);
-				DataUtil._loaded[toUrl] = data;
-				onLoadFunction(data, otherData);
-			};
-			return request;
-		}
-	},
-
-	promiseJSON: function (url) {
+	loadJSON: function (url, ...otherData) {
 		return new Promise((resolve, reject) => {
-			DataUtil.loadJSON(url, (data) => resolve(data));
+			function handleAlreadyLoaded (url) {
+				resolve(DataUtil._loaded[url], otherData);
+			}
+
+			if (this._loaded[url]) {
+				handleAlreadyLoaded(url);
+				return;
+			}
+
+			const procUrl = UrlUtil.link(url);
+			if (this._loaded[procUrl]) {
+				handleAlreadyLoaded(procUrl);
+				return;
+			}
+
+			const request = getRequest(procUrl);
+			if (procUrl !== url) {
+				request.onerror = function () {
+					const fallbackRequest = getRequest(url);
+					fallbackRequest.send();
+				};
+			}
+			request.send();
+
+			function getRequest (toUrl) {
+				const request = new XMLHttpRequest();
+				request.open("GET", toUrl, true);
+				request.overrideMimeType("application/json");
+				request.onload = function () {
+					try {
+						const data = JSON.parse(this.response);
+						DataUtil._loaded[toUrl] = data;
+						resolve(data, otherData);
+					} catch (e) {
+						reject(new Error('Could not parse JSON'));
+					}
+				};
+				request.onerror = () => reject(new Error('Error during JSON request'));
+				return request;
+			}
 		});
 	},
 
@@ -2505,18 +2506,15 @@ DataUtil = {
 
 		let loadedCount = 0;
 		toLoads.forEach(tl => {
-			this.loadJSON(
-				tl.url,
-				function (data) {
-					if (onEachLoadFunction) onEachLoadFunction(tl, data);
-					dataStack.push(data);
+			this.loadJSON(tl.url).then((data) => {
+				if (onEachLoadFunction) onEachLoadFunction(tl, data);
+				dataStack.push(data);
 
-					loadedCount++;
-					if (loadedCount >= toLoads.length) {
-						onFinalLoadFunction(dataStack);
-					}
+				loadedCount++;
+				if (loadedCount >= toLoads.length) {
+					onFinalLoadFunction(dataStack);
 				}
-			)
+			});
 		});
 	},
 
@@ -2725,11 +2723,31 @@ BrewUtil = {
 
 		refreshBrewList();
 
-		const $iptAdd = $(`<input multiple type="file" accept=".json" style="display: none;">`).on("change", (evt) => {
+		const $iptAdd = $(`<input multiple type="file" accept=".json" style="display: none;">`).change((evt) => {
 			addBrewLocal(evt, funcAddCallback);
 		});
+
+		const $btnLoadFromUrl = $(`<button class="btn btn-default btn-sm">Load from URL</button>`);
+		$btnLoadFromUrl.click(() => {
+			const enteredUrl = window.prompt('Please enter the URL of the homebrew:');
+			if (!enteredUrl) {
+				return;
+			}
+
+			let parsedUrl;
+			try {
+				parsedUrl = new URL(enteredUrl);
+			} catch (e) {
+				window.alert('The entered URL does not seem to be valid.');
+				return;
+			}
+			BrewUtil.addBrewRemote(null, parsedUrl.href).catch(() => {
+				window.alert('Could not load homebrew from the given URL.')
+			});
+		});
+
 		const $btnGet = $(`<button class="btn btn-default btn-sm">Get Homebrew 2.0</button>`);
-		$btnGet.on("click", () => {
+		$btnGet.click(() => {
 			const $lst = $(`
 				<div id="brewlistcontainer" class="listcontainer homebrew-window dropdown-menu">
 					<input type="search" class="search form-control" placeholder="Find homebrew..." style="width: 100%">
@@ -2809,6 +2827,8 @@ BrewUtil = {
 		$window.append(
 			$(`<div class="text-align-center"/>`)
 				.append($(`<label class="btn btn-default btn-sm btn-file">Upload File</label>`).append($iptAdd))
+				.append(" ")
+				.append($btnLoadFromUrl)
 				.append(" ")
 				.append($btnGet)
 				.append(" ")
@@ -2969,7 +2989,7 @@ BrewUtil = {
 			const $src = $(ele).find(`span.source`);
 			const cached = $src.text();
 			$src.text("Loading...");
-			DataUtil.loadJSON(`${jsonUrl}?${(new Date()).getTime()}`, (data) => {
+			return DataUtil.loadJSON(`${jsonUrl}?${(new Date()).getTime()}`).then((data) => {
 				BrewUtil.doHandleBrewJson(data, page, refreshBrewList);
 				$src.text("Done!");
 				setInterval(() => {

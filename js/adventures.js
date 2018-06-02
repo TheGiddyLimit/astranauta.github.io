@@ -9,7 +9,7 @@ const CONTENTS_URL = "data/adventures.json";
 let adventuresIndex;
 
 window.onload = function load () {
-	DataUtil.loadJSON(CONTENTS_URL, onJsonLoad);
+	DataUtil.loadJSON(CONTENTS_URL).then(onJsonLoad);
 };
 
 function onJsonLoad (data) {

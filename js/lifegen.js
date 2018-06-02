@@ -479,7 +479,7 @@ const SUPP_STATUS = [
 ];
 
 window.onload = function load () {
-	DataUtil.loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
 let classList;

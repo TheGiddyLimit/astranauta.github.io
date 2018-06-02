@@ -47,7 +47,7 @@ function getHiddenModeList (psionic) {
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
-	DataUtil.loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
 let list;

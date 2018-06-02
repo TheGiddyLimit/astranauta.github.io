@@ -5,7 +5,7 @@ const JSON_URL = "data/demo.json";
 window.onload = loadJson;
 
 function loadJson () {
-	DataUtil.loadJSON(JSON_URL, initDemo)
+	DataUtil.loadJSON(JSON_URL).then(initDemo)
 }
 
 function initDemo (data) {

@@ -3,7 +3,7 @@ const JSON_URL = "data/variantrules.json";
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
-	DataUtil.loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
 let tableDefault;

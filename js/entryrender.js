@@ -1803,11 +1803,11 @@ EntryRenderer.item = {
 		const basicItemUrl = urls.basicitems || `${EntryRenderer.getDefaultRenderer().baseUrl}data/basicitems.json`;
 		const magicVariantUrl = urls.magicvariants || `${EntryRenderer.getDefaultRenderer().baseUrl}data/magicvariants.json`;
 
-		DataUtil.loadJSON(itemUrl, addBasicItems);
+		DataUtil.loadJSON(itemUrl).then(addBasicItems);
 
 		function addBasicItems (itemData) {
 			itemList = itemData.item;
-			DataUtil.loadJSON(basicItemUrl, addVariants);
+			DataUtil.loadJSON(basicItemUrl).then(addVariants);
 		}
 
 		function addVariants (basicItemData) {
@@ -1815,7 +1815,7 @@ EntryRenderer.item = {
 			// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
 			basicItemData.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
 			basicItemData.itemType.forEach(t => EntryRenderer.item._addType(t));
-			DataUtil.loadJSON(magicVariantUrl, mergeBasicItems);
+			DataUtil.loadJSON(magicVariantUrl).then(mergeBasicItems);
 		}
 
 		function mergeBasicItems (variantData) {
@@ -2132,10 +2132,10 @@ EntryRenderer.hover = {
 					if (!data[listProp]) return;
 					loadPopulate(data, listProp);
 				});
-				DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}index.json`, (data) => {
+				DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}index.json`).then((data) => {
 					const procData = {};
 					Object.keys(data).forEach(k => procData[k.toLowerCase()] = data[k]);
-					DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${procData[source.toLowerCase()]}`, (data) => {
+					DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${procData[source.toLowerCase()]}`).then((data) => {
 						loadPopulate(data, listProp);
 						callbackFn();
 					});
@@ -2151,7 +2151,7 @@ EntryRenderer.hover = {
 					if (!data[listProp]) return;
 					loadPopulate(data, listProp);
 				});
-				DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/${jsonFile}`, (data) => {
+				DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/${jsonFile}`).then((data) => {
 					if (listProp instanceof Array) listProp.forEach(p => loadPopulate(data, p));
 					else loadPopulate(data, listProp);
 					callbackFn();
@@ -2225,7 +2225,7 @@ EntryRenderer.hover = {
 						if (!data.race) return;
 						loadPopulate(data, "race");
 					});
-					DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/races.json`, (data) => {
+					DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/races.json`).then((data) => {
 						const merged = EntryRenderer.race.mergeSubraces(data.race);
 						merged.forEach(race => {
 							const raceHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](race);

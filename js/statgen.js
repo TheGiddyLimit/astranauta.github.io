@@ -6,7 +6,7 @@ let amount, count;
 let raceData;
 
 function loadRaceJson () {
-	DataUtil.loadJSON(RACE_JSON_URL, onJsonLoad)
+	DataUtil.loadJSON(RACE_JSON_URL).then(onJsonLoad)
 }
 
 window.onload = function load () {
