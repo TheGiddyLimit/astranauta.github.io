@@ -1311,6 +1311,7 @@ EntryRenderer.background = {
 
 EntryRenderer.invocation = {
 	getPrerequisiteText: (prerequisites, orMode) => {
+		if (!prerequisites) return "";
 		const prereqs = [
 			(!prerequisites.patron || prerequisites.patron === STR_ANY) ? null : `${prerequisites.patron} patron`,
 			(!prerequisites.pact || prerequisites.pact === STR_ANY || prerequisites.pact === STR_SPECIAL) ? null : Parser.invoPactToFull(prerequisites.pact),
