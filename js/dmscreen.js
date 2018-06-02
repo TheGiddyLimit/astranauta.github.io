@@ -18,6 +18,7 @@ class Board {
 
 		this.nextId = 1;
 		this.hoveringPanel = null;
+		this.availContent = {};
 	}
 
 	doAdjust$CreenCss () {
@@ -45,14 +46,19 @@ class Board {
 		return this.height;
 	}
 
-	setWidth (width) {
-		this.width = Math.min(width, 1);
+	setDimensions (width, height) {
+		if (width) this.width = Math.max(width, 1);
+		if (height) this.height = Math.max(height, 1);
+		this.doAdjust$creenCss();
 		this.doCullPanels();
+		this.doCheckFillSpaces();
 	}
 
-	setHeight (height) {
-		this.height = Math.min(height, 1);
-		this.doCullPanels();
+	doAdjust$creenCss () {
+		this.$creen.css({
+			gridAutoColumns: `${(1 / this.width) * 100}%`,
+			gridAutoRows: `${(1 / this.height) * 100}%`
+		});
 	}
 
 	getPanelDimensions () {
@@ -64,20 +70,50 @@ class Board {
 		};
 	}
 
-	/**
-	 * Destroys any panels completely outside the viewing area, and shrinks any partially outside
-	 */
-	doCullPanels () {
+	doShowLoading () {
+		$(`<div class="dm-screen-loading"><span class="initial-message">Loading...</span></div>`).css({
+			gridColumnStart: "1",
+			gridColumnEnd: String(this.width + 1),
+			gridRowStart: "1",
+			gridRowEnd: String(this.height + 1),
+		}).appendTo(this.$creen);
+	}
 
+	doHideLoading () {
+		this.$creen.find(`.dm-screen-loading`).remove();
 	}
 
 	initialise () {
 		this.doAdjust$CreenCss();
+		this.doShowLoading();
+		this.doLoadIndex(this.doCheckFillSpaces)
+	}
+
+	doLoadIndex (fnCallback) {
+		DataUtil.loadJSON("search/index.json").then((data) => {
+			data.forEach(d => {
+				d.cf = Parser.pageCategoryToFull(d.c);
+				if (!this.availContent[d.cf]) {
+					this.availContent[d.cf] = elasticlunr(function () {
+						this.addField("n");
+						this.addField("s");
+						this.setRef("id");
+						elasticlunr.clearStopWords();
+					});
+				}
+				this.availContent[d.cf].addDoc(d);
+			});
+			fnCallback.bind(this)();
+			this.doHideLoading();
+		});
+	}
+
+	// TODO dummy content; remove
+	doDummyPopulate () {
 		for (let x = 0; x < this.width; x++) {
 			for (let y = 0; y < this.height; ++y) {
 				const pnl = new Panel(this, x, y);
 
-				// TODO dummy content
 				if (pnl.id === 8) {
 					const fireball = data.spell.find(it => it.name === "Fireball");
 					pnl.set$Content($(`<div class="panel-content-wrapper-inner"><table class="stats">${EntryRenderer.spell.getCompactRenderedString(fireball)}</table></div>`));
@@ -133,6 +169,7 @@ class Panel {
 		this.isContentDirty = false;
 		this.isLocked = false;
 
+		this.$btnAdd = null;
 		this.$content = null;
 
 		this.$pnl = null;
@@ -287,15 +324,23 @@ class Panel {
 			this.$pnl = $pnl;
 			const $ctrlBar = $(`<div class="panel-control-bar"/>`).appendTo($pnl);
 
-			const $ctrlEmpty = $(`<div class="delete-icon glyphicon glyphicon-remove"/>`).appendTo($ctrlBar);
-			$ctrlEmpty.on("click", () => {
-				this.set$Content(null, true);
+			const $ctrlMove = $(`<div class="panel-control-icon glyphicon glyphicon-move" title="Move"/>`).appendTo($ctrlBar);
+			$ctrlMove.on("click", () => {
+				$pnl.find(`.panel-control`).toggle();
+			});
+			const $ctrlEmpty = $(`<div class="panel-control-icon glyphicon glyphicon-remove" title="Empty"/>`).appendTo($ctrlBar);
+			$ctrlEmpty.on("click", (e) => {
+				if (e.ctrlKey || window.confirm("Are you sure? (CTRL-click to avoid this confirmation)")) this.set$Content(null, true);
 			});
 
 			const joyMenu = new JoystickMenu(this);
 			joyMenu.initialise();
 
 			const $wrpContent = $(`<div class="panel-content-wrapper"/>`).appendTo($pnl);
+			// TODO add button
+			$(`<div class="btn-add">+</div>`).on("click", () => {
+
+			}).appendTo($wrpContent);
 			this.$pnlWrpContent = $wrpContent;
 
 			if (this.$content) $wrpContent.append(this.$content);
@@ -360,16 +405,13 @@ class JoystickMenu {
 
 			const w = this.panel.$content.width();
 			const h = this.panel.$content.height();
+			const childH = this.panel.$content.children().first().height();
 			const offset = this.panel.$content.offset();
 			const offsetX = e.clientX - offset.left;
-			const offsetY = e.clientY - offset.top;
+			const offsetY = h > childH ? childH / 2: (e.clientY - offset.top);
 
 			$body.append(this.panel.$content);
-			$ctrlMove.hide();
-			$ctrlXpandUp.hide();
-			$ctrlXpandRight.hide();
-			$ctrlXpandDown.hide();
-			$ctrlXpandLeft.hide();
+			$(`.panel-control`).hide();
 			this.panel.$content.css({
 				width: w,
 				height: h,
@@ -378,7 +420,7 @@ class JoystickMenu {
 				left: e.clientX,
 				zIndex: 102,
 				pointerEvents: "none",
-				transform: "rotate(-4deg)",
+				// transform: "rotate(-4deg)",
 				background: "none"
 			});
 			this.panel.$content.addClass("panel-content-hovering");
@@ -395,11 +437,6 @@ class JoystickMenu {
 			$(document).on("mouseup", () => {
 				$(document).off("mousemove").off("mouseup");
 
-				$ctrlMove.show();
-				$ctrlXpandUp.show();
-				$ctrlXpandRight.show();
-				$ctrlXpandDown.show();
-				$ctrlXpandLeft.show();
 				$body.css("userSelect", "");
 				this.panel.$content.css({
 					width: "",
@@ -436,6 +473,21 @@ class JoystickMenu {
 		function xpandHandler (dir) {
 			MiscUtil.clearSelection();
 			$(`body`).css("userSelect", "none");
+			$(`.panel-control`).hide();
+			switch (dir) {
+				case UP:
+					this.panel.$pnl.find(`.panel-control-top`).show();
+					break;
+				case RIGHT:
+					this.panel.$pnl.find(`.panel-control-right`).show();
+					break;
+				case DOWN:
+					this.panel.$pnl.find(`.panel-control-bottom`).show();
+					break;
+				case LEFT:
+					this.panel.$pnl.find(`.panel-control-left`).show();
+					break;
+			}
 			const axis = dir === RIGHT || dir === LEFT ? AX_X : AX_Y;
 
 			const pos = this.panel.$pnl.offset();
@@ -509,6 +561,7 @@ class JoystickMenu {
 				$(document).off("mousemove").off("mouseup");
 
 				$(`body`).css("userSelect", "");
+				this.panel.$pnl.find(`.panel-control`).show();
 				this.panel.$pnl.css({
 					zIndex: "",
 					boxShadow: "",
@@ -625,59 +678,16 @@ class RadialMenu {
 
 const data = {};
 window.addEventListener("load", () => {
-	// FIXME have a better method of doing this -- callbacks for content to individual panels?
-	const FILES = [
-		"backgrounds.json",
-		"classes.json",
-		"cultsboons.json",
-		"deities.json",
-		"feats.json",
-		"invocations.json",
-		"objects.json",
-		"psionics.json",
-		"races.json",
-		"rewards.json",
-		"trapshazards.json",
-		"variantrules.json"
-	];
-
-	function mergeData (fromRec) {
-		Object.keys(fromRec).forEach(k => data[k] ? data[k] = data[k].concat(fromRec[k]) : data[k] = fromRec[k])
-	}
-
-	DataUtil.loadJSON(`data/bestiary/index.json`)
-		.then(index => Promise.all(Object.values(index).map(f => DataUtil.loadJSON(`data/bestiary/${f}`))))
-		.then(monData => {
-			monData.forEach(d => {
-				mergeData(d);
-			});
-			Promise.resolve();
-		}).then(() => DataUtil.loadJSON(`data/spells/index.json`))
-		.then(index => Promise.all(Object.values(index).map(f => DataUtil.loadJSON(`data/spells/${f}`))))
-		.then(spellData => {
-			spellData.forEach(d => {
-				mergeData(d);
-			});
-			Promise.resolve();
-		}).then(() => {
-		const promises = FILES.map(url => DataUtil.loadJSON(`data/${url}`));
-		promises.push(EntryRenderer.item.promiseData());
-		return Promise.all(promises).then(retData => {
-			retData.forEach(d => {
-				if (d.race) d.race = EntryRenderer.race.mergeSubraces(d.race);
-				if (d.class) {
-					d.class.forEach(c => c.subclasses.forEach(sc => sc.class = c.name));
-					d.subclass = d.subclass || [];
-					d.class.forEach(c => {
-						d.subclass = d.subclass.concat(c.subclasses)
-					});
-				}
-				mergeData(d);
-			});
-
-
-			const screen = new Board();
-			screen.initialise();
-		})
-	});
+	const screen = new Board();
+	screen.initialise();
+	// EntryRenderer.hover._doFillThenCall(
+	// 	it.page,
+	// 	it.source,
+	// 	it.hash,
+	// 	() => {
+	// 		tmp.push(EntryRenderer.hover._getFromCache(it.page, it.source, it.hash));
+	// 		cachedCount--;
+	// 		if (cachedCount <= 0) callback(tmp);
+	// 	}
+	// );
 });
