@@ -2046,13 +2046,55 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This horned mask of glossy ebony has horns and a skull-like mien. The mask reshapes to fit a wearer attuned to it. While you are wearing the mask and attuned to it, you can access the following properties.",
-				"Damage Absorption. You have damage resistance to acid. If you already have damage resistance to acid from another source, you gain immunity to acid damage. If you already have immunity to acid damage from another source, you regain hit points equal to half of any acid damage you are dealt.",
-				"Draconic Majesty. While you are wearing no armor, you can add your Charisma bonus to your Armor Class.",
-				"Dragon Breath. If you have a breath weapon that requires rest to recharge, it gains a recharge of 6.",
-				"Dragon Sight. You gain darkvision with a radius of 60 feet, or an additional 60 feet of darkvision if you already have that sense. Once per day, you can gain blindsight out to a range of 30 feet for 5 minutes.",
-				"Dragon Tongue. You can speak and understand Draconic. You also have advantage on any Charisma check you make against black dragons.",
-				"Legendary Resistance. (1/Day) If you fail a saving throw, you can choose to succeed instead.",
-				"Water Breathing. You can breathe underwater."
+				{
+				    "type": "entries",
+				    "name": "Damage Absorption",
+				    "entries": [
+				        "You have damage resistance to acid. If you already have damage resistance to acid from another source, you gain immunity to acid damage. If you already have immunity to acid damage from another source, you regain hit points equal to half of any acid damage you are dealt."
+				    ]
+				},
+				{
+				    "type": "entries",
+				    "name": "Draconic Majesty",
+				    "entries": [
+				        "While you are wearing no armor, you can add your Charisma bonus to your Armor Class."
+				    ]
+				},
+				{
+				    "type": "entries",
+				    "name": "Dragon Breath",
+				    "entries": [
+				        "If you have a breath weapon that requires rest to recharge, it gains a recharge of 6."
+				    ]
+				},
+				{
+				    "type": "entries",
+				    "name": "Dragon Sight",
+				    "entries": [
+				        "You gain darkvision with a radius of 60 feet, or an additional 60 feet of darkvision if you already have that sense. Once per day, you can gain blindsight out to a range of 30 feet for 5 minutes."
+				    ]
+				},
+				{
+				    "type": "entries",
+				    "name": "Dragon Tongue",
+				    "entries": [
+				        "You can speak and understand Draconic. You also have advantage on any Charisma check you make against Black dragons."
+				    ]
+				},
+				{
+				    "type": "entries",
+				    "name": "Legendary Resistance",
+				    "entries": [
+				        "(1/Day) If you fail a saving throw, you can choose to succeed instead."
+				    ]
+				},
+				{
+				    "type": "entries",
+				    "name": "Water Breathing",
+				    "entries": [
+				        "You can breathe underwater."
+				    ]
+				}
 			]
 		},
 		{
@@ -2177,13 +2219,55 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This mask of glossy azure has spikes around its edges and a ridged horn in its center. The mask reshapes to fit a wearer attuned to it. While you are wearing the mask and attuned to it, you can access the following properties.",
-				"Damage Absorption. You have resistance against lightning damage. If you already have resistance to lightning damage from another source, you instead have immunity to lightning damage. If you already have immunity to lightning damage from another source, whenever you are subjected to acid damage, you take none of that damage and regain a number of hit points equal to half the damage dealt of that type.",
-				"Draconic Majesty. While you are wearing no armor, you can add your Charisma bonus to your Armor Class.",
-				"Dragon Breath. If you have a breath weapon that requires rest to recharge, it gains a recharge of 6.",
-				"Dragon Sight. You gain darkvision out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain blindsight out to 30 feet for 5 minutes.",
-				"Dragon Tongue. You can speak and understand Draconic. You also have advantage on any Charisma check you make against Blue Dragons.",
-				"Legendary Resistance. (1/Day) If you fail a saving throw, you can choose to succeed instead.",
-				"Lingering Shock. If you deal lightning damage to a creature, it can't take reactions until its next turn."
+				{
+				    "type": "entries",
+				    "name": "Damage Absorption",
+				    "entries": [
+						"You have resistance against lightning damage. If you already have resistance to lightning damage from another source, you instead have immunity to lightning damage. If you already have immunity to lightning damage from another source, whenever you are subjected to lightning damage, you take none of that damage and regain a number of hit points equal to half the damage dealt of that type."
+				    ]
+				},
+				{
+				    "type": "entries",
+				    "name": "Draconic Majesty",
+				    "entries": [
+						"While you are wearing no armor, you can add your Charisma bonus to your Armor Class."
+				    ]
+				},
+				{
+				    "type": "entries",
+				    "name": "Dragon Breath",
+				    "entries": [
+						"If you have a breath weapon that requires rest to recharge, it gains a recharge of 6."
+				    ]
+				},
+				{
+				    "type": "entries",
+				    "name": "Dragon Sight",
+				    "entries": [
+						"You gain darkvision out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain blindsight out to 30 feet for 5 minutes."
+				    ]
+				},
+				{
+				    "type": "entries",
+				    "name": "Dragon Tongue",
+				    "entries": [
+						"You can speak and understand Draconic. You also have advantage on any Charisma check you make against Blue Dragons."
+				    ]
+				},
+				{
+				    "type": "entries",
+				    "name": "Legendary Resistance",
+				    "entries": [
+						"(1/Day) If you fail a saving throw, you can choose to succeed instead."
+				    ]
+				},
+				{
+				    "type": "entries",
+				    "name": "Lingering Shock",
+				    "entries": [
+						"If you deal lightning damage to a creature, it can't take reactions until its next turn."
+				    ]
+				}
 			]
 		},
 		{
@@ -5408,13 +5492,55 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This mottled green mask is surmounted by a frilled crest and has leathery spiked plates along its jaw. The mask reshapes to fit a wearer attuned to it. While you are wearing the mask and attuned to it, you can access the following properties",
-				"Damage Absorption. You have resistance against poison damage. If you already have resistance to poison damage from another source, you instead have immunity to poison damage. If you already have immunity to poison damage from another source, whenever you are subjected to poison damage, you take none of that damage and regain a number of hit points equal to half the damage dealt of that type.",
-				"Draconic Majesty. While you are wearing no armor, you can add your Charisma bonus to your Armor Class.",
-				"Dragon Breath. If you have a breath weapon that requires rest to recharge, it gains a recharge of 6.",
-				"Dragon Sight. You gain darkvision out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain blindsight out to 30 feet for 5 minutes.",
-				"Dragon Tongue. You can speak and understand Draconic. You also have advantage on any Charisma check you make against Green Dragons.",
-				"Legendary Resistance. (1/Day) If you fail a saving throw, you can choose to succeed instead.",
-				"Water Breathing. You can breathe underwater."
+				{
+					"type": "entries",
+					"name": "Damage Absorption",
+					"entries": [
+						"You have resistance against poison damage. If you already have resistance to poison damage from another source, you instead have immunity to poison damage. If you already have immunity to poison damage from another source, whenever you are subjected to poison damage, you take none of that damage and regain a number of hit points equal to half the damage dealt of that type."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Draconic Majesty",
+					"entries": [
+						"While you are wearing no armor, you can add your Charisma bonus to your Armor Class."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dragon Breath",
+					"entries": [
+						"If you have a breath weapon that requires rest to recharge, it gains a recharge of 6."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dragon Sight",
+					"entries": [
+						"You gain darkvision out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain blindsight out to 30 feet for 5 minutes."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dragon Tongue",
+					"entries": [
+						"You can speak and understand Draconic. You also have advantage on any Charisma check you make against Green Dragons."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Legendary Resistance",
+					"entries": [
+						"(1/Day) If you fail a saving throw, you can choose to succeed instead."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Water Breathing",
+					"entries": [
+						"You can breathe underwater."
+					]
+				}
 			]
 		},
 		{
@@ -8879,13 +9005,55 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This mask of glossy crimson has swept-back horns and spiked cheek ridges. The mask reshapes to fit a wearer attuned to it. While you are wearing the mask and attuned to it, you can access the following properties.",
-				"Damage Absorption. You have resistance against fire damage. If you already have resistance to fire damage from another source, you instead have immunity to fire damage. If you already have immunity to fire damage from another source, whenever you are subjected to fire damage, you take none of that damage and regain a number of hit points equal to half the damage dealt of that type.",
-				"Draconic Majesty. While you are wearing no armor, you can add your Charisma bonus to your Armor Class.",
-				"Dragon Breath. If you have a breath weapon that requires rest to recharge, it gains a recharge of 6.",
-				"Dragon Sight. You gain darkvision out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain blindsight out to 30 feet for 5 minutes.",
-				"Dragon Tongue. You can speak and understand Draconic. You also have advantage on any Charisma check you make against Red Dragons.",
-				"Legendary Resistance. (1/Day) If you fail a saving throw, you can choose to succeed instead.",
-				"Dragon Fire. If you deal fire damage to a creature or flammable object, it starts burning. At the start of each of its turns, a creature burning in this way takes 1d6 fire damage. A creature that can reach the burning target can use an action to extinguish the fire."
+				{
+					"type": "entries",
+					"name": "Damage Absorption",
+					"entries": [
+						"You have resistance against fire damage. If you already have resistance to fire damage from another source, you instead have immunity to fire damage. If you already have immunity to fire damage from another source, whenever you are subjected to fire damage, you take none of that damage and regain a number of hit points equal to half the damage dealt of that type."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Draconic Majesty",
+					"entries": [
+						"While you are wearing no armor, you can add your Charisma bonus to your Armor Class."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dragon Breath",
+					"entries": [
+						"If you have a breath weapon that requires rest to recharge, it gains a recharge of 6."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dragon Sight",
+					"entries": [
+						"You gain darkvision out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain blindsight out to 30 feet for 5 minutes."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dragon Tongue",
+					"entries": [
+						"You can speak and understand Draconic. You also have advantage on any Charisma check you make against Red Dragons."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Legendary Resistance",
+					"entries": [
+						"(1/Day) If you fail a saving throw, you can choose to succeed instead."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dragon Fire",
+					"entries": [
+						"If you deal fire damage to a creature or flammable object, it starts burning. At the start of each of its turns, a creature burning in this way takes 1d6 fire damage. A creature that can reach the burning target can use an action to extinguish the fire."
+					]
+				}
 			]
 		},
 		{
@@ -13353,13 +13521,55 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This gleaming mask is white with highlights of pale blue and is topped by a spined crest. The mask reshapes to fit a wearer attuned to it. While you are wearing the mask and attuned to it, you can access the following properties.",
-				"Damage Absorption. You have resistance against cold damage. If you already have resistance to cold damage from another source, you instead have immunity to cold damage. If you already have immunity to cold damage from another source, whenever you are subjected to cold damage, you take none of that damage and regain a number of hit points equal to half the damage dealt of that type.",
-				"Draconic Majesty. While you are wearing no armor, you can add your Charisma bonus to your Armor Class.",
-				"Dragon Breath. If you have a breath weapon that requires rest to recharge, it gains a recharge of 6.",
-				"Dragon Sight. You gain darkvision out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain blindsight out to 30 feet for 5 minutes.",
-				"Dragon Tongue. You can speak and understand Draconic. You also have advantage on any Charisma check you make against White Dragons.",
-				"Legendary Resistance. (1/Day) If you fail a saving throw, you can choose to succeed instead.",
-				"Winter's Fury. While your current hit points are equal to or less than half your hit point maximum, you deal an extra 1d8 cold damage with your melee attacks."
+				{
+					"type": "entries",
+					"name": "Damage Absorption",
+					"entries": [
+						"You have resistance against cold damage. If you already have resistance to cold damage from another source, you instead have immunity to cold damage. If you already have immunity to cold damage from another source, whenever you are subjected to cold damage, you take none of that damage and regain a number of hit points equal to half the damage dealt of that type."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Draconic Majesty",
+					"entries": [
+						"While you are wearing no armor, you can add your Charisma bonus to your Armor Class."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dragon Breath",
+					"entries": [
+						"If you have a breath weapon that requires rest to recharge, it gains a recharge of 6."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dragon Sight",
+					"entries": [
+						"You gain darkvision out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain blindsight out to 30 feet for 5 minutes."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dragon Tongue",
+					"entries": [
+						"You can speak and understand Draconic. You also have advantage on any Charisma check you make against White Dragons."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Legendary Resistance",
+					"entries": [
+						"(1/Day) If you fail a saving throw, you can choose to succeed instead."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Winter's Fury",
+					"entries": [
+						"While your current hit points are equal to or less than half your hit point maximum, you deal an extra 1d8 cold damage with your melee attacks."
+					]
+				}
 			]
 		},
 		{
