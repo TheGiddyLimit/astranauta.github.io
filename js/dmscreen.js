@@ -1,5 +1,13 @@
+"use strict";
 // TODO have the roller section be placeable in the grid as a special tile
 // TODO have custom tiles for e.g. plaintext notes?
+
+const UP = "UP";
+const RIGHT = "RIGHT";
+const LEFT = "LEFT";
+const DOWN = "DOWN";
+const AX_X = "AXIS_X";
+const AX_Y = "AXIS_Y";
 
 class Board {
 	constructor () {
@@ -45,6 +53,15 @@ class Board {
 	setHeight (height) {
 		this.height = Math.min(height, 1);
 		this.doCullPanels();
+	}
+
+	getPanelDimensions () {
+		const w = this.$creen.width();
+		const h = this.$creen.height();
+		return {
+			pxWidth: w / this.width,
+			pxHeight: h / this.height
+		};
 	}
 
 	/**
@@ -122,22 +139,16 @@ class Panel {
 		this.$pnlWrpContent = null;
 	}
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	getRightNeighbours () {
-		const rightmost = this.x + this.width;
-		return [...new Array(this.height)].map((blank, i) => i + this.y)
-			.map(y => this.board.getPanel(rightmost, y))
-			.filter(p => p);
-	}
-
 	getTopNeighbours () {
 		return [...new Array(this.width)]
 			.map((blank, i) => i + this.x).map(x => this.board.getPanel(x, this.y - 1))
 			.filter(p => p);
 	}
 
-	getLeftNeighbours () {
+	getRightNeighbours () {
+		const rightmost = this.x + this.width;
 		return [...new Array(this.height)].map((blank, i) => i + this.y)
-			.map(y => this.board.getPanel(this.x - 1, y))
+			.map(y => this.board.getPanel(rightmost, y))
 			.filter(p => p);
 	}
 
@@ -147,41 +158,89 @@ class Panel {
 			.map(x => this.board.getPanel(x, lowest))
 			.filter(p => p);
 	}
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	hasColumnRight () {
-		return (this.x + this.width) < this.board.getWidth();
-	}
 
+	getLeftNeighbours () {
+		return [...new Array(this.height)].map((blank, i) => i + this.y)
+			.map(y => this.board.getPanel(this.x - 1, y))
+			.filter(p => p);
+	}
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	hasRowTop () {
 		return this.y > 0;
 	}
 
-	hasColumnLeft () {
-		return this.x > 0;
+	hasColumnRight () {
+		return (this.x + this.width) < this.board.getWidth();
 	}
 
 	hasRowBottom () {
 		return (this.y + this.height) < this.board.getHeight();
 	}
+
+	hasColumnLeft () {
+		return this.x > 0;
+	}
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	hasSpaceTop () {
+		const hasLockedNeighbourTop = this.getTopNeighbours().filter(p => p.getLocked()).length;
+		return this.hasRowTop() && !hasLockedNeighbourTop;
+	}
+
 	hasSpaceRight () {
 		const hasLockedNeighbourRight = this.getRightNeighbours().filter(p => p.getLocked()).length;
 		return this.hasColumnRight() && !hasLockedNeighbourRight;
 	}
 
-	hasSpaceTop () {
-		const hasLockedNeighbourTop = this.getTopNeighbours().filter(p => p.getLocked()).length;
-		return this.hasRowTop() && !hasLockedNeighbourTop;
+	hasSpaceBottom () {
+		const hasLockedNeighbourBottom = this.getBottomNeighbours().filter(p => p.getLocked()).length;
+		return this.hasRowBottom() && !hasLockedNeighbourBottom;
 	}
 
 	hasSpaceLeft () {
 		const hasLockedNeighbourLeft = this.getLeftNeighbours().filter(p => p.getLocked()).length;
 		return this.hasColumnLeft() && !hasLockedNeighbourLeft;
 	}
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	canShrinkTop () {
+		return this.height > 1 && !this.getLocked();
+	}
 
-	hasSpaceBottom () {
-		const hasLockedNeighbourBottom = this.getBottomNeighbours().filter(p => p.getLocked()).length;
-		return this.hasRowBottom() && !hasLockedNeighbourBottom;
+	canShrinkRight () {
+		return this.width > 1 && !this.getLocked();
+	}
+
+	canShrinkBottom () {
+		return this.height > 1 && !this.getLocked();
+	}
+
+	canShrinkLeft () {
+		return this.width > 1 && !this.getLocked();
+	}
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	doShrinkTop () {
+		this.height -= 1;
+		this.y += 1;
+		this.setDirty(true);
+		this.render();
+	}
+
+	doShrinkRight () {
+		this.width -= 1;
+		this.setDirty(true);
+		this.render();
+	}
+
+	doShrinkBottom () {
+		this.height -= 1;
+		this.setDirty(true);
+		this.render();
+	}
+
+	doShrinkLeft () {
+		this.width -= 1;
+		this.x += 1;
+		this.setDirty(true);
+		this.render();
 	}
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	getEmpty () {
@@ -317,8 +376,10 @@ class JoystickMenu {
 				left: e.clientX,
 				zIndex: 102,
 				pointerEvents: "none",
-				boxShadow: "0 0 12px 0 #000000a0"
+				transform: "rotate(-4deg)",
+				background: "none"
 			});
+			this.panel.$content.addClass("panel-content-hovering");
 
 			$(document).off("mousemove").off("mouseup");
 
@@ -345,11 +406,13 @@ class JoystickMenu {
 					left: "",
 					zIndex: "",
 					pointerEvents: "",
-					boxShadow: ""
+					transform: "",
+					background: ""
 				});
+				this.panel.$content.removeClass("panel-content-hovering");
 
 				if (!this.panel.board.hoveringPanel || this.panel.id === this.panel.board.hoveringPanel.id) {
-					this.panel.$pnlWrpContent.append(this.$content);
+					this.panel.$pnlWrpContent.append(this.panel.$content);
 				} else {
 					const her = this.panel.board.hoveringPanel;
 					if (her.getEmpty()) {
@@ -365,44 +428,157 @@ class JoystickMenu {
 				}
 			});
 		});
-		$ctrlXpandUp.on("click", () => {
-			if (!this.panel.hasSpaceTop()) return; // TODO flare locked
 
-			this.panel.getTopNeighbours().forEach(p => p.destroy());
-			this.panel.height += 1;
-			this.panel.y -= 1;
-			this.panel.setDirty(true);
-			this.panel.render();
-			this.panel.board.doCheckFillSpaces();
-		});
-		$ctrlXpandRight.on("click", () => {
-			if (!this.panel.hasSpaceRight()) return; // TODO flare locked
+		function xpandHandler (dir) {
+			const axis = dir === RIGHT || dir === LEFT ? AX_X : AX_Y;
 
-			this.panel.getRightNeighbours().forEach(p => p.destroy());
-			this.panel.width += 1;
-			this.panel.setDirty(true);
-			this.panel.render();
-			this.panel.board.doCheckFillSpaces();
-		});
-		$ctrlXpandDown.on("click", () => {
-			if (!this.panel.hasSpaceBottom()) return; // TODO flare locked
+			const pos = this.panel.$pnl.offset();
+			const dim = this.panel.board.getPanelDimensions();
+			let numPanelsCovered = 0;
+			const initGCS = this.panel.$pnl.css("gridColumnStart");
+			const initGCE = this.panel.$pnl.css("gridColumnEnd");
+			const initGRS = this.panel.$pnl.css("gridRowStart");
+			const initGRE = this.panel.$pnl.css("gridRowEnd");
 
-			this.panel.getBottomNeighbours().forEach(p => p.destroy());
-			this.panel.height += 1;
-			this.panel.setDirty(true);
-			this.panel.render();
-			this.panel.board.doCheckFillSpaces();
-		});
-		$ctrlXpandLeft.on("click", () => {
-			if (!this.panel.hasSpaceLeft()) return; // TODO flare locked
+			this.panel.$pnl.css({
+				zIndex: 102,
+				boxShadow: "0 0 12px 0 #000000a0"
+			});
 
-			this.panel.getLeftNeighbours().forEach(p => p.destroy());
-			this.panel.width += 1;
-			this.panel.x -= 1;
-			this.panel.setDirty(true);
-			this.panel.render();
-			this.panel.board.doCheckFillSpaces();
-		});
+			$(document).off("mousemove").off("mouseup");
+
+			$(document).on("mousemove", (e) => {
+				let delta = 0;
+				const px = axis === AX_X ? dim.pxWidth : dim.pxHeight;
+				switch (dir) {
+					case UP:
+						delta = pos.top - e.clientY;
+						break;
+					case RIGHT:
+						delta = e.clientX - (pos.left + (px * this.panel.width));
+						break;
+					case DOWN:
+						delta = e.clientY - (pos.top + (px * this.panel.height));
+						break;
+					case LEFT:
+						delta = pos.left - e.clientX;
+						break;
+				}
+
+				numPanelsCovered = Math.ceil((delta / px));
+				if (axis === AX_X && this.panel.width <= 1) numPanelsCovered = Math.max(0, numPanelsCovered);
+				if (axis === AX_Y && this.panel.height <= 1) numPanelsCovered = Math.max(0, numPanelsCovered);
+
+				switch (dir) {
+					case UP:
+						this.panel.$pnl.css({
+							gridRowStart: String(this.panel.y + (1 - numPanelsCovered)),
+							gridRowEnd: String(this.panel.y + 1 + this.panel.height),
+						});
+						break;
+					case RIGHT:
+						this.panel.$pnl.css({
+							gridColumnEnd: String(this.panel.x + 1 + this.panel.width + numPanelsCovered),
+						});
+						break;
+					case DOWN:
+						this.panel.$pnl.css({
+							gridRowEnd: String(this.panel.y + 1 + this.panel.height + numPanelsCovered),
+						});
+						break;
+					case LEFT:
+						this.panel.$pnl.css({
+							gridColumnStart: String(this.panel.x + (1 - numPanelsCovered)),
+							gridColumnEnd: String(this.panel.x + 1 + this.panel.width),
+						});
+						break;
+				}
+			});
+
+			$(document).on("mouseup", (e) => {
+				$(document).off("mousemove").off("mouseup");
+
+				this.panel.$pnl.css({
+					zIndex: "",
+					boxShadow: "",
+					gridColumnStart: initGCS,
+					gridColumnEnd: initGCE,
+					gridRowStart: initGRS,
+					gridRowEnd: initGRE
+				});
+
+				if (numPanelsCovered === 0) return;
+				const isGrowth = ~Math.sign(numPanelsCovered);
+				if (isGrowth) {
+					// TODO flare locked
+					switch (dir) {
+						case UP:
+							if (!this.panel.hasSpaceTop()) return;
+							break;
+						case RIGHT:
+							if (!this.panel.hasSpaceRight()) return;
+							break;
+						case DOWN:
+							if (!this.panel.hasSpaceBottom()) return;
+							break;
+						case LEFT:
+							if (!this.panel.hasSpaceLeft()) return;
+							break;
+					}
+				}
+
+				for (let i = Math.abs(numPanelsCovered); i > 0; --i) {
+					switch (dir) {
+						case UP:
+							if (isGrowth) {
+								this.panel.getTopNeighbours().forEach(p => {
+									if (p.canShrinkBottom()) p.doShrinkBottom();
+									else p.destroy();
+								});
+							}
+							this.panel.height += Math.sign(numPanelsCovered);
+							this.panel.y -= Math.sign(numPanelsCovered);
+							break;
+						case RIGHT:
+							if (isGrowth) {
+								this.panel.getRightNeighbours().forEach(p => {
+									if (p.canShrinkLeft()) p.doShrinkLeft();
+									else p.destroy();
+								});
+							}
+							this.panel.width += Math.sign(numPanelsCovered);
+							break;
+						case DOWN:
+							if (isGrowth) {
+								this.panel.getBottomNeighbours().forEach(p => {
+									if (p.canShrinkTop()) p.doShrinkTop();
+									else p.destroy();
+								});
+							}
+							this.panel.height += Math.sign(numPanelsCovered);
+							break;
+						case LEFT:
+							if (isGrowth) {
+								this.panel.getLeftNeighbours().forEach(p => {
+									if (p.canShrinkRight()) p.doShrinkRight();
+									else p.destroy();
+								});
+							}
+							this.panel.width += Math.sign(numPanelsCovered);
+							this.panel.x -= Math.sign(numPanelsCovered);
+							break;
+					}
+				}
+				this.panel.setDirty(true);
+				this.panel.render();
+				this.panel.board.doCheckFillSpaces();
+			});
+		}
+
+		$ctrlXpandUp.on("mousedown", xpandHandler.bind(this, UP));
+		$ctrlXpandRight.on("mousedown", xpandHandler.bind(this, RIGHT));
+		$ctrlXpandLeft.on("mousedown", xpandHandler.bind(this, LEFT));
+		$ctrlXpandDown.on("mousedown", xpandHandler.bind(this, DOWN));
 
 		this.panel.$pnl.append($ctrlMove).append($ctrlXpandUp).append($ctrlXpandRight).append($ctrlXpandDown).append($ctrlXpandLeft);
 	}
