@@ -9,8 +9,16 @@ class Board {
 		this.$creen = $(`.dm-screen`);
 
 		this.nextId = 1;
-
 		this.hoveringPanel = null;
+	}
+
+	doAdjust$CreenCss () {
+		// assumes 7px grid spacing
+		this.$creen.css({
+			gridGap: 7,
+			width: `calc(100% - ${(this.width - 1) * 7}px)`,
+			height: `calc(100% - ${(this.height - 1) * 7}px)`
+		});
 	}
 
 	getNextId () {
@@ -47,6 +55,7 @@ class Board {
 	}
 
 	initialise () {
+		this.doAdjust$CreenCss();
 		for (let x = 0; x < this.width; x++) {
 			for (let y = 0; y < this.height; ++y) {
 				const pnl = new Panel(this, x, y);
@@ -66,7 +75,11 @@ class Board {
 	}
 
 	getPanel (x, y) {
-		return this.panels[`${x}--${y}`];
+		return Object.values(this.panels).find(p => {
+			// x <= pX < x+w && y <= pY < y+h
+			return (p.x <= x) && (x < (p.x + p.width)) && (p.y <= y) && (y < (p.y + p.height));
+		});
+		// return this.panels[`${x}--${y}`];
 	}
 
 	setHoveringPanel (panel) {
@@ -96,30 +109,69 @@ class Panel {
 		this.$pnl = null;
 		this.$pnlWrpContent = null;
 	}
-
-	hasSpaceRight () {
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	getRightNeighbours () {
 		const rightmost = this.x + this.width;
-		const isColumnRight = rightmost < this.board.getWidth();
-
-		const hasLockedNeighbourRight = [...new Array(this.height)].map((blank, i) => i + this.y).map(y => this.board.getPanel(rightmost, y)).filter(p => p.isLocked()).length;
-
-		return isColumnRight && !hasLockedNeighbourRight;
+		return [...new Array(this.height)].map((blank, i) => i + this.y)
+			.map(y => this.board.getPanel(rightmost, y))
+			.filter(p => p);
 	}
 
-	hasSpaceLeft () {
+	getTopNeighbours () {
+		return [...new Array(this.width)]
+			.map((blank, i) => i + this.x).map(x => this.board.getPanel(x, this.y - 1))
+			.filter(p => p);
+	}
+
+	getLeftNeighbours () {
+		return [...new Array(this.height)].map((blank, i) => i + this.y)
+			.map(y => this.board.getPanel(this.x - 1, y))
+			.filter(p => p);
+	}
+
+	getBottomNeighbours () {
+		const lowest = this.y + this.height;
+		return [...new Array(this.width)].map((blank, i) => i + this.x)
+			.map(x => this.board.getPanel(x, lowest))
+			.filter(p => p);
+	}
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	hasColumnRight () {
 		return (this.x + this.width) < this.board.getWidth();
 	}
 
-	hasSpaceTop () {
-		const isRowAbove = this.y > 0;
+	hasRowTop () {
+		return this.y > 0;
+	}
 
-		return isRowAbove && true // todo check if any above are locked
+	hasColumnLeft () {
+		return this.x > 0;
+	}
+
+	hasRowBottom () {
+		return (this.y + this.height) < this.board.getHeight();
+	}
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	hasSpaceRight () {
+		const hasLockedNeighbourRight = this.getRightNeighbours().filter(p => p.getLocked()).length;
+		return this.hasColumnRight() && !hasLockedNeighbourRight;
+	}
+
+	hasSpaceTop () {
+		const hasLockedNeighbourTop = this.getTopNeighbours().filter(p => p.getLocked()).length;
+		return this.hasRowTop() && !hasLockedNeighbourTop;
+	}
+
+	hasSpaceLeft () {
+		const hasLockedNeighbourLeft = this.getLeftNeighbours().filter(p => p.getLocked()).length;
+		return this.hasColumnLeft() && !hasLockedNeighbourLeft;
 	}
 
 	hasSpaceBottom () {
-
+		const hasLockedNeighbourBottom = this.getBottomNeighbours().filter(p => p.getLocked()).length;
+		return this.hasRowBottom() && !hasLockedNeighbourBottom;
 	}
-
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	getEmpty () {
 		return this.$content == null;
 	}
@@ -172,10 +224,13 @@ class Panel {
 				this.board.setHoveringPanel(this);
 			});
 
-			const $ctrlCenter = $(`<div class="panel-control panel-control-middle"/>`);
-			const $ctrlUp = $(`<div class="panel-control panel-control-top"/>`);
+			const $ctrlMove = $(`<div class="panel-control panel-control-middle"/>`);
+			const $ctrlXpandUp = $(`<div class="panel-control panel-control-top"/>`);
+			const $ctrlXpandRight = $(`<div class="panel-control panel-control-right"/>`);
+			const $ctrlXpandDown = $(`<div class="panel-control panel-control-bottom"/>`);
+			const $ctrlXpandLeft = $(`<div class="panel-control panel-control-left"/>`);
 
-			$ctrlCenter.on("mousedown", (e) => {
+			$ctrlMove.on("mousedown", (e) => {
 				if (!this.$content) return;
 
 				const w = this.$content.width();
@@ -185,8 +240,11 @@ class Panel {
 				const offsetY = e.clientY - offset.top;
 
 				$(`body`).append(this.$content);
-				$ctrlCenter.css("display", "none");
-				$ctrlUp.css("display", "none");
+				$ctrlMove.hide();
+				$ctrlXpandUp.hide();
+				$ctrlXpandRight.hide();
+				$ctrlXpandDown.hide();
+				$ctrlXpandLeft.hide();
 				this.$content.css({
 					width: w,
 					height: h,
@@ -196,7 +254,7 @@ class Panel {
 					zIndex: 102,
 					pointerEvents: "none",
 					boxShadow: "0 0 12px 0 #000000a0"
-			});
+				});
 
 				$(document).off("mousemove").off("mouseup");
 
@@ -210,8 +268,11 @@ class Panel {
 				$(document).on("mouseup", (e) => {
 					$(document).off("mousemove").off("mouseup");
 
-					$ctrlCenter.css("display", "");
-					$ctrlUp.css("display", "");
+					$ctrlMove.show();
+					$ctrlXpandUp.show();
+					$ctrlXpandRight.show();
+					$ctrlXpandDown.show();
+					$ctrlXpandLeft.show();
 					this.$content.css({
 						width: "",
 						height: "",
@@ -240,20 +301,42 @@ class Panel {
 					}
 				});
 			});
-			$ctrlUp.on("click", () => {
+			$ctrlXpandUp.on("click", () => {
 				if (!this.hasSpaceTop()) return; // TODO flare locked
 
-				const neighbours = [...new Array(this.width)]
-					.map((blank, i) => i + this.x).map(x => this.board.getPanel(x, this.y - 1))
-					.filter(p => p); // can be undefined if there's a hole in the grid
-				neighbours.forEach(p => p.destroy());
+				this.getTopNeighbours().forEach(p => p.destroy());
 				this.height += 1;
 				this.y -= 1;
 				this.setDirty(true);
 				this.render();
 			});
+			$ctrlXpandRight.on("click", () => {
+				if (!this.hasSpaceRight()) return; // TODO flare locked
 
-			$pnl.append($ctrlCenter).append($ctrlUp);
+				this.getRightNeighbours().forEach(p => p.destroy());
+				this.width += 1;
+				this.setDirty(true);
+				this.render();
+			});
+			$ctrlXpandDown.on("click", () => {
+				if (!this.hasSpaceBottom()) return; // TODO flare locked
+
+				this.getBottomNeighbours().forEach(p => p.destroy());
+				this.height += 1;
+				this.setDirty(true);
+				this.render();
+			});
+			$ctrlXpandLeft.on("click", () => {
+				if (!this.hasSpaceLeft()) return; // TODO flare locked
+
+				this.getLeftNeighbours().forEach(p => p.destroy());
+				this.width += 1;
+				this.x -= 1;
+				this.setDirty(true);
+				this.render();
+			});
+
+			$pnl.append($ctrlMove).append($ctrlXpandUp).append($ctrlXpandRight).append($ctrlXpandDown).append($ctrlXpandLeft);
 
 			const $wrpContent = $(`<div class="panel-content-wrapper"/>`).appendTo($pnl);
 			this.$pnlWrpContent = $wrpContent;
@@ -342,25 +425,27 @@ window.addEventListener("load", () => {
 		"trapshazards.json",
 		"variantrules.json"
 	];
+
 	function mergeData (fromRec) {
 		Object.keys(fromRec).forEach(k => data[k] ? data[k] = data[k].concat(fromRec[k]) : data[k] = fromRec[k])
 	}
-	DataUtil.promiseJSON(`data/bestiary/index.json`)
-		.then(index => Promise.all(Object.values(index).map(f => DataUtil.promiseJSON(`data/bestiary/${f}`))))
+
+	DataUtil.loadJSON(`data/bestiary/index.json`)
+		.then(index => Promise.all(Object.values(index).map(f => DataUtil.loadJSON(`data/bestiary/${f}`))))
 		.then(monData => {
 			monData.forEach(d => {
 				mergeData(d);
 			});
 			Promise.resolve();
-		}).then(() => DataUtil.promiseJSON(`data/spells/index.json`))
-		.then(index => Promise.all(Object.values(index).map(f => DataUtil.promiseJSON(`data/spells/${f}`))))
+		}).then(() => DataUtil.loadJSON(`data/spells/index.json`))
+		.then(index => Promise.all(Object.values(index).map(f => DataUtil.loadJSON(`data/spells/${f}`))))
 		.then(spellData => {
 			spellData.forEach(d => {
 				mergeData(d);
 			});
 			Promise.resolve();
 		}).then(() => {
-		const promises = FILES.map(url => DataUtil.promiseJSON(`data/${url}`));
+		const promises = FILES.map(url => DataUtil.loadJSON(`data/${url}`));
 		promises.push(EntryRenderer.item.promiseData());
 		return Promise.all(promises).then(retData => {
 			retData.forEach(d => {
