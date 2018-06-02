@@ -68,7 +68,7 @@ class Board {
 					pnl.set$Content($(`<div class="dummy-content">${pnl.id}</div>`));
 				}
 
-				this.panels[`${x}--${y}`] = pnl;
+				this.panels[pnl.id] = pnl;
 			}
 		}
 		Object.values(this.panels).forEach(p => p.render());
@@ -79,7 +79,6 @@ class Board {
 			// x <= pX < x+w && y <= pY < y+h
 			return (p.x <= x) && (x < (p.x + p.width)) && (p.y <= y) && (y < (p.y + p.height));
 		});
-		// return this.panels[`${x}--${y}`];
 	}
 
 	setHoveringPanel (panel) {
@@ -89,6 +88,19 @@ class Board {
 	destroyPanel (id) {
 		const panelK = Object.keys(this.panels).find(k => this.panels[k].id === id);
 		if (panelK) delete this.panels[panelK];
+	}
+
+	doCheckFillSpaces () {
+		for (let x = 0; x < this.width; x++) {
+			for (let y = 0; y < this.height; ++y) {
+				const pnl = this.getPanel(x, y);
+				if (!pnl) {
+					const nuPnl = new Panel(this, x, y);
+					this.panels[nuPnl.id] = nuPnl;
+				}
+			}
+		}
+		Object.values(this.panels).forEach(p => p.render());
 	}
 }
 
@@ -361,6 +373,7 @@ class JoystickMenu {
 			this.panel.y -= 1;
 			this.panel.setDirty(true);
 			this.panel.render();
+			this.panel.board.doCheckFillSpaces();
 		});
 		$ctrlXpandRight.on("click", () => {
 			if (!this.panel.hasSpaceRight()) return; // TODO flare locked
@@ -369,6 +382,7 @@ class JoystickMenu {
 			this.panel.width += 1;
 			this.panel.setDirty(true);
 			this.panel.render();
+			this.panel.board.doCheckFillSpaces();
 		});
 		$ctrlXpandDown.on("click", () => {
 			if (!this.panel.hasSpaceBottom()) return; // TODO flare locked
@@ -377,6 +391,7 @@ class JoystickMenu {
 			this.panel.height += 1;
 			this.panel.setDirty(true);
 			this.panel.render();
+			this.panel.board.doCheckFillSpaces();
 		});
 		$ctrlXpandLeft.on("click", () => {
 			if (!this.panel.hasSpaceLeft()) return; // TODO flare locked
@@ -386,6 +401,7 @@ class JoystickMenu {
 			this.panel.x -= 1;
 			this.panel.setDirty(true);
 			this.panel.render();
+			this.panel.board.doCheckFillSpaces();
 		});
 
 		this.panel.$pnl.append($ctrlMove).append($ctrlXpandUp).append($ctrlXpandRight).append($ctrlXpandDown).append($ctrlXpandLeft);
