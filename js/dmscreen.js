@@ -213,6 +213,7 @@ class Panel {
 			 */
 
 			const $pnl = $(`<div class="dm-screen-panel"/>`);
+			this.$pnl = $pnl;
 			const $ctrlBar = $(`<div class="panel-control-bar"/>`).appendTo($pnl);
 
 			const $ctrlEmpty = $(`<div class="delete-icon glyphicon glyphicon-remove"/>`).appendTo($ctrlBar);
@@ -220,131 +221,15 @@ class Panel {
 				this.set$Content(null, true);
 			});
 
-			$pnl.on("mouseover", () => {
-				this.board.setHoveringPanel(this);
-			});
-
-			const $ctrlMove = $(`<div class="panel-control panel-control-middle"/>`);
-			const $ctrlXpandUp = $(`<div class="panel-control panel-control-top"/>`);
-			const $ctrlXpandRight = $(`<div class="panel-control panel-control-right"/>`);
-			const $ctrlXpandDown = $(`<div class="panel-control panel-control-bottom"/>`);
-			const $ctrlXpandLeft = $(`<div class="panel-control panel-control-left"/>`);
-
-			$ctrlMove.on("mousedown", (e) => {
-				if (!this.$content) return;
-
-				const w = this.$content.width();
-				const h = this.$content.height();
-				const offset = this.$content.offset();
-				const offsetX = e.clientX - offset.left;
-				const offsetY = e.clientY - offset.top;
-
-				$(`body`).append(this.$content);
-				$ctrlMove.hide();
-				$ctrlXpandUp.hide();
-				$ctrlXpandRight.hide();
-				$ctrlXpandDown.hide();
-				$ctrlXpandLeft.hide();
-				this.$content.css({
-					width: w,
-					height: h,
-					position: "fixed",
-					top: e.clientY,
-					left: e.clientX,
-					zIndex: 102,
-					pointerEvents: "none",
-					boxShadow: "0 0 12px 0 #000000a0"
-				});
-
-				$(document).off("mousemove").off("mouseup");
-
-				$(document).on("mousemove", (e) => {
-					this.$content.css({
-						top: e.clientY - offsetY,
-						left: e.clientX - offsetX
-					});
-				});
-
-				$(document).on("mouseup", (e) => {
-					$(document).off("mousemove").off("mouseup");
-
-					$ctrlMove.show();
-					$ctrlXpandUp.show();
-					$ctrlXpandRight.show();
-					$ctrlXpandDown.show();
-					$ctrlXpandLeft.show();
-					this.$content.css({
-						width: "",
-						height: "",
-						position: "",
-						top: "",
-						left: "",
-						zIndex: "",
-						pointerEvents: "",
-						boxShadow: ""
-					});
-
-					if (!this.board.hoveringPanel || this.id === this.board.hoveringPanel.id) {
-						this.$pnlWrpContent.append(this.$content);
-					} else {
-						const her = this.board.hoveringPanel;
-						if (her.getEmpty()) {
-							her.set$Content(this.$content, true);
-							this.set$Content(null, true);
-							this.$content = null;
-						} else {
-							const $herContent = her.get$Content();
-							const $myContent = this.$content;
-							her.set$Content($myContent, true);
-							this.set$Content($herContent, true);
-						}
-					}
-				});
-			});
-			$ctrlXpandUp.on("click", () => {
-				if (!this.hasSpaceTop()) return; // TODO flare locked
-
-				this.getTopNeighbours().forEach(p => p.destroy());
-				this.height += 1;
-				this.y -= 1;
-				this.setDirty(true);
-				this.render();
-			});
-			$ctrlXpandRight.on("click", () => {
-				if (!this.hasSpaceRight()) return; // TODO flare locked
-
-				this.getRightNeighbours().forEach(p => p.destroy());
-				this.width += 1;
-				this.setDirty(true);
-				this.render();
-			});
-			$ctrlXpandDown.on("click", () => {
-				if (!this.hasSpaceBottom()) return; // TODO flare locked
-
-				this.getBottomNeighbours().forEach(p => p.destroy());
-				this.height += 1;
-				this.setDirty(true);
-				this.render();
-			});
-			$ctrlXpandLeft.on("click", () => {
-				if (!this.hasSpaceLeft()) return; // TODO flare locked
-
-				this.getLeftNeighbours().forEach(p => p.destroy());
-				this.width += 1;
-				this.x -= 1;
-				this.setDirty(true);
-				this.render();
-			});
-
-			$pnl.append($ctrlMove).append($ctrlXpandUp).append($ctrlXpandRight).append($ctrlXpandDown).append($ctrlXpandLeft);
+			const joyMenu = new JoystickMenu(this);
+			joyMenu.initialise();
 
 			const $wrpContent = $(`<div class="panel-content-wrapper"/>`).appendTo($pnl);
 			this.$pnlWrpContent = $wrpContent;
 
 			if (this.$content) $wrpContent.append(this.$content);
 
-			this.$pnl = doApplyPosCss.bind(this)($pnl)
-				.appendTo(this.board.get$creen());
+			doApplyPosCss.bind(this)($pnl).appendTo(this.board.get$creen());
 		}
 
 		if (this.isDirty) {
@@ -381,8 +266,134 @@ class Panel {
 	}
 }
 
+class JoystickMenu {
+	constructor (panel) {
+		this.panel = panel;
+	}
+
+	initialise () {
+		this.panel.$pnl.on("mouseover", () => {
+			this.panel.board.setHoveringPanel(this.panel);
+		});
+
+		const $ctrlMove = $(`<div class="panel-control panel-control-middle"/>`);
+		const $ctrlXpandUp = $(`<div class="panel-control panel-control-top"/>`);
+		const $ctrlXpandRight = $(`<div class="panel-control panel-control-right"/>`);
+		const $ctrlXpandDown = $(`<div class="panel-control panel-control-bottom"/>`);
+		const $ctrlXpandLeft = $(`<div class="panel-control panel-control-left"/>`);
+
+		$ctrlMove.on("mousedown", (e) => {
+			if (!this.panel.$content) return;
+
+			const w = this.panel.$content.width();
+			const h = this.panel.$content.height();
+			const offset = this.panel.$content.offset();
+			const offsetX = e.clientX - offset.left;
+			const offsetY = e.clientY - offset.top;
+
+			$(`body`).append(this.panel.$content);
+			$ctrlMove.hide();
+			$ctrlXpandUp.hide();
+			$ctrlXpandRight.hide();
+			$ctrlXpandDown.hide();
+			$ctrlXpandLeft.hide();
+			this.panel.$content.css({
+				width: w,
+				height: h,
+				position: "fixed",
+				top: e.clientY,
+				left: e.clientX,
+				zIndex: 102,
+				pointerEvents: "none",
+				boxShadow: "0 0 12px 0 #000000a0"
+			});
+
+			$(document).off("mousemove").off("mouseup");
+
+			$(document).on("mousemove", (e) => {
+				this.panel.$content.css({
+					top: e.clientY - offsetY,
+					left: e.clientX - offsetX
+				});
+			});
+
+			$(document).on("mouseup", (e) => {
+				$(document).off("mousemove").off("mouseup");
+
+				$ctrlMove.show();
+				$ctrlXpandUp.show();
+				$ctrlXpandRight.show();
+				$ctrlXpandDown.show();
+				$ctrlXpandLeft.show();
+				this.panel.$content.css({
+					width: "",
+					height: "",
+					position: "",
+					top: "",
+					left: "",
+					zIndex: "",
+					pointerEvents: "",
+					boxShadow: ""
+				});
+
+				if (!this.panel.board.hoveringPanel || this.panel.id === this.panel.board.hoveringPanel.id) {
+					this.panel.$pnlWrpContent.append(this.$content);
+				} else {
+					const her = this.panel.board.hoveringPanel;
+					if (her.getEmpty()) {
+						her.set$Content(this.panel.$content, true);
+						this.panel.set$Content(null, true);
+						this.panel.$content = null;
+					} else {
+						const $herContent = her.get$Content();
+						const $myContent = this.panel.$content;
+						her.set$Content($myContent, true);
+						this.panel.set$Content($herContent, true);
+					}
+				}
+			});
+		});
+		$ctrlXpandUp.on("click", () => {
+			if (!this.panel.hasSpaceTop()) return; // TODO flare locked
+
+			this.panel.getTopNeighbours().forEach(p => p.destroy());
+			this.panel.height += 1;
+			this.panel.y -= 1;
+			this.panel.setDirty(true);
+			this.panel.render();
+		});
+		$ctrlXpandRight.on("click", () => {
+			if (!this.panel.hasSpaceRight()) return; // TODO flare locked
+
+			this.panel.getRightNeighbours().forEach(p => p.destroy());
+			this.panel.width += 1;
+			this.panel.setDirty(true);
+			this.panel.render();
+		});
+		$ctrlXpandDown.on("click", () => {
+			if (!this.panel.hasSpaceBottom()) return; // TODO flare locked
+
+			this.panel.getBottomNeighbours().forEach(p => p.destroy());
+			this.panel.height += 1;
+			this.panel.setDirty(true);
+			this.panel.render();
+		});
+		$ctrlXpandLeft.on("click", () => {
+			if (!this.panel.hasSpaceLeft()) return; // TODO flare locked
+
+			this.panel.getLeftNeighbours().forEach(p => p.destroy());
+			this.panel.width += 1;
+			this.panel.x -= 1;
+			this.panel.setDirty(true);
+			this.panel.render();
+		});
+
+		this.panel.$pnl.append($ctrlMove).append($ctrlXpandUp).append($ctrlXpandRight).append($ctrlXpandDown).append($ctrlXpandLeft);
+	}
+}
+
 // radial shit
-class Menu {
+class RadialMenu {
 	constructor (x, y) {
 		this.x = x;
 		this.y = y;
