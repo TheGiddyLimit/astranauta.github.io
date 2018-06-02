@@ -318,7 +318,6 @@ class Panel {
 		}
 	}
 
-	// TODO everything
 	set$Content ($content, doUpdateElements) {
 		this.$content = $content;
 		if (doUpdateElements) {
@@ -354,6 +353,9 @@ class JoystickMenu {
 		const $ctrlXpandLeft = $(`<div class="panel-control panel-control-left"/>`);
 
 		$ctrlMove.on("mousedown", (e) => {
+			const $body = $(`body`);
+			MiscUtil.clearSelection();
+			$body.css("userSelect", "none");
 			if (!this.panel.$content) return;
 
 			const w = this.panel.$content.width();
@@ -362,7 +364,7 @@ class JoystickMenu {
 			const offsetX = e.clientX - offset.left;
 			const offsetY = e.clientY - offset.top;
 
-			$(`body`).append(this.panel.$content);
+			$body.append(this.panel.$content);
 			$ctrlMove.hide();
 			$ctrlXpandUp.hide();
 			$ctrlXpandRight.hide();
@@ -390,7 +392,7 @@ class JoystickMenu {
 				});
 			});
 
-			$(document).on("mouseup", (e) => {
+			$(document).on("mouseup", () => {
 				$(document).off("mousemove").off("mouseup");
 
 				$ctrlMove.show();
@@ -398,6 +400,7 @@ class JoystickMenu {
 				$ctrlXpandRight.show();
 				$ctrlXpandDown.show();
 				$ctrlXpandLeft.show();
+				$body.css("userSelect", "");
 				this.panel.$content.css({
 					width: "",
 					height: "",
@@ -426,10 +429,13 @@ class JoystickMenu {
 						this.panel.set$Content($herContent, true);
 					}
 				}
+				MiscUtil.clearSelection();
 			});
 		});
 
 		function xpandHandler (dir) {
+			MiscUtil.clearSelection();
+			$(`body`).css("userSelect", "none");
 			const axis = dir === RIGHT || dir === LEFT ? AX_X : AX_Y;
 
 			const pos = this.panel.$pnl.offset();
@@ -471,22 +477,26 @@ class JoystickMenu {
 
 				switch (dir) {
 					case UP:
+						 if (numPanelsCovered > this.panel.y) numPanelsCovered = this.panel.y;
 						this.panel.$pnl.css({
 							gridRowStart: String(this.panel.y + (1 - numPanelsCovered)),
 							gridRowEnd: String(this.panel.y + 1 + this.panel.height),
 						});
 						break;
 					case RIGHT:
+						if (numPanelsCovered > (this.panel.board.width - this.panel.width) - this.panel.x) numPanelsCovered = (this.panel.board.width - this.panel.width) - this.panel.x;
 						this.panel.$pnl.css({
 							gridColumnEnd: String(this.panel.x + 1 + this.panel.width + numPanelsCovered),
 						});
 						break;
 					case DOWN:
+						if (numPanelsCovered > (this.panel.board.height - this.panel.height) - this.panel.y) numPanelsCovered = (this.panel.board.height - this.panel.height) - this.panel.y;
 						this.panel.$pnl.css({
 							gridRowEnd: String(this.panel.y + 1 + this.panel.height + numPanelsCovered),
 						});
 						break;
 					case LEFT:
+						if (numPanelsCovered > this.panel.x) numPanelsCovered = this.panel.x;
 						this.panel.$pnl.css({
 							gridColumnStart: String(this.panel.x + (1 - numPanelsCovered)),
 							gridColumnEnd: String(this.panel.x + 1 + this.panel.width),
@@ -495,9 +505,10 @@ class JoystickMenu {
 				}
 			});
 
-			$(document).on("mouseup", (e) => {
+			$(document).on("mouseup", () => {
 				$(document).off("mousemove").off("mouseup");
 
+				$(`body`).css("userSelect", "");
 				this.panel.$pnl.css({
 					zIndex: "",
 					boxShadow: "",
@@ -572,6 +583,7 @@ class JoystickMenu {
 				this.panel.setDirty(true);
 				this.panel.render();
 				this.panel.board.doCheckFillSpaces();
+				MiscUtil.clearSelection();
 			});
 		}
 

@@ -1603,6 +1603,25 @@ function showCopiedEffect ($ele) {
 	});
 }
 
+// TODO refactor other misc utils into this
+MiscUtil = {
+	clearSelection () {
+		if (document.getSelection) {
+			document.getSelection().removeAllRanges();
+			document.getSelection().addRange(document.createRange());
+		} else if (window.getSelection) {
+			if (window.getSelection().removeAllRanges) {
+				window.getSelection().removeAllRanges();
+				window.getSelection().addRange(document.createRange());
+			} else if (window.getSelection().empty) {
+				window.getSelection().empty();
+			}
+		} else if (document.selection) {
+			document.selection.empty();
+		}
+	}
+};
+
 // LIST AND SEARCH =====================================================================================================
 ListUtil = {
 	SUB_HASH_PREFIX: "sublistselected",
