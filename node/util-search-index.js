@@ -172,7 +172,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			baseUrl: "psionics.html",
 			deepIndex: (primary, it) => {
 				if (!it.modes) return [];
-				return it.modes.map(m => ({n: `${primary.parentName}; ${m.name}`}))
+				return it.modes.map(m => ({d: 1, n: `${primary.parentName}; ${m.name}`}))
 			},
 			hover: true
 		},
@@ -209,7 +209,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 				it.entries.forEach(e => {
 					er.EntryRenderer.getNames(names, e);
 				});
-				return names.map(n => ({n: `${primary.parentName}; ${n}`}));
+				return names.map(n => ({d: 1, n: `${primary.parentName}; ${n}`}));
 			}
 		},
 		{

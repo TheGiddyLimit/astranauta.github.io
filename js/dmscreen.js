@@ -15,6 +15,7 @@ class Board {
 		this.height = 3;
 		this.panels = {}; // flat panel structure because I'm a fucking maniac
 		this.$creen = $(`.dm-screen`);
+		this.menu = new AddMenu();
 
 		this.nextId = 1;
 		this.hoveringPanel = null;
@@ -91,18 +92,36 @@ class Board {
 
 	doLoadIndex (fnCallback) {
 		DataUtil.loadJSON("search/index.json").then((data) => {
+			elasticlunr.clearStopWords();
+			this.availContent.ALL = elasticlunr(function () {
+				this.addField("n");
+				this.addField("s");
+				this.setRef("id");
+			});
 			data.forEach(d => {
+				if (d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF) return;
+				if (d.d) return; // flag for "deep indexed" content that refers to the same item
 				d.cf = Parser.pageCategoryToFull(d.c);
 				if (!this.availContent[d.cf]) {
 					this.availContent[d.cf] = elasticlunr(function () {
 						this.addField("n");
 						this.addField("s");
 						this.setRef("id");
-						elasticlunr.clearStopWords();
 					});
 				}
+				this.availContent.ALL.addDoc(d);
 				this.availContent[d.cf].addDoc(d);
 			});
+
+			Object.keys(this.availContent).sort().forEach(cat => {
+				const isAll = cat === "ALL";
+				const label = isAll ? "All Categories" : cat;
+				const tab = new AddMenuSearchTab(label, this.availContent[cat]);
+				if (isAll) tab.setSpotlight(true);
+				this.menu.addTab(tab)
+			});
+			this.menu.render();
+
 			fnCallback.bind(this)();
 			this.doHideLoading();
 		});
@@ -310,37 +329,34 @@ class Panel {
 		}
 
 		function doInitialRender () {
-			/*
-			TODO controls... hm... let me see...
-			- delete (really an "Empty") - X in the top-right of the title bar?
-			- move it about by click-dragging?
-			- resize it by click-dragging edge regions?
-
-			LOCKS ARE BAD - THEY REQUIRE YOU TO REMEMBER TO LOCK/UNLOCK
-			RADIAL MENU
-			 */
-
-			const $pnl = $(`<div class="dm-screen-panel"/>`);
+			const $pnl = $(`<div class="dm-screen-panel" empty="true"/>`);
 			this.$pnl = $pnl;
 			const $ctrlBar = $(`<div class="panel-control-bar"/>`).appendTo($pnl);
 
 			const $ctrlMove = $(`<div class="panel-control-icon glyphicon glyphicon-move" title="Move"/>`).appendTo($ctrlBar);
 			$ctrlMove.on("click", () => {
 				$pnl.find(`.panel-control`).toggle();
+				$pnl.find(`.btn-panel-add`).toggle();
 			});
 			const $ctrlEmpty = $(`<div class="panel-control-icon glyphicon glyphicon-remove" title="Empty"/>`).appendTo($ctrlBar);
-			$ctrlEmpty.on("click", (e) => {
-				if (e.ctrlKey || window.confirm("Are you sure? (CTRL-click to avoid this confirmation)")) this.set$Content(null, true);
+			$ctrlEmpty.on("click", () => {
+				this.set$Content(null, true);
+				$pnl.find(`.panel-control`).hide();
+				$pnl.find(`.btn-panel-add`).show();
 			});
 
 			const joyMenu = new JoystickMenu(this);
 			joyMenu.initialise();
 
 			const $wrpContent = $(`<div class="panel-content-wrapper"/>`).appendTo($pnl);
-			// TODO add button
-			$(`<div class="btn-add">+</div>`).on("click", () => {
-
-			}).appendTo($wrpContent);
+			const $wrpBtnAdd = $(`<div class="panel-add"/>`).appendTo($wrpContent);
+			const $btnAdd = $(`<span class="btn-panel-add glyphicon glyphicon-plus"/>`).on("click", () => {
+				this.board.menu.doOpen();
+				this.board.menu.setPanel(this);
+				if (!this.board.menu.hasActiveTab()) this.board.menu.setFirstTabActive();
+				else this.board.menu.getActiveTab().doTransitionActive();
+			}).appendTo($wrpBtnAdd);
+			this.$btnAdd = $wrpBtnAdd;
 			this.$pnlWrpContent = $wrpContent;
 
 			if (this.$content) $wrpContent.append(this.$content);
@@ -366,8 +382,10 @@ class Panel {
 	set$Content ($content, doUpdateElements) {
 		this.$content = $content;
 		if (doUpdateElements) {
-			if (!$content) this.$pnlWrpContent.empty();
+			this.$pnlWrpContent.children().detach();
+			if ($content === null) this.$pnlWrpContent.append(this.$btnAdd);
 			else this.$pnlWrpContent.append($content);
+			this.$pnl.attr("empty", !$content);
 		}
 	}
 
@@ -418,11 +436,12 @@ class JoystickMenu {
 				position: "fixed",
 				top: e.clientY,
 				left: e.clientX,
-				zIndex: 102,
+				zIndex: 52,
 				pointerEvents: "none",
-				// transform: "rotate(-4deg)",
+				transform: "rotate(-4deg)",
 				background: "none"
 			});
+			this.panel.board.get$creen().addClass("board-content-hovering");
 			this.panel.$content.addClass("panel-content-hovering");
 
 			$(document).off("mousemove").off("mouseup");
@@ -449,6 +468,7 @@ class JoystickMenu {
 					transform: "",
 					background: ""
 				});
+				this.panel.board.get$creen().removeClass("board-content-hovering");
 				this.panel.$content.removeClass("panel-content-hovering");
 
 				if (!this.panel.board.hoveringPanel || this.panel.id === this.panel.board.hoveringPanel.id) {
@@ -499,7 +519,7 @@ class JoystickMenu {
 			const initGRE = this.panel.$pnl.css("gridRowEnd");
 
 			this.panel.$pnl.css({
-				zIndex: 102,
+				zIndex: 52,
 				boxShadow: "0 0 12px 0 #000000a0"
 			});
 
@@ -649,45 +669,295 @@ class JoystickMenu {
 	}
 }
 
-// radial shit
-class RadialMenu {
-	constructor (x, y) {
-		this.x = x;
-		this.y = y;
-		this.currentChild = null;
+class AddMenu {
+	constructor () {
+		this.tabs = [];
+
+		this.$menu = null;
+		this.$tabView = null;
+		this.activeTab = null;
+		this.pnl = null; // panel where an add button was last clicked
 	}
 
-	open () {
-
+	addTab (tab) {
+		tab.setMenu(this);
+		this.tabs.push(tab);
 	}
 
-	close () {
-		if (this.currentChild) this.closeChild();
+	get$Menu () {
+		return this.$menu;
 	}
 
-	openChild (child) {
-		this.currentChild = child();
-		child.open();
+	setActiveTab (tab) {
+		this.$menu.find(`.panel-addmenu-tab-head`).attr(`active`, false);
+		if (this.activeTab) this.activeTab.get$Tab().detach();
+		this.activeTab = tab;
+		this.$tabView.append(tab.get$Tab());
+		tab.$head.attr(`active`, true);
+
+		if (tab.doTransitionActive) tab.doTransitionActive();
 	}
 
-	closeChild () {
-		if (this.currentChild) this.currentChild.close();
-		this.currentChild = null;
+	hasActiveTab () {
+		return this.activeTab !== null;
+	}
+
+	getActiveTab () {
+		return this.activeTab;
+	}
+
+	setFirstTabActive () {
+		const t = this.tabs[0];
+		this.setActiveTab(t);
+	}
+
+	render () {
+		if (!this.$menu) {
+			const $menu = $(`<div class="panel-addmenu">`);
+			this.$menu = $menu;
+			const $menuInner = $(`<div class="panel-addmenu-inner dropdown-menu">`).appendTo($menu);
+			const $tabBar = $(`<div class="panel-addmenu-bar"/>`).appendTo($menuInner);
+			const $tabView = $(`<div class="panel-addmenu-view"/>`).appendTo($menuInner);
+			this.$tabView = $tabView;
+
+			this.tabs.forEach(t => {
+				t.render();
+				const $head = $(`<div class="btn btn-default panel-addmenu-tab-head">${t.label}</div>`).appendTo($tabBar);
+				if (t.getSpotlight()) $head.addClass("btn-spotlight");
+				const $body = $(`<div class="panel-addmenu-tab-body"/>`).appendTo($tabBar);
+				$body.append(t.get$Tab);
+				t.$head = $head;
+				t.$body = $body;
+				$head.on("click", () => this.setActiveTab(t));
+			});
+
+			$menu.on("click", () => this.doClose());
+			$menuInner.on("click", (e) => e.stopPropagation());
+		}
+	}
+
+	setPanel (pnl) {
+		this.pnl = pnl;
+	}
+
+	getPanel () {
+		return this.pnl;
+	}
+
+	doClose () {
+		this.$menu.detach();
+	}
+
+	doOpen () {
+		$(`body`).append(this.$menu);
 	}
 }
 
-const data = {};
+class AddMenuTab {
+	constructor (label) {
+		this.label = label;
+		this.spotlight = false;
+
+		this.menu = null;
+	}
+
+	genTabId (type) {
+		return `tab-${type}-${this.label.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9\-]/g, "_")}`;
+	}
+
+	setMenu (menu) {
+		this.menu = menu;
+	}
+
+	setSpotlight (spotlight) {
+		this.spotlight = spotlight;
+	}
+
+	getSpotlight () {
+		return this.spotlight;
+	}
+}
+
+class AddMenuListTab extends AddMenuTab {
+	constructor (label, content) {
+		super(label);
+		this.tabId = this.genTabId("list");
+		this.content = content;
+
+		this.$tab = null;
+		this.list = null;
+	}
+
+	get$Tab () {
+		return this.$tab;
+	}
+
+	render () {
+		if (!this.$tab) {
+			const $tab = $(`<div class="panel-tab-list-wrapper" id="${this.tabId}"/>`);
+			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search list...">`).appendTo($tab);
+			const $list = $(`<div class="list panel-tab-list"/>`).appendTo($tab);
+			let temp = "";
+			this.content.forEach(d => {
+				temp += `<div class="panel-tab-list-item"><span class="name">${d.n}</span></div>`;
+			});
+			$list.append(temp);
+			this.$tab = $tab;
+			this.$srch = $srch;
+			this.$list = $list;
+		}
+	}
+
+	doTransitionActive () {
+		setTimeout(() => {
+			if (!tab.list) {
+				tab.list = new List(tab.tabId, {
+					valueNames: ["name"],
+					listClass: "panel-tab-list"
+				});
+			}
+		}, 1);
+	}
+}
+
+class AddMenuSearchTab extends AddMenuTab {
+	constructor (label, index) {
+		super(label);
+		this.tabId = this.genTabId("search");
+		this.index = index;
+
+		this.$tab = null;
+		this.$srch = null;
+		this.$results = null;
+		this.showMsgIpt = null;
+	}
+
+	get$Tab () {
+		return this.$tab;
+	}
+
+	render () {
+		let doClickFirst = false;
+		let isWait = false;
+
+		this.showMsgIpt = () =>  {
+			isWait = true;
+			this.$results.empty().append(`<div class="panel-tab-message"><i>Enter a search.</i></div>`);
+		};
+
+		const showMsgDots = () => {
+			this.$results.empty().append(`<div class="panel-tab-message"><i>\u2022\u2022\u2022</i></div>`);
+		};
+
+		const showNoResults = () => {
+			isWait = true;
+			this.$results.empty().append(`<div class="panel-tab-message"><i>No results.</i></div>`);
+		};
+
+		const doSearch = () => {
+			const srch = this.$srch.val();
+			const results = this.index.search(srch, {
+				fields: {
+					n: {boost: 5, expand: true},
+					s: {expand: true}
+				},
+				bool: "AND",
+				expand: true
+			});
+
+			this.$results.empty();
+			if (results.length) {
+				const handleClick = (r) => {
+					this.menu.pnl.set$Content($(`<div class="panel-content-wrapper-inner"><div class="panel-tab-message"><i>Loading...</i></div></div>`), true);
+					const page = UrlUtil.categoryToPage(r.doc.c);
+					const source = r.doc.s;
+					const hash = r.doc.u;
+					EntryRenderer.hover._doFillThenCall(
+						page,
+						source,
+						hash,
+						() => {
+							const fn = EntryRenderer.hover._pageToRenderFn(page);
+							const it = EntryRenderer.hover._getFromCache(page, source, hash);
+							this.menu.pnl.set$Content($(`<div class="panel-content-wrapper-inner"><table class="stats">${fn(it)}</table></div>`), true);
+						}
+					);
+					this.menu.doClose();
+				};
+
+				if (doClickFirst) {
+					handleClick(results[0]);
+					doClickFirst = false;
+					return;
+				}
+
+				const res = results.slice(0, 75); // hard cap at 75 results
+
+				res.forEach(r => {
+					$(`
+						<div class="panel-tab-results-row">
+							<span>${r.doc.n}</span>
+							<span>${r.doc.s ? `<i title="${Parser.sourceJsonToFull(r.doc.s)}">${Parser.sourceJsonToAbv(r.doc.s)}${r.doc.p ? ` p${r.doc.p}` : ""}</i>` : ""}</span>
+						</div>
+					`).on("click", () => handleClick(r)).appendTo(this.$results);
+				});
+
+				if (results.length > res.length) {
+					const diff = results.length - res.length;
+					this.$results.append(`<div class="panel-tab-results-row panel-tab-results-row-display-only">...${diff} more result${diff === 1 ? " was" : "s were"} hidden. Refine your search!</div>`);
+				}
+			} else {
+				if (!srch.trim()) this.showMsgIpt();
+				else showNoResults();
+			}
+		};
+
+		if (!this.$tab) {
+			const $tab = $(`<div class="panel-tab-list-wrapper" id="${this.tabId}"/>`);
+			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($tab);
+			const $results = $(`<div class="panel-tab-results"/>`).appendTo($tab);
+
+			// auto-search after 100ms
+			const TYPE_TIMEOUT_MS = 100;
+			let typeTimer;
+			$srch.on("keyup", () => {
+				clearTimeout(typeTimer);
+				typeTimer = setTimeout(() => {
+					doSearch();
+				}, TYPE_TIMEOUT_MS);
+			});
+			$srch.on("keydown", () => {
+				if (isWait) {
+					isWait = false;
+					showMsgDots();
+				}
+				clearTimeout(typeTimer)
+			});
+			$srch.on("click", () => {
+				if ($srch.val() && $srch.val().trim().length) doSearch();
+			});
+			$srch.on("keypress", (e) => {
+				if (e.which === 13) {
+					doClickFirst = true;
+					doSearch();
+				}
+			});
+
+			this.$tab = $tab;
+			this.$srch = $srch;
+			this.$results = $results;
+
+			this.showMsgIpt();
+		}
+	}
+
+	doTransitionActive () {
+		this.$srch.val("").focus();
+		if (this.showMsgIpt) this.showMsgIpt();
+	}
+}
+
 window.addEventListener("load", () => {
 	const screen = new Board();
 	screen.initialise();
-	// EntryRenderer.hover._doFillThenCall(
-	// 	it.page,
-	// 	it.source,
-	// 	it.hash,
-	// 	() => {
-	// 		tmp.push(EntryRenderer.hover._getFromCache(it.page, it.source, it.hash));
-	// 		cachedCount--;
-	// 		if (cachedCount <= 0) callback(tmp);
-	// 	}
-	// );
 });

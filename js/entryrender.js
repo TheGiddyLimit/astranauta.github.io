@@ -2431,6 +2431,39 @@ EntryRenderer.hover = {
 		}
 	},
 
+	_pageToRenderFn (page) {
+		switch (page) {
+			case UrlUtil.PG_SPELLS:
+				return EntryRenderer.spell.getCompactRenderedString;
+			case UrlUtil.PG_ITEMS:
+				return EntryRenderer.item.getCompactRenderedString;
+			case UrlUtil.PG_BESTIARY:
+				return EntryRenderer.monster.getCompactRenderedString;
+			case UrlUtil.PG_CONDITIONS:
+				return EntryRenderer.condition.getCompactRenderedString;
+			case UrlUtil.PG_BACKGROUNDS:
+				return EntryRenderer.background.getCompactRenderedString;
+			case UrlUtil.PG_FEATS:
+				return EntryRenderer.feat.getCompactRenderedString;
+			case UrlUtil.PG_INVOCATIONS:
+				return EntryRenderer.invocation.getCompactRenderedString;
+			case UrlUtil.PG_PSIONICS:
+				return EntryRenderer.psionic.getCompactRenderedString;
+			case UrlUtil.PG_REWARDS:
+				return EntryRenderer.reward.getCompactRenderedString;
+			case UrlUtil.PG_RACES:
+				return EntryRenderer.race.getCompactRenderedString;
+			case UrlUtil.PG_DEITIES:
+				return EntryRenderer.deity.getCompactRenderedString;
+			case UrlUtil.PG_OBJECTS:
+				return EntryRenderer.object.getCompactRenderedString;
+			case UrlUtil.PG_TRAPS_HAZARDS:
+				return EntryRenderer.traphazard.getCompactRenderedString;
+			default:
+				return null;
+		}
+	},
+
 	_BAR_HEIGHT: 16,
 	_showInProgress: false,
 	_hoverId: 1,
@@ -2466,50 +2499,8 @@ EntryRenderer.hover = {
 		const $curWin = $(`.hoverborder[data-hover-id="${hoverId}"]`);
 		if (alreadyHovering === "true" && $curWin.length) return;
 
-		let renderFunction;
-		switch (page) {
-			case UrlUtil.PG_SPELLS:
-				renderFunction = EntryRenderer.spell.getCompactRenderedString;
-				break;
-			case UrlUtil.PG_ITEMS:
-				renderFunction = EntryRenderer.item.getCompactRenderedString;
-				break;
-			case UrlUtil.PG_BESTIARY:
-				renderFunction = EntryRenderer.monster.getCompactRenderedString;
-				break;
-			case UrlUtil.PG_CONDITIONS:
-				renderFunction = EntryRenderer.condition.getCompactRenderedString;
-				break;
-			case UrlUtil.PG_BACKGROUNDS:
-				renderFunction = EntryRenderer.background.getCompactRenderedString;
-				break;
-			case UrlUtil.PG_FEATS:
-				renderFunction = EntryRenderer.feat.getCompactRenderedString;
-				break;
-			case UrlUtil.PG_INVOCATIONS:
-				renderFunction = EntryRenderer.invocation.getCompactRenderedString;
-				break;
-			case UrlUtil.PG_PSIONICS:
-				renderFunction = EntryRenderer.psionic.getCompactRenderedString;
-				break;
-			case UrlUtil.PG_REWARDS:
-				renderFunction = EntryRenderer.reward.getCompactRenderedString;
-				break;
-			case UrlUtil.PG_RACES:
-				renderFunction = EntryRenderer.race.getCompactRenderedString;
-				break;
-			case UrlUtil.PG_DEITIES:
-				renderFunction = EntryRenderer.deity.getCompactRenderedString;
-				break;
-			case UrlUtil.PG_OBJECTS:
-				renderFunction = EntryRenderer.object.getCompactRenderedString;
-				break;
-			case UrlUtil.PG_TRAPS_HAZARDS:
-				renderFunction = EntryRenderer.traphazard.getCompactRenderedString;
-				break;
-			default:
-				throw new Error(`No hover render function specified for page ${page}`)
-		}
+		const renderFunction = EntryRenderer.hover._pageToRenderFn(page);
+		if (!renderFunction) throw new Error(`No hover render function specified for page ${page}`);
 		EntryRenderer.hover._curHovering = {
 			hoverId: hoverId,
 			ele: ele,
