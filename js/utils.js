@@ -808,6 +808,9 @@ Parser.monImmResToFull = function (toParse) {
 			} else if (it.resist) {
 				const toJoin = it.resist.map(nxt => toString(nxt, depth + 1));
 				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : CollectionUtil.joinConjunct(toJoin, ", ", " and ");
+			} else if (it.vulnerable) {
+				const toJoin = it.vulnerable.map(nxt => toString(nxt, depth + 1));
+				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : CollectionUtil.joinConjunct(toJoin, ", ", " and ");
 			}
 			if (it.note) stack += ` ${it.note}`;
 			return stack;

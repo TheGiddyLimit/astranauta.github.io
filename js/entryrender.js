@@ -600,21 +600,22 @@ function EntryRenderer () {
 						switch (tag) {
 							case "@dice": {
 								// format: {@dice 1d2+3+4d5-6} // TODO do we need to handle e.g. 4d6+1-1d4+2 (negative dice exp)?
-								const spl = rollText.toLowerCase().replace(/\s/g, "").split(/[+-]/g).map(s => s.trim());
+								const spl = rollText.toLowerCase().replace(/\s/g, "").replace(/-/g, "-NEG").split(/[+-]/g).map(s => s.trim());
 								// recombine modifiers
 								const toRoll = [];
 								for (let i = 0; i < spl.length; ++i) {
 									const it = spl[i];
 									if (it.includes("d")) {
-										const m = /^(\d+)?d(\d+)$/.exec(it);
+										const m = /^(NEG)?(\d+)?d(\d+)$/.exec(it);
 										toRoll.push({
-											number: Number(m[1]) || 1,
-											faces: Number(m[2]),
+											number: Number(m[2]) || 1,
+											faces: Number(m[3]),
 											modifier: 0,
 											hideModifier: true
 										});
 									} else {
-										toRoll[toRoll.length - 1].modifier += Number(it);
+										let neg = it.includes("NEG");
+										toRoll[toRoll.length - 1].modifier += ((neg * -1) || 1) * Number(it.replace(/NEG/g, ""));
 										toRoll[toRoll.length - 1].hideModifier = false;
 									}
 								}
