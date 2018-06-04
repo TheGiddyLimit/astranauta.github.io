@@ -3083,4 +3083,5 @@ EntryRenderer.DATA_NONE = "data-none";
 
 if (typeof module !== "undefined") {
 	module.exports.EntryRenderer = EntryRenderer;
+	global.EntryRenderer = EntryRenderer;
 }

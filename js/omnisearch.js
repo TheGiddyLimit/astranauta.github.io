@@ -4,6 +4,7 @@ const Omnisearch = {
 	_onFirstLoad: null,
 	_loadingSearch: false,
 	_CATEGORY_COUNTS: {},
+	highestId: -1,
 
 	init: init = function () {
 		const $nav = $(`#navbar`);
@@ -240,19 +241,22 @@ const Omnisearch = {
 	},
 
 	onSearchLoad: function (data) {
+		elasticlunr.clearStopWords();
 		Omnisearch._searchIndex = elasticlunr(function () {
 			this.addField("n");
 			this.addField("cf");
 			this.addField("s");
 			this.setRef("id");
-			elasticlunr.clearStopWords();
 		});
-		data.forEach(d => {
+		const addToIndex = (d) => {
 			d.cf = Parser.pageCategoryToFull(d.c);
 			if (!Omnisearch._CATEGORY_COUNTS[d.cf]) Omnisearch._CATEGORY_COUNTS[d.cf] = 1;
 			else Omnisearch._CATEGORY_COUNTS[d.cf]++;
 			Omnisearch._searchIndex.addDoc(d);
-		});
+		};
+		data.forEach(addToIndex);
+		Omnisearch.highestId = data[data.length - 1].id;
+		BrewUtil.getSearchIndex().forEach(addToIndex); // this doesn't update if the 'Brew changes later, but so be it.
 	}
 };
 

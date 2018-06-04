@@ -9,6 +9,9 @@ const DOWN = "DOWN";
 const AX_X = "AXIS_X";
 const AX_Y = "AXIS_Y";
 
+const PANEL_TYP_EMPTY = 0;
+const PANEL_TYP_STATS = 1;
+
 class Board {
 	constructor () {
 		this.width = 5;
@@ -16,6 +19,7 @@ class Board {
 		this.panels = {}; // flat panel structure because I'm a fucking maniac
 		this.$creen = $(`.dm-screen`);
 		this.menu = new AddMenu();
+		this.storage = StorageUtil.getStorage();
 
 		this.nextId = 1;
 		this.hoveringPanel = null;
@@ -51,7 +55,7 @@ class Board {
 		if (width) this.width = Math.max(width, 1);
 		if (height) this.height = Math.max(height, 1);
 		this.doAdjust$creenCss();
-		this.doCullPanels();
+		// this.doCullPanels(); // TODO implement this as required
 		this.doCheckFillSpaces();
 	}
 
@@ -87,20 +91,40 @@ class Board {
 	initialise () {
 		this.doAdjust$CreenCss();
 		this.doShowLoading();
-		this.doLoadIndex(this.doCheckFillSpaces)
+		const fnCallback = this.hasSavedState() ? () => {
+			this.doLoadState();
+			this.doCheckFillSpaces();
+			this.initUnloadHandler();
+		} : () => {
+			this.doCheckFillSpaces();
+			this.initUnloadHandler();
+		};
+		this.doLoadIndex(fnCallback)
+	}
+
+	initUnloadHandler () {
+		$(window).on("beforeunload", () => this.doSaveState());
 	}
 
 	doLoadIndex (fnCallback) {
 		DataUtil.loadJSON("search/index.json").then((data) => {
+			function hasBadCat (d) {
+				return d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF;
+			}
+
+			function fromDeepIndex (d) {
+				return d.d; // flag for "deep indexed" content that refers to the same item
+			}
+
 			elasticlunr.clearStopWords();
 			this.availContent.ALL = elasticlunr(function () {
 				this.addField("n");
 				this.addField("s");
 				this.setRef("id");
 			});
+			// Add main site index
 			data.forEach(d => {
-				if (d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF) return;
-				if (d.d) return; // flag for "deep indexed" content that refers to the same item
+				if (hasBadCat(d) || fromDeepIndex(d)) return;
 				d.cf = Parser.pageCategoryToFull(d.c);
 				if (!this.availContent[d.cf]) {
 					this.availContent[d.cf] = elasticlunr(function () {
@@ -109,6 +133,14 @@ class Board {
 						this.setRef("id");
 					});
 				}
+				this.availContent.ALL.addDoc(d);
+				this.availContent[d.cf].addDoc(d);
+			});
+
+			// Add homebrew
+			BrewUtil.getSearchIndex().forEach(d => {
+				if (hasBadCat(d) || fromDeepIndex(d)) return;
+				d.cf = Parser.pageCategoryToFull(d.c);
 				this.availContent.ALL.addDoc(d);
 				this.availContent[d.cf].addDoc(d);
 			});
@@ -125,25 +157,6 @@ class Board {
 			fnCallback.bind(this)();
 			this.doHideLoading();
 		});
-	}
-
-	// TODO dummy content; remove
-	doDummyPopulate () {
-		for (let x = 0; x < this.width; x++) {
-			for (let y = 0; y < this.height; ++y) {
-				const pnl = new Panel(this, x, y);
-
-				if (pnl.id === 8) {
-					const fireball = data.spell.find(it => it.name === "Fireball");
-					pnl.set$Content($(`<div class="panel-content-wrapper-inner"><table class="stats">${EntryRenderer.spell.getCompactRenderedString(fireball)}</table></div>`));
-				} else {
-					pnl.set$Content($(`<div class="dummy-content">${pnl.id}</div>`));
-				}
-
-				this.panels[pnl.id] = pnl;
-			}
-		}
-		Object.values(this.panels).forEach(p => p.render());
 	}
 
 	getPanel (x, y) {
@@ -174,25 +187,107 @@ class Board {
 		}
 		Object.values(this.panels).forEach(p => p.render());
 	}
+
+	hasSavedState () {
+		return !!((this.storage.getItem(DMSCREEN_STORAGE) || "").trim());
+	}
+
+	doSaveState () {
+		console.log("saving state") // FIXME remove
+		const toSave = {
+			w: this.width,
+			h: this.height,
+			ps: Object.values(this.panels).map(p => p.getSaveableState())
+		};
+		this.storage.setItem(DMSCREEN_STORAGE, JSON.stringify(toSave));
+		console.log(this.storage.getItem(DMSCREEN_STORAGE))
+	}
+
+	doLoadState () {
+		const purgeSaved = () => {
+			window.alert("Error when loading DM screen! Purging saved data...");
+			this.storage.removeItem(DMSCREEN_STORAGE);
+		};
+
+		const raw = this.storage.getItem(DMSCREEN_STORAGE);
+		if (raw) {
+			try {
+				const toLoad = JSON.parse(raw);
+				this.width = toLoad.w;
+				this.height = toLoad.h;
+				toLoad.ps.filter(Boolean).forEach(saved => {
+					const p = Panel.fromSavedState(this, saved);
+					this.panels[p.id] = p;
+				});
+			} catch (e) {
+				// on error, purge all brew and reset hash
+				purgeSaved();
+				throw e;
+			}
+		}
+	}
 }
 
 class Panel {
-	constructor (board, x, y) {
+	constructor (board, x, y, width = 1, height = 1) {
 		this.id = board.getNextId();
 		this.board = board;
 		this.x = x;
 		this.y = y;
-		this.width = 1;
-		this.height = 1;
+		this.width = width;
+		this.height = height;
 		this.isDirty = true;
 		this.isContentDirty = false;
 		this.isLocked = false;
+		this.type = 0;
+		this.contentMeta = null; // info used during saved state re-load
 
 		this.$btnAdd = null;
 		this.$content = null;
 
 		this.$pnl = null;
 		this.$pnlWrpContent = null;
+	}
+
+	static fromSavedState (board, saved) {
+		const p = new Panel(board, saved.x, saved.y, saved.w, saved.h);
+		p.render();
+		switch (saved.t) {
+			case PANEL_TYP_EMPTY:
+				return p;
+			case PANEL_TYP_STATS: {
+				const page = saved.c.p;
+				const source = saved.c.s;
+				const hash = saved.c.u;
+				p.doPopulate_Stats(page, source, hash);
+				return p;
+			}
+		}
+	}
+
+	doPopulate_Stats (page, source, hash) {
+		const meta = {p: page, s: source, u: hash};
+		this.set$Content(
+			PANEL_TYP_STATS,
+			meta,
+			$(`<div class="panel-content-wrapper-inner"><div class="panel-tab-message"><i>Loading...</i></div></div>`),
+			true
+		);
+		EntryRenderer.hover._doFillThenCall(
+			page,
+			source,
+			hash,
+			() => {
+				const fn = EntryRenderer.hover._pageToRenderFn(page);
+				const it = EntryRenderer.hover._getFromCache(page, source, hash);
+				this.set$Content(
+					PANEL_TYP_STATS,
+					meta,
+					$(`<div class="panel-content-wrapper-inner"><table class="stats">${fn(it)}</table></div>`),
+					true
+				);
+			}
+		);
 	}
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	getTopNeighbours () {
@@ -299,6 +394,18 @@ class Panel {
 		this.render();
 	}
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	getPanelMeta () {
+		return {
+			type: this.type,
+			contentMeta: this.contentMeta
+		}
+	}
+
+	setPanelMeta (type, contentMeta) {
+		this.type = type;
+		this.contentMeta = contentMeta;
+	}
+
 	getEmpty () {
 		return this.$content == null;
 	}
@@ -340,7 +447,7 @@ class Panel {
 			});
 			const $ctrlEmpty = $(`<div class="panel-control-icon glyphicon glyphicon-remove" title="Empty"/>`).appendTo($ctrlBar);
 			$ctrlEmpty.on("click", () => {
-				this.set$Content(null, true);
+				this.reset$Content(true);
 				$pnl.find(`.panel-control`).hide();
 				$pnl.find(`.btn-panel-add`).show();
 			});
@@ -379,7 +486,13 @@ class Panel {
 		}
 	}
 
-	set$Content ($content, doUpdateElements) {
+	reset$Content (doUpdateElements) {
+		this.set$Content(PANEL_TYP_EMPTY, null, null, doUpdateElements);
+	}
+
+	set$Content (type, contentMeta, $content, doUpdateElements) {
+		this.type = type;
+		this.contentMeta = contentMeta;
 		this.$content = $content;
 		if (doUpdateElements) {
 			this.$pnlWrpContent.children().detach();
@@ -396,6 +509,30 @@ class Panel {
 	destroy () {
 		if (this.$pnl) this.$pnl.remove();
 		this.board.destroyPanel(this.id);
+	}
+
+	getSaveableState () {
+		const out = {
+			x: this.x,
+			y: this.y,
+			w: this.width,
+			h: this.height,
+			t: this.type
+		};
+
+		switch (this.type) {
+			case PANEL_TYP_EMPTY:
+				break;
+			case PANEL_TYP_STATS:
+				out.c = {
+					p: this.contentMeta.p,
+					s: this.contentMeta.s,
+					u: this.contentMeta.u
+				};
+				break;
+		}
+
+		return out;
 	}
 }
 
@@ -476,14 +613,18 @@ class JoystickMenu {
 				} else {
 					const her = this.panel.board.hoveringPanel;
 					if (her.getEmpty()) {
-						her.set$Content(this.panel.$content, true);
-						this.panel.set$Content(null, true);
-						this.panel.$content = null;
+						her.set$Content(
+							this.panel.type,
+							this.panel.contentMeta,
+							this.panel.$content,
+							true
+						);
+						this.panel.reset$Content(true);
 					} else {
+						const herMeta = her.getPanelMeta();
 						const $herContent = her.get$Content();
-						const $myContent = this.panel.$content;
-						her.set$Content($myContent, true);
-						this.panel.set$Content($herContent, true);
+						her.set$Content(this.panel.type, this.panel.contentMeta, this.panel.$content, true);
+						this.panel.set$Content(herMeta.type, herMeta.contentMeta, $herContent, true);
 					}
 				}
 				MiscUtil.clearSelection();
@@ -868,20 +1009,34 @@ class AddMenuSearchTab extends AddMenuTab {
 			this.$results.empty();
 			if (results.length) {
 				const handleClick = (r) => {
-					this.menu.pnl.set$Content($(`<div class="panel-content-wrapper-inner"><div class="panel-tab-message"><i>Loading...</i></div></div>`), true);
 					const page = UrlUtil.categoryToPage(r.doc.c);
 					const source = r.doc.s;
 					const hash = r.doc.u;
-					EntryRenderer.hover._doFillThenCall(
-						page,
-						source,
-						hash,
-						() => {
-							const fn = EntryRenderer.hover._pageToRenderFn(page);
-							const it = EntryRenderer.hover._getFromCache(page, source, hash);
-							this.menu.pnl.set$Content($(`<div class="panel-content-wrapper-inner"><table class="stats">${fn(it)}</table></div>`), true);
-						}
-					);
+
+					this.menu.pnl.doPopulate_Stats(page, source, hash);
+
+					// const meta = {p: page, s: source, u: hash};
+					// this.menu.pnl.set$Content(
+					// 	PANEL_TYP_STATS,
+					// 	meta,
+					// 	$(`<div class="panel-content-wrapper-inner"><div class="panel-tab-message"><i>Loading...</i></div></div>`),
+					// 	true
+					// );
+					// EntryRenderer.hover._doFillThenCall(
+					// 	page,
+					// 	source,
+					// 	hash,
+					// 	() => {
+					// 		const fn = EntryRenderer.hover._pageToRenderFn(page);
+					// 		const it = EntryRenderer.hover._getFromCache(page, source, hash);
+					// 		this.menu.pnl.set$Content(
+					// 			PANEL_TYP_STATS,
+					// 			meta,
+					// 			$(`<div class="panel-content-wrapper-inner"><table class="stats">${fn(it)}</table></div>`),
+					// 			true
+					// 		);
+					// 	}
+					// );
 					this.menu.doClose();
 				};
 

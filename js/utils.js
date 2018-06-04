@@ -106,6 +106,7 @@ ABIL_CH_ANY = "Choose Any";
 
 HOMEBREW_STORAGE = "HOMEBREW_STORAGE";
 EXCLUDES_STORAGE = "EXCLUDES_STORAGE";
+DMSCREEN_STORAGE = "DMSCREEN_STORAGE";
 
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
@@ -3364,6 +3365,24 @@ BrewUtil = {
 	sourceJsonToAbv (source) {
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].abbreviation || source : source;
+	},
+
+	/**
+	 * Get data in a format similar to the main search index
+	 */
+	getSearchIndex () {
+		// FIXME add it to all pages
+		if (typeof Omnidexer !== "undefined") {
+			BrewUtil._buildSourceCache();
+			const indexer = new Omnidexer(Omnisearch.highestId + 1);
+
+			Omnidexer.TO_INDEX__FROM_INDEX_JSON.filter(ti => BrewUtil.homebrew[ti.listProp]).forEach(ti => indexer.addToIndex(ti, BrewUtil.homebrew));
+			Omnidexer.TO_INDEX.filter(ti => BrewUtil.homebrew[ti.listProp]).forEach(ti => indexer.addToIndex(ti, BrewUtil.homebrew));
+
+			return indexer.getIndex();
+		} else {
+			return [];
+		}
 	}
 };
 
