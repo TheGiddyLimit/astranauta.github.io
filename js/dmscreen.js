@@ -444,12 +444,14 @@ class Panel {
 			$ctrlMove.on("click", () => {
 				$pnl.find(`.panel-control`).toggle();
 				$pnl.find(`.btn-panel-add`).toggle();
+				$pnl.toggleClass(`panel-mode-move`);
 			});
 			const $ctrlEmpty = $(`<div class="panel-control-icon glyphicon glyphicon-remove" title="Empty"/>`).appendTo($ctrlBar);
 			$ctrlEmpty.on("click", () => {
 				this.reset$Content(true);
 				$pnl.find(`.panel-control`).hide();
 				$pnl.find(`.btn-panel-add`).show();
+				$pnl.removeClass(`panel-mode-move`);
 			});
 
 			const joyMenu = new JoystickMenu(this);
@@ -580,6 +582,7 @@ class JoystickMenu {
 			});
 			this.panel.board.get$creen().addClass("board-content-hovering");
 			this.panel.$content.addClass("panel-content-hovering");
+			this.panel.$pnl.removeClass("panel-mode-move");
 
 			$(document).off("mousemove").off("mouseup");
 
@@ -635,6 +638,7 @@ class JoystickMenu {
 			MiscUtil.clearSelection();
 			$(`body`).css("userSelect", "none");
 			$(`.panel-control`).hide();
+			this.panel.$pnl.addClass("panel-mode-move");
 			switch (dir) {
 				case UP:
 					this.panel.$pnl.find(`.panel-control-top`).show();
