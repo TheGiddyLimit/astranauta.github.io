@@ -3371,20 +3371,15 @@ BrewUtil = {
 	 * Get data in a format similar to the main search index
 	 */
 	getSearchIndex () {
-		// FIXME add it to all pages
-		if (typeof Omnidexer !== "undefined") {
-			BrewUtil._buildSourceCache();
-			const indexer = new Omnidexer(Omnisearch.highestId + 1);
+		BrewUtil._buildSourceCache();
+		const indexer = new Omnidexer(Omnisearch.highestId + 1);
 
-			if (BrewUtil.homebrew) {
-				Omnidexer.TO_INDEX__FROM_INDEX_JSON.filter(ti => BrewUtil.homebrew[ti.listProp]).forEach(ti => indexer.addToIndex(ti, BrewUtil.homebrew));
-				Omnidexer.TO_INDEX.filter(ti => BrewUtil.homebrew[ti.listProp]).forEach(ti => indexer.addToIndex(ti, BrewUtil.homebrew));
-			}
-
-			return indexer.getIndex();
-		} else {
-			return [];
+		if (BrewUtil.homebrew) {
+			Omnidexer.TO_INDEX__FROM_INDEX_JSON.filter(ti => BrewUtil.homebrew[ti.listProp]).forEach(ti => indexer.addToIndex(ti, BrewUtil.homebrew));
+			Omnidexer.TO_INDEX.filter(ti => BrewUtil.homebrew[ti.listProp]).forEach(ti => indexer.addToIndex(ti, BrewUtil.homebrew));
 		}
+
+		return indexer.getIndex();
 	}
 };
 
