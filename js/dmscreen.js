@@ -145,13 +145,10 @@ class Board {
 				this.availContent[d.cf].addDoc(d);
 			});
 
-			Object.keys(this.availContent).sort().forEach(cat => {
-				const isAll = cat === "ALL";
-				const label = isAll ? "All Categories" : cat;
-				const tab = new AddMenuSearchTab(label, this.availContent[cat]);
-				if (isAll) tab.setSpotlight(true);
-				this.menu.addTab(tab)
-			});
+			// add search tab
+			const omniTab = new AddMenuSearchTab("Search", this.availContent);
+			omniTab.setSpotlight(true);
+			this.menu.addTab(omniTab);
 			this.menu.render();
 
 			fnCallback.bind(this)();
@@ -964,12 +961,14 @@ class AddMenuListTab extends AddMenuTab {
 }
 
 class AddMenuSearchTab extends AddMenuTab {
-	constructor (label, index) {
+	constructor (label, indexes) {
 		super(label);
 		this.tabId = this.genTabId("search");
-		this.index = index;
+		this.indexes = indexes;
+		this.cat = "ALL";
 
 		this.$tab = null;
+		this.$selCat = null;
 		this.$srch = null;
 		this.$results = null;
 		this.showMsgIpt = null;
@@ -999,7 +998,7 @@ class AddMenuSearchTab extends AddMenuTab {
 
 		const doSearch = () => {
 			const srch = this.$srch.val();
-			const results = this.index.search(srch, {
+			const results = this.indexes[this.cat].search(srch, {
 				fields: {
 					n: {boost: 5, expand: true},
 					s: {expand: true}
@@ -1016,29 +1015,6 @@ class AddMenuSearchTab extends AddMenuTab {
 					const hash = r.doc.u;
 
 					this.menu.pnl.doPopulate_Stats(page, source, hash);
-
-					// const meta = {p: page, s: source, u: hash};
-					// this.menu.pnl.set$Content(
-					// 	PANEL_TYP_STATS,
-					// 	meta,
-					// 	$(`<div class="panel-content-wrapper-inner"><div class="panel-tab-message"><i>Loading...</i></div></div>`),
-					// 	true
-					// );
-					// EntryRenderer.hover._doFillThenCall(
-					// 	page,
-					// 	source,
-					// 	hash,
-					// 	() => {
-					// 		const fn = EntryRenderer.hover._pageToRenderFn(page);
-					// 		const it = EntryRenderer.hover._getFromCache(page, source, hash);
-					// 		this.menu.pnl.set$Content(
-					// 			PANEL_TYP_STATS,
-					// 			meta,
-					// 			$(`<div class="panel-content-wrapper-inner"><table class="stats">${fn(it)}</table></div>`),
-					// 			true
-					// 		);
-					// 	}
-					// );
 					this.menu.doClose();
 				};
 
@@ -1071,7 +1047,17 @@ class AddMenuSearchTab extends AddMenuTab {
 
 		if (!this.$tab) {
 			const $tab = $(`<div class="panel-tab-list-wrapper" id="${this.tabId}"/>`);
-			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($tab);
+			const $wrpCtrls = $(`<div class="panel-tab-controls"/>`).appendTo($tab);
+
+			const $selCat = $(`
+				<select class="form-control panel-tab-cat">
+					<option value="ALL">All Categories</option>
+				</select>
+			`).appendTo($wrpCtrls);
+			Object.keys(this.indexes).sort().filter(it => it !== "ALL").forEach(it => $selCat.append(`<option value="${it}">${it}</option>`));
+			$selCat.on("change", () => this.cat = $selCat.val());
+
+			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($wrpCtrls);
 			const $results = $(`<div class="panel-tab-results"/>`).appendTo($tab);
 
 			// auto-search after 100ms
@@ -1101,6 +1087,7 @@ class AddMenuSearchTab extends AddMenuTab {
 			});
 
 			this.$tab = $tab;
+			this.$selCat = $selCat;
 			this.$srch = $srch;
 			this.$results = $results;
 

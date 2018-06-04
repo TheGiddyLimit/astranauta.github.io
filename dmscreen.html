@@ -230,6 +230,7 @@
 			float: none;
 			display: flex;
 			flex-direction: column;
+			min-width: 600px;
 		}
 
 		@media (min-width: 768px) {
@@ -343,10 +344,22 @@
 			font-weight: 500;
 		}
 
-		input.panel-tab-search {
+		.panel-tab-controls {
 			width: 100%;
-			border-radius: 0;
+			display: flex;
 			margin-top: -1px;
+		}
+
+		.panel-tab-cat {
+			border-radius: 0;
+			max-width: 180px;
+			flex-shrink: 0;
+			border-right: 0;
+		}
+
+		input.panel-tab-search {
+			border-radius: 0;
+			width: 100%;
 		}
 
 		.panel-tab-list-item {
