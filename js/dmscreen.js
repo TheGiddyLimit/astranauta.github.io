@@ -193,14 +193,12 @@ class Board {
 	}
 
 	doSaveState () {
-		console.log("saving state") // FIXME remove
 		const toSave = {
 			w: this.width,
 			h: this.height,
 			ps: Object.values(this.panels).map(p => p.getSaveableState())
 		};
 		this.storage.setItem(DMSCREEN_STORAGE, JSON.stringify(toSave));
-		console.log(this.storage.getItem(DMSCREEN_STORAGE))
 	}
 
 	doLoadState () {
