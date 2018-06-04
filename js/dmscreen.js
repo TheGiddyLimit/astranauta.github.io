@@ -18,6 +18,7 @@ class Board {
 		this.height = 3;
 		this.panels = {}; // flat panel structure because I'm a fucking maniac
 		this.$creen = $(`.dm-screen`);
+		this.sideMenu = new SideMenu(this);
 		this.menu = new AddMenu();
 		this.storage = StorageUtil.getStorage();
 
@@ -151,6 +152,8 @@ class Board {
 			this.menu.addTab(omniTab);
 			this.menu.render();
 
+			this.sideMenu.render();
+
 			fnCallback.bind(this)();
 			this.doHideLoading();
 		});
@@ -220,6 +223,27 @@ class Board {
 				throw e;
 			}
 		}
+	}
+
+	doReset () {
+		Object.values(this.panels).forEach(p => p.destroy());
+		this.doCheckFillSpaces();
+	}
+}
+
+class SideMenu {
+	constructor (board) {
+		this.board = board;
+		this.$mnu = $(`.dm-sidemenu`);
+	}
+
+	render () {
+		const $btnReset = $(`<div class="btn btn-danger">Reset Screen</div>`).appendTo(this.$mnu);
+		$btnReset.on("click", () => {
+			if (window.confirm("Are you sure?")) {
+				this.board.doReset();
+			}
+		})
 	}
 }
 

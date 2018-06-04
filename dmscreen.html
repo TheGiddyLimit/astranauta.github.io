@@ -26,6 +26,7 @@
 			padding: 7px;
 			grid-auto-columns: 20%;
 			grid-auto-rows: 33%;
+			position: relative;
 		}
 
 		.dm-screen-loading {
@@ -385,6 +386,51 @@
 			padding: 0;
 			border-right: 5px transparent;
 		}
+
+		.dm-sidemenu {
+			z-index: 60;
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: -260px;
+			width: 250px;
+			background: #fff;
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+			border: 1px solid #ccc;
+			transition: left 0.1s;
+			cursor: default;
+			display: flex;
+			flex-direction: column;
+			padding: 3px;
+		}
+
+		.dm-sidemenu-toggle {
+			position: absolute;
+			top: 14px;
+			left: -16px;
+			width: 32px;
+			height: 32px;
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+			cursor: pointer;
+			z-index: 60;
+			background: lightgrey;
+			transition: left 0.1s;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			padding: 3px 4px;
+		}
+
+		.dm-sidemenu-toggle .dm-sidemenu-burger {
+			height: 3px;
+			background: white;
+			box-shadow: inset 0 0 1px 0 #888;
+		}
+
+		.dm-sidemenu-toggle:hover .dm-sidemenu {
+			left: 0;
+			transition: left 0.1s;
+		}
 	</style>
 </head>
 
@@ -401,7 +447,14 @@
 		<ul class="nav nav-pills" id="navbar">
 		</ul>
 	</nav>
-	<div class="dm-screen"></div>
+	<div class="dm-screen">
+		<div class="dm-sidemenu-toggle">
+			<div class="dm-sidemenu-burger"></div>
+			<div class="dm-sidemenu-burger"></div>
+			<div class="dm-sidemenu-burger"></div>
+			<div class="dm-sidemenu"></div>
+		</div>
+	</div>
 </div>
 
 <!--5ETOOLS_SCRIPT_ANCHOR-->
