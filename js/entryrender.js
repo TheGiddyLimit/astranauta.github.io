@@ -1124,7 +1124,15 @@ EntryRenderer.feat = {
 		const abilityObj = feat.ability;
 		if (!abilityObj || feat._hasMergedAbility) return;
 		feat._hasMergedAbility = true;
-		entries.find(e => e.type === "list").items.unshift(abilityObjToListItem());
+		const targetList = entries.find(e => e.type === "list");
+		if (targetList) targetList.items.unshift(abilityObjToListItem());
+		else {
+			// this should never happen, but display sane output anyway, and throw an out-of-order exception
+			entries.unshift(abilityObjToListItem());
+			setTimeout(() => {
+				throw new Error(`Could not find object of type "list" in "entries" for feat "${feat.name}" from source "${feat.source}" when merging ability scores! Reformat the feat to include a "list"-type entry.`);
+			}, 1);
+		}
 
 		function abilityObjToListItem () {
 			const TO_MAX_OF_TWENTY = ", to a maximum of 20.";
