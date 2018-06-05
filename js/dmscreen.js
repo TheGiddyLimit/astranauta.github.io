@@ -497,7 +497,7 @@ class Panel {
 		}
 
 		function doInitialRender () {
-			const $pnl = $(`<div class="dm-screen-panel" empty="true"/>`);
+			const $pnl = $(`<div data-panelId="${this.id}" class="dm-screen-panel" empty="true"/>`);
 			this.$pnl = $pnl;
 			const $ctrlBar = $(`<div class="panel-control-bar"/>`).appendTo($pnl);
 
@@ -750,7 +750,7 @@ class JoystickMenu {
 				}
 
 				numPanelsCovered = Math.ceil((delta / px));
-				const canShrink = AX_X ? this.panel.width - 1 : this.panel.height - 1;
+				const canShrink = axis === AX_X ? this.panel.width - 1 : this.panel.height - 1;
 				if (canShrink + numPanelsCovered <= 0) numPanelsCovered = -canShrink;
 
 				switch (dir) {
@@ -797,7 +797,7 @@ class JoystickMenu {
 					gridRowEnd: initGRE
 				});
 
-				const canShrink = AX_X ? this.panel.width - 1 : this.panel.height - 1;
+				const canShrink = axis === AX_X ? this.panel.width - 1 : this.panel.height - 1;
 				if (canShrink + numPanelsCovered <= 0) numPanelsCovered = -canShrink;
 				if (numPanelsCovered === 0) return;
 				const isGrowth = ~Math.sign(numPanelsCovered);
@@ -1170,6 +1170,7 @@ class AddMenuSearchTab extends AddMenuTab {
 }
 
 window.addEventListener("load", () => {
-	const screen = new Board();
-	screen.initialise();
+	// expose it for debugging purposes
+	window.DM_SCREEN = new Board();
+	window.DM_SCREEN.initialise();
 });
