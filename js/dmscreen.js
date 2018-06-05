@@ -30,21 +30,11 @@ class Board {
 	getInitialWidth () {
 		const scW = this.$creen.width();
 		return Math.ceil(scW / 400);
-		if (scW > 1200) return 5;
-		if (scW > 900) return 4;
-		if (scW > 600) return 3;
-		if (scW > 300) return 2;
-		else return 1;
 	}
 
 	getInitialHeight () {
 		const scH = this.$creen.height();
 		return Math.ceil(scH / 300);
-		if (scH > 1200) return 5;
-		if (scH > 900) return 4;
-		if (scH > 600) return 3;
-		if (scH > 300) return 2;
-		else return 1;
 	}
 
 	getNextId () {
@@ -206,6 +196,11 @@ class Board {
 		});
 	}
 
+	getPanelPx (xPx, hPx) {
+		const dim = this.getPanelDimensions();
+		return this.getPanel(Math.floor(xPx / dim.pxWidth), Math.floor(hPx / dim.pxHeight));
+	}
+
 	setHoveringPanel (panel) {
 		this.hoveringPanel = panel;
 	}
@@ -268,6 +263,18 @@ class Board {
 		Object.values(this.panels).forEach(p => p.destroy());
 		this.setDimensions(this.getInitialWidth(), this.getInitialHeight());
 	}
+
+	setHoveringButton(panel) {
+		this.resetHoveringButton(panel);
+		panel.$btnAddInner.addClass("faux-hover");
+	}
+
+	resetHoveringButton(panel) {
+		Object.values(this.panels).forEach(p => {
+			if (panel && panel.id === p.id) return;
+			p.$btnAddInner.removeClass("faux-hover");
+		})
+	}
 }
 
 class SideMenu {
@@ -325,6 +332,7 @@ class Panel {
 		this.contentMeta = null; // info used during saved state re-load
 
 		this.$btnAdd = null;
+		this.$btnAddInner = null;
 		this.$content = null;
 
 		this.$pnl = null;
@@ -548,6 +556,7 @@ class Panel {
 				else this.board.menu.getActiveTab().doTransitionActive();
 			}).appendTo($wrpBtnAdd);
 			this.$btnAdd = $wrpBtnAdd;
+			this.$btnAddInner = $btnAdd;
 			this.$pnlWrpContent = $wrpContent;
 
 			if (this.$content) $wrpContent.append(this.$content);
@@ -568,6 +577,26 @@ class Panel {
 			}
 			this.isDirty = false;
 		}
+	}
+
+	getPos () {
+		const offset = this.$pnl.offset();
+		return {
+			top: offset.top,
+			left: offset.left,
+			width: this.$pnl.outerWidth(),
+			height: this.$pnl.outerHeight()
+		};
+	}
+
+	getAddButtonPos() {
+		const offset = this.$btnAddInner.offset();
+		return {
+			top: offset.top,
+			left: offset.left,
+			width: this.$btnAddInner.outerWidth(),
+			height: this.$btnAddInner.outerHeight()
+		};
 	}
 
 	reset$Content (doUpdateElements) {
@@ -1193,5 +1222,6 @@ class AddMenuSearchTab extends AddMenuTab {
 window.addEventListener("load", () => {
 	// expose it for debugging purposes
 	window.DM_SCREEN = new Board();
+	EntryRenderer.hover.bindDmScreen(window.DM_SCREEN);
 	window.DM_SCREEN.initialise();
 });

@@ -2100,6 +2100,11 @@ EntryRenderer.hover = {
 	_isInit: false,
 	_active: {},
 
+	_dmScreen: null,
+	bindDmScreen (screen) {
+		this._dmScreen = screen;
+	},
+
 	_addToCache: (page, source, hash, item) => {
 		page = page.toLowerCase();
 		source = source.toLowerCase();
@@ -2275,7 +2280,7 @@ EntryRenderer.hover = {
 		delete EntryRenderer.hover._active[hoverId];
 	},
 
-	_makeWindow: () => {
+	_makeWindow () {
 		if (!EntryRenderer.hover._curHovering) {
 			reset();
 			return;
@@ -2343,11 +2348,27 @@ EntryRenderer.hover = {
 		const mouseUpId = `mouseup.${hoverId}`;
 		const mouseMoveId = `mousemove.${hoverId}`;
 		const resizeId = `resize.${hoverId}`;
+
+		function isOverHoverTarget (evt, target) {
+			return evt.clientX >= target.left && evt.clientX <= target.left + target.width && evt.clientY >= target.top && evt.clientY <= target.top + target.height;
+		}
+
 		$(document)
-			.on(mouseUpId, () => {
+			.on(mouseUpId, (evt) => {
 				if (drag.on) {
 					drag.on = false;
 					adjustPosition();
+					if (this._dmScreen) {
+						const panel = this._dmScreen.getPanelPx(evt.clientX, evt.clientY);
+						if (!panel) return;
+						this._dmScreen.setHoveringPanel(panel);
+						const target = panel.getAddButtonPos();
+						if (isOverHoverTarget(evt, target)) {
+							panel.doPopulate_Stats(page, source, hash);
+							altTeardown();
+						}
+					}
+					this._dmScreen.resetHoveringButton();
 				}
 			})
 			.on(mouseMoveId, (evt) => {
@@ -2360,6 +2381,15 @@ EntryRenderer.hover = {
 					drag.startY = evt.clientY;
 					drag.baseTop = parseFloat($hov.css("top"));
 					drag.baseLeft = parseFloat($hov.css("left"));
+
+					if (this._dmScreen) {
+						const panel = this._dmScreen.getPanelPx(evt.clientX, evt.clientY);
+						if (!panel) return;
+						this._dmScreen.setHoveringPanel(panel);
+						const target = panel.getAddButtonPos();
+						if (isOverHoverTarget(evt, target)) this._dmScreen.setHoveringButton(panel);
+						else this._dmScreen.resetHoveringButton();
+					}
 				}
 			});
 		$(window).on(resizeId, () => {
@@ -2378,12 +2408,7 @@ EntryRenderer.hover = {
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
 			.on("click", (evt) => {
 				evt.stopPropagation();
-				// alternate teardown for 'x' button
-				$ele.attr("data-hover-active", false);
-				$hov.remove();
-				$(document).off(mouseUpId);
-				$(document).off(mouseMoveId);
-				$(window).off(resizeId);
+				altTeardown();
 			});
 		$brdrTop.append($btnClose);
 		$hov.append($brdrTop)
@@ -2432,6 +2457,16 @@ EntryRenderer.hover = {
 
 		function teardown () {
 			EntryRenderer.hover._teardownWindow(hoverId);
+		}
+
+		function altTeardown () {
+			// alternate teardown for 'x' button
+			$ele.attr("data-hover-active", false);
+			$hov.remove();
+			$(document).off(mouseUpId);
+			$(document).off(mouseMoveId);
+			$(window).off(resizeId);
+			delete EntryRenderer.hover._active[hoverId];
 		}
 
 		function reset () {
@@ -2542,7 +2577,7 @@ EntryRenderer.hover = {
 			}
 		});
 
-		EntryRenderer.hover._doFillThenCall(page, source, hash, EntryRenderer.hover._makeWindow);
+		EntryRenderer.hover._doFillThenCall(page, source, hash, EntryRenderer.hover._makeWindow.bind(EntryRenderer.hover));
 	},
 
 	_cleanWindows: () => {
