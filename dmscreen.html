@@ -23,7 +23,6 @@
 			height: 100%;
 			display: grid;
 			grid-gap: 7px;
-			padding: 7px;
 			grid-auto-columns: 20%;
 			grid-auto-rows: 33%;
 			position: relative;
@@ -157,6 +156,7 @@
 			border-top: 0;
 			border-bottom-left-radius: 5px;
 			border-bottom-right-radius: 5px;
+			min-width: 20px;
 		}
 
 		.panel-control-right {
@@ -170,6 +170,7 @@
 			border-right: 0;
 			border-bottom-left-radius: 5px;
 			border-top-left-radius: 5px;
+			min-height: 20px;
 		}
 
 		.panel-control-bottom {
@@ -183,6 +184,7 @@
 			border-bottom: 0;
 			border-top-right-radius: 5px;
 			border-top-left-radius: 5px;
+			min-width: 20px;
 		}
 
 		.panel-control-left {
@@ -196,6 +198,7 @@
 			border-left: 0;
 			border-top-right-radius: 5px;
 			border-bottom-right-radius: 5px;
+			min-height: 20px;
 		}
 
 		.panel-control-middle {
@@ -406,8 +409,8 @@
 
 		.dm-sidemenu-toggle {
 			position: absolute;
-			top: 14px;
-			left: -16px;
+			top: -38px;
+			left: -7px;
 			width: 32px;
 			height: 32px;
 			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
@@ -421,7 +424,15 @@
 			padding: 3px 4px;
 		}
 
-		.dm-sidemenu-toggle .dm-sidemenu-burger {
+		.dm-sidemenu-hotzone {
+			position: fixed;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			width: 1px;
+		}
+
+		.dm-sidemenu-burger {
 			height: 3px;
 			background: white;
 			box-shadow: inset 0 0 1px 0 #888;
@@ -430,6 +441,25 @@
 		.dm-sidemenu-toggle:hover .dm-sidemenu {
 			left: 0;
 			transition: left 0.1s;
+		}
+
+		.dm-sidemenu-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 5px;
+		}
+
+		.dm-sidemenu-row-divider {
+			background: #ccc;
+			height: 1px;
+			width: calc(100% - 12px);
+			margin: 7px 2px;
+		}
+
+		.dm-sidemenu-row-label {
+			min-width: 46px;
+			flex-shrink: 0;
 		}
 	</style>
 </head>
@@ -449,6 +479,7 @@
 	</nav>
 	<div class="dm-screen">
 		<div class="dm-sidemenu-toggle">
+			<div class="dm-sidemenu-hotzone"></div>
 			<div class="dm-sidemenu-burger"></div>
 			<div class="dm-sidemenu-burger"></div>
 			<div class="dm-sidemenu-burger"></div>

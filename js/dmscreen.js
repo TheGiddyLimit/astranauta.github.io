@@ -27,15 +27,6 @@ class Board {
 		this.availContent = {};
 	}
 
-	doAdjust$CreenCss () {
-		// assumes 7px grid spacing
-		this.$creen.css({
-			gridGap: 7,
-			width: `calc(100% - ${(this.width - 1) * 7}px)`,
-			height: `calc(100% - ${(this.height - 1) * 7}px)`
-		});
-	}
-
 	getNextId () {
 		return this.nextId++;
 	}
@@ -53,15 +44,44 @@ class Board {
 	}
 
 	setDimensions (width, height) {
+		const oldWidth = this.width;
+		const oldHeight = this.height;
 		if (width) this.width = Math.max(width, 1);
 		if (height) this.height = Math.max(height, 1);
+		if (oldWidth === width && oldHeight === height) return;
 		this.doAdjust$creenCss();
-		// this.doCullPanels(); // TODO implement this as required
+		if (width < oldWidth || height < oldHeight) this.doCullPanels(oldWidth, oldHeight);
 		this.doCheckFillSpaces();
+		this.sideMenu.doUpdateDimensions();
+	}
+
+	doCullPanels (oldWidth, oldHeight) {
+		for (let x = oldWidth - 1; x >= 0; x--) {
+			for (let y = oldHeight - 1; y >= 0; y--) {
+				const p = this.getPanel(x, y);
+				if (!p) continue; // happens when a large panel gets shrunk
+				if (x >= this.width && y >= this.height) {
+					if (p.canShrinkBottom() && p.canShrinkRight()) {
+						p.doShrinkBottom();
+						p.doShrinkRight();
+					} else p.destroy();
+				} else if (x >= this.width) {
+					if (p.canShrinkRight()) p.doShrinkRight();
+					else p.destroy();
+				} else if (y >= this.height) {
+					if (p.canShrinkBottom()) p.doShrinkBottom();
+					else p.destroy();
+				}
+			}
+		}
 	}
 
 	doAdjust$creenCss () {
+		// assumes 7px grid spacing
 		this.$creen.css({
+			gridGap: 7,
+			width: `calc(100% - ${(this.width - 1) * 7}px)`,
+			height: `calc(100% - ${85 + (this.height - 1) * 7}px)`, // 85 magical pixels
 			gridAutoColumns: `${(1 / this.width) * 100}%`,
 			gridAutoRows: `${(1 / this.height) * 100}%`
 		});
@@ -90,11 +110,10 @@ class Board {
 	}
 
 	initialise () {
-		this.doAdjust$CreenCss();
+		this.doAdjust$creenCss();
 		this.doShowLoading();
 		const fnCallback = this.hasSavedState() ? () => {
 			this.doLoadState();
-			this.doCheckFillSpaces();
 			this.initUnloadHandler();
 		} : () => {
 			this.doCheckFillSpaces();
@@ -211,12 +230,11 @@ class Board {
 		if (raw) {
 			try {
 				const toLoad = JSON.parse(raw);
-				this.width = toLoad.w;
-				this.height = toLoad.h;
 				toLoad.ps.filter(Boolean).forEach(saved => {
 					const p = Panel.fromSavedState(this, saved);
 					this.panels[p.id] = p;
 				});
+				this.setDimensions(toLoad.w, toLoad.h);
 			} catch (e) {
 				// on error, purge all brew and reset hash
 				purgeSaved();
@@ -235,15 +253,39 @@ class SideMenu {
 	constructor (board) {
 		this.board = board;
 		this.$mnu = $(`.dm-sidemenu`);
+
+		this.$iptWidth = null;
+		this.$iptHeight = null;
 	}
 
 	render () {
+		const $wrpResizeW = $(`<div class="dm-sidemenu-row"><div class="dm-sidemenu-row-label">Width</div></div>`).appendTo(this.$mnu);
+		const $iptWidth = $(`<input class="form-control" type="number" value="${this.board.width}">`).appendTo($wrpResizeW);
+		this.$iptWidth = $iptWidth;
+		const $wrpResizeH = $(`<div class="dm-sidemenu-row"><div class="dm-sidemenu-row-label">Height</div></div>`).appendTo(this.$mnu);
+		const $iptHeight = $(`<input class="form-control" type="number" value="${this.board.height}">`).appendTo($wrpResizeH);
+		this.$iptHeight = $iptHeight;
+		const $btnSetDim = $(`<div class="btn btn-primary">Set Dimensions</div>`).appendTo(this.$mnu);
+		$btnSetDim.on("click", () => {
+			const w = Number($iptWidth.val());
+			const h = Number($iptHeight.val());
+			if ((w > 10 || h > 10) && !window.confirm("That's a lot of panels. You sure?")) return;
+			this.board.setDimensions(w, h);
+		});
+
+		this.$mnu.append(`<hr class="dm-sidemenu-row-divider">`);
+
 		const $btnReset = $(`<div class="btn btn-danger">Reset Screen</div>`).appendTo(this.$mnu);
 		$btnReset.on("click", () => {
 			if (window.confirm("Are you sure?")) {
 				this.board.doReset();
 			}
 		})
+	}
+
+	doUpdateDimensions () {
+		this.$iptWidth.val(this.board.width);
+		this.$iptHeight.val(this.board.height);
 	}
 }
 
