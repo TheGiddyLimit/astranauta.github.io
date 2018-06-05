@@ -750,8 +750,8 @@ class JoystickMenu {
 				}
 
 				numPanelsCovered = Math.ceil((delta / px));
-				if (axis === AX_X && this.panel.width <= 1) numPanelsCovered = Math.max(0, numPanelsCovered);
-				if (axis === AX_Y && this.panel.height <= 1) numPanelsCovered = Math.max(0, numPanelsCovered);
+				const canShrink = AX_X ? this.panel.width - 1 : this.panel.height - 1;
+				if (canShrink + numPanelsCovered <= 0) numPanelsCovered = -canShrink;
 
 				switch (dir) {
 					case UP:
@@ -797,6 +797,8 @@ class JoystickMenu {
 					gridRowEnd: initGRE
 				});
 
+				const canShrink = AX_X ? this.panel.width - 1 : this.panel.height - 1;
+				if (canShrink + numPanelsCovered <= 0) numPanelsCovered = -canShrink;
 				if (numPanelsCovered === 0) return;
 				const isGrowth = ~Math.sign(numPanelsCovered);
 				if (isGrowth) {
