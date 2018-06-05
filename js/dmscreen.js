@@ -14,10 +14,10 @@ const PANEL_TYP_STATS = 1;
 
 class Board {
 	constructor () {
-		this.width = 5;
-		this.height = 3;
 		this.panels = {}; // flat panel structure because I'm a fucking maniac
 		this.$creen = $(`.dm-screen`);
+		this.width = this.getInitialWidth();
+		this.height = this.getInitialHeight();
 		this.sideMenu = new SideMenu(this);
 		this.menu = new AddMenu();
 		this.storage = StorageUtil.getStorage();
@@ -25,6 +25,26 @@ class Board {
 		this.nextId = 1;
 		this.hoveringPanel = null;
 		this.availContent = {};
+	}
+
+	getInitialWidth () {
+		const scW = this.$creen.width();
+		return Math.ceil(scW / 400);
+		if (scW > 1200) return 5;
+		if (scW > 900) return 4;
+		if (scW > 600) return 3;
+		if (scW > 300) return 2;
+		else return 1;
+	}
+
+	getInitialHeight () {
+		const scH = this.$creen.height();
+		return Math.ceil(scH / 300);
+		if (scH > 1200) return 5;
+		if (scH > 900) return 4;
+		if (scH > 600) return 3;
+		if (scH > 300) return 2;
+		else return 1;
 	}
 
 	getNextId () {
@@ -48,11 +68,12 @@ class Board {
 		const oldHeight = this.height;
 		if (width) this.width = Math.max(width, 1);
 		if (height) this.height = Math.max(height, 1);
-		if (oldWidth === width && oldHeight === height) return;
-		this.doAdjust$creenCss();
-		if (width < oldWidth || height < oldHeight) this.doCullPanels(oldWidth, oldHeight);
+		if (!(oldWidth === width && oldHeight === height)) {
+			this.doAdjust$creenCss();
+			if (width < oldWidth || height < oldHeight) this.doCullPanels(oldWidth, oldHeight);
+			this.sideMenu.doUpdateDimensions();
+		}
 		this.doCheckFillSpaces();
-		this.sideMenu.doUpdateDimensions();
 	}
 
 	doCullPanels (oldWidth, oldHeight) {
@@ -245,7 +266,7 @@ class Board {
 
 	doReset () {
 		Object.values(this.panels).forEach(p => p.destroy());
-		this.doCheckFillSpaces();
+		this.setDimensions(this.getInitialWidth(), this.getInitialHeight());
 	}
 }
 
@@ -615,7 +636,7 @@ class JoystickMenu {
 		const $ctrlXpandDown = $(`<div class="panel-control panel-control-bottom"/>`);
 		const $ctrlXpandLeft = $(`<div class="panel-control panel-control-left"/>`);
 
-		$ctrlMove.on("mousedown", (e) => {
+		$ctrlMove.on("mousedown touchstart", (e) => {
 			const $body = $(`body`);
 			MiscUtil.clearSelection();
 			$body.css("userSelect", "none");
@@ -645,17 +666,17 @@ class JoystickMenu {
 			this.panel.$content.addClass("panel-content-hovering");
 			this.panel.$pnl.removeClass("panel-mode-move");
 
-			$(document).off("mousemove").off("mouseup");
+			$(document).off("mousemove touchmove").off("mouseup touchend");
 
-			$(document).on("mousemove", (e) => {
+			$(document).on("mousemove touchmove", (e) => {
 				this.panel.$content.css({
 					top: e.clientY - offsetY,
 					left: e.clientX - offsetX
 				});
 			});
 
-			$(document).on("mouseup", () => {
-				$(document).off("mousemove").off("mouseup");
+			$(document).on("mouseup touchend", () => {
+				$(document).off("mousemove touchmove").off("mouseup touchend");
 
 				$body.css("userSelect", "");
 				this.panel.$content.css({
@@ -729,9 +750,9 @@ class JoystickMenu {
 				boxShadow: "0 0 12px 0 #000000a0"
 			});
 
-			$(document).off("mousemove").off("mouseup");
+			$(document).off("mousemove touchmove").off("mouseup touchend");
 
-			$(document).on("mousemove", (e) => {
+			$(document).on("mousemove touchmove", (e) => {
 				let delta = 0;
 				const px = axis === AX_X ? dim.pxWidth : dim.pxHeight;
 				switch (dir) {
@@ -783,8 +804,8 @@ class JoystickMenu {
 				}
 			});
 
-			$(document).on("mouseup", () => {
-				$(document).off("mousemove").off("mouseup");
+			$(document).on("mouseup touchend", () => {
+				$(document).off("mousemove touchmove").off("mouseup touchend");
 
 				$(`body`).css("userSelect", "");
 				this.panel.$pnl.find(`.panel-control`).show();
@@ -868,10 +889,10 @@ class JoystickMenu {
 			});
 		}
 
-		$ctrlXpandUp.on("mousedown", xpandHandler.bind(this, UP));
-		$ctrlXpandRight.on("mousedown", xpandHandler.bind(this, RIGHT));
-		$ctrlXpandLeft.on("mousedown", xpandHandler.bind(this, LEFT));
-		$ctrlXpandDown.on("mousedown", xpandHandler.bind(this, DOWN));
+		$ctrlXpandUp.on("mousedown touchstart", xpandHandler.bind(this, UP));
+		$ctrlXpandRight.on("mousedown touchstart", xpandHandler.bind(this, RIGHT));
+		$ctrlXpandLeft.on("mousedown touchstart", xpandHandler.bind(this, LEFT));
+		$ctrlXpandDown.on("mousedown touchstart", xpandHandler.bind(this, DOWN));
 
 		this.panel.$pnl.append($ctrlMove).append($ctrlXpandUp).append($ctrlXpandRight).append($ctrlXpandDown).append($ctrlXpandLeft);
 	}

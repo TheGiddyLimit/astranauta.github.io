@@ -237,24 +237,6 @@
 			min-width: 600px;
 		}
 
-		@media (min-width: 768px) {
-			.panel-addmenu-inner {
-				max-width: 750px;
-			}
-		}
-
-		@media (min-width: 992px) {
-			.panel-addmenu-inner {
-				max-width: 970px;
-			}
-		}
-
-		@media (min-width: 1200px) {
-			.panel-addmenu-inner {
-				max-width: 1170px;
-			}
-		}
-
 		.panel-addmenu-bar {
 			display: flex;
 			flex-shrink: 0;
@@ -460,6 +442,36 @@
 		.dm-sidemenu-row-label {
 			min-width: 46px;
 			flex-shrink: 0;
+		}
+
+		@media (max-width: 767px) {
+			.panel-addmenu-inner {
+				min-width: 0;
+			}
+		}
+
+		@media (min-width: 768px) {
+			.panel-addmenu-inner {
+				max-width: 750px;
+			}
+		}
+
+		@media (max-width: 991px) {
+			.viewport-wrapper {
+				bottom: 0;
+			}
+		}
+
+		@media (min-width: 992px) {
+			.panel-addmenu-inner {
+				max-width: 970px;
+			}
+		}
+
+		@media (min-width: 1200px) {
+			.panel-addmenu-inner {
+				max-width: 1170px;
+			}
 		}
 	</style>
 </head>
