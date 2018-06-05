@@ -2358,11 +2358,14 @@ EntryRenderer.hover = {
 				if (drag.on) {
 					drag.on = false;
 					adjustPosition();
+
+					// handle DM screen integration
 					if (this._dmScreen) {
 						const panel = this._dmScreen.getPanelPx(evt.clientX, evt.clientY);
 						if (!panel) return;
 						this._dmScreen.setHoveringPanel(panel);
 						const target = panel.getAddButtonPos();
+
 						if (isOverHoverTarget(evt, target)) {
 							panel.doPopulate_Stats(page, source, hash);
 							altTeardown();
@@ -2382,11 +2385,13 @@ EntryRenderer.hover = {
 					drag.baseTop = parseFloat($hov.css("top"));
 					drag.baseLeft = parseFloat($hov.css("left"));
 
+					// handle DM screen integration
 					if (this._dmScreen) {
 						const panel = this._dmScreen.getPanelPx(evt.clientX, evt.clientY);
 						if (!panel) return;
 						this._dmScreen.setHoveringPanel(panel);
 						const target = panel.getAddButtonPos();
+
 						if (isOverHoverTarget(evt, target)) this._dmScreen.setHoveringButton(panel);
 						else this._dmScreen.resetHoveringButton();
 					}
