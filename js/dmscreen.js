@@ -11,6 +11,9 @@ const AX_Y = "AXIS_Y";
 
 const PANEL_TYP_EMPTY = 0;
 const PANEL_TYP_STATS = 1;
+const PANEL_TYP_TUBE = 10;
+const PANEL_TYP_TWITCH = 11;
+const PANEL_TYP_TWITCH_CHAT = 12;
 
 class Board {
 	constructor () {
@@ -156,7 +159,7 @@ class Board {
 			// Add main site index
 			data.forEach(d => {
 				if (hasBadCat(d) || fromDeepIndex(d)) return;
-				d.cf = Parser.pageCategoryToFull(d.c);
+				d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
 				if (!this.availContent[d.cf]) {
 					this.availContent[d.cf] = elasticlunr(function () {
 						this.addField("n");
@@ -179,7 +182,11 @@ class Board {
 			// add search tab
 			const omniTab = new AddMenuSearchTab("Search", this.availContent);
 			omniTab.setSpotlight(true);
-			this.menu.addTab(omniTab);
+
+			const tubeTab = new AddMenuVideoTab("Video");
+
+			this.menu.addTab(omniTab).addTab(tubeTab);
+
 			this.menu.render();
 
 			this.sideMenu.render();
@@ -352,6 +359,17 @@ class Panel {
 				p.doPopulate_Stats(page, source, hash);
 				return p;
 			}
+			case PANEL_TYP_TUBE:
+				p.doPopulate_YouTube(saved.c.u);
+				return p;
+			case PANEL_TYP_TWITCH:
+				p.doPopulate_Twitch(saved.c.u);
+				return p;
+			case PANEL_TYP_TWITCH_CHAT:
+				p.doPopulate_TwitchChat(saved.c.u);
+				return p;
+			default:
+				throw new Error(`Unhandled panel type ${saved.t}`);
 		}
 	}
 
@@ -377,6 +395,36 @@ class Panel {
 					true
 				);
 			}
+		);
+	}
+
+	doPopulate_YouTube (url) {
+		const meta = {u: url};
+		this.set$Content(
+			PANEL_TYP_TUBE,
+			meta,
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen/></div>`),
+			true
+		);
+	}
+
+	doPopulate_Twitch (url) {
+		const meta = {u: url};
+		this.set$Content(
+			PANEL_TYP_TWITCH,
+			meta,
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no" allowfullscreen/></div>`),
+			true
+		);
+	}
+
+	doPopulate_TwitchChat (url) {
+		const meta = {u: url};
+		this.set$Content(
+			PANEL_TYP_TWITCH_CHAT,
+			meta,
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no"/></div>`),
+			true
 		);
 	}
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -513,6 +561,18 @@ class Panel {
 		this.isContentDirty = true;
 	}
 
+	doShowJoystick () {
+		this.$pnl.find(`.panel-control`).show();
+		this.$pnl.find(`.btn-panel-add`).hide();
+		this.$pnl.addClass(`panel-mode-move`);
+	}
+
+	doHideJoystick () {
+		this.$pnl.find(`.panel-control`).hide();
+		this.$pnl.find(`.btn-panel-add`).show();
+		this.$pnl.removeClass(`panel-mode-move`);
+	}
+
 	render () {
 		function doApplyPosCss ($ele) {
 			// indexed from 1 instead of zero...
@@ -643,6 +703,15 @@ class Panel {
 					u: this.contentMeta.u
 				};
 				break;
+			case PANEL_TYP_TUBE:
+			case PANEL_TYP_TWITCH:
+			case PANEL_TYP_TWITCH_CHAT:
+				out.c = {
+					u: this.contentMeta.u
+				};
+				break;
+			default:
+				throw new Error(`Unhandled panel type ${this.type}`);
 		}
 
 		return out;
@@ -664,6 +733,7 @@ class JoystickMenu {
 		const $ctrlXpandRight = $(`<div class="panel-control panel-control-right"/>`);
 		const $ctrlXpandDown = $(`<div class="panel-control panel-control-bottom"/>`);
 		const $ctrlXpandLeft = $(`<div class="panel-control panel-control-left"/>`);
+		const $ctrlBg = $(`<div class="panel-control panel-control-bg"/>`);
 
 		$ctrlMove.on("mousedown touchstart", (e) => {
 			const $body = $(`body`);
@@ -724,6 +794,7 @@ class JoystickMenu {
 
 				if (!this.panel.board.hoveringPanel || this.panel.id === this.panel.board.hoveringPanel.id) {
 					this.panel.$pnlWrpContent.append(this.panel.$content);
+					this.panel.doShowJoystick();
 				} else {
 					const her = this.panel.board.hoveringPanel;
 					if (her.getEmpty()) {
@@ -740,6 +811,8 @@ class JoystickMenu {
 						her.set$Content(this.panel.type, this.panel.contentMeta, this.panel.$content, true);
 						this.panel.set$Content(herMeta.type, herMeta.contentMeta, $herContent, true);
 					}
+					this.panel.doHideJoystick();
+					her.doShowJoystick();
 				}
 				MiscUtil.clearSelection();
 			});
@@ -749,19 +822,20 @@ class JoystickMenu {
 			MiscUtil.clearSelection();
 			$(`body`).css("userSelect", "none");
 			$(`.panel-control`).hide();
+			$ctrlBg.show();
 			this.panel.$pnl.addClass("panel-mode-move");
 			switch (dir) {
 				case UP:
-					this.panel.$pnl.find(`.panel-control-top`).show();
+					$ctrlXpandUp.show();
 					break;
 				case RIGHT:
-					this.panel.$pnl.find(`.panel-control-right`).show();
+					$ctrlXpandRight.show();
 					break;
 				case DOWN:
-					this.panel.$pnl.find(`.panel-control-bottom`).show();
+					$ctrlXpandDown.show();
 					break;
 				case LEFT:
-					this.panel.$pnl.find(`.panel-control-left`).show();
+					$ctrlXpandLeft.show();
 					break;
 			}
 			const axis = dir === RIGHT || dir === LEFT ? AX_X : AX_Y;
@@ -923,7 +997,7 @@ class JoystickMenu {
 		$ctrlXpandLeft.on("mousedown touchstart", xpandHandler.bind(this, LEFT));
 		$ctrlXpandDown.on("mousedown touchstart", xpandHandler.bind(this, DOWN));
 
-		this.panel.$pnl.append($ctrlMove).append($ctrlXpandUp).append($ctrlXpandRight).append($ctrlXpandDown).append($ctrlXpandLeft);
+		this.panel.$pnl.append($ctrlBg).append($ctrlMove).append($ctrlXpandUp).append($ctrlXpandRight).append($ctrlXpandDown).append($ctrlXpandLeft);
 	}
 }
 
@@ -940,6 +1014,7 @@ class AddMenu {
 	addTab (tab) {
 		tab.setMenu(this);
 		this.tabs.push(tab);
+		return this;
 	}
 
 	get$Menu () {
@@ -1016,7 +1091,12 @@ class AddMenuTab {
 		this.label = label;
 		this.spotlight = false;
 
+		this.$tab = null;
 		this.menu = null;
+	}
+
+	get$Tab () {
+		return this.$tab;
 	}
 
 	genTabId (type) {
@@ -1036,18 +1116,78 @@ class AddMenuTab {
 	}
 }
 
+class AddMenuVideoTab extends AddMenuTab {
+	constructor (label) {
+		super(label);
+		this.tabId = this.genTabId("tube");
+	}
+
+	render () {
+		if (!this.$tab) {
+			const $tab = $(`<div class="panel-tab-list-wrapper" id="${this.tabId}"/>`);
+
+			const $wrpYT = $(`<div class="tab-body-row"/>`).appendTo($tab);
+			const $iptUrlYT = $(`<input class="form-control" placeholder="Paste YouTube URL">`).appendTo($wrpYT);
+			const $btnAddYT = $(`<div class="btn btn-primary">Add</div>`).appendTo($wrpYT);
+			$btnAddYT.on("click", () => {
+				let url = $iptUrlYT.val().trim();
+				const m = /https?:\/\/(www\.)?youtube\.com\/watch\?v=(.*?)(&.*$|$)/.exec(url);
+				if (url && m) {
+					url = `https://www.youtube.com/embed/${m[2]}`;
+					this.menu.pnl.doPopulate_YouTube(url);
+					this.menu.doClose();
+				} else {
+					alert(`Please enter a URL of the form: "https://www.youtube.com/watch?v=XXXXXXX"`);
+				}
+			});
+
+			const $wrpTwitch = $(`<div class="tab-body-row"/>`).appendTo($tab);
+			const $iptUrlTwitch = $(`<input class="form-control" placeholder="Paste Twitch URL">`).appendTo($wrpTwitch);
+			const $btnAddTwitch = $(`<div class="btn btn-primary">Add</div>`).appendTo($wrpTwitch);
+			const $btnAddTwitchChat = $(`<div class="btn btn-primary">Add Chat</div>`).appendTo($wrpTwitch);
+			const getTwitchM = (url) => {
+				return /https?:\/\/(www\.)?twitch\.tv\/(.*?)(\?.*$|$)/.exec(url);
+			};
+			$btnAddTwitch.on("click", () => {
+				let url = $iptUrlTwitch.val().trim();
+				const m = getTwitchM(url);
+				if (url && m) {
+					url = `http://player.twitch.tv/?channel=${m[2]}`;
+					this.menu.pnl.doPopulate_Twitch(url);
+					this.menu.doClose();
+				} else {
+					alert(`Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`);
+				}
+			});
+
+			$btnAddTwitchChat.on("click", () => {
+				let url = $iptUrlTwitch.val().trim();
+				const m = getTwitchM(url);
+				if (url && m) {
+					url = `http://www.twitch.tv/embed/${m[2]}/chat`;
+					this.menu.pnl.doPopulate_TwitchChat(url);
+					this.menu.doClose();
+				} else {
+					alert(`Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`);
+				}
+			});
+
+			this.$tab = $tab;
+		}
+	}
+
+	doTransitionActive () {
+		// TODO clear + reset form
+	}
+}
+
 class AddMenuListTab extends AddMenuTab {
 	constructor (label, content) {
 		super(label);
 		this.tabId = this.genTabId("list");
 		this.content = content;
 
-		this.$tab = null;
 		this.list = null;
-	}
-
-	get$Tab () {
-		return this.$tab;
 	}
 
 	render () {
@@ -1085,15 +1225,10 @@ class AddMenuSearchTab extends AddMenuTab {
 		this.indexes = indexes;
 		this.cat = "ALL";
 
-		this.$tab = null;
 		this.$selCat = null;
 		this.$srch = null;
 		this.$results = null;
 		this.showMsgIpt = null;
-	}
-
-	get$Tab () {
-		return this.$tab;
 	}
 
 	render () {
@@ -1220,7 +1355,7 @@ class AddMenuSearchTab extends AddMenuTab {
 }
 
 window.addEventListener("load", () => {
-	// expose it for debugging purposes
+	// expose it for dbg purposes
 	window.DM_SCREEN = new Board();
 	EntryRenderer.hover.bindDmScreen(window.DM_SCREEN);
 	window.DM_SCREEN.initialise();

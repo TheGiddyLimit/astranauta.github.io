@@ -146,6 +146,14 @@
 			z-index: 55;
 		}
 
+		.panel-control-bg {
+			z-index: 54;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+
 		.panel-control-top {
 			top: 0;
 			right: 40px;
@@ -371,6 +379,30 @@
 			margin: 0 3px;
 			padding: 0;
 			border-right: 5px transparent;
+		}
+
+		iframe {
+			width: 100%;
+			height: 100%;
+		}
+
+		.tab-body-row {
+			margin-bottom: 5px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.tab-body-row:first-of-type {
+			margin-top: -1px;
+		}
+
+		.tab-body-row > * {
+			margin-right: 5px;
+		}
+
+		.tab-body-row > *:last-child {
+			margin-right: 0;
 		}
 
 		.dm-sidemenu {
