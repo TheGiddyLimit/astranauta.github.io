@@ -14,6 +14,7 @@ const PANEL_TYP_STATS = 1;
 const PANEL_TYP_TUBE = 10;
 const PANEL_TYP_TWITCH = 11;
 const PANEL_TYP_TWITCH_CHAT = 12;
+const PANEL_TYP_GENERIC_EMBED = 90;
 
 class Board {
 	constructor () {
@@ -183,7 +184,7 @@ class Board {
 			const omniTab = new AddMenuSearchTab("Search", this.availContent);
 			omniTab.setSpotlight(true);
 
-			const tubeTab = new AddMenuVideoTab("Video");
+			const tubeTab = new AddMenuVideoTab("Embed");
 
 			this.menu.addTab(omniTab).addTab(tubeTab);
 
@@ -368,6 +369,9 @@ class Panel {
 			case PANEL_TYP_TWITCH_CHAT:
 				p.doPopulate_TwitchChat(saved.c.u);
 				return p;
+			case PANEL_TYP_GENERIC_EMBED:
+				p.doPopulate_GenericEmbed(saved.c.u);
+				return p;
 			default:
 				throw new Error(`Unhandled panel type ${saved.t}`);
 		}
@@ -424,6 +428,16 @@ class Panel {
 			PANEL_TYP_TWITCH_CHAT,
 			meta,
 			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no"/></div>`),
+			true
+		);
+	}
+
+	doPopulate_GenericEmbed (url) {
+		const meta = {u: url};
+		this.set$Content(
+			PANEL_TYP_GENERIC_EMBED,
+			meta,
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}"/></div>`),
 			true
 		);
 	}
@@ -706,6 +720,7 @@ class Panel {
 			case PANEL_TYP_TUBE:
 			case PANEL_TYP_TWITCH:
 			case PANEL_TYP_TWITCH_CHAT:
+			case PANEL_TYP_GENERIC_EMBED:
 				out.c = {
 					u: this.contentMeta.u
 				};
@@ -1128,7 +1143,7 @@ class AddMenuVideoTab extends AddMenuTab {
 
 			const $wrpYT = $(`<div class="tab-body-row"/>`).appendTo($tab);
 			const $iptUrlYT = $(`<input class="form-control" placeholder="Paste YouTube URL">`).appendTo($wrpYT);
-			const $btnAddYT = $(`<div class="btn btn-primary">Add</div>`).appendTo($wrpYT);
+			const $btnAddYT = $(`<div class="btn btn-primary">Embed</div>`).appendTo($wrpYT);
 			$btnAddYT.on("click", () => {
 				let url = $iptUrlYT.val().trim();
 				const m = /https?:\/\/(www\.)?youtube\.com\/watch\?v=(.*?)(&.*$|$)/.exec(url);
@@ -1143,8 +1158,8 @@ class AddMenuVideoTab extends AddMenuTab {
 
 			const $wrpTwitch = $(`<div class="tab-body-row"/>`).appendTo($tab);
 			const $iptUrlTwitch = $(`<input class="form-control" placeholder="Paste Twitch URL">`).appendTo($wrpTwitch);
-			const $btnAddTwitch = $(`<div class="btn btn-primary">Add</div>`).appendTo($wrpTwitch);
-			const $btnAddTwitchChat = $(`<div class="btn btn-primary">Add Chat</div>`).appendTo($wrpTwitch);
+			const $btnAddTwitch = $(`<div class="btn btn-primary">Embed</div>`).appendTo($wrpTwitch);
+			const $btnAddTwitchChat = $(`<div class="btn btn-primary">Embed Chat</div>`).appendTo($wrpTwitch);
 			const getTwitchM = (url) => {
 				return /https?:\/\/(www\.)?twitch\.tv\/(.*?)(\?.*$|$)/.exec(url);
 			};
@@ -1169,6 +1184,20 @@ class AddMenuVideoTab extends AddMenuTab {
 					this.menu.doClose();
 				} else {
 					alert(`Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`);
+				}
+			});
+
+
+			const $wrpGeneric = $(`<div class="tab-body-row"/>`).appendTo($tab);
+			const $iptUrlGeneric = $(`<input class="form-control" placeholder="Paste any URL">`).appendTo($wrpGeneric);
+			const $btnAddGeneric = $(`<div class="btn btn-primary">Embed</div>`).appendTo($wrpGeneric);
+			$btnAddGeneric.on("click", () => {
+				let url = $iptUrlGeneric.val().trim();
+				if (url) {
+					this.menu.pnl.doPopulate_GenericEmbed(url);
+					this.menu.doClose();
+				} else {
+					alert(`Please enter a URL`);
 				}
 			});
 
