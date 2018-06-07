@@ -587,8 +587,6 @@ HashLoad.subclassPillWrapper = undefined;
 
 class SubClassLoader {
 	static loadsub (sub) {
-		const curHash = window.location.hash;
-
 		let subclasses = null;
 		let feature = null;
 		let hideClassFeatures = null;
@@ -597,7 +595,7 @@ class SubClassLoader {
 		let bookView = null;
 		let comparisonView = null;
 
-		let partCache = null;
+		SubClassLoader.partCache = null;
 
 		function sliceTrue (hashPart, findString) {
 			return hashPart.slice(findString.length) === "true";
