@@ -381,19 +381,19 @@ class Panel {
 		}
 	}
 
-	static _get$eleLoading () {
-		return $(`<div class="panel-content-wrapper-inner"><div class="panel-tab-message loading-spinner"><i>Loading...</i></div></div>`);
+	static _get$eleLoading (message = "Loading") {
+		return $(`<div class="panel-content-wrapper-inner"><div class="panel-tab-message loading-spinner"><i>${message}...</i></div></div>`);
 	}
 
 	doPopulate_Empty () {
 		this.reset$Content(true);
 	}
 
-	doPopulate_Loading () {
+	doPopulate_Loading (message) {
 		this.set$Content(
 			PANEL_TYP_EMPTY,
 			null,
-			Panel._get$eleLoading(),
+			Panel._get$eleLoading(message),
 			true
 		);
 	}
@@ -1290,7 +1290,7 @@ class AddMenuImageTab extends AddMenuTab {
 				};
 				reader.fileName = input.files[0].name;
 				reader.readAsDataURL(input.files[0]);
-				this.menu.pnl.doPopulate_Loading();
+				this.menu.pnl.doPopulate_Loading("Uploading");
 				this.menu.doClose();
 			}).appendTo($tab);
 			const $btnAdd = $(`<div class="btn btn-primary">Upload</div>`).appendTo($wrpImgur);
