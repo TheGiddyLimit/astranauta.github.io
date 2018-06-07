@@ -14,6 +14,7 @@ const PANEL_TYP_STATS = 1;
 const PANEL_TYP_TUBE = 10;
 const PANEL_TYP_TWITCH = 11;
 const PANEL_TYP_TWITCH_CHAT = 12;
+const PANEL_TYP_IMAGE = 20;
 const PANEL_TYP_GENERIC_EMBED = 90;
 
 class Board {
@@ -180,13 +181,13 @@ class Board {
 				this.availContent[d.cf].addDoc(d);
 			});
 
-			// add search tab
+			// add tabs
 			const omniTab = new AddMenuSearchTab("Search", this.availContent);
 			omniTab.setSpotlight(true);
+			const embedTab = new AddMenuVideoTab("Embed");
+			const imageTab = new AddMenuImageTab("Image");
 
-			const tubeTab = new AddMenuVideoTab("Embed");
-
-			this.menu.addTab(omniTab).addTab(tubeTab);
+			this.menu.addTab(omniTab).addTab(imageTab).addTab(embedTab);
 
 			this.menu.render();
 
@@ -372,6 +373,9 @@ class Panel {
 			case PANEL_TYP_GENERIC_EMBED:
 				p.doPopulate_GenericEmbed(saved.c.u);
 				return p;
+			case PANEL_TYP_IMAGE:
+				p.doPopulate_Image(saved.c.u);
+				return p;
 			default:
 				throw new Error(`Unhandled panel type ${saved.t}`);
 		}
@@ -438,6 +442,16 @@ class Panel {
 			PANEL_TYP_GENERIC_EMBED,
 			meta,
 			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}"/></div>`),
+			true
+		);
+	}
+
+	doPopulate_Image (url) {
+		const meta = {u: url};
+		this.set$Content(
+			PANEL_TYP_IMAGE,
+			meta,
+			$(`<div class="panel-content-wrapper-inner"><div class="panel-content-wrapper-img"><img src="${url}"></div></div>`),
 			true
 		);
 	}
@@ -627,7 +641,10 @@ class Panel {
 				this.board.menu.doOpen();
 				this.board.menu.setPanel(this);
 				if (!this.board.menu.hasActiveTab()) this.board.menu.setFirstTabActive();
-				else this.board.menu.getActiveTab().doTransitionActive();
+				else {
+					const fn = this.board.menu.getActiveTab().doTransitionActive;
+					if (fn) fn();
+				}
 			}).appendTo($wrpBtnAdd);
 			this.$btnAdd = $wrpBtnAdd;
 			this.$btnAddInner = $btnAdd;
@@ -721,6 +738,7 @@ class Panel {
 			case PANEL_TYP_TWITCH:
 			case PANEL_TYP_TWITCH_CHAT:
 			case PANEL_TYP_GENERIC_EMBED:
+			case PANEL_TYP_IMAGE:
 				out.c = {
 					u: this.contentMeta.u
 				};
@@ -1151,6 +1169,7 @@ class AddMenuVideoTab extends AddMenuTab {
 					url = `https://www.youtube.com/embed/${m[2]}`;
 					this.menu.pnl.doPopulate_YouTube(url);
 					this.menu.doClose();
+					$iptUrlYT.val("");
 				} else {
 					alert(`Please enter a URL of the form: "https://www.youtube.com/watch?v=XXXXXXX"`);
 				}
@@ -1170,6 +1189,7 @@ class AddMenuVideoTab extends AddMenuTab {
 					url = `http://player.twitch.tv/?channel=${m[2]}`;
 					this.menu.pnl.doPopulate_Twitch(url);
 					this.menu.doClose();
+					$iptUrlTwitch.val("");
 				} else {
 					alert(`Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`);
 				}
@@ -1182,6 +1202,7 @@ class AddMenuVideoTab extends AddMenuTab {
 					url = `http://www.twitch.tv/embed/${m[2]}/chat`;
 					this.menu.pnl.doPopulate_TwitchChat(url);
 					this.menu.doClose();
+					$iptUrlTwitch.val("");
 				} else {
 					alert(`Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`);
 				}
@@ -1204,9 +1225,61 @@ class AddMenuVideoTab extends AddMenuTab {
 			this.$tab = $tab;
 		}
 	}
+}
 
-	doTransitionActive () {
-		// TODO clear + reset form
+class AddMenuImageTab extends AddMenuTab {
+	constructor (label) {
+		super(label);
+		this.tabId = this.genTabId("image");
+	}
+
+	render () {
+		if (!this.$tab) {
+			const $tab = $(`<div class="panel-tab-list-wrapper" id="${this.tabId}"/>`);
+
+			const $wrpHelp = $(`<div class="tab-body-row">Anonymously uploads to imgur. Max 10MB. Accepts whatever formats imgur accepts.</div>`).appendTo($tab);
+			const $wrp = $(`<div class="tab-body-row"/>`).appendTo($tab);
+
+			const $iptFile = $(`<input type="file" class="hidden">`).on("change", (evt) => {
+				const input = evt.target;
+				const reader = new FileReader();
+				reader.onload = () => {
+					const base64 = reader.result.replace(/.*,/, "");
+					$.ajax({
+						url: "https://api.imgur.com/3/image",
+						type: "POST",
+						data: {
+							image: base64,
+							type: "base64"
+						},
+						headers: {
+							Accept: "application/json",
+							Authorization: `Client-ID ${IMGUR_CLIENT_ID}`
+						},
+						success: (data) => {
+							this.menu.pnl.doPopulate_Image(data.data.link);
+							this.menu.doClose();
+						},
+						error: (error) => {
+							try {
+								alert(`Failed to upload: ${JSON.parse(error.responseText).data.error}`);
+							} catch (e) {
+								alert("Failed to upload: Unknown error");
+							}
+						}
+					});
+				};
+				reader.fileName = input.files[0].name;
+				reader.readAsDataURL(input.files[0]);
+			}).appendTo($tab);
+			// TODO
+			const $btnAdd = $(`<div class="btn btn-primary">Upload</div>`).appendTo($wrp);
+			$btnAdd.on("click", () => {
+				$iptFile.click();
+			});
+
+			this.$tab = $tab;
+		}
 	}
 }
 
