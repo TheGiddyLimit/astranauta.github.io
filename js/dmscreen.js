@@ -19,7 +19,8 @@ const PANEL_TYP_GENERIC_EMBED = 90;
 
 class Board {
 	constructor () {
-		this.panels = {}; // flat panel structure because I'm a fucking maniac
+		this.panels = {};
+		this.exiledPanels = [];
 		this.$creen = $(`.dm-screen`);
 		this.width = this.getInitialWidth();
 		this.height = this.getInitialHeight();
@@ -80,13 +81,13 @@ class Board {
 					if (p.canShrinkBottom() && p.canShrinkRight()) {
 						p.doShrinkBottom();
 						p.doShrinkRight();
-					} else p.destroy();
+					} else p.exile();
 				} else if (x >= this.width) {
 					if (p.canShrinkRight()) p.doShrinkRight();
-					else p.destroy();
+					else p.exile();
 				} else if (y >= this.height) {
 					if (p.canShrinkBottom()) p.doShrinkBottom();
-					else p.destroy();
+					else p.exile();
 				}
 			}
 		}
@@ -135,7 +136,7 @@ class Board {
 			this.doCheckFillSpaces();
 			this.initUnloadHandler();
 		};
-		this.doLoadIndex(fnCallback)
+		this.doLoadIndex(fnCallback);
 	}
 
 	initUnloadHandler () {
@@ -214,6 +215,31 @@ class Board {
 		this.hoveringPanel = panel;
 	}
 
+	setVisiblyHoveringPanel (isVis) {
+		Object.values(this.panels).forEach(p => p.removeHoverClass());
+		if (isVis && this.hoveringPanel) this.hoveringPanel.addHoverClass();
+	}
+
+	exilePanel (id) {
+		const panelK = Object.keys(this.panels).find(k => this.panels[k].id === id);
+		if (panelK) {
+			const toExile = this.panels[panelK];
+			if (!toExile.getEmpty()) {
+				delete this.panels[panelK];
+				this.exiledPanels.unshift(toExile);
+				const toDestroy = this.exiledPanels.splice(10);
+				toDestroy.forEach(p => p.destroy());
+				this.sideMenu.doUpdateHistory()
+			} else this.destroyPanel(id);
+		}
+	}
+
+	recallPanel (panel) {
+		const ix = this.exiledPanels.findIndex(p => p.id === panel.id);
+		if (~ix) this.exiledPanels.splice(ix, 1);
+		this.panels[panel.id] = panel;
+	}
+
 	destroyPanel (id) {
 		const panelK = Object.keys(this.panels).find(k => this.panels[k].id === id);
 		if (panelK) delete this.panels[panelK];
@@ -240,7 +266,8 @@ class Board {
 		const toSave = {
 			w: this.width,
 			h: this.height,
-			ps: Object.values(this.panels).map(p => p.getSaveableState())
+			ps: Object.values(this.panels).map(p => p.getSaveableState()),
+			ex: this.exiledPanels.map(p => p.getSaveableState())
 		};
 		this.storage.setItem(DMSCREEN_STORAGE, JSON.stringify(toSave));
 	}
@@ -255,9 +282,20 @@ class Board {
 		if (raw) {
 			try {
 				const toLoad = JSON.parse(raw);
+				// re-exile
+				toLoad.ex.filter(Boolean).reverse().forEach(saved => {
+					const p = Panel.fromSavedState(this, saved);
+					if (p) {
+						this.panels[p.id] = p;
+						p.exile();
+					}
+				});
+				this.setDimensions(toLoad.w, toLoad.h);
 				toLoad.ps.filter(Boolean).forEach(saved => {
 					const p = Panel.fromSavedState(this, saved);
-					this.panels[p.id] = p;
+					if (p) {
+						this.panels[p.id] = p;
+					}
 				});
 				this.setDimensions(toLoad.w, toLoad.h);
 			} catch (e) {
@@ -269,7 +307,11 @@ class Board {
 	}
 
 	doReset () {
+		this.exiledPanels.forEach(p => p.destroy());
+		this.exiledPanels = [];
+		this.sideMenu.doUpdateHistory();
 		Object.values(this.panels).forEach(p => p.destroy());
+		this.panels = {};
 		this.setDimensions(this.getInitialWidth(), this.getInitialHeight());
 	}
 
@@ -291,8 +333,15 @@ class SideMenu {
 		this.board = board;
 		this.$mnu = $(`.dm-sidemenu`);
 
+		this.$mnu.on("mouseover", () => {
+			this.board.setHoveringPanel(null);
+			this.board.setVisiblyHoveringPanel(false);
+			this.board.resetHoveringButton();
+		});
+
 		this.$iptWidth = null;
 		this.$iptHeight = null;
+		this.$wrpHistory = null;
 	}
 
 	render () {
@@ -317,12 +366,88 @@ class SideMenu {
 			if (window.confirm("Are you sure?")) {
 				this.board.doReset();
 			}
-		})
+		});
+
+		this.$mnu.append(`<hr class="dm-sidemenu-row-divider">`);
+
+		const $wrpHistory = $(`<div class="dm-sidemenu-history"/>`).appendTo(this.$mnu);
+		this.$wrpHistory = $wrpHistory;
 	}
 
 	doUpdateDimensions () {
 		this.$iptWidth.val(this.board.width);
 		this.$iptHeight.val(this.board.height);
+	}
+
+	doUpdateHistory () {
+		this.board.exiledPanels.forEach(p => p.get$ContentWrapper().detach());
+		this.$wrpHistory.children().remove();
+		if (this.board.exiledPanels.length) this.$wrpHistory.append(`<div class="dm-sidemenu-history-header dm-sidemenu-row">Recently Removed</div>`);
+		this.board.exiledPanels.forEach(p => {
+			const $wrpHistItem = $(`<div class="dm-sidemenu-history-item"/>`).appendTo(this.$wrpHistory);
+			const $cvrHistItem = $(`<div class="dm-sidemenu-history-item-cover"/>`).appendTo($wrpHistItem);
+			const $ctrlMove = $(`<div class="panel-history-control-middle"/>`).appendTo($cvrHistItem);
+
+			const $contents = p.get$ContentWrapper();
+
+			$wrpHistItem.append($contents);
+
+			$ctrlMove.on("mousedown touchstart", (e) => {
+				this.board.setVisiblyHoveringPanel(true);
+				const $body = $(`body`);
+				MiscUtil.clearSelection();
+				$body.css("userSelect", "none");
+
+				const w = $contents.width();
+				const h = $contents.height();
+				const offset = $contents.offset();
+				const offsetX = e.clientX - offset.left;
+				const offsetY = e.clientY - offset.top;
+
+				$body.append($contents);
+				$(`.panel-control`).hide();
+				Panel.setMovingCss(e, $contents, w, h, offsetX, offsetY, 58);
+				this.board.get$creen().addClass("board-content-hovering");
+				p.get$Content().addClass("panel-content-hovering");
+
+				Panel.bindMovingEvents(this.board, $contents, offsetX, offsetY);
+
+				$(document).on("mouseup touchend", () => {
+					this.board.setVisiblyHoveringPanel(false);
+					$(document).off("mousemove touchmove").off("mouseup touchend");
+
+					$body.css("userSelect", "");
+					Panel.unsetMovingCss($contents);
+					this.board.get$creen().removeClass("board-content-hovering");
+					p.get$Content().removeClass("panel-content-hovering");
+
+					if (!this.board.hoveringPanel || p.id === this.board.hoveringPanel.id) $wrpHistItem.append($contents);
+					else {
+						this.board.recallPanel(p);
+						const her = this.board.hoveringPanel;
+						if (her.getEmpty()) {
+							her.set$Content(
+								p.type,
+								p.contentMeta,
+								p.$content,
+								true
+							);
+							p.destroy();
+						} else {
+							const herMeta = her.getPanelMeta();
+							const $herContent = her.get$Content();
+							her.set$Content(p.type, p.contentMeta, p.$content, true);
+							p.set$Content(herMeta.type, herMeta.contentMeta, $herContent, true);
+							p.exile();
+						}
+						// this.panel.doHideJoystick(); // TODO?
+						her.doShowJoystick();
+						this.doUpdateHistory();
+					}
+					MiscUtil.clearSelection();
+				});
+			});
+		});
 	}
 }
 
@@ -339,16 +464,18 @@ class Panel {
 		this.isLocked = false;
 		this.type = 0;
 		this.contentMeta = null; // info used during saved state re-load
+		this.isMousedown = false;
 
 		this.$btnAdd = null;
 		this.$btnAddInner = null;
 		this.$content = null;
-
+		this.joyMenu = null;
 		this.$pnl = null;
 		this.$pnlWrpContent = null;
 	}
 
 	static fromSavedState (board, saved) {
+		if (saved.t === PANEL_TYP_EMPTY && board.getPanel(saved.x, saved.y)) return null; // cull empties
 		const p = new Panel(board, saved.x, saved.y, saved.w, saved.h);
 		p.render();
 		switch (saved.t) {
@@ -383,6 +510,45 @@ class Panel {
 
 	static _get$eleLoading (message = "Loading") {
 		return $(`<div class="panel-content-wrapper-inner"><div class="panel-tab-message loading-spinner"><i>${message}...</i></div></div>`);
+	}
+
+	static setMovingCss (evt, $ele, w, h, offsetX, offsetY, zIndex) {
+		$ele.css({
+			width: w,
+			height: h,
+			position: "fixed",
+			top: evt.clientY - offsetY,
+			left: evt.clientX - offsetX,
+			zIndex: zIndex,
+			pointerEvents: "none",
+			transform: "rotate(-4deg)",
+			background: "none"
+		});
+	}
+
+	static unsetMovingCss ($ele) {
+		$ele.css({
+			width: "",
+			height: "",
+			position: "",
+			top: "",
+			left: "",
+			zIndex: "",
+			pointerEvents: "",
+			transform: "",
+			background: ""
+		});
+	}
+
+	static bindMovingEvents (board, $content, offsetX, offsetY) {
+		$(document).off("mousemove touchmove").off("mouseup touchend");
+		$(document).on("mousemove touchmove", (e) => {
+			board.setVisiblyHoveringPanel(true);
+			$content.css({
+				top: e.clientY - offsetY,
+				left: e.clientX - offsetX
+			});
+		});
 	}
 
 	doPopulate_Empty () {
@@ -597,6 +763,14 @@ class Panel {
 		return this.isLocked;
 	}
 
+	getMousedown () {
+		return this.isMousedown;
+	}
+
+	setMousedown (isMousedown) {
+		this.isMousedown = isMousedown;
+	}
+
 	setDirty (dirty) {
 		this.isDirty = dirty;
 	}
@@ -607,14 +781,12 @@ class Panel {
 	}
 
 	doShowJoystick () {
-		this.$pnl.find(`.panel-control`).show();
-		this.$pnl.find(`.btn-panel-add`).hide();
+		this.joyMenu.doShow();
 		this.$pnl.addClass(`panel-mode-move`);
 	}
 
 	doHideJoystick () {
-		this.$pnl.find(`.panel-control`).hide();
-		this.$pnl.find(`.btn-panel-add`).show();
+		this.joyMenu.doHide();
 		this.$pnl.removeClass(`panel-mode-move`);
 	}
 
@@ -643,13 +815,12 @@ class Panel {
 			});
 			const $ctrlEmpty = $(`<div class="panel-control-icon glyphicon glyphicon-remove" title="Empty"/>`).appendTo($ctrlBar);
 			$ctrlEmpty.on("click", () => {
-				this.reset$Content(true);
-				$pnl.find(`.panel-control`).hide();
-				$pnl.find(`.btn-panel-add`).show();
-				$pnl.removeClass(`panel-mode-move`);
+				this.exile();
+				this.board.doCheckFillSpaces();
 			});
 
 			const joyMenu = new JoystickMenu(this);
+			this.joyMenu = joyMenu;
 			joyMenu.initialise();
 
 			const $wrpContent = $(`<div class="panel-content-wrapper"/>`).appendTo($pnl);
@@ -659,8 +830,7 @@ class Panel {
 				this.board.menu.setPanel(this);
 				if (!this.board.menu.hasActiveTab()) this.board.menu.setFirstTabActive();
 				else {
-					const fn = this.board.menu.getActiveTab().doTransitionActive;
-					if (fn) fn();
+					if (this.board.menu.getActiveTab().doTransitionActive) this.board.menu.getActiveTab().doTransitionActive();
 				}
 			}).appendTo($wrpBtnAdd);
 			this.$btnAdd = $wrpBtnAdd;
@@ -723,13 +893,30 @@ class Panel {
 		}
 	}
 
+	get$ContentWrapper () {
+		return this.$pnlWrpContent;
+	}
+
 	get$Content () {
 		return this.$content
+	}
+
+	exile () {
+		if (this.$pnl) this.$pnl.detach();
+		this.board.exilePanel(this.id);
 	}
 
 	destroy () {
 		if (this.$pnl) this.$pnl.remove();
 		this.board.destroyPanel(this.id);
+	}
+
+	addHoverClass () {
+		this.$pnl.addClass("faux-hover");
+	}
+
+	removeHoverClass () {
+		this.$pnl.removeClass("faux-hover");
 	}
 
 	getSaveableState () {
@@ -771,12 +958,13 @@ class Panel {
 class JoystickMenu {
 	constructor (panel) {
 		this.panel = panel;
+
+		this.$ctrls = null;
 	}
 
 	initialise () {
-		this.panel.$pnl.on("mouseover", () => {
-			this.panel.board.setHoveringPanel(this.panel);
-		});
+		this.panel.$pnl.on("mouseover", () => this.panel.board.setHoveringPanel(this.panel));
+		this.panel.$pnl.on("mouseout", () => this.panel.board.setHoveringPanel(null));
 
 		const $ctrlMove = $(`<div class="panel-control panel-control-middle"/>`);
 		const $ctrlXpandUp = $(`<div class="panel-control panel-control-top"/>`);
@@ -784,8 +972,10 @@ class JoystickMenu {
 		const $ctrlXpandDown = $(`<div class="panel-control panel-control-bottom"/>`);
 		const $ctrlXpandLeft = $(`<div class="panel-control panel-control-left"/>`);
 		const $ctrlBg = $(`<div class="panel-control panel-control-bg"/>`);
+		this.$ctrls = [$ctrlMove, $ctrlXpandUp, $ctrlXpandRight, $ctrlXpandDown, $ctrlXpandLeft, $ctrlBg];
 
 		$ctrlMove.on("mousedown touchstart", (e) => {
+			this.panel.board.setVisiblyHoveringPanel(true);
 			const $body = $(`body`);
 			MiscUtil.clearSelection();
 			$body.css("userSelect", "none");
@@ -800,45 +990,19 @@ class JoystickMenu {
 
 			$body.append(this.panel.$content);
 			$(`.panel-control`).hide();
-			this.panel.$content.css({
-				width: w,
-				height: h,
-				position: "fixed",
-				top: e.clientY,
-				left: e.clientX,
-				zIndex: 52,
-				pointerEvents: "none",
-				transform: "rotate(-4deg)",
-				background: "none"
-			});
+			Panel.setMovingCss(e, this.panel.$content, w, h, offsetX, offsetY, 52);
 			this.panel.board.get$creen().addClass("board-content-hovering");
 			this.panel.$content.addClass("panel-content-hovering");
 			this.panel.$pnl.removeClass("panel-mode-move");
 
-			$(document).off("mousemove touchmove").off("mouseup touchend");
-
-			$(document).on("mousemove touchmove", (e) => {
-				this.panel.$content.css({
-					top: e.clientY - offsetY,
-					left: e.clientX - offsetX
-				});
-			});
+			Panel.bindMovingEvents(this.panel.board, this.panel.$content, offsetX, offsetY);
 
 			$(document).on("mouseup touchend", () => {
+				this.panel.board.setVisiblyHoveringPanel(false);
 				$(document).off("mousemove touchmove").off("mouseup touchend");
 
 				$body.css("userSelect", "");
-				this.panel.$content.css({
-					width: "",
-					height: "",
-					position: "",
-					top: "",
-					left: "",
-					zIndex: "",
-					pointerEvents: "",
-					transform: "",
-					background: ""
-				});
+				Panel.unsetMovingCss(this.panel.$content);
 				this.panel.board.get$creen().removeClass("board-content-hovering");
 				this.panel.$content.removeClass("panel-content-hovering");
 
@@ -999,7 +1163,7 @@ class JoystickMenu {
 							if (isGrowth) {
 								this.panel.getTopNeighbours().forEach(p => {
 									if (p.canShrinkBottom()) p.doShrinkBottom();
-									else p.destroy();
+									else p.exile();
 								});
 							}
 							this.panel.height += Math.sign(numPanelsCovered);
@@ -1009,7 +1173,7 @@ class JoystickMenu {
 							if (isGrowth) {
 								this.panel.getRightNeighbours().forEach(p => {
 									if (p.canShrinkLeft()) p.doShrinkLeft();
-									else p.destroy();
+									else p.exile();
 								});
 							}
 							this.panel.width += Math.sign(numPanelsCovered);
@@ -1018,7 +1182,7 @@ class JoystickMenu {
 							if (isGrowth) {
 								this.panel.getBottomNeighbours().forEach(p => {
 									if (p.canShrinkTop()) p.doShrinkTop();
-									else p.destroy();
+									else p.exile();
 								});
 							}
 							this.panel.height += Math.sign(numPanelsCovered);
@@ -1027,7 +1191,7 @@ class JoystickMenu {
 							if (isGrowth) {
 								this.panel.getLeftNeighbours().forEach(p => {
 									if (p.canShrinkRight()) p.doShrinkRight();
-									else p.destroy();
+									else p.exile();
 								});
 							}
 							this.panel.width += Math.sign(numPanelsCovered);
@@ -1048,6 +1212,14 @@ class JoystickMenu {
 		$ctrlXpandDown.on("mousedown touchstart", xpandHandler.bind(this, DOWN));
 
 		this.panel.$pnl.append($ctrlBg).append($ctrlMove).append($ctrlXpandUp).append($ctrlXpandRight).append($ctrlXpandDown).append($ctrlXpandLeft);
+	}
+
+	doShow () {
+		this.$ctrls.forEach($c => $c.show());
+	}
+
+	doHide () {
+		this.$ctrls.forEach($c => $c.hide());
 	}
 }
 
