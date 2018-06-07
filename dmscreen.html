@@ -300,6 +300,11 @@
 			flex-direction: column;
 		}
 
+		.underline-tabs {
+			border-top: 1px solid #ccc;
+			margin-top: -1px;
+		}
+
 		.list {
 			padding: 3px;
 		}
@@ -390,9 +395,9 @@
 		}
 
 		.panel-content-wrapper-img img {
-			max-width: 100%;
-			max-height: 100%;
-
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
 		}
 
 		iframe {
@@ -409,6 +414,17 @@
 
 		.tab-body-row:first-of-type {
 			margin-top: -1px;
+		}
+
+		.tab-body-row-sep {
+			background: #ccc;
+			height: 1px;
+			width: calc(100% - 12px);
+			margin: 2px 2px 7px;
+		}
+
+		.underline-tabs .tab-body-row:first-of-type {
+			margin-top: 4px;
 		}
 
 		.tab-body-row > * {

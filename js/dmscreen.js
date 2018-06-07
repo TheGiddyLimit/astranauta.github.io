@@ -381,12 +381,29 @@ class Panel {
 		}
 	}
 
+	static _get$eleLoading () {
+		return $(`<div class="panel-content-wrapper-inner"><div class="panel-tab-message loading-spinner"><i>Loading...</i></div></div>`);
+	}
+
+	doPopulate_Empty () {
+		this.reset$Content(true);
+	}
+
+	doPopulate_Loading () {
+		this.set$Content(
+			PANEL_TYP_EMPTY,
+			null,
+			Panel._get$eleLoading(),
+			true
+		);
+	}
+
 	doPopulate_Stats (page, source, hash) {
 		const meta = {p: page, s: source, u: hash};
 		this.set$Content(
 			PANEL_TYP_STATS,
 			meta,
-			$(`<div class="panel-content-wrapper-inner"><div class="panel-tab-message"><i>Loading...</i></div></div>`),
+			Panel._get$eleLoading(),
 			true
 		);
 		EntryRenderer.hover._doFillThenCall(
@@ -1157,7 +1174,7 @@ class AddMenuVideoTab extends AddMenuTab {
 
 	render () {
 		if (!this.$tab) {
-			const $tab = $(`<div class="panel-tab-list-wrapper" id="${this.tabId}"/>`);
+			const $tab = $(`<div class="panel-tab-list-wrapper underline-tabs" id="${this.tabId}"/>`);
 
 			const $wrpYT = $(`<div class="tab-body-row"/>`).appendTo($tab);
 			const $iptUrlYT = $(`<input class="form-control" placeholder="Paste YouTube URL">`).appendTo($wrpYT);
@@ -1235,11 +1252,10 @@ class AddMenuImageTab extends AddMenuTab {
 
 	render () {
 		if (!this.$tab) {
-			const $tab = $(`<div class="panel-tab-list-wrapper" id="${this.tabId}"/>`);
+			const $tab = $(`<div class="panel-tab-list-wrapper underline-tabs" id="${this.tabId}"/>`);
 
-			const $wrpHelp = $(`<div class="tab-body-row">Anonymously uploads to imgur. Max 10MB. Accepts whatever formats imgur accepts.</div>`).appendTo($tab);
-			const $wrp = $(`<div class="tab-body-row"/>`).appendTo($tab);
-
+			const $wrpImgur = $(`<div class="tab-body-row"/>`).appendTo($tab);
+			$(`<span>Imgur (Anonymous Upload) <i class="text-muted">Accepts <a href="https://help.imgur.com/hc/articles/115000083326">formats imgur accepts</a>.</i></span>`).appendTo($wrpImgur);
 			const $iptFile = $(`<input type="file" class="hidden">`).on("change", (evt) => {
 				const input = evt.target;
 				const reader = new FileReader();
@@ -1258,7 +1274,6 @@ class AddMenuImageTab extends AddMenuTab {
 						},
 						success: (data) => {
 							this.menu.pnl.doPopulate_Image(data.data.link);
-							this.menu.doClose();
 						},
 						error: (error) => {
 							try {
@@ -1266,16 +1281,36 @@ class AddMenuImageTab extends AddMenuTab {
 							} catch (e) {
 								alert("Failed to upload: Unknown error");
 							}
+							this.menu.pnl.doPopulate_Empty();
 						}
 					});
 				};
+				reader.onerror = () => {
+					this.menu.pnl.doPopulate_Empty();
+				};
 				reader.fileName = input.files[0].name;
 				reader.readAsDataURL(input.files[0]);
+				this.menu.pnl.doPopulate_Loading();
+				this.menu.doClose();
 			}).appendTo($tab);
-			// TODO
-			const $btnAdd = $(`<div class="btn btn-primary">Upload</div>`).appendTo($wrp);
+			const $btnAdd = $(`<div class="btn btn-primary">Upload</div>`).appendTo($wrpImgur);
 			$btnAdd.on("click", () => {
 				$iptFile.click();
+			});
+
+			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
+
+			const $wrpUtl = $(`<div class="tab-body-row"/>`).appendTo($tab);
+			const $iptUrl = $(`<input class="form-control" placeholder="Paste image URL">`).appendTo($wrpUtl);
+			const $btnAddUrl = $(`<div class="btn btn-primary">Add</div>`).appendTo($wrpUtl);
+			$btnAddUrl.on("click", () => {
+				let url = $iptUrl.val().trim();
+				if (url) {
+					this.menu.pnl.doPopulate_Image(url);
+					this.menu.doClose();
+				} else {
+					alert(`Please enter a URL`);
+				}
 			});
 
 			this.$tab = $tab;
