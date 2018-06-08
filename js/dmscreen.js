@@ -12,6 +12,7 @@ const AX_Y = "AXIS_Y";
 const PANEL_TYP_EMPTY = 0;
 const PANEL_TYP_STATS = 1;
 const PANEL_TYP_ROLLBOX = 2;
+const PANEL_TYP_TEXTBOX = 3;
 const PANEL_TYP_TUBE = 10;
 const PANEL_TYP_TWITCH = 11;
 const PANEL_TYP_TWITCH_CHAT = 12;
@@ -562,6 +563,9 @@ class Panel {
 			case PANEL_TYP_ROLLBOX:
 				EntryRenderer.dice.bindDmScreenPanel(p);
 				return p;
+			case PANEL_TYP_TEXTBOX:
+				p.doPopulate_TextBox(saved.c.x);
+				return p;
 			case PANEL_TYP_TUBE:
 				p.doPopulate_YouTube(saved.c.u);
 				return p;
@@ -668,6 +672,15 @@ class Panel {
 			PANEL_TYP_ROLLBOX,
 			null,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(EntryRenderer.dice.get$Roller().addClass("rollbox-panel")),
+			true
+		);
+	}
+
+	doPopulate_TextBox (content) {
+		this.set$Content(
+			PANEL_TYP_TEXTBOX,
+			null,
+			$(`<div class="panel-content-wrapper-inner"><textarea class="panel-content-textarea">${content || ""}</textarea></div>`),
 			true
 		);
 	}
@@ -1085,6 +1098,11 @@ class Panel {
 					s: this.contentMeta.s,
 					u: this.contentMeta.u
 				};
+				break;
+			case PANEL_TYP_TEXTBOX:
+				out.c = {
+					x: this.$content ? this.$content.find(`textarea`).val() : ""
+				}
 				break;
 			case PANEL_TYP_TUBE:
 			case PANEL_TYP_TWITCH:
@@ -1581,7 +1599,7 @@ class AddMenuImageTab extends AddMenuTab {
 			const $tab = $(`<div class="panel-tab-list-wrapper underline-tabs" id="${this.tabId}"/>`);
 
 			const $wrpImgur = $(`<div class="tab-body-row"/>`).appendTo($tab);
-			$(`<span>Imgur (Anonymous Upload) <i class="text-muted">Accepts <a href="https://help.imgur.com/hc/articles/115000083326">formats imgur accepts</a>.</i></span>`).appendTo($wrpImgur);
+			$(`<span>Imgur (Anonymous Upload) <i class="text-muted">(accepts <a href="https://help.imgur.com/hc/articles/115000083326" target="_blank">imgur-friendly formats</a>)</i></span>`).appendTo($wrpImgur);
 			const $iptFile = $(`<input type="file" class="hidden">`).on("change", (evt) => {
 				const input = evt.target;
 				const reader = new FileReader();
@@ -1623,7 +1641,6 @@ class AddMenuImageTab extends AddMenuTab {
 			$btnAdd.on("click", () => {
 				$iptFile.click();
 			});
-
 			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
 
 			const $wrpUtl = $(`<div class="tab-body-row"/>`).appendTo($tab);
@@ -1653,9 +1670,19 @@ class AddMenuSpecialTab extends AddMenuTab {
 	render () {
 		if (!this.$tab) {
 			const $tab = $(`<div class="panel-tab-list-wrapper" id="${this.tabId}"/>`);
-			const $btnRoller = $(`<div class="btn btn-primary">Roller</div>`).appendTo($tab);
+
+			const $wrpRoller = $(`<div class="tab-body-row"><span>Dice Roller <i class="text-muted">(moves the existing dice roller to a panel)</i></span></div>`).appendTo($tab);
+			const $btnRoller = $(`<div class="btn btn-primary">Move</div>`).appendTo($wrpRoller);
 			$btnRoller.on("click", () => {
 				EntryRenderer.dice.bindDmScreenPanel(this.menu.pnl);
+				this.menu.doClose();
+			});
+			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
+
+			const $wrpText = $(`<div class="tab-body-row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, embed a Google Doc or similar)</i></span></div>`).appendTo($tab);
+			const $btnText = $(`<div class="btn btn-primary">Add</div>`).appendTo($wrpText);
+			$btnText.on("click", () => {
+				this.menu.pnl.doPopulate_TextBox();
 				this.menu.doClose();
 			});
 
