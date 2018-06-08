@@ -1285,8 +1285,8 @@ class JoystickMenu {
 						case UP:
 							if (isGrowth) {
 								this.panel.getTopNeighbours().forEach(p => {
-									if (p.canShrinkBottom()) p.doShrinkBottom();
-									else if (p.canBumpTop()) p.doBumpTop();
+									if (p.canBumpTop()) p.doBumpTop();
+									else if (p.canShrinkBottom()) p.doShrinkBottom();
 									else p.exile();
 								});
 							}
@@ -1296,8 +1296,8 @@ class JoystickMenu {
 						case RIGHT:
 							if (isGrowth) {
 								this.panel.getRightNeighbours().forEach(p => {
-									if (p.canShrinkLeft()) p.doShrinkLeft();
-									else if (p.canBumpRight()) p.doBumpRight();
+									if (p.canBumpRight()) p.doBumpRight();
+									else if (p.canShrinkLeft()) p.doShrinkLeft();
 									else p.exile();
 								});
 							}
@@ -1306,8 +1306,8 @@ class JoystickMenu {
 						case DOWN:
 							if (isGrowth) {
 								this.panel.getBottomNeighbours().forEach(p => {
-									if (p.canShrinkTop()) p.doShrinkTop();
-									else if (p.canBumpBottom()) p.doBumpBottom();
+									if (p.canBumpBottom()) p.doBumpBottom()
+									else if (p.canShrinkTop()) p.doShrinkTop();
 									else p.exile();
 								});
 							}
@@ -1316,8 +1316,8 @@ class JoystickMenu {
 						case LEFT:
 							if (isGrowth) {
 								this.panel.getLeftNeighbours().forEach(p => {
-									if (p.canShrinkRight()) p.doShrinkRight();
-									else if (p.canBumpLeft()) p.doBumpLeft();
+									if (p.canBumpLeft()) p.doBumpLeft();
+									else if (p.canShrinkRight()) p.doShrinkRight();
 									else p.exile();
 								});
 							}
