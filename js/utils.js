@@ -2869,11 +2869,11 @@ BrewUtil = {
 		});
 		$window.append(
 			$(`<div class="text-align-center"/>`)
+				.append($btnGet)
+				.append(" ")
 				.append($(`<label class="btn btn-default btn-sm btn-file">Upload File</label>`).append($iptAdd))
 				.append(" ")
 				.append($btnLoadFromUrl)
-				.append(" ")
-				.append($btnGet)
 				.append(" ")
 				.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Browse Repository</button></a>`)
 		);
