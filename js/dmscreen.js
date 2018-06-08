@@ -1057,16 +1057,15 @@ class Panel {
 	}
 
 	exile () {
-		if (this.type === PANEL_TYP_ROLLBOX) {
-			EntryRenderer.dice.unbindDmScreenPanel();
-			this.destroy();
-		} else {
+		if (this.type === PANEL_TYP_ROLLBOX) this.destroy();
+		else {
 			if (this.$pnl) this.$pnl.detach();
 			this.board.exilePanel(this.id);
 		}
 	}
 
 	destroy () {
+		if (this.type === PANEL_TYP_ROLLBOX) EntryRenderer.dice.unbindDmScreenPanel();
 		if (this.$pnl) this.$pnl.remove();
 		this.board.destroyPanel(this.id);
 	}
