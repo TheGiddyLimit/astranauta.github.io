@@ -406,7 +406,9 @@ class SideMenu {
 
 				$body.append($contents);
 				$(`.panel-control`).hide();
-				Panel.setMovingCss(e, $contents, w, h, offsetX, offsetY, 58);
+				Panel.setMovingCss(e, $contents, w, h, offsetX, offsetY, 61);
+				$wrpHistItem.css("box-shadow", "none");
+				$ctrlMove.hide();
 				this.board.get$creen().addClass("board-content-hovering");
 				p.get$Content().addClass("panel-content-hovering");
 
@@ -418,6 +420,8 @@ class SideMenu {
 
 					$body.css("userSelect", "");
 					Panel.unsetMovingCss($contents);
+					$wrpHistItem.css("box-shadow", "");
+					$ctrlMove.show();
 					this.board.get$creen().removeClass("board-content-hovering");
 					p.get$Content().removeClass("panel-content-hovering");
 
