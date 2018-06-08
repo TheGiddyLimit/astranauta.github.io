@@ -359,6 +359,11 @@ class Board {
 			p.$btnAddInner.removeClass("faux-hover");
 		})
 	}
+
+	addPanel (panel) {
+		this.panels[panel.id] = panel;
+		panel.render();
+	}
 }
 
 class SideMenu {
@@ -936,7 +941,9 @@ class Panel {
 			});
 			const $ctrlEmpty = $(`<div class="panel-control-icon glyphicon glyphicon-remove" title="Empty"/>`).appendTo($ctrlBar);
 			$ctrlEmpty.on("click", () => {
+				const replacement = new Panel(this.board, this.x, this.y, this.width, this.height);
 				this.exile();
+				this.board.addPanel(replacement);
 				this.board.doCheckFillSpaces();
 			});
 
