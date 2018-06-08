@@ -129,17 +129,25 @@ class Board {
 	initialise () {
 		this.doAdjust$creenCss();
 		this.doShowLoading();
-		const fnCallback = this.hasSavedState() ? () => {
-			this.doLoadState();
-			this.initUnloadHandler();
-		} : () => {
-			this.doCheckFillSpaces();
-			this.initUnloadHandler();
-		};
+		const fnCallback = this.hasSavedStateUrl()
+			? () => {
+				this.doLoadUrlState();
+				this.initUnloadHandler();
+			}
+			: this.hasSavedState()
+				? () => {
+					this.doLoadState();
+					this.initUnloadHandler();
+				}
+				: () => {
+					this.doCheckFillSpaces();
+					this.initUnloadHandler();
+				};
 		this.doLoadIndex(fnCallback);
 	}
 
 	initUnloadHandler () {
+		window.onhashchange = () => this.doLoadUrlState();
 		$(window).on("beforeunload", () => this.doSaveState());
 	}
 
@@ -258,18 +266,53 @@ class Board {
 		Object.values(this.panels).forEach(p => p.render());
 	}
 
+	hasSavedStateUrl () {
+		return window.location.hash.length;
+	}
+
+	doLoadUrlState () {
+		if (window.location.hash.length) {
+			const toLoad = JSON.parse(decodeURIComponent(window.location.hash.slice(1)));
+			this.doReset();
+			this.doLoadStateFrom(toLoad);
+		}
+		window.location.hash = "";
+	}
+
 	hasSavedState () {
 		return !!((this.storage.getItem(DMSCREEN_STORAGE) || "").trim());
 	}
 
-	doSaveState () {
-		const toSave = {
+	getSaveableState () {
+		return {
 			w: this.width,
 			h: this.height,
 			ps: Object.values(this.panels).map(p => p.getSaveableState()),
 			ex: this.exiledPanels.map(p => p.getSaveableState())
 		};
-		this.storage.setItem(DMSCREEN_STORAGE, JSON.stringify(toSave));
+	}
+
+	doSaveState () {
+		this.storage.setItem(DMSCREEN_STORAGE, JSON.stringify(this.getSaveableState()));
+	}
+
+	doLoadStateFrom (toLoad) {
+		// re-exile
+		toLoad.ex.filter(Boolean).reverse().forEach(saved => {
+			const p = Panel.fromSavedState(this, saved);
+			if (p) {
+				this.panels[p.id] = p;
+				p.exile();
+			}
+		});
+		this.setDimensions(toLoad.w, toLoad.h);
+		toLoad.ps.filter(Boolean).forEach(saved => {
+			const p = Panel.fromSavedState(this, saved);
+			if (p) {
+				this.panels[p.id] = p;
+			}
+		});
+		this.setDimensions(toLoad.w, toLoad.h);
 	}
 
 	doLoadState () {
@@ -282,22 +325,7 @@ class Board {
 		if (raw) {
 			try {
 				const toLoad = JSON.parse(raw);
-				// re-exile
-				toLoad.ex.filter(Boolean).reverse().forEach(saved => {
-					const p = Panel.fromSavedState(this, saved);
-					if (p) {
-						this.panels[p.id] = p;
-						p.exile();
-					}
-				});
-				this.setDimensions(toLoad.w, toLoad.h);
-				toLoad.ps.filter(Boolean).forEach(saved => {
-					const p = Panel.fromSavedState(this, saved);
-					if (p) {
-						this.panels[p.id] = p;
-					}
-				});
-				this.setDimensions(toLoad.w, toLoad.h);
+				this.doLoadStateFrom(toLoad);
 			} catch (e) {
 				// on error, purge all brew and reset hash
 				purgeSaved();
@@ -345,6 +373,10 @@ class SideMenu {
 	}
 
 	render () {
+		const renderDivider = () => {
+			this.$mnu.append(`<hr class="dm-sidemenu-row-divider">`);
+		};
+
 		const $wrpResizeW = $(`<div class="dm-sidemenu-row"><div class="dm-sidemenu-row-label">Width</div></div>`).appendTo(this.$mnu);
 		const $iptWidth = $(`<input class="form-control" type="number" value="${this.board.width}">`).appendTo($wrpResizeW);
 		this.$iptWidth = $iptWidth;
@@ -358,8 +390,30 @@ class SideMenu {
 			if ((w > 10 || h > 10) && !window.confirm("That's a lot of panels. You sure?")) return;
 			this.board.setDimensions(w, h);
 		});
+		renderDivider();
 
-		this.$mnu.append(`<hr class="dm-sidemenu-row-divider">`);
+		const $wrpSaveLoadFile = $(`<div class="dm-sidemenu-row-alt"/>`).appendTo(this.$mnu);
+		const $btnSaveFile = $(`<div class="btn btn-primary">Save to File</div>`).appendTo($wrpSaveLoadFile);
+		$btnSaveFile.on("click", () => {
+			DataUtil.userDownload(`dm-screen`, this.board.getSaveableState());
+		});
+		const $btnLoadFile = $(`<div class="btn btn-primary">Load from File</div>`).appendTo($wrpSaveLoadFile);
+		$btnLoadFile.on("click", () => {
+			DataUtil.userUpload((json) => {
+				this.board.doReset();
+				this.board.doLoadStateFrom(json);
+			});
+		});
+		renderDivider();
+
+		const $wrpSaveLoadLink = $(`<div class="dm-sidemenu-row-alt"/>`).appendTo(this.$mnu);
+		const $btnSaveLink = $(`<div class="btn btn-primary">Save to URL</div>`).appendTo($wrpSaveLoadLink);
+		$btnSaveLink.on("click", () => {
+			const encoded = `${window.location.href.split("#")[0]}#${encodeURIComponent(JSON.stringify(this.board.getSaveableState()))}`;
+			copyText(encoded);
+			showCopiedEffect($btnSaveLink);
+		});
+		renderDivider();
 
 		const $btnReset = $(`<div class="btn btn-danger">Reset Screen</div>`).appendTo(this.$mnu);
 		$btnReset.on("click", () => {
@@ -367,8 +421,7 @@ class SideMenu {
 				this.board.doReset();
 			}
 		});
-
-		this.$mnu.append(`<hr class="dm-sidemenu-row-divider">`);
+		renderDivider();
 
 		const $wrpHistory = $(`<div class="dm-sidemenu-history"/>`).appendTo(this.$mnu);
 		this.$wrpHistory = $wrpHistory;

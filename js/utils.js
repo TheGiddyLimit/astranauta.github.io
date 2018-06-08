@@ -2544,10 +2544,30 @@ DataUtil = {
 	},
 
 	userDownload: function (filename, data) {
+		if (typeof data !== "string") data = JSON.stringify(data, null, "\t");
 		const $a = $(`<a href="data:text/json;charset=utf-8,${encodeURIComponent(data)}" download="${filename}.json" style="display: none;">DL</a>`);
 		$(`body`).append($a);
 		$a[0].click();
 		$a.remove();
+	},
+
+	userUpload (fnCallback) {
+		function loadSaved (event) {
+			const input = event.target;
+
+			const reader = new FileReader();
+			reader.onload = () => {
+				const text = reader.result;
+				const json = JSON.parse(text);
+				fnCallback(json);
+			};
+			reader.readAsText(input.files[0]);
+		}
+
+		const $iptAdd = $(`<input type="file" accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`).on("change", (evt) => {
+			loadSaved(evt);
+		}).appendTo($(`body`));
+		$iptAdd.click();
 	}
 };
 
@@ -2755,9 +2775,7 @@ BrewUtil = {
 		const $btnLoadFromUrl = $(`<button class="btn btn-default btn-sm">Load from URL</button>`);
 		$btnLoadFromUrl.click(() => {
 			const enteredUrl = window.prompt('Please enter the URL of the homebrew:');
-			if (!enteredUrl) {
-				return;
-			}
+			if (!enteredUrl) return;
 
 			let parsedUrl;
 			try {
