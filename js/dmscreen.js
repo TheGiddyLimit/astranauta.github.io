@@ -306,11 +306,16 @@ class Board {
 			}
 		});
 		this.setDimensions(toLoad.w, toLoad.h);
-		toLoad.ps.filter(Boolean).forEach(saved => {
+
+		// reload
+		// fill content first; empties can fill any remaining space
+		toLoad.ps.filter(Boolean).filter(saved => saved.t !== PANEL_TYP_EMPTY).forEach(saved => {
 			const p = Panel.fromSavedState(this, saved);
-			if (p) {
-				this.panels[p.id] = p;
-			}
+			if (p) this.panels[p.id] = p;
+		});
+		toLoad.ps.filter(Boolean).filter(saved => saved.t === PANEL_TYP_EMPTY).forEach(saved => {
+			const p = Panel.fromSavedState(this, saved);
+			if (p) this.panels[p.id] = p;
 		});
 		this.setDimensions(toLoad.w, toLoad.h);
 	}
@@ -532,7 +537,9 @@ class Panel {
 	}
 
 	static fromSavedState (board, saved) {
-		if (saved.t === PANEL_TYP_EMPTY && board.getPanel(saved.x, saved.y)) return null; // cull empties
+		const existing = board.getPanel(saved.x, saved.y);
+		if (saved.t === PANEL_TYP_EMPTY && existing) return null; // cull empties
+		else if (existing) existing.destroy(); // prefer more recent panels
 		const p = new Panel(board, saved.x, saved.y, saved.w, saved.h);
 		p.render();
 		switch (saved.t) {
@@ -796,6 +803,63 @@ class Panel {
 	doShrinkLeft () {
 		this.width -= 1;
 		this.x += 1;
+		this.setDirty(true);
+		this.render();
+	}
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	canBumpTop () {
+		if (!this.hasRowTop()) return false; // if there's no row above, we can't bump up a row
+		if (!this.getTopNeighbours().filter(p => !p.getEmpty()).length) return true; // if there's a row above and it's empty, we can bump
+		// if there's a row above and it has non-empty panels, we can bump if they can all bump
+		return !this.getTopNeighbours().filter(p => !p.getEmpty()).filter(p => !p.canBumpTop()).length;
+	}
+
+	canBumpRight () {
+		if (!this.hasColumnRight()) return false;
+		if (!this.getRightNeighbours().filter(p => !p.getEmpty()).length) return true;
+		return !this.getRightNeighbours().filter(p => !p.getEmpty()).filter(p => !p.canBumpRight()).length;
+	}
+
+	canBumpBottom () {
+		if (!this.hasRowBottom()) return false;
+		if (!this.getBottomNeighbours().filter(p => !p.getEmpty()).length) return true;
+		return !this.getBottomNeighbours().filter(p => !p.getEmpty()).filter(p => !p.canBumpBottom()).length;
+	}
+
+	canBumpLeft () {
+		if (!this.hasColumnLeft()) return false;
+		if (!this.getLeftNeighbours().filter(p => !p.getEmpty()).length) return true;
+		return !this.getLeftNeighbours().filter(p => !p.getEmpty()).filter(p => !p.canBumpLeft()).length;
+	}
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	doBumpTop () {
+		this.getTopNeighbours().filter(p => p.getEmpty()).forEach(p => p.destroy());
+		this.getTopNeighbours().filter(p => !p.getEmpty()).forEach(p => p.doBumpTop());
+		this.y -= 1;
+		this.setDirty(true);
+		this.render();
+	}
+
+	doBumpRight () {
+		this.getRightNeighbours().filter(p => p.getEmpty()).forEach(p => p.destroy());
+		this.getRightNeighbours().filter(p => !p.getEmpty()).forEach(p => p.doBumpRight());
+		this.x += 1;
+		this.setDirty(true);
+		this.render();
+	}
+
+	doBumpBottom () {
+		this.getBottomNeighbours().filter(p => p.getEmpty()).forEach(p => p.destroy());
+		this.getBottomNeighbours().filter(p => !p.getEmpty()).forEach(p => p.doBumpBottom());
+		this.y += 1;
+		this.setDirty(true);
+		this.render();
+	}
+
+	doBumpLeft () {
+		this.getLeftNeighbours().filter(p => p.getEmpty()).forEach(p => p.destroy());
+		this.getLeftNeighbours().filter(p => !p.getEmpty()).forEach(p => p.doBumpLeft());
+		this.x -= 1;
 		this.setDirty(true);
 		this.render();
 	}
@@ -1093,6 +1157,7 @@ class JoystickMenu {
 			MiscUtil.clearSelection();
 			$(`body`).css("userSelect", "none");
 			$(`.panel-control`).hide();
+			$(`.panel-control-bar`).addClass("xpander-active");
 			$ctrlBg.show();
 			this.panel.$pnl.addClass("panel-mode-move");
 			switch (dir) {
@@ -1183,6 +1248,7 @@ class JoystickMenu {
 
 				$(`body`).css("userSelect", "");
 				this.panel.$pnl.find(`.panel-control`).show();
+				$(`.panel-control-bar`).removeClass("xpander-active");
 				this.panel.$pnl.css({
 					zIndex: "",
 					boxShadow: "",
@@ -1220,6 +1286,7 @@ class JoystickMenu {
 							if (isGrowth) {
 								this.panel.getTopNeighbours().forEach(p => {
 									if (p.canShrinkBottom()) p.doShrinkBottom();
+									else if (p.canBumpTop()) p.doBumpTop();
 									else p.exile();
 								});
 							}
@@ -1230,6 +1297,7 @@ class JoystickMenu {
 							if (isGrowth) {
 								this.panel.getRightNeighbours().forEach(p => {
 									if (p.canShrinkLeft()) p.doShrinkLeft();
+									else if (p.canBumpRight()) p.doBumpRight();
 									else p.exile();
 								});
 							}
@@ -1239,6 +1307,7 @@ class JoystickMenu {
 							if (isGrowth) {
 								this.panel.getBottomNeighbours().forEach(p => {
 									if (p.canShrinkTop()) p.doShrinkTop();
+									else if (p.canBumpBottom()) p.doBumpBottom();
 									else p.exile();
 								});
 							}
@@ -1248,6 +1317,7 @@ class JoystickMenu {
 							if (isGrowth) {
 								this.panel.getLeftNeighbours().forEach(p => {
 									if (p.canShrinkRight()) p.doShrinkRight();
+									else if (p.canBumpLeft()) p.doBumpLeft();
 									else p.exile();
 								});
 							}
