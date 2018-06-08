@@ -11,6 +11,7 @@ const AX_Y = "AXIS_Y";
 
 const PANEL_TYP_EMPTY = 0;
 const PANEL_TYP_STATS = 1;
+const PANEL_TYP_ROLLBOX = 2;
 const PANEL_TYP_TUBE = 10;
 const PANEL_TYP_TWITCH = 11;
 const PANEL_TYP_TWITCH_CHAT = 12;
@@ -191,12 +192,13 @@ class Board {
 			});
 
 			// add tabs
-			const omniTab = new AddMenuSearchTab("Search", this.availContent);
+			const omniTab = new AddMenuSearchTab(this.availContent);
 			omniTab.setSpotlight(true);
-			const embedTab = new AddMenuVideoTab("Embed");
-			const imageTab = new AddMenuImageTab("Image");
+			const embedTab = new AddMenuVideoTab();
+			const imageTab = new AddMenuImageTab();
+			const specialTab = new AddMenuSpecialTab();
 
-			this.menu.addTab(omniTab).addTab(imageTab).addTab(embedTab);
+			this.menu.addTab(omniTab).addTab(imageTab).addTab(embedTab).addTab(specialTab);
 
 			this.menu.render();
 
@@ -557,6 +559,9 @@ class Panel {
 				p.doPopulate_Stats(page, source, hash);
 				return p;
 			}
+			case PANEL_TYP_ROLLBOX:
+				EntryRenderer.dice.bindDmScreenPanel(p);
+				return p;
 			case PANEL_TYP_TUBE:
 				p.doPopulate_YouTube(saved.c.u);
 				return p;
@@ -655,6 +660,15 @@ class Panel {
 					true
 				);
 			}
+		);
+	}
+
+	doPopulate_Rollbox () {
+		this.set$Content(
+			PANEL_TYP_ROLLBOX,
+			null,
+			$(`<div class="panel-content-wrapper-inner"/>`).append(EntryRenderer.dice.get$Roller().addClass("rollbox-panel")),
+			true
 		);
 	}
 
@@ -1030,8 +1044,13 @@ class Panel {
 	}
 
 	exile () {
-		if (this.$pnl) this.$pnl.detach();
-		this.board.exilePanel(this.id);
+		if (this.type === PANEL_TYP_ROLLBOX) {
+			EntryRenderer.dice.unbindDmScreenPanel();
+			this.destroy();
+		} else {
+			if (this.$pnl) this.$pnl.detach();
+			this.board.exilePanel(this.id);
+		}
 	}
 
 	destroy () {
@@ -1058,6 +1077,7 @@ class Panel {
 
 		switch (this.type) {
 			case PANEL_TYP_EMPTY:
+			case PANEL_TYP_ROLLBOX:
 				break;
 			case PANEL_TYP_STATS:
 				out.c = {
@@ -1473,8 +1493,8 @@ class AddMenuTab {
 }
 
 class AddMenuVideoTab extends AddMenuTab {
-	constructor (label) {
-		super(label);
+	constructor () {
+		super("Embed");
 		this.tabId = this.genTabId("tube");
 	}
 
@@ -1551,8 +1571,8 @@ class AddMenuVideoTab extends AddMenuTab {
 }
 
 class AddMenuImageTab extends AddMenuTab {
-	constructor (label) {
-		super(label);
+	constructor () {
+		super("Image");
 		this.tabId = this.genTabId("image");
 	}
 
@@ -1624,6 +1644,26 @@ class AddMenuImageTab extends AddMenuTab {
 	}
 }
 
+class AddMenuSpecialTab extends AddMenuTab {
+	constructor () {
+		super("Special");
+		this.tabId = this.genTabId("special");
+	}
+
+	render () {
+		if (!this.$tab) {
+			const $tab = $(`<div class="panel-tab-list-wrapper" id="${this.tabId}"/>`);
+			const $btnRoller = $(`<div class="btn btn-primary">Roller</div>`).appendTo($tab);
+			$btnRoller.on("click", () => {
+				EntryRenderer.dice.bindDmScreenPanel(this.menu.pnl);
+				this.menu.doClose();
+			});
+
+			this.$tab = $tab;
+		}
+	}
+}
+
 class AddMenuListTab extends AddMenuTab {
 	constructor (label, content) {
 		super(label);
@@ -1662,8 +1702,8 @@ class AddMenuListTab extends AddMenuTab {
 }
 
 class AddMenuSearchTab extends AddMenuTab {
-	constructor (label, indexes) {
-		super(label);
+	constructor (indexes) {
+		super("Search");
 		this.tabId = this.genTabId("search");
 		this.indexes = indexes;
 		this.cat = "ALL";

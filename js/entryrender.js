@@ -2618,6 +2618,30 @@ EntryRenderer.dice = {
 	_histIndex: null,
 	_$lastRolledBy: null,
 
+	_panel: null,
+	bindDmScreenPanel (panel) {
+		if (EntryRenderer.dice._panel) { // there can only be one roller box
+			EntryRenderer.dice.unbindDmScreenPanel();
+		}
+		EntryRenderer.dice._showBox();
+		EntryRenderer.dice._panel = panel;
+		panel.doPopulate_Rollbox();
+	},
+
+	unbindDmScreenPanel () {
+		if (EntryRenderer.dice._panel) {
+			$(`body`).append(EntryRenderer.dice._$wrpRoll);
+			EntryRenderer.dice._panel.reset$Content(true);
+			EntryRenderer.dice._panel = null;
+			EntryRenderer.dice._hideBox();
+			EntryRenderer.dice._$wrpRoll.removeClass("rollbox-panel");
+		}
+	},
+
+	get$Roller () {
+		return EntryRenderer.dice._$wrpRoll;
+	},
+
 	isCrypto: () => {
 		return typeof window !== "undefined" && typeof window.crypto !== "undefined";
 	},
@@ -2693,7 +2717,7 @@ EntryRenderer.dice = {
 		});
 		const $head = $(`<div class="head-roll"><span class="hdr-roll">Dice Roller</span><span class="delete-icon glyphicon glyphicon-remove"></span></div>`)
 			.on("click", () => {
-				EntryRenderer.dice._hideBox();
+				if (!EntryRenderer.dice._panel) EntryRenderer.dice._hideBox();
 			});
 		const $outRoll = $(`<div class="out-roll">`);
 		const $iptRoll = $(`<input class="ipt-roll form-control" autocomplete="off" spellcheck="false">`)
@@ -2762,6 +2786,9 @@ EntryRenderer.dice = {
 			// try use table caption
 			let titleMaybe = $(ele).closest(`table`).find(`caption`).text();
 			if (titleMaybe) return titleMaybe;
+			// try use stats table name row
+			titleMaybe = $(ele).closest(`table.stats`).children(`tbody`).first().children(`tr`).first().find(`th.name .stats-name`).text();
+			if (titleMaybe) return titleMaybe;
 			// otherwise, use the section title, where applicable
 			titleMaybe = $(ele).closest(`div`).find(`.entry-title`).first().text();
 			if (titleMaybe) {
@@ -2779,7 +2806,8 @@ EntryRenderer.dice = {
 			if ($roll.length) {
 				return $roll.data("name");
 			}
-			return document.title.replace("- 5etools", "").trim();
+			let name = document.title.replace("- 5etools", "").trim();
+			return name === "DM Screen" ? "Dungeon Master" : name;
 		}
 
 		function getThRoll (total) {
