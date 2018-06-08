@@ -439,7 +439,7 @@ class HashLoad {
 		HashLoad.makeSourceCyclePill();
 
 		// spacer before the subclass pills
-		HashLoad.subclassPillWrapper.append($(`<span class="divider">`));
+		HashLoad.addPillDivider();
 
 		// subclass pills
 		const subClasses = ClassDisplay.curClass.subclasses
@@ -464,6 +464,10 @@ class HashLoad {
 			if (nonStandardSource) pill.hide();
 			HashLoad.subclassPillWrapper.append(pill);
 		}
+
+		// spacer before "Feeling Lucky" pill
+		HashLoad.addPillDivider();
+		HashLoad.makeFeelingLuckyPill();
 
 		// call loadsub with a blank sub-hash, to ensure the right content is displayed
 		loadsub([]);
@@ -510,6 +514,24 @@ class HashLoad {
 
 			HashLoad.cleanSetHash(outStack.join(HASH_PART_SEP));
 		}
+	}
+
+	static addPillDivider () {
+		HashLoad.subclassPillWrapper.append($(`<span class="divider">`));
+	}
+
+	static makeFeelingLuckyPill () {
+		const $pill = $(`<span title="Feeling lucky?" class="sc-pill-feeling-lucky"><span class="glyphicon glyphicon-random"></span></span>`);
+		HashLoad.subclassPillWrapper.append($pill);
+		$pill.click(() => {
+			const [link, ...sub] = History._getHashParts();
+			const outStack = [link];
+			sub.filter(hashPart => !hashPart.startsWith(HASH_SUBCLASS)).forEach(hashPart => outStack.push(hashPart));
+			const hashes = $(`.${CLSS_SUBCLASS_PILL}`).filter(`:visible`)
+				.map((i, e) => HashLoad.getEncodedSubclass($(e).attr(`data-subclass`), $(e).attr(`data-source`))).get();
+			outStack.push(`${HASH_SUBCLASS}${hashes[RollerUtil.roll(hashes.length)]}`);
+			HashLoad.cleanSetHash(outStack.join(HASH_PART_SEP));
+		});
 	}
 
 	static handleSubclassClick (isPillActive, subclassName, subclassSource) {
@@ -1183,4 +1205,5 @@ DataUtil.loadJSON(jsonURL).then((data) => {
 	}, HOMEBREW_STORAGE);
 
 	History.initialLoad = false;
+	RollerUtil.addListRollButton();
 });
