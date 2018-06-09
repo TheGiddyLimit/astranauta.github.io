@@ -53,7 +53,7 @@ class Omnidexer {
 			return toAdd;
 		};
 
-		j[arbiter.listProp].forEach((it, i) => {
+		Omnidexer.getProperty(j, arbiter.listProp).forEach((it, i) => {
 			const name = Omnidexer.getProperty(it, arbiter.primary || "name");
 			if (!it.noDisplay) {
 				const toAdd = getToAdd(it, {n: name}, i);
@@ -108,6 +108,7 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
  * page: (OPTIONAL; default "page") JSON property containing the item's page in the relevant book, per item.
  * 		Can be a chain of properties, e.g. `outer.inner.page`
  * listProp: the JSON always has a root property containing the list of items. Provide the name of this property here.
+ * 		Can be a chain of properties e.g. `outer.inner.name`
  * baseUrl: the base URL (which page) to use when forming index URLs
  * deepIndex: (OPTIONAL) a function which returns a list of strings to be indexed, in addition to the primary index.
  * 		Once indexed, these will share the item's source, URL (and page).
@@ -281,11 +282,11 @@ Omnidexer.TO_INDEX = [
 	},
 	{
 		category: 18,
-		file: "quickreference.json",
-		listProp: "data",
+		file: "bookref-quick.json",
+		listProp: "data.bookref-quick",
 		baseUrl: "quickreference.html",
 		hashBuilder: (it, i) => {
-			return `quickreference,${i}`;
+			return `bookref-quick,${i}`;
 		},
 		onlyDeep: true,
 		deepIndex: (primary, it) => {
@@ -293,7 +294,7 @@ Omnidexer.TO_INDEX = [
 			return names.map(n => {
 				return {
 					n: n,
-					u: `quickreference${HASH_PART_SEP}${primary.i}${HASH_PART_SEP}${UrlUtil.encodeForHash(n.toLowerCase())}`,
+					u: `bookref-quick${HASH_PART_SEP}${primary.i}${HASH_PART_SEP}${UrlUtil.encodeForHash(n.toLowerCase())}`,
 					s: undefined
 				}
 			});

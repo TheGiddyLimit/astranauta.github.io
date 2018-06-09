@@ -226,6 +226,7 @@ const BookUtil = {
 	bookIndex: [],
 	renderArea: null,
 	isQuickReference: false,
+	subDataProp: null,
 	// custom loading to serve multiple sources
 	booksHashChange: () => {
 		function cleanName (name) {
@@ -257,7 +258,7 @@ const BookUtil = {
 			BookUtil.thisContents = allContents.filter(`[data-bookid="${UrlUtil.encodeForHash(bookId)}"]`);
 			BookUtil.thisContents.show();
 			allContents.filter(`[data-bookid!="${UrlUtil.encodeForHash(bookId)}"]`).hide();
-			BookUtil.showBookContent(data.data, fromIndex, bookId, hashParts);
+			BookUtil.showBookContent(BookUtil.subDataProp ? data.data[BookUtil.subDataProp] : data.data, fromIndex, bookId, hashParts);
 			BookUtil.addSearch(fromIndex, bookId);
 		});
 	},
