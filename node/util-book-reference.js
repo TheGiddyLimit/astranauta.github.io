@@ -2,13 +2,20 @@ const ut = require('../js/utils.js');
 const er = require('../js/entryrender.js');
 
 UtilBookReference = {
-	SECTIONS: [
-		"Character Creation",
-		"Equipment",
-		"Playing the Game",
-		"Combat",
-		"Adventuring"
-	],
+	getSections (refId) {
+		switch (refId) {
+			case "bookref-quick":
+				return [
+					"Character Creation",
+					"Equipment",
+					"Playing the Game",
+					"Combat",
+					"Adventuring"
+				];
+			default:
+				throw new Error(`No sections defined for book id ${refId}`);
+		}
+	},
 
 	getIndex (...refTypes) {
 		const index = require(`../data/books.json`);
@@ -47,7 +54,7 @@ UtilBookReference = {
 					const sect = ent.data[refType.tag];
 					if (!out[sect]) {
 						out[sect] = {
-							sectName: UtilBookReference.SECTIONS[sect - 1],
+							sectName: UtilBookReference.getSections(refType.id)[sect - 1],
 							sections: []
 						};
 					}
