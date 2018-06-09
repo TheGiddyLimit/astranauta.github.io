@@ -13,6 +13,7 @@ const PANEL_TYP_EMPTY = 0;
 const PANEL_TYP_STATS = 1;
 const PANEL_TYP_ROLLBOX = 2;
 const PANEL_TYP_TEXTBOX = 3;
+const PANEL_TYP_RULES = 4;
 const PANEL_TYP_TUBE = 10;
 const PANEL_TYP_TWITCH = 11;
 const PANEL_TYP_TWITCH_CHAT = 12;
@@ -33,6 +34,7 @@ class Board {
 		this.nextId = 1;
 		this.hoveringPanel = null;
 		this.availContent = {};
+		this.availRules = {};
 	}
 
 	getInitialWidth () {
@@ -162,16 +164,34 @@ class Board {
 	}
 
 	doLoadIndex (fnCallback) {
-		DataUtil.loadJSON("search/index.json").then((data) => {
+		elasticlunr.clearStopWords();
+		DataUtil.loadJSON("data/bookref-dmscreen-index.json").then((data) => {
+			this.availRules.ALL = elasticlunr(function () {
+				this.addField("b");
+				this.addField("s");
+				this.addField("p");
+				this.addField("n");
+				this.addField("h");
+				this.setRef("id");
+			});
+
+			data.data.forEach(d => {
+				d.n = data._meta.name[d.b];
+				d.b = data._meta.id[d.b];
+				d.s = data._meta.section[d.s];
+				this.availRules.ALL.addDoc(d);
+			});
+
+			return DataUtil.loadJSON("search/index.json");
+		}).then((data) => {
 			function hasBadCat (d) {
-				return d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF;
+				return d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF || d.c === Parser.CAT_ID_VARIANT_OPTIONAL_RULE;
 			}
 
 			function fromDeepIndex (d) {
 				return d.d; // flag for "deep indexed" content that refers to the same item
 			}
 
-			elasticlunr.clearStopWords();
 			this.availContent.ALL = elasticlunr(function () {
 				this.addField("n");
 				this.addField("s");
@@ -203,11 +223,12 @@ class Board {
 			// add tabs
 			const omniTab = new AddMenuSearchTab(this.availContent);
 			omniTab.setSpotlight(true);
+			const ruleTab = new AddMenuSearchTab(this.availRules, "rules");
 			const embedTab = new AddMenuVideoTab();
 			const imageTab = new AddMenuImageTab();
 			const specialTab = new AddMenuSpecialTab();
 
-			this.menu.addTab(omniTab).addTab(imageTab).addTab(embedTab).addTab(specialTab);
+			this.menu.addTab(omniTab).addTab(ruleTab).addTab(imageTab).addTab(embedTab).addTab(specialTab);
 
 			this.menu.render();
 
@@ -518,7 +539,6 @@ class SideMenu {
 							p.set$Content(herMeta.type, herMeta.contentMeta, $herContent, true);
 							p.exile();
 						}
-						// this.panel.doHideJoystick(); // TODO?
 						her.doShowJoystick();
 						this.doUpdateHistory();
 					}
@@ -566,6 +586,13 @@ class Panel {
 				const source = saved.c.s;
 				const hash = saved.c.u;
 				p.doPopulate_Stats(page, source, hash);
+				return p;
+			}
+			case PANEL_TYP_RULES: {
+				const book = saved.c.b;
+				const chapter = saved.c.c;
+				const header = saved.c.h;
+				p.doPopulate_Rules(book, chapter, header);
 				return p;
 			}
 			case PANEL_TYP_ROLLBOX:
@@ -669,6 +696,32 @@ class Panel {
 					PANEL_TYP_STATS,
 					meta,
 					$(`<div class="panel-content-wrapper-inner"><table class="stats">${fn(it)}</table></div>`),
+					true
+				);
+			}
+		);
+	}
+
+	doPopulate_Rules (book, chapter, header) {
+		const meta = {b: book, c: chapter, h: header};
+		this.set$Content(
+			PANEL_TYP_RULES,
+			meta,
+			Panel._get$eleLoading(),
+			true
+		);
+		RuleLoader.doFillThenCall(
+			book,
+			chapter,
+			header,
+			() => {
+				const rule = RuleLoader.getFromCache(book, chapter, header);
+				const it = EntryRenderer.rule.getCompactRenderedString(rule);
+				console.log(it)
+				this.set$Content(
+					PANEL_TYP_RULES,
+					meta,
+					$(`<div class="panel-content-wrapper-inner"><table class="stats">${it}</table></div>`),
 					true
 				);
 			}
@@ -1104,6 +1157,13 @@ class Panel {
 					p: this.contentMeta.p,
 					s: this.contentMeta.s,
 					u: this.contentMeta.u
+				};
+				break;
+			case PANEL_TYP_RULES:
+				out.c = {
+					b: this.contentMeta.b,
+					c: this.contentMeta.c,
+					h: this.contentMeta.h
 				};
 				break;
 			case PANEL_TYP_TEXTBOX:
@@ -1736,16 +1796,18 @@ class AddMenuListTab extends AddMenuTab {
 }
 
 class AddMenuSearchTab extends AddMenuTab {
-	constructor (indexes) {
-		super("Search");
-		this.tabId = this.genTabId("search");
+	constructor (indexes, subType = "content") {
+		super(subType === "content" ? "Content" : "Rules");
+		this.tabId = this.genTabId(subType === "content" ? "content" : "rules");
 		this.indexes = indexes;
 		this.cat = "ALL";
+		this.subType = subType;
 
 		this.$selCat = null;
 		this.$srch = null;
 		this.$results = null;
 		this.showMsgIpt = null;
+		this.doSearch = null;
 	}
 
 	render () {
@@ -1766,47 +1828,80 @@ class AddMenuSearchTab extends AddMenuTab {
 			this.$results.empty().append(`<div class="panel-tab-message"><i>No results.</i></div>`);
 		};
 
-		const doSearch = () => {
-			const srch = this.$srch.val();
-			const results = this.indexes[this.cat].search(srch, {
-				fields: {
-					n: {boost: 5, expand: true},
-					s: {expand: true}
-				},
-				bool: "AND",
-				expand: true
-			});
+		this.doSearch = () => {
+			const srch = this.$srch.val().trim();
+			const MAX_RESULTS = 75; // hard cap results
+
+			const searchOptions = this.subType === "content" ?
+				{
+					fields: {
+						n: {boost: 5, expand: true},
+						s: {expand: true}
+					},
+					bool: "AND",
+					expand: true
+				} :
+				{
+					fields: {
+						h: {boost: 5, expand: true},
+						s: {expand: true}
+					},
+					bool: "AND",
+					expand: true
+				};
+
+			const index = this.indexes[this.cat];
+			const results = index.search(srch, searchOptions);
+			const resultCount = results.length ? results.length : index.documentStore.length;
+			const toProcess = results.length ? results : Object.values(index.documentStore.docs).slice(0, 75).map(it => ({doc: it}));
 
 			this.$results.empty();
-			if (results.length) {
+			if (toProcess.length) {
 				const handleClick = (r) => {
-					const page = UrlUtil.categoryToPage(r.doc.c);
-					const source = r.doc.s;
-					const hash = r.doc.u;
+					if (this.subType === "content") {
+						const page = UrlUtil.categoryToPage(r.doc.c);
+						const source = r.doc.s;
+						const hash = r.doc.u;
 
-					this.menu.pnl.doPopulate_Stats(page, source, hash);
+						this.menu.pnl.doPopulate_Stats(page, source, hash);
+					} else {
+						this.menu.pnl.doPopulate_Rules(r.doc.b, r.doc.p, r.doc.h);
+					}
 					this.menu.doClose();
 				};
 
+				const get$Row = (r) => {
+					if (this.subType === "content") {
+						return $(`
+							<div class="panel-tab-results-row">
+								<span>${r.doc.n}</span>
+								<span>${r.doc.s ? `<i title="${Parser.sourceJsonToFull(r.doc.s)}">${Parser.sourceJsonToAbv(r.doc.s)}${r.doc.p ? ` p${r.doc.p}` : ""}</i>` : ""}</span>
+							</div>
+						`);
+					} else {
+						return $(`
+							<div class="panel-tab-results-row">
+								<span>${r.doc.h}</span>
+								<span><i>${r.doc.n}, ${r.doc.s}</i></span>
+							</div>
+						`);
+					}
+				};
+
 				if (doClickFirst) {
-					handleClick(results[0]);
+					handleClick(toProcess[0]);
 					doClickFirst = false;
 					return;
 				}
 
-				const res = results.slice(0, 75); // hard cap at 75 results
+				const res = toProcess.slice(0, MAX_RESULTS); // hard cap at 75 results
 
 				res.forEach(r => {
-					$(`
-						<div class="panel-tab-results-row">
-							<span>${r.doc.n}</span>
-							<span>${r.doc.s ? `<i title="${Parser.sourceJsonToFull(r.doc.s)}">${Parser.sourceJsonToAbv(r.doc.s)}${r.doc.p ? ` p${r.doc.p}` : ""}</i>` : ""}</span>
-						</div>
-					`).on("click", () => handleClick(r)).appendTo(this.$results);
+					get$Row(r).on("click", () => handleClick(r)).appendTo(this.$results);
 				});
 
-				if (results.length > res.length) {
-					const diff = results.length - res.length;
+				if (resultCount > MAX_RESULTS) {
+					const diff = resultCount - MAX_RESULTS;
 					this.$results.append(`<div class="panel-tab-results-row panel-tab-results-row-display-only">...${diff} more result${diff === 1 ? " was" : "s were"} hidden. Refine your search!</div>`);
 				}
 			} else {
@@ -1836,7 +1931,7 @@ class AddMenuSearchTab extends AddMenuTab {
 			$srch.on("keyup", () => {
 				clearTimeout(typeTimer);
 				typeTimer = setTimeout(() => {
-					doSearch();
+					this.doSearch();
 				}, TYPE_TIMEOUT_MS);
 			});
 			$srch.on("keydown", () => {
@@ -1847,12 +1942,12 @@ class AddMenuSearchTab extends AddMenuTab {
 				clearTimeout(typeTimer)
 			});
 			$srch.on("click", () => {
-				if ($srch.val() && $srch.val().trim().length) doSearch();
+				if ($srch.val() && $srch.val().trim().length) this.doSearch();
 			});
 			$srch.on("keypress", (e) => {
 				if (e.which === 13) {
 					doClickFirst = true;
-					doSearch();
+					this.doSearch();
 				}
 			});
 
@@ -1861,15 +1956,41 @@ class AddMenuSearchTab extends AddMenuTab {
 			this.$srch = $srch;
 			this.$results = $results;
 
-			this.showMsgIpt();
+			this.doSearch();
 		}
 	}
 
 	doTransitionActive () {
 		this.$srch.val("").focus();
-		if (this.showMsgIpt) this.showMsgIpt();
+		if (this.doSearch) this.doSearch();
 	}
 }
+
+class RuleLoader {
+	static doFillThenCall (book, chapter, header, fnCallback) {
+		DataUtil.loadJSON(`data/${book}.json`).then((data) => {
+			const $$$ = RuleLoader.cache;
+
+			Object.keys(data.data).forEach(b => {
+				const ref = data.data[b];
+				if (!$$$[b]) $$$[b] = {};
+				ref.forEach((c, i) => {
+					if (!$$$[b][i]) $$$[b][i] = {};
+					c.entries.forEach(s => {
+						$$$[b][i][s.name] = s;
+					});
+				})
+			});
+
+			fnCallback();
+		});
+	}
+
+	static getFromCache (book, chapter, header) {
+		return RuleLoader.cache[book][chapter][header];
+	}
+}
+RuleLoader.cache = {};
 
 window.addEventListener("load", () => {
 	// expose it for dbg purposes

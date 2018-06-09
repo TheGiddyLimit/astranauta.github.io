@@ -2095,6 +2095,16 @@ EntryRenderer.psionic = {
 	}
 };
 
+EntryRenderer.rule = {
+	getCompactRenderedString (rule) {
+		return `
+			<tr><td colspan="6">
+			${EntryRenderer.getDefaultRenderer().setFirstSection(true).renderEntry(rule)}
+			</td></tr>
+		`;
+	}
+};
+
 EntryRenderer.hover = {
 	linkCache: {},
 	_isInit: false,
