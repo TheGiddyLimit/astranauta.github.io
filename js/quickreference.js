@@ -17,7 +17,7 @@ window.onload = function load () {
 };
 
 function onJsonLoad (data) {
-	reference = data.reference;
+	reference = [data.reference["bookref-quick"]];
 
 	const allContents = $("ul.contents");
 	let tempString = "";
@@ -43,8 +43,7 @@ function onJsonLoad (data) {
 
 	BookUtil.baseDataUrl = "data/";
 	BookUtil.bookIndex = reference;
-	BookUtil.isQuickReference = true;
-	BookUtil.subDataProp = "bookref-quick";
+	BookUtil.referenceId = "bookref-quick";
 
 	window.onhashchange = BookUtil.booksHashChange;
 	if (window.location.hash.length) {

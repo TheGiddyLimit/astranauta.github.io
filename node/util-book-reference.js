@@ -25,13 +25,15 @@ UtilBookReference = {
 		});
 
 		const outJson = {
-			reference: refTypes.map(it => ({
-				name: it.name,
-				id: it.id,
-				contents: []
-			})),
+			reference: {},
 			data: {}
 		};
+
+		refTypes.forEach(it => outJson.reference[it.id] = {
+			name: it.name,
+			id: it.id,
+			contents: []
+		});
 
 		let bookData = [];
 		function reset () {
@@ -97,7 +99,7 @@ UtilBookReference = {
 			refTypes.forEach(refType => {
 				Object.keys(out).sort().forEach(i => {
 					const sects = out[i].sections.sort((a, b) => SortUtil.ascSort(a.name, b.name));
-					const header = outJson.reference.find(it => it.id === refType.id);
+					const header = outJson.reference[refType.id];
 					header.contents.push({
 						name: out[i].sectName,
 						headers: sects.map(s => s.name)

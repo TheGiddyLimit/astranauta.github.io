@@ -155,7 +155,7 @@ const BookUtil = {
 		if (hashParts && hashParts.length > 0) chapter = Number(hashParts[0]);
 		if (hashParts && hashParts.length > 1) {
 			scrollTo = $(`[href="#${bookId},${chapter},${hashParts[1]}"]`).data("header");
-			if (BookUtil.isQuickReference) {
+			if (BookUtil.referenceId) {
 				handleQuickReferenceShow(scrollTo);
 			}
 
@@ -165,7 +165,7 @@ const BookUtil = {
 				if (hashParts[2]) scrollIndex = Number(hashParts[2]);
 				forceScroll = true;
 			}
-		} else if (BookUtil.isQuickReference) {
+		} else if (BookUtil.referenceId) {
 			handleQuickReferenceShowAll();
 		}
 
@@ -188,7 +188,7 @@ const BookUtil = {
 			BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
 			if (scrollTo) {
-				if (BookUtil.isQuickReference) {
+				if (BookUtil.referenceId) {
 					handleQuickReferenceShow(scrollTo)
 				}
 				setTimeout(() => {
@@ -225,8 +225,7 @@ const BookUtil = {
 	baseDataUrl: "",
 	bookIndex: [],
 	renderArea: null,
-	isQuickReference: false,
-	subDataProp: null,
+	referenceId: false,
 	// custom loading to serve multiple sources
 	booksHashChange: () => {
 		function cleanName (name) {
@@ -258,7 +257,7 @@ const BookUtil = {
 			BookUtil.thisContents = allContents.filter(`[data-bookid="${UrlUtil.encodeForHash(bookId)}"]`);
 			BookUtil.thisContents.show();
 			allContents.filter(`[data-bookid!="${UrlUtil.encodeForHash(bookId)}"]`).hide();
-			BookUtil.showBookContent(BookUtil.subDataProp ? data.data[BookUtil.subDataProp] : data.data, fromIndex, bookId, hashParts);
+			BookUtil.showBookContent(BookUtil.referenceId ? data.data[BookUtil.referenceId] : data.data, fromIndex, bookId, hashParts);
 			BookUtil.addSearch(fromIndex, bookId);
 		});
 	},
