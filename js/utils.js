@@ -1625,7 +1625,7 @@ MiscUtil = {
 		} else if (document.selection) {
 			document.selection.empty();
 		}
-	},
+	}
 };
 
 // LIST AND SEARCH =====================================================================================================

@@ -130,7 +130,7 @@ class Board {
 			gridColumnStart: "1",
 			gridColumnEnd: String(this.width + 1),
 			gridRowStart: "1",
-			gridRowEnd: String(this.height + 1),
+			gridRowEnd: String(this.height + 1)
 		}).appendTo(this.$creen);
 	}
 
@@ -380,12 +380,12 @@ class Board {
 		this.setDimensions(this.getInitialWidth(), this.getInitialHeight());
 	}
 
-	setHoveringButton(panel) {
+	setHoveringButton (panel) {
 		this.resetHoveringButton(panel);
 		panel.$btnAddInner.addClass("faux-hover");
 	}
 
-	resetHoveringButton(panel) {
+	resetHoveringButton (panel) {
 		Object.values(this.panels).forEach(p => {
 			if (panel && panel.id === p.id) return;
 			p.$btnAddInner.removeClass("faux-hover");
@@ -810,7 +810,7 @@ class Panel {
 			true
 		);
 	}
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	getTopNeighbours () {
 		return [...new Array(this.width)]
 			.map((blank, i) => i + this.x).map(x => this.board.getPanel(x, this.y - 1))
@@ -836,7 +836,7 @@ class Panel {
 			.map(y => this.board.getPanel(this.x - 1, y))
 			.filter(p => p);
 	}
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	hasRowTop () {
 		return this.y > 0;
 	}
@@ -852,7 +852,7 @@ class Panel {
 	hasColumnLeft () {
 		return this.x > 0;
 	}
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	hasSpaceTop () {
 		const hasLockedNeighbourTop = this.getTopNeighbours().filter(p => p.getLocked()).length;
 		return this.hasRowTop() && !hasLockedNeighbourTop;
@@ -872,7 +872,7 @@ class Panel {
 		const hasLockedNeighbourLeft = this.getLeftNeighbours().filter(p => p.getLocked()).length;
 		return this.hasColumnLeft() && !hasLockedNeighbourLeft;
 	}
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	canShrinkTop () {
 		return this.height > 1 && !this.getLocked();
 	}
@@ -888,7 +888,7 @@ class Panel {
 	canShrinkLeft () {
 		return this.width > 1 && !this.getLocked();
 	}
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	doShrinkTop () {
 		this.height -= 1;
 		this.y += 1;
@@ -914,7 +914,7 @@ class Panel {
 		this.setDirty(true);
 		this.render();
 	}
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	canBumpTop () {
 		if (!this.hasRowTop()) return false; // if there's no row above, we can't bump up a row
 		if (!this.getTopNeighbours().filter(p => !p.getEmpty()).length) return true; // if there's a row above and it's empty, we can bump
@@ -939,7 +939,7 @@ class Panel {
 		if (!this.getLeftNeighbours().filter(p => !p.getEmpty()).length) return true;
 		return !this.getLeftNeighbours().filter(p => !p.getEmpty()).filter(p => !p.canBumpLeft()).length;
 	}
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	doBumpTop () {
 		this.getTopNeighbours().filter(p => p.getEmpty()).forEach(p => p.destroy());
 		this.getTopNeighbours().filter(p => !p.getEmpty()).forEach(p => p.doBumpTop());
@@ -971,7 +971,7 @@ class Panel {
 		this.setDirty(true);
 		this.render();
 	}
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	getPanelMeta () {
 		return {
 			type: this.type,
@@ -1027,7 +1027,7 @@ class Panel {
 				gridColumnEnd: String(this.x + 1 + this.width),
 
 				gridRowStart: String(this.y + 1),
-				gridRowEnd: String(this.y + 1 + this.height),
+				gridRowEnd: String(this.y + 1 + this.height)
 			});
 		}
 
@@ -1098,7 +1098,7 @@ class Panel {
 		};
 	}
 
-	getAddButtonPos() {
+	getAddButtonPos () {
 		const offset = this.$btnAddInner.offset();
 		return {
 			top: offset.top,
@@ -1234,7 +1234,7 @@ class JoystickMenu {
 			const childH = this.panel.$content.children().first().height();
 			const offset = this.panel.$content.offset();
 			const offsetX = e.clientX - offset.left;
-			const offsetY = h > childH ? childH / 2: (e.clientY - offset.top);
+			const offsetY = h > childH ? childH / 2 : (e.clientY - offset.top);
 
 			$body.append(this.panel.$content);
 			$(`.panel-control`).hide();
@@ -1342,29 +1342,29 @@ class JoystickMenu {
 
 				switch (dir) {
 					case UP:
-						 if (numPanelsCovered > this.panel.y) numPanelsCovered = this.panel.y;
+						if (numPanelsCovered > this.panel.y) numPanelsCovered = this.panel.y;
 						this.panel.$pnl.css({
 							gridRowStart: String(this.panel.y + (1 - numPanelsCovered)),
-							gridRowEnd: String(this.panel.y + 1 + this.panel.height),
+							gridRowEnd: String(this.panel.y + 1 + this.panel.height)
 						});
 						break;
 					case RIGHT:
 						if (numPanelsCovered > (this.panel.board.width - this.panel.width) - this.panel.x) numPanelsCovered = (this.panel.board.width - this.panel.width) - this.panel.x;
 						this.panel.$pnl.css({
-							gridColumnEnd: String(this.panel.x + 1 + this.panel.width + numPanelsCovered),
+							gridColumnEnd: String(this.panel.x + 1 + this.panel.width + numPanelsCovered)
 						});
 						break;
 					case DOWN:
 						if (numPanelsCovered > (this.panel.board.height - this.panel.height) - this.panel.y) numPanelsCovered = (this.panel.board.height - this.panel.height) - this.panel.y;
 						this.panel.$pnl.css({
-							gridRowEnd: String(this.panel.y + 1 + this.panel.height + numPanelsCovered),
+							gridRowEnd: String(this.panel.y + 1 + this.panel.height + numPanelsCovered)
 						});
 						break;
 					case LEFT:
 						if (numPanelsCovered > this.panel.x) numPanelsCovered = this.panel.x;
 						this.panel.$pnl.css({
 							gridColumnStart: String(this.panel.x + (1 - numPanelsCovered)),
-							gridColumnEnd: String(this.panel.x + 1 + this.panel.width),
+							gridColumnEnd: String(this.panel.x + 1 + this.panel.width)
 						});
 						break;
 				}
@@ -1576,7 +1576,7 @@ class AddMenuTab {
 	}
 
 	genTabId (type) {
-		return `tab-${type}-${this.label.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9\-]/g, "_")}`;
+		return `tab-${type}-${this.label.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "_")}`;
 	}
 
 	setMenu (menu) {
@@ -1650,7 +1650,6 @@ class AddMenuVideoTab extends AddMenuTab {
 					alert(`Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`);
 				}
 			});
-
 
 			const $wrpGeneric = $(`<div class="tab-body-row"/>`).appendTo($tab);
 			const $iptUrlGeneric = $(`<input class="form-control" placeholder="Paste any URL">`).appendTo($wrpGeneric);
@@ -1829,7 +1828,7 @@ class AddMenuSearchTab extends AddMenuTab {
 		let doClickFirst = false;
 		let isWait = false;
 
-		this.showMsgIpt = () =>  {
+		this.showMsgIpt = () => {
 			isWait = true;
 			this.$results.empty().append(`<div class="panel-tab-message"><i>Enter a search.</i></div>`);
 		};
@@ -1847,16 +1846,16 @@ class AddMenuSearchTab extends AddMenuTab {
 			const srch = this.$srch.val().trim();
 			const MAX_RESULTS = 75; // hard cap results
 
-			const searchOptions = this.subType === "content" ?
-				{
+			const searchOptions = this.subType === "content"
+				? {
 					fields: {
 						n: {boost: 5, expand: true},
 						s: {expand: true}
 					},
 					bool: "AND",
 					expand: true
-				} :
-				{
+				}
+				: {
 					fields: {
 						h: {boost: 5, expand: true},
 						s: {expand: true}

@@ -63,7 +63,7 @@ UtilSearchIndex.getIndex = function (doLogging = true, test_doExtraIndex = false
 
 		if (test_doExtraIndex && ti.test_extraIndex) {
 			const extra = ti.test_extraIndex();
-			extra.forEach(add => index.push(add));
+			extra.forEach(add => indexer.index.push(add));
 		}
 	});
 
