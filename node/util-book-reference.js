@@ -41,6 +41,7 @@ UtilBookReference = {
 
 		let bookData = [];
 		function reset () {
+			bookData = [];
 			index.book.forEach(b => {
 				const data = JSON.parse(JSON.stringify(books[b.id.toLowerCase()]));
 				bookData.push(data);
@@ -100,21 +101,19 @@ UtilBookReference = {
 				})
 			});
 
-			refTypes.forEach(refType => {
-				Object.keys(out).sort().forEach(i => {
-					const sects = out[i].sections.sort((a, b) => SortUtil.ascSort(a.name, b.name));
-					const header = outJson.reference[refType.id];
-					header.contents.push({
-						name: out[i].sectName,
-						headers: sects.map(s => s.name)
-					});
-					const toAdd = {
-						type: "entries",
-						entries: sects
-					};
-					if (!outJson.data[refType.id]) outJson.data[refType.id] = [];
-					outJson.data[refType.id].push(toAdd);
+			Object.keys(out).sort().forEach(i => {
+				const sects = out[i].sections.sort((a, b) => SortUtil.ascSort(a.name, b.name));
+				const header = outJson.reference[refType.id];
+				header.contents.push({
+					name: out[i].sectName,
+					headers: sects.map(s => s.name)
 				});
+				const toAdd = {
+					type: "entries",
+					entries: sects
+				};
+				if (!outJson.data[refType.id]) outJson.data[refType.id] = [];
+				outJson.data[refType.id].push(toAdd);
 			});
 		});
 
