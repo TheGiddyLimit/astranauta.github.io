@@ -38,21 +38,15 @@
 
 		.initial-message {
 			font-size: 5vmin;
-			color: black;
+			color: initial;
 		}
 
 		.dm-screen-panel {
-			background-color: #f0f0f0;
 			position: relative;
-		}
-
-		.dm-screen-panel.faux-hover {
-			background: #e0e0e0;
 		}
 
 		.dm-screen-panel.faux-hover .panel-content-wrapper-inner::after {
 			content: "";
-			background: #e0e0e080;
 			position: absolute;
 			top: 0;
 			right: 0;
@@ -63,7 +57,6 @@
 		.panel-control-bar {
 			position: absolute;
 			right: 0;
-			background: #80808080;
 			border-bottom-left-radius: 5px;
 			padding-left: 3px;
 			opacity: 0.2;
@@ -91,7 +84,6 @@
 		.panel-control-icon {
 			top: 0;
 			padding: 2px;
-			color: rgba(255,255,255,0.7);
 			cursor: pointer;
 			font-size: 12px;
 			margin-right: 2px;
@@ -103,21 +95,14 @@
 			justify-content: center;
 			align-items: center;
 			font-size: 5rem;
-			color: #ccc;
 	 	}
 
 		.btn-panel-add {
 			padding: 3px 3px 5px 6px;
-			border: 1px solid #ccc;
 			display: block;
 			border-radius: 5px;
 			cursor: pointer;
 			user-select: none;
-		}
-
-		.btn-panel-add.faux-hover,
-		.btn-panel-add:hover {
-			background: #e0e0e0;
 		}
 
 		.board-content-hovering .btn-panel-add {
@@ -154,7 +139,6 @@
 		.panel-content-wrapper-inner {
 			height: 100%;
 			width: 100%;
-			background: #ffffff;
 		}
 
 		.panel-control {
@@ -177,9 +161,7 @@
 			right: 40px;
 			left: 40px;
 			cursor: ns-resize;
-			background: #cccccca0;
 			height: 15px;
-			border: 1px solid #ccc;
 			border-top: 0;
 			border-bottom-left-radius: 5px;
 			border-bottom-right-radius: 5px;
@@ -191,9 +173,7 @@
 			right: 0;
 			bottom: 40px;
 			cursor: ew-resize;
-			background: #cccccca0;
 			width: 15px;
-			border: 1px solid #ccc;
 			border-right: 0;
 			border-bottom-left-radius: 5px;
 			border-top-left-radius: 5px;
@@ -205,9 +185,7 @@
 			bottom: 0;
 			left: 40px;
 			cursor: ns-resize;
-			background: #cccccca0;
 			height: 15px;
-			border: 1px solid #ccc;
 			border-bottom: 0;
 			border-top-right-radius: 5px;
 			border-top-left-radius: 5px;
@@ -219,9 +197,7 @@
 			bottom: 40px;
 			left: 0;
 			cursor: ew-resize;
-			background: #cccccca0;
 			width: 15px;
-			border: 1px solid #ccc;
 			border-left: 0;
 			border-top-right-radius: 5px;
 			border-bottom-right-radius: 5px;
@@ -229,8 +205,6 @@
 		}
 
 		.panel-control-middle {
-			background: #cccccca0;
-			border: 1px solid #ccc;
 			top: calc(50% - 20px);
 			left: calc(50% - 20px);
 			width: 40px;
@@ -242,7 +216,6 @@
 		.panel-addmenu {
 			position: fixed;
 			z-index: 1000;
-			background-color: rgba(69, 69, 69, 0.51);
 			width: 100vw;
 			height: 100vh;
 			display: flex;
@@ -279,33 +252,6 @@
 			margin-top: -3px;
 		}
 
-		.panel-addmenu-tab-head[active="true"] {
-			background-color: #e6e6e6;
-			border-color: #adadad;
-		}
-
-		.btn-spotlight {
-			background-color: #e8f5ff;
-			border-color: #c4cace;
-		}
-
-		.btn-spotlight:focus {
-			color: #333;
-			background-color: #d2dee6;
-			border-color: #85898c;
-		}
-
-		.btn-spotlight:hover {
-			color: #333;
-			background-color: #d2dee6;
-			border-color: #85898c;
-		}
-
-		.panel-addmenu-tab-head.btn-spotlight[active="true"] {
-			background-color: #d2dee6;
-			border-color: #85898c;
-		}
-
 		.panel-addmenu-view {
 			min-height: 0;
 			height: 100%;
@@ -319,7 +265,6 @@
 		}
 
 		.underline-tabs {
-			border-top: 1px solid #ccc;
 			margin-top: -1px;
 		}
 
@@ -339,9 +284,8 @@
 
 		.panel-tab-results-row {
 			cursor: pointer;
-			border-bottom: 1px solid #ddd;
 			font-weight: bold;
-			padding: 1px 0;
+			padding: 1px 2px;
 			display: flex;
 			justify-content: space-between;
 		}
@@ -395,7 +339,6 @@
 
 		.panel-content-wrapper-inner td div.border {
 			height: 2px;
-			background-color: #922610;
 			margin: 0 3px;
 			padding: 0;
 			border-right: 5px transparent;
@@ -458,7 +401,6 @@
 		}
 
 		.tab-body-row-sep {
-			background: #ccc;
 			height: 1px;
 			width: calc(100% - 12px);
 			margin: 2px 2px 7px;
@@ -483,9 +425,7 @@
 			bottom: 0;
 			left: -260px;
 			width: 250px;
-			background: #fff;
 			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-			border: 1px solid #ccc;
 			transition: left 0.1s;
 			cursor: default;
 			display: flex;
@@ -502,7 +442,6 @@
 			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 			cursor: pointer;
 			z-index: 60;
-			background: lightgrey;
 			transition: left 0.1s;
 			display: flex;
 			flex-direction: column;
@@ -520,7 +459,6 @@
 
 		.dm-sidemenu-burger {
 			height: 3px;
-			background: white;
 			box-shadow: inset 0 0 1px 0 #888;
 		}
 
@@ -544,7 +482,6 @@
 		}
 
 		.dm-sidemenu-row-divider {
-			background: #ccc;
 			height: 1px;
 			width: calc(100% - 12px);
 			margin: 7px 2px;
@@ -587,12 +524,12 @@
 		}
 
 		.panel-history-control-remove-wrapper {
-			background: #80808080;
 			opacity: 0;
 			position: absolute;
 			top: 0;
 			right: 0;
 			transition: opacity 0.1s;
+			border-bottom-left-radius: 5px;
 		}
 
 		.dm-sidemenu-history-item-cover:hover .panel-history-control-remove-wrapper {
@@ -605,7 +542,6 @@
 			right: 1px;
 			left: 2px;
 			padding: 2px;
-			color: rgba(255,255,255,0.7);
 			cursor: pointer;
 			font-size: 12px;
 			margin-right: 2px;
@@ -617,8 +553,6 @@
 			position: absolute;
 			user-select: none;
 			z-index: 58;
-			background: #cccccca0;
-			border: 1px solid #ccc;
 			top: calc(50% - 20px);
 			left: calc(50% - 20px);
 			width: 40px;

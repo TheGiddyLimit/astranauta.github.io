@@ -1563,6 +1563,126 @@ table.stats.stats-book table.printbook-bestiary-entry {
 
 /* *** */
 
+/* DM Screen */
+.dm-screen-panel {
+	background-color: #f0f0f0;
+
+	&.faux-hover {
+		background: #e0e0e0;
+
+		.panel-content-wrapper-inner::after {
+			background: #e0e0e080;
+		}
+	}
+}
+
+.panel-history-control-remove-wrapper,
+.panel-control-bar {
+	background: #80808080;
+}
+
+.panel-control-icon {
+	color: rgba(255,255,255,0.7);
+}
+
+.panel-add {
+	color: #ccc;
+}
+
+.btn-panel-add {
+	border: 1px solid #ccc;
+
+	&:hover,
+	&.faux-hover {
+		background: #e0e0e0;
+	}
+}
+
+.panel-content-wrapper-inner {
+	background: #ffffff;
+}
+
+.panel-control-top,
+.panel-control-right,
+.panel-control-bottom,
+.panel-control-left,
+.panel-control-middle {
+	background: #cccccca0;
+	border: 1px solid #ccc;
+}
+
+.panel-addmenu {
+	background-color: rgba(69, 69, 69, 0.51);
+}
+
+.panel-addmenu-tab-head[active="true"] {
+	background-color: #e6e6e6;
+	border-color: #adadad;
+}
+
+.btn-spotlight {
+	background-color: #e8f5ff;
+	border-color: #c4cace;
+}
+
+.btn-spotlight:focus {
+	color: #333;
+	background-color: #d2dee6;
+	border-color: #85898c;
+}
+
+.btn-spotlight:hover {
+	color: #333;
+	background-color: #d2dee6;
+	border-color: #85898c;
+}
+
+.panel-addmenu-tab-head.btn-spotlight[active="true"] {
+	background-color: #d2dee6;
+	border-color: #85898c;
+}
+
+.underline-tabs {
+	border-top: 1px solid #ccc;
+}
+
+.panel-tab-results-row {
+	border-bottom: 1px solid #ddd;
+}
+
+.panel-content-wrapper-inner td div.border {
+	background-color: #922610;
+}
+
+.dm-sidemenu-row-divider,
+.tab-body-row-sep {
+	background: #ccc;
+}
+
+.dm-sidemenu {
+	background: #fff;
+	border: 1px solid #ccc;
+}
+
+.dm-sidemenu-toggle {
+	background: lightgrey;
+}
+
+.dm-sidemenu-burger {
+	background: white;
+}
+
+.panel-history-control-remove {
+	color: rgba(255,255,255,0.7);
+}
+
+.panel-history-control-middle {
+	background: #cccccca0;
+	border: 1px solid #ccc;
+}
+
+/* *** */
+
 /****************************************
  * Print styles
  ***************************************/
@@ -3298,6 +3418,70 @@ table.stats table.statsDataInset {
 	.output-wrp-border {
 		border: 1px solid rgba(255, 255, 255, 0.15);
 	}
+
+	/* DM Screen */
+	.dm-screen-panel {
+		background-color: #303030;
+
+		&.faux-hover {
+			background: #404040;
+
+			.panel-content-wrapper-inner::after {
+				background: #40404080;
+			}
+		}
+	}
+
+	.panel-history-control-remove-wrapper,
+	.panel-control-bar {
+		background: #80808080;
+	}
+
+	.panel-control-icon {
+		color: rgba(255,255,255,0.7);
+	}
+
+	.panel-add {
+		color: #ccc;
+	}
+
+	.btn-panel-add {
+		&:hover,
+		&.faux-hover {
+			background: #404040;
+		}
+	}
+
+	.panel-content-wrapper-inner {
+		background: #222;
+	}
+
+	.panel-addmenu-tab-head[active="true"] {
+		background-color: #ffffff40 !important;
+	}
+
+	.panel-content-wrapper-inner td div.border {
+		background-color: $class-main-color;
+	}
+
+	.dm-sidemenu-row-divider,
+	.tab-body-row-sep {
+		background: #999;
+	}
+
+	.dm-sidemenu {
+		background: #222;
+	}
+
+	.dm-sidemenu-toggle {
+		background: #444;
+	}
+
+	.dm-sidemenu-burger {
+		background: #222;
+	}
+
+	/* *** */
 }
 
 /* Night Mode End */

@@ -1751,7 +1751,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 
 	render () {
 		if (!this.$tab) {
-			const $tab = $(`<div class="panel-tab-list-wrapper" id="${this.tabId}"/>`);
+			const $tab = $(`<div class="panel-tab-list-wrapper underline-tabs" id="${this.tabId}"/>`);
 
 			const $wrpRoller = $(`<div class="tab-body-row"><span>Dice Roller <i class="text-muted">(moves the existing dice roller to a panel)</i></span></div>`).appendTo($tab);
 			const $btnRoller = $(`<div class="btn btn-primary">Move</div>`).appendTo($wrpRoller);
