@@ -99,16 +99,24 @@ class Board {
 		// assumes 7px grid spacing
 		this.$creen.css({
 			gridGap: 7,
-			width: `calc(100% - ${(this.width - 1) * 7}px)`,
-			height: `calc(100% - ${85 + (this.height - 1) * 7}px)`, // 85 magical pixels
+			width: `calc(100% - ${this._getWidthAdjustment()}px)`,
+			height: `calc(100% - ${this._getHeightAdjustment()}px)`,
 			gridAutoColumns: `${(1 / this.width) * 100}%`,
 			gridAutoRows: `${(1 / this.height) * 100}%`
 		});
 	}
 
+	_getWidthAdjustment () {
+		return (this.width - 1) * 7;
+	}
+
+	_getHeightAdjustment () {
+		return 85 + (this.height - 1) * 7; // 85 magical pixels
+	}
+
 	getPanelDimensions () {
-		const w = this.$creen.width();
-		const h = this.$creen.height();
+		const w = this.$creen.outerWidth() + this._getWidthAdjustment();
+		const h = this.$creen.outerHeight() + this._getHeightAdjustment();
 		return {
 			pxWidth: w / this.width,
 			pxHeight: h / this.height
