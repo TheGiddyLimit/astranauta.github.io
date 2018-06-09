@@ -477,14 +477,26 @@ class SideMenu {
 	doUpdateHistory () {
 		this.board.exiledPanels.forEach(p => p.get$ContentWrapper().detach());
 		this.$wrpHistory.children().remove();
-		if (this.board.exiledPanels.length) this.$wrpHistory.append(`<div class="dm-sidemenu-history-header dm-sidemenu-row">Recently Removed</div>`);
-		this.board.exiledPanels.forEach(p => {
+		if (this.board.exiledPanels.length) {
+			const $wrpHistHeader = $(`<div class="dm-sidemenu-row"><span style="font-variant: small-caps;">Recently Removed</span></div>`).appendTo(this.$wrpHistory);
+			const $btnHistClear = $(`<div class="btn btn-danger">Clear</div>`).appendTo($wrpHistHeader);
+			$btnHistClear.on("click", () => {
+				this.board.exiledPanels = [];
+				this.doUpdateHistory();
+			});
+		}
+		this.board.exiledPanels.forEach((p, i) => {
 			const $wrpHistItem = $(`<div class="dm-sidemenu-history-item"/>`).appendTo(this.$wrpHistory);
 			const $cvrHistItem = $(`<div class="dm-sidemenu-history-item-cover"/>`).appendTo($wrpHistItem);
-			const $ctrlMove = $(`<div class="panel-history-control-middle"/>`).appendTo($cvrHistItem);
+			const $btnRemove = $(`<div class="panel-history-control-remove-wrapper"><span class="panel-history-control-remove glyphicon glyphicon-remove" title="Remove"/></div>`).appendTo($cvrHistItem);
+			const $ctrlMove = $(`<div class="panel-history-control-middle" title="Move"/>`).appendTo($cvrHistItem);
+
+			$btnRemove.on("click", () => {
+				this.board.exiledPanels.splice(i, 1);
+				this.doUpdateHistory();
+			});
 
 			const $contents = p.get$ContentWrapper();
-
 			$wrpHistItem.append($contents);
 
 			$ctrlMove.on("mousedown touchstart", (e) => {
@@ -501,8 +513,10 @@ class SideMenu {
 
 				$body.append($contents);
 				$(`.panel-control`).hide();
+				$contents.css("overflow-y", "hidden");
 				Panel.setMovingCss(e, $contents, w, h, offsetX, offsetY, 61);
 				$wrpHistItem.css("box-shadow", "none");
+				$btnRemove.hide();
 				$ctrlMove.hide();
 				this.board.get$creen().addClass("board-content-hovering");
 				p.get$Content().addClass("panel-content-hovering");
@@ -514,8 +528,10 @@ class SideMenu {
 					$(document).off("mousemove touchmove").off("mouseup touchend");
 
 					$body.css("userSelect", "");
+					$contents.css("overflow-y", "");
 					Panel.unsetMovingCss($contents);
-					$wrpHistItem.css("box-shadow", "");
+					$wrpHistItem.css("box-shadow", "")
+					$btnRemove.show();
 					$ctrlMove.show();
 					this.board.get$creen().removeClass("board-content-hovering");
 					p.get$Content().removeClass("panel-content-hovering");
