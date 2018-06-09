@@ -521,7 +521,7 @@ class HashLoad {
 	}
 
 	static makeFeelingLuckyPill () {
-		const $pill = $(`<span title="Feeling lucky?" class="sc-pill-feeling-lucky"><span class="glyphicon glyphicon-random"></span></span>`);
+		const $pill = $(`<span title="Feeling Lucky?" class="sc-pill-feeling-lucky"><span class="glyphicon glyphicon-random"></span></span>`);
 		HashLoad.subclassPillWrapper.append($pill);
 		$pill.click(() => {
 			const [link, ...sub] = History._getHashParts();
