@@ -185,7 +185,7 @@ class Board {
 			return DataUtil.loadJSON("search/index.json");
 		}).then((data) => {
 			function hasBadCat (d) {
-				return d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF || d.c === Parser.CAT_ID_VARIANT_OPTIONAL_RULE;
+				return d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF;
 			}
 
 			function fromDeepIndex (d) {
@@ -717,7 +717,6 @@ class Panel {
 			() => {
 				const rule = RuleLoader.getFromCache(book, chapter, header);
 				const it = EntryRenderer.rule.getCompactRenderedString(rule);
-				console.log(it)
 				this.set$Content(
 					PANEL_TYP_RULES,
 					meta,
@@ -1920,7 +1919,10 @@ class AddMenuSearchTab extends AddMenuTab {
 				</select>
 			`).appendTo($wrpCtrls);
 			Object.keys(this.indexes).sort().filter(it => it !== "ALL").forEach(it => $selCat.append(`<option value="${it}">${it}</option>`));
-			$selCat.on("change", () => this.cat = $selCat.val());
+			$selCat.on("change", () => {
+				this.cat = $selCat.val();
+				this.doSearch();
+			});
 
 			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($wrpCtrls);
 			const $results = $(`<div class="panel-tab-results"/>`).appendTo($tab);

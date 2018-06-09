@@ -102,8 +102,6 @@ function loadhash (id) {
 
 	const curRule = rulesList[id];
 
-	$("th.name").html(curRule.name);
-
 	// build text list and display
 	$("tr.text").remove();
 	const textStack = [];

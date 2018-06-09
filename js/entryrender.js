@@ -2105,6 +2105,16 @@ EntryRenderer.rule = {
 	}
 };
 
+EntryRenderer.variantrule = {
+	getCompactRenderedString (rule) {
+		return `
+			<tr><td colspan="6">
+			${EntryRenderer.getDefaultRenderer().setFirstSection(true).renderEntry(rule)}
+			</td></tr>
+		`;
+	}
+};
+
 EntryRenderer.hover = {
 	linkCache: {},
 	_isInit: false,
@@ -2275,6 +2285,12 @@ EntryRenderer.hover = {
 				loadSimple(page, "trapshazards.json", ["trap", "hazard"]);
 				break;
 			}
+			case UrlUtil.PG_VARIATNRULES: {
+				loadSimple(page, "variantrules.json", "variantrule");
+				break;
+			}
+			default:
+				throw new Error(`No load function defined for page ${page}`);
 		}
 	},
 
@@ -2518,6 +2534,8 @@ EntryRenderer.hover = {
 				return EntryRenderer.object.getCompactRenderedString;
 			case UrlUtil.PG_TRAPS_HAZARDS:
 				return EntryRenderer.traphazard.getCompactRenderedString;
+			case UrlUtil.PG_VARIATNRULES:
+				return EntryRenderer.variantrule.getCompactRenderedString;
 			default:
 				return null;
 		}
