@@ -12,6 +12,10 @@ UtilBookReference = {
 					"Combat",
 					"Adventuring"
 				];
+			case "bookref-dmscreen":
+				return [
+					"Running the Game"
+				];
 			default:
 				throw new Error(`No sections defined for book id ${refId}`);
 		}
@@ -43,9 +47,9 @@ UtilBookReference = {
 			});
 		}
 
-		const out = {};
 		refTypes.forEach(refType => {
 			reset();
+			const out = {};
 
 			function isDesiredSect (ent) {
 				return ent.entries && ent.data && ent.data[refType.tag];
