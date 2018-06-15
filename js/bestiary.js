@@ -37,6 +37,10 @@ function getAllImmRest (toParse, key) {
 	return out;
 }
 
+function basename(str, sep) {
+    return str.substr(str.lastIndexOf(sep) + 1);
+}
+
 const meta = {};
 
 function loadMeta (nextFunction) {
@@ -543,6 +547,7 @@ function loadhash (id) {
 				<span class="glyphicon glyphicon-volume-up mon-name-pronounce-icon"></span>
 				<audio class="mon-name-pronounce">
 				   <source src="${mon.soundClip}" type="audio/mpeg">
+				   <source src="audio/${basename(mon.soundClip, '/')}" type="audio/mpeg">
 				</audio>
 			</span>`;
 		}
