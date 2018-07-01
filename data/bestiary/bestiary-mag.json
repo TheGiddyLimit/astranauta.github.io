@@ -8,7 +8,14 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "18 (natural armor)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 162,
 				"formula": "13d12+78"
@@ -72,7 +79,7 @@
 					]
 				},
 				{
-					"name": "Web Net (Recharge 5\u20146)",
+					"name": "Web Net (Recharge 5—6)",
 					"entries": [
 						"The spider shark launches webs at a 30-foot radius area within 90 feet. Each creature in that area must succeed on a DC 16 Dexterity save. On a failed save, the creature takes 18 ({@dice 3d10+2}) damage and is restrained by webbing. As an action, the restrained creature can make a DC 18 Strength check, destroying from the webbing on a success. The effect ends if the webbing is destroyed. The webbing has AC 15; 25 hit points; is vulnerable to fire damage; and is immune to bludgeoning, poison, and psychic damage."
 					]

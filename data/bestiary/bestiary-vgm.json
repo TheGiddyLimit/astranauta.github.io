@@ -13,7 +13,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 84,
 				"formula": "13d8+26"
@@ -142,7 +149,14 @@
 				"C",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 120,
 				"formula": "16d8+48"
@@ -219,7 +233,7 @@
 					]
 				},
 				{
-					"name": "Mind Blast (Recharge 5\u20146)",
+					"name": "Mind Blast (Recharge 5—6)",
 					"entries": [
 						"The alhoon magically emits psychic energy in a 60-foot cone. Each creature in that area must succeed on a DC 16 Intelligence saving throw or take 22 ({@dice 4d8+4}) psychic damage and be stunned for 1 minute. A target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
@@ -322,7 +336,14 @@
 				"C",
 				"E"
 			],
-			"ac": "17 (natural armor)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 75,
 				"formula": "10d10+20"
@@ -640,7 +661,9 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "10",
+			"ac": [
+				10
+			],
 			"hp": {
 				"average": 9,
 				"formula": "2d8"
@@ -710,7 +733,15 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "16 (hide armor, shield)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item hide armor|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 132,
 				"formula": "24d8+24"
@@ -854,7 +885,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "16 (studded leather armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 75,
 				"formula": "10d8+30"
@@ -914,7 +952,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "11 (natural armor)",
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 38,
 				"formula": "4d10+16"
@@ -968,7 +1013,14 @@
 				"C",
 				"E"
 			],
-			"ac": "16 (natural armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 82,
 				"formula": "11d8+33"
@@ -1066,7 +1118,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 84,
 				"formula": "8d10+40"
@@ -1152,7 +1211,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "15 (chain shirt)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item chain shirt|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 44,
 				"formula": "8d8+8"
@@ -1257,7 +1323,14 @@
 				"L",
 				"E"
 			],
-			"ac": "17 (natural armor)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 90,
 				"formula": "12d10+24"
@@ -1384,7 +1457,14 @@
 				"C",
 				"E"
 			],
-			"ac": "17 (natural armor)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 91,
 				"formula": "14d8+28"
@@ -1698,7 +1778,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "7d8+21"
@@ -1780,7 +1867,14 @@
 				"NY",
 				"E"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 153,
 				"formula": "18d8+72"
@@ -1875,7 +1969,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "7d8+21"
@@ -1941,7 +2042,14 @@
 				"C",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 58,
 				"formula": "9d8+18"
@@ -2037,7 +2145,9 @@
 				"C",
 				"N"
 			],
-			"ac": "14",
+			"ac": [
+				14
+			],
 			"hp": {
 				"average": 18,
 				"formula": "4d6+4"
@@ -2119,7 +2229,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 121,
 				"formula": "9d20+27"
@@ -2167,7 +2284,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 84,
 				"formula": "8d10+40"
@@ -2206,7 +2330,7 @@
 					]
 				},
 				{
-					"name": "Death Ray (Recharge 5\u20146)",
+					"name": "Death Ray (Recharge 5—6)",
 					"entries": [
 						"The catoblepas targets a creature that it can see within 30 feet of it. The target must make a DC 16 Constitution saving throw, taking 36 ({@dice 8d8}) necrotic damage on a failed save, or half as much damage on a successful one. If the saving throw fails by 5 or more, the target instead takes 64 necrotic damage. The target dies if reduced to 0 hit points by this ray."
 					]
@@ -2226,7 +2350,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "16 (natural armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 58,
 				"formula": "9d8+18"
@@ -2307,7 +2438,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 143,
 				"formula": "22d8+44"
@@ -2379,7 +2517,14 @@
 				"C",
 				"E"
 			],
-			"ac": "14 (hide armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item hide armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 18,
 				"formula": "4d6+4"
@@ -2457,7 +2602,14 @@
 				"C",
 				"E"
 			],
-			"ac": "15 (studded leather armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 15,
 				"formula": "12d8+12"
@@ -2521,7 +2673,7 @@
 					]
 				},
 				{
-					"name": "Web (Recharge 5\u20146)",
+					"name": "Web (Recharge 5—6)",
 					"entries": [
 						"Ranged Weapon Attack: {@hit +5} to hit, range 30/60 ft., one Large or smaller creature. Hit: The target is restrained by webbing. As an action, the restrained target can make a DC 11 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; 5 hit points; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
 					]
@@ -2581,7 +2733,14 @@
 				"C",
 				"N"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 262,
 				"formula": "21d12+128"
@@ -2725,7 +2884,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 40,
 				"formula": "9d8"
@@ -2835,7 +3001,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "10",
+			"ac": [
+				10
+			],
 			"hp": {
 				"average": 15,
 				"formula": "2d10+4"
@@ -2879,7 +3047,9 @@
 				"L",
 				"E"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 2,
 				"formula": "1d4"
@@ -2935,7 +3105,14 @@
 				"C",
 				"N"
 			],
-			"ac": "14 (leather armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 13,
 				"formula": "3d6+3"
@@ -2999,7 +3176,14 @@
 				"C",
 				"N"
 			],
-			"ac": "15 (studded leather armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 27,
 				"formula": "5d8+5"
@@ -3069,7 +3253,14 @@
 				"L",
 				"E"
 			],
-			"ac": "16 (natural armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 161,
 				"formula": "17d10+68"
@@ -3146,7 +3337,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "10",
+			"ac": [
+				10
+			],
 			"hp": {
 				"average": 13,
 				"formula": "2d8+4"
@@ -3210,7 +3403,9 @@
 				"L",
 				"E"
 			],
-			"ac": "11",
+			"ac": [
+				11
+			],
 			"hp": {
 				"average": 67,
 				"formula": "9d8+27"
@@ -3302,7 +3497,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 26,
 				"formula": "4d8+8"
@@ -3366,7 +3568,14 @@
 				"C",
 				"E"
 			],
-			"ac": "16 (natural armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 178,
 				"formula": "17d10+85"
@@ -3435,7 +3644,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "12 (natural armor)",
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 19,
 				"formula": "3d8+6"
@@ -3483,7 +3699,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 67,
 				"formula": "15d8"
@@ -3616,7 +3839,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "12 (natural armor)",
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 11,
 				"formula": "2d8+2"
@@ -3680,7 +3910,14 @@
 				"C",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 123,
 				"formula": "13d10+52"
@@ -3774,7 +4011,9 @@
 				"L",
 				"E"
 			],
-			"ac": "10",
+			"ac": [
+				10
+			],
 			"hp": {
 				"average": 210,
 				"formula": "20d10+100"
@@ -3839,7 +4078,7 @@
 					]
 				},
 				{
-					"name": "Mind Blast (Recharge 5\u20146)",
+					"name": "Mind Blast (Recharge 5—6)",
 					"entries": [
 						"The elder brain magically emits psychic energy. Creatures of the elder brain's choice within 60 feet of it must succeed on a DC 18 Intelligence saving throw or take 32 ({@dice 5d10+5}) psychic damage and be stunned for 1 minute. A target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
@@ -3921,7 +4160,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 40,
 				"formula": "9d8"
@@ -4037,7 +4283,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 66,
 				"formula": "12d8+12"
@@ -4161,7 +4414,15 @@
 				"L",
 				"E"
 			],
-			"ac": "21 (plate, shields)",
+			"ac": [
+				{
+					"ac": 21,
+					"from": [
+						"{@item plate armor|phb}",
+						"{@item shield|phb|shields}"
+					]
+				}
+			],
 			"hp": {
 				"average": 187,
 				"formula": "15d12+90"
@@ -4245,7 +4506,14 @@
 				"L",
 				"E"
 			],
-			"ac": "10 (13 with mage armor)",
+			"ac": [
+				10,
+				{
+					"ac": 13,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 33,
 				"formula": "6d8+6"
@@ -4348,7 +4616,15 @@
 				"L",
 				"E"
 			],
-			"ac": "16 (chain shirt, shield)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item chain shirt|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 22,
 				"formula": "4d8+4"
@@ -4413,7 +4689,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "16 (natural armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "5d10+25"
@@ -4502,7 +4785,14 @@
 				"C",
 				"E"
 			],
-			"ac": "16 (chain mail)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item chain mail|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 127,
 				"formula": "15d8+60"
@@ -4585,7 +4875,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 184,
 				"formula": "16d12+80"
@@ -4677,7 +4974,14 @@
 				"C",
 				"E"
 			],
-			"ac": "15 (patchwork armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"barding scraps"
+					]
+				}
+			],
 			"hp": {
 				"average": 189,
 				"formula": "14d12+98"
@@ -4766,7 +5070,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 67,
 				"formula": "9d8+27"
@@ -4848,7 +5159,9 @@
 				"L",
 				"E"
 			],
-			"ac": "13",
+			"ac": [
+				13
+			],
 			"hp": {
 				"average": 13,
 				"formula": "3d4+6"
@@ -4916,6 +5229,23 @@
 			"environment": [
 				"underdark"
 			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Gazer Familiar",
+					"entries": [
+						"Spellcasters who are interested in unusual familiars find that gazers are eager to serve someone who has magical power, especially those who make a point of bullying and harassing others. The gazer behaves aggressively toward creatures smaller than itself, and it tends to randomly attack house pets, farm animals, and even children in town unless its master is very strict. A gazer serving as a familiar has the following trait.",
+						{
+						    "type": "entries",
+						    "name": "Familiar",
+						    "entries": [
+								"The gazer can serve another creature as a familiar, forming a telepathic bond with its willing master, provided that the mater is at least a 3rd-level spellcaster. While the two are bonded, the master can sense what the gazer senses as long as they are within 1 mile of each other. If its master causes it physical harm, the gazer will end its service as a familiar, breaking the telepathic bond."
+						    ]
+						}
+					]
+				}
+			],
+			"familiar": true,
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/183/gazer.mp3"
 		},
 		{
@@ -4927,7 +5257,14 @@
 				"L",
 				"E"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 22,
 				"formula": "3d10+6"
@@ -4984,7 +5321,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "13",
+			"ac": [
+				13
+			],
 			"hp": {
 				"average": 59,
 				"formula": "7d10+21"
@@ -5054,7 +5393,14 @@
 				"C",
 				"E"
 			],
-			"ac": "14 (studded leather armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 22,
 				"formula": "4d8+4"
@@ -5132,7 +5478,14 @@
 				"C",
 				"E"
 			],
-			"ac": "13 (leather armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 22,
 				"formula": "4d8+4"
@@ -5206,7 +5559,14 @@
 				"C",
 				"E"
 			],
-			"ac": "12 (natural armor)",
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 11,
 				"formula": "2d8+2"
@@ -5284,7 +5644,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "7d8+21"
@@ -5363,7 +5730,9 @@
 				"L",
 				"E"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 11,
 				"formula": "2d6+4"
@@ -5457,7 +5826,9 @@
 				"L",
 				"E"
 			],
-			"ac": "13",
+			"ac": [
+				13
+			],
 			"hp": {
 				"average": 49,
 				"formula": "9d6+18"
@@ -5562,7 +5933,14 @@
 				"L",
 				"E"
 			],
-			"ac": "13 (16 with barkskin)",
+			"ac": [
+				13,
+				{
+					"ac": 16,
+					"condition": "with {@spell barkskin}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 27,
 				"formula": "5d6+10"
@@ -5684,7 +6062,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "11 (natural armor)",
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 19,
 				"formula": "3d10+3"
@@ -5732,7 +6117,14 @@
 				"L",
 				"E"
 			],
-			"ac": "13 (studded leather armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 45,
 				"formula": "7d8+14"
@@ -5845,7 +6237,9 @@
 				"L",
 				"E"
 			],
-			"ac": "15",
+			"ac": [
+				15
+			],
 			"hp": {
 				"average": 32,
 				"formula": "5d8+10"
@@ -5947,7 +6341,14 @@
 				"C",
 				"E"
 			],
-			"ac": "17 (natural armor)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 135,
 				"formula": "18d8+54"
@@ -6045,7 +6446,7 @@
 					]
 				},
 				{
-					"name": "Mind Blast (Recharge 5\u20146)",
+					"name": "Mind Blast (Recharge 5—6)",
 					"entries": [
 						"The illithilich magically emits psychic energy in a 60-foot cone. Each creature in that area must succeed on a DC 18 Intelligence saving throw or take 27 ({@dice 5d8+5}) psychic damage and be stunned for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
@@ -6197,7 +6598,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 38,
 				"formula": "7d8+7"
@@ -6301,7 +6709,14 @@
 				"L",
 				"G"
 			],
-			"ac": "20 (natural armor)",
+			"ac": [
+				{
+					"ac": 20,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 152,
 				"formula": "16d12+48"
@@ -6521,7 +6936,15 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (leather armor, shield)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item leather armor|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 44,
 				"formula": "8d6+16"
@@ -6605,7 +7028,9 @@
 				"L",
 				"E"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 13,
 				"formula": "3d6+3"
@@ -6692,7 +7117,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 27,
 				"formula": "5d6+10"
@@ -6795,7 +7227,14 @@
 				"C",
 				"N"
 			],
-			"ac": "17 (natural armor)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 102,
 				"formula": "12d6+60"
@@ -6911,7 +7350,9 @@
 				"C",
 				"E"
 			],
-			"ac": "10",
+			"ac": [
+				10
+			],
 			"hp": {
 				"average": 75,
 				"formula": "10d8+30"
@@ -7000,7 +7441,14 @@
 				"C",
 				"E"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 67,
 				"formula": "9d10+18"
@@ -7088,7 +7536,9 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "16",
+			"ac": [
+				16
+			],
 			"hp": {
 				"average": 60,
 				"formula": "11d8+11"
@@ -7165,7 +7615,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "16 (studded leather armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 83,
 				"formula": "13d8+26"
@@ -7258,7 +7715,14 @@
 				"C",
 				"E"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 33,
 				"formula": "6d8+6"
@@ -7320,7 +7784,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 31,
 				"formula": "7d6+7"
@@ -7360,7 +7831,7 @@
 					]
 				},
 				{
-					"name": "Shadow Teleport (Recharge 5\u20146)",
+					"name": "Shadow Teleport (Recharge 5—6)",
 					"entries": [
 						"As a bonus action, the meenlock can teleport to an unoccupied space within 30 feet of it, provided that both the space it's teleporting from and its destination are in dim light or darkness. The destination need not be within line of sight."
 					]
@@ -7391,7 +7862,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (breastplate)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item breastplate|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 71,
 				"formula": "13d8+13"
@@ -7444,7 +7922,7 @@
 					]
 				},
 				{
-					"name": "Mind Blast (Recharge 5\u20146)",
+					"name": "Mind Blast (Recharge 5—6)",
 					"entries": [
 						"The mind flayer magically emits psychic energy in a 60-foot cone. Each creature in that area must succeed on a DC 15 Intelligence saving throw or take 22 ({@dice 4d8+4}) psychic damage and be stunned for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
@@ -7519,7 +7997,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 75,
 				"formula": "10d10+20"
@@ -7607,7 +8092,14 @@
 				"C",
 				"E"
 			],
-			"ac": "17 (natural armor)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 130,
 				"formula": "20d8+40"
@@ -7778,7 +8270,14 @@
 				"C",
 				"E"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 105,
 				"formula": "10d12+40"
@@ -7848,7 +8347,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 66,
 				"formula": "12d8+12"
@@ -7970,7 +8476,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 33,
 				"formula": "6d6+12"
@@ -8049,7 +8562,9 @@
 				"L",
 				"E"
 			],
-			"ac": "11",
+			"ac": [
+				11
+			],
 			"hp": {
 				"average": 7,
 				"formula": "3d4"
@@ -8105,7 +8620,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 71,
 				"formula": "11d8+22"
@@ -8224,7 +8746,14 @@
 				"C",
 				"E"
 			],
-			"ac": "16 (natural armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 325,
 				"formula": "21d20+105"
@@ -8269,7 +8798,7 @@
 					]
 				},
 				{
-					"name": "Acid Breath (Recharge 5\u20146)",
+					"name": "Acid Breath (Recharge 5—6)",
 					"entries": [
 						"The neothelid exhales acid in a 60-foot cone. Each creature in that area must make a DC 18 Dexterity saving throw, taking 35 ({@dice 10d6}) acid damage on a failed save, or half as much damage on a successful one."
 					]
@@ -8313,7 +8842,14 @@
 				"C",
 				"E"
 			],
-			"ac": "13 (leather armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 7,
 				"formula": "2d6"
@@ -8410,7 +8946,15 @@
 				"C",
 				"E"
 			],
-			"ac": "18 (chain mail, shield)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item chain mail|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 60,
 				"formula": "8d8+24"
@@ -8500,7 +9044,14 @@
 				"C",
 				"E"
 			],
-			"ac": "14 (hide armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item hide armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 45,
 				"formula": "6d8+18"
@@ -8606,7 +9157,14 @@
 				"C",
 				"E"
 			],
-			"ac": "12 (hide armor)",
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"{@item hide armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 30,
 				"formula": "4d8+12"
@@ -8704,7 +9262,9 @@
 				"C",
 				"E"
 			],
-			"ac": "9",
+			"ac": [
+				9
+			],
 			"hp": {
 				"average": 30,
 				"formula": "4d8+12"
@@ -8780,7 +9340,14 @@
 				"C",
 				"E"
 			],
-			"ac": "15 (studded leather armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "8d8+16"
@@ -8873,7 +9440,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "10",
+			"ac": [
+				10
+			],
 			"hp": {
 				"average": 15,
 				"formula": "2d10+4"
@@ -8925,7 +9494,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 30,
 				"formula": "4d12+4"
@@ -8984,7 +9560,9 @@
 				"C",
 				"E"
 			],
-			"ac": "16",
+			"ac": [
+				16
+			],
 			"hp": {
 				"average": 10,
 				"formula": "3d4+3"
@@ -9050,7 +9628,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "7d8+21"
@@ -9116,7 +9701,14 @@
 				"C",
 				"E"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 45,
 				"formula": "6d6+24"
@@ -9188,7 +9780,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "10",
+			"ac": [
+				10
+			],
 			"hp": {
 				"average": 15,
 				"formula": "2d10+4"
@@ -9236,7 +9830,14 @@
 				"L",
 				"E"
 			],
-			"ac": "11 (natural armor)",
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 32,
 				"formula": "5d8+10"
@@ -9302,7 +9903,9 @@
 				"L",
 				"E"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 33,
 				"formula": "6d8+6"
@@ -9413,7 +10016,14 @@
 				"C",
 				"E"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 110,
 				"formula": "13d10+39"
@@ -9503,7 +10113,9 @@
 				"C",
 				"E"
 			],
-			"ac": "14",
+			"ac": [
+				14
+			],
 			"hp": {
 				"average": 32,
 				"formula": "5d8+10"
@@ -9625,7 +10237,9 @@
 				"C",
 				"E"
 			],
-			"ac": "10",
+			"ac": [
+				10
+			],
 			"hp": {
 				"average": 76,
 				"formula": "9d8+36"
@@ -9702,7 +10316,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 76,
 				"formula": "8d12+24"
@@ -9741,7 +10362,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "10",
+			"ac": [
+				10
+			],
 			"hp": {
 				"average": 15,
 				"formula": "2d10+4"
@@ -9802,7 +10425,14 @@
 				"C",
 				"N"
 			],
-			"ac": "18 (natural armor)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 161,
 				"formula": "14d12+70"
@@ -9889,7 +10519,9 @@
 				"C",
 				"G"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 230,
 				"formula": "20d12+100"
@@ -10012,7 +10644,9 @@
 				"L",
 				"E"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 36,
 				"formula": "8d8"
@@ -10110,7 +10744,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "8",
+			"ac": [
+				8
+			],
 			"hp": {
 				"average": 22,
 				"formula": "5d8"
@@ -10181,7 +10817,14 @@
 				"NY",
 				"E"
 			],
-			"ac": "17 (leather armor)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 66,
 				"formula": "12d8+12"
@@ -10255,7 +10898,14 @@
 				"C",
 				"E"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 95,
 				"formula": "10d8+50"
@@ -10339,7 +10989,14 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 27,
 				"formula": "5d8+5"
@@ -10402,7 +11059,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 85,
 				"formula": "10d10+30"
@@ -10470,7 +11134,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 40,
 				"formula": "9d8"
@@ -10585,7 +11256,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 85,
 				"formula": "10d10+30"
@@ -10643,7 +11321,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (breastplate)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item breastplate|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 127,
 				"formula": "17d10+14"
@@ -10706,7 +11391,7 @@
 					]
 				},
 				{
-					"name": "Mind Blast (Recharge 5\u20146)",
+					"name": "Mind Blast (Recharge 5—6)",
 					"entries": [
 						"The ulitharid magically emits psychic energy in a 60-foot cone. Each creature in that area must succeed on a DC 17 Intelligence saving throw or take 31 ({@dice 4d12+5}) psychic damage and be stunned for 1 minute. A target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
@@ -10752,7 +11437,9 @@
 				"C",
 				"E"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 13,
 				"formula": "3d4+6"
@@ -10818,7 +11505,14 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 9,
 				"formula": "2d6+2"
@@ -10887,7 +11581,14 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 33,
 				"formula": "6d6+12"
@@ -10968,7 +11669,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 10,
 				"formula": "3d4+3"
@@ -11035,7 +11743,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 117,
 				"formula": "18d8+36"
@@ -11163,7 +11878,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "11 (14 with mage armor)",
+			"ac": [
+				11,
+				{
+					"ac": 14,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 49,
 				"formula": "11d8"
@@ -11280,7 +12002,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 78,
 				"formula": "12d8+24"
@@ -11405,7 +12134,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 91,
 				"formula": "14d8+28"
@@ -11523,7 +12259,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 229,
 				"formula": "27d8+108"
@@ -11616,7 +12359,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "7d8+21"
@@ -11683,7 +12433,15 @@
 				"L",
 				"N"
 			],
-			"ac": "18 (natural armor, shield)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 75,
 				"formula": "10d8+30"
@@ -11778,7 +12536,14 @@
 				"C",
 				"E"
 			],
-			"ac": "13 (leather armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 7,
 				"formula": "2d6"
@@ -11854,7 +12619,14 @@
 				"C",
 				"E"
 			],
-			"ac": "13 (leather armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 7,
 				"formula": "2d6"
@@ -11930,7 +12702,14 @@
 				"C",
 				"E"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 22,
 				"formula": "5d6+5"
@@ -12034,7 +12813,14 @@
 				"L",
 				"E"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 51,
 				"formula": "6d10+18"
@@ -12128,7 +12914,14 @@
 				"N",
 				"E"
 			],
-			"ac": "16 (natural armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 189,
 				"formula": "18d12+72"
@@ -12284,7 +13077,14 @@
 				"N",
 				"E"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 45,
 				"formula": "7d8+14"
@@ -12389,7 +13189,14 @@
 				"N",
 				"E"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 71,
 				"formula": "13d8+13"
@@ -12553,7 +13360,14 @@
 				"N",
 				"E"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 71,
 				"formula": "13d8+13"
@@ -12717,7 +13531,14 @@
 				"N",
 				"E"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 88,
 				"formula": "16d8+16"
@@ -12875,7 +13696,9 @@
 				"N",
 				"E"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 66,
 				"formula": "12d8+12"
@@ -12990,7 +13813,9 @@
 				"N",
 				"E"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 66,
 				"formula": "12d8+12"

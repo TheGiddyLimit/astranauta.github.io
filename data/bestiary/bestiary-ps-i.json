@@ -10,7 +10,9 @@
 				"L",
 				"E"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 21,
 				"formula": "6d4+6"
@@ -95,7 +97,9 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "11",
+			"ac": [
+				11
+			],
 			"hp": {
 				"average": 45,
 				"formula": "10d8"
@@ -203,7 +207,9 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "9",
+			"ac": [
+				9
+			],
 			"hp": {
 				"average": 93,
 				"formula": "11d8+44"
@@ -341,7 +347,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 82,
 				"formula": "11d8+33"
@@ -409,7 +422,6 @@
 						"The vampire has advantage on melee attack rolls, but attack rolls against it have advantage."
 					]
 				},
-
 				{
 					"name": "Elder Vampires: Spellcasting",
 					"entries": [
@@ -454,7 +466,7 @@
 					"type": "variant",
 					"name": "Elder Vampires",
 					"entries": [
-						"The basic vampire statistics represent a \"neonate\"\u2014a newly spawned vampire. Older vampires can learn powerful magic of many different kinds, and might have any of the following traits and abilities."
+						"The basic vampire statistics represent a \"neonate\"—a newly spawned vampire. Older vampires can learn powerful magic of many different kinds, and might have any of the following traits and abilities."
 					]
 				}
 			]
@@ -475,7 +487,19 @@
 				"C",
 				"E"
 			],
-			"ac": "11 in human form, 12 (natural armor) in canid form",
+			"ac": [
+				{
+					"ac": 11,
+					"condition": "in humanoid form"
+				},
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					],
+					"condition": "in canid form"
+				}
+			],
 			"hp": {
 				"average": 58,
 				"formula": "9d8+18"

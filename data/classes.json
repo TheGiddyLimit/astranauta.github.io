@@ -717,7 +717,7 @@
 							{
 								"name": "Path of the Battlerager",
 								"entries": [
-									"Known as Kuldjargh (literally \"axe idiot\") in Dwarvish, battleragers are dwarf followers of the gods of war and take the Path of the Battlerager. They specialize in wearing bulky, spiked armor and throwing themselves into combat, striking with their body itself and giving themselves over to the fury of battle.",
+									"Known as Kuldjargh (literally \"axe idiot\") in Dwarvish, battleragers are dwarf followers of the gods of war and take the Path of the Battlerager. They specialize in wearing bulky, {@item spiked armor|scag} and throwing themselves into combat, striking with their body itself and giving themselves over to the fury of battle.",
 									{
 										"type": "entries",
 										"name": "Restriction - Dwarves Only",
@@ -730,8 +730,8 @@
 										"type": "entries",
 										"name": "Battlerager Armor",
 										"entries": [
-											"When you choose this path at 3rd level, you gain the ability to use spiked armor as a weapon.",
-											"While you are wearing spiked armor and are raging, you can use a bonus action to make one melee weapon attack with your armor spikes at a target within 5 feet of you. If the attack hits, the spikes deal 1d4 piercing damage. You use your Strength modifier for the attack and damage rolls.",
+											"When you choose this path at 3rd level, you gain the ability to use {@item spiked armor|scag} as a weapon.",
+											"While you are wearing {@item spiked armor|scag} and are raging, you can use a bonus action to make one melee weapon attack with your armor spikes at a target within 5 feet of you. If the attack hits, the spikes deal 1d4 piercing damage. You use your Strength modifier for the attack and damage rolls.",
 											"Additionally, when you use the Attack action to grapple a creature, the target takes 3 piercing damage if your grapple check succeeds."
 										]
 									}
@@ -771,7 +771,7 @@
 										"type": "entries",
 										"name": "Spiked Retribution",
 										"entries": [
-											"Starting at 14th level, when a creature within 5 feet of you hits you with a melee attack, the attacker takes 3 piercing damage if you are raging, aren't {@condition incapacitated}, and are wearing spiked armor."
+											"Starting at 14th level, when a creature within 5 feet of you hits you with a melee attack, the attacker takes 3 piercing damage if you are raging, aren't {@condition incapacitated}, and are wearing {@item spiked armor|scag}."
 										]
 									}
 								]
@@ -31383,11 +31383,11 @@
 					"shortName": "Abjuration"
 				},
 				{
-					"name": "Bladesinger",
+					"name": "Bladesinging",
 					"subclassFeatures": [
 						[
 							{
-								"name": "Bladesinger",
+								"name": "Bladesinging",
 								"entries": [
 									"Bladesingers are elves who bravely defend their people and lands. They are elf wizards who master a school of sword fighting grounded in a tradition of arcane magic. In combat, a bladesinger uses a series of intricate, elegant maneuvers that fend off harm and allow the bladesinger to channel magic into devastating attacks and a cunning defense.",
 									{
@@ -31469,7 +31469,7 @@
 						]
 					],
 					"source": "SCAG",
-					"shortName": "Bladesinger"
+					"shortName": "Bladesinging"
 				},
 				{
 					"name": "School of Conjuration",

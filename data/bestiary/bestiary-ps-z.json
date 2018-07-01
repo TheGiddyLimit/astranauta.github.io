@@ -10,7 +10,14 @@
 				"L",
 				"N"
 			],
-			"ac": "17 (natural armor)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 136,
 				"formula": "16d8+64"
@@ -127,7 +134,9 @@
 				"L",
 				"G"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 67,
 				"formula": "9d10+18"
@@ -256,7 +265,14 @@
 				"C",
 				"E"
 			],
-			"ac": "16 (natural armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 230,
 				"formula": "20d12+100"
@@ -328,7 +344,7 @@
 					]
 				},
 				{
-					"name": "Lightning Strike (Recharge 5\u20146)",
+					"name": "Lightning Strike (Recharge 5—6)",
 					"entries": [
 						"The kraken hurls a magical lightning bolt at a point it can see within 500 feet of it. Each creature within 10 feet of that point must make a DC 17 Dexterity saving throw, taking 54 ({@dice 12d8}) lightning damage on a failed save, or half as much damage on a successful one."
 					]

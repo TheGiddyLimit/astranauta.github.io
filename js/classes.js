@@ -215,6 +215,10 @@ class ClassData {
 	static cleanScSource (source) {
 		return Parser._getSourceStringFromSource(source);
 	}
+
+	static getSubclassFromPill ($pill) {
+		return ClassDisplay.curClass.subclasses.find(sc => sc.name === $pill.data("subclass") && (sc.source.source || sc.source) === $pill.data("source"));
+	}
 }
 ClassData.classes = [];
 

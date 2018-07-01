@@ -14,7 +14,14 @@
 				"L",
 				"E"
 			],
-			"ac": "14 (leather armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 16,
 				"formula": "3d8+3"
@@ -88,7 +95,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (studded leather)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 78,
 				"formula": "12d8+24"
@@ -180,7 +194,14 @@
 				"L",
 				"E"
 			],
-			"ac": "16 (studded leather)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 110,
 				"formula": "17d8+34"
@@ -278,7 +299,14 @@
 				"L",
 				"E"
 			],
-			"ac": "14 (leather armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 33,
 				"formula": "6d8+6"
@@ -364,7 +392,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "7d8+21"
@@ -419,7 +454,14 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "12 (natural armor)",
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 32,
 				"formula": "5d8+10"
@@ -483,7 +525,14 @@
 				"L",
 				"E"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 135,
 				"formula": "18d8+54"
@@ -577,7 +626,9 @@
 				"L",
 				"E"
 			],
-			"ac": "17",
+			"ac": [
+				17
+			],
 			"hp": {
 				"average": 117,
 				"formula": "18d8+36"
@@ -667,7 +718,14 @@
 				"L",
 				"E"
 			],
-			"ac": "13 (16 with mage armor)",
+			"ac": [
+				13,
+				{
+					"ac": 16,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 71,
 				"formula": "11d8+22"
@@ -797,7 +855,9 @@
 				"L",
 				"E"
 			],
-			"ac": "16",
+			"ac": [
+				16
+			],
 			"hp": {
 				"average": 150,
 				"formula": "20d8+60"
@@ -950,7 +1010,14 @@
 				"C",
 				"E"
 			],
-			"ac": "25 (natural armor)",
+			"ac": [
+				{
+					"ac": 25,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 615,
 				"formula": "30d20+300"

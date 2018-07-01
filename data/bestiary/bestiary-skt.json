@@ -14,7 +14,9 @@
 				"N",
 				"G"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 6,
 				"formula": "3d4"
@@ -85,7 +87,15 @@
 				"L",
 				"G"
 			],
-			"ac": "15 (chain shirt, shield)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item chain shirt|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 13,
 				"formula": "2d8+4"
@@ -160,7 +170,9 @@
 				"C",
 				"G"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 18,
 				"formula": "4d8"
@@ -227,7 +239,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "13",
+			"ac": [
+				13
+			],
 			"hp": {
 				"average": 34,
 				"formula": "4d10+12"
@@ -301,7 +315,14 @@
 				"L",
 				"G"
 			],
-			"ac": "14 (breastplate)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item breastplate|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "8d8+16"
@@ -380,7 +401,9 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 27,
 				"formula": "5d8+5"
@@ -452,7 +475,9 @@
 				"L",
 				"G"
 			],
-			"ac": "10",
+			"ac": [
+				10
+			],
 			"hp": {
 				"average": 9,
 				"formula": "2d8"
@@ -486,7 +511,7 @@
 				{
 					"name": "Parry",
 					"entries": [
-						"Duvessa adds 2 to her AC against on melee attack that would hit him. To do so, Duvessa must see the attacker and be wielding a melee weapon."
+						"Duvessa adds 2 to her AC against one melee attack that would hit her. To do so, Duvessa must see the attacker and be wielding a melee weapon."
 					]
 				}
 			],
@@ -520,7 +545,15 @@
 				"L",
 				"G"
 			],
-			"ac": "14 (breastplate, shield)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item breastplate|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 30,
 				"formula": "4d8+12"
@@ -562,7 +595,7 @@
 				{
 					"name": "Roleplaying Information",
 					"entries": [
-						"The blacksmith Ghelryn has a good heart, but he hates orcs and giants\u2014hates them with a fiery passion. He considers it the solemn duty of all dwarves to cave in their skulls!",
+						"The blacksmith Ghelryn has a good heart, but he hates orcs and giants—hates them with a fiery passion. He considers it the solemn duty of all dwarves to cave in their skulls!",
 						"Ideal: \"It is incumbent upon every dwarf to forge a legacy.\"",
 						"Bond: \"I stand for Clan Foehammer and all dwarvenkind.\"",
 						"Flaw: \"I never run from a fight, especially if it involves killing orcs or giants.\""
@@ -593,7 +626,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "17 (natural armor)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 76,
 				"formula": "8d12+24"
@@ -653,7 +693,14 @@
 				"L",
 				"E"
 			],
-			"ac": "22 (natural armor)",
+			"ac": [
+				{
+					"ac": 22,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 481,
 				"formula": "26d20+208"
@@ -743,7 +790,7 @@
 					]
 				},
 				{
-					"name": "Lightning Breath (Recharge 5\u20146)",
+					"name": "Lightning Breath (Recharge 5—6)",
 					"entries": [
 						"Iymrith exhales lightning in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 23 Dexterity saving throw, taking 88 ({@dice 16d10}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
@@ -788,7 +835,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 59,
 				"formula": "7d12+14"
@@ -854,7 +908,9 @@
 				"C",
 				"E"
 			],
-			"ac": "16",
+			"ac": [
+				16
+			],
 			"hp": {
 				"average": 341,
 				"formula": "22d20+110"
@@ -962,7 +1018,7 @@
 				{
 					"name": "Quench Magic",
 					"entries": [
-						"Maegera targets one creature that it can see within 60 feet of it. Any resistence or immunity to fire damage that the target gains from a spell or magic item is suppressed. The effect lasts until the end of Maegera's next turn."
+						"Maegera targets one creature that it can see within 60 feet of it. Any resistance or immunity to fire damage that the target gains from a spell or magic item is suppressed. The effect lasts until the end of Maegera's next turn."
 					]
 				},
 				{
@@ -1001,7 +1057,14 @@
 				"L",
 				"G"
 			],
-			"ac": "17 (splint)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item splint armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 58,
 				"formula": "9d8+18"
@@ -1072,7 +1135,9 @@
 				"N",
 				"G"
 			],
-			"ac": "10",
+			"ac": [
+				10
+			],
 			"hp": {
 				"average": 22,
 				"formula": "4d8+4"
@@ -1143,7 +1208,9 @@
 				"C",
 				"G"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 18,
 				"formula": "4d8"
@@ -1216,7 +1283,14 @@
 				"N",
 				"G"
 			],
-			"ac": "10 (13 with mage armor)",
+			"ac": [
+				10,
+				{
+					"ac": 13,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 27,
 				"formula": "6d8"
@@ -1312,7 +1386,9 @@
 				"C",
 				"G"
 			],
-			"ac": "11",
+			"ac": [
+				11
+			],
 			"hp": {
 				"average": 9,
 				"formula": "2d6+2"
@@ -1393,7 +1469,14 @@
 				"L",
 				"N"
 			],
-			"ac": "10 (13 with mage armor)",
+			"ac": [
+				10,
+				{
+					"ac": 13,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 16,
 				"formula": "3d8+3"
@@ -1478,7 +1561,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "12 (natural armor)",
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 42,
 				"formula": "5d10+15"
@@ -1534,7 +1624,14 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "13 (leather)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 27,
 				"formula": "6d8"
@@ -1609,7 +1706,14 @@
 				"L",
 				"G"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "8d8+16"
@@ -1682,7 +1786,14 @@
 				"L",
 				"G"
 			],
-			"ac": "14 (leather)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 22,
 				"formula": "5d8"
@@ -1748,7 +1859,9 @@
 				"C",
 				"N"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 5,
 				"formula": "2d4"
@@ -1831,7 +1944,14 @@
 				"L",
 				"G"
 			],
-			"ac": "12 (leather)",
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 58,
 				"formula": "9d8+18"
@@ -1865,7 +1985,7 @@
 						"A retired adventurer, Urgala owns a respectable inn, the North­ shield House, and she doesn't want to see it or her neighbors' homes destroyed. She has no tolerance for monsters or bullies.",
 						"Ideal: \"We live in a violent world, and sometimes violence is necessary for survival.\"",
 						"Bond: \"My home is my life. Threaten it, and I'll hurt you.\"",
-						"Flaw: \"I know how treacherous and greedy adventurers can be. I don't trust them\u2014any of them.\""
+						"Flaw: \"I know how treacherous and greedy adventurers can be. I don't trust them—any of them.\""
 					]
 				}
 			],
@@ -1905,7 +2025,9 @@
 				"L",
 				"E"
 			],
-			"ac": "13",
+			"ac": [
+				13
+			],
 			"hp": {
 				"average": 38,
 				"formula": "7d8+7"
@@ -1979,7 +2101,14 @@
 				"L",
 				"E"
 			],
-			"ac": "12 (hide armor)",
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"{@item hide armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "7d10+14"
@@ -2090,7 +2219,14 @@
 				"L",
 				"E"
 			],
-			"ac": "11 (leather)",
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 60,
 				"formula": "8d10+16"
@@ -2159,7 +2295,9 @@
 				"C",
 				"G"
 			],
-			"ac": "15",
+			"ac": [
+				15
+			],
 			"hp": {
 				"average": 22,
 				"formula": "5d8"
@@ -2229,7 +2367,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 68,
 				"formula": "8d12+16"
@@ -2289,7 +2434,14 @@
 				"C",
 				"E"
 			],
-			"ac": "18 (natural armor)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 472,
 				"formula": "27d20+189"
@@ -2502,7 +2654,14 @@
 				"C",
 				"E"
 			],
-			"ac": "9 (natural armor)",
+			"ac": [
+				{
+					"ac": 9,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 160,
 				"formula": "10d12+40"
@@ -2558,7 +2717,14 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "17 (natural armor)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 170,
 				"formula": "11d12+55"
@@ -2652,7 +2818,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (patchwork armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"barding scraps"
+					]
+				}
+			],
 			"hp": {
 				"average": 189,
 				"formula": "12d12+60"
@@ -2749,7 +2922,14 @@
 				"L",
 				"E"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 221,
 				"formula": "13d12+78"
@@ -2832,7 +3012,14 @@
 				"L",
 				"E"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 200,
 				"formula": "16d12+96"
@@ -2979,7 +3166,14 @@
 				"C",
 				"G"
 			],
-			"ac": "16 (scale mail)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item scale mail|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 330,
 				"formula": "20d12+100"
@@ -3044,7 +3238,7 @@
 					]
 				},
 				{
-					"name": "Lightning Strike (Recharge 5\u20146)",
+					"name": "Lightning Strike (Recharge 5—6)",
 					"entries": [
 						"Hekaton hurls a magical lightning bolt at a point he can see within 500 feet of it. Each creature within 10 feet of that point must make a DC 17 Dexterity saving throw, taking 54 ({@dice 12d8}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
@@ -3087,7 +3281,14 @@
 				"C",
 				"G"
 			],
-			"ac": "21 (+3 plate armor)",
+			"ac": [
+				{
+					"ac": 21,
+					"from": [
+						"{@item plate armor +3|dmg|+3 plate armor}"
+					]
+				}
+			],
 			"hp": {
 				"average": 204,
 				"formula": "12d12+60"
@@ -3161,7 +3362,14 @@
 				"L",
 				"E"
 			],
-			"ac": "13 (chain shirt)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item chain shirt|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 30,
 				"formula": "4d10+8"
@@ -3206,7 +3414,14 @@
 				"N",
 				"G"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 200,
 				"formula": "16d12+96"
@@ -3371,7 +3586,14 @@
 				"C",
 				"E"
 			],
-			"ac": "22 (natural armor)",
+			"ac": [
+				{
+					"ac": 22,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 546,
 				"formula": "28d20+252"
@@ -3456,7 +3678,7 @@
 					]
 				},
 				{
-					"name": "Fire Breath (Recharge 5\u20146)",
+					"name": "Fire Breath (Recharge 5—6)",
 					"entries": [
 						"Klauth exhales fire in a 90-foot cone. Each creature in that area must make a DC 24 Dexterity saving throw, taking 91 ({@dice 26d6}) fire damage on a failed save, or half as much damage on a successful one."
 					]

@@ -56,7 +56,8 @@
 					],
 					"type": "entries"
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/7/aarakocra.mp3"
 		},
 		{
 			"name": "Genasi",
@@ -212,7 +213,8 @@
 						}
 					]
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/576/genasi.mp3"
 		},
 		{
 			"name": "Elf",
@@ -480,13 +482,10 @@
 					},
 					"entries": [
 						{
-							"name": "Languages",
+							"name": "Extra Language",
 							"entries": [
 								"You can speak, read, and write Auran."
 							],
-							"data": {
-								"overwrite": "Languages"
-							},
 							"type": "entries"
 						},
 						{
@@ -543,13 +542,10 @@
 					},
 					"entries": [
 						{
-							"name": "Languages",
+							"name": "Extra Language",
 							"entries": [
 								"You can speak, read, and write Aquan."
 							],
-							"data": {
-								"overwrite": "Languages"
-							},
 							"type": "entries"
 						},
 						{
@@ -687,13 +683,10 @@
 							"type": "entries"
 						},
 						{
-							"name": "Languages",
+							"name": "Extra Language",
 							"entries": [
-								"You can speak, read, and write Common, Aquan and Elvish. Elvish is fluid, with subtle intonations and intricate grammar. Elven literature is rich and varied, and their songs and poems are famous among other races. Many bards learn their language so they can add Elvish ballads to their repertoires."
+								"You can speak, read, and write Aquan."
 							],
-							"data": {
-								"overwrite": "Languages"
-							},
 							"type": "entries"
 						}
 					]
@@ -723,7 +716,8 @@
 						}
 					]
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/152/elf.mp3"
 		},
 		{
 			"name": "Elf (Zendikar)",
@@ -1082,7 +1076,10 @@
 							"name": "Size",
 							"entries": [
 								"A typical svirfneblin stands about 3 to 3½ feet tall and weighs 80 to 120 pounds. Your size is Small."
-							]
+							],
+							"data": {
+								"overwrite": "Size"
+							}
 						},
 						{
 							"name": "Superior Darkvision",
@@ -1199,6 +1196,16 @@
 							}
 						},
 						{
+							"type": "entries",
+							"name": "Size",
+							"entries": [
+								"Unlike other gnomes, svirfneblin tend to weigh 80 to 120 pounds. Your size is Small."
+							],
+							"data": {
+								"overwrite": "Size"
+							}
+						},
+						{
 							"name": "Alignment",
 							"type": "entries",
 							"entries": [
@@ -1237,7 +1244,8 @@
 						}
 					]
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/231/gnome.mp3"
 		},
 		{
 			"name": "Dragonborn",
@@ -1367,7 +1375,8 @@
 					],
 					"type": "entries"
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/135/dragonborn.mp3"
 		},
 		{
 			"name": "Goliath",
@@ -1436,7 +1445,8 @@
 					],
 					"type": "entries"
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/238/goliath.mp3"
 		},
 		{
 			"name": "Half-Elf",
@@ -1693,7 +1703,8 @@
 						}
 					]
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/259/half-elf.mp3"
 		},
 		{
 			"name": "Half-Orc",
@@ -1763,7 +1774,8 @@
 					],
 					"type": "entries"
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/262/half-orc.mp3"
 		},
 		{
 			"name": "Dwarf",
@@ -1982,7 +1994,8 @@
 						}
 					]
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/146/dwarf.mp3"
 		},
 		{
 			"name": "Human",
@@ -2065,7 +2078,8 @@
 						}
 					]
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/279/human.mp3"
 		},
 		{
 			"name": "Halfling",
@@ -2175,7 +2189,8 @@
 						}
 					]
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/260/halfling.mp3"
 		},
 		{
 			"name": "Shifter",
@@ -2400,7 +2415,7 @@
 						{
 							"name": "Appearance",
 							"entries": [
-								"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose 1d4+1 of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone"
+								"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose {@dice 1d4+1} of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone"
 							],
 							"type": "entries"
 						},
@@ -2853,7 +2868,8 @@
 						}
 					]
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/488/tiefling.mp3"
 		},
 		{
 			"name": "Bugbear",
@@ -3052,7 +3068,8 @@
 						}
 					]
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/8/aasimar.mp3"
 		},
 		{
 			"name": "Firbolg",
@@ -3121,7 +3138,8 @@
 					],
 					"type": "entries"
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/161/firbolg.mp3"
 		},
 		{
 			"name": "Goblin",
@@ -3309,7 +3327,8 @@
 					],
 					"type": "entries"
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/294/kenku-2.mp3"
 		},
 		{
 			"name": "Kobold",
@@ -3609,7 +3628,8 @@
 					],
 					"type": "entries"
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/482/tabaxi.mp3"
 		},
 		{
 			"name": "Triton",
@@ -3689,7 +3709,8 @@
 					],
 					"type": "entries"
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/496/triton.mp3"
 		},
 		{
 			"name": "Yuan-ti Pureblood",
@@ -4777,7 +4798,8 @@
 					],
 					"type": "entries"
 				}
-			]
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/8/aasimar.mp3"
 		},
 		{
 			"name": "Human (Amonkhet)",

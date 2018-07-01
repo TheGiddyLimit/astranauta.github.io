@@ -156,8 +156,8 @@ function loadhash (jsonIndex) {
 
 	renderer.recursiveEntryRender({entries: it.entries}, renderStack, 2);
 
-	const simplePart = EntryRenderer.traphazard.getSimplePart(it);
-	const complexPart = EntryRenderer.traphazard.getComplexPart(it);
+	const simplePart = EntryRenderer.traphazard.getSimplePart(renderer, it);
+	const complexPart = EntryRenderer.traphazard.getComplexPart(renderer, it);
 	const $content = $(`#pagecontent`).empty();
 	$content.append(`
 		${EntryRenderer.utils.getBorderTr()}

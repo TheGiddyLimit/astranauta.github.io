@@ -111,6 +111,8 @@ EXCLUDES_STORAGE = "EXCLUDES_STORAGE";
 DMSCREEN_STORAGE = "DMSCREEN_STORAGE";
 ROLLER_MACRO_STORAGE = "ROLLER_MACRO_STORAGE";
 
+JSON_HOMEBREW_INDEX = `homebrew/index.json`;
+
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
@@ -474,6 +476,33 @@ Parser.crToNumber = function (cr) {
 	else return 0;
 };
 
+Parser.acToFull = function (ac) {
+	if (typeof ac === "string") return ac; // handle classic format
+
+	const renderer = EntryRenderer.getDefaultRenderer();
+	let stack = "";
+	for (let i = 0; i < ac.length; ++i) {
+		const cur = ac[i];
+		const nxt = ac[i + 1];
+
+		if (cur.ac) {
+			stack += cur.ac;
+			if (cur.from) stack += ` (${cur.from.map(it => renderer.renderEntry(it)).join(", ")})`;
+			if (cur.condition) stack += ` ${renderer.renderEntry(cur.condition)}`;
+			if (cur.braces) stack += ")";
+		} else {
+			stack += cur;
+		}
+
+		if (nxt) {
+			if (nxt.braces) stack += " (";
+			else stack += ", ";
+		}
+	}
+
+	return stack.trim();
+};
+
 MONSTER_COUNT_TO_XP_MULTIPLIER = [1, 1.5, 2, 2, 2, 2, 2.5, 2.5, 2.5, 2.5, 3, 3, 3, 3, 4];
 Parser.numMonstersToXpMult = function (num) {
 	if (num >= MONSTER_COUNT_TO_XP_MULTIPLIER.length) return 4;
@@ -605,6 +634,10 @@ Parser.spLevelToFull = function (level) {
 	if (level === 2) return level + "nd";
 	if (level === 3) return level + "rd";
 	return level + "th";
+};
+
+Parser.spLevelToFullLevelText = function (level, dash) {
+	return `${Parser.spLevelToFull(level)}${(level === 0 ? "s" : `${dash ? "-" : " "}level`)}`;
 };
 
 Parser.spMetaToFull = function (meta) {
@@ -1685,6 +1718,8 @@ ListUtil = {
 				// K up; J down
 				if (noModifierKeys(e)) {
 					if (e.key === "k" || e.key === "j") {
+						// don't switch if the user is typing somewhere else
+						if (e.target.nodeName === "INPUT" || e.target.nodeName === "TEXTAREA") return;
 						const it = History.getSelectedListElementWithIndex();
 
 						if (it) {
@@ -2200,13 +2235,16 @@ ListUtil = {
  * @param options overrides for the default filter options
  * @returns {*} a `Filter`
  */
-function getSourceFilter (options) {
+function getSourceFilter (options = {}) {
 	const baseOptions = {
 		header: FilterBox.SOURCE_HEADER,
 		displayFn: Parser.sourceJsonToFullCompactPrefix,
-		selFn: defaultSourceSelFn
+		selFn: defaultSourceSelFn,
+		numGroups: 2,
+		groupFn: SourceUtil.isNonstandardSource
 	};
-	return getFilterWithMergedOptions(baseOptions, options);
+	Object.assign(baseOptions, options);
+	return new GroupedFilter(baseOptions);
 }
 
 function defaultSourceDeselFn (val) {
@@ -2714,19 +2752,38 @@ BrewUtil = {
 		if (BrewUtil.homebrew) {
 			brewHandler(BrewUtil.homebrew);
 		} else {
-			const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
-			if (rawBrew) {
-				try {
-					BrewUtil.homebrew = JSON.parse(rawBrew);
-					brewHandler(BrewUtil.homebrew);
-				} catch (e) {
-					// on error, purge all brew and reset hash
-					purgeBrew();
-					setTimeout(() => {
-						throw e
-					});
+			DataUtil.loadJSON(JSON_HOMEBREW_INDEX).then((data) => {
+				// auto-load from `homebrew/`, for custom versions of the site
+				function handleHomebrewFolder () {
+					if (data.toImport.length) {
+						Promise.all(data.toImport.map(it => DataUtil.loadJSON(`homebrew/${it}`))).then((datas) => {
+							const page = UrlUtil.getCurrentPage();
+							datas.forEach(d => {
+								BrewUtil.doHandleBrewJson(d, page);
+							})
+						});
+					}
 				}
-			}
+
+				const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
+				if (rawBrew) {
+					try {
+						BrewUtil.homebrew = JSON.parse(rawBrew);
+						handleHomebrewFolder();
+						brewHandler(BrewUtil.homebrew);
+					} catch (e) {
+						// on error, purge all brew and reset hash
+						purgeBrew();
+						setTimeout(() => {
+							throw e
+						});
+					}
+				} else {
+					BrewUtil.homebrew = {};
+					handleHomebrewFolder();
+					brewHandler(BrewUtil.homebrew);
+				}
+			});
 		}
 
 		function purgeBrew () {

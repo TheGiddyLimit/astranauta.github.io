@@ -9,7 +9,14 @@
 				"L",
 				"E"
 			],
-			"ac": "21 (natural armor)",
+			"ac": [
+				{
+					"ac": 21,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 285,
 				"formula": "30d8+150"
@@ -240,7 +247,14 @@
 			"alignment": [
 				"A"
 			],
-			"ac": "13 (hide armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item hide armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 30,
 				"formula": "4d8+12"
@@ -316,7 +330,14 @@
 				"L",
 				"N"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 49,
 				"formula": "9d8+9"
@@ -374,7 +395,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "13",
+			"ac": [
+				13
+			],
 			"hp": {
 				"average": 3,
 				"formula": "1d6"
@@ -428,7 +451,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 68,
 				"formula": "8d12+16"
@@ -483,7 +513,14 @@
 				"N",
 				"G"
 			],
-			"ac": "14 (studded leather)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 82,
 				"formula": "15d8+15"
@@ -570,7 +607,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 85,
 				"formula": "10d10+30"
@@ -636,7 +680,9 @@
 				"L",
 				"E"
 			],
-			"ac": "7",
+			"ac": [
+				7
+			],
 			"hp": {
 				"average": 225,
 				"formula": "18d12+108"
@@ -762,7 +808,9 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "15",
+			"ac": [
+				15
+			],
 			"hp": {
 				"average": 5,
 				"formula": "2d4"
@@ -844,7 +892,15 @@
 				"L",
 				"G"
 			],
-			"ac": "17 (breastplate, shield)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item breastplate|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 120,
 				"formula": "16d8+48"
@@ -914,7 +970,9 @@
 				"L",
 				"E"
 			],
-			"ac": "13",
+			"ac": [
+				13
+			],
 			"hp": {
 				"average": 26,
 				"formula": "4d10+4"
@@ -955,7 +1013,6 @@
 					"name": "Multiattack",
 					"entries": [
 						"The eblis attacks twice with its beak."
-
 					]
 				},
 				{
@@ -975,7 +1032,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 3,
 				"formula": "1d6+4"
@@ -1020,7 +1079,14 @@
 				"C",
 				"E"
 			],
-			"ac": "17 (natural armor)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 147,
 				"formula": "14d10+70"
@@ -1101,7 +1167,18 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "17 (natural armor), 12 while prone",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				},
+				{
+					"ac": 12,
+					"condition": "while prone"
+				}
+			],
 			"hp": {
 				"average": 75,
 				"formula": "10d10+20"
@@ -1116,7 +1193,7 @@
 			"int": 2,
 			"wis": 12,
 			"cha": 5,
-			"senses": "darvision 60 ft.",
+			"senses": "darkvision 60 ft.",
 			"passive": 11,
 			"cr": "3",
 			"trait": [
@@ -1152,7 +1229,14 @@
 				"C",
 				"E"
 			],
-			"ac": "11 (natural armor)",
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 59,
 				"formula": "7d10+21"
@@ -1220,7 +1304,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 16,
 				"formula": "3d10"
@@ -1281,7 +1372,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 67,
 				"formula": "9d10+18"
@@ -1311,7 +1409,7 @@
 				{
 					"name": "Pounce",
 					"entries": [
-						"If the kamadan moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is knocked prone, the kamadan can make two attacks\u2014one with its bite and one with its snakes\u2014against it as a bonus action."
+						"If the kamadan moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is knocked prone, the kamadan can make two attacks—one with its bite and one with its snakes—against it as a bonus action."
 					]
 				}
 			],
@@ -1363,7 +1461,15 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (studded leather, shield)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 84,
 				"formula": "13d8+26"
@@ -1434,7 +1540,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 45,
 				"formula": "7d10+7"
@@ -1499,7 +1607,9 @@
 				"L",
 				"N"
 			],
-			"ac": "10",
+			"ac": [
+				10
+			],
 			"hp": {
 				"average": 13,
 				"formula": "3d8"
@@ -1565,7 +1675,14 @@
 				"L",
 				"E"
 			],
-			"ac": "12 (natural armor)",
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 26,
 				"formula": "4d10+4"
@@ -1638,7 +1755,14 @@
 				"N",
 				"E"
 			],
-			"ac": "15 (bracers of defense)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item bracers of defense}"
+					]
+				}
+			],
 			"hp": {
 				"special": "127 (17d8+51) reduced to 107; subtract 1 for each day that passes during the adventure"
 			},
@@ -1806,7 +1930,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 157,
 				"formula": "15d10+75"
@@ -1893,7 +2024,9 @@
 				"C",
 				"E"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 27,
 				"formula": "5d8+5"
@@ -1934,7 +2067,7 @@
 					]
 				},
 				{
-					"name": "Psychic Crush (Recharge 5\u20146)",
+					"name": "Psychic Crush (Recharge 5—6)",
 					"entries": [
 						"The su-monster targets one creature it can see within 30 feet of it. The target must succeed on a DC 11 Wisdom saving throw or take 17 ({@dice 5d6}) psychic damage and be stunned for 1 minute. The stunned target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
@@ -1956,7 +2089,14 @@
 				"C",
 				"G"
 			],
-			"ac": "14 (leather armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 40,
 				"formula": "9d8"
@@ -2031,7 +2171,9 @@
 				"C",
 				"G"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 22,
 				"formula": "5d8"
@@ -2100,7 +2242,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "10",
+			"ac": [
+				10
+			],
 			"hp": {
 				"average": 11,
 				"formula": "2d8+2"
@@ -2159,7 +2303,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "11 (natural armor)",
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 136,
 				"formula": "13d12+52"
@@ -2232,7 +2383,9 @@
 				"C",
 				"G"
 			],
-			"ac": "11",
+			"ac": [
+				11
+			],
 			"hp": {
 				"average": 31,
 				"formula": "7d8"
@@ -2315,7 +2468,14 @@
 				"L",
 				"E"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 71,
 				"formula": "11d8+22"
@@ -2423,7 +2583,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "6",
+			"ac": [
+				6
+			],
 			"hp": {
 				"average": 60,
 				"formula": "11d8+11"
@@ -2485,7 +2647,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "9",
+			"ac": [
+				9
+			],
 			"hp": {
 				"average": 33,
 				"formula": "6d8+6"
@@ -2538,7 +2702,14 @@
 				"L",
 				"G"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 110,
 				"formula": "17d8+34"
@@ -2653,7 +2824,7 @@
 					]
 				},
 				{
-					"name": "Breath Weapon (Recharge 5\u20146)",
+					"name": "Breath Weapon (Recharge 5—6)",
 					"entries": [
 						"Zindar uses one of the following options:"
 					]
@@ -2681,7 +2852,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "10 (see Natural Armor feature)",
+			"ac": [
+				{
+					"ac": 10,
+					"from": [
+						"see Natural Armor feature"
+					]
+				}
+			],
 			"hp": {
 				"average": 27,
 				"formula": "6d6+6"
@@ -2733,7 +2911,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 200,
 				"formula": "19d12+52"
@@ -2786,7 +2971,7 @@
 					]
 				},
 				{
-					"name": "Summon Swarm (Recharge 5\u20146)",
+					"name": "Summon Swarm (Recharge 5—6)",
 					"entries": [
 						"The King of Feathers exhales a swarm of insects (wasps) that forms in a space within 20 feet of it. The swarm acts as an ally of the King of Feathers and takes its turn immediately after it. The swarm disperses after 1 minute. It can't use the Summon Swarm action while it is grappling a creature with its jaws."
 					]
@@ -2814,7 +2999,14 @@
 				"L",
 				"E"
 			],
-			"ac": "14 (studded leather)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 45,
 				"formula": "6d8+18"
@@ -2960,7 +3152,9 @@
 				"L",
 				"N"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 31,
 				"formula": "7d8"
@@ -3070,7 +3264,14 @@
 				"N",
 				"E"
 			],
-			"ac": "17 (natural armor)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 135,
 				"formula": "18d8+54"
@@ -3290,7 +3491,14 @@
 				"C",
 				"N"
 			],
-			"ac": "13 (hide armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item hide armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 67,
 				"formula": "9d8+27"

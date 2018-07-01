@@ -37,6 +37,7 @@ find . -type f -name '*.html' -print0 |
     	# FIXME temporarily disabled
         # sed -i -e 's;href="css/;href="https://static.5etools.com/css/;g' $line
         # sed -i -e 's;src="js/;src="https://static.5etools.com/js/;g' $line
+        echo I must pay more attention in class
     done
 
 find css -type f -name '*.css' -print0 |
@@ -47,6 +48,7 @@ find css -type f -name '*.css' -print0 |
         # sed -i -e 's;../fonts/glyphicons-halflings-regular.eot;https://static.5etools.com/fonts/glyphicons-halflings-regular.eot;g' $line
         # sed -i -e 's;../fonts/glyphicons-halflings-regular.woff;https://static.5etools.com/fonts/glyphicons-halflings-regular.woff;g' $line
         # sed -i -e 's;../fonts/glyphicons-halflings-regular.ttf;https://static.5etools.com/fonts/glyphicons-halflings-regular.ttf;g' $line
+        echo I must pay more attention in class
     done
 
 echo "Installing Query Strings."

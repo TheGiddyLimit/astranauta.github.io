@@ -9,7 +9,9 @@
 				"L",
 				"E"
 			],
-			"ac": "8",
+			"ac": [
+				8
+			],
 			"hp": {
 				"average": 22,
 				"formula": "3d8+9"
@@ -74,7 +76,9 @@
 				"L",
 				"E"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 22,
 				"formula": "5d8"
@@ -149,7 +153,9 @@
 				"L",
 				"E"
 			],
-			"ac": "13",
+			"ac": [
+				13
+			],
 			"hp": {
 				"average": 45,
 				"formula": "6d8+18"
@@ -234,7 +240,14 @@
 				"L",
 				"E"
 			],
-			"ac": "11 (14 with mage armor)",
+			"ac": [
+				11,
+				{
+					"ac": 14,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 27,
 				"formula": "6d8"
@@ -352,7 +365,14 @@
 				"L",
 				"E"
 			],
-			"ac": "14 (studded leather armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 16,
 				"formula": "3d8+3"
@@ -402,7 +422,14 @@
 				"N",
 				"G"
 			],
-			"ac": "16 (chain mail)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item chain mail|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 27,
 				"formula": "5d8+5"

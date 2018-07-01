@@ -193,6 +193,19 @@ header {
 
 /* *** */
 
+.btn-name-pronounce {
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.name-pronounce-icon {
+	line-height: 16px;
+}
+
+.name-pronounce {
+	display: none;
+}
+
 .glyphicon.delete-icon {
 	top: 0;
 	margin-left: auto;
@@ -2047,11 +2060,22 @@ table.stats.stats-book table.printbook-bestiary-entry {
 	background: #7a564f;
 }
 
-.dropdown-menu-filter .pill-grid {
+.dropdown-menu-filter .pill-grid,
+.dropdown-menu-filter .pill-grid-sub {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	max-width: 100%;
+}
+
+.dropdown-menu-filter .pill-grid.pill-grid-subs {
+	display: block;
+}
+
+.dropdown-menu-filter .pill-grid-subs-divider {
+	margin-top: 6px;
+	margin-bottom: 6px;
+	max-width: 80%;
 }
 
 .dropdown-menu-filter .pill-grid-divider {
@@ -2120,6 +2144,21 @@ table.stats.stats-book table.printbook-bestiary-entry {
 	background: #8a1a1b;
 	color: white;
 	border: 1px solid transparent;
+}
+
+.dropdown-menu-filter .slider.slider-horizontal {
+	width: calc(100% - 80px);
+	margin-top: 5px;
+	margin-bottom: 7px;
+}
+
+.dropdown-menu-filter .slider-handle {
+	border-radius: 3px;
+	width: 14px;
+	height: 16px;
+	top: 2px;
+	border: 1px solid #ccc;
+	background: white;
 }
 
 #filter-search-input-group > *:first-child,
@@ -3396,6 +3435,18 @@ table.stats table.statsDataInset {
 
 	.dropdown-menu-filter .pill-grid .filter-pill:hover:not([state]) {
 		background: #323232;
+	}
+
+	.dropdown-menu-filter .slider-handle {
+		background: rgba(128, 128, 128, 0.5);
+	}
+
+	.dropdown-menu-filter .slider-track {
+		background: #444;
+	}
+
+	.dropdown-menu-filter .slider-selection {
+		background: #777;
 	}
 
 	.list-disabled-overlay::after {

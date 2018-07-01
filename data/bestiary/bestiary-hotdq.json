@@ -8,7 +8,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 22,
 				"formula": "4d6+8"
@@ -71,7 +78,14 @@
 				"L",
 				"E"
 			],
-			"ac": "13 (16 with mage armor)",
+			"ac": [
+				13,
+				{
+					"ac": 16,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 39,
 				"formula": "6d8+12"
@@ -185,7 +199,14 @@
 				"L",
 				"E"
 			],
-			"ac": "17 (splint)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item splint armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 138,
 				"formula": "12d12+60"
@@ -304,7 +325,15 @@
 				"L",
 				"E"
 			],
-			"ac": "19 (splint, shield)",
+			"ac": [
+				{
+					"ac": 19,
+					"from": [
+						"{@item splint armor|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 93,
 				"formula": "11d10+33"
@@ -381,7 +410,15 @@
 				"L",
 				"E"
 			],
-			"ac": "16 (studded leather, shield)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item studded leather armor|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "7d10+14"
@@ -499,7 +536,14 @@
 				"L",
 				"E"
 			],
-			"ac": "16 (chain mail)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item chain mail|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 44,
 				"formula": "8d8+8"
@@ -595,7 +639,14 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "15 (leather armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 22,
 				"formula": "4d6+8"
@@ -696,7 +747,14 @@
 				"L",
 				"E"
 			],
-			"ac": "17 (splint)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item splint armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 57,
 				"formula": "6d12+18"
@@ -760,7 +818,7 @@
 					]
 				},
 				{
-					"name": "Lightning Breath (Recharge 5\u20146)",
+					"name": "Lightning Breath (Recharge 5—6)",
 					"entries": [
 						"Langdedrosa breathes lightning in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 13 Dexterity saving throw, taking 22 ({@dice 4d10}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
@@ -782,7 +840,15 @@
 				"C",
 				"E"
 			],
-			"ac": "15 (studded leather armor, shield)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 59,
 				"formula": "7d8+28"
@@ -912,7 +978,14 @@
 				"L",
 				"E"
 			],
-			"ac": "13 (15 with the Black Dragon Mask)",
+			"ac": [
+				13,
+				{
+					"ac": 15,
+					"condition": "with the Black Dragon Mask",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 90,
 				"formula": "12d8+36"
@@ -997,7 +1070,7 @@
 					]
 				},
 				{
-					"name": "Acid Breath (Recharge 5\u20146)",
+					"name": "Acid Breath (Recharge 5—6)",
 					"entries": [
 						"Rezmir breathes acid in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 14 Dexterity saving throw, taking 22 ({@dice 5d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
@@ -1041,7 +1114,15 @@
 				"L",
 				"E"
 			],
-			"ac": "18 (scale mail +1, shield)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item scale mail +1|dmg|+1 scale mail}",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 58,
 				"formula": "9d8+18"

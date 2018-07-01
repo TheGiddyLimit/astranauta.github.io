@@ -758,7 +758,10 @@ function EntryRenderer () {
 							case "@class": {
 								if (others.length) {
 									const scSource = others.length > 1 ? `~${others[1].trim()}` : "~phb";
-									fauxEntry.href.subhashes = [{"key": "sub", "value": others[0].trim() + scSource}];
+									fauxEntry.href.subhashes = [
+										{key: "sub", value: others[0].trim() + scSource},
+										{key: "sources", value: 2}
+									];
 									if (others.length > 2) {
 										fauxEntry.href.subhashes.push({key: "f", value: others[2].trim()})
 									}
@@ -1566,7 +1569,7 @@ EntryRenderer.traphazard = {
 		}
 	},
 
-	getSimplePart (it) {
+	getSimplePart (renderer, it) {
 		if (it.trapType === "SMPL") {
 			return renderer.renderEntry({
 				entries: [
@@ -1591,7 +1594,7 @@ EntryRenderer.traphazard = {
 		return "";
 	},
 
-	getComplexPart (it) {
+	getComplexPart (renderer, it) {
 		if (it.trapType === "CMPX") {
 			return renderer.renderEntry({
 				entries: [
@@ -1635,7 +1638,7 @@ EntryRenderer.traphazard = {
 		const renderer = EntryRenderer.getDefaultRenderer();
 		return `
 			${EntryRenderer.utils.getNameTr(it, true)}
-			<tr class="text"><td colspan="6"><i>${EntryRenderer.traphazard.getSubtitle(it)}</i>${EntryRenderer.traphazard.getSimplePart(it)}${EntryRenderer.traphazard.getComplexPart(it)}</td>
+			<tr class="text"><td colspan="6"><i>${EntryRenderer.traphazard.getSubtitle(it)}</i>${EntryRenderer.traphazard.getSimplePart(renderer, it)}${EntryRenderer.traphazard.getComplexPart(renderer, it)}</td>
 			<tr class="text"><td colspan="6">${renderer.renderEntry({entries: it.entries}, 2)}</td></tr>
 		`;
 	}
@@ -1757,7 +1760,7 @@ EntryRenderer.monster = {
 						<th>Challenge Rating</th>
 					</tr>
 					<tr>
-						<td>${mon.ac}</td>					
+						<td>${Parser.acToFull(mon.ac)}</td>					
 						<td>${EntryRenderer.monster.getRenderedHp(mon.hp)}</td>					
 						<td>${Parser.getSpeedString(mon)}</td>					
 						<td>${Parser.monCrToFull(mon.cr)}</td>					

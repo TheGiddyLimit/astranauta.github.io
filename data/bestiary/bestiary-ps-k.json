@@ -9,7 +9,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "11",
+			"ac": [
+				11
+			],
 			"hp": {
 				"average": 27,
 				"formula": "5d8+5"
@@ -59,7 +61,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "11 (natural armor)",
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 10,
 				"formula": "3d4+3"
@@ -100,7 +109,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 247,
 				"formula": "15d20+90"

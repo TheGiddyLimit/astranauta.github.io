@@ -1,5 +1,6 @@
 "use strict";
 const JSON_URL = "data/backgrounds.json";
+const JSON_FLUFF_URL = "data/fluff-backgrounds.json";
 const renderer = EntryRenderer.getDefaultRenderer();
 
 window.onload = function load () {
@@ -114,21 +115,64 @@ function getSublistItem (bg, pinId) {
 
 function loadhash (id) {
 	renderer.setFirstSection(true);
+	const $pgContent = $("#pagecontent").empty();
+	const bg = bgList[id];
 
-	const $content = $("#pagecontent").empty();
-	const curbg = bgList[id];
-	const renderStack = [];
-	const entryList = {type: "entries", entries: curbg.entries};
-	renderer.recursiveEntryRender(entryList, renderStack, 1);
+	function buildStatsTab () {
+		const renderStack = [];
+		const entryList = {type: "entries", entries: bg.entries};
+		renderer.recursiveEntryRender(entryList, renderStack, 1);
 
-	$content.append(`
-		${EntryRenderer.utils.getBorderTr()}
-		${EntryRenderer.utils.getNameTr(curbg)}
-		<tr><td class="divider" colspan="6"><div></div></td></tr>
-		<tr class='trait'><td colspan='6'>${renderStack.join("")}</td></tr>
-		${EntryRenderer.utils.getPageTr(curbg)}
-		${EntryRenderer.utils.getBorderTr()}
-	`);
+		$pgContent.append(`
+			${EntryRenderer.utils.getBorderTr()}
+			${EntryRenderer.utils.getNameTr(bg)}
+			<tr><td class="divider" colspan="6"><div></div></td></tr>
+			<tr class='trait'><td colspan='6'>${renderStack.join("")}</td></tr>
+			${EntryRenderer.utils.getPageTr(bg)}
+			${EntryRenderer.utils.getBorderTr()}
+		`);
+	}
+
+	const traitTab = EntryRenderer.utils.tabButton(
+		"Traits",
+		() => {},
+		buildStatsTab
+	);
+
+	const infoTab = EntryRenderer.utils.tabButton(
+		"Info",
+		() => {},
+		() => {
+			function get$Tr () {
+				return $(`<tr class="text">`);
+			}
+			function get$Td () {
+				return $(`<td colspan="6" class="text">`);
+			}
+
+			$pgContent.append(EntryRenderer.utils.getBorderTr());
+			$pgContent.append(EntryRenderer.utils.getNameTr(bg));
+			let $tr = get$Tr();
+			let $td = get$Td().appendTo($tr);
+			$pgContent.append($tr);
+			$pgContent.append(EntryRenderer.utils.getBorderTr());
+
+			DataUtil.loadJSON(JSON_FLUFF_URL).then((data) => {
+				const baseFluff = data.background.find(it => it.name.toLowerCase() === bg.name.toLowerCase() && it.source.toLowerCase() === bg.source.toLowerCase());
+				if (bg.fluff && bg.fluff.entries) { // override; for homebrew usage only
+					renderer.setFirstSection(true);
+					$td.append(renderer.renderEntry({type: "section", entries: bg.fluff.entries}));
+				} else if (baseFluff && baseFluff.entries) {
+					renderer.setFirstSection(true);
+					$td.append(renderer.renderEntry({type: "section", entries: baseFluff.entries}));
+				} else {
+					$td.empty();
+					$td.append(HTML_NO_INFO);
+				}
+			});
+		}
+	);
+	EntryRenderer.utils.bindTabButtons(traitTab, infoTab);
 }
 
 function loadsub (sub) {

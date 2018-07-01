@@ -241,7 +241,10 @@ const levelFilter = new Filter({
 	displayFn: getFltrSpellLevelStr
 });
 const classFilter = new Filter({header: "Class"});
-const subclassFilter = new Filter({header: "Subclass"});
+const subclassFilter = new GroupedFilter({
+	header: "Subclass",
+	numGroups: 2
+});
 const classAndSubclassFilter = new MultiFilter("Classes", classFilter, subclassFilter);
 const metaFilter = new Filter({
 	header: "Components/Miscellaneous",
@@ -536,7 +539,13 @@ function addSpells (data) {
 		if (!spell.damageInflict) spell.damageInflict = [];
 		spell._fMeta = getMetaFilterObj(spell);
 		spell._fClasses = spell.classes.fromClassList.map(c => getClassFilterStr(c));
-		spell._fSubclasses = spell.classes.fromSubclass ? spell.classes.fromSubclass.map(c => getClassFilterStr(c.subclass)) : [];
+		spell._fSubclasses = spell.classes.fromSubclass
+			? spell.classes.fromSubclass.map(c => new FilterItem(
+				getClassFilterStr(c.subclass),
+				null,
+				SourceUtil.hasBeenReprinted(c.subclass.name, c.subclass.source) || Parser.sourceJsonToFull(c.subclass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(c.subclass.source).startsWith(PS_PREFIX)
+			))
+			: [];
 		spell._fTimeType = spell.time.map(t => t.unit);
 		spell._fDurationType = spell.duration.map(t => t.type);
 		spell._fRangeType = getRangeType(spell.range);

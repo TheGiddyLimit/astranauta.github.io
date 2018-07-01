@@ -9,7 +9,14 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "18 (natural armor)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 228,
 				"formula": "24d10+96"
@@ -110,7 +117,14 @@
 				"C",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 136,
 				"formula": "16d10+48"
@@ -166,7 +180,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 52,
 				"formula": "7d10+14"

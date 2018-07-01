@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.3.4",
+	"version": "1.4.0",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -342,6 +342,34 @@
 				}
 			]
 		},
+		"acItem": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"ac": {
+							"type": "integer"
+						},
+						"from": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"condition": {
+							"type": "string"
+						},
+						"braces": {
+							"type": "boolean"
+						}
+					},
+					"required": ["ac"]
+				},
+				{
+					"type": "integer"
+				}
+			]
+		},
 		"creature": {
 			"type": "object",
 			"properties": {
@@ -460,7 +488,10 @@
 					}
 				},
 				"ac": {
-					"type": "string"
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/acItem"
+					}
 				},
 				"hp": {
 					"oneOf": [

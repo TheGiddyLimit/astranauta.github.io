@@ -1,0 +1,32 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.0",
+	"type": "object",
+	"properties": {
+		"background": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"entries": {
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						}
+					}
+				},
+				"required": ["name", "source"],
+				"additionalProperties": false
+			}
+		}
+	},
+	"additionalProperties": false
+}

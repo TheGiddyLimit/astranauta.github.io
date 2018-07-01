@@ -370,30 +370,30 @@
 								},
 								{
 									"type": "entries",
-									"name": "Personality Trait:",
+									"name": "Personality Trait: Isolation",
 									"entries": [
-										"Isolation. It's a cruel world. All people have to fend for themselves. Self-sufficiency is the only path to success."
+										"It's a cruel world. All people have to fend for themselves. Self-sufficiency is the only path to success."
 									]
 								},
 								{
 									"type": "entries",
-									"name": "Ideal:",
+									"name": "Ideal: Independence",
 									"entries": [
-										"Independence. Someone who can stand alone can stand against anything."
+										"Someone who can stand alone can stand against anything."
 									]
 								},
 								{
 									"type": "entries",
-									"name": "Bond:",
+									"name": "Bond: The Yawning Portal",
 									"entries": [
-										"The Yawning Portal. This place is my only home. My friends and family are long gone. I love this place, but I try not to get attached to the people here. I'll outlive them all. Lucky me."
+										"This place is my only home. My friends and family are long gone. I love this place, but I try not to get attached to the people here. I'll outlive them all. Lucky me."
 									]
 								},
 								{
 									"type": "entries",
-									"name": "Flaw:",
+									"name": "Flaw: Heartless",
 									"entries": [
-										"Heartless. If you want sympathy, the Temple of Ilmater is in the Sea Ward. No matter how bad things are, you'll be gone in a blink of an eye."
+										"If you want sympathy, the Temple of Ilmater is in the Sea Ward. No matter how bad things are, you'll be gone in a blink of an eye."
 									]
 								}
 							]
@@ -465,13 +465,18 @@
 					"type": "entries",
 					"name": "The Sunless Citadel",
 					"entries": [
-						"{@i All things roll here: horrors of midnights,",
-						"Campaigns of a lost year,",
-						"Dungeons disturbed, and groves of lights;",
-						"Echoing on these shores, still clear,",
-						"Dead ecstasies of questing knights-",
-						"Yet how the wind revives us here!}",
-						"{@i - Arthur Rimbaud}",
+						{
+							"type": "quote",
+							"entries": [
+								"All things roll here: horrors of midnights,",
+								"Campaigns of a lost year,",
+								"Dungeons disturbed, and groves of lights;",
+								"Echoing on these shores, still clear,",
+								"Dead ecstasies of questing knights\u2014",
+								"Yet how the wind revives us here!"
+							],
+							"by": "Arthur Rimbaud"
+						},
 						"This adventure concerns a once-proud fortress that fell into the earth in an age long past. Now known as the Sunless Citadel, its echoing, broken halls house malign creatures. Evil has taken root at the citadel's core, which is deep within a subterranean garden of blighted foliage. Here a terrible tree and its dark shepherd plot in darkness.",
 						"The tree, called the Gulthias Tree, is shepherded by a twisted druid, Belak the Outcast. He was drawn to the buried citadel twelve years ago, following stories of oddly enchanted fruit to their source. The druid found an old fortress that had been swallowed up by the earth in some sort of magically invoked devastation. With the previous inhabitants long dispersed, vile and opportunistic creatures common to lightless dungeons infested the subterranean ruins. At the core of the old fortress, Belak stumbled upon the Twilight Grove. He discovered at the grove's heart the Gulthias Tree, which sprouted from a wooden stake that was used to slay an ancient vampire.",
 						"A perfect, ruby-red apple ripens on the Gulthias Tree at the summer solstice, and the tree produces a single albino apple at the winter solstice. The midsummer fruit grants vigor, health, and life, while the midwinter fruit steals the same. In the years since Belak's arrival, the enchanted fruit has been widely dispersed through the surrounding lands, promoting good and ill. The seeds of either fruit, if allowed to sprout, grow into small plant monsters known as twig blights."
@@ -654,9 +659,14 @@
 					"type": "entries",
 					"name": "The Citadel",
 					"entries": [
-						"{@i See the old Dragon from his throne",
-						"Sink with enormous ruin down!}",
-						"{@i - Hymn}",
+							{
+							"type": "quote",
+							"entries": [
+								"See the old Dragon from his throne",
+								"Sink with enormous ruin down!"
+							],
+							"by": "Hymn"
+						},
 						"Once the characters are ready to leave Oakhurst, the adventure truly begins. The overgrown Old Road winds through rocky downs, near stands of old-growth oak, and past abandoned farms. It is 7 miles from Oakhurst to the Sunless Citadel.",
 						{
 							"type": "inset",

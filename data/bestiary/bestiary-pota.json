@@ -14,7 +14,14 @@
 				"L",
 				"E"
 			],
-			"ac": "13 (16 with mage armor)",
+			"ac": [
+				13,
+				{
+					"ac": 16,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 66,
 				"formula": "12d8+12"
@@ -144,7 +151,14 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 117,
 				"formula": "18d8+36"
@@ -229,7 +243,14 @@
 				"L",
 				"E"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 78,
 				"formula": "12d8+24"
@@ -346,7 +367,14 @@
 				"L",
 				"E"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 39,
 				"formula": "6d8+12"
@@ -405,7 +433,14 @@
 				"L",
 				"E"
 			],
-			"ac": "17 (splint)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item splint armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 45,
 				"formula": "7d8+14"
@@ -505,7 +540,14 @@
 				"L",
 				"E"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 82,
 				"formula": "11d8+33"
@@ -574,7 +616,14 @@
 				"L",
 				"E"
 			],
-			"ac": "13 (chain shirt)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item chain shirt|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "8d8+16"
@@ -661,7 +710,14 @@
 				"L",
 				"E"
 			],
-			"ac": "14 (shield)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 22,
 				"formula": "4d8+4"
@@ -712,7 +768,9 @@
 				"L",
 				"E"
 			],
-			"ac": "13",
+			"ac": [
+				13
+			],
 			"hp": {
 				"average": 58,
 				"formula": "9d8+18"
@@ -791,7 +849,14 @@
 				"L",
 				"E"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 93,
 				"formula": "11d8+44"
@@ -879,7 +944,14 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 127,
 				"formula": "17d8+51"
@@ -961,7 +1033,14 @@
 				"L",
 				"E"
 			],
-			"ac": "14 (hide)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item hide armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 71,
 				"formula": "11d8+22"
@@ -1063,7 +1142,19 @@
 				"C",
 				"E"
 			],
-			"ac": "17 (breastplate, shield; 15 while using a crossbow)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item breastplate|phb}",
+						"{@item shield|phb}"
+					]
+				},
+				{
+					"ac": 15,
+					"condition": "while using a crossbow"
+				}
+			],
 			"hp": {
 				"average": 45,
 				"formula": "7d8+14"
@@ -1131,7 +1222,14 @@
 				"L",
 				"E"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "8d8+16"
@@ -1220,7 +1318,14 @@
 				"L",
 				"E"
 			],
-			"ac": "10 (13 with mage armor)",
+			"ac": [
+				10,
+				{
+					"ac": 13,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 52,
 				"formula": "8d8+16"
@@ -1324,7 +1429,14 @@
 				"L",
 				"E"
 			],
-			"ac": "16 (scale)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item scale mail|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 33,
 				"formula": "6d8+6"
@@ -1400,7 +1512,14 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 117,
 				"formula": "18d8+36"
@@ -1495,7 +1614,14 @@
 				"C",
 				"E"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 105,
 				"formula": "14d8+42"
@@ -1598,7 +1724,14 @@
 				"L",
 				"E"
 			],
-			"ac": "16 (natural armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 30,
 				"formula": "15d8+45"
@@ -1741,7 +1874,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 102,
 				"formula": "12d10+36"
@@ -1838,7 +1978,9 @@
 				"L",
 				"E"
 			],
-			"ac": "16",
+			"ac": [
+				16
+			],
 			"hp": {
 				"average": 78,
 				"formula": "12d8+24"
@@ -1877,7 +2019,7 @@
 					]
 				},
 				{
-					"name": "Stunning Strike (Recharge 5\u20146)",
+					"name": "Stunning Strike (Recharge 5—6)",
 					"entries": [
 						"When Hellenrae hits a target with a melee weapon attack, the target must succeed on a DC 13 Constitution saving throw or be stunned until the end of Hellenrae's next turn."
 					]
@@ -1933,7 +2075,14 @@
 				"L",
 				"E"
 			],
-			"ac": "13 (leather)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 9,
 				"formula": "2d8"
@@ -1993,7 +2142,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (studded leather)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 45,
 				"formula": "10d8"
@@ -2099,7 +2255,9 @@
 				"L",
 				"E"
 			],
-			"ac": "14",
+			"ac": [
+				14
+			],
 			"hp": {
 				"average": 33,
 				"formula": "6d8+6"
@@ -2198,7 +2356,9 @@
 				"L",
 				"E"
 			],
-			"ac": "17",
+			"ac": [
+				17
+			],
 			"hp": {
 				"average": 325,
 				"formula": "26d12+156"
@@ -2367,7 +2527,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 136,
 				"formula": "16d8+64"
@@ -2458,7 +2625,14 @@
 				"L",
 				"E"
 			],
-			"ac": "10 (13 with mage armor)",
+			"ac": [
+				10,
+				{
+					"ac": 13,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 82,
 				"formula": "11d8+33"
@@ -2579,7 +2753,14 @@
 				"L",
 				"E"
 			],
-			"ac": "20 (natural armor)",
+			"ac": [
+				{
+					"ac": 20,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 526,
 				"formula": "27d20+243"
@@ -2722,7 +2903,14 @@
 				"L",
 				"E"
 			],
-			"ac": "18 (natural armor)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 324,
 				"formula": "24d12+168"
@@ -2884,7 +3072,14 @@
 				"C",
 				"E"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 49,
 				"formula": "9d8+9"
@@ -2984,7 +3179,14 @@
 				"C",
 				"E"
 			],
-			"ac": "11 (14 with mage armor)",
+			"ac": [
+				11,
+				{
+					"ac": 14,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 39,
 				"formula": "6d8+12"
@@ -3088,7 +3290,14 @@
 				"C",
 				"E"
 			],
-			"ac": "17 (splint)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item splint armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 112,
 				"formula": "15d8+75"
@@ -3156,7 +3365,9 @@
 				"L",
 				"E"
 			],
-			"ac": "14",
+			"ac": [
+				14
+			],
 			"hp": {
 				"average": 22,
 				"formula": "4d8+4"
@@ -3231,7 +3442,14 @@
 				"L",
 				"E"
 			],
-			"ac": "10 (13 with mage armor)",
+			"ac": [
+				10,
+				{
+					"ac": 13,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 60,
 				"formula": "8d8+24"
@@ -3344,7 +3562,14 @@
 				"C",
 				"E"
 			],
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 44,
 				"formula": "8d8+8"
@@ -3430,7 +3655,14 @@
 				"L",
 				"E"
 			],
-			"ac": "17 (splint)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item splint armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 75,
 				"formula": "10d8+30"
@@ -3531,7 +3763,14 @@
 				"L",
 				"E"
 			],
-			"ac": "16 (breastplate)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item breastplate|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 71,
 				"formula": "11d8+21"
@@ -3638,7 +3877,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (studded leather)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 112,
 				"formula": "15d8+45"
@@ -3762,7 +4008,14 @@
 			"alignment": [
 				"N"
 			],
-			"ac": "18 (plate)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 127,
 				"formula": "17d8+51"
@@ -3846,7 +4099,14 @@
 				"L",
 				"E"
 			],
-			"ac": "11 (16 with barkskin)",
+			"ac": [
+				11,
+				{
+					"ac": 16,
+					"condition": "with {@spell barkskin}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 36,
 				"formula": "8d6+8"
@@ -3942,7 +4202,14 @@
 				"L",
 				"E"
 			],
-			"ac": "15 (studded leather)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 55,
 				"formula": "10d8+10"
@@ -4048,7 +4315,14 @@
 				"L",
 				"E"
 			],
-			"ac": "22 (natural armor)",
+			"ac": [
+				{
+					"ac": 22,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 283,
 				"formula": "21d12+147"

@@ -59,6 +59,7 @@
 								"{@filter Races that have a bonus to Intelligence|races|Ability Bonus (Including Subrace)=Intelligence +2;Intelligence +1}",
 								"{@filter Bard cantrips and first-level spells|spells|level=0;1|class=bard}",
 								"{@filter Beast with challenge rating 1 or lower|bestiary|cr=0;1/8;1/4;1/2;1|type=beast}",
+								"{@filter Creatures with a Strength score of 18 or more|bestiary|strength=min18}",
 								"{@filter Divination and Evocation spells|spells|school=D;V}",
 								"{@filter All uncommon magic items|items|source=null|type=null|tier=null|rarity=uncommon|property=null|attunement=null|category=null|miscellaneous=Magic}",
 								{
@@ -494,7 +495,9 @@
 							"L",
 							"G"
 						],
-						"ac": "12",
+						"ac": [
+							12
+						],
 						"hp": {
 							"average": 67,
 							"formula": "9d10+18"
