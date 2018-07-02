@@ -47,6 +47,7 @@ function navigation () {
 	LI('ul_rules', 'book.html', "Player's Handbook", "PHB");
 	LI('ul_rules', 'book.html', "Sword Coast Adventurer's Guide", "SCAG");
 	LI('ul_rules', 'book.html', "Volo's Guide to Monsters", "VGM");
+	LI('ul_rules', 'book.html', "Xanathar's Guide to Everything", "XGE");
 
 	LIDropdown('navbar', 'players', 'dropdown');
 	A('players', 'playerOption', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Player Options <span class='caret'></span>");

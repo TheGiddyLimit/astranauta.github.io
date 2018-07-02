@@ -2,7 +2,7 @@ const fs = require('fs');
 const ut = require('../js/utils.js');
 const utS = require("../node/util-search-index");
 
-const re = /{@(spell|item|class|creature|condition|background|race|invocation|feat|reward|psionic|object|cult|boon) (.*?)(\|(.*?))?(\|.*?)?}/g;
+const re = /{@(spell|item|class|creature|condition|background|race|invocation|feat|reward|psionic|object|cult|boon|trap|hazard) (.*?)(\|(.*?))?(\|.*?)?}/g;
 let msg = ``;
 
 const TAG_TO_PAGE = {
@@ -19,7 +19,9 @@ const TAG_TO_PAGE = {
 	"psionic": UrlUtil.PG_PSIONICS,
 	"object": UrlUtil.PG_OBJECTS,
 	"cult": UrlUtil.PG_CULTS_BOONS,
-	"boon": UrlUtil.PG_CULTS_BOONS
+	"boon": UrlUtil.PG_CULTS_BOONS,
+	"trap": UrlUtil.PG_TRAPS_HAZARDS,
+	"hazard": UrlUtil.PG_TRAPS_HAZARDS
 };
 
 const TAG_TO_DEFAULT_SOURCE = {
@@ -36,7 +38,9 @@ const TAG_TO_DEFAULT_SOURCE = {
 	"psionic": "UATheMysticClass",
 	"object": "dmg",
 	"cult": "mtf",
-	"boon": "mtf"
+	"boon": "mtf",
+	"trap": "dmg",
+	"hazard": "dmg"
 };
 
 function recursiveCheck (file) {

@@ -280,6 +280,7 @@ const BookUtil = {
 		BookUtil._$body.off("keypress");
 		BookUtil._$body.on("keypress", (e) => {
 			if ((e.key === "f" && noModifierKeys(e))) {
+				if (e.target.nodeName === "INPUT" || e.target.nodeName === "TEXTAREA") return;
 				$(`span.temp`).contents().unwrap();
 				BookUtil._lastHighlight = null;
 				if (BookUtil._$findAll) BookUtil._$findAll.remove();

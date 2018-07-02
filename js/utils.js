@@ -2604,6 +2604,18 @@ DataUtil = {
 			loadSaved(evt);
 		}).appendTo($(`body`));
 		$iptAdd.click();
+	},
+
+	class: {
+		loadJSON: function () {
+			return new Promise((resolve, reject) => {
+				DataUtil.loadJSON(`data/class/index.json`).then((index) => {
+					Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`data/class/${it}`))).then((all) => {
+						resolve(all.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []}));
+					});
+				})
+			});
+		}
 	}
 };
 
@@ -2988,7 +3000,7 @@ BrewUtil = {
 					const $ul = $lst.find(`ul`);
 					let stack = "";
 					BrewUtil._getBrewCategories().forEach(cat => {
-						BrewUtil.homebrew[cat].filter(it => it.source === source).forEach(it => {
+						BrewUtil.homebrew[cat].filter(it => it.source === source).sort((a, b) => SortUtil.ascSort(a.name, b.name)).forEach(it => {
 							stack += `<li><section onclick="ListUtil.toggleCheckbox(event, this)">
 							<span class="col-xs-7 name">${it.name}</span>
 							<span class="col-xs-4 category">${getDisplayCat(cat)}${getExtraInfo(cat, it)}</span>

@@ -96,6 +96,22 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 		listProp: "spell",
 		baseUrl: "spells.html",
 		hover: true
+	},
+	{
+		category: 5,
+		dir: "class",
+		primary: "name",
+		source: "source",
+		page: "page",
+		listProp: "class",
+		baseUrl: "classes.html",
+		deepIndex: (primary, it) => {
+			return it.subclasses.map(sc => ({
+				n: `${primary.parentName}; ${sc.name}`,
+				s: sc.source,
+				u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`
+			}))
+		}
 	}
 ];
 /**
@@ -135,19 +151,6 @@ Omnidexer.TO_INDEX = [
 		listProp: "basicitem",
 		baseUrl: "items.html",
 		hover: true
-	},
-	{
-		category: 5,
-		file: "classes.json",
-		listProp: "class",
-		baseUrl: "classes.html",
-		deepIndex: (primary, it) => {
-			return it.subclasses.map(sc => ({
-				n: `${primary.parentName}; ${sc.name}`,
-				s: sc.source,
-				u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`
-			}))
-		}
 	},
 	{
 		category: 6,

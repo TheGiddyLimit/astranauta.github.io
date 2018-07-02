@@ -772,7 +772,7 @@ class Panel {
 		this.set$Content(
 			PANEL_TYP_INITIATIVE_TRACKER,
 			state,
-			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTracker.make$Tracker(state))
+			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTracker.make$Tracker(this.board, state))
 		);
 	}
 
@@ -1878,21 +1878,23 @@ class AddMenuSearchTab extends AddMenuTab {
 	}
 
 	render () {
-		let doClickFirst = false;
-		let isWait = false;
+		const flags = {
+			doClickFirst: false,
+			isWait: false
+		};
 
 		this.showMsgIpt = () => {
-			isWait = true;
-			this.$results.empty().append(`<div class="panel-tab-message"><i>Enter a search.</i></div>`);
+			flags.isWait = true;
+			this.$results.empty().append(DmScreenUtil.getSearchEnter());
 		};
 
 		const showMsgDots = () => {
-			this.$results.empty().append(`<div class="panel-tab-message"><i>\u2022\u2022\u2022</i></div>`);
+			this.$results.empty().append(DmScreenUtil.getSearchLoading());
 		};
 
 		const showNoResults = () => {
-			isWait = true;
-			this.$results.empty().append(`<div class="panel-tab-message"><i>No results.</i></div>`);
+			flags.isWait = true;
+			this.$results.empty().append(DmScreenUtil.getSearchEnter());
 		};
 
 		this.doSearch = () => {
@@ -1955,9 +1957,9 @@ class AddMenuSearchTab extends AddMenuTab {
 					}
 				};
 
-				if (doClickFirst) {
+				if (flags.doClickFirst) {
 					handleClick(toProcess[0]);
-					doClickFirst = false;
+					flags.doClickFirst = false;
 					return;
 				}
 
@@ -1995,30 +1997,10 @@ class AddMenuSearchTab extends AddMenuTab {
 			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($wrpCtrls);
 			const $results = $(`<div class="panel-tab-results"/>`).appendTo($tab);
 
-			// auto-search after 100ms
-			const TYPE_TIMEOUT_MS = 100;
-			let typeTimer;
-			$srch.on("keyup", () => {
-				clearTimeout(typeTimer);
-				typeTimer = setTimeout(() => {
-					this.doSearch();
-				}, TYPE_TIMEOUT_MS);
-			});
-			$srch.on("keydown", () => {
-				if (isWait) {
-					isWait = false;
-					showMsgDots();
-				}
-				clearTimeout(typeTimer)
-			});
-			$srch.on("click", () => {
-				if ($srch.val() && $srch.val().trim().length) this.doSearch();
-			});
-			$srch.on("keypress", (e) => {
-				if (e.which === 13) {
-					doClickFirst = true;
-					this.doSearch();
-				}
+			DmScreenUtil.bindAutoSearch($srch, {
+				flags: flags,
+				search: this.doSearch,
+				showWait: showMsgDots
 			});
 
 			this.$tab = $tab;
@@ -2063,7 +2045,7 @@ class RuleLoader {
 RuleLoader.cache = {};
 
 class InitiativeTracker {
-	static make$Tracker (state) {
+	static make$Tracker (board, state) {
 		const ALPHA = "ALPHA";
 		const NUM = "NUMBER";
 		const ASC = "ASC";
@@ -2079,8 +2061,8 @@ class InitiativeTracker {
 			<div class="dm-init-wrp-header">
 				<div class="dm-init-header">Name</div>
 				<div class="dm-init-row-rhs" style="margin-right: 9px;">
-					<div class="dm-init-header">HP</div>
-					<div class="dm-init-header">#</div>
+					<div class="dm-init-header" title="Hit Points">HP</div>
+					<div class="dm-init-header" title="Initiative Score">#</div>
 					<div style="width: 24px;"/>
 				</div>
 			</div>
@@ -2090,8 +2072,9 @@ class InitiativeTracker {
 
 		const $wrpControls = $(`<div class="dm-init-wrp-controls"/>`).appendTo($wrpTracker);
 		const $wrpAddNext = $(`<div/>`).appendTo($wrpControls);
-		const $btnAdd = $(`<div class="btn btn-primary" style="margin-right: 7px;"><span class="glyphicon glyphicon-plus"></span></div>`).appendTo($wrpAddNext);
-		const $btnNext = $(`<div class="btn btn-primary" title="Next Turn"><span class="glyphicon glyphicon-step-forward"></span></div>`).appendTo($wrpAddNext);
+		const $btnAdd = $(`<div class="btn btn-primary" title="Add Player" style="margin-right: 7px;"><span class="glyphicon glyphicon-plus"></span></div>`).appendTo($wrpAddNext);
+		const $btnAddMonster = $(`<div class="btn btn-success" title="Add Monster" style="margin-right: 7px;"><span class="glyphicon glyphicon-print"></span></div>`).appendTo($wrpAddNext);
+		const $btnNext = $(`<div class="btn btn-default" title="Next Turn"><span class="glyphicon glyphicon-step-forward"></span></div>`).appendTo($wrpAddNext);
 		$btnNext.on("click", () => setNextActive());
 		const $wrpSort = $(`<div/>`).appendTo($wrpControls);
 		const $btnSortAlpha = $(`<div title="Sort Alphabetically" class="btn btn-default" style="margin-right: 7px;"><span class="glyphicon glyphicon-sort-by-alphabet"></span></div>`).appendTo($wrpSort);
@@ -2119,13 +2102,108 @@ class InitiativeTracker {
 			checkSetActive();
 		});
 
+		$btnAddMonster.on("click", () => {
+			const flags = {
+				doClickFirst: false,
+				isWait: false
+			};
+
+			const $menu = $(`<div class="panel-addmenu">`);
+			const $menuInner = $(`<div class="panel-addmenu-inner dropdown-menu">`).appendTo($menu);
+			const doClose = () => $menu.remove();
+			$menu.on("click", doClose);
+			$menuInner.on("click", (e) => e.stopPropagation());
+			$(`body`).append($menu);
+
+			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($menuInner);
+			const $results = $(`<div class="panel-tab-results"/>`).appendTo($menuInner);
+
+			this.showMsgIpt = () => {
+				flags.isWait = true;
+				$results.empty().append(DmScreenUtil.getSearchEnter());
+			};
+
+			const showMsgDots = () => $results.empty().append(DmScreenUtil.getSearchLoading());
+
+			const showNoResults = () => {
+				flags.isWait = true;
+				$results.empty().append(DmScreenUtil.getSearchNoResults());
+			};
+
+			const doSearch = () => {
+				const srch = $srch.val().trim();
+				const MAX_RESULTS = 75; // hard cap results
+
+				const index = board.availContent["Creature"];
+				const results = index.search(srch, {
+					fields: {
+						n: {boost: 5, expand: true},
+						s: {expand: true}
+					},
+					bool: "AND",
+					expand: true
+				});
+				const resultCount = results.length ? results.length : index.documentStore.length;
+				const toProcess = results.length ? results : Object.values(index.documentStore.docs).slice(0, 75).map(it => ({doc: it}));
+
+				$results.empty();
+				if (toProcess.length) {
+					const handleClick = (r) => {
+						const name = r.doc.n;
+						const source = r.doc.s;
+						makeRow(name, "", "", false, source);
+						doClose();
+					};
+
+					const get$Row = (r) => {
+						return $(`
+							<div class="panel-tab-results-row">
+								<span>${r.doc.n}</span>
+								<span>${r.doc.s ? `<i title="${Parser.sourceJsonToFull(r.doc.s)}">${Parser.sourceJsonToAbv(r.doc.s)}${r.doc.p ? ` p${r.doc.p}` : ""}</i>` : ""}</span>
+							</div>
+						`);
+					};
+
+					if (flags.doClickFirst) {
+						handleClick(toProcess[0]);
+						flags.doClickFirst = false;
+						return;
+					}
+
+					const res = toProcess.slice(0, MAX_RESULTS); // hard cap at 75 results
+
+					res.forEach(r => get$Row(r).on("click", () => handleClick(r)).appendTo($results));
+
+					if (resultCount > MAX_RESULTS) {
+						const diff = resultCount - MAX_RESULTS;
+						$results.append(`<div class="panel-tab-results-row panel-tab-results-row-display-only">...${diff} more result${diff === 1 ? " was" : "s were"} hidden. Refine your search!</div>`);
+					}
+				} else {
+					if (!srch.trim()) showMsgIpt();
+					else showNoResults();
+				}
+			};
+
+			DmScreenUtil.bindAutoSearch($srch, {
+				flags: flags,
+				search: doSearch,
+				showWait: showMsgDots
+			});
+
+			doSearch();
+
+			doSort(sort);
+			checkSetActive();
+		});
+
 		$wrpTracker.data("getState", () => {
 			const rows = $wrpEntries.find(`.dm-init-row`).map((i, e) => {
 				return {
 					n: $(e).find(`input.name`).val(),
 					h: $(e).find(`input.hp`).val(),
 					i: $(e).find(`input.score`).val(),
-					a: 0 + $(e).hasClass(`dm-init-row-active`)
+					a: 0 + $(e).hasClass(`dm-init-row-active`),
+					s: $(e).find(`input.source`).val()
 				}
 			}).get();
 			return {
@@ -2136,7 +2214,7 @@ class InitiativeTracker {
 		});
 
 		(state.r || []).forEach(r => {
-			makeRow(r.n, r.h, r.i, r.a);
+			makeRow(r.n, r.h, r.i, r.a, r.s);
 		});
 		checkSetActive();
 
@@ -2152,12 +2230,17 @@ class InitiativeTracker {
 			}
 		}
 
-		function makeRow (name = "", hp = "", init = "", isActive) {
+		function makeRow (name = "", hp = "", init = "", isActive, source) {
+			const isMon = !!source;
+
 			const $wrpRow = $(`<div class="dm-init-row ${isActive ? "dm-init-row-active" : ""}"/>`).appendTo($wrpEntries);
-			const $iptName = $(`<input class="form-control input-sm name" placeholder="Name" value="${name}">`).appendTo($wrpRow);
-			$iptName.on("change", () => {
-				doSort(ALPHA);
-			});
+			const $iptName = $(`<input class="form-control input-sm name ${isMon ? "hidden" : ""}" placeholder="Name" value="${name}">`).appendTo($wrpRow);
+			$iptName.on("change", () => doSort(ALPHA));
+			if (isMon) {
+				$(`<div class="init-wrp-creature">${EntryRenderer.getDefaultRenderer().renderEntry(`{@creature ${name}|${source}}`)}</div>`).appendTo($wrpRow);
+				$(`<input class="source hidden" value="${source}">`).appendTo($wrpRow);
+			}
+
 			const $wrpRhs = $(`<div class="dm-init-row-rhs"/>`).appendTo($wrpRow);
 			let curHp = hp;
 			const $iptHp = $(`<input class="form-control input-sm hp" placeholder="HP" value="${curHp}">`).appendTo($wrpRhs);
@@ -2179,9 +2262,7 @@ class InitiativeTracker {
 				}
 			});
 			const $iptScore = $(`<input class="form-control input-sm score" type="number" value="${init}">`).appendTo($wrpRhs);
-			$iptScore.on("change", () => {
-				doSort(NUM);
-			});
+			$iptScore.on("change", () => doSort(NUM));
 			const $btnDel = $(`<div class="btn btn-danger btn-xs" style="line-height: 26px;"><span class="glyphicon glyphicon-trash"/></div>`).appendTo($wrpRhs);
 			$btnDel.on("click", () => {
 				if ($wrpRow.hasClass(`dm-init-row-active`) && $wrpEntries.find(`.dm-init-row`).length > 1) {
@@ -2216,6 +2297,57 @@ class InitiativeTracker {
 		doSort(sort);
 
 		return $wrpTracker;
+	}
+}
+
+class DmScreenUtil {
+	static getSearchNoResults () {
+		return `<div class="panel-tab-message"><i>No results.</i></div>`;
+	}
+
+	static getSearchLoading () {
+		return `<div class="panel-tab-message"><i>\u2022\u2022\u2022</i></div>`;
+	}
+
+	static getSearchEnter () {
+		return `<div class="panel-tab-message"><i>Enter a search.</i></div>`;
+	}
+
+	/**
+	 * @param $srch input element
+	 * @param opt should contain:
+	 *  `search` -- function which runs search
+	 *  `flags` -- object which contains:
+	 *    `isWait` -- flag tracking "waiting for user to stop typing"
+	 *    `doClickFirst` -- flag tracking "should first result get clicked"
+	 *  `showWait` -- function which displays loading dots
+	 */
+	static bindAutoSearch ($srch, opt) {
+		// auto-search after 100ms
+		const TYPE_TIMEOUT_MS = 100;
+		let typeTimer;
+		$srch.on("keyup", () => {
+			clearTimeout(typeTimer);
+			typeTimer = setTimeout(() => {
+				opt.search();
+			}, TYPE_TIMEOUT_MS);
+		});
+		$srch.on("keydown", () => {
+			if (opt.flags.isWait) {
+				opt.flags.isWait = false;
+				opt.showWait();
+			}
+			clearTimeout(typeTimer)
+		});
+		$srch.on("click", () => {
+			if ($srch.val() && $srch.val().trim().length) opt.search();
+		});
+		$srch.on("keypress", (e) => {
+			if (e.which === 13) {
+				opt.flags.doClickFirst = true;
+				opt.search();
+			}
+		});
 	}
 }
 

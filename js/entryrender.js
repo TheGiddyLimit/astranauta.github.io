@@ -702,12 +702,14 @@ function EntryRenderer () {
 							type: "link",
 							href: {
 								type: "internal",
-								path: page,
-								hash: hash,
-								hashPreEncoded: true
+								path: page
 							},
 							text: displayText
 						};
+						if (hash) {
+							fauxEntry.hash = hash;
+							fauxEntry.hashPreEncoded = true;
+						}
 						self.recursiveEntryRender(fauxEntry, textStack, depth);
 					} else if (tag === "@book") {
 						// format: {@book Display Text|DMG< |chapter< |section > >}
@@ -868,6 +870,25 @@ function EntryRenderer () {
 								fauxEntry.href.hover = {
 									page: UrlUtil.PG_CULTS_BOONS,
 									source: source || SRC_MTF
+								};
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
+							case "@trap":
+							case "@hazard":
+								fauxEntry.href.path = "trapshazards.html";
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_DMG;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_TRAPS_HAZARDS,
+									source: source || SRC_DMG
+								};
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
+							case "@variantrule":
+								fauxEntry.href.path = "variantrules.html";
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_DMG;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_VARIATNRULES,
+									source: source || SRC_DMG
 								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
@@ -2196,15 +2217,21 @@ EntryRenderer.item = {
 		});
 	},
 
+	_isRefPopulated: false,
 	populatePropertyAndTypeReference: () => {
 		return DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/basicitems.json`).then(data => {
-			try {
-				data.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
-				data.itemType.forEach(t => EntryRenderer.item._addType(t));
-				EntryRenderer.item._addBrewPropertiesAndTypes();
+			if (EntryRenderer.item._isRefPopulated) {
 				Promise.resolve();
-			} catch (e) {
-				Promise.reject(e);
+			} else {
+				try {
+					data.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
+					data.itemType.forEach(t => EntryRenderer.item._addType(t));
+					EntryRenderer.item._addBrewPropertiesAndTypes();
+					EntryRenderer.item._isRefPopulated = true;
+					Promise.resolve();
+				} catch (e) {
+					Promise.reject(e);
+				}
 			}
 		});
 	}
@@ -2447,15 +2474,17 @@ EntryRenderer.hover = {
 
 			case UrlUtil.PG_ITEMS: {
 				if (!EntryRenderer.hover._isCached(page, source, hash)) {
-					BrewUtil.addBrewData((data) => {
-						if (!data.item) return;
-						data.item.forEach(it => {
-							if (!it._isEnhanced) EntryRenderer.item.enhanceItem(it);
-							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
-							EntryRenderer.hover._addToCache(page, it.source, itHash, it)
-						});
-					});
 					EntryRenderer.item.buildList((allItems) => {
+						// populate brew once the main item properties have been loaded
+						BrewUtil.addBrewData((data) => {
+							if (!data.item) return;
+							data.item.forEach(it => {
+								if (!it._isEnhanced) EntryRenderer.item.enhanceItem(it);
+								const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+								EntryRenderer.hover._addToCache(page, it.source, itHash, it)
+							});
+						});
+
 						allItems.forEach(item => {
 							const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
 							EntryRenderer.hover._addToCache(page, item.source, itemHash, item)

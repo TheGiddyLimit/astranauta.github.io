@@ -26,7 +26,6 @@ class Blacklist {
 
 		const FILES = [
 			"backgrounds.json",
-			"classes.json",
 			"cultsboons.json",
 			"deities.json",
 			"feats.json",
@@ -62,19 +61,19 @@ class Blacklist {
 					mergeData(d);
 				});
 				Promise.resolve();
+			}).then(() => DataUtil.class.loadJSON())
+			.then(classData => {
+				classData.class.forEach(c => c.subclasses.forEach(sc => sc.class = c.name));
+				classData.subclass = classData.subclass || [];
+				classData.class.forEach(c => classData.subclass = classData.subclass.concat(c.subclasses));
+				mergeData(classData);
+				Promise.resolve();
 			}).then(() => {
 				const promises = FILES.map(url => DataUtil.loadJSON(`data/${url}`));
 				promises.push(EntryRenderer.item.promiseData({}, true));
 				return Promise.all(promises).then(retData => {
 					retData.forEach(d => {
 						if (d.race) d.race = EntryRenderer.race.mergeSubraces(d.race);
-						if (d.class) {
-							d.class.forEach(c => c.subclasses.forEach(sc => sc.class = c.name));
-							d.subclass = d.subclass || [];
-							d.class.forEach(c => {
-								d.subclass = d.subclass.concat(c.subclasses)
-							});
-						}
 						mergeData(d);
 					});
 					const sourceSet = new Set();

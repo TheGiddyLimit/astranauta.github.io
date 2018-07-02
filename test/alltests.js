@@ -9,6 +9,7 @@ const TESTS_PASSED = 0;
 const TESTS_FAILED = 1;
 let results = [];
 const expected = [];
+const expectedDirs = {};
 const existing = [];
 
 require("./check-links");
@@ -54,14 +55,17 @@ fs.readdirSync("./data/bestiary")
 	.filter(file => file.startsWith("bestiary") && file.endsWith(".json"))
 	.forEach(file => {
 		const result = JSON.parse(fs.readFileSync(`./data/bestiary/${file}`));
-		for (let i = 0; i < result.monster.length; i++) expected.push(`${result.monster[i].source}/${result.monster[i].name.replace(/"/g, "")}.png`);
+		result.monster.forEach(m => {
+			if (fs.existsSync(`./img/${m.source}`)) expected.push(`${m.source}/${m.name.replace(/"/g, "")}.png`);
+			else expectedDirs[m.source] = true;
+		});
 	});
 
 // Loop through each bestiary-related img directory and push the list of files in each.
 fs.readdirSync("./img")
 	.filter(file => !file.endsWith(".png"))
 	.forEach(dir => {
-		if (dir !== "adventure" && dir !== "deities" && dir !== "variantrules" && dir !== "rules" && dir !== "objects" && dir !== "bestiary" && dir !== "roll20") {
+		if (dir !== "adventure" && dir !== "deities" && dir !== "variantrules" && dir !== "rules" && dir !== "objects" && dir !== "bestiary" && dir !== "roll20" && dir !== "book") {
 			fs.readdirSync(`./img/${dir}`).forEach(file => {
 				existing.push(`${dir.replace("(", "").replace(")", "")}/${file}`);
 			})
@@ -75,6 +79,7 @@ expected.forEach(function (i) {
 existing.forEach(function (i) {
 	if (expected.indexOf(i) === -1) results.push(`${i} is extra`);
 });
+Object.keys(expectedDirs).forEach(k => results.push(`Directory ${k} didn't exist!`));
 results.sort(function (a, b) {
 	return a.toLowerCase().localeCompare(b.toLowerCase());
 }).forEach(function (i) {

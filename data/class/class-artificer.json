@@ -1,0 +1,784 @@
+{
+	"class": [
+		{
+			"name": "Artificer",
+			"source": "UAArtificer",
+			"hd": {
+				"number": 1,
+				"faces": 8
+			},
+			"proficiency": [
+				"con",
+				"int"
+			],
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"Spells Known"
+					],
+					"rows": [
+						[
+							0
+						],
+						[
+							0
+						],
+						[
+							3
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							5
+						],
+						[
+							6
+						],
+						[
+							6
+						],
+						[
+							7
+						],
+						[
+							8
+						],
+						[
+							8
+						],
+						[
+							9
+						],
+						[
+							10
+						],
+						[
+							10
+						],
+						[
+							11
+						],
+						[
+							11
+						],
+						[
+							11
+						],
+						[
+							12
+						],
+						[
+							13
+						]
+					]
+				},
+				{
+					"title": "Spell Slots per Spell Level",
+					"colLabels": [
+						"{@filter 1st|spells|level=1|class=Artificer (UAA)}",
+						"{@filter 2nd|spells|level=2|class=Artificer (UAA)}",
+						"{@filter 3rd|spells|level=3|class=Artificer (UAA)}",
+						"{@filter 4th|spells|level=4|class=Artificer (UAA)}"
+					],
+					"rows": [
+						[
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							2,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							1
+						]
+					]
+				}
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium"
+				],
+				"weapons": [
+					"simple"
+				],
+				"tools": [
+					"Thieves' tools",
+					"two other tools of your choice"
+				],
+				"skills": {
+					"choose": 3,
+					"from": [
+						"Arcana",
+						"Deception",
+						"History",
+						"Investigation",
+						"Medicine",
+						"Nature",
+						"Religion",
+						"Sleight of Hand"
+					]
+				}
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item handaxe|phb} and a {@item light hammer|phb} or (b) any two {@filter simple weapons|items|source=phb|category=basic|type=simple weapon}",
+					"a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts}",
+					"(a) {@item scale mail|phb} or (b) {@item studded leather armor|phb}",
+					"{@item thieves' tools|phb} and a {@item dungeoneer's pack|phb}"
+				]
+			},
+			"classFeatures": [
+				[
+					{
+						"name": "Artificer Specialist",
+						"entries": [
+							"At 1st level, you choose the type of Artificer Specialist you are from the list of available specialisations. Your choice grants you features at 1st level and again at 3rd, 9th, 14th, and 17th level."
+						],
+						"gainSubclassFeature": true
+					},
+					{
+						"name": "Magic Item Analysis",
+						"entries": [
+							"Starting at 1st level, your understanding of magic items allows you to analyze and understand their secrets. You know the artificer spells {@spell detect magic} and {@spell identify}, and you can cast them as rituals. You don't need to provide a material component when casting {@spell identify} with this class feature."
+						]
+					}
+				],
+				[
+					{
+						"name": "Tool Expertise",
+						"entries": [
+							"Starting at 2nd level, your proficiency bonus is doubled for any ability check you make that uses any of the tool proficiencies you gain from this class."
+						]
+					},
+					{
+						"name": "Wondrous Invention",
+						"entries": [
+							"At 2nd level, you gain the use of a magic item that you have crafted. Choose the item from the list of 2nd-level items below. Crafting an item is a difficult task. When you gain a magic item from this feature, it reflects long hours of study, tinkering, and experimentation that allowed you to finally complete the item. You are assumed to work on this item in your leisure time and to finish it when you level up. You complete another item of your choice when you reach certain levels in this class: 5th, 10th, 15th, and 20th level. The item you choose must be on the list for your current artificer level or a lower level. These magic items are detailed in the Dungeon Master's Guide.",
+							{
+								"type": "entries",
+								"name": "2nd Level",
+								"entries": [
+									"{@item Bag of holding}, {@item cap of water breathing}, {@item driftglobe}, {@item goggles of night}, {@item sending stones}"
+								]
+							},
+							{
+								"type": "entries",
+								"name": "5th Level",
+								"entries": [
+									"{@item Alchemy jug}, {@item helm of comprehending languages}, {@item lantern of revealing}, {@item ring of swimming}, {@item robe of useful items}, {@item rope of climbing}, {@item wand of magic detection}, {@item wand of secrets}"
+								]
+							},
+							{
+								"type": "entries",
+								"name": "10th Level",
+								"entries": [
+									"{@item Bag of beans}, {@item chime of opening}, {@item decanter of endless water}, {@item eyes of minute seeing}, {@item folding boat}, {@item Heward's handy haversack}"
+								]
+							},
+							{
+								"type": "entries",
+								"name": "15th Level",
+								"entries": [
+									"{@item Boots of striding and springing}, {@item bracers of archery}, {@item brooch of shielding}, {@item broom of flying}, {@item hat of disguise}, {@item slippers of spider climbing}"
+								]
+							},
+							{
+								"type": "entries",
+								"name": "20th Level",
+								"entries": [
+									"{@item Eyes of the eagle}, {@item gem of brightness}, {@item gloves of missile snaring}, {@item gloves of swimming and climbing}, {@item ring of jumping}, {@item ring of mind shielding}, {@item wings of flying}"
+								]
+							}
+						]
+					}
+				],
+				[
+					{
+						"name": "Masterwork Feature",
+						"entries": [
+							"At 3rd level, you gain a feature from your Artificer Specialist."
+						],
+						"gainSubclassFeature": true
+					},
+					{
+						"name": "Spellcasting",
+						"entries": [
+							"As part of your study of magic, you gain the ability to cast spells at 3rd level. The spells you learn are limited in scope, primarily concerned with modifying creatures and objects or creating items.",
+							{
+								"type": "entries",
+								"name": "Spell Slots",
+								"entries": [
+									"The Artificer table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Spells Known of 1st Level and Higher",
+								"entries": [
+									"You know three 1st-level spells of your choice from the artificer spell list (which appears at the end of this document). The Spells Known column of the Artificer table shows when you learn more artificer spells of your choice from this feature. Each of these spells must be of a level for which you have spell slots on the Artificer table. Additionally, when you gain a level in this class, you can choose one of the artificer spells you know from this feature and replace it with another spell from the artificer spell list. The new spell must also be of a level for which you have spell slots on the Artificer table."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Spellcasting Ability",
+								"entries": [
+									"Intelligence is your spellcasting ability for your artificer spells; your understanding of the theory behind magic allows you to wield these spells with superior skill. You use your Intelligence whenever an artificer spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for an artificer spell you cast and when making an attack roll with one.",
+									{
+										"type": "abilityDc",
+										"name": "Spell",
+										"attributes": [
+											"int"
+										]
+									},
+									{
+										"type": "abilityAttackMod",
+										"name": "Spell",
+										"attributes": [
+											"int"
+										]
+									}
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Spellcasting Focus",
+								"entries": [
+									"You can use an arcane focus as a spellcasting focus for your artificer spells. See chapter 5, \"Equipment,\" in the Player's Handbook for various arcane focus options."
+								]
+							}
+						]
+					}
+				],
+				[
+					{
+						"name": "Infuse Magic",
+						"entries": [
+							"Starting at 4th level, you gain the ability to channel your artificer spells into objects for later use. When you cast an artificer spell with a casting time of 1 action, you can increase its casting time to 1 minute. If you do so and hold a nonmagical item throughout the casting, you expend a spell slot, but none of the spell's effects occur. Instead, the spell transfers into that item for later use if the item doesn't already contain a spell from this feature.",
+							"Any creature holding the item thereafter can use an action to activate the spell if the creature has an Intelligence score of at least 6. The spell is cast using your spellcasting ability, targeting the creature that activates the item. If the spell targets more than one creature, the creature that activates the item selects the additional targets. If the spell has an area of effect, it is centered on the item. If the spell's range is self, it targets the creature that activates the item.",
+							"When you infuse a spell in this way, it must be used within 8 hours. After that time, its magic fades and is wasted. You can have a limited number of infused spells at the same time. The number equals your Intelligence modifier."
+						]
+					},
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 4th, 8th, 12th, 16th, and 18th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+						]
+					}
+				],
+				[
+					{
+						"name": "Superior Attunement",
+						"entries": [
+							"At 5th level, your superior understanding of magic items allows you to master their use. You can now attune to up to four, rather than three, magic items at a time. At 15th level, this limit increases to five magic items."
+						]
+					},
+					{
+						"name": "Wondrous Invention",
+						"entries": [
+							"At 5th level, you craft another item from your Wondrous Invention feature."
+						]
+					}
+				],
+				[
+					{
+						"name": "Mechanical Servant",
+						"entries": [
+							"At 6th level, your research and mastery of your craft allow you to produce a mechanical servant. The servant is a construct that obeys your commands without hesitation and functions in combat to protect you. Though magic fuels its creation, the servant is not magical itself. You are assumed to have been working on the servant for quite some time, finally finishing it during a short or long rest after you reach 6th level.",
+							"Select a Large beast with a challenge rating of 2 or less. The servant uses that beast's game statistics, but it can look however you like, as long as its form is appropriate for its statistics. It has the following modifications:",
+							{
+								"type": "list",
+								"items": [
+									"It is a construct instead of a beast.",
+									"It can't be {@condition charmed}.",
+									"It is immune to poison damage and the {@condition poisoned} condition.",
+									"It gains darkvision with a range of 60 feet if it doesn't have it already.",
+									"It understands the languages you can speak when you create it, but it can't speak.",
+									"If you are the target of a melee attack and the servant is within 5 feet of the attacker, you can use your reaction to command the servant to respond, using its reaction to make a melee attack against the attacker."
+								]
+							},
+							"The servant obeys your orders to the best of its ability. In combat, it rolls its own initiative and acts on its own.",
+							"If the servant is killed, it can be returned to life via normal means, such as with the {@spell revivify} spell. In addition, over the course of a long rest, you can repair a slain servant if you have access to its body. It returns to life with 1 hit point at the end of the rest. If the servant is beyond recovery, you can build a new one with one week of work (eight hours each day) and 1,000 gp of raw materials."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 8th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Masterwork Feature",
+						"entries": [
+							"At 9th level, you gain a feature from your Artificer Specialist."
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[
+					{
+						"name": "Wondrous Invention",
+						"entries": [
+							"At 10th level, you craft another item from your Wondrous Invention feature."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 12th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Masterwork Feature",
+						"entries": [
+							"At 14th level, you gain a feature from your Artificer Specialist."
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[
+					{
+						"name": "Superior Attunement",
+						"entries": [
+							"Starting at 15th level, you can attune to up to five magic items."
+						]
+					},
+					{
+						"name": "Wondrous Invention",
+						"entries": [
+							"At 15th level, you craft another item from your Wondrous Invention feature."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 16th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Masterwork Feature",
+						"entries": [
+							"At 17th level, you gain a feature from your Artificer Specialist."
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 18th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Soul of Artifice",
+						"entries": [
+							"At 20th level, your understanding of magic items is unmatched, allowing you to mingle your soul with items linked to you. You can attune to up to six magic items at once. In addition, you gain a +1 bonus to all saving throws per magic item you are currently attuned to."
+						]
+					}
+				]
+			],
+			"subclassTitle": "Artificer Specialist",
+			"subclasses": [
+				{
+					"name": "Alchemist",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Alchemist",
+								"entries": [
+									"An alchemist is an expert at combining exotic reagents to produce a variety of materials, from healing draughts that can mend a wound in moments to clinging goo that slows creatures down.",
+									{
+										"type": "entries",
+										"name": "Alchemist's Satchel",
+										"entries": [
+											"At 1st level, you craft an Alchemist's Satchel, a bag of reagents that you use to create a variety of concoctions. The bag and its contents are both magical, and this magic allows you to pull out exactly the right materials you need for your Alchemical Formula options, described below. After you use one of those options, the bag reclaims the materials.",
+											"If you lose this satchel, you can create a new one over the course of three days of work (eight hours each day) by expending 100 gp worth of leather, glass, and other raw materials."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Alchemical Formula",
+										"entries": [
+											"At 1st level, you learn three Alchemical Formula options: Alchemical Fire, Alchemical Acid, and one other option of your choice. You learn an additional formula of your choice at 3rd, 9th, 14th, and 17th levels.",
+											"To use any of these options, your Alchemist's Satchel must be within reach.",
+											"If an Alchemical Formula option requires a saving throw, the DC is 8 + your proficiency bonus + your Intelligence modifier.",
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Alchemical Fire",
+														"entries": [
+															"As an action, you can reach into your Alchemist's Satchel, pull out a vial of volatile liquid, and hurl the vial at a creature, object, or surface within 30 feet of you (the vial and its contents disappear if you don't hurl the vial by the end of the current turn). On impact, the vial detonates in a 5-foot radius. Any creature in that area must succeed on a Dexterity saving throw or take 1d6 fire damage. This formula's damage increases by 1d6 when you reach certain levels in this class: 4th level (2d6), 7th level (3d6), 10th level (4d6), 13th level (5d6), 16th level (6d6), and 19th level (7d6)."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Alchemical Acid",
+														"entries": [
+															"As an action, you can reach into your Alchemist's Satchel, pull out a vial of acid, and hurl the vial at a creature or object within 30 feet of you (the vial and its contents disappear if you don't hurl the vial by the end of the current turn). The vial shatters on impact. A creature must succeed on a Dexterity saving throw or take 1d6 acid damage. An object automatically takes that damage, and the damage is maximized. This formula's damage increases by 1d6 when you reach certain levels in this class: 3rd level (2d6), 5th level (3d6), 7th level (4d6), 9th level (5d6), 11th level (6d6), 13th level (7d6), 15th level (8d6), 17th level (9d6), and 19th level (10d6)."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Healing Draught",
+														"entries": [
+															"As an action, you can reach into your Alchemist's Satchel and pull out a vial of healing liquid. A creature can drink it as an action to regain 1d8 hit points. The vial then disappears. Once a creature regains hit points from this alchemical formula, the creature can't do so again until it finishes a long rest. If not used, the vial and its contents disappear after 1 hour. While the vial exists, you can't use this formula. This formula's healing increases by 1d8 when you reach certain levels in this class: 3rd level (2d8), 5th level (3d8), 7th level (4d8), 9th level (5d8), 11th level (6d8), 13th level (7d8), 15th level (8d8), 17th level (9d8), and 19th level (10d8)."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Smoke Stick",
+														"entries": [
+															"As an action, you can reach into your Alchemist's Satchel and pull out a stick that produces a thick plume of smoke. You can hold on to the stick or throw it to a point up to 30 feet away as part of the action used to produce it. The area in a 10-foot radius around the stick is filled with thick smoke that blocks vision, including darkvision. The stick and smoke persist for 1 minute and then disappear. After using this formula, you can't do so again for 1 minute."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Swift Step Draught",
+														"entries": [
+															"As a bonus action, you can reach into your Alchemist's Satchel and pull out a vial filled with a bubbling, brown liquid. As an action, a creature can drink it. Doing so increases the creature's speed by 20 feet for 1 minute, and the vial disappears. If not used, the vial and its contents disappear after 1 minute. After using this formula, you can't do so again for 1 minute."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Tanglefoot",
+														"entries": [
+															"As an action, you can reach into your Alchemist's Satchel and pull out a bag filled with writhing, sticky black tar and hurl it at a point on the ground within 30 feet of you (the bag and its contents disappear if you don't hurl the bag by the end of the current turn). The bag bursts on impact and covers the ground in a 5-foot radius with sticky goo. That area becomes difficult terrain for 1 minute, and any creature that starts its turn on the ground in that area has its speed halved for that turn. After using this formula, you can't do so again for 1 minute."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Thunderstone",
+														"entries": [
+															"As an action, you can reach into your Alchemist's Satchel and pull out a crystalline shard and hurl it at a creature, object, or surface within 30 feet of you (the shard disappears if you don't hurl it by the end of the current turn). The shard shatters on impact with a blast of concussive energy. Each creature within 10 feet of the point of impact must succeed on a Constitution saving throw or be knocked {@condition prone} and pushed 10 feet away from that point."
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Extra Alchemical Formula",
+										"entries": [
+											"At 3rd level, you learn an additional Alchemical Formula."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Extra Alchemical Formula",
+										"entries": [
+											"At 9th level, you learn an additional Alchemical Formula."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Extra Alchemical Formula",
+										"entries": [
+											"At 14th level, you learn an additional Alchemical Formula."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Extra Alchemical Formula",
+										"entries": [
+											"At 17th level, you learn an additional Alchemical Formula."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "UAArtificer",
+					"shortName": "Alchemist"
+				},
+				{
+					"name": "Gunsmith",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Gunsmith",
+								"entries": [
+									"A master of engineering, you forge a firearm powered by a combination of science and magic.",
+									{
+										"type": "entries",
+										"name": "Master Smith",
+										"entries": [
+											"When you choose this specialization at 1st level, you gain proficiency with smith's tools, and you learn the mending cantrip."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Thunder Cannon",
+										"entries": [
+											"At 1st level, you forge a deadly firearm using a combination of arcane magic and your knowledge of engineering and metallurgy. This firearm is called a Thunder Cannon. It is a ferocious weapon that fires leaden bullets that can punch through armor with ease.",
+											"You are proficient with the Thunder Cannon. The firearm is a two-handed ranged weapon that deals 2d6 piercing damage. Its normal range is 150 feet, and its maximum range if 500 feet. Once fired, it must be reloaded as a bonus action.",
+											"If you lose your Thunder Cannon, you can create a new one over the course of three days of work (eight hours each day) by expending 100 gp worth of metal and other raw materials."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Arcane Magazine",
+										"entries": [
+											"At 1st level, you craft a leather bag used to carry your tools and ammunition for your Thunder Cannon. Your Arcane Magazine includes the powders, lead shot, and other materials needed to keep that weapon functioning.",
+											"You can use the Arcane Magazine to produce ammunition for your gun. At the end of each long rest, you can magically produce 40 rounds of ammunition with this magazine. After each short rest, you can produce 10 rounds.",
+											"If you lose your Arcane Magazine, you can create a new one as part of a long rest, using 25 gp of leather and other raw materials."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Thunder Monger",
+										"entries": [
+											"At 3rd level, you learn to channel thunder energy into your Thunder Cannon. As an action, you can make a special attack with your Thunder Cannon that deals an extra 1d6 thunder damage on a hit.",
+											"This extra damage increases by 1d6 when you reach certain levels in this class: 5th level (2d6), 7th level (3d6), 9th level (4d6), 11th level (5d6), 13th level (6d6), 15th level (7d6), 17th level (8d6), and 19th level (9d6)."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Blast Wave",
+										"entries": [
+											"Starting at 9th level, you can channel force energy into your Thunder Cannon. As an action, you can make a special attack with it. Rather than making an attack roll, you unleash force energy in a 15-foot cone from the gun. Each creature in that area must make a Strength saving throw with a DC of 8 + your proficiency bonus + your Intelligence modifier. On a failed saving throw, a target takes 2d6 force damage and is pushed 10 feet away from you.",
+											"This damage increases by 1d6 when you reach certain levels in this class: 13th level (3d6) and 17th level (4d6)."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Piercing Round",
+										"entries": [
+											"Starting at 14th level, you can shoot lightning energy through your Thunder Cannon. As an action, you can make a special attack with it. Rather than making an attack roll, you cause the gun to unleash a bolt of lightning, 5-feet wide and 30-feet long. Each creature in that area must make Dexterity saving throws with a DC of 8 + your proficiency bonus + your Intelligence modifier. On a failed saving throw, a target takes 4d6 lightning damage. This damage increases to 6d6 when you reach 19th level in this class."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Explosive Round",
+										"entries": [
+											"Starting at 17th level, you can channel fiery energy into your Thunder Cannon. As an action, you can make a special attack with it. Rather than making an attack roll, you launch an explosive round from the gun. The round detonates in a 30-foot radius sphere at a point within range. Each creature in that area must make a Dexterity saving throw with a DC of 8 + your proficiency bonus + your Intelligence modifier. On a failed saving throw, a target takes 4d8 fire damage."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "UAArtificer",
+					"shortName": "Gunsmith"
+				}
+			]
+		}
+	]
+}

@@ -1165,8 +1165,6 @@ ClassBookView._$wrpBook = null;
 ClassBookView._$bkTbl = null;
 ClassBookView._$scToggles = {};
 
-const jsonURL = "data/classes.json";
-
 const renderer = EntryRenderer.getDefaultRenderer();
 
 const sourceFilter = new Filter({
@@ -1200,7 +1198,7 @@ let tableDefault = $("#pagecontent").html();
 let statsProfDefault = $("#statsprof").html();
 let classTableDefault = $("#classtable").html();
 
-DataUtil.loadJSON(jsonURL).then((data) => {
+DataUtil.class.loadJSON().then((data) => {
 	addClassData(data);
 
 	BrewUtil.addBrewData(handleBrew);
