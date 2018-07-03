@@ -60,13 +60,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) piercing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) piercing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
 					]
 				},
 				{
 					"name": "Drain Blood",
 					"entries": [
-						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one creature that is prone, incapacitated, or restrained. Hit: 5 ({@dice 1d6+2}) necrotic damage. The target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the chupacabra regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one creature that is prone, incapacitated, or restrained. Hit: 5 ({@dice 1d6+2}) necrotic damage. The target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the chupacabra regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
 					]
 				}
 			],
@@ -124,19 +124,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
 					]
 				},
 				{
 					"name": "Spit Poison",
 					"entries": [
-						"Ranged Weapon Attack: {@hit +4} to hit, range 15/30 ft., one creature. Hit: The target must make a DC 13 Constitution saving throw, taking 18 ({@dice 4d8}) poison damage on a failed save, or half as much damage on a successful one. In addition, a creature that fails its saving throw is blinded until the end of the deathspitter's next turn."
+						"Ranged Weapon Attack: {@hit 4} to hit, range 15/30 ft., one creature. Hit: The target must make a DC 13 Constitution saving throw, taking 18 ({@dice 4d8}) poison damage on a failed save, or half as much damage on a successful one. In addition, a creature that fails its saving throw is blinded until the end of the deathspitter's next turn."
 					]
 				}
 			]
@@ -200,7 +200,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit +11} to hit, reach 15 ft., one target. Hit: 39 ({@dice 5d12 + 7}) piercing damage. If the target is a Large or smaller creature, it must succeed on a DC 19 Dexterity saving throw or it is grappled (escape DC 19). Until this grapple ends, the target is restrained, and Gishath can't bite another target."
+						"Melee Weapon Attack: {@hit 11} to hit, reach 15 ft., one target. Hit: 39 ({@dice 5d12 + 7}) piercing damage. If the target is a Large or smaller creature, it must succeed on a DC 19 Dexterity saving throw or it is grappled (escape DC 19). Until this grapple ends, the target is restrained, and Gishath can't bite another target."
 					]
 				},
 				{
@@ -213,13 +213,13 @@
 				{
 					"name": "Stomp",
 					"entries": [
-						"Melee Weapon Attack: {@hit +11} to hit, reach 10 ft., one target. Hit: 29 ({@dice 5d8 + 7}) bludgeoning damage, and the target must succeed on a DC 19 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit 11} to hit, reach 10 ft., one target. Hit: 29 ({@dice 5d8 + 7}) bludgeoning damage, and the target must succeed on a DC 19 Strength saving throw or be knocked prone."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: {@hit +11} to hit, reach 15 ft., one target. Hit: 25 ({@dice 4d8 + 7}) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 11} to hit, reach 15 ft., one target. Hit: 25 ({@dice 4d8 + 7}) bludgeoning damage."
 					]
 				}
 			],
@@ -456,25 +456,25 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 15 ft., one target. Hit: 28 ({@dice 4d8 + 10}) slashing damage."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 15 ft., one target. Hit: 28 ({@dice 4d8 + 10}) slashing damage."
 					]
 				},
 				{
 					"name": "Wing",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 20 ft., one target. Hit: 28 ({@dice 4d8 + 10}) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 20 ft., one target. Hit: 28 ({@dice 4d8 + 10}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: {@hit +11} to hit, reach 15 ft., one target. Hit: 25 ({@dice 4d8 + 7}) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 11} to hit, reach 15 ft., one target. Hit: 25 ({@dice 4d8 + 7}) bludgeoning damage."
 					]
 				},
 				{
@@ -609,13 +609,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
 					]
 				},
 				{
 					"name": "Flipper",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 5 ft., one target. Hit: 28 ({@dice 4d8 + 10}) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 5 ft., one target. Hit: 28 ({@dice 4d8 + 10}) bludgeoning damage."
 					]
 				},
 				{
@@ -749,13 +749,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 15 ft., one target. Hit: 28 ({@dice 4d8 + 10}) slashing damage."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 15 ft., one target. Hit: 28 ({@dice 4d8 + 10}) slashing damage."
 					]
 				},
 				{
@@ -895,31 +895,31 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 15 ft., one target. Hit: 28 ({@dice 4d8 + 10}) slashing damage."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 15 ft., one target. Hit: 28 ({@dice 4d8 + 10}) slashing damage."
 					]
 				},
 				{
 					"name": "Horns",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 32 ({@dice 4d10 + 10}) piercing damage."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 10 ft., one target. Hit: 32 ({@dice 4d10 + 10}) piercing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 20 ft., one target. Hit: 24 ({@dice 4d6 + 10}) piercing damage. If the target is a creature, it must succeed on a DC 20 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 20 ft., one target. Hit: 24 ({@dice 4d6 + 10}) piercing damage. If the target is a creature, it must succeed on a DC 20 Strength saving throw or be knocked prone."
 					]
 				},
 				{
 					"name": "Tail Spikes",
 					"entries": [
-						"Ranged Weapon Attack: {@hit +9} to hit, range 100/300 ft., two targets. Hit: 7 ({@dice 2d6}) piercing damage."
+						"Ranged Weapon Attack: {@hit 9} to hit, range 100/300 ft., two targets. Hit: 7 ({@dice 2d6}) piercing damage."
 					]
 				},
 				{
@@ -1047,19 +1047,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 62 ({@dice 8d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 10 ft., one target. Hit: 62 ({@dice 8d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
 					]
 				},
 				{
 					"name": "Stomp",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 5 ft., one target. Hit: 46 ({@dice 8d8 + 10}) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 5 ft., one target. Hit: 46 ({@dice 8d8 + 10}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 20 ft., one target. Hit: 38 ({@dice 8d6 + 10}) bludgeoning damage. If the target is a creature, it must succeed on a DC 20 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 20 ft., one target. Hit: 38 ({@dice 8d6 + 10}) bludgeoning damage. If the target is a creature, it must succeed on a DC 20 Strength saving throw or be knocked prone."
 					]
 				},
 				{
@@ -1187,19 +1187,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained. If the elder dinosaur has three targets restrained in this way, it can't bite another target."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained. If the elder dinosaur has three targets restrained in this way, it can't bite another target."
 					]
 				},
 				{
 					"name": "Stomp",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 5 ft., one target. Hit: 46 ({@dice 8d8 + 10}) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 5 ft., one target. Hit: 46 ({@dice 8d8 + 10}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: {@hit +19} to hit, reach 20 ft., one target. Hit: 38 ({@dice 8d6 + 10}) bludgeoning damage. If the target is a creature, it must succeed on a DC 20 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 20 ft., one target. Hit: 38 ({@dice 8d6 + 10}) bludgeoning damage. If the target is a creature, it must succeed on a DC 20 Strength saving throw or be knocked prone."
 					]
 				},
 				{
@@ -1329,7 +1329,7 @@
 				{
 					"name": "Talon",
 					"entries": [
-						"Melee Weapon Attack: {@hit +14} to hit, reach 5 ft., one target. Hit: 16 ({@dice 2d6 + 9}) slashing damage plus 14 ({@dice 4d6}) fire damage, and the target is grappled (escape DC 18). Until this grapple ends, the target is restrained, and the sunbird can't attack another target with that talon. A grappled creature takes 11 ({@dice 2d10}) fire damage at the start of each of the sunbird's turns."
+						"Melee Weapon Attack: {@hit 14} to hit, reach 5 ft., one target. Hit: 16 ({@dice 2d6 + 9}) slashing damage plus 14 ({@dice 4d6}) fire damage, and the target is grappled (escape DC 18). Until this grapple ends, the target is restrained, and the sunbird can't attack another target with that talon. A grappled creature takes 11 ({@dice 2d10}) fire damage at the start of each of the sunbird's turns."
 					]
 				}
 			]

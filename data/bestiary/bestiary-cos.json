@@ -130,7 +130,7 @@
 				{
 					"name": "Shapechanger",
 					"entries": [
-						"Baba Lysaga can use an action to polymorph into a swarm of insects (flies) or back into her true form. While in swarm form, she has a walking speed of 5 feet and a flying speed of 30 feet. Anything she is wearing transforms with her, but nothing she is carrying does."
+						"Baba Lysaga can use an action to polymorph into a swarm of insects (flies), or back into her true form. While in swarm form, she has a walking speed of 5 feet and a flying speed of 30 feet. Anything she is wearing transforms with her, but nothing she is carrying does."
 					]
 				},
 				{
@@ -144,13 +144,13 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"Baba Lysaga makes three attacks with her quarterstaff"
+						"Baba Lysaga makes three attacks with her quarterstaff."
 					]
 				},
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"Melee Weapon Attack: {@hit +8} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) bludgeoning damage, or 8 ({@dice 1d8+4}) bludgeoning damage if wielded with two hands."
+						"Melee Weapon Attack: {@hit 8} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) bludgeoning damage, or 8 ({@dice 1d8+4}) bludgeoning damage if wielded with two hands."
 					]
 				},
 				{
@@ -180,7 +180,7 @@
 			],
 			"hp": {
 				"average": 263,
-				"formula": "17d10+85"
+				"formula": "17d20+85"
 			},
 			"speed": {
 				"walk": 30
@@ -244,13 +244,13 @@
 				{
 					"name": "Root",
 					"entries": [
-						"Melee Weapon Attack: {@hit +12} to hit, reach 60 ft., one target. Hit: 30 ({@dice 4d10+8}) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 12} to hit, reach 60 ft., one target. Hit: 30 ({@dice 4d10+8}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Rock",
 					"entries": [
-						"Ranged Weapon Attack: {@hit +12} to hit, range 120 ft., one target. Hit: 21 ({@dice 3d8+8}) bludgeoning damage."
+						"Ranged Weapon Attack: {@hit 12} to hit, range 120 ft., one target. Hit: 21 ({@dice 3d8+8}) bludgeoning damage."
 					]
 				}
 			],
@@ -330,13 +330,13 @@
 				{
 					"name": "Claws (Requires Alter Self)",
 					"entries": [
-						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage. This attack is magical."
+						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage. This attack is magical."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Weapon Attack: {@hit +2} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit 2} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage."
 					]
 				}
 			],
@@ -424,7 +424,7 @@
 				{
 					"name": "Broomstick",
 					"entries": [
-						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d4+3}) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d4+3}) bludgeoning damage."
 					]
 				}
 			],
@@ -557,19 +557,19 @@
 				{
 					"name": "Rapier +1",
 					"entries": [
-						"Melee Weapon Attack: {@hit +8} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d8+5}) piercing damage."
+						"Melee Weapon Attack: {@hit 8} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d8+5}) piercing damage."
 					]
 				},
 				{
 					"name": "Handaxe +1",
 					"entries": [
-						"Melee or Ranged Weapon Attack: {@hit +6} to hit, reach 5 ft. or range 20/60 ft., one creature. Hit: 6 ({@dice 1d6+3}) slashing damage."
+						"Melee or Ranged Weapon Attack: {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
 					]
 				},
 				{
 					"name": "Silvered Shortsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
+						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
 					]
 				},
 				{
@@ -661,13 +661,13 @@
 				{
 					"name": "Antimagic Susceptibility",
 					"entries": [
-						"The portrait is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the portrait must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute."
+						"The portrait is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the portrait must succeed on a Constitution saving throw against the caster's spell save DC or become unconscious for 1 minute."
 					]
 				},
 				{
 					"name": "False Appearance",
 					"entries": [
-						"While the figure in the portrait remains motionless, it is indistinguishable from a normal painting."
+						"While the figure in the portrait remains motionless, the portrait is indistinguishable from a normal painting."
 					]
 				}
 			],
@@ -684,7 +684,7 @@
 			},
 			"source": "CoS",
 			"alignment": [
-				"L",
+				"N",
 				"E"
 			],
 			"ac": [
@@ -733,13 +733,13 @@
 				{
 					"name": "Battleaxe",
 					"entries": [
-						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) slashing damage, or 15 ({@dice 2d10+4}) when used with two hands."
+						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) slashing damage, or 15 ({@dice 2d10+4}) when used with two hands."
 					]
 				},
 				{
 					"name": "Hurl Flame",
 					"entries": [
-						"Ranged Spell Attack: {@hit +5} to hit, range 60 ft., one target. Hit: 10 ({@dice 3d6}) fire damage. If the target is a flammable object that isn't being worn or carried, it catches fire."
+						"Ranged Spell Attack: {@hit 5} to hit, range 60 ft., one target. Hit: 10 ({@dice 3d6}) fire damage. If the target is a flammable object that isn't being worn or carried, it catches fire."
 					]
 				}
 			],
@@ -872,7 +872,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage."
 					]
 				},
 				{
@@ -949,7 +949,7 @@
 				{
 					"name": "Mimicry",
 					"entries": [
-						"The mongrelfolk can mimic any sounds it has beard, including voices. A creature that hears the sounds can tell they are imitations with a successful DC 12 Wisdom (Insight) check."
+						"The mongrelfolk can mimic any sounds it has heard, including voices. A creature that hears the sounds can tell they are imitations with a successful DC 12 Wisdom (Insight) check."
 					]
 				}
 			],
@@ -963,19 +963,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
+						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) slashing damage."
+						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) slashing damage."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Weapon Attack: {@hit +3} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
 					]
 				}
 			],
@@ -1069,7 +1069,7 @@
 				{
 					"name": "Spectral Longsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) force damage."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) force damage."
 					]
 				},
 				{
@@ -1087,7 +1087,7 @@
 			"type": "construct",
 			"source": "CoS",
 			"alignment": [
-				"L",
+				"N",
 				"E"
 			],
 			"ac": [
@@ -1112,7 +1112,7 @@
 			"wis": 13,
 			"cha": 10,
 			"skill": {
-				"performance": "+3"
+				"performance": "+2"
 			},
 			"immune": [
 				"poison"
@@ -1137,13 +1137,13 @@
 				{
 					"name": "Club",
 					"entries": [
-						"Melee Weapon Attack: {@hit +2} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 2} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Dart",
 					"entries": [
-						"Ranged Weapon Attack: {@hit +4} to hit, range 20/60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
+						"Ranged Weapon Attack: {@hit 4} to hit, range 20/60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
 					]
 				}
 			],
@@ -1247,13 +1247,13 @@
 				{
 					"name": "Scimitar",
 					"entries": [
-						"Melee Weapon Attack: {@hit +10} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d6+6}) slashing damage."
+						"Melee Weapon Attack: {@hit 10} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d6+6}) slashing damage."
 					]
 				},
 				{
 					"name": "Poisoned Dart",
 					"entries": [
-						"Ranged Weapon Attack: {@hit +10} to hit, range 20/60 ft., one target. Hit: 8 ({@dice 1d4+6}) piercing damage plus 5 ({@dice 2d4}) poison damage."
+						"Ranged Weapon Attack: {@hit 10} to hit, range 20/60 ft., one target. Hit: 8 ({@dice 1d4+6}) piercing damage plus 5 ({@dice 2d4}) poison damage."
 					]
 				}
 			],
@@ -1389,86 +1389,11 @@
 				{
 					"name": "Sword Cane",
 					"entries": [
-						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage (wooden cane) or piercing damage (silvered sword)."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage (wooden cane) or piercing damage (silvered sword)."
 					]
 				}
 			],
 			"page": 238
-		},
-		{
-			"name": "Strahd Zombie",
-			"size": "M",
-			"type": "undead",
-			"source": "CoS",
-			"alignment": [
-				"U"
-			],
-			"ac": [
-				8
-			],
-			"hp": {
-				"average": 30,
-				"formula": "4d8+12"
-			},
-			"speed": {
-				"walk": 20
-			},
-			"str": 13,
-			"dex": 6,
-			"con": 16,
-			"int": 3,
-			"wis": 6,
-			"cha": 5,
-			"save": {
-				"wis": "+0"
-			},
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"poisoned"
-			],
-			"senses": "darkvision 60 ft.",
-			"passive": 8,
-			"languages": "understands the languages it knew in life but can't speak",
-			"cr": "1",
-			"trait": [
-				{
-					"name": "Loathsome Limbs",
-					"entries": [
-						"Whenever the zombie takes at least 5 bludgeoning or slashing damage at one time, roll a d20 to determine what else happens to it:",
-						"1-8: One leg is severed from the zombie if it has any legs left.",
-						"9-16: One arm is severed from the zombie if it has any arms left.",
-						"17-20: The zombie is decapitated.",
-						"If the zombie is reduced to 0 hit points, all parts of it die. Until then, a severed part acts on the zombie's initiative and has its own action and movement. A severed part has AC 8. Any damage it takes is subtracted from the zombie's hit points.",
-						"A severed leg is unable to attack and has a speed of 5 feet.",
-						"A severed arm has a speed of 5 feet and can make one claw attack on its turn, with disadvantage on the attack roll. Each time the zombie loses an arm, it loses a claw attack.",
-						"If its head is severed, the zombie loses its bite attack and its body is blinded unless the head can see it. The severed head has a speed of 0 feet. It can make a bite attack but only against a target in its space.",
-						"The zombie's speed is halved if it's missing a leg. If it loses both legs, it falls prone. If it has both arms, it can crawl. With only one arm, it can still crawl, but its speed is halved. With no arms or legs, its speed is 0, and it can't benefit from bonuses to speed."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The zombie makes three attacks: one with its bite and two with its claws."
-					]
-				},
-				{
-					"name": "Bite",
-					"entries": [
-						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
-					]
-				},
-				{
-					"name": "Claw",
-					"entries": [
-						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage."
-					]
-				}
-			],
-			"page": 241
 		},
 		{
 			"name": "Strahd von Zarovich",
@@ -1535,7 +1460,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Strahd is a 9th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 18, {@hit 10} to hit with spell attacks). Strahd has the following wizard spells prepared:"
+						"Strahd is a 9th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 18, {@hit 10} to hit with spell attacks). He has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -1593,7 +1518,7 @@
 					"entries": [
 						"If Strahd isn't in running water or sunlight, he can use his action to polymorph into a Tiny bat, a Medium wolf, or a Medium cloud of mist, or back into his true form.",
 						"While in bat or wolf form, Strahd can't speak. In bat form, his walking speed is 5 feet, and he has a flying speed of 30 feet. In wolf form, his walking speed is 40 feet. His statistics, other than his size and speed, are unchanged. Anything he is wearing transforms with him, but nothing he is carrying does. He reverts to his true form if he dies.",
-						"While in mist form, Strahd can't take any actions, speak, or manipulate objects. He is weightless, has a flying speed of 30 feet, can hover, and can enter a hostile creature's space and stop there. In addition, if air can pass through a space, the mist can do so without squeezing, and he can't pass through water. He has advantage on Strength, Dexterity, and Constitution saving throws, and it is immune to all nonmagical damage, except the damage he takes from sunlight."
+						"While in mist form, Strahd can't take any actions, speak, or manipulate objects. He is weightless, has a flying speed of 20 feet, can hover, and can enter a hostile creature's space and stop there. In addition, if air can pass through a space, the mist can do so without squeezing, and he can't pass through water. He has advantage on Strength, Dexterity, and Constitution saving throws, and he is immune to all nonmagical damage, except the damage he takes from sunlight."
 					]
 				},
 				{
@@ -1605,8 +1530,8 @@
 				{
 					"name": "Misty Escape",
 					"entries": [
-						"When he drops to 0 hit points outside his coffin, Strahd transforms into a cloud of mist (as in the Shapechanger trait) instead of falling {@condition unconscious}, provided that he isn't in running water or sunlight. If he can't transform, he is destroyed.",
-						"While he has 0 hit points in mist form, he can't revert to his vampire form, and he must reach his coffin within 2 hours or be destroyed. Once in his coffin, he reverts to his vampire form. He is then {@condition paralyzed} until he regains at least 1 hit point. After spending 1 hour in his coffin with 0 hit points, he regains 1 hit point."
+						"When Strahd drops to 0 hit points outside his coffin, he transforms into a cloud of mist (as in the Shapechanger trait) instead of falling {@condition unconscious}, provided that he isn't in running water or sunlight. If he can't transform, he is destroyed.",
+						"While he has 0 hit points in mist form, he can't revert to his vampire form, and he must reach his coffin within 2 hours or be destroyed. Once in his coffin, he reverts to his vampire form. He is then {@condition paralyzed} until he regains at least 1 hit point. After 1 hour in his coffin with 0 hit points, he regains 1 hit point."
 					]
 				},
 				{
@@ -1618,7 +1543,7 @@
 				{
 					"name": "Spider Climb",
 					"entries": [
-						"Strahd can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+						"Strahd can climb difficult surfaces, including upside down on ceilings, without having to make an ability check."
 					]
 				},
 				{
@@ -1642,26 +1567,26 @@
 				{
 					"name": "Unarmed Strike (Vampire Form Only)",
 					"entries": [
-						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one creature. Hit: 8 ({@dice 1d8+4}) bludgeoning damage, plus 14 ({@dice 4d6}) necrotic damage. If the target is a creature, Strahd can grapple it (escape DC 18) instead of dealing the bludgeoning damage."
+						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage, plus 14 ({@dice 4d6}) necrotic damage. If the target is a creature, Strahd can grapple it (escape DC 18) instead of dealing the bludgeoning damage."
 					]
 				},
 				{
 					"name": "Bite (Bat or Vampire Form Only)",
 					"entries": [
-						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by Strahd, {@condition incapacitated}, or {@condition restrained}. Hit: 7 ({@dice 1d6+4}) piercing damage plus 10 ({@dice 3d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and Strahd regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0. A humanoid slain in this way and then buried in the ground rises the following night as a {@creature vampire spawn} under Strahd's control."
+						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by Strahd, {@condition incapacitated}, or {@condition restrained}. Hit: 7 ({@dice 1d6+4}) piercing damage plus 10 ({@dice 3d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and Strahd regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0. A humanoid slain in this way and then buried in the ground rises the following night as a {@creature vampire spawn} under Strahd's control."
 					]
 				},
 				{
 					"name": "Charm",
 					"entries": [
-						"Strahd targets one humanoid he can see within 30 ft. of him. If the target can see Strahd, the target must succeed on a DC 17 Wisdom saving throw against this magic or be {@condition charmed}. The charmed target regards Strahd as a trusted friend to be heeded and protected. The target isn't under Strahd's control, but it takes Strahd's requests and actions in the most favorable way and lets Strahd bite it.",
+						"Strahd targets one humanoid he can see within 30 feet of him. If the target can see Strahd, the target must succeed on a DC 17 Wisdom saving throw against this magic or be {@condition charmed}. The charmed target regards Strahd as a trusted friend to be heeded and protected. The target isn't under Strahd's control, but it takes Strahd's requests and actions in the most favorable way and lets Strahd bite it.",
 						"Each time Strahd or his companions do anything harmful to the target, it can repeat the saving throw, ending the effect on itself on a success. Otherwise, the effect lasts 24 hours or until Strahd is destroyed, is on a different plane of existence than the target, or takes a bonus action to end the effect."
 					]
 				},
 				{
 					"name": "Children of the Night (1/Day)",
 					"entries": [
-						"Strahd magically calls {@dice 2d4} swarms of {@creature swarm of bats|mm|bats} or {@creature swarm of rats|mm|rats}, provided that the sun isn't up. While outdoors, Strahd can call {@dice 3d6} {@creature wolf|mm|wolves} instead. The called creatures arrive in {@dice 1d4} rounds, acting as allies of Strahd and obeying his spoken commands. The beasts remain for 1 hour, until Strahd dies, or until he dismisses them as a bonus action."
+						"Strahd magically calls {@dice 2d4} {@creature swarm of bats|mm|swarms of bats} or {@creature swarm of rats|mm|swarms of rats}, provided that the sun isn't up. While outdoors, Strahd can call {@dice 3d6} {@creature wolf|mm|wolves} instead. The called creatures arrive in {@dice 1d4} rounds, acting as allies of Strahd and obeying his spoken commands. The beasts remain for 1 hour, until Strahd dies, or until he dismisses them as a bonus action."
 					]
 				}
 			],
@@ -1688,6 +1613,81 @@
 			],
 			"page": 240,
 			"isNamedCreature": true
+		},
+		{
+			"name": "Strahd Zombie",
+			"size": "M",
+			"type": "undead",
+			"source": "CoS",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				8
+			],
+			"hp": {
+				"average": 30,
+				"formula": "4d8+12"
+			},
+			"speed": {
+				"walk": 20
+			},
+			"str": 13,
+			"dex": 6,
+			"con": 16,
+			"int": 3,
+			"wis": 6,
+			"cha": 5,
+			"save": {
+				"wis": "+0"
+			},
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"senses": "darkvision 60 ft.",
+			"passive": 8,
+			"languages": "understands the languages it knew in life but can't speak",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Loathsome Limbs",
+					"entries": [
+						"Whenever the zombie takes at least 5 bludgeoning or slashing damage at one time, roll a d20 to determine what else happens to it:",
+						"1-8: One leg is severed from the zombie if it has any legs left.",
+						"9-16: One arm is severed from the zombie if it has any arms left.",
+						"17-20: The zombie is decapitated.",
+						"If the zombie is reduced to 0 hit points, all parts of it die. Until then, a severed part acts on the zombie's initiative and has its own action and movement. A severed part has AC 8. Any damage it takes is subtracted from the zombie's hit points.",
+						"A severed leg is unable to attack and has a speed of 5 feet.",
+						"A severed arm has a speed of 5 feet and can make one claw attack on its turn, with disadvantage on the attack roll. Each time the zombie loses an arm, it loses a claw attack.",
+						"If its head is severed, the zombie loses its bite attack and its body is blinded unless the head can see it. The severed head has a speed of 0 feet. It can make a bite attack, but only against a target in its space.",
+						"The zombie's speed is halved if it's missing a leg. If it loses both legs, it falls prone. If it has both arms, it can crawl. With only one arm, it can still crawl, but its speed is halved. With no arms or legs, its speed is 0 feet, and it can't benefit from bonuses to speed."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The zombie makes three attacks: one with its bite and two with its claws."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage."
+					]
+				}
+			],
+			"page": 241
 		},
 		{
 			"name": "Strahd's Animated Armor",
@@ -1775,13 +1775,13 @@
 				{
 					"name": "Greatsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) slashing damage plus 3 ({@dice 1d6}) lightning damage."
+						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) slashing damage plus 3 ({@dice 1d6}) lightning damage."
 					]
 				},
 				{
 					"name": "Shocking Bolt",
 					"entries": [
-						"Ranged Spell Attack: {@hit +4} to hit (with advantage on the attack roll if the target is wearing armor made of metal), range 60 ft., one target. Hit: 10 ({@dice 3d6}) lightning damage."
+						"Ranged Spell Attack: {@hit 4} to hit (with advantage on the attack roll if the target is wearing armor made of metal), range 60 ft., one target. Hit: 10 ({@dice 3d6}) lightning damage."
 					]
 				}
 			],
@@ -1793,7 +1793,7 @@
 			"type": "plant",
 			"source": "CoS",
 			"alignment": [
-				"L",
+				"N",
 				"E"
 			],
 			"ac": [
@@ -1843,25 +1843,25 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"The blight makes four attacks: two with its branches and two with its grasping roots, If it has a target grappled, the blight can also make a bite attack against the target as a bonus action."
+						"The blight makes four attacks: two with its branches and two with its grasping roots. If it has a target grappled, the blight can also make a bite attack against that target as a bonus action."
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 19 ({@dice 3d8+6}) piercing damage."
+						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one target. Hit: 19 ({@dice 3d8+6}) piercing damage."
 					]
 				},
 				{
 					"name": "Branch",
 					"entries": [
-						"Melee Weapon Attack: {@hit +9} to hit, reach 15 ft., one target. Hit ({@dice 3d6+6}) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 9} to hit, reach 15 ft., one target. Hit: 16 ({@dice 3d6+6}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Grasping Root",
 					"entries": [
-						"Melee Weapon Attack: {@hit +9} to hit, reach 15 ft., one creature not grappled by the blight. Hit: the target is grappled (escape DC 15). Until the grapple ends, the target takes 9 ({@dice 1d6+6}) bludgeoning damage at the start of each of its turns. The root has AC 15 and can be severed by dealing 6 slashing damage or more to it at once. Cutting the root doesn't hurt the blight but ends the grapple."
+						"Melee Weapon Attack: {@hit 9} to hit, reach 15 ft., one creature not grappled by the blight. Hit: The target is grappled (escape DC 15). Until the grapple ends, the target takes 9 ({@dice 1d6+6}) bludgeoning damage at the start of each of its turns. The root has AC 15 and can be severed by dealing 6 slashing damage or more to it at once. Cutting the root doesn't hurt the blight, but ends the grapple."
 					]
 				}
 			],
@@ -1936,6 +1936,12 @@
 					]
 				},
 				{
+					"name": "Special Equipment",
+					"entries": [
+						"Vladimir wields a +2 greatsword with a hilt sculpted to resemble silver dragon wings and a pommel shaped like a silver dragon's head clutching a black opal between its teeth. "
+					]
+				},
+				{
 					"name": "Turn Immunity",
 					"entries": [
 						"Vladimir is immune to effects that turn undead."
@@ -1944,7 +1950,7 @@
 				{
 					"name": "Vengeful Tracker",
 					"entries": [
-						"Vladimir knows the distance to and direction of any creature against which it seeks revenge, even if the creature and Vladimir are on different planes of existence. If the creature being tracked by Vladimir dies, Vladimir knows."
+						"Vladimir knows the distance to and direction of Strahd, even if Strahd and Vladimir are on different planes of existence. If Strahd is destroyed, Vladimir knows."
 					]
 				}
 			],
@@ -1958,19 +1964,19 @@
 				{
 					"name": "Fist",
 					"entries": [
-						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage. If the target is a creature against which Vladimir has sworn vengeance, the target takes an extra 14 ({@dice 4d6}) bludgeoning damage. Instead of dealing damage, Vladimir can grapple the target (escape DC 14) provided the target is Large or smaller."
+						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage. Strahd, the target of Vladimir's sworn vengeance, takes an extra 14 ({@dice 4d6}) bludgeoning damage. Instead of dealing damage, Vladimir can grapple the target (escape DC 14) provided the target is Large or smaller."
 					]
 				},
 				{
 					"name": "Greatsword +2",
 					"entries": [
-						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 20 ({@dice 4d6+4}) slashing damage. Against Strahd, Vladimir deals an extra 14 ({@dice 4d6}) slashing damage with this weapon."
+						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one target. Hit: 20 ({@dice 4d6+4}) slashing damage. Against Strahd, Vladimir deals an extra 14 ({@dice 4d6}) slashing damage with this weapon."
 					]
 				},
 				{
 					"name": "Vengeful Glare",
 					"entries": [
-						"Vladimir targets one creature he can see within 30 feet of him and against which he has sworn vengeance. The target must make a DC 15 Wisdom saving throw. On a failure, the target is paralyzed until Vladimir deals damage to it, or until the end of Vladimir's next turn. When the paralysis ends, the target is frightened of Vladimir for 1 minute. The frightened target can repeat the saving throw at the end of each of its turns, with disadvantage if it can see Vladimir, ending the frightened condition on itself on a success."
+						"Vladimir can target Strahd within 30 feet provided he can see Strahd. Strahd must make a DC 15 Wisdom saving throw. One a failure, Strahd is paralyzed until Vladimir deals damage to him, or until the end of Vladimir's next turn. When the paralysis ends, Strahd is frightened of Vladimir for 1 minute. Strahd can repeat the saving throw at the end of each of his turns, with disadvantage if he can see Vladimir, ending the frightened condition on itself on a success."
 					]
 				}
 			],
@@ -2032,7 +2038,7 @@
 				{
 					"name": "Shapechanger",
 					"entries": [
-						"The wereraven can use its action to polymorph into a raven-humanoid hybrid or into a raven, or back into its human form. Any equipment it is wearing or carrying isn't transformed. It reverts to its human form if it dies."
+						"The wereraven can use its action to polymorph into a raven-humanoid hybrid or into a raven, or back into its human form. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its human form if it dies."
 					]
 				},
 				{
@@ -2052,19 +2058,19 @@
 				{
 					"name": "Beak (Raven or Hybrid Form Only)",
 					"entries": [
-						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 1 piercing damage in raven form, or 4 ({@dice 1d4+2}) piercing damage in hybrid form. If the target is humanoid, it must succeed on a DC 10 Constitution saving throw or be cursed with wereraven lycanthropy."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 1 piercing damage in raven form, or 4 ({@dice 1d4+2}) piercing damage in hybrid form. If the target is humanoid, it must succeed on a DC 10 Constitution saving throw or be cursed with wereraven lycanthropy."
 					]
 				},
 				{
-					"name": "Shortsword (Humanoid or Hybrid Form Only)",
+					"name": "Shortsword (Human or Hybrid Form Only)",
 					"entries": [
-						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				},
 				{
-					"name": "Hand Crossbow (Humanoid or Hybrid Form Only)",
+					"name": "Hand Crossbow (Human or Hybrid Form Only)",
 					"entries": [
-						"Ranged Weapon Attack: {@hit +4} to hit, range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"Ranged Weapon Attack: {@hit 4} to hit, range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],
