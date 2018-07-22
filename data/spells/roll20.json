@@ -1,4 +1,4 @@
-{
+	{
 	"spell": [
 		{
 			"name": "Acid Splash",
@@ -8,6 +8,9 @@
 				"Damage": "1d6",
 				"Damage Type": "Acid",
 				"Damage Progression": "Cantrip Dice"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -89,6 +92,9 @@
 				"Damage": "5",
 				"Damage Type": "Cold",
 				"Higher Spell Slot Bonus": "5"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -102,6 +108,9 @@
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1",
 				"Target": "Each creature within 10 feet of you"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -149,6 +158,9 @@
 			"data": {
 				"Damage": "5d10",
 				"Damage Type": "Force"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -195,6 +207,9 @@
 				"Damage": "6d10",
 				"Damage Type": "Slashing",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -217,6 +232,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -227,6 +245,9 @@
 				"Damage": "3d8",
 				"Damage Type": "Radiant",
 				"Save Success": "Not blinded"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -252,6 +273,9 @@
 				"Damage Type": "Radiant",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -265,6 +289,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -278,6 +305,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d10",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -296,6 +326,9 @@
 				"Damage": "10d8",
 				"Damage Type": "Lightning",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -313,6 +346,9 @@
 				"Damage Type": "Necrotic",
 				"Spell Attack": "Ranged",
 				"Damage Progression": "Cantrip Dice"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -325,6 +361,9 @@
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1",
 				"Target": "A creature that you can see within range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -338,6 +377,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "2"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -364,6 +406,9 @@
 				"Target": "A cube 5 feet on each side, centered on a point you choose within range",
 				"Higher Spell Slot Die": "d4",
 				"Higher Spell Slot Dice": "2"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -377,6 +422,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -438,6 +486,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -451,18 +502,21 @@
 		{
 			"name": "Conjure Animals",
 			"source": "PHB",
+			"data": {}
+		},
+		{
+			"name": "Conjure Barrage",
+			"source": "PHB",
 			"data": {
 				"Save": "Dexterity",
 				"Damage": "3d8",
 				"Damage Type": "Same as weapon or ammunition used as component",
 				"Save Success": "half damage",
 				"Target": "Each creature in a 60-foot cone"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
-		},
-		{
-			"name": "Conjure Barrage",
-			"source": "PHB",
-			"data": {}
 		},
 		{
 			"name": "Conjure Celestial",
@@ -493,6 +547,9 @@
 				"Damage Type": "Same as that of the ammunition or weapon",
 				"Save Success": "Half damage",
 				"Target": "Each creature in a 40-foot-radius. 20-foot-high cylinder centered on a point within range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -541,6 +598,9 @@
 				"Damage": "1d6",
 				"Damage Type": "Piercing",
 				"Target": "A creature other than you which the spell is not ignoring that comes within 30 feet of the ammunition for the first time or ends its turn there"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -626,6 +686,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -644,6 +707,10 @@
 				"Target": "Each creature you choose within 30 feet of you",
 				"Secondary Damage": "5d6",
 				"Secondary Damage Type": "Radiant or necrotic (your choice)"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save",
+				"secondaryDamageCondition": "save"
 			}
 		},
 		{
@@ -686,8 +753,12 @@
 				"Save": "Dexterity",
 				"Damage": "10d6 + 40",
 				"Damage Type": "Force",
+				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "3"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -713,6 +784,9 @@
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1",
 				"Target": "One creature of your choice within range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -781,18 +855,23 @@
 				"Damage Type": "Force",
 				"Spell Attack": "Ranged",
 				"Damage Progression": "Cantrip Beams"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
 			"name": "Elemental Weapon",
 			"source": "PHB",
 			"data": {
-				"Damage": "1d4 + 1",
+				"Damage": "1d4",
 				"Damage Type": "Acid, cold, fire, lightning, or thunder",
 				"Higher Spell Slot Die": "d4",
 				"Higher Spell Slot Dice": "1",
-				"Target": "A nonmagical weapon",
-				"Higher Spell Slot Bonus": "1"
+				"Target": "A nonmagical weapon"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -814,6 +893,9 @@
 				"Damage Type": "Piercing",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -844,6 +926,9 @@
 				"Damage": "3d6",
 				"Target": "A creature that enters the affected area for the first time on a turn or starts its turn there",
 				"Damage Type": "Bludgeoning"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -896,6 +981,9 @@
 				"Save": "Intelligence",
 				"Damage": "4d6",
 				"Damage Type": "Psychic"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -931,6 +1019,9 @@
 				"Damage": "7d8 + 30",
 				"Damage Type": "Necrotic",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -941,6 +1032,9 @@
 				"Damage Type": "Fire",
 				"Spell Attack": "Ranged",
 				"Damage Progression": "Cantrip Dice"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -956,6 +1050,9 @@
 				"Damage": "7d10",
 				"Damage Type": "Fire",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -969,6 +1066,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -980,6 +1080,9 @@
 				"Spell Attack": "Melee",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "0.49"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -995,6 +1098,10 @@
 				"Higher Spell Slot Die": "d6",
 				"Secondary Damage Type": "Radiant",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save",
+				"secondaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1008,6 +1115,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1137,6 +1247,9 @@
 				"Damage": "20",
 				"Damage Type": "Radiant",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1158,6 +1271,9 @@
 				"Spell Attack": "Ranged",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -1179,6 +1295,9 @@
 				"Higher Spell Slot Die": "d10",
 				"Higher Spell Slot Dice": "1",
 				"Target": "The target of an attack and each creature within 5 feet of it"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1199,6 +1318,9 @@
 				"Damage": "14d6",
 				"Damage Type": "Necrotic",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1230,7 +1352,12 @@
 			"data": {
 				"Save": "Constitution",
 				"Damage": "2d8",
-				"Damage Type": "Fire"
+				"Damage Type": "Fire",
+				"Higher Spell Slot Dice": "1",
+				"Higher Spell Slot Die": "d8"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -1243,6 +1370,9 @@
 				"Save Success": "half damage",
 				"Higher Spell Slot Die": "d10",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1261,6 +1391,9 @@
 			"data": {
 				"Damage": "1d6",
 				"Damage Type": "Necrotic"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -1296,12 +1429,21 @@
 				"Target": "A 20-foot-radius sphere centered on a point within range",
 				"Secondary Damage": "2d6",
 				"Secondary Damage Type": "Acid"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto",
+				"secondaryDamageCondition": "save"
 			}
 		},
 		{
 			"name": "Hunter's Mark",
 			"source": "PHB",
-			"data": {}
+			"data": {
+				"Damage": "1d6"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
+			}
 		},
 		{
 			"name": "Hypnotic Pattern",
@@ -1324,6 +1466,10 @@
 				"Higher Spell Slot Die": "d8",
 				"Secondary Damage Type": "Cold",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save",
+				"secondaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1353,6 +1499,9 @@
 				"Target": "Each creature in a 20-foot-radius sphere centered on a point within range when it appears or when it enters the spell's area for the first time on a turn or ends its turn there.",
 				"Damage Type": "Fire",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1364,6 +1513,9 @@
 				"Spell Attack": "Melee",
 				"Higher Spell Slot Die": "d10",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -1377,6 +1529,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d10",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1440,7 +1595,13 @@
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1",
 				"Secondary Damage": "2d8",
-				"Secondary Damage Type": "Lightning"
+				"Secondary Damage Type": "Lightning",
+				"Secondary Higher Spell Slot Die": "d8",
+				"Secondary Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition":"auto",
+				"secondaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1454,6 +1615,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1508,6 +1672,9 @@
 				"Higher Spell Slot Die": "d4",
 				"Higher Spell Slot Dice": "1",
 				"Higher Spell Slot Bonus": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -1581,6 +1748,10 @@
 				"Higher Spell Slot Dice": "1",
 				"Secondary Higher Spell Slot Die": "d4",
 				"Secondary Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack",
+				"secondaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -1604,6 +1775,10 @@
 				"Save Success": "Half damage",
 				"Secondary Damage": "20d6",
 				"Secondary Damage Type": "Bludgeoning"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save",
+				"secondaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1654,14 +1829,21 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d10",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
 			"name": "Mordenkainen's Faithful Hound",
 			"source": "PHB",
 			"data": {
+				"Spell Attack": "Melee",
 				"Damage": "4d8",
 				"Damage Type": "Piercing"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -1681,6 +1863,9 @@
 				"Damage": "3d10",
 				"Damage Type": "Force",
 				"Spell Attack": "Melee"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -1711,6 +1896,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1726,7 +1914,7 @@
 			"data": {}
 		},
 		{
-			"name": "Pass Without Trace",
+			"name": "Pass without Trace",
 			"source": "PHB",
 			"data": {}
 		},
@@ -1744,6 +1932,9 @@
 				"Save": "Intelligence",
 				"Damage": "1d6",
 				"Damage Type": "Psychic"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1790,6 +1981,9 @@
 				"Damage": "1d12",
 				"Damage Type": "Poison",
 				"Damage Progression": "Cantrip Dice"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1840,6 +2034,9 @@
 				"Target": "Each creature in a 60-foot cone",
 				"Damage Type": "Fire, acid, lightning, poison, or cold",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -1851,15 +2048,22 @@
 				"Target": "A creature attempts to reach into or pass through the wall",
 				"Damage Type": "Fire, acid, lightning, poison, or cold",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
 			"name": "Produce Flame",
 			"source": "PHB",
 			"data": {
-				"Damage": "((@{level} + 1) / 6 + 0.5)d8",
+				"Damage": "1d8",
+				"Damage Progression": "Cantrip Dice",
 				"Damage Type": "Fire",
 				"Spell Attack": "Ranged"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -1921,6 +2125,9 @@
 				"Damage Type": "Cold",
 				"Spell Attack": "Ranged",
 				"Damage Progression": "Cantrip Dice"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -1934,6 +2141,9 @@
 				"Save Success": "Not poisoned",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -1990,6 +2200,9 @@
 				"Damage": "1d8",
 				"Damage Type": "Radiant",
 				"Damage Progression": "Cantrip Dice"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2006,6 +2219,9 @@
 				"Damage": "2d6",
 				"Damage Type": "Fire",
 				"Spell Attack": "Ranged"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -2028,6 +2244,10 @@
 				"Higher Spell Slot Dice": "1",
 				"Secondary Damage": "1d6",
 				"Secondary Damage Type": "Fire"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto",
+				"secondaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2068,6 +2288,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2093,6 +2316,9 @@
 				"Damage Type": "Lightning",
 				"Spell Attack": "Melee",
 				"Damage Progression": "Cantrip Dice"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -2178,6 +2404,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2190,6 +2419,9 @@
 				"Add Casting Modifier": "Yes",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "0.49"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -2199,6 +2431,9 @@
 				"Save": "Wisdom",
 				"Damage": "4d6",
 				"Damage Type": "Psychic"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -2228,6 +2463,9 @@
 				"Damage": "2d6",
 				"Target": "Each creature in a 360-foot radius centered on a point you can see (no more than 5,000 feet beneath the cloud) when it appears",
 				"Damage Type": "Thunder"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2246,6 +2484,9 @@
 				"Target": "Each creature in the line",
 				"Damage Type": "Radiant",
 				"Save Success": "Half damage and not blinded"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2257,6 +2498,9 @@
 				"Target": "Each creature in a 60-foot radius centered on a point within range",
 				"Damage Type": "Radiant",
 				"Save Success": "Half damage and not blinded"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2317,6 +2561,9 @@
 				"Damage Progression": "Cantrip Dice",
 				"Spell Attack": "Melee",
 				"Target": "A creature in range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -2326,6 +2573,9 @@
 				"Save": "Strength",
 				"Damage": "2d6",
 				"Damage Type": "Thunder"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -2339,6 +2589,9 @@
 				"Save Success": "Half damage and not pushed",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2392,6 +2645,9 @@
 				"Damage Type": "Bludgeoning",
 				"Save Success": "Half damage and not prone",
 				"Target": "Each creature within the wall, which is up to 300 feet long, 300 feet high, and 50 feet thick"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2408,6 +2664,9 @@
 				"Spell Attack": "Melee",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -2418,6 +2677,9 @@
 				"Damage": "1d4",
 				"Damage Type": "Psychic",
 				"Damage Progression": "Cantrip Dice"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2431,6 +2693,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2449,6 +2714,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "2"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2471,6 +2739,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2518,6 +2789,9 @@
 				"Target": "Each creature within the wall when it appears",
 				"Damage Type": "Bludgeoning",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2535,6 +2809,9 @@
 				"Higher Spell Slot Die": "d12",
 				"Higher Spell Slot Dice": "1",
 				"Target": "A creature within range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -2550,6 +2827,9 @@
 				"Damage": "1d6",
 				"Damage Type": "Psychic",
 				"Save Success": "Spell ends"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -2563,20 +2843,30 @@
 			"name": "Booming Blade",
 			"source": "SCAG",
 			"data": {
-				"Damage": "1d8",
+				"Damage": "([[ceil((@{level} + 2) / 6)]]-1)d8",
 				"Damage Type": "Thunder",
-				"Damage Progression": "Cantrip Dice",
+				"Secondary Damage": "[[ceil((@{level} + 2) / 6)]]d8",
+				"Secondary Damage Type": "Thunder",
 				"Target": "Target which willingly moved"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto",
+				"secondaryDamageCondition": "auto"
 			}
 		},
 		{
 			"name": "Green-Flame Blade",
 			"source": "SCAG",
 			"data": {
+				"Damage": "([[ceil((@{level} + 2) / 6)]]-1)d8",
 				"Damage Type": "Fire",
-				"Damage Progression": "Cantrip Dice",
-				"Target": "Second creature",
-				"Add Casting Modifier": "Yes"
+				"Secondary Damage": "(((@{level} + 1) / 6 + 0.5)-1)d8",
+				"Secondary Damage Type": "Fire",
+				"Secondary Add Casting Modifier": "Yes"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto",
+				"secondaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -2588,6 +2878,9 @@
 				"Damage Type": "Lightning",
 				"Damage Progression": "Cantrip Dice",
 				"Target": "One creature you can see within range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2599,6 +2892,9 @@
 				"Damage Type": "Force",
 				"Damage Progression": "Cantrip Dice",
 				"Target": "Each creature within range other than you"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2701,6 +2997,9 @@
 				"Spell Attack": "Ranged",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -2717,6 +3016,9 @@
 				"Damage Type": "Radiant",
 				"Damage Progression": "Cantrip Dice",
 				"Target": "Each creature of your choice that you can see within range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2735,6 +3037,9 @@
 				"Damage Type": "Piercing",
 				"Damage Progression": "Cantrip Dice",
 				"Target": "One creature you can see within range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2746,6 +3051,9 @@
 				"Damage Progression": "Cantrip Dice",
 				"Target": "One creature within 5 feet of you",
 				"Spell Attack": "Melee"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -2783,6 +3091,10 @@
 				"Target": "One creature you can see within range",
 				"Secondary Damage": "1d8",
 				"Secondary Damage Type": "Necrotic"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save",
+				"secondaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2849,6 +3161,9 @@
 				"Damage Type": "Necrotic",
 				"Save Success": "Half damage",
 				"Target": "Every creature in a 30-foot cube centered on a point"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2859,6 +3174,9 @@
 				"Damage Type": "Triggering",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -2872,6 +3190,9 @@
 				"Higher Spell Slot Dice": "1",
 				"Target": "Each creature in a line 30 feet long and 5 feet wide emanating from you in a direction you choose",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2886,6 +3207,9 @@
 				"Save": "Dexterity",
 				"Damage": "6d6",
 				"Damage Type": "Bludgeoning"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2897,6 +3221,9 @@
 				"Damage Type": "Bludgeoning",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2922,12 +3249,18 @@
 			"name": "Chaos Bolt",
 			"source": "XGE",
 			"data": {
-				"Damage": "2d8 + 1d6",
+				"Damage": "2d8",
 				"Damage Type": "Variable",
 				"Target": "One creature in range",
 				"Spell Attack": "Ranged",
-				"Higher Spell Slot Die": "d6",
-				"Higher Spell Slot Dice": "1"
+				"Secondary Higher Spell Slot Die": "d6",
+				"Secondary Higher Spell Slot Dice": "1",
+				"Secondary Damage": "1d6",
+				"Secondary Damage Type": "Variable"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack",
+				"secondaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -2955,6 +3288,9 @@
 				"Damage": "1d8",
 				"Damage Type": "Fire",
 				"Damage Progression": "Cantrip Dice"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2970,6 +3306,9 @@
 				"Damage Type": "Radiant",
 				"Target": "One creature or object within 120 feet",
 				"Spell Attack": "Ranged"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -2986,6 +3325,9 @@
 				"Damage Type": "Radiant",
 				"Target": "Each creature in a 30-foot-radius, 40-foot-high cylinder",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -2999,6 +3341,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3016,6 +3361,9 @@
 				"Save Success": "Half damage and not pushed",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3028,6 +3376,9 @@
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1",
 				"Target": "Each creature other than you"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3044,6 +3395,9 @@
 				"Save": "Constitution",
 				"Damage": "2d6",
 				"Damage Type": "Extra of the chosen type"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3059,12 +3413,16 @@
 			"source": "XGE",
 			"data": {
 				"Save": "Dexterity",
-				"Damage": "2d8",
+				"Damage": "4d8",
 				"Damage Type": "Necrotic",
+				"Save Success": "Half damage and no continuing effect",
 				"Target": "A creature you can see within range",
 				"Healing": "You regain half the necrotic damage the target takes",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3078,6 +3436,9 @@
 				"Higher Spell Slot Die": "d12",
 				"Higher Spell Slot Dice": "1",
 				"Target": "Each creature in a 20-foot cube centered on point you can see on the ground within range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3096,6 +3457,9 @@
 			"data": {
 				"Damage": "1d6",
 				"Damage Type": "Fire"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -3106,6 +3470,9 @@
 				"Damage": "1d6",
 				"Damage Type": "Cold",
 				"Damage Progression": "Cantrip Dice"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3123,7 +3490,9 @@
 			"source": "XGE",
 			"data": {
 				"Target": "A space that is a 5-foot cube you can see within range",
-				"Healing": "1d6"
+				"Healing": "1d6",
+				"Higher Spell Slot Die": "d6",
+				"Higher Spell Slot Dice": "1"
 			}
 		},
 		{
@@ -3131,12 +3500,17 @@
 			"source": "XGE",
 			"data": {
 				"Save": "Constitution",
-				"Damage": "4d8",
+				"Damage": "2d8",
 				"Damage Type": "Radiant",
 				"Target": "Each creature of your choice that you can see within 30 feet of you",
 				"Save Success": "Half damage and not blinded",
-				"Secondary Damage": "2d8",
+				"Secondary Damage": "4d8",
 				"Secondary Damage Type": "Radiant"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto",
+				"secondaryDamageCondition": "save"
+
 			}
 		},
 		{
@@ -3152,17 +3526,21 @@
 				"Secondary Damage Type": "Cold",
 				"Secondary Higher Spell Slot Die": "d6",
 				"Secondary Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack",
+				"secondaryDamageCondition": "save"
 			}
 		},
 		{
 			"name": "Illusory Dragon",
 			"source": "XGE",
 			"data": {
-				"Save": "Intelligence",
-				"Damage": "7d6",
-				"Damage Type": "Acid, cold, fire, lightning, necrotic, or poison",
-				"Target": "Each creature in a 60-foot cone originating from the illusion's space",
-				"Save Success": "Half damage"
+				"Save": "Wisdom",
+				"Save Success": "Not frightened"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3174,6 +3552,9 @@
 				"Damage Type": "Fire",
 				"Save Success": "Half damage and not burning",
 				"Target": "One creature you can see withing range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3190,6 +3571,9 @@
 				"Damage Type": "Poison",
 				"Damage Progression": "Cantrip Dice",
 				"Target": "One creature you can see within range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3203,6 +3587,10 @@
 				"Secondary Damage": "1d10",
 				"Secondary Damage Type": "Fire",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save",
+				"secondaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -3214,6 +3602,9 @@
 				"Damage Type": "Cold",
 				"Save Success": "Half damage and speed not halved",
 				"Target": "Each creature in a 15-foot cone extending from you in a direction you choose"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3233,6 +3624,9 @@
 				"Damage Type": "Bludgeoning",
 				"Save Success": "Half damage and not pushed away",
 				"Target": "Each creature in a 15-foot cube centered on a point you can see within 60 feet of you"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3250,6 +3644,9 @@
 				"Healing": "Twice the necrotic damage you take",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -3260,6 +3657,9 @@
 				"Damage": "8d8",
 				"Damage Type": "Psychic",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3269,6 +3669,9 @@
 				"Save": "Strength",
 				"Damage": "6d6",
 				"Damage Type": "Bludgeoning"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3279,6 +3682,9 @@
 				"Damage Type": "Bludgeoning",
 				"Spell Attack": "Ranged",
 				"Add Casting Modifier": "Yes"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -3296,6 +3702,9 @@
 				"Damage": "2d6",
 				"Damage Type": "Bludgeoning",
 				"Target": "A 5-foot-square unoccupied space on the ground that you can see within range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3307,6 +3716,9 @@
 				"Damage Type": "Fire",
 				"Target": "Each creature within 5 feet of a point or points you choose within 120 feet of you",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3320,6 +3732,10 @@
 				"Save Success": "Spell ends",
 				"Secondary Damage": "10d10",
 				"Secondary Damage Type": "Psychic"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto",
+				"secondaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3338,6 +3754,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3354,6 +3773,9 @@
 				"Damage Type": "Necrotic",
 				"Target": "One creature you can see within range",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3372,6 +3794,9 @@
 				"Damage Progression": "Cantrip Dice",
 				"Target": "One creature within 5 feet of you",
 				"Spell Attack": "Melee"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -3388,6 +3813,9 @@
 				"Damage Type": "Psychic",
 				"Target": "Up to ten creatures of your choice that you can see within range",
 				"Save Success": "Half damage and not stunned"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3414,6 +3842,9 @@
 				"Damage Type": "Psychic",
 				"Higher Spell Slot Die": "d8",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -3422,6 +3853,9 @@
 			"data": {
 				"Damage": "2d8",
 				"Damage Type": "Necrotic"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -3437,6 +3871,9 @@
 				"Damage": "4d10",
 				"Damage Type": "Radiant",
 				"Target": "A creature that moves into the spell's area for the first time on a turn or starts its turn there"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3467,6 +3904,9 @@
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1",
 				"Target": "Each creature in a 5-foot-radius sphere centered on a point you choose within range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3484,6 +3924,9 @@
 				"Damage Type": "Force",
 				"Target": "Up to five creatures you can see within range",
 				"Spell Attack": "Melee"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -3496,10 +3939,15 @@
 				"Higher Spell Slot Die": "d6",
 				"Higher Spell Slot Dice": "1",
 				"Target": "Each creature in a 20-foot-radius sphere centered on a point you choose within range",
+				"Spell Attack": "Ranged",
 				"Secondary Damage": "4d6",
 				"Secondary Damage Type": "Lightning",
 				"Secondary Higher Spell Slot Die": "d6",
 				"Secondary Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save",
+				"secondaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -3523,6 +3971,9 @@
 				"Damage Type": "Psychic",
 				"Target": "Each creature within a 20-foot-radius sphere centered on a point within range",
 				"Save Success": "Half damage"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3546,6 +3997,9 @@
 				"Save Success": "Half damage",
 				"Higher Spell Slot Die": "d10",
 				"Higher Spell Slot Dice": "1"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3557,6 +4011,9 @@
 				"Damage Type": "Thunder",
 				"Damage Progression": "Cantrip Dice",
 				"Target": "Each creature within range other than you"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3568,6 +4025,9 @@
 				"Damage Type": "Bludgeoning",
 				"Save Success": "Half damage and not prone",
 				"Target": "Each creature in an area within range up to 30 feet long, up to 10 feet wide, and up to 10 feet tall"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3580,12 +4040,17 @@
 			"source": "XGE",
 			"data": {
 				"Save": "Wisdom",
-				"Damage": "1d12",
+				"Damage": "1d8",
 				"Damage Type": "Necrotic",
 				"Damage Progression": "Cantrip Dice",
 				"Target": "One creature you can see within range",
-				"Secondary Damage": "1d8",
-				"Secondary Damage Type": "Necrotic"
+				"Secondary Damage": "1d12",
+				"Secondary Damage Type": "Necrotic",
+				"Secondary Damage Progression": "Cantrip Dice"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save",
+				"secondaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3595,6 +4060,9 @@
 				"Save": "Dexterity",
 				"Damage": "4d8",
 				"Damage Type": "Bludgeoning"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3610,6 +4078,10 @@
 				"Target": "Each creature in a 20-foot-radius sphere centered on a point within range",
 				"Secondary Damage": "5d4",
 				"Secondary Damage Type": "Acid"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save",
+				"secondaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3623,6 +4095,10 @@
 				"Save Success": "Half damage and not blinded",
 				"Secondary Damage": "4d8",
 				"Secondary Damage Type": "Radiant"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save",
+				"secondaryDamageCondition": "auto"
 			}
 		},
 		{
@@ -3654,6 +4130,9 @@
 				"Damage Type": "Bludgeoning",
 				"Save Success": "Half damage and not restrained",
 				"Target": "Each creature in a 10-foot-radius, 30-foot-high cylinder centred on a point on the ground within range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3665,6 +4144,9 @@
 				"Damage Type": "Radiant",
 				"Damage Progression": "Cantrip Dice",
 				"Target": "Each creature of your choice that you can see within range"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save"
 			}
 		},
 		{
@@ -3675,8 +4157,13 @@
 				"Damage": "4d6",
 				"Damage Type": "Slashing",
 				"Target": "Each of your enemies within 10 feet of any tree within a 60-foot cube centered on a point chosen when the spell was cast",
+				"Spell Attack": "Ranged",
 				"Secondary Damage": "3d8",
 				"Secondary Damage Type": "Nonmagical bludgeoning"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "save",
+				"secondaryDamageCondition": "attack"
 			}
 		},
 		{
@@ -3685,6 +4172,9 @@
 			"data": {
 				"Damage": "1d8",
 				"Damage Type": "Force"
+			},
+			"shapedData": {
+				"primaryDamageCondition": "auto"
 			}
 		}
 	]
