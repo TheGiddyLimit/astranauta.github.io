@@ -3841,7 +3841,7 @@
 				"Damage": "2d8",
 				"Damage Type": "Psychic",
 				"Higher Spell Slot Die": "d8",
-				"Higher Spell Slot Dice": "1"
+				"Higher Spell Slot Dice": "0.49"
 			},
 			"shapedData": {
 				"primaryDamageCondition": "auto"
@@ -4091,10 +4091,14 @@
 				"Save": "Constitution",
 				"Damage": "4d8",
 				"Damage Type": "Radiant",
+				"Higher Spell Slot Die": "d8",
+				"Higher Spell Slot Dice": "1",
 				"Target": "Each creature in the wall's area",
 				"Save Success": "Half damage and not blinded",
 				"Secondary Damage": "4d8",
-				"Secondary Damage Type": "Radiant"
+				"Secondary Damage Type": "Radiant",
+				"Secondary Higher Spell Slot Die": "d8",
+				"Secondary Higher Spell Slot Dice": "1"
 			},
 			"shapedData": {
 				"primaryDamageCondition": "save",
