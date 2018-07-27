@@ -1247,12 +1247,24 @@
 						{
 							"type": "list",
 							"items": [
-								"Bonemelt Sprayer. The hellfire engine spews acidic flame in a 60-foot cone. Each creature in the cone must make a DC 20 Dexterity saving throw, taking 11 ({@dice 2d10}) fire damage plus 18 ({@dice 4d8}) acid damage on a failed save, or half as much damage on a successful one. Creatures that fail the saving throw are drenched in burning acid and take 5 ({@dice 1d10}) fire damage plus 9 ({@dice 2d8}) acid damage at the end of their turns. An affected creature or another creature within 5 feet of it can take an action to scrape off the burning fuel.",
-								"Lightning Flail. Melee Weapon Attack: {@hit 11} to hit, reach 15 ft., one creature. Hit: 18 ({@dice 3d8+5}) bludgeoning damage plus 22 ({@dice 5d8}) lightning damage. Up to three other creatures of the hellfire engine's choice that it can see within 30 feet of the target must each make a DC 20 Dexterity saving throw, taking 22 ({@dice 5d8}) lightning damage on a failed save, or half as much damage on a successful one.",
-								"Thunder Cannon. The hellfire engine targets a point within 120 feet of it that it can see. Each creature within 30 feet of that point must make a DC 20 Dexterity saving throw, taking 27 ({@dice 5d10}) bludgeoning damage plus 13 ({@dice 2d12}) thunder damage on a failed save, or half as much damage on a successful one.",
-								"If the chosen option kills a creature, the creature's soul rises from the River Styx as a lemure in Avernus in {@dice 1d4} hours. If the creature isn't revived before then, only a wish spell or killing the lemure and casting true resurrection on the creature's original body can restore it to life. Constructs and devils are immune to this effect."
+								{
+									"type": "item",
+									"name": "Bonemelt Sprayer",
+									"entry": "The hellfire engine spews acidic flame in a 60-foot cone. Each creature in the cone must make a DC 20 Dexterity saving throw, taking 11 ({@dice 2d10}) fire damage plus 18 ({@dice 4d8}) acid damage on a failed save, or half as much damage on a successful one. Creatures that fail the saving throw are drenched in burning acid and take 5 ({@dice 1d10}) fire damage plus 9 ({@dice 2d8}) acid damage at the end of their turns. An affected creature or another creature within 5 feet of it can take an action to scrape off the burning fuel."
+								},
+								{
+									"type": "item",
+									"name": "Lightning Flail",
+									"entry": "Melee Weapon Attack: {@hit 11} to hit, reach 15 ft., one creature. Hit: 18 ({@dice 3d8+5}) bludgeoning damage plus 22 ({@dice 5d8}) lightning damage. Up to three other creatures of the hellfire engine's choice that it can see within 30 feet of the target must each make a DC 20 Dexterity saving throw, taking 22 ({@dice 5d8}) lightning damage on a failed save, or half as much damage on a successful one."
+								},
+								{
+									"type": "item",
+									"name": "Thunder Cannon",
+									"entry": "The hellfire engine targets a point within 120 feet of it that it can see. Each creature within 30 feet of that point must make a DC 20 Dexterity saving throw, taking 27 ({@dice 5d10}) bludgeoning damage plus 13 ({@dice 2d12}) thunder damage on a failed save, or half as much damage on a successful one."
+								}
 							]
-						}
+						},
+									"If the chosen option kills a creature, the creature's soul rises from the River Styx as a lemure in Avernus in {@dice 1d4} hours. If the creature isn't revived before then, only a wish spell or killing the lemure and casting true resurrection on the creature's original body can restore it to life. Constructs and devils are immune to this effect."
 					]
 				}
 			],
@@ -8449,37 +8461,37 @@
 					]
 				},
 				{
-					"name": "1 Acid",
+					"name": "1. Acid",
 					"entries": [
 						"The target must make a DC 17 Constitution saving throw, taking an additional 17 ({@dice 5d6}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
-					"name": "2 Blindness (1/Day)",
+					"name": "2. Blindness (1/Day)",
 					"entries": [
 						"The target takes 5 ({@dice 1d10}) radiant damage. In addition, the target and all other creatures within 20 feet of it must each make a successful DC 17 Dexterity saving throw or be blinded until the end of the orthon's next turn."
 					]
 				},
 				{
-					"name": "3 Concussion",
+					"name": "3. Concussion",
 					"entries": [
 						"The target and each creature within 20 feet of it must make a DC 17 Constitution saving throw, taking 13 ({@dice 2d12}) thunder damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
-					"name": "4 Entanglement",
+					"name": "4. Entanglement",
 					"entries": [
 						"The target must make a successful DC 17 Dexterity saving throw or be restrained for 1 hour by strands of sticky webbing. A restrained creature can escape by using an action to make a successful DC 17 Dexterity or Strength check. Any creature other than an orthon that touches the restrained creature must make a successful DC 17 Dexterity saving throw or become similarly restrained."
 					]
 				},
 				{
-					"name": "5 Paralysis (1/Day)",
+					"name": "5. Paralysis (1/Day)",
 					"entries": [
 						"The target takes 22 ({@dice 4d10}) lightning damage and must make a successful DC 17 Constitution saving throw or be paralyzed for 1 minute. The paralyzed target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				},
 				{
-					"name": "6 Tracking",
+					"name": "6. Tracking",
 					"entries": [
 						"For the next 24 hours, the orthon knows the direction and distance to the target, as long as it's on the same plane of existence. If the target is on a different plane, the orthon knows which one, but not the exact location there."
 					]
