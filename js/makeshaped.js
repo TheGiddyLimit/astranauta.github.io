@@ -320,12 +320,7 @@ class ShapedConverter {
 
 	static processHP (monster, output) {
 		if (monster.hp.special) {
-			const match = monster.hp.special.match(/^(\d+(?:\s\(\d+d\d+(?:[+-]\d+)\)))(.*)/);
-			if (match) {
-				output.HP = match[1];
-			} else {
-				output.HP = 0;
-			}
+			output.HP = monster.hp.special;
 		} else {
 			output.HP = `${monster.hp.average} (${monster.hp.formula.replace(/(\d)([+-])(\d)/, '$1 $2 $3')})`;
 		}
