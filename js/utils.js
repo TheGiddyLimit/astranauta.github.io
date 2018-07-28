@@ -2579,6 +2579,7 @@ UrlUtil.PG_CULTS_BOONS = "cultsboons.html";
 UrlUtil.PG_OBJECTS = "objects.html";
 UrlUtil.PG_TRAPS_HAZARDS = "trapshazards.html";
 UrlUtil.PG_QUICKREF = "quickreference.html";
+UrlUtil.PG_MAKE_SHAPED = "makeshaped.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -3243,6 +3244,8 @@ BrewUtil = {
 						return ["condition", "disease"];
 					case UrlUtil.PG_ADVENTURES:
 						return ["adventure"];
+					case UrlUtil.PG_MAKE_SHAPED:
+						return ["spell", "creature"];
 					default:
 						throw new Error(`No homebrew properties defined for category ${page}`);
 				}
@@ -3504,8 +3507,12 @@ BrewUtil = {
 				BrewUtil.homebrew[arrName].splice(index, 1);
 				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 				if (doRefresh) refreshBrewList();
-				BrewUtil._lists.forEach(l => l.remove("uniqueid", uniqueId));
-				if (doRefresh) History.hashChange();
+				if (page === UrlUtil.PG_MAKE_SHAPED) {
+					// TODO call "delete" function
+				} else {
+					BrewUtil._lists.forEach(l => l.remove("uniqueid", uniqueId));
+					if (doRefresh) History.hashChange();
+				}
 			}
 		}
 
@@ -3697,6 +3704,9 @@ BrewUtil = {
 				break;
 			case UrlUtil.PG_ADVENTURES:
 				handleBrew(toAdd);
+				break;
+			case UrlUtil.PG_MAKE_SHAPED:
+				// TODO call "add" function
 				break;
 			case "NO_PAGE":
 				break;

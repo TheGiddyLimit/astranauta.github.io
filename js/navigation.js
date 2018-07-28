@@ -96,6 +96,7 @@ function navigation () {
 	LI('ul_utils', 'converter.html', 'Stat Block to JSON');
 	LI('ul_utils', 'demo.html', 'Renderer Demo');
 	LI('ul_utils', 'roll20.html', 'Roll20 Script Help');
+	LI('ul_utils', 'makeshaped.html', 'Roll20 Shaped Sheet JS Builder');
 
 	LISwitcher('navbar', 'daynightMode', 'nightModeToggle', '#', 'styleSwitcher.toggleActiveStyleSheet(); return false;');
 

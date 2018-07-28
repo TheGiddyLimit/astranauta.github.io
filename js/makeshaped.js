@@ -77,6 +77,7 @@ class ShapedConverter {
 							}
 						})
 					}
+					BrewUtil.makeBrewButton("manage-brew");
 					return inputs;
 				});
 			});
@@ -991,7 +992,7 @@ window.onload = function load () {
 		inputs.forEach(input => {
 			const disabled = input.name === 'Player\'s Handbook' ? 'disabled="disabled" ' : '';
 			const checked = input.name === 'Player\'s Handbook' ? 'checked="checked" ' : '';
-			$('#sourceList').append($(`<li><label><input type="checkbox" ${disabled}${checked} value="${input.key}"><span>${input.name}</span></label></li>`));
+			$('#sourceList').append($(`<li><label class="shaped-label"><input class="shaped-source" type="checkbox" ${disabled}${checked} value="${input.key}"><span>${input.name}</span></label></li>`));
 		});
 	}).catch(e => {
 		alert(`${e}\n${e.stack}`);
@@ -1000,7 +1001,7 @@ window.onload = function load () {
 	const $btnSaveFile = $(`<div class="btn btn-primary">Prepare JS</div>`);
 	$(`#buttons`).append($btnSaveFile);
 	$btnSaveFile.on('click', () => {
-		const keys = $('input[type="checkbox"]:checked').map((i, e) => {
+		const keys = $('.shaped-source:checked').map((i, e) => {
 			return e.value;
 		}).get();
 		shapedConverter.generateShapedJS(keys)
@@ -1014,5 +1015,9 @@ window.onload = function load () {
 		const shapedJS = $('#shapedJS');
 		shapedJS.select();
 		document.execCommand('Copy');
+		showCopiedEffect($('#copyJS'));
 	});
+	$(`#selectAll`).change(function () {
+		$(`.shaped-source:not([disabled])`).prop("checked", $(this).prop("checked"));
+	})
 };

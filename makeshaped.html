@@ -15,6 +15,54 @@
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
+
+	<style>
+		#shapedJS {
+			resize: none;
+			width: 100%;
+			height: 100%;
+		}
+
+		.shaped-cols {
+			display: flex;
+			width: 100%;
+			justify-content: center;
+		}
+
+		.shaped-cols > *:first-child {
+			margin-right: 5rem;
+		}
+
+		.shaped-label {
+			display: flex;
+		}
+
+		.shaped-label > input {
+			margin-right: 5px;
+		}
+
+		.shaped-wrp-controls {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			max-height: 100%;
+		}
+
+		#sourceList {
+			margin-bottom: 0;
+		}
+
+		.shaped-wrp-output {
+			flex: 1;
+		}
+
+		.wrp-shaped-list {
+			flex-shrink: 0;
+			display: flex;
+			height: 100%;
+			flex-direction: column;
+		}
+	</style>
 </head>
 <body>
 <header class="hidden-xs hidden-sm">
@@ -30,13 +78,31 @@
 </nav>
 <main class="container bodyContent">
 	<div class="row">
-		<ul id="sourceList"></ul>
-	</div>
-	<div class="row">
-		<textarea id="shapedJS"></textarea>
-	</div>
-	<div class="row" id="buttons">
-		<div class="btn btn-primary" id="copyJS" disabled="disabled">Copy JS</div>
+		<div class="shaped-cols">
+			<div class="wrp-shaped-list">
+				<div class="text-align-center">
+					<label class="shaped-label ml-2"><input type="checkbox" id="selectAll"> Select All</label>
+				</div>
+				<ul id="sourceList"></ul>
+				<div class="text-align-center">
+					<button class="btn btn-default btn-sm btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+				</div>
+			</div>
+
+			<div class="shaped-wrp-controls">
+				<div class="mb-2">
+					<p class="shaped-help">
+						This is where you would describe the steps required to import the data into Roll20. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</div>
+				<div class="mb-2 text-align-center" id="buttons">
+					<div class="btn btn-primary" id="copyJS" disabled="disabled">Copy JS</div>
+				</div>
+				<div class="mb-2 shaped-wrp-output">
+					<textarea id="shapedJS"></textarea>
+				</div>
+			</div>
+		</div>
 	</div>
 </main>
 <footer class="container">
@@ -48,6 +114,7 @@
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/makeshaped.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>
