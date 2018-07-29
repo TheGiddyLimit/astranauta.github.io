@@ -3544,6 +3544,9 @@ BrewUtil = {
 					return deleteClassBrew;
 				case "adventure":
 					return deleteAdventureBrew;
+				case "adventureData":
+					// Do nothing, handled by deleting the associated adventure
+					return () => {};
 				default:
 					throw new Error(`No homebrew delete function defined for category ${category}`);
 			}
@@ -3706,7 +3709,7 @@ BrewUtil = {
 				handleBrew(toAdd);
 				break;
 			case UrlUtil.PG_MAKE_SHAPED:
-				// TODO call "add" function
+				handleBrew(toAdd);
 				break;
 			case "NO_PAGE":
 				break;

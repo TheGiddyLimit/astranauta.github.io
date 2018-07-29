@@ -56,33 +56,36 @@ class ShapedConverter {
 				}, inputs);
 			}).then(inputs => {
 				return BrewUtil.pAddBrewData().then(data => {
-					if (data.spell && data.spell.length) {
-						data.spell.forEach(spell => {
-							const input = this.constructor.getInput(inputs, spell.source, BrewUtil.sourceJsonToFull(spell.source));
-							input.spellInput = input.spellInput || [];
-							input.spellInput.push(spell);
-						})
-					}
-					if (data.monster && data.monster.length) {
-						data.monster.forEach(monster => {
-							const input = this.constructor.getInput(inputs, monster.source, BrewUtil.sourceJsonToFull(monster.source));
-							input.monsterInput = input.monsterInput || [];
-							input.monsterInput.push(monster);
-						});
-					}
-					if (data.legendaryGroup && data.legendaryGroup.length) {
-						data.legendaryGroup.forEach(legendary => {
-							if (!inputs._legendaryGroup[legendary.name]) {
-								inputs._legendaryGroup[legendary.name] = legendary;
-							}
-						})
-					}
-					BrewUtil.makeBrewButton("manage-brew");
+					this.addBrewData(inputs, data);
 					return inputs;
 				});
 			});
 		}
 		return this._inputPromise;
+	}
+
+	addBrewData (inputs, data) {
+		if (data.spell && data.spell.length) {
+			data.spell.forEach(spell => {
+				const input = this.constructor.getInput(inputs, spell.source, BrewUtil.sourceJsonToFull(spell.source));
+				input.spellInput = input.spellInput || [];
+				input.spellInput.push(spell);
+			})
+		}
+		if (data.monster && data.monster.length) {
+			data.monster.forEach(monster => {
+				const input = this.constructor.getInput(inputs, monster.source, BrewUtil.sourceJsonToFull(monster.source));
+				input.monsterInput = input.monsterInput || [];
+				input.monsterInput.push(monster);
+			});
+		}
+		if (data.legendaryGroup && data.legendaryGroup.length) {
+			data.legendaryGroup.forEach(legendary => {
+				if (!inputs._legendaryGroup[legendary.name]) {
+					inputs._legendaryGroup[legendary.name] = legendary;
+				}
+			})
+		}
 	}
 
 	static getInput (inputs, key, name) {
@@ -988,8 +991,17 @@ class ShapedConverter {
 	}
 }
 
-window.onload = function load () {
-	window.shapedConverter = new ShapedConverter();
+function rebuildShapedSources () {
+	const checkedSources = {
+		SRC_PHB: true
+	};
+	$('.shaped-source').each((i, e) => {
+		const $e = $(e);
+		if ($e.prop('checked')) {
+			checkedSources[$e.val()] = true;
+		}
+		$e.parent().parent().remove();
+	});
 	shapedConverter.getInputs().then((inputs) => {
 		return Object.values(inputs).sort((a, b) => {
 			if (a.name === 'Player\'s Handbook') {
@@ -1001,13 +1013,30 @@ window.onload = function load () {
 		});
 	}).then(inputs => {
 		inputs.forEach(input => {
-			const disabled = input.name === 'Player\'s Handbook' ? 'disabled="disabled" ' : '';
-			const checked = input.name === 'Player\'s Handbook' ? 'checked="checked" ' : '';
+			const disabled = input.key === SRC_PHB ? 'disabled="disabled" ' : '';
+			const checked = checkedSources[input.key] ? 'checked="checked" ' : '';
 			$('#sourceList').append($(`<li><label class="shaped-label"><input class="shaped-source" type="checkbox" ${disabled}${checked} value="${input.key}"><span>${input.name}</span></label></li>`));
 		});
 	}).catch(e => {
 		alert(`${e}\n${e.stack}`);
 	});
+}
+
+window.onload = function load () {
+	window.handleBrew = data => {
+		shapedConverter.getInputs()
+			.then(inputs => {
+				shapedConverter.addBrewData(inputs, data);
+				rebuildShapedSources();
+			})
+			.catch(e => {
+				alert(`${e}\n${e.stack}`);
+			});
+	};
+	window.shapedConverter = new ShapedConverter();
+	rebuildShapedSources();
+
+	BrewUtil.makeBrewButton("manage-brew");
 
 	const $btnSaveFile = $(`<div class="btn btn-primary">Prepare JS</div>`);
 	$(`#buttons`).append($btnSaveFile);
