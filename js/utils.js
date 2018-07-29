@@ -3493,6 +3493,9 @@ BrewUtil = {
 				});
 			});
 			BrewUtil.removeJsonSource(source);
+			if (page === UrlUtil.PG_MAKE_SHAPED) {
+				removeBrewSource(source);
+			}
 			// remove the source from the filters and re-render the filter box
 			if (BrewUtil._sourceFilter) BrewUtil._sourceFilter.removeIfExists(source);
 			if (BrewUtil._filterBox) BrewUtil._filterBox.render();
@@ -3507,9 +3510,7 @@ BrewUtil = {
 				BrewUtil.homebrew[arrName].splice(index, 1);
 				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 				if (doRefresh) refreshBrewList();
-				if (page === UrlUtil.PG_MAKE_SHAPED) {
-					// TODO call "delete" function
-				} else {
+				if (BrewUtil._lists) {
 					BrewUtil._lists.forEach(l => l.remove("uniqueid", uniqueId));
 					if (doRefresh) History.hashChange();
 				}

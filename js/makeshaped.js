@@ -1033,6 +1033,14 @@ window.onload = function load () {
 				alert(`${e}\n${e.stack}`);
 			});
 	};
+
+	window.removeBrewSource = source => {
+		shapedConverter.getInputs().then(inputs => {
+			delete inputs[source];
+			rebuildShapedSources();
+		});
+	};
+
 	window.shapedConverter = new ShapedConverter();
 	rebuildShapedSources();
 
