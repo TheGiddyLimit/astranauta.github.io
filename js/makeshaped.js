@@ -59,16 +59,16 @@ class ShapedConverter {
 					if (data.spell && data.spell.length) {
 						data.spell.forEach(spell => {
 							const input = this.constructor.getInput(inputs, spell.source, BrewUtil.sourceJsonToFull(spell.source));
-							input.spellInput = [];
+							input.spellInput = input.spellInput || [];
 							input.spellInput.push(spell);
 						})
 					}
 					if (data.monster && data.monster.length) {
 						data.monster.forEach(monster => {
 							const input = this.constructor.getInput(inputs, monster.source, BrewUtil.sourceJsonToFull(monster.source));
-							input.monsterInput = [];
+							input.monsterInput = input.monsterInput || [];
 							input.monsterInput.push(monster);
-						})
+						});
 					}
 					if (data.legendaryGroup && data.legendaryGroup.length) {
 						data.legendaryGroup.forEach(legendary => {
@@ -240,7 +240,7 @@ class ShapedConverter {
 	static makeTraitAction (name) {
 		const nameMatch = name.match(/([^(]+)(?:\(([^)]+)\))?/);
 		if (nameMatch && nameMatch[2]) {
-			const rechargeMatch = nameMatch[2].match(/^(?:(.*), )?(\d(?: minute[s]?)?\/(?:Day|Turn|Rest|Hour|Week|Long Rest|Short Rest)|Recharge \d(?:\u20136)?|Recharge[s]? [^),]+)(?:, ([^)]+))?$/i);
+			const rechargeMatch = nameMatch[2].match(/^(?:(.*), )?(\d(?: minute[s]?)?\/(?:Day|Turn|Rest|Hour|Week|Month|Night|Long Rest|Short Rest)|Recharge \d(?:\u20136)?|Recharge[s]? [^),]+)(?:, ([^)]+))?$/i);
 			if (rechargeMatch) {
 				let newName = nameMatch[1].trim();
 				const condition = rechargeMatch[1] || rechargeMatch[3];
@@ -369,6 +369,16 @@ class ShapedConverter {
 		}
 	}
 
+	static getSpellcastingProcessor (spellcasting) {
+		if (spellcasting.daily || spellcasting.will || spellcasting.headerWill) {
+			return this.innateSpellProc.bind(this);
+		} else if (spellcasting.spells) {
+			return this.normalSpellProc.bind(this);
+		}
+
+		throw new Error(`Unrecognised type of spellcasting object: ${spellcasting.name}`);
+	}
+
 	static processMonster (monster, legendaryGroup) {
 		const output = {};
 		output.name = monster.name;
@@ -415,8 +425,8 @@ class ShapedConverter {
 		}
 		if (monster.spellcasting) {
 			monster.spellcasting.forEach(spellcasting => {
-				const spellProc = spellcasting.name.startsWith('Innate') ? this.innateSpellProc : this.normalSpellProc;
-				const spellLines = spellProc.bind(this)(spellcasting);
+				const spellProc = this.getSpellcastingProcessor(spellcasting);
+				const spellLines = spellProc(spellcasting);
 				spellLines.unshift(this.fixLinks(spellcasting.headerEntries[0]));
 				if (spellcasting.footerEntries) {
 					spellLines.push.apply(spellLines, spellcasting.footerEntries);
@@ -520,11 +530,11 @@ class ShapedConverter {
 				if (lairs.every(isString)) {
 					output.lairActions = lairs.map(this.fixLinks);
 				} else {
-					output.lairActions = lairs.filter(isObject)[0].items.map(this.fixLinks);
+					output.lairActions = lairs.filter(isObject)[0].items.map(this.itemRenderer);
 				}
 			}
 			if (legendaryGroup[monster.legendaryGroup].regionalEffects) {
-				output.regionalEffects = legendaryGroup[monster.legendaryGroup].regionalEffects.filter(isObject)[0].items.map(this.fixLinks);
+				output.regionalEffects = legendaryGroup[monster.legendaryGroup].regionalEffects.filter(isObject)[0].items.map(this.itemRenderer);
 				output.regionalEffectsFade = this.fixLinks(legendaryGroup[monster.legendaryGroup].regionalEffects.filter(isString).last());
 			}
 		}
@@ -534,6 +544,10 @@ class ShapedConverter {
 		}
 
 		return output;
+	}
+
+	static get itemRenderer () {
+		return item => (this.fixLinks(isObject(item) ? `${item.name}. ${item.entries.join('\n')}` : item));
 	}
 
 	static padInteger (num) {
@@ -769,7 +783,9 @@ class ShapedConverter {
 
 		this.processSpellEntries(spell.entries, newSpell);
 		this.processHigherLevel(spell.entriesHigherLevel, newSpell);
-		this.addExtraSpellData(newSpell, additionalSpellData[spell.name]);
+		if (additionalSpellData[spell.name]) {
+			this.addExtraSpellData(newSpell, additionalSpellData[spell.name]);
+		}
 
 		return newSpell;
 	}
