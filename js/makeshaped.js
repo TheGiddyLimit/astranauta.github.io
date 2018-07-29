@@ -992,9 +992,9 @@ class ShapedConverter {
 }
 
 function rebuildShapedSources () {
-	const checkedSources = {
-		SRC_PHB: true
-	};
+	const checkedSources = {};
+	checkedSources[SRC_PHB] = true;
+
 	$('.shaped-source').each((i, e) => {
 		const $e = $(e);
 		if ($e.prop('checked')) {
