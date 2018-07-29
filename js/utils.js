@@ -3368,6 +3368,7 @@ BrewUtil = {
 							const deleteFn = getDeleteFunction(it.category.toLowerCase().replace(/ /g, ""));
 							deleteFn(it.uid, false);
 						});
+						BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 						populateList();
 						refreshBrewList();
 						window.location.hash = "";
@@ -3494,6 +3495,7 @@ BrewUtil = {
 					deleteFn(uId, false);
 				});
 			});
+			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 			BrewUtil.removeJsonSource(source);
 			// remove the source from the filters and re-render the filter box
 			if (BrewUtil._sourceFilter) BrewUtil._sourceFilter.removeIfExists(source);
@@ -3507,7 +3509,6 @@ BrewUtil = {
 			const index = getIndex(arrName, uniqueId);
 			if (~index) {
 				BrewUtil.homebrew[arrName].splice(index, 1);
-				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 				if (doRefresh) refreshBrewList();
 				BrewUtil._lists.forEach(l => l.remove("uniqueid", uniqueId));
 				if (doRefresh) History.hashChange();
