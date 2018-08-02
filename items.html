@@ -13,8 +13,6 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<style id="dynamicStyle"></style> <!-- populated with JS -->
-
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
@@ -24,17 +22,37 @@
 			max-height: 100%;
 		}
 
-		h3.ele-mundane,
-		h3.ele-magic {
+		span.side-label {
+			position: absolute;
+			transform: rotate(-90deg);
+			transform-origin: 0 0;
 			font-size: 18px;
-			margin: 0;
+			left: -22px;
+			bottom: 0;
 		}
 
-		h3.ele-mundane {
-			margin-top: 5px;
+		h3.ele-mundane,
+		h3.ele-magic {
+			margin: 0;
+			position: relative;
+		}
+
+		h3.ele-mundane span.side-label {
+		}
+		h3.ele-magic span.side-label {
+		}
+
+		@media (max-width: 991px) {
+			ul.list {
+				max-height: 20em;
+			}
 		}
 
 		@media (max-device-height: 700px) {
+			ul.list {
+				max-height: 20em;
+			}
+
 			.viewport-wrapper {
 				bottom: auto;
 			}
@@ -74,68 +92,72 @@
 						<button class="btn btn-default" type="button" id="reset">Reset</button>
 					</span>
 			</div>
-			<div id="filtertools" class="sortlabel btn-group">
-				<button class="col-xs-4 sort btn btn-default btn-xs" type="button" data-sort="name" data-sortby="asc">Name
-				</button>
-				<button class="col-xs-4 col-xs-4-3 sort btn btn-default btn-xs" type="button" data-sort="type" data-sortby="asc">
-					Type
-				</button>
-				<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source"
-						data-sortby="asc">Source
-				</button>
-				<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="rarity" data-sortby="asc">Rarity
-				</button>
+			<div id="filtertools-mundane" class="ele-mundane sortlabel btn-group">
+				<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="name" data-sortby="asc">Name</button>
+				<button class="col-xs-4 col-xs-4-3 sort btn btn-default btn-xs" type="button" data-sort="type" data-sortby="asc">Type</button>
+				<button class="col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" type="button" data-sort="cost" data-sortby="asc">Cost</button>
+				<button class="col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" type="button" data-sort="weight" data-sortby="asc">Weight</button>
+				<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source" data-sortby="asc">Source</button>
 			</div>
 
-
-			<h3 data-toggle="mundane" class="ele-mundane">Mundane</h3>
 			<ul class="list mundane ele-mundane"></ul>
+			<h3 class="ele-mundane"><span class="side-label"></span></h3>
 
-			<h3 data-toggle="magic" class="ele-magic">Magic</h3>
+			<div id="filtertools-magic" class="ele-magic sortlabel btn-group">
+				<button class="fullborder col-xs-3 col-xs-3-5 sort btn btn-default btn-xs" type="button" data-sort="name" data-sortby="asc">Name</button>
+				<button class="fullborder col-xs-3 col-xs-3-3 sort btn btn-default btn-xs" type="button" data-sort="type" data-sortby="asc">Type</button>
+				<button class="fullborder col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" type="button" data-sort="weight" data-sortby="asc">Weight</button>
+				<button class="fullborder col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="rarity" data-sortby="asc">Rarity</button>
+				<button class="fullborder col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source" data-sortby="asc">Source</button>
+			</div>
+
 			<ul class="list magic ele-magic"></ul>
+			<h3 data-toggle="magic" class="ele-magic"><span class="side-label"></span></h3>
 		</div>
 
 		<div id="contentwrapper" class="view-col">
+			<div id="sublistcontainer">
+				<div id="sublistsort" class="sortlabel btn-group">
+					<button class="col-xs-6 sort btn btn-default btn-xs" data-sort="name">Name</button>
+					<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="weight">Weight</button>
+					<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="cost">Cost</button>
+					<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="count">Number</button>
+				</div>
+				<ul class="list subitems">
+					<!-- populate with JS -->
+				</ul>
+				<div class="row">
+					<span class="col-xs-6 text-align-right">Total:</span>
+					<span class="col-xs-2 text-align-center no-wrap" id="totalweight"></span>
+					<span class="col-xs-2 text-align-center no-wrap" id="totalvalue"></span>
+				</div>
+			</div>
+
+			<div class="wrp-stat-tab">
+				<div id="tabs-right"></div>
+			</div>
+
 			<table id="pagecontent" class="stats">
-				<tr>
-					<th class="border" colspan="6"></th>
-				</tr>
-				<tr>
-					<th class="name" colspan="6">Name</th>
-				</tr>
-				<tr>
-					<td id="typerarityattunement" class="typerarityattunement" colspan="6"><span
-							id="type">Type</span><span id="rarity">, rarity</span> <span id="attunement">(requires attunement)</span>
-					</td>
-				</tr>
-				<tr>
-					<td id="valueweight" colspan="2"><span id="value">10gp</span> <span id="weight">45 lbs.</span></td>
-					<td id="damageproperties" class="damageproperties" colspan="4"><span id="damage">Damage</span> <span
-							id="damagetype">type</span> <span id="properties">(versatile)</span></td>
-				</tr>
-				<tr id="text">
-					<td class="divider" colspan="6">
-						<div></div>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="6" id="source">Source: <span>Source</span></td>
-				</tr>
-				<tr>
-					<th class="border" colspan="6"></th>
-				</tr>
+				<tr><th class="border" colspan="6"></th></tr>
+				<tr><td colspan="6" class="initial-message">Select an item from the list to view it here</td></tr>
+				<tr><th class="border" colspan="6"></th></tr>
 			</table>
+			<br>
+			<p class="text-align-center">
+				<button class="btn btn-default btn-sm btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+			</p>
 		</div>
 	</div>
 </div>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/history.js"></script>
 <script type="text/javascript" src="js/items.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
-<script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>

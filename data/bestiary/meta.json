@@ -29,58 +29,7 @@
 		{
 			"name": "Aerisi Kalinoth",
 			"lairActions": [
-				"If Aerisi is in the air node while {@creature Yan-C-Bin|PotA} isn't, Aerisi can take lair actions. On initiative count 20 (losing initiative ties), Aerisi uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Aerisi can take no other lair actions while concentrating on a spell cast as a lair action.",
-				"If Aerisi casts {@spell invisibility} using this lair action, she also draws the power of the air node into herself. By doing so, she regains 15 (3d8+2) hit points."
-			]
-		},
-		{
-			"name": "Alquam",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), Alquam takes a lair action to cause one of the following effects; Alquam can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"Alquam snuffs all light sources within the lair. Spells that create light are dispelled, mundane light sources are extinguished, and magical light sources are suppressed. Even light created by artifacts is reduced to dim light with half its normal radius of illumination. This lasts until initiative count 20 on the following round.",
-						"Haunting, maddening music emanates from a point Alquam can see. Creatures within 50 feet of the origin that can hear the music must make a DC 15 Wisdom saving throw. Those that fail are charmed, incapacitated, and have their speed reduced to 0 until they take damage or until initiative count 20 on the following round.",
-						"Black tendrils writhe around up to three creatures Alquam can see within 100 feet. The creatures must succeed on a DC 15 Strength saving throw or be restrained until initiative count 20 on the following round."
-					]
-				}
-			],
-			"regionalEffects": [
-				"The region containing Alquam's lair is warped by the demon lord's magic, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"Within 1 mile of the lair all light sources except artifacts shed light to only half the usual radius.",
-						"Owls and other nocturnal beasts become enraged and hostile within 5 miles of the lair, attacking intruders individually and in swarms.",
-						"Within 1 mile of the lair, Alquam can cast his senses into any area of dim light or darkness as if using {@spell clairvoyance}."
-					]
-				},
-				"If Alquam dies, conditions in the area surrounding the lair return to normal over the course of 1d10 days."
-			]
-		},
-		{
-			"name": "Amethyst Dragon",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"The dragon stomps its foot, creating an earth tremors in a 40-foot radius around it. Each creature other than the dragon in that area must succeed on a DC 15 Dexterity saving throw or take 2d6 bludgeoning damage and fall prone. If the ground in that area is loose earth or stone, it becomes difficult terrain until cleared.",
-						"The dragon causes two amethyst pillars to rise from the earth within 120 feet of it. The pillars crumble to rubble when this action is used again. The effect is otherwise identical to the {@spell bones of the earth|XGE} spell (spell save DC 15)."
-					]
-				}
-			],
-			"regionalEffects": [
-				"The region surrounding a legendary amethyst dragon's lair is warped by the dragon's psionic power, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"Small stones and boulders gather into cairns atop places where a person has fallen in battle within 6 miles of the dragon's lair. The size of the cairn reflects the magnitude of the sorrow caused by the person's loss. The stones have perfect balance, even in an earthquake.",
-						"Rings of small amethyst stones with a radius of 100 feet appear within 1 mile of the dragon's lair. Weapons cannot be drawn while its bearer is within this area, and damage-dealing spells fail instantly."
-					]
-				},
-				"The stones remain after the dragon's death, though their magical effects end immediately."
+				"If Aerisi is in the air node while {@creature Yan-C-Bin|PotA} isn't, Aerisi can take lair actions. On initiative count 20 (losing initiative ties), Aerisi uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Aerisi can take no other lair actions while concentrating on a spell cast as a lair action.\nIf Aerisi casts {@spell invisibility} using this lair action, she also draws the power of the air node into herself. By doing so, she regains 15 (3d8+2) hit points."
 			]
 		},
 		{
@@ -91,7 +40,7 @@
 					"type": "list",
 					"items": [
 						"Baphomet seals one doorway or other entryway within the lair. The opening must be unoccupied. It is filled with solid stone for 1 minute or until Baphomet creates this effect again.",
-						"Baphomet chooses a room within the lair that is no larger in any dimension than 100 feet. Until the next initiative count 20, gravity is reversed within that room. Any creatures or objects in the room when this happens fall in the direction ofthc new pull of gravity, unless they have some means of remaining aloft. Baphomet can ignore the gravity reversal if he's in the room, although he likes to use this action to land on a ceiling to attack targets dying near it.",
+						"Baphomet chooses a room within the lair that is no larger in any dimension than 100 feet. Until the next initiative count 20, gravity is reversed within that room. Any creatures or objects in the room when this happens fall in the direction of the new pull of gravity, unless they have some means of remaining aloft. Baphomet can ignore the gravity reversal if he's in the room, although he likes to use this action to land on a ceiling to attack targets dying near it.",
 						"Baphomet casts {@spell mirage arcane}, affecting a room within the lair that is no longer in any dimension than 100 feet. The effect ends on the next initiative count 20."
 					]
 				}
@@ -125,23 +74,23 @@
 							],
 							"rows": [
 								[
-									"01\u201420",
+									"01\u201320",
 									"\"My anger consumes me. I can't be reasoned with when my rage has been stoked.\""
 								],
 								[
-									"21\u201440",
+									"21\u201340",
 									"\"I degenerate into beastly behavior, seeming more like a wild animal than a thinking being.\""
 								],
 								[
-									"41\u201460",
+									"41\u201360",
 									"\"The world is my hunting ground. Others are my prey.\""
 								],
 								[
-									"61\u201480",
+									"61\u201380",
 									"\"Hate comes easily to me and explodes into rage.\""
 								],
 								[
-									"81\u201400",
+									"81\u201300",
 									"\"I see those who oppose me not as people, but as beasts meant to be preyed upon.\""
 								]
 							]
@@ -210,7 +159,7 @@
 					"type": "list",
 					"items": [
 						"Part of the ceiling collapses above one creature that the dragon can see within 120 feet of it. The creature must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) bludgeoning damage and be knocked prone and buried. The buried target is restrained and unable to breathe or stand up. A creature can take an action to make a DC 10 Strength check, ending the buried state on a success.",
-						"A cloud of sand swirls about in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The cloud spreads around corners. Each creature in the cloud must succeed on a DC 15 constitution saving throw or be blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+						"A cloud of sand swirls about in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The cloud spreads around corners. Each creature in the cloud must succeed on a DC 15 Constitution saving throw or be blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
 						"Lightning arcs, forming a 5-foot-wide line between two of the lair's solid surfaces that the dragon can see. They must be within 120 feet of the dragon and 120 feet of each other. Each creature in that line must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) lightning damage."
 					]
 				}
@@ -261,7 +210,7 @@
 					"type": "list",
 					"items": [
 						"The dragon creates fog as though it had cast the {@spell fog cloud} spell. The fog lasts until initiative count 20 on the next round.",
-						"A thunderclap originates at a point the dragon can see within 120 feet of it. Each creature within a 20-foot-radius centered on that point must make a DC 15 Constitution saving throw or take 5 (1d10) thunder damage and be deafened until the end of its next turn."
+						"A thunderclap originates at a point the dragon can see within 120 feet of it. Each creature within a 20-foot radius centered on that point must make a DC 15 Constitution saving throw or take 5 (1d10) thunder damage and be deafened until the end of its next turn."
 					]
 				}
 			],
@@ -270,7 +219,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Once per day, the dragon can alter the weather in a 6-mile-radius centered on its lair. The dragon doesn't need to be outdoors; otherwise the effect is identical to the {@spell control weather} spell.",
+						"Once per day, the dragon can alter the weather in a 6-mile radius centered on its lair. The dragon doesn't need to be outdoors; otherwise the effect is identical to the {@spell control weather} spell.",
 						"Underwater plants within 6 miles of the dragon's lair take on dazzlingly brilliant hues.",
 						"Within its lair, the dragon can set illusory sounds, such as soft music and strange echoes, so that they can be heard in various parts of the lair."
 					]
@@ -285,7 +234,7 @@
 				{
 					"type": "list",
 					"items": [
-						"The dragon chooses a point on the ground that it can see within 120 feet of it. Stone spikes sprout from the ground in a 20-foot-radius centered on that point. The effect is otherwise identical to the spike growth spell and lasts until the dragon uses this lair action again or until the dragon dies.",
+						"The dragon chooses a point on the ground that it can see within 120 feet of it. Stone spikes sprout from the ground in a 20-foot radius centered on that point. The effect is otherwise identical to the spike growth spell and lasts until the dragon uses this lair action again or until the dragon dies.",
 						"The dragon chooses a 10-foot-square area on the ground that it can see within 120 feet of it. The ground in that area turns into 3-foot-deep mud. Each creature on the ground in that area when the mud appears must succeed on a DC 15 Dexterity saving throw or sink into the mud and become restrained. A creature can take an action to attempt a DC 15 Strength check, freeing itself or another creature within its reach and ending the restrained condition on a success. Moving 1 foot in the mud costs 2 feet of movement. On initiative count 20 on the next round, the mud hardens, and the Strength DC to work free increases to 20."
 					]
 				}
@@ -304,38 +253,13 @@
 			]
 		},
 		{
-			"name": "Crystal Dragon",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"Crystal shackles fly toward a creature the dragon can see within 120 feet. The target must succeed on a DC 16 Dexterity saving throw or be restrained. This effect lasts until the dragon uses this lair action again or the target breaks free with a DC 16 Strength (Athletics) check.",
-						"A strong wind blows around the dragon. Each creature within 60 feet of the dragon must succeed on a DC 15 Strength saving throw or be pushed 15 feet away from the dragon and knocked prone. Gases and vapors are dispersed by the wind and unprotected flames are extinguished. Protected flames, such as lanterns, have a 50 percent chance of being extinguished."
-					]
-				}
-			],
-			"regionalEffects": [
-				"The region surrounding a legendary crystal dragon's lair is warped by the dragon's psionic power, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"Thick clouds heavily obscure the land within a half-mile of the dragon's lair (though not inside its lair).",
-						"Islands of scintillating crystal with AC 10 and 50 hit points float around the dragon's mountain, plummeting to the ground if damaged.",
-						"While within 1 mile of the dragon's lair, Tiny beasts such as rodents and birds gain the ability to communicate telepathically with other creatures within 60 feet."
-					]
-				},
-				"If the dragon dies, the clouds fade within 1 day. The other effects disappear over 1d10 days."
-			]
-		},
-		{
 			"name": "Death Tyrant",
 			"lairActions": [
 				"When fighting inside its lair, a death tyrant can invoke the ambient magic to take lair actions. On initiative count 20 (losing initiative ties), the death tyrant can take one lair action to cause one of the following effects:",
 				{
 					"type": "list",
 					"items": [
-						"An area that is a 50-foot-cube within 120 feet of the tyrant is filled with spectral eyes and tentacles. To creatures other than the death tyrant, that area is lightly obscured and difficult terrain until initiative count 20 on the next round.",
+						"An area that is a 50-foot cube within 120 feet of the tyrant is filled with spectral eyes and tentacles. To creatures other than the death tyrant, that area is lightly obscured and difficult terrain until initiative count 20 on the next round.",
 						"Walls sprout spectral appendages until initiative count 20 on the round after next. Any creature, including one on the Ethereal Plane, that is hostile to the tyrant and starts its turn within 10 feet of a wall must succeed on a DC 17 Dexterity saving throw or be grappled. Escaping requires a successful DC 17 Strength (Athletics) or Dexterity (Acrobatics) check.",
 						"A spectral eye opens in the air at a point within 50 feet of the tyrant. One random eye ray of the tyrant shoots from that eye, which is considered to be an ethereal source, at a target of the tyrant's choice. The eye then closes and disappears."
 					]
@@ -421,23 +345,23 @@
 							],
 							"rows": [
 								[
-									"01\u201420",
+									"01\u201320",
 									"\"Someone is plotting to kill me. I need to strike first to stop them!\""
 								],
 								[
-									"21\u201440",
+									"21\u201340",
 									"\"There is only one solution to my problems: kill them all!\""
 								],
 								[
-									"41\u201460",
+									"41\u201360",
 									"\"There is more than one mind inside my head.\""
 								],
 								[
-									"61\u201480",
+									"61\u201380",
 									"\"If you don't agree with me, I'll beat you into submission to get my way.\""
 								],
 								[
-									"81\u201400",
+									"81\u201300",
 									"\"I can't allow anyone to touch anything that belongs to me. They might try to take it away from me!\""
 								]
 							]
@@ -470,30 +394,6 @@
 					]
 				},
 				"If the elder brain dies, these effects immediately end."
-			]
-		},
-		{
-			"name": "Emerald Dragon",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"The dragon creates fog as though it had cast the {@spell fog cloud} spell. The fog lasts until initiative count 20 on the next round.",
-						"A column of wind 60 feet tall and 20 feet wide appears within 120 feet of the dragon and lifts up scattered scales, creatures, and debris. The wind lasts until initiative count 20 on the next round. Any Large or smaller creature that starts its turn in the column or enters it for the first time on its turn must succeed on a DC 15 Dexterity saving throw or be thrown 60 feet into the air and take 10 (3d6) bludgeoning damage plus 21 (6d6) falling damage."
-					]
-				}
-			],
-			"regionalEffects": [
-				"The region surrounding a legendary emerald dragon's lair is warped by the dragon's psionic power, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"Chill fog lightly obscures the land within 6 miles of the dragon's lair, and apparitions of legendary figures the dragon has studied caution intruders against approaching the dragon's lair.",
-						"Spires of pure emerald grow from the earth within 1 mile of the dragon's lair. Creatures that touch a spire have advantage on Intelligence (History) checks for the next hour."
-					]
-				},
-				"If the dragon dies, the fog fades within 1 day. The other effects disappear over 1d10 days."
 			]
 		},
 		{
@@ -538,23 +438,23 @@
 							],
 							"rows": [
 								[
-									"01\u201420",
+									"01\u201320",
 									"\"I never let anyone know the truth about my actions or intentions, even if doing so would be beneficial to me.\""
 								],
 								[
-									"21\u201440",
+									"21\u201340",
 									"\"I have intermittent hallucinations and fits of catatonia.\""
 								],
 								[
-									"41\u201460",
+									"41\u201360",
 									"\"My mind wanders as I have elaborate fantasies that have no bearing on reality. When I return my focus to the world, I have a hard time remembering that it was just a daydream.\""
 								],
 								[
-									"61\u201480",
+									"61\u201380",
 									"\"I convince myself that things are true, even in the face of overwhelming evidence to the contrary.\""
 								],
 								[
-									"81\u201400",
+									"81\u201300",
 									"\"My perception of reality doesn't match anyone else's. It makes me prone to violent delusions that make no sense to anyone else.\""
 								]
 							]
@@ -566,8 +466,7 @@
 		{
 			"name": "Gar Shatterkeel",
 			"lairActions": [
-				"If Gar is in the water node while {@creature Olhydra|PotA} isn't, he can take lair actions. On initiative count 20 (losing initiative ties), Gar uses a lair action to use his Multiattack or cast one of his spells, up to 3rd level, without using components or a spell slot. He can't cast the same spell two rounds in a row, but he can continue to concentrate on a spell he previously cast using a lair action. He can take no other lair actions while concentrating on a spell cast as a lair action. His favorite use of this capability is casting {@spell inflict wounds} or {@spell call lightning}.",
-				"If Gar casts {@spell cure wounds} using this lair action, he regains the maximum number of hit points from the spell (28)."
+				"If Gar is in the water node while {@creature Olhydra|PotA} isn't, he can take lair actions. On initiative count 20 (losing initiative ties), Gar uses a lair action to use his Multiattack or cast one of his spells, up to 3rd level, without using components or a spell slot. He can't cast the same spell two rounds in a row, but he can continue to concentrate on a spell he previously cast using a lair action. He can take no other lair actions while concentrating on a spell cast as a lair action. His favorite use of this capability is casting {@spell inflict wounds} or {@spell call lightning}.\nIf Gar casts {@spell cure wounds} using this lair action, he regains the maximum number of hit points from the spell (28)."
 			]
 		},
 		{
@@ -636,27 +535,27 @@
 							],
 							"rows": [
 								[
-									"01\u201420",
+									"01\u201320",
 									"\"There is nothing in the world more important than me and my desires.\""
 								],
 								[
-									"21\u201440",
+									"21\u201340",
 									"\"Anyone who doesn't do exactly what I say doesn't deserve to live.\""
 								],
 								[
-									"41\u201460",
+									"41\u201360",
 									"\"Mine is the path of redemption. Anyone who says otherwise is intentionally misleading you.\""
 								],
 								[
-									"61\u201480",
+									"61\u201380",
 									"\"I will not rest until I have made someone else mine, and doing so is more important to me than my own life\u2014or the lives of others.\""
 								],
 								[
-									"81\u201490",
+									"81\u201390",
 									"\"My own pleasure is of paramount importance. Everything else, including social graces, is a triviality.\""
 								],
 								[
-									"91\u201400",
+									"91\u201300",
 									"\"Anything that can bring me happiness should be enjoyed immediately. There is no point to saving anything pleasurable for later.\""
 								]
 							]
@@ -683,8 +582,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Thickets form labyrinthine passages within 1 mile of the dragon's lair. The thickets act as 10-foot-high, 10-foot-thick walls that block line of sight. Creatures can move through the thickets, with every 1 foot a creature moves costing it 4 feet of movement. A creature in the thickets must make a DC 15 Dexterity saving throw once each round it's in contact with the 'thickets or take 3 (1d6) piercing damage from thorns.",
-						"Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning and piercing damage, vulnerability to fire damage, and immunity to psychic and thunder damage.",
+						"Thickets form labyrinthine passages within 1 mile of the dragon's lair. The thickets act as 10-foot-high, 10-foot-thick walls that block line of sight. Creatures can move through the thickets, with every 1 foot a creature moves costing it 4 feet of movement. A creature in the thickets must make a DC 15 Dexterity saving throw once each round it's in contact with the 'thickets or take 3 (1d6) piercing damage from thorns.\nEach 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning and piercing damage, vulnerability to fire damage, and immunity to psychic and thunder damage.",
 						"Within 1 mile of its lair, the dragon leaves no physical evidence of its passage unless it wishes to. Tracking it there is impossible except by magical means. In addition, it ignores movement impediments and damage from plants in this area that are neither magical nor creatures, including the thickets described above. The plants remove themselves from the dragon's path.",
 						"Rodents and birds within 1 mile of the dragon's lair serve as the dragon's eyes and ears. Deer and other large game are strangely absent, hinting at the presence of an unnaturally hungry predator."
 					]
@@ -760,23 +658,23 @@
 							],
 							"rows": [
 								[
-									"01\u201420",
+									"01\u201320",
 									"\"I must consume everything I can!\""
 								],
 								[
-									"21\u201440",
+									"21\u201340",
 									"\"I refuse to part with any of my possessions.\""
 								],
 								[
-									"41\u201460",
+									"41\u201360",
 									"\"I'll do everything I can to get others to eat and drink beyond their normal limits.\""
 								],
 								[
-									"61\u201480",
+									"61\u201380",
 									"\"I must possess as many material goods as I can.\""
 								],
 								[
-									"81\u201400",
+									"81\u201300",
 									"\"My personality is irrelevant. I am defined by what I consume.\""
 								]
 							]
@@ -849,7 +747,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Within 1 mile of the lair carrion eating creatures are much more agressive and attack and try to consume living creatures.",
+						"Within 1 mile of the lair carrion eating creatures are much more aggressive and attack and try to consume living creatures.",
 						"Aberrations and undead creatures are abnormally frequently encountered within the region.",
 						"The stench of decay fills the air within 6 miles of the lair."
 					]
@@ -876,33 +774,6 @@
 			"lairActions": [
 				"If Marlos is in the earth node while {@creature Ogrémoch|PotA} isn't, the medusa can take lair actions. On initiative count 20 (losing initiative ties), Marlos uses a lair action to cast {@spell earthquake} without using components. As long as he maintains concentration on {@spell earthquake}, initiative count 20 is the start of Marlos's turn for the purpose of the spell. He can take no other lair actions while concentrating on {@spell earthquake}.",
 				"Marlos's second option for a lair action is to draw power from the earth node to heal. When he does so, he regains 30 (6d8+3) hit points."
-			]
-		},
-		{
-			"name": "Moon Dragon",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"Rocks crash from the cavern's ceiling, possibly crushing several creatures. The dragon makes one ranged attack roll each against up to three creatures it can see within 120 feet. On a hit the target takes 10 (3d6) bludgeoning damage.",
-						"Underground water reserves surge upwards through cracks and holes in the floor, flooding craters the dragon can see and spillling out before receding and pulling creatures around in and burying them in the dragon's hoard. Creatures within 20 feet of these craters must succeed on a DC 15 Strength saving throw or be pulled into the crater and be buried in treasure. While buried, the creature is prone and restrained. A creature can use an action to make a DC 10 Strength check, ending the buried state on itself on a success.",
-						"A light glints across the dragon's body and its form disappears where the light passes. The dragon becomes invisible. The invisibility ends on initiative count 20 on the next round."
-					]
-				}
-			],
-			"regionalEffects": [
-				"A region containing a moon dragon's lair is warped by the dragon's presence, which creates one or more of the following effects.:",
-				{
-					"type": "list",
-					"items": [
-						"Within 6 miles of the lair, the sky is always clear of clouds, when the moon is visible, day or night, making navigation by the constellations more reliable.",
-						"Plantlife within 3 miles of the lair is sparse, if not completely nonexistent, and natural fauna is rare.",
-						"Creatures within 1 mile of the dragon's lair easily lose focus and become disoriented. Once per day, creatures other than the dragon and its followers must succeed on a DC 10 Wisdom saving throw or gain disadvantage on Intelligence and Wisdom checks for an hour.",
-						"The geography within 3 miles of the lair is interspersed with circular crater-like pits."
-					]
-				},
-				"If the dragon dies, plants regrow naturally over time, and craters remain. The other effects fade over the course of 1d10 days."
 			]
 		},
 		{
@@ -992,7 +863,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Orcus's voice booms throughout the lair. His utterance causes one creature of his choice to be subjected to {@spell power word kill} (save DC 23). Orcus needn't see the creature, but he must be aware that the individual is in the lair.",
+						"Orcus's voice booms throughout the lair. His utterance causes one creature of his choice to be subjected to {@spell power word kill}. Orcus needn't see the creature, but he must be aware that the individual is in the lair.",
 						"Orcus causes up to six corpses within the lair to rise as skeletons, zombies, or ghouls. These undead obey his telepathic commands, which can reach anywhere in the lair.",
 						"Orcus causes skeletal arms to rise from an area on the ground in a 20-foot square that he can see. They last until the next initiative count 20. Each creature in that area when the arms appear must succeed on a DC 23 Strength saving throw or be restrained until the arms disappear or until Orcus releases their grasp (no action required)."
 					]
@@ -1027,23 +898,23 @@
 							],
 							"rows": [
 								[
-									"01\u201420",
+									"01\u201320",
 									"\"I often become withdrawn and moody, dwelling on the insufferable state of life.\""
 								],
 								[
-									"21\u201440",
+									"21\u201340",
 									"\"I am compelled to make the weak suffer.\""
 								],
 								[
-									"41\u201460",
+									"41\u201360",
 									"\"I have no compunction against tampering with the dead in my search to better understand death.\""
 								],
 								[
-									"61\u201480",
+									"61\u201380",
 									"\"I want to achieve the everlasting existence of undeath.\""
 								],
 								[
-									"81\u201400",
+									"81\u201300",
 									"\"I am awash in the awareness of life's futility.\""
 								]
 							]
@@ -1079,57 +950,6 @@
 			]
 		},
 		{
-			"name": "Sapphire Dragon",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"The dragon glimpses the future, granting it advantage on all saving throws until initiative count 20 on the next round.",
-						"The dragon chooses a point on the ground within 60 feet. Sapphire spikes sprout from the ground in a 20-foot radius centered on that point. The effect is otherwise identical to the spike growth spell and lasts until the dragon uses this lair action again or until the dragon dies."
-					]
-				}
-			],
-			"regionalEffects": [
-				"The region surrounding a legendary sapphire dragon's lair is warped by the dragon's psionic power, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"Statues of monsters the dragon has slain emerge from the stone within 1 mile of the dragon's lair. Creatures adjacent to a statue hear the dragon's voice describing this creature's death.",
-						"Lattices of pure sapphire grow across tunnels within 1 mile of the dragon's lair. Each 10-foot section of sapphire has AC 5 and 50 hit points.",
-						"Images of the dragon's eye appear in natural stones within 6 miles of the dragon's lair. As an action, the dragon may choose to see through any eye as if using the {@spell clairvoyance} spell."
-					]
-				},
-				"If the dragon dies, the effects fade over 1d10 days."
-			]
-		},
-		{
-			"name": "Sardior",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), Sardior takes a lair action while within the Ruby Palace to cause one of the following effects; Sardior can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"A {@creature Sardorian golem|GDoF 3pp} emerges from the quartz floor of his palace within 120 feet of Sardior and acts on initiative count 20. Sardior cannot use this lair action again until the golem is destroyed.",
-						"Sardior can shape up to 1000 cubic feet of ruby, creating walls, doors, passageways, or other complex shapes within the Ruby Palace. In combat, Sardior typically uses this action to create a ruby {@spell wall of stone} (spell save DC 20) that is 1 foot thick, 20 feet tall, and 50 feet long to protect himself against invaders. Each 10-foot section of wall has AC 15 and 360 hit points.",
-						"Gravity reorients itself to Sardior's command. Creatures and unattended objects within the Ruby Palace treat the ceiling or a wall (Sardior's choice) as the floor and instantly fall to the new floor unless they have a flying speed, taking falling damage as usual. This effect lasts until Sardior takes this lair action again."
-					]
-				}
-			],
-			"regionalEffects": [
-				"The following effects are present around the Ruby Palace, as wisps of the Astral Plane follow it throughout the multiverse. If the palace remains in one location for at least one week, the effects spread to the surrounding region.",
-				{
-					"type": "list",
-					"items": [
-						"Trees and shrubs petrify, their bark transforming into stunning rose quartz and their leaves becoming paper-thin rubies.",
-						"Bodies of water at least 10 feet in diameter become Color Pools, like those found on the Astral Plane (see Dungeon Master's Guide, pg. 47).",
-						"Psychic winds batter the walls of the castle; roll on each Psychic Winds Table at the start of each day (see Dungeon Master's Guide, pg. 48)."
-					]
-				},
-				""
-			]
-		},
-		{
 			"name": "Silver Dragon",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects:",
@@ -1137,7 +957,7 @@
 					"type": "list",
 					"items": [
 						"The dragon creates fog as if it had cast the {@spell fog cloud} spell. The fog lasts until initiative count 20 on the next round.",
-						"A blisteringly cold wind blows through the lair near the dragon, Each creature within 120 feet of the dragon must succeed on a DC 15 Constitution saving throw or take 5 (1d10) cold damage. Gases and vapors are dispersed by the wind, and unprotected flames are extinguished. Protected flames, such as lanterns, have a 50 percent chance of being extinguished."
+						"A blisteringly cold wind blows through the lair near the dragon. Each creature within 120 feet of the dragon must succeed on a DC 15 Constitution saving throw or take 5 (1d10) cold damage. Gases and vapors are dispersed by the wind, and unprotected flames are extinguished. Protected flames, such as lanterns, have a 50 percent chance of being extinguished."
 					]
 				}
 			],
@@ -1198,7 +1018,7 @@
 		{
 			"name": "Strahd von Zarovich",
 			"lairActions": [
-				"While Strahd is in Castle Ravenloft, he can take lair actions as long as he isn't incapacitated.",
+				"While Strahd is in Castle Ravenloft, he can take lair actions as long as he isn't incapacitated. ",
 				"On initiative count 20 (losing initiative ties), Strahd can take one of the following lair action options, or forgo using any of them in that round:",
 				{
 					"type": "list",
@@ -1209,82 +1029,6 @@
 						"Strahd targets one Medium or smaller creature that casts a shadow. The target's shadow must be visible to Strahd and within 30 feet of him. If the target fails a DC 17 Charisma saving throw, its shadow detaches from it and becomes a {@creature shadow} that obeys Strahd's commands, acting on initiative count 20. A {@spell greater restoration} spell or a {@spell remove curse} spell cast on the target restores its natural shadow, but only if its undead shadow has been destroyed."
 					]
 				}
-			]
-		},
-		{
-			"name": "Sun Dragon",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"The temperature in the lair rises dramatically. All creatures within 60 feet of the dragon must succeed on a DC 15 Constitution saving throw or gain one level of exhaustion. Creatures that are immune to fire damage are immune to this effect. Creatures with resistance to fire damage have advantage on the saving throw and creatures with vulnerability to fire damage have disadvantage on the saving throw. A creature that fails a saving throw against this lair action, automatically passes any further saving throws against this lair action for the next 24 hours.",
-						"A flare erupts across the floor of the lair in a 20-foot-radius sphere at a point the dragon chooses within 120 feet of it. Creatures within the sphere must succeed on a DC 15 Dexterity saving throw, taking 10 (3d6) fire damage on a failed save, or half as much damage on a successful one.",
-						"A strong wind blows toward the dragon from all directions. Creatures within 30 feet of the must succeed on a DC 15 Strength saving throw or be pushed 20 feet directly toward the dragon and be knocked prone. The dragon may spread its wings and immediately fly up to 20 feet directly upward on the updraft created underneath it."
-					]
-				}
-			],
-			"regionalEffects": [
-				"A region containing a sun dragon's lair is warped by the dragon's presence, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"A barrier of wind surrounds the dragon's roost at the peak of its mountain in a 300-foot-radius sphere, making flying directly to and from the peak nearly impossible. A creature that tries to fly into or out of the sphere takes 10 (3d6) bludgeoning damage plus 35 (10d6) radiant damage and must succeed on a DC 18 Constitution saving throw or be stunned for two rounds. The dragon can supress and cotinue the effect at will with no action required as long as it can see its roost.",
-						"Within 3 miles of the lair, the weather is always hot, regardless of the surrounding climate or season. This can make travel more difficult due to exhaustion.",
-						"Within 6 miles of the lair, wind always blows in the direction of the lair, allowing any creature aware of this phenomenon which knows it is within this radius to determine the direction of the lair."
-					]
-				},
-				"If the dragon dies, these effects fade over the course of 1d10 days."
-			]
-		},
-		{
-			"name": "Time Dragon",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"The dragon selectively slows or stops time in tiny, pinpoint-sized pockets of space in a 20-foot-radius sphere at a point the dragon chooses within 120 feet of it. Creatures in the area must succeed on a DC 15 Charisma saving throw, or take 14 (4d6) piercing damage, as parts of their flesh are frozen in place while the creatures move.",
-						"The dragon increases its speed dramatically for a moment. The dragon is affected as if the haste spell was cast on it until initiative count 20 on the next round.",
-						"The dragon slows the perception and reflexes of creatures within 60 feet of itself. Creatures within the area must succeed on a DC 15 Charisma saving throw or their initiative score is reduced by 10 for the rest of the encounter. This changes the initiative order. A creature that already took its turn this round, does not get an additional turn because of this effect. A creature's initiative cannot be reduced to less than 1 + the creature's Initiative bonus."
-					]
-				}
-			],
-			"regionalEffects": [
-				"A region containing a time dragon's lair is warped by the dragon's presence, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"Weather and the state of vegetation within 6 miles of the lair are inconsistent with the current geographical season and each other, as though each cycle takes place at a different rate. Strangely, this disparity does not cause any damage to the local flora. Wisdom (Survival) checks made to find food in the wild within this area have disadvantage.",
-						"Little to no natural fauna lives permanently within 6 miles of the lair, but is abundant near the border of this area, as creatures take advantage of the irregular flora and meteorological phenomena, such as finding food during seasons during which it is not normally available."
-					]
-				},
-				"If the dragon dies, these effects fade over the course of 1d10 months. Vegetation dies off over the course of this process and regrows naturally thereafter, while the abundant animal life outside the area scatters."
-			]
-		},
-		{
-			"name": "Topaz Dragon",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"The dragon creates fog as though it had cast the {@spell fog cloud} spell. The fog lasts until initiative count 20 on the next round.",
-						"A tsunami surges from existing water in the dragon's lair, as if the dragon had cast the {@spell tidal wave|XGE} spell."
-					]
-				}
-			],
-			"regionalEffects": [
-				"The region surrounding a legendary topaz dragon's lair is warped by the dragon's psionic power, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"Humid fog lightly obscures the land within 6 miles of the dragon's lair, and phantasmal images of ships the dragon has sunk sail through the mist.",
-						"Reefs of pure topaz grow in the water within 1 mile of the dragon's lair.",
-						"Whirlpools appear in the water within 6 miles of the dragon's lair as if the dragon had cast the {@spell control water} spell."
-					]
-				},
-				"If the dragon dies, the fog fades within 1 day. The other effects disappear over 1d10 days."
 			]
 		},
 		{
@@ -1306,8 +1050,7 @@
 		{
 			"name": "Vanifer",
 			"lairActions": [
-				"If Vanifer is in the fire node while {@creature Imix|PotA} isn't, the tiefling can take lair actions. On initiative count 20 (losing initiative ties), Vanifer uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Vanifer can take no other lair actions while concentrating on a spell cast as a lair action. Her favorite use of this capability is casting {@spell fireball} or {@spell hypnotic pattern}.",
-				"If Vanifer casts {@spell misty step} using this lair action, she also draws the power of the fire node into herself. By doing so, she regains 15 (3d8+2) hit points."
+				"If Vanifer is in the fire node while {@creature Imix|PotA} isn't, the tiefling can take lair actions. On initiative count 20 (losing initiative ties), Vanifer uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Vanifer can take no other lair actions while concentrating on a spell cast as a lair action. Her favorite use of this capability is casting {@spell fireball} or {@spell hypnotic pattern}.\nIf Vanifer casts {@spell misty step} using this lair action, she also draws the power of the fire node into herself. By doing so, she regains 15 (3d8+2) hit points."
 			]
 		},
 		{
@@ -1324,57 +1067,6 @@
 					]
 				},
 				"If the vampire is destroyed, these effects end after 2d6 days."
-			]
-		},
-		{
-			"name": "Void Dragon",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"The dragon fills the minds of creatures it can see within 30 feet of it with a profound and unsettling feeling of wrongness. Creatures of the dragon's choice within the area must succeed on a DC 15 Wisdom saving throw or become frightened of the dragon until initiative count 20 on the next round.",
-						"The dragon creates a bubble of vacuum in a 20-foot-radius sphere at a point it can see within 120 feet of itself. Creatures within the area take 3 (1d6) slashing damage from the negative pressure and must succeed on a DC 15 Constitution saving throw or take 3 (1d6) thundering damage and be stunned for one round, as the surrounding air (or whichever medium the space is surrounded by) implodes violently back into the area."
-					]
-				}
-			],
-			"regionalEffects": [
-				"A region containing a void dragon's lair is warped by the dragon's presence, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"The air within 1 mile of the lair is notably harder to breathe. Creatures that breathe air have disadvantage on Constitution checks and saving throws to resist exhaustion from physical activity (such as forced marches and chases).",
-						"Creatures within 3 miles of the lair have an uncanny feeling, that there is something fundamentally wrong with the area, although they cannot pinpoint the reason.",
-						"Wildlife actively avoids the area 6 miles around the dragon's lair. Stagnant bodies of water are dried out completely. Any signs of plantlife (if there was any vegetation to begin with) are withered remains."
-					]
-				},
-				"If the dragon dies, these effects fade over the course of 1d10 days. Water and plantlife return naturally, according to the climate."
-			]
-		},
-		{
-			"name": "Warp Dragon",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"The dragon sends a creature it can see within 60 feet of itself through a fold in space. The target must succeed on a DC 15 Charisma saving throw or be teleported to an unoccupied space the dragon can see within 120 feet of it.",
-						"Gravity reverses momentarily around the dragon. Creatures other than the dragon within 60 feet of the dragon fall 20 feet straight up into the air and must succeed on a DC 15 Dexterity saving throw, falling prone and taking 7 (2d6) bludgeoning damage from the fall back to the ground on a failed save, or half as much damage on a successful one. Creatures that can fly have advantage on this saving throw.",
-						"The dragon chooses a point it can see within 120 feet of itself. Creatures within a 20-foot-radius sphere around that point suddenly feel significantly heavier. Creatures within the area must succeed on a DC 15 Charisma saving throw, or their speed is halved and they gain disadvantage on all Dexterity (Acrobatics) and Strength (Athletics) checks for one minute. Flying creatures must succeed on a DC 15 Strength (Athletics) check at the start of each of their turns to stay afloat. If a creature fails this check, it immediately falls. At the start of each of its turns, a creature can repeat the saving throw, ending the effect on itself on a success."
-					]
-				}
-			],
-			"regionalEffects": [
-				"A region containing a warp dragon's lair is warped by the dragon's presence, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"Travellers within 3 miles of the lair randomly feel subtly lighter or heavier at different intervals ranging from 10 minutes to 2 hours. Altogether these changes have no short term effect and balance each other out for longer activities.",
-						"Creatures travelling through the area within 6 miles of the lair sometimes get turned around for no discernible reason. For every mile a group travels in the area, the DM rolls a d20. On a result of 1 or 2, the group gets turned around in a direction of the DM's choice and after an hour of travelling must succeed on a DC 10 Wisdom (Survival) check in order to realize they are travelling in the wrong direction. Each full hour the group travels, each member is allowed an additional Wisdom (Survival) check to realize they have been turned around. At the DM's discretion, another check may be necessary to determine which way will take them back toward their intended destination.",
-						"Weather, plants and even animals living in the area within 3 miles of the lair display subtle spiral patterns, in the shapes of clouds, and swirling winds, the growth of their branches, leaves, and tendrils, the structure of their bark, or the markings on their skin or fur. Some creatures even follow such patterns in certain behaviors, such as birds and insects swarming in helix patterns, forming swirling cylinder or vortex shapes in the air, and ground-dwelling animals inadvertently wandering in continually shrinking circles as they search for food."
-					]
-				},
-				"If the dragon dies, these effects fade over the course of 1d10 days."
 			]
 		},
 		{
@@ -1397,7 +1089,7 @@
 					"items": [
 						"Chilly fog lightly obscures the land within 6 miles of the dragon's lair.",
 						"Freezing precipitation falls within 6 miles of the dragon's lair, sometimes forming blizzard conditions when the dragon is at rest.",
-						"Icy walls block off areas in the dragon's lair. Each wall is 6 inches thick, and a 10-foot section has AC 5, 15 hit points, vulnerability to fire damage, and immunity to acid, cold, necrotic, poison, and psychic damage. If the dragon wishes to move through a wall, it can do so without slowing down. The portion of the wall the dragon moves through is destroyed, however."
+						"Icy walls block off areas in the dragon's lair. Each wall is 6 inches thick, and a 10-foot section has AC 5, 15 hit points, vulnerability to fire damage, and immunity to acid, cold, necrotic, poison, and psychic damage.\nIf the dragon wishes to move through a wall, it can do so without slowing down. The portion of the wall the dragon moves through is destroyed, however."
 					]
 				},
 				"If the dragon dies, the fog and precipitation fade within 1 day. The ice walls melt over the course of 1d10 days."
@@ -1472,23 +1164,23 @@
 							],
 							"rows": [
 								[
-									"01\u201420",
+									"01\u201320",
 									"\"I get caught up in the flow of anger, and try to stoke others around me into forming an angry mob.\""
 								],
 								[
-									"21\u201440",
+									"21\u201340",
 									"\"The flesh of other intelligent creatures is delicious!\""
 								],
 								[
-									"41\u201460",
+									"41\u201360",
 									"\"I rail against the laws and customs of civilization, attempting to return to a more primitive time.\""
 								],
 								[
-									"61\u201480",
+									"61\u201380",
 									"\"I hunger for the deaths of others, and am constantly starting fights in the hope of seeing bloodshed.\""
 								],
 								[
-									"81\u201400",
+									"81\u201300",
 									"\"I keep trophies from the bodies I have slain, turning them into adornments.\""
 								]
 							]
@@ -1539,23 +1231,23 @@
 							],
 							"rows": [
 								[
-									"01\u201420",
+									"01\u201320",
 									"\"I see visions in the world around me that others do not.\""
 								],
 								[
-									"21\u201440",
+									"21\u201340",
 									"\"I periodically slip into a catatonic state, staring off into the distance for long stretches at a time.\""
 								],
 								[
-									"41\u201460",
+									"41\u201360",
 									"\"I see an altered version of reality, with my mind convincing itself that things are true even in the face of overwhelming evidence to the contrary.\""
 								],
 								[
-									"61\u201480",
+									"61\u201380",
 									"\"My mind is slipping away, and my intelligence seems to wax and wane.\""
 								],
 								[
-									"81\u201400",
+									"81\u201300",
 									"\"I am constantly scratching at unseen fungal infections.\""
 								]
 							]
@@ -1565,29 +1257,156 @@
 			]
 		},
 		{
-			"name": "Flame Dragon",
+			"name": "Morkoth",
 			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
+				"On initiative count 20 (losing initiative ties), the morkoth takes a lair action to cause one of the effects described below:",
 				{
 					"type": "list",
 					"items": [
-						"A cloud of smoke swirls in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The cloud spreads around corners and the area is lightly obscured. Each creature in the cloud must succeed on a DC 15 Constitution saving throw or be blinded for 1 minute. A blinded creature repeats the saving throw at the end of each of its turns, ending the effect on itself on a success.",
-						"The ground erupts with volcanic force at a point the dragon can see within 120 feet of it. Any creature within 20 feet of the point must make a successful DC 15 Dexterity saving throw or be knocked prone and trapped in the ground. A creature trapped in this way is restrained and can't stand up. A creature can end the restraint if it or another creature takes an action to make a successful DC 15 Strength check.",
-						"wall of fire rises up from the ground within 120 feet of the dragon. The wall is up to 60 feet long, 10 feet high, and 5 feet thick, can take any shape the dragon wants, and blocks line of sight. When the wall appears, each creature in its area must make a DC 15 Dexterity saving throw. A creature that fails the saving throw takes 21 (6d6) fire damage. Each creature that enters the wall for the first time each turn or ends its turn there takes 21 (6d6) fire damage. The wall is extinguished when the dragon uses this lair action again or when the dragon dies."
+						"The morkoth uses its Hypnosis action, originating at a point within 120 feet of itself. It doesn't need to see the effect's point of origin.",
+						"The morkoth casts {@spell darkness}, {@spell dispel magic}, or {@spell misty step}, using Intelligence as its spellcasting ability and without expending a spell slot."
 					]
 				}
 			],
 			"regionalEffects": [
-				"The region containing a legendary flame dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
+				"The island surrounding a morkoth's lair is warped by the creature's presence, creating the following effects:",
 				{
 					"type": "list",
 					"items": [
-						"Arguments and misunderstandings erupt easily within 6 miles of the lair. Friendships are easily broken and criminal acts are common.",
-						"Temperatures rise within 6 miles of the lair. Crops wither, producing famines.",
-						"Sulfur geysers form in and around the dragon's lair. Some of them erupt only once an hour, so they're spotted only with a successful DC 20 Wisdom (Perception) check. A creature on top of an erupting geyser takes 21 (6d6) fire damage, or half damage with a successful DC 15 Dexterity saving throw."
+						"The morkoth is aware of any new arrival, whether an object or a creature, on its island or in its sanctum. As an action, the morkoth can locate any one creature or object on the island. Visitors to the island feel as though they are being watched, even when they aren't.",
+						"Each time a creature that has been on the island for less than a year finishes a short or long rest, it must make a DC 10 Intelligence (Investigation) check. On a failure, the creature has misplaced one possession (chosen by the player, if the creature is that player's character). The possession remains nearby but concealed for a short time, so it can be recovered with a successful DC 15 Wisdom (Perception) check. An object that is misplaced but not recovered ends up in the morkoth's lair 1 hour later. If the creature later goes to the morkoth's lair, its lost possessions stand out in its perception and are easily recovered.",
+						"Entrances to the morkoth's lair have an enchantment that the morkoth can activate or suppress at any time while it's in its lair and not incapacitated. Any creature within 30 feet of such an entrance and able to see it must make a DC 15 Wisdom saving throw. On a failed save, the creature feels an intense urge to use its movement on each of its turns to enter the lair and to move toward the morkoth's location (the target doesn't realize it's heading toward a creature). The target moves toward the morkoth by the most direct route. As soon as it can see the morkoth, the target can repeat the saving throw, ending the effect on itself on a success. It can also repeat the saving throw at the end of each of its turns and every time it takes damage.",
+						"With a thought (no action required), the morkoth can initiate a change in the water within its lair that takes effect 1 minute later. The water can be as breathable and clear as air, or it can be normal water (ranging in clarity from murky to clear)."
 					]
 				},
-				"If the dragon dies, the arguments and misunderstandings disappear immediately and the temperatures go back to normal within 1d10 days. Any geysers remain where they are."
+				"If the morkoth dies, these regional effects end immediately."
+			]
+		},
+		{
+			"name": "Balhannoth",
+			"lairActions": [
+				"When fighting inside its lair, a balhannoth can use lair actions. On initiative count 20 (losing initiative ties), a balhannoth can take one lair action to cause one of the following effects; the balhannoth can't use the same lair action two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"The balhannoth warps reality around it in an area up to 500 feet square. After 10 minutes, the terrain in the area reshapes to assume the appearance of a location sought by one intelligent creature whose mind the balhannoth has read (see Regional Effects below). The transformation affects nonliving material only and can't create anything with moving parts or magical properties. Any object created in this area is, upon close inspection, revealed as a fake. Books are filled with empty pages, golden items are obvious counterfeits, and so on. The transformation lasts until the balhannoth dies or uses this lair action again.",
+						"The balhannoth targets one creature within 500 feet of it. The target must succeed on a DC 16 Wisdom saving throw or the target, along with whatever it is wearing and carrying, teleports to an unoccupied space of the balhannoth's choice within 60 feet of it.",
+						"The balhannoth targets one creature within 500 feet of it. The target must succeed on a DC 16 Wisdom saving throw or the balhannoth becomes invisible to that creature for 1 minute. This effect ends if the balhannoth attacks the target."
+					]
+				}
+			],
+			"regionalEffects": [
+				"A region containing a balhannoth's lair becomes warped by the creature's unnatural presence, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Creatures within 1 mile of the balhannoth's lair experience a sensation of being close to whatever they desire most. The sensation grows stronger the closer the creatures come to the balhannoth's lair.",
+						"The balhannoth can sense the strongest desires of any humanoid within 1 mile of it and learns whether those desires involve a place: a safe location to rest, a temple, home, or somewhere else."
+					]
+				},
+				"If the balhannoth dies, these effects end immediately."
+			]
+		},
+		{
+			"name": "Geryon",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), Geryon can take a lair action to cause one of the following effects; he can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"Geryon causes a blast of cold to burst from the ground at a point he can see within 120 feet of him. The cold fills a cube, 10 feet on each side, centered on that point. Each creature in that area must succeed on a DC 21 Constitution saving throw or take 28 (8d6) cold damage.",
+						"Geryon targets one creature he can see within 60 feet of him. The target must succeed on a DC 21 Wisdom saving throw or become restrained for 1 minute. The target can end the effect on itself if it deals any damage to one or more of its allies.",
+						"Geryon casts the {@spell banishment} spell."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The region containing Geryon's lair is warped by his magic, creating one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Intelligent creatures within 1 mile of the lair frequently see shimmering portals leading to places they consider safe. Passing through a portal always deposits a traveler somewhere in Stygia.",
+						"Freezing strong winds howl around the area within 1 mile of the lair.",
+						"Howls and screams fill the air within 1 mile of the lair. Any creature that finishes a short or long rest in this area must succeed on a DC 21 Wisdom saving throw or derive no benefit from the rest."
+					]
+				},
+				"If Geryon dies, these effects fade over the course of 1d10 days."
+			]
+		},
+		{
+			"name": "Zariel",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), Zariel can take a lair action to cause one of the following effects; she can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"Zariel casts major image four times at its lowest level, targeting different areas with the spell. Zariel prefers to create images of intruders' loved ones being burned alive. Zariel doesn't need to concentrate on the spells, which end on initiative count 20 of the next round. Each creature that can see these illusions must succeed on a DC 26 Wisdom saving throw or become frightened of the illusion for 1 minute. A frightened creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+						"Zariel casts her innate {@spell fireball} spell."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The region containing Zariel's lair is warped by her magic, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"The area within 9 miles of the lair is filled with screaming voices and the stench of burning meat.",
+						"Once every 60 feet within 1 mile of the lair, 10-foot-high gouts of flame rise from the ground. Any creature or object that touches the flame takes 7 (2d6) fire damage, though it can take this damage no more than once per round.",
+						"The area within 2 miles, but no closer than 500 feet, of the lair is filled with smoke, which causes the area to be heavily obscured. The smoke can't be cleared away."
+					]
+				},
+				"If Zariel dies, these effects fade over the course of 1d10 days."
+			]
+		},
+		{
+			"name": "Githzerai Anarch",
+			"lairActions": [
+				"An anarch can use lair actions. On initiative count 20 (losing initiative ties), the anarch can take a lair action to cause one of the following effects; the anarch can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"The anarch casts the {@spell lightning bolt} spell (at 5th level), but the anarch can change the damage type from lightning to cold, fire, psychic, radiant, or thunder. If the spell deals damage other than fire or lightning, it doesn't ignite flammable objects.",
+						"The anarch casts the {@spell creation} spell (as a 9th-level spell) using the unformed substance of Limbo instead of shadow material. If used in Limbo, the object remains until the anarch's concentration is broken, regardless of its composition. If the anarch moves more than 120 feet from the object, its concentration breaks.",
+						"The anarch can magically move an object it can see within 150 feet of it by making a Wisdom check with advantage. The DC depends on the object's size: DC 5 for Tiny, DC 10 for Small, DC 15 for Medium, DC 20 for Large, and DC 25 for Huge or larger."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The region containing an anarch's lair is warped by its presence, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"In Limbo, the anarch can spend 10 minutes stabilizing a 5-mile area centered on it, causing the unformed substance to take whatever inanimate form the anarch chooses. During that process, the anarch determines the shape and composition of the forms created.",
+						"The anarch stabilizes any object created in Limbo and brought to the Material Plane for as long as the anarch remains within 1 mile of it (no action required)."
+					]
+				},
+				"If the anarch dies, these effects end after 1d6 rounds. All formed substance becomes a chaotic churn of energy and matter, unraveling into unformed substance that dissipates 1d6 rounds later."
+			]
+		},
+		{
+			"name": "Merrenoloth",
+			"lairActions": [
+				"Any ship a merrenoloth is contracted to captain becomes the creature's lair. When fighting on the ship, the merrenoloth can invoke its ability to take lair actions. On initiative count 20 (losing initiative ties), the merrenoloth can take one lair action to cause one of the following effects; it can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"The ship regains 22 (4d10) hit points.",
+						"A strong wind propels the ship, increasing its speed by 30 feet until initiative count 20 on the next round.",
+						"The air within 60 feet of the ship is filled with howling wind. Until initiative count 20 on the next round, that area is difficult terrain, and when a Medium or smaller creature flies into that area or starts its turn flying there, it must succeed on a DC 13 Strength saving throw or be knocked prone."
+					]
+				}
+			],
+			"regionalEffects": [
+				"A merrenoloth imbues its vessel with powerful magic that creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"The ship doesn't sink even if its hull is breached.",
+						"The ship always stays on course to the destination the merrenoloth names.",
+						"Creatures the merrenoloth chooses to take on the ship aren't discomfited by wind or weather, though this effect doesn't protect against damage."
+					]
+				},
+				"If the merrenoloth dies, these effects fade over the course of 1d6 hours."
 			]
 		}
 	]

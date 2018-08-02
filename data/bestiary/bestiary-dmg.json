@@ -5,18 +5,42 @@
 			"size": "M",
 			"type": "undead",
 			"source": "DMG",
-			"alignment": "neutral evil",
-			"ac": "20",
-			"hp": "half the hit point maximum of its summoner",
-			"speed": "60 ft., fly 60 ft. (hover)",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				20
+			],
+			"hp": {
+				"special": "half the hit point maximum of its summoner"
+			},
+			"speed": {
+				"walk": 60,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
 			"str": 16,
 			"dex": 16,
 			"con": 16,
 			"int": 16,
 			"wis": 16,
 			"cha": 16,
-			"immune": "necrotic, poison",
-			"conditionImmune": "charmed, frightened, paralyzed, petrified, poisoned, unconscious",
+			"immune": [
+				"necrotic",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"unconscious"
+			],
 			"senses": "darkvision 60 ft., truesight 60 ft.",
 			"passive": 13,
 			"languages": "all languages known to its summoner",
@@ -25,11 +49,11 @@
 				{
 					"name": "Incorporeal Movement",
 					"entries": [
-						"The avatar can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object."
+						"The avatar can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@dice 1d10}) force damage if it ends its turn inside an object."
 					]
 				},
 				{
-					"name": "Turning Immunity",
+					"name": "Turn Immunity",
 					"entries": [
 						"The avatar is immune to features that turn undead."
 					]
@@ -39,21 +63,35 @@
 				{
 					"name": "Reaping Scythe",
 					"entries": [
-						"The avatar sweeps its spectral scythe through a creature within 5 feet of it, dealing 7 (1d8+3) slashing damage plus 4 (1d8) necrotic damage."
+						"The avatar sweeps its spectral scythe through a creature within 5 feet of it, dealing 7 ({@dice 1d8+3}) slashing damage plus 4 ({@dice 1d8}) necrotic damage."
 					]
 				}
 			],
-			"page": 164
+			"page": 164,
+			"traitTags": [
+				"Incorporeal Movement",
+				"Turn Immunity"
+			]
 		},
 		{
 			"name": "Giant Fly",
 			"size": "L",
 			"type": "beast",
 			"source": "DMG",
-			"alignment": "unaligned",
-			"ac": "11",
-			"hp": "19 (3d10+3)",
-			"speed": "30 ft., fly 60 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				11
+			],
+			"hp": {
+				"average": 19,
+				"formula": "3d10+3"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 60
+			},
 			"str": 14,
 			"dex": 13,
 			"con": 13,
@@ -70,10 +108,20 @@
 			"name": "Larva",
 			"size": "M",
 			"type": "fiend",
-			"alignment": "neutral evil",
-			"ac": "9",
-			"hp": "9 (2d8)",
-			"speed": "20ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				9
+			],
+			"hp": {
+				"average": 9,
+				"formula": "2d8"
+			},
+			"speed": {
+				"walk": 20
+			},
 			"str": 9,
 			"dex": 9,
 			"con": 10,
@@ -87,7 +135,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4-1) piercing damage."
+						"Melee Weapon Attack: {@hit 1} to hit, reach 5 ft., one target. Hit: 1 ({@dice 1d4-1}) piercing damage."
 					]
 				}
 			],

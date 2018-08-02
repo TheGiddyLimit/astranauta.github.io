@@ -370,30 +370,30 @@
 								},
 								{
 									"type": "entries",
-									"name": "Personality Trait:",
+									"name": "Personality Trait: Isolation",
 									"entries": [
-										"Isolation. It's a cruel world. All people have to fend for themselves. Self-sufficiency is the only path to success."
+										"It's a cruel world. All people have to fend for themselves. Self-sufficiency is the only path to success."
 									]
 								},
 								{
 									"type": "entries",
-									"name": "Ideal:",
+									"name": "Ideal: Independence",
 									"entries": [
-										"Independence. Someone who can stand alone can stand against anything."
+										"Someone who can stand alone can stand against anything."
 									]
 								},
 								{
 									"type": "entries",
-									"name": "Bond:",
+									"name": "Bond: The Yawning Portal",
 									"entries": [
-										"The Yawning Portal. This place is my only home. My friends and family are long gone. I love this place, but I try not to get attached to the people here. I'll outlive them all. Lucky me."
+										"This place is my only home. My friends and family are long gone. I love this place, but I try not to get attached to the people here. I'll outlive them all. Lucky me."
 									]
 								},
 								{
 									"type": "entries",
-									"name": "Flaw:",
+									"name": "Flaw: Heartless",
 									"entries": [
-										"Heartless. If you want sympathy, the Temple of Ilmater is in the Sea Ward. No matter how bad things are, you'll be gone in a blink of an eye."
+										"If you want sympathy, the Temple of Ilmater is in the Sea Ward. No matter how bad things are, you'll be gone in a blink of an eye."
 									]
 								}
 							]
@@ -750,7 +750,7 @@
 									"type": "entries",
 									"name": "Developer's Note:",
 									"entries": [
-										"If the party are on the ' {@i Vanquish the Orc Raisers} ' quest then some method of tracking the number of Orcs that the party dispose of is needed. Parcels, like the one below, will be found where there are Orcs. If the party are not following this quest these parcels can be ignored."
+										"If the party are on the ' {@i Vanquish the Orc Raiders} ' quest then some method of tracking the number of Orcs that the party dispose of is needed. Parcels, like the one below, will be found where there are Orcs. If the party are not following this quest these parcels can be ignored."
 									]
 								},
 								{
@@ -1881,7 +1881,7 @@
 							]
 						},
 						"Any creature that enters the slippery slope or starts its move there must make a DC 12 Dexterity (Acrobatics) check. A creature that fails the check falls prone and slides southward toward the stream at half its walking speed. The stream is flowing fast enough that anyone who falls in must succeed on a DC 10 Strength saving throw to avoid being swept over the waterfall.",
-						"A creature that goes over the waterfall lands in a pool 60 feet below (see area 28), taking 10 (3d6) bludgeoning damage and suffering one level of exhaustion."
+						"A creature that goes over the waterfall lands in a pool 60 feet below (see area 28), taking 10 (3d6) bludgeoning damage and suffering one level of {@condition exhaustion}."
 					]
 				},
 				{
@@ -1967,7 +1967,7 @@
 							]
 						},
 						"The stream flowing from area 25 in the Glitterhame pours down into the chamber.",
-						"The pool is populated by harmless blind fish and white crustaceans but contains nothing dangerous. The outflowing stream drains into the river in area 29. Any characters who fell into the pool are carried by the current toward the outflow at about 20 feet per round. A character who ends up in the river might be swept away; see \"Fast-Flowing Water\"."
+						"The pool is populated by harmless blind fish and white crustaceans but contains nothing dangerous. The outflowing stream drains into the river in area 29. Any characters who fell into the pool are carried by the current toward the outflow at about 20 feet per round. A character who ends up in the river might be swept away; see \"Fast-Flowing Water.\""
 					]
 				},
 				{
@@ -2044,7 +2044,7 @@
 								"The water is about 5 feet deep and is tainted by disease. Anyone who drinks the water or wades into it is exposed and must succeed on a DC 10 Constitution saving throw to avoid infection. Symptoms manifest one day after exposure and include high fever, muscle spasms, and eventual paralysis."
 							]
 						},
-						"An infected creature suffers one level of exhaustion when it finishes the first long rest it takes after being exposed. Whenever it finishes a long rest thereafter, it must make a DC 10 Constitution saving throw. On a failed save, the creature suffers another level of exhaustion. On a successful save, its exhaustion level is reduced by one. If its exhaustion level reaches 5, the infected creature becomes paralyzed until the disease is cured or the effect is removed with a {@spell lesser restoration|PHB} spell or similar magic. If a successful saving throw reduces the infected creature's exhaustion level to 0, the creature recovers from the disease.",
+						"An infected creature suffers one level of {@condition exhaustion} when it finishes the first long rest it takes after being exposed. Whenever it finishes a long rest thereafter, it must make a DC 10 Constitution saving throw. On a failed save, the creature suffers another level of {@condition exhaustion}. On a successful save, its {@condition exhaustion} level is reduced by one. If its {@condition exhaustion} level reaches 5, the infected creature becomes paralyzed until the disease is cured or the effect is removed with a {@spell lesser restoration|PHB} spell or similar magic. If a successful saving throw reduces the infected creature's {@condition exhaustion} level to 0, the creature recovers from the disease.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -2087,7 +2087,7 @@
 								"A strand extends from the stalagmite, with the thrashing cave fish in its grasp. It pulls the fish toward the rock formation-and then, suddenly, a fang-filled maw gapes open in the stalagmite and devours the fish in one bite."
 							]
 						},
-						"The roper attacks when any character gets at least 20 feet into the cave, gaining surprise if its presence hasn't been revealed. It can target up to four characters with its tendrils, possibly pulling those it has grappled into the rushing river. Characters in the water have advantage on checks to escape the grapple due to the force of the current. The river poses a severe hazard in itself, though; see \"Fast-Flowing Water\".",
+						"The roper attacks when any character gets at least 20 feet into the cave, gaining surprise if its presence hasn't been revealed. It can target up to four characters with its tendrils, possibly pulling those it has grappled into the rushing river. Characters in the water have advantage on checks to escape the grapple due to the force of the current. The river poses a severe hazard in itself, though; see \"Fast-Flowing Water.\"",
 						{
 							"type": "entries",
 							"name": "Development",
@@ -2142,7 +2142,7 @@
 						"The underground river that cuts through this level of the dungeon presents a serious hazard. Those who fall in risk being swept away by the current.",
 						"A creature that falls in the river and is within 5 feet of the water's edge must succeed on a DC 10 Strength saving throw to catch itself on the rocky bank. On a failed save, or if the creature is too far away from the bank, it is drawn into the main current.",
 						"A creature in the main current that takes no other action is swept 60 feet downstream (to the south or to the west, depending on location) each round. If it spends its action to make a DC 10 Strength (Athletics) check and the check is a success, it can reduce the distance traveled by the amount of its walking speed and move toward a bank.",
-						"On a failed check, the creature must succeed on a DC 10 Constitution saving throw or suffer one level of exhaustion. Creatures that have a swim speed can take the Dash action and use their full swim speed without making a Strength check. A creature within 5 feet of a bank can pull itself out of the current as part of its move."
+						"On a failed check, the creature must succeed on a DC 10 Constitution saving throw or suffer one level of {@condition exhaustion}. Creatures that have a swim speed can take the Dash action and use their full swim speed without making a Strength check. A creature within 5 feet of a bank can pull itself out of the current as part of its move."
 					]
 				},
 				{
@@ -2457,7 +2457,7 @@
 							"type": "entries",
 							"name": "Creature",
 							"entries": [
-								"An {@creature animated table|TftYP} activates when someone enters the main part of the room. It fights until destroyed but won't attack a dwarf. See the \"Arundil's Animated Objects\"."
+								"An {@creature animated table|TftYP} activates when someone enters the main part of the room. It fights until destroyed but won't attack a dwarf. See the \"Arundil's Animated Objects.\""
 							]
 						},
 						"The room is full of old, rusty iron pots, pans, cutlery, and cooking utensils, none of which are worth much.",
@@ -2490,7 +2490,7 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"The orc champion is now a {@creature wight|MM}, an undead monster that thirsts for life essence. Two of the piles of bones are ogre skeletons (use the {@creature ogre|MM} stat block; give it the undead creature type, vulnerability to bludgeoning damage, immunity to poison damage, and immunity to the exhaustion and poisoned conditions; and remove its ability to speak). The ogres were slain during the final battle and later animated to join the orc warrior in his watch."
+								"The orc champion is now a {@creature wight|MM}, an undead monster that thirsts for life essence. Two of the piles of bones are ogre skeletons (use the {@creature ogre|MM} stat block; give it the undead creature type, vulnerability to bludgeoning damage, immunity to poison damage, and immunity to the {@condition exhaustion} and poisoned conditions; and remove its ability to speak). The ogres were slain during the final battle and later animated to join the orc warrior in his watch."
 							]
 						},
 						"The wight and skeletons lie immobile until someone enters. They can't pursue characters outside room.",
@@ -2636,7 +2636,7 @@
 							"type": "entries",
 							"name": "Creature",
 							"entries": [
-								"The rug, 20 feet square, is actually a Gargantuan {@creature rug of smothering|MM} that activates when any nondwarf sets foot on it. It fights until destroyed but doesn't attack a dwarf under any circumstances. See \"Arundil's Animated Objects\"."
+								"The rug, 20 feet square, is actually a Gargantuan {@creature rug of smothering|MM} that activates when any nondwarf sets foot on it. It fights until destroyed but doesn't attack a dwarf under any circumstances. See \"Arundil's Animated Objects.\""
 							]
 						},
 						{
@@ -2663,7 +2663,7 @@
 							"type": "entries",
 							"name": "Creature",
 							"entries": [
-								"One of the armor stands is actually an animated object (use the {@creature animated armor|MM} stat block), which activates when a non-dwarf enters the room. It fights until destroyed. See \"Arundil's Animated Objects\"."
+								"One of the armor stands is actually an animated object (use the {@creature animated armor|MM} stat block), which activates when a non-dwarf enters the room. It fights until destroyed. See \"Arundil's Animated Objects.\""
 							]
 						}
 					]
@@ -2792,7 +2792,7 @@
 							"type": "entries",
 							"name": "Hazard",
 							"entries": [
-								"The weakened bridge can't take much weight before it collapses. If more than one Small or larger creature is on the bridge at one time, or if a character in heavy armor steps onto it, the arch fails. Any creature on the span must succeed on a DC 10 Dexterity saving throw to catch itself on the ledge. On a failed save, a creature falls, takes 7 (2d6) bludgeoning damage from falling timbers and stones, and is caught in the river's current (see \"Fast-Flowing Water\"."
+								"The weakened bridge can't take much weight before it collapses. If more than one Small or larger creature is on the bridge at one time, or if a character in heavy armor steps onto it, the arch fails. Any creature on the span must succeed on a DC 10 Dexterity saving throw to catch itself on the ledge. On a failed save, a creature falls, takes 7 (2d6) bludgeoning damage from falling timbers and stones, and is caught in the river's current (see \"Fast-Flowing Water.\""
 							]
 						}
 					]

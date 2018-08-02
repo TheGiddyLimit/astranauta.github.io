@@ -2,7 +2,7 @@ const fs = require('fs');
 const ut = require('../js/utils.js');
 const utS = require("../node/util-search-index");
 
-const re = /{@(spell|item|class|creature|condition|background) (.*?)(\|(.*?))?(\|.*?)?}/g;
+const re = /{@(spell|item|class|creature|condition|disease|background|race|invocation|feat|reward|psionic|object|cult|boon|trap|hazard) (.*?)(\|(.*?))?(\|.*?)?}/g;
 let msg = ``;
 
 const TAG_TO_PAGE = {
@@ -10,8 +10,19 @@ const TAG_TO_PAGE = {
 	"item": UrlUtil.PG_ITEMS,
 	"class": UrlUtil.PG_CLASSES,
 	"creature": UrlUtil.PG_BESTIARY,
-	"condition": UrlUtil.PG_CONDITIONS,
-	"background": UrlUtil.PG_BACKGROUNDS
+	"condition": UrlUtil.PG_CONDITIONS_DISEASES,
+	"disease": UrlUtil.PG_CONDITIONS_DISEASES,
+	"background": UrlUtil.PG_BACKGROUNDS,
+	"race": UrlUtil.PG_RACES,
+	"invocation": UrlUtil.PG_INVOCATIONS,
+	"reward": UrlUtil.PG_REWARDS,
+	"feat": UrlUtil.PG_FEATS,
+	"psionic": UrlUtil.PG_PSIONICS,
+	"object": UrlUtil.PG_OBJECTS,
+	"cult": UrlUtil.PG_CULTS_BOONS,
+	"boon": UrlUtil.PG_CULTS_BOONS,
+	"trap": UrlUtil.PG_TRAPS_HAZARDS,
+	"hazard": UrlUtil.PG_TRAPS_HAZARDS
 };
 
 const TAG_TO_DEFAULT_SOURCE = {
@@ -20,7 +31,18 @@ const TAG_TO_DEFAULT_SOURCE = {
 	"class": "phb",
 	"creature": "mm",
 	"condition": "phb",
-	"background": "phb"
+	"disease": "dmg",
+	"background": "phb",
+	"race": "phb",
+	"invocation": "phb",
+	"reward": "dmg",
+	"feat": "phb",
+	"psionic": "UATheMysticClass",
+	"object": "dmg",
+	"cult": "mtf",
+	"boon": "mtf",
+	"trap": "dmg",
+	"hazard": "dmg"
 };
 
 function recursiveCheck (file) {

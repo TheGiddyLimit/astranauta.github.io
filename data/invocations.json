@@ -1,4 +1,4 @@
-﻿{
+{
 	"invocation": [
 		{
 			"name": "Agonizing Blast",
@@ -6,7 +6,7 @@
 				"spell": "Eldritch Blast"
 			},
 			"entries": [
-				"When you cast eldritch blast, add your Charisma modifier to the damage it deals on a hit."
+				"When you cast {@spell eldritch blast}, add your Charisma modifier to the damage it deals on a hit."
 			],
 			"source": "PHB",
 			"page": 110
@@ -25,7 +25,7 @@
 		{
 			"name": "Armor of Shadows",
 			"entries": [
-				"You can cast mage armor on yourself at will, without expending a spell slot or material components."
+				"You can cast {@spell mage armor} on yourself at will, without expending a spell slot or material components."
 			],
 			"source": "PHB",
 			"page": 110
@@ -36,7 +36,7 @@
 				"level": 9
 			},
 			"entries": [
-				"You can cast levitate on yourself at will, without expending a spell slot or material components."
+				"You can cast {@spell levitate} on yourself at will, without expending a spell slot or material components."
 			],
 			"source": "PHB",
 			"page": 110
@@ -66,7 +66,7 @@
 		{
 			"name": "Beast Speech",
 			"entries": [
-				"You can cast speak with animals at will, without expending a spell slot."
+				"You can cast {@spell speak with animals} at will, without expending a spell slot."
 			],
 			"source": "PHB",
 			"page": 110
@@ -85,7 +85,7 @@
 				"level": 7
 			},
 			"entries": [
-				"You can cast compulsion once using a warlock spell slot. You can't do so again until you finish a long rest."
+				"You can cast {@spell compulsion} once using a warlock spell slot. You can't do so again until you finish a long rest."
 			],
 			"source": "PHB",
 			"page": 110
@@ -96,7 +96,7 @@
 				"pact": "Tome"
 			},
 			"entries": [
-				"You can now inscribe magical rituals in your Book of Shadows. Choose two 1st-level spells that have the ritual tag from any class's spell list. The spells needn't be from the same spell list. The spells appear in the book and don't count against the number of spells you know. With your Book of Shadows in hand, you can cast the chosen spells as rituals. You can't cast the spells except as rituals, unless you've learned them by some other means. You can also cast a warlock spell you know as a ritual if it has the ritual tag.",
+				"You can now inscribe magical rituals in your Book of Shadows. Choose two {@filter 1st-level spells that have the ritual tag from any class's spell list|spells|tag=ritual|level=1}. The spells needn't be from the same spell list. The spells appear in the book and don't count against the number of spells you know. With your Book of Shadows in hand, you can cast the chosen spells as rituals. You can't cast the spells except as rituals, unless you've learned them by some other means. You can also cast a warlock spell you know as a ritual if it has the ritual tag.",
 				"On your adventures, you can add other ritual spells to your Book of Shadows. When you find such a spell, you can add it to the book if the spell's level is equal to or less than half your warlock level (rounded up) and if you can spare the time to transcribe the spell. For each level of the spell, the transcription process takes 2 hours and costs 50 gp for the rare inks needed to inscribe it."
 			],
 			"source": "PHB",
@@ -131,7 +131,7 @@
 				"level": 15
 			},
 			"entries": [
-				"You can cast hold monster at will\u2014targeting a celestial, fiend, or elemental\u2014without expending a spell slot or material components. You must finish a long rest before you can use this invocation on the same creature again."
+				"You can cast {@spell hold monster} at will\u2014targeting a celestial, fiend, or elemental\u2014without expending a spell slot or material components. You must finish a long rest before you can use this invocation on the same creature again."
 			],
 			"source": "PHB",
 			"page": 110
@@ -222,7 +222,7 @@
 				"level": 7
 			},
 			"entries": [
-				"You can cast confusion once using a warlock spell slot. You can't do so again until you finish a long rest."
+				"You can cast {@spell confusion} once using a warlock spell slot. You can't do so again until you finish a long rest."
 			],
 			"source": "PHB",
 			"page": 110
@@ -230,7 +230,7 @@
 		{
 			"name": "Eldritch Sight",
 			"entries": [
-				"You can cast detect magic at will, without expending a spell slot."
+				"You can cast {@spell detect magic} at will, without expending a spell slot."
 			],
 			"source": "PHB",
 			"page": 110
@@ -253,7 +253,7 @@
 				"spell": "Eldritch Blast"
 			},
 			"entries": [
-				"When you cast eldritch blast, its range is 300 feet."
+				"When you cast {@spell eldritch blast}, its range is 300 feet."
 			],
 			"source": "PHB",
 			"page": 111
@@ -269,7 +269,7 @@
 		{
 			"name": "Fiendish Vigor",
 			"entries": [
-				"You can cast false life on yourself at will as a 1st-level spell, without expending a spell slot or material components."
+				"You can cast {@spell false life} on yourself at will as a 1st-level spell, without expending a spell slot or material components."
 			],
 			"source": "PHB",
 			"page": 111
@@ -281,7 +281,7 @@
 				"spell": "Eldritch Blast"
 			},
 			"entries": [
-				"You draw on the gifts of the Prince of Frost to trap your enemies in ice. When you hit a creature with your eldritch blast cantrip one or more times on your turn, you can reduce that creature's speed by 10 feet until the end of your next turn."
+				"You draw on the gifts of the Prince of Frost to trap your enemies in ice. When you hit a creature with your {@spell eldritch blast} cantrip one or more times on your turn, you can reduce that creature's speed by 10 feet until the end of your next turn."
 			],
 			"source": "UAWarlockAndWizard",
 			"page": 4
@@ -292,7 +292,7 @@
 				"spell": "Eldritch Blast"
 			},
 			"entries": [
-				"Once on each of your turns when you hit a creature with your eldritch blast, you can reduce that creature's speed by 10 feet until the end of your next turn."
+				"Once on each of your turns when you hit a creature with your {@spell eldritch blast}, you can reduce that creature's speed by 10 feet until the end of your next turn."
 			],
 			"source": "UARevisedClassOptions",
 			"page": 6
@@ -334,7 +334,7 @@
 				"level": 5
 			},
 			"entries": [
-				"You can breathe underwater, and you gain a swimming speed equal to your walking speed. You can also cast water breathing without expending a spell slot. Once you cast it using this invocation, you can't do so again until you finish a long rest."
+				"You can breathe underwater, and you gain a swimming speed equal to your walking speed. You can also cast {@spell water breathing} without expending a spell slot. Once you cast it using this invocation, you can't do so again until you finish a long rest."
 			],
 			"source": "UARevisedClassOptions",
 			"page": 6
@@ -357,7 +357,7 @@
 				"spell": "Eldritch Blast"
 			},
 			"entries": [
-				"Once during your turn when you hit a creature with your eldritch blast cantrip, you can move that creature in a straight line 10 feet closer to yourself."
+				"Once during your turn when you hit a creature with your {@spell eldritch blast} cantrip, you can move that creature in a straight line 10 feet closer to yourself."
 			],
 			"source": "UAWarlockAndWizard",
 			"page": 4
@@ -368,7 +368,7 @@
 				"spell": "Eldritch Blast"
 			},
 			"entries": [
-				"Once on each of your turns when you hit a creature with your eldritch blast cantrip, you can move that creature in a straight line 10 feet closer to yourself."
+				"Once on each of your turns when you hit a creature with your {@spell eldritch blast} cantrip, you can move that creature in a straight line 10 feet closer to yourself."
 			],
 			"source": "UARevisedClassOptions",
 			"page": 6
@@ -415,7 +415,7 @@
 				"spell": "Eldritch Blast"
 			},
 			"entries": [
-				"You can channel the fires of Mephistopheles through your eldritch blast. When you hit a creature with that cantrip, you can cast fireball as a bonus action using a warlock spell slot. However, the spell must be centered on a creature you hit with eldritch blast."
+				"You can channel the fires of Mephistopheles through your {@spell eldritch blast}. When you hit a creature with that cantrip, you can cast {@spell fireball} as a bonus action using a warlock spell slot. However, the spell must be centered on a creature you hit with eldritch blast."
 			],
 			"source": "UAWarlockAndWizard",
 			"page": 4
@@ -427,7 +427,7 @@
 				"spell": "Eldritch Blast"
 			},
 			"entries": [
-				"When you hit a creature with your eldritch blast, you can cast fireball as a bonus action using a warlock spell slot. The spell must be centered on the creature you hit with eldritch blast."
+				"When you hit a creature with your {@spell eldritch blast}, you can cast fireball as a bonus action using a warlock spell slot. The spell must be centered on the creature you hit with {@spell eldritch blast}."
 			],
 			"source": "UARevisedClassOptions",
 			"page": 6
@@ -462,7 +462,7 @@
 				"level": 5
 			},
 			"entries": [
-				"As a bonus action, you cause a psychic disturbance around the target cursed by your hex spell or by a warlock feature of yours, such as Hexblade's Curse and Sign of Ill Omen. When you do so, you deal psychic damage to the target and each creature of your choice within 5 feet of it. The psychic damage equals your Charisma modifier (minimum of 0 damage)."
+				"As a bonus action, you cause a psychic disturbance around the target cursed by your {@spell hex} spell or by a warlock feature of yours, such as Hexblade's Curse and Sign of Ill Omen. When you do so, you deal psychic damage to the target and each creature of your choice within 5 feet of it. The psychic damage equals your Charisma modifier (minimum of 0 damage)."
 			],
 			"source": "UARevisedClassOptions",
 			"page": 6
@@ -470,7 +470,7 @@
 		{
 			"name": "Mask of Many Faces",
 			"entries": [
-				"You can cast disguise self at will, without expending a spell slot."
+				"You can cast {@spell disguise self} at will, without expending a spell slot."
 			],
 			"source": "PHB",
 			"page": 111
@@ -481,7 +481,7 @@
 				"level": 15
 			},
 			"entries": [
-				"You can cast alter self at will, without expending a spell slot."
+				"You can cast {@spell alter self} at will, without expending a spell slot."
 			],
 			"source": "PHB",
 			"page": 111
@@ -492,7 +492,7 @@
 				"level": 9
 			},
 			"entries": [
-				"You can cast conjure elemental once using a warlock spell slot. You can't do so again until you finish a long rest."
+				"You can cast {@spell conjure elemental} once using a warlock spell slot. You can't do so again until you finish a long rest."
 			],
 			"source": "PHB",
 			"page": 111
@@ -503,7 +503,7 @@
 				"level": 5
 			},
 			"entries": [
-				"You can cast slow once using a warlock spell slot. You can't do so again until you finish a long rest."
+				"You can cast {@spell slow} once using a warlock spell slot. You can't do so again until you finish a long rest."
 			],
 			"source": "PHB",
 			"page": 111
@@ -511,7 +511,7 @@
 		{
 			"name": "Misty Visions",
 			"entries": [
-				"You can cast silent image at will, without expending a spell slot or material components."
+				"You can cast {@spell silent image} at will, without expending a spell slot or material components."
 			],
 			"source": "PHB",
 			"page": 111
@@ -545,7 +545,7 @@
 				"level": 9
 			},
 			"entries": [
-				"You can cast jump on yourself at will, without expending a spell slot or material components."
+				"You can cast {@spell jump} on yourself at will, without expending a spell slot or material components."
 			],
 			"source": "PHB",
 			"page": 111
@@ -568,7 +568,7 @@
 				"spell": "Eldritch Blast"
 			},
 			"entries": [
-				"When you score a critical hit with your eldritch blast cantrip, pick yourself or an ally you can see within 30 feet of you. The chosen creature can immediately expend a Hit Die to regain hit points equal to the roll + the creature's Constitution modifier (minimum of 1 hit point)."
+				"When you score a critical hit with your {@spell eldritch blast} cantrip, pick yourself or an ally you can see within 30 feet of you. The chosen creature can immediately expend a Hit Die to regain hit points equal to the roll + the creature's Constitution modifier (minimum of 1 hit point)."
 			],
 			"source": "UAWarlockAndWizard",
 			"page": 5
@@ -591,7 +591,7 @@
 				"level": 7
 			},
 			"entries": [
-				"Your curse creates a temporary bond between you and your target. As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see within 5 feet of the target cursed by your hex spell or by a warlock feature of yours, such as Hexblade's Curse and Sign of Ill Omen. To teleport in this way, you must be able to see the cursed target."
+				"Your curse creates a temporary bond between you and your target. As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see within 5 feet of the target cursed by your {@spell hex} spell or by a warlock feature of yours, such as Hexblade's Curse and Sign of Ill Omen. To teleport in this way, you must be able to see the cursed target."
 			],
 			"source": "UARevisedClassOptions",
 			"page": 6
@@ -602,7 +602,7 @@
 				"spell": "Eldritch Blast"
 			},
 			"entries": [
-				"When you hit a creature with eldritch blast, you can push the creature up to 10 feet away from you in a straight line."
+				"When you hit a creature with {@spell eldritch blast}, you can push the creature up to 10 feet away from you in a straight line."
 			],
 			"source": "PHB",
 			"page": 111
@@ -613,7 +613,7 @@
 				"level": 7
 			},
 			"entries": [
-				"You can cast polymorph once using a warlock spell slot. You can't do so again until you finish a long rest."
+				"You can cast {@spell polymorph} once using a warlock spell slot. You can't do so again until you finish a long rest."
 			],
 			"source": "PHB",
 			"page": 111
@@ -625,7 +625,7 @@
 			},
 			"entries": [
 				"The Sea Twins rule seas in the Feywild. Their gift allows you to travel through water with ease. You can breathe underwater, and you gain a swimming speed equal to your walking speed.",
-				"You can also cast water breathing using a warlock spell slot. Once you cast it using this invocation, you can't do so again until you finish a long rest."
+				"You can also cast {@spell water breathing} using a warlock spell slot. Once you cast it using this invocation, you can't do so again until you finish a long rest."
 			],
 			"source": "UAWarlockAndWizard",
 			"page": 5
@@ -647,7 +647,7 @@
 				"level": 15
 			},
 			"entries": [
-				"You can cast invisibility at will, without expending a spell slot."
+				"You can cast {@spell invisibility} at will, without expending a spell slot."
 			],
 			"source": "UARevisedClassOptions",
 			"page": 6
@@ -670,7 +670,7 @@
 				"level": 5
 			},
 			"entries": [
-				"You can cast bestow curse once using a warlock spell slot. You can't do so again until you finish a long rest."
+				"You can cast {@spell bestow curse} once using a warlock spell slot. You can't do so again until you finish a long rest."
 			],
 			"source": "PHB",
 			"page": 111
@@ -690,7 +690,7 @@
 		{
 			"name": "Thief of Five Fates",
 			"entries": [
-				"You can cast bane once using a warlock spell slot. You can't do so again until you finish a long rest."
+				"You can cast {@spell bane} once using a warlock spell slot. You can't do so again until you finish a long rest."
 			],
 			"source": "PHB",
 			"page": 111
@@ -737,7 +737,7 @@
 				"level": 7
 			},
 			"entries": [
-				"You can cast freedom of movement once on yourself without expending a spell slot. You regain the ability to do so when you finish a long rest."
+				"You can cast {@spell freedom of movement} once on yourself without expending a spell slot. You regain the ability to do so when you finish a long rest."
 			],
 			"source": "UARevisedClassOptions",
 			"page": 7
@@ -760,7 +760,7 @@
 				"level": 15
 			},
 			"entries": [
-				"You can cast arcane eye at will, without expending a spell slot."
+				"You can cast {@spell arcane eye} at will, without expending a spell slot."
 			],
 			"source": "PHB",
 			"page": 111
@@ -782,7 +782,7 @@
 				"level": 9
 			},
 			"entries": [
-				"You can cast speak with dead at will, without expending a spell slot."
+				"You can cast {@spell speak with dead} at will, without expending a spell slot."
 			],
 			"source": "PHB",
 			"page": 111
@@ -853,7 +853,7 @@
 			},
 			"entries": [
 				"You can breathe underwater, and you gain a swimming speed equal to your walking speed.",
-				"You can also cast water breathing once without expending a spell slot. You regain the ability to do so when you finish a long rest."
+				"You can also cast {@spell water breathing} once without expending a spell slot. You regain the ability to do so when you finish a long rest."
 			],
 			"source": "XGE",
 			"page": 57
@@ -875,7 +875,7 @@
 				"spell": "Eldritch Blast"
 			},
 			"entries": [
-				"Once on each of your turns when you hit a creature with your eldritch blast, you can move that creature in a straight line 10 feet closer to you."
+				"Once on each of your turns when you hit a creature with your {@spell eldritch blast}, you can move that creature in a straight line 10 feet closer to you."
 			],
 			"source": "XGE",
 			"page": 57
@@ -899,7 +899,7 @@
 				"spell": "Eldritch Blast"
 			},
 			"entries": [
-				"Once on each of your turns when you hit a creature with your eldritch blast, you can reduce that creature's speed by 10 feet until the end of your next turn."
+				"Once on each of your turns when you hit a creature with your {@spell eldritch blast}, you can reduce that creature's speed by 10 feet until the end of your next turn."
 			],
 			"source": "XGE",
 			"page": 57
@@ -911,7 +911,7 @@
 				"spell": "Hex/Curse"
 			},
 			"entries": [
-				"As a bonus action, you cause a psychic disturbance around the target cursed by your hex spell or by a warlock feature of yours, such as Hexblade's Curse or Sign of Ill Omen. When you do so, you deal psychic damage to the cursed target and each creature of your choice that you can see within 5 feet of it. The psychic damage equals your Charisma modifier (minimum of 1 damage). To use this invocation, you must be able to see the cursed target, and it must be within 30 feet of you."
+				"As a bonus action, you cause a psychic disturbance around the target cursed by your {@spell hex} spell or by a warlock feature of yours, such as Hexblade's Curse or Sign of Ill Omen. When you do so, you deal psychic damage to the cursed target and each creature of your choice that you can see within 5 feet of it. The psychic damage equals your Charisma modifier (minimum of 1 damage). To use this invocation, you must be able to see the cursed target, and it must be within 30 feet of you."
 			],
 			"source": "XGE",
 			"page": 57
@@ -923,7 +923,7 @@
 				"spell": "Hex/Curse"
 			},
 			"entries": [
-				"Your curse creates a temporary bond between you and your target. As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see within 5 feet of the target cursed by your hex spell or by a warlock feature of yours, such as Hexblade's Curse or Sign of Ill Omen. To teleport in this way, you must be able to see the cursed target."
+				"Your curse creates a temporary bond between you and your target. As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see within 5 feet of the target cursed by your {@spell hex} spell or by a warlock feature of yours, such as Hexblade's Curse or Sign of Ill Omen. To teleport in this way, you must be able to see the cursed target."
 			],
 			"source": "XGE",
 			"page": 57
@@ -934,7 +934,7 @@
 				"level": 15
 			},
 			"entries": [
-				"You can cast invisibility at will, without expending a spell slot."
+				"You can cast {@spell invisibility} at will, without expending a spell slot."
 			],
 			"source": "XGE",
 			"page": 57
@@ -957,7 +957,7 @@
 				"level": 7
 			},
 			"entries": [
-				"You can cast freedom of movement once on yourself without expending a spell slot. You regain the ability to do so when you finish a long rest."
+				"You can cast {@spell freedom of movement} once on yourself without expending a spell slot. You regain the ability to do so when you finish a long rest."
 			],
 			"source": "XGE",
 			"page": 57

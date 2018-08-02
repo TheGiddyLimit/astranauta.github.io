@@ -12,7 +12,7 @@ window.onload = function load () {
 	else BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message">Select a book to begin</td></tr>`);
 	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
-	DataUtil.loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
 function onJsonLoad (data) {
@@ -26,7 +26,7 @@ function onJsonLoad (data) {
 
 		tempString +=
 			`<li class="contents-item" data-bookid="${UrlUtil.encodeForHash(book.id)}">
-				<a id="${i}" href='#${book.id},0' title='${book.name}'>
+				<a id="${i}" href='#${book.id},0' title="${book.name}">
 					<span class='name'>${book.name}</span>
 				</a>
 				${BookUtil.makeContentsBlock({book: book, addOnclick: true, defaultHeadersHidden: true})}

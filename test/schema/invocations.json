@@ -1,41 +1,66 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.1.0",
 	"title": "Invocations",
 	"type": "object",
 
 	"definitions": {
+		"prerequisite": {
+			"type": "object",
+			"properties": {
+				"spell": {
+					"oneOf": [
+						{
+							"type": "string",
+							"enum": [
+								"Eldritch Blast", "Hex/Curse"
+							]
+						},
+						{
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					]
+				},
+				"pact": {
+					"type": "string",
+					"enum": [
+						"Chain", "Tome", "Blade"
+					]
+				},
+				"patron": {
+					"type": "string",
+					"enum": [
+						"The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker", "The Kraken"
+					]
+				},
+				"level": {
+					"type": "integer",
+					"enum": [5, 7, 9, 12, 15, 18]
+				},
+				"feature": {
+					"type": "string",
+					"enum": ["Grip of the Master"]
+				},
+
+				"or": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/prerequisite"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
 		"invocation": {
 			"properties": {
 				"name": {
 					"type": "string"
 				},
 				"prerequisites": {
-					"type": "object",
-					"properties": {
-						"spell": {
-							"type": "string",
-							"enum": [
-								"Eldritch Blast", "Hex/Curse"
-							]
-						},
-						"pact": {
-							"type": "string",
-							"enum": [
-								"Chain", "Tome", "Blade"
-							]
-						},
-						"patron": {
-							"type": "string",
-							"enum": [
-								"The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker"
-							]
-						},
-						"level": {
-							"type": "integer",
-							"enum": [5, 7, 9, 12, 15, 18]
-						}
-					},
-					"additionalProperties": false
+					"$ref": "#/definitions/prerequisite"
 				},
 				"entries": {
 					"type": "array",
@@ -53,8 +78,7 @@
 			"required": [
 				"name",
 				"entries",
-				"source",
-				"page"
+				"source"
 			],
 			"additionalProperties": false
 		}

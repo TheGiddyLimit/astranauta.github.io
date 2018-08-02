@@ -13,11 +13,49 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<style id="dynamicStyle"></style> <!-- populated with JS -->
-
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
+
+	<style>
+		button#reset {
+			border-radius: 4px;
+		}
+
+		.old-text {
+			text-decoration: line-through;
+		}
+
+		.crypto-true {
+			color: #00b400;
+		}
+
+		.crypto-false {
+			color: #ff3100;
+		}
+
+		[class^="crypto-"] {
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			padding: 2px;
+			margin-bottom: -2px;
+			margin-top: -2px;
+			background-color: white;
+			cursor: help;
+		}
+
+		.stat-roll-line {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.stat-roll-item {
+			width: 100%;
+			text-align: center;
+			cursor: help;
+		}
+	</style>
 </head>
 
 <body>
@@ -45,14 +83,14 @@
 		</div>
 		<div class="col-sm-9 statmethod" id="rolled" style="display: none">
 			<h3>Rolled Stats</h3>
-			<button type="button" id="rollbutton" class="btn btn-default">Roll Stats</button>
-			<h3 id="rolls">
-			</h3>
-			<p>Click the button to roll for your stats. 4d6 are rolled with the lowest of the set discarded. This is
-				done for each ability score. Assign these numbers to your abilities as desired. As this is based on your
-				browser's JavaScript random number generator,
-				it cannot be considered at all "truly" random, but for most purposes can be considered "random
-				enough."</p>
+			<div class="input-group">
+				<span class="input-group-addon" id="roller-mode"></span>
+				<input class="form-control" placeholder="Enter dice formula" value="4d6dl1" id="stats-formula">
+				<span class="input-group-btn">
+					<button type="button" id="rollbutton" class="btn btn-default">Roll Stats</button>
+				</span>
+			</div>
+			<h3 id="rolls"></h3>
 		</div>
 		<div class="col-sm-9 statmethod" id="array" style="display: none">
 			<h3>Standard Array</h3>
@@ -74,7 +112,7 @@
 					<td class="choose"></td>
 				</tr>
 				<tr id="str">
-					<td>STR</td>
+					<td><b>STR</b></td>
 					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
 					<td><input type="number" class="racial" readonly></td>
 					<td><input type="number" readonly></td>
@@ -82,7 +120,7 @@
 					<td><input type="checkbox" class="choose"></td>
 				</tr>
 				<tr id="dex">
-					<td>DEX</td>
+					<td><b>DEX</b></td>
 					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
 					<td><input type="number" class="racial" readonly></td>
 					<td><input type="number" readonly></td>
@@ -90,7 +128,7 @@
 					<td><input type="checkbox" class="choose"></td>
 				</tr>
 				<tr id="con">
-					<td>CON</td>
+					<td><b>CON</b></td>
 					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
 					<td><input type="number" class="racial" readonly></td>
 					<td><input type="number" readonly></td>
@@ -98,7 +136,7 @@
 					<td><input type="checkbox" class="choose"></td>
 				</tr>
 				<tr id="int">
-					<td>INT</td>
+					<td><b>INT</b></td>
 					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
 					<td><input type="number" class="racial" readonly></td>
 					<td><input type="number" readonly></td>
@@ -106,7 +144,7 @@
 					<td><input type="checkbox" class="choose"></td>
 				</tr>
 				<tr id="wis">
-					<td>WIS</td>
+					<td><b>WIS</b></td>
 					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
 					<td><input type="number" class="racial" readonly></td>
 					<td><input type="number" readonly></td>
@@ -114,7 +152,7 @@
 					<td><input type="checkbox" class="choose"></td>
 				</tr>
 				<tr id="cha">
-					<td>CHA</td>
+					<td><b>CHA</b></td>
 					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
 					<td><input type="number" class="racial" readonly></td>
 					<td><input type="number" readonly></td>
@@ -123,11 +161,20 @@
 				</tr>
 			</table>
 			<select id="race"></select>
-			<p id="choose"></p>
+
+			<table id="custom" style="display: none;">
+				<tr><td>Custom race <b>STR</b> bonus:</td><td><input name="str" class="custom" type="number" value="0" step="1"></td></tr>
+				<tr><td>Custom race <b>DEX</b> bonus:</td><td><input name="dex" class="custom" type="number" value="0" step="1"></td></tr>
+				<tr><td>Custom race <b>CON</b> bonus:</td><td><input name="con" class="custom" type="number" value="0" step="1"></td></tr>
+				<tr><td>Custom race <b>INT</b> bonus:</td><td><input name="int" class="custom" type="number" value="0" step="1"></td></tr>
+				<tr><td>Custom race <b>WIS</b> bonus:</td><td><input name="wis" class="custom" type="number" value="0" step="1"></td></tr>
+				<tr><td>Custom race <b>CHA</b> bonus:</td><td><input name="cha" class="custom" type="number" value="0" step="1"></td></tr>
+			</table>
 		</div>
 	</div>
 </main>    <!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/statgen.js"></script>

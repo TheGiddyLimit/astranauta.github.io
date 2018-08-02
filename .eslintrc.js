@@ -68,7 +68,7 @@ module.exports = {
 		"no-irregular-whitespace": "error",
 		"no-iterator": "error",
 		"no-label-var": "error",
-		"no-labels": ["error", {"allowLoop": false, "allowSwitch": false}],
+		"no-labels": ["error", {"allowLoop": true, "allowSwitch": false}],
 		"no-lone-blocks": "error",
 		"no-mixed-operators": ["error", {
 			"groups": [

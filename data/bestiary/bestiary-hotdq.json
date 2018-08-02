@@ -5,10 +5,24 @@
 			"size": "M",
 			"type": "dragon",
 			"source": "HotDQ",
-			"alignment": "unaligned",
-			"ac": "13 (natural armor)",
-			"hp": "22 (4d6+8)",
-			"speed": "30 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 22,
+				"formula": "4d6+8"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 13,
 			"dex": 15,
 			"con": 14,
@@ -19,7 +33,9 @@
 				"perception": "+4",
 				"stealth": "+4"
 			},
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
 			"languages": "understands Draconic but can't speak it",
@@ -34,7 +50,7 @@
 				{
 					"name": "Surprise Attack",
 					"entries": [
-						"If the drake surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 7 (2d6) damage from the attack."
+						"If the drake surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 7 ({@dice 2d6}) damage from the attack."
 					]
 				}
 			],
@@ -42,14 +58,18 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) piercing damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
 					]
 				}
 			],
-			"page": 88
+			"page": 88,
+			"traitTags": [
+				"Pack Tactics"
+			]
 		},
 		{
 			"name": "Azbara Jos",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -58,17 +78,35 @@
 				]
 			},
 			"source": "HotDQ",
-			"alignment": "lawful evil",
-			"ac": "13 (16 with mage armor)",
-			"hp": "39 (6d8+12)",
-			"speed": "30 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				13,
+				{
+					"ac": 16,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
+			"hp": {
+				"average": 39,
+				"formula": "6d8+12"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 9,
 			"dex": 16,
 			"con": 14,
 			"int": 16,
 			"wis": 13,
 			"cha": 11,
-			"save": "Int +5, Wis +3",
+			"save": {
+				"int": "+5",
+				"wis": "+3"
+			},
 			"skill": {
 				"arcana": "+5",
 				"deception": "+2",
@@ -125,7 +163,7 @@
 				{
 					"name": "Special Equipment",
 					"entries": [
-						"Azbara has two scrolls of mage armor."
+						"Azbara has two {@item spell scroll (1st level)|DMG|scrolls} of {@spell mage armor}."
 					]
 				},
 				{
@@ -145,7 +183,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 5 (1d4+3) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit 5} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 5 ({@dice 1d4+3}) piercing damage."
 					]
 				}
 			],
@@ -153,6 +191,7 @@
 		},
 		{
 			"name": "Blagothkus",
+			"isNPC": true,
 			"size": "H",
 			"type": {
 				"type": "giant",
@@ -161,17 +200,36 @@
 				]
 			},
 			"source": "HotDQ",
-			"alignment": "neutral evil",
-			"ac": "17 (splint)",
-			"hp": "138 (12d12+60)",
-			"speed": "40 ft.",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item splint armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 138,
+				"formula": "12d12+60"
+			},
+			"speed": {
+				"walk": 40
+			},
 			"str": 26,
 			"dex": 13,
 			"con": 20,
 			"int": 16,
 			"wis": 15,
 			"cha": 15,
-			"save": "Con +9, Wis +6, Cha +6",
+			"save": {
+				"con": "+9",
+				"wis": "+6",
+				"cha": "+6"
+			},
 			"skill": {
 				"arcana": "+7",
 				"insight": "+6",
@@ -252,14 +310,21 @@
 				{
 					"name": "Morningstar",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 21 (3d8+8) piercing damage."
+						"Melee Weapon Attack: {@hit 10} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d8+8}) piercing damage."
 					]
 				}
 			],
-			"page": 89
+			"page": 89,
+			"traitTags": [
+				"Keen Senses"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Captain Othelstan",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -268,17 +333,36 @@
 				]
 			},
 			"source": "HotDQ",
-			"alignment": "lawful evil",
-			"ac": "19 (splint, shield)",
-			"hp": "93 (11d10+33)",
-			"speed": "30 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 19,
+					"from": [
+						"{@item splint armor|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 93,
+				"formula": "11d10+33"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 19,
 			"dex": 10,
 			"con": 16,
 			"int": 13,
 			"wis": 14,
 			"cha": 12,
-			"save": "Str +7, Con +6",
+			"save": {
+				"str": "+7",
+				"con": "+6"
+			},
 			"skill": {
 				"athletics": "+7",
 				"intimidation": "+7",
@@ -312,20 +396,24 @@
 				{
 					"name": "Flail",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Spear",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 7 (1d6+4) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit 7} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
 					]
 				}
 			],
-			"page": 89
+			"page": 89,
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Dralmorrer Borngray",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -334,17 +422,36 @@
 				]
 			},
 			"source": "HotDQ",
-			"alignment": "neutral evil",
-			"ac": "16 (studded leather, shield)",
-			"hp": "52 (7d10+14)",
-			"speed": "30 ft.",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item studded leather armor|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 52,
+				"formula": "7d10+14"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 18,
 			"dex": 14,
 			"con": 14,
 			"int": 16,
 			"wis": 10,
 			"cha": 8,
-			"save": "Str +6, Con +4",
+			"save": {
+				"str": "+6",
+				"con": "+4"
+			},
 			"skill": {
 				"arcana": "+5",
 				"deception": "+1",
@@ -419,20 +526,27 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) slashing damage."
+						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) slashing damage."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or ranged 20/60, one target. Hit: 6 (1d4+4) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit 6} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 6 ({@dice 1d4+4}) piercing damage."
 					]
 				}
 			],
-			"page": 90
+			"page": 90,
+			"traitTags": [
+				"Fey Ancestry"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Frulam Mondath",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -441,17 +555,35 @@
 				]
 			},
 			"source": "HotDQ",
-			"alignment": "lawful evil",
-			"ac": "16 (chain mail)",
-			"hp": "44 (8d8+8)",
-			"speed": "30 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item chain mail|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 44,
+				"formula": "8d8+8"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 14,
 			"dex": 10,
 			"con": 13,
 			"int": 11,
 			"wis": 18,
 			"cha": 15,
-			"save": "Wis +6, Cha +4",
+			"save": {
+				"wis": "+6",
+				"cha": "+4"
+			},
 			"skill": {
 				"deception": "+4",
 				"history": "+2",
@@ -511,14 +643,18 @@
 				{
 					"name": "Halberd",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 10 ft., one target. Hit: 7 (1d10+2) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 10 ft., one target. Hit: 7 ({@dice 1d10+2}) bludgeoning damage."
 					]
 				}
 			],
-			"page": 90
+			"page": 90,
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Jamna Gleamsilver",
+			"isNPC": true,
 			"size": "S",
 			"type": {
 				"type": "humanoid",
@@ -527,17 +663,34 @@
 				]
 			},
 			"source": "HotDQ",
-			"alignment": "neutral",
-			"ac": "15 (leather armor)",
-			"hp": "22 (4d6+8)",
-			"speed": "25 ft.",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 22,
+				"formula": "4d6+8"
+			},
+			"speed": {
+				"walk": 25
+			},
 			"str": 8,
 			"dex": 17,
 			"con": 14,
 			"int": 15,
 			"wis": 10,
 			"cha": 12,
-			"save": "Dex +5, Int +4",
+			"save": {
+				"dex": "+5",
+				"int": "+4"
+			},
 			"skill": {
 				"acrobatics": "+5",
 				"deception": "+3",
@@ -601,14 +754,18 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage, or 9 (1d6+3) plus (1d6) piercing damage if the target is Medium or larger."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage, or 9 ({@dice 1d6+3}) plus ({@dice 1d6}) piercing damage if the target is Medium or larger."
 					]
 				}
 			],
-			"page": 91
+			"page": 91,
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Langdedrosa Cyanwrath",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -617,23 +774,43 @@
 				]
 			},
 			"source": "HotDQ",
-			"alignment": "lawful evil",
-			"ac": "17 (splint)",
-			"hp": "57 (6d12+18)",
-			"speed": "30 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item splint armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 57,
+				"formula": "6d12+18"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 19,
 			"dex": 13,
 			"con": 16,
 			"int": 10,
 			"wis": 14,
 			"cha": 12,
-			"save": "Str +6, Con +5",
+			"save": {
+				"str": "+6",
+				"con": "+5"
+			},
 			"skill": {
 				"athletics": "+6",
 				"intimidation": "+3",
 				"perception": "+4"
 			},
-			"resist": "lightning",
+			"resist": [
+				"lightning"
+			],
 			"senses": "blindsight 10 ft., darkvision 60 ft.",
 			"passive": 14,
 			"languages": "Common, Draconic",
@@ -662,26 +839,30 @@
 				{
 					"name": "Greatsword",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage."
+						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
 					]
 				},
 				{
 					"name": "Spear",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 7 (1d6+4) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit 6} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
 					]
 				},
 				{
-					"name": "Lightning Breath (Recharge 5\u20146)",
+					"name": "Lightning Breath (Recharge 5\u20136)",
 					"entries": [
-						"Langdedrosa breathes lightning in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 13 Dexterity saving throw, taking 22 (4d10) lightning damage on a failed save, or half as much damage on a successful one."
+						"Langdedrosa breathes lightning in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 13 Dexterity saving throw, taking 22 ({@dice 4d10}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
-			"page": 91
+			"page": 91,
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Pharblex Spattergoo",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -690,17 +871,37 @@
 				]
 			},
 			"source": "HotDQ",
-			"alignment": "chaotic evil",
-			"ac": "15 (studded leather armor, shield)",
-			"hp": "59 (7d8+28)",
-			"speed": "20 ft., swim 40 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 59,
+				"formula": "7d8+28"
+			},
+			"speed": {
+				"walk": 20,
+				"swim": 40
+			},
 			"str": 15,
 			"dex": 12,
 			"con": 18,
 			"int": 11,
 			"wis": 16,
 			"cha": 7,
-			"save": "Str +4, Con +6",
+			"save": {
+				"str": "+4",
+				"con": "+6"
+			},
 			"skill": {
 				"perception": "+5",
 				"religion": "+2",
@@ -760,7 +961,7 @@
 				{
 					"name": "Poison Strike (3/Day)",
 					"entries": [
-						"Once per turn, when Pharblex hits with a melee attack, he can expend a use of this trait to deal an extra 9 (2d8) poison damage."
+						"Once per turn, when Pharblex hits with a melee attack, he can expend a use of this trait to deal an extra 9 ({@dice 2d8}) poison damage."
 					]
 				},
 				{
@@ -786,17 +987,23 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) piercing damage."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Spear",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +5 to hit. reach 5 ft. or ranged 20/60 ft., one target. Hit: 5 (1d6+2) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit 5} to hit. reach 5 ft. or ranged 20/60 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],
-			"page": 91
+			"page": 91,
+			"traitTags": [
+				"Amphibious"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Rezmir",
@@ -808,23 +1015,46 @@
 				]
 			},
 			"source": "HotDQ",
-			"alignment": "neutral evil",
-			"ac": "13 (15 with the Black Dragon Mask)",
-			"hp": "90 (12d8+36)",
-			"speed": "30 ft.",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				13,
+				{
+					"ac": 15,
+					"condition": "with the Black Dragon Mask",
+					"braces": true
+				}
+			],
+			"hp": {
+				"average": 90,
+				"formula": "12d8+36"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 18,
 			"dex": 16,
 			"con": 16,
 			"int": 15,
 			"wis": 12,
 			"cha": 14,
-			"save": "Dex +6, Wis +4",
+			"save": {
+				"dex": "+6",
+				"wis": "+4"
+			},
 			"skill": {
 				"arcana": "+5",
 				"stealth": "+9"
 			},
-			"immune": "acid",
-			"conditionImmune": "charmed, frightened",
+			"immune": [
+				"acid"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened"
+			],
 			"senses": "blindsight 10 ft., darkvision 120 ft.",
 			"passive": 11,
 			"languages": "Common, Draconic, Infernal, Giant, Netherese",
@@ -833,7 +1063,7 @@
 				{
 					"name": "Special Equipment",
 					"entries": [
-						"Rezmir has the Black Dragon Mask, Hazirawn, and an insignia of claws."
+						"Rezmir has the {@item Black Dragon Mask|hotdq}, {@item Hazirawn|hotdq}, and an {@item insignia of claws|hotdq}."
 					]
 				},
 				{
@@ -845,7 +1075,7 @@
 				{
 					"name": "Dark Advantage",
 					"entries": [
-						"Once per turn, Rezmir can deal an extra 10 (3d6) damage when she hits with a weapon attack, provided Rezmir has advantage on the attack roll."
+						"Once per turn, Rezmir can deal an extra 10 ({@dice 3d6}) damage when she hits with a weapon attack, provided Rezmir has advantage on the attack roll."
 					]
 				},
 				{
@@ -871,19 +1101,19 @@
 				{
 					"name": "Greatsword (Hazirawn)",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 13 (2d6+6) slashing damage plus 7 (2d6) necrotic damage. If the target is a creature, it can't regain hit points for 1 minute. The target can make a DC 15 Constitution saving throw at the end of each of its turns, ending this effect early on a success."
+						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d6+6}) slashing damage plus 7 ({@dice 2d6}) necrotic damage. If the target is a creature, it can't regain hit points for 1 minute. The target can make a DC 15 Constitution saving throw at the end of each of its turns, ending this effect early on a success."
 					]
 				},
 				{
 					"name": "Caustic Bolt",
 					"entries": [
-						"Ranged Spell Attack: +8 to hit, range 90 ft., one target. Hit: 18 (4d8) acid damage."
+						"Ranged Spell Attack: {@hit 8} to hit, range 90 ft., one target. Hit: 18 ({@dice 4d8}) acid damage."
 					]
 				},
 				{
-					"name": "Acid Breath (Recharge 5\u20146)",
+					"name": "Acid Breath (Recharge 5\u20136)",
 					"entries": [
-						"Rezmir breathes acid in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 14 Dexterity saving throw, taking 22 (5d8) acid damage on a failed save, or half as much damage on a successful one."
+						"Rezmir breathes acid in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 14 Dexterity saving throw, taking 22 ({@dice 5d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -908,10 +1138,17 @@
 					]
 				}
 			],
-			"page": 93
+			"page": 93,
+			"isNamedCreature": true,
+			"isNPC": true,
+			"traitTags": [
+				"Amphibious",
+				"Legendary Resistances"
+			]
 		},
 		{
 			"name": "Talis the White",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -920,17 +1157,36 @@
 				]
 			},
 			"source": "HotDQ",
-			"alignment": "lawful evil",
-			"ac": "18 (scale mail +1, shield)",
-			"hp": "58 (9d8+18)",
-			"speed": "30 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item scale mail +1|dmg|+1 scale mail}",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 58,
+				"formula": "9d8+18"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 14,
 			"dex": 12,
 			"con": 14,
 			"int": 10,
 			"wis": 16,
 			"cha": 16,
-			"save": "Wis +6, Cha +6",
+			"save": {
+				"wis": "+6",
+				"cha": "+6"
+			},
 			"skill": {
 				"deception": "+6",
 				"insight": "+6",
@@ -1000,7 +1256,7 @@
 				{
 					"name": "Special Equipment",
 					"entries": [
-						"Talis has +1 scale mail and a wand of winter."
+						"Talis has {@item scale mail +1|dmg|+1 scale mail} and a {@item wand of winter|hotdq}."
 					]
 				},
 				{
@@ -1012,7 +1268,7 @@
 				{
 					"name": "Winter Strike (3/Day)",
 					"entries": [
-						"Once per turn, when Talis hits with a melee attack, she can expend a use of this trait to deal an extra 9 (2d8) cold damage."
+						"Once per turn, when Talis hits with a melee attack, she can expend a use of this trait to deal an extra 9 ({@dice 2d8}) cold damage."
 					]
 				}
 			],
@@ -1020,11 +1276,94 @@
 				{
 					"name": "Spear",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 6 (1d6+2) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit 5} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 6 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],
-			"page": 93
+			"page": 93,
+			"traitTags": [
+				"Fey Ancestry"
+			]
+		},
+		{
+			"name": "Trepsin",
+			"isNPC": true,
+			"size": "L",
+			"type": "giant",
+			"source": "HotDQ",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "84"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 18,
+			"dex": 13,
+			"con": 20,
+			"int": 7,
+			"wis": 9,
+			"cha": 7,
+			"skill": {
+				"perception": "+1"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": 11,
+			"languages": "Giant",
+			"cr": "6",
+			"trait": [
+				{
+					"name": "Keen Smell",
+					"entries": [
+						"The troll has advantage on Wisdom (Perception) checks that rely on smell."
+					]
+				},
+				{
+					"name": "Regeneration",
+					"entries": [
+						"The troll regains 10 hit points at the start of its turn. If the troll takes acid or fire damage, this trait doesn't function at the start of the troll's next turn. The troll dies only if it starts its turn with 0 hit points and doesn't regenerate."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The troll attacks five times, once with its bite and four times with its claws. If two or more claws hit the same target, the troll rends the target, dealing an extra {@dice 2d6} slashing damage."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 7 (1d6 + 4) piercing damage."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) slashing damage."
+					]
+				}
+			],
+			"page": 63,
+			"traitTags": [
+				"Keen Senses",
+				"Regeneration"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
 		}
 	]
 }

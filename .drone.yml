@@ -1,3 +1,15 @@
+buildstep-ssh: &buildstep-ssh
+  image: appleboy/drone-ssh
+  pull: true
+  host: ianthe.rem.uz
+  port: 22
+  user: root
+  secrets: [ ssh_key ]
+
+buildstep-node: &buildstep-node
+  image: webhippie/nodejs:latest
+  pull: true
+
 workspace:
   base: /srv/app
 clone:
@@ -5,14 +17,15 @@ clone:
     image: plugins/git:1
     depth: 1
     tags: false
+    submodule_override:
+      img: https://git.develop.5eTools.com/5eTools/5etools_img.git
 
 pipeline:
 ###############################################################################
 # All Branches
-# Push || Pull request -> Test -> Notify || Shame
+# Push || Pull request -> Test -> Notify
   Test:
-      image: webhippie/nodejs:latest
-      pull: true
+      <<: *buildstep-node
       commands:
           - npm install
           - npm test
@@ -20,8 +33,7 @@ pipeline:
           event: pull_request
 
   Test:
-      image: webhippie/nodejs:latest
-      pull: true
+      <<: *buildstep-node
       commands:
           - npm install
           - npm test
@@ -29,55 +41,28 @@ pipeline:
           event: push
           branch: development
 
-  Notify:
-      image: appleboy/drone-discord
-      pull: true
-      secrets: [ discord_webhook_id, discord_webhook_token ]
-      message: >
-       5etools test of {{ build.number }} to {{ build.branch }} by
-       {{ build.author }} finished with {{ build.status }}.
-       ({{ build.link }})
-      when:
-        status: success
-        event: [ push, pull_request ]
-
-  Shame:
-    image: appleboy/drone-ssh
-    pull: true
-    host: ianthe.rem.uz
-    port: 22
-    user: root
-    secrets: [ ssh_key ]
-    script:
-      - python /scripts/shame.py
-    when:
-       status: failure
-       event: [ push, pull_request ]
-
 ###############################################################################
 # Master Branch
 # ... -> Merge -> Version Check -> Deploy
-  Version:
-    image: appleboy/drone-ssh
-    pull: true
-    host: ianthe.rem.uz
-    port: 22
-    user: root
-    secrets: [ ssh_key ]
+  Check-version:
+    <<: *buildstep-ssh
     script:
       - cd /scripts/ && python /scripts/chk-version.py
+    when:
+      branch: master
+      event: [ push, pull_request ]
+
+  Update-version:
+    <<: *buildstep-ssh
+    script:
+      - cd /scripts/ && python /scripts/upd-version.py
     when:
       branch: master
       event: push
 
   Deploy-prod:
-    image: appleboy/drone-ssh
-    pull: true
-    host: ianthe.rem.uz
-    port: 22
-    user: root
-    secrets: [ ssh_key ]
-    command_timeout: 180
+    <<: *buildstep-ssh
+    command_timeout: 300
     script:
       - bash /scripts/prod-deploy.sh
     when:
@@ -88,13 +73,8 @@ pipeline:
 # Development Branch
 # ... -> Deploy
   Deploy-dev:
-    image: appleboy/drone-ssh
-    pull: true
-    host: ianthe.rem.uz
-    port: 22
-    user: root
-    secrets: [ ssh_key ]
-    command_timeout: 180
+    <<: *buildstep-ssh
+    command_timeout: 300
     script:
       - bash /scripts/dev-deploy.sh
     when:
@@ -103,15 +83,12 @@ pipeline:
 
 ###############################################################################
 # All Branches
-# ... -> Notify
-  Notify:
-      image: appleboy/drone-discord
-      pull: true
-      secrets: [ discord_webhook_id, discord_webhook_token ]
-      message: >
-       5etools deployment of {{ build.number }} from {{ build.branch }} by
-       {{ build.author }} finished with {{ build.status }}.
-       ({{ build.link }})
-      when:
-        status:  [ failure, success ]
-        event: push
+# ... -> Notify || Shame
+
+  Shame:
+    <<: *buildstep-ssh
+    script:
+      - python /scripts/shame.py
+    when:
+       status: failure
+       event: [ push, pull_request ]

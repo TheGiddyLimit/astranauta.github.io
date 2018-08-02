@@ -1,5 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.1.0",
 	"type": "object",
 
 	"definitions": {
@@ -33,6 +34,51 @@
 					}
 				}
 			]
+		},
+
+		"traitTag": {
+			"type": "string",
+			"enum": [
+				"Amphibious",
+				"Armor Proficiency",
+				"Damage Resistance",
+				"Dragonmark",
+				"Improved Resting",
+				"Natural Armor",
+				"NPC Race",
+				"Powerful Build",
+				"Skill Proficiency",
+				"Spellcasting",
+				"Tool Proficiency",
+				"Unarmed Strike",
+				"Weapon Proficiency"
+			]
+		},
+
+		"languageTag": {
+			"type": "string",
+			"enum": [
+				"Abyssal",
+				"Aquan",
+				"Auran",
+				"Celestial",
+				"Choose",
+				"Common",
+				"Draconic",
+				"Dwarvish",
+				"Elvish",
+				"Giant",
+				"Gnomish",
+				"Goblin",
+				"Halfling",
+				"Infernal",
+				"Orc",
+				"Other",
+				"Primordial",
+				"Sylvan",
+				"Terran",
+				"Undercommon"
+			]
 		}
 	},
 
@@ -51,6 +97,25 @@
 					"page": {
 						"type": "integer"
 					},
+					"otherSources": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								}
+							},
+							"required": [
+								"source",
+								"page"
+							],
+							"additionalProperties": false
+						}
+					},
 					"ability": {
 						"type": "object"
 					},
@@ -67,6 +132,9 @@
 							"$ref": "/Entry"
 						}
 					},
+					"soundClip": {
+						"type": "string"
+					},
 					"subraces": {
 						"type": "array",
 						"items": {
@@ -80,6 +148,25 @@
 								},
 								"page": {
 									"type": "integer"
+								},
+								"otherSources": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"source": {
+												"type": "string"
+											},
+											"page": {
+												"type": "integer"
+											}
+										},
+										"required": [
+											"source",
+											"page"
+										],
+										"additionalProperties": false
+									}
 								},
 								"ability": {
 									"type": "object"
@@ -95,6 +182,18 @@
 								},
 								"darkvision": {
 									"type": "integer"
+								},
+								"traitTags": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/traitTag"
+									}
+								},
+								"languageTags": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/languageTag"
+									}
 								}
 							},
 							"additionalProperties": false
@@ -103,14 +202,22 @@
 					"darkvision": {
 						"type": "integer"
 					},
-					"npc": {
-						"type": "boolean"
+					"traitTags": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/traitTag"
+						}
+					},
+					"languageTags": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/languageTag"
+						}
 					}
 				},
 				"required": [
 					"name",
-					"source",
-					"page"
+					"source"
 				],
 				"additionalProperties": false
 			}

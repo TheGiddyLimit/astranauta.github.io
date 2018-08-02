@@ -1,0 +1,341 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.1",
+
+	"title": "ClassArray",
+	"type": "object",
+
+	"definitions": {
+		"classTableGroup": {
+			"properties": {
+				"title": {
+					"type": "string"
+				},
+				"subclasses": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"source": {
+								"type": "string"
+							}
+						},
+						"required": ["name", "source"],
+						"additionalProperties": false
+					}
+				},
+				"colLabels": {
+					"type": "array",
+					"items": {
+						"anyOf": [{"type": "string"}]
+					}
+				},
+				"rows": {
+					"type": "array",
+					"items": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				}
+			},
+			"required": [
+				"colLabels",
+				"rows"
+			],
+			"additionalProperties": false
+		},
+
+		"classFeature": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				},
+				"gainSubclassFeature": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"name",
+				"entries"
+			],
+			"additionalProperties": false
+		},
+		"subclassFeature": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				}
+			},
+			"required": [
+				"entries"
+			],
+			"additionalProperties": false
+		},
+
+		"subclass": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"shortName": {
+					"type": "string"
+				},
+				"subclassFeatures": {
+					"type": "array",
+					"items": {
+						"type": "array",
+						"items": {"$ref": "#/definitions/subclassFeature"}
+					},
+					"maxItems": 20
+				},
+				"source": {
+					"type": "string"
+				},
+				"subclassSpells": {
+					"description": "Homebrew use only",
+					"type": "array",
+					"items": {"$ref": "#/definitions/spellRef"}
+				},
+				"subSubclassSpells": {
+					"description": "Homebrew use only",
+					"type": "array",
+					"items": {"$ref": "#/definitions/spellRef"}
+				},
+				"class": {
+					"description": "Homebrew use only",
+					"type": "string"
+				},
+				"classSource": {
+					"description": "Homebrew use only",
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"shortName",
+				"subclassFeatures",
+				"source"
+			],
+			"additionalProperties": false
+		},
+
+		"class": {
+			"description" : "A character class",
+
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"hd": {
+					"type": "object",
+					"properties": {
+						"number": {
+							"type": "integer"
+						},
+						"faces": {
+							"type": "integer"
+						}
+					},
+					"required": [
+						"number",
+						"faces"
+					],
+					"additionalProperties": false
+				},
+				"proficiency": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": ["str", "dex", "con", "int", "wis", "cha"]
+					}
+				},
+				"classTableGroups": {
+					"type": "array",
+					"items": { "$ref": "#/definitions/classTableGroup"}
+				},
+				"startingProficiencies": {
+					"type": "object",
+					"properties": {
+						"armor": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"weapons": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"tools": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"skills": {
+							"type": "object",
+							"properties": {
+								"choose": {
+									"type": "integer"
+								},
+								"from": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"enum": [
+											"Acrobatics",
+											"Animal Handling",
+											"Arcana",
+											"Athletics",
+											"Deception",
+											"History",
+											"Insight",
+											"Intimidation",
+											"Investigation",
+											"Medicine",
+											"Nature",
+											"Perception",
+											"Performance",
+											"Persuasion",
+											"Religion",
+											"Sleight of Hand",
+											"Stealth",
+											"Survival"
+										]
+									}
+								}
+							},
+							"required": [
+								"choose",
+								"from"
+							],
+							"additionalProperties": false
+						}
+					}
+				},
+				"startingEquipment": {
+					"type": "object",
+					"properties": {
+						"additionalFromBackground": {
+							"type": "boolean"
+						},
+						"default": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"goldAlternative": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"additionalFromBackground",
+						"default"
+					],
+					"additionalProperties": false
+				},
+				"classFeatures": {
+					"type": "array",
+					"items": {
+						"type": "array",
+						"items": {
+							"items": {"$ref": "#/definitions/classFeature"}
+						}
+					},
+					"minItems": 20,
+					"maxItems": 20
+				},
+				"subclassTitle": {
+					"type": "string"
+				},
+				"subclasses": {
+					"type": "array",
+					"items": {"$ref": "#/definitions/subclass"}
+				},
+				"page": {
+					"type": "integer"
+				},
+				"fluff": {
+					"type": "array",
+					"items": {
+						"items": {"$ref": "/Entry"}
+					}
+				},
+				"fluffPage": {
+					"type": "integer"
+				},
+				"classSpells": {
+					"description": "Homebrew use only",
+					"type": "array",
+					"items": {"$ref": "#/definitions/spellRef"}
+				}
+			},
+			"required": [
+				"name",
+				"source",
+				"hd",
+				"proficiency",
+				"classTableGroups",
+				"startingProficiencies",
+				"startingEquipment",
+				"classFeatures",
+				"subclassTitle",
+				"subclasses"
+			],
+			"additionalProperties": false
+		},
+
+		"spellRef": {
+			"description": "A reference to a spell, linked by name and source. Assumes PHB as the source, if none is provided.",
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"source": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"name", "source"
+					]
+				},
+				{
+					"type": "string"
+				}
+			]
+		}
+	},
+
+	"properties": {
+		"class": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/class"}
+		}
+	}
+}

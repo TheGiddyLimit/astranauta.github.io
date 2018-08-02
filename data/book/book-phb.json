@@ -88,7 +88,7 @@
 								"Ability checks, attack rolls, and saving throws are the three main kinds of d20 rolls, forming the core of the rules of the game. All three follow these simple steps.",
 								"{@b 1. Roll the die and add a modifier.} Roll a d20 and add the relevant modifier. This is typically the modifier derived from one of the six ability scores, and it sometimes includes a proficiency bonus to reflect a character's particular skill. (See chapter 1 for details on each ability and how to determine an ability's modifier.)",
 								"{@b 2. Apply circumstantial bonuses and penalties.} A class feature, a spell, a particular circumstance, or some other effect might give a bonus or penalty to the check.",
-								"{@b 3. Compare the total to a target number. }If the total equals or exceeds the target number, the ability check, attack roll, or saving throw is a success. Otherwise, it's a failure. The DM is usually the one who determines target numbers and tells players whether their ability checks, attack rolls, and saving throws succeed or fail.",
+								"{@b 3. Compare the total to a target number.} If the total equals or exceeds the target number, the ability check, attack roll, or saving throw is a success. Otherwise, it's a failure. The DM is usually the one who determines target numbers and tells players whether their ability checks, attack rolls, and saving throws succeed or fail.",
 								"The target number for an ability check or a saving throw is called a {@b Difficulty Class} (DC). The target number for an attack roll is called an {@b Armor Class} (AC).",
 								"This simple rule governs the resolution of most tasks in D&D play. Chapter 7 provides more detailed rules for using the d20 in the game."
 							]
@@ -158,7 +158,7 @@
 				"Your first step in playing an adventurer in the Dungeons & Dragons game is to imagine and create a character of your own. Your character is a combination of various statistics, roleplaying hooks, and your imagination. You choose a race (such as human or halfling) and a class (such as fighter or wizard). You also invent the personality, appearance, and backstory of your character. Once completed, your character serves as your representative in the game, your avatar in the Dungeons & Dragons world.",
 				"Before you dive into step 1 below, think about the kind of adventurer you want to play. You might be a courageous fighter, a skulking rogue, a fervent cleric, or a flamboyant wizard. Or you might be more interested in an unconventional character, such as a brave rogue who likes hand-to-hand combat, or a sharpshooter who picks off enemies from afar. Do you like fantasy fiction featuring dwarves or elves? Try building a character of one of those races. Do you want your character to be the toughest adventurer at the table? Consider a class like barbarian or paladin. If you don't know where else to begin, take a look at the illustrations in this book to see what catches your interest.",
 				"Once you have a character in mind, roll on these steps in order, making decisions that reflect the character you want. Your conception of your character might evolve with each choice you make. What's important is that you come to the table with a character you're excited to play.",
-				"Throughout this chapter, we use the term {@b character sheet} to mean whatever you use to track your character, whether its a formal character sheet (like the one at the end of this book), some form of digital record, or a piece of notebook paper. An official D&D character sheet is a fine place to start until you know what information you need and how you use it during the game.",
+				"Throughout this chapter, we use the term {@b character sheet} to mean whatever you use to track your character, whether it's a formal character sheet (like the one at the end of this book), some form of digital record, or a piece of notebook paper. An official D&D character sheet is a fine place to start until you know what information you need and how you use it during the game.",
 				{
 					"type": "entries",
 					"entries": [
@@ -268,7 +268,7 @@
 										"entries": [
 											"{@i Measures:} Natural athleticism, bodily power",
 											"{@i Important for:} Barbarian, fighter, paladin",
-											"{@filter Races that have a bonus to Strength|races|Ability Bonus=Strength +2;Strength +1}"
+											"{@filter Races that have a bonus to Strength|races|Ability Bonus (Including Subrace)=Strength +2;Strength +1}"
 										]
 									}
 								]
@@ -290,7 +290,7 @@
 										"entries": [
 											"{@i Measures:} Physical agility, reflexes, balance, poise",
 											"{@i Important for:} Monk, ranger, rogue",
-											"{@filter Races that have a bonus to Dexterity|races|Ability Bonus=Dexterity +2;Dexterity +1}"
+											"{@filter Races that have a bonus to Dexterity|races|Ability Bonus (Including Subrace)=Dexterity +2;Dexterity +1}"
 										]
 									}
 								]
@@ -312,7 +312,7 @@
 										"entries": [
 											"{@i Measures:} Health, stamina, vital force",
 											"{@i Important for:} Everyone",
-											"{@filter Races that have a bonus to Constitution|races|Ability Bonus=Constitution +2;Constitution +1}"
+											"{@filter Races that have a bonus to Constitution|races|Ability Bonus (Including Subrace)=Constitution +2;Constitution +1}"
 										]
 									}
 								]
@@ -334,7 +334,7 @@
 										"entries": [
 											"{@i Measures:} Mental acuity, information recall, analytical skill",
 											"{@i Important for:} Wizard",
-											"{@filter Races that have a bonus to Intelligence|races|Ability Bonus=Intelligence +2;Intelligence +1}"
+											"{@filter Races that have a bonus to Intelligence|races|Ability Bonus (Including Subrace)=Intelligence +2;Intelligence +1}"
 										]
 									}
 								]
@@ -356,7 +356,7 @@
 										"entries": [
 											"{@i Measures:} Awareness, intuition, insight",
 											"{@i Important for:} Cleric, druid",
-											"{@filter Races that have a bonus to Wisdom|races|Ability Bonus=Wisdom +2;Wisdom +1}"
+											"{@filter Races that have a bonus to Wisdom|races|Ability Bonus (Including Subrace)=Wisdom +2;Wisdom +1}"
 										]
 									}
 								]
@@ -378,7 +378,7 @@
 										"entries": [
 											"{@i Measures:} Confidence, eloquence, leadership",
 											"{@i Important for:} Bard, sorcerer, warlock",
-											"{@filter Races that have a bonus to Charisma|races|Ability Bonus=Charisma +2;Charisma +1}"
+											"{@filter Races that have a bonus to Charisma|races|Ability Bonus (Including Subrace)=Charisma +2;Charisma +1}"
 										]
 									}
 								]
@@ -917,15 +917,15 @@
 					],
 					"rows": [
 						[
-							"Barbarian",
+							"{@class Barbarian}",
 							"A fierce warrior of primitive background who can enter a battle rage",
 							"d12",
 							"Strength",
-							"strength & Constitution",
+							"Strength & Constitution",
 							"Light and medium armor, shields, simple and martial weapons"
 						],
 						[
-							"Bard",
+							"{@class Bard}",
 							"An inspiring magician whose power echoes the music of creation",
 							"d8",
 							"Charisma",
@@ -933,7 +933,7 @@
 							"Light armor, simple weapons, hand crossbows, longswords, rapiers, shortswords"
 						],
 						[
-							"Cleric",
+							"{@class Cleric}",
 							"A priestly champion who wields divine magic in service of a higher power",
 							"d8",
 							"Wisdom",
@@ -941,7 +941,7 @@
 							"Light and medium armor, shields, simple weapons"
 						],
 						[
-							"Druid",
+							"{@class Druid}",
 							"A priest of the Old Faith, wielding the powers of nature\u2014moonlight and plant growth, fire and lightning\u2014and adapting animal forms",
 							"d8",
 							"Wisdom",
@@ -949,7 +949,7 @@
 							"Light and medium armor (nonmetal), shields (nonmetal), clubs, daggers, darts, javelins. maces, quarterstaffs, scimitars, sickles, slings, spears"
 						],
 						[
-							"Fighter",
+							"{@class Fighter}",
 							"A master of martial combat, skilled with a variety of weapons and armor",
 							"d10",
 							"Strength or Dexterity",
@@ -957,7 +957,7 @@
 							"All armor, shields, simple and martial weapons"
 						],
 						[
-							"Monk",
+							"{@class Monk}",
 							"A master of martial arts harnessing the power of the body in pursuit of physical and spiritual perfection",
 							"d8",
 							"Dexterity & Wisdom",
@@ -965,7 +965,7 @@
 							"Simple weapons, shortswords"
 						],
 						[
-							"Paladin",
+							"{@class Paladin}",
 							"A holy warrior bound to a sacred oath",
 							"d10",
 							"Strength & Charisma",
@@ -973,7 +973,7 @@
 							"All armor, shields, simple and martial weapons"
 						],
 						[
-							"Ranger",
+							"{@class Ranger}",
 							"A warrior who uses martial prowess and nature magic to combat threats on the edges of civilization",
 							"d10",
 							"Dexterity & Wisdom",
@@ -981,7 +981,7 @@
 							"Light and medium armor, shields, simple and martial weapons"
 						],
 						[
-							"Rogue",
+							"{@class Rogue}",
 							"A scoundrel who uses stealth and trickery to overcome obstacles and enemies",
 							"d8",
 							"Dexterity",
@@ -989,7 +989,7 @@
 							"Light armor, simple weapons, hand crossbows, longswords, rapiers, shortswords"
 						],
 						[
-							"Sorcerer",
+							"{@class Sorcerer}",
 							"A spellcaster who draws on inherent magic from a gift or bloodline",
 							"d6",
 							"Charisma",
@@ -997,7 +997,7 @@
 							"Daggers, carts, slings, quarterstaffs, light crossbows"
 						],
 						[
-							"Warlock",
+							"{@class Warlock}",
 							"A wielder of magic that is derived from a bargain with an extraplanar entity",
 							"d8",
 							"Charisma",
@@ -1005,7 +1005,7 @@
 							"Light armor, simple weapons"
 						],
 						[
-							"Wizard",
+							"{@class Wizard}",
 							"A scholarly magic-user capable of manipulating the structures of reality",
 							"d6",
 							"Intelligence",
@@ -1913,8 +1913,7 @@
 											"type": "entries",
 											"name": "Heavy Armor",
 											"entries": [
-												"Heavier armor interferes with the wearer's ability to move quickly, stealthily, and freely.",
-												"If the Armor table shows \"Str 13\" or \"Str 15\" in the Strength column for an armor type, the armor reduces the wearer's speed by 10 feet unless the wearer has a Strength score equal to or higher than the listed score."
+												"Heavier armor interferes with the wearer's ability to move quickly, stealthily, and freely. If the Armor table shows \"Str 13\" or \"Str 15\" in the Strength column for an armor type, the armor reduces the wearer's speed by 10 feet unless the wearer has a Strength score equal to or higher than the listed score."
 											]
 										},
 										{
@@ -2612,8 +2611,8 @@
 											"type": "entries",
 											"name": "Ammunition",
 											"entries": [
-												"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield. [new paragraph] If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon (see \"Improvised Weapons\" late in the section). A sling must be loaded to deal any damage when used in this way.",
-												"Loading a one-handed weapon requires a free hand."
+												"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
+												"If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon (see \"Improvised Weapons\" late in the section). A sling must be loaded to deal any damage when used in this way. Loading a one-handed weapon requires a free hand."
 											]
 										},
 										{
@@ -2648,8 +2647,7 @@
 											"type": "entries",
 											"name": "Range",
 											"entries": [
-												"A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's long range.",
-												"When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
+												"A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's long range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
 											]
 										},
 										{
@@ -4433,7 +4431,7 @@
 							"colLabels": [
 								"Item",
 								"Cost",
-								"Weight"
+								"Speed"
 							],
 							"colStyles": [
 								"col-xs-8",
@@ -4623,8 +4621,7 @@
 											"type": "entries",
 											"name": "Squalid",
 											"entries": [
-												" You live in a leaky stable, a mud-floored hut just outside town, or a vermin-infested boarding house in the worst part of town. You have shelter from the elements, but you live in a desperate and often violent environment, in places rife with disease, hunger, and misfortune.",
-												"You are beneath the notice of most people, and you have few legal protections. Most people at this lifestyle level have suffered some terrible setback. They might be disturbed, marked as exiles, or suffer from disease."
+												" You live in a leaky stable, a mud-floored hut just outside town, or a vermin-infested boarding house in the worst part of town. You have shelter from the elements, but you live in a desperate and often violent environment, in places rife with disease, hunger, and misfortune. You are beneath the notice of most people, and you have few legal protections. Most people at this lifestyle level have suffered some terrible setback. They might be disturbed, marked as exiles, or suffer from disease."
 											]
 										},
 										{
@@ -4952,315 +4949,411 @@
 							"caption": "Trinkets",
 							"colLabels": [
 								"d100",
-								"Trinket",
-								"d100",
 								"Trinket"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-5",
-								"col-xs-1 text-align-center",
-								"col-xs-5"
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
 									"01",
-									"A mummified goblin hand",
+									"A mummified goblin hand"
+								],
+								[
+									"02",
+									"A piece of crystal that faintly glows in the moonlight"
+								],
+								[
+									"03",
+									"A gold coin minted in an unknown land"
+								],
+								[
+									"04",
+									"A diary written in a language you don't know"
+								],
+								[
+									"05",
+									"A brass ring that never tarnishes"
+								],
+								[
+									"06",
+									"An old chess piece made from glass"
+								],
+								[
+									"07",
+									"A pair of knucklebone dice, each with a skull symbol on the side that would normally show six pips"
+								],
+								[
+									"08",
+									"A small idol depicting a nightmarish creature that gives you unsettling dreams when you sleep near it"
+								],
+								[
+									"09",
+									"A rope necklace from which dangles four mummified elf fingers"
+								],
+								[
+									"10",
+									"The deed for a parcel of land in a realm unknown to you"
+								],
+								[
+									"11",
+									"A 1-ounce block made from an unknown material"
+								],
+								[
+									"12",
+									"A small cloth doll skewered with needles"
+								],
+								[
+									"13",
+									"A tooth from an unknown beast"
+								],
+								[
+									"14",
+									"An enormous scale, perhaps from a dragon"
+								],
+								[
+									"15",
+									"A bright green feather"
+								],
+								[
+									"16",
+									"An old divination card bearing your likeness"
+								],
+								[
+									"17",
+									"A glass orb filled with moving smoke"
+								],
+								[
+									"18",
+									"A 1-pound egg with a bright red shell"
+								],
+								[
+									"19",
+									"A pipe that blows bubbles"
+								],
+								[
+									"20",
+									"A glass jar containing a weird bit of flesh floating in pickling fluid"
+								],
+								[
+									"21",
+									"A tiny gnome-crafted music box that plays a song you dimly remember from your childhood"
+								],
+								[
+									"22",
+									"A small wooden statuette of a smug halfling"
+								],
+								[
+									"23",
+									"A brass orb etched with strange runes"
+								],
+								[
+									"24",
+									"A multicolored stone disk"
+								],
+								[
+									"25",
+									"A tiny silver icon of a raven"
+								],
+								[
+									"26",
+									"A bag containing forty-seven humanoid teeth, one of which is rotten"
+								],
+								[
+									"27",
+									"A shard of obsidian that always feels warm to the touch"
+								],
+								[
+									"28",
+									"A dragon's bony talon hanging from a plain leather necklace"
+								],
+								[
+									"29",
+									"A pair of old socks"
+								],
+								[
+									"30",
+									"A blank book whose pages refuse to hold ink, chalk, graphite, or any other substance or marking"
+								],
+								[
+									"31",
+									"A silver badge in the shape of a five-pointed star"
+								],
+								[
+									"32",
+									"A knife that belonged to a relative"
+								],
+								[
+									"33",
+									"A glass vial filled with nail clippings"
+								],
+								[
+									"34",
+									"A rectangular metal device with two tiny metal cups on one end that throws sparks when wet"
+								],
+								[
+									"35",
+									"A white, sequined glove sized for a human"
+								],
+								[
+									"36",
+									"A vest with one hundred tiny pockets"
+								],
+								[
+									"37",
+									"A small, weightless stone block"
+								],
+								[
+									"38",
+									"A tiny sketch portrait of a goblin"
+								],
+								[
+									"39",
+									"An empty glass vial that smells of perfume when opened"
+								],
+								[
+									"40",
+									"A gemstone that looks like a lump of coal when examined by anyone but you"
+								],
+								[
+									"41",
+									"A scrap of cloth from an old banner"
+								],
+								[
+									"42",
+									"A rank insignia from a lost legionnaire"
+								],
+								[
+									"43",
+									"A tiny silver bell without a clapper"
+								],
+								[
+									"44",
+									"A mechanical canary inside a gnomish lamp"
+								],
+								[
+									"45",
+									"A tiny chest carved to look like it has numerous feet on the bottom"
+								],
+								[
+									"46",
+									"A dead {@creature sprite} inside a clear glass bottle"
+								],
+								[
+									"47",
+									"A metal can that has no opening but sounds as if it is filled with liquid, sand, spiders, or broken glass (your choice)"
+								],
+								[
+									"48",
+									"A glass orb filled with water, in which swims a clockwork goldfish"
+								],
+								[
+									"49",
+									"A silver spoon with an 'M' engraved on the handle"
+								],
+								[
+									"50",
+									"A whistle made from gold-colored wood"
+								],
+								[
 									"51",
 									"A dead scarab beetle the size of your hand"
 								],
 								[
-									"02",
-									"A piece of crystal that faintly glows in the moonlight",
 									"52",
-									"Two toy soldiers, one with a missing head"
+									"Two toy soldiers, one with a missing head "
 								],
 								[
-									"03",
-									"A gold coin minted in an unknown land",
 									"53",
 									"A small box filled with different-sized buttons"
 								],
 								[
-									"04",
-									"A diary written in a language you don't know",
 									"54",
-									"A candle that can't be lit"
+									"A candle that cant be lit"
 								],
 								[
-									"05",
-									"A brass ring that never tarnishes",
 									"55",
 									"A tiny cage with no door"
 								],
 								[
-									"06",
-									"An old chess piece made from glass",
 									"56",
 									"An old key"
 								],
 								[
-									"07",
-									"A pair of knucklebone dice, each with a skull symbol on the side that would normally show six pips",
 									"57",
 									"An indecipherable treasure map"
 								],
 								[
-									"08",
-									"A small idol depicting a nightmarish creature that gives you unsettling dreams when you sleep near it ",
 									"58",
 									"A hilt from a broken sword"
 								],
 								[
-									"09",
-									"A rope necklace from which dangles four mummified elf fingers",
 									"59",
 									"A rabbit's foot"
 								],
 								[
-									"10",
-									"The deed for a parcel of land in a realm unknown to you",
 									"60",
 									"A glass eye"
 								],
 								[
-									"11",
-									"A 1-ounce block made from an unknown material",
 									"61",
 									"A cameo carved in the likeness of a hideous person"
 								],
 								[
-									"12",
-									"A small cloth doll skewered with needles",
 									"62",
 									"A silver skull the size of a coin"
 								],
 								[
-									"13",
-									"A tooth from an unknown beast opened",
 									"63",
 									"An alabaster mask"
 								],
 								[
-									"14",
-									"An enormous scale, perhaps from a dragon",
 									"64",
 									"A pyramid of sticky black incense that smells very bad"
 								],
 								[
-									"15",
-									"A bright green feather",
 									"65",
 									"A nightcap that, when worn, gives you pleasant dreams"
 								],
 								[
-									"16",
-									"An old divination card bearing your likeness",
 									"66",
 									"A single caltrop made from bone"
 								],
 								[
-									"17",
-									"A glass orb filled with moving smoke",
 									"67",
 									"A gold monocle frame without the lens"
 								],
 								[
-									"18",
-									"A 1-pound egg with a bright red shell",
 									"68",
 									"A 1-inch cube, each side painted a different color"
 								],
 								[
-									"19",
-									"A pipe that blows bubbles",
 									"69",
 									"A crystal knob from a door"
 								],
 								[
-									"20",
-									"A glass jar containing a weird bit of flesh floating in pickling fluid",
 									"70",
 									"A small packet filled with pink dust"
 								],
 								[
-									"21",
-									"A tiny gnome-crafted music box that plays a song you dimly remember from your childhood",
 									"71",
 									"A fragment of a beautiful song, written as musical notes on two pieces of parchment"
 								],
 								[
-									"22",
-									"A small wooden statuette of a smug halfling",
 									"72",
 									"A silver teardrop earring made from a real teardrop"
 								],
 								[
-									"23",
-									"A brass orb etched with strange runes",
 									"73",
 									"The shell of an egg painted with scenes of human misery in disturbing detail"
 								],
 								[
-									"24",
-									"A multicolored stone disk",
 									"74",
 									"A fan that, when unfolded, shows a sleeping cat"
 								],
 								[
-									"25",
-									"A tiny silver icon of a raven",
 									"75",
 									"A set of bone pipes"
 								],
 								[
-									"26",
-									"A bag containing forty-seven humanoid teeth, one of which is rotten",
 									"76",
 									"A four-leaf clover pressed inside a book discussing manners and etiquette"
 								],
 								[
-									"27",
-									"A shard of obsidian that always feels warm to the touch",
 									"77",
 									"A sheet of parchment upon which is drawn a complex mechanical contraption"
 								],
 								[
-									"28",
-									"A dragon's bony talon hanging from a plain leather necklace",
 									"78",
 									"An ornate scabbard that fits no blade you have found so far"
 								],
 								[
-									"29",
-									"A pair of old socks",
 									"79",
 									"An invitation to a party where a murder happened"
 								],
 								[
-									"30",
-									"A blank book whose pages refuse to hold ink, chalk, graphite, or any other substance for marking",
 									"80",
 									"A bronze pentacle with an etching of a rat's head in its center"
 								],
 								[
-									"31",
-									"A silver badge in the shape of a five-pointed star",
 									"81",
-									"A purple handkerchief embroidered with the name of a powerful archmage"
+									"A purple handkerchief embroidered with the name of a powerful {@creature archmage}"
 								],
 								[
-									"32",
-									"A knife that belonged to a relative",
 									"82",
 									"Half of a floorplan for a temple, castle, or some other structure"
 								],
 								[
-									"33",
-									"A glass vial filled with nail clippings",
 									"83",
 									"A bit of folded cloth that, when unfolded, turns into a stylish cap"
 								],
 								[
-									"34",
-									"A rectangular metal device with two tiny metal cups on one end that throws sparks when wet",
 									"84",
 									"A receipt of deposit at a bank in a far-flung city"
 								],
 								[
-									"35",
-									"A white, sequined glove sized for a human",
 									"85",
 									"A diary with seven missing pages"
 								],
 								[
-									"36",
-									"A vest with one hundred tiny pockets",
 									"86",
 									"An empty silver snuffbox bearing an inscription on the surface that says \"dreams\""
 								],
 								[
-									"37",
-									"A small, weightless stone block",
 									"87",
 									"An iron holy symbol devoted to an unknown god"
 								],
 								[
-									"38",
-									"A tiny sketch portrait of a goblin",
 									"88",
 									"A book that tells the story of a legendary hero's rise and fall, with the last chapter missing"
 								],
 								[
-									"39",
-									"An empty glass vial that smells of perfume when opened",
 									"89",
 									"A vial of dragon blood"
 								],
 								[
-									"40",
-									"A gemstone that looks like a lump of coal when examined by anyone but you",
 									"90",
 									"An ancient arrow of elven design"
 								],
 								[
-									"41",
-									"A scrap of cloth from an old banner",
 									"91",
 									"A needle that never bends"
 								],
 								[
-									"42",
-									"A rank insignia from a lost legionnaire",
 									"92",
 									"An ornate brooch of dwarven design"
 								],
 								[
-									"43",
-									"A tiny silver bell without a clapper",
 									"93",
 									"An empty wine bottle bearing a pretty label that says, \"The Wizard of Wines Winery, Red Dragon Crush, 331422-W\""
 								],
 								[
-									"44",
-									"A mechanical canary inside a gnomish lamp",
 									"94",
 									"A mosaic tile with a multicolored, glazed surface"
 								],
 								[
-									"45",
-									"A tiny chest carved to look like it has numerous feet on the bottom",
 									"95",
-									"A petrified mouse"
+									"A {@condition petrified} mouse"
 								],
 								[
-									"46",
-									"A dead sprite inside a clear glass bottle",
 									"96",
 									"A black pirate flag adorned with a dragon's skull and crossbones"
 								],
 								[
-									"47",
-									"A metal can that has no opening but sounds as if it is filled with liquid, sand, spiders, or broken glass (your choice)",
 									"97",
 									"A tiny mechanical crab or spider that moves about when it's not being observed"
 								],
 								[
-									"48",
-									"A glass orb filled with water, in which swims a clockwork goldfish",
 									"98",
 									"A glass jar containing lard with a label that reads, \"Griffon Grease\""
 								],
 								[
-									"49",
-									"A silver spoon with an M engraved on the handle",
 									"99",
-									"A wooden box with a ceramic bottom that holds a living worm with a head on each end of its body"
+									"A wooden box with a ceramic bottom that holds a living worm with a head on each end of it's body"
 								],
 								[
-									"50",
-									"A whistle made from gold-colored wood",
-									"00",
+									"100",
 									"A metal urn containing the ashes of a hero"
 								]
 							]
@@ -5366,7 +5459,7 @@
 							"name": "Hit Points and Hit Dice",
 							"entries": [
 								"You gain the hit points from your new class as described for levels after 1st. You gain the 1st-level hit points for a class only when you are a 1st-level character.",
-								"You add together the Hit Dice granted by all your classes to form your pool of Hit Dice. if the Hit Dice are the same die type, you can simply pool them together. For example, both the fighter and the paladin have a d10. so if you area paladin 5/fighter 5, you have ten d10 Hit Dice. If your classes give you Hit Dice of different types, keep track of them separately. If you area paladin 5/cleric 5, for example, you have five d10 Hit Dice and five d8 Hit Dice."
+								"You add together the Hit Dice granted by all your classes to form your pool of Hit Dice. if the Hit Dice are the same die type, you can simply pool them together. For example, both the fighter and the paladin have a d10. so if you are a paladin 5/fighter 5, you have ten d10 Hit Dice. If your classes give you Hit Dice of different types, keep track of them separately. If you area paladin 5/cleric 5, for example, you have five d10 Hit Dice and five d8 Hit Dice."
 							]
 						},
 						{
@@ -5481,14 +5574,15 @@
 											"name": "Spells Known and Prepared",
 											"entries": [
 												"You determine what spells you know and can prepare for each class individually, as if you were a single-classed member of that class. If you are a ranger 4/wizard 3, for example, you know three 1st-level ranger spells based on your levels in the ranger class. As 3rd-level wizard, you know three wizard cantrips, and your spellbook contains ten wizard spells, two of which (the two you gained when you reached 3rd level as a wizard) can be 2nd-level spells. If your intelligence is 16, you can prepare six wizard spells from your spellbook.",
-												"Each spell you know and prepare is associated with one of your classes, and you use the spellcasting ability of that class when you cast the spell. Similarly, a spellcasting focus, such as a holy symbol, can he used only for the spells from the class associated with that focus."
+												"Each spell you know and prepare is associated with one of your classes, and you use the spellcasting ability of that class when you cast the spell. Similarly, a spellcasting focus, such as a holy symbol, can he used only for the spells from the class associated with that focus.",
+												"If a cantrip of yours increases in power at higher levels, the increase is based on your character level, not your level in a particular class."
 											]
 										},
 										{
 											"type": "entries",
 											"name": "Spell Slots",
 											"entries": [
-												"You determine your available spell slots by adding together all your levels in the hard, cleric, druid, sorcerer, and wizard classes, half your levels (rounded down) in the paladin and ranger classes, and a third of your fighter or rogue levels (rounded down) if you have the Eldritch Knight or the Arcane Trickster feature. Use this total to determine your spell slots by consulting the Multiclass Spellcaster table.",
+												"You determine your available spell slots by adding together all your levels in the bard, cleric, druid, sorcerer, and wizard classes, half your levels (rounded down) in the paladin and ranger classes, and a third of your fighter or rogue levels (rounded down) if you have the Eldritch Knight or the Arcane Trickster feature. Use this total to determine your spell slots by consulting the Multiclass Spellcaster table.",
 												"If you have more than one spellcasting class, this table might give you spell slots of a level that is higher than the spells you know or can prepare. You can use those slots, but only to cast your lower-level spells. If a lower-level spell that you cast, like {@spell burning hands}, has an enhanced effect when cast using a higher-level slot, you can use the enhanced effect, even though you don't have any spells of that higher level.",
 												"For example, if you are the aforementioned ranger 4/wizard 3. you count as a 5th-level character when determining your spell slots: you have four 1st-level slots, three 2nd-level slots, and two 3rd-level slots. However, you don't know any 3rd-level spells, nor do you know any 2nd-level ranger spells. You can use the spell slots of those levels to cast the spells you do know\u2014and potentially enhance their effects."
 											]
@@ -5771,6 +5865,13 @@
 											]
 										}
 									]
+								},
+								{
+									"type": "entries",
+									"name": "Starting Equipment",
+									"entries": [
+										"You gain the starting equipment of your first class only."
+									]
 								}
 							]
 						}
@@ -5999,7 +6100,7 @@
 										],
 										[
 											"Dexterity",
-											"Dexterity, Acrobatics, Sleight of Hand, Stealth"
+											"Acrobatics, Sleight of Hand, Stealth"
 										],
 										[
 											"Intelligence",
@@ -6239,17 +6340,17 @@
 									"name": "Hiding",
 									"entries": [
 										"When you try to hide, make a Dexterity (Stealth) check. Until you are discovered or you stop hiding, that check's total is contested by the Wisdom (Perception) check of any creature that actively searches for signs of your presence.",
-										"You can't hide from a creature that can see you, and if you make noise (such as shouting a warning or knocking over a vase), you give away your position. An invisible creature can't be seen, so it can always try to hide. Signs of its passage might still be noticed, however, and it still has to stay quiet.",
+										"You can't hide from a creature that can see you clearly, and if you make noise (such as shouting a warning or knocking over a vase), you give away your position. An invisible creature can't be seen, so it can always try to hide. Signs of its passage might still be noticed, however, and it still has to stay quiet.",
 										"In combat, most creatures stay alert for signs of danger all around, so if you come out of hiding and approach a creature, it usually sees you. However, under certain circumstances, the Dungeon Master might allow you to stay hidden as you approach a creature that is distracted, allowing you to gain advantage on an attack before you are seen.",
-										"The DM decides when circumstances are appropriate for hiding. Also, the question isn't whether a creature can see you when you're hiding. The question is whether it can see you clearly.",
+										"Ultimately, the DM decides when circumstances are appropriate for hiding.",
 										{
 											"type": "entries",
 											"name": "Passive Perception",
 											"entries": [
-												" When you hide, there's a chance someone will notice you even if they aren't searching. To determine whether such a creature notices you, the DM compares your Dexterity (Stealth) check with that creature's passive Wisdom (Perception) score, which equals 10 + the creature's Wisdom modifier, as well as any other bonuses or penalties. If the creature has advantage, add 5. For disadvantage, subtract 5."
+												" When you hide, there's a chance someone will notice you even if they aren't searching. To determine whether such a creature notices you, the DM compares your Dexterity (Stealth) check with that creature's passive Wisdom (Perception) score, which equals 10 + the creature's Wisdom modifier, as well as any other bonuses or penalties. If the creature has advantage, add 5. For disadvantage, subtract 5.",
+												"For example, if a 1st-level character (with a proficiency bonus of +2) has a Wisdom of 15 (a +2 modifier) and a proficiency in Perception, he or she has a passive Wisdom (Perception) of 14."
 											]
 										},
-										"For example, if a 1st-level character (with a proficiency bonus of +2) has a Wisdom of 15 (a +2 modifier) and a proficiency in Perception, he or she has a passive Wisdom (Perception) of 14.",
 										{
 											"type": "entries",
 											"name": "What Can you See?",
@@ -6443,7 +6544,7 @@
 									"name": "Finding a Hidden Object",
 									"entries": [
 										"When your character searches for a hidden object such as a secret door or a trap, the DM typically asks you to make a Wisdom (Perception) check. Such a check can be used to find hidden details or other information and clues that you might otherwise overlook.",
-										"In most cases, you need to describe where you are looking in order for the DM to determine your chance of success. For example, a key is hidden beneath a set of folded clothes in the top drawer of a bureau. If you tell the DM that you pace around the room, looking at the walls and furniture for clues, you have no chance of finding they key, regardless of your Wisdom (Perception) check result. You would have to specify that you were opening the drawers or searching the bureau in order to have any chance of success."
+										"In most cases, you need to describe where you are looking in order for the DM to determine your chance of success. For example, a key is hidden beneath a set of folded clothes in the top drawer of a bureau. If you tell the DM that you pace around the room, looking at the walls and furniture for clues, you have no chance of finding the key, regardless of your Wisdom (Perception) check result. You would have to specify that you were opening the drawers or searching the bureau in order to have any chance of success."
 									]
 								}
 							]
@@ -6584,7 +6685,7 @@
 												" The Travel Pace table assumes that characters travel for 8 hours in day. They can push on beyond that limit, at the risk of exhaustion."
 											]
 										},
-										"For each additional hour of travel beyond 8 hours, the characters cover the distance shown in the Hour column for their pace, and each character must make a Constitution saving throw at the end of the hour. The DC is 10 + 1 for each hour past 8 hours. On a failed saving throw, a character suffers one level of exhaustion (see the appendix).",
+										"For each additional hour of travel beyond 8 hours, the characters cover the distance shown in the Hour column for their pace, and each character must make a Constitution saving throw at the end of the hour. The DC is 10 + 1 for each hour past 8 hours. On a failed saving throw, a character suffers one level of {@condition exhaustion} (see the appendix).",
 										{
 											"type": "entries",
 											"name": "Mounts and Vehicles",
@@ -6645,7 +6746,7 @@
 									"name": "Difficult Terrain",
 									"entries": [
 										"The travel speeds given in the Travel Pace table assume relatively simple terrain: roads, open plains, or clear dungeon corridors. But adventurers often face dense forests, deep swamps, rubble-filled ruins, steep mountains, and ice-covered ground\u2014all considered difficult terrain.",
-										"You move at half speed in difficult terrain-moving 1 foot in difficult terrain costs 2 feet of speed\u2014so you can cover only half the normal distance in a minute, an hour, or a day."
+										"You move at half speed in difficult terrain\u2014moving 1 foot in difficult terrain costs 2 feet of speed\u2014so you can cover only half the normal distance in a minute, an hour, or a day."
 									]
 								}
 							]
@@ -6828,7 +6929,7 @@
 									"entries": [
 										"The most fundamental tasks of adventuring\u2014noticing danger, finding hidden objects, hitting an enemy in combat, and targeting a spell, to name just a few\u2014rely heavily on a character's ability to see. Darkness and other effects that obscure vision can prove a significant hindrance.",
 										"A given area might be lightly or heavily obscured. In a {@b lightly obscured} area, such as dim light, patchy fog, or moderate foliage, creatures have disadvantage on Wisdom (Perception) checks that rely on sight.",
-										"{@b A heavily obscured} area\u2014such as darkness, opaque fog, or dense foliage-blocks vision entirely. A creature in a heavily obscured area effectively suffers from the blinded condition (see the appendix). A heavily obscured area doesn't blind you, but you are effectively blinded when you try to see something obscured by it.",
+										"{@b A heavily obscured} area\u2014such as darkness, opaque fog, or dense foliage\u2014blocks vision entirely. A creature in a heavily obscured area effectively suffers from the blinded condition (see the appendix). A heavily obscured area doesn't blind you, but you are effectively blinded when you try to see something obscured by it.",
 										"The presence or absence of light in an environment creates three categories of illumination: bright light, dim light, and darkness.",
 										"{@b Bright light} lets most creatures see normally. Even gloomy days provide bright light, as do torches, lanterns, fires, and other sources of illumination within a specific radius.",
 										"{@b Dim light}, also called shadows, creates a lightly obscured area. An area of dim light is usually a boundary between a source of bright light, such as a torch, and surrounding darkness. The soft light of twilight and dawn also counts as dim light. A particularly brilliant full moon might bathe the land in dim light.",
@@ -6864,13 +6965,13 @@
 									},
 									"name": "Food and Water",
 									"entries": [
-										"Characters who don't eat or drink suffer the effects of exhaustion (see the appendix). Exhaustion caused by lack of food or water can't be removed until the character eats and drinks the full required amount.",
+										"Characters who don't eat or drink suffer the effects of {@condition exhaustion} (see the appendix). Exhaustion caused by lack of food or water can't be removed until the character eats and drinks the full required amount.",
 										{
 											"type": "entries",
 											"name": "Food",
 											"entries": [
 												"A character needs one pound of food per day and can make food last longer by subsisting on half rations. Eating half a pound of food in a day counts as half a day without food.",
-												"A character can go without food for a number of days equal to 3 + his or her Constitution modifier (minimum 1). At the end of each day beyond that limit, a character automatically suffers one level of exhaustion.",
+												"A character can go without food for a number of days equal to 3 + his or her Constitution modifier (minimum 1). At the end of each day beyond that limit, a character automatically suffers one level of {@condition exhaustion}.",
 												"A normal day of eating resets the count of days without food to zero."
 											]
 										},
@@ -6878,8 +6979,8 @@
 											"type": "entries",
 											"name": "Water",
 											"entries": [
-												"A character needs one gallon of water per day, or two gallons per day if the weather is hot. A character who drinks only half that much water must succeed on a DC 15 Constitution saving throw or suffer one level of exhaustion at the end of the day. A character with access to even less water automatically suffers one level of exhaustion at the end of the day.",
-												"If the character already has one or more levels of exhaustion, the character takes two levels in either case."
+												"A character needs one gallon of water per day, or two gallons per day if the weather is hot. A character who drinks only half that much water must succeed on a DC 15 Constitution saving throw or suffer one level of {@condition exhaustion} at the end of the day. A character with access to even less water automatically suffers one level of {@condition exhaustion} at the end of the day.",
+												"If the character already has one or more levels of {@condition exhaustion}, the character takes two levels in either case."
 											]
 										}
 									]
@@ -6974,7 +7075,7 @@
 							"name": "Resting",
 							"entries": [
 								"Heroic though they might be, adventurers can't spend every hour of the day in the thick of exploration, social interaction, and combat. They need rest-time to sleep and eat, tend their wounds, refresh their minds and spirits for spellcasting, and brace themselves for further adventure.",
-								"Adventurers, and creatures, can take short rests in the midst of an adventuring day and a long rest to end the day.",
+								"Adventurers can take short rests in the midst of an adventuring day and a long rest to end the day. While the text here refers to adventurers, any creature can take a short or long rest.",
 								{
 									"type": "entries",
 									"name": "Short Rest",
@@ -6987,7 +7088,7 @@
 									"type": "entries",
 									"name": "Long Rest",
 									"entries": [
-										"A long rest is a period of extended downtime, at least 8 hours long, during which a character sleeps or performs light activity: reading, talking, eating, or standing watch for no more than 2 hours. If the rest is interrupted by a period of strenuous activity\u2014at least 1 hour of walking, fighting, casting spells, or similar adventuring activity, the characters must begin the rest again to gain any benefit from it.",
+										"A long rest is a period of extended downtime, at least 8 hours long, during which a character sleeps for at least 6 hours and performs no more than 2 hours of light activity, such as reading, talking, eating, or standing watch. If the rest is interrupted by a period of strenuous activity\u2014at least 1 hour of walking, fighting, casting spells, or similar adventuring activity, the characters must begin the rest again to gain any benefit from it.",
 										"At the end of a long rest, a character regains all lost hit points. The character also regains spent Hit Dice, up to a number of dice equal to half of the character's total number of them. You regain at least 1 Hit Die when you finish a long rest.",
 										"For example, if a character has eight Hit Dice, he or she can regain four spent Hit Dice upon finishing a long rest.",
 										"A character can't benefit from more than one long rest in a 24-hour period, and a character must have at least 1 hit point at the start of the rest to gain its benefits."
@@ -7624,7 +7725,7 @@
 							"entries": [
 								"Used in hand-to-hand combat, a melee attack allows you to attack a foe within your reach. A melee attack typically uses a handheld weapon such as a sword, a warhammer, or an axe. A typical monster makes a melee attack when it strikes with its claws, horns, teeth, tentacles, or other body part. A few spells also involve making a melee attack.",
 								"Most creatures have a 5-foot reach and can thus attack targets within 5 feet of them when making a melee attack. Certain creatures (typically those larger than Medium) have melee attacks with a greater reach than 5 feet, as noted in their descriptions.",
-								"Instead of using a weapon to make a melee weapon attack, you can use an unarmed strike: a punch, kick, head-butt, or similar forceful blow (none of which count as weapons). On a hit, an unarmed strike deals bludgeoning damage equal to 1 + your Strength modifier. You are proficient with your unarmed strikes."
+								"Instead of using a weapon to make a melee weapon attack, you can use an {@b unarmed strike}: a punch, kick, head-butt, or similar forceful blow (none of which count as weapons). On a hit, an unarmed strike deals bludgeoning damage equal to 1 + your Strength modifier. You are proficient with your unarmed strikes."
 							]
 						},
 						{
@@ -7736,7 +7837,7 @@
 										"The damage types follow, with examples to help a DM assign a damage type to a new effect.",
 										{
 											"type": "entries",
-											"name": "Acid.",
+											"name": "Acid",
 											"entries": [
 												" The corrosive spray of a black dragon's breath and the dissolving enzymes secreted by a black pudding deal acid damage."
 											]
@@ -7997,7 +8098,7 @@
 							"type": "entries",
 							"name": "Spell Level",
 							"entries": [
-								"Every spell has a level from 0 to 9. A spell's level is a general indicator of how powerful it is, with the lowly (but still impressive) magic missile at 1st level and the incredible time stop at 9th. Cantrips\u2014simple but powerful spells that characters can cast almost by rote are level 0. The higher a spell's level, the higher level a spellcaster must be to use that spell.",
+								"Every spell has a level from 0 to 9. A spell's level is a general indicator of how powerful it is, with the lowly (but still impressive) magic missile at 1st level and the incredible time stop at 9th. Cantrips\u2014simple but powerful spells that characters can cast almost by rote\u2014are level 0. The higher a spell's level, the higher level a spellcaster must be to use that spell.",
 								"Spell level and character level don't correspond directly. Typically, a character has to be at least 17th level, not 9th level, to cast a 9th-level spell."
 							]
 						},
@@ -8124,7 +8225,7 @@
 									"entries": [
 										"Casting some spells requires particular objects, specified in parentheses in the component entry. A character can use a component pouch or a spellcasting focus (found in chapter 5) in place of the components specified for a spell. But if a cost is indicated for a component, a character must have that specific component before he or she can cast the spell.",
 										"If a spell states that a material component is consumed by the spell, the caster must provide this component for each casting of the spell.",
-										"A spellcaster must have a hand free to access these components, but it can be the same hand that he or she uses to perform somatic components."
+										"A spellcaster must have a hand free to access a spell's material components\u2014or to hold a spellcasting focus\u2014but it can be the same hand that he or she uses to perform somatic components."
 									]
 								}
 							]
@@ -9882,7 +9983,6 @@
 			"type": "section",
 			"name": "The Planes of Existence",
 			"entries": [
-				"The Planes of Existence",
 				"Incredibly vast is the cosmos of the Dungeons & Dragons game, which teems with a multitude of worlds as well as myriad alternate dimensions of reality, called the {@b planes of existence.} It encompasses every world where Dungeon Masters run their adventures, all within the relatively mundane realm of the Material Plane. Beyond that plane are domains of raw elemental matter and energy, realms of pure thought and ethos, the homes of demons and angels, and the dominions of the gods.",
 				"Many spells and magic items can draw energy from these planes, summon the creatures that dwell there, communicate with their denizens, and allow adventurers to travel there. As your character achieves greater power and higher levels, you might undertake a quest to rescue a friend from the horrific depths of the Abyss, or find yourself hoisting a tankard with the friendly giants of Ysgard. You might walk on streets made of solid fire or test your mettle on a battlefield where the fallen are resurrected with each dawn.",
 				{

@@ -13,8 +13,6 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<style id="dynamicStyle"></style> <!-- populated with JS -->
-
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
@@ -43,8 +41,11 @@
 						<option value="11">11-16</option>
 						<option value="17">17+</option>
 					</select>
-					<span class="input-group-addon" style="vertical-align: bottom;"><label for="hoard">Hoard? <input
-							type="checkbox" id="hoard" value="0" style="vertical-align: bottom;"></label></span>
+					<span class="input-group-addon" style="padding: 0;">
+						<label for="hoard" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+							Hoard? <input type="checkbox" id="hoard" value="0" style="vertical-align: bottom;">
+						</label>
+					</span>
 				</div>
 				<br>
 				<button type="button" class="col-xs-9 btn btn-default" id="genloot">Roll Loot!</button>
@@ -53,6 +54,9 @@
 					<small>Based on the tables and rules in the <em>Dungeon Master's Guide</em>, pages 133-149.</small>
 				</p>
 			</form>
+			<select class="form-control" id="table-sel">
+				<option value="" disabled selected>View individual tables...</option>
+			</select>
 			<div id="classtable"></div>
 		</div>
 		<div class="col-sm-7">
@@ -65,6 +69,7 @@
 
 </footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/lootgen.js"></script>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--5ETOOLS_VERSION-->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Content Blacklist - 5etools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script type="text/javascript" src="lib/js-cookie.js"></script>
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
+
+	<style>
+		.intro {
+			padding: 0 2em;
+			margin-top: 2em;
+		}
+
+		.intro p:last-child {
+			margin-bottom: 0;
+		}
+
+		.subtitle {
+			margin-top: -10px;
+			margin-bottom: 10px;
+		}
+
+		.source,
+		.category,
+		.name {
+			line-height: 22px;
+		}
+
+		.btn-offset {
+			margin-left: 1em;
+		}
+	</style>
+</head>
+
+<body>
+<header class="hidden-xs hidden-sm">
+	<div class="container">
+
+		<h1>Content Blacklist</h1>
+		<p>Exclude content and export configurations</p>
+	</div>
+</header>
+<nav class="container" id="navigation">
+	<ul class="nav nav-pills" id="navbar">
+	</ul>
+</nav>
+<main class="container bodyContent">
+	<div class="row intro">
+		<p>
+			This page allows you to create configurations which &quot;blacklist&quot; site content, hiding it from list pages.
+			This can be used, for example, in conjunction with homebrew content, to create a campaign JSON file containing additions to the base game,
+			as well as the removal of extraneous content.
+		</p>
+		<p><i class="text-muted">
+			With great power comes great responsibility. If you're a DM intending to use this system to remove parts of the game you
+			consider broken, inconvenient, or otherwise in need of adjustment; please first consider the needs and expectations of your players,
+			as well as the extensive playtesting and design iterations of which 5th Edition was the result.
+			If something is in the game, it's probably there for a reason.
+		</i></p>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		<div class="form-group col-xs-3">
+			<label for="bl-source">Source</label>
+			<select class="loading form-control form-inline" id="bl-source" disabled>
+				<option class="loading-temp" value="loading">Loading...</option>
+				<option value="*">*</option>
+			</select>
+		</div>
+
+		<div class="form-group col-xs-3">
+			<label for="bl-category">Category</label>
+			<select class="loading form-control form-inline" id="bl-category" disabled>
+				<option class="loading-temp" value="loading">Loading...</option>
+				<option value="*">*</option>
+			</select>
+		</div>
+
+		<div class="form-group col-xs-3">
+			<label for="bl-name">Name</label>
+			<select class="loading form-control form-inline" id="bl-name" disabled>
+				<option class="loading-temp" value="loading">Loading...</option>
+				<option value="*">*</option>
+			</select>
+		</div>
+
+		<div class="form-group col-xs-3">
+			<div style="padding-top: 25px;">
+				<button type="button" class="loading btn btn-default" onclick="Blacklist.add()" disabled>Add Exclusion</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-xs-12">
+			<button type="button" class="btn btn-default" onclick="Blacklist.export()">Export List</button>
+			<button type="button" class="btn btn-default" onclick="Blacklist.import(event)" title="SHIFT for Add Only">Import List</button>
+			<button type="button" class="btn btn-danger btn-offset" onclick="window.confirm('Are you sure?') && Blacklist.reset()">Reset List</button>
+		</div>
+	</div>
+
+	<hr>
+
+	<h4>Exclusion List</h4>
+	<div class="text-muted subtitle"><i>Rows marked with a star (*) in a field match everything in that field</i></div>
+	<div class="row" id="listcontainer">
+
+		<div class="input-group" id="filter-search-input-group">
+			<input type="search" id="search" class="search form-control" placeholder="Find content...">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" id="reset">Reset Search</button>
+			</span>
+		</div>
+
+		<div id="filtertools" class="sortlabel btn-group">
+			<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+			<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="category">Category</button>
+			<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+			<button class="col-xs-3 sort btn btn-default btn-xs" type="button" disabled>&nbsp;</button>
+		</div>
+
+		<ul class="list-display-only blacklist"></ul>
+	</div>
+</main>
+<footer class="container">
+
+</footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/blacklist.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+</body>
+
+</html>

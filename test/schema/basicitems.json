@@ -1,5 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.1",
 	"definitions": {
 		"itemLookup": {
 			"type": "array",
@@ -121,6 +122,9 @@
 						"type": "string"
 					},
 					"reload": {
+						"type": "string"
+					},
+					"scfType": {
 						"type": "string"
 					},
 					"stealth": {

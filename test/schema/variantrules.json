@@ -1,5 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.1",
 	"title": "RulesArray",
 
 	"type": "object",
@@ -31,6 +32,11 @@
 				},
 				"page": {
 					"type": "integer"
+				},
+				"ruleType": {
+					"description": "Optional, Variant, Unknown",
+					"type": "string",
+					"enum": ["O", "V", "U"]
 				}
 			},
 			"required": [

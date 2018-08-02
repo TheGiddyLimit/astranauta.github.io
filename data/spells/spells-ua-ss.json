@@ -27,7 +27,7 @@
 				{
 					"type": "timed",
 					"duration": {
-						"type": "minutes",
+						"type": "minute",
 						"amount": 1
 					},
 					"concentration": true
@@ -73,7 +73,10 @@
 			"components": {
 				"v": true,
 				"s": true,
-				"m": "25 gp worth of powdered silver"
+				"m": {
+					"text": "25 gp worth of powdered silver",
+					"cost": 25
+				}
 			},
 			"duration": [
 				{
@@ -293,6 +296,9 @@
 				"poison",
 				"psychic",
 				"thunder"
+			],
+			"spellAttack": [
+				"R"
 			]
 		},
 		{
@@ -322,7 +328,7 @@
 				{
 					"type": "timed",
 					"duration": {
-						"type": "hours",
+						"type": "hour",
 						"amount": 8
 					},
 					"concentration": true
@@ -402,7 +408,8 @@
 			],
 			"savingThrow": [
 				"constitution"
-			]
+			],
+			"scalingEffects": true
 		},
 		{
 			"name": "Healing Elixir (UA)",
@@ -431,7 +438,7 @@
 				{
 					"type": "timed",
 					"duration": {
-						"type": "hours",
+						"type": "hour",
 						"amount": 24
 					}
 				}
@@ -511,7 +518,8 @@
 			],
 			"savingThrow": [
 				"constitution"
-			]
+			],
+			"scalingEffects": true
 		},
 		{
 			"name": "Primal Savagery (UA)",
@@ -554,7 +562,11 @@
 			"damageInflict": [
 				"piercing",
 				"slashing"
-			]
+			],
+			"spellAttack": [
+				"M"
+			],
+			"scalingEffects": true
 		},
 		{
 			"name": "Puppet (UA)",
@@ -632,7 +644,7 @@
 				{
 					"type": "timed",
 					"duration": {
-						"type": "minutes",
+						"type": "minute",
 						"amount": 10
 					},
 					"concentration": true
@@ -675,13 +687,16 @@
 			"components": {
 				"v": true,
 				"s": true,
-				"m": "30 feet of cord or rope, which is consumed by the spell"
+				"m": {
+					"text": "30 feet of cord or rope, which is consumed by the spell",
+					"consume": true
+				}
 			},
 			"duration": [
 				{
 					"type": "permanent",
 					"ends": [
-						"dispell",
+						"dispel",
 						"trigger"
 					]
 				}
@@ -724,7 +739,7 @@
 			"time": [
 				{
 					"number": 1,
-					"unit": "bonus action"
+					"unit": "bonus"
 				}
 			],
 			"range": {
@@ -815,7 +830,8 @@
 			],
 			"savingThrow": [
 				"wisdom"
-			]
+			],
+			"scalingEffects": true
 		},
 		{
 			"name": "Unearthly Chorus (UA)",
@@ -843,7 +859,7 @@
 				{
 					"type": "timed",
 					"duration": {
-						"type": "minutes",
+						"type": "minute",
 						"amount": 10
 					},
 					"concentration": true
@@ -891,7 +907,7 @@
 				{
 					"type": "timed",
 					"duration": {
-						"type": "rounds",
+						"type": "round",
 						"amount": 1
 					}
 				}
@@ -975,7 +991,7 @@
 			"time": [
 				{
 					"number": 1,
-					"unit": "bonus action"
+					"unit": "bonus"
 				}
 			],
 			"range": {
@@ -991,7 +1007,7 @@
 				{
 					"type": "timed",
 					"duration": {
-						"type": "minutes",
+						"type": "minute",
 						"amount": 1
 					},
 					"concentration": true

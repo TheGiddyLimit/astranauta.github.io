@@ -1,5 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.1",
 	"type": "object",
 	"properties": {
 		"object": {
@@ -21,7 +22,7 @@
 					},
 					"type": {
 						"type": "string",
-						"enum": ["siege weapon"]
+						"enum": ["siege weapon", "generic"]
 					},
 					"ac": {
 						"type": "string"
@@ -43,13 +44,15 @@
 						"items": {
 							"$ref": "/Entry"
 						}
+					},
+					"tokenURL": {
+						"type": "string"
 					}
 				},
 				"additionalProperties": false,
 				"required": [
 					"name",
 					"source",
-					"page",
 					"size",
 					"type",
 					"ac",

@@ -1,5 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.0",
 	"title": "NameArray",
 	"type": "object",
 
@@ -28,6 +29,9 @@
 			"properties": {
 				"option": {
 					"type": "string"
+				},
+				"diceType": {
+					"type": "integer"
 				},
 				"table": {
 					"type": "array",

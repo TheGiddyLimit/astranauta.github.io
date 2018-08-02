@@ -5,18 +5,37 @@
 			"size": "H",
 			"type": "plant",
 			"source": "OotA",
-			"alignment": "unaligned",
-			"ac": "13 (natural armor)",
-			"hp": "59 (7d12+14)",
-			"speed": "20 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 59,
+				"formula": "7d12+14"
+			},
+			"speed": {
+				"walk": 20
+			},
 			"str": 19,
 			"dex": 6,
 			"con": 15,
 			"int": 10,
 			"wis": 10,
 			"cha": 7,
-			"resist": "bludgeoning, piercing",
-			"vulnerable": "fire",
+			"resist": [
+				"bludgeoning",
+				"piercing"
+			],
+			"vulnerable": [
+				"fire"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "one language known by its creator",
@@ -39,11 +58,14 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 14 (3d6+4) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 6} to hit, reach 10 ft., one target. Hit: 14 ({@dice 3d6+4}) bludgeoning damage."
 					]
 				}
 			],
-			"page": 230
+			"page": 230,
+			"traitTags": [
+				"False Appearance"
+			]
 		},
 		{
 			"name": "Baphomet",
@@ -55,24 +77,62 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "22 (natural armor)",
-			"hp": "333 (23d12+184)",
-			"speed": "40 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 22,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 333,
+				"formula": "23d12+184"
+			},
+			"speed": {
+				"walk": 40
+			},
 			"str": 30,
 			"dex": 14,
 			"con": 26,
 			"int": 18,
 			"wis": 24,
 			"cha": 16,
-			"save": "Dex +9, Con +15, Wis +14",
+			"save": {
+				"dex": "+9",
+				"con": "+15",
+				"wis": "+14"
+			},
 			"skill": {
 				"intimidation": "+17",
 				"perception": "+14"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 24,
 			"languages": "all, telepathy 120 ft.",
@@ -81,7 +141,7 @@
 				{
 					"name": "Charge",
 					"entries": [
-						"If Baphomet moves at least 10 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 22 (4d10) piercing damage. If the target is a creature, it must succeed on a DC 25 Strength saving throw or be pushed up to 10 feet away and knocked prone."
+						"If Baphomet moves at least 10 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 22 ({@dice 4d10}) piercing damage. If the target is a creature, it must succeed on a DC 25 Strength saving throw or be pushed up to 10 feet away and knocked prone."
 					]
 				},
 				{
@@ -125,19 +185,19 @@
 				{
 					"name": "Heartcleaver",
 					"entries": [
-						"Melee Weapon Attack: +17 to hit, reach 15 ft., one target. Hit: 24 (4d6+10) slashing damage"
+						"Melee Weapon Attack: {@hit 17} to hit, reach 15 ft., one target. Hit: 24 ({@dice 4d6+10}) slashing damage"
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +17 to hit, reach 10 ft., one target. Hit: 19 (2d8+10) piercing damage."
+						"Melee Weapon Attack: {@hit 17} to hit, reach 10 ft., one target. Hit: 19 ({@dice 2d8+10}) piercing damage."
 					]
 				},
 				{
 					"name": "Gore",
 					"entries": [
-						"Melee Weapon Attack: +17 to hit, reach 10 ft., one target. Hit: 21 (2d10+10) piercing damage."
+						"Melee Weapon Attack: {@hit 17} to hit, reach 10 ft., one target. Hit: 21 ({@dice 2d10+10}) piercing damage."
 					]
 				},
 				{
@@ -151,7 +211,7 @@
 			"legendaryGroup": "Baphomet",
 			"legendary": [
 				{
-					"name": "Heartcleaver attack",
+					"name": "Heartcleaver Attack",
 					"entries": [
 						"Baphomet makes a melee attack with Heartcleaver."
 					],
@@ -160,7 +220,7 @@
 					]
 				},
 				{
-					"name": "Charge (Costs 2 actions)",
+					"name": "Charge (Costs 2 Actions)",
 					"entries": [
 						"Baphomet moves up to his speed, then makes a gore attack."
 					],
@@ -192,6 +252,18 @@
 						]
 					}
 				}
+			],
+			"isNamedCreature": true,
+			"traitTags": [
+				"Charge",
+				"Legendary Resistances",
+				"Magic Resistance",
+				"Magic Weapons",
+				"Reckless"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Frightful Presence"
 			]
 		},
 		{
@@ -199,10 +271,25 @@
 			"size": "M",
 			"type": "plant",
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "13 (natural armor)",
-			"hp": "22 (5d8)",
-			"speed": "20 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 22,
+				"formula": "5d8"
+			},
+			"speed": {
+				"walk": 20
+			},
 			"str": 14,
 			"dex": 11,
 			"con": 11,
@@ -242,17 +329,35 @@
 			"size": "L",
 			"type": "plant",
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "13 (natural armor)",
-			"hp": "45 (6d10+12)",
-			"speed": "20 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 45,
+				"formula": "6d10+12"
+			},
+			"speed": {
+				"walk": 20
+			},
 			"str": 17,
 			"dex": 7,
 			"con": 14,
 			"int": 11,
 			"wis": 8,
 			"cha": 12,
-			"resist": "bludgeoning, piercing",
+			"resist": [
+				"bludgeoning",
+				"piercing"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 9,
 			"languages": "Abyssal, Undercommon",
@@ -287,35 +392,61 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6+3) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Infestation Spores (1/Day)",
 					"entries": [
-						"The chaberlain releases spores that burst out in a cloud that fills a 10-foot-radius sphere centered on it, and the cloud lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a DC 12 Constitution saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the spores of Zuggtmoy and also gains a random form of indefinite madness (determined by rolling on the Madness of Zuggtmoy table in appendix D) that lasts until the creature is cured of the disease or dies. While infected in this way, the creature can't be reinfected, and it must be repeat the saving throw at the end of every 24 hours, ending the infection on a success. On a failure, the infected creature's body is slowly taken over by fungal growth, and after three such failed saves, the creature dies and is reanimated as a spore servant if it's a type of creature that can be (see the \"Myconids\" entry in the Monster Manual)."
+						"The chamberlain releases spores that burst out in a cloud that fills a 10-foot-radius sphere centered on it, and the cloud lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a DC 12 Constitution saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the spores of Zuggtmoy and also gains a random form of indefinite madness (determined by rolling on the Madness of Zuggtmoy table in appendix D) that lasts until the creature is cured of the disease or dies. While infected in this way, the creature can't be reinfected, and it must be repeat the saving throw at the end of every 24 hours, ending the infection on a success. On a failure, the infected creature's body is slowly taken over by fungal growth, and after three such failed saves, the creature dies and is reanimated as a spore servant if it's a type of creature that can be (see the \"Myconids\" entry in the Monster Manual)."
 					]
 				}
 			],
-			"page": 230
+			"page": 230,
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Chuul Spore Servant",
 			"size": "L",
 			"type": "plant",
 			"source": "OotA",
-			"alignment": "unaligned",
-			"ac": "16 (natural armor)",
-			"hp": "93 (11d10+33)",
-			"speed": "30 ft., swim 30 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 93,
+				"formula": "11d10+33"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
 			"str": 19,
 			"dex": 10,
 			"con": 16,
 			"int": 2,
 			"wis": 6,
 			"cha": 1,
-			"immune": "poison",
-			"conditionImmune": "blinded, charmed, frightened, paralyzed, poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"poisoned"
+			],
 			"senses": "blindsight 30 ft. (blind beyond this radius)",
 			"passive": 8,
 			"cr": "4",
@@ -329,11 +460,14 @@
 				{
 					"name": "Pincer",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 11 (2d6+4) bludgeoning damage. The target is grappled (Escape DC 14) if it is a Large or smaller creature and the spore servant doesn't have two other creatures grappled."
+						"Melee Weapon Attack: {@hit 6} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage. The target is grappled (Escape DC 14) if it is a Large or smaller creature and the spore servant doesn't have two other creatures grappled."
 					]
 				}
 			],
-			"page": 228
+			"page": 228,
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Demogorgon",
@@ -345,24 +479,64 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "22 (natural armor)",
-			"hp": "496 (34d12+272)",
-			"speed": "50 ft., swim 50 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 22,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 496,
+				"formula": "34d12+272"
+			},
+			"speed": {
+				"walk": 50,
+				"swim": 50
+			},
 			"str": 29,
 			"dex": 14,
 			"con": 26,
 			"int": 20,
 			"wis": 17,
 			"cha": 25,
-			"save": "Dex +10, Con +16, Wis +11, Cha +15",
+			"save": {
+				"dex": "+10",
+				"con": "+16",
+				"wis": "+11",
+				"cha": "+15"
+			},
 			"skill": {
 				"insight": "+11",
 				"perception": "+19"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 29,
 			"languages": "all, telepathy 120 ft.",
@@ -403,7 +577,7 @@
 				{
 					"name": "Tentacle",
 					"entries": [
-						"Melee Weapon Attack: +17 to hit, reach 10 ft., one target. Hit: 35 (4d12+9) bludgeoning damage. If the target is a creature, it must succeed on a DC 23 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"Melee Weapon Attack: {@hit 17} to hit, reach 10 ft., one target. Hit: 35 ({@dice 4d12+9}) bludgeoning damage. If the target is a creature, it must succeed on a DC 23 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				},
 				{
@@ -423,7 +597,7 @@
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +17 to hit, reach 15 ft., one target. Hit: 31 (4d10+9) bludgeoning damage plus 22 (4d10) necrotic damage."
+						"Melee Weapon Attack: {@hit 17} to hit, reach 15 ft., one target. Hit: 31 ({@dice 4d10+9}) bludgeoning damage plus 22 ({@dice 4d10}) necrotic damage."
 					],
 					"attack": [
 						"|17|4d10+9+4d10"
@@ -459,6 +633,16 @@
 						]
 					}
 				}
+			],
+			"isNamedCreature": true,
+			"traitTags": [
+				"Legendary Resistances",
+				"Magic Resistance",
+				"Magic Weapons"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Tentacles"
 			]
 		},
 		{
@@ -471,10 +655,25 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "13 (leather armor)",
-			"hp": "13 (3d6+3)",
-			"speed": "30 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 13,
+				"formula": "3d6+3"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 9,
 			"dex": 14,
 			"con": 12,
@@ -512,17 +711,22 @@
 				{
 					"name": "Hooked Shortspear",
 					"entries": [
-						"Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 1 (1d4-1) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall prone."
+						"Melee Weapon Attack: {@hit 2} to hit, reach 5 ft., one target. Hit: 1 ({@dice 1d4-1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall prone."
 					]
 				},
 				{
 					"name": "Light Repeating Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: +4 to hit, range 40/160 ft., one target. Hit: 6 (1d8+2) piercing damage."
+						"Ranged Weapon Attack: {@hit 4} to hit, range 40/160 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
 					]
 				}
 			],
-			"page": 224
+			"page": 224,
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/616/derro.mp3",
+			"traitTags": [
+				"Magic Resistance",
+				"Sunlight Sensitivity"
+			]
 		},
 		{
 			"name": "Derro Savant",
@@ -534,10 +738,25 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "13 (leather armor)",
-			"hp": "49 (11d6+11)",
-			"speed": "30 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 49,
+				"formula": "11d6+11"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 9,
 			"dex": 14,
 			"con": 12,
@@ -575,13 +794,13 @@
 				{
 					"name": "Hooked Shortspear",
 					"entries": [
-						"Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 1 (1d4-1) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall prone."
+						"Melee Weapon Attack: {@hit 2} to hit, reach 5 ft., one target. Hit: 1 ({@dice 1d4-1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall prone."
 					]
 				},
 				{
 					"name": "Light Repeating Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: +4 to hit, range 40/160 ft., one target. Hit: 6 (1d8+2) piercing damage."
+						"Ranged Weapon Attack: {@hit 4} to hit, range 40/160 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
 					]
 				}
 			],
@@ -626,10 +845,16 @@
 						}
 					}
 				}
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/615/derro-savant.mp3",
+			"traitTags": [
+				"Magic Resistance",
+				"Sunlight Sensitivity"
 			]
 		},
 		{
 			"name": "Droki",
+			"isNPC": true,
 			"size": "S",
 			"type": {
 				"type": "humanoid",
@@ -638,10 +863,28 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "15 (studded leather)",
-			"hp": "31 (7d6+7)",
-			"speed": "30 ft. (60 ft. with boots of speed)",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 31,
+				"formula": "7d6+7"
+			},
+			"speed": {
+				"walk": {
+					"number": 30,
+					"condition": " (60 ft. with boots of speed)"
+				}
+			},
 			"str": 11,
 			"dex": 16,
 			"con": 13,
@@ -659,7 +902,7 @@
 				{
 					"name": "Special Equipment",
 					"entries": [
-						"Droki wears boots of speed"
+						"Droki wears {@item boots of speed}."
 					]
 				},
 				{
@@ -671,7 +914,7 @@
 				{
 					"name": "Sneak Attack (1/Turn)",
 					"entries": [
-						"Droki deals an extra 7 (2d6) damage when he hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of Droki that isn't incapacitated and Droki doesn't have disadvantage on the attack roll."
+						"Droki deals an extra 7 ({@dice 2d6}) damage when he hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of Droki that isn't incapacitated and Droki doesn't have disadvantage on the attack roll."
 					]
 				},
 				{
@@ -697,7 +940,7 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit:6 (1d6+3) piercing damage. The sword is coated with serpent venom that wears off after the first hit. A target subjected to the venom must make a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage. The sword is coated with serpent venom that wears off after the first hit. A target subjected to the venom must make a DC 11 Constitution saving throw, taking 10 ({@dice 3d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -727,6 +970,15 @@
 						]
 					}
 				}
+			],
+			"traitTags": [
+				"Sneak Attack",
+				"Magic Resistance",
+				"Sunlight Sensitivity"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Parry"
 			]
 		},
 		{
@@ -734,17 +986,36 @@
 			"size": "M",
 			"type": "plant",
 			"source": "OotA",
-			"alignment": "unaligned",
-			"ac": "15 (chain shirt)",
-			"hp": "13 (3d8)",
-			"speed": "20 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item chain shirt|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 13,
+				"formula": "3d8"
+			},
+			"speed": {
+				"walk": 20
+			},
 			"str": 10,
 			"dex": 14,
 			"con": 10,
 			"int": 2,
 			"wis": 6,
 			"cha": 1,
-			"conditionImmune": "blinded, charmed, frightened, paralyzed",
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"frightened",
+				"paralyzed"
+			],
 			"senses": "blindsight 30 ft. (blind beyond this radius)",
 			"passive": 8,
 			"cr": "1/8",
@@ -752,7 +1023,7 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],
@@ -768,17 +1039,35 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "lawful evil",
-			"ac": "16 (scale mail, shield)",
-			"hp": "26 (4d8+4)",
-			"speed": "25 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item scale mail|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 26,
+				"formula": "4d8+4"
+			},
+			"speed": {
+				"walk": 25
+			},
 			"str": 14,
 			"dex": 11,
 			"con": 14,
 			"int": 11,
 			"wis": 10,
 			"cha": 9,
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "Dwarvish, Undercommon",
@@ -807,13 +1096,13 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage, or 11 (2d8+2) piercing damage while enlarged."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage, or 11 ({@dice 2d8+2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage, or 9 (2d6+2) piercing damage while enlarged."
+						"Melee or Ranged Weapon Attack: {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
 					]
 				},
 				{
@@ -841,6 +1130,9 @@
 						]
 					}
 				}
+			],
+			"traitTags": [
+				"Sunlight Sensitivity"
 			]
 		},
 		{
@@ -853,17 +1145,35 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "lawful evil",
-			"ac": "16 (scale mail, shield)",
-			"hp": "26 (4d8+4)",
-			"speed": "25 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item scale mail|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 26,
+				"formula": "4d8+4"
+			},
+			"speed": {
+				"walk": 25
+			},
 			"str": 14,
 			"dex": 11,
 			"con": 14,
 			"int": 11,
 			"wis": 10,
 			"cha": 9,
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "Dwarvish, Undercommon",
@@ -904,19 +1214,19 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage, or 11 (2d8+2) piercing damage while enlarged."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage, or 11 ({@dice 2d8+2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage, or 9 (2d6+2) piercing damage while enlarged."
+						"Melee or Ranged Weapon Attack: {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: +4 to hit, range 100/400 ft., one target. Hit: 5 (1d10) piercing damage."
+						"Ranged Weapon Attack: {@hit 4} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
 					]
 				},
 				{
@@ -926,7 +1236,11 @@
 					]
 				}
 			],
-			"page": 226
+			"page": 226,
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/627/duergar-kavalrachni.mp3",
+			"traitTags": [
+				"Sunlight Sensitivity"
+			]
 		},
 		{
 			"name": "Duergar Keeper of the Flame",
@@ -938,17 +1252,35 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "lawful evil",
-			"ac": "16 (scale mail, shield)",
-			"hp": "26 (4d8+4)",
-			"speed": "25 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item scale mail|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 26,
+				"formula": "4d8+4"
+			},
+			"speed": {
+				"walk": 25
+			},
 			"str": 14,
 			"dex": 11,
 			"con": 14,
 			"int": 11,
 			"wis": 10,
 			"cha": 9,
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "Dwarvish, Undercommon",
@@ -977,13 +1309,13 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage, or 11 (2d8+2) piercing damage while enlarged."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage, or 11 ({@dice 2d8+2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage, or 9 (2d6+2) piercing damage while enlarged."
+						"Melee or Ranged Weapon Attack: {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
 					]
 				},
 				{
@@ -1040,6 +1372,9 @@
 						}
 					}
 				}
+			],
+			"traitTags": [
+				"Sunlight Sensitivity"
 			]
 		},
 		{
@@ -1052,17 +1387,34 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "lawful evil",
-			"ac": "14 (leather armor)",
-			"hp": "18 (4d8)",
-			"speed": "25 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 18,
+				"formula": "4d8"
+			},
+			"speed": {
+				"walk": 25
+			},
 			"str": 11,
 			"dex": 16,
 			"con": 10,
 			"int": 11,
 			"wis": 10,
 			"cha": 12,
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "Dwarvish, Undercommon",
@@ -1097,7 +1449,7 @@
 				{
 					"name": "Soulblade",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) force damage, or 10 (2d6+3) force damage while enlarged. If the soulblade has advantage on the attack roll, the attack deals an extra 3 (1d6) force damage."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) force damage, or 10 ({@dice 2d6+3}) force damage while enlarged. If the soulblade has advantage on the attack roll, the attack deals an extra 3 ({@dice 1d6}) force damage."
 					]
 				},
 				{
@@ -1125,6 +1477,10 @@
 						]
 					}
 				}
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/630/duergar-soulblade.mp3",
+			"traitTags": [
+				"Sunlight Sensitivity"
 			]
 		},
 		{
@@ -1132,18 +1488,40 @@
 			"size": "M",
 			"type": "plant",
 			"source": "OotA",
-			"alignment": "unaligned",
-			"ac": "16 (scale armor, shield)",
-			"hp": "26 (4d8+8)",
-			"speed": "15 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item scale mail|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 26,
+				"formula": "4d8+8"
+			},
+			"speed": {
+				"walk": 15
+			},
 			"str": 14,
 			"dex": 11,
 			"con": 14,
 			"int": 2,
 			"wis": 6,
 			"cha": 1,
-			"resist": "poison",
-			"conditionImmune": "blinded, charmed, frightened, paralyzed",
+			"resist": [
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"frightened",
+				"paralyzed"
+			],
 			"senses": "blindsight 30 ft. (blind beyond this radius)",
 			"passive": 8,
 			"cr": "1/2",
@@ -1151,7 +1529,7 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
 					]
 				}
 			],
@@ -1167,17 +1545,35 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "lawful evil",
-			"ac": "18 (chain mail, shield)",
-			"hp": "39 (6d8+12)",
-			"speed": "25 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item chain mail|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 39,
+				"formula": "6d8+12"
+			},
+			"speed": {
+				"walk": 25
+			},
 			"str": 18,
 			"dex": 11,
 			"con": 14,
 			"int": 11,
 			"wis": 10,
 			"cha": 9,
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "Dwarvish, Undercommon",
@@ -1206,13 +1602,13 @@
 				{
 					"name": "King's Knife (Shortsword)",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage, or 11 (2d6+4) piercing damage while enlarged."
+						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage, or 11 ({@dice 2d6+4}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage, or 9 (2d6+2) piercing damage while enlarged."
+						"Melee or Ranged Weapon Attack: {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
 					]
 				},
 				{
@@ -1222,7 +1618,11 @@
 					]
 				}
 			],
-			"page": 227
+			"page": 227,
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/631/duergar-stone-guard.mp3",
+			"traitTags": [
+				"Sunlight Sensitivity"
+			]
 		},
 		{
 			"name": "Duergar Xarrorn",
@@ -1234,17 +1634,34 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "lawful evil",
-			"ac": "18 (platemail)",
-			"hp": "26 (4d8+8)",
-			"speed": "25 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 26,
+				"formula": "4d8+8"
+			},
+			"speed": {
+				"walk": 25
+			},
 			"str": 16,
 			"dex": 11,
 			"con": 14,
 			"int": 11,
 			"wis": 10,
 			"cha": 9,
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "Dwarvish, Undercommon",
@@ -1273,13 +1690,13 @@
 				{
 					"name": "Fire Lance",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit (with disadvantage if the target is within 5 feet of the duergar), reach 10 ft., one target. Hit: 9 (1d12+3) piercing damage plus 3 (1d6) fire damage, or 16 (2d12+3) piercing damage plus 3 (1d6) fire damage while enlarged."
+						"Melee Weapon Attack: {@hit 5} to hit (with disadvantage if the target is within 5 feet of the duergar), reach 10 ft., one target. Hit: 9 ({@dice 1d12+3}) piercing damage plus 3 ({@dice 1d6}) fire damage, or 16 ({@dice 2d12+3}) piercing damage plus 3 ({@dice 1d6}) fire damage while enlarged."
 					]
 				},
 				{
-					"name": "Fire Spray (Recharge 5\u20146)",
+					"name": "Fire Spray (Recharge 5\u20136)",
 					"entries": [
-						"From its fire lance, the duergar shoots a 15-foot cone of fire or a line of fire 30 feet long and 5 feet wide. Each creature in that area must make a DC 12 Dexterity saving throw, taking 10 (3d6) fire damage on a failed save, or half as much damage on a successful one."
+						"From its fire lance, the duergar shoots a 15-foot cone of fire or a line of fire 30 feet long and 5 feet wide. Each creature in that area must make a DC 12 Dexterity saving throw, taking 10 ({@dice 3d6}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
@@ -1289,7 +1706,11 @@
 					]
 				}
 			],
-			"page": 226
+			"page": 226,
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/633/duergar-xarrorn.mp3",
+			"traitTags": [
+				"Sunlight Sensitivity"
+			]
 		},
 		{
 			"source": "OotA",
@@ -1301,10 +1722,25 @@
 					"dwarf"
 				]
 			},
-			"alignment": "lawful neutral",
-			"ac": "16 (breastplate)",
-			"hp": "19 (3d8+6)",
-			"speed": "25 ft.",
+			"alignment": [
+				"L",
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item breastplate|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 19,
+				"formula": "3d8+6"
+			},
+			"speed": {
+				"walk": 25
+			},
 			"str": 11,
 			"dex": 14,
 			"con": 14,
@@ -1317,7 +1753,9 @@
 				"stealth": "+6",
 				"survival": "+5"
 			},
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 15,
 			"languages": "Common, Dwarvish",
@@ -1346,27 +1784,48 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: +3 to hit, range 100/400 ft., one target. Hit: 5 (1d10) piercing damage."
+						"Ranged Weapon Attack: {@hit 3} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
 					]
 				}
 			],
-			"page": 130
+			"page": 130,
+			"traitTags": [
+				"Keen Senses"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Female Steeder",
 			"size": "L",
 			"type": "beast",
 			"source": "OotA",
-			"alignment": "unaligned",
-			"ac": "14 (natural armor)",
-			"hp": "30 (4d10+8)",
-			"speed": "30 ft., climb 30 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 30,
+				"formula": "4d10+8"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
 			"str": 15,
 			"dex": 16,
 			"con": 14,
@@ -1397,17 +1856,21 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 7 (1d8+3) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 9 (2d8) acid damage on a failed save, or half as much damage on a successful one."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+3}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 9 ({@dice 2d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Sticky Leg (Recharges when the Steeder Has No Creatures Grappled)",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one Medium or smaller creature. Hit: The target is stuck on the steeder's leg and grappled until it escapes (escape DC 12)"
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one Medium or smaller creature. Hit: The target is stuck on the steeder's leg and grappled until it escapes (escape DC 12)"
 					]
 				}
 			],
-			"page": 231
+			"page": 231,
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/639/female-steeder.mp3",
+			"traitTags": [
+				"Spider Climb"
+			]
 		},
 		{
 			"name": "Fraz-Urb'luu",
@@ -1419,25 +1882,65 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "18 (natural armor)",
-			"hp": "350 (28d10+196)",
-			"speed": "40 ft., fly 40 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 350,
+				"formula": "28d10+196"
+			},
+			"speed": {
+				"walk": 40,
+				"fly": 40
+			},
 			"str": 29,
 			"dex": 12,
 			"con": 25,
 			"int": 26,
 			"wis": 24,
 			"cha": 26,
-			"save": "Dex +8, Con +15, Int +15, Wis +14",
+			"save": {
+				"dex": "+8",
+				"con": "+15",
+				"int": "+15",
+				"wis": "+14"
+			},
 			"skill": {
 				"deception": "+15",
 				"perception": "+14",
 				"stealth": "+8"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 24,
 			"languages": "all, telepathy 120 ft.",
@@ -1478,13 +1981,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +16 to hit, reach 10 ft., one target. Hit: 23 (4d6+9) piercing damage."
+						"Melee Weapon Attack: {@hit 16} to hit, reach 10 ft., one target. Hit: 23 ({@dice 4d6+9}) piercing damage."
 					]
 				},
 				{
 					"name": "Fist",
 					"entries": [
-						"Melee Weapon Attack: +16 to hit, reach 10 ft., one target. Hit: 27 (4d8+9) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 16} to hit, reach 10 ft., one target. Hit: 27 ({@dice 4d8+9}) bludgeoning damage."
 					]
 				}
 			],
@@ -1493,7 +1996,7 @@
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +16 to hit, reach 15 ft., one target. Hit: 31 (4d10+9) bludgeoning damage. If the target is a Large or smaller creature, it is also grappled (escape DC 24). The grappled target is also restrained. Fraz-Urb'luu can grapple only one creature with his tail at a time."
+						"Melee Weapon Attack: {@hit 16} to hit, reach 15 ft., one target. Hit: 31 ({@dice 4d10+9}) bludgeoning damage. If the target is a Large or smaller creature, it is also grappled (escape DC 24). The grappled target is also restrained. Fraz-Urb'luu can grapple only one creature with his tail at a time."
 					],
 					"attack": [
 						"|16|4d10+9"
@@ -1534,6 +2037,15 @@
 						]
 					}
 				}
+			],
+			"isNamedCreature": true,
+			"traitTags": [
+				"Legendary Resistances",
+				"Magic Resistance",
+				"Magic Weapons"
+			],
+			"actionTags": [
+				"Multiattack"
 			]
 		},
 		{
@@ -1541,10 +2053,25 @@
 			"name": "Giant Riding Lizard",
 			"size": "L",
 			"type": "beast",
-			"alignment": "unaligned",
-			"ac": "12 (natural armor)",
-			"hp": "19 (3d10+3)",
-			"speed": "30 ft., climb 30ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 19,
+				"formula": "3d10+3"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
 			"str": 15,
 			"dex": 12,
 			"con": 13,
@@ -1566,11 +2093,14 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
 					]
 				}
 			],
-			"page": 131
+			"page": 131,
+			"traitTags": [
+				"Spider Climb"
+			]
 		},
 		{
 			"name": "Graz'zt",
@@ -1583,26 +2113,64 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "20 (natural armor)",
-			"hp": "378 (36d10+180)",
-			"speed": "40 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 20,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 378,
+				"formula": "36d10+180"
+			},
+			"speed": {
+				"walk": 40
+			},
 			"str": 22,
 			"dex": 15,
 			"con": 21,
 			"int": 23,
 			"wis": 21,
 			"cha": 26,
-			"save": "Dex +9, Con +12, Wis +12",
+			"save": {
+				"dex": "+9",
+				"con": "+12",
+				"wis": "+12"
+			},
 			"skill": {
 				"deception": "+15",
 				"insight": "+12",
 				"perception": "+12",
 				"persuasion": "+15"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 22,
 			"languages": "all, telepathy 120 ft.",
@@ -1643,7 +2211,7 @@
 				{
 					"name": "Wave of Sorrow (Greatsword)",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 10 ft., one target, Hit; 20 (4d6+6) slashing damage plus 14 (4d6) acid damage."
+						"Melee Weapon Attack: {@hit 13} to hit, reach 10 ft., one target, Hit; 20 ({@dice 4d6+6}) slashing damage plus 14 ({@dice 4d6}) acid damage."
 					]
 				},
 				{
@@ -1709,10 +2277,22 @@
 						]
 					}
 				}
+			],
+			"isNamedCreature": true,
+			"traitTags": [
+				"Shapechanger",
+				"Legendary Resistances",
+				"Magic Resistance",
+				"Magic Weapons"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Teleport"
 			]
 		},
 		{
 			"name": "Grisha",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1724,17 +2304,36 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "18 (chain mail, shield)",
-			"hp": "33 (6d8+6)",
-			"speed": "30 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item chain mail|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 33,
+				"formula": "6d8+6"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 14,
 			"dex": 12,
 			"con": 12,
 			"int": 11,
 			"wis": 14,
 			"cha": 16,
-			"save": "Wis +4, Cha +5",
+			"save": {
+				"wis": "+4",
+				"cha": "+5"
+			},
 			"skill": {
 				"persuasion": "+5",
 				"religion": "+2"
@@ -1752,7 +2351,7 @@
 				{
 					"name": "+1 Flail",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit:7 (1d8+3) bludgeoning damage"
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) bludgeoning damage"
 					]
 				}
 			],
@@ -1801,6 +2400,9 @@
 						}
 					}
 				}
+			],
+			"actionTags": [
+				"Multiattack"
 			]
 		},
 		{
@@ -1808,18 +2410,40 @@
 			"size": "M",
 			"type": "plant",
 			"source": "OotA",
-			"alignment": "unaligned",
-			"ac": "15 (natural armor)",
-			"hp": "75 (10d10+10)",
-			"speed": "20 ft., climb 20 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 75,
+				"formula": "10d10+10"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
 			"str": 18,
 			"dex": 10,
 			"con": 15,
 			"int": 2,
 			"wis": 6,
 			"cha": 1,
-			"resist": "poison",
-			"conditionImmune": "blinded, charmed, frightened, paralyzed",
+			"resist": [
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"frightened",
+				"paralyzed"
+			],
 			"senses": "blindsight 30 ft. (blind beyond this radius)",
 			"passive": 8,
 			"cr": "3",
@@ -1833,21 +2457,40 @@
 				{
 					"name": "Hook",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 11 (2d6+4) piercing damage."
+						"Melee Weapon Attack: {@hit 6} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage."
 					]
 				}
 			],
-			"page": 68
+			"page": 68,
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Ixitxachitl",
 			"size": "S",
 			"type": "aberration",
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "15 (natural armor)",
-			"hp": "18 (4d6+4)",
-			"speed": "0 ft., swim 30 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 18,
+				"formula": "4d6+4"
+			},
+			"speed": {
+				"walk": 0,
+				"swim": 30
+			},
 			"str": 12,
 			"dex": 16,
 			"con": 13,
@@ -1862,7 +2505,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) piercing damage."
+						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
 					]
 				}
 			],
@@ -1871,7 +2514,7 @@
 					"name": "Barbed Tail",
 					"entries": [
 						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
 					]
 				}
 			],
@@ -1882,10 +2525,26 @@
 			"size": "S",
 			"type": "aberration",
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "15 (natural armor)",
-			"hp": "18 (4d6+4)",
-			"speed": "0 ft., swim 30 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 18,
+				"formula": "4d6+4"
+			},
+			"speed": {
+				"walk": 0,
+				"swim": 30
+			},
 			"str": 12,
 			"dex": 16,
 			"con": 13,
@@ -1900,7 +2559,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) piercing damage."
+						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
 					]
 				}
 			],
@@ -1909,7 +2568,7 @@
 					"name": "Barbed Tail",
 					"entries": [
 						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
 					]
 				}
 			],
@@ -1962,23 +2621,70 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "18 (natural armor)",
-			"hp": "350 (28d12+168)",
-			"speed": "30 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 350,
+				"formula": "28d12+168"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 24,
 			"dex": 10,
 			"con": 23,
 			"int": 20,
 			"wis": 20,
 			"cha": 16,
-			"save": "Dex +7, Con +13, Wis +12",
+			"save": {
+				"dex": "+7",
+				"con": "+13",
+				"wis": "+12"
+			},
 			"skill": {
 				"perception": "+12"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, grappled, paralyzed, petrified, poisoned, prone, restrained, stunned, unconscious",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"grappled",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained",
+				"stunned",
+				"unconscious"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 22,
 			"languages": "all, telepathy 120 ft.",
@@ -2031,13 +2737,13 @@
 				{
 					"name": "Acid Lash",
 					"entries": [
-						"Melee Weapon Attack: +14 to hit, reach 10 ft., one target. Hit: 21 (4d6+7) acid damage. Any creature killed by this attack is drawn into Juiblex's body, and the corpse is obliterated after 1 minute."
+						"Melee Weapon Attack: {@hit 14} to hit, reach 10 ft., one target. Hit: 21 ({@dice 4d6+7}) acid damage. Any creature killed by this attack is drawn into Juiblex's body, and the corpse is obliterated after 1 minute."
 					]
 				},
 				{
-					"name": "Eject Slime (Recharge 5\u20146)",
+					"name": "Eject Slime (Recharge 5\u20136)",
 					"entries": [
-						"Juiblex spews out a corrosive slime, targeting one creature that it can see within 60 feet of it. The target must make a DC 21 Dexterity saving throw. On a failure, the target takes 55 (10d10) acid damage. Unless the target avoids taking any of this damage, any metal armor worn by the target takes a permanent -1 penalty to the AC it offers, and any metal weapon it is carrying or wearing takes a permanent -1 penalty to damage rolls. The penalty worsens each time a target is subjected to this effect. If the penalty on an object drops to -5, the object is destroyed."
+						"Juiblex spews out a corrosive slime, targeting one creature that it can see within 60 feet of it. The target must make a DC 21 Dexterity saving throw. On a failure, the target takes 55 ({@dice 10d10}) acid damage. Unless the target avoids taking any of this damage, any metal armor worn by the target takes a permanent \u22121 penalty to the AC it offers, and any metal weapon it is carrying or wearing takes a permanent \u22121 penalty to damage rolls. The penalty worsens each time a target is subjected to this effect. If the penalty on an object drops to \u22125, the object is destroyed."
 					]
 				}
 			],
@@ -2058,7 +2764,7 @@
 				{
 					"name": "Corrupting Touch (Costs 2 Actions)",
 					"entries": [
-						"Melee Weapon Attack: +14 to hit, reach 10 ft., one creature. Hit: 21 (4d6+7) poison damage, and the target is slimed. Until the slime is scraped off with an action, the target is poisoned, and any creature, other than an ooze, is poisoned while Within 10 of the target."
+						"Melee Weapon Attack: {@hit 14} to hit, reach 10 ft., one creature. Hit: 21 ({@dice 4d6+7}) poison damage, and the target is slimed. Until the slime is scraped off with an action, the target is poisoned, and any creature, other than an ooze, is poisoned while Within 10 of the target."
 					],
 					"attack": [
 						"|14|4d6+7"
@@ -2084,6 +2790,17 @@
 						]
 					}
 				}
+			],
+			"isNamedCreature": true,
+			"traitTags": [
+				"Legendary Resistances",
+				"Magic Resistance",
+				"Magic Weapons",
+				"Regeneration",
+				"Spider Climb"
+			],
+			"actionTags": [
+				"Multiattack"
 			]
 		},
 		{
@@ -2096,10 +2813,26 @@
 					"dwarf"
 				]
 			},
-			"alignment": "chaotic good",
-			"ac": "16 (chain shirt, shield)",
-			"hp": "11 (2d8+2)",
-			"speed": "30ft.",
+			"alignment": [
+				"C",
+				"G"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item chain shirt|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 11,
+				"formula": "2d8+2"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 14,
 			"dex": 12,
 			"con": 12,
@@ -2124,7 +2857,7 @@
 				{
 					"name": "Halberd",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 10ft., one target. Hit: 7 (1d10+2) slashing damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 10ft., one target. Hit: 7 ({@dice 1d10+2}) slashing damage."
 					]
 				}
 			],
@@ -2140,10 +2873,24 @@
 					"human"
 				]
 			},
-			"alignment": "neutral",
-			"ac": "13 (leather armor)",
-			"hp": "27 (6d8)",
-			"speed": "30ft.",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 27,
+				"formula": "6d8"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 10,
 			"dex": 15,
 			"con": 10,
@@ -2172,7 +2919,7 @@
 				{
 					"name": "Sneak Attack (1/Turn)",
 					"entries": [
-						"The spy deals an extra 7 (2d6) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the spy that isn't incapacitated and the spy doesn't have disadvantage on the attack roll."
+						"The spy deals an extra 7 ({@dice 2d6}) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the spy that isn't incapacitated and the spy doesn't have disadvantage on the attack roll."
 					]
 				}
 			],
@@ -2186,27 +2933,48 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Hand Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage."
+						"Ranged Weapon Attack: {@hit 4} to hit, range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],
-			"page": 131
+			"page": 131,
+			"traitTags": [
+				"Sneak Attack"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Male Steeder",
 			"size": "M",
 			"type": "beast",
 			"source": "OotA",
-			"alignment": "unaligned",
-			"ac": "12 (natural armor)",
-			"hp": "13 (2d8+4)",
-			"speed": "30 ft., climb 30 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 13,
+				"formula": "2d8+4"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
 			"str": 15,
 			"dex": 12,
 			"con": 14,
@@ -2237,20 +3005,25 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 7 (1d8+2) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 4 (1d8) acid damage on a failed save, or half as much damage on a successful one."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+2}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 4 ({@dice 1d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Sticky Leg (Recharges when the Steeder Has No Creatures Grappled)",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one Small or Tiny creature. Hit: The target is stuck on the steeder's leg and grappled until it escapes (escape DC 12)"
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one Small or Tiny creature. Hit: The target is stuck on the steeder's leg and grappled until it escapes (escape DC 12)"
 					]
 				}
 			],
-			"page": 231
+			"page": 231,
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/659/male-steeder.mp3",
+			"traitTags": [
+				"Spider Climb"
+			]
 		},
 		{
 			"name": "Narrak",
+			"isNPC": true,
 			"size": "S",
 			"type": {
 				"type": "humanoid",
@@ -2259,10 +3032,25 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "12 (15 to mage armor)",
-			"hp": "40 (9d6+9)",
-			"speed": "30 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
+			"hp": {
+				"average": 40,
+				"formula": "9d6+9"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 9,
 			"dex": 14,
 			"con": 13,
@@ -2307,7 +3095,7 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit:5 (1d6+2) piercing damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				},
 				{
@@ -2350,6 +3138,10 @@
 						}
 					}
 				}
+			],
+			"traitTags": [
+				"Magic Resistance",
+				"Sunlight Sensitivity"
 			]
 		},
 		{
@@ -2362,24 +3154,64 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "17 (natural armor)",
-			"hp": "405 (30d12+210)",
-			"speed": "40 ft., fly 40 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 405,
+				"formula": "30d12+210"
+			},
+			"speed": {
+				"walk": 40,
+				"fly": 40
+			},
 			"str": 27,
 			"dex": 14,
 			"con": 25,
 			"int": 20,
 			"wis": 20,
 			"cha": 25,
-			"save": "Dex +10, Con +15, Wis +13",
+			"save": {
+				"dex": "+10",
+				"con": "+15",
+				"wis": "+13"
+			},
 			"skill": {
 				"arcana": "+12",
 				"perception": "+12"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "necrotic, poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"necrotic",
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 22,
 			"languages": "all, telepathy 120 ft.",
@@ -2388,7 +3220,7 @@
 				{
 					"name": "Wand of Orcus",
 					"entries": [
-						"The wand has 7 charges, and any of its properties that require a saving throw have a save DC of 18. While holding it, Orcus can use an action to cast animate dead, blight, or speak with dead. Alternatively, he can expend or 1 or more of the wand's charges to cast one of the following spells from it: circle of death (1 charge), finger of death (1 charge), or power word kill (2 charges). The wand regains 1d4+3 charges daily at dawn.",
+						"The wand has 7 charges, and any of its properties that require a saving throw have a save DC of 18. While holding it, Orcus can use an action to cast animate dead, blight, or speak with dead. Alternatively, he can expend or 1 or more of the wand's charges to cast one of the following spells from it: circle of death (1 charge), finger of death (1 charge), or power word kill (2 charges). The wand regains {@dice 1d4+3} charges daily at dawn.",
 						"While holding the wand, Orcus gains +3 AC and can use an action to conjure undead creatures whose combined average hit points don't exceed 500, These undead magically rise up from the ground or otherwise form in unoccupied spaces within 300 feet of Orcus and obey his commands until they are destroyed or until he dismisses them as an action. Once this property of the wand is used, the property can't be used again until the next dawn."
 					]
 				},
@@ -2427,13 +3259,13 @@
 				{
 					"name": "Wand of Orcus",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 10 ft., one target. Hit: 21 (3d8+8) bludgeoning damage plus 13 (2d12) necrotic damage."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d8+8}) bludgeoning damage plus 13 ({@dice 2d12}) necrotic damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +17 to hit, reach 10 ft., one target. Hit: 21 (3d8+8) piercing damage plus 18 (4d8) poison damage."
+						"Melee Weapon Attack: {@hit 17} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d8+8}) piercing damage plus 18 ({@dice 4d8}) poison damage."
 					]
 				}
 			],
@@ -2479,10 +3311,20 @@
 						]
 					}
 				}
+			],
+			"isNamedCreature": true,
+			"traitTags": [
+				"Legendary Resistances",
+				"Magic Resistance",
+				"Magic Weapons"
+			],
+			"actionTags": [
+				"Multiattack"
 			]
 		},
 		{
 			"name": "The Pudding King",
+			"isNPC": true,
 			"size": "S",
 			"type": {
 				"type": "humanoid",
@@ -2492,25 +3334,48 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "13 (16 with mage armor)",
-			"hp": "49 (9d6+18)",
-			"speed": "30 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				13,
+				{
+					"ac": 16,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
+			"hp": {
+				"average": 49,
+				"formula": "9d6+18"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 10,
 			"dex": 16,
 			"con": 14,
 			"int": 12,
 			"wis": 8,
 			"cha": 17,
-			"save": "Con +5, Cha +6",
+			"save": {
+				"con": "+5",
+				"cha": "+6"
+			},
 			"skill": {
 				"arcana": "+4",
 				"perception": "+2",
 				"stealth": "+6",
 				"survival": "+2"
 			},
-			"resist": "acid, poison",
-			"conditionImmune": "poisoned",
+			"resist": [
+				"acid",
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "Abyssal, Gnomish, Terran, Undercommon",
@@ -2539,7 +3404,7 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit 4 (1d8) piercing damage."
+						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d8}) piercing damage."
 					]
 				},
 				{
@@ -2638,10 +3503,25 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "14 (natural armor)",
-			"hp": "59 (7d8+28)",
-			"speed": "30 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 59,
+				"formula": "7d8+28"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 18,
 			"dex": 12,
 			"con": 18,
@@ -2687,39 +3567,61 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 6 (1d4+4) piercing damage."
+						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d4+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 6 (1d4+4) slashing damage."
+						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d4+4}) slashing damage."
 					]
 				},
 				{
 					"name": "Greatclub",
 					"entries": [
-						"Melee Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage."
+						"Melee Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Acid Spray (Recharge 6)",
 					"entries": [
-						"The troglodyte spits acid in a line 15 feet long and 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 10 (3d6) acid damage on a failed save, or half as much damage on a successful one."
+						"The troglodyte spits acid in a line 15 feet long and 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 10 ({@dice 3d6}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
-			"page": 229
+			"page": 229,
+			"traitTags": [
+				"Sunlight Sensitivity"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Vampiric Ixitxachitl",
 			"size": "M",
 			"type": "aberration",
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "16 (natural armor)",
-			"hp": "44 (8d8+8)",
-			"speed": "0 ft., swim 30 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 44,
+				"formula": "8d8+8"
+			},
+			"speed": {
+				"walk": 0,
+				"swim": 30
+			},
 			"str": 14,
 			"dex": 18,
 			"con": 13,
@@ -2734,7 +3636,7 @@
 				{
 					"name": "Vampiric Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				}
 			],
@@ -2743,7 +3645,7 @@
 					"name": "Barbed Tail",
 					"entries": [
 						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 9 (1d10+4) piercing damage."
+						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage."
 					]
 				}
 			],
@@ -2754,10 +3656,26 @@
 			"size": "M",
 			"type": "aberration",
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "16 (natural armor)",
-			"hp": "44 (8d8+8)",
-			"speed": "0 ft., swim 30 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 44,
+				"formula": "8d8+8"
+			},
+			"speed": {
+				"walk": 0,
+				"swim": 30
+			},
 			"str": 14,
 			"dex": 18,
 			"con": 13,
@@ -2772,7 +3690,7 @@
 				{
 					"name": "Vampiric Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				}
 			],
@@ -2781,7 +3699,7 @@
 					"name": "Barbed Tail",
 					"entries": [
 						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 9 (1d10+4) piercing damage."
+						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage."
 					]
 				}
 			],
@@ -2834,10 +3752,25 @@
 					"human"
 				]
 			},
-			"alignment": "lawful good",
-			"ac": "17 (splint)",
-			"hp": "58 (9d8+18)",
-			"speed": "30ft.",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item splint armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 58,
+				"formula": "9d8+18"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 16,
 			"dex": 13,
 			"con": 14,
@@ -2855,29 +3788,32 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"The veteran makes two longsword attacks. If it has a shorts word drawn, it can also make a shortsword attack."
+						"The veteran makes two longsword attacks. If it has a shortsword drawn, it can also make a shortsword attack."
 					]
 				},
 				{
 					"name": "Longsword",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) slashing damage, or 8 (1d10+3) slashing damage if used with two hands."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) slashing damage, or 8 ({@dice 1d10+3}) slashing damage if used with two hands."
 					]
 				},
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: +3 to hit, range 100/400 ft., one target. Hit: 6 (1d10+1) piercing damage."
+						"Ranged Weapon Attack: {@hit 3} to hit, range 100/400 ft., one target. Hit: 6 ({@dice 1d10+1}) piercing damage."
 					]
 				}
 			],
-			"page": 130
+			"page": 130,
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Yeenoghu",
@@ -2889,24 +3825,62 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "22 (natural armor)",
-			"hp": "348 (24d12+192)",
-			"speed": "50 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 22,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 348,
+				"formula": "24d12+192"
+			},
+			"speed": {
+				"walk": 50
+			},
 			"str": 29,
 			"dex": 16,
 			"con": 23,
 			"int": 15,
 			"wis": 24,
 			"cha": 15,
-			"save": "Dex +10, Con +15, Wis +14",
+			"save": {
+				"dex": "+10",
+				"con": "+15",
+				"wis": "+14"
+			},
 			"skill": {
 				"intimidation": "+9",
 				"perception": "+14"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 24,
 			"languages": "all, telepathy 120 ft.",
@@ -2942,7 +3916,7 @@
 					"name": "Multiattack",
 					"entries": [
 						"Yeenoghu makes three flail attacks. If an attack hits, he can cause it to create an additional effect of his choice or at random (each effect can be used only once per Multi attack):",
-						"1. The attack deals an extra 13 (2d12) bludgeoning damage.",
+						"1. The attack deals an extra 13 ({@dice 2d12}) bludgeoning damage.",
 						"2. The target must succeed on a DC 17 Constitution saving throw or be paralyzed until the start of Yeenoghu's next turn.",
 						"3. The target must succeed on a DC 17 Wisdom saving throw or be affected by the confusion spell until the start of Yeenoghu's next turn."
 					]
@@ -2950,13 +3924,13 @@
 				{
 					"name": "Flail",
 					"entries": [
-						"Melee Weapon Attack: +16 to hit, reach 15 ft., one target. Hit: 22 (2d12+9) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 16} to hit, reach 15 ft., one target. Hit: 22 ({@dice 2d12+9}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +16 to hit, reach 10 ft., one target. Hit: 31 (4d10+9) piercing damage."
+						"Melee Weapon Attack: {@hit 16} to hit, reach 10 ft., one target. Hit: 31 ({@dice 4d10+9}) piercing damage."
 					]
 				}
 			],
@@ -3003,6 +3977,16 @@
 						]
 					}
 				}
+			],
+			"isNamedCreature": true,
+			"traitTags": [
+				"Legendary Resistances",
+				"Magic Resistance",
+				"Magic Weapons",
+				"Rampage"
+			],
+			"actionTags": [
+				"Multiattack"
 			]
 		},
 		{
@@ -3010,18 +3994,37 @@
 			"size": "L",
 			"type": "monstrosity",
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "15 (natural armor)",
-			"hp": "75 (10d10+20)",
-			"speed": "30 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 75,
+				"formula": "10d10+20"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 12,
 			"dex": 10,
 			"con": 14,
 			"int": 13,
 			"wis": 15,
 			"cha": 10,
-			"immune": "poison",
-			"conditionImmune": "poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 12,
 			"languages": "Abyssal, telepathy 60 ft.",
@@ -3038,13 +4041,13 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 8 (3d4+1) bludgeoning damage plus 7 (3d4) poison damage."
+						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 8 ({@dice 3d4+1}) bludgeoning damage plus 7 ({@dice 3d4}) poison damage."
 					]
 				},
 				{
 					"name": "Caustic Spores (1/Day)",
 					"entries": [
-						"Yestabrod releases spores in a 30-foot cone. Each creature in that area must succeed on a DC 12 Dexterity saving throw or take 1d6 acid damage at the start of each of Yestbrod's turns. A creature can repeat the saving throw at the end of each of its turn, ending the effect on itself on a success."
+						"Yestabrod releases spores in a 30-foot cone. Each creature in that area must succeed on a DC 12 Dexterity saving throw or take {@dice 1d6} acid damage at the start of each of Yestabrod's turns. A creature can repeat the saving throw at the end of each of its turn, ending the effect on itself on a success."
 					]
 				},
 				{
@@ -3059,7 +4062,7 @@
 				{
 					"name": "Corpse Burst",
 					"entries": [
-						"Gore, offal, and acid erupt from a corpse within 20 feet of Yestabrod. Creatures within 10 feet of the corpse must succeed on a DC 12 Dexterity saving throw or take 7 (2d6) acid damage."
+						"Gore, offal, and acid erupt from a corpse within 20 feet of Yestabrod. Creatures within 10 feet of the corpse must succeed on a DC 12 Dexterity saving throw or take 7 ({@dice 2d6}) acid damage."
 					],
 					"attack": [
 						"||2d6"
@@ -3068,17 +4071,22 @@
 				{
 					"name": "Foul Absorption",
 					"entries": [
-						"Yestabrod absorbs putrescence from a corpse within 5 feet of it, regaining 1d8+2 hit points"
+						"Yestabrod absorbs putrescence from a corpse within 5 feet of it, regaining {@dice 1d8+2} hit points"
 					],
 					"attack": [
 						"||1d8+2"
 					]
 				}
 			],
-			"page": 233
+			"page": 233,
+			"isNamedCreature": true,
+			"traitTags": [
+				"Legendary Resistances"
+			]
 		},
 		{
 			"name": "Deepking Horgar Steelshadow V",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3087,17 +4095,35 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "lawful evil",
-			"ac": "20 (dwarven plate)",
-			"hp": "52 (8d8+16)",
-			"speed": "30 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 20,
+					"from": [
+						"{@item dwarven plate|dmg}"
+					]
+				}
+			],
+			"hp": {
+				"average": 52,
+				"formula": "8d8+16"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 19,
 			"dex": 11,
 			"con": 14,
 			"int": 11,
 			"wis": 11,
 			"cha": 15,
-			"save": "Con +4, Wis +2",
+			"save": {
+				"con": "+4",
+				"wis": "+2"
+			},
 			"passive": 10,
 			"languages": "Draconic, Giant, and Dwarvish",
 			"cr": "3",
@@ -3105,7 +4131,22 @@
 				{
 					"name": "(Optional) Indefinite Madness",
 					"entries": [
-						"Horgar has been affected by the demon lords let loose in the Abyss during the Rage of Demons storyline. Roll on the Indefinite Madness table to determine Horgar's flaw."
+						{
+							"type": "inline",
+							"entries": [
+								"Horgar has been affected by the demon lords let loose in the Abyss during the Rage of Demons storyline. Roll on the ",
+								{
+									"type": "link",
+									"href": {
+										"type": "internal",
+										"path": "variantrules.html",
+										"hash": "madness_dmg"
+									},
+									"text": "Indefinite Madness table"
+								},
+								" to determine Horgar's flaw."
+							]
+						}
 					]
 				},
 				{
@@ -3155,13 +4196,13 @@
 				{
 					"name": "+2 Warhammer",
 					"entries": [
-						"Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 10 (1d8+6) bludgeoning damage, or 11 (1d10+6) bludgeoning damage if used with two hands. While Horgar is enlarged, the damage increases to 15 (2d8+6) or 17 (2d10+6) bludgeoning damage, respectively."
+						"Melee Weapon Attack: {@hit 8} to hit, reach 5 ft., one target. Hit: 10 ({@dice 1d8+6}) bludgeoning damage, or 11 ({@dice 1d10+6}) bludgeoning damage if used with two hands. While Horgar is enlarged, the damage increases to 15 ({@dice 2d8+6}) or 17 ({@dice 2d10+6}) bludgeoning damage, respectively."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: +2 to hit, range 100/400 ft., one target. Hit: 5 (1d10) piercing damage."
+						"Ranged Weapon Attack: {@hit 2} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
 					]
 				},
 				{
@@ -3179,7 +4220,14 @@
 					]
 				}
 			],
-			"page": 82
+			"page": 82,
+			"traitTags": [
+				"Sunlight Sensitivity"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Parry"
+			]
 		},
 		{
 			"source": "OotA",
@@ -3191,10 +4239,24 @@
 					"human"
 				]
 			},
-			"alignment": "neutral",
-			"ac": "11 (leather armor)",
-			"hp": "32 (5d8+10)",
-			"speed": "30ft.",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 32,
+				"formula": "5d8+10"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 15,
 			"dex": 11,
 			"con": 14,
@@ -3224,37 +4286,61 @@
 				{
 					"name": "Mace",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: +2 to hit, range 100/400 ft., one target. Hit: 5 (1d10) piercing damage."
+						"Ranged Weapon Attack: {@hit 2} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
 					]
 				}
 			],
-			"page": 131
+			"page": 131,
+			"traitTags": [
+				"Pack Tactics"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Spider King",
 			"size": "L",
 			"type": "beast",
 			"source": "OotA",
-			"alignment": "unaligned",
-			"ac": "14 (natural armor)",
-			"hp": "44 (4d10+22)",
-			"speed": "30 ft., climb 30 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 44,
+				"formula": "4d10+22"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
 			"str": 14,
 			"dex": 16,
 			"con": 12,
 			"int": 2,
 			"wis": 11,
 			"cha": 4,
-			"save": "Con +3, Wis +2",
+			"save": {
+				"con": "+3",
+				"wis": "+2"
+			},
 			"skill": {
-					"stealth": "+7",
-					"perception": "+4"
+				"stealth": "+7",
+				"perception": "+4"
 			},
 			"senses": "blindsight 10 ft., darkvision 60 ft.",
 			"passive": 14,
@@ -3262,9 +4348,9 @@
 			"trait": [
 				{
 					"name": "Two Heads",
-						"entries": [
-								"Because of its two heads, the Spider King has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious."
-										]
+					"entries": [
+						"Because of its two heads, the Spider King has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious."
+					]
 				},
 				{
 					"name": "Spider Climb",
@@ -3289,17 +4375,22 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 7 (1d8+3) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 9 (2d8) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+3}) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 9 ({@dice 2d8}) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way."
 					]
 				},
 				{
-					"name": "Web (Recharge 5-6)",
+					"name": "Web (Recharge 5\u20136)",
 					"entries": [
-						"Ranged Weapon Attack: +5 to hit, range 30/60 ft., one creature. Hit: The target is restrained by webbing. As an action, the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
+						"Ranged Weapon Attack: {@hit 5} to hit, range 30/60 ft., one creature. Hit: The target is restrained by webbing. As an action, the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
 					]
 				}
 			],
-			"page": 74
+			"page": 74,
+			"traitTags": [
+				"Spider Climb",
+				"Web Sense",
+				"Web Walker"
+			]
 		},
 		{
 			"name": "Zuggtmoy",
@@ -3311,23 +4402,61 @@
 				]
 			},
 			"source": "OotA",
-			"alignment": "chaotic evil",
-			"ac": "18 (natural armor)",
-			"hp": "304 (32d10+128)",
-			"speed": "30 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 304,
+				"formula": "32d10+128"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 22,
 			"dex": 15,
 			"con": 18,
 			"int": 20,
 			"wis": 19,
 			"cha": 24,
-			"save": "Dex +9, Con +11, Wis +11",
+			"save": {
+				"dex": "+9",
+				"con": "+11",
+				"wis": "+11"
+			},
 			"skill": {
 				"perception": "+11"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 21,
 			"languages": "all, telepathy 120 ft.",
@@ -3362,17 +4491,17 @@
 				{
 					"name": "Pseudopod",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 15 (2d8+6) bludgeoning damage plus 9 (2d8) poison damage."
+						"Melee Weapon Attack: {@hit 13} to hit, reach 10 ft., one target. Hit: 15 ({@dice 2d8+6}) bludgeoning damage plus 9 ({@dice 2d8}) poison damage."
 					]
 				},
 				{
 					"name": "Infestation Spores (3/Day)",
 					"entries": [
-						"Zuggtmoy releases spores that burst out in cloud fills a 20-foof-radius sphere centered on her, and it lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a DC 19 Constitution saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the spores of Zuggtmoy and also gains a random form of madness (determined by rolling on the Madness of Zuggtmoy table) that lasts until the creature is cured of the disease or dies. While infected in this way, the creature can't be reinfected, and it must repeat the saving throw at the end of every 24 hours, ending the infection on a success. On a failure, the infected creature's body is slowly taken over by fungal growth, and after three such failed saves, the creature dies and is reanimated as a spore servant if it's a type of creature that can be (see the \"Myconids\" entry in the Monster Manual)."
+						"Zuggtmoy releases spores that burst out in cloud fills a 20-foot-radius sphere centered on her, and it lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a DC 19 Constitution saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the spores of Zuggtmoy and also gains a random form of madness (determined by rolling on the Madness of Zuggtmoy table) that lasts until the creature is cured of the disease or dies. While infected in this way, the creature can't be reinfected, and it must repeat the saving throw at the end of every 24 hours, ending the infection on a success. On a failure, the infected creature's body is slowly taken over by fungal growth, and after three such failed saves, the creature dies and is reanimated as a spore servant if it's a type of creature that can be (see the \"Myconids\" entry in the Monster Manual)."
 					]
 				},
 				{
-					"name": "Mind Control Spores (Recharge 5\u20146)",
+					"name": "Mind Control Spores (Recharge 5\u20136)",
 					"entries": [
 						"Zuggtmoy releases spores that burst out in a cloud that fills a 20-foot-radius sphere centered on her, and it lingers for 1 minute. Humanoids and beasts in the cloud when it appears, or that enter it later, must make a DC 19 Wisdom saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the influence of Zuggtmoy for 24 hours. While infected, the creature is charmed by her and can't be reinfected by these spores."
 					]
@@ -3418,6 +4547,15 @@
 						]
 					}
 				}
+			],
+			"isNamedCreature": true,
+			"traitTags": [
+				"Legendary Resistances",
+				"Magic Resistance",
+				"Magic Weapons"
+			],
+			"actionTags": [
+				"Multiattack"
 			]
 		}
 	]

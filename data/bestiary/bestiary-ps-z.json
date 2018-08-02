@@ -6,23 +6,56 @@
 			"name": "Archon Of Redemption",
 			"size": "L",
 			"type": "celestial",
-			"alignment": "lawful neutral",
-			"ac": "17 (natural armor)",
-			"hp": "136 (16d8+64)",
-			"speed": "30 ft., fly 90 ft.",
+			"alignment": [
+				"L",
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 136,
+				"formula": "16d8+64"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 90
+			},
 			"str": 18,
 			"dex": 18,
 			"con": 18,
 			"int": 17,
 			"wis": 20,
 			"cha": 20,
-			"save": "Wis +9, Cha +9",
+			"save": {
+				"wis": "+9",
+				"cha": "+9"
+			},
 			"skill": {
 				"insight": "+9",
 				"perception": "+9"
 			},
-			"resist": "radiant; bludgeoning, piercing, and slashing from",
-			"conditionImmune": "charmed, exhaustion, frightened",
+			"resist": [
+				"radiant",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 19,
 			"languages": "all, telepathy 120 ft.",
@@ -48,7 +81,7 @@
 				{
 					"name": "Angelic Weapons",
 					"entries": [
-						"The archon's weapon attacks are magical. When the archon hits with any weapon, the weapon deals an extra 3d8 radiant damage (included in the attack)."
+						"The archon's weapon attacks are magical. When the archon hits with any weapon, the weapon deals an extra {@dice 3d8} radiant damage (included in the attack)."
 					]
 				},
 				{
@@ -80,15 +113,21 @@
 				{
 					"name": "Sword",
 					"entries": [
-						"Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) slashing damage plus 13 (3d8) radiant damage."
+						"Melee Weapon Attack: {@hit 8} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) slashing damage plus 13 ({@dice 3d8}) radiant damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 11 (2d6+4) piercing damage plus 13 (3d8) radiant damage."
+						"Melee Weapon Attack: {@hit 8} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage plus 13 ({@dice 3d8}) radiant damage."
 					]
 				}
+			],
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"actionTags": [
+				"Multiattack"
 			]
 		},
 		{
@@ -97,18 +136,34 @@
 			"name": "Felidar",
 			"size": "L",
 			"type": "celestial",
-			"alignment": "lawful good",
-			"ac": "12",
-			"hp": "67 (9d10+18)",
-			"speed": "50 ft.",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 67,
+				"formula": "9d10+18"
+			},
+			"speed": {
+				"walk": 50
+			},
 			"str": 18,
 			"dex": 14,
 			"con": 15,
 			"int": 11,
 			"wis": 17,
 			"cha": 16,
-			"immune": "poison",
-			"conditionImmune": "charmed, paralyzed, poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"paralyzed",
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"languages": "Celestial, telepathy 60 ft.",
@@ -163,19 +218,19 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage."
+						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) piercing damage."
+						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Healing Touch (3/Day)",
 					"entries": [
-						"The felidar touches another creature with its horns. The target magically regains 11 (2d8+2) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target"
+						"The felidar touches another creature with its horns. The target magically regains 11 ({@dice 2d8+2}) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target"
 					]
 				},
 				{
@@ -201,9 +256,17 @@
 				{
 					"name": "Heal Self (Costs 3 Actions)",
 					"entries": [
-						"The felidar magically regains 11 (2d8+2) hit points."
+						"The felidar magically regains 11 ({@dice 2d8+2}) hit points."
 					]
 				}
+			],
+			"traitTags": [
+				"Pounce",
+				"Magic Resistance",
+				"Magic Weapons"
+			],
+			"actionTags": [
+				"Multiattack"
 			]
 		},
 		{
@@ -212,10 +275,26 @@
 			"name": "Kraken",
 			"size": "H",
 			"type": "monstrosity",
-			"alignment": "chaotic evil",
-			"ac": "16 (natural armor)",
-			"hp": "230 (20d12+100)",
-			"speed": "30 ft., swim 50 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 230,
+				"formula": "20d12+100"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 50
+			},
 			"str": 29,
 			"dex": 14,
 			"con": 20,
@@ -226,8 +305,13 @@
 				"athletics": "+14",
 				"perception": "+9"
 			},
-			"resist": "cold",
-			"immune": "lightning, thunder",
+			"resist": [
+				"cold"
+			],
+			"immune": [
+				"lightning",
+				"thunder"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 19,
 			"languages": "Common",
@@ -264,21 +348,29 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +14 to hit, reach 10 ft., one target. Hit: 30 (6d6+9) slashing damage."
+						"Melee Weapon Attack: {@hit 14} to hit, reach 10 ft., one target. Hit: 30 ({@dice 6d6+9}) slashing damage."
 					]
 				},
 				{
 					"name": "Tentacles",
 					"entries": [
-						"Melee Weapon Attack: +14 to hit, reach 20 ft., one target. Hit: 30 (6d6+9) bludgeoning damage, and the target is grappled (escape DC 17). Until this grapple ends, the target is restrained."
+						"Melee Weapon Attack: {@hit 14} to hit, reach 20 ft., one target. Hit: 30 ({@dice 6d6+9}) bludgeoning damage, and the target is grappled (escape DC 17). Until this grapple ends, the target is restrained."
 					]
 				},
 				{
-					"name": "Lightning Strike (Recharge 5\u20146)",
+					"name": "Lightning Strike (Recharge 5\u20136)",
 					"entries": [
-						"The kraken hurls a magical lightning bolt at a point it can see within 500 feet of it. Each creature within 10 feet of that point must make a DC 17 Dexterity saving throw, taking 54 (12d8) lightning damage on a failed save, or half as much damage on a successful one."
+						"The kraken hurls a magical lightning bolt at a point it can see within 500 feet of it. Each creature within 10 feet of that point must make a DC 17 Dexterity saving throw, taking 54 ({@dice 12d8}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				}
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/304/kraken.mp3",
+			"traitTags": [
+				"Amphibious"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Tentacles"
 			]
 		}
 	]

@@ -6,10 +6,19 @@
 			"name": "Gremlin",
 			"size": "S",
 			"type": "beast",
-			"alignment": "unaligned",
-			"ac": "11",
-			"hp": "27 (5d8+5)",
-			"speed": "40 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				11
+			],
+			"hp": {
+				"average": 27,
+				"formula": "5d8+5"
+			},
+			"speed": {
+				"walk": 40
+			},
 			"str": 12,
 			"dex": 13,
 			"con": 13,
@@ -31,7 +40,7 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 5 (1d8+1) slashing damage."
+						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d8+1}) slashing damage."
 					]
 				},
 				{
@@ -49,25 +58,44 @@
 			"name": "Servo",
 			"size": "T",
 			"type": "construct",
-			"alignment": "unaligned",
-			"ac": "11 (natural armor)",
-			"hp": "10(3d4+3)",
-			"speed": "20 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 10,
+				"formula": "3d4+3"
+			},
+			"speed": {
+				"walk": 20
+			},
 			"str": 4,
 			"dex": 11,
 			"con": 12,
 			"int": 3,
 			"wis": 10,
 			"cha": 7,
-			"immune": "poison",
-			"conditionImmune": "charmed, poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"poisoned"
+			],
 			"passive": 10,
 			"cr": "0",
 			"action": [
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 slashing damage."
+						"Melee Weapon Attack: {@hit 0} to hit, reach 5 ft., one target. Hit: 1 slashing damage."
 					]
 				}
 			]
@@ -78,24 +106,45 @@
 			"name": "Sky Leviathan",
 			"size": "G",
 			"type": "beast",
-			"alignment": "unaligned",
-			"ac": "14 (natural armor)",
-			"hp": "247 (15d20+90)",
-			"speed": "fly 50 ft. (hover)",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 247,
+				"formula": "15d20+90"
+			},
+			"speed": {
+				"fly": {
+					"number": 50,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
 			"str": 28,
 			"dex": 7,
 			"con": 22,
 			"int": 1,
 			"wis": 8,
 			"cha": 4,
-			"save": "Con +10, Wis +3",
+			"save": {
+				"con": "+10",
+				"wis": "+3"
+			},
 			"passive": 9,
 			"cr": "10",
 			"action": [
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 22 (3d8+9) piercing damage. If the target is a Large or smaller creature, it must succeed on a DC 18 Dexterity saving throw or be swallowed by the leviathan. A swallowed creature is blinded and restrained, it has total cover against attacks and other effects outside the leviathan, and it takes 21 (6d6) acid damage at the start of each of the leviathan's turns.",
+						"Melee Weapon Attack: {@hit 9} to hit, reach 10 ft., one target. Hit: 22 ({@dice 3d8+9}) piercing damage. If the target is a Large or smaller creature, it must succeed on a DC 18 Dexterity saving throw or be swallowed by the leviathan. A swallowed creature is blinded and restrained, it has total cover against attacks and other effects outside the leviathan, and it takes 21 ({@dice 6d6}) acid damage at the start of each of the leviathan's turns.",
 						"If the leviathan takes 30 damage or more on a single turn from a creature inside it, the leviathan must succeed on a DC 21 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of the leviathan. If the leviathan dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
 					]
 				}

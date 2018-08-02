@@ -13,8 +13,6 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<style id="dynamicStyle"></style> <!-- populated with JS -->
-
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
@@ -40,7 +38,7 @@
 <header class="hidden-xs hidden-sm">
 	<div class="container">
 
-		<h1>5e<span class="header-tools">tools</span></h1>
+		<h1 class="header-tools">5e<span>tools</span></h1>
 		<p>A suite of tools for 5e D&amp;D players.</p>
 	</div>
 </header>
@@ -49,23 +47,20 @@
 	</ul>
 </nav>
 <main class="container bodyContent">
-	<div class="row">
-		<div class="col-sm-12">
-
-		</div>
-	</div>
+	<div class="alert alert-warning"><p><strong>Note:</strong> this is an unofficial/personal mirror, and is not guaranteed to be up-to-date. For the best browsing experience, please use the main site at <a class="alert-link" href="https://5e.tools/" target="_blank">https://5e.tools/</a>.</p></div>
+	<!--<div class="alert alert-warning">-->
+		<!--<p><strong>Discord update:</strong> A recent bot-hijack resulted in many accounts being banned from our Discord server, along with a general server reset. Besides bans, no user accounts were affected, and the server has largely been restored to its former state. <a class="alert-link" href="https://discord.gg/AzyBjtQ" target="_blank">You can rejoin here.</a></p>-->
+	<!--</div>-->
 	<div class="row">
 		<table class="home-table">
 			<tr>
 				<td colspan="2">
-					<p>5etools is a suite of HTML-and-JavaScript tools for players and DMs of D&amp;D 5e. You can find and
-						download the project on
-						<a href="https://github.com/TheGiddyLimit/TheGiddyLimit.github.io">GitHub</a>,
-						or on <a href="https://get.5e.tools">get.5e.tools</a>.
-						<span class="not-simple" title="For Firefox, this works. For Chrome/derivatives, you need to use '--allow-file-access-from-files' (Google it.)">Simply</span> download the project as a zip, extract it all to a folder,
-						open the .html files in a browser, and it's ready to go! You can also host your own mirror, or
-						contribute to the project via GitHub. With all the Unearthed Arcana material released, data entry is
-						appreciated!</p>
+					<p>5etools is a suite of browser-based tools for players and DMs of D&amp;D 5e. You can
+						download the entire project from <a href="https://get.5e.tools">get.5e.tools</a>.
+						To run a local (offline) copy, <span class="not-simple" title="For Firefox, this works. For Chrome/derivatives, you need to use '--allow-file-access-from-files' (Google it.)">simply</span>
+						download the project, extract it all to a folder, and open the html files in a browser.
+						You're free to host your own mirror, or contribute to the project via
+						<a href="https://github.com/TheGiddyLimit/TheGiddyLimit.github.io">GitHub</a>.</p>
 				</td>
 			</tr>
 			<tr>
@@ -76,8 +71,7 @@
 				</td>
 				<td>
 					<h4><a href="bestiary.html">Bestiary</a></h4>
-					<p>Bestiary.html provides a searchable, filterable list of the more than 1,000 stat blocks in D&amp;D 5e. You
-						can display them and each attack and damage roll can be done in-line with just a click.</p>
+					<p>Bestiary.html provides a searchable, filterable list of the more than 1,000 stat blocks in D&amp;D 5e.</p>
 				</td>
 			</tr>
 			<tr>
@@ -87,19 +81,18 @@
 						material.</p>
 				</td>
 				<td>
-					<h4><a href="conditions.html">Conditions</a></h4>
-					<p>Conditions.html lists all the conditions in D&amp;D 5e.</p>
+					<h4><a href="conditionsdiseases.html">Conditions & Diseases</a></h4>
+					<p>ConditionsDiseases.html lists all the conditions in D&amp;D 5e, and the sample diseases found in the DMG.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<h4><a href="feats.html">Feats</a></h4>
-					<p>Feats.html provides a quick-use list of the feats in D&amp;D 5e, including those from Unearthed Arcana
-						and supplements.</p>
+					<p>Feats.html provides a quick-use list of the feats in D&amp;D 5e.</p>
 				</td>
 				<td>
-					<h4><a href="cults.html">Cults</a>/<a href="deities.html">Deities</a></h4>
-					<p>Cults.html lists all cults in the UA: Fiendish Options. Deities.html lists all the gods in D&amp;D 5e. </p>
+					<h4><a href="cultsboons.html">Cults &amp; Demonic Boons</a>/<a href="deities.html">Deities</a></h4>
+					<p>CultsBoons.html lists all cults and demonic boons in the D&amp;D 5e. Deities.html lists all the gods in D&amp;D 5e. </p>
 				</td>
 			</tr>
 			<tr>
@@ -109,19 +102,27 @@
 				</td>
 				<td>
 					<h4><a href="items.html">Items</a></h4>
-					<p>Items.html lists the mundane and magical items currently in D&amp;D 5e, allowing quick access to their
-						properties.</p>
+					<p>Items.html lists the mundane and magical items currently in D&amp;D 5e.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<h4><a href="names.html">Names</a></h4>
-					<p>Names.html lists a name roller for each of the races in D&amp;D 5e.</p>
+					<p>Names.html presents a name roller for each of the races in D&amp;D 5e.</p>
 				</td>
 				<td>
 					<h4><a href="rewards.html">Other Rewards</a></h4>
-					<p>Rewards.html lists the blessings, boons, and charms currently in D&amp;D 5e, allowing quick access to
-						their properties.</p>
+					<p>Rewards.html lists the blessings, boons, and charms currently in D&amp;D 5e.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h4><a href="lifegen.html">This Is Your Life</a></h4>
+					<p>Lifegen.html provides an automated version of the character background generator from <i>Xanathar's Guide to Everything</i>.</p>
+				</td>
+				<td>
+					<h4><a href="spells.html">Spells</a>/<a href="psionics.html">Psionics</a></h4>
+					<p>Spells.html lists all of the official spells in D&amp;D 5e, and includes a spellbook mode. Psionics.html lists all psionics in the UA: The Mystic Class.</p>
 				</td>
 			</tr>
 			<tr>
@@ -131,10 +132,8 @@
 						custom monsters made for D&amp;D 5e.</p>
 				</td>
 				<td>
-					<h4><a href="spells.html">Spells</a>/<a href="psionics.html">Psionics</a></h4>
-					<p>Spells.html lists all of the official spells in D&amp;D 5e. Psionics.html lists all psionics in the UA:
-						The Mystic Class. Both lists can be easily searched and filtered and the entries can be shared through
-						the generated URL.</p>
+					<h4><a href="quickreference.html">Quick Reference</a></h4>
+					<p>Quickreference.html provides a searchable selection of commonly used rules and tables.</p>
 				</td>
 			</tr>
 			<tr>
@@ -144,20 +143,18 @@
 						5e.</p>
 				</td>
 				<td>
-					<h4><a href="variantrules.html">Variant Rules</a></h4>
-					<p>Variantrules.html lists the variant and optional rules in D&amp;D 5e.</p>
+					<h4><a href="dmscreen.html">DM Screen</a></h4>
+					<p>DMscreen.html provides a customizable DM screen for almost all the site's content.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<h4><a href="adventures.html">Adventures</a></h4>
-					<p>Adventures.html is a work-in-progress list of officially released adventures for D&amp;D 5e.</p>
+					<p>Adventures.html contains officially released adventures for D&amp;D 5e.</p>
 				</td>
 				<td>
 					<h4><a href="invocations.html">Eldritch Invocations</a></h4>
-					<p>Invocations.html lists all of the official Eldritch Invocations for the Warlock Class in D&amp;D 5e, from
-						the PHB, XGE, and various UA. Filterable by prerequisites, and entries can be shared through the
-						generated URL.</p>
+					<p>Invocations.html lists all of the official Eldritch Invocations for the Warlock Class in D&amp;D 5e.</p>
 				</td>
 			</tr>
 		</table>
@@ -168,7 +165,7 @@
 			<p>Get Tampermonkey (<a
 					href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo">Chrome</a>/<a
 					href="https://addons.mozilla.org/firefox/addon/tampermonkey/">Firefox</a>), and install the 5etools companion script using
-				this <a href="https://get.5etools.com/5etoolsR20.user.js">link</a>! This
+				this <a href="https://get.5e.tools/script/betteR20-5etools.user.js">link</a>! This
 				userscript allows you to import much of 5etools' data without paying a dime.</p>
 			<p>As a player, you can import character options, spells, and items to quickly fill out a sheet. As a GM, you can make handout copies
 				of these, as well as import monsters, objects, and adventures.</p>
@@ -177,13 +174,13 @@
 			<p>If you are using the Shaped
 				sheet, be sure to open up the NPC sheets and let them convert before using it.</p>
 			<p>Beyond importing, the script features a custom initiative tracker; the ability to add custom map/token images by URL; enhanced journal functionality; and more.</p>
+			<p><b>FAQ: Check the <a href="roll20.html">Help page</a> for some basic pointers on how to use the script.</b></p>
 			<h3>Use Discord?</h3>
-			<p>Now you can join our server using this <a href="https://discord.gg/v3AXzcW">link!</a></p>
+			<p>Now you can join our server using this <a href="https://discord.gg/AzyBjtQ">link!</a></p>
 			<h3>FAQ / Help</h3>
-			<p><b>Browser Support.</b> We aim to fully support <b>all</b> commonly used browsers, i.e. Chrome and
-				Firefox. We have no plans to support any Microsoft browsers. Other browsers, e.g. Safari and Opera,
-				might work OK but you may wish to upgrade to a better browser in order to have a better experience when
-				using the internet.</p>
+			<p><b>Browser Support.</b> We aim to fully support Chrome and Firefox. We have no plans to support any
+				Microsoft browsers. While generally adequate, other browsers (for example Safari and Opera) are not
+				officially supported; your experience may vary.</p>
 			<p><b>Device Support.</b> We aim to support Windows and Android; mainly because they're the devices we
 				usually have access to. Due to the amount of information displayed we typically aim for the best
 				look-and-feel when using a monitor rather than a smartphone screen. Similar to our browser support, you
@@ -222,11 +219,12 @@
 <footer class="container">
 	<p class="text-align-center">
 		Version
-		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.16.1<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
+		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.58.0<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
 		| <span style="text-decoration: red line-through">&nbsp;&copy;&nbsp;</span>2018 5etools
 	</p>
 </footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>

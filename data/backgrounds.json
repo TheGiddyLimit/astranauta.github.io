@@ -24,7 +24,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A holy symbol (a gift to you when you entered the priesthood), a prayer book or prayer wheel, 5 sticks of incense, vestments, a set of common clothes, and a belt pouch containing 15 gp"
+						"A {@item holy symbol|phb} (a gift to you when you entered the priesthood), a prayer book or prayer wheel, 5 sticks of incense, vestments, a set of {@item common clothes|phb}, and a belt common {@item pouch|phb} containing 15 gp"
 					]
 				},
 				{
@@ -227,7 +227,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A set of fine clothes, a disguise kit, tools of the con of your choice (ten stoppered bottles filled with colored liquid, a set of weighted dice, a deck of marked cards, or a signet ring of an imaginary duke), and a belt pouch containing 15 gp"
+						"A set of {@item fine clothes|phb}, a {@item disguise kit|phb}, tools of the con of your choice (ten stoppered bottles filled with colored liquid, a set of weighted dice, a deck of marked cards, or a signet ring of an imaginary duke), and a belt {@item pouch|phb} containing 15 gp"
 					]
 				},
 				{
@@ -473,7 +473,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A uniform in the style of your unit and indicative of your rank, a horn with which to summon help, a set of manacles, and a pouch containing 10 gp"
+						"A uniform in the style of your unit and indicative of your rank, a {@item horn|phb} with which to summon help, a set of {@item manacles|phb}, and a {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -485,6 +485,14 @@
 					"data": {
 						"isFeature": true
 					}
+				},
+				{
+					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Use the tables for the {@background soldier} background in the Player's Handbook as the basis for your traits and motivations, modifying the entries when appropriate to suit your identity as a member of the city watch.",
+						"Your bond is likely associated with your fellow watch members or the watch organization itself and almost certainly concerns your community. Your ideal probably involves the fostering of peace and safety. An investigator is likely to have an ideal connected to achieving justice by successfully solving crimes."
+					]
 				}
 			]
 		},
@@ -519,7 +527,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A set of artisan's tools with which you are proficient, a maker's mark chisel used to mark your handiwork with the symbol of the clan of crafters you learned your skill from, a set of traveler's clothes, and a pouch containing 5 gp and a gem worth 10 gp"
+						"A set of {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan tool} with which you are proficient, a maker's mark chisel used to mark your handiwork with the symbol of the clan of crafters you learned your skill from, a set of {@item traveler's clothes|phb}, and a {@item pouch|phb} containing 5 gp and a gem worth 10 gp"
 					]
 				},
 				{
@@ -531,6 +539,14 @@
 					"data": {
 						"isFeature": true
 					}
+				},
+				{
+					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Use the tables for the {@background guild artisan} background in the Player's Handbook as the basis for your traits and motivations, modifying the entries when appropriate to suit your identity as a clan crafter. (For instance, consider the words \"guild\" and \"clan\" to be interchangeable.)",
+						"Your bond is almost certainly related to the master or the clan that taught you, or else to the work that you produce. Your ideal might have to do with maintaining the high quality of your work or preserving the dwarven traditions of craftsmanship."
+					]
 				}
 			]
 		},
@@ -558,7 +574,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"The scholar's robes of your cloister, a writing kit (small pouch with a quill, ink, folded parchment, and a small penknife), a borrowed book on the subject of your current study, and a pouch containing 10 gp"
+						"The scholar's {@item robes|phb} of your cloister, a writing kit (small pouch with a quill, ink, folded parchment, and a small penknife), a borrowed {@item book|phb} on the subject of your current study, and a {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -572,6 +588,14 @@
 					"data": {
 						"isFeature": true
 					}
+				},
+				{
+					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Use the tables for the {@background sage} background in the Player's Handbook as the basis for your traits and motivations, modifying the entries when appropriate to suit your identity as a cloistered scholar.",
+						"Your bond is almost certainly associated either with the place where you grew up or with the knowledge you hope to acquire through adventuring. Your ideal is no doubt related to how you view the quest for knowledge and truth - perhaps as a worthy goal in itself, or maybe as a means to a desirable end."
+					]
 				}
 			]
 		},
@@ -599,7 +623,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A set of fine clothes and a pouch containing 5 gp"
+						"A set of {@item fine clothes|phb} and a {@item pouch|phb} containing 5 gp"
 					]
 				},
 				{
@@ -611,6 +635,14 @@
 					"data": {
 						"isFeature": true
 					}
+				},
+				{
+					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Use the tables for the {@background guild artisan} background in the Player's Handbook as the basis for your traits and motivations, modifying the entries when appropriate to suit your identity as a courtier.",
+						"The noble court or bureaucratic organization where you got your start is directly or indirectly associated with your bond (which could pertain to certain individuals in the group, such as your sponsor or mentor). Your ideal might be concerned with the prevailing philosophy of your court or organization."
+					]
 				}
 			]
 		},
@@ -638,7 +670,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A crowbar, a set of dark common clothes including a hood, and a belt pouch containing 15 gp"
+						"A {@item crowbar|phb}, a set of dark {@item common clothes|phb} including a hood, and a belt {@item pouch|phb} containing 15 gp"
 					]
 				},
 				{
@@ -659,12 +691,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Specialty"
+								"d8",
+								"Specialty"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -711,12 +743,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -756,12 +788,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -793,12 +825,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -830,12 +862,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -892,7 +924,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A musical instrument (one of your choice), the favor of an admirer (love letter, lock of hair, or trinket), a costume, and a belt pouch containing 15 gp"
+						"A {@filter musical instrument|items|source=phb|miscellaneous=mundane|type=instrument} (one of your choice), the favor of an admirer (love letter, lock of hair, or trinket), {@item costume clothes|phb}, and a belt {@item pouch|phb} containing 15 gp"
 					]
 				},
 				{
@@ -913,12 +945,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d10",
-									"Routines"
+								"d10",
+								"Routines"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -973,12 +1005,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1018,12 +1050,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1055,12 +1087,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1092,12 +1124,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1154,7 +1186,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"Badge or emblem of your faction, a copy of a seminal faction text (or code-book for a covert faction), a set of common clothes, and a pouch containing 15 gp"
+						"Badge or emblem of your faction, a copy of a seminal faction text (or code-book for a covert faction), a set of {@item common clothes|phb}, and a {@item pouch|phb} containing 15 gp"
 					]
 				},
 				{
@@ -1166,6 +1198,14 @@
 					"data": {
 						"isFeature": true
 					}
+				},
+				{
+					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Use the tables for the {@background acolyte} background in the Player's Handbook as the basis for your traits and motivations, modifying the entries when appropriate to suit your identity as a faction agent. (For instance, consider the words \"faith\" and \"faction\" to be interchangeable.)",
+						"Your bond might be associated with other members of your faction, or a location or an object that is important to your faction. The ideal you strive for is probably in keeping with the tenets and principles of your faction, but might be more personal in nature."
+					]
 				}
 			]
 		},
@@ -1200,7 +1240,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"One set of traveler's clothes, any one musical instrument or gaming set you are proficient with, poorly wrought maps from your homeland that depict where you are in Faerûn, a small piece of jewelry worth 10 gp in the style of your homeland's craftsmanship, and a pouch containing 5 gp"
+						"One set of {@item traveler's clothes|phb}, any one {@filter musical instrument|items|source=phb|miscellaneous=mundane|type=instrument} or {@filter gaming set|items|source=phb|miscellaneous=mundane|type=gaming set} you are proficient with, poorly wrought maps from your homeland that depict where you are in Faerûn, a small piece of jewelry worth 10 gp in the style of your homeland's craftsmanship, and a {@item pouch|phb} containing 5 gp"
 					]
 				},
 				{
@@ -1222,12 +1262,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Reason"
+								"d6",
+								"Reason"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1264,12 +1304,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Personality Trait"
+								"d6",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1301,12 +1341,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1338,12 +1378,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1375,12 +1415,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1437,7 +1477,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A set of artisan's tools (one of your choice), a shovel, an iron pot, a set of common clothes, and a belt pouch containing 10 gp"
+						"A set of {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan tool} (one of your choice), a {@item shovel|phb}, an {@item iron pot|phb}, a set of {@item common clothes|phb}, and a belt {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -1458,12 +1498,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d10",
-									"Defining Event"
+								"d10",
+								"Defining Event"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1518,12 +1558,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1563,12 +1603,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1600,12 +1640,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1637,12 +1677,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1699,7 +1739,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A set of artisan's tools (one of your choice), a letter of introduction from your guild, a set of traveler's clothes, and a belt pouch containing 15 gp"
+						"A set of {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan tool} (one of your choice), a letter of introduction from your guild, a set of {@item traveler's clothes|phb}, and a belt {@item pouch|phb} containing 15 gp"
 					]
 				},
 				{
@@ -1722,12 +1762,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d20",
-									"Guild Business"
+								"d20",
+								"Guild Business"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1822,12 +1862,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1867,12 +1907,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1904,12 +1944,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -1941,12 +1981,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2010,7 +2050,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A scroll case stuffed full of notes from your studies or prayers, a winter blanket, a set of common clothes, an herbalism kit, and 5 gp"
+						"A scroll case stuffed full of notes from your studies or prayers, a winter {@item blanket|phb}, a set of {@item common clothes|phb}, an {@item herbalism kit|phb}, and 5 gp"
 					]
 				},
 				{
@@ -2032,12 +2072,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Life of Seclusion"
+								"d8",
+								"Life of Seclusion"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2084,12 +2124,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2129,12 +2169,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2166,12 +2206,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2203,12 +2243,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2272,7 +2312,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"Your inheritance, a set of traveler's clothes, the tool you choose for this background's tool proficiency, and a pouch containing 15 gp"
+						"Your inheritance, a set of {@item traveler's clothes|phb}, the tool you choose for this background's tool proficiency ({@filter gaming set|items|source=phb|miscellaneous=mundane|type=gaming set} or {@filter musical instrument|items|source=phb|miscellaneous=mundane|type=instrument}), and a {@item pouch|phb} containing 15 gp"
 					]
 				},
 				{
@@ -2285,12 +2325,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Object or item:"
+								"d8",
+								"Object or item:"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2327,6 +2367,14 @@
 					"data": {
 						"isFeature": true
 					}
+				},
+				{
+					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Use the tables for the {@background folk hero} background in the Player's Handbook as the basis for your traits and motivations, modifying the entries when appropriate to suit your identity as an inheritor.",
+						"Your bond might be directly related to your inheritance, or to the person from whom you received it. Your ideal might be influenced by what you know about your inheritance, or by what you intend to do with your gift once you realize what it is capable of."
+					]
 				}
 			]
 		},
@@ -2354,7 +2402,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A uniform in the style of your unit and indicative of your rank, a horn with which to summon help, a set of manacles, and a pouch containing 10 gp"
+						"A uniform in the style of your unit and indicative of your rank, a {@item horn|phb} with which to summon help, a set of {@item manacles|phb}, and a {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -2366,6 +2414,14 @@
 					"data": {
 						"isFeature": true
 					}
+				},
+				{
+					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Use the tables for the {@background soldier} background in the Player's Handbook as the basis for your traits and motivations, modifying the entries when appropriate to suit your identity as a member of the city watch.",
+						"Your bond is likely associated with your fellow watch members or the watch organization itself and almost certainly concerns your community. Your ideal probably involves the fostering of peace and safety. An investigator is likely to have an ideal connected to achieving justice by successfully solving crimes."
+					]
 				}
 			]
 		},
@@ -2400,7 +2456,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"One set of traveler's clothes, a signet, banner, or seal representing your place or rank in the order, and a pouch containing 10 gp"
+						"One set of {@item traveler's clothes|phb}, a signet, banner, or seal representing your place or rank in the order, and a {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -2413,6 +2469,14 @@
 					"data": {
 						"isFeature": true
 					}
+				},
+				{
+					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Use the tables for the {@background soldier} background in the Player's Handbook as the basis for your traits and motivations, modifying the entries when appropriate to suit your identity as a knight of your order.",
+						"Your bond almost always involves the order to which you belong (or at least key members of it), and it is highly unusual for a knight's ideal not to reflect the agenda, sentiment, or philosophy of one's order."
+					]
 				}
 			]
 		},
@@ -2440,7 +2504,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A uniform of your company (traveler's clothes in quality), an insignia of your rank, a gaming set of your choice, and a pouch containing the remainder of your last wages (10 gp)."
+						"A uniform of your company ({@item traveler's clothes|phb} in quality), an insignia of your rank, a {@filter gaming set|items|source=phb|miscellaneous=mundane|type=gaming set} of your choice, and a {@item pouch|phb} containing the remainder of your last wages (10 gp)."
 					]
 				},
 				{
@@ -2452,6 +2516,14 @@
 					"data": {
 						"isFeature": true
 					}
+				},
+				{
+					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Use the tables for the {@background soldier} background in the Player's Handbook as the basis for your traits and motivations, modifying the entries when appropriate to suit your identity as a mercenary.",
+						"Your bond could be associated with the company you traveled with previously, or with some of the comrades you served with. The ideal you embrace largely depends on your worldview and your motivation for fighting."
+					]
 				}
 			]
 		},
@@ -2486,7 +2558,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A set of fine clothes, a signet ring, a scroll of pedigree, and a purse containing 25 gp"
+						"A set of {@item fine clothes|phb}, a {@item signet ring|phb}, a scroll of pedigree, and a purse containing 25 gp"
 					]
 				},
 				{
@@ -2507,12 +2579,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2552,12 +2624,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2589,12 +2661,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2626,12 +2698,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2695,7 +2767,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A staff, a hunting trap, a trophy from an animal you killed, a set of traveler's clothes, and a belt pouch containing 10 gp"
+						"A {@item staff|phb}, a {@item hunting trap|phb}, a trophy from an animal you killed, a set of {@item traveler's clothes|phb}, and a belt {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -2716,12 +2788,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d10",
-									"Origin"
+								"d10",
+								"Origin"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2776,12 +2848,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2821,12 +2893,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2858,12 +2930,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2895,12 +2967,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -2957,7 +3029,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A bottle of black ink, a quill, a small knife, a letter from a dead colleague posing a question you have not yet been able to answer, a set of common clothes, and a belt pouch containing 10 gp"
+						"A bottle of black ink, a quill, a small knife, a letter from a dead colleague posing a question you have not yet been able to answer, a set of {@item common clothes|phb}, and a belt {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -2978,12 +3050,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Field of Study"
+								"d8",
+								"Field of Study"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3030,12 +3102,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3075,12 +3147,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3112,12 +3184,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3149,12 +3221,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3211,7 +3283,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A belaying pin (club), 50 feet of silk rope, a lucky charm such as a rabbit foot or a small stone with a hole in the center (or you may roll for a random trinket on the Trinkets table in chapter 5), a set of common clothes, and a belt pouch containing 10 gp"
+						"A belaying pin ({@item club|phb}), {@item silk rope (50 feet)|phb}, a lucky charm such as a rabbit foot or a small stone with a hole in the center (or you may roll for a random trinket on the Trinkets table in chapter 5), a set of {@item common clothes|phb}, and a belt {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -3232,12 +3304,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3277,12 +3349,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3314,12 +3386,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3351,12 +3423,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3413,7 +3485,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"An insignia of rank, a trophy taken from a fallen enemy (a dagger, broken blade, or piece of a banner), a set of bone dice or deck of cards, a set of common clothes, and a belt pouch containing 10 gp"
+						"An insignia of rank, a trophy taken from a fallen enemy (a dagger, broken blade, or piece of a banner), a bone {@item dice set|phb} or {@item playing card set|phb}, a set of {@item common clothes|phb}, and a belt {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -3434,12 +3506,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Role"
+								"d8",
+								"Role"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3486,12 +3558,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3531,12 +3603,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3568,12 +3640,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3605,12 +3677,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3667,7 +3739,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A set of clothes appropriate to your duties and a pouch containing 20 gp"
+						"A set of clothes appropriate to your duties and a {@item pouch|phb} containing 20 gp"
 					]
 				},
 				{
@@ -3679,6 +3751,14 @@
 					"data": {
 						"isFeature": true
 					}
+				},
+				{
+					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Use the tables for the {@background criminal} background in the Player's Handbook as the basis for your bounty hunter's traits and motivations, modifying the entries when appropriate to suit your identity as a bounty hunter.",
+						"For instance, your bond might involve other bounty hunters or the organizations or individuals that employ you. Your ideal could be associated with your determination always to catch your quarry or your desire to maintain your reputation for being dependable."
+					]
 				}
 			]
 		},
@@ -3706,7 +3786,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A small knife, a map of the city you grew up in, a pet mouse, a token to remember your parents by, a set of common clothes, and a belt pouch containing 10 gp"
+						"A small knife, a map of the city you grew up in, a pet mouse, a token to remember your parents by, a set of {@item common clothes|phb}, and a belt {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -3727,12 +3807,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3772,12 +3852,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3809,12 +3889,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3846,12 +3926,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -3915,7 +3995,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A hunting trap, a totemic token or set of tattoos marking your loyalty to Uthgar and your tribal totem, a set of traveler's clothes, and a pouch containing 10 gp"
+						"A {@item hunting trap|phb}, a totemic token or set of tattoos marking your loyalty to Uthgar and your tribal {@item totem|phb}, a set of {@item traveler's clothes|phb}, and a {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -3928,6 +4008,15 @@
 					"data": {
 						"isFeature": true
 					}
+				},
+				{
+					"type": "section",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Use the tables for the {@background outlander} background in the Player's Handbook as the basis for your traits and motivations, modifying the entries when appropriate to suit your identity as a member of an Uthgardt tribe.",
+						"Even if you have left your tribe behind (at least for now), you hold to the traditions of your people. You will never cut down a still-living tree, and you may not countenance such an act being done in your presence. The Uthgardt ancestral mounds - great hills where the totem spirits were defeated by Uthgar and where the heroes of the tribes are interred - are sacred to you.",
+						"Your bond is undoubtedly associated with your tribe or some aspect of Uthgardt philosophy or culture (perhaps even Uthgar himself). Your ideal is a personal choice that probably hews closely to the ethos of your people and certainly doesn't contradict or compromise what being an Uthgardt stands for."
+					]
 				}
 			]
 		},
@@ -3962,7 +4051,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A set of fine clothes, a signet ring or brooch, a scroll of pedigree, a skin of fine zzar or wine, and a purse containing 20 gp"
+						"A set of {@item fine clothes|phb}, a {@item signet ring|phb} or brooch, a scroll of pedigree, a skin of fine zzar or wine, and a purse containing 20 gp"
 					]
 				},
 				{
@@ -3975,6 +4064,14 @@
 					"data": {
 						"isFeature": true
 					}
+				},
+				{
+					"type": "section",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Use the tables for the {@background noble} background in the Player's Handbook as the basis for your traits and motivations, modifying the entries when appropriate to suit your identity as a member of a Waterdhavian family.",
+						"Like other nobles, you were born and raised in a different world from the one that most folk know - one that grants you privilege but also calls you to fulfill a duty befitting your station. Your bond might be associated with your family alone, or it could be concerned with another noble house that sides with or opposes your own. Your ideal depends to some extent on how you view your role in the family, and how you intend to conduct yourself in the world at large as a representative of your house."
+					]
 				}
 			]
 		},
@@ -3995,14 +4092,14 @@
 					"name": "Tool Proficiencies",
 					"type": "entries",
 					"entries": [
-						"One type of gaming set, thief's tools"
+						"One type of gaming set, thieves' tools"
 					]
 				},
 				{
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A crowbar, a set of dark common clothes including a hood, and a belt pouch containing 15 gp"
+						"A {@item crowbar|phb}, a set of dark {@item common clothes|phb} including a hood, and a belt {@item pouch|phb} containing 15 gp"
 					]
 				},
 				{
@@ -4041,7 +4138,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"An inexpensive but unusual weapon, such as a trident or net (one of your choice), the favor of an admirer (love letter, lock of hair, or trinket), a costume, and a belt pouch containing 15 gp"
+						"An inexpensive but unusual weapon, such as a {@item trident|phb} or {@item net|phb} (one of your choice), the favor of an admirer (love letter, lock of hair, or trinket), {@item costume clothes|phb}, and a belt {@item pouch|phb} containing 15 gp"
 					]
 				},
 				{
@@ -4080,7 +4177,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A mule and cart, a letter of introduction from your guild, a set of traveler's clothes, and a belt pouch containing 15 gp"
+						"A {@item mule|phb} and {@item cart|phb}, a letter of introduction from your guild, a set of {@item traveler's clothes|phb}, and a belt {@item pouch|phb} containing 15 gp"
 					]
 				},
 				{
@@ -4128,14 +4225,14 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A banner or other token from a noble lord or lady to whom you have given your heart, a set of fine clothes, a signet ring, a scroll of pedigree, and a purse containing 25 gp"
+						"A banner or other token from a noble lord or lady to whom you have given your heart, a set of {@item fine clothes|phb}, a {@item signet ring|phb}, a scroll of pedigree, and a purse containing 25 gp"
 					]
 				},
 				{
 					"name": "Variant Noble (Knight)",
 					"type": "entries",
 					"entries": [
-						"A knighthood is among the lowest noble titles in most societies, but it can be a path to higher status. If you wish to be a knight, choose the Retainers feature instead of the Position of Privilege feature.", 
+						"A knighthood is among the lowest noble titles in most societies, but it can be a path to higher status. If you wish to be a knight, choose the Retainers feature instead of the Position of Privilege feature.",
 						"As an emblem of chivalry and the ideals of courtly love, you might include among your equipment a banner or other token from a noble lord or lady to whom you have given your heart-in a chaste sort of devotion."
 					]
 				},
@@ -4176,7 +4273,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A belaying pin (club), 50 feet of silk rope, a lucky charm such as a rabbit foot or a small stone with a hole in the center (or you may roll for a random trinket on the Trinkets table in chapter 5), a set of common clothes, and a belt pouch containing 10 gp"
+						"A belaying pin ({@item club|phb}), {@item silk rope (50 feet)|phb}, a lucky charm such as a rabbit foot or a small stone with a hole in the center (or you may roll for a random trinket on the Trinkets table in chapter 5), a set of {@item common clothes|phb}, and a belt {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -4215,7 +4312,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A holy symbol, a set of traveler's clothes, and a belt pouch containing 15 gp"
+						"A {@item holy symbol|phb}, a set of {@item traveler's clothes|phb}, and a belt {@item pouch|phb} containing 15 gp"
 					]
 				},
 				{
@@ -4240,7 +4337,7 @@
 					"name": "Skill Proficiencies",
 					"type": "entries",
 					"entries": [
-						"Choose one of Arcana, Investigation, Religion, or Survival"
+						"Choose two of Arcana, Investigation, Religion, or Survival"
 					]
 				},
 				{
@@ -4254,7 +4351,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"Monster hunter's pack, one trinket of special significance (choose one or roll on the Gothic Trinkets table)"
+						"{@item Monster hunter's pack|cos}, one trinket of special significance (choose one or roll on the Gothic Trinkets table)"
 					]
 				},
 				{
@@ -4333,12 +4430,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -4378,12 +4475,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -4415,12 +4512,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -4452,12 +4549,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -4514,7 +4611,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A simple puzzle box, a scroll containing the basic teachings of the five gods, a gaming set, a set of common clothes, and a belt pouch containing 15 gp. If you have completed any trials before the start of the campaign, you also have any cartouches you have earned"
+						"A simple puzzle box, a scroll containing the basic teachings of the five gods, a {@filter gaming set|items|source=phb|miscellaneous=mundane|type=gaming set}, a set of {@item common clothes|phb}, and a belt {@item pouch|phb} containing 15 gp. If you have completed any trials before the start of the campaign, you also have any cartouches you have earned"
 					]
 				},
 				{
@@ -4578,12 +4675,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -4623,12 +4720,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -4660,12 +4757,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -4697,12 +4794,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -4759,7 +4856,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A set of artisan's tools or a musical instrument (one of your choice), a scroll of your god's teachings, a vizier's cartouche, a set of fine clothes, and a pouch containing 25 gp"
+						"A set of {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan tool} or a {@filter musical instrument|items|source=phb|miscellaneous=mundane|type=instrument} (one of your choice), a scroll of your god's teachings, a vizier's cartouche, a set of {@item fine clothes|phb}, and a {@item pouch|phb} containing 25 gp"
 					]
 				},
 				{
@@ -4780,12 +4877,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d10",
-									"Personality Trait"
+								"d10",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -4833,12 +4930,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -4870,12 +4967,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -4907,12 +5004,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -4996,7 +5093,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A leather-bound diary, a bottle of ink, an ink pen, a set of traveler's clothes, one trinket of special significance, and a pouch containing 10 gp"
+						"A leather-bound diary, a bottle of ink, an ink pen, a set of {@item traveler's clothes|phb}, one trinket of special significance, and a {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -5007,12 +5104,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Culture"
+								"d8",
+								"Culture"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5069,12 +5166,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Personality Trait"
+								"d6",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5106,12 +5203,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5143,12 +5240,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5180,12 +5277,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5249,7 +5346,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A wooden case containing a map to a ruin or dungeon, a bullseye lantern, a miner's pick, a set of traveler's clothes, a shovel, a two-person tent, a trinket recovered from a dig site, and a pouch containing 25 gp"
+						"A wooden case containing a map to a ruin or dungeon, a {@item bullseye lantern|phb}, a {@item miner's pick|phb}, a set of {@item traveler's clothes|phb}, a {@item shovel|phb}, a {@item two-person tent|phb}, a trinket recovered from a dig site, and a {@item pouch|phb} containing 25 gp"
 					]
 				},
 				{
@@ -5260,12 +5357,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Item"
+								"d8",
+								"Item"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5322,12 +5419,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5367,12 +5464,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5404,12 +5501,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5441,12 +5538,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5503,7 +5600,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"Disguise kit, common clothes, a Tears of Virulence emblem, a writ of free agency signed by the Lord Regent, a set of artisan's tools or gaming set you are proficient with, and a pouch with 15 gp (payment for services rendered)."
+						"{@item Disguise kit|phb}, {@item common clothes|phb}, a Tears of Virulence emblem, a writ of free agency signed by the Lord Regent, a set of {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan tool} or {@filter gaming set|items|source=phb|miscellaneous=mundane|type=gaming set} you are proficient with, and a {@item pouch|phb} with 15 gp (payment for services rendered)."
 					]
 				},
 				{
@@ -5538,12 +5635,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5583,12 +5680,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5620,12 +5717,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5657,12 +5754,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5726,7 +5823,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A dagger, tattered rags, a loaf of moldy bread, a small cast-off scale belonging to Vorgansharax \u2014 the Maimed Virulence, and a pouch with 5 gp of various coins (salvaged during your escape from Phlan)."
+						"A {@item dagger|phb}, tattered rags, a loaf of moldy bread, a small cast-off scale belonging to Vorgansharax \u2014 the Maimed Virulence, and a {@item pouch|phb} with 5 gp of various coins (salvaged during your escape from Phlan)."
 					]
 				},
 				{
@@ -5753,14 +5850,14 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Origin (Occupation)",
-									"Tool Proficiency"
+								"d8",
+								"Origin (Occupation)",
+								"Tool Proficiency"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-5",
-									"col-xs-6"
+								"col-xs-1 text-align-center",
+								"col-xs-5",
+								"col-xs-6"
 							],
 							"rows": [
 								[
@@ -5826,12 +5923,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Disfigurement"
+								"d8",
+								"Disfigurement"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5876,12 +5973,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5921,12 +6018,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5958,12 +6055,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -5995,12 +6092,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6057,7 +6154,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A set of dark common clothes, pack saddle, burglar's pack and a belt pouch containing 5 gp"
+						"A set of dark {@item common clothes|phb}, {@item pack saddle|phb}, {@item burglar's pack|phb} and a belt {@item pouch|phb} containing 5 gp"
 					]
 				},
 				{
@@ -6090,12 +6187,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6135,12 +6232,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6172,12 +6269,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6209,12 +6306,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6271,7 +6368,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A bag of caltrops (20), a small trinket that connects you to the life you once had before the occupation of Phlan, a healer's kit, a set of dark common clothes that includes a cloak and hood, and a belt pouch containing 5 gp"
+						"A bag of {@item caltrops (20)|phb}, a small trinket that connects you to the life you once had before the occupation of Phlan, a {@item healer's kit|phb}, a set of dark {@item common clothes|phb} that includes a cloak and hood, and a belt {@item pouch|phb} containing 5 gp"
 					]
 				},
 				{
@@ -6297,14 +6394,14 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Origin (General)",
-									"Origin (Specific)"
+								"d8",
+								"Origin (General)",
+								"Origin (Specific)"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-4",
-									"col-xs-7"
+								"col-xs-1 text-align-center",
+								"col-xs-4",
+								"col-xs-7"
 							],
 							"rows": [
 								[
@@ -6369,12 +6466,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6414,12 +6511,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6451,12 +6548,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6488,12 +6585,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6550,7 +6647,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A small knife, a set of common clothes, a trinket from the life you stayed behind to defend, a belt pouch with 10 gp"
+						"A small knife, a set of {@item common clothes|phb}, a trinket from the life you stayed behind to defend, a belt {@item pouch|phb} with 10 gp"
 					]
 				},
 				{
@@ -6584,12 +6681,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6629,12 +6726,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6666,12 +6763,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6703,12 +6800,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6772,7 +6869,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"Herbalism kit, a small article of jewelry that is distinct to your tribe, a hunting trap, a set of common clothes, and a belt pouch containing 5 gp"
+						"{@item Herbalism kit|phb}, a small article of jewelry that is distinct to your tribe, a {@item hunting trap|phb}, a set of {@item common clothes|phb}, and a belt {@item pouch|phb} containing 5 gp"
 					]
 				},
 				{
@@ -6808,12 +6905,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6853,12 +6950,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6890,12 +6987,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6927,12 +7024,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -6996,7 +7093,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A whip, a tent, a regional map, a set of traveling clothes, and a belt pouch containing 10 gp"
+						"A {@item whip|phb}, a {@item two-person tent|phb}, a regional map, a set of {@item traveler's clothes|phb}, and a belt {@item pouch|phb} containing 10 gp"
 					]
 				},
 				{
@@ -7029,12 +7126,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7074,12 +7171,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7111,12 +7208,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7148,12 +7245,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7210,7 +7307,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A shovel or a miner's pick, a block and tackle, a climber's kit, a set of common clothes, and a belt pouch containing 5 gp"
+						"A {@item shovel|phb} or a {@item miner's pick|phb}, a {@item block and tackle|phb}, a {@item climber's kit|phb}, a set of {@item common clothes|phb}, and a belt {@item pouch|phb} containing 5 gp"
 					]
 				},
 				{
@@ -7243,12 +7340,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7288,12 +7385,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7325,12 +7422,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7362,12 +7459,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7424,7 +7521,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"Fishing tackle, dice set, playing card set, or Three Dragon Ante set, a set of common clothes, rowboat, and a belt containing 5 gp"
+						"{@item Fishing tackle|phb}, {@item dice set|phb}, {@item playing card set|phb}, or {@item Three-Dragon Ante set|phb}, a set of {@item common clothes|phb}, {@item rowboat}, and a belt {@item pouch|phb} containing 5 gp"
 					]
 				},
 				{
@@ -7457,12 +7554,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7502,12 +7599,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7539,12 +7636,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7576,12 +7673,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7638,7 +7735,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"One set of artisan's tools or musical instrument, a set of fine clothes, and a purse containing 10 gp"
+						"One set of {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan tool} or {@filter musical instrument|items|source=phb|miscellaneous=mundane|type=instrument}, a set of {@item fine clothes|phb}, and a purse containing 10 gp"
 					]
 				},
 				{
@@ -7671,12 +7768,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7716,12 +7813,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7753,12 +7850,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7790,12 +7887,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7859,7 +7956,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A set of artisan's tools (one of your choice), a token of the life you once knew, a set of traveler's clothes, and a belt pouch containing 15 gp"
+						"A set of {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan tool} (one of your choice), a token of the life you once knew, a set of {@item traveler's clothes|phb}, and a belt {@item pouch|phb} containing 15 gp"
 					]
 				},
 				{
@@ -7892,12 +7989,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7937,12 +8034,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -7974,12 +8071,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8011,12 +8108,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8080,7 +8177,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A two-person tent, artisan's tools, a holy symbol, a set of traveler's clothes, a belt pouch, 5 gp"
+						"A {@item two-person tent|phb}, {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan tool}, a {@item holy symbol|phb}, a set of {@item traveler's clothes|phb}, a belt {@item pouch|phb}, 5 gp"
 					]
 				},
 				{
@@ -8113,12 +8210,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8158,12 +8255,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8191,17 +8288,16 @@
 									"To the Abyss with Them. The people of Hillsfar cast me out. I won't risk my hide to help them. (Evil)"
 								]
 							]
-						}
-,
+						},
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8233,12 +8329,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8295,7 +8391,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A battered alms box, a musical instrument, a cast-off military jacket, cap, or scarf, a set of common clothes, a belt pouch, and 10 gp"
+						"A battered alms box, a {@filter musical instrument|items|source=phb|miscellaneous=mundane|type=instrument}, a cast-off military jacket, cap, or scarf, a set of {@item common clothes|phb}, a belt {@item pouch|phb}, and 10 gp"
 					]
 				},
 				{
@@ -8328,12 +8424,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8373,12 +8469,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8410,12 +8506,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8447,12 +8543,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8509,7 +8605,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A fine set of clothes, a signet ring, a letter of introduction from your family's trading house, and a purse containing 25 gp"
+						"A set of {@item fine clothes|phb}, a {@item signet ring|phb}, a letter of introduction from your family's trading house, and a purse containing 25 gp"
 					]
 				},
 				{
@@ -8554,12 +8650,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8599,12 +8695,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8636,12 +8732,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8673,12 +8769,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8742,7 +8838,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A forgery kit, a set of common clothes, a belt pouch, and 5 gp"
+						"A {@item forgery kit|phb}, a set of {@item common clothes|phb}, a belt {@item pouch|phb}, and 5 gp"
 					]
 				},
 				{
@@ -8776,12 +8872,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8821,12 +8917,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8858,12 +8954,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8895,12 +8991,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -8957,7 +9053,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A disguise kit, a forgery kit, a set of common clothes, a belt pouch, 5 gp"
+						"A {@item disguise kit|phb}, a {@item forgery kit|phb}, a set of {@item common clothes|phb}, a belt {@item pouch|phb}, 5 gp"
 					]
 				},
 				{
@@ -8990,12 +9086,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -9035,12 +9131,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -9072,12 +9168,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -9109,12 +9205,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -9178,7 +9274,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"A forgery kit, a transparent cylinder of shadow that has no opening, a signet ring, a set of fine clothes, and 15 gp"
+						"A {@item forgery kit|phb}, a transparent cylinder of shadow that has no opening, a {@item signet ring|phb}, a set of {@item fine clothes|phb}, and 15 gp"
 					]
 				},
 				{
@@ -9212,12 +9308,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -9257,12 +9353,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -9294,12 +9390,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -9331,12 +9427,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -9400,7 +9496,7 @@
 					"name": "Equipment",
 					"type": "entries",
 					"entries": [
-						"Thieves' tools, a gray cloak, Sherrif's insignia (badge) a set of fine clothes, and 17 gp"
+						"{@item Thieves' tools|phb}, a gray cloak, Sherrif's insignia (badge) a set of {@item fine clothes|phb}, and 17 gp"
 					]
 				},
 				{
@@ -9434,12 +9530,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d8",
-									"Personality Trait"
+								"d8",
+								"Personality Trait"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -9479,12 +9575,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Ideal"
+								"d6",
+								"Ideal"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -9516,12 +9612,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Bond"
+								"d6",
+								"Bond"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -9553,12 +9649,12 @@
 						{
 							"type": "table",
 							"colLabels": [
-									"d6",
-									"Flaw"
+								"d6",
+								"Flaw"
 							],
 							"colStyles": [
-									"col-xs-1 text-align-center",
-									"col-xs-11"
+								"col-xs-1 text-align-center",
+								"col-xs-11"
 							],
 							"rows": [
 								[
@@ -9584,6 +9680,279 @@
 								[
 									"6",
 									"I speak for the First Lord of Hillsfar and make sure everyone knows it."
+								]
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "House Agent",
+			"source": "UAWGE",
+			"page": 94,
+			"skillProficiencies": "Investigation, Persuasion",
+			"entries": [
+				{
+					"name": "Skill Proficiencies",
+					"type": "entries",
+					"entries": [
+						"Investigation, Persuasion"
+					]
+				},
+				{
+					"name": "Tool Proficiency",
+					"type": "entries",
+					"entries": [
+						"Two tools by house:",
+						{
+							"type": "list",
+							"items": [
+								"Cannith: alchemist's supplies and tinker's tools",
+								"Deneith: one gaming set and vehicles (land)",
+								"Ghallanda: brewer's supplies and cook's utensils",
+								"Jorasco: alchemist's supplies and herbalism kit",
+								"Kundarak: tinker's tools and thieves' tools",
+								"Lyrandar: vehicles (sea/air) and navigator's tools",
+								"Medani: thieves' tools and disguise kit",
+								"Orien: vehicles (land) and one gaming set",
+								"Phiarlan: disguise kit and one musical instrument",
+								"Sivis: calligrapher's tools and forgery kit",
+								"Tharashk: thieves' tools and one gaming set",
+								"Thuranni: poisoner's kit and one musical instrument",
+								"Vadalis: vehicles (land) and herbalism kit"
+							]
+						}
+					]
+				},
+				{
+					"name": "Equipment",
+					"type": "entries",
+					"entries": [
+						"A set of {@item fine clothes|phb}, house signet ring, ID papers, and a purse containing 20 gp."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Role",
+					"entries": [
+						"You are always gathering information for your house. But when the barons come to you with a specific mission, what sort of work do you usually do? Choose your role or roll on the table below.",
+						{
+							"type": "table",
+							"caption": "House Agent Role",
+							"colLabels": [
+								"d8",
+								"Role"
+							],
+							"colStyles": [
+								"col-xs-2 text-align-center",
+								"col-xs-10"
+							],
+							"rows": [
+								[
+									1,
+									"Acquisition"
+								],
+								[
+									2,
+									"Investigation"
+								],
+								[
+									3,
+									"Research & Development"
+								],
+								[
+									4,
+									"Security"
+								],
+								[
+									5,
+									"Intimidation"
+								],
+								[
+									6,
+									"Exploration"
+								],
+								[
+									7,
+									"Negotiation"
+								],
+								[
+									8,
+									"Covert Operations"
+								]
+							]
+						}
+					]
+				},
+				{
+					"name": "Feature: House Connections",
+					"type": "entries",
+					"entries": [
+						"As an agent of your house, you can always get food and lodging for your friends at a house enclave. When the house assigns you a mission, it will usually provide you with necessary supplies and transportation. Beyond this, you have many old friends, mentors, and rivals in your house and you may encounter one of them when you interact with a house business. As a Lyrandar agent you may know the captain of an airship; as a Ghallanda agent you know a lot of innkeepers and bartenders. The degree to which such acquaintances will be willing to help you out will depend on your current standing in your house."
+					],
+					"data": {
+						"isFeature": true
+					}
+				},
+				{
+					"name": "Suggested Characteristics",
+					"type": "entries",
+					"entries": [
+						"House agents are a diverse lot. Consider the house you serve and the type of work you do in developing or selecting characteristics.",
+						{
+							"type": "table",
+							"colLabels": [
+								"d8",
+								"Personality Trait"
+							],
+							"colStyles": [
+								"col-xs-2 text-align-center",
+								"col-xs-10"
+							],
+							"rows": [
+								[
+									1,
+									"I never let emotion complicate work."
+								],
+								[
+									2,
+									"I'm always looking to improve efficiency."
+								],
+								[
+									3,
+									"I share trivia about my house's business (medicine, ships, warforged)."
+								],
+								[
+									4,
+									"I hold myself and anyone I work with to extremely high standards."
+								],
+								[
+									5,
+									"I never forget an insult made against myself or my house."
+								],
+								[
+									6,
+									"I'm very excited and enthusiastic about everything my house does."
+								],
+								[
+									7,
+									"I'm representing my house and take great pride in my personal appearance."
+								],
+								[
+									8,
+									"I'm critical of monarchies and opposed to any restrictions on the houses."
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colLabels": [
+								"d6",
+								"Ideal"
+							],
+							"colStyles": [
+								"col-xs-2 text-align-center",
+								"col-xs-10"
+							],
+							"rows": [
+								[
+									1,
+									"Common Good. My house serves a vital function, and its prosperity will help everyone. (Good)"
+								],
+								[
+									2,
+									"Tradition. I uphold traditions of my house and bring honor to my family. (Lawful)"
+								],
+								[
+									3,
+									"Innovation. Abandon old traditions and find better ways to do things. (Chaotic)"
+								],
+								[
+									4,
+									"Power. I want to ensure the prosperity of my house and wield its power myself. (Evil)"
+								],
+								[
+									5,
+									"Discovery. I want to learn all I can, both for my house and for my own curiosity. (Any)"
+								],
+								[
+									6,
+									"Comfort. I want to ensure that me and mine enjoy the best things in life. (Any)"
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colLabels": [
+								"d6",
+								"Bond"
+							],
+							"colStyles": [
+								"col-xs-2 text-align-center",
+								"col-xs-10"
+							],
+							"rows": [
+								[
+									1,
+									"My house is my family, and I would do anything for my family."
+								],
+								[
+									2,
+									"I love someone from another house, but such relationships are forbidden."
+								],
+								[
+									3,
+									"Someone I love was killed by a rival faction within my house, and I will have revenge."
+								],
+								[
+									4,
+									"I don't care about the house as a whole, but I would do anything for my old mentor."
+								],
+								[
+									5,
+									"I believe my house needs to evolve to survive, and I need to lead that change."
+								],
+								[
+									6,
+									"I am determined to impress the leaders of my house, and to become a leader myself"
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colLabels": [
+								"d6",
+								"Flaw"
+							],
+							"colStyles": [
+								"col-xs-2 text-align-center",
+								"col-xs-10"
+							],
+							"rows": [
+								[
+									1,
+									"I'm overly concerned with following established procedures and protocols."
+								],
+								[
+									2,
+									"I'm obsessed with conspiracy theories and worried about secret societies and hidden demons."
+								],
+								[
+									3,
+									"I believe that my house and bloodline makes me better than everyone else."
+								],
+								[
+									4,
+									"I'm concealing a secret that could get me driven from my house."
+								],
+								[
+									5,
+									"I have strong religious beliefs that aren't shared by others in my house."
+								],
+								[
+									6,
+									"I'm working for a hidden faction in my house that gives me secret assignments."
 								]
 							]
 						}

@@ -5,10 +5,25 @@
 			"name": "Tiny Servant",
 			"size": "T",
 			"type": "construct",
-			"alignment": "unaligned",
-			"ac": "15 (natural armor)",
-			"hp": "10 (4d4)",
-			"speed": "30 ft., climb 30 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 10,
+				"formula": "4d4"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
 			"str": 4,
 			"dex": 16,
 			"con": 10,
@@ -17,14 +32,26 @@
 			"cha": 1,
 			"passive": 10,
 			"cr": "Unknown",
-			"immune": "poison, psychic",
-			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, paralyzed, petrified, poisoned",
-			"senses": "blindsight 60 ft. (blind beyond this radius), darkvision 120 ft.",
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"senses": "blindsight 60 ft. (blind beyond this radius)",
 			"action": [
 				{
 					"name": "Slam",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4+3) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d4+3}) bludgeoning damage."
 					]
 				}
 			],

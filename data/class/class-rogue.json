@@ -1,0 +1,1897 @@
+{
+	"class": [
+		{
+			"name": "Rogue",
+			"source": "PHB",
+			"hd": {
+				"number": 1,
+				"faces": 8
+			},
+			"proficiency": [
+				"dex",
+				"int"
+			],
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"Sneak Attack"
+					],
+					"rows": [
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 2,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 2,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 3,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 3,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 4,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 4,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 5,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 5,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 6,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 6,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 7,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 7,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 8,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 8,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 9,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 9,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 10,
+										"faces": 6
+									}
+								]
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 10,
+										"faces": 6
+									}
+								]
+							}
+						]
+					]
+				},
+				{
+					"subclasses": [
+						{
+							"name": "Arcane Trickster",
+							"source": "PHB"
+						}
+					],
+					"colLabels": [
+						"{@filter Cantrips Known|spells|level=0|subclass=Arcane Trickster}",
+						"Spells Known"
+					],
+					"rows": [
+						[
+							0,
+							0
+						],
+						[
+							0,
+							0
+						],
+						[
+							3,
+							3
+						],
+						[
+							3,
+							4
+						],
+						[
+							3,
+							4
+						],
+						[
+							3,
+							4
+						],
+						[
+							3,
+							5
+						],
+						[
+							3,
+							6
+						],
+						[
+							3,
+							6
+						],
+						[
+							4,
+							7
+						],
+						[
+							4,
+							8
+						],
+						[
+							4,
+							8
+						],
+						[
+							4,
+							9
+						],
+						[
+							4,
+							10
+						],
+						[
+							4,
+							10
+						],
+						[
+							4,
+							11
+						],
+						[
+							4,
+							11
+						],
+						[
+							4,
+							11
+						],
+						[
+							4,
+							12
+						],
+						[
+							4,
+							13
+						]
+					]
+				},
+				{
+					"title": "Spell Slots per Spell Level",
+					"subclasses": [
+						{
+							"name": "Arcane Trickster",
+							"source": "PHB"
+						}
+					],
+					"colLabels": [
+						"{@filter 1st|spells|level=1|subclass=Arcane Trickster}",
+						"{@filter 2nd|spells|level=2|subclass=Arcane Trickster}",
+						"{@filter 3rd|spells|level=3|subclass=Arcane Trickster}",
+						"{@filter 4th|spells|level=4|subclass=Arcane Trickster}"
+					],
+					"rows": [
+						[
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							2,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							1
+						]
+					]
+				}
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light"
+				],
+				"weapons": [
+					"simple",
+					"hand crossbows",
+					"longswords",
+					"rapiers",
+					"shortswords"
+				],
+				"tools": [
+					"thieves' tools"
+				],
+				"skills": {
+					"choose": 4,
+					"from": [
+						"Acrobatics",
+						"Athletics",
+						"Deception",
+						"Insight",
+						"Intimidation",
+						"Investigation",
+						"Perception",
+						"Performance",
+						"Persuasion",
+						"Sleight of Hand",
+						"Stealth"
+					]
+				}
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item rapier|phb} or (b) a {@item shortsword|phb}",
+					"(a) a {@item shortbow|phb} and {@item quiver|phb} of {@item arrows (20)|phb|20 arrows} or (b) a {@item shortsword|phb}",
+					"(a) a {@item burglar's pack|phb}, (b) a {@item dungeoneer's pack|phb}, or (c) an {@item explorer's pack|phb}",
+					"{@item Leather armor|phb}, two {@item dagger|phb|daggers}, and {@item thieves' tools|phb}"
+				],
+				"goldAlternative": "4d4 × 10"
+			},
+			"classFeatures": [
+				[
+					{
+						"name": "Expertise",
+						"entries": [
+							"At 1st level, choose two of your skill proficiencies, or one of your skill proficiencies and your proficiency with thieves' tools. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.",
+							"At 6th level, you can choose two more of your proficiencies (in skills or with thieves' tools) to gain this benefit."
+						]
+					},
+					{
+						"name": "Sneak Attack",
+						"entries": [
+							"Beginning at 1st level, you know how to strike subtly and exploit a foe's distraction. Once per turn, you can deal an extra 1d6 damage to one creature you hit with an attack if you have advantage on the attack roll. The attack must use a finesse or a ranged weapon.",
+							"You don't need advantage on the attack roll if another enemy of the target is within 5 feet of it, that enemy isn't {@condition incapacitated}, and you don't have disadvantage on the attack roll.",
+							"The amount of the extra damage increases as you gain levels in this class, as shown in the Sneak Attack column of the Rogue table."
+						]
+					},
+					{
+						"name": "Thieves' Cant",
+						"entries": [
+							"During your rogue training you learned thieves' cant, a secret mix of dialect, jargon, and code that allows you to hide messages in seemingly normal conversation. Only another creature that knows thieves' cant understands such messages. It takes four times longer to convey such a message than it does to speak the same idea plainly.",
+							"In addition, you understand a set of secret signs and symbols used to convey short, simple messages, such as whether an area is dangerous or the territory of a thieves' guild, whether loot is nearby, or whether the people in an area are easy marks or will provide a safe house for thieves on the run."
+						]
+					}
+				],
+				[
+					{
+						"name": "Cunning Action",
+						"entries": [
+							"Starting at 2nd level, your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action."
+						]
+					}
+				],
+				[
+					{
+						"name": "Roguish Archetype",
+						"entries": [
+							"At 3rd level, you choose an archetype that you emulate in the exercise of your rogue abilities from the list of available archetypes. Your archetype choice grants you features at 3rd level and then again at 9th, 13th, and 17th level."
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 4th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a feat."
+						]
+					}
+				],
+				[
+					{
+						"name": "Uncanny Dodge",
+						"entries": [
+							"Starting at 5th level, when an attacker that you can see hits you with an attack, you can use your reaction to halve the attack's damage against you."
+						]
+					}
+				],
+				[
+					{
+						"name": "Expertise",
+						"entries": [
+							"At 6th level, you can choose two more of your proficiencies (in skills or with thieves' tools) to gain the benefit of Expertise."
+						]
+					}
+				],
+				[
+					{
+						"name": "Evasion",
+						"entries": [
+							"Beginning at 7th level, you can nimbly dodge out of the way of certain area effects, such as a red dragon's fiery breath or an {@spell ice storm} spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 8th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a feat."
+						]
+					}
+				],
+				[
+					{
+						"name": "Roguish Archetype feature",
+						"entries": [
+							"At 9th level, you gain a feature granted by your Roguish Archetype."
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 10th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a feat."
+						]
+					}
+				],
+				[
+					{
+						"name": "Reliable Talent",
+						"entries": [
+							"By 11th level, you have refined your chosen skills until they approach perfection. Whenever you make an ability check that lets you add your proficiency bonus, you can treat a d20 roll of 9 or lower as a 10."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 12th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a feat."
+						]
+					}
+				],
+				[
+					{
+						"name": "Roguish Archetype feature",
+						"entries": [
+							"At 13th level, you gain a feature granted by your Roguish Archetype."
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[
+					{
+						"name": "Blindsense",
+						"entries": [
+							"Starting at 14th level, if you are able to hear, you are aware of the location of any hidden or {@condition invisible} creature within 10 feet of you."
+						]
+					}
+				],
+				[
+					{
+						"name": "Slippery Mind",
+						"entries": [
+							"By 15th level, you have acquired greater mental strength. You gain proficiency in Wisdom saving throws."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 16th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a feat."
+						]
+					}
+				],
+				[
+					{
+						"name": "Roguish Archetype feature",
+						"entries": [
+							"At 17th level, you gain a feature granted by your Roguish Archetype."
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[
+					{
+						"name": "Elusive",
+						"entries": [
+							"Beginning at 18th level, you are so evasive that attackers rarely gain the upper hand against you. No attack roll has advantage against you while you aren't {@condition incapacitated}."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a feat."
+						]
+					}
+				],
+				[
+					{
+						"name": "Stroke of Luck",
+						"entries": [
+							"At 20th level, you have an uncanny knack for succeeding when you need to. If your attack misses a target within range, you can turn the miss into a hit. Alternatively, if you fail an ability check, you can treat the d20 roll as a 20.",
+							"Once you use this feature, you can't use it again until you finish a short or long rest."
+						]
+					}
+				]
+			],
+			"subclassTitle": "Roguish Archetype",
+			"subclasses": [
+				{
+					"name": "Arcane Trickster",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Arcane Trickster",
+								"entries": [
+									"Some rogues enhance their fine-honed skills of stealth and agility with magic, learning tricks of enchantment and illusion. These rogues include pickpockets and burglars, but also pranksters, mischief-makers, and a significant number of adventurers.",
+									{
+										"type": "entries",
+										"name": "Mage Hand Legerdemain",
+										"entries": [
+											"Starting at 3rd level, when you cast {@spell mage hand}, you can make the spectral hand {@condition invisible}, and you can perform the following additional tasks with it:",
+											{
+												"type": "list",
+												"items": [
+													"You can stow one object the hand is holding in a container worn or carried by another creature.",
+													"You can retrieve an object in a container worn or carried by another creature.",
+													"You can use thieves' tools to pick lock and disarm traps at range."
+												]
+											},
+											"You can perform one of these tasks without being noticed by a creature if you succeed on a Dexterity (Sleight of Hand) check contested by the creature's Wisdom (Perception) check.",
+											"In addition, you can use the bonus action granted by your Cunning Action to control the hand."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Spellcasting",
+										"entries": [
+											"When you reach 3rd level, you gain the ability to cast spells. See chapter 10 for the general rules of spellcasting and chapter 11 for the wizard spell list.",
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Cantrips",
+														"entries": [
+															"You learn three cantrips: {@spell mage hand} and two other cantrips of your choice from the wizard spell list. You learn another wizard cantrip of your choice at 10th level."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Spell Slots",
+														"entries": [
+															"The Arcane Trickster Spellcasting table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+															"For example, if you know the 1st-level spell {@spell charm person} and have a 1st-level and a 2nd-level spell slot available, you can cast {@spell charm person} using either slot."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Spells Known of 1st-Level and Higher",
+														"entries": [
+															"You know three 1st-level wizard spells of your choice, two of which you must choose from the enchantment and illusion spells on the wizard spell list.",
+															"The Spells Known column of the Arcane Trickster Spellcasting table shows when you learn more wizard spells of 1st level or higher. Each of these spells must be an enchantment or illusion spell of your choice, and must be of a level for which you have spell slots. For instance, when you reach 7th level in this class, you can learn one new spell of 1st or 2nd level.",
+															"The spells you learn at 8th, 14th, and 20th level can come from any school of magic.",
+															"Whenever you gain a level in this class, you can replace one of the wizard spells you know with another spell of your choice from the wizard spell list. The new spell must be of a level for which you have spell slots, and it must be an enchantment or illusion spell, unless you're replacing the spell you gained at 8th, 14th, or 20th level."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Spellcasting Ability",
+														"entries": [
+															"Intelligence is your spellcasting ability for your wizard spells, since you learn your spells through dedicated study and memorization. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one.",
+															{
+																"type": "abilityDc",
+																"name": "Spell",
+																"attributes": [
+																	"int"
+																]
+															},
+															{
+																"type": "abilityAttackMod",
+																"name": "Spell",
+																"attributes": [
+																	"int"
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Magical Ambush",
+										"entries": [
+											"Starting at 9th level, if you are hidden from a creature when you cast a spell on it, the creature has disadvantage on any saving throw it makes against the spell this turn."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Versatile Trickster",
+										"entries": [
+											"At 13th level, you gain the ability to distract targets with your {@spell mage hand}. As a bonus action on your turn, you can designate a creature within 5 feet of the spectral hand created by the spell. Doing so gives you advantage on attack rolls against that creature until the end of the turn."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Spell Thief",
+										"entries": [
+											"At 17th level, you gain the ability to magically steal the knowledge of how to cast a spell from another spellcaster.",
+											"Immediately after a creature casts a spell that targets you or includes you in its area of effect, you can use your reaction to force the creature to make a saving throw with its spellcasting ability modifier. The DC equals your spell save DC. On a failed save, you negate the spell's effect against you, and you steal the knowledge of the spell if it is at least 1st level and of a level you can cast (it doesn't need to be a wizard spell). For the next 8 hours, you know the spell and can cast it using your spell slots. The creature can't cast that spell until the 8 hours have passed.",
+											"Once you use this feature, you can't use it again until you finish a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "PHB",
+					"shortName": "Arcane Trickster"
+				},
+				{
+					"name": "Assassin",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Assassin",
+								"entries": [
+									"You focus your training on the grim art of the death. Those who adhere to this archetype are diverse - hired killers, spies, bounty hunters, and even specially anointed priests trained to exterminate the enemies of their deity. Stealth, poison, and disguise help you eliminate your foes with deadly efficiency.",
+									"Your archetype grants you features at 3rd level and then again at 9th, 13th, and 17th level.",
+									{
+										"type": "entries",
+										"name": "Assassinate",
+										"entries": [
+											"Starting at 3rd level, you are at your deadliest when you get the drop on your enemies. You have advantage on attack rolls against any creature that hasn't taken a turn in the combat yet. In addition, any hit you score against a creature that is surprised is a critical hit."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Bonus Proficiencies",
+										"entries": [
+											"When you choose this archetype at 3rd level, you gain proficiency with the disguise kit and the poisoner's kit."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Infiltration Expertise",
+										"entries": [
+											"Starting at 9th level, you can unfailingly create false identities for yourself. You must spend seven days and 25 gp to establish the history, profession, and affiliations for an identity. You can't establish an identity that belongs to someone else. For example, you might acquire appropriate clothing, letters of introduction, and official-looking certification to establish yourself as a member of a trading house from a remote city so you can insinuate yourself into the company of other wealthy merchants.",
+											"Thereafter, if you adopt the new identity as a disguise, other creatures believe you to be that person until given an obvious reason not to."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Impostor",
+										"entries": [
+											"At 13th level, you gain the ability to unerringly mimic another person's speech, writing, and behavior. You must spend at least three hours studying these three components of the person's behavior, listening to speech, examining handwriting, and observing mannerism.",
+											"Your ruse is indiscernible to the casual observer. If a wary creature suspects something is amiss, you have advantage on any Charisma (Deception) check you make to avoid detection."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Death Strike",
+										"entries": [
+											"Starting at 17th level, you become a master of instant death. When you attack and hit a creature that is surprised, it must make a Constitution saving throw (DC 8 + your Dexterity modifier + your proficiency bonus). On a failed save, double the damage of your attack against the creature."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "PHB",
+					"shortName": "Assassin"
+				},
+				{
+					"name": "Mastermind",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Mastermind",
+								"entries": [
+									"Your focus is on people and on the influence and secrets they have. Many spies, courtiers, and schemers follow this archetype, leading lives of intrigue. Words are your weapons as often as knives or poison, and secrets and favors are some of your favorite treasures.",
+									{
+										"type": "entries",
+										"name": "Master of Intrigue",
+										"entries": [
+											"When you choose this archetype at 3rd level, you gain proficiency with the disguise kit, the forgery kit, and one gaming set of your choice. You also learn two languages of your choice.",
+											"Additionally, you can unerringly mimic the speech patterns and accent of a creature that you hear speak for at least 1 minute, allowing you to pass yourself off as a native speaker of a particular land, provided that you know the language."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Master of Tactics",
+										"entries": [
+											"Starting at 3rd level, you can use the Help action as a bonus action. Additionally, when you use the Help action to aid an ally in attacking a creature, the target of that attack can be within 30 feet of you, rather than 5 feet of you, if the target can see or hear you."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Insightful Manipulator",
+										"entries": [
+											"Starting at 9th level, if you spend at least 1 minute observing or interacting with another creature outside combat, you can learn certain information about its capabilities compared to your own. The DM tells you if the creature is your equal, superior, or inferior in regard to two of the following characteristics of your choice:",
+											{
+												"type": "list",
+												"items": [
+													"Intelligence score",
+													"Wisdom score",
+													"Charisma score",
+													"Class levels (if any)"
+												]
+											},
+											"At the DM's option, you might also realize you know a piece of the creature's history or one of its personality traits, if it has any."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Misdirection",
+										"entries": [
+											"Beginning at 13th level, you can sometimes cause another creature to suffer an attack meant for you. When you are targeted by an attack while a creature within 5 feet of you is granting you cover against that attack, you can use your reaction to have the attack target that creature instead of you."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Soul of Deceit",
+										"entries": [
+											"Starting at 17th level, your thoughts can't be read by telepathy or other means, unless you allow it. You can present false thoughts by making a Charisma (Deception) check contested by the mind reader's Wisdom (Insight) check.",
+											"Additionally, no matter what you say, magic that would determine if you are telling the truth indicates you are being truthful, if you so choose, and you can't be compelled to tell the truth by magic."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "SCAG",
+					"shortName": "Mastermind"
+				},
+				{
+					"name": "Inquisitive (UA)",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Inquisitive",
+								"entries": [
+									"As an archetypal Inquisitive, you excel at rooting out secrets and unraveling mysteries. You rely on your sharp eye for details, but also on your finely honed ability to read the words and deeds of other creatures to determine their true intent. You excel at defeating creatures that hide among and prey upon ordinary folk, and your mastery of lore and your sharp eye make you well equipped to expose and end hidden evils.",
+									{
+										"type": "entries",
+										"name": "Ear for Deceit",
+										"entries": [
+											"When you choose this archetype at 3rd level, you develop a keen ear for picking out lies. Whenever you make a Wisdom (Insight) check to sense if a creature is lying, you use the total of your check or 8 + your Wisdom modifier, whichever is higher. If you are proficient in Insight, you add your proficiency bonus to the fixed result. If you chose Insight as a skill augmented by your Expertise feature, add double your proficiency bonus."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Eye for Detail",
+										"entries": [
+											"Starting at 3rd level, you can use the bonus action granted by your Cunning Action feature to make a Wisdom (Perception) check to spot a hidden creature or object, to make an Intelligence (Investigation) check to uncover and decipher clues, or to use Insightful Fighting."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Insightful Fighting",
+										"entries": [
+											"At 3rd level, you gain the ability to decipher an opponent's tactics and develop a counter to them. As an action (or as a bonus action using Eye for Detail), you make a Wisdom (Insight) check against a creature you can see that isn't {@condition incapacitated}, opposed by the target's Charisma (Deception) check. If you succeed, you can use Sneak Attack against that creature even if you do not have advantage against it or if no enemy of the target is within 5 feet of it. You can use Sneak Attack in this way even if you have disadvantage against the target.",
+											"This benefit lasts for 1 minute or until you successfully use Insightful Fighting against a different target."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Steady Eye",
+										"entries": [
+											"At 9th level, you gain advantage on any Wisdom (Perception) check made on your turn to find a hidden creature or object if you do not move during that turn. If you use this ability before moving, you cannot move or ready movement during your turn."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Unerring Eye",
+										"entries": [
+											"At 13th level, you gain the ability to detect magical deception. As an action, you sense the presence within 30 feet of you of illusions, shapechanger creatures not in their true form, and other magic designed to deceive the senses. Though you determine that an effect is attempting to trick you, you gain no special insight into what is hidden or its true nature."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Eye for Weakness",
+										"entries": [
+											"At 17th level, you learn to exploit a creature's weaknesses by carefully studying its tactics and movement. While your Insightful Fighting feature applies to a creature, your Sneak Attack damage against that creature increases by 2d6."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "UAGothicHeroes",
+					"shortName": "Inquisitive (UA)"
+				},
+				{
+					"name": "Swashbuckler",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Swashbuckler",
+								"entries": [
+									"You focus your training on the art of the blade, relying on speed, elegance, and charisma in equal parts. While other warriors are brutes clad in heavy armor, your method of fighting looks more like performance. Rakes, duelists, and pirates typically follow this archetype.",
+									"A swashbuckler excels in single combat, and can fight with two weapons while safely darting away from an opponent. Swashbucklers are especially talented at making difficult maneuvers to escape enemies or attack from an unexpected direction.",
+									{
+										"type": "entries",
+										"name": "Fancy Footwork",
+										"entries": [
+											"When you choose this archetype at 3rd level, you learn how to land a strike and then slip away without reprisal. During your turn, if you make a melee attack against a creature, that creature cannot make opportunity attacks against you for the rest of your turn."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Rakish Audacity",
+										"entries": [
+											"Starting at 3rd level, your unmistakable confidence propels you into battle. You add your Charisma modifier to your initiative rolls.",
+											"In addition, you don't need advantage on your attack roll to use your Sneak Attack if no creature other than your target is within 5 feet of you. All the other rules for the Sneak Attack class feature still apply to you."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Panache",
+										"entries": [
+											"At 9th level, your charm becomes extraordinarily beguiling. As an action, you can make a Charisma (Persuasion) check contested by a creature's Wisdom (Insight) check. The creature must be able to hear you, and the two of you must share a language.",
+											"If you succeed on the check and the creature is hostile to you, it has disadvantage on attack rolls against targets other than you and can't make opportunity attacks against targets other than you. This effect lasts for 1 minute, until one of your companions attacks the target or affects it with a spell, or until you and the target are more than 60 feet apart.",
+											"If you succeed on the check and the creature isn't hostile to you, it is {@condition charmed} by you for 1 minute. While {@condition charmed}, it regards you as a friendly acquaintance. This effect ends immediately if you or your companions do anything harmful to it."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Elegant Maneuver",
+										"entries": [
+											"Starting at 13th level, you can use a bonus action on your turn to gain advantage on the next Dexterity (Acrobatics) or Strength (Athletics) check you make during the same turn."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Master Duelist",
+										"entries": [
+											"Beginning at 17th level, your mastery of the blade lets you turn failure to success in combat. If you miss with an attack roll, you can choose to roll it again with advantage. Once you do so, you can't use this feature again until you finish a short or long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "SCAG",
+					"shortName": "Swashbuckler"
+				},
+				{
+					"name": "Thief",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Thief",
+								"entries": [
+									"You hone your skills in the larcenous arts. Burglars, bandits, cutpurses, and other criminals typically follow this archetype, but so do rogues who prefer to think of themselves as professional treasure seekers, explorers, delvers, and investigators. In addition to improving your agility and stealth, you learn skills useful for delving into ancient ruins, reading unfamiliar languages, and using magic items you normally couldn't employ.",
+									{
+										"type": "entries",
+										"name": "Fast Hands",
+										"entries": [
+											"Starting at 3rd level, you can use the bonus action granted by your Cunning Action to make a Dexterity (Sleight of Hand) check, use your thieves' tools to disarm a trap or open a lock, or take the Use an Object action."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Second-Story Work",
+										"entries": [
+											"When you choose this archetype at 3rd level, you gain the ability to climb faster than normal; climbing no longer costs you extra movement.",
+											"In addition, when you make a running jump, the distance you cover increases by a number of feet equal to your Dexterity modifier."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Supreme Sneak",
+										"entries": [
+											"Starting at 9th level, you have advantage on a Dexterity (Stealth) check if you move no more than half your speed on the same turn."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Use Magic Device",
+										"entries": [
+											"By 13th level, you have learned enough about the workings of magic that you can improvise the use of items even when they are not intended for you. You ignore all class, race, and level requirements on the use of magic items."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Thief's Reflexes",
+										"entries": [
+											"When you reach 17th level, you have become adept at laying ambushes and quickly escaping danger. You can take two turns during the first round of any combat. You take your first turn at your normal initiative and your second turn at your initiative minus 10. You can't use this feature when you are surprised."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "PHB",
+					"shortName": "Thief"
+				},
+				{
+					"name": "Scout (UA)",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Scout",
+								"entries": [
+									"You are skilled in woodcraft and stealth, allowing you to range ahead of your companions during expeditions. Rogues who embrace this archetype are at home in the wilderness and among barbarians and fighters, as they serve as the eyes and ears of war bands across the world. Compared to other rogues, you are skilled at surviving in the wilds.",
+									{
+										"type": "entries",
+										"name": "Survivalist",
+										"entries": [
+											"When you choose this archetype at 3rd level, you gain proficiency in the Nature and Survival skills. Your proficiency bonus is doubled for any ability check you make that uses either of those proficiencies."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Skirmisher",
+										"entries": [
+											"Starting at 3rd level, you are difficult to pin down during a fight. You can move up to half your speed as a reaction when an enemy ends its turn within 5 feet of you. This movement doesn't provoke opportunity attacks."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Superior Mobility",
+										"entries": [
+											"At 9th level, your walking speed increases by 10 feet. If you have a climbing or swimming speed, this increase applies to that speed as well."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Ambush Master",
+										"entries": [
+											"Starting at 13th level, you excel at leading ambushes. If any of your foes are surprised, you can use a bonus action on your turn in the first round of the combat to grant each ally who can see you a +5 bonus to initiative that lasts until the combat ends. If the initiative bonus would increase an ally's initiative above yours, the ally's initiative instead equals your initiative.",
+											"Each of the allies also receives a 10-foot increase to speed that lasts until the end of the ally's next turn."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Sudden Strike",
+										"entries": [
+											"Starting at 17th level, you can strike with deadly speed. If you take the Attack action on your turn, you can make one additional attack as a bonus action. This attack can benefit from your Sneak Attack even if you have already used it this turn, but only if the attack is the only one you make against the target this turn."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "UARangerAndRogue",
+					"shortName": "Scout (UA)"
+				},
+				{
+					"name": "Inquisitive",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Inquisitive",
+								"entries": [
+									"As an archetypal Inquisitive, you excel at rooting out secrets and unraveling mysteries. You rely on your sharp eye for detail, but also on your finely honed ability to read the words and deeds of other creatures to determine their true intent. You excel at defeating creatures that hide among and prey upon ordinary folk, and your mastery of lore and your keen deductions make you well equipped to expose and end hidden evils.",
+									{
+										"type": "entries",
+										"name": "Ear for Deceit",
+										"entries": [
+											"When you choose this archetype at 3rd level, you develop a talent for picking out lies. Whenever you make a Wisdom (Insight) check to determine whether a creature is lying, treat a roll of 7 or lower on the d20 as an 8."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Eye for Detail",
+										"entries": [
+											"Starting at 3rd level, you can use a bonus action to make a Wisdom (Perception) check to spot a hidden creature or object or to make an Intelligence (Investigation) check to uncover or decipher clues."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Insightful Fighting",
+										"entries": [
+											"At 3rd level, you gain the ability to decipher an opponent's tactics and develop a counter to them. As a bonus action, you can make a Wisdom (Insight) check against a creature you can see that isn't {@condition incapacitated}, contested by the target's Charisma (Deception) check. If you succeed, you can use your Sneak Attack against that target even if you don't have advantage on the attack roll, but not if you have disadvantage on it.",
+											"This benefit lasts for 1 minute or until you successfully use this feature against a different target."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Steady Eye",
+										"entries": [
+											"Starting at 9th level, you have advantage on any Wisdom (Perception) or Intelligence (Investigation) check if you move no more than half your speed on the same turn."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Unerring Eye",
+										"entries": [
+											"Beginning at 13th level, your senses are almost impossible to foil. As an action, you sense the presence of illusions, shapechangers not in their original form, and other magic designed to deceive the senses within 30 feet of you, provided you aren't {@condition blinded} or {@condition deafened}. You sense that an effect is attempting to trick you, but you gain no insight into what is hidden or into its true nature.",
+											"You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses of it when you finish a long rest."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Eye for Weakness",
+										"entries": [
+											"At 17th level, you learn to exploit a creature's weaknesses by carefully studying its tactics and movement. While your Insightful Fighting feature applies to a creature, your Sneak Attack damage against that creature increases by 3d6."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "XGE",
+					"shortName": "Inquisitive"
+				},
+				{
+					"name": "Mastermind",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Mastermind",
+								"entries": [
+									"Your focus is on people and on the influence and secrets they have. Many spies, courtiers, and schemers follow this archetype, leading lives of intrigue. Words are your weapons as often as knives or poison, and secrets and favors are some of your favorite treasures.",
+									{
+										"type": "entries",
+										"name": "Master of Intrigue",
+										"entries": [
+											"When you choose this archetype at 3rd level, you gain proficiency with the disguise kit, the forgery kit, and one gaming set of your choice. You also learn two languages of your choice.",
+											"Additionally, you can unerringly mimic the speech patterns and accent of a creature that you hear speak for at least 1 minute, enabling you to pass yourself off as a native speaker of a particular land, provided that you know the language."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Master of Tactics",
+										"entries": [
+											"Starting at 3rd level, you can use the Help action as a bonus action. Additionally, when you use the Help action to aid an ally in attacking a creature, the target of that attack can be within 30 feet of you, rather than within 5 feet of you, if the target can see or hear you."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Insightful Manipulator",
+										"entries": [
+											"Starting at 9th level, if you spend at least 1 minute observing or interacting with another creature outside combat, you can learn certain information about its capabilities compared to your own. The DM tells you if the creature is your equal, superior, or inferior in regard to two of the following characteristics of your choice:",
+											{
+												"type": "list",
+												"items": [
+													"Intelligence score",
+													"Wisdom score",
+													"Charisma score",
+													"Class levels (if any)"
+												]
+											},
+											"At the DM's option, you might also realize you know a piece of the creature's history or one of its personality traits, if it has any."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Misdirection",
+										"entries": [
+											"Beginning at 13th level, you can sometimes cause another creature to suffer an attack meant for you. When you are targeted by an attack while a creature within 5 feet of you is granting you cover against that attack, you can use your reaction to have the attack target that creature instead of you."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Soul of Deceit",
+										"entries": [
+											"Starting at 17th level, your thoughts can't be read by telepathy or other means, unless you allow it. You can present false thoughts by succeeding on a Charisma (Deception) check contested by the mind reader's Wisdom (Insight) check.",
+											"Additionally, no matter what you say, magic that would determine if you are telling the truth indicates you are being truthful if you so choose, and you can't be compelled to tell the truth by magic."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "XGE",
+					"shortName": "Mastermind"
+				},
+				{
+					"name": "Scout",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Scout",
+								"entries": [
+									"You are skilled in stealth and surviving far from the streets of a city, allowing you to scout ahead of your companions during expeditions. Rogues who embrace this archetype are at home in the wilderness and among barbarians and rangers, and many Scouts serve as the eyes and ears of war bands. Ambusher, spy, bounty hunter\u2014these are just a few of the roles that Scouts assume as they range the world.",
+									{
+										"type": "entries",
+										"name": "Skirmisher",
+										"entries": [
+											"Starting at 3rd level, you are difficult to pin down during a fight. You can move up to half your speed as a reaction when an enemy ends its turn within 5 feet of you. This movement doesn't provoke opportunity attacks."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Survivalist",
+										"entries": [
+											"When you choose this archetype at 3rd level, you gain proficiency in the Nature and Survival skills if you don't already have it. Your proficiency bonus is doubled for any ability check you make that uses either of those proficiencies."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Superior Mobility",
+										"entries": [
+											"At 9th level, your walking speed increases by 10 feet. If you have a climbing or swimming speed, this increase applies to that speed as well."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Ambush Master",
+										"entries": [
+											"Starting at 13th level, you excel at leading ambushes and acting first in a fight.",
+											"You have advantage on initiative rolls. In addition, the first creature you hit during the first round of a combat becomes easier for you and others to strike; attack rolls against that target have advantage until the start of your next turn."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Sudden Strike",
+										"entries": [
+											"Starting at 17th level, you can strike with deadly speed. If you take the Attack action on your turn, you can make one additional attack as a bonus action. This attack can benefit from your Sneak Attack even if you have already used it this turn, but you can't use your Sneak Attack against the same target more than once in a turn."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "XGE",
+					"shortName": "Scout"
+				},
+				{
+					"name": "Swashbuckler",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Swashbuckler",
+								"entries": [
+									"You focus your training on the art of the blade, relying on speed, elegance, and charm in equal parts. While some warriors are brutes clad in heavy armor, your method of fighting looks almost like a performance. Duelists and pirates typically belong to this archetype.",
+									"A Swashbuckler excels in single combat, and can fight with two weapons while safely darting away from an opponent.",
+									{
+										"type": "entries",
+										"name": "Fancy Footwork",
+										"entries": [
+											"When you choose this archetype at 3rd level, you learn how to land a strike and then slip away without reprisal. During your turn, if you make a melee attack against a creature, that creature can't make opportunity attacks against you for the rest of your turn."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Rakish Audacity",
+										"entries": [
+											"Starting at 3rd level, your confidence propels you into battle. You can give yourself a bonus to your initiative rolls equal to your Charisma modifier.",
+											"You also gain an additional way to use your Sneak Attack; you don't need advantage on the attack roll to use your Sneak Attack against a creature if you are within 5 feet of it, no other creatures are within 5 feet of you, and you don't have disadvantage on the attack roll. All the other rules for Sneak Attack still apply to you."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Panache",
+										"entries": [
+											"At 9th level, your charm becomes extraordinarily beguiling. As an action, you can make a Charisma (Persuasion) check contested by a creature's Wisdom (Insight) check. The creature must be able to hear you, and the two of you must share a language.",
+											"If you succeed on the check and the creature is hostile to you, it has disadvantage on attack rolls against targets other than you and can't make opportunity attacks against targets other than you. This effect lasts for 1 minute, until one of your companions attacks the target or affects it with a spell, or until you and the target are more than 60 feet apart.",
+											"If you succeed on the check and the creature isn't hostile to you, it is {@condition charmed} by you for 1 minute. While {@condition charmed}, it regards you as a friendly acquaintance. This effect ends immediately if you or your companions do anything harmful to it."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Elegant Maneuver",
+										"entries": [
+											"Starting at 13th level, you can use a bonus action on your turn to gain advantage on the next Dexterity (Acrobatics) or Strength (Athletics) check you make during the same turn."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Master Duelist",
+										"entries": [
+											"Beginning at 17th level, your mastery of the blade lets you turn failure into success in combat. If you miss with an attack roll, you can roll it again with advantage. Once you do so, you can't use this feature again until you finish a short or long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "XGE",
+					"shortName": "Swashbuckler"
+				},
+				{
+					"name": "Acrobat (Livestream)",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Acrobat",
+								"entries": [
+									"{@i Transcribed on 2018-04-07. [Square bracketed text] denotes transcriber's annotations.}",
+									"Your archetype grants you features at 3rd level and then again at 9th, 13th, and 17th level.",
+									{
+										"type": "entries",
+										"name": "Aerial Artistry",
+										"entries": [
+											"Starting at 3rd level, you gain the ability {@i [to]} move with incredible speed, precision, and power, Few obstacles can prevent you from reaching your destination.",
+											"When you move, you can instead take two short movements by flying. Each movement is half your speed, and you must end each one on a solid object or {@i [the]} ground. If you do not, you fall and your movement ends."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Fearless Aerialist",
+										"entries": [
+											"Starting at 9th level, you no longer take damage from falling."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Unchained Agility",
+										"entries": [
+											"At 13th level, your agility, speed and flexibility allow you to escape from almost any danger. You gain the benefits of {@spell freedom of movement}."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Aerial Mastery",
+										"entries": [
+											"At 17th level your Aerial Artistry ability improves. When you move you can instead take four short movements by flying. {@i [Each short movement is still limited to half your speed, and between each movement you must still touch a solid object or the ground. If you do not, you fall and your movement ends.]}"
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "Stream",
+					"shortName": "Acrobat (Stream)"
+				}
+			],
+			"fluff": [
+				{
+					"type": "quote",
+					"entries": [
+						"People forget that the entire point of venturing down into a dusty tomb is to bring back the prizes hidden away there. Fighting is for fools. Dead men can't spend their fortunes."
+					],
+					"by": "Barnabas Bladecutter"
+				},
+				"When brute force won't get the job done, or when magic isn't available or appropriate, the rogue rises to the fore. With skills tied to stealth, subterfuge, and trickery, rogues can get into and out of trouble in ways that few other characters can emulate.",
+				"Some rogues who turn to adventuring are former criminals who have decided that dodging monsters is preferable to remaining one step ahead of the law. Others are professional killers in search of a profitable application of their talents between contracts. Some simply love the thrill of overcoming any challenge that stands in their way.",
+				"On adventures, a rogue is likely to mix an outwardly cautious approach\u2014few rogues enjoy combat\u2014with a ravenous hunger for loot. Most of the time, in a rogue's mind, taking up arms against a creature is not about killing the creature but about becoming the new owner of its treasure.",
+				"The following sections explore certain facets of what it means to be a rogue, which you can use to add depth to your character.",
+				{
+					"type": "entries",
+					"name": "Guilty Pleasures",
+					"entries": [
+						"Most of what rogues do revolves around obtaining treasure and preventing others from doing the same. Little gets in the way of attaining those goals, except that many rogues are enticed away from that path by a compulsion that clouds their thinking\u2014an irresistible need that must be satisfied, even if doing so is risky.",
+						"A rogue's guilty pleasure could be the acquisition of a physical item, something to be experienced, or a way of conducting oneself at certain times. One rogue might not be able to pass up any loot made of silver, for instance, even if said loot is hanging around the neck of a castle guard. Another one can't go through a day in the city without lifting a purse or two, just to keep in practice.",
+						"What's the one form of temptation that your rogue character can't resist when the opportunity presents itself, even if giving into it might mean trouble for you and your companions?",
+						{
+							"type": "table",
+							"caption": "Guilty Pleasures",
+							"colLabels": [
+								"{@dice d6}",
+								"Pleasure"
+							],
+							"colStyles": [
+								"col-xs-1 text-align-center",
+								"col-xs-11"
+							],
+							"rows": [
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 1
+										}
+									},
+									"Large gems"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 2
+										}
+									},
+									"A smile from a pretty face"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 3
+										}
+									},
+									"A new ring for your finger"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 4
+										}
+									},
+									"The chance to deflate someone's ego"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 5
+										}
+									},
+									"The finest food and drink"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 6
+										}
+									},
+									"Adding to your collection of exotic coins"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Adversaries",
+					"entries": [
+						"Naturally, those who enforce the law are bound to come up against those who break it, and it's the rare rogue who isn't featured on at least one wanted poster. Beyond that, it's in the nature of their profession that rogues often come into contact with criminal elements, whether out of choice or necessity. Some of those people can be adversaries too, and they're likely to be harder to deal with than the average member of the city watch.",
+						"If your character's backstory doesn't already include a personage of this sort, you could work with your DM to come up with a reason why an adversary has appeared in your life. Perhaps you've been the subject of scrutiny for a while from someone who wants to use you for nefarious purposes and has just now become known to you. Such an incident could be the basis for an upcoming adventure.",
+						"Does your rogue character have an adversary who also happens to be a criminal? If so, how is this relationship affecting your life?",
+						{
+							"type": "table",
+							"caption": "Adversaries",
+							"colLabels": [
+								"{@dice d6}",
+								"Adversary"
+							],
+							"colStyles": [
+								"col-xs-1 text-align-center",
+								"col-xs-11"
+							],
+							"rows": [
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 1
+										}
+									},
+									"The pirate captain on whose ship you once served; what you call moving on, the captain calls mutiny"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 2
+										}
+									},
+									"A master spy to whom you unwittingly fed bad information, which led to the assassination of the wrong target"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 3
+										}
+									},
+									"The master of the local thieves' guild, who wants you to join the organization or leave town"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 4
+										}
+									},
+									"An art collector who uses illegal means to acquire masterpieces"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 5
+										}
+									},
+									"A fence who uses you as a messenger to set up illicit meetings"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 6
+										}
+									},
+									"The proprietor of an illegal pit fighting arena where you once took bets"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Benefactor",
+					"entries": [
+						"Few rogues make it far in life before needing someone's help, which means thereafter owing that benefactor a significant debt.",
+						"If your character's backstory doesn't already include a personage of this sort, you could work with your DM to determine why a benefactor has appeared in your life. Perhaps you benefited from something your benefactor did for you without realizing who was responsible, and that person has now just become known to you. Who helped you in the past, whether or not you knew it at the time, and what do you owe that person as recompense?",
+						{
+							"type": "table",
+							"caption": "Benefactors",
+							"colLabels": [
+								"{@dice d6}",
+								"Benefactor"
+							],
+							"colStyles": [
+								"col-xs-1 text-align-center",
+								"col-xs-11"
+							],
+							"rows": [
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 1
+										}
+									},
+									"A smuggler kept you from getting caught but lost a valuable shipment in doing so. Now you owe that person an equally valuable favor."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 2
+										}
+									},
+									"The Beggar King has hidden you from your pursuers many times, in return for future considerations."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 3
+										}
+									},
+									"A magistrate once kept you out of jail in return for information on a powerful crime lord."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 4
+										}
+									},
+									"Your parents used their savings to bail you out of trouble in your younger days and are now destitute."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 5
+										}
+									},
+									"A dragon didn't eat you when it had a chance, and in return you promised to set aside choice pieces of treasure for it."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 6
+										}
+									},
+									"A druid once helped you out of a tight spot; now any random animal you see could be that benefactor, perhaps come to claim a return favor."
+								]
+							]
+						}
+					]
+				}
+			],
+			"fluffPage": 44
+		}
+	]
+}

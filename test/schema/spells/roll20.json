@@ -1,5 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.1",
 	"title": "SpellMetaArray",
 	"type": "object",
 
@@ -65,9 +66,18 @@
 						},
 						"Secondary Higher Spell Slot Dice":{
 							"type": "string"
+						},
+						"Secondary Damage Progression": {
+							"type": "string"
+						},
+						"Secondary Add Casting Modifier": {
+							"type": "string"
 						}
 					},
 					"additionalProperties": false
+				},
+				"shapedData": {
+					"type": "object"
 				}
 			},
 			"required": ["name", "source", "data"],

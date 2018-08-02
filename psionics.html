@@ -13,8 +13,6 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<style id="dynamicStyle"></style> <!-- populated with JS -->
-
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
@@ -54,40 +52,42 @@
 		</div>
 
 		<div id="contentwrapper" class="view-col">
+			<div id="sublistcontainer">
+				<div id="sublistsort" class="sortlabel btn-group">
+					<button class="col-xs-6 sort btn btn-default btn-xs" data-sort="name">Name</button>
+					<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="type">Type</button>
+					<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="order">Order</button>
+				</div>
+				<ul class="list subpsionics">
+					<!-- populate with JS -->
+				</ul>
+			</div>
+
+			<div class="wrp-stat-tab">
+				<div id="tabs-right"></div>
+			</div>
+
 			<table id="pagecontent" class="stats">
-				<tr>
-					<th class="border" colspan="6"></th>
-				</tr>
-				<tr>
-					<th class="name" colspan="6">Name</th>
-				</tr>
-				<tr>
-					<td id="orderAndType" colspan="6" class="psi-order-and-talent"><span id="order"></span> <span
-							id="type"></span></td>
-				</tr>
-				<tr>
-					<td class="divider" colspan="6">
-						<div></div>
-					</td>
-				</tr>
-				<tr class="text">
-					<td colspan="6" id="text"></td>
-				</tr>
-				<tr>
-					<th class="border" colspan="6"></th>
-				</tr>
+				<tr><th class="border" colspan="6"></th></tr>
+				<tr><td colspan="6" class="initial-message">Select a psionic from the list to view it here</td></tr>
+				<tr><th class="border" colspan="6"></th></tr>
 			</table>
+			<br>
+			<p class="text-align-center">
+				<button class="btn btn-default btn-sm btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+			</p>
 		</div>
 	</div>
 </div>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/history.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/psionics.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
-<script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>

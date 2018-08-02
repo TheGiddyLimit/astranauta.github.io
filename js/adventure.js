@@ -2,8 +2,6 @@
 
 const CONTENTS_URL = "data/adventures.json";
 
-let adventures;
-
 window.onload = function load () {
 	BookUtil.renderArea = $(`#pagecontent`);
 
@@ -12,12 +10,13 @@ window.onload = function load () {
 	else BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message">Select an adventure to begin</td></tr>`);
 	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
-	DataUtil.loadJSON(CONTENTS_URL, onJsonLoad);
+	DataUtil.loadJSON(CONTENTS_URL).then(onJsonLoad);
 };
 
+let list;
+let adventures = [];
+let adI = 0;
 function onJsonLoad (data) {
-	adventures = data.adventure;
-
 	const adventuresList = $("ul.contents");
 	adventuresList.append($(`
 		<li>
@@ -27,34 +26,51 @@ function onJsonLoad (data) {
 		</li>
 	`));
 
+	list = new List("listcontainer", {
+		valueNames: ['name'],
+		listClass: "contents"
+	});
+
+	BookUtil.baseDataUrl = "data/adventure/adventure-";
+	BookUtil.homebrewIndex = "adventure";
+	BookUtil.homebrewData = "adventureData";
+
+	addAdventures(data);
+
+	window.onhashchange = BookUtil.booksHashChange;
+	BrewUtil.pAddBrewData()
+		.then(homebrew => {
+			addAdventures(homebrew);
+			BookUtil.addHeaderHandles(true);
+		})
+		.catch(BrewUtil.purgeBrew)
+		.then(() => {
+			if (window.location.hash.length) {
+				BookUtil.booksHashChange();
+			} else {
+				$(`.contents-item`).show();
+			}
+		});
+}
+
+function addAdventures (data) {
+	if (!data.adventure || !data.adventure.length) return;
+
+	adventures = adventures.concat(data.adventure);
+	BookUtil.bookIndex = adventures;
+
+	const adventuresList = $("ul.contents");
 	let tempString = "";
-	for (let i = 0; i < adventures.length; i++) {
-		const adv = adventures[i];
+	for (; adI < adventures.length; adI++) {
+		const adv = adventures[adI];
 
 		tempString +=
 			`<li class="contents-item" data-bookid="${UrlUtil.encodeForHash(adv.id)}" style="display: none;">
-				<a id="${i}" href='#${adv.id},0' title='${adv.name}'>
+				<a id="${adI}" href="#${adv.id},0" title="${adv.name}">
 					<span class='name'>${adv.name}</span>
 				</a>
 				${BookUtil.makeContentsBlock({book: adv, addOnclick: true, defaultHeadersHidden: true})}
 			</li>`;
 	}
 	adventuresList.append(tempString);
-
-	BookUtil.addHeaderHandles(true);
-
-	const list = new List("listcontainer", {
-		valueNames: ['name'],
-		listClass: "contents"
-	});
-
-	BookUtil.baseDataUrl = "data/adventure/adventure-";
-	BookUtil.bookIndex = adventures;
-
-	window.onhashchange = BookUtil.booksHashChange;
-	if (window.location.hash.length) {
-		BookUtil.booksHashChange();
-	} else {
-		$(`.contents-item`).show();
-	}
 }

@@ -13,8 +13,6 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<style id="dynamicStyle"></style> <!-- populated with JS -->
-
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
@@ -51,33 +49,40 @@
 		</div>
 
 		<div id="contentwrapper" class="view-col">
+			<div id="sublistcontainer">
+				<div id="sublistsort" class="sortlabel btn-group">
+					<button class="col-xs-12 sort btn btn-default btn-xs" data-sort="name">Name</button>
+				</div>
+				<ul class="list subrewards">
+					<!-- populate with JS -->
+				</ul>
+			</div>
+
+			<div class="wrp-stat-tab">
+				<div id="tabs-right"></div>
+			</div>
+
 			<table id="pagecontent" class="stats">
-				<tr>
-					<th class="border" colspan="6"></th>
-				</tr>
-				<tr>
-					<th class="name" colspan="6">Name</th>
-				</tr>
-				<tr id="text">
-					<td class="divider" colspan="6">
-						<div></div>
-					</td>
-				</tr>
-				<tr>
-					<th class="border" colspan="6"></th>
-				</tr>
+				<tr><th class="border" colspan="6"></th></tr>
+				<tr><td colspan="6" class="initial-message">Select an item from the list to view it here</td></tr>
+				<tr><th class="border" colspan="6"></th></tr>
 			</table>
+			<br>
+			<p class="text-align-center">
+				<button class="btn btn-default btn-sm btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+			</p>
 		</div>
 	</div>
 </div>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/history.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/rewards.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
-<script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>

@@ -13,8 +13,6 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<style id="dynamicStyle"></style> <!-- populated with JS -->
-
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
@@ -43,20 +41,12 @@
 					</span>
 			</div>
 			<div id="filtertools" class="sortlabel btn-group">
-				<button class="col-xs-3 col-xs-3-5 sort btn btn-default btn-xs" type="button" data-sort="name">Name
-				</button>
-				<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source">
-					Source
-				</button>
-				<button class="col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" type="button" data-sort="level">Level
-				</button>
-				<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="time">Time
-				</button>
-				<button class="col-xs-1 col-xs-1-2 sort btn btn-default btn-xs" type="button" data-sort="school">
-					School
-				</button>
-				<button class="col-xs-2 col-xs-2-4 sort btn btn-default btn-xs" type="button" data-sort="range">Range
-				</button>
+				<button class="col-xs-3 col-xs-3-5 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+				<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+				<button class="col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" type="button" data-sort="level">Level</button>
+				<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="time">Time</button>
+				<button class="col-xs-1 col-xs-1-2 sort btn btn-default btn-xs" type="button" data-sort="school">School</button>
+				<button class="col-xs-2 col-xs-2-4 sort btn btn-default btn-xs" type="button" data-sort="range">Range</button>
 			</div>
 
 			<ul class="list spells">
@@ -65,15 +55,41 @@
 		</div>
 
 		<div id="contentwrapper" class="view-col" style="flex: 5">
+			<div id="sublistcontainer">
+				<div id="sublistsort" class="sortlabel btn-group">
+					<button class="col-xs-3 col-xs-3-9 sort btn btn-default btn-xs" data-sort="name">Name</button>
+					<button class="col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" data-sort="level">Level</button>
+					<button class="col-xs-1 col-xs-1-8 sort btn btn-default btn-xs" data-sort="time">Time</button>
+					<button class="col-xs-1 col-xs-1-2 sort btn btn-default btn-xs" data-sort="school">School</button>
+					<button class="col-xs-3 col-xs-3-6 sort btn btn-default btn-xs" data-sort="range">Range</button>
+				</div>
+				<ul class="list subspells">
+					<!-- populate with JS -->
+				</ul>
+			</div>
+
+			<div class="wrp-stat-tab">
+				<div id="tabs-right"></div>
+			</div>
+
 			<table id="pagecontent" class="stats">
-				<!-- populate with JS -->
+				<tr><th class="border" colspan="6"></th></tr>
+				<tr><td colspan="6" class="initial-message">Select a spell from the list to view it here</td></tr>
+				<tr><th class="border" colspan="6"></th></tr>
 			</table>
+			<br>
+			<p class="text-align-center">
+				<button class="btn btn-default btn-sm" id="btn-spellbook">Book View</button>
+				<button class="btn btn-default btn-sm" id="btn-show-table" title="View and Download Spells in Tabular Format">Table View</button>
+				<button class="btn btn-default btn-sm btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+			</p>
 		</div>
 	</div>
 </div>    <!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="lib/jquery.js"></script>
-<script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/history.js"></script>

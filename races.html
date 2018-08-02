@@ -13,8 +13,6 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<style id="dynamicStyle"></style> <!-- populated with JS -->
-
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
@@ -52,42 +50,42 @@
 			<ul class="list races"></ul>
 		</div>
 		<div id="contentwrapper" class="view-col">
+			<div id="sublistcontainer">
+				<div id="sublistsort" class="sortlabel btn-group">
+					<button class="col-xs-5 sort btn btn-default btn-xs" data-sort="name">Name</button>
+					<button class="col-xs-5 sort btn btn-default btn-xs" data-sort="ability">Ability</button>
+					<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="size">Size</button>
+				</div>
+				<ul class="list subraces">
+					<!-- populate with JS -->
+				</ul>
+			</div>
+
+			<div class="wrp-stat-tab" id="stat-tabs">
+				<div id="tabs-right"></div>
+			</div>
+
 			<table id="pagecontent" class="stats">
-				<tr>
-					<th class="border" colspan="6"></th>
-				</tr>
-				<tr>
-					<th class="name" colspan="6">Name</th>
-				</tr>
-				<tr>
-					<td id="ability" colspan="6">Ability Scores: <span>+1 Dex</span></td>
-				</tr>
-				<tr>
-					<td id="size" colspan="6">Size: <span>Medium</span></td>
-				</tr>
-				<tr>
-					<td id="speed" colspan="6">Speed: <span>30 ft.</span></td>
-				</tr>
-				<tr id="traits">
-					<td class="divider" colspan="6">
-						<div></div>
-					</td>
-				</tr>
-				<tr>
-					<th class="border" colspan="6"></th>
-				</tr>
+				<tr><th class="border" colspan="6"></th></tr>
+				<tr><td colspan="6" class="initial-message">Select a race from the list to view it here</td></tr>
+				<tr><th class="border" colspan="6"></th></tr>
 			</table>
+			<br>
+			<p class="text-align-center">
+				<button class="btn btn-default btn-sm btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+			</p>
 		</div>
 	</div>
 </div>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/history.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/races.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
-<script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>

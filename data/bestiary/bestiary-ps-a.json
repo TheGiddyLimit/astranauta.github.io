@@ -6,10 +6,25 @@
 			"name": "Criosphinx",
 			"size": "L",
 			"type": "monstrosity",
-			"alignment": "neutral",
-			"ac": "18 (natural armor)",
-			"hp": "228 (24d10+96)",
-			"speed": "30 ft., fly 60 ft.",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 228,
+				"formula": "24d10+96"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 60
+			},
 			"str": 18,
 			"dex": 15,
 			"con": 18,
@@ -22,9 +37,23 @@
 				"perception": "+8",
 				"religion": "+8"
 			},
-			"resist": "bludgeoning, piercing, and slashing from",
-			"immune": "psychic",
-			"conditionImmune": "charmed, frightened",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from"
+				}
+			],
+			"immune": [
+				"psychic"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 18,
 			"languages": "understands Common, Sphinx",
@@ -53,13 +82,13 @@
 				{
 					"name": "Ram",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 17 (3d8+4) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one target. Hit: 17 ({@dice 3d8+4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) slashing damage."
+						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) slashing damage."
 					]
 				}
 			],
@@ -76,6 +105,12 @@
 						"The sphinx magically teleports, along with any equipment it is wearing or carrying, up to 120 feet to an unoccupied space it can see."
 					]
 				}
+			],
+			"traitTags": [
+				"Magic Weapons"
+			],
+			"actionTags": [
+				"Multiattack"
 			]
 		},
 		{
@@ -84,10 +119,25 @@
 			"name": "Manticore, Heart-Piercer",
 			"size": "L",
 			"type": "monstrosity",
-			"alignment": "chaotic evil",
-			"ac": "15 (natural armor)",
-			"hp": "136 (16d10+48)",
-			"speed": "50 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 136,
+				"formula": "16d10+48"
+			},
+			"speed": {
+				"walk": 50
+			},
 			"str": 19,
 			"dex": 14,
 			"con": 16,
@@ -100,7 +150,6 @@
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
 			"cr": "5",
-			"trait": [],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -111,21 +160,24 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) piercing damage."
+						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) slashing damage."
+						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) slashing damage."
 					]
 				},
 				{
 					"name": "Stinger",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 11 (2d6+4) piercing damage. The target must make a DC 14 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one."
+						"Melee Weapon Attack: {@hit 7} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage. The target must make a DC 14 Constitution saving throw, taking 24 ({@dice 7d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				}
+			],
+			"actionTags": [
+				"Multiattack"
 			]
 		},
 		{
@@ -134,10 +186,19 @@
 			"name": "Serpopard",
 			"size": "L",
 			"type": "beast",
-			"alignment": "unaligned",
-			"ac": "12",
-			"hp": "52 (7d10+14)",
-			"speed": "40 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 52,
+				"formula": "7d10+14"
+			},
+			"speed": {
+				"walk": 40
+			},
 			"str": 18,
 			"dex": 14,
 			"con": 15,
@@ -168,9 +229,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 9 (1d10+4) piercing damage, and the target must make a DC 14 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one."
+						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage, and the target must make a DC 14 Constitution saving throw, taking 10 ({@dice 3d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				}
+			],
+			"traitTags": [
+				"Keen Senses",
+				"Pounce"
 			]
 		}
 	]

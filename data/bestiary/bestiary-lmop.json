@@ -5,19 +5,35 @@
 			"size": "M",
 			"type": "undead",
 			"source": "LMoP",
-			"alignment": "neutral evil",
-			"ac": "8",
-			"hp": "22 (3d8+9)",
-			"speed": "20 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				8
+			],
+			"hp": {
+				"average": 22,
+				"formula": "3d8+9"
+			},
+			"speed": {
+				"walk": 20
+			},
 			"str": 13,
 			"dex": 6,
 			"con": 16,
 			"int": 3,
 			"wis": 6,
 			"cha": 5,
-			"save": "Wis +0",
-			"immune": "poison",
-			"conditionImmune": "poisoned",
+			"save": {
+				"wis": "+0"
+			},
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 8,
 			"languages": "understands all languages it spoke in life but can't speak",
@@ -40,14 +56,18 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage."
 					]
 				}
 			],
-			"page": 31
+			"page": 31,
+			"traitTags": [
+				"Undead Fortitude"
+			]
 		},
 		{
 			"name": "Evil Mage",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -56,17 +76,30 @@
 				]
 			},
 			"source": "LMoP",
-			"alignment": "lawful evil",
-			"ac": "12",
-			"hp": "22 (5d8)",
-			"speed": "30 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 22,
+				"formula": "5d8"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 9,
 			"dex": 14,
 			"con": 11,
 			"int": 17,
 			"wis": 12,
 			"cha": 11,
-			"save": "Int +5, Wis +3",
+			"save": {
+				"int": "+5",
+				"wis": "+3"
+			},
 			"skill": {
 				"arcana": "+5",
 				"history": "+5"
@@ -109,7 +142,7 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 3 (1d8-1) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 1} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d8-1}) bludgeoning damage."
 					]
 				}
 			],
@@ -117,22 +150,59 @@
 		},
 		{
 			"name": "Mormesk the Wraith",
+			"isNPC": true,
 			"size": "M",
 			"type": "undead",
 			"source": "LMoP",
-			"alignment": "neutral evil",
-			"ac": "13",
-			"hp": "45 (6d8+18)",
-			"speed": "0 ft., fly 60 ft.",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"average": 45,
+				"formula": "6d8+18"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": 60
+			},
 			"str": 6,
 			"dex": 16,
 			"con": 16,
 			"int": 12,
 			"wis": 14,
 			"cha": 15,
-			"resist": "acid, cold, fire, lightning, thunder; bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered",
-			"immune": "necrotic, poison",
-			"conditionImmune": "charmed, grappled, paralyzed, petrified, poisoned, prone, restrained",
+			"resist": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks that aren't silvered"
+				}
+			],
+			"immune": [
+				"necrotic",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"grappled",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "Common, Infernal",
@@ -155,14 +225,19 @@
 				{
 					"name": "Life Drain",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 16 (3d8+3) necrotic damage, and the target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. If this attack reduces the target's hit point maximum to 0, the target dies. This reduction to the target's hit point maximum lasts until the target finishes a long rest."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one creature. Hit: 16 ({@dice 3d8+3}) necrotic damage, and the target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. If this attack reduces the target's hit point maximum to 0, the target dies. This reduction to the target's hit point maximum lasts until the target finishes a long rest."
 					]
 				}
 			],
-			"page": 59
+			"page": 59,
+			"traitTags": [
+				"Incorporeal Movement",
+				"Sunlight Sensitivity"
+			]
 		},
 		{
 			"name": "Nezznar the Black Spider",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -171,17 +246,35 @@
 				]
 			},
 			"source": "LMoP",
-			"alignment": "neutral evil",
-			"ac": "11 (14 with mage armor)",
-			"hp": "27 (6d8)",
-			"speed": "30 ft.",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				11,
+				{
+					"ac": 14,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
+			"hp": {
+				"average": 27,
+				"formula": "6d8"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 9,
 			"dex": 13,
 			"con": 10,
 			"int": 16,
 			"wis": 14,
 			"cha": 13,
-			"save": "Int +5, Wis +4",
+			"save": {
+				"int": "+5",
+				"wis": "+4"
+			},
 			"skill": {
 				"arcana": "+5",
 				"perception": "+4",
@@ -191,6 +284,26 @@
 			"passive": 14,
 			"languages": "Elvish, Undercommon",
 			"cr": "2",
+			"trait": [
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Nezznar has a {@item spider staff|lmop}."
+					]
+				},
+				{
+					"name": "Fey Ancestry",
+					"entries": [
+						"Nezznar has advantage on saving throws against being charmed, and magic can't put him to sleep."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"Nezznar has disadvantage on attack rolls when he or his target is in sunlight."
+					]
+				}
+			],
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
@@ -238,35 +351,19 @@
 					}
 				}
 			],
-			"trait": [
-				{
-					"name": "Special Equipment",
-					"entries": [
-						"Nezznar has a spider staff."
-					]
-				},
-				{
-					"name": "Fey Ancestry",
-					"entries": [
-						"Nezznar has advantage on saving throws against being charmed, and magic can't put him to sleep."
-					]
-				},
-				{
-					"name": "Sunlight Sensitivity",
-					"entries": [
-						"Nezznar has disadvantage on attack rolls when he or his target is in sunlight."
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Spider Staff",
 					"entries": [
-						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) bludgeoning damage plus 3 (1d6) poison damage."
+						"Melee Weapon Attack: {@hit 1} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d6-1}) bludgeoning damage plus 3 ({@dice 1d6}) poison damage."
 					]
 				}
 			],
-			"page": 59
+			"page": 59,
+			"traitTags": [
+				"Fey Ancestry",
+				"Sunlight Sensitivity"
+			]
 		},
 		{
 			"name": "Redbrand Ruffian",
@@ -278,10 +375,25 @@
 				]
 			},
 			"source": "LMoP",
-			"alignment": "neutral evil",
-			"ac": "14 (studded leather armor)",
-			"hp": "16 (3d8+3)",
-			"speed": "30 ft.",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 16,
+				"formula": "3d8+3"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 11,
 			"dex": 14,
 			"con": 12,
@@ -304,14 +416,18 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],
-			"page": 61
+			"page": 61,
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Sildar Hallwinter",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -320,17 +436,35 @@
 				]
 			},
 			"source": "LMoP",
-			"alignment": "neutral good",
-			"ac": "16 (chain mail)",
-			"hp": "27 (5d8+5)",
-			"speed": "30 ft.",
+			"alignment": [
+				"N",
+				"G"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item chain mail|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 27,
+				"formula": "5d8+5"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 13,
 			"dex": 10,
 			"con": 12,
 			"int": 10,
 			"wis": 11,
 			"cha": 10,
-			"save": "Str +3, Con +3",
+			"save": {
+				"str": "+3",
+				"con": "+3"
+			},
 			"skill": {
 				"perception": "+2"
 			},
@@ -347,13 +481,13 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 5 (1d8+1) slashing damage."
+						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d8+1}) slashing damage."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: +2 to hit, range 100 ft./400 ft., one target. Hit: 5 (1d10) piercing damage."
+						"Ranged Weapon Attack: {@hit 2} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
 					]
 				}
 			],
@@ -361,11 +495,15 @@
 				{
 					"name": "Parry",
 					"entries": [
-						"When an attacker hits Sildar with a melee attack and Sildar can see the attacker, he can roll 1d6 and add the number rolled to his AC against the triggering attack, provided that he's wielding a melee weapon."
+						"When an attacker hits Sildar with a melee attack and Sildar can see the attacker, he can roll {@dice 1d6} and add the number rolled to his AC against the triggering attack, provided that he's wielding a melee weapon."
 					]
 				}
 			],
-			"page": 61
+			"page": 61,
+			"actionTags": [
+				"Multiattack",
+				"Parry"
+			]
 		}
 	]
 }

@@ -15,7 +15,6 @@ const JSON_ITEM_TYPE = "type";
 const JSON_ITEM_ORDER = "order";
 const JSON_ITEM_MODES = "modes";
 const JSON_ITEM_SUBMODES = "submodes";
-const JSON_ITEM_MODE_TITLE = "title";
 const CLS_PSIONICS = "psionics";
 const CLS_COL1 = "col-xs-5";
 const CLS_COL2 = "col-xs-2";
@@ -35,11 +34,11 @@ function getHiddenModeList (psionic) {
 	if (modeList === undefined) return STR_EMPTY;
 	const outArray = [];
 	for (let i = 0; i < modeList.length; ++i) {
-		outArray.push(TMP_HIDDEN_MODE.formatUnicorn(modeList[i][JSON_ITEM_MODE_TITLE]));
+		outArray.push(TMP_HIDDEN_MODE.formatUnicorn(modeList[i].name));
 		if (modeList[i][JSON_ITEM_SUBMODES] !== undefined) {
 			const subModes = modeList[i][JSON_ITEM_SUBMODES];
 			for (let j = 0; j < subModes.length; ++j) {
-				outArray.push(TMP_HIDDEN_MODE.formatUnicorn(subModes[j][JSON_ITEM_MODE_TITLE]))
+				outArray.push(TMP_HIDDEN_MODE.formatUnicorn(subModes[j].name))
 			}
 		}
 	}
@@ -47,34 +46,78 @@ function getHiddenModeList (psionic) {
 }
 
 window.onload = function load () {
-	DataUtil.loadJSON(JSON_URL, onJsonLoad);
+	ExcludeUtil.initialise();
+	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
-let PSIONIC_LIST;
-
+let list;
+const sourceFilter = getSourceFilter({
+	deselFn: () => false
+});
+let filterBox;
 function onJsonLoad (data) {
-	PSIONIC_LIST = data.psionic;
-
-	const sourceFilter = getSourceFilter({
-		deselFn: function (val) {
-			return false;
-		}
-	});
 	const typeFilter = new Filter({header: "Type", items: [Parser.PSI_ABV_TYPE_TALENT, Parser.PSI_ABV_TYPE_DISCIPLINE], displayFn: Parser.psiTypeToFull});
 	const orderFilter = new Filter({
 		header: "Order",
 		items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", Parser.PSI_ORDER_NONE]
 	});
 
-	const filterBox = initFilterBox(sourceFilter, typeFilter, orderFilter);
+	filterBox = initFilterBox(sourceFilter, typeFilter, orderFilter);
+
+	list = ListUtil.search({
+		valueNames: [LIST_NAME, LIST_SOURCE, LIST_TYPE, LIST_ORDER, LIST_MODE_LIST],
+		listClass: CLS_PSIONICS,
+		sortFunction: SortUtil.listSort
+	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
+
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		handleFilterChange
+	);
+
+	RollerUtil.addListRollButton();
+
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "type", "order", "id"],
+		listClass: "subpsionics",
+		getSublistRow: getSublistItem
+	});
+	ListUtil.initGenericPinnable();
+
+	addPsionics(data);
+	BrewUtil.pAddBrewData()
+		.then(addPsionics)
+		.catch(BrewUtil.purgeBrew)
+		.then(() => {
+			BrewUtil.makeBrewButton("manage-brew");
+			BrewUtil.bind({list, filterBox, sourceFilter});
+			ListUtil.loadState();
+			RollerUtil.addListRollButton();
+
+			History.init(true);
+		});
+}
+
+let psionicList = [];
+let psI = 0;
+function addPsionics (data) {
+	if (!data.psionic || !data.psionic.length) return;
+
+	psionicList = psionicList.concat(data.psionic);
 
 	let tempString = "";
-	PSIONIC_LIST.forEach(function (p, i) {
+	for (; psI < psionicList.length; psI++) {
+		const p = psionicList[psI];
+		if (ExcludeUtil.isExcluded(p.name, "psionic", p.source)) continue;
 		p[JSON_ITEM_ORDER] = Parser.psiOrderToFull(p[JSON_ITEM_ORDER]);
 
 		tempString += `
-			<li class='row' ${FLTR_ID}="${i}">
-				<a id='${i}' href='#${UrlUtil.autoEncodeHash(p)}' title="${p[JSON_ITEM_NAME]}">
+			<li class='row' ${FLTR_ID}="${psI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
+				<a id='${psI}' href='#${UrlUtil.autoEncodeHash(p)}' title="${p[JSON_ITEM_NAME]}">
 					<span class='${LIST_NAME} ${CLS_COL1}'>${p[JSON_ITEM_NAME]}</span>
 					<span class='${LIST_SOURCE} ${CLS_COL2}' title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
 					<span class='${LIST_TYPE} ${CLS_COL3}'>${Parser.psiTypeToFull(p[JSON_ITEM_TYPE])}</span>
@@ -86,65 +129,82 @@ function onJsonLoad (data) {
 
 		// populate filters
 		sourceFilter.addIfAbsent(p[JSON_ITEM_SOURCE]);
-	});
+	}
+	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$(`#${ID_PSIONICS_LIST}`).append(tempString);
 
 	// sort filters
 	sourceFilter.items.sort(SortUtil.ascSort);
 
-	const list = ListUtil.search({
-		valueNames: [LIST_NAME, LIST_SOURCE, LIST_TYPE, LIST_ORDER, LIST_MODE_LIST],
-		listClass: CLS_PSIONICS,
-		sortFunction: SortUtil.listSort
-	});
-
+	list.reIndex();
+	if (lastSearch) list.search(lastSearch);
+	list.sort("name");
 	filterBox.render();
-
-	// filtering function
-	$(filterBox).on(
-		FilterBox.EVNT_VALCHANGE,
-		handleFilterChange
-	);
-
-	function handleFilterChange () {
-		const f = filterBox.getValues();
-		list.filter(function (item) {
-			const p = PSIONIC_LIST[$(item.elm).attr(FLTR_ID)];
-			return filterBox.toDisplay(
-				f,
-				p.source,
-				p.type,
-				p.order
-			);
-		});
-	}
-
-	initHistory();
 	handleFilterChange();
-	RollerUtil.addListRollButton();
+
+	ListUtil.setOptions({
+		itemList: psionicList,
+		getSublistRow: getSublistItem,
+		primaryLists: [list]
+	});
+	ListUtil.bindPinButton();
+	EntryRenderer.hover.bindPopoutButton(psionicList);
+	UrlUtil.bindLinkExportButton(filterBox);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton();
+}
+
+function handleFilterChange () {
+	const f = filterBox.getValues();
+	list.filter(function (item) {
+		const p = psionicList[$(item.elm).attr(FLTR_ID)];
+		return filterBox.toDisplay(
+			f,
+			p.source,
+			p.type,
+			p.order
+		);
+	});
+	FilterBox.nextIfHidden(psionicList);
+}
+
+function getSublistItem (p, pinId) {
+	return `
+		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+			<a href="#${UrlUtil.autoEncodeHash(p)}" title="${p.name}">
+				<span class="name col-xs-6">${p.name}</span>
+				<span class="type col-xs-3">${Parser.psiTypeToFull(p.type)}</span>
+				<span class="order col-xs-3 ${p.order === STR_NONE ? CLS_LI_NONE : ""}">${p.order}</span>
+				<span class="id hidden">${pinId}</span>				
+			</a>
+		</li>
+	`;
 }
 
 let renderer;
 function loadhash (jsonIndex) {
-	if (!renderer) renderer = new EntryRenderer();
+	if (!renderer) renderer = EntryRenderer.getDefaultRenderer();
+	renderer.setFirstSection(true);
+	const $content = $(`#pagecontent`).empty();
 
-	const $name = $(`th.name`);
-	const STATS_ORDER_AND_TYPE = document.getElementById(ID_STATS_ORDER_AND_TYPE);
-	const STATS_TEXT = document.getElementById(ID_TEXT);
+	const psi = psionicList[jsonIndex];
 
-	const selectedPsionic = PSIONIC_LIST[jsonIndex];
+	$content.append(`
+		${EntryRenderer.utils.getBorderTr()}
+		${EntryRenderer.utils.getNameTr(psi)}
+		<tr>
+			<td colspan="6"><i>${psi.type === "T" ? Parser.psiTypeToFull(psi[JSON_ITEM_TYPE]) : `${psi[JSON_ITEM_ORDER]} ${Parser.psiTypeToFull(psi[JSON_ITEM_TYPE])}`}</i><span id="order"></span> <span id="type"></span></td>
+		</tr>
+		<tr><td class="divider" colspan="6"><div></div></td></tr>
+		<tr class="text"><td colspan="6" id="text">${psi.type === "T" ? EntryRenderer.psionic.getTalentText(psi, renderer) : EntryRenderer.psionic.getDisciplineText(psi, renderer)}</td></tr>
+		${EntryRenderer.utils.getPageTr(psi)}
+		${EntryRenderer.utils.getBorderTr()}
+	`);
 
-	$name.html(selectedPsionic[JSON_ITEM_NAME]);
-	if (selectedPsionic[JSON_ITEM_TYPE] === Parser.PSI_ABV_TYPE_TALENT) loadTalent();
-	else if (selectedPsionic[JSON_ITEM_TYPE] === Parser.PSI_ABV_TYPE_DISCIPLINE) loadDiscipline();
+	ListUtil.updateSelected();
+}
 
-	function loadTalent () {
-		STATS_ORDER_AND_TYPE.innerHTML = Parser.psiTypeToFull(selectedPsionic[JSON_ITEM_TYPE]);
-		STATS_TEXT.innerHTML = EntryRenderer.psionic.getTalentText(selectedPsionic, renderer);
-	}
-
-	function loadDiscipline () {
-		STATS_ORDER_AND_TYPE.innerHTML = `${selectedPsionic[JSON_ITEM_ORDER]} ${Parser.psiTypeToFull(selectedPsionic[JSON_ITEM_TYPE])}`;
-		STATS_TEXT.innerHTML = EntryRenderer.psionic.getDisciplineText(selectedPsionic, renderer);
-	}
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
+	ListUtil.setFromSubHashes(sub);
 }

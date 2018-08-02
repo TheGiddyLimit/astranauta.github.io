@@ -370,30 +370,30 @@
 								},
 								{
 									"type": "entries",
-									"name": "Personality Trait:",
+									"name": "Personality Trait: Isolation",
 									"entries": [
-										"Isolation. It's a cruel world. All people have to fend for themselves. Self-sufficiency is the only path to success."
+										"It's a cruel world. All people have to fend for themselves. Self-sufficiency is the only path to success."
 									]
 								},
 								{
 									"type": "entries",
-									"name": "Ideal:",
+									"name": "Ideal: Independence",
 									"entries": [
-										"Independence. Someone who can stand alone can stand against anything."
+										"Someone who can stand alone can stand against anything."
 									]
 								},
 								{
 									"type": "entries",
-									"name": "Bond:",
+									"name": "Bond: The Yawning Portal",
 									"entries": [
-										"The Yawning Portal. This place is my only home. My friends and family are long gone. I love this place, but I try not to get attached to the people here. I'll outlive them all. Lucky me."
+										"This place is my only home. My friends and family are long gone. I love this place, but I try not to get attached to the people here. I'll outlive them all. Lucky me."
 									]
 								},
 								{
 									"type": "entries",
-									"name": "Flaw:",
+									"name": "Flaw: Heartless",
 									"entries": [
-										"Heartless. If you want sympathy, the Temple of Ilmater is in the Sea Ward. No matter how bad things are, you'll be gone in a blink of an eye."
+										"If you want sympathy, the Temple of Ilmater is in the Sea Ward. No matter how bad things are, you'll be gone in a blink of an eye."
 									]
 								}
 							]
@@ -1358,16 +1358,9 @@
 							"type": "entries",
 							"name": "Disease",
 							"entries": [
-								"After combat with the zombies is finished, each character who took damage from the monsters must succeed on a DC 11 Constitution saving throw or contract sewer plague (see \"Sample Diseases\" in chapter 8 of the {@i Dungeon Master's Guide}). Unlike the normal disease, symptoms of this disease manifest in an infected creature after 1 hour rather than 1d4 days."
+								"After combat with the zombies is finished, each character who took damage from the monsters must succeed on a DC 11 Constitution saving throw or contract {@disease sewer plague} (see \"Sample Diseases\" in chapter 8 of the {@i Dungeon Master's Guide}). Unlike the normal disease, symptoms of this disease manifest in an infected creature after 1 hour rather than 1d4 days."
 							]
-						},
-						{
-							"type": "list",
-							"items": [
-								"{@link Link: Diseases -}"
-							]
-						},
-						"Dungeon Master's Guide"
+						}
 					]
 				},
 				{
@@ -2491,7 +2484,7 @@
 							]
 						},
 						"The gem in the center of the altar has AC 17 and 15 hit points. If it is destroyed, the altar stops spinning and the character is released. The gem is a cursed stone, but it appears to be a jewel of value, and it can be pried from the altar. If the gem comes in contact with a creature's flesh, that creature must succeed on a DC 16 Wisdom saving throw or be affected as if by an Otto's irresistible dance spell, going into a spinning dance that lasts until the stone is released. To let go of the stone willingly, the creature must be the target of magic that removes a curse or breaks an enchantment.",
-						"If the creature dances for a number of minutes equal to its Constitution score, it must succeed on a DC 10 Constitution saving throw or suffer one level of exhaustion. The creature repeats the saving throw whenever the same number of minutes elapses again, suffering one more level of exhaustion on a failed save."
+						"If the creature dances for a number of minutes equal to its Constitution score, it must succeed on a DC 10 Constitution saving throw or suffer one level of {@condition exhaustion}. The creature repeats the saving throw whenever the same number of minutes elapses again, suffering one more level of {@condition exhaustion} on a failed save."
 					]
 				},
 				{

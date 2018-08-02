@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--5ETOOLS_VERSION-->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>This Is Your Life - 5etools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script type="text/javascript" src="lib/js-cookie.js"></script>
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
+
+	<style>
+		h4 {
+			border-bottom: 1px solid black;
+			width: 100%;
+		}
+
+		h5 {
+			text-decoration: underline;
+			margin-bottom: 3px;
+		}
+
+		.output-wrp-border {
+			border-radius: 4px;
+			margin-bottom: 3px;
+		}
+
+		.wrp-sect-head {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.wrp-sect-head > button {
+			margin: 6px 0 6px 6px;
+		}
+
+		.output {
+			background: none;
+		}
+
+		.btn-supp-fam {
+			margin-top: 7px;
+			margin-bottom: 7px;
+			display: block;
+		}
+
+		.btn-supp-fam::before {
+			content: "Roll Supplemental Tables Details";
+		}
+
+		.note {
+			display: inline-block;
+			margin: 3px 10px;
+			font-style: italic;
+			user-select: none;
+		}
+
+		.btn-reroll::before {
+			content: "Reroll";
+		}
+	</style>
+</head>
+
+<body>
+<header class="hidden-xs hidden-sm">
+	<div class="container">
+
+		<h1>This Is Your Life</h1>
+		<p>Select options, and hit generate.</p>
+	</div>
+</header>
+<nav class="container" id="navigation">
+	<ul class="nav nav-pills" id="navbar">
+	</ul>
+</nav>
+<main class="container bodyContent">
+
+	<div class="row noprint">
+		<div class="form-group col-xs-2 col-xs-2-4">
+			<label for="race">Race</label>
+			<select class="form-control form-inline" id="race"></select>
+		</div>
+
+		<div class="form-group col-xs-2 col-xs-2-4">
+			<label for="cha">Charisma Modifier</label>
+			<select class="form-control form-inline" id="cha"></select>
+		</div>
+
+		<div class="form-group col-xs-2 col-xs-2-4">
+			<label for="race">Background</label>
+			<select class="form-control form-inline" id="background"></select>
+		</div>
+
+		<div class="form-group col-xs-2 col-xs-2-4">
+			<label for="race">Class</label>
+			<select class="form-control form-inline" id="class"></select>
+		</div>
+
+		<div class="form-group col-xs-2 col-xs-2-4">
+			<label for="age"><i>Age</i></label>
+			<select class="form-control form-inline" id="age">
+				<option value="" style="font-style: normal;">Random</option>
+				<option value="1" class="italic">20 years or younger</option>
+				<option value="21" class="italic">21&mdash;30 years</option>
+				<option value="60" class="italic">31&mdash;40 years</option>
+				<option value="70" class="italic">41&mdash;50 years</option>
+				<option value="90" class="italic">51&mdash;60 years</option>
+				<option value="100" class="italic">61 years or older</option>
+			</select>
+		</div>
+	</div>
+	<div class="row noprint">
+		<div class="form-group col-xs-12">
+			<button type="button" class="btn btn-default" onclick="roll()">Generate</button>
+		</div>
+	</div>
+
+	<div class="row noprint" style="padding: 0 3em;">
+		<p>Based on the tables and rules in Xanathar's Guide to Everything, pages 61-73.</p>
+		<p><i>NOTE: Rolls or options displayed in italics exist for the sake of speed and ease of use. They do not correspond to rolls on any table, nor do they have officially associated weightings or chances. Ignore or use them as you see fit.</i></p>
+	</div>
+
+	<hr class="output" style="display: none;">
+	<div class="row output" style="display: none;">
+		<div class="wrp-sect-head"><h4>Parents</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectParents()"></button></div>
+		<p id="parents"></p>
+	</div>
+	<div class="row output" style="display: none;">
+		<div class="wrp-sect-head"><h4>Birthplace</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectBirthplace()"></button></div>
+		<p id="birthplace"></p>
+	</div>
+	<div class="row output" style="display: none;">
+		<div class="wrp-sect-head"><h4>Siblings</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectSiblings()"></button></div>
+		<p id="siblings"></p>
+	</div>
+	<div class="row output" style="display: none;">
+		<div class="wrp-sect-head"><h4>Family and Friends</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectFamily()"></button></div>
+		<p id="family"></p>
+	</div>
+	<div class="row output" style="display: none;">
+		<div class="wrp-sect-head"><h4>Personal Decisions</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectPersonalDecisions()"></button></div>
+		<p id="personal"></p>
+	</div>
+	<div class="row output" style="display: none;">
+		<div class="wrp-sect-head"><h4>Class Training</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectClassTraining()"></button></div>
+		<p id="clss"></p>
+	</div>
+	<div class="row output" style="display: none;">
+		<div class="wrp-sect-head"><h4>Life Events</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectLifeEvents()"></button></div>
+		<p id="events"></p>
+	</div>
+</main>
+<footer class="container">
+
+</footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/genutils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/lifegen.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+</body>
+
+</html>

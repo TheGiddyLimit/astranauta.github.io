@@ -1,0 +1,2635 @@
+{
+	"class": [
+		{
+			"name": "Paladin",
+			"source": "PHB",
+			"hd": {
+				"number": 1,
+				"faces": 10
+			},
+			"proficiency": [
+				"wis",
+				"cha"
+			],
+			"classTableGroups": [
+				{
+					"title": "Spell Slots per Spell Level",
+					"colLabels": [
+						"{@filter 1st|spells|level=1|class=Paladin}",
+						"{@filter 2nd|spells|level=2|class=Paladin}",
+						"{@filter 3rd|spells|level=3|class=Paladin}",
+						"{@filter 4th|spells|level=4|class=Paladin}",
+						"{@filter 5th|spells|level=5|class=Paladin}"
+					],
+					"rows": [
+						[
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							2,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2
+						]
+					]
+				}
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					"heavy",
+					"shields"
+				],
+				"weapons": [
+					"simple",
+					"martial"
+				],
+				"skills": {
+					"choose": 2,
+					"from": [
+						"Athletics",
+						"Insight",
+						"Intimidation",
+						"Medicine",
+						"Persuasion",
+						"Religion"
+					]
+				}
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@filter martial weapon|items|source=phb|category=basic|type=martial weapon} and a {@item shield|phb} or (b) two {@filter martial weapons|items|source=phb|category=basic|type=martial weapon}",
+					"(a) five {@item javelin|phb|javelins} or (b) any {@filter simple melee weapon|items|source=phb|category=basic|type=simple weapon;melee weapon}",
+					"(a) a {@item priest's pack|phb} or (b) an {@item explorer's pack|phb}",
+					"{@item Chain mail|phb} and a {@item holy symbol|phb}"
+				],
+				"goldAlternative": "5d4 × 10"
+			},
+			"classFeatures": [
+				[
+					{
+						"name": "Divine Sense",
+						"entries": [
+							"The presence of strong evil registers on your senses like a noxious odor, and powerful good rings like heavenly music in your ears. As an action, you can open your awareness to detect such forces. Until the end of your next turn, you know the location of any celestial, fiend, or undead within 60 feet of you that is not behind total cover. You know the type (celestial, fiend, or undead) of any being whose presence you sense, but not its identity (the vampire Count Strahd von Zarovich, for instance). Within the same radius, you also detect the presence of any place or object that has been consecrated or desecrated, as with the {@spell hallow} spell.",
+							"You can use this feature a number of times equal to 1 + your Charisma modifier. When you finish a long rest, you regain all expended uses."
+						]
+					},
+					{
+						"name": "Lay on Hands",
+						"entries": [
+							"Your blessed touch can heal wounds. You have a pool of healing power that replenishes when you take a long rest. With that pool, you can restore a total number of hit points equal to your paladin level × 5.",
+							"As an action, you can touch a creature and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in your pool.",
+							"Alternatively, you can expend 5 hit points from your pool of healing to cure the target of one disease or neutralize one poison affecting it. You can cure multiple diseases and neutralize multiple poisons with a single use of Lay on Hands, expending hit points separately for each one.",
+							"This feature has no effect on undead and constructs."
+						]
+					}
+				],
+				[
+					{
+						"name": "Divine Smite",
+						"entries": [
+							"Starting at 2nd level, when you hit a creature with a melee weapon attack, you can expend one spell slot to deal radiant damage to the target, in addition to the weapon's damage. The extra damage is 2d8 for a 1st-level spell slot, plus 1d8 for each spell level higher than 1st, to a maximum of 5d8. The damage increases by 1d8 if the target is an undead or a fiend."
+						]
+					},
+					{
+						"name": "Fighting Style",
+						"entries": [
+							"At 2nd level, you adopt a particular style of fighting as your specialty. Choose a fighting style from the list of optional features. You can't take the same Fighting Style option more than once, even if you get to choose again.",
+							{
+								"type": "options",
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Close Quarters Shooter",
+										"entries": [
+											"When making a ranged attack while you are within 5 feet of a hostile creature, you do not have disadvantage on the attack roll. Your ranged attacks ignore half cover and three-quarters cover against targets within 30 feet of you. You have a +1 bonus to attack rolls on ranged attacks."
+										],
+										"source": "UALightDarkUnderdark"
+									},
+									{
+										"type": "entries",
+										"name": "Defense",
+										"entries": [
+											"While you are wearing armor, you gain a +1 bonus to AC."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Dueling",
+										"entries": [
+											"When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Great Weapon Fighting",
+										"entries": [
+											"When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll. The weapon must have the two-handed or versatile property for you to gain this benefit."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Mariner",
+										"entries": [
+											"As long as you are not wearing heavy armor or using a shield, you have a swimming speed and a climbing speed equal to your normal speed, and you gain a +1 bonus to AC."
+										],
+										"source": "UAWaterborneAdventures"
+									},
+									{
+										"type": "entries",
+										"name": "Protection",
+										"entries": [
+											"When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Tunnel Fighter",
+										"entries": [
+											"As a bonus action, you can enter a defensive stance that lasts until the start of your next turn. While in your defensive stance, you can make opportunity attacks without using your reaction, and you can use your reaction to make a melee attack against a creature that moves more than 5 feet while within your reach."
+										],
+										"source": "UALightDarkUnderdark"
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Spellcasting",
+						"entries": [
+							"By 2nd level, you have learned to draw on divine magic through meditation and prayer to cast spells as a cleric does. See chapter 10 for the general rules of spellcasting and chapter 11 for the paladin spell list.",
+							{
+								"type": "entries",
+								"name": "Preparing and Casting Spells",
+								"entries": [
+									"The Paladin table shows how many spell slots you have to cast your spells. To cast one of your paladin spells of 1st level or higher, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+									"You prepare the list of paladin spells that are available for you to cast, choosing from the paladin spell list. When you do so, choose a number of paladin spells equal to your Charisma modifier + half your paladin level, rounded down (minimum of one spell). The spells must be of a level for which you have spell slots.",
+									"For example, if you are a 5th-level paladin, you have four 1st-level and two 2nd-level spell slots. With a Charisma of 14, your list of prepared spells can include four spells of 1st or 2nd-level, in any combination. If you prepare the 1st-level spell {@spell cure wounds}, you can cast it using a 1st-level or a 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.",
+									"You can change your list of prepared spells when you finish a long rest. Preparing a new list of paladin spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Spellcasting Ability",
+								"entries": [
+									"Charisma is your spellcasting ability for your paladin spells, since their power derives from the strength of your convictions. You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a paladin spell you cast and when making an attack roll with one.",
+									{
+										"type": "abilityDc",
+										"name": "Spell",
+										"attributes": [
+											"cha"
+										]
+									},
+									{
+										"type": "abilityAttackMod",
+										"name": "Spell",
+										"attributes": [
+											"cha"
+										]
+									}
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Spellcasting Focus",
+								"entries": [
+									"You can use a holy symbol (found in chapter 5) as a spellcasting focus for your paladin spells."
+								]
+							}
+						]
+					}
+				],
+				[
+					{
+						"name": "Divine Health",
+						"entries": [
+							"By 3rd level, the divine magic flowing through you makes you immune to disease."
+						]
+					},
+					{
+						"name": "Sacred Oath",
+						"entries": [
+							"When you reach 3rd level, you swear the oath that binds you as a paladin forever. Up to this time you have been in a preparatory stage, committed to the path but not yet sworn to it. Now you choose from the list of available oaths.",
+							"Your choice grants you features at 3rd level and again at 7th, 15th, and 20th level. Those features include oath spells and the Channel Divinity feature.",
+							{
+								"name": "Oath Spells",
+								"entries": [
+									"Each oath has a list of associated spells. You gain access to these spells at the levels specified in the oath description. Once you gain access to an oath spell, you always have it prepared. Oath spells don't count against the number of spells you can prepare each day.",
+									"If you gain an oath spell that doesn't appear on the paladin spell list, the spell is nonetheless a paladin spell for you."
+								]
+							},
+							{
+								"name": "Channel Divinity",
+								"entries": [
+									"Your oath allows you to channel divine energy to fuel magical effects. Each Channel Divinity option provided by your oath explains how to use it.",
+									"When you use your Channel Divinity, you choose which option to use. You must then finish a short or long rest to use your Channel Divinity again.",
+									"Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your paladin spell save DC."
+								]
+							},
+							{
+								"name": "Breaking Your Oath",
+								"type": "inset",
+								"entries": [
+									"A paladin tries to hold to the highest standards of conduct, but even the most virtuous paladin is fallible. Sometimes the right path proves too demanding, sometimes a situation calls for the lesser of two evils, and sometimes the heat of emotion causes a paladin to transgress his or her oath.",
+									"A paladin who has broken a vow typically seeks absolution from a cleric who shares his or her faith or from another paladin of the same order. The paladin might spend an all-night vigil in prayer as a sign of penitence, or undertake a fast or similar act of self-denial. After a rite of confession and forgiveness, the paladin starts fresh.",
+									"If a paladin willfully violates his or her oath and shows no sign of repentance, the consequences can be more serious. At the DM's discretion, an impenitent paladin might be forced to abandon this class and adopt another, or perhaps to take the Oathbreaker paladin option that appears in the Dungeon Master's Guide."
+								]
+							}
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 4th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a feat."
+						]
+					}
+				],
+				[
+					{
+						"name": "Extra Attack",
+						"entries": [
+							"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+						]
+					}
+				],
+				[
+					{
+						"name": "Aura of Protection",
+						"entries": [
+							"Starting at 6th level, whenever you or a friendly creature within 10 feet of you must make a saving throw, the creature gains a bonus to the saving throw equal to your Charisma modifier (with a minimum bonus of +1). You must be conscious to grant this bonus.",
+							"At 18th level, the range of this aura increases to 30 feet."
+						]
+					}
+				],
+				[
+					{
+						"name": "Sacred Oath feature",
+						"entries": [
+							"At 7th level, you gain a feature granted to you by your Sacred Oath."
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 8th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a feat."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Aura of Courage",
+						"entries": [
+							"Starting at 10th level, you and friendly creatures within 10 feet of you can't be {@condition frightened} while you are conscious.",
+							"At 18th level, the range of this aura increases to 30 feet."
+						]
+					}
+				],
+				[
+					{
+						"name": "Improved Divine Smite",
+						"entries": [
+							"By 11th level, you are so suffused with righteous might that all your melee weapon strikes carry divine power with them. Whenever you hit a creature with a melee weapon, the creature takes an extra 1d8 radiant damage. If you also use your Divine Smite with an attack, you add this damage to the extra damage of your Divine Smite."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 12th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a feat."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Cleansing Touch",
+						"entries": [
+							"Beginning at 14th level, you can use your action to end one spell on yourself or on one willing creature that you touch.",
+							"You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain expended uses when you finish a long rest."
+						]
+					}
+				],
+				[
+					{
+						"name": "Sacred Oath feature",
+						"entries": [
+							"At 15th level, you gain a feature granted to you by your Sacred Oath."
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 16th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a feat."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Aura improvements",
+						"entries": [
+							"At 18th level, the range of your Aura of Protection increases to 30 feet."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a feat."
+						]
+					}
+				],
+				[
+					{
+						"name": "Sacred Oath feature",
+						"entries": [
+							"At 20th level, you gain a feature granted to you by your Sacred Oath."
+						],
+						"gainSubclassFeature": true
+					}
+				]
+			],
+			"subclassTitle": "Sacred Oath",
+			"subclasses": [
+				{
+					"name": "Oath of the Ancients",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Oath of the Ancients",
+								"entries": [
+									"The Oath of the Ancients is as old as the race of elves and the rituals of the druids. Sometimes called fey knights, green knights, or horned knights, paladins who swear this oath cast their lot with the side of the light in the cosmic struggle against darkness because they love the beautiful and life-giving things of the world, not necessarily because they believe in principles of honor, courage, and justice. They adorn their armor and clothing with images of growing things\u2014leaves, antlers, or flowers\u2014to reflect their commitment to preserving life and light in the world.",
+									{
+										"type": "entries",
+										"name": "Tenets of the Ancients",
+										"entries": [
+											"The tenets of the Oath of the Ancients have been preserved for uncounted centuries. This oath emphasizes the principles of good above any concerns of law or chaos. Its four central principles are simple.",
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Kindle the Light",
+														"entries": [
+															"Through your acts of mercy, kindness, and forgiveness, kindle the light of hope in the world, beating back despair."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Shelter the Light",
+														"entries": [
+															"Where there is good, beauty, love, and laughter in the world, stand against the wickedness that would swallow it. Where life flourishes, stand against the forces that would render it barren."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Preserve Your Own Light",
+														"entries": [
+															"Delight in song and laughter, in beauty and art. If you allow the light to die in your own heart, you can't preserve it in the world."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Be the Light",
+														"entries": [
+															"Be a glorious beacon for all who live in despair. Let the light of your joy and courage shine forth in all your deeds."
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Oath Spells",
+										"entries": [
+											"You gain oath spells at the paladin levels listed.",
+											{
+												"type": "table",
+												"caption": "Oath of the Ancients Spells",
+												"colLabels": [
+													"Paladin Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-xs-3 text-align-center",
+													"col-xs-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell ensnaring strike}, {@spell speak with animals}"
+													],
+													[
+														"5th",
+														"{@spell moonbeam}, {@spell misty step}"
+													],
+													[
+														"9th",
+														"{@spell plant growth}, {@spell protection from energy}"
+													],
+													[
+														"13th",
+														"{@spell ice storm}, {@spell stoneskin}"
+													],
+													[
+														"17th",
+														"{@spell commune with nature}, {@spell tree stride}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Nature's Wrath",
+										"entries": [
+											"You can use your Channel Divinity to invoke primeval forces to ensnare a foe. As an action, you can cause spectral vines to spring up and reach for a creature within 10 feet of you that you can see. The creature must succeed on a Strength or Dexterity saving throw (its choice) or be {@condition restrained}. While {@condition restrained} by the vines, the creature repeats the saving throw at the end of each of its turns. On a success, it frees itself and the vines vanish."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Turn the Faithless",
+										"entries": [
+											"You can use your Channel Divinity to utter ancient words that are painful for fey and fiends to hear. As an action, you present your holy symbol, and each fey or fiend within 30 feet of you that can hear you must make a Wisdom saving throw. On a failed save, the creature is turned for 1 minute or until it takes damage.",
+											"A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action.",
+											"If the creature's true form is concealed by an illusion, shapeshifting, or other effect, that form is revealed while it is turned."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Aura of Warding",
+										"entries": [
+											"Beginning at 7th level, ancient magic lies so heavily upon you that it forms an eldritch ward. You and friendly creatures within 10 feet of you have resistance to damage from spells.",
+											"At 18th level, the range of this aura increases to 30 feet."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Undying Sentinel",
+										"entries": [
+											"Starting at 15th level, when you are reduced to 0 hit points and are not killed outright, you can choose to drop to 1 hit point instead. Once you use this ability, you can't use it again until you finish a long rest.",
+											"Additionally, you suffer none of the drawbacks of old age, and you can't be aged magically."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Elder Champion",
+										"entries": [
+											"At 20th level, you can assume the form of an ancient force of nature, taking on an appearance you choose. For example, your skin might turn green or take on a bark-like texture, your hair might become leafy or mosslike, or you might sprout antlers or a lion-like mane.",
+											"Using your action, you undergo a transformation. For 1 minute, you gain the following benefits:",
+											{
+												"type": "list",
+												"items": [
+													"At the start of each of your turns, you regain 10 hit points.",
+													"Whenever you cast a paladin spell that has a casting time of 1 action, you can cast it using your bonus action instead.",
+													"Enemy creatures within 10 feet of you have disadvantage on saving throws against your paladin spells and Channel Divinity options."
+												]
+											},
+											"Once you use this feature, you can't use it again until you finish a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "PHB",
+					"shortName": "Ancients"
+				},
+				{
+					"name": "Oath of Devotion",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Oath of Devotion",
+								"entries": [
+									"The Oath of Devotion binds a paladin to the loftiest ideals of justice, virtue, and order. Sometimes called cavaliers, white knights, or holy warriors, these paladins meet the ideal of the knight in shining armor, acting with honor in pursuit of justice and the greater good. They hold themselves to the highest standards of conduct, and some, for better or worse, hold the rest of the world to the same standards. Many who swear this oath are devoted to gods of law and good and use their gods' tenets as the measure of their devotion. They hold angels\u2014the perfect servants of good\u2014as their ideals, and incorporate images of angelic wings into their helmets or coats of arms.",
+									{
+										"type": "entries",
+										"name": "Tenets of Devotion",
+										"entries": [
+											"Though the exact words and strictures of the Oath of Devotion vary, paladins of this oath share these tenets.",
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Honesty",
+														"entries": [
+															"Don't lie or cheat. Let your word be your promise."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Courage",
+														"entries": [
+															"Never fear to act, though caution is wise."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Compassion",
+														"entries": [
+															"Aid others, protect the weak, and punish those who threaten them. Show mercy to your foes, but temper it with wisdom."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Honor",
+														"entries": [
+															"Treat others with fairness, and let your honorable deeds be an example to them. Do as much good as possible while causing the least amount of harm."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Duty",
+														"entries": [
+															"Be responsible for your actions and their consequences, protect those entrusted to your care, and obey those who have just authority over you."
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Oath Spells",
+										"entries": [
+											"You gain oath spells at the paladin levels listed.",
+											{
+												"type": "table",
+												"caption": "Oath of Devotion Spells",
+												"colLabels": [
+													"Paladin Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-xs-3 text-align-center",
+													"col-xs-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell protection from evil and good}, {@spell sanctuary}"
+													],
+													[
+														"5th",
+														"{@spell lesser restoration}, {@spell zone of truth}"
+													],
+													[
+														"9th",
+														"{@spell beacon of hope}, {@spell dispel magic}"
+													],
+													[
+														"13th",
+														"{@spell freedom of movement}, {@spell guardian of faith}"
+													],
+													[
+														"17th",
+														"{@spell commune}, {@spell flame strike}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Sacred Weapon",
+										"entries": [
+											"As an action, you can imbue one weapon that you are holding with positive energy, using your Channel Divinity. For 1 minute, you add your Charisma modifier to attack rolls made with that weapon (with a minimum bonus of +1). The weapon also emits bright light in a 20-foot radius and dim light 20 feet beyond that. If the weapon is not already magical, it becomes magical for the duration.",
+											"You can end this effect on your turn as part of any other action. If you are no longer holding or carrying this weapon, or if you fall {@condition unconscious}, this effect ends."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Turn the Unholy",
+										"entries": [
+											"As an action, you present your holy symbol and speak a prayer censuring fiends and undead, using your Channel Divinity. Each fiend or undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes damage.",
+											"A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Aura of Devotion",
+										"entries": [
+											"Starting at 7th level, you and friendly creatures within 10 feet of you can't be {@condition charmed} while you are conscious.",
+											"At 18th level, the range of this aura increases to 30 feet."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Purity of Spirit",
+										"entries": [
+											"Beginning at 15th level, you are always under the effects of a {@spell protection from evil and good} spell."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Holy Nimbus",
+										"entries": [
+											"At 20th level, as an action, you can emanate an aura of sunlight. For 1 minute, bright light shines from you in a 30-foot radius, and dim light shines 30 feet beyond that.",
+											"Whenever an enemy creature starts its turn in the bright light, the creature takes 10 radiant damage.",
+											"In addition, for the duration, you have advantage on saving throws against spells cast by fiends or undead.",
+											"Once you use this feature, you can't use it again until you finish a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "PHB",
+					"shortName": "Devotion"
+				},
+				{
+					"name": "Oath of Vengeance",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Oath of Vengeance",
+								"entries": [
+									"The Oath of Vengeance is a solemn commitment to punish those who have committed a grievous sin. When evil forces slaughter helpless villagers, when an entire people turns against the will of the gods, when a thieves' guild grows too violent and powerful, when a dragon rampages through the countryside - at times like these, paladins arise and swear an Oath of Vengeance to set right that which has gone wrong. To these paladins\u2014sometimes called avengers or dark knights\u2014their own purity is not as important as delivering justice.",
+									{
+										"type": "entries",
+										"name": "Tenets of Vengeance",
+										"entries": [
+											"The tenets of the Oath of Vengeance vary by paladin, but all the tenets revolve around punishing wrongdoers by any means necessary. Paladins who uphold these tenets are willing to sacrifice even their own righteousness to mete out justice upon those who do evil, so the paladins are often neutral or lawful neutral in alignment. The core principles of the tenets are brutally simple.",
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Fight the Greater Evil",
+														"entries": [
+															"Faced with a choice of fighting my sworn foes or combating a lesser evil. I choose the greater evil."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "No Mercy for the Wicked",
+														"entries": [
+															"Ordinary foes might win my mercy, but my sworn enemies do not."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "By Any Means Necessary",
+														"entries": [
+															"My qualms can't get in the way of exterminating my foes."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Restitution",
+														"entries": [
+															"If my foes wreak ruin on the world, it is because I failed to stop them. I must help those harmed by their misdeeds."
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Oath Spells",
+										"entries": [
+											"You gain oath spells at the paladin levels listed.",
+											{
+												"type": "table",
+												"caption": "Oath of Vengeance Spells",
+												"colLabels": [
+													"Paladin Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-xs-3 text-align-center",
+													"col-xs-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell bane}, {@spell hunter's mark}"
+													],
+													[
+														"5th",
+														"{@spell hold person}, {@spell misty step}"
+													],
+													[
+														"9th",
+														"{@spell haste}, {@spell protection from energy}"
+													],
+													[
+														"13th",
+														"{@spell banishment}, {@spell dimension door}"
+													],
+													[
+														"17th",
+														"{@spell hold monster}, {@spell scrying}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Abjure Enemy",
+										"entries": [
+											"As an action, you present your holy symbol and speak a prayer of denunciation, using your Channel Divinity. Choose one creature within 60 feet of you that you can see. That creature must make a Wisdom saving throw, unless it is immune to being {@condition frightened}. Fiends and undead have disadvantage on this saving throw.",
+											"On a failed save, the creature is {@condition frightened} for 1 minute or until it takes any damage. While {@condition frightened}, the creature's speed is 0, and it can't benefit from any bonus to its speed.",
+											"On a successful save, the creature's speed is halved for 1 minute or until the creature takes any damage."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Vow of Enmity",
+										"entries": [
+											"As a bonus action, you can utter a vow of enmity against a creature you can see within 10 feet of you, using your Channel Divinity. You gain advantage on attack rolls against the creature for 1 minute or until it drops to 0 hit points or falls {@condition unconscious}."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Relentless Avenger",
+										"entries": [
+											"By 7th level, your supernatural focus helps you close off a foe's retreat. When you hit a creature with an opportunity attack, you can move up to half your speed immediately after the attack and as part of the same reaction. This movement doesn't provoke opportunity attacks."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Soul of Vengeance",
+										"entries": [
+											"Starting at 15th level, the authority with which you speak your Vow of Enmity gives you greater power over your foe. When a creature under the effect of your Vow of Enmity makes an attack, you can use your reaction to make a melee weapon attack against that creature if it is within range."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Avenging Angel",
+										"entries": [
+											"At 20th level, you can assume the form of an angelic avenger. Using your action, you undergo a transformation. For 1 hour, you gain the following benefits:",
+											{
+												"type": "list",
+												"items": [
+													"Wings sprout from your back and grant you a flying speed of 60 feet.",
+													"You emanate an aura of menace in a 30-foot radius. The first time any enemy creature enters the aura or starts its turn there during a battle, the creature must succeed on a Wisdom saving throw or become {@condition frightened} of you for 1 minute or until it takes any damage. Attack rolls against the {@condition frightened} creature have advantage."
+												]
+											},
+											"Once you use this feature, you can't use it again until you finish a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "PHB",
+					"shortName": "Vengeance"
+				},
+				{
+					"name": "Oathbreaker",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Oathbreaker",
+								"entries": [
+									"An Oathbreaker is a paladin who breaks his or her sacred oaths to pursue some dark ambition or serve an evil power. Whatever light burned in the paladin's heart has been extinguished. Only darkness remains.",
+									"A paladin must be evil and at least 3rd level to become an Oathbreaker. The paladin replaces the features specific to his or her Sacred Oath with Oathbreaker features.",
+									{
+										"type": "entries",
+										"name": "Oathbreaker Spells",
+										"entries": [
+											"You gain oathbreaker spells at the paladin levels listed.",
+											{
+												"type": "table",
+												"caption": "Oathbreaker Spells",
+												"colLabels": [
+													"Paladin Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-xs-3 text-align-center",
+													"col-xs-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell hellish rebuke}, {@spell inflict wounds}"
+													],
+													[
+														"5th",
+														"{@spell crown of madness}, {@spell darkness}"
+													],
+													[
+														"9th",
+														"{@spell animate dead}, {@spell bestow curse}"
+													],
+													[
+														"13th",
+														"{@spell blight}, {@spell confusion}"
+													],
+													[
+														"17th",
+														"{@spell contagion}, {@spell dominate person}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Oathbreaker Channel Divinity: Control Undead",
+										"entries": [
+											"As an action, the paladin targets one undead creature he or she can see within 30 feet of him or her. The target must make a Wisdom saving throw. On a failed save, the target must obey the paladin's commands for the next 24 hours, or until the paladin uses this Channel Divinity option again. An undead whose challenge rating is equal to or greater than the paladin's level is immune to this effect."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Oathbreaker Channel Divinity: Dreadful Aspect",
+										"entries": [
+											"As an action, the paladin channels the darkest emotions and focuses them into a burst of magical menace. Each creature of the paladin's choice within 30 feet of the paladin must make a Wisdom saving throw if it can see the paladin. On a failed save, the target is {@condition frightened} of the paladin for 1 minute. If a creature {@condition frightened} by this effect ends its turn more than 30 feet away from the paladin, it can attempt another Wisdom saving throw to end the effect on it."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Aura of Hate",
+										"entries": [
+											"Starting at 7th level, the paladin, as well any fiends and undead within 10 feet of the paladin, gains a bonus to melee weapon damage rolls equal to the paladin's Charisma modifier (minimum of +1). A creature can benefit from this feature from only one paladin at a time.",
+											"At 18th level, the range of this aura increases to 30 feet."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Supernatural Resistance",
+										"entries": [
+											"At 15th level, the paladin gains resistance to bludgeoning, piercing, and slashing damage from nonmagical weapons."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Dread Lord",
+										"entries": [
+											"At 20th level, the paladin can, as an action, surround himself or herself with an aura of gloom that lasts for 1 minute. The aura reduces any bright light in a 30-foot radius around the paladin to dim light. Whenever an enemy that is {@condition frightened} by the paladin starts its turn in the aura, it takes 4d10 psychic damage. Additionally, the paladin and creatures he or she chooses in the aura are draped in deeper shadow. Creatures that rely on sight have disadvantage on attack rolls against creatures draped in this shadow.",
+											"While the aura lasts, the paladin can use a bonus action on his or her turn to cause the shadows in the aura to attack one creature. The paladin makes a melee spell attack against the target. If the attack hits, the target takes necrotic damage equal to 3d10 + the paladin's Charisma modifier.",
+											"After activating the aura, the paladin can't do so again until he or she finishes a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "DMG",
+					"shortName": "Oathbreaker"
+				},
+				{
+					"name": "Oath of the Crown",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Oath of the Crown",
+								"entries": [
+									"The Oath of the Crown is sworn to the ideals of civilization, be it the spirit of a nation, fealty to a sovereign, or service to a deity of law and rulership. The paladins who swear this oath dedicate themselves to serving society and, in particular, the laws that hold society together. These paladins are the watchful guardians on the walls, standing against the chaotic tides of barbarism that threaten to tear down all that civilization has built, and are commonly known as guardians, exemplars, or sentinels. Often, paladins who swear this oath are members of an order of knighthood in service to a nation or sovereign, and undergo their oath as part of their admission to the order's ranks.",
+									{
+										"type": "entries",
+										"name": "Tenets of the Crown",
+										"entries": [
+											"The tenets of the Oath of the Crown are often set by the sovereign to which their oath is sworn, but generally emphasize the following tenets.",
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Law",
+														"entries": [
+															"The law is paramount. It is the mortar that holds the stones of civilization together, and it must be respected."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Loyalty",
+														"entries": [
+															"Your word is your bond. Without loyalty, oaths and laws are meaningless."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Courage",
+														"entries": [
+															"You must be willing to do what needs to be done for the sake of order, even in the face of overwhelming odds. If you don't act, then who will?"
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Responsibility",
+														"entries": [
+															"You must deal with the consequences of your actions, and you are responsible for fulfilling your duties and obligations."
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Oath Spells",
+										"entries": [
+											"You gain oath spells at the paladin levels listed.",
+											{
+												"type": "table",
+												"caption": "Oath of the Crown Spells",
+												"colLabels": [
+													"Paladin Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-xs-3 text-align-center",
+													"col-xs-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell command}, {@spell compelled duel}"
+													],
+													[
+														"5th",
+														"{@spell warding bond}, {@spell zone of truth}"
+													],
+													[
+														"9th",
+														"{@spell aura of vitality}, {@spell spirit guardians}"
+													],
+													[
+														"13th",
+														"{@spell banishment}, {@spell guardian of faith}"
+													],
+													[
+														"17th",
+														"{@spell circle of power}, {@spell geas}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Champion Challenge",
+										"entries": [
+											"As a bonus action, you issue a challenge that compels other creatures to do battle with you. Each creature of your choice that you can see within 30 feet of you must make a Wisdom saving throw. On a failed save, a creature can't willingly move more than 30 feet away from you. This effect ends on the creature if you are {@condition incapacitated} or die or if the creature is more than 30 feet away from you."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Turn the Tide",
+										"entries": [
+											"As a bonus action, you can bolster injured creatures with your Channel Divinity. Each creature of your choice that can hear you within 30 feet of you regains hit points equal to 1d6 + your Charisma modifier (minimum of 1) if it has no more than half of its hit points."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Divine Allegiance",
+										"entries": [
+											"Starting at 7th level, when a creature within 5 feet of you takes damage, you can use your reaction to magically substitute your own health for that of the target creature, causing that creature not to take the damage. Instead, you take the damage. This damage to you can't be reduced or prevented in any way."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Unyielding Spirit",
+										"entries": [
+											"Starting at 15th level, you have advantage on saving throws to avoid becoming {@condition paralyzed} or {@condition stunned}."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Exalted Champion",
+										"entries": [
+											"At 20th level, your presence on the field of battle is an inspiration to those dedicated to your cause. You can use your action to gain the following benefits for 1 hour:",
+											{
+												"type": "list",
+												"items": [
+													"You have resistance to bludgeoning, piercing, and slashing damage from nonmagical weapons.",
+													"Your allies have advantage on death saving throws while within 30 feet of you.",
+													"You have advantage on Wisdom saving throws, as do your allies within 30 feet of you."
+												]
+											},
+											"This effect ends early if you are {@condition incapacitated} or die. Once you use this feature, you can't use it again until you finish a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "SCAG",
+					"shortName": "Crown"
+				},
+				{
+					"name": "Oath of Conquest (UA)",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Oath of Conquest",
+								"entries": [
+									"The Oath of Conquest calls to paladins who seek glory in battle and the subjugation of their enemies. It isn't enough for these paladins to establish order. They must crush the forces of chaos. Sometimes called knight tyrants or iron mongers, those who swear this oath gather into grim orders that serve gods or philosophies of war and well-ordered might. Some of these paladins go so far as to consort with the powers of the Nine Hells. The archdevil Bel, warlord of Avernus, counts many of these paladins called hell knights as his most ardent supporters. Hell knights cover their armor with trophies taken from fallen enemies, a grim warning to any who dare oppose them and the decrees of their lords.",
+									{
+										"type": "entries",
+										"name": "Tenets of Conquest",
+										"entries": [
+											"A paladin who takes this oath has the tenets of conquest seared on the upper arm. A hell knight's oath appears in Infernal runes, a brutal reminder of vows to the Lords of Hell.",
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Douse the Flame of Hope",
+														"entries": [
+															"It is not enough to merely defeat an enemy in battle. Your victory must be so overwhelming that your enemies will to fight is shattered forever. A blade can end a life. Fear can end an empire."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Rule with an Iron Fist",
+														"entries": [
+															"Once you have conquered, tolerate no dissent. Your word is law. Those who obey it shall be favored. Those who defy it shall be punished as an example to all who might follow."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Strength Above All",
+														"entries": [
+															"You shall rule until a stronger one arises. Then you must grow mightier and meet the challenge, or fall to your own ruin."
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Oath Spells",
+										"entries": [
+											"You gain oath spells at the paladin levels listed.",
+											{
+												"type": "table",
+												"caption": "Oath of Conquest Spells",
+												"colLabels": [
+													"Paladin Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-xs-3 text-align-center",
+													"col-xs-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell armor of Agathys}, {@spell command}"
+													],
+													[
+														"5th",
+														"{@spell hold person}, {@spell spiritual weapon}"
+													],
+													[
+														"9th",
+														"{@spell bestow curse}, {@spell fear}"
+													],
+													[
+														"13th",
+														"{@spell blight}, {@spell dominate beast}"
+													],
+													[
+														"17th",
+														"{@spell dominate person}, {@spell insect plague}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Conquering Strike",
+										"entries": [
+											"You can use your Channel Divinity to break a foe's will. When you hit a creature with a melee weapon attack as part of the Attack action, you can also use your Channel Divinity to force the target to make a Wisdom saving throw. On a failed save, the target becomes {@condition frightened} of you for 1 minute. The {@condition frightened} creature can repeat this saving throw at the end of each of its turns, ending the effect on itself on a success."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Guided Strike",
+										"entries": [
+											"You can use your Channel Divinity to strike with supernatural accuracy. When you make an attack roll, you can use your Channel Divinity to gain a +10 bonus to the roll. You make this choice after you see the roll, but before the DM says whether the attack hits or misses."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Aura of Conquest",
+										"entries": [
+											"Starting at 7th level, you emanate a menacing aura while you're not {@condition incapacitated}. The aura includes your space, extends 10 feet from you in every direction, and is blocked by total cover. Any enemy in the aura has disadvantage on saving throws against being {@condition frightened}.",
+											"At 18th level, the range of this aura increases to 30 feet."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Implacable Spirit",
+										"entries": [
+											"Once you reach 15th level, you can no longer be {@condition charmed}."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Invincible Conqueror",
+										"entries": [
+											"At 20th level, you gain the ability to harness extraordinary martial prowess. As an action, you can magically become an avatar of conquest, gaining the following benefits for 1 minute:",
+											{
+												"type": "list",
+												"items": [
+													"You have resistance to all damage.",
+													"When you take the Attack action on your turn, you can make one additional attack as part of that action.",
+													"Your melee weapon attacks score a critical hit on a roll of 19 or 20."
+												]
+											},
+											"Once you use this feature, you can't use it again until you finish a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "UAPaladin",
+					"shortName": "Conquest (UA)"
+				},
+				{
+					"name": "Oath of Conquest v2 (UA)",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Oath of Conquest v2",
+								"entries": [
+									"The Oath of Conquest calls to paladins who seek glory in battle and the subjugation of their enemies. It isn't enough for these paladins to establish order. They must crush the forces of chaos. Sometimes called knight tyrants or iron mongers, those who swear this oath gather into grim orders that serve gods or philosophies of war and well-ordered might.",
+									"Some of these paladins go so far as to consort with the powers of the Nine Hells, valuing the rule of law over the balm of mercy. The archdevil Bel, warlord of Avernus, counts many of these paladins\u2014called hell knights\u2014as his most ardent supporters. Hell knights cover their armor with trophies taken from fallen enemies, a grim warning to any who dare oppose them and the decrees of their lords. These knights are often most fiercely resisted by other paladins of this oath, who believe that the hell knights have wandered too far into darkness.",
+									{
+										"type": "entries",
+										"name": "Tenets of Conquest",
+										"entries": [
+											"A paladin who takes this oath has the tenets of conquest seared on the upper arm. A hell knight's oath appears in Infernal runes, a brutal reminder of vows to the Lords of Hell.",
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Douse the Flame of Hope",
+														"entries": [
+															"It is not enough to merely defeat an enemy in battle. Your victory must be so overwhelming that your enemies' will to fight is shattered forever. A blade can end a life. Fear can end an empire."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Rule with an Iron Fist",
+														"entries": [
+															"Once you have conquered, tolerate no dissent. Your word is law. Those who obey it shall be favored. Those who defy it shall be punished as an example to all who might follow."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Strength Above All",
+														"entries": [
+															"You shall rule until a stronger one arises. Then you must grow mightier and meet the challenge, or fall to your own ruin."
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Oath Spells",
+										"entries": [
+											"You gain oath spells at the paladin levels listed.",
+											{
+												"type": "table",
+												"caption": "Oath of Conquest Spells",
+												"colLabels": [
+													"Paladin Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-xs-3 text-align-center",
+													"col-xs-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell armor of Agathys}, {@spell command}"
+													],
+													[
+														"5th",
+														"{@spell hold person}, {@spell spiritual weapon}"
+													],
+													[
+														"9th",
+														"{@spell bestow curse}, {@spell fear}"
+													],
+													[
+														"13th",
+														"{@spell dominate beast}, {@spell stoneskin}"
+													],
+													[
+														"17th",
+														"{@spell cloudkill}, {@spell dominate person}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Conquering Presence",
+										"entries": [
+											"You can use your Channel Divinity to exude a terrifying presence. As an action, you force each creature of your choice that you can see within 30 feet of you to make a Wisdom saving throw. On a failed save, a creature becomes {@condition frightened} of you for 1 minute. The {@condition frightened} creature can repeat this saving throw at the end of each of its turns, ending the effect on itself on a success."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Guided Strike",
+										"entries": [
+											"You can use your Channel Divinity to strike with supernatural accuracy. When you make an attack roll, you can use your Channel Divinity to gain a +10 bonus to the roll. You make this choice after you see the roll, but before the DM says whether the attack hits or misses."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Aura of Conquest",
+										"entries": [
+											"Starting at 7th level, you constantly emanate a menacing aura while you're not {@condition incapacitated}. The aura includes your space, extends 10 feet from you in every direction, and is blocked by total cover.",
+											"If a creature is {@condition frightened} of you, its speed is reduced to 0 while in the aura, and that creature takes psychic damage equal to half your paladin level if it starts its turn there. At 18th level, the range of this aura increases to 30 feet."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Scornful Rebuke",
+										"entries": [
+											"Starting at 15th level, those who dare to strike you are psychically punished for their audacity. Whenever a creature hits you with an attack, that creature takes psychic damage equal to your Charisma modifier (minimum of 0) if you're not {@condition incapacitated}."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Invincible Conqueror",
+										"entries": [
+											"At 20th level, you gain the ability to harness extraordinary martial prowess. As an action, you can magically become an avatar of conquest, gaining the following benefits for 1 minute:",
+											{
+												"type": "list",
+												"items": [
+													"You have resistance to all damage.",
+													"When you take the Attack action on your turn, you can make one additional attack as part of that action.",
+													"Your melee weapon attacks score a critical hit on a roll of 19 or 20 on the d20."
+												]
+											},
+											"Once you use this feature, you can't use it again until you finish a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "UARevisedClassOptions",
+					"shortName": "Conquest v2 (UA)"
+				},
+				{
+					"name": "Oath of Treachery (UA)",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Oath of Treachery",
+								"entries": [
+									"The Oath of Treachery is the path followed by paladins who have forsworn other oaths or who care only for their own power and survival. Commonly known as blackguards, these profane warriors are faithful only to themselves. Anyone desperate enough to follow one of these paladins does so because, while deceitful, these paladins command great power. Those who follow them without falling prey to their treachery hope to indulge in wanton violence and accumulate great treasure. Many of these paladins pay homage to demon lords, especially Grazz't and Orcus. Even the Lords of Hell are loath to ally with these champions of chaos, but sometimes Baalzebul and Glasya find a kindred spirit in a blackguard's penchant for double dealing and treachery.",
+									{
+										"type": "entries",
+										"name": "Tenets of Treachery",
+										"entries": [
+											"A paladin who embraces the Oath of Treachery owes allegiance to no one. There are no tenets of this oath, for it lacks any substance. Those who are unfortunate enough to have close contact with blackguards have observed that a blackguard's overwhelming concern is power and safety, especially if both can be obtained at the expense of others."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Oath Spells",
+										"entries": [
+											"You gain oath spells at the paladin levels listed.",
+											{
+												"type": "table",
+												"caption": "Oath of Treachery Spells",
+												"colLabels": [
+													"Paladin Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-xs-3 text-align-center",
+													"col-xs-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell charm person}, {@spell expeditious retreat}"
+													],
+													[
+														"5th",
+														"{@spell invisibility}, {@spell mirror image}"
+													],
+													[
+														"9th",
+														"{@spell gaseous form}, {@spell haste}"
+													],
+													[
+														"13th",
+														"{@spell confusion}, {@spell greater invisibility}"
+													],
+													[
+														"17th",
+														"{@spell dominate person}, {@spell passwall}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Conjure Duplicate",
+										"entries": [
+											"As an action, you create a visual illusion of yourself that lasts for 1 minute, or until you lose your concentration (as if you were concentrating on a spell). The illusion appears in an unoccupied space of your choice that you can see within 30 feet of you. The illusion looks exactly like you; it is silent; it is your size, is insubstantial, doesn't occupy its space; and it is unaffected by attacks and damage. As a bonus action on your turn, you can move the illusion up to 30 feet to a space you can see, but the illusion must remain within 120 feet of you.",
+											"For the duration, you can cast spells as though you were in the illusion's space, but you must use your own senses. Additionally, when both you and your illusion are within 5 feet of a creature that can see the illusion, you have advantage on attack rolls against that creature, given how uncanny the illusion is."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Poison Strike",
+										"entries": [
+											"You can use your Channel Divinity to make a weapon deadlier. As a bonus action, you touch one weapon or piece of ammunition and conjure a special poison on it. The poison lasts for 1 minute. The next time you hit a target with an attack using that weapon or ammunition, the target takes poison damage immediately after the attack. The poison damage equals 2d10 + your paladin level, or 20 + your paladin level if you had advantage on the attack roll."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Aura of Treachery",
+										"entries": [
+											"Starting at 7th level, you emanate an aura of discord, which gives you the following benefits.",
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Cull the Herd",
+														"entries": [
+															"You have advantage on melee attack rolls against any creature that has one or more of its allies within 5 feet of it."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Treacherous Strike",
+														"entries": [
+															"If a creature within 5 feet of you misses you with a melee attack, you can use your reaction to force the attacker to reroll that attack against a creature of your choice that is also within 5 feet of the attacker. The ability fails and is wasted if the attacker is immune to being {@condition charmed}.",
+															"You can use this ability three times. You regain expended uses of it when you finish a short or long rest."
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Blackguard's Escape",
+										"entries": [
+											"At 15th level, you have the ability to slip away from your foes. Immediately after you are hit by an attack, you can use your reaction to turn {@condition invisible} and teleport up to 60 feet to a spot you can see. You remain {@condition invisible} until the end of your next turn or until you attack, deal damage, or force a creature to make a saving throw. Once you use this feature, you must finish a short or long rest before you can use it again."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Icon of Deceit",
+										"entries": [
+											"At 20th level, you gain the ability to emanate feelings of treachery. As an action, you can magically become an avatar of deceit, gaining the following benefits for 1 minute:",
+											{
+												"type": "list",
+												"items": [
+													"You are {@condition invisible}.",
+													"If a creature damages you on its turn, it must succeed on a Wisdom saving throw (DC equal to your spell save DC) or you control its next action, provided that you aren't {@condition incapacitated} when it takes the action. A creature automatically succeeds on the save if the creature is immune to being {@condition charmed}.",
+													"If you have advantage on an attack roll, you gain a bonus to its damage roll equal to your paladin level."
+												]
+											},
+											"Once you use this feature, you can't use it again until you finish a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "UAPaladin",
+					"shortName": "Treachery (UA)"
+				},
+				{
+					"name": "Oath of Redemption (UA)",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Oath of Redemption",
+								"entries": [
+									"The Oath of Redemption sets a paladin on a difficult path, one that requires a holy warrior to use violence only as a last resort. Paladins who dedicate themselves to this oath believe that any person can be redeemed and that the path of benevolence and justice is one that anyone can walk. These paladins face evil creatures in the hope of turning them to the light, and the paladins slay them only when such a deed will clearly save other lives. Paladins who follow this path are known as redeemers.",
+									"While redeemers are idealists, they are no fools. Redeemers know that undead, demons, devils, and other supernatural threats can be inherently evil. Against such foes, the paladins bring the full wrath of their weapons and spells to bear. Yet the redeemers still pray that, one day, even creatures of wickedness will invite their own redemption.",
+									{
+										"type": "entries",
+										"name": "Tenets of Redemption",
+										"entries": [
+											"The tenets of the Oath of Redemption hold a paladin to a high standard of peace and justice.",
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Peace",
+														"entries": [
+															"Violence is a weapon of last resort. Diplomacy and understanding are the paths to long-lasting peace."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Innocence",
+														"entries": [
+															"All people begin life in an innocent state, and it is their environment or the influence of dark forces that drives them to evil. By setting the proper example, and working to heal the wounds of a deeply flawed world, you can set anyone on a righteous path."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Patience",
+														"entries": [
+															"Change takes time. Those who have walked the path of the wicked must be given reminders to keep them honest and true. Once you have planted the seed of righteousness in a creature, you must work day after day to allow it to survive and then flourish."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Wisdom",
+														"entries": [
+															"Your heart and mind must stay clear, for eventually you will be forced to admit defeat. While every creature can be redeemed, some are so far along the path of evil that you have no choice but to end their lives for the greater good. Any such action must be carefully weighed and the consequences fully understood, but once you have made the decision, follow through with it knowing your path is just."
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Oath Spells",
+										"entries": [
+											"You gain oath spells at the paladin levels listed.",
+											{
+												"type": "table",
+												"caption": "Oath of Redemption Spells",
+												"colLabels": [
+													"Paladin Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-xs-3 text-align-center",
+													"col-xs-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell shield}, {@spell sleep}"
+													],
+													[
+														"5th",
+														"{@spell hold person}, {@spell ray of enfeeblement}"
+													],
+													[
+														"9th",
+														"{@spell counterspell}, {@spell hypnotic pattern}"
+													],
+													[
+														"13th",
+														"{@spell Otiluke's resilient sphere}, {@spell stoneskin}"
+													],
+													[
+														"17th",
+														"{@spell hold monster}, {@spell wall of force}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Armor of Peace",
+										"entries": [
+											"Starting at 3rd level, your commitment to peace allows you to walk into the most dangerous situations unarmored. While you aren't wearing armor or wielding a shield, your base AC is 16 + your Dexterity modifier."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Warrior of Reconciliation",
+										"entries": [
+											"At 3rd level, you foreswear the weapons of war in favor of simple tools. While wielding a simple weapon that deals bludgeoning damage, you gain a special benefit if you reduce a creature to 0 hit points with that weapon and decide to spare the creature's life. Instead of falling {@condition unconscious}, the creature is {@condition charmed} by you for 1 minute. During that time, the {@condition charmed} creature is peaceful and docile, refusing to move or to take actions or reactions, unless you command it to. You can't order the creature to attack, force someone to make a saving throw, or cause damage to itself or others. This {@condition charmed} effect ends early if you are {@condition incapacitated} or if you or your companions attack the creature, deal damage to it, or force it to make a saving throw. When the effect ends, the creature falls {@condition unconscious} if it still has 0 hit points."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Emissary of Peace",
+										"entries": [
+											"You can use your Channel Divinity to augment your presence with divine power. As a bonus action, you grant yourself a +5 bonus to the next Charisma (Persuasion) check you make within the next minute."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Rebuke the Violent",
+										"entries": [
+											"You can use your Channel Divinity to rebuke those who use violence. As a reaction when an enemy within 10 feet of you deals damage with a melee attack against one creature other than you, you force that attacker to make a Wisdom saving throw. On a failed save, the attacker takes radiant damage equal to the damage it just dealt. On a successful save, it takes half as much damage."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Aura of the Guardian",
+										"entries": [
+											"Starting at 7th level, you can shield your allies from harm at the cost of your own health. As a reaction when an ally within 10 feet of you takes damage, you instead magically take that damage. This feature doesn't transfer any other effects that might accompany the damage."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Protective Spirit",
+										"entries": [
+											"Starting at 15th level, a holy presence mends your wounds in combat. You regain hit points equal to 1d6 + half your paladin level if you end your turn in combat with fewer than half of your hit points remaining and you aren't {@condition incapacitated}."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Emissary of Redemption",
+										"entries": [
+											"At 20th level, you become an avatar of peace, which gives you two benefits:",
+											{
+												"type": "list",
+												"items": [
+													"You have resistance to all damage dealt by other creatures (their attacks, spells, and other effects).",
+													"Whenever a creature damages you, it takes damage equal to half the amount it dealt to you."
+												]
+											},
+											"If you attack a creature, deal damage to it, or force it to make a saving throw, neither benefit works against that creature until you finish a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "UAATrioOfSubclasses",
+					"shortName": "Redemption (UA)"
+				},
+				{
+					"name": "Oath of Conquest",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Oath of Conquest",
+								"entries": [
+									"The Oath of Conquest calls to paladins who seek glory in battle and the subjugation of their enemies. It isn't enough for these paladins to establish order. They must crush the forces of chaos. Sometimes called knight tyrants or iron mongers, those who swear this oath gather into grim orders that serve gods or philosophies of war and well-ordered might.",
+									"Some of these paladins go so far as to consort with the powers of the Nine Hells, valuing the rule of law over the balm of mercy. The archdevil Bel, warlord of Avernus, counts many of these paladins\u2014called hell knights\u2014as his most ardent supporters. Hell knights cover their armor with trophies taken from fallen enemies, a grim warning to any who dare oppose them and the decrees of their lords. These knights are often most fiercely resisted by other paladins of this oath, who believe that the hell knights have wandered too far into darkness.",
+									{
+										"type": "entries",
+										"name": "Tenets of Conquest",
+										"entries": [
+											"A paladin who takes this oath has the tenets of conquest seared on the upper arm.",
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Douse the Flame of Hope",
+														"entries": [
+															"It is not enough to merely defeat an enemy in battle. Your victory must be so overwhelming that your enemies' will to fight is shattered forever. A blade can end a life. Fear can end an empire."
+														]
+													},
+													{
+														"type": "entries",
+														"name": "Rule with an Iron Fist",
+														"entries": [
+															"Once you have conquered, tolerate no dissent. Your word is law. Those who obey it shall be favored. Those who defy it shall be punished as an example to all who might follow."
+														]
+													},
+													{
+														"type": "entries",
+														"name": "Strength Above All",
+														"entries": [
+															"You shall rule until a stronger one arises. Then you must grow mightier and meet the challenge, or fall to your own ruin."
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Oath Spells",
+										"entries": [
+											"You gain oath spells at the paladin levels listed.",
+											{
+												"type": "table",
+												"caption": "Oath of Conquest Spells",
+												"colLabels": [
+													"Paladin Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-xs-3 text-align-center",
+													"col-xs-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell armor of Agathys}, {@spell command}"
+													],
+													[
+														"5th",
+														"{@spell hold person}, {@spell spiritual weapon}"
+													],
+													[
+														"9th",
+														"{@spell bestow curse}, {@spell fear}"
+													],
+													[
+														"13th",
+														"{@spell dominate beast}, {@spell stoneskin}"
+													],
+													[
+														"17th",
+														"{@spell cloudkill}, {@spell dominate person}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Conquering Presence",
+										"entries": [
+											"You can use your Channel Divinity to exude a terrifying presence. As an action, you force each creature of your choice that you can see within 30 feet of you to make a Wisdom saving throw. On a failed save, a creature becomes {@condition frightened} of you for 1 minute. The {@condition frightened} creature can repeat this saving throw at the end of each of its turns, ending the effect on itself on a success."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Guided Strike",
+										"entries": [
+											"You can use your Channel Divinity to strike with supernatural accuracy. When you make an attack roll, you can use your Channel Divinity to gain a +10 bonus to the roll. You make this choice after you see the roll, but before the DM says whether the attack hits or misses."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Aura of Conquest",
+										"entries": [
+											"Starting at 7th level, you constantly emanate a menacing aura while you're not {@condition incapacitated}. The aura extends 10 feet from you in every direction, but not through total cover.",
+											"If a creature is {@condition frightened} of you, its speed is reduced to 0 while in the aura, and that creature takes psychic damage equal to half your paladin level if it starts its turn there.",
+											"At 18th level, the range of this aura increases to 30 feet."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Scornful Rebuke",
+										"entries": [
+											"Starting at 15th level, those who dare to strike you are psychically punished for their audacity. Whenever a creature hits you with an attack, that creature takes psychic damage equal to your Charisma modifier (minimum of 1) if you're not {@condition incapacitated}."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Invincible Conqueror",
+										"entries": [
+											"At 20th level, you gain the ability to harness extraordinary martial prowess. As an action, you can magically become an avatar of conquest, gaining the following benefits for 1 minute:",
+											{
+												"type": "list",
+												"items": [
+													"You have resistance to all damage.",
+													"When you take the Attack action on your turn, you can make one additional attack as part of that action.",
+													"Your melee weapon attacks score a critical hit on a roll of 19 or 20 on the d20."
+												]
+											},
+											"Once you use this feature, you can't use it again until you finish a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "XGE",
+					"shortName": "Conquest"
+				},
+				{
+					"name": "Oath of Redemption",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Oath of Redemption",
+								"entries": [
+									"The Oath of Redemption sets a paladin on a difficult path, one that requires a holy warrior to use violence only as a last resort. Paladins who dedicate themselves to this oath believe that any person can be redeemed and that the path of benevolence and justice is one that anyone can walk. These paladins face evil creatures in the hope of turning their foes to the light, and they slay their enemies only when such a deed will clearly save other lives. Paladins who follow this path are known as redeemers.",
+									"While redeemers are idealists, they are no fools. Redeemers know that undead, demons, devils, and other supernatural threats can be inherently evil. Against such foes, paladins who swear this oath bring the full wrath of their weapons and spells to bear. Yet the redeemers still pray that, one day, even creatures of wickedness will invite their own redemption.",
+									{
+										"type": "entries",
+										"name": "Tenets of Redemption",
+										"entries": [
+											"The tenets of the Oath of Redemption hold a paladin to a high standard of peace and justice.",
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Peace",
+														"entries": [
+															"Violence is a weapon of last resort. Diplomacy and understanding are the paths to long-lasting peace."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Innocence",
+														"entries": [
+															"All people begin life in an innocent state, and it is their environment or the influence of dark forces that drives them to evil. By setting the proper example, and working to heal the wounds of a deeply flawed world, you can set anyone on a righteous path."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Patience",
+														"entries": [
+															"Change takes time. Those who have walked the path of the wicked must be given reminders to keep them honest and true. Once you have planted the seed of righteousness in a creature, you must work day after day to allow that seed to survive and flourish."
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"entries": [
+													{
+														"type": "entries",
+														"name": "Wisdom",
+														"entries": [
+															"Your heart and mind must stay clear, for eventually you will be forced to admit defeat. While every creature can be redeemed, some are so far along the path of evil that you have no choice but to end their lives for the greater good. Any such action must be carefully weighed and the consequences fully understood, but once you have made the decision, follow through with it knowing your path is just."
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Oath Spells",
+										"entries": [
+											"You gain oath spells at the paladin levels listed.",
+											{
+												"type": "table",
+												"caption": "Oath of Redemption Spells",
+												"colLabels": [
+													"Paladin Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-xs-3 text-align-center",
+													"col-xs-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell sanctuary}, {@spell sleep}"
+													],
+													[
+														"5th",
+														"{@spell calm emotions}, {@spell hold person}"
+													],
+													[
+														"9th",
+														"{@spell counterspell}, {@spell hypnotic pattern}"
+													],
+													[
+														"13th",
+														"{@spell Otiluke's resilient sphere}, {@spell stoneskin}"
+													],
+													[
+														"17th",
+														"{@spell hold monster}, {@spell wall of force}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Emissary of Peace",
+										"entries": [
+											"You can use your Channel Divinity to augment your presence with divine power. As a bonus action, you grant yourself a +5 bonus to Charisma (Persuasion) checks for the next 10 minutes."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Rebuke the Violent",
+										"entries": [
+											"You can use your Channel Divinity to rebuke those who use violence. Immediately after an attacker within 30 feet of you deals damage with an attack against a creature other than you, you can use your reaction to force the attacker to make a Wisdom saving throw. On a failed save, the attacker takes radiant damage equal to the damage it just dealt. On a successful save, it takes half as much damage."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Aura of the Guardian",
+										"entries": [
+											"Starting at 7th level, you can shield others from harm at the cost of your own health. When a creature within 10 feet of you takes damage, you can use your reaction to magically take that damage, instead of that creature taking it. This feature doesn't transfer any other effects that might accompany the damage, and this damage can't be reduced in any way.",
+											"At 18th level, the range of this aura increases to 30 feet."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Protective Spirit",
+										"entries": [
+											"Starting at 15th level, a holy presence mends your wounds in battle. You regain hit points equal to 1d6 + half your paladin level if you end your turn in combat with fewer than half of your hit points remaining and you aren't {@condition incapacitated}."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Emissary of Redemption",
+										"entries": [
+											"At 20th level, you become an avatar of peace, which gives you two benefits:",
+											{
+												"type": "list",
+												"items": [
+													"You have resistance to all damage dealt by other creatures (their attacks, spells, and other effects).",
+													"Whenever a creature hits you with an attack, it takes radiant damage equal to half the damage you take from the attack."
+												]
+											},
+											"If you attack a creature, cast a spell on it, or deal damage to it by any means but this feature, neither benefit works against that creature until you finish a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "XGE",
+					"shortName": "Redemption"
+				}
+			],
+			"fluff": [
+				{
+					"type": "quote",
+					"entries": [
+						"The true worth of a paladin is measured not in foes defeated or dungeons plundered. It is measured in lives saved and hearts turned to the causes of mercy and justice."
+					],
+					"by": "Isteval"
+				},
+				"A paladin is a living embodiment of an oath\u2014a promise or a vow made manifest in the person of a holy warrior who has the skill and the determination to see the cause through to the end. Some paladins devote themselves expressly to protecting the innocent and spreading justice in the world, while others resolve to attain that goal by conquering those who stand defiant and bringing them under the rule of law.",
+				"Although no paladin in the world could be described as typical, a number of them are narrow-minded do-gooders who refuse to tolerate even the smallest deviation from their own outlook. Paladins who take up the adventuring life, however, rarely remain so rigid in their attitudes\u2014if only to keep from alienating their companions.",
+				"You can flesh out your paladin character by using the suggestions below. It's important to keep in mind that most paladins aren't robots. They have doubts and prejudices and harbor contradictory thoughts just as any other character does. Some are compelled by an internal motivation that might sometimes be at odds with the principles of their oaths.",
+				{
+					"type": "entries",
+					"name": "Personal Goal",
+					"entries": [
+						"The precepts of a paladin's oath provide purpose to the character and dictate an ultimate goal or an overall intent that the paladin abides by and advances. Aside from that, some paladins are driven by a personal goal that either complements or transcends the dictates of their oaths. Paladins who swear different oaths might have the same personal goal, differing only in how they apply that goal to their actions when upholding their oaths.",
+						"If your paladin character has a personal goal, it might be drawn from some life event and thus not directly tied to the oath.",
+						{
+							"type": "table",
+							"caption": "Personal Goal",
+							"colLabels": [
+								"{@dice d6}",
+								"Personal Goal"
+							],
+							"colStyles": [
+								"col-xs-1 text-align-center",
+								"col-xs-11"
+							],
+							"rows": [
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 1
+										}
+									},
+									"Peace. You fight so that future generations will not have to."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 2
+										}
+									},
+									"Revenge. Your oath is the vehicle through which you will right an ancient wrong."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 3
+										}
+									},
+									"Duty. You will live up to what you have sworn to do, or die trying."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 4
+										}
+									},
+									"Leadership. You will win a great battle that bards will sing about, and in so doing, you will become an example to inspire others."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 5
+										}
+									},
+									"Faith. You know your path is righteous, or else the gods would not have set you upon it."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 6
+										}
+									},
+									"Glory. You will lead the world into a grand new era, one that will be branded with your name."
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Symbol",
+					"entries": [
+						"Paladins are mindful of the influence of symbols, and many of them adopt or design an artistic device that bears a distinctive image. Your symbol exemplifies the oath you have taken and communicates that message to those around you, friend and foe alike.",
+						"Your symbol might be displayed on a banner, a flag, or your clothing for all to see. Or it could be less obvious, such as a trinket or a token that you carry concealed on your person.",
+						{
+							"type": "table",
+							"caption": "Symbol",
+							"colLabels": [
+								"{@dice d6}",
+								"Symbol"
+							],
+							"colStyles": [
+								"col-xs-1 text-align-center",
+								"col-xs-11"
+							],
+							"rows": [
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 1
+										}
+									},
+									"A dragon, emblematic of your nobility in peace and your ferocity in combat"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 2
+										}
+									},
+									"A clenched fist, because you are always ready to fight for your beliefs"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 3
+										}
+									},
+									"An upraised open hand, indicating your preference for diplomacy over combat"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 4
+										}
+									},
+									"A red heart, showing the world your commitment to justice"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 5
+										}
+									},
+									"A black heart, signifying that emotions such as pity do not sway your dedication to your oath"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 6
+										}
+									},
+									"An unblinking eye, meaning that you are ever alert to all threats against your cause"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Nemesis",
+					"entries": [
+						"Their adherence to a sacred oath demands that paladins take an active stance in carrying their beliefs into the world. This activity naturally leads to conflict with creatures or entities that oppose those beliefs. Among those opponents, one often stands out as a paladin's most persistent or most formidable foe\u2014a nemesis whose presence or influence is a constant factor in a paladin's life.",
+						"Your paladin character might have an enemy that dates from the days before you took up your path. Or you could be a target because when you became a paladin, you immediately attracted the attention of those that would do you in. If you have a nemesis, who or what is it? Whom among your enemies do you consider to be the biggest threat to achieving your goals?",
+						{
+							"type": "table",
+							"caption": "Nemesis",
+							"colLabels": [
+								"{@dice d6}",
+								"Nemesis"
+							],
+							"colStyles": [
+								"col-xs-1 text-align-center",
+								"col-xs-11"
+							],
+							"rows": [
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 1
+										}
+									},
+									"A mighty orc war chief who threatens to overrun and destroy everything you hold sacred"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 2
+										}
+									},
+									"A fiend or a celestial, the agent of a power of the Outer Planes, who has been charged with corrupting or redeeming you, as appropriate"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 3
+										}
+									},
+									"A dragon whose servants dog your steps"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 4
+										}
+									},
+									"A high priest who sees you as a misguided fool and wants you to abandon your religion"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 5
+										}
+									},
+									"A rival paladin who trained with you but became an oath-breaker and holds you responsible"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 6
+										}
+									},
+									"A vampire who has sworn revenge against all paladins after being defeated by one"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Temptation",
+					"entries": [
+						"Although paladins are dedicated to their oaths, they are mortals, and thus they are flawed. Many of them exhibit a type of behavior or hold to an attitude that is not in keeping with the highest ideals of their calling.",
+						"What is the temptation that your character succumbs to or finds it difficult to resist?",
+						{
+							"type": "table",
+							"caption": "Temptation",
+							"colLabels": [
+								"{@dice d6}",
+								"Temptation"
+							],
+							"colStyles": [
+								"col-xs-1 text-align-center",
+								"col-xs-11"
+							],
+							"rows": [
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 1
+										}
+									},
+									"Fury. When your anger is roused, you have trouble thinking straight, and you fear you might do something you'll regret."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 2
+										}
+									},
+									"Pride. Your deeds are noteworthy, and no one takes note of them more often than you."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 3
+										}
+									},
+									"Lust. You can't resist an attractive face and a pleasant smile."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 4
+										}
+									},
+									"Envy. You are mindful of what some famous folk have accomplished, and you feel inadequate when your deeds don't compare to theirs."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 5
+										}
+									},
+									"Despair. You consider the great strength of the enemies you must defeat, and at times you see no way to achieve final victory."
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 6
+										}
+									},
+									"Greed. Regardless of how much glory and treasure you amass, it's never enough for you."
+								]
+							]
+						}
+					]
+				}
+			],
+			"fluffPage": 36
+		}
+	]
+}

@@ -5,7 +5,7 @@ const JSON_URL = "data/demo.json";
 window.onload = loadJson;
 
 function loadJson () {
-	DataUtil.loadJSON(JSON_URL, initDemo)
+	DataUtil.loadJSON(JSON_URL).then(initDemo)
 }
 
 function initDemo (data) {
@@ -33,7 +33,9 @@ function initDemo (data) {
 			json = JSON.parse(editor.getValue());
 		} catch (e) {
 			$msg.html(`Invalid JSON! We recommend using <a href="https://jsonlint.com/" target="_blank">JSONLint</a>.`);
-			return;
+			setTimeout(() => {
+				throw e
+			});
 		}
 
 		renderer.recursiveEntryRender(json, renderStack);

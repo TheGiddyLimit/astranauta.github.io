@@ -10,17 +10,34 @@
 				]
 			},
 			"source": "RoT",
-			"alignment": "neutral evil",
-			"ac": "14 (leather armor)",
-			"hp": "16 (3d8+3)",
-			"speed": "30 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 16,
+				"formula": "3d8+3"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 9,
 			"dex": 16,
 			"con": 13,
 			"int": 11,
 			"wis": 10,
 			"cha": 12,
-			"save": "Wis +2",
+			"save": {
+				"wis": "+2"
+			},
 			"skill": {
 				"deception": "+3",
 				"stealth": "+5"
@@ -38,7 +55,7 @@
 				{
 					"name": "Fanatic Advantage",
 					"entries": [
-						"Once per turn, if the dragonclaw makes a weapon attack with advantage on the attack roll and hits, it deals an extra 7 (2d6) damage."
+						"Once per turn, if the dragonclaw makes a weapon attack with advantage on the attack roll and hits, it deals an extra 7 ({@dice 2d6}) damage."
 					]
 				},
 				{
@@ -58,11 +75,17 @@
 				{
 					"name": "Scimitar",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) slashing damage."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
 					]
 				}
 			],
-			"page": 89
+			"page": 89,
+			"traitTags": [
+				"Pack Tactics"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Dragonfang",
@@ -74,22 +97,50 @@
 				]
 			},
 			"source": "RoT",
-			"alignment": "neutral evil",
-			"ac": "15 (studded leather)",
-			"hp": "78 (12d8+24)",
-			"speed": "30 ft.",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 78,
+				"formula": "12d8+24"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 11,
 			"dex": 16,
 			"con": 14,
 			"int": 12,
 			"wis": 12,
 			"cha": 14,
-			"save": "Wis +3",
+			"save": {
+				"wis": "+3"
+			},
 			"skill": {
 				"deception": "+4",
 				"stealth": "+5"
 			},
-			"resist": "one of the following: acid, cold, fire, lightning or poison",
+			"resist": [
+				{
+					"resist": [
+						"acid",
+						"cold",
+						"fire",
+						"lightning",
+						"poison"
+					],
+					"preNote": "one of the following:"
+				}
+			],
 			"passive": 11,
 			"languages": "Common, Draconic, Infernal",
 			"cr": "5",
@@ -103,7 +154,7 @@
 				{
 					"name": "Fanatic Advantage",
 					"entries": [
-						"Once per turn, if the dragonfang makes a weapon attack with advantage on the attack roll and hits, the target takes an extra 10 (3d6) damage."
+						"Once per turn, if the dragonfang makes a weapon attack with advantage on the attack roll and hits, the target takes an extra 10 ({@dice 3d6}) damage."
 					]
 				},
 				{
@@ -123,17 +174,20 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage plus 7 (2d6) damage of the type to which the dragonfang has resistance."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage plus 7 ({@dice 2d6}) damage of the type to which the dragonfang has resistance."
 					]
 				},
 				{
 					"name": "Orb of Dragon's Breath (2/Day)",
 					"entries": [
-						"Ranged Spell Attack: +5 to hit, range 50 ft., one target. Hit: 22 (5d8) damage of the type to which the dragonfang has damage resistance."
+						"Ranged Spell Attack: {@hit 5} to hit, range 50 ft., one target. Hit: 22 ({@dice 5d8}) damage of the type to which the dragonfang has damage resistance."
 					]
 				}
 			],
-			"page": 89
+			"page": 89,
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Dragonsoul",
@@ -145,22 +199,50 @@
 				]
 			},
 			"source": "RoT",
-			"alignment": "neutral evil",
-			"ac": "16 (studded leather)",
-			"hp": "110 (17d8+34)",
-			"speed": "30 ft.",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 110,
+				"formula": "17d8+34"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 11,
 			"dex": 18,
 			"con": 14,
 			"int": 13,
 			"wis": 12,
 			"cha": 16,
-			"save": "Wis +4",
+			"save": {
+				"wis": "+4"
+			},
 			"skill": {
 				"deception": "+6",
 				"stealth": "+7"
 			},
-			"resist": "one of the following: acid, cold, fire, lightning or poison",
+			"resist": [
+				{
+					"resist": [
+						"acid",
+						"cold",
+						"fire",
+						"lightning",
+						"poison"
+					],
+					"preNote": "one of the following:"
+				}
+			],
 			"passive": 11,
 			"languages": "Common, Draconic, Infernal",
 			"cr": "7",
@@ -174,7 +256,7 @@
 				{
 					"name": "Fanatic Advantage",
 					"entries": [
-						"Once per turn, if the dragonsoul makes a weapon attack with advantage on the attack roll and hits, the target takes an extra 10 (3d6) damage."
+						"Once per turn, if the dragonsoul makes a weapon attack with advantage on the attack roll and hits, the target takes an extra 10 ({@dice 3d6}) damage."
 					]
 				},
 				{
@@ -200,17 +282,23 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage plus 10 (3d6) damage of the type to which the dragonsoul has resistance."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage plus 10 ({@dice 3d6}) damage of the type to which the dragonsoul has resistance."
 					]
 				},
 				{
 					"name": "Orb of Dragon's Breath (3/Day)",
 					"entries": [
-						"Ranged Spell Attack: +7 to hit, range 90 ft., one target. Hit: 27 (6d8) damage of the type to which the dragonsoul has damage resistance."
+						"Ranged Spell Attack: {@hit 7} to hit, range 90 ft., one target. Hit: 27 ({@dice 6d8}) damage of the type to which the dragonsoul has damage resistance."
 					]
 				}
 			],
-			"page": 89
+			"page": 89,
+			"traitTags": [
+				"Pack Tactics"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Dragonwing",
@@ -222,22 +310,50 @@
 				]
 			},
 			"source": "RoT",
-			"alignment": "neutral evil",
-			"ac": "14 (leather armor)",
-			"hp": "33 (6d8+6)",
-			"speed": "30 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 33,
+				"formula": "6d8+6"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 11,
 			"dex": 16,
 			"con": 13,
 			"int": 11,
 			"wis": 11,
 			"cha": 13,
-			"save": "Wis +2",
+			"save": {
+				"wis": "+2"
+			},
 			"skill": {
 				"deception": "+3",
 				"stealth": "+5"
 			},
-			"resist": "one of the following: acid, cold, fire, lightning or poison",
+			"resist": [
+				{
+					"resist": [
+						"acid",
+						"cold",
+						"fire",
+						"lightning",
+						"poison"
+					],
+					"preNote": "one of the following:"
+				}
+			],
 			"passive": 10,
 			"languages": "Common, Draconic",
 			"cr": "2",
@@ -251,7 +367,7 @@
 				{
 					"name": "Fanatic Advantage",
 					"entries": [
-						"Once per turn, if the dragonwing makes a weapon attack with advantage on the attack roll and hits, the target takes an extra 7 (2d6) damage."
+						"Once per turn, if the dragonwing makes a weapon attack with advantage on the attack roll and hits, the target takes an extra 7 ({@dice 2d6}) damage."
 					]
 				},
 				{
@@ -277,21 +393,41 @@
 				{
 					"name": "Scimitar",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) slashing damage plus 3 (1d6) damage of the type to which the cultist has resistance."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage plus 3 ({@dice 1d6}) damage of the type to which the cultist has resistance."
 					]
 				}
 			],
-			"page": 90
+			"page": 90,
+			"traitTags": [
+				"Pack Tactics"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Guard Drake",
 			"size": "M",
 			"type": "dragon",
 			"source": "RoT",
-			"alignment": "unaligned",
-			"ac": "14 (natural armor)",
-			"hp": "52 (7d8+21)",
-			"speed": "30 ft.",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 52,
+				"formula": "7d8+21"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 16,
 			"dex": 11,
 			"con": 16,
@@ -301,7 +437,9 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"resist": "lightning",
+			"resist": [
+				"lightning"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "understands Draconic but can't speak it",
@@ -316,27 +454,46 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) bludgeoning damage."
 					]
 				}
 			],
-			"page": 90
+			"page": 90,
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/254/guard-drake.mp3",
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Ice Toad",
 			"size": "M",
 			"type": "monstrosity",
 			"source": "RoT",
-			"alignment": "neutral",
-			"ac": "12 (natural armor)",
-			"hp": "32 (5d8+10)",
-			"speed": "30 ft., swim 30 ft.",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 32,
+				"formula": "5d8+10"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
 			"str": 13,
 			"dex": 10,
 			"con": 14,
@@ -346,7 +503,9 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"immune": "cold",
+			"immune": [
+				"cold"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "Ice Toad",
@@ -361,7 +520,7 @@
 				{
 					"name": "Cold Aura",
 					"entries": [
-						"Any creature that starts its turn within 5 feet of the toad takes 3 (1d6) cold damage."
+						"Any creature that starts its turn within 5 feet of the toad takes 3 ({@dice 1d6}) cold damage."
 					]
 				},
 				{
@@ -375,35 +534,72 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d8) cold damage. If the target is a Medium or smaller creature it is grappled (escape DC 11). Until this grapple ends, the toad can't bite another target."
+						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d8}) cold damage. If the target is a Medium or smaller creature it is grappled (escape DC 11). Until this grapple ends, the toad can't bite another target."
 					]
 				}
 			],
-			"page": 90
+			"page": 90,
+			"traitTags": [
+				"Amphibious"
+			]
 		},
 		{
 			"name": "Naergoth Bladelord",
+			"isNPC": true,
 			"size": "M",
 			"type": "undead",
 			"source": "RoT",
-			"alignment": "neutral evil",
-			"ac": "18 (plate)",
-			"hp": "135 (18d8+54)",
-			"speed": "30 ft.",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 135,
+				"formula": "18d8+54"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 20,
 			"dex": 12,
 			"con": 16,
 			"int": 12,
 			"wis": 14,
 			"cha": 16,
-			"save": "Dex +5, Wis +4",
+			"save": {
+				"dex": "+5",
+				"wis": "+4"
+			},
 			"skill": {
 				"perception": "+6",
 				"stealth": "+5"
 			},
-			"resist": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered",
-			"immune": "poison",
-			"conditionImmune": "exhaustion, poisoned",
+			"resist": [
+				"necrotic",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks that aren't silvered"
+				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 16,
 			"languages": "Common, Draconic",
@@ -426,26 +622,33 @@
 				{
 					"name": "Life Drain",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 20 (5d6+3) necrotic damage. The target must succeed on a DC 15 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one target. Hit: 20 ({@dice 5d6+3}) necrotic damage. The target must succeed on a DC 15 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
 					]
 				},
 				{
 					"name": "Longsword",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 9 (1d8+5) slashing damage, or 10 (1d10+5) if used with two hands, plus 10 (3d6) necrotic damage."
+						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d8+5}) slashing damage, or 10 ({@dice 1d10+5}) if used with two hands, plus 10 ({@dice 3d6}) necrotic damage."
 					]
 				},
 				{
 					"name": "Longbow",
 					"entries": [
-						"Ranged Weapon Attack: +5 to hit, range 150/600 ft., one target. Hit: 5 (1d8+1) piercing damage plus 10 (3d6) necrotic damage."
+						"Ranged Weapon Attack: {@hit 5} to hit, range 150/600 ft., one target. Hit: 5 ({@dice 1d8+1}) piercing damage plus 10 ({@dice 3d6}) necrotic damage."
 					]
 				}
 			],
-			"page": 90
+			"page": 90,
+			"traitTags": [
+				"Sunlight Sensitivity"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Neronvain",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -454,23 +657,42 @@
 				]
 			},
 			"source": "RoT",
-			"alignment": "neutral evil",
-			"ac": "17",
-			"hp": "117 (18d8+36)",
-			"speed": "30 ft.",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				17
+			],
+			"hp": {
+				"average": 117,
+				"formula": "18d8+36"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 8,
 			"dex": 17,
 			"con": 15,
 			"int": 16,
 			"wis": 13,
 			"cha": 18,
-			"save": "Con +6, Wis +5",
+			"save": {
+				"con": "+6",
+				"wis": "+5"
+			},
 			"skill": {
 				"arcana": "+7",
 				"perception": "+5"
 			},
-			"immune": "poison",
-			"conditionImmune": "charmed, frightened, poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 15,
 			"languages": "Common, Draconic, Elvish, Infernal",
@@ -481,15 +703,15 @@
 					"entries": [
 						"Neronvain adds his Charisma bonus to his AC (included)."
 					]
-				}
-			],
-			"action": [
+				},
 				{
 					"name": "Fey Ancestry",
 					"entries": [
 						"Magic can't put Neronvain to sleep."
 					]
-				},
+				}
+			],
+			"action": [
 				{
 					"name": "Multiattack",
 					"entries": [
@@ -499,13 +721,13 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage plus 13 (3d8) poison damage."
+						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage plus 13 ({@dice 3d8}) poison damage."
 					]
 				},
 				{
 					"name": "Eldritch Arrow",
 					"entries": [
-						"Ranged Spell Attack: +7 to hit, range 120 ft., one target. Hit: 11 (2d10) force damage plus 9 (2d8) poison damage."
+						"Ranged Spell Attack: {@hit 7} to hit, range 120 ft., one target. Hit: 11 ({@dice 2d10}) force damage plus 9 ({@dice 2d8}) poison damage."
 					]
 				},
 				{
@@ -515,10 +737,17 @@
 					]
 				}
 			],
-			"page": 91
+			"page": 91,
+			"traitTags": [
+				"Fey Ancestry"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Rath Modar",
+			"isNPC": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -527,17 +756,35 @@
 				]
 			},
 			"source": "RoT",
-			"alignment": "lawful evil",
-			"ac": "13 (16 with mage armor)",
-			"hp": "71 (11d8+22)",
-			"speed": "30 ft.",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				13,
+				{
+					"ac": 16,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
+			"hp": {
+				"average": 71,
+				"formula": "11d8+22"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 11,
 			"dex": 16,
 			"con": 14,
 			"int": 18,
 			"wis": 14,
 			"cha": 10,
-			"save": "Int +7, Wis +5",
+			"save": {
+				"int": "+7",
+				"wis": "+5"
+			},
 			"skill": {
 				"arcana": "+7",
 				"deception": "+3",
@@ -614,7 +861,7 @@
 				{
 					"name": "Special Equipment",
 					"entries": [
-						"Rath has a staff of fire, and scrolls of dimension door, feather fall, and fireball."
+						"Rath has a {@item staff of fire}, and scrolls of {@spell dimension door}, {@spell feather fall}, and {@spell fireball}."
 					]
 				}
 			],
@@ -622,7 +869,7 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d8) bludgeoning damage."
+						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d8}) bludgeoning damage."
 					]
 				}
 			],
@@ -646,24 +893,71 @@
 				]
 			},
 			"source": "RoT",
-			"alignment": "neutral evil",
-			"ac": "16",
-			"hp": "150 (20d8+60)",
-			"speed": "30 ft.",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				16
+			],
+			"hp": {
+				"average": 150,
+				"formula": "20d8+60"
+			},
+			"speed": {
+				"walk": 30
+			},
 			"str": 10,
 			"dex": 13,
 			"con": 16,
 			"int": 17,
 			"wis": 12,
 			"cha": 20,
-			"save": "Dex +5, Wis +5",
+			"save": {
+				"dex": "+5",
+				"wis": "+5"
+			},
 			"skill": {
 				"arcana": "+7",
 				"religion": "+7"
 			},
-			"resist": "While wearing the mask of the Dragon Queen: acid, cold, lightning, poison; bludgeoning, piercing, and slashing from nonmagical attacks",
-			"immune": "While wearing the mask of the Dragon Queen: fire",
-			"conditionImmune": "While wearing the mask of the Dragon Queen: charmed, frightened, poisoned",
+			"resist": [
+				{
+					"resist": [
+						"acid",
+						"cold",
+						"lightning",
+						"poison",
+						{
+							"resist": [
+								"bludgeoning",
+								"piercing",
+								"slashing"
+							],
+							"note": "from nonmagical attacks"
+						}
+					],
+					"preNote": "While wearing the mask of the Dragon Queen:"
+				}
+			],
+			"immune": [
+				{
+					"immune": [
+						"fire"
+					],
+					"preNote": "While wearing the mask of the Dragon Queen:"
+				}
+			],
+			"conditionImmune": [
+				{
+					"conditionImmune": [
+						"charmed",
+						"frightened",
+						"poisoned"
+					],
+					"preNote": "While wearing the mask of the Dragon Queen:"
+				}
+			],
 			"senses": "While wearing the Mask of the Dragon Queen: darkvision 60 ft.",
 			"passive": 11,
 			"languages": "Common, Draconic, Infernal",
@@ -672,7 +966,7 @@
 				{
 					"name": "Special Equipment",
 					"entries": [
-						"Severin has the Mask of the Dragon Queen."
+						"Severin has the {@item Mask of the Dragon Queen|rot}."
 					]
 				},
 				{
@@ -684,7 +978,7 @@
 				{
 					"name": "Ignite Enemy",
 					"entries": [
-						"If Severin deals fire damage to a creature while wearing the Mask of the Dragon Queen, the target catches fire. At the start of each of its turns, the burning target takes 5 (1d10) fire damage. A creature within reach of the fire can use an action to extinguish it."
+						"If Severin deals fire damage to a creature while wearing the Mask of the Dragon Queen, the target catches fire. At the start of each of its turns, the burning target takes 5 ({@dice 1d10}) fire damage. A creature within reach of the fire can use an action to extinguish it."
 					]
 				},
 				{
@@ -698,25 +992,24 @@
 				{
 					"name": "Burning Touch",
 					"entries": [
-						"Melee Spell Attack: +5 to hit, reach 5 ft., one target. Hit: 18 (4d8) fire damage."
+						"Melee Spell Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 18 ({@dice 4d8}) fire damage."
 					]
 				},
 				{
 					"name": "Flaming Orb",
 					"entries": [
-						"Ranged Spell Attack: +5 to hit, range 90 ft., one target. Hit: 40 (9d8) fire damage."
+						"Ranged Spell Attack: {@hit 5} to hit, range 90 ft., one target. Hit: 40 ({@dice 9d8}) fire damage."
 					]
 				},
 				{
 					"name": "Scorching Burst",
 					"entries": [
-						"Severin chooses a point he can see within 60 feet of him. Each creature within 5 feet of that point must make a DC 17 Dexterity saving throw, taking 18 (4d8) fire damage on a failed save, or half as much damage on a successful one."
+						"Severin chooses a point he can see within 60 feet of him. Each creature within 5 feet of that point must make a DC 17 Dexterity saving throw, taking 18 ({@dice 4d8}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
 			"legendary": [
 				{
-					"name": "Legendary Actions (3/Turn)",
 					"entries": [
 						"If Severin is wearing the Mask of the Dragon Queen, he can take 3 legendary actions, choosing from the options listed. Only one legendary action option can be used at a time and only at the end of another creature's turn. Severin regains spent legendary actions at the start of his turn."
 					]
@@ -730,7 +1023,7 @@
 				{
 					"name": "Fiery Teleport (Costs 2 Actions)",
 					"entries": [
-						"Severin, along with any objects he is wearing or carrying, teleports up to 60 feet to an unoccupied space he can see. Each creature within 5 feet of Severin before he teleports takes 5 (1dlO) fire damage."
+						"Severin, along with any objects he is wearing or carrying, teleports up to 60 feet to an unoccupied space he can see. Each creature within 5 feet of Severin before he teleports takes 5 ({@dice 1d10}) fire damage."
 					],
 					"attack": [
 						"Fiery Teleport||1d10"
@@ -739,38 +1032,84 @@
 				{
 					"name": "Hellish Chains (Costs 3 Actions)",
 					"entries": [
-						"Severin targets one creature he can see within 30 feet of him. The target is wrapped in magical chains of fire and restrained. The restrained target takes 21 (6d6) fire damage at the start of each of its turns. At the end of its turns, the target can make a DC 17 Strength saving throw, ending the effect on itself on a success."
+						"Severin targets one creature he can see within 30 feet of him. The target is wrapped in magical chains of fire and restrained. The restrained target takes 21 ({@dice 6d6}) fire damage at the start of each of its turns. At the end of its turns, the target can make a DC 17 Strength saving throw, ending the effect on itself on a success."
 					],
 					"attack": [
 						"Hellish Chains||6d6"
 					]
 				}
 			],
-			"page": 92
+			"page": 92,
+			"isNamedCreature": true,
+			"isNPC": true,
+			"traitTags": [
+				"Legendary Resistances"
+			]
 		},
 		{
 			"name": "Tiamat",
 			"size": "G",
 			"type": "fiend",
 			"source": "RoT",
-			"alignment": "chaotic evil",
-			"ac": "25 (natural armor)",
-			"hp": "615 (30d20+300)",
-			"speed": "60 ft., fly 120 ft.",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 25,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 615,
+				"formula": "30d20+300"
+			},
+			"speed": {
+				"walk": 60,
+				"fly": 120
+			},
 			"str": 30,
 			"dex": 10,
 			"con": 30,
 			"int": 26,
 			"wis": 26,
 			"cha": 28,
-			"save": "Str +19, Dex +9, Wis +17",
+			"save": {
+				"str": "+19",
+				"dex": "+9",
+				"wis": "+17"
+			},
 			"skill": {
 				"arcana": "+17",
 				"perception": "+26",
 				"religion": "+17"
 			},
-			"immune": "acid, cold, fire, lightning, poison; bludgeoning, piercing, and slashing from nonmagical attacks",
-			"conditionImmune": "blinded, charmed, deafened, frightened, poisoned, stunned",
+			"immune": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"frightened",
+				"poisoned",
+				"stunned"
+			],
 			"senses": "darkvision 240 ft., truesight 120 ft.",
 			"passive": 36,
 			"languages": "Common, Draconic, Infernal",
@@ -836,13 +1175,13 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 15 ft., one target. Hit: 24 (4d6+10) slashing damage."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 15 ft., one target. Hit: 24 ({@dice 4d6+10}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 25 ft., one target. Hit: 28 (4d8+10) piercing damage."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 25 ft., one target. Hit: 28 ({@dice 4d8+10}) piercing damage."
 					]
 				},
 				{
@@ -862,7 +1201,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 20 ft., one target. Hit: 32 (4d10+10) slashing damage plus 14 (4d6) acid damage (black dragon head), lightning damage (blue dragon head), poison damage (green dragon head), fire damage (red dragon head), or cold damage (white dragon head)."
+						"Melee Weapon Attack: {@hit 19} to hit, reach 20 ft., one target. Hit: 32 ({@dice 4d10+10}) slashing damage plus 14 ({@dice 4d6}) acid damage (black dragon head), lightning damage (blue dragon head), poison damage (green dragon head), fire damage (red dragon head), or cold damage (white dragon head)."
 					],
 					"attack": [
 						"Bite|19|4d10+10+4d6"
@@ -871,7 +1210,7 @@
 				{
 					"name": "Black Dragon Head: Acid Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes acid in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 27 Dexterity saving throw, taking 67 (15d8) acid damage on a failed save, or half as much damage on a successful one."
+						"Tiamat breathes acid in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 27 Dexterity saving throw, taking 67 ({@dice 15d8}) acid damage on a failed save, or half as much damage on a successful one."
 					],
 					"attack": [
 						"Acid Breath||15d8"
@@ -880,7 +1219,7 @@
 				{
 					"name": "Blue Dragon Head: Lightning Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes lightning in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 27 Dexterity saving throw, taking 88 (16d10) lightning damage on a failed save, or half as much damage on a successful one."
+						"Tiamat breathes lightning in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 27 Dexterity saving throw, taking 88 ({@dice 16d10}) lightning damage on a failed save, or half as much damage on a successful one."
 					],
 					"attack": [
 						"Lightning Breath||16d10"
@@ -889,7 +1228,7 @@
 				{
 					"name": "Green Dragon Head: Poison Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes poisonous gas in a 90-foot cone. Each creature in that area must make a DC 27 Constitution saving throw, taking 77 (22d6) poison damage on a failed save, or half as much damage on a successful one."
+						"Tiamat breathes poisonous gas in a 90-foot cone. Each creature in that area must make a DC 27 Constitution saving throw, taking 77 ({@dice 22d6}) poison damage on a failed save, or half as much damage on a successful one."
 					],
 					"attack": [
 						"Poison Breath||22d6"
@@ -898,7 +1237,7 @@
 				{
 					"name": "Red Dragon Head: Fire Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes fire in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 91 (26d6) fire damage on a failed save, or half as much damage on a successful one."
+						"Tiamat breathes fire in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 91 ({@dice 26d6}) fire damage on a failed save, or half as much damage on a successful one."
 					],
 					"attack": [
 						"Fire Breath||26d6"
@@ -907,14 +1246,24 @@
 				{
 					"name": "White Dragon Head: Cold Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes an icy blast in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 72 (16d8) cold damage on a failed save, or half as much damage on a successful one."
+						"Tiamat breathes an icy blast in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 72 ({@dice 16d8}) cold damage on a failed save, or half as much damage on a successful one."
 					],
 					"attack": [
 						"Cold Breath||16d8"
 					]
 				}
 			],
-			"page": 92
+			"page": 92,
+			"isNamedCreature": true,
+			"traitTags": [
+				"Legendary Resistances",
+				"Magic Weapons",
+				"Regeneration"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Frightful Presence"
+			]
 		}
 	]
 }

@@ -6,41 +6,13 @@ const MONTH_NAMES = [
 ];
 const CONTENTS_URL = "data/adventures.json";
 
-let adventuresIndex;
-
 window.onload = function load () {
-	DataUtil.loadJSON(CONTENTS_URL, onJsonLoad);
+	DataUtil.loadJSON(CONTENTS_URL).then(onJsonLoad);
 };
 
+let list;
 function onJsonLoad (data) {
-	adventuresIndex = data.adventure;
-
-	const adventuresList = $("ul.books");
-	let tempString = "";
-	for (let i = 0; i < adventuresIndex.length; i++) {
-		const adv = adventuresIndex[i];
-		// used for sorting
-		adv._startLevel = adv.level.start || 20;
-		adv._pubDate = new Date(adv.published);
-
-		tempString +=
-			`<li ${FLTR_ID}="${i}">
-				<a href='adventure.html#${adv.id}' title='${adv.name}' class="adv-name">
-					<span class='name'>
-						<span class="col-xs-6 col-xs-6-2">${adv.name}</span>
-						<span class="col-xs-2 col-xs-2-5 adv-detail">${adv.storyline}</span>
-						<span class="col-xs-1 col-xs-1-3 adv-detail">${getLevelsStr(adv)}</span>
-						<span class="col-xs-2 adv-detail">${getDateStr(adv)}</span>
-					</span>
-					<span class="showhide" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>
-					<span class="source" style="display: none">${adv.id}</span>
-				</a>
-				${BookUtil.makeContentsBlock({book: adv, addPrefix: "adventure.html", defaultHidden: true})}
-			</li>`;
-	}
-	adventuresList.append(tempString);
-
-	const list = new List("listcontainer", {
+	list = new List("listcontainer", {
 		valueNames: ['name', 'source'],
 		listClass: "books"
 	});
@@ -67,6 +39,54 @@ function onJsonLoad (data) {
 		});
 	});
 
+	handleBrew(data);
+	BrewUtil.pAddBrewData()
+		.then(addAdventures)
+		.catch(BrewUtil.purgeBrew)
+		.then(() => BrewUtil.makeBrewButton("manage-brew"));
+}
+
+function handleBrew (homebrew) {
+	addAdventures(homebrew);
+}
+
+let adventureList = [];
+let adI = 0;
+function addAdventures (data) {
+	if (!data.adventure || !data.adventure.length) return;
+
+	adventureList = adventureList.concat(data.adventure);
+
+	const adventuresList = $("ul.books");
+	let tempString = "";
+	for (; adI < adventureList.length; adI++) {
+		const adv = adventureList[adI];
+		// used for sorting
+		adv._startLevel = adv.level.start || 20;
+		adv._pubDate = new Date(adv.published);
+
+		tempString +=
+			`<li ${FLTR_ID}="${adI}">
+				<a href="adventure.html#${adv.id}" title="${adv.name}" class="adv-name">
+					<span class='name'>
+						<span class="col-xs-6 col-xs-6-2">${adv.name}</span>
+						<span class="col-xs-2 col-xs-2-5 adv-detail">${adv.storyline}</span>
+						<span class="col-xs-1 col-xs-1-3 adv-detail">${getLevelsStr(adv)}</span>
+						<span class="col-xs-2 adv-detail">${getDateStr(adv)}</span>
+					</span>
+					<span class="showhide" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>
+					<span class="source" style="display: none">${adv.id}</span>
+				</a>
+				${BookUtil.makeContentsBlock({book: adv, addPrefix: "adventure.html", defaultHidden: true})}
+			</li>`;
+	}
+	const lastSearch = ListUtil.getSearchTermAndReset(list);
+	adventuresList.append(tempString);
+
+	list.reIndex();
+	if (lastSearch) list.search(lastSearch);
+	list.sort("name");
+
 	function getLevelsStr (adv) {
 		if (adv.level.custom) return adv.level.custom;
 		return `Level ${adv.level.start}\u2013${adv.level.end}`
@@ -79,8 +99,8 @@ function onJsonLoad (data) {
 }
 
 function sortAdventures (a, b, o) {
-	a = adventuresIndex[a.elm.getAttribute(FLTR_ID)];
-	b = adventuresIndex[b.elm.getAttribute(FLTR_ID)];
+	a = adventureList[a.elm.getAttribute(FLTR_ID)];
+	b = adventureList[b.elm.getAttribute(FLTR_ID)];
 
 	if (o.valueName === "name") {
 		return byName();

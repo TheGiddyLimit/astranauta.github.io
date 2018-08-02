@@ -1503,7 +1503,7 @@
 								{
 									"type": "list",
 									"items": [
-										"A creature that starts its turn in the fog must succeed on a DC 20 Constitution saving throw or gain one level of exhaustion (see appendix A in the {@i Player's Handbook} ). This exhaustion can't be removed while the creature is in the fog.",
+										"A creature that starts its turn in the fog must succeed on a DC 20 Constitution saving throw or gain one level of {@condition exhaustion} (see appendix A in the {@i Player's Handbook} ). This {@condition exhaustion} can't be removed while the creature is in the fog.",
 										"No matter how far a creature travels in the fog, or in which direction it goes, it gets turned around so that it eventually finds itself back in Barovia.",
 										"The area within the fog is heavily obscured (see \"Vision and Light\" in chapter 8 of the {@i Player's Handbook} )."
 									]
@@ -2360,12 +2360,12 @@
 							"type": "table",
 							"caption": "17.03 Gothic Trinkets",
 							"colLabels": [
-								"d10+d100",
+								"d100",
 								"Trinket"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
@@ -3316,8 +3316,8 @@
 										"Occupants"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
-										""
+										"col-xs-2 text-align-center",
+										"col-xs-12"
 									],
 									"rows": [
 										[
@@ -3335,36 +3335,6 @@
 										[
 											"17-20",
 											"2d4 Strahd Zombies"
-										]
-									]
-								},
-								{
-									"type": "table",
-									"caption": "Occupants of Houses in Barovia",
-									"colLabels": [
-										"d20",
-										"Occupants"
-									],
-									"colStyles": [
-										"col-xs-1 text-align-center",
-										""
-									],
-									"rows": [
-										[
-											"1-3",
-											"None"
-										],
-										[
-											"4-8",
-											"2d4 swarms of rats"
-										],
-										[
-											"9-16",
-											"Barovian villagers"
-										],
-										[
-											"17-20",
-											"2d4 Strahd zombies"
 										]
 									]
 								}
@@ -3973,96 +3943,6 @@
 							"type": "table",
 							"caption": "Random Encounters in Castle Ravenloft",
 							"colLabels": [
-								"d8+d12",
-								"Encounter"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
-							],
-							"rows": [
-								[
-									"2",
-									"Ezmerelda d'Avenir"
-								],
-								[
-									"3",
-									"Rahadin"
-								],
-								[
-									"4",
-									"1 Black Cat"
-								],
-								[
-									"5",
-									"1 Broom of Animated Attack"
-								],
-								[
-									"6",
-									"Flying Swords"
-								],
-								[
-									"7",
-									"Blinsky Toy"
-								],
-								[
-									"8",
-									"Unseen Servant"
-								],
-								[
-									"9",
-									"Barovian Commoners"
-								],
-								[
-									"10",
-									"Crawling Claws"
-								],
-								[
-									"11",
-									"Shadows"
-								],
-								[
-									"12",
-									"Swarms of Bats"
-								],
-								[
-									"13",
-									"1 Crawling Strahd Zombie"
-								],
-								[
-									"14",
-									"Vistani Thugs"
-								],
-								[
-									"15",
-									"Wights"
-								],
-								[
-									"16",
-									"Trinket"
-								],
-								[
-									"17",
-									"Giant Spider Cocoon"
-								],
-								[
-									"18",
-									"1 Barovian Witch"
-								],
-								[
-									"19",
-									"Vampire Spawn"
-								],
-								[
-									"20",
-									"Strahd von Zarovich"
-								]
-							]
-						},
-						{
-							"type": "table",
-							"caption": "Random Encounters in Castle Ravenloft",
-							"colLabels": [
 								"d12+d8",
 								"Encounter"
 							],
@@ -4491,12 +4371,12 @@
 							"type": "table",
 							"caption": "17.03 Gothic Trinkets",
 							"colLabels": [
-								"d10+d100",
+								"d100",
 								"Trinket"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
@@ -4949,6 +4829,92 @@
 				},
 				{
 					"type": "entries",
+					"name": "K7. Entry",
+					"entries": [
+						"Read the following text if the characters approach from the courtyard (area K1):",
+						{
+							"type": "inset",
+							"entries": [
+								"The ornate outer doors of the castle hang open, flanked by fluttering torches in iron sconces. Twenty feet inside the castle is a second set of doors."
+							]
+						},
+						"If one or more characters approach from area K1 and come within 10 feet of the double doors, read:",
+						{
+							"type": "inset",
+							"entries": [
+								"The doors in front of you suddenly swing open, revealing a grand hall filled with the sound of organ music."
+							]
+						},
+						"If the characters approach from area K8 and have not yet visited this area, read:",
+						{
+							"type": "inset",
+							"entries": [
+								"A set of double doors to the west appears to be, or to lead to, an exit from the castle."
+							]
+						},
+						"If the characters enter from either direction, read:",
+						{
+							"type": "inset",
+							"entries": [
+								"Overhead, in the vaulted entry foyer, four statues of dragons glare down, their eyes flickering in the torchlight."
+							]
+						},
+						"If anyone except Strahd enters this area through the doors that adjoin area K8, the dragons come alive, drop to the floor hissing and spitting, and attack. The dragons don't attack characters who enter this area from area K1, heading east. The dragons are four {@creature red dragon wyrmling|MM|red dragon wyrmlings}, and they have instructions to allow guests to enter the castle, but not to leave it. If intruders vacate this area, the dragons fly up to their perches and revert to stone. In their stone forms, they are impervious to weapon damage. The dragons never leave the room."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "K8. Great Entry",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Cobwebs stretch between the columns that support the vaulted ceiling of a great, dusty hall dimly lit by sputtering torches in iron sconces. The torches cast odd shadows across the faces of eight stone gargoyles squatting motionlessly on the rim of the domed ceiling. Cracked and faded ceiling frescoes are covered by decay.",
+								"Double doors of bronze stand closed to the east. To the north, a wide staircase climbs into darkness. A lit hallway to the south contains another set of bronze doors, through which you hear sad and majestic organ tones."
+							]
+						},
+						"The southern hallway is described in area K9. The wide staircase leads up to area K19.",
+						"If the characters are here by invitation, add the following:",
+						{
+							"type": "inset",
+							"entries": [
+								"An elf with brown skin and long black hair descends the wide staircase, quiet as a cat. He wears a gray cloak over black studded leather armor and has a polished scimitar hanging from his belt. \"My master is expecting you,\" he says."
+							]
+						},
+						"The elf is {@creature Rahadin|CoS}, the castle chamberlain. He fights only if attacked. Otherwise, he leads the characters to the dining hall (area K10), points them inside, pulls the doors shut behind them, and withdraws to area K72 by way of the South Tower Stair (area K21).",
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/CoS/Rahadin.jpg"
+							},
+							"title": "Rahadin"
+						},
+						{
+							"type": "entries",
+							"name": "Development",
+							"entries": [
+								"After all the characters leave this room, the eight {@creature gargoyle|MM|gargoyles} attack any character who dares to return. The gargoyles also swoop down to fight if they are attacked. When the gargoyles attack, the turbulence in the air from their wings extinguishes the feeble torches in the sconces, plunging the hall into darkness unless the characters have light sources."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "K9. Guests' Hall",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Torchlight flutters against the walls of this vaulted hall. To the east, an arched hallway stretches for twenty feet, ending at a spiral staircase that goes up and down. Next to the hallway, a suit of armor, oiled and glistening, stands at attention in a shallow alcove. To the west, large double doors hang slightly open, and a steady bright light escapes through the opening. Swells of organ music come from behind the doors, spilling their melody of power and defeat into the hall."
+							]
+						},
+						"The suit of armor standing in the alcove is merely a normal suit of plate armor that is well cared for.",
+						"The staircase leads down to area K61 and up to area K30. The double doors provide access to area K10."
+					]
+				},
+				{
+					"type": "entries",
 					"name": "Main Floor",
 					"entries": [
 						{
@@ -5269,92 +5235,6 @@
 							]
 						},
 						"The stairs lead to area K34."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "K7. Entry",
-					"entries": [
-						"Read the following text if the characters approach from the courtyard (area K1):",
-						{
-							"type": "inset",
-							"entries": [
-								"The ornate outer doors of the castle hang open, flanked by fluttering torches in iron sconces. Twenty feet inside the castle is a second set of doors."
-							]
-						},
-						"If one or more characters approach from area K1 and come within 10 feet of the double doors, read:",
-						{
-							"type": "inset",
-							"entries": [
-								"The doors in front of you suddenly swing open, revealing a grand hall filled with the sound of organ music."
-							]
-						},
-						"If the characters approach from area K8 and have not yet visited this area, read:",
-						{
-							"type": "inset",
-							"entries": [
-								"A set of double doors to the west appears to be, or to lead to, an exit from the castle."
-							]
-						},
-						"If the characters enter from either direction, read:",
-						{
-							"type": "inset",
-							"entries": [
-								"Overhead, in the vaulted entry foyer, four statues of dragons glare down, their eyes flickering in the torchlight."
-							]
-						},
-						"If anyone except Strahd enters this area through the doors that adjoin area K8, the dragons come alive, drop to the floor hissing and spitting, and attack. The dragons don't attack characters who enter this area from area K1, heading east. The dragons are four {@creature red dragon wyrmling|MM|red dragon wyrmlings}, and they have instructions to allow guests to enter the castle, but not to leave it. If intruders vacate this area, the dragons fly up to their perches and revert to stone. In their stone forms, they are impervious to weapon damage. The dragons never leave the room."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "K8. Great Entry",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Cobwebs stretch between the columns that support the vaulted ceiling of a great, dusty hall dimly lit by sputtering torches in iron sconces. The torches cast odd shadows across the faces of eight stone gargoyles squatting motionlessly on the rim of the domed ceiling. Cracked and faded ceiling frescoes are covered by decay.",
-								"Double doors of bronze stand closed to the east. To the north, a wide staircase climbs into darkness. A lit hallway to the south contains another set of bronze doors, through which you hear sad and majestic organ tones."
-							]
-						},
-						"The southern hallway is described in area K9. The wide staircase leads up to area K19.",
-						"If the characters are here by invitation, add the following:",
-						{
-							"type": "inset",
-							"entries": [
-								"An elf with brown skin and long black hair descends the wide staircase, quiet as a cat. He wears a gray cloak over black studded leather armor and has a polished scimitar hanging from his belt. \"My master is expecting you,\" he says."
-							]
-						},
-						"The elf is {@creature Rahadin|CoS}, the castle chamberlain. He fights only if attacked. Otherwise, he leads the characters to the dining hall (area K10), points them inside, pulls the doors shut behind them, and withdraws to area K72 by way of the South Tower Stair (area K21).",
-						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/CoS/Rahadin.jpg"
-							},
-							"title": "Rahadin"
-						},
-						{
-							"type": "entries",
-							"name": "Development",
-							"entries": [
-								"After all the characters leave this room, the eight {@creature gargoyle|MM|gargoyles} attack any character who dares to return. The gargoyles also swoop down to fight if they are attacked. When the gargoyles attack, the turbulence in the air from their wings extinguishes the feeble torches in the sconces, plunging the hall into darkness unless the characters have light sources."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "K9. Guests' Hall",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Torchlight flutters against the walls of this vaulted hall. To the east, an arched hallway stretches for twenty feet, ending at a spiral staircase that goes up and down. Next to the hallway, a suit of armor, oiled and glistening, stands at attention in a shallow alcove. To the west, large double doors hang slightly open, and a steady bright light escapes through the opening. Swells of organ music come from behind the doors, spilling their melody of power and defeat into the hall."
-							]
-						},
-						"The suit of armor standing in the alcove is merely a normal suit of plate armor that is well cared for.",
-						"The staircase leads down to area K61 and up to area K30. The double doors provide access to area K10."
 					]
 				},
 				{
@@ -9211,7 +9091,7 @@
 							]
 						},
 						"Victor found a spellbook in his father's library and is using it to teach himself the art of spellcasting. Only recently has he been able to decipher some of its high-level spells. He's a weird, awkward, and off-putting fellow who is dangerous only if threatened.",
-						"For practice and for fun, Victor dug up some old cat bones behind the Wachter estate (see area N4) and animated them, creating six cat skeletons (use the {@creature cat|MM} stat block, but give them darkvision out to a range of 60 feet and immunity to poison damage, exhaustion, and the poisoned condition). The skeletons attack only when Victor commands them to.",
+						"For practice and for fun, Victor dug up some old cat bones behind the Wachter estate (see area N4) and animated them, creating six cat skeletons (use the {@creature cat|MM} stat block, but give them darkvision out to a range of 60 feet and immunity to poison damage, {@condition exhaustion}, and the poisoned condition). The skeletons attack only when Victor commands them to.",
 						"The \"children\" standing in the corner are painted wooden dolls dressed in clothing that Victor wore as a child. He pretends they are his disobedient pupils.",
 						"The sheets of parchment are covered with elaborate diagrams of teleportation circles. Victor drew them in an effort to learn the {@spell teleportation circle|PHB} spell, which he's still trying to master (see \"Teleportation Circle\" below).",
 						"The trunk contains several bolts of silk cloth, needles and thread, and a half-finished wizard's robe. Victor started to make the robe for himself but found the work tedious and stopped.",
@@ -11806,6 +11686,130 @@
 				},
 				{
 					"type": "entries",
+					"name": "S6. North Gate",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"The road from the village climbs above the mist to the wide ledge on which the abbey is perched. A light dusting of snow covers the trees and the rocky earth.",
+								"The gravel road passes between two small, stone outbuildings, to either side of which stretches a five-foot-high, three-foot-thick wall of jumbled stones held together with mortar. Blocking the road are iron gates attached to the outbuildings by rusty hinges. They appear to be unlocked. Viewed through the gates, the stone abbey stands quiet. Its two wings are joined by a fifteen-foot-high curtain wall. A belfry protrudes from the rooftop of the closer north wing, which also sports a chimney billowing gray smoke."
+							]
+						},
+						"The iron gates are unlocked but squeal loudly when someone opens them.",
+						"Two gate guards are on duty, but they aren't awake when the characters arrive (see below). Characters who succeed on a DC 12 Dexterity (Stealth) check can climb over the low outer wall without waking them. If one or more characters fail the check, or if the characters open the gates, the guards rouse themselves and stumble forth to confront the trespassers.",
+						"The gate guards are Otto and Zygfrek Belview, two lawful evil {@creature mongrelfolk|CoS}. They sleep under piles of musty animal furs. Both are loyal servants of the Abbot, yet not so good at guarding. If the characters seem friendly, the mongrelfolk escort them to the courtyard (area S12) and ask the characters to wait there while they fetch the Abbot (area S13). If the characters seem hostile, the mongrelfolk let them enter but don't accompany them willingly.",
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/CoS/Otto Belview.jpg"
+							},
+							"title": "Otto Belview"
+						},
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/CoS/Zygfrek Belview.jpg"
+							},
+							"title": "Zygfrek Belview"
+						},
+						"Hanging on the inside wall of each guard post is a net woven from twigs and pine needles, as well as a shovel. Otto and Zygfrek cover themselves with the nets when they skulk through the village at night in search of fresh graves to dig up.",
+						{
+							"type": "entries",
+							"name": "Roleplaying the Mongrelfolk",
+							"entries": [
+								"Use the information below to roleplay the mongrelfolk guards, Otto and Zygfrek.",
+								{
+									"type": "entries",
+									"name": "Otto Belview",
+									"entries": [
+										"Otto is 4 feet, 9 inches tall and squats instead of standing upright. He looks like a beardless dwarf with patches of donkey flesh covering his face and body. He has one human ear and one wolf's ear, and a protruding wolf's snout and fangs. His arms and hands are human, but his legs and feet are leonine, and he has a donkey's tail. He can barely speak Common, and his laugh sounds like a donkey's bray. He wears a plain wool cloak."
+									]
+								},
+								"Otto has the Standing Leap feature (see the mongrelfolk stat block in appendix D). His madness is embodied in the following statement: \"I am the smartest, wisest, strongest, fastest, and most beautiful person I know.\"",
+								{
+									"type": "entries",
+									"name": "Zygfrek Belview",
+									"entries": [
+										"Zygfrek stands 4 feet, 7 inches tall. The left side of her face and body is covered with lizard scales, the right with tufts of gray wolf fur. Between these tufts is pale human skin. One of her eyes is that of a feline, and her fingers and hands resemble cat's paws with opposable thumbs. She has a gruff voice and wears a gray cloak with black fur trim."
+									]
+								},
+								"Zygfrek has the Darkvision feature (see the mongrelfolk stat block in appendix D). Her madness is embodied in the following statement: \"I don't like the way people judge me all the time.\""
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "S7. Graveyard",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Stunted pine trees grow out of the rocky earth in the graveyard near the foundation of the abbey's north wing. The windows of the structure are cracked panes of leaded glass. Ancient gravestones burst from a thin crust of snow in the yard. Beyond the low wall that surrounds the graveyard, the ground falls away. The village lies four hundred feet below, and the view is breathtaking."
+							]
+						},
+						"Carved into each gravestone is the name of a long-dead priest or nun. Some of the names include Brother Martek, Brother Valen, Sister Constance, and Sister Lenora.",
+						{
+							"type": "entries",
+							"name": "Sun's Grave",
+							"entries": [
+								"The gravestone marked X is carved with roses and bears a 3-inch-diameter sun-shaped indentation on its east side. Engraved beneath the indentation is the name Petrovna. If Tasha Petrovna's holy symbol (see chapter 4, area K84, crypt 11) is placed in the indentation, both the holy symbol and the indentation vanish. Then read:",
+								{
+									"type": "inset",
+									"entries": [
+										"A ray of golden sunlight breaks through the clouds to the west and shines upon the grave. The fog and the gloom shrink from its brilliance as the sunlight causes the gravestone to crack and crumble, revealing a ring within."
+									]
+								},
+								"The sunray lasts for 1 minute. If the characters smash the gravestone without placing Tasha Petrovna's holy symbol in it first, they find nothing within its remains.",
+								"The ring is a {@item ring of regeneration|DMG}."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "S8. Garden Gatehouse",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"A gatehouse stands at the entrance to the abbey gardens."
+							]
+						},
+						"The gatehouse is empty."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "S9. Gardens",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Nestled between rising and plunging cliffs are four rectangular garden plots enclosed by a five-foot-high wall of mortared stones. White rabbits nibble on turnips uprooted by the cold. Two lifeless scarecrows with stuffed gullets and sackcloth heads hang from wooden crosses pounded into the cold, hard earth."
+							]
+						},
+						"If the characters haven't cleared out the east wing, add:",
+						{
+							"type": "inset",
+							"entries": [
+								"The abbey's east wing looms over the garden, its shattered windows dark and disturbing. A door leads into this forlorn edifice, which apparently isn't as abandoned as one might have hoped. From within come the laughter and the wailing of things that should not be."
+							]
+						},
+						"The rabbits and the scarecrows are harmless. The gardens contain a meager assortment of root vegetables and squash. The door leading to area S15 isn't locked.",
+						{
+							"type": "entries",
+							"name": "Fortunes of Ravenloft",
+							"entries": [
+								"If your card reading reveals that a treasure is here, the item is hidden in the straw-filled gullet of the southernmost scarecrow. If the treasure is removed from the scarecrow, seven {@creature wight|MM|wights} erupt from the gardens and attack. They wear tattered livery of Strahd's house."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
 					"name": "S10. Abbey Entrance",
 					"entries": [
 						{
@@ -12316,130 +12320,6 @@
 						},
 						"If the characters approach the {@creature raven|MM}, it flies to the shoulder of the nearest scarecrow in the garden (area S9).",
 						"A character who kills the raven is cursed. While cursed, the character has disadvantage on all attack rolls and ability checks. A {@spell greater restoration|PHB} spell, a {@spell remove curse|PHB} spell, or a similar effect ends the curse."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "S6. North Gate",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"The road from the village climbs above the mist to the wide ledge on which the abbey is perched. A light dusting of snow covers the trees and the rocky earth.",
-								"The gravel road passes between two small, stone outbuildings, to either side of which stretches a five-foot-high, three-foot-thick wall of jumbled stones held together with mortar. Blocking the road are iron gates attached to the outbuildings by rusty hinges. They appear to be unlocked. Viewed through the gates, the stone abbey stands quiet. Its two wings are joined by a fifteen-foot-high curtain wall. A belfry protrudes from the rooftop of the closer north wing, which also sports a chimney billowing gray smoke."
-							]
-						},
-						"The iron gates are unlocked but squeal loudly when someone opens them.",
-						"Two gate guards are on duty, but they aren't awake when the characters arrive (see below). Characters who succeed on a DC 12 Dexterity (Stealth) check can climb over the low outer wall without waking them. If one or more characters fail the check, or if the characters open the gates, the guards rouse themselves and stumble forth to confront the trespassers.",
-						"The gate guards are Otto and Zygfrek Belview, two lawful evil {@creature mongrelfolk|CoS}. They sleep under piles of musty animal furs. Both are loyal servants of the Abbot, yet not so good at guarding. If the characters seem friendly, the mongrelfolk escort them to the courtyard (area S12) and ask the characters to wait there while they fetch the Abbot (area S13). If the characters seem hostile, the mongrelfolk let them enter but don't accompany them willingly.",
-						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/CoS/Otto Belview.jpg"
-							},
-							"title": "Otto Belview"
-						},
-						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/CoS/Zygfrek Belview.jpg"
-							},
-							"title": "Zygfrek Belview"
-						},
-						"Hanging on the inside wall of each guard post is a net woven from twigs and pine needles, as well as a shovel. Otto and Zygfrek cover themselves with the nets when they skulk through the village at night in search of fresh graves to dig up.",
-						{
-							"type": "entries",
-							"name": "Roleplaying the Mongrelfolk",
-							"entries": [
-								"Use the information below to roleplay the mongrelfolk guards, Otto and Zygfrek.",
-								{
-									"type": "entries",
-									"name": "Otto Belview",
-									"entries": [
-										"Otto is 4 feet, 9 inches tall and squats instead of standing upright. He looks like a beardless dwarf with patches of donkey flesh covering his face and body. He has one human ear and one wolf's ear, and a protruding wolf's snout and fangs. His arms and hands are human, but his legs and feet are leonine, and he has a donkey's tail. He can barely speak Common, and his laugh sounds like a donkey's bray. He wears a plain wool cloak."
-									]
-								},
-								"Otto has the Standing Leap feature (see the mongrelfolk stat block in appendix D). His madness is embodied in the following statement: \"I am the smartest, wisest, strongest, fastest, and most beautiful person I know.\"",
-								{
-									"type": "entries",
-									"name": "Zygfrek Belview",
-									"entries": [
-										"Zygfrek stands 4 feet, 7 inches tall. The left side of her face and body is covered with lizard scales, the right with tufts of gray wolf fur. Between these tufts is pale human skin. One of her eyes is that of a feline, and her fingers and hands resemble cat's paws with opposable thumbs. She has a gruff voice and wears a gray cloak with black fur trim."
-									]
-								},
-								"Zygfrek has the Darkvision feature (see the mongrelfolk stat block in appendix D). Her madness is embodied in the following statement: \"I don't like the way people judge me all the time.\""
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "S7. Graveyard",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Stunted pine trees grow out of the rocky earth in the graveyard near the foundation of the abbey's north wing. The windows of the structure are cracked panes of leaded glass. Ancient gravestones burst from a thin crust of snow in the yard. Beyond the low wall that surrounds the graveyard, the ground falls away. The village lies four hundred feet below, and the view is breathtaking."
-							]
-						},
-						"Carved into each gravestone is the name of a long-dead priest or nun. Some of the names include Brother Martek, Brother Valen, Sister Constance, and Sister Lenora.",
-						{
-							"type": "entries",
-							"name": "Sun's Grave",
-							"entries": [
-								"The gravestone marked X is carved with roses and bears a 3-inch-diameter sun-shaped indentation on its east side. Engraved beneath the indentation is the name Petrovna. If Tasha Petrovna's holy symbol (see chapter 4, area K84, crypt 11) is placed in the indentation, both the holy symbol and the indentation vanish. Then read:",
-								{
-									"type": "inset",
-									"entries": [
-										"A ray of golden sunlight breaks through the clouds to the west and shines upon the grave. The fog and the gloom shrink from its brilliance as the sunlight causes the gravestone to crack and crumble, revealing a ring within."
-									]
-								},
-								"The sunray lasts for 1 minute. If the characters smash the gravestone without placing Tasha Petrovna's holy symbol in it first, they find nothing within its remains.",
-								"The ring is a {@item ring of regeneration|DMG}."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "S8. Garden Gatehouse",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"A gatehouse stands at the entrance to the abbey gardens."
-							]
-						},
-						"The gatehouse is empty."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "S9. Gardens",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Nestled between rising and plunging cliffs are four rectangular garden plots enclosed by a five-foot-high wall of mortared stones. White rabbits nibble on turnips uprooted by the cold. Two lifeless scarecrows with stuffed gullets and sackcloth heads hang from wooden crosses pounded into the cold, hard earth."
-							]
-						},
-						"If the characters haven't cleared out the east wing, add:",
-						{
-							"type": "inset",
-							"entries": [
-								"The abbey's east wing looms over the garden, its shattered windows dark and disturbing. A door leads into this forlorn edifice, which apparently isn't as abandoned as one might have hoped. From within come the laughter and the wailing of things that should not be."
-							]
-						},
-						"The rabbits and the scarecrows are harmless. The gardens contain a meager assortment of root vegetables and squash. The door leading to area S15 isn't locked.",
-						{
-							"type": "entries",
-							"name": "Fortunes of Ravenloft",
-							"entries": [
-								"If your card reading reveals that a treasure is here, the item is hidden in the straw-filled gullet of the southernmost scarecrow. If the treasure is removed from the scarecrow, seven {@creature wight|MM|wights} erupt from the gardens and attack. They wear tattered livery of Strahd's house."
-							]
-						}
 					]
 				},
 				{
@@ -13607,6 +13487,119 @@
 				},
 				{
 					"type": "entries",
+					"name": "W2. Loading Dock",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Parked in the loading dock is a wagon with three barrels set in braces on the bed. A raised wooden walkway runs along the west, south, and east walls. Through a hole in the ceiling you see the wooden arm of a loading crane with ropes and hooks dangling from it."
+							]
+						},
+						"Wine barrels in the cellar (area W14) are rolled up a ramp (area W12) to the crane on the upper floor (area W16), then lowered into the wagon from above. Empty barrels are rolled off the back of the wagon and stored in area W9. The three barrels on the wagon hold Purple Grapemash No. 3.",
+						"The south door has been forced open and hangs ajar. It can't be closed properly until repaired, though it can be barricaded."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "W3. Barrel Maker's Workshop",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Strips of iron and wood lie in neat piles on the floor of this workshop, the walls of which are lined with tools. Two worktables stand against the east wall."
+							]
+						},
+						"Wine barrels are made here. The north door is barred from the inside."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "W4. Barrel Storage",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Rows of new barrels fill this room. A narrow stone staircase spirals upward in the southwest corner."
+							]
+						},
+						"The room contains thirteen empty barrels."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "W5. Veranda",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Resting on a flagstone veranda are three five-foot-diameter wooden tubs, their insides stained with grape juice. Each tub has a short ladder bolted to its side and a catch basin tucked underneath.",
+								"At the back of the veranda is a large set of sliding wooden doors as well as a normal-sized wooden door. Stone pillars and arches support the upper floor above."
+							]
+						},
+						"This veranda is where grapes from the vineyard are crushed into juice. The sliding wooden doors are chained shut from the inside, and the smaller door is barred shut from the inside. Breaking through either requires a successful DC 20 Strength check."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "W6. Well",
+					"entries": [
+						"A ring of tight-fitting, moss-covered stones encloses this 40-foot-deep well."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "W7. Outhouse",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Sweet-smelling herbs hang from the eaves of this ramshackle wooden outhouse, which has a small crescent moon carved into its door."
+							]
+						},
+						"The outhouse contains no surprises."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "W8. Storage",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Bare hooks line the walls of this storage room. Shelves to the south hold several pairs of stained wooden sandals with oversized soles. Both doors to this room hang open. The one to the west is fitted with iron brackets and leads outside into the rain. Lying on the floor next to it is a five-foot-long wooden beam."
+							]
+						},
+						"Before fleeing the winery, the wereravens took the leather rain cloaks stored here, but they left behind the wooden sandals that they wear when crushing grapes on the veranda (area W5).",
+						"The wooden beam on the floor can be used to bar the outer door."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "W9. Fermentation Vats",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"The rich smell of fermenting wine fills this large, two-story chamber, which is dominated by four enormous wooden casks, each one eight feet wide and twelve feet tall. A wooden staircase in the center of the room climbs to a ten-foot-high wooden balcony that clings to the south wall, which has four windows set into it at balcony level. Stacked against the wall underneath the balcony are old, empty barrels with \"The Wizard of Wines\" burned into their sides. The balcony climbs another five feet as it continues along the west and east walls, ending at doors leading to the winery's upper level. Underneath these side balconies are several doors, some of which hang open. Beneath the sloping roof stretch thick rafters, upon which scores of ravens have quietly gathered. They watch you with great interest."
+							]
+						},
+						"Four {@b swarms of ravens} perch on the rafters but don't attack the characters under any circumstances.",
+						"Unless they have been drawn outside, twenty-four {@creature twig blight|MM|twig blights} and one {@creature druid|MM} (NE female human) are also present. If they are here, read:",
+						{
+							"type": "inset",
+							"entries": [
+								"The balcony creaks, drawing your eye to a wild-looking figure hunched over the westernmost cask, pouring a flask of thick syrup into it. She wears a gown made of animal skins and a headdress with goat horns, and her hair is long and unkempt. Suddenly, you see something skittering across the floor. It looks like a tiny creature made of twigs. It moves from its hiding place under the stairs and disappears behind the easternmost cask."
+							]
+						},
+						"The four containers are fermentation vats, where grape juice is mixed with other ingredients and turned into wine. The easternmost cask has split in the back, creating a 6-inch-wide, 6-foot-high opening through which the twig blights can pass. All twenty-four twig blights are hidden in the cask, ready to emerge and attack when commanded to do so. While inside the cask, they have total cover against attacks that originate outside the cask.",
+						"The druid is poisoning the fermentation vats. The three westernmost vats contain poisoned wine, enough to fill a total of twenty barrels. Drinking the poisoned wine has the same effect as drinking a potion of poison. Pouring antitoxin into a vat neutralizes the poison, but it also spoils the taste of the wine. Casting a {@spell purify food and drink|PHB} spell on a vat neutralizes the poison without spoiling the wine.",
+						"In addition to her animal skin gown and horned headdress, the druid wears necklaces of human teeth. If the characters attack the druid, she calls forth her twig blights. When that happens, the swarms of ravens descend from the rafters and begin attacking the blights. Each swarm tears apart one twig blight on each of its turns.",
+						"The sliding wooden doors along the north wall (leading to area W5) are chained shut from the inside. The key to the padlock can be found in the office (area W20).",
+						"The single door leading to area W5 is barred shut from the inside, as is the single door leading to area W2."
+					]
+				},
+				{
+					"type": "entries",
 					"name": "W10. Glassblower's Workshop",
 					"entries": [
 						{
@@ -13785,20 +13778,6 @@
 				},
 				{
 					"type": "entries",
-					"name": "W2. Loading Dock",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Parked in the loading dock is a wagon with three barrels set in braces on the bed. A raised wooden walkway runs along the west, south, and east walls. Through a hole in the ceiling you see the wooden arm of a loading crane with ropes and hooks dangling from it."
-							]
-						},
-						"Wine barrels in the cellar (area W14) are rolled up a ramp (area W12) to the crane on the upper floor (area W16), then lowered into the wagon from above. Empty barrels are rolled off the back of the wagon and stored in area W9. The three barrels on the wagon hold Purple Grapemash No. 3.",
-						"The south door has been forced open and hangs ajar. It can't be closed properly until repaired, though it can be barricaded."
-					]
-				},
-				{
-					"type": "entries",
 					"name": "W20. Printing Press",
 					"entries": [
 						"The door to this room hangs open.",
@@ -13818,105 +13797,6 @@
 						"The druid and the vine blights fight to the death.",
 						"Inside the cabinet is a key hanging on a loop of twine. The key unlocks the padlock on the sliding doors between the veranda (area W5) and the fermentation vats (area W9).",
 						"The contraption standing near the north wall is a printing press, which Davian Martikov uses to make wine bottle labels. The ink is made from wine and stored in bottles in the cabinet, along with pieces of parchment and jars of glue."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "W3. Barrel Maker's Workshop",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Strips of iron and wood lie in neat piles on the floor of this workshop, the walls of which are lined with tools. Two worktables stand against the east wall."
-							]
-						},
-						"Wine barrels are made here. The north door is barred from the inside."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "W4. Barrel Storage",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Rows of new barrels fill this room. A narrow stone staircase spirals upward in the southwest corner."
-							]
-						},
-						"The room contains thirteen empty barrels."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "W5. Veranda",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Resting on a flagstone veranda are three five-foot-diameter wooden tubs, their insides stained with grape juice. Each tub has a short ladder bolted to its side and a catch basin tucked underneath.",
-								"At the back of the veranda is a large set of sliding wooden doors as well as a normal-sized wooden door. Stone pillars and arches support the upper floor above."
-							]
-						},
-						"This veranda is where grapes from the vineyard are crushed into juice. The sliding wooden doors are chained shut from the inside, and the smaller door is barred shut from the inside. Breaking through either requires a successful DC 20 Strength check."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "W6. Well",
-					"entries": [
-						"A ring of tight-fitting, moss-covered stones encloses this 40-foot-deep well."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "W7. Outhouse",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Sweet-smelling herbs hang from the eaves of this ramshackle wooden outhouse, which has a small crescent moon carved into its door."
-							]
-						},
-						"The outhouse contains no surprises."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "W8. Storage",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Bare hooks line the walls of this storage room. Shelves to the south hold several pairs of stained wooden sandals with oversized soles. Both doors to this room hang open. The one to the west is fitted with iron brackets and leads outside into the rain. Lying on the floor next to it is a five-foot-long wooden beam."
-							]
-						},
-						"Before fleeing the winery, the wereravens took the leather rain cloaks stored here, but they left behind the wooden sandals that they wear when crushing grapes on the veranda (area W5).",
-						"The wooden beam on the floor can be used to bar the outer door."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "W9. Fermentation Vats",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"The rich smell of fermenting wine fills this large, two-story chamber, which is dominated by four enormous wooden casks, each one eight feet wide and twelve feet tall. A wooden staircase in the center of the room climbs to a ten-foot-high wooden balcony that clings to the south wall, which has four windows set into it at balcony level. Stacked against the wall underneath the balcony are old, empty barrels with \"The Wizard of Wines\" burned into their sides. The balcony climbs another five feet as it continues along the west and east walls, ending at doors leading to the winery's upper level. Underneath these side balconies are several doors, some of which hang open. Beneath the sloping roof stretch thick rafters, upon which scores of ravens have quietly gathered. They watch you with great interest."
-							]
-						},
-						"Four {@b swarms of ravens} perch on the rafters but don't attack the characters under any circumstances.",
-						"Unless they have been drawn outside, twenty-four {@creature twig blight|MM|twig blights} and one {@creature druid|MM} (NE female human) are also present. If they are here, read:",
-						{
-							"type": "inset",
-							"entries": [
-								"The balcony creaks, drawing your eye to a wild-looking figure hunched over the westernmost cask, pouring a flask of thick syrup into it. She wears a gown made of animal skins and a headdress with goat horns, and her hair is long and unkempt. Suddenly, you see something skittering across the floor. It looks like a tiny creature made of twigs. It moves from its hiding place under the stairs and disappears behind the easternmost cask."
-							]
-						},
-						"The four containers are fermentation vats, where grape juice is mixed with other ingredients and turned into wine. The easternmost cask has split in the back, creating a 6-inch-wide, 6-foot-high opening through which the twig blights can pass. All twenty-four twig blights are hidden in the cask, ready to emerge and attack when commanded to do so. While inside the cask, they have total cover against attacks that originate outside the cask.",
-						"The druid is poisoning the fermentation vats. The three westernmost vats contain poisoned wine, enough to fill a total of twenty barrels. Drinking the poisoned wine has the same effect as drinking a potion of poison. Pouring antitoxin into a vat neutralizes the poison, but it also spoils the taste of the wine. Casting a {@spell purify food and drink|PHB} spell on a vat neutralizes the poison without spoiling the wine.",
-						"In addition to her animal skin gown and horned headdress, the druid wears necklaces of human teeth. If the characters attack the druid, she calls forth her twig blights. When that happens, the swarms of ravens descend from the rafters and begin attacking the blights. Each swarm tears apart one twig blight on each of its turns.",
-						"The sliding wooden doors along the north wall (leading to area W5) are chained shut from the inside. The key to the padlock can be found in the office (area W20).",
-						"The single door leading to area W5 is barred shut from the inside, as is the single door leading to area W2."
 					]
 				},
 				{
@@ -14033,6 +13913,260 @@
 							]
 						},
 						"The amber statues are impervious to damage. Looking at one for long fills a viewer with unease."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X1a. Narrow Fissure",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"A natural fissure has opened in the mountainside west of the temple's facade, creating a gap two feet wide, ten feet tall, and fifteen feet deep. You see light coming from a room beyond, and you hear human voices there as well."
+							]
+						},
+						"The fissure leads to area X15. If the characters make a lot of noise outside, one of the creatures in that area investigates the disturbance."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X2. Entrance",
+					"entries": [
+						"If the characters pass through the archway between the statues, read:",
+						{
+							"type": "inset",
+							"entries": [
+								"Icy steps descend ten feet to a time-ravaged hallway with arrow slits in the walls. Beyond the hall lies a vast, sepulchral darkness."
+							]
+						},
+						"The hall connects areas X1 and X4. There are no guards in the rooms behind the arrow slits (areas X2a and X2b)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X2a. Guard Room",
+					"entries": [
+						"This empty room lies behind a secret door. The ceiling is 10 feet high. Two arrow slits are carved into the east wall."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X2b. Guard Room",
+					"entries": [
+						"This room lies behind a secret door.",
+						{
+							"type": "inset",
+							"entries": [
+								"Two arrow slits are carved into the west wall of this 10-foot-high, twenty-foot-square room. Slumped in the northeast corner is a skeleton wearing a blue wizard's robe and clutching a wand to its chest."
+							]
+						},
+						"The skeleton is all that remains of a wizard who froze to death. It poses no threat.",
+						{
+							"type": "entries",
+							"name": "Treasure",
+							"entries": [
+								"The skeleton clutches a {@item wand of secrets|DMG}."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X3. Empty Barracks",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Shattered bits of wood cover the floor of this frigid, twenty-foot-square room."
+							]
+						},
+						"The ceiling in each of these rooms is 10 feet high. The wood is all that remains of guards' bunks.",
+						"A secret door set in one wall of each room can be pulled open to reveal area X2a or X2b beyond."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X4. Overlook",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"A twenty-foot-wide balcony of black marble with a shattered railing overlooks a vast temple. Black marble staircases at each end of the balcony descend thirty feet to the temple floor. The vaulted ceiling is thirty feet above the balcony. The walls and ceiling are covered in an amber glaze, lending the gloom a golden sheen. A set of amber doors stands closed at the west end of the balcony. A similar pair stands open to the east."
+							]
+						},
+						"Anyone with a passive Wisdom (Perception) score of 12 or higher notice arrow slits in the walls overlooking the temple (see areas X8 and X17 for more information on these arrow slits). If the characters' light source or vision extends 90 feet or more, they can see a large, faceless statue at the far end of the temple (area X5a).",
+						"The open doorway to the east leads to area X6. The double doors to the west open into area X15. Characters who listen at the western doors hear gruff humanoid voices beyond, but can't discern what's being said."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X5. Temple of Lost Secrets",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Four black marble columns support the vaulted ceiling of the temple, at the north end of which stands a forty-foot-tall statue of a cowled figure in flowing robes. The statue's stony hands are outstretched as if in the midst of casting a spell. Its face is a void of utter blackness.",
+								"The ominous statue stands between two black marble balconies, one of which has partially collapsed and fallen on the temple's black marble floor, in front of an open doorway. The walls of the temple are sheathed in amber, and the doors leading from it are made of amber as well. Arched hallways coated with amber lead away from the temple to the west and east. Flanking these exits are alcoves that hold white marble statues of robed human wizards with pointed hats and golden staffs. One of them has toppled over and lies shattered on the floor."
+							]
+						},
+						"An {@creature arcanaloth|MM} named Neferon guards this temple from within the hollow head of the great statue (area X5a) and attacks characters on sight with its longer-ranged spells. Thanks to its truesight, the arcanaloth can see the invisible and can see through magical darkness. Characters can't see Neferon unless they can penetrate the magical darkness that envelops the statue's face and head.",
+						"Once the arcanaloth begins casting spells, the three {@creature flameskull|MM|flameskulls} in area X17 take up positions behind the arrow slits that overlook the temple and cast {@spell magic missile|PHB} and {@spell fireball|PHB} spells at characters they can see.",
+						"The temple ceiling is 60 feet high. Wide, black marble staircases ascend 30 feet to the southern balcony (area X4). The balconies that flank the statue (areas X11 and X23) are 30 feet high as well.",
+						"Arrow slits cut into the walls of the upper galleries (areas X8 and X17) and archer posts (areas X13 and X25) look down on the temple. The amber glaze that covers the temple walls makes these arrow slits difficult to spot. Characters who have a passive Wisdom (Perception) score of 12 or higher notice them. Creatures behind the arrow slits gain three-quarters cover.",
+						"The marble wizard statues stand 8 feet tall. Their 9-foot-tall golden staffs are made of wrought iron coated in peeling gold paint. The northeast statue fell over when an earth tremor collapsed the wall of its alcove."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X5a. God of Secrets",
+					"entries": [
+						"This 40-foot-tall statue, carved out of granite, depicts a faceless god of secrets. At the base of the statue, in the back, is a secret door that can be found with a successful DC 20 Wisdom (Perception) check. It can be pulled open to reveal a spiral staircase that climbs to a stone trapdoor set into the floor of the statue's hollow head.",
+						{
+							"type": "entries",
+							"name": "Statue's Head",
+							"entries": [
+								"Neferon the {@creature arcanaloth|MM} lairs inside the statue's hollow head, within a field of magical darkness that fills the interior of the head and hides the statue's humanlike face. The darkness can be dispelled (DC 17).",
+								"A pair of 2-foot-wide eyeholes provides an unobstructed view of the temple floor south of the statue, as well as the southern balcony (area X4). Looking through the eyes, one can't see the northern balconies (areas X11 and X23), the areas beneath them, or anywhere behind or directly above the statue. The eyeholes grant the arcanaloth three-quarters cover against attacks that originate outside the head.",
+								"Neferon wears gold spectacles and a magic robe (see \"Treasure\" below). It uses its {@spell alter self|PHB} spell and Deception skill to pass itself off as an old human wizard with a long white beard named Heinrich Stolt. \"Heinrich\" feigns confusion. If the characters ask him why he attacked, he claims that he was guarding the temple. If the arcanaloth loses more than half of its hit points, it teleports to the temple floor, turns invisible, and flees by the safest route, attacking the characters again when it's safe to do so. The arcanaloth will not, under any circumstances, leave the Amber Temple."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Treasure",
+							"entries": [
+								"The arcanaloth carries a spellbook containing the wizard spells it has prepared (see its stat block in the {@i Monster Manual} ). It wears small gold spectacles with pink crystal lenses (worth 250 gp) and a {@item robe of useful items|DMG} with the following eight patches remaining:",
+								{
+									"type": "list",
+									"items": [
+										"Bag of 100 gp",
+										"Iron door",
+										"Wooden ladder",
+										"Riding horse",
+										"Pit",
+										"Rowboat",
+										"{@item Spell Scroll (2nd level)|DMG|Spell scroll} ( {@spell moonbeam|PHB} )",
+										"Mastiffs"
+									]
+								},
+								"See the robe's description in the {@i Dungeon Master's Guide} for more information on each patch."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Fortunes of Ravenloft",
+							"entries": [
+								"If your card reading reveals that a treasure is here, it's lying on the floor inside the statue's head."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X5b. Secret Door",
+					"entries": [
+						"Set into the middle of the temple's north wall is a secret door. A character who searches the wall for secret doors and succeeds on a DC 20 Wisdom (Perception) check detects seams in the amber glaze that covers the wall, hinting at the presence of the door. It is warded by an {@spell arcane lock|PHB} spell that prevents it from being opened, but knocking on the door three times causes it to swing open for 1 minute, revealing a dusty stone staircase. The stairs climb 30 feet to another secret door that swings open automatically when a creature moves within 5 feet of it. The stairs lead to area X30."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X5c. Locked Doors",
+					"entries": [
+						"These amber doors are sealed with an {@spell arcane lock|PHB} spell. The password to suppress it is \"Etherna.\" A character can push open the doors with a successful DC 25 Strength check. The doors (AC 15, 60 hit points) can also be smashed. If they are reduced to 0 hit points, necrotic energy fills the 30-foot cube directly north of the them. A creature in that area takes 22 (4d10) necrotic damage, turning to dust if reduced to 0 hit points. Beyond the doors lie the temple catacombs (area X31)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X5d. Amber Reflections",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"This arched hall rises to a height of twenty feet. You can see your reflections in the amber glaze. But the images don't mirror your movements. Instead, they wave their arms and scream silent warnings to you."
+							]
+						},
+						"The characters' bizarre reflections are illusions meant to discourage them from exploring the temple. The illusions can be dispelled (DC 15).",
+						"The east hall leads to area X32, the west hall to area X36."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X6. Southeast Annex",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"This room is featureless except for a rough-edged, 10-foot-diameter circular hole in the floor to the east and empty torch sconces along the walls. Double doors of amber stand open to the north and west. A single closed door lies just south of the western set of double doors."
+							]
+						},
+						"The ceiling here is 20 feet high. Beyond the open doors to the north, the characters can see a long, wide hallway with amber-covered walls (area X8).",
+						"The hole in the floor forms a roughly hewn shaft that descends 20 feet, then breaks through the ceiling of area X33a. From the bottom of the shaft, it's another 10-foot drop to the floor of area X33a. The shaft has abundant handholds and can be climbed without an ability check, but characters must still drop the last 10 feet to reach the floor below. If the characters make a lot of noise, the three {@creature flameskull|MM|flameskulls} in area X33a float up the shaft and attack them. The flameskulls also attack anyone they can hear attempting to descend the shaft.",
+						"A secret door in the south wall opens into area X7."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X7. Secret Scroll Repository",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Carved into the south wall of this dusty space are cylindrical holes fit for scrolls or maps."
+							]
+						},
+						"The wizards kept magic scrolls here in case the temple came under attack. The scrolls have crumbled to dust."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X8. Upper East Hall",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"Glazed amber covers the walls of this twenty-foot-wide, seventy-foot-long arched corridor. The amber doors at both ends of the hall stand open. A closed door is in the middle of the east wall, and three arrow slits are cut into the wall across from it. Cracks in the black marble floor run the length of the hall."
+							]
+						},
+						"The cracks in the floor were made by the golem in area X10. The arrow slits are 5 inches wide, 2 feet tall, and 1 foot thick. They look down on the temple (area X5)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "X9. Lecture Hall",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"This chamber is brightly lit by red copper lanthorns that hang from the ceiling. The walls are sheathed in amber that has been shaped into bas-reliefs of wizards with spellbooks. Stairs to the north and south descend twenty feet to an obsidian lectern, behind which a slab of black slate hangs from chains. Between the stairs are descending rows of red marble benches."
+							]
+						},
+						"The hanging lanthorns have {@i continual light} spells cast on them. The black slate slab once served as a chalkboard and has a few chalk marks on it.",
+						"Hiding behind the lectern is Vilnius (NE male human {@creature mage|MM} ) and his invisible {@creature quasit|MM} familiar. Characters who have a passive Wisdom (Perception) score of 17 or higher notice him. A character who actively searches the room for hidden occupants spots Vilnius with a successful DC 12 Wisdom (Perception) check.",
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/CoS/Vilnius and Quasit.jpg"
+							},
+							"title": "Vilnius and Quasit"
+						},
+						"Vilnius wears scorched robes, his unkempt hair is half burned away, and his face and arms are covered with blisters from magic fire. He is the apprentice of Jakarion, the dead wizard in area X17. After the flameskulls there incinerated his master, the wounded Vilnius retreated here. He eats vermin to survive. The amber golem has been patrolling the hallway outside (area X8), and Vilnius won't leave this room until he knows the golem has been destroyed.",
+						"Vilnius is a greedy, treacherous coward. He curses his dead master for leading them to this wretched land. If the characters try to befriend him, he is suspicious of their intentions. He would like to retrieve his dead master's staff and spellbook, but otherwise he has no interest in exploring more of the Amber Temple. He knows the following information about the place:",
+						{
+							"type": "list",
+							"items": [
+								"The temple is a haven for forbidden knowledge.",
+								"Flameskulls - constructs made from the remains of dead wizards - guard the temple.",
+								"Barbaric mountain folk use the temple for shelter."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Treasure",
+							"entries": [
+								"Vilnius carries his spellbook, which contains all the spells he has prepared. He also has a gold amulet shaped like an upside-down V hidden under his robes. Of exquisite design, the amulet is worth 1,000 gp. It is the control amulet for the shield guardian in area X35.",
+								"Although he can tell that the amulet is magical, he doesn't know its purpose. The amulet thrums when it comes within 10 feet of the shield guardian. If Vilnius realizes what the amulet does, he won't part with it."
+							]
+						}
 					]
 				},
 				{
@@ -14195,33 +14329,6 @@
 						},
 						"The ceiling here is 15 feet high. The bottles contain the dried-up remains of potions that lost their efficacy long ago. The ladders were once used to reach the higher niches, but they can no longer support any weight.",
 						"A secret door is set in the north wall. It can be pulled open to reveal a staircase landing (area X21)."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X1a. Narrow Fissure",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"A natural fissure has opened in the mountainside west of the temple's facade, creating a gap two feet wide, ten feet tall, and fifteen feet deep. You see light coming from a room beyond, and you hear human voices there as well."
-							]
-						},
-						"The fissure leads to area X15. If the characters make a lot of noise outside, one of the creatures in that area investigates the disturbance."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X2. Entrance",
-					"entries": [
-						"If the characters pass through the archway between the statues, read:",
-						{
-							"type": "inset",
-							"entries": [
-								"Icy steps descend ten feet to a time-ravaged hallway with arrow slits in the walls. Beyond the hall lies a vast, sepulchral darkness."
-							]
-						},
-						"The hall connects areas X1 and X4. There are no guards in the rooms behind the arrow slits (areas X2a and X2b)."
 					]
 				},
 				{
@@ -14400,48 +14507,6 @@
 							]
 						},
 						"The ceiling here is 10 feet high."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X2a. Guard Room",
-					"entries": [
-						"This empty room lies behind a secret door. The ceiling is 10 feet high. Two arrow slits are carved into the east wall."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X2b. Guard Room",
-					"entries": [
-						"This room lies behind a secret door.",
-						{
-							"type": "inset",
-							"entries": [
-								"Two arrow slits are carved into the west wall of this 10-foot-high, twenty-foot-square room. Slumped in the northeast corner is a skeleton wearing a blue wizard's robe and clutching a wand to its chest."
-							]
-						},
-						"The skeleton is all that remains of a wizard who froze to death. It poses no threat.",
-						{
-							"type": "entries",
-							"name": "Treasure",
-							"entries": [
-								"The skeleton clutches a {@item wand of secrets|DMG}."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X3. Empty Barracks",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Shattered bits of wood cover the floor of this frigid, twenty-foot-square room."
-							]
-						},
-						"The ceiling in each of these rooms is 10 feet high. The wood is all that remains of guards' bunks.",
-						"A secret door set in one wall of each room can be pulled open to reveal area X2a or X2b beyond."
 					]
 				},
 				{
@@ -14882,20 +14947,6 @@
 				},
 				{
 					"type": "entries",
-					"name": "X4. Overlook",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"A twenty-foot-wide balcony of black marble with a shattered railing overlooks a vast temple. Black marble staircases at each end of the balcony descend thirty feet to the temple floor. The vaulted ceiling is thirty feet above the balcony. The walls and ceiling are covered in an amber glaze, lending the gloom a golden sheen. A set of amber doors stands closed at the west end of the balcony. A similar pair stands open to the east."
-							]
-						},
-						"Anyone with a passive Wisdom (Perception) score of 12 or higher notice arrow slits in the walls overlooking the temple (see areas X8 and X17 for more information on these arrow slits). If the characters' light source or vision extends 90 feet or more, they can see a large, faceless statue at the far end of the temple (area X5a).",
-						"The open doorway to the east leads to area X6. The double doors to the west open into area X15. Characters who listen at the western doors hear gruff humanoid voices beyond, but can't discern what's being said."
-					]
-				},
-				{
-					"type": "entries",
 					"name": "X40. Sealed Treasury",
 					"entries": [
 						"The amber doors to the south are sealed with an {@spell arcane lock|PHB} spell. The password to suppress the spell is \"Dhaviton.\" A character can push open the doors with a successful DC 25 Strength check. The doors (AC 15, 60 hit points) can also be smashed. If the doors are reduced to 0 hit points, a {@spell greater invisibility|PHB} spell is cast on the amber golem in this room. The spell lasts for 1 minute.",
@@ -15069,177 +15120,6 @@
 									]
 								},
 								"The beneficiary of this dark gift takes on a corpse-like appearance and is easily mistaken for an undead."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X5. Temple of Lost Secrets",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Four black marble columns support the vaulted ceiling of the temple, at the north end of which stands a forty-foot-tall statue of a cowled figure in flowing robes. The statue's stony hands are outstretched as if in the midst of casting a spell. Its face is a void of utter blackness.",
-								"The ominous statue stands between two black marble balconies, one of which has partially collapsed and fallen on the temple's black marble floor, in front of an open doorway. The walls of the temple are sheathed in amber, and the doors leading from it are made of amber as well. Arched hallways coated with amber lead away from the temple to the west and east. Flanking these exits are alcoves that hold white marble statues of robed human wizards with pointed hats and golden staffs. One of them has toppled over and lies shattered on the floor."
-							]
-						},
-						"An {@creature arcanaloth|MM} named Neferon guards this temple from within the hollow head of the great statue (area X5a) and attacks characters on sight with its longer-ranged spells. Thanks to its truesight, the arcanaloth can see the invisible and can see through magical darkness. Characters can't see Neferon unless they can penetrate the magical darkness that envelops the statue's face and head.",
-						"Once the arcanaloth begins casting spells, the three {@creature flameskull|MM|flameskulls} in area X17 take up positions behind the arrow slits that overlook the temple and cast {@spell magic missile|PHB} and {@spell fireball|PHB} spells at characters they can see.",
-						"The temple ceiling is 60 feet high. Wide, black marble staircases ascend 30 feet to the southern balcony (area X4). The balconies that flank the statue (areas X11 and X23) are 30 feet high as well.",
-						"Arrow slits cut into the walls of the upper galleries (areas X8 and X17) and archer posts (areas X13 and X25) look down on the temple. The amber glaze that covers the temple walls makes these arrow slits difficult to spot. Characters who have a passive Wisdom (Perception) score of 12 or higher notice them. Creatures behind the arrow slits gain three-quarters cover.",
-						"The marble wizard statues stand 8 feet tall. Their 9-foot-tall golden staffs are made of wrought iron coated in peeling gold paint. The northeast statue fell over when an earth tremor collapsed the wall of its alcove."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X5a. God of Secrets",
-					"entries": [
-						"This 40-foot-tall statue, carved out of granite, depicts a faceless god of secrets. At the base of the statue, in the back, is a secret door that can be found with a successful DC 20 Wisdom (Perception) check. It can be pulled open to reveal a spiral staircase that climbs to a stone trapdoor set into the floor of the statue's hollow head.",
-						{
-							"type": "entries",
-							"name": "Statue's Head",
-							"entries": [
-								"Neferon the {@creature arcanaloth|MM} lairs inside the statue's hollow head, within a field of magical darkness that fills the interior of the head and hides the statue's humanlike face. The darkness can be dispelled (DC 17).",
-								"A pair of 2-foot-wide eyeholes provides an unobstructed view of the temple floor south of the statue, as well as the southern balcony (area X4). Looking through the eyes, one can't see the northern balconies (areas X11 and X23), the areas beneath them, or anywhere behind or directly above the statue. The eyeholes grant the arcanaloth three-quarters cover against attacks that originate outside the head.",
-								"Neferon wears gold spectacles and a magic robe (see \"Treasure\" below). It uses its {@spell alter self|PHB} spell and Deception skill to pass itself off as an old human wizard with a long white beard named Heinrich Stolt. \"Heinrich\" feigns confusion. If the characters ask him why he attacked, he claims that he was guarding the temple. If the arcanaloth loses more than half of its hit points, it teleports to the temple floor, turns invisible, and flees by the safest route, attacking the characters again when it's safe to do so. The arcanaloth will not, under any circumstances, leave the Amber Temple."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Treasure",
-							"entries": [
-								"The arcanaloth carries a spellbook containing the wizard spells it has prepared (see its stat block in the {@i Monster Manual} ). It wears small gold spectacles with pink crystal lenses (worth 250 gp) and a {@item robe of useful items|DMG} with the following eight patches remaining:",
-								{
-									"type": "list",
-									"items": [
-										"Bag of 100 gp",
-										"Iron door",
-										"Wooden ladder",
-										"Riding horse",
-										"Pit",
-										"Rowboat",
-										"{@item Spell Scroll (2nd level)|DMG|Spell scroll} ( {@spell moonbeam|PHB} )",
-										"Mastiffs"
-									]
-								},
-								"See the robe's description in the {@i Dungeon Master's Guide} for more information on each patch."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Fortunes of Ravenloft",
-							"entries": [
-								"If your card reading reveals that a treasure is here, it's lying on the floor inside the statue's head."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X5b. Secret Door",
-					"entries": [
-						"Set into the middle of the temple's north wall is a secret door. A character who searches the wall for secret doors and succeeds on a DC 20 Wisdom (Perception) check detects seams in the amber glaze that covers the wall, hinting at the presence of the door. It is warded by an {@spell arcane lock|PHB} spell that prevents it from being opened, but knocking on the door three times causes it to swing open for 1 minute, revealing a dusty stone staircase. The stairs climb 30 feet to another secret door that swings open automatically when a creature moves within 5 feet of it. The stairs lead to area X30."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X5c. Locked Doors",
-					"entries": [
-						"These amber doors are sealed with an {@spell arcane lock|PHB} spell. The password to suppress it is \"Etherna.\" A character can push open the doors with a successful DC 25 Strength check. The doors (AC 15, 60 hit points) can also be smashed. If they are reduced to 0 hit points, necrotic energy fills the 30-foot cube directly north of the them. A creature in that area takes 22 (4d10) necrotic damage, turning to dust if reduced to 0 hit points. Beyond the doors lie the temple catacombs (area X31)."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X5d. Amber Reflections",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"This arched hall rises to a height of twenty feet. You can see your reflections in the amber glaze. But the images don't mirror your movements. Instead, they wave their arms and scream silent warnings to you."
-							]
-						},
-						"The characters' bizarre reflections are illusions meant to discourage them from exploring the temple. The illusions can be dispelled (DC 15).",
-						"The east hall leads to area X32, the west hall to area X36."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X6. Southeast Annex",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"This room is featureless except for a rough-edged, 10-foot-diameter circular hole in the floor to the east and empty torch sconces along the walls. Double doors of amber stand open to the north and west. A single closed door lies just south of the western set of double doors."
-							]
-						},
-						"The ceiling here is 20 feet high. Beyond the open doors to the north, the characters can see a long, wide hallway with amber-covered walls (area X8).",
-						"The hole in the floor forms a roughly hewn shaft that descends 20 feet, then breaks through the ceiling of area X33a. From the bottom of the shaft, it's another 10-foot drop to the floor of area X33a. The shaft has abundant handholds and can be climbed without an ability check, but characters must still drop the last 10 feet to reach the floor below. If the characters make a lot of noise, the three {@creature flameskull|MM|flameskulls} in area X33a float up the shaft and attack them. The flameskulls also attack anyone they can hear attempting to descend the shaft.",
-						"A secret door in the south wall opens into area X7."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X7. Secret Scroll Repository",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Carved into the south wall of this dusty space are cylindrical holes fit for scrolls or maps."
-							]
-						},
-						"The wizards kept magic scrolls here in case the temple came under attack. The scrolls have crumbled to dust."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X8. Upper East Hall",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"Glazed amber covers the walls of this twenty-foot-wide, seventy-foot-long arched corridor. The amber doors at both ends of the hall stand open. A closed door is in the middle of the east wall, and three arrow slits are cut into the wall across from it. Cracks in the black marble floor run the length of the hall."
-							]
-						},
-						"The cracks in the floor were made by the golem in area X10. The arrow slits are 5 inches wide, 2 feet tall, and 1 foot thick. They look down on the temple (area X5)."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "X9. Lecture Hall",
-					"entries": [
-						{
-							"type": "inset",
-							"entries": [
-								"This chamber is brightly lit by red copper lanthorns that hang from the ceiling. The walls are sheathed in amber that has been shaped into bas-reliefs of wizards with spellbooks. Stairs to the north and south descend twenty feet to an obsidian lectern, behind which a slab of black slate hangs from chains. Between the stairs are descending rows of red marble benches."
-							]
-						},
-						"The hanging lanthorns have {@i continual light} spells cast on them. The black slate slab once served as a chalkboard and has a few chalk marks on it.",
-						"Hiding behind the lectern is Vilnius (NE male human {@creature mage|MM} ) and his invisible {@creature quasit|MM} familiar. Characters who have a passive Wisdom (Perception) score of 17 or higher notice him. A character who actively searches the room for hidden occupants spots Vilnius with a successful DC 12 Wisdom (Perception) check.",
-						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/CoS/Vilnius and Quasit.jpg"
-							},
-							"title": "Vilnius and Quasit"
-						},
-						"Vilnius wears scorched robes, his unkempt hair is half burned away, and his face and arms are covered with blisters from magic fire. He is the apprentice of Jakarion, the dead wizard in area X17. After the flameskulls there incinerated his master, the wounded Vilnius retreated here. He eats vermin to survive. The amber golem has been patrolling the hallway outside (area X8), and Vilnius won't leave this room until he knows the golem has been destroyed.",
-						"Vilnius is a greedy, treacherous coward. He curses his dead master for leading them to this wretched land. If the characters try to befriend him, he is suspicious of their intentions. He would like to retrieve his dead master's staff and spellbook, but otherwise he has no interest in exploring more of the Amber Temple. He knows the following information about the place:",
-						{
-							"type": "list",
-							"items": [
-								"The temple is a haven for forbidden knowledge.",
-								"Flameskulls - constructs made from the remains of dead wizards - guard the temple.",
-								"Barbaric mountain folk use the temple for shelter."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Treasure",
-							"entries": [
-								"Vilnius carries his spellbook, which contains all the spells he has prepared. He also has a gold amulet shaped like an upside-down V hidden under his robes. Of exquisite design, the amulet is worth 1,000 gp. It is the control amulet for the shield guardian in area X35.",
-								"Although he can tell that the amulet is magical, he doesn't know its purpose. The amulet thrums when it comes within 10 feet of the shield guardian. If Vilnius realizes what the amulet does, he won't part with it."
 							]
 						}
 					]
@@ -15872,6 +15752,19 @@
 								"After the mists reappear, Madam Eva and her Vistani come back to the valley, the beasts of the land once more fall under Strahd's spell, and the burgomasters fortify their settlements, hoping against all hope that someone can save them from Strahd again."
 							]
 						}
+					]
+				}
+			]
+		},
+		{
+			"type": "section",
+			"name": "Appendix A: Character Options",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Character Background",
+					"entries": [
+						"During character creation, players can select the follow­ ing background for their characters, with your approval: {@background Haunted One|CoS}. It is appropriate for any character or campaign associ­ated with eeriness or horror."
 					]
 				}
 			]
@@ -16953,84 +16846,84 @@
 						"CR"
 					],
 					"colStyles": [
-						"",
-						""
+						"col-xs-11",
+						"col-xs-1 text-align-center"
 					],
 					"rows": [
 						[
-							"Baba Lysaga",
+							"{@creature Baba Lysaga|CoS}",
 							"11"
 						],
 						[
-							"Baba Lysaga's creeping hut",
+							"{@creature Baba Lysaga's creeping hut|CoS}",
 							"11"
 						],
 						[
-							"Broom of animated atk",
+							"{@creature Broom of animated attack|CoS}",
 							"1/4"
 						],
 						[
-							"Barovian witch",
+							"{@creature Barovian witch|CoS}",
 							"1/2"
 						],
 						[
-							"Ezmerelda d'Avenir",
+							"{@creature Ezmerelda d'Avenir|CoS}",
 							"8"
 						],
 						[
-							"Guardian portrait",
+							"{@creature Guardian portrait|CoS}",
 							"1"
 						],
 						[
-							"Izek Strazni",
+							"{@creature Izek Strazni|CoS}",
 							"5"
 						],
 						[
-							"Madam Eva",
+							"{@creature Madam Eva|CoS}",
 							"10"
 						],
 						[
-							"Mongrelfolk",
+							"{@creature Mongrelfolk|CoS}",
 							"1/4"
 						],
 						[
-							"Phantom warrior",
+							"{@creature Phantom warrior|CoS}",
 							"3"
 						],
 						[
-							"Pidlwick II",
+							"{@creature Pidlwick II|CoS}",
 							"1/4"
 						],
 						[
-							"Rahadin",
+							"{@creature Rahadin|CoS}",
 							"10"
 						],
 						[
-							"Rictavio",
+							"{@creature Rictavio|CoS}",
 							"5"
 						],
 						[
-							"Strahd's animated armor",
+							"{@creature Strahd's animated armor|CoS}",
 							"6"
 						],
 						[
-							"Strahd von Zarovich",
+							"{@creature Strahd von Zarovich|CoS}",
 							"15"
 						],
 						[
-							"Strahd zombie",
+							"{@creature Strahd zombie|CoS}",
 							"1"
 						],
 						[
-							"Tree blight",
+							"{@creature Tree blight|CoS}",
 							"7"
 						],
 						[
-							"Vladimir Horngaard",
+							"{@creature Vladimir Horngaard|CoS}",
 							"7"
 						],
 						[
-							"Wereraven",
+							"{@creature Wereraven|CoS}",
 							"2"
 						]
 					]
@@ -18176,6 +18069,498 @@
 					"entries": [
 						"Giant spiders weave thick, sticky webs across passages and at the bottom of pits to snare prey. These web-filled areas are difficult terrain. Moreover, a creature entering a webbed area for the first time on a turn or starting its turn there must succeed on a DC 12 Dexterity saving throw or become restrained by the webs. A restrained creature can use its action to try to escape, doing so with a successful DC 12 Strength (Athletics) or Dexterity (Acrobatics) check.",
 						"Each 10-foot cube of giant webs has AC 10, 15 hit points, vulnerability to fire, and immunity to bludgeoning, piercing, and psychic damage."
+					]
+				}
+			]
+		},
+		{
+			"type": "section",
+			"name": "Appendix E: The Tarokka Deck",
+			"entries": [
+				"The Vistani have long been masters of fortune-telling. In the hands of a Vistani seer, a deck of tarokka cards can tell tales of the future and provide answers to many a dark and mysterious question.",
+				"Although the workmanship and artistic quality of the cards can vary from deck to deck, the ability of the cards to call forth information about the future is far more valuable than the monetary worth of a deck.",
+				"Anyone can craft a deck of tarokka cards, but only someone of Vistani blood can imbue the cards with the gift of prophecy. Once they are crafted and empowered, they must be stored in accordance with ancient tradition, or they lose their efficacy. When not in use, tarokka cards must be wrapped in silk and stored in a wooden box.",
+				{
+					"type": "entries",
+					"name": "Composition",
+					"entries": [
+						"A tarokka deck has fifty-four cards, each of which has its own name. Forty of them comprise the common deck, which is divided into four suits: swords, coins, stars, and glyphs.",
+						"Each suit contains cards numbered one through nine, plus a tenth card that is called the master of that suit. A card can be referred to by its suit designation or by its name. For instance, the three of glyphs is also known as the healer, and the wizard card is also known as the master of stars.",
+						"The remaining fourteen cards make up the high deck, which symbolizes the natural forces of the multiverse. These cards are represented by a crown symbol and are the most powerful cards in the deck."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "High Deck",
+					"entries": [
+						"The cards that compose the high deck aren't considered to be one suit, although they are often denoted with a crown icon to mark their importance. Rather, each card is an important power in its own right. If one of these cards comes out in a casting and seems to contradict the prediction of an earlier card, the Vistani always assume that this card takes precedence."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Common Deck",
+					"entries": [
+						"The four suits and their respective cards are described in more detail below.",
+						{
+							"type": "entries",
+							"name": "Swords",
+							"entries": [
+								"This suit symbolizes aggression and violence. It is the suit of warriors, be they paladins, soldiers, mercenaries, or gladiators. It also symbolizes the power of governments and leaders, whether noble or corrupt."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Stars",
+							"entries": [
+								"This suit symbolizes the desire for personal power and control over things beyond the ken of mortals. It is the suit of arcane mages, sages, and intellectuals. It also represents the triumph of magic, science, and reason over religion, mysticism, and superstition."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Coins",
+							"entries": [
+								"This suit symbolizes avarice and the desire for personal and material gain. It is also symbolic of gluttony, lust, and obsession. On the side of good, this suit can suggest the accumulation of wealth for the benefit of a charity or a just cause. On the side of evil, it embodies the worst aspects of greed. It speaks to the power of gold, and how that power can build or destroy nations."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Glyphs",
+							"entries": [
+								"This suit symbolizes faith, spirituality, and inner strength. It is the suit of priests and those who devote themselves to the service of a deity, a higher power, or a heightened philosophy. On the side of good, it represents willpower and dedication. On the side of evil, the suit signifies weakness of character, self-doubt, and betrayal of one's ideals or beliefs. It symbolizes health and healing, as well as illness and disease."
+							]
+						}
+					]
+				},
+				{
+					"type": "table",
+					"caption": "High Deck",
+					"colLabels": [
+						"Name",
+						"Represents"
+					],
+					"colStyles": [
+						"col-xs-2",
+						"col-xs-10"
+					],
+					"rows": [
+						[
+							"Artifact",
+							"The importance of some physical object that must be obtained, protected, or destroyed at all costs"
+						],
+						[
+							"Beast",
+							"Great rage or passion - something bestial or malevolent hiding in plain sight or lurking just below the surface"
+						],
+						[
+							"Broken One",
+							"Defeat, failure, and despair - the loss of something or someone important, without which one feels incomplete"
+						],
+						[
+							"Darklord",
+							"A single, powerful individual of an evil nature, one whose goals have enormous and far-reaching consequences"
+						],
+						[
+							"Donjon",
+							"Isolation and imprisonment - being so conservative in thinking as to be a prisoner of one's own beliefs"
+						],
+						[
+							"Ghost",
+							"The looming past - the return of an old enemy or the discovery of a secret buried long ago"
+						],
+						[
+							"Executioner",
+							"The imminent death of one rightly or wrongly convicted of a crime - false accusations and unjust prosecution"
+						],
+						[
+							"Horseman",
+							"Death - disaster in the form of the loss of wealth or property, a horrible defeat, or the end of a bloodline"
+						],
+						[
+							"Innocent",
+							"A being of great importance whose life is in danger (who might be helpless or simply unaware of the peril)"
+						],
+						[
+							"Marionette",
+							"The presence of a spy or a minion of some greater power - an encounter with a puppet or an underling"
+						],
+						[
+							"Mists",
+							"Something unexpected or mysterious that can't be avoided - a great quest or journey that will try one's spirit"
+						],
+						[
+							"Raven",
+							"A hidden source of information - a fortunate turn of events - a secret potential for good"
+						],
+						[
+							"Seer",
+							"Inspiration and keen intellect - a future event, the outcome of which will hinge on a clever mind"
+						],
+						[
+							"Tempter",
+							"One who has been compromised or led astray by temptation or foolishness - one who tempts others for evil ends"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Swords",
+					"colLabels": [
+						"Card",
+						"Name",
+						"Represents"
+					],
+					"colStyles": [
+						"col-xs-2",
+						"col-xs-2",
+						"col-xs-8"
+					],
+					"rows": [
+						[
+							"Master of swords",
+							"Warrior",
+							"Strength and force personified - violence - those who use force to accomplish their goals"
+						],
+						[
+							"One of swords",
+							"Avenger",
+							"Justice and revenge for great wrongs - those on a quest to rid the world of great evil"
+						],
+						[
+							"Two of swords",
+							"Paladin",
+							"Just and noble warriors - those who live by a code of honor and integrity"
+						],
+						[
+							"Three of swords",
+							"Soldier",
+							"War and sacrifice - the stamina to endure great hardship"
+						],
+						[
+							"Four of swords",
+							"Mercenary",
+							"Inner strength and fortitude - those who fight for power or wealth"
+						],
+						[
+							"Five of swords",
+							"Myrmidon",
+							"Great heroes - a sudden reversal of fate - the triumph of the underdog over a mighty enemy"
+						],
+						[
+							"Six of swords",
+							"Berserker",
+							"The brutal and barbaric side of warfare - bloodlust - those with a bestial nature"
+						],
+						[
+							"Seven of swords",
+							"Hooded One",
+							"Bigotry, intolerance, and xenophobia - a mysterious presence or newcomer"
+						],
+						[
+							"Eight of swords",
+							"Dictator",
+							"All that is wrong with government and leadership - those who rule through fear and violence"
+						],
+						[
+							"Nine of swords",
+							"Torturer",
+							"The coming of suffering or merciless cruelty - one who is irredeemably evil or sadistic"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Stars",
+					"colLabels": [
+						"Card",
+						"Name",
+						"Represents"
+					],
+					"colStyles": [
+						"col-xs-2",
+						"col-xs-2",
+						"col-xs-8"
+					],
+					"rows": [
+						[
+							"Master of stars",
+							"Wizard",
+							"Mystery and riddles - the unknown - those who crave magical power and great knowledge"
+						],
+						[
+							"One of stars",
+							"Transmuter",
+							"A new discovery - the coming of unexpected things - unforeseen consequences and chaos"
+						],
+						[
+							"Two of stars",
+							"Diviner",
+							"The pursuit of knowledge tempered by wisdom - truth and honesty - sages and prophecy"
+						],
+						[
+							"Three of stars",
+							"Enchanter",
+							"Inner turmoil that comes from confusion, fear of failure, or false information"
+						],
+						[
+							"Four of stars",
+							"Abjurer",
+							"Those guided by logic and reasoning - warns of an overlooked clue or piece of information"
+						],
+						[
+							"Five of stars",
+							"Elementalist",
+							"The triumph of nature over civilization - natural disasters and bountiful harvests"
+						],
+						[
+							"Six of stars",
+							"Evoker",
+							"Magical or supernatural power that can't be controlled - magic for destructive ends"
+						],
+						[
+							"Seven of stars",
+							"Illusionist",
+							"Lies and deceit - grand conspiracies - secret societies - the presence of a dupe or a saboteur"
+						],
+						[
+							"Eight of stars",
+							"Necromancer",
+							"Unnatural events and unhealthy obsessions - those who follow a destructive path"
+						],
+						[
+							"Nine of stars",
+							"Conjurer",
+							"The coming of an unexpected supernatural threat - those who think of themselves as gods"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Coins",
+					"colLabels": [
+						"Card",
+						"Name",
+						"Represents"
+					],
+					"colStyles": [
+						"col-xs-2",
+						"col-xs-2",
+						"col-xs-8"
+					],
+					"rows": [
+						[
+							"Master of coins",
+							"Rogue",
+							"Anyone for whom money is important - those who believe money is the key to their success"
+						],
+						[
+							"One of coins",
+							"Swashbuckler",
+							"Those who like money yet give it up freely - likable rogues and rapscallions"
+						],
+						[
+							"Two of coins",
+							"Philanthropist",
+							"Charity and giving on a grand scale - those who use wealth to fight evil and sickness"
+						],
+						[
+							"Three of coins",
+							"Trader",
+							"Commerce - smuggling and black markets - fair and equitable trades"
+						],
+						[
+							"Four of coins",
+							"Merchant",
+							"A rare commodity or business opportunity - deceitful or dangerous business transactions"
+						],
+						[
+							"Five of coins",
+							"Guild Member",
+							"Like-minded individuals joined together in a common goal - pride in one's work"
+						],
+						[
+							"Six of coins",
+							"Beggar",
+							"Sudden change in economic status or fortune"
+						],
+						[
+							"Seven of coins",
+							"Thief",
+							"Those who steal or burgle - a loss of property, beauty, innocence, friendship, or reputation"
+						],
+						[
+							"Eight of coins",
+							"Tax Collector",
+							"Corruption - honesty in an otherwise corrupt government or organization"
+						],
+						[
+							"Nine of coins",
+							"Miser",
+							"Hoarded wealth - those who are irreversibly unhappy or who think money is meaningless"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Glyphs",
+					"colLabels": [
+						"Card",
+						"Name",
+						"Represents"
+					],
+					"colStyles": [
+						"col-xs-2",
+						"col-xs-2",
+						"col-xs-8"
+					],
+					"rows": [
+						[
+							"Master of glyphs",
+							"Priest",
+							"Enlightenment - those who follow a deity, a system of values, or a higher purpose"
+						],
+						[
+							"One of glyphs",
+							"Monk",
+							"Serenity - inner strength and self-reliance - supreme confidence bereft of arrogance"
+						],
+						[
+							"Two of glyphs",
+							"Missionary",
+							"Those who spread wisdom and faith to others - warnings of the spread of fear and ignorance"
+						],
+						[
+							"Three of glyphs",
+							"Healer",
+							"Healing - a contagious illness, disease, or curse - those who practice the healing arts"
+						],
+						[
+							"Four of glyphs",
+							"Shepherd",
+							"Those who protect others - one who bears a burden far too great to be shouldered alone"
+						],
+						[
+							"Five of glyphs",
+							"Druid",
+							"The ambivalence and cruelty of nature and those who feel drawn to it - inner turmoil"
+						],
+						[
+							"Six of glyphs",
+							"Anarchist",
+							"A fundamental change brought on by one whose beliefs are being put to the test"
+						],
+						[
+							"Seven of glyphs",
+							"Charlatan",
+							"Liars - those who profess to believe one thing but actually believe another"
+						],
+						[
+							"Eight of glyphs",
+							"Bishop",
+							"Strict adherence to a code or a belief - those who plot, plan, and scheme"
+						],
+						[
+							"Nine of glyphs",
+							"Traitor",
+							"Betrayal by someone close and trusted - a weakening or loss of faith"
+						]
+					]
+				}
+			]
+		},
+		{
+			"type": "section",
+			"name": "Appendix F: Handouts",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Kolyan Indirovich's Letter (Version 1)",
+					"entries": [
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/CoS/Kolyan Indirovich's Letter v1.jpg"
+							}
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Strahd's Invitation",
+					"entries": [
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/CoS/Strahd's Invitation.jpg"
+							}
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "From the Tome of Strahd",
+					"entries": [
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/CoS/Tome of Strahd 1.jpg"
+							}
+						},
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/CoS/Tome of Strahd 2.jpg"
+							}
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Journal of Rudolph van Richten",
+					"entries": [
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/CoS/Journal of Rudolph van Richten 1.jpg"
+							}
+						},
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/CoS/Journal of Rudolph van Richten 2.jpg"
+							}
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Kolyan Indirovich's Letter (Version 2)",
+					"entries": [
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/CoS/Kolyan Indirovich's Letter v2.jpg"
+							}
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Journal of Argynvost",
+					"entries": [
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/CoS/Journal of Argynvost.jpg"
+							}
+						}
 					]
 				}
 			]

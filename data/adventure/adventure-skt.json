@@ -3637,7 +3637,14 @@
 							"type": "table",
 							"caption": "Random Wilderness Encounters",
 							"colLabels": [
-								"Encounter", "Forest", "Grassland", "Hills/Moors", "Mountains", "Road/Trail", "Sea", "Tundra"
+								"Encounter",
+								"Forest",
+								"Grassland",
+								"Hills/Moors",
+								"Mountains",
+								"Road/Trail",
+								"Sea",
+								"Tundra"
 							],
 							"colStyles": [
 								"col-xs-4",
@@ -3651,26 +3658,206 @@
 								"col-xs-1 text-align-center"
 							],
 							"rows": [
-								["Bandits", "01\u201408", "01\u201407", "01\u201404", "\u2014", "01\u201408", "01\u201420", "\u2014"],
-								["Barbarians", "09\u201418", "08\u201432", "05\u201424", "01\u201410", "\u2014", "21\u201440", "01\u201415"],
-								["Battlefield", "19\u201421", "33\u201437", "25\u201428", "\u2014", "\u2014", "\u2014", "16\u201419"],
-								["Cloud castle", "\u2014", "38\u201439", "29\u201430", "11\u201415", "\u2014", "\u2014", "20\u201422"],
-								["Crag cats", "\u2014", "\u2014", "31\u201435", "16\u201432", "09\u201413", "\u2014", "23\u201435"],
-								["Dig site", "22\u201429", "40\u201446", "36\u201438", "33\u201435", "\u2014", "\u2014", "36\u201441"],
-								["Dragon", "\u2014", "\u2014", "39\u201441", "\u2014", "14\u201420", "\u2014", "\u2014"],
-								["Elk", "30\u201437", "47\u201453", "42\u201450", "36\u201443", "\u2014", "\u2014", "42\u201454"],
-								["Elves", "38\u201453", "\u2014", "\u2014", "\u2014", "\u2014", "41\u201450", "\u2014"],
-								["Fire giant", "54\u201455", "54\u201455", "51\u201453", "44\u201449", "21\u201428", "\u2014", "55\u201456"],
-								["Food hunters", "56\u201462", "56\u201462", "54\u201459", "50\u201452", "29\u201437", "\u2014", "57\u201458"],
-								["Frost giants", "63\u201467", "63\u201466", "60\u201461", "53\u201460", "38\u201441", "51\u201470", "59\u201470"],
-								["Hill giants", "68\u201470", "67\u201468", "62\u201476", "61\u201462", "42\u201446", "\u2014", "71\u201474"],
-								["Horse-drawn wagon", "71\u201475", "69\u201475", "\u2014", "\u2014", "47\u201455", "\u2014", "\u2014"],
-								["Knight", "76\u201480", "76\u201478", "77\u201480", "63\u201464", "56\u201464", "\u2014", "\u2014"],
-								["Ogres", "81\u201482", "79\u201484", "81\u201485", "65\u201466", "65\u201469", "71\u201480", "75\u201476"],
-								["Orcs", "83\u201490", "85\u201491", "86\u201490", "67\u201479", "70\u201473", "\u2014", "77\u201487"],
-								["Ranger", "91\u201495", "92\u201495", "91\u201494", "80\u201483", "74\u201478", "\u2014", "88\u201493"],
-								["Stone giants", "\u2014", "\u2014", "95\u201497", "84\u201495", "79\u201480", "\u2014", "94\u201495"],
-								["Travelers", "96\u201400", "96\u201400", "98\u201400", "96\u201400", "81\u201400", "81\u201400", "96\u201400"]
+								[
+									"Bandits",
+									"01\u201408",
+									"01\u201407",
+									"01\u201404",
+									"\u2014",
+									"01\u201408",
+									"01\u201420",
+									"\u2014"
+								],
+								[
+									"Barbarians",
+									"09\u201418",
+									"08\u201432",
+									"05\u201424",
+									"01\u201410",
+									"\u2014",
+									"21\u201440",
+									"01\u201415"
+								],
+								[
+									"Battlefield",
+									"19\u201421",
+									"33\u201437",
+									"25\u201428",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"16\u201419"
+								],
+								[
+									"Cloud castle",
+									"\u2014",
+									"38\u201439",
+									"29\u201430",
+									"11\u201415",
+									"\u2014",
+									"\u2014",
+									"20\u201422"
+								],
+								[
+									"Crag cats",
+									"\u2014",
+									"\u2014",
+									"31\u201435",
+									"16\u201432",
+									"09\u201413",
+									"\u2014",
+									"23\u201435"
+								],
+								[
+									"Dig site",
+									"22\u201429",
+									"40\u201446",
+									"36\u201438",
+									"33\u201435",
+									"\u2014",
+									"\u2014",
+									"36\u201441"
+								],
+								[
+									"Dragon",
+									"\u2014",
+									"\u2014",
+									"39\u201441",
+									"\u2014",
+									"14\u201420",
+									"\u2014",
+									"\u2014"
+								],
+								[
+									"Elk",
+									"30\u201437",
+									"47\u201453",
+									"42\u201450",
+									"36\u201443",
+									"\u2014",
+									"\u2014",
+									"42\u201454"
+								],
+								[
+									"Elves",
+									"38\u201453",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"41\u201450",
+									"\u2014"
+								],
+								[
+									"Fire giant",
+									"54\u201455",
+									"54\u201455",
+									"51\u201453",
+									"44\u201449",
+									"21\u201428",
+									"\u2014",
+									"55\u201456"
+								],
+								[
+									"Food hunters",
+									"56\u201462",
+									"56\u201462",
+									"54\u201459",
+									"50\u201452",
+									"29\u201437",
+									"\u2014",
+									"57\u201458"
+								],
+								[
+									"Frost giants",
+									"63\u201467",
+									"63\u201466",
+									"60\u201461",
+									"53\u201460",
+									"38\u201441",
+									"51\u201470",
+									"59\u201470"
+								],
+								[
+									"Hill giants",
+									"68\u201470",
+									"67\u201468",
+									"62\u201476",
+									"61\u201462",
+									"42\u201446",
+									"\u2014",
+									"71\u201474"
+								],
+								[
+									"Horse-drawn wagon",
+									"71\u201475",
+									"69\u201475",
+									"\u2014",
+									"\u2014",
+									"47\u201455",
+									"\u2014",
+									"\u2014"
+								],
+								[
+									"Knight",
+									"76\u201480",
+									"76\u201478",
+									"77\u201480",
+									"63\u201464",
+									"56\u201464",
+									"\u2014",
+									"\u2014"
+								],
+								[
+									"Ogres",
+									"81\u201482",
+									"79\u201484",
+									"81\u201485",
+									"65\u201466",
+									"65\u201469",
+									"71\u201480",
+									"75\u201476"
+								],
+								[
+									"Orcs",
+									"83\u201490",
+									"85\u201491",
+									"86\u201490",
+									"67\u201479",
+									"70\u201473",
+									"\u2014",
+									"77\u201487"
+								],
+								[
+									"Ranger",
+									"91\u201495",
+									"92\u201495",
+									"91\u201494",
+									"80\u201483",
+									"74\u201478",
+									"\u2014",
+									"88\u201493"
+								],
+								[
+									"Stone giants",
+									"\u2014",
+									"\u2014",
+									"95\u201497",
+									"84\u201495",
+									"79\u201480",
+									"\u2014",
+									"94\u201495"
+								],
+								[
+									"Travelers",
+									"96\u201400",
+									"96\u201400",
+									"98\u201400",
+									"96\u201400",
+									"81\u201400",
+									"81\u201400",
+									"96\u201400"
+								]
 							]
 						}
 					]
@@ -3737,7 +3924,7 @@
 					"type": "entries",
 					"name": "Dig Site",
 					"entries": [
-						"A {@creature fire giant|MM} equipped with a {@item rod of the Vonindod|SKT} has located a particularly large fragment of the Vonindod and has tasked its minions with digging it up. The giant oversees 1d4+1 {@creature ogre|MM|ogres}, 2d6+2 {@creature hobgoblin|MM|hobgoblins}, and 2d6+10 {@creature goblin|MM|goblins}. The ogres are using ropes to pull the 2,000-pound fragment out of a 50-foot-wide, 30-foot-deep crater. The hobgoblins scream at the ogres to put their backs into it. The goblins lie around the outskirts of the crater, picks and shovels scattered between them. The goblins have spent the past several days digging the crater and are suffering from five levels of exhaustion (see appendix A in the {@i Player's Handbook}).",
+						"A {@creature fire giant|MM} equipped with a {@item rod of the Vonindod|SKT} has located a particularly large fragment of the Vonindod and has tasked its minions with digging it up. The giant oversees 1d4+1 {@creature ogre|MM|ogres}, 2d6+2 {@creature hobgoblin|MM|hobgoblins}, and 2d6+10 {@creature goblin|MM|goblins}. The ogres are using ropes to pull the 2,000-pound fragment out of a 50-foot-wide, 30-foot-deep crater. The hobgoblins scream at the ogres to put their backs into it. The goblins lie around the outskirts of the crater, picks and shovels scattered between them. The goblins have spent the past several days digging the crater and are suffering from five levels of {@condition exhaustion} (see appendix A in the {@i Player's Handbook}).",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -4375,8 +4562,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If the characters received a letter of recommendation from Tamalin Zoar (see the \"Calling Horns\" section) and they show it to Dral Thelev, the half-orc tells them that the Zoar family has power in the city and that the characters can give the letter of recommendation to Dral in exchange for one favor from the Zoars (see the \"Marks of Prestige\" section in chapter 7 of the {@i Dungeon Master's Guide}). When the characters decide to call in the favor, Dral contacts his employers, and High Captain Horix Zoar does everything in his power to give the characters what they want, provided it's within his power and isn't likely to burden him or the Zoar family. Examples of what he might provide include a meeting with one or more members of the Council of Elders, an arranged meeting with a Lords' Alliance representative from another city, and a spell {@item Spell Scroll (5th level)|DMG|scroll of} {@spell raise dead|PHB}.",
-								"Dungeon Masters Guide"
+								"If the characters received a letter of recommendation from Tamalin Zoar (see the \"Calling Horns\" section) and they show it to Dral Thelev, the half-orc tells them that the Zoar family has power in the city and that the characters can give the letter of recommendation to Dral in exchange for one favor from the Zoars (see the \"{@book Marks of Prestige|DMG|7|Marks of Prestige}\" section in chapter 7 of the {@i Dungeon Master's Guide}). When the characters decide to call in the favor, Dral contacts his employers, and High Captain Horix Zoar does everything in his power to give the characters what they want, provided it's within his power and isn't likely to burden him or the Zoar family. Examples of what he might provide include a meeting with one or more members of the Council of Elders, an arranged meeting with a Lords' Alliance representative from another city, and a spell {@item Spell Scroll (5th level)|DMG|scroll of} {@spell raise dead|PHB}."
 							]
 						}
 					]
@@ -5401,7 +5587,7 @@
 									"items": [
 										"A thunderbeast skeleton can attack with its bite instead of its tail. Its bite attack has a +7 bonus to hit, has a reach of 5 feet, and deals 18 (4d6+4) piercing damage on a hit. Unlike its tail attack, its bite attack can't knock a target prone.",
 										"It has vulnerability to bludgeoning damage.",
-										"It is undead and has immunity to poison damage, the poisoned condition, and exhaustion.",
+										"It is undead and has immunity to poison damage, the poisoned condition, and {@condition exhaustion}.",
 										"It has darkvision out to a range of 60 feet."
 									]
 								}
@@ -6585,7 +6771,7 @@
 					"type": "entries",
 					"name": "Journey to the Eye",
 					"entries": [
-						"Harshnag offers to lead the characters to the Eye of the All-Father. He isn't shy about using roads and trails, nor does he blanch at traversing the uncharted wilderness or crossing cold rivers. He expects the characters to keep up but travels at a normal pace so that they don't suffer the effects of exhaustion.",
+						"Harshnag offers to lead the characters to the Eye of the All-Father. He isn't shy about using roads and trails, nor does he blanch at traversing the uncharted wilderness or crossing cold rivers. He expects the characters to keep up but travels at a normal pace so that they don't suffer the effects of {@condition exhaustion}.",
 						"The Eye of the All-Father is hidden under the icy peaks of the Spine of the World and can be reached by way of a mountain pass that starts in the Valley of Khedrun. After two days traversing the desolate valley, Harshnag finds the pass. Characters should be 7th level when they're ready to explore the Eye of the All-Father.",
 						"An overland journey to the Eye might include one or more random encounters, at your discretion. See the \"Random Wilderness Encounters\" section in chapter 3 for more information. Characters are also subject to extreme cold temperatures (see the \"Wilderness Survival\" section in chapter 5 of the {@i Dungeon Master's Guide}).",
 						{
@@ -7995,9 +8181,9 @@
 										"Notes"
 									],
 									"colStyles": [
-										"",
-										"",
-										""
+										"col-xs-1 text-align-center",
+										"col-xs-3",
+										"col-xs-8"
 									],
 									"rows": [
 										[
@@ -8079,7 +8265,45 @@
 					"name": "Reinforcements",
 					"entries": [
 						"Adventurers can use hit-and-run tactics to weaken Grudd Haug's defenses. Depending on how much time passes between the adventurers' forays, the hill giant den might gain reinforcements from the nearby hills.",
-						"At the end of each hour, roll percentile dice and consult the Grudd Haug Reinforcements table to determine what creatures, if any, appear. Unless otherwise noted, such creatures enter through the stockyard (area 9) and go to the feasting hall (area 2), to pay homage or deliver food to Chief Guh. There is a 25 percent chance that the creatures have 1d4 prisoners (unarmed {@creature commoner|MM|commoners}) in tow. If Guh commands the reinforcements to stay, they take up defensive positions in and around the stockyard after confining their prisoners in area 13. Otherwise, they leave by the route they came after 20 minutes or so."
+						"At the end of each hour, roll percentile dice and consult the Grudd Haug Reinforcements table to determine what creatures, if any, appear. Unless otherwise noted, such creatures enter through the stockyard (area 9) and go to the feasting hall (area 2), to pay homage or deliver food to Chief Guh. There is a 25 percent chance that the creatures have 1d4 prisoners (unarmed {@creature commoner|MM|commoners}) in tow. If Guh commands the reinforcements to stay, they take up defensive positions in and around the stockyard after confining their prisoners in area 13. Otherwise, they leave by the route they came after 20 minutes or so.",
+						{
+							"type": "table",
+							"caption": "Grudd Haug Reinforcements",
+							"colLabels": [
+								"d100",
+								"Creature(s)"
+							],
+							"colStyles": [
+								"col-xs-2 text-align-center",
+								"col-xs-10"
+							],
+							"rows": [
+								[
+									"01-50",
+									"None"
+								],
+								[
+									"51-60",
+									"1 male {@creature hill giant} carrying a live pig, sheep, goat, cow, pony, or mule"
+								],
+								[
+									"61-70",
+									"2d4 {@creature bugbear|mm|bugbears}, each carrying a basket of apples, carrots, or potatoes"
+								],
+								[
+									"71-80",
+									"1 {@creature hobgoblin warlord} mounted on a {@creature wyvern}, which lands on the rocky outcropping by area 1"
+								],
+								[
+									"81-90",
+									"3d6 Iceshield {@creature orc|mm|orcs} and 1 Iceshield {@creature orc war chief}, who travel downriver on two rafts"
+								],
+								[
+									"91-00",
+									"1d4+1 male {@creature hill giant|mm|hill giants}, each carrying a basket of dead fish, a barrel of pickles, or a block of sugar"
+								]
+							]
+						}
 					]
 				},
 				{
@@ -8446,7 +8670,7 @@
 					"type": "entries",
 					"name": "Character Advancement",
 					"entries": [
-						"If Guh has the {@item conch of teleportation|SKT} and the characters obtain it, they can use it to teleport to Maelstrom once a character attunes to the item. The characters might have a few issues to resolve before using the conch, such as escorting Ghalvin Dragonmoor to Goldenfields. The characters should advance to 9th level before moving on to chapter 10, \"Hold of the Storm Giants.\".",
+						"If Guh has the {@item conch of teleportation|SKT} and the characters obtain it, they can use it to teleport to Maelstrom once a character attunes to the item. The characters might have a few issues to resolve before using the conch, such as escorting Ghalvin Dragonmoor to Goldenfields. The characters should advance to 9th level before moving on to chapter 10, \"Hold of the Storm Giants.\"",
 						{
 							"type": "image",
 							"href": {
@@ -8484,7 +8708,7 @@
 					"type": "entries",
 					"name": "A Pox on the Land",
 					"entries": [
-						"Unlike most stone giants, Thane Kayalithica is a neutral evil extremist. She is using the dissolution of the ordning as an excuse to destroy what she has come to fear and abhor-the rapidly spreading civilizations of humans and their ilk. Kayalithica's followers, who are predominantly neutral, believe that violence against small folk is justified, because their thane has assured them that she is heeding the will of Skoraeus Stonebones.",
+						"Unlike most stone giants, {@creature Thane Kayalithica|skt} is a neutral evil extremist. She is using the dissolution of the ordning as an excuse to destroy what she has come to fear and abhor-the rapidly spreading civilizations of humans and their ilk. Kayalithica's followers, who are predominantly neutral, believe that violence against small folk is justified, because their thane has assured them that she is heeding the will of Skoraeus Stonebones.",
 						"Kayalithica believes that the works of the small folk are a pox on the land. They desecrate the very stone upon which they are built. By obliterating them, she hopes to impress the gods and elevate her people to the top of the ordning. By the time the adventurers set a course for her canyon, Kayalithica has already led major assaults against the nearby settlements of Orlbar and Llorkh. The stone giant thane now has her sights set on Loudwater or Parnast, and she has asked Skoraeus Stonebones to send her divine guidance about which community to attack next.",
 						"Not all members of Kayalithica's clan support the thane. A few have fled into the nearby mountains and foothills, fearing that Deadstone Cleft has become a cursed place. These stone giants won't easily be turned against their thane, but they might be persuaded to help adventurers survive the perils of Deadstone Cleft by providing information about the canyon and its defenses. They can also shed light on Kayalithica's evil intentions."
 					]
@@ -9023,7 +9247,7 @@
 						{
 							"type": "list",
 							"items": [
-								"Kayalithica is neutral evil and has 170 hit points.",
+								"{@creature Thane Kayalithica|skt|Kayalithica} is neutral evil and has 170 hit points.",
 								"She has a Charisma of 14 (+2).",
 								"She has gained the benefits of the Olach Morrah feature (see \"The Great Stillness\" section earlier in this chapter).",
 								"She wields an {@item adamantine greatclub|XGE}. This magic weapon has no bonus to attack or damage rolls. A creature can attune to it, and the weapon enlarges or reduces to be an appropriate size for that creature."
@@ -9593,7 +9817,7 @@
 							"type": "list",
 							"items": [
 								"It is a construct. It follows the orders of its assembler.",
-								"It is immune to poison and psychic damage; the charmed, frightened, paralyzed, petrified, and poisoned conditions; and exhaustion.",
+								"It is immune to poison and psychic damage; the charmed, frightened, paralyzed, petrified, and poisoned conditions; and {@condition exhaustion}.",
 								"Repairing 1 hit point of damage to the clockwork mule takes 1 hour and requires replacement parts, which can be bought in a large city for 20 gp. If the mule drops to 0 hit points, it is destroyed and unrepairable."
 							]
 						}
@@ -10948,8 +11172,8 @@
 					"type": "entries",
 					"name": "20. Slave Wheel",
 					"entries": [
-						"A fireplace in the middle of the north wall keeps this area warm and lit. An enormous wheel made of iron gears and wooden spokes dominates the room. The wheel is rigged to the bucket chain that travels throughout the forge. Turning the great wheel are ten shield dwarves and ten humans (all {@creature commoner|MM|commoners}) with iron manacles around their ankles. These slaves all suffer from four levels of exhaustion (see appendix A in the Player's Handbook). Every 2 hours spent turning the wheel increases their level of exhaustion by 1.",
-						"Watching over the slaves are two {@creature ogre|MM|ogres} clad head to toe in spiked iron armor (AC 18). When the slaves reach level 5 exhaustion, they collapse, and the ogres bellow for the hobgoblins in area 23 to bring replacement slaves. At the end of the shift change, the hobgoblins drag the exhausted slaves back to their cells to rest.",
+						"A fireplace in the middle of the north wall keeps this area warm and lit. An enormous wheel made of iron gears and wooden spokes dominates the room. The wheel is rigged to the bucket chain that travels throughout the forge. Turning the great wheel are ten shield dwarves and ten humans (all {@creature commoner|MM|commoners}) with iron manacles around their ankles. These slaves all suffer from four levels of {@condition exhaustion} (see appendix A in the Player's Handbook). Every 2 hours spent turning the wheel increases their level of {@condition exhaustion} by 1.",
+						"Watching over the slaves are two {@creature ogre|MM|ogres} clad head to toe in spiked iron armor (AC 18). When the slaves reach level 5 {@condition exhaustion}, they collapse, and the ogres bellow for the hobgoblins in area 23 to bring replacement slaves. At the end of the shift change, the hobgoblins drag the exhausted slaves back to their cells to rest.",
 						"The slaves stop turning the wheel if combat breaks out between the characters and the ogres. When this happens, the fire giant overseer in area 21 investigates, joining the battle in the following round. If the overseer can't bring the situation under control quickly, he raises the portcullis to area 22 and frees the hell hounds to join the battle. Once the characters have dealt with the ogres, the fire giant, and the hell hounds, they can try freeing the prisoners from their manacles, either by breaking them or picking the locks. Unless they dispose of the enemies quickly, freeing the slaves has to wait until Duke Zalto and the others have been dealt with.",
 						{
 							"type": "entries",

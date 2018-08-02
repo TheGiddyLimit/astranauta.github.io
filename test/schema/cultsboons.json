@@ -1,0 +1,137 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.0",
+	"type": "object",
+	"properties": {
+		"cult": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"goal": {
+						"type": "object",
+						"properties": {
+							"entry": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"entry"
+						],
+						"additionalProperties": false
+					},
+					"cultists": {
+						"type": "object",
+						"properties": {
+							"entry": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"entry"
+						],
+						"additionalProperties": false
+					},
+					"signaturespells": {
+						"type": "object",
+						"properties": {
+							"entry": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"entry"
+						],
+						"additionalProperties": false
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				},
+				"required": [
+					"name",
+					"source",
+					"entries"
+				],
+				"additionalProperties": false
+			}
+		},
+		"boon": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"type": {
+						"type": "string"
+					},
+					"ability": {
+						"type": "object",
+						"properties": {
+							"entry": {
+								"$ref": "/Entry"
+							}
+						},
+						"required": [
+							"entry"
+						],
+						"additionalProperties": false
+					},
+					"signaturespells": {
+						"type": "object",
+						"properties": {
+							"entry": {
+								"$ref": "/Entry"
+							}
+						},
+						"required": [
+							"entry"
+						],
+						"additionalProperties": false
+					},
+					"entries": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				},
+				"required": [
+					"name",
+					"source",
+					"type",
+					"entries"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"required": [
+		"cult",
+		"boon"
+	],
+	"additionalProperties": false
+}

@@ -370,30 +370,30 @@
 								},
 								{
 									"type": "entries",
-									"name": "Personality Trait:",
+									"name": "Personality Trait: Isolation",
 									"entries": [
-										"Isolation. It's a cruel world. All people have to fend for themselves. Self-sufficiency is the only path to success."
+										"It's a cruel world. All people have to fend for themselves. Self-sufficiency is the only path to success."
 									]
 								},
 								{
 									"type": "entries",
-									"name": "Ideal:",
+									"name": "Ideal: Independence",
 									"entries": [
-										"Independence. Someone who can stand alone can stand against anything."
+										"Someone who can stand alone can stand against anything."
 									]
 								},
 								{
 									"type": "entries",
-									"name": "Bond:",
+									"name": "Bond: The Yawning Portal",
 									"entries": [
-										"The Yawning Portal. This place is my only home. My friends and family are long gone. I love this place, but I try not to get attached to the people here. I'll outlive them all. Lucky me."
+										"This place is my only home. My friends and family are long gone. I love this place, but I try not to get attached to the people here. I'll outlive them all. Lucky me."
 									]
 								},
 								{
 									"type": "entries",
-									"name": "Flaw:",
+									"name": "Flaw: Heartless",
 									"entries": [
-										"Heartless. If you want sympathy, the Temple of Ilmater is in the Sea Ward. No matter how bad things are, you'll be gone in a blink of an eye."
+										"If you want sympathy, the Temple of Ilmater is in the Sea Ward. No matter how bad things are, you'll be gone in a blink of an eye."
 									]
 								}
 							]
@@ -465,13 +465,18 @@
 					"type": "entries",
 					"name": "The Sunless Citadel",
 					"entries": [
-						"{@i All things roll here: horrors of midnights,",
-						"Campaigns of a lost year,",
-						"Dungeons disturbed, and groves of lights;",
-						"Echoing on these shores, still clear,",
-						"Dead ecstasies of questing knights-",
-						"Yet how the wind revives us here!}",
-						"{@i - Arthur Rimbaud}",
+						{
+							"type": "quote",
+							"entries": [
+								"All things roll here: horrors of midnights,",
+								"Campaigns of a lost year,",
+								"Dungeons disturbed, and groves of lights;",
+								"Echoing on these shores, still clear,",
+								"Dead ecstasies of questing knights\u2014",
+								"Yet how the wind revives us here!"
+							],
+							"by": "Arthur Rimbaud"
+						},
 						"This adventure concerns a once-proud fortress that fell into the earth in an age long past. Now known as the Sunless Citadel, its echoing, broken halls house malign creatures. Evil has taken root at the citadel's core, which is deep within a subterranean garden of blighted foliage. Here a terrible tree and its dark shepherd plot in darkness.",
 						"The tree, called the Gulthias Tree, is shepherded by a twisted druid, Belak the Outcast. He was drawn to the buried citadel twelve years ago, following stories of oddly enchanted fruit to their source. The druid found an old fortress that had been swallowed up by the earth in some sort of magically invoked devastation. With the previous inhabitants long dispersed, vile and opportunistic creatures common to lightless dungeons infested the subterranean ruins. At the core of the old fortress, Belak stumbled upon the Twilight Grove. He discovered at the grove's heart the Gulthias Tree, which sprouted from a wooden stake that was used to slay an ancient vampire.",
 						"A perfect, ruby-red apple ripens on the Gulthias Tree at the summer solstice, and the tree produces a single albino apple at the winter solstice. The midsummer fruit grants vigor, health, and life, while the midwinter fruit steals the same. In the years since Belak's arrival, the enchanted fruit has been widely dispersed through the surrounding lands, promoting good and ill. The seeds of either fruit, if allowed to sprout, grow into small plant monsters known as twig blights."
@@ -583,7 +588,7 @@
 							"type": "entries",
 							"name": "Solving a Mystery",
 							"entries": [
-								"The goblin tribe infesting the nearby ruins, called the Sunless Citadel, though no one knows why) sells a single piece of magical fruit to the highest bidder in Oakhurst once every midsummer. They've been doing this for the last twelve years. Usually, the fruit sells for around 50 gp, which is all the townsfolk can bring themselves to pay a goblin. The fruit, apparently an apple of perfect hue, heals those who suffer from any disease or other ailment. They sometimes plant the seeds at the center of each fruit, hoping to engender an enchanted apple tree. When the seeds germinate in their proper season, they produce a twiggy mass of twisted sapling stems. Not too long after the saplings reach 2 feet in height, they are stolen-every time. The townsfolk assume the goblins send out thieves to ensure their monopoly of enchanted fruit. You are interested in piercing the mystery associated with how wretched goblins could ever possess such a wonder, and how they steal every sprouting sapling grown from the enchanted fruit's seed. Moreover, you wish to find this rumored tree of healing, hoping to heal an ailing friend or relative."
+								"The goblin tribe infesting the nearby ruins, called the Sunless Citadel, (though no one knows why) sells a single piece of magical fruit to the highest bidder in Oakhurst once every midsummer. They've been doing this for the last twelve years. Usually, the fruit sells for around 50 gp, which is all the townsfolk can bring themselves to pay a goblin. The fruit, apparently an apple of perfect hue, heals those who suffer from any disease or other ailment. They sometimes plant the seeds at the center of each fruit, hoping to engender an enchanted apple tree. When the seeds germinate in their proper season, they produce a twiggy mass of twisted sapling stems. Not too long after the saplings reach 2 feet in height, they are stolen-every time. The townsfolk assume the goblins send out thieves to ensure their monopoly of enchanted fruit. You are interested in piercing the mystery associated with how wretched goblins could ever possess such a wonder, and how they steal every sprouting sapling grown from the enchanted fruit's seed. Moreover, you wish to find this rumored tree of healing, hoping to heal an ailing friend or relative."
 							]
 						}
 					]
@@ -654,9 +659,14 @@
 					"type": "entries",
 					"name": "The Citadel",
 					"entries": [
-						"{@i See the old Dragon from his throne",
-						"Sink with enormous ruin down!}",
-						"{@i - Hymn}",
+						{
+							"type": "quote",
+							"entries": [
+								"See the old Dragon from his throne",
+								"Sink with enormous ruin down!"
+							],
+							"by": "Hymn"
+						},
 						"Once the characters are ready to leave Oakhurst, the adventure truly begins. The overgrown Old Road winds through rocky downs, near stands of old-growth oak, and past abandoned farms. It is 7 miles from Oakhurst to the Sunless Citadel.",
 						{
 							"type": "inset",
@@ -828,7 +838,7 @@
 							"type": "entries",
 							"name": "Hidden Pit",
 							"entries": [
-								"The map shows the location of a concealed trapdoor that covers a 10-foot-square, 10-footdeep pit. A 2-foot-wide catwalk on the west edge allows access to the door that leads to area 4. It takes a successful DC 15 Wisdom (Perception) check to note the trapdoor's unmortared edge. Then, a successful DC 10 Intelligence (Investigation) check lets a character deduce the location of the catwalk and how the pit operates."
+								"The map shows the location of a concealed trapdoor that covers a 10-foot-square, 10-foot-deep pit. A 2-foot-wide catwalk on the west edge allows access to the door that leads to area 4. It takes a successful DC 15 Wisdom (Perception) check to note the trapdoor's unmortared edge. Then, a successful DC 10 Intelligence (Investigation) check lets a character deduce the location of the catwalk and how the pit operates."
 							]
 						},
 						"If a creature steps on the trapdoor, the lid flips open, dumping the creature into the pit. With a successful DC 15 Dexterity check, a creature can use thieves' tools to jam the lid shut. A mechanism resets the trap 1 minute after the door opens, pushing it back into the closed position. The mechanism is in the pit wall under the catwalk. A creature can jam it in the open position with a successful DC 15 Dexterity check using thieves' tools. If this check succeeds by 5 or more, the mechanism can be permanently disabled if desired.",
@@ -1146,7 +1156,7 @@
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"The dragonpriest has an ornate ceremonial dagger (worth 125 gp), two silver rings (15 gp each), and a silver amulet (15 gp). Scattered across the bottom of the sarcophagus are 220 sp, 50 gp, and four {@item spell scroll (2nd level)|DMG|spell scrolls}: {@spell command|PHB}, {@spell cure wounds|PHB|cure wounds (2nd level)}, {@spell inflict wounds|PHB|inflict wounds (2nd level)}, amd {@spell guiding bolt|PHB|guiding bolt (2nd level)}."
+								"The dragonpriest has an ornate ceremonial dagger (worth 125 gp), two silver rings (15 gp each), and a silver amulet (15 gp). Scattered across the bottom of the sarcophagus are 220 sp, 50 gp, and four {@item spell scroll (2nd level)|DMG|spell scrolls}: {@spell command|PHB}, {@spell cure wounds|PHB|cure wounds (2nd level)}, {@spell inflict wounds|PHB|inflict wounds (2nd level)}, and {@spell guiding bolt|PHB|guiding bolt (2nd level)}."
 							]
 						}
 					]
@@ -1471,35 +1481,35 @@
 						{
 							"type": "inset",
 							"entries": [
-								"\"Kobolds are heir to dragons. As the mightiest among my people, I have led a brave few to this ancient holy site, where dragons were worshiped long ago.\" Yusdrayl knows nothing else about the history of the fortress, except the name of the dragon that was once revered here, which is Ashardalon."
+								"{@i Why are kobolds in this place?} \"Kobolds are heir to dragons. As the mightiest among my people, I have led a brave few to this ancient holy site, where dragons were worshiped long ago.\" Yusdrayl knows nothing else about the history of the fortress, except the name of the dragon that was once revered here, which is Ashardalon."
 							],
 							"name": "Yusdrayl"
 						},
 						{
 							"type": "inset",
 							"entries": [
-								"\"The Outcast, he lives below. He grows the fruit, which he gives to the goblins. The dragon-thieving goblins are his servants!\""
+								"{@i What about the goblins/fruit/Belak?} \"The Outcast, he lives below. He grows the fruit, which he gives to the goblins. The dragon-thieving goblins are his servants!\""
 							],
 							"name": "Yusdrayl"
 						},
 						{
 							"type": "inset",
 							"entries": [
-								"\"The twig blights are pets of the Outcast. They are more numerous below, in the Twilight Grove.\""
+								"{@i What about the twig monsters?} \"The twig blights are pets of the Outcast. They are more numerous below, in the Twilight Grove.\""
 							],
 							"name": "Yusdrayl"
 						},
 						{
 							"type": "inset",
 							"entries": [
-								"\"They went to fight the goblins and never returned.\""
+								"{@i What about the lost human adventurers?} \"They went to fight the goblins and never returned.\""
 							],
 							"name": "Yusdrayl"
 						},
 						{
 							"type": "inset",
 							"entries": [
-								"\"The goblins stole our dragon! If you return Calcryx to us, I shall grant you a reward. Meepo can accompany you if you desire.\""
+								"{@i What about the stolen wyrmling dragon?} \"The goblins stole our dragon! If you return Calcryx to us, I shall grant you a reward. Meepo can accompany you if you desire.\""
 							],
 							"name": "Yusdrayl"
 						},
@@ -1520,7 +1530,7 @@
 								"The key clenched in the mouth of the carved dragon opens the door to area 7. Yusdrayl has keys to area 18 and the chains there, a key to the doors in area 24, and a key that once fit the cage in area 15. She also has 35 gp."
 							]
 						},
-						"The items assembled on the altar include a {@i Quaal's feather token (tree}), three spell scrolls, ({@spell mage armor|PHB}, {@spell spider climb|PHB}, and {@spell knock|PHB}), and a small flask that contains three doses of {@item elixir of health|DMG}."
+						"The items assembled on the altar include a {@item Quaal's Feather Token, Tree|DMG|Quaal's feather token (tree)}, three spell scrolls, ({@spell mage armor|PHB}, {@spell spider climb|PHB}, and {@spell knock|PHB}), and a small flask that contains three doses of {@item elixir of health|DMG}."
 					]
 				},
 				{
@@ -1681,7 +1691,7 @@
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"The candle has a {@spell continual flame|PHB} spell cast on it. In the flask is a {@i potion of resistance (fire}). The whistle, made of crystal, has the name {@item Night Caller|TftYP} inscribed on it in Dwarvish."
+								"The candle has a {@spell continual flame|PHB} spell cast on it. In the flask is a {@item Potion of Fire Resistance|dmg|potion of resistance (fire)}. The whistle, made of crystal, has the name {@item Night Caller|TftYP} inscribed on it in Dwarvish."
 							]
 						},
 						"A secret compartment in the shrine, requiring a successful DC 20 Wisdom (Perception) check to find, holds a coffer containing six peridot jewels carved in a likeness of a dragon (worth 10 gp each)."
@@ -1784,7 +1794,7 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"Three {@creature giant rat|MM|giant rats} occupy the area, along with a monstrously swollen female {@b diseased giant rat} (Medium [6 feet long], 16 hit points, +5 to hit, challenge rating 1/4 [50 XP]) that the goblins call Guthash (Bloated One). The giant rats that hunt in the Sunless Citadel all descend from her. These creatures attack and attempt to eat all trespassers."
+								"Three {@creature giant rat|MM|giant rats} occupy the area, along with a monstrously swollen female {@creature Giant Rat (Diseased)|mm|diseased giant rat} (Medium [6 feet long], 16 hit points, +5 to hit, challenge rating 1/4 [50 XP]) that the goblins call {@creature Guthash|tftyp|Guthash (Bloated One)}. The giant rats that hunt in the Sunless Citadel all descend from her. These creatures attack and attempt to eat all trespassers."
 							]
 						},
 						{
@@ -1846,7 +1856,7 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"Two {@creature goblin|MM|goblins} are stationed behind the rough, 3-foot-high wall. They are hostile to intruders, but unwilling to die facing a superior force. If captured, these goblins know the same information that Erky Timbers in area 34 does."
+								"Two {@creature goblin|MM|goblins} are stationed behind the rough, 3-foot-high wall. They are hostile to intruders, but unwilling to die facing a superior force. If captured, these goblins know the same information that {@creature Erky Timbers|tftyp} in area 34 does."
 							]
 						},
 						{
@@ -1880,7 +1890,7 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"The three {@creature goblin|MM} s assigned to watch the room spend some of their time shooting at the hair and fur-filled burlap dummies that look vaguely like humans and elves. The rest of the time they drink too much goblin wine."
+								"The three {@creature goblin|MM|goblins} assigned to watch the room spend some of their time shooting at the hair and fur-filled burlap dummies that look vaguely like humans and elves. The rest of the time they drink too much goblin wine."
 							]
 						},
 						"When fighting, the goblins try to use the 3-foot-high wall for cover while shooting their foes.",
@@ -1927,44 +1937,48 @@
 							"title": "Erky"
 						},
 						"The kobolds are aware that the goblins might try to ransom them back to the other kobolds. Uncertain of their chances with the characters, the kobolds are unhelpful and reluctant to be set free. If they are released and shown a clear line of retreat, the kobolds flee. They know very little, but they react positively to Meepo's presence or if they are told that the characters intend to free Calcryx.",
-						"The gnome is named Erky Timbers, an {@creature acolyte|MM} with 17 (5d6) hit points who knows Common, Draconic, Gnomish, and Goblin. He has the cleric's Channel Divinity: Turn Undead feature, which he can use once after each short or long rest.",
+						"The gnome is named {@creature Erky Timbers|tftyp}, an {@creature acolyte|MM} with 17 (5d6) hit points who knows Common, Draconic, Gnomish, and Goblin. He has the cleric's Channel Divinity: Turn Undead feature, which he can use once after each short or long rest.",
 						"If he is released, he helpfully answers questions. He knows the following information:",
 						{
 							"type": "inset",
 							"entries": [
-								"\"Months past, I was on my way to seek my fortune and took the Old Road. My bad luck that the goblin bandits caught me; I've been here ever since. My deity's blessings have kept me healthy; otherwise I'm sure I'd be dead from starvation and abuse.\""
+								"{@i Why are you here?} \"Months past, I was on my way to seek my fortune and took the Old Road. My bad luck that the goblin bandits caught me; I've been here ever since. My deity's blessings have kept me healthy; otherwise I'm sure I'd be dead from starvation and abuse.\""
 							],
 							"name": "Erky"
 						},
 						{
 							"type": "inset",
 							"entries": [
-								"\"I've heard the goblins talk about the Twilight Grove down below. A wicked old human called Belak-a spellcaster, I suspect-tends an enchanted garden and harvests fruit from something the goblins call the Gulthias Tree, but they speak of it only in the most terrified of whispers. The enchanted fruit grows on the Gulthias Tree.\""
-							]
+								"{@i What about the goblins/Belak?} \"I've heard the goblins talk about the Twilight Grove down below. A wicked old human called Belak-a spellcaster, I suspect-tends an enchanted garden and harvests fruit from something the goblins call the Gulthias Tree, but they speak of it only in the most terrified of whispers. The enchanted fruit grows on the Gulthias Tree.\""
+							],
+							"name": "Erky"
 						},
 						{
 							"type": "inset",
 							"entries": [
-								"\"The midsummer fruit restores spirit and vigor to those who eat it; the pale midwinter fruit steals the same. Belak allows the goblins to sell the fruit on the surface, but I don't know why.\""
-							]
+								"{@i What's the deal with the fruit?} \"The midsummer fruit restores spirit and vigor to those who eat it; the pale midwinter fruit steals the same. Belak allows the goblins to sell the fruit on the surface, but I don't know why.\""
+							],
+							"name": "Erky"
 						},
 						{
 							"type": "inset",
 							"entries": [
-								"\"Twig blights live in the level below, with the Gulthias Tree.\""
-							]
+								"{@i What about the twig blights?} \"Twig blights live in the level below, with the Gulthias Tree.\""
+							],
+							"name": "Erky"
 						},
 						{
 							"type": "inset",
 							"entries": [
-								"\"The goblins caught three of them over a month ago, and they were captives with me in here for a while. They said their names were Talgen, Sharwyn, and Sir Braford. The goblins kept them in here only about a week before they removed them. Belak wanted them, and that's the last I've heard about that.\""
-							]
+								"{@i What about the lost human adventurers?} \"The goblins caught three of them over a month ago, and they were captives with me in here for a while. They said their names were Talgen, Sharwyn, and Sir Braford. The goblins kept them in here only about a week before they removed them. Belak wanted them, and that's the last I've heard about that.\""
+							],
+							"name": "Erky"
 						},
 						{
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If the characters fail to suggest it, Erky Timbers asks to join the party as a temporary member. The gnome serves as a loyal friend. Currently, though, he has no gear. Those who free Erky gain XP as if they defeated him in combat."
+								"If the characters fail to suggest it, {@creature Erky Timbers|tftyp} asks to join the party as a temporary member. The gnome serves as a loyal friend. Currently, though, he has no gear. Those who free Erky gain XP as if they defeated him in combat."
 							]
 						},
 						{
@@ -2126,7 +2140,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"An attack on the goblins brings reinforcements from area 36 and warns the goblin chief in area 41 that something is amiss. Grenl, the goblin shaman in area 41, might emerge to protect the tribe."
+								"An attack on the goblins brings reinforcements from area 36 and warns the goblin chief in area 41 that something is amiss. {@creature Grenl|tftyp}, the goblin shaman in area 41, might emerge to protect the tribe."
 							]
 						},
 						{
@@ -2161,31 +2175,31 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"The chief of the Durbuluk tribe is Durnn, a {@creature hobgoblin|MM}. He wears splint armor (AC 19) and has 18 hit points, a +4 bonus to hit, a +1 bonus to damage, and Strength 15 (+2). These changes raise his challenge rating to 1 (200 XP). When not in combat, Durnn sits on the throne, and three other {@creature hobgoblin|MM|hobgoblins} stand nearby or lounge on stone benches."
+								"The chief of the Durbuluk tribe is {@creature Durnn|tftyp}, a {@creature hobgoblin|MM}. He wears splint armor (AC 19) and has 18 hit points, a +4 bonus to hit, a +1 bonus to damage, and Strength 15 (+2). These changes raise his challenge rating to 1 (200 XP). When not in combat, {@creature Durnn|tftyp} sits on the throne, and three other {@creature hobgoblin|MM|hobgoblins} stand nearby or lounge on stone benches."
 							]
 						},
-						"The shaman Grenl advises the chief. She is a {@creature goblin|MM} with 10 (3d6) hit points, a Wisdom of 13 (+1), and the following trait:",
+						"The shaman {@creature Grenl|tftyp} advises the chief. She is a {@creature goblin|MM} with 10 (3d6) hit points, a Wisdom of 13 (+1), and the following trait:",
 						{
 							"type": "entries",
 							"name": "Spellcasting",
 							"entries": [
-								"Grenl is a 1st-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). She has the following cleric spells prepared:"
+								"{@creature Grenl|tftyp} is a 1st-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). She has the following cleric spells prepared:"
 							]
 						},
 						"Cantrips (at will): {@spell poison spray|PHB}, {@spell thaumaturgy|PHB}",
 						"1st level (2 slots): {@spell bane|PHB}, {@spell inflict wounds|PHB}",
-						"A {@creature twig blight|MM}, a gift from Belak the Outcast and a pet of Durnn's, is in the stone pot, and goblins from area 40 occasionally enter the chamber to see to the needs of the tribe's elite that languish here.",
+						"A {@creature twig blight|MM}, a gift from {@creature Belak the Outcast|tftyp} and a pet of {@creature Durnn|tftyp}'s, is in the stone pot, and goblins from area 40 occasionally enter the chamber to see to the needs of the tribe's elite that languish here.",
 						{
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"Durnn has a {@item potion of healing|DMG} and two vials of antitoxin. Grenl has a {@item Spell Scroll (1st level)|DMG|scroll of} {@spell faerie fire|PHB} and another of {@spell expeditious retreat|PHB}."
+								"{@creature Durnn|tftyp} has a {@item potion of healing|DMG} and two vials of antitoxin. {@creature Grenl|tftyp} has a {@item Spell Scroll (1st level)|DMG|scroll of} {@spell faerie fire|PHB} and another of {@spell expeditious retreat|PHB}."
 							]
 						},
 						"The goblins in area 40 don't join the battle if they hear sounds of violence coming from the north. If the fight turns against the chief, however, he might open the door to area 40 and call for aid, or withdraw to area 40 to continue the fight.",
-						"Durnn can't surrender for fear of losing face. He won't give up if the opposition includes kobolds. Otherwise, he might call for parley if doing so allows him to avoid death. But he must still look strong while negotiating, so he's unwilling to capitulate in an arrangement that makes him look weak.",
-						"Because Durnn and his hobgoblins usurped control of the Durbuluk tribe, Grenl hates them. She also wants to protect her tribe, so she is willing to negotiate a truce if Durnn falls. Grenl also hates and envies Belak, and she wants him gone from the citadel so she can control the Gulthias Tree.",
-						"If captured and interrogated, the goblinoids here know what Erky in area 34 knows, with the following addition: Belak wanted all the living human prisoners sent down to him, but in a fit of anger, Durnn slew Talgen. Thus, Durnn sent only Sharwyn and Sir Braford down to the Twilight Grove.",
+						"{@creature Durnn|tftyp} can't surrender for fear of losing face. He won't give up if the opposition includes kobolds. Otherwise, he might call for parley if doing so allows him to avoid death. But he must still look strong while negotiating, so he's unwilling to capitulate in an arrangement that makes him look weak.",
+						"Because {@creature Durnn|tftyp} and his hobgoblins usurped control of the Durbuluk tribe, {@creature Grenl|tftyp} hates them. She also wants to protect her tribe, so she is willing to negotiate a truce if {@creature Durnn|tftyp} falls. {@creature Grenl|tftyp} also hates and envies Belak, and she wants him gone from the citadel so she can control the Gulthias Tree.",
+						"If captured and interrogated, the goblinoids here know what Erky in area 34 knows, with the following addition: Belak wanted all the living human prisoners sent down to him, but in a fit of anger, {@creature Durnn|tftyp} slew Talgen. Thus, {@creature Durnn|tftyp} sent only Sharwyn and Sir Braford down to the Twilight Grove.",
 						{
 							"type": "entries",
 							"name": "Shaft",
@@ -2198,7 +2212,7 @@
 							"type": "entries",
 							"name": "Trapped Chest",
 							"entries": [
-								"Durnn's iron chest rests in front of the throne. It is locked (Dexterity DC 15 using thieves' tools) and trapped with a poisoned needle. A character who succeeds on a DC 15 Intelligence (Investigation) check deduces the trap's presence from alterations made to the lock. A character can then remove the needle from the lock by succeeding on a DC 15 Dexterity check using thieves' tools. On a failed Dexterity check, the trap is triggered."
+								"{@creature Durnn|tftyp}'s iron chest rests in front of the throne. It is locked (Dexterity DC 15 using thieves' tools) and trapped with a poisoned needle. A character who succeeds on a DC 15 Intelligence (Investigation) check deduces the trap's presence from alterations made to the lock. A character can then remove the needle from the lock by succeeding on a DC 15 Dexterity check using thieves' tools. On a failed Dexterity check, the trap is triggered."
 							]
 						},
 						"When the trap is triggered, the needle extends 3 inches straight out from the lock. A creature within striking distance takes 1 piercing damage and must succeed on a DC 10 Constitution saving throw or take 3 (1d6) poison damage.",
@@ -2206,10 +2220,10 @@
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"In addition to the valuables mentioned in the \"Development\" section, Durnn wears Talgen's gold signet ring (worth 20 gp) and splint armor, which is identifiable by the Hucrele family crest worked into the chest pieces. The chief also has the key to his iron chest. Grenl has keys to areas 34 and 37. One of the other hobgoblins wears silver earrings set with moonstones (20 gp each), and another wears a matching necklace (50 gp)."
+								"In addition to the valuables mentioned in the \"Development\" section, {@creature Durnn|tftyp} wears Talgen's gold signet ring (worth 20 gp) and splint armor, which is identifiable by the Hucrele family crest worked into the chest pieces. The chief also has the key to his iron chest. {@creature Grenl|tftyp} has keys to areas 34 and 37. One of the other hobgoblins wears silver earrings set with moonstones (20 gp each), and another wears a matching necklace (50 gp)."
 							]
 						},
-						"Inside Durnn's iron chest are 231 gp and two onyx gems (30 gp each)."
+						"Inside {@creature Durnn|tftyp}'s iron chest are 231 gp and two onyx gems (30 gp each)."
 					]
 				}
 			]
@@ -2404,7 +2418,7 @@
 							"type": "entries",
 							"name": "Southwest Chamber",
 							"entries": [
-								"The goblins use a crude mashing, straining, and casking facility to create goblin wine, which they and Belak are quite fond of. Two goblin commoners currently stand barefoot in the mashing-tun, squashing roots and fungi into pulp. A dirty straining bin stands nearby, as well as ten 2-gallon casks of the end product."
+								"The goblins use a crude mashing, straining, and casking facility to create goblin wine, which they and Belak are quite fond of. Two goblin {@creature commoner|MM|commoners} currently stand barefoot in the mashing-tun, squashing roots and fungi into pulp. A dirty straining bin stands nearby, as well as ten 2-gallon casks of the end product."
 							]
 						},
 						{
@@ -2721,11 +2735,11 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"Belak the Outcast spends much of his time studying the Gulthias Tree, but he is well aware when the characters are approaching. He is a human {@creature druid|MM}, and he has the following spells prepared:"
+								"{@creature Belak the Outcast|tftyp} spends much of his time studying the Gulthias Tree, but he is well aware when the characters are approaching. He is a human {@creature druid|MM}, and he has the following spells prepared:"
 							]
 						},
 						"Cantrips (at will): {@spell druidcraft|PHB}, {@spell poison spray|PHB}, {@spell shillelagh|PHB}",
-						"1st level (4 slots): cure wounds, entangle, faerie fire, thunderwave",
+						"1st level (4 slots): {@spell cure wounds}, {@spell entangle}, {@spell faerie fire}, {@spell thunderwave}",
 						"2nd level (3 slots): {@spell barkskin|PHB}, {@spell flaming sphere|PHB}",
 						"Standing with Belak are {@creature Sir Braford|TftYP} and {@creature Sharwyn Hucrele|TftYP}. Belak's {@creature giant frog|MM}, Kulket, lurks stealthily in the branches of the Gulthias Tree. A character who has a passive Perception score of 15 or higher or succeeds on a DC 15 Wisdom (Perception) check spots the frog. If combat breaks out, the frog jumps down and joins the fight in the second round. Three {@creature twig blight|MM|twig blights} are here, too.",
 						{
@@ -2746,42 +2760,42 @@
 						{
 							"type": "inset",
 							"entries": [
-								"\"I am Belak, called the Outcast. My circle expelled me, the fools. Why? Because I dared to expand nature's reach in ways they couldn't grasp. I have found what I sought in the Gulthias Tree.\""
+								"{@i What are you doing?} \"I am Belak, called the Outcast. My circle expelled me, the fools. Why? Because I dared to expand nature's reach in ways they couldn't grasp. I have found what I sought in the Gulthias Tree.\""
 							],
 							"name": "Belak"
 						},
 						{
 							"type": "inset",
 							"entries": [
-								"\"It's beautiful, no? It lives, though it looks dead. In an age long past, someone staked a vampire on this very spot. The stake took root. And so grew the Gulthias Tree, reverberating with primal power for those who can tap it.\""
+								"{@i What is the Gulthias Tree?} \"It's beautiful, no? It lives, though it looks dead. In an age long past, someone staked a vampire on this very spot. The stake took root. And so grew the Gulthias Tree, reverberating with primal power for those who can tap it.\""
 							],
 							"name": "Belak"
 						},
 						{
 							"type": "inset",
 							"entries": [
-								"\"The twig blights grow from seeds of the tree's fruit.\""
+								"{@i What's with the stick-monsters?} \"The twig blights grow from seeds of the tree's fruit.\""
 							],
 							"name": "Belak"
 						},
 						{
 							"type": "inset",
 							"entries": [
-								"\"I give fruit to the goblins with orders to disperse their seeds on the surface. Deceitful beings that they are, the goblins barter the fruit, but the seeds are dispersed all the same. My plan for colonizing the surface with the children of Gulthias continues.\""
+								"{@i What's going on with the fruit?} \"I give fruit to the goblins with orders to disperse their seeds on the surface. Deceitful beings that they are, the goblins barter the fruit, but the seeds are dispersed all the same. My plan for colonizing the surface with the children of Gulthias continues.\""
 							],
 							"name": "Belak"
 						},
 						{
 							"type": "inset",
 							"entries": [
-								"\"They were the first supplicants. The Gulthias Tree has accepted them, and they are mine to control, just like the twig blights. You can't save them.\""
+								"{@i What did you do to the other adventurers?} \"They were the first supplicants. The Gulthias Tree has accepted them, and they are mine to control, just like the twig blights. You can't save them.\""
 							],
 							"name": "Belak"
 						},
 						{
 							"type": "inset",
 							"entries": [
-								"\"Though your remains would enrich the compost, you'll serve my needs better as supplicants. You shall retain your lives, after a fashion. Surrender and submit peacefully, or perish!\""
+								"{@i Why are you talking to us?} \"Though your remains would enrich the compost, you'll serve my needs better as supplicants. You shall retain your lives, after a fashion. Surrender and submit peacefully, or perish!\""
 							],
 							"name": "Belak"
 						},

@@ -1,0 +1,55 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.1.0",
+	"type": "object",
+	"definitions": {
+		"conditionDisease": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"type": "integer"
+				}
+			},
+			"required": [
+				"name",
+				"entries",
+				"source",
+				"page"
+			],
+			"additionalProperties": false
+		}
+	},
+	"properties": {
+		"condition": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/definitions/conditionDisease"
+			}
+		},
+		"disease": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/definitions/conditionDisease"
+			}
+		}
+	},
+	"required": [
+		"condition",
+		"disease"
+	],
+	"additionalProperties": false
+}

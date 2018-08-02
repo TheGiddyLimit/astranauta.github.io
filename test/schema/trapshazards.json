@@ -1,42 +1,198 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.0",
 	"type": "object",
 	"properties": {
 		"trap": {
 			"type": "array",
 			"items": {
 				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"trapType": {
-						"type": "string",
-						"enum": [
-							"MECH",
-							"MAG"
-						]
-					},
-					"source": {
-						"type": "string"
-					},
-					"page": {
-						"type": "integer"
-					},
-					"entries": {
-						"type": "array",
-						"items": {
-							"$ref": "/Entry"
+					"oneOf": [
+						{
+							"description": "Older format, used in DMG",
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"trapType": {
+									"type": "string",
+									"enum": [
+										"MECH",
+										"MAG"
+									]
+								},
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								},
+								"entries": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"name",
+								"trapType",
+								"source",
+								"entries"
+							]
+						},
+						{
+							"description": "XGE \"Traps Revisited\" Simple traps",
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"trapType": {
+									"const": "SMPL"
+								},
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								},
+								"entries": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								},
+								"tier": {
+									"type": "integer",
+									"minimum": 1,
+									"maximum": 4
+								},
+								"threat": {
+									"type": "integer",
+									"minimum": 1,
+									"maximum": 3
+								},
+								"trigger": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								},
+								"effect": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								},
+								"countermeasures": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"name",
+								"trapType",
+								"source",
+								"entries",
+								"type",
+								"threat",
+								"trigger",
+								"effect",
+								"countermeasures"
+							]
+						},
+						{
+							"description": "XGE \"Traps Revisited\" Complex traps",
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"trapType": {
+									"const": "CMPX"
+								},
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								},
+								"entries": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								},
+								"tier": {
+									"type": "integer",
+									"minimum": 1,
+									"maximum": 4
+								},
+								"threat": {
+									"type": "integer",
+									"minimum": 1,
+									"maximum": 3
+								},
+								"trigger": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								},
+								"initiative": {
+									"type": "integer",
+									"minimum": 1,
+									"maximum": 3
+								},
+								"initiativeNote": {
+									"$ref": "/Entry"
+								},
+								"eActive": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								},
+								"eDynamic": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								},
+								"eConstant": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								},
+								"countermeasures": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"name",
+								"trapType",
+								"source",
+								"entries",
+								"tier",
+								"threat",
+								"trigger",
+								"initiative",
+								"countermeasures"
+							]
 						}
-					}
-				},
-				"additionalProperties": false,
-				"required": [
-					"name",
-					"trapType",
-					"source",
-					"page",
-					"entries"
-				]
+					]
+				}
 			}
 		},
 		"hazard": {
@@ -63,7 +219,6 @@
 				"required": [
 					"name",
 					"source",
-					"page",
 					"entries"
 				]
 			}

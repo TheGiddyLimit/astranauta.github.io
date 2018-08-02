@@ -5,6 +5,13 @@
 			"name": "Renderer Demo",
 			"entries": [
 				"(This is a section heading. This is mainly used in Adventures, for the header of entire chapters. The root entry does {@b not} need have the 'section' type, 'entries' is generally used instead. The 'section' produces a {@bold level -1} header; the 'basement' level, if you will.)",
+				{
+					"type": "quote",
+					"entries": [
+						"Look, don't quote me on this, but"
+					],
+					"by": "Anon"
+				},
 				"This is a demo of the JSON format, and how it (usually) gets rendered. You can edit this text, and it will reset on refresh.",
 				"{@b If a JSON property is described as 'optional,' the property may be excluded, unless otherwise noted.}",
 				"The goal of this system is to emulate the look and feel of the books, while maintaining a convenient and consistent data structure that can be re-used.",
@@ -13,9 +20,12 @@
 				{
 					"type": "list",
 					"items": [
-						"Style tags; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand})",
-						"Dice roller tags; (improvements to the output placement pending) {@dice 1d2-2+2d3+5} for regular dice rolls, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7}. Currently, 'droll.js' must be included in the page for these to work, but this might change in the future.",
+						"Style tags; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand}), {@strike some text to strike-through}, (alternative {@s shorthand})",
+						"Additionally, {@note note tags}, used for adding errata or Twitter \"designer footnotes.\"",
+						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls, with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7}.",
+						"Chance tags; similar to dice roller tags, but output success/failure. Similar syntax as dice tags: {@chance 50}, {@chance 50|display text}, and {@chance 50|display text|rolled by name}.",
 						"Skill and action tags; {@skill Perception} and {@action Dash} (case-sensitive) which provide tooltips on hover.",
+						"The homebrew tag; Can show {@homebrew changes|modifications}, {@homebrew additions} or {@homebrew |removals}.",
 						"Content tags:",
 						{
 							"type": "list",
@@ -24,8 +34,45 @@
 								"Items: {@item alchemy jug} assumed DMG by default, {@item longsword|phb} can have sources added with a pipe, {@item longsword|phb|and optional link text added with another pipe}.",
 								"Creatures: {@creature goblin} assumes MM by default, {@creature cow|vgm} can have sources added with a pipe, {@creature cow|vgm|and optional link text added with another pipe}.",
 								"Backgrounds: {@background Charlatan} assumes PHB by default, {@background Anthropologist|toa} can have sources added with a pipe, {@background Anthropologist|ToA|and optional link text added with another pipe}.",
-								"Classes: {@class fighter} assumes PHB by default, {@class artificer|uaartificer} can have sources added with a pipe, {@class fighter|phb|optional link text added with another pipe}, {@class fighter|phb|and subclasses added with another pipe.|Eldritch Knight}",
-								"Conditions: {@condition stunned} assumes PHB by default, {@condition stunned|phb} can have sources added with a pipe (not that it's ever useful), {@condition stunned|phb|and optional link text added with another pipe}."
+								"Races: {@race Human} assumes PHB by default, {@race Aarakocra|eepc} can have sources added with a pipe, {@race Aarakocra|eepc|and optional link text added with another pipe}.",
+								"Invocations: {@invocation Agonizing Blast} assumes PHB by default, {@invocation Aspect of the Moon|xge} can have sources added with a pipe, {@invocation Aspect of the Moon|xge|and optional link text added with another pipe}.",
+								"Classes: {@class fighter} assumes PHB by default, {@class artificer|uaartificer} can have sources added with a pipe, {@class fighter|phb|optional link text added with another pipe}, {@class fighter|phb|subclasses added|Eldritch Knight} with another pipe, {@class fighter|phb|and class feature added|Eldritch Knight|phb|Martial Archetype 3} with another pipe (number denotes level, since names can be duplicate).",
+								"Conditions: {@condition stunned} assumes PHB by default, {@condition stunned|phb} can have sources added with a pipe (not that it's ever useful), {@condition stunned|phb|and optional link text added with another pipe}.",
+								"Diseases: {@disease cackle fever} assumes DMG by default, {@disease cackle fever|dmg} can have sources added with a pipe, {@disease cackle fever|dmg|and optional link text added with another pipe}.",
+								"Other Rewards: {@reward Blessing of Health} assumes DMG by default, {@reward Blessing of Health|dmg} can have sources added with a pipe, {@reward Blessing of Health|dmg|and optional link text added with another pipe}.",
+								"Feats: {@feat Alert} assumes PHB by default, {@feat Elven Accuracy|xge} can have sources added with a pipe, {@feat Elven Accuracy|xge|and optional link text added with another pipe}.",
+								"Psionics: {@psionic Mastery of Force} assumes UATheMysticClass by default, {@psionic Mastery of Force|UATheMysticClass} can have sources added with a pipe, {@psionic Mastery of Force|UATheMysticClass|and optional link text added with another pipe}.",
+								"Objects: {@object Ballista} assumes DMG by default, {@object Ballista|DMG} can have sources added with a pipe, {@object Ballista|DMG|and optional link text added with another pipe}.",
+								"Boons: {@boon Demogorgon} assumes MTF by default, {@boon Demogorgon|MTF} can have sources added with a pipe, {@boon Demogorgon|MTF|and optional link text added with another pipe}.",
+								"Cults: {@cult Cult of Asmodeus} assumes MTF by default, {@cult Cult of Asmodeus|MTF} can have sources added with a pipe, {@cult Cult of Asmodeus|MTF|and optional link text added with another pipe}.",
+								"Traps: {@trap falling net} assumes DMG by default, {@trap falling portcullis|xge} can have sources added with a pipe, {@trap falling portcullis|xge|and optional link text added with another pipe}.",
+								"Hazards: {@hazard brown mold} assumes DMG by default, {@hazard russet mold|vgm} can have sources added with a pipe, {@hazard russet mold|vgm|and optional link text added with another pipe}."
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Filter Tag",
+							"entries": [
+								"Another tag that appears occasionally in the data is the @filter tag. This tag can be tricky to use, and generally relies on knowledge of the internals of each page. As such, use with caution, and if you're not sure about something, don't be afraid to drop by our {@link Discord|https://discord.gg/v3AXzcW} and ask questions.",
+								"The syntax for the @filter tag is as follows:",
+								"(open curly brace)@filter display text|page_without_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;...(close curly brace)",
+								"The purpose of this tag is to open the given page, pre-filtered with the specified filtering options. There's one major caveat that makes this tricky to use for aspiring JSONtranauts \u2014 the filter values use the {@i internal} version, as you'd find in the data. So, for example, ...|school=D|... would filter spells to Divination school spells, as 'D' is the Divination identifier in the data. Trying to do e.g. ...|school=Divination|... will not work.",
+								"The 'filter_name_X' here matches the literal text name of the filter, as displayed in the dropdown.",
+								"Some examples of the tag in action:",
+								"{@filter Races that have a bonus to Intelligence|races|Ability Bonus (Including Subrace)=Intelligence +2;Intelligence +1}",
+								"{@filter Bard cantrips and first-level spells|spells|level=0;1|class=bard}",
+								"{@filter Beast with challenge rating 1 or lower|bestiary|cr=0;1/8;1/4;1/2;1|type=beast}",
+								"{@filter Creatures with a Strength score of 18 or more|bestiary|strength=min18}",
+								"{@filter Divination and Evocation spells|spells|school=D;V}",
+								"{@filter All uncommon magic items|items|source=null|type=null|tier=null|rarity=uncommon|property=null|attunement=null|category=null|miscellaneous=Magic}",
+								{
+									"type": "entries",
+									"name": "Note",
+									"entries": [
+										"Setting a filter to null, i.e. ...|school=null|... is equivalent to 'clear the filter,' resetting it to all-white.",
+										"The pages that support this functionality are those with the 'magnet' button; the link this button exports will give clues as to what one could do with the filter tag."
+									]
+								}
 							]
 						}
 					]
@@ -135,7 +182,7 @@
 					"rows": [
 						[
 							"This is a table row",
-							"The number of entries should match the number of columns, naturally"
+							"The number of entries should match the number of columns, naturally*"
 						],
 						[
 							"The 'colStyles' list is literally used as CSS classes",
@@ -159,6 +206,71 @@
 								"As objects with additional properties"
 							]
 						}
+					],
+					"footnotes": [
+						"* Optional footer entries"
+					]
+				},
+				"Rollable tables can be made like so (note the 'pad' to format single digit numbers e.g. '01' for tables with >10 rows):",
+				{
+					"type": "table",
+					"caption": "Rollable Table Caption",
+					"colLabels": [
+						"{@dice d6}",
+						"Item"
+					],
+					"colStyles": [
+						"col-xs-1 text-align-center",
+						"col-xs-11"
+					],
+					"rows": [
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1,
+									"pad": true
+								}
+							},
+							"First Item"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 2
+								}
+							},
+							"Item the Second"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"min": 3,
+									"max": 4
+								}
+							},
+							"Three of Four Items"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
+							"Item V: The Item Items Back"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
+							"Item for Lucky Winners"
+						]
 					]
 				},
 				{
@@ -172,6 +284,15 @@
 								"Such as a nested list"
 							]
 						}
+					]
+				},
+				"There's also:",
+				{
+					"type": "list",
+					"style": "list-no-bullets",
+					"items": [
+						"A list of items without bullets",
+						"Used very rarely"
 					]
 				},
 				{
@@ -205,7 +326,22 @@
 							"name": "A similar story here",
 							"entry": "The 'item' is an entry as above, but there's no 'name' for the entire list, so this has no left inset. Some long text to show what happens when the lines wrap around, it should continue but be indented after the first line. Some example of this in the source books can be found in Metalic Dragon breath weapons in the Monster Manual."
 						},
-						"Can be mixed with regular strings"
+						{
+							"type": "itemSub",
+							"name": "A sub-item used in some places.",
+							"entry": "For example, XGE's complex traps"
+						},
+						{
+							"type": "item",
+							"name": "Multiple entry version.",
+							"entries": [
+								"This was, again, required specifically for XGE's complex traps, which can have multiple lines of text; due to their large and complex nature, one would have to presume.",
+								"Speaking of lines, this one is very long (much like the one above, which was specifically packed with superfluous information to pad it out to a decent word count) to hopefully demonstrate the effects of having to wrap a paragraph into the column, which should indent the first line of the paragraph only. Of course, if you're viewing this on an obscenely wide monitor, this will have little or no effect, so if you're in the future where 10k monitors are standard, then congratulations. Otherwise, like the rest of us plebs, you should see the desired layout.",
+								"For most uses, the single-entry version is preferred.",
+								"And here's another really long run-on sentence, just to really hammer home the effects of {@s drugs} excessive text, something I'm sure my English teacher would have a few comments about; thankfully, they're not much of a fan of Dungeons & Dragons, or even fantasy in general (needless to say, they were at best ambivalent towards the vast majority of my literary interests as a teenager; at least, as much as an English teacher can be towards a student who enjoys reading and who would choose to do it of their own volition).",
+								"What on earth did I just write"
+							]
+						}
 					]
 				},
 				"The 'bonus' type just sticks a + in front of things",
@@ -316,7 +452,7 @@
 					"type": "insetReadaloud",
 					"name": "Same As Above",
 					"entries": [
-						"But a different colour."
+						"But a different color."
 					]
 				},
 				{
@@ -340,7 +476,7 @@
 						}
 					]
 				},
-				"And finally, images (similar to the structure of the 'link' type):",
+				"Images (similar to the structure of the 'link' type):",
 				{
 					"type": "image",
 					"href": {
@@ -348,6 +484,183 @@
 						"path": "blank.png"
 					},
 					"title": "Optional Title"
+				},
+				"Creatures; format based on Bestiary data, with added type (note that a proper Bestiary entry and a link to the entry is the preferred method of adding creatures, this functionality exists primarily for homebrew data):",
+				{
+					"type": "dataCreature",
+					"dataCreature": {
+						"name": "Unicorn",
+						"size": "L",
+						"type": "celestial",
+						"source": "MM",
+						"alignment": [
+							"L",
+							"G"
+						],
+						"ac": [
+							12
+						],
+						"hp": {
+							"average": 67,
+							"formula": "9d10+18"
+						},
+						"speed": {
+							"walk": 50
+						},
+						"str": 18,
+						"dex": 14,
+						"con": 15,
+						"int": 11,
+						"wis": 17,
+						"cha": 16,
+						"immune": [
+							"poison"
+						],
+						"conditionImmune": [
+							"charmed",
+							"paralyzed",
+							"poisoned"
+						],
+						"senses": "darkvision 60 ft.",
+						"passive": 13,
+						"languages": "Celestial, Elvish, Sylvan, telepathy 60 ft.",
+						"cr": "5",
+						"trait": [
+							{
+								"name": "Charge",
+								"entries": [
+									"If the unicorn moves at least 20 ft. straight toward a target and then hits it with a horn attack on the same turn, the target takes an extra 9 (2d8) piercing damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
+								]
+							},
+							{
+								"name": "Magic Resistance",
+								"entries": [
+									"The unicorn has advantage on saving throws against spells and other magical effects."
+								]
+							},
+							{
+								"name": "Magic Weapons",
+								"entries": [
+									"The unicorn's weapon attacks are magical."
+								]
+							}
+						],
+						"action": [
+							{
+								"name": "Multiattack",
+								"entries": [
+									"The unicorn makes two attacks: one with its hooves and one with its horn."
+								]
+							},
+							{
+								"name": "Hooves",
+								"entries": [
+									"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) bludgeoning damage."
+								]
+							},
+							{
+								"name": "Horn",
+								"entries": [
+									"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) piercing damage."
+								]
+							},
+							{
+								"name": "Healing Touch (3/Day)",
+								"entries": [
+									"The unicorn touches another creature with its horn. The target magically regains 11 (2d8+2) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target."
+								]
+							},
+							{
+								"name": "Teleport (1/Day)",
+								"entries": [
+									"The unicorn magically teleports itself and up to three willing creatures it can see within 5 ft. of it, along with any equipment they are wearing or carrying, to a location the unicorn is familiar with, up to 1 mile away."
+								]
+							}
+						],
+						"legendaryGroup": "Unicorn",
+						"legendary": [
+							{
+								"name": "Hooves",
+								"entries": [
+									"The unicorn makes one attack with its hooves."
+								]
+							},
+							{
+								"name": "Shimmering Shield (Costs 2 Actions)",
+								"entries": [
+									"The unicorn creates a shimmering, magical field around itself or another creature it can see within 60 ft. of it. The target gains a +2 bonus to AC until the end of the unicorn's next turn."
+								]
+							},
+							{
+								"name": "Heal Self (Costs 3 Actions)",
+								"entries": [
+									"The unicorn magically regains 11 (2d8+2) hit points."
+								]
+							}
+						],
+						"page": 294,
+						"spellcasting": [
+							{
+								"name": "Innate Spellcasting",
+								"headerEntries": [
+									"The unicorn's innate spellcasting ability is Charisma (spell save DC 14). The unicorn can innately cast the following spells, requiring no components:"
+								],
+								"will": [
+									"{@spell detect evil and good}",
+									"{@spell druidcraft}",
+									"{@spell pass without trace}"
+								],
+								"daily": {
+									"1e": [
+										"{@spell calm emotions}",
+										"{@spell dispel evil and good}",
+										"{@spell entangle}"
+									]
+								}
+							}
+						]
+					}
+				},
+				"There exist a few homebrew features (generally) for use in custom copies of the site:",
+				{
+					"type": "homebrew",
+					"entries": [
+						{
+							"name": "Homebrew",
+							"type": "entries",
+							"entries": [
+								"If you make additions to existing text, you may want to use the \"homebrew\" entry type, to clearly mark homebrew sections."
+							]
+						}
+					]
+				},
+				{
+					"type": "homebrew",
+					"entries": [
+						{
+							"name": "Homebrew which changed something",
+							"type": "entries",
+							"entries": [
+								"It also supports changes, which show the replaced entries on hover."
+							]
+						}
+					],
+					"oldEntries": [
+						"This was the original content."
+					]
+				},
+				{
+					"type": "homebrew",
+					"oldEntries": [
+						"You can also mark removed content."
+					]
+				},
+				{
+					"type": "homebrew",
+					"movedTo": "a completely different place",
+					"oldEntries": [
+						"And you can also mark moved content."
+					]
 				}
 			]
 		}

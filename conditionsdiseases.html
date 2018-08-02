@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--5ETOOLS_VERSION-->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Conditions - 5etools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script type="text/javascript" src="lib/js-cookie.js"></script>
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
+</head>
+
+<body>
+<div class="viewport-wrapper">
+	<header class="hidden-xs hidden-sm">
+		<div class="container">
+
+			<h1>Conditions & Diseases List</h1>
+			<p>Search by name on the left, click a name to display on the right.</p>
+		</div>
+	</header>
+	<nav class="container" id="navigation">
+		<ul class="nav nav-pills" id="navbar">
+		</ul>
+	</nav>
+
+	<div class="container view-col-wrapper">
+		<div class="view-col" id="listcontainer">
+			<div class="input-group" id="filter-search-input-group">
+				<input type="search" id="search" class="search form-control" placeholder="Find condition or diseases...">
+				<span class="input-group-btn"><button class="btn btn-default" type="button" id="reset">Reset</button></span>
+			</div>
+
+			<div id="filtertools" class="sortlabel btn-group">
+				<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="type">Type</button>
+				<button class="col-xs-7 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+				<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+			</div>
+
+			<ul class="list conditions"></ul>
+		</div>
+
+		<div id="contentwrapper" class="view-col">
+			<div id="sublistcontainer">
+				<div id="sublistsort" class="sortlabel btn-group">
+					<button class="col-xs-12 sort btn btn-default btn-xs" data-sort="name">Name</button>
+				</div>
+				<ul class="list subconditions">
+					<!-- populate with JS -->
+				</ul>
+			</div>
+
+			<div class="wrp-stat-tab">
+				<div id="tabs-right"></div>
+			</div>
+
+			<table id="pagecontent" class="stats">
+				<tr><th class="border" colspan="6"></th></tr>
+				<tr><td colspan="6" class="initial-message">Select an entry from the list to view it here</td></tr>
+				<tr><th class="border" colspan="6"></th></tr>
+			</table>
+			<br>
+			<p class="text-align-center">
+				<button class="btn btn-default btn-sm btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+			</p>
+		</div>
+	</div>
+</div>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/filter.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/history.js"></script>
+<script type="text/javascript" src="js/conditionsdiseases.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+</body>
+
+</html>

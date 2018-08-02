@@ -2042,8 +2042,8 @@
 				{
 					"type": "list",
 					"items": [
-						"You learn two maneuvers of your choice from among those available to the Battle Master archetype in the fighter class. If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice).",
-						"If you have superiority dice, you add one more to your existing pool (regardless of when you gain them); otherwise, you have one superiority die, which is a d6. This die is used to fuel your maneuvers. A superiority die is expended when you use it. You regain your expended superiority dice when you finish a short or long rest."
+						"You learn two maneuvers of your choice from among those available to the {@class fighter|phb|Battle Master|Battle Master|phb|Martial Archetype 3} archetype in the fighter class. If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice).",
+						"You gain one superiority dice, which is a d6 (this die is added to any superiority dice you have from another source). This die is used to fuel your maneuvers. A superiority die is expended when you use it. You regain your expended superiority dice when you finish a short or long rest."
 					]
 				}
 			]
@@ -2227,7 +2227,7 @@
 			],
 			"entries": [
 				"You have learned a number of spells that you can cast as rituals. These spells are written in a ritual book, which you must have in hand while casting one of them.",
-				"When you choose this feat, you acquire a ritual book holding two 1st-level spells of your choice. Choose one of the following classes: bard, cleric, druid, sorcerer, warlock, or wizard. You must choose your spells from that class's spell list, and the spells you choose must have the ritual tag. The class you choose also determines your spellcasting ability for these spells: Charisma for bard, sorcerer, or warlock; Wisdom for cleric or druid; or Intelligence for wizard.",
+				"When you choose this feat, you acquire a ritual book holding two 1st-level spells of your choice. Choose one of the following classes: {@filter bard|spells|level=1|class=bard|components & miscellaneous=ritual}, {@filter cleric|spells|level=1|class=cleric|components & miscellaneous=ritual}, {@filter druid|spells|level=1|class=druid|components & miscellaneous=ritual}, {@filter sorcerer|spells|level=1|class=sorcerer|components & miscellaneous=ritual}, {@filter warlock|spells|level=1|class=warlock|components & miscellaneous=ritual}, or {@filter wizard|spells|level=1|class=wizard|components & miscellaneous=ritual}. You must choose your spells from that class's spell list, and the spells you choose must have the ritual tag. The class you choose also determines your spellcasting ability for these spells: Charisma for bard, sorcerer, or warlock; Wisdom for cleric or druid; or Intelligence for wizard.",
 				"If you come across a spell in written form, such as a magical spell scroll or a wizard's spellbook, you might be able to add it to your ritual book. The spell must be on the spell list for the class you chose, the spell's level can be no higher than half your level (rounded up), and it must have the ritual tag. The process of copying the spell into your ritual book takes 2 hours per level of the spell, and costs 50 gp per level. The cost represents material components you expend as you experiment with the spell to master it, as well as the fine inks you need to record it."
 			]
 		},
@@ -2343,8 +2343,8 @@
 		},
 		{
 			"name": "Svirfneblin Magic",
-			"source": "EEPC",
-			"page": 7,
+			"source": "MTF",
+			"page": 0,
 			"prerequisite": [
 				{
 					"race": [
@@ -2358,6 +2358,12 @@
 			"entries": [
 				"You have inherited the innate spellcasting ability of your ancestors. This ability allows you to cast {@spell nondetection} on yourself at will, without needing a material component. You can also cast each of the following spells once with this ability: {@spell blindness/deafness}, {@spell blur}, and {@spell disguise self}. You regain the ability to cast these spells when you finish a long rest.",
 				"Intelligence is your spellcasting ability for these spells, and you cast them at their lowest possible levels."
+			],
+			"additionalSources": [
+				{
+					"source": "EEPC",
+					"page": 7
+				}
 			]
 		},
 		{
@@ -2502,7 +2508,7 @@
 				"Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your servo familiar to make one attack of its own."
 			]
 		},
-				{
+		{
 			"name": "Bountiful Luck",
 			"prerequisite": [
 				{
@@ -2519,7 +2525,6 @@
 				"Your people have extraordinary luck, which you have learned to mystically lend to your companions when you see them falter. You're not sure how you do it; you just wish it, and it happens. Surely a sign of fortune's favor!",
 				"When an ally you can see within 30 feet of you rolls a 1 on the d20 for an attack roll, an ability check, or a saving throw, you can use your reaction to let the ally reroll the die. The ally must use the new roll",
 				"When you use this ability, you can't use your Lucky racial trait before the end of your next turn."
-
 			]
 		},
 		{
@@ -2612,7 +2617,7 @@
 			]
 		},
 		{
-			"name": "Dwarf Fortitude",
+			"name": "Dwarven Fortitude",
 			"prerequisite": [
 				{
 					"race": [
@@ -2979,8 +2984,522 @@
 			"source": "PSX",
 			"page": 14,
 			"entries": [
-				"As an action, you can transform the lower half of your body into an inky black vapor, allowing you to float through the air. While transformed, you have a flying speed of 30 feet. You can maintain this form for up to 10 minutes. Once you use this ability, you can’t use it again until you finish a short or long rest."
+				"As an action, you can transform the lower half of your body into an inky black vapor, allowing you to float through the air. While transformed, you have a flying speed of 30 feet. You can maintain this form for up to 10 minutes. Once you use this ability, you can't use it again until you finish a short or long rest."
 			]
+		},
+		{
+			"name": "Revenant Blade",
+			"prerequisite": [
+				{
+					"race": [
+						{
+							"name": "elf"
+						}
+					]
+				}
+			],
+			"source": "UAWGE",
+			"page": 74,
+			"entries": [
+				"You are descended from a master of the double blade and their skills have passed on to you. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"While wielding a double-bladed weapon with two hands, the weapon has the finesse trait for your attacks with it, and you gain +1 AC.",
+						"On your turn, when you use a bonus action to make a melee attack with the blade at the opposite end of the weapon, the weapon's damage die for this attack increases to 2d4, instead of 1d4."
+					]
+				}
+			],
+			"ability": {
+				"choose": [
+					{
+						"from": [
+							"str",
+							"dex"
+						],
+						"amount": 1
+					}
+				]
+			}
+		},
+		{
+			"name": "Greater Dragonmark (Detection)",
+			"prerequisite": [
+				{
+					"level": 8
+				},
+				{
+					"special": "character must possess a dragonmark"
+				}
+			],
+			"source": "UAWGE",
+			"page": 110,
+			"entries": [
+				"Your dragonmark has grown in size and power. This enhances your existing dragonmark, and the benefits are based on the mark that you already possess. A greater dragonmark provides the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The die type of your dragonmarked Intuition Die increases by one (for example, from a d4 to a d6).",
+						"You learn the spells {@spell see invisibility} and {@spell true seeing}, each of which you can cast once without expending a spell slot or using a material component. Intelligence is your spellcasting ability for these spells. Once you cast a spell using this feature, and you must finish a long rest before you can do so again."
+					]
+				}
+			],
+			"ability": {
+				"choose": [
+					{
+						"from": [
+							"cha",
+							"int"
+						],
+						"amount": 1
+					}
+				]
+			}
+		},
+		{
+			"name": "Greater Dragonmark (Finding)",
+			"prerequisite": [
+				{
+					"level": 8
+				},
+				{
+					"special": "character must possess a dragonmark"
+				}
+			],
+			"source": "UAWGE",
+			"page": 110,
+			"entries": [
+				"Your dragonmark has grown in size and power. This enhances your existing dragonmark, and the benefits are based on the mark that you already possess. A greater dragonmark provides the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The die type of your dragonmarked Intuition Die increases by one (for example, from a d4 to a d6).",
+						"You learn the spells {@spell locate creature} and {@spell find the path}, each of which you can cast once without expending a spell slot or using a material component. Wisdom is your spellcasting ability for these spells. Once you cast a spell using this feature, and you must finish a long rest before you can do so again."
+					]
+				}
+			],
+			"ability": {
+				"choose": [
+					{
+						"from": [
+							"dex",
+							"str",
+							"wis"
+						],
+						"amount": 1
+					}
+				]
+			}
+		},
+		{
+			"name": "Greater Dragonmark (Handling)",
+			"prerequisite": [
+				{
+					"level": 8
+				},
+				{
+					"special": "character must possess a dragonmark"
+				}
+			],
+			"source": "UAWGE",
+			"page": 110,
+			"entries": [
+				"Your dragonmark has grown in size and power. This enhances your existing dragonmark, and the benefits are based on the mark that you already possess. A greater dragonmark provides the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The die type of your dragonmarked Intuition Die increases by one (for example, from a d4 to a d6).",
+						"You learn the spells {@spell beast sense} and {@spell dominate beast}, each of which you can cast once without expending a spell slot or using a material component. Wisdom is your spellcasting ability for these spells. Once you cast a spell using this feature, and you must finish a long rest before you can do so again."
+					]
+				}
+			],
+			"ability": {
+				"choose": [
+					{
+						"from": [
+							"dex",
+							"wis"
+						],
+						"amount": 1
+					}
+				]
+			}
+		},
+		{
+			"name": "Greater Dragonmark (Healing)",
+			"prerequisite": [
+				{
+					"level": 8
+				},
+				{
+					"special": "character must possess a dragonmark"
+				}
+			],
+			"source": "UAWGE",
+			"page": 110,
+			"entries": [
+				"Your dragonmark has grown in size and power. This enhances your existing dragonmark, and the benefits are based on the mark that you already possess. A greater dragonmark provides the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The die type of your dragonmarked Intuition Die increases by one (for example, from a d4 to a d6).",
+						"You learn the spells {@spell mass healing word} and {@spell greater restoration}, each of which you can cast once without expending a spell slot or using a material component. Wisdom is your spellcasting ability for these spells. Once you cast a spell using this feature, and you must finish a long rest before you can do so again."
+					]
+				}
+			],
+			"ability": {
+				"choose": [
+					{
+						"from": [
+							"dex",
+							"wis"
+						],
+						"amount": 1
+					}
+				]
+			}
+		},
+		{
+			"name": "Greater Dragonmark (Hospitality)",
+			"prerequisite": [
+				{
+					"level": 8
+				},
+				{
+					"special": "character must possess a dragonmark"
+				}
+			],
+			"source": "UAWGE",
+			"page": 110,
+			"entries": [
+				"Your dragonmark has grown in size and power. This enhances your existing dragonmark, and the benefits are based on the mark that you already possess. A greater dragonmark provides the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The die type of your dragonmarked Intuition Die increases by one (for example, from a d4 to a d6).",
+						"You learn the spells {@spell sanctuary} and {@spell Mordenkainen's magnificent mansion}, each of which you can cast once without expending a spell slot or using a material component. Charisma is your spellcasting ability for these spells. Once you cast a spell using this feature, and you must finish a long rest before you can do so again."
+					]
+				}
+			],
+			"ability": {
+				"choose": [
+					{
+						"from": [
+							"dex",
+							"cha"
+						],
+						"amount": 1
+					}
+				]
+			}
+		},
+		{
+			"name": "Greater Dragonmark (Making)",
+			"prerequisite": [
+				{
+					"level": 8
+				},
+				{
+					"special": "character must possess a dragonmark"
+				}
+			],
+			"source": "UAWGE",
+			"page": 110,
+			"entries": [
+				"Your dragonmark has grown in size and power. This enhances your existing dragonmark, and the benefits are based on the mark that you already possess. A greater dragonmark provides the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The die type of your dragonmarked Intuition Die increases by one (for example, from a d4 to a d6).",
+						"You learn the spells {@spell fabricate} and {@spell creation}, each of which you can cast once without expending a spell slot or using a material component. Intelligence is your spellcasting ability for these spells. Once you cast a spell using this feature, and you must finish a long rest before you can do so again."
+					]
+				}
+			],
+			"ability": {
+				"choose": [
+					{
+						"from": [
+							"dex",
+							"int"
+						],
+						"amount": 1
+					}
+				]
+			}
+		},
+		{
+			"name": "Greater Dragonmark (Passage)",
+			"prerequisite": [
+				{
+					"level": 8
+				},
+				{
+					"special": "character must possess a dragonmark"
+				}
+			],
+			"source": "UAWGE",
+			"page": 110,
+			"entries": [
+				"Your dragonmark has grown in size and power. This enhances your existing dragonmark, and the benefits are based on the mark that you already possess. A greater dragonmark provides the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The die type of your dragonmarked Intuition Die increases by one (for example, from a d4 to a d6).",
+						"You learn the spells {@spell blink} and {@spell teleportation circle}, each of which you can cast once without expending a spell slot or using a material component. Constitution is your spellcasting ability for these spells. Once you cast a spell using this feature, and you must finish a long rest before you can do so again."
+					]
+				}
+			],
+			"ability": {
+				"choose": [
+					{
+						"from": [
+							"dex",
+							"con"
+						],
+						"amount": 1
+					}
+				]
+			}
+		},
+		{
+			"name": "Greater Dragonmark (Scribing)",
+			"prerequisite": [
+				{
+					"level": 8
+				},
+				{
+					"special": "character must possess a dragonmark"
+				}
+			],
+			"source": "UAWGE",
+			"page": 110,
+			"entries": [
+				"Your dragonmark has grown in size and power. This enhances your existing dragonmark, and the benefits are based on the mark that you already possess. A greater dragonmark provides the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The die type of your dragonmarked Intuition Die increases by one (for example, from a d4 to a d6).",
+						"You learn the spells {@spell sending} and {@spell tongues}, each of which you can cast once without expending a spell slot or using a material component. Intelligence is your spellcasting ability for these spells. Once you cast a spell using this feature, and you must finish a short or long rest before you can do so again."
+					]
+				}
+			],
+			"ability": {
+				"choose": [
+					{
+						"from": [
+							"int",
+							"cha"
+						],
+						"amount": 1
+					}
+				]
+			}
+		},
+		{
+			"name": "Greater Dragonmark (Sentinel)",
+			"prerequisite": [
+				{
+					"level": 8
+				},
+				{
+					"special": "character must possess a dragonmark"
+				}
+			],
+			"source": "UAWGE",
+			"page": 110,
+			"entries": [
+				"Your dragonmark has grown in size and power. This enhances your existing dragonmark, and the benefits are based on the mark that you already possess. A greater dragonmark provides the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The die type of your dragonmarked Intuition Die increases by one (for example, from a d4 to a d6).",
+						"You learn the spells {@spell compelled duel}, {@spell warding bond}, each of which you can cast once without expending a spell slot or using a material component. Wisdom is your spellcasting ability for these spells. Once you cast a spell using this feature, and you must finish a short or long rest before you can do so again."
+					]
+				}
+			],
+			"ability": {
+				"choose": [
+					{
+						"from": [
+							"str",
+							"wis"
+						],
+						"amount": 1
+					}
+				]
+			}
+		},
+		{
+			"name": "Greater Dragonmark (Shadow)",
+			"prerequisite": [
+				{
+					"level": 8
+				},
+				{
+					"special": "character must possess a dragonmark"
+				}
+			],
+			"source": "UAWGE",
+			"page": 110,
+			"entries": [
+				"Your dragonmark has grown in size and power. This enhances your existing dragonmark, and the benefits are based on the mark that you already possess. A greater dragonmark provides the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The die type of your dragonmarked Intuition Die increases by one (for example, from a d4 to a d6).",
+						"You learn the spells {@spell nondetection} and {@spell mislead}, each of which you can cast once without expending a spell slot or using a material component. Charisma is your spellcasting ability for these spells. Once you cast a spell using this feature, and you must finish a long rest before you can do so again."
+					]
+				}
+			],
+			"ability": {
+				"choose": [
+					{
+						"from": [
+							"cha",
+							"dex"
+						],
+						"amount": 1
+					}
+				]
+			}
+		},
+		{
+			"name": "Greater Dragonmark (Storm)",
+			"prerequisite": [
+				{
+					"level": 8
+				},
+				{
+					"special": "character must possess a dragonmark"
+				}
+			],
+			"source": "UAWGE",
+			"page": 110,
+			"entries": [
+				"Your dragonmark has grown in size and power. This enhances your existing dragonmark, and the benefits are based on the mark that you already possess. A greater dragonmark provides the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The die type of your dragonmarked Intuition Die increases by one (for example, from a d4 to a d6).",
+						"You learn the spells {@spell control water} and {@spell control winds|xge}, each of which you can cast once without expending a spell slot or using a material component. Charisma is your spellcasting ability for these spells. Once you cast a spell using this feature, and you must finish a long rest before you can do so again."
+					]
+				}
+			],
+			"ability": {
+				"choose": [
+					{
+						"from": [
+							"cha",
+							"dex"
+						],
+						"amount": 1
+					}
+				]
+			}
+		},
+		{
+			"name": "Greater Dragonmark (Warding)",
+			"prerequisite": [
+				{
+					"level": 8
+				},
+				{
+					"special": "character must possess a dragonmark"
+				}
+			],
+			"source": "UAWGE",
+			"page": 110,
+			"entries": [
+				"Your dragonmark has grown in size and power. This enhances your existing dragonmark, and the benefits are based on the mark that you already possess. A greater dragonmark provides the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The die type of your dragonmarked Intuition Die increases by one (for example, from a d4 to a d6).",
+						"You learn the spells {@spell knock}, {@spell glyph of warding} and {@spell Leomund's secret chest}*, each of which you can cast once without expending a spell slot or using a material component. Intelligence is your spellcasting ability for these spells. Once you cast a spell using this feature, and you must finish a long rest before you can do so again."
+					]
+				},
+				"* To cast {@spell Leomund's secret chest} using this feat, you must have a Siberys dragonshard with a value of at least 100 gp. While you have this dragonshard in hand, it serves as the spell's focus, and you can use it to summon and dismiss the chest."
+			],
+			"ability": {
+				"choose": [
+					{
+						"from": [
+							"dex",
+							"int"
+						],
+						"amount": 1
+					}
+				]
+			}
+		},
+		{
+			"name": "Aberrant Dragonmark",
+			"prerequisite": [
+				{
+					"special": "No existing dragonmark"
+				}
+			],
+			"source": "UAWGE",
+			"page": 112,
+			"entries": [
+				"You have manifested an aberrant dragonmark. Determine its appearance and the flaw associated with it (see the Aberrant Mark Flaw table for examples). You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You learn a {@filter cantrip from the sorcerer spell list|spells|level=0|class=Sorcerer}. In addition, choose a {@filter 1st-level spell from the sorcerer spell list|spells|level=1|class=Sorcerer}. You learn that spell and can cast it at its lowest level. Once you cast it, you must finish a long rest before you can cast it again. Constitution is your spellcasting ability for these spells.",
+						"You can increase the power of your aberrant spells at the risk of your own vitality. When you cast a spell with your aberrant mark, you can use one of your Hit Dice to increase the spell's level by 1. Immediately after you cast the spell, roll the Hit Die. You take damage equal to the number rolled."
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Aberrant Mark Flaw",
+					"colLabels": [
+						"1d8",
+						"Aberrant Mark Flaw"
+					],
+					"colStyles": [
+						"col-xs-2 text-align-center",
+						"col-xs-10"
+					],
+					"rows": [
+						[
+							1,
+							"Your mark is a source of constant physical pain."
+						],
+						[
+							2,
+							"Your mark whispers to you, though you may not understand what it says."
+						],
+						[
+							3,
+							"In times of stress, your mark may trigger a cantrip effect involuntarily."
+						],
+						[
+							4,
+							"The skin around your mark has an unusual appearance: burned, scaly, withered, etc."
+						],
+						[
+							5,
+							"Mundane animals become uneasy around you."
+						],
+						[
+							6,
+							"You have dramatic mood swings any time you use your mark."
+						],
+						[
+							7,
+							"Your appearance changes in a minor way every time you use your mark."
+						],
+						[
+							8,
+							"You have horrific nightmares after you use your mark."
+						]
+					]
+				}
+			],
+			"ability": {
+				"con": 1
+			}
 		}
 	]
 }

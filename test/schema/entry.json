@@ -5,6 +5,7 @@
 	"id": "/Entry",
 	"description": "A recursively renderable object.",
 	"type": ["string", "integer", "object"],
+	"version": "1.1.1",
 
 	"definitions" : {
 		"entry": {
@@ -71,6 +72,62 @@
 						}
 					},
 					"required": ["entries"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryHomebrew": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "homebrew"},
+						"name": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						},
+						"movedTo": {
+							"$ref": "/Entry"
+						},
+						"oldEntries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						},
+						"data": {
+							"type": "object"
+						}
+					},
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryQuote": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "quote"},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						},
+						"by": {
+							"type": "string"
+						},
+						"from": {
+							"type": "string"
+						}
+					},
+					"required": ["entries", "by"],
 					"additionalProperties": false
 				}
 			]
@@ -589,6 +646,19 @@
 							"items": {
 								"$ref": "/Entry"
 							}
+						},
+						"variantSource": {
+							"type": "object",
+							"properties": {
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								}
+							},
+							"required": ["source", "page"],
+							"additionalProperties": false
 						}
 					},
 					"required": ["name", "entries"]
@@ -620,8 +690,64 @@
 			"allOf" : [
 				{"$ref" : "#/definitions/entry"},
 				{
+					"oneOf": [
+						{
+							"properties": {
+								"type": {"const": "item"},
+								"name": {
+									"type": "string"
+								},
+								"entry": {
+									"$ref": "/Entry"
+								}
+							},
+							"required": ["name", "entry"],
+							"additionalProperties": false
+						},
+						{
+							"properties": {
+								"type": {"const": "item"},
+								"name": {
+									"type": "string"
+								},
+								"entries": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								}
+							},
+							"required": ["name", "entries"],
+							"additionalProperties": false
+						}
+					]
+				}
+			]
+		},
+		"entryItemSub": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
 					"properties": {
-						"type": {"const": "item"},
+						"type": {"const": "itemSub"},
+						"name": {
+							"type": "string"
+						},
+						"entry": {
+							"$ref": "/Entry"
+						}
+					},
+					"required": ["name", "entry"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryItemSpell": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "itemSpell"},
 						"name": {
 							"type": "string"
 						},
@@ -725,12 +851,26 @@
 					"additionalProperties": false
 				}
 			]
+		},
+		"entryDataCreature": {
+			"properties": {
+				"type": {"const": "dataCreature"},
+				"dataCreature": {
+					"$ref" : "/Bestiary#/definitions/creature"
+				}
+			},
+			"required": [
+				"type",
+				"dataCreature"
+			]
 		}
 	},
 
 	"anyOf": [
 		{"$ref": "#/definitions/entrySection"},
 		{"$ref": "#/definitions/entryEntries"},
+		{"$ref": "#/definitions/entryHomebrew"},
+		{"$ref": "#/definitions/entryQuote"},
 		{"$ref": "#/definitions/entryInlineEntries"},
 		{"$ref": "#/definitions/entryEntriesInlineEntries"},
 		{"$ref": "#/definitions/entryOptions"},
@@ -752,9 +892,13 @@
 		{"$ref": "#/definitions/entryVariant"},
 		{"$ref": "#/definitions/entryVariantSub"},
 		{"$ref": "#/definitions/entryItem"},
+		{"$ref": "#/definitions/entryItemSub"},
+		{"$ref": "#/definitions/entryItemSpell"},
 		{"$ref": "#/definitions/entryImage"},
 		{"$ref": "#/definitions/entryActions"},
 		{"$ref": "#/definitions/entryAttack"},
+		{"$ref": "#/definitions/entryAttack"},
+		{"$ref": "#/definitions/entryDataCreature"},
 		{"type": "string"},
 		{"type": "integer"}
 	]

@@ -3,7 +3,7 @@
 const JSON_URL = "data/encounters.json";
 
 let encounterList;
-const renderer = new EntryRenderer();
+const renderer = EntryRenderer.getDefaultRenderer();
 
 function makeContentsBlock (i, loc) {
 	let out =
@@ -27,7 +27,7 @@ function getTableName (loc, table) {
 }
 
 window.onload = function load () {
-	DataUtil.loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
 function onJsonLoad (data) {
@@ -51,7 +51,7 @@ function onJsonLoad (data) {
 		listClass: "encounters"
 	});
 
-	initHistory();
+	History.init(true);
 	RollerUtil.addListRollButton();
 }
 
@@ -61,6 +61,8 @@ function showHideList (ele) {
 }
 
 function loadhash (id) {
+	renderer.setFirstSection(true);
+
 	const [iLoad, jLoad] = id.split(",").map(n => Number(n));
 	const location = encounterList[iLoad];
 	const table = location.tables[jLoad].table;
@@ -69,7 +71,7 @@ function loadhash (id) {
 	let htmlText = `
 		<tr>
 			<td colspan="6">
-				<table>
+				<table class="striped-odd">
 					<caption>${tableName}</caption>
 					<thead>
 						<tr>
@@ -111,19 +113,21 @@ function rollAgainstTable (iLoad, jLoad) {
 	const table = location.tables[jLoad];
 	const rollTable = table.table;
 
-	const roll = EntryRenderer.dice.randomise(100) - 1; // -1 since results are 1-100
+	const roll = RollerUtil.randomise(100) - 1; // -1 since results are 1-100
 
 	let result;
 	for (let i = 0; i < rollTable.length; i++) {
 		const row = rollTable[i];
-		if (roll >= row.min && (row.max === undefined || roll <= row.max)) {
+		const trueMin = row.max != null && row.max < row.min ? row.max : row.min;
+		const trueMax = row.max != null && row.max > row.min ? row.max : row.min;
+		if (roll >= trueMin && roll <= trueMax) {
 			result = getRenderedText(row.enc);
 			break;
 		}
 	}
 
 	// add dice results
-	result = result.replace(DICE_REGEX, function (match) {
+	result = result.replace(RollerUtil.DICE_REGEX, function (match) {
 		const r = EntryRenderer.dice.parseRandomise(match);
 		return `<span class="roller" onclick="reroll(this)">${match}</span> <span class="result">(${r.total})</span>`
 	});

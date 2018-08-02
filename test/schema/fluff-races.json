@@ -1,0 +1,60 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.1",
+	"type": "object",
+	"properties": {
+		"race": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"entries": {
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						}
+					},
+					"_appendCopy": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"source": {
+								"type": "string"
+							}
+						}
+					},
+					"uncommon": {
+						"type": "boolean"
+					},
+					"monstrous": {
+						"type": "boolean"
+					}
+				},
+				"required": ["name", "source"],
+				"additionalProperties": false
+			}
+		},
+		"meta": {
+			"type": "object",
+			"properties": {
+				"uncommon": {
+					"$ref": "/Entry"
+				},
+				"monstrous": {
+					"$ref": "/Entry"
+				}
+			}
+		}
+	},
+	"additionalProperties": false
+}

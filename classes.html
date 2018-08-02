@@ -13,18 +13,20 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<style id="dynamicStyle"></style> <!-- populated with JS -->
-
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 	<style>
-		table#stats > tbody > tr > td {
-			padding: 0 0.8em;
+		/* hide these until the user clicks a class */
+		#classtable,
+		#button-wrapper,
+		#statsprof,
+		#sticky-nav {
+			display: none;
 		}
 
-		#please-select-message {
-			height: 10px;
+		table#stats > tbody > tr > td {
+			padding: 0 0.8em;
 		}
 
 		#please-select-message.showing > td {
@@ -42,43 +44,19 @@
 			content: "Toggle a button to view class and subclass information";
 		}
 
-		table.stats th.close-border div {
-			display: flex;
-			justify-content: flex-end;
-		}
-
-		.book-view {
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			z-index: 100;
-			display: flex;
-		}
-
-		.book-view-under {
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			z-index: 100;
-		}
-
-		.book-view div.pnl-content {
+		.book-mode div.pnl-content {
 			min-height: 100vh;
 			flex: 7 0 0;
 			height: 100vh;
 			overflow-y: auto;
 		}
 
-		.book-view div.pnl-menu::-webkit-scrollbar-track,
-		.book-view div.pnl-content::-webkit-scrollbar-track {
+		.book-mode div.pnl-menu::-webkit-scrollbar-track,
+		.book-mode div.pnl-content::-webkit-scrollbar-track {
 			background: #e0e0e0;
 		}
 
-		.book-view div.pnl-menu {
+		.book-mode div.pnl-menu {
 			min-height: 100vh;
 			min-width: 100px;
 			flex: 1 0 0;
@@ -99,41 +77,163 @@
 			margin-top: auto;
 		}
 
-		.book-view table.stats-book {
-			height: 100vh;
-			overflow-y: auto;
-		}
-
-		.book-view table.stats-book td {
-			vertical-align: top;
-		}
-
 		.wrp-btn-readmode {
 			margin-top: 10px;
 			margin-bottom: 5px;
+		}
+
+		#sticky-nav {
+			width: 100%;
+			position: sticky;
+			top: 15px;
+			overflow-y: hidden;
+			margin-top: 15px;
+			max-height: calc(100vh - 30px);
+			padding-right: 9px;
+			font-family: 'Andada', serif;
+			font-variant: small-caps;
+			font-weight: 500;
+		}
+
+		#sticky-nav:hover {
+			overflow-y: auto;
+			padding-right: 0;
+		}
+
+		#sticky-nav .nav-head[data-state="0"] {
+			color: #00000020;
+		}
+
+		.night-mode #sticky-nav .nav-head[data-state="0"] {
+			color: #bbbbbb40;
+		}
+
+		#sticky-nav .nav-head[data-state="1"] .nav-outline:hover::after {
+			content: " (Hide)";
+			font-weight: initial;
+		}
+
+		#sticky-nav .nav-head[data-state="0"]:hover {
+			color: inherit;
+		}
+
+		#sticky-nav .nav-head[data-state="0"] .nav-outline:hover::after {
+			content: " (Show)";
+			font-weight: initial;
+		}
+
+		#sticky-nav .nav-outline {
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		#sticky-nav hr {
+			margin: 2px;
+		}
+
+		#sticky-nav div.nav-item {
+			cursor: pointer;
+			user-select: none;
+			max-height: 20px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			color: #922610;
+		}
+
+		#sticky-nav div.nav-item.blue {
+			color: #337ab7;
+		}
+
+		#sticky-nav div.nav-item.green {
+			color: #1d965d;
+		}
+
+		#sticky-nav div.nav-item.purple {
+			color: #8c3b96;
+		}
+
+		.night-mode #sticky-nav div.nav-item {
+			color: #d29a38;
+		}
+
+		.night-mode #sticky-nav div.nav-item.blue {
+			color: #609dd2;
+		}
+
+		.night-mode #sticky-nav div.nav-item.green {
+			color: #27ce80;
+		}
+
+		#sticky-nav div.nav-item:hover {
+			background: lightgrey;
+		}
+
+		#sticky-nav div.nav-item:active {
+			color: #e0e0e0;
+		}
+
+		.night-mode #sticky-nav div.nav-item:hover {
+			background: black;
+		}
+
+		#sticky-nav div.nav-item:active {
+			color: white;
+		}
+
+		#sticky-nav .n1 {
+			font-weight: bold;
+		}
+
+		#sticky-nav .n2 {
+		}
+
+		#sticky-nav .n3 {
+			padding-left: 10px;
+		}
+
+		#sticky-nav .n3::before {
+			content: '\2022  ';
+		}
+
+		#desktop-flex {
+			display: flex;
+		}
+
+		div#subclasses > span.sc-pill-feeling-lucky > .glyphicon {
+			width: 2rem;
+			line-height: 12px;
 		}
 
 		@media (max-width: 991px) {
 			.wrp-btn-readmode {
 				margin-top: 0;
 			}
+
+			#sticky-nav {
+				display: none;
+			}
+
+			#desktop-flex {
+				display: block;
+			}
+
+			#statsprof {
+				margin-bottom: 7px;
+			}
 		}
 
 		@media (max-width: 768px) {
-			.book-view {
-				flex-direction: column;
-			}
-
-			.book-view div.pnl-content {
+			.book-mode div.pnl-content {
 				min-height: 0;
 				overflow-y: initial;
 			}
 
-			.book-view div.pnl-menu {
+			.book-mode div.pnl-menu {
 				min-height: 200px;
 			}
 
-			.book-view div.pnl-menu-pad {
+			.book-mode div.pnl-menu-pad {
 				display: none;
 			}
 
@@ -175,11 +275,11 @@
 
 			</ul>
 			<p class="text-align-center">
-				<button class="btn btn-default btn-sm btn-file" onclick="manageBrew()">Manage Brew</button>
+				<button class="btn btn-default btn-sm btn-file btn-info" id="manage-brew">Manage Homebrew</button>
 			</p>
 		</div>
 		<div class="col-sm-9" id="classtable">
-			<table>
+			<table class="shadow-big">
 				<tr>
 					<th class="border" colspan="15"></th>
 				</tr>
@@ -301,13 +401,13 @@
 		</div>
 	</div>
 	<hr>
-	<div class="row">
+	<div class="row" id="desktop-flex">
 		<div class="col-md-3">
-			<div class="text-align-center wrp-btn-readmode">
+			<div id="button-wrapper" class="text-align-center wrp-btn-readmode">
 				<button class="btn btn-default btn-sm" id="btn-comparemode" title="A pop-up table which can be used to compare subclass features.">Subclass Comparison</button>
 				<button class="btn btn-default btn-sm" id="btn-readmode" title="A pop-up reading mode thatkeeps class and subclass information separated, matching the books.">Book View</button>
 			</div>
-			<table id="statsprof" class="stats">
+			<table id="statsprof" class="stats shadow-big">
 				<tr>
 					<th class="border" colspan="6"></th>
 				</tr>
@@ -376,13 +476,19 @@
 					<th class="border" colspan="6"></th>
 				</tr>
 			</table>
+			<div id="sticky-nav">
+				<div class="nav-head" data-state="1"><div class="nav-outline">Outline</div><hr></div>
+				<div class="nav-body"><!-- populate with JS --></div>
+			</div>
 		</div>
 		<div class="col-md-9">
 			<div id="subclasses"></div>
-			<table id="pagecontent" class="stats">
+			<table id="pagecontent" class="stats shadow-big">
 				<tr id="ftTopBorder">
 					<th class="border" colspan="6"></th>
 				</tr>
+
+				<tr><td colspan="6" id="msg-no-class-selected" class="initial-message">Select a class from the list to view it here</td></tr>
 
 				<!-- populate with JS -->
 
@@ -400,15 +506,17 @@
 <footer class="container">
 
 </footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/history.js"></script>
 <script type="text/javascript" src="js/classes.js"></script>
-<script type="text/javascript" src="lib/list.js"></script>
-<script type="text/javascript" src="lib/jquery.js"></script>
-<script type="text/javascript" src="lib/bootstrap.js"></script>
-<script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>
 
 </html>
