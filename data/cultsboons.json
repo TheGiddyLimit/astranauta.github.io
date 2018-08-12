@@ -59,7 +59,11 @@
         "signaturespells": {
             "entry": "{@spell Friends} (cantrip), {@spell charm person} (1st level), {@spell suggestion} (2nd level), {@spell hypnotic pattern} (3rd level)"
         },
-        "entries": ["Fierna is a master manipulator. Mortals who desire success in love or who seek to become beloved leaders at the head of a band of fanatics are drawn to striking bargains with her.", "Fierna grants gifts that allow her cultists to manipulate emotions; they gain increases to Charisma, as well as proficiency with skills such as Persuasion and Intimidation. In addition, cultists can gain the Infernal Loyalty trait. Cult leaders can also gain the Loyalty beyond Death trait.", "This creature has advantage on saving throws while it can see a creature within 30 feet of it that has the Loyalty beyond Death trait.", {
+        "entries": ["Fierna is a master manipulator. Mortals who desire success in love or who seek to become beloved leaders at the head of a band of fanatics are drawn to striking bargains with her.", "Fierna grants gifts that allow her cultists to manipulate emotions; they gain increases to Charisma, as well as proficiency with skills such as Persuasion and Intimidation. In addition, cultists can gain the Infernal Loyalty trait. Cult leaders can also gain the Loyalty beyond Death trait.", {
+            "type": "entries",
+            "name": "Infernal Loyalty",
+            "entries": ["This creature has advantage on saving throws while it can see a creature within 30 feet of it that has the Loyalty beyond Death trait."]
+        }, {
             "type": "entries",
             "name": "Loyalty beyond Death (Recharges after a Short or Long Rest)",
             "entries": ["As a reaction when an ally this creature can see is reduced to 0 hit points, that ally is instead reduced to 1 hit point and gains temporary hit points equal to this creature's Charisma score + half its number of Hit Dice."]
@@ -161,7 +165,11 @@
         "signaturespells": {
             "entry": "{@spell Fire bolt} (cantrip), {@spell burning hands} (1st level), {@spell flaming sphere} (2nd level), {@spell fireball} (3rd level)"
         },
-        "entries": ["As a master of the arcane arts, Mephistopheles finds eager recruits among those who study magic. Any monster that uses spells, such as {@creature storm giant|mm|storm giants} and {@creature oni}, might follow him, and wizards' guilds and conclaves of sages are the most likely to come under his influence.", "Mephistopheles grants spellcasting ability to many of his followers. In addition, cultists can gain the Spell Shield trait. Cult leaders can also gain the Spell Leech trait.", "This creature gains advantage on saving throws against spells. If it succeeds on such a saving throw, it gains temporary hit points equal to the spell's level.", {
+        "entries": ["As a master of the arcane arts, Mephistopheles finds eager recruits among those who study magic. Any monster that uses spells, such as {@creature storm giant|mm|storm giants} and {@creature oni}, might follow him, and wizards' guilds and conclaves of sages are the most likely to come under his influence.", "Mephistopheles grants spellcasting ability to many of his followers. In addition, cultists can gain the Spell Shield trait. Cult leaders can also gain the Spell Leech trait.", {
+            "type": "entries",
+            "name": "Spell Shield",
+            "entries": ["This creature gains advantage on saving throws against spells. If it succeeds on such a saving throw, it gains temporary hit points equal to the spell's level."]
+        }, {
             "type": "entries",
             "name": "Spell Leech",
             "entries": ["As a bonus action, this creature chooses one ally it can see within 30 feet of it. The target loses its lowest-level spell slot, and this creature gains it."]
@@ -250,7 +258,11 @@
         "signaturespells": {
             "entry": "{@spell Friends} (cantrip), {@spell charm person} (1st level), {@spell suggestion} (2nd level), {@spell hypnotic pattern} (3rd level)"
         },
-        "entries": ["Fierna is a master manipulator. Mortals who desire success in love or who seek to become beloved leaders at the head of a band of fanatics are drawn to striking bargains with her.", "Her cultists can gain the Infernal Loyalty trait. Cult leaders can also gain the Loyalty beyond Death trait.", "This creature has advantage on saving throws while it can see a creature within 30 feet of it that has the Loyalty beyond Death trait.", {
+        "entries": ["Fierna is a master manipulator. Mortals who desire success in love or who seek to become beloved leaders at the head of a band of fanatics are drawn to striking bargains with her.", "Her cultists can gain the Infernal Loyalty trait. Cult leaders can also gain the Loyalty beyond Death trait.", {
+            "type": "entries",
+            "name": "Infernal Loyalty",
+            "entries": ["This creature has advantage on saving throws while it can see a creature within 30 feet of it that has the Loyalty beyond Death trait."]
+        }, {
             "type": "entries",
             "name": "Loyalty beyond Death (Recharges after a Short or Long Rest)",
             "entries": ["As a reaction when an ally this creature can see is reduced to 0 hit points, that ally is instead reduced to 1 hit point and gains temporary hit points equal to this creature's Charisma score + half its number of Hit Dice."]
@@ -352,7 +364,11 @@
         "signaturespells": {
             "entry": "{@spell Fire bolt} (cantrip), {@spell burning hands} (1st level), {@spell flaming sphere} (2nd level), {@spell fireball} (3rd level)"
         },
-        "entries": ["As a master of the arcane arts, Mephistopheles finds eager recruits among those who study magic. Any monsters that use spells, such as {@creature storm giant|mm|storm giants} and {@creature oni}, might follow him, and wizards' guilds and conclaves of sages are the most likely to come under his influence.", "Mephistopheles's cultists can gain the Spell Shield trait. Cult leaders can also gain the Spell Leech trait.", "This creature gains advantage on saving throws against spells. If it succeeds on such a saving throw, it gains temporary hit points equal to the spell's level.", {
+        "entries": ["As a master of the arcane arts, Mephistopheles finds eager recruits among those who study magic. Any monsters that use spells, such as {@creature storm giant|mm|storm giants} and {@creature oni}, might follow him, and wizards' guilds and conclaves of sages are the most likely to come under his influence.", "Mephistopheles's cultists can gain the Spell Shield trait. Cult leaders can also gain the Spell Leech trait.", {
+            "type": "entries",
+            "name": "Spell Shield",
+            "entries": ["This creature gains advantage on saving throws against spells. If it succeeds on such a saving throw, it gains temporary hit points equal to the spell's level."]
+        }, {
             "type": "entries",
             "name": "Spell Leech",
             "entries": ["As a bonus action, this creature chooses one ally it can see within 30 feet of it. The target loses its lowest-level spell slot, and this creature gains it."]
@@ -389,7 +405,27 @@
         "signaturespells": {
             "entry": "{@spell Chill touch} (cantrip), {@spell hex} (1st level), {@spell phantasmal force} (2nd level), {@spell fear} (3rd level)"
         },
-        "entries": ["Cabalists are uniformly fanatical, tormented into zealotry by pain, greed, and the distinctive power of their dementia magic. From the Cabal's beginning, spellcasters known as dementists have manipulated the very stuff of nightmares, reshaping reality and creating items and creatures from the parallel realm of \"dementia space.\" Though it has been greatly changed by centuries of hardship, dementia magic remains a powerful asset of the Cabal, and cabalists value prowess with such magic above everything except the favor of Belzenlok.", "Most members of the Cabal serve it in a religious capacity. Cells of Cabal cultists are found throughout the world, worshiping Belzenlok in secret. Once inducted into the Cabal more formally, cultists shave their heads and become initiates, assisting priests in their dark rites. As Cabal priests rise through the ranks, they dress more ornately, often wearing headgear or high collars that set them apart from initiates. Most Cabal clerics are dementists, and carry with them implements of sacrifice and veneration. But a few are more martial in nature, wielding heavy blades and viewing combat as the most active form of sacrifice to Belzenlok.", "Cabal knights are all members of an order called the Grimnant. The armor they wear has been melted down from scavenged or stolen pieces and forged anew, painted in a black lacquer and with its edges honed. Often, the armor is molded to mirror aspects of the demon Belzenlok, a form of idol worship that Grimnant knights believe gains them power and favor.", "Grimnants are brutal combatants who arrive after the Cabal's infiltration has weakened a target. Most have some minor knowledge of dementia magic or carry trinkets that give them the ability to wield dark magic in battle, but they're not generally known as spellcasters. Appearing stoic from afar, most Grimnant knights experience a bloodlust in battle and enjoy going in close for the kill.", "In its cells throughout the world, the Cabal has need for more than prayer. Whether striking from the shadows or venturing out in full regalia to spread open terror, Belzenlok's infiltrators and assassins emphasize what many fear: that the Cabal is already everywhere.", "Belzenlok's cultists can gain the Demonic Vigor trait. Favored cultists or cult leaders can also have the Unholy Tether trait.", "As a bonus action, or as a reaction when this creature would drop to 0 hit points, it regains 1 hit point and gains temporary hit points equal to its Constitution modifier plus its maximum number of Hit Dice.", {
+        "entries": [{
+            "type": "entries",
+            "name": "Belzenlok's Cultists",
+            "entries": ["Cabalists are uniformly fanatical, tormented into zealotry by pain, greed, and the distinctive power of their dementia magic. From the Cabal's beginning, spellcasters known as dementists have manipulated the very stuff of nightmares, reshaping reality and creating items and creatures from the parallel realm of \"dementia space.\" Though it has been greatly changed by centuries of hardship, dementia magic remains a powerful asset of the Cabal, and cabalists value prowess with such magic above everything except the favor of Belzenlok."]
+        }, {
+            "type": "entries",
+            "name": "Cultists, Initiates, and Priests",
+            "entries": ["Most members of the Cabal serve it in a religious capacity. Cells of Cabal cultists are found throughout the world, worshiping Belzenlok in secret. Once inducted into the Cabal more formally, cultists shave their heads and become initiates, assisting priests in their dark rites. As Cabal priests rise through the ranks, they dress more ornately, often wearing headgear or high collars that set them apart from initiates. Most Cabal clerics are dementists, and carry with them implements of sacrifice and veneration. But a few are more martial in nature, wielding heavy blades and viewing combat as the most active form of sacrifice to Belzenlok."]
+        }, {
+            "type": "entries",
+            "name": "Grimnants",
+            "entries": ["Cabal knights are all members of an order called the Grimnant. The armor they wear has been melted down from scavenged or stolen pieces and forged anew, painted in a black lacquer and with its edges honed. Often, the armor is molded to mirror aspects of the demon Belzenlok, a form of idol worship that Grimnant knights believe gains them power and favor.", "Grimnants are brutal combatants who arrive after the Cabal's infiltration has weakened a target. Most have some minor knowledge of dementia magic or carry trinkets that give them the ability to wield dark magic in battle, but they're not generally known as spellcasters. Appearing stoic from afar, most Grimnant knights experience a bloodlust in battle and enjoy going in close for the kill."]
+        }, {
+            "type": "entries",
+            "name": "Infiltrators and Assassins",
+            "entries": ["In its cells throughout the world, the Cabal has need for more than prayer. Whether striking from the shadows or venturing out in full regalia to spread open terror, Belzenlok's infiltrators and assassins emphasize what many fear: that the Cabal is already everywhere."]
+        }, "Belzenlok's cultists can gain the Demonic Vigor trait. Favored cultists or cult leaders can also have the Unholy Tether trait.", {
+            "type": "entries",
+            "name": "Demonic Vigor (1/day)",
+            "entries": ["As a bonus action, or as a reaction when this creature would drop to 0 hit points, it regains 1 hit point and gains temporary hit points equal to its Constitution modifier plus its maximum number of Hit Dice."]
+        }, {
             "type": "entries",
             "name": "Unholy Tether",
             "entries": ["As a reaction when an ally of this creature within 30 feet of it dies, this creature regains hit points equal to twice the dead creature's Constitution modifier."]
