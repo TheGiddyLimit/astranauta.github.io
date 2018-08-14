@@ -1,4 +1,4 @@
-## 5e Tools
+## 5e 工具
 Visit the [main site](5etools.html) or go to the unofficial GitHub [mirror](5etools.html).
 
 [Join the 5etools Discord here!](https://discord.gg/AzyBjtQ)
