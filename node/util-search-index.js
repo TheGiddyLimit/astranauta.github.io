@@ -51,7 +51,7 @@ UtilSearchIndex.getIndex = function (doLogging = true, test_doExtraIndex = false
 			const absF = `../data/${ti.dir}/${j}`;
 			const contents = require(absF);
 			if (doLogging) console.log(`indexing ${absF}`);
-			indexer.addToIndex(ti, contents);
+			indexer.addToIndex(ti, contents, undefined, test_doExtraIndex);
 		})
 	});
 
@@ -61,7 +61,7 @@ UtilSearchIndex.getIndex = function (doLogging = true, test_doExtraIndex = false
 
 		function addData (j) {
 			if (doLogging) console.log(`indexing ${f}`);
-			indexer.addToIndex(ti, j);
+			indexer.addToIndex(ti, j, undefined, test_doExtraIndex);
 
 			if (test_doExtraIndex && ti.test_extraIndex) {
 				const extra = ti.test_extraIndex();

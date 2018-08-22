@@ -23,6 +23,7 @@ class Blacklist {
 			item: `<li class="row no-click"><span class="id hidden"></span><span class="source col-xs-3"></span><span class="category col-xs-3"></span><span class="name col-xs-3"></span><span class="actions col-xs-3 text-align-center"></span></li>`
 		});
 		Blacklist._listId = 1;
+		ListUtil.bindEscapeKey(Blacklist._list, $(`#search`));
 
 		const FILES = [
 			"backgrounds.json",

@@ -48,13 +48,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one creature grappled by the decapus. Hit: 7 ({@dice 2d4+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature {@condition grappled} by the decapus. Hit: 7 ({@dice 2d4+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Tentacles",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 10 ft., one target. Hit: 24 ({@dice 9d4+2}) bludgeoning damage or 14 ({@dice 5d4+2}) bludgeoning damage if the decapus is grappling a creature other than the target or if the decapus is on the ground or floor. The target is also grappled (escape DC 14) unless the decapus is already grappling a creature. Until this grapple ends, the target is restrained."
+						"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. Hit: 24 ({@dice 9d4+2}) bludgeoning damage or 14 ({@dice 5d4+2}) bludgeoning damage if the decapus is grappling a creature other than the target or if the decapus is on the ground or floor. The target is also {@condition grappled} (escape DC 14) unless the decapus is already grappling a creature. Until this grapple ends, the target is {@condition restrained}."
 					]
 				}
 			],
@@ -112,7 +112,7 @@
 				{
 					"name": "Club",
 					"entries": [
-						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) bludgeoning damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) bludgeoning damage."
 					]
 				},
 				{
@@ -185,7 +185,7 @@
 				{
 					"name": "Venomous Claws",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) slashing damage plus 2 ({@dice 1d4}) poison damage, and the target must succeed on a DC 11 Constitution saving throw or be poisoned until the end of the target's next turn."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) slashing damage plus 2 ({@dice 1d4}) poison damage, and the target must succeed on a DC 11 Constitution saving throw or be {@condition poisoned} until the end of the target's next turn."
 					]
 				}
 			],
@@ -249,25 +249,25 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) slashing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) slashing damage."
 					]
 				},
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) bludgeoning damage, or 6 ({@dice 1d8+2}) bludgeoning damage when used with two hands."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) bludgeoning damage, or 6 ({@dice 1d8+2}) bludgeoning damage when used with two hands."
 					]
 				},
 				{
 					"name": "Light Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 2} to hit, range 80/320 ft., one target. Hit: 4 ({@dice 1d8}) piercing piercing damage."
+						"{@atk rw} {@hit 2} to hit, range 80/320 ft., one target. Hit: 4 ({@dice 1d8}) piercing damage."
 					]
 				},
 				{
 					"name": "Shell Defense",
 					"entries": [
-						"The tortle withdraws into its shell. Until it emerges, it gains a +4 bonus to AC and has advantage on Strength and Constitution saving throws. While in its shell, the tortle is prone, its speed is 0 and can't increase, it has disadvantage on Dexterity saving throws, it can't take reactions, and the only action it can take is a bonus action to emerge."
+						"The tortle withdraws into its shell. Until it emerges, it gains a +4 bonus to AC and has advantage on Strength and Constitution saving throws. While in its shell, the tortle is {@condition prone}, its speed is 0 and can't increase, it has disadvantage on Dexterity saving throws, it can't take reactions, and the only action it can take is a bonus action to emerge."
 					]
 				}
 			],
@@ -350,7 +350,8 @@
 								"{@spell hold person}"
 							]
 						}
-					}
+					},
+					"ability": "wis"
 				}
 			],
 			"trait": [
@@ -365,19 +366,19 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) slashing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) slashing damage."
 					]
 				},
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) bludgeoning damage, or 6 ({@dice 1d8+2}) bludgeoning damage when used with two hands."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) bludgeoning damage, or 6 ({@dice 1d8+2}) bludgeoning damage when used with two hands."
 					]
 				},
 				{
 					"name": "Shell Defense",
 					"entries": [
-						"The tortle withdraws into its shell. Until it emerges, it gains a +4 bonus to AC and has advantage on Strength and Constitution saving throws. While in its shell, the tortle is prone, its speed is 0 and can't increase, it has disadvantage on Dexterity saving throws, it can't take reactions, and the only action it can take is a bonus action to emerge."
+						"The tortle withdraws into its shell. Until it emerges, it gains a +4 bonus to AC and has advantage on Strength and Constitution saving throws. While in its shell, the tortle is {@condition prone}, its speed is 0 and can't increase, it has disadvantage on Dexterity saving throws, it can't take reactions, and the only action it can take is a bonus action to emerge."
 					]
 				}
 			],
@@ -449,13 +450,13 @@
 				{
 					"name": "Tentacles",
 					"entries": [
-						"Melee Weapon Attack: {@hit 8} to hit, reach 10 ft., one creature. Hit: 4 ({@dice 1d4+2}) poison damage, and the target must succeed on a DC 13 Constitution saving throw or be poisoned for 1 minute. Until this poison ends, the target is paralyzed. The target can repeat the saving throw at the end of each of its turns, ending the poison on itself on a success."
+						"{@atk mw} {@hit 8} to hit, reach 10 ft., one creature. Hit: 4 ({@dice 1d4+2}) poison damage, and the target must succeed on a DC 13 Constitution saving throw or be {@condition poisoned} for 1 minute. Until this poison ends, the target is {@condition paralyzed}. The target can repeat the saving throw at the end of each of its turns, ending the poison on itself on a success."
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) piercing damage."
 					]
 				}
 			],
@@ -479,7 +480,8 @@
 							"{@spell sanctuary}",
 							"{@spell spiritual weapon}"
 						]
-					}
+					},
+					"ability": "wis"
 				}
 			],
 			"page": 18,

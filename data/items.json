@@ -2223,7 +2223,8 @@
 			"reqAttune": true,
 			"entries": [
 				"Kavan was a ruthless chieftain whose tribe lived in the Balinok Mountains centuries before the arrival of {@creature Strahd von Zarovich|CoS}. Although he was very much alive, Kavan had some traits in common with vampires: he slept during the day and hunted at night, he drank the blood of his prey, and he lived underground. In battle, he wielded a spear stained with blood. His was the first blood spear, a weapon that drains life from those it kills and transfers that life to its wielder, imbuing that individual with the stamina to keep fighting.",
-				"When you hit with a melee attack using this magic spear and reduce the target to 0 hit points, you gain {@dice 2d6} temporary hit points."
+				"When you hit with a melee attack using this magic spear and reduce the target to 0 hit points, you gain {@dice 2d6} temporary hit points.",
+				"Any creature can wield the spear, but only the character {@adventure chosen by Kavan|CoS|14|Blood Spear of Kavan} to wield it gains a +2 bonus to attack and damage rolls made with this magic weapon."
 			]
 		},
 		{
@@ -6357,8 +6358,8 @@
 			"page": 175,
 			"entries": [
 				"You can use an action to blow this horn. In response, warrior spirits from the plane of Ysgard appear within 60 feet of you. These spirits use the {@creature berserker} statistics. They return to Ysgard after 1 hour or when they drop to 0 hit points. Once you use the horn, it can't be used again until 7 days have passed.",
-				"A brass horn summons {@dice 3d4+3} berserkers. To use the brass horn, you must be proficient with all simple weapons.",
-				"If you blow the horn without meeting its requirement, the summoned berserkers attack you. If you meet the requirement, they are friendly to you and your companions and follow your commands."
+				"A brass horn summons {@dice 3d4+3} {@creature berserker|MM|berserkers}. To use the brass horn, you must be proficient with all simple weapons.",
+				"If you blow the horn without meeting its requirement, the summoned {@creature berserker|MM|berserkers} attack you. If you meet the requirement, they are friendly to you and your companions and follow your commands."
 			]
 		},
 		{
@@ -6371,8 +6372,8 @@
 			"page": 175,
 			"entries": [
 				"You can use an action to blow this horn. In response, warrior spirits from the plane of Ysgard appear within 60 feet of you. These spirits use the {@creature berserker} statistics. They return to Ysgard after 1 hour or when they drop to 0 hit points. Once you use the horn, it can't be used again until 7 days have passed.",
-				"A bronze horn summons {@dice 4d4+4} berserkers. To use the bronze horn, you must be proficient with medium armor.",
-				"If you blow the horn without meeting its requirement, the summoned berserkers attack you. If you meet the requirement, they are friendly to you and your companions and follow your commands."
+				"A bronze horn summons {@dice 4d4+4} {@creature berserker|MM|berserkers}. To use the bronze horn, you must be proficient with medium armor.",
+				"If you blow the horn without meeting its requirement, the summoned {@creature berserker|MM|berserkers} attack you. If you meet the requirement, they are friendly to you and your companions and follow your commands."
 			]
 		},
 		{
@@ -6385,8 +6386,8 @@
 			"page": 175,
 			"entries": [
 				"You can use an action to blow this horn. In response, warrior spirits from the plane of Ysgard appear within 60 feet of you. These spirits use the {@creature berserker} statistics. They return to Ysgard after 1 hour or when they drop to 0 hit points. Once you use the horn, it can't be used again until 7 days have passed.",
-				"The iron horn summons {@dice 5d4+5} berserkers. To use the iron horn, you must be proficient with all martial weapons.",
-				"If you blow the horn without meeting its requirement, the summoned berserkers attack you. If you meet the requirement, they are friendly to you and your companions and follow your commands."
+				"The iron horn summons {@dice 5d4+5} {@creature berserker|MM|berserkers}. To use the iron horn, you must be proficient with all martial weapons.",
+				"If you blow the horn without meeting its requirement, the summoned {@creature berserker|MM|berserkers} attack you. If you meet the requirement, they are friendly to you and your companions and follow your commands."
 			]
 		},
 		{
@@ -6399,8 +6400,8 @@
 			"page": 175,
 			"entries": [
 				"You can use an action to blow this horn. In response, warrior spirits from the plane of Ysgard appear within 60 feet of you. These spirits use the {@creature berserker} statistics. They return to Ysgard after 1 hour or when they drop to 0 hit points. Once you use the horn, it can't be used again until 7 days have passed.",
-				"The silver horn summons {@dice 2d4+2} berserkers.",
-				"The berserkers are friendly to you and your companions and follow your commands."
+				"The silver horn summons {@dice 2d4+2} {@creature berserker|MM|berserkers}.",
+				"The {@creature berserker|MM|berserkers} are friendly to you and your companions and follow your commands."
 			]
 		},
 		{
@@ -11612,7 +11613,7 @@
 			"weight": "3",
 			"dmg1": "{@dice 1d8}",
 			"dmg2": "{@dice 1d10}",
-			"dmgType": "S",
+			"dmgType": "R",
 			"property": [
 				"F",
 				"V"
@@ -11634,7 +11635,7 @@
 			"weaponCategory": "Martial",
 			"dmg1": "{@dice 1d8}",
 			"dmg2": "{@dice 1d10}",
-			"dmgType": "S",
+			"dmgType": "R",
 			"weight": "3",
 			"property": [
 				"F",
@@ -11660,7 +11661,7 @@
 			"name": "Survival Mantle",
 			"type": "MA",
 			"armor": true,
-			"rarity": "Unknown",
+			"rarity": "Unknown (Magic)",
 			"weight": "40",
 			"ac": 15,
 			"stealth": true,
@@ -15106,7 +15107,7 @@
 			"page": 206,
 			"reqAttune": true,
 			"entries": [
-				"This amulet is carved from obsidian and shaped like a screaming humanoid skull, with ruby eyes and emeralds for teeth. It hands from an iron chain necklace.",
+				"This amulet is carved from obsidian and shaped like a screaming humanoid skull, with ruby eyes and emeralds for teeth. It hangs from an iron chain necklace.",
 				"The amulet has 6 charges and regains {@dice 1d6} charges daily at dawn. While wearing the amulet, you can use an action to expend 1 of its charges to transport yourself and anything you are wearing or carrying to a location within 100 feet of you. The destination you choose doesn't need to be in your line of sight, but it must be familiar to you (in other words, a place you have seen or visited), and it must be on the same plane of existence as you. This effect isn't subject to the magic restrictions placed on the Tomb of the Nine Gods; thus, the amulet can be used to enter and exit the tomb.",
 				"If you aren't undead, you must make a DC 16 Constitution saving throw each time you use the amulet to teleport. On a failed saving throw, the black skull cackles as you are transformed in transit. The transformation takes effect as soon as you arrive at the destination, and is determined randomly by rolling percentile dice and consulting the Black Skull Transformation table.",
 				{
@@ -16345,6 +16346,7 @@
 		},
 		{
 			"name": "Band of Loyalty",
+			"type": "RG",
 			"rarity": "Common",
 			"source": "UAWGE",
 			"page": 115,
@@ -16366,6 +16368,7 @@
 		{
 			"name": "Everbright Lantern",
 			"rarity": "Common",
+			"wondrous": true,
 			"source": "UAWGE",
 			"page": 115,
 			"entries": [
@@ -16489,8 +16492,9 @@
 			"name": "Rings of Shared Suffering",
 			"rarity": "Uncommon",
 			"reqAttune": true,
+			"type": "RG",
 			"source": "UAWGE",
-			"page": 115,
+			"page": 117,
 			"entries": [
 				"These rings come in linked pairs. It you possess the Mark of Sentinel, you can use a bonus action to form a link to the creature attuned to the other ring; from then on, whenever that creature suffers damage, they only suffer half of that damage and you take the rest. This effect continues until you end it as a bonus action or until you or the other creature removes their ring. This effect isn't limited by range. A creature cannot be attuned to more than one ring of shared suffering."
 			]
@@ -16634,6 +16638,111 @@
 						"If the sheathed wand requires attunement, you must attune to the wand before you can use it. However, the wand sheath and the attached wand only count as a single item for purposes of the maximum number of items you can be attuned to. If you remove the wand from the sheath, you immediately lose your attunement to the wand."
 					]
 				}
+			]
+		},
+		{
+			"name": "Statuette of Saint Markovia",
+			"type": "OTH",
+			"source": "CoS",
+			"page": 152,
+			"value": "250gp",
+			"rarity": "Unknown (Magic)",
+			"entries": [
+				"This golden statuette grants any good-aligned creature that carries it a +1 bonus to saving throws."
+			]
+		},
+		{
+			"name": "Lost Sword",
+			"type": "M",
+			"weaponCategory": "Martial",
+			"dmg1": "{@dice 1d6}",
+			"dmgType": "P",
+			"weight": "2",
+			"property": [
+				"F",
+				"L"
+			],
+			"rarity": "Unknown (Magic)",
+			"source": "CoS",
+			"page": 81,
+			"reqAttune": true,
+			"sentient": true,
+			"entries": [
+				"The Lost Sword is a sentient lawful good {@item shortsword +1|DMG|+1 shortsword} (Intelligence 11, Wisdom 13, Charisma 13). It has hearing and normal vision out to a range of 120 feet. It communicates by transmitting emotion to the creature carrying or wielding it.",
+				"The sword's purpose is to fight evil. The sword has the following additional properties:",
+				{
+					"type": "list",
+					"items": [
+						"The sword continually sheds bright light in a 15-foot radius and dim light for an additional 15 feet. Only by destroying the sword can this light be extinguished.",
+						"A lawful good creature can attune itself to the sword in 1 minute.",
+						"While attuned to the weapon, the sword's wielder can use the sword to cast the {@spell crusader's mantle|PHB} spell. Once used, this property of the sword can't be used again until the next dawn."
+					]
+				}
+			]
+		},
+		{
+			"name": "Green Copper Ewer",
+			"type": "OTH",
+			"rarity": "Unknown (Magic)",
+			"source": "CoS",
+			"page": 188,
+			"entries": [
+				"Any poisonous liquid poured into the ewer is instantly transformed into an equal amount of sweet wine. Furthermore, a creature that grasps the ewer's handle can command the ewer to fill with 1 gallon of wine, and it can't produce more wine until the next dawn."
+			]
+		},
+		{
+			"name": "Silver Dragon Shield +2",
+			"type": "S",
+			"weight": "6",
+			"ac": 4,
+			"tier": "Major",
+			"rarity": "Rare",
+			"source": "CoS",
+			"page": 68,
+			"entries": [
+				"While holding this shield, you have a +2 bonus to AC. This bonus is in addition to the shield's normal bonus to AC.",
+				"The shield is emblazoned with a stylized silver dragon that is the emblem of the Order of the Silver Dragon (see {@adventure {@i Curse of Strahd}, chapter 7|CoS|7|The Order of the Silver Dragon}). The shield whispers warnings to its bearer, granting a +2 bonus to initiative if the bearer isn't incapacitated.",
+				"A shield is made from wood or metal and is carried in one hand. Wielding a shield increases your Armor Class by 2. You can benefit from only one shield at a time."
+			]
+		},
+		{
+			"name": "Adventurer's Battleaxe",
+			"type": "M",
+			"weaponCategory": "Martial",
+			"rarity": "Unknown (Magic)",
+			"weight": "2",
+			"dmg1": "{@dice 1d8}",
+			"dmg2": "{@dice 1d10}",
+			"dmgType": "S",
+			"property": [
+				"V"
+			],
+			"source": "CoS",
+			"page": 198,
+			"entries": [
+				"The axe's handle is carved with leaves and vines, and it weighs half as much as a normal battleaxe. When the axe hits a plant, whether an ordinary plant or a plant creature, the target takes an extra {@dice 1d8} slashing damage. When a creature of non-good alignment wields the axe, it sprouts thorns whenever its wielder makes an attack with it. These thorns prick the wielder for 1 piercing damage after the attack is made, and this damage is considered magical."
+			]
+		},
+		{
+			"name": "Reszur",
+			"type": "M",
+			"weaponCategory": "Simple",
+			"rarity": "Uncommon",
+			"value": "2gp",
+			"weight": "1",
+			"dmg1": "{@dice 1d4+1}",
+			"dmgType": "P",
+			"property": [
+				"F",
+				"L",
+				"T"
+			],
+			"range": "20/60",
+			"source": "PotA",
+			"page": 157,
+			"entries": [
+				"You have a +1 bonus to attack and damage rolls made with this weapon, which doesn't make noise when it hits or cuts something.",
+				"The name \"Reszur\" is graven on the dagger's pommel. If the wielder speaks the name, the blade gives off a faint, cold glow, shedding dim light in a 10-foot radius until the wielder speaks the name again."
 			]
 		}
 	],

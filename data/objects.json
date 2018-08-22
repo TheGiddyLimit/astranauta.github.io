@@ -5,7 +5,7 @@
 			"source": "DMG",
 			"page": 255,
 			"size": "L",
-			"type": "siege weapon",
+			"type": "SW",
 			"ac": "15",
 			"hp": "50",
 			"immune": "poison, psychic",
@@ -34,7 +34,7 @@
 		{
 			"name": "Cannon",
 			"size": "L",
-			"type": "siege weapon",
+			"type": "SW",
 			"source": "DMG",
 			"ac": "19",
 			"hp": "75",
@@ -66,7 +66,7 @@
 		{
 			"name": "Cauldron, Suspended",
 			"size": "L",
-			"type": "siege weapon",
+			"type": "SW",
 			"source": "DMG",
 			"ac": "19",
 			"hp": "20",
@@ -89,7 +89,7 @@
 		{
 			"name": "Mangonel",
 			"size": "L",
-			"type": "siege weapon",
+			"type": "SW",
 			"source": "DMG",
 			"ac": "15",
 			"hp": "100",
@@ -121,7 +121,7 @@
 		{
 			"name": "Ram",
 			"size": "L",
-			"type": "siege weapon",
+			"type": "SW",
 			"source": "DMG",
 			"ac": "15",
 			"hp": "100",
@@ -154,7 +154,7 @@
 		{
 			"name": "Siege Tower",
 			"size": "G",
-			"type": "siege weapon",
+			"type": "SW",
 			"source": "DMG",
 			"ac": "15",
 			"hp": "200",
@@ -167,7 +167,7 @@
 		{
 			"name": "Trebuchet",
 			"size": "H",
-			"type": "siege weapon",
+			"type": "SW",
 			"source": "DMG",
 			"ac": "15",
 			"hp": "150",
@@ -200,7 +200,7 @@
 		{
 			"name": "Generic Object",
 			"size": "V",
-			"type": "generic",
+			"type": "GEN",
 			"source": "DMG",
 			"page": 246,
 			"ac": "Varies (see below)",
@@ -324,6 +324,50 @@
 							"name": "Damage Threshold",
 							"entries": [
 								" Big objects such as castle walls often have extra resilience represented by a damage threshold. An object with a damage threshold has immunity to all damage unless it takes an amount of damage from a single attack or effect equal to or greater than its damage threshold, in which case it takes damage as normal. Any damage that fails to meet or exceed the object's damage threshold is considered superficial and doesn't reduce the object's hit points."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Gulthias Tree",
+			"source": "TftYP",
+			"page": 31,
+			"size": "G",
+			"ac": "10",
+			"hp": "35",
+			"type": "U",
+			"immune": "necrotic, poison, psychic",
+			"resist": "piercing",
+			"vulnerable": "fire",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Fruit",
+					"entries": [
+						"Two magical fruits (evocation school) ripen on the tree each year. Each fruit resembles an apple, but it slowly extrudes from the tree like a cyst.",
+						"Up to a week before the summer solstice, a ruby red fruit grows. Someone other than a construct who eats a quarter or more of it regains 70 hit points. In addition, any {@condition blinded|phb|blindness}, {@condition deafened|phb|deafness}, and diseases affecting the eater end.",
+						"Up to a week before the winter solstice, a sickly white fruit grows. Someone who eats a quarter or more of it takes 70 necrotic damage. Each fruit has {@dice 1d4} seeds that, if planted, grow leafless woody shrubs that animate as twig blights after one year."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tree Thralls",
+					"entries": [
+						"If a humanoid is bound to the bole of the Gulthias Tree, over the next 24 hours the victim is sucked completely into the tree. Once the victim is completely absorbed into the tree, it becomes the tree's thrall, and is expelled over the course of 1 hour. The Gulthias Tree can have only four thralls at any one time. A victim's skin is rough, gray, and bark-like. A thrall is totally corrupted, becoming neutral evil. Such a creature exists only to serve the Gulthias Tree and those who tend it (such as Belak). It possesses all of its former abilities and gains the following traits:",
+						{
+							"type": "entries",
+							"name": "Barkskin",
+							"entries": [
+								"The thrall's AC can't be lower than 16."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Tree Thrall",
+							"entries": [
+								"If the Gulthias Tree dies, the thrall dies 24 hours later."
 							]
 						}
 					]

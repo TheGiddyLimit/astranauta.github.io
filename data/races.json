@@ -452,7 +452,7 @@
 					]
 				},
 				{
-					"name": "Eladrin; UA",
+					"name": "Eladrin",
 					"source": "UAEladrinAndGith",
 					"page": 1,
 					"ability": {
@@ -586,7 +586,7 @@
 					]
 				},
 				{
-					"name": "Sea; UA",
+					"name": "Sea",
 					"source": "UAElfSubraces",
 					"speed": {
 						"walk": 30,
@@ -634,7 +634,7 @@
 					]
 				},
 				{
-					"name": "Shadar-kai; UA",
+					"name": "Shadar-kai",
 					"source": "UAElfSubraces",
 					"ability": {
 						"cha": 1
@@ -2214,7 +2214,7 @@
 					"type": "entries",
 					"name": "Size",
 					"entries": [
-						"Half-orcs are somewhat larger and bulkier than humans, and they range From 5 to well over 6 feet tall. Your size is Medium."
+						"Half-orcs are somewhat larger and bulkier than humans, and they range from 5 to well over 6 feet tall. Your size is Medium."
 					]
 				},
 				{
@@ -2933,6 +2933,85 @@
 						"Dragonmark",
 						"Spellcasting"
 					]
+				},
+				{
+					"name": "Keldon",
+					"source": "PSD",
+					"page": 19,
+					"ability": {
+						"str": 2,
+						"con": 1
+					},
+					"entries": [
+						{
+							"name": "Age",
+							"type": "entries",
+							"entries": [
+								"Keldons reach adulthood in their late teens and live less than a century."
+							],
+							"data": {
+								"overwrite": "Age"
+							}
+						},
+						{
+							"name": "Alignment",
+							"type": "entries",
+							"entries": [
+								"Keldons tend toward chaotic alignments, and many walk a fine line between good and evil."
+							],
+							"data": {
+								"overwrite": "Alignment"
+							}
+						},
+						{
+							"type": "entries",
+							"name": "Size",
+							"entries": [
+								"Keldons are taller and heavier than the human norms of other cultures, standing almost universally above 6 feet tall and reaching heights above 7 feet. Your size is Medium."
+							],
+							"data": {
+								"overwrite": "Size"
+							}
+						},
+						{
+							"name": "Languages",
+							"entries": [
+								"You can speak, read, and write Common and Keldon."
+							],
+							"type": "entries",
+							"data": {
+								"overwrite": "Languages"
+							}
+						},
+						{
+							"type": "entries",
+							"name": "Natural Athlete",
+							"entries": [
+								"You have proficiency in the Athletics skill."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Keldon Resilience",
+							"entries": [
+								"You have proficiency in Strength saving throws."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Icehaven Born",
+							"entries": [
+								"You are naturally adapted to cold climates, as described in chapter 5 of the {@i Dungeon Master's Guide}."
+							]
+						}
+					],
+					"traitTags": [
+						"Skill Proficiency"
+					],
+					"languageTags": [
+						"Common",
+						"Other"
+					]
 				}
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/279/human.mp3",
@@ -3382,7 +3461,7 @@
 								{
 									"name": "Winged",
 									"entries": [
-										"You have bat-like wings sprouting form on your shoulder blades. You have a flying speed of 30 feet while you aren't wearing heavy armor."
+										"You have bat-like wings sprouting from your shoulder blades. You have a flying speed of 30 feet while you aren't wearing heavy armor."
 									],
 									"type": "entries"
 								}
@@ -3492,7 +3571,7 @@
 					]
 				},
 				{
-					"name": "Asmodeus; UA",
+					"name": "Asmodeus",
 					"source": "UAFiendishOptions",
 					"ability": {
 						"cha": 2,
@@ -3513,7 +3592,7 @@
 					]
 				},
 				{
-					"name": "Baalzebul; UA",
+					"name": "Baalzebul",
 					"source": "UAFiendishOptions",
 					"ability": {
 						"cha": 2,
@@ -3534,7 +3613,7 @@
 					]
 				},
 				{
-					"name": "Dispater; UA",
+					"name": "Dispater",
 					"source": "UAFiendishOptions",
 					"page": 1,
 					"ability": {
@@ -3555,7 +3634,7 @@
 					]
 				},
 				{
-					"name": "Fierna; UA",
+					"name": "Fierna",
 					"source": "UAFiendishOptions",
 					"page": 1,
 					"ability": {
@@ -3576,7 +3655,7 @@
 					]
 				},
 				{
-					"name": "Glasya; UA",
+					"name": "Glasya",
 					"source": "UAFiendishOptions",
 					"page": 2,
 					"ability": {
@@ -3597,7 +3676,7 @@
 					]
 				},
 				{
-					"name": "Levistus; UA",
+					"name": "Levistus",
 					"source": "UAFiendishOptions",
 					"page": 2,
 					"ability": {
@@ -3618,7 +3697,7 @@
 					]
 				},
 				{
-					"name": "Mammon; UA",
+					"name": "Mammon",
 					"source": "UAFiendishOptions",
 					"ability": {
 						"cha": 2,
@@ -3639,7 +3718,7 @@
 					]
 				},
 				{
-					"name": "Mephistopheles; UA",
+					"name": "Mephistopheles",
 					"source": "UAFiendishOptions",
 					"ability": {
 						"cha": 2,
@@ -3659,7 +3738,7 @@
 					]
 				},
 				{
-					"name": "Zariel; UA",
+					"name": "Zariel",
 					"source": "UAFiendishOptions",
 					"ability": {
 						"cha": 2,
@@ -5753,30 +5832,70 @@
 					]
 				},
 				{
-					"name": "Vedalken Cunning",
-					"entries": [
-						"You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Aether Lore",
-					"entries": [
-						"Whenever you make an Intelligence (History) check related to magic items or aether-powered technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply."
-					],
-					"type": "entries"
-				},
-				{
 					"name": "Languages",
 					"entries": [
-						"You can speak, read, and write Common and Vedalken. The Vedalken language is renowned for its technical treatises and its catalogs of knowledge about the natural world and the aether that pervades it."
+						"You can speak, read, and write Common."
 					],
 					"type": "entries"
 				}
 			],
+			"subraces": [
+				{
+					"entries": [
+						{
+							"name": "Vedalken Cunning",
+							"entries": [
+								"You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Aether Lore",
+							"entries": [
+								"Whenever you make an Intelligence (History) check related to magic items or aether-powered technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Languages",
+							"entries": [
+								"You can speak, read, and write Common and Vedalken. The Vedalken language is renowned for its technical treatises and its catalogs of knowledge about the natural world and the aether that pervades it."
+							],
+							"type": "entries",
+							"data": {
+								"overwrite": "Languages"
+							}
+						}
+					],
+					"languageTags": [
+						"Common",
+						"Other"
+					]
+				},
+				{
+					"source": "UARacesOfRavnica",
+					"page": 4,
+					"entries": [
+						{
+							"name": "Vedalken Dispassion",
+							"entries": [
+								"You have advantage on all Intelligence, Wisdom, and Charisma saving throws."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Tireless Precision",
+							"entries": [
+								"You are proficient in one of the following skills of your choice: Arcana, History, Investigation, Medicine, Performance, or Sleight of Hand. You are also proficient with one tool of your choice.",
+								"Whenever you make an ability check with the chosen skill or tool, roll a d4, and add the number rolled to the check's total."
+							],
+							"type": "entries"
+						}
+					]
+				}
+			],
 			"languageTags": [
-				"Common",
-				"Other"
+				"Common"
 			]
 		},
 		{
@@ -5930,7 +6049,7 @@
 			]
 		},
 		{
-			"name": "Aasimar (DMG)",
+			"name": "Aasimar",
 			"source": "DMG",
 			"page": 286,
 			"size": "M",
@@ -6152,6 +6271,35 @@
 						"wis": 2
 					},
 					"entries": [
+						{
+							"name": "Hawkeyed",
+							"entries": [
+								"You have proficiency in the Perception skill. In addition, attacking at long range doesn't impose disadvantage on your ranged weapon attack rolls."
+							],
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Skill Proficiency"
+					]
+				},
+				{
+					"ability": {
+						"wis": 2
+					},
+					"source": "PSD",
+					"page": 6,
+					"entries": [
+						{
+							"name": "Alignment",
+							"type": "entries",
+							"entries": [
+								"Aven are inclined toward the lawful good alignment of the Church of Serra"
+							],
+							"data": {
+								"overwrite": "Alignment"
+							}
+						},
 						{
 							"name": "Hawkeyed",
 							"entries": [
@@ -6422,7 +6570,7 @@
 			],
 			"subraces": [
 				{
-					"name": "Githyanki; UA",
+					"name": "Githyanki",
 					"ability": {
 						"str": 2
 					},
@@ -6462,7 +6610,7 @@
 					]
 				},
 				{
-					"name": "Githzerai; UA",
+					"name": "Githzerai",
 					"ability": {
 						"wis": 2
 					},
@@ -8788,6 +8936,304 @@
 						"Skill Proficiency"
 					]
 				}
+			]
+		},
+		{
+			"name": "Loxodon",
+			"source": "UARacesOfRavnica",
+			"page": 1,
+			"ability": {
+				"con": 2,
+				"wis": 1
+			},
+			"size": "M",
+			"speed": 30,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Age",
+					"entries": [
+						"Loxodons physically mature at the same rate as humans, but they live about 450 years. They highly value the weight of wisdom and experience and are considered young until they reach the age of 60."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Alignment",
+					"entries": [
+						"Most loxodons are lawful, believing in the value of a peaceful, ordered life. They also tend toward good."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Loxodons stand between 7 and 8 feet tall. Their massive bodies weigh between 300 and 400 pounds. Your size is Medium."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Powerful Build",
+					"entries": [
+						"You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Loxodon Bravery",
+					"entries": [
+						"You have advantage on saving throws against being frightened."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Natural Armor",
+					"entries": [
+						"You have thick, leathery skin. When you aren't wearing armor, your AC is 13 + your Dexterity modifier. You can use your natural armor to determine your AC if the armor you wear would leave you with a lower AC. A shield's benefits apply as normal while you use your natural armor.",
+						{
+							"type": "inset",
+							"name": "Tip: AC Calculations Don't Stack",
+							"entries": [
+								"When the game gives you more than one way to calculate your Armor Class, you can use only one of them. You choose the one to use. For example, if you have the loxodon's Natural Armor trait and the monk's Unarmored Defense feature, you don't mix them together. Instead, you choose which one determines your AC."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Mason's Proficiency",
+					"entries": [
+						"You gain proficiency with mason's tools."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Stonecunning",
+					"entries": [
+						"Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your normal proficiency bonus to the check, instead of your normal proficiency bonus."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Keen Smell",
+					"entries": [
+						"Thanks to your sensitive trunk, you have advantage on Wisdom (Perception) and Intelligence (Investigation) checks that rely on smell."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common."
+					]
+				}
+			],
+			"languageTags": [
+				"Common"
+			],
+			"traitTags": [
+				"Natural Armor",
+				"Tool Proficiency",
+				"Powerful Build"
+			]
+		},
+		{
+			"name": "Simic Hybrid",
+			"source": "UARacesOfRavnica",
+			"page": 2,
+			"ability": {
+				"con": 2,
+				"choose": [
+					{
+						"from": [
+							"str",
+							"dex",
+							"con",
+							"int",
+							"wis",
+							"cha"
+						],
+						"count": 1
+					}
+				]
+			},
+			"size": "M",
+			"speed": {
+				"walk": 30
+			},
+			"darkvision": 60,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Ability Score Increase",
+					"entries": [
+						"Your Constitution score increases by 2, and one other ability score of your choice increases by 1."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Age",
+					"entries": [
+						"Hybrids begin their lives as adult humans, elves, or vedalken. They exhibit signs of slightly accelerated aging, so their maximum lifespans are probably reduced somewhat, but the Guardian Project has not been operating long enough to observe the full effect of this phenomenon."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Alignment",
+					"entries": [
+						"Most hybrids share the generally neutral outlook of the Simic Combine as a whole. They are more interested in scientific research and the standing of their guild than in moral or ethical questions. However, those who leave the Combine often do so because their philosophical outlook and alignment are more in line with a different guild's."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Your size is Medium, within the normal range of your humanoid base race."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Darkvision",
+					"entries": [
+						"You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Animal Enhancement",
+					"entries": [
+						"Your body has been altered to incorporate certain animal characteristics. You choose one animal enhancement now and a second enhancement at 5th level.",
+						"At 1st level, choose one of the following options:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Manta Glide",
+									"entry": "Your ray-like wings can slow your fall and allow you to glide. When you fall and aren't incapacitated, you can subtract up to 100 feet from the fall when calculating falling damage, and you can move up to 2 feet horizontally for every 1 foot you descend."
+								},
+								{
+									"type": "item",
+									"name": "Nimble Climber",
+									"entry": "You have a climbing speed equal to your walking speed."
+								},
+								{
+									"type": "item",
+									"name": "Underwater Adaptation",
+									"entry": "You can breathe air and water, and you have a swimming speed equal to your walking speed."
+								}
+							]
+						},
+						"At 5th level, choose one of the following options, or choose one of the options you didn't take at 1st level:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Grappling Appendage",
+									"entry": "You have two special appendages growing alongside your arms. Choose whether they're both claws or tentacles. Each of these appendages is a natural weapon, which you can use to make unarmed strikes. If you hit with it, the target takes bludgeoning damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike. Immediately after hitting, you can try to grapple the target as a bonus action. These appendages can't precisely manipulate anything and can't wield weapons, magic items, or other specialized equipment."
+								},
+								{
+									"type": "item",
+									"name": "Carapace",
+									"entry": "Your skin in places is covered by a thick shell. You gain a +1 bonus to AC when you're not wearing heavy armor."
+								},
+								{
+									"type": "item",
+									"name": "Acid Spit",
+									"entry": "As an action, you can spray a stream of acid from glands in your mouth, targeting one creature or object you can see within 30 feet of you. The target takes 2d10 acid damage unless it succeeds on a Dexterity saving throw against a DC equal to 8 + your Constitution modifier + your proficiency bonus. This damage increases by 1d10 when you reach 11th level (3d10) and 17th level (4d10)."
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common amd Elvish."
+					]
+				}
+			],
+			"languageTags": [
+				"Common",
+				"Elvish"
+			],
+			"traitTags": [
+				"Amphibious",
+				"Unarmed Strike",
+				"Natural Armor"
+			]
+		},
+		{
+			"name": "Viashino",
+			"source": "UARacesOfRavnica",
+			"page": 5,
+			"ability": {
+				"dex": 2,
+				"str": 1
+			},
+			"size": "M",
+			"speed": 30,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Age",
+					"entries": [
+						"Viashino mature quickly, reaching adulthood in their early teens. They live violent lives and rarely die of old age, but they would rarely live past 60 anyway."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Alignment",
+					"entries": [
+						"Viashino strongly tend toward chaotic alignments. They have no particular inclination toward good or evil."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Viashino are about as tall as humans, but they have lithe, wiry frames. Your size is Medium."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Bite",
+					"entries": [
+						"Your fanged maw is a natural weapon, which you can use to make unarmed strikes. If you hit with it, you deal piercing damage equal to 1d4 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Lashing Tail",
+					"entries": [
+						"Your semi-prehensile tail is tipped with a bony blade. Immediately after a creature within 5 feet of you deals damage to you with a melee attack, you can use your reaction to make an unarmed strike against that creature with your tail. If you hit, you deal slashing damage equal to 1d4 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Wiry Frame",
+					"entries": [
+						"You gain proficiency in the Acrobatics or the Stealth skill (your choice)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and Draconic."
+					]
+				}
+			],
+			"languageTags": [
+				"Common",
+				"Draconic"
+			],
+			"traitTags": [
+				"Unarmed Strike",
+				"Skill Proficiency"
 			]
 		}
 	]

@@ -43,6 +43,7 @@ function onJsonLoad (data) {
 
 	BookUtil.baseDataUrl = "data/book/book-";
 	BookUtil.bookIndex = books;
+	BookUtil.initLinkGrabbers();
 
 	window.onhashchange = BookUtil.booksHashChange;
 	if (window.location.hash.length) {

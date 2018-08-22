@@ -42,12 +42,16 @@ const replacements = {
 const replacementRegex = new RegExp(Object.keys(replacements).join("|"), 'g');
 
 function cleanFolder (folder) {
+	console.log(`Cleaning directory ${folder}...`);
 	const files = listFiles(folder);
 	files
-		.map(file => ({
-			name: file,
-			contents: readJSON(file)
-		}))
+		.map(file => {
+			console.log(`\tCleaning ${file}...`);
+			return {
+				name: file,
+				contents: readJSON(file)
+			};
+		})
 		.map(file => {
 			file.contents = JSON.stringify(file.contents, null, "\t") + "\n";
 			return file;
@@ -65,3 +69,4 @@ function cleanFolder (folder) {
 
 const data = `./data`;
 cleanFolder(data);
+console.log("Cleaning complete.");

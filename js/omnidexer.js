@@ -29,7 +29,7 @@ class Omnidexer {
 		return withDots.split(".").reduce((o, i) => o[i], obj);
 	}
 
-	addToIndex (arbiter, j, idOffset) {
+	addToIndex (arbiter, j, idOffset, isTestMode) {
 		if (idOffset) this.id += idOffset;
 		const index = this.index;
 		let id = this.id;
@@ -57,7 +57,7 @@ class Omnidexer {
 			const name = Omnidexer.getProperty(it, arbiter.primary || "name");
 			if (!it.noDisplay) {
 				const toAdd = getToAdd(it, {n: name}, i);
-				if ((!arbiter.filter || !arbiter.filter(it)) && !arbiter.onlyDeep) index.push(toAdd);
+				if ((isTestMode || !(arbiter.filter && arbiter.filter(it))) && !arbiter.onlyDeep) index.push(toAdd);
 				if (arbiter.deepIndex) {
 					const primary = {it: it, i: i, parentName: name};
 					const deepItems = arbiter.deepIndex(primary, it);

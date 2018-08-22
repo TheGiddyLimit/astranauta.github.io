@@ -1,14 +1,18 @@
 "use strict";
 
 const BookUtil = {
-	scrollClick: (scrollTo, scrollIndex) => {
-		const selectors = [
-			`div.statsBlockSectionHead > span.entry-title:textEquals("${scrollTo}")`,
-			`div.statsBlockHead > span.entry-title:textEquals("${scrollTo}")`,
-			`div.statsBlockSubHead > span.entry-title:textEquals("${scrollTo}")`,
-			`div.statsBlockInset > span.entry-title:textEquals("${scrollTo}")`,
-			`div.statsInlineHead > span.entry-title:textEquals("${scrollTo}.")`
+	_getSelectors (scrollTo) {
+		return [
+			`.statsBlockSectionHead > .entry-title:textEquals("${scrollTo}")`,
+			`.statsBlockHead > .entry-title:textEquals("${scrollTo}")`,
+			`.statsBlockSubHead > .entry-title:textEquals("${scrollTo}")`,
+			`.statsBlockInset > .entry-title:textEquals("${scrollTo}")`,
+			`.statsInlineHead > .entry-title:textEquals("${scrollTo}.")`
 		];
+	},
+
+	scrollClick: (scrollTo, scrollIndex) => {
+		const selectors = BookUtil._getSelectors(scrollTo);
 
 		if (scrollIndex === undefined) {
 			// textEquals selector defined below; added on window load
@@ -180,11 +184,35 @@ const BookUtil = {
 			BookUtil.curRender.chapter = chapter;
 			BookUtil.renderArea.html("");
 
+			const goToPage = (page) => {
+				page = String(page);
+				const newHashParts = [bookId, ...hashParts];
+				newHashParts[1] = page;
+				window.location.hash = newHashParts.join(HASH_PART_SEP);
+				MiscUtil.scrollPageTop();
+			};
+
+			const renderNavButtons = (isTop) => {
+				const tdStlye = `padding-${isTop ? "top" : "bottom"}: 6px; padding-left: 9px; padding-right: 9px;`;
+				const $wrpControls = $(`<div class="split"/>`).appendTo($(`<td colspan="6" style="${tdStlye}"/>`).appendTo($(`<tr/>`).appendTo(BookUtil.renderArea)));
+				if (chapter > 0) $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-chevron-left"></span>Previous</button>`).click(() => goToPage(chapter - 1)).appendTo($wrpControls);
+				else $wrpControls.append(`<div/>`);
+
+				if (!isTop) $(`<button class="btn btn-xs btn-default">Back to Top</button>`).click(() => MiscUtil.scrollPageTop()).appendTo($wrpControls);
+
+				if (chapter < data.length - 1) $(`<button class="btn btn-xs btn-default">Next<span class="glyphicon glyphicon-chevron-right"></span></button>`).click(() => goToPage(chapter + 1)).appendTo($wrpControls);
+				else $wrpControls.append(`<div/>`);
+			};
+
 			BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
+			renderNavButtons(true);
 			const textStack = [];
 			BookUtil._renderer.setFirstSection(true);
+			BookUtil._renderer.resetHeaderIndex();
 			BookUtil._renderer.recursiveEntryRender(data[chapter], textStack);
-			BookUtil.renderArea.append(`<tr class='text'><td colspan='6'>${textStack.join("")}</td></tr>`);
+			BookUtil.renderArea.append(`<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>`);
+			renderNavButtons();
+
 			BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
 			if (scrollTo) {
@@ -222,6 +250,17 @@ const BookUtil = {
 		}
 	},
 
+	initLinkGrabbers () {
+		$(`body`).on(`click`, `.entry-title-inner`, function () {
+			const $this = $(this);
+			const text = $this.text().replace(/\.$/, "");
+
+			const toCopy = [`${window.location.href.split("#")[0]}#${BookUtil.curRender.curAdvId}`, BookUtil.curRender.chapter, text, $this.parent().data("title-relative-index")];
+			copyText(toCopy.join(HASH_PART_SEP));
+			showCopiedEffect($this);
+		});
+	},
+
 	baseDataUrl: "",
 	bookIndex: [],
 	homebrewIndex: null,
@@ -255,7 +294,7 @@ const BookUtil = {
 		const fromIndex = BookUtil.bookIndex.find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
 		if (fromIndex && !fromIndex.uniqueId) handleFound(fromIndex);
 		else if (fromIndex && fromIndex.uniqueId) { // it's homebrew
-			BrewUtil.pAddBrewData()
+			BrewUtil.pAddBrewData() // to load existing data
 				.then((brew) => {
 					if (!brew[BookUtil.homebrewData]) handleNotFound();
 					const bookData = (brew[BookUtil.homebrewData] || []).find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
@@ -269,7 +308,7 @@ const BookUtil = {
 		} else handleNotFound();
 	},
 
-	_renderer: new EntryRenderer(),
+	_renderer: new EntryRenderer().setEnumerateTitlesRel(true),
 	loadBook: (fromIndex, bookId, hashParts, homebrewData) => {
 		function doPopulate (data) {
 			const allContents = $(`.contents-item`);
@@ -305,7 +344,7 @@ const BookUtil = {
 		BookUtil._$body.off("keypress");
 		BookUtil._$body.on("keypress", (e) => {
 			if ((e.key === "f" && noModifierKeys(e))) {
-				if (e.target.nodeName === "INPUT" || e.target.nodeName === "TEXTAREA") return;
+				if (MiscUtil.isInInput(e)) return;
 				$(`span.temp`).contents().unwrap();
 				BookUtil._lastHighlight = null;
 				if (BookUtil._$findAll) BookUtil._$findAll.remove();

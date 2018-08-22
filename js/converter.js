@@ -56,6 +56,11 @@ String.prototype.indexOf_handleColon = String.prototype.indexOf_handleColon ||
 
 // Tries to parse immunities, resistances, and vulnerabilities
 function tryParseSpecialDamage (strDamage, damageType) {
+	// handle the case where a comma is mistakenly used instead of a semicolon
+	if (strDamage.toLowerCase().includes(", bludgeoning, piercing, and slashing from")) {
+		strDamage = strDamage.replace(/, (bludgeoning, piercing, and slashing from)/gi, "; $1")
+	}
+
 	const splSemi = strDamage.toLowerCase().split(";");
 	const newDamage = [];
 	try {
@@ -82,11 +87,32 @@ function tryParseSpecialDamage (strDamage, damageType) {
 	}
 }
 
-function tryParseSpellcasting (trait) {
+function tryParseSpellcasting (trait, isMarkdown) {
 	let spellcasting = [];
 
 	function parseSpellcasting (trait) {
 		const splitter = new RegExp(/,\s?(?![^(]*\))/, "g"); // split on commas not within parentheses
+
+		function getParsedSpells (thisLine) {
+			let spellPart = thisLine.substring(thisLine.indexOf(": ") + 2).trim();
+			if (isMarkdown) {
+				const cleanPart = (part) => {
+					part = part.trim();
+					while (part.startsWith("*") && part.endsWith("*")) {
+						part = part.replace(/^\*(.*)\*$/, "$1");
+					}
+					return part;
+				};
+
+				const cleanedInner = spellPart.split(splitter).map(it => cleanPart(it)).filter(it => it);
+				spellPart = cleanedInner.join(", ");
+
+				while (spellPart.startsWith("*") && spellPart.endsWith("*")) {
+					spellPart = spellPart.replace(/^\*(.*)\*$/, "$1");
+				}
+			}
+			return spellPart.split(splitter).map(i => parseSpell(i));
+		}
 
 		let name = trait.name;
 		let spellcastingEntry = {"name": name, "headerEntries": [parseToHit(trait.entries[0])]};
@@ -96,36 +122,36 @@ function tryParseSpellcasting (trait) {
 			if (thisLine.includes("/rest")) {
 				doneHeader = true;
 				let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
-				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(splitter).map(i => parseSpell(i));
+				const value = getParsedSpells(thisLine);
 				if (!spellcastingEntry.rest) spellcastingEntry.rest = {};
 				spellcastingEntry.rest[property] = value;
 			} else if (thisLine.includes("/day")) {
 				doneHeader = true;
 				let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
-				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(splitter).map(i => parseSpell(i));
+				const value = getParsedSpells(thisLine);
 				if (!spellcastingEntry.daily) spellcastingEntry.daily = {};
 				spellcastingEntry.daily[property] = value;
 			} else if (thisLine.includes("/week")) {
 				doneHeader = true;
 				let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
-				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(splitter).map(i => parseSpell(i));
+				const value = getParsedSpells(thisLine);
 				if (!spellcastingEntry.weekly) spellcastingEntry.weekly = {};
 				spellcastingEntry.weekly[property] = value;
 			} else if (thisLine.startsWith("Constant: ")) {
 				doneHeader = true;
-				spellcastingEntry.constant = thisLine.substring(9).split(splitter).map(i => parseSpell(i));
+				spellcastingEntry.constant = getParsedSpells(thisLine);
 			} else if (thisLine.startsWith("At will: ")) {
 				doneHeader = true;
-				spellcastingEntry.will = thisLine.substring(9).split(splitter).map(i => parseSpell(i));
+				spellcastingEntry.will = getParsedSpells(thisLine);
 			} else if (thisLine.includes("Cantrip")) {
 				doneHeader = true;
-				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(splitter).map(i => parseSpell(i));
+				const value = getParsedSpells(thisLine);
 				if (!spellcastingEntry.spells) spellcastingEntry.spells = {"0": {"spells": []}};
 				spellcastingEntry.spells["0"].spells = value;
 			} else if (thisLine.includes(" level") && thisLine.includes(": ")) {
 				doneHeader = true;
 				let property = thisLine.substr(0, 1);
-				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(splitter).map(i => parseSpell(i));
+				const value = getParsedSpells(thisLine);
 				if (!spellcastingEntry.spells) spellcastingEntry.spells = {};
 				let slots = thisLine.includes(" slot") ? parseInt(thisLine.substr(11, 1)) : 0;
 				spellcastingEntry.spells[property] = {"slots": slots, "spells": value};
@@ -138,6 +164,14 @@ function tryParseSpellcasting (trait) {
 				}
 			}
 		}
+
+		if (spellcastingEntry.headerEntries) {
+			const m = /charisma|intelligence|wisdom|constitution/gi.exec(JSON.stringify(spellcastingEntry.headerEntries));
+			if (m) {
+				spellcastingEntry.ability = m[0].substring(0, 3).toLowerCase();
+			}
+		}
+
 		spellcasting.push(spellcastingEntry);
 	}
 
@@ -231,6 +265,9 @@ const COOKIE_NAME_MODE = "converterMode";
 function loadparser (data) {
 	let hasAppended = false;
 
+	const $iptPage = $(`#page_in`);
+	const getPage = () => Number($iptPage.val() || 0);
+
 	// custom sources
 	const $srcSel = $(`#source`);
 	Object.keys(data).forEach(src => appendSource($srcSel, src));
@@ -257,6 +294,22 @@ function loadparser (data) {
 			$srcSel.val(toAdd);
 			$inptCustomSource.val("");
 		}
+	});
+
+	$(`#download`).on("click", () => {
+		const output = $(`#jsonoutput`).val();
+		if (output && output.trim()) {
+			const out = {
+				monster: JSON.parse(`[${output}]`)
+			};
+			DataUtil.userDownload(`converter-output.json`, out);
+		} else {
+			alert("Nothing to download!");
+		}
+	});
+
+	$(`#editable`).click(() => {
+		if (confirm(`Edits will be overwritten as you parse new statblocks. Enable anyway?`)) $(`#jsonoutput`).attr("readonly", false);
 	});
 
 	// init editor
@@ -308,9 +361,7 @@ function loadparser (data) {
 	}
 
 	function getCleanName (line) {
-		return line.toLowerCase().replace(/\b\w/g, function (l) {
-			return l.toUpperCase()
-		});
+		return $(`#titlecase`).prop("checked") ? line.toLowerCase().toTitleCase() : line;
 	}
 
 	function setCleanSizeTypeAlignment (stats, line) {
@@ -457,10 +508,17 @@ function loadparser (data) {
 	}
 
 	function setCleanSenses (stats, line) {
-		stats.senses = line.toLowerCase().split_handleColon("senses")[1].split("passive perception")[0].trim();
-		if (!stats.senses.indexOf("passive perception")) stats.senses = "";
-		if (stats.senses[stats.senses.length - 1] === ",") stats.senses = stats.senses.substring(0, stats.senses.length - 1);
-		stats.passive = tryConvertNumber(line.toLowerCase().split("passive perception")[1].trim());
+		const senses = line.toLowerCase().split_handleColon("senses")[1].trim();
+		const tempSenses = [];
+		senses.split(",").forEach(s => {
+			s = s.trim();
+			if (s) {
+				if (s.includes("passive perception")) stats.passive = tryConvertNumber(s.split("passive perception")[1].trim());
+				else tempSenses.push(s.trim());
+			}
+		});
+		if (tempSenses.length) stats.senses = tempSenses.join(", ");
+		else delete stats.senses;
 	}
 
 	function setCleanLanguages (stats, line) {
@@ -508,7 +566,7 @@ function loadparser (data) {
 		const stats = {};
 		stats.source = $srcSel.val();
 		// for the user to fill out
-		stats.page = 0;
+		stats.page = getPage();
 
 		let prevLine = null;
 		let curLine = null;
@@ -766,10 +824,10 @@ function loadparser (data) {
 		const $outArea = $("textarea#jsonoutput");
 		if (append) {
 			const oldVal = $outArea.text();
-			$outArea.text(`${out},\n${oldVal}`);
+			$outArea.val(`${out},\n${oldVal}`);
 			hasAppended = true;
 		} else {
-			$outArea.text(out);
+			$outArea.val(out);
 			hasAppended = false;
 		}
 	}
@@ -808,7 +866,7 @@ function loadparser (data) {
 		function getNewStatblock () {
 			return {
 				source: $srcSel.val(),
-				page: 0
+				page: getPage()
 			}
 		}
 
@@ -857,7 +915,7 @@ function loadparser (data) {
 
 				// convert spellcasting
 				if (trait.name.toLowerCase().includes("spellcasting")) {
-					trait = tryParseSpellcasting(trait);
+					trait = tryParseSpellcasting(trait, true);
 					if (trait.success) {
 						// merge in e.g. innate spellcasting
 						if (stats.spellcasting) stats.spellcasting = stats.spellcasting.concat(trait.out);
@@ -900,11 +958,16 @@ function loadparser (data) {
 			trait = null;
 		}
 
+		function getCleanedRaw (str) {
+			return str.trim()
+				.replace(/<br\s*(\/)?>/gi, ""); // remove <br>
+		}
+
 		let i = 0;
 		for (; i < toConvert.length; i++) {
 			prevLine = curLine;
-			curLineRaw = toConvert[i].trim();
-			curLine = toConvert[i].trim();
+			curLineRaw = getCleanedRaw(toConvert[i]);
+			curLine = curLineRaw;
 
 			if (curLine === "" || curLine.toLowerCase() === "\\pagebreak" || curLine.toLowerCase() === "\\columnbreak") {
 				prevBlank = true;

@@ -53,6 +53,7 @@ function onJsonLoad (data) {
 	addTrapsHazards(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -67,6 +68,7 @@ function onJsonLoad (data) {
 function handleBrew (homebrew) {
 	addTrapsHazards({trap: homebrew.trap});
 	addTrapsHazards({hazard: homebrew.hazard});
+	return Promise.resolve();
 }
 
 let trapsAndHazardsList = [];

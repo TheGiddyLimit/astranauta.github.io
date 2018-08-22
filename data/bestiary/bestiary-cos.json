@@ -124,7 +124,8 @@
 								"{@spell power word stun}"
 							]
 						}
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"trait": [
@@ -151,7 +152,7 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"Melee Weapon Attack: {@hit 8} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) bludgeoning damage, or 8 ({@dice 1d8+4}) bludgeoning damage if wielded with two hands."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) bludgeoning damage, or 8 ({@dice 1d8+4}) bludgeoning damage if wielded with two hands."
 					]
 				},
 				{
@@ -232,7 +233,7 @@
 				{
 					"name": "Antimagic Susceptibility",
 					"entries": [
-						"The hut is incapacitated while the magic gem that animates it is in the area of an antimagic field. If targeted by dispel magic, the hut must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute."
+						"The hut is {@condition incapacitated} while the magic gem that animates it is in the area of an antimagic field. If targeted by dispel magic, the hut must succeed on a Constitution saving throw against the caster's spell save DC or fall {@condition unconscious} for 1 minute."
 					]
 				},
 				{
@@ -252,13 +253,13 @@
 				{
 					"name": "Root",
 					"entries": [
-						"Melee Weapon Attack: {@hit 12} to hit, reach 60 ft., one target. Hit: 30 ({@dice 4d10+8}) bludgeoning damage."
+						"{@atk mw} {@hit 12} to hit, reach 60 ft., one target. Hit: 30 ({@dice 4d10+8}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Rock",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 12} to hit, range 120 ft., one target. Hit: 21 ({@dice 3d8+8}) bludgeoning damage."
+						"{@atk rw} {@hit 12} to hit, range 120 ft., one target. Hit: 21 ({@dice 3d8+8}) bludgeoning damage."
 					]
 				}
 			],
@@ -338,20 +339,21 @@
 								"{@spell invisibility}"
 							]
 						}
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"action": [
 				{
 					"name": "Claws (Requires Alter Self)",
 					"entries": [
-						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage. This attack is magical."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage. This attack is magical."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Weapon Attack: {@hit 2} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage."
+						"{@atk mw,rw} {@hit 2} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage."
 					]
 				}
 			],
@@ -420,7 +422,7 @@
 				{
 					"name": "Antimagic Susceptibility",
 					"entries": [
-						"The broom is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the broom must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute."
+						"The broom is {@condition incapacitated} while in the area of an antimagic field. If targeted by dispel magic, the broom must succeed on a Constitution saving throw against the caster's spell save DC or fall {@condition unconscious} for 1 minute."
 					]
 				},
 				{
@@ -440,7 +442,7 @@
 				{
 					"name": "Broomstick",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d4+3}) bludgeoning damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d4+3}) bludgeoning damage."
 					]
 				}
 			],
@@ -560,7 +562,8 @@
 								"{@spell greater invisibility}"
 							]
 						}
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"trait": [
@@ -581,19 +584,19 @@
 				{
 					"name": "Rapier +1",
 					"entries": [
-						"Melee Weapon Attack: {@hit 8} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d8+5}) piercing damage."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d8+5}) piercing damage."
 					]
 				},
 				{
 					"name": "Handaxe +1",
 					"entries": [
-						"Melee or Ranged Weapon Attack: {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
+						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
 					]
 				},
 				{
 					"name": "Silvered Shortsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
 					]
 				},
 				{
@@ -605,7 +608,7 @@
 				{
 					"name": "Evil Eye (Recharges after a Short or Long Rest)",
 					"entries": [
-						"Ezmerelda targets one creature that she can see within 10 feet of her and casts one of the following spells on the target (save DC 14), requiring neither somatic nor material components to do so: animal friendship, charm person, or hold person. If the target succeeds on the initial saving throw, Ezmerelda is blinded until the end of her next turn. Once a target succeeds on a saving throw against this effect, it is immune to the Evil Eye power of all Vistani for 24 hours."
+						"Ezmerelda targets one creature that she can see within 10 feet of her and casts one of the following spells on the target (save DC 14), requiring neither somatic nor material components to do so: animal friendship, charm person, or hold person. If the target succeeds on the initial saving throw, Ezmerelda is {@condition blinded} until the end of her next turn. Once a target succeeds on a saving throw against this effect, it is immune to the Evil Eye power of all Vistani for 24 hours."
 					]
 				}
 			],
@@ -674,7 +677,8 @@
 							"{@spell hypnotic pattern}",
 							"{@spell telekinesis}"
 						]
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"trait": [
@@ -688,7 +692,7 @@
 				{
 					"name": "Antimagic Susceptibility",
 					"entries": [
-						"The portrait is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the portrait must succeed on a Constitution saving throw against the caster's spell save DC or become unconscious for 1 minute."
+						"The portrait is {@condition incapacitated} while in the area of an antimagic field. If targeted by dispel magic, the portrait must succeed on a Constitution saving throw against the caster's spell save DC or become {@condition unconscious} for 1 minute."
 					]
 				},
 				{
@@ -765,13 +769,13 @@
 				{
 					"name": "Battleaxe",
 					"entries": [
-						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) slashing damage, or 15 ({@dice 2d10+4}) when used with two hands."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) slashing damage, or 15 ({@dice 2d10+4}) when used with two hands."
 					]
 				},
 				{
 					"name": "Hurl Flame",
 					"entries": [
-						"Ranged Spell Attack: {@hit 5} to hit, range 60 ft., one target. Hit: 10 ({@dice 3d6}) fire damage. If the target is a flammable object that isn't being worn or carried, it catches fire."
+						"{@atk rs} {@hit 5} to hit, range 60 ft., one target. Hit: 10 ({@dice 3d6}) fire damage. If the target is a flammable object that isn't being worn or carried, it catches fire."
 					]
 				}
 			],
@@ -904,26 +908,27 @@
 								"{@spell earthquake}"
 							]
 						}
-					}
+					},
+					"ability": "wis"
 				}
 			],
 			"action": [
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage."
 					]
 				},
 				{
 					"name": "Curse (Recharges after a Long Rest)",
 					"entries": [
-						"Madam Eva targets one creature that she can see within 30 feet of her. The target must succeed on a DC 17 Wisdom saving throw or be cursed. While cursed, the target is blinded and deafened. The curse lasts until ended with a greater restoration spell, a remove curse spell, or similar magic. When the curse ends, Madam Eva takes {@dice 5d6} psychic damage."
+						"Madam Eva targets one creature that she can see within 30 feet of her. The target must succeed on a DC 17 Wisdom saving throw or be cursed. While cursed, the target is {@condition blinded} and {@condition deafened}. The curse lasts until ended with a greater restoration spell, a remove curse spell, or similar magic. When the curse ends, Madam Eva takes {@dice 5d6} psychic damage."
 					]
 				},
 				{
 					"name": "Evil Eye (Recharges after a Short or Long Rest)",
 					"entries": [
-						"Madam Eva targets one creature that she can see within 10 feet of her and casts one of the following spells on the target (save DC 17), requiring neither somatic nor material components to do so: {@spell animal friendship}, {@spell charm person}, or {@spell hold person}. If the target succeeds on the initial saving throw, Madam Eva is blinded until the end of her next turn. Once a target succeeds on a saving throw against this effect, it is immune to the Evil Eye power of all Vistani for 24 hours."
+						"Madam Eva targets one creature that she can see within 10 feet of her and casts one of the following spells on the target (save DC 17), requiring neither somatic nor material components to do so: {@spell animal friendship}, {@spell charm person}, or {@spell hold person}. If the target succeeds on the initial saving throw, Madam Eva is {@condition blinded} until the end of her next turn. Once a target succeeds on a saving throw against this effect, it is immune to the Evil Eye power of all Vistani for 24 hours."
 					]
 				}
 			],
@@ -975,14 +980,14 @@
 				{
 					"name": "Extraordinary Feature",
 					"entries": [
-						"The mongrelfolk has one of the following extraordinary features, determined randomly by rolling a d20 or chosen by the DM:",
+						"The mongrelfolk has one of the following extraordinary features, determined randomly by rolling a {@dice d20} or chosen by the DM:",
 						"1\u20133: Amphibious. The mongrelfolk can breathe air and water.",
 						"4\u20139: Darkvision. The mongrelfolk has darkvision out to a range of 60 feet.",
 						"10: Flight. The mongrelfolk has leathery wings and a flying speed of 40 feet.",
 						"11\u201315: Keen Hearing and Smell. The mongrelfolk has advantage on Wisdom (Perception) checks that rely on hearing or smell.",
 						"16\u201317: Spider Climb. The mongrelfolk can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check.",
 						"18\u201319: Standing Leap. The mongrelfolk's long jump is up to 20 feet and its high jump up to 10 feet, with or without a running start.",
-						"20: Two-Headed. The mongrelfolk has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, or knocked unconscious."
+						"20: Two-Headed. The mongrelfolk has advantage on Wisdom (Perception) checks and on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, or knocked {@condition unconscious}."
 					]
 				},
 				{
@@ -1002,19 +1007,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) slashing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) slashing damage."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Weapon Attack: {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
+						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
 					]
 				}
 			],
@@ -1111,7 +1116,7 @@
 				{
 					"name": "Spectral Longsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) force damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) force damage."
 					]
 				},
 				{
@@ -1186,13 +1191,13 @@
 				{
 					"name": "Club",
 					"entries": [
-						"Melee Weapon Attack: {@hit 2} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) bludgeoning damage."
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Dart",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 4} to hit, range 20/60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
+						"{@atk rw} {@hit 4} to hit, range 20/60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
 					]
 				}
 			],
@@ -1267,7 +1272,8 @@
 							"{@spell misty step}",
 							"{@spell phantom steed}"
 						]
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"trait": [
@@ -1280,7 +1286,7 @@
 				{
 					"name": "Fey Ancestry",
 					"entries": [
-						"Rahadin has advantage on saving throws against being charmed, and magic can't put him to sleep."
+						"Rahadin has advantage on saving throws against being {@condition charmed}, and magic can't put him to sleep."
 					]
 				},
 				{
@@ -1294,19 +1300,19 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"Rahadin attacks three times with his scimitar, or twice with his poisoned darts."
+						"Rahadin attacks three times with his scimitar, or twice with his {@condition poisoned} darts."
 					]
 				},
 				{
 					"name": "Scimitar",
 					"entries": [
-						"Melee Weapon Attack: {@hit 10} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d6+6}) slashing damage."
+						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d6+6}) slashing damage."
 					]
 				},
 				{
 					"name": "Poisoned Dart",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 10} to hit, range 20/60 ft., one target. Hit: 8 ({@dice 1d4+6}) piercing damage plus 5 ({@dice 2d4}) poison damage."
+						"{@atk rw} {@hit 10} to hit, range 20/60 ft., one target. Hit: 8 ({@dice 1d4+6}) piercing damage plus 5 ({@dice 2d4}) poison damage."
 					]
 				}
 			],
@@ -1422,7 +1428,8 @@
 								"{@spell dispel evil and good}"
 							]
 						}
-					}
+					},
+					"ability": "wis"
 				}
 			],
 			"trait": [
@@ -1449,7 +1456,7 @@
 				{
 					"name": "Sword Cane",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage (wooden cane) or piercing damage (silvered sword)."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage (wooden cane) or piercing damage (silvered sword)."
 					]
 				}
 			],
@@ -1572,7 +1579,8 @@
 								"{@spell scrying}"
 							]
 						}
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"trait": [
@@ -1630,19 +1638,19 @@
 				{
 					"name": "Unarmed Strike (Vampire Form Only)",
 					"entries": [
-						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage, plus 14 ({@dice 4d6}) necrotic damage. If the target is a creature, Strahd can grapple it (escape DC 18) instead of dealing the bludgeoning damage."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage, plus 14 ({@dice 4d6}) necrotic damage. If the target is a creature, Strahd can grapple it (escape DC 18) instead of dealing the bludgeoning damage."
 					]
 				},
 				{
 					"name": "Bite (Bat or Vampire Form Only)",
 					"entries": [
-						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by Strahd, {@condition incapacitated}, or {@condition restrained}. Hit: 7 ({@dice 1d6+4}) piercing damage plus 10 ({@dice 3d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and Strahd regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0. A humanoid slain in this way and then buried in the ground rises the following night as a {@creature vampire spawn} under Strahd's control."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by Strahd, {@condition incapacitated}, or {@condition restrained}. Hit: 7 ({@dice 1d6+4}) piercing damage plus 10 ({@dice 3d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and Strahd regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0. A humanoid slain in this way and then buried in the ground rises the following night as a {@creature vampire spawn} under Strahd's control."
 					]
 				},
 				{
 					"name": "Charm",
 					"entries": [
-						"Strahd targets one humanoid he can see within 30 feet of him. If the target can see Strahd, the target must succeed on a DC 17 Wisdom saving throw against this magic or be {@condition charmed}. The charmed target regards Strahd as a trusted friend to be heeded and protected. The target isn't under Strahd's control, but it takes Strahd's requests and actions in the most favorable way and lets Strahd bite it.",
+						"Strahd targets one humanoid he can see within 30 feet of him. If the target can see Strahd, the target must succeed on a DC 17 Wisdom saving throw against this magic or be {@condition charmed}. The {@condition charmed} target regards Strahd as a trusted friend to be heeded and protected. The target isn't under Strahd's control, but it takes Strahd's requests and actions in the most favorable way and lets Strahd bite it.",
 						"Each time Strahd or his companions do anything harmful to the target, it can repeat the saving throw, ending the effect on itself on a success. Otherwise, the effect lasts 24 hours or until Strahd is destroyed, is on a different plane of existence than the target, or takes a bonus action to end the effect."
 					]
 				},
@@ -1725,15 +1733,15 @@
 				{
 					"name": "Loathsome Limbs",
 					"entries": [
-						"Whenever the zombie takes at least 5 bludgeoning or slashing damage at one time, roll a d20 to determine what else happens to it:",
+						"Whenever the zombie takes at least 5 bludgeoning or slashing damage at one time, roll a {@dice d20} to determine what else happens to it:",
 						"1\u20138: One leg is severed from the zombie if it has any legs left.",
 						"9\u201316: One arm is severed from the zombie if it has any arms left.",
 						"17\u201320: The zombie is decapitated.",
 						"If the zombie is reduced to 0 hit points, all parts of it die. Until then, a severed part acts on the zombie's initiative and has its own action and movement. A severed part has AC 8. Any damage it takes is subtracted from the zombie's hit points.",
 						"A severed leg is unable to attack and has a speed of 5 feet.",
 						"A severed arm has a speed of 5 feet and can make one claw attack on its turn, with disadvantage on the attack roll. Each time the zombie loses an arm, it loses a claw attack.",
-						"If its head is severed, the zombie loses its bite attack and its body is blinded unless the head can see it. The severed head has a speed of 0 feet. It can make a bite attack, but only against a target in its space.",
-						"The zombie's speed is halved if it's missing a leg. If it loses both legs, it falls prone. If it has both arms, it can crawl. With only one arm, it can still crawl, but its speed is halved. With no arms or legs, its speed is 0 feet, and it can't benefit from bonuses to speed."
+						"If its head is severed, the zombie loses its bite attack and its body is {@condition blinded} unless the head can see it. The severed head has a speed of 0 feet. It can make a bite attack, but only against a target in its space.",
+						"The zombie's speed is halved if it's missing a leg. If it loses both legs, it falls {@condition prone}. If it has both arms, it can crawl. With only one arm, it can still crawl, but its speed is halved. With no arms or legs, its speed is 0 feet, and it can't benefit from bonuses to speed."
 					]
 				}
 			],
@@ -1747,13 +1755,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage."
 					]
 				}
 			],
@@ -1828,7 +1836,7 @@
 				{
 					"name": "Antimagic Susceptibility",
 					"entries": [
-						"The armor is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the armor must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute."
+						"The armor is {@condition incapacitated} while in the area of an antimagic field. If targeted by dispel magic, the armor must succeed on a Constitution saving throw against the caster's spell save DC or fall {@condition unconscious} for 1 minute."
 					]
 				},
 				{
@@ -1848,13 +1856,13 @@
 				{
 					"name": "Greatsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) slashing damage plus 3 ({@dice 1d6}) lightning damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) slashing damage plus 3 ({@dice 1d6}) lightning damage."
 					]
 				},
 				{
 					"name": "Shocking Bolt",
 					"entries": [
-						"Ranged Spell Attack: {@hit 4} to hit (with advantage on the attack roll if the target is wearing armor made of metal), range 60 ft., one target. Hit: 10 ({@dice 3d6}) lightning damage."
+						"{@atk rs} {@hit 4} to hit (with advantage on the attack roll if the target is wearing armor made of metal), range 60 ft., one target. Hit: 10 ({@dice 3d6}) lightning damage."
 					]
 				}
 			],
@@ -1923,25 +1931,25 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"The blight makes four attacks: two with its branches and two with its grasping roots. If it has a target grappled, the blight can also make a bite attack against that target as a bonus action."
+						"The blight makes four attacks: two with its branches and two with its grasping roots. If it has a target {@condition grappled}, the blight can also make a bite attack against that target as a bonus action."
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one target. Hit: 19 ({@dice 3d8+6}) piercing damage."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 19 ({@dice 3d8+6}) piercing damage."
 					]
 				},
 				{
 					"name": "Branch",
 					"entries": [
-						"Melee Weapon Attack: {@hit 9} to hit, reach 15 ft., one target. Hit: 16 ({@dice 3d6+6}) bludgeoning damage."
+						"{@atk mw} {@hit 9} to hit, reach 15 ft., one target. Hit: 16 ({@dice 3d6+6}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Grasping Root",
 					"entries": [
-						"Melee Weapon Attack: {@hit 9} to hit, reach 15 ft., one creature not grappled by the blight. Hit: The target is grappled (escape DC 15). Until the grapple ends, the target takes 9 ({@dice 1d6+6}) bludgeoning damage at the start of each of its turns. The root has AC 15 and can be severed by dealing 6 slashing damage or more to it at once. Cutting the root doesn't hurt the blight, but ends the grapple."
+						"{@atk mw} {@hit 9} to hit, reach 15 ft., one creature not {@condition grappled} by the blight. Hit: The target is {@condition grappled} (escape DC 15). Until the grapple ends, the target takes 9 ({@dice 1d6+6}) bludgeoning damage at the start of each of its turns. The root has AC 15 and can be severed by dealing 6 slashing damage or more to it at once. Cutting the root doesn't hurt the blight, but ends the grapple."
 					]
 				}
 			],
@@ -2052,19 +2060,19 @@
 				{
 					"name": "Fist",
 					"entries": [
-						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage. Strahd, the target of Vladimir's sworn vengeance, takes an extra 14 ({@dice 4d6}) bludgeoning damage. Instead of dealing damage, Vladimir can grapple the target (escape DC 14) provided the target is Large or smaller."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage. Strahd, the target of Vladimir's sworn vengeance, takes an extra 14 ({@dice 4d6}) bludgeoning damage. Instead of dealing damage, Vladimir can grapple the target (escape DC 14) provided the target is Large or smaller."
 					]
 				},
 				{
 					"name": "Greatsword +2",
 					"entries": [
-						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one target. Hit: 20 ({@dice 4d6+4}) slashing damage. Against Strahd, Vladimir deals an extra 14 ({@dice 4d6}) slashing damage with this weapon."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 20 ({@dice 4d6+4}) slashing damage. Against Strahd, Vladimir deals an extra 14 ({@dice 4d6}) slashing damage with this weapon."
 					]
 				},
 				{
 					"name": "Vengeful Glare",
 					"entries": [
-						"Vladimir can target Strahd within 30 feet provided he can see Strahd. Strahd must make a DC 15 Wisdom saving throw. One a failure, Strahd is paralyzed until Vladimir deals damage to him, or until the end of Vladimir's next turn. When the paralysis ends, Strahd is frightened of Vladimir for 1 minute. Strahd can repeat the saving throw at the end of each of his turns, with disadvantage if he can see Vladimir, ending the frightened condition on itself on a success."
+						"Vladimir can target Strahd within 30 feet provided he can see Strahd. Strahd must make a DC 15 Wisdom saving throw. One a failure, Strahd is {@condition paralyzed} until Vladimir deals damage to him, or until the end of Vladimir's next turn. When the paralysis ends, Strahd is {@condition frightened} of Vladimir for 1 minute. Strahd can repeat the saving throw at the end of each of his turns, with disadvantage if he can see Vladimir, ending the {@condition frightened} condition on itself on a success."
 					]
 				}
 			],
@@ -2154,19 +2162,19 @@
 				{
 					"name": "Beak (Raven or Hybrid Form Only)",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 1 piercing damage in raven form, or 4 ({@dice 1d4+2}) piercing damage in hybrid form. If the target is humanoid, it must succeed on a DC 10 Constitution saving throw or be cursed with wereraven lycanthropy."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 1 piercing damage in raven form, or 4 ({@dice 1d4+2}) piercing damage in hybrid form. If the target is humanoid, it must succeed on a DC 10 Constitution saving throw or be cursed with wereraven lycanthropy."
 					]
 				},
 				{
 					"name": "Shortsword (Human or Hybrid Form Only)",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Hand Crossbow (Human or Hybrid Form Only)",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 4} to hit, range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],

@@ -56,7 +56,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage."
 					]
 				}
 			],
@@ -135,14 +135,15 @@
 								"{@spell misty step}"
 							]
 						}
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"action": [
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"Melee Weapon Attack: {@hit 1} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d8-1}) bludgeoning damage."
+						"{@atk mw} {@hit 1} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d8-1}) bludgeoning damage."
 					]
 				}
 			],
@@ -225,7 +226,7 @@
 				{
 					"name": "Life Drain",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one creature. Hit: 16 ({@dice 3d8+3}) necrotic damage, and the target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. If this attack reduces the target's hit point maximum to 0, the target dies. This reduction to the target's hit point maximum lasts until the target finishes a long rest."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. Hit: 16 ({@dice 3d8+3}) necrotic damage, and the target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. If this attack reduces the target's hit point maximum to 0, the target dies. This reduction to the target's hit point maximum lasts until the target finishes a long rest."
 					]
 				}
 			],
@@ -294,7 +295,7 @@
 				{
 					"name": "Fey Ancestry",
 					"entries": [
-						"Nezznar has advantage on saving throws against being charmed, and magic can't put him to sleep."
+						"Nezznar has advantage on saving throws against being {@condition charmed}, and magic can't put him to sleep."
 					]
 				},
 				{
@@ -348,14 +349,15 @@
 								"{@spell suggestion}"
 							]
 						}
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"action": [
 				{
 					"name": "Spider Staff",
 					"entries": [
-						"Melee Weapon Attack: {@hit 1} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d6-1}) bludgeoning damage plus 3 ({@dice 1d6}) poison damage."
+						"{@atk mw} {@hit 1} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d6-1}) bludgeoning damage plus 3 ({@dice 1d6}) poison damage."
 					]
 				}
 			],
@@ -416,7 +418,7 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],
@@ -481,13 +483,13 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d8+1}) slashing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d8+1}) slashing damage."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 2} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
+						"{@atk rw} {@hit 2} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
 					]
 				}
 			],

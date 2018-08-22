@@ -2,7 +2,7 @@ const fs = require('fs');
 const ut = require('../js/utils.js');
 const utS = require("../node/util-search-index");
 
-const re = /{@(spell|item|class|creature|condition|disease|background|race|invocation|feat|reward|psionic|object|cult|boon|trap|hazard) (.*?)(\|(.*?))?(\|.*?)?}/g;
+const re = /{@(spell|item|class|creature|condition|disease|background|race|invocation|feat|reward|psionic|object|cult|boon|trap|hazard|deity|variantrule) (.*?)(\|(.*?))?(\|(.*?))?(\|.*?)?}/g;
 let msg = ``;
 
 const TAG_TO_PAGE = {
@@ -22,7 +22,9 @@ const TAG_TO_PAGE = {
 	"cult": UrlUtil.PG_CULTS_BOONS,
 	"boon": UrlUtil.PG_CULTS_BOONS,
 	"trap": UrlUtil.PG_TRAPS_HAZARDS,
-	"hazard": UrlUtil.PG_TRAPS_HAZARDS
+	"hazard": UrlUtil.PG_TRAPS_HAZARDS,
+	"deity": UrlUtil.PG_DEITIES,
+	"variantrule": UrlUtil.PG_VARIATNRULES
 };
 
 const TAG_TO_DEFAULT_SOURCE = {
@@ -42,7 +44,9 @@ const TAG_TO_DEFAULT_SOURCE = {
 	"cult": "mtf",
 	"boon": "mtf",
 	"trap": "dmg",
-	"hazard": "dmg"
+	"hazard": "dmg",
+	"deity": "phb",
+	"variantrule": "dmg"
 };
 
 function recursiveCheck (file) {
@@ -60,9 +64,17 @@ function checkFile (file) {
 	// eslint-disable-next-line no-cond-assign
 	while (match = re.exec(contents)) {
 		const tag = match[1];
-		const name = match[2];
-		const src = match[4] || TAG_TO_DEFAULT_SOURCE[tag];
-		const url = `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash([name, src])}`.toLowerCase().trim();
+		const toEncode = [match[2]];
+
+		if (tag === "deity") {
+			toEncode.push();
+			toEncode.push(match[4] || "forgotten realms");
+			toEncode.push(match[6] || TAG_TO_DEFAULT_SOURCE[tag]);
+		} else {
+			toEncode.push(match[4] || TAG_TO_DEFAULT_SOURCE[tag]);
+		}
+
+		const url = `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash(toEncode)}`.toLowerCase().trim();
 		if (!ALL_URLS.has(url)) {
 			// scan for a list of similar entries, to aid debugging
 			const similarUrls = [];

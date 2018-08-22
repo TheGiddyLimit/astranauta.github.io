@@ -1,0 +1,195 @@
+{
+	"monster": [
+		{
+			"source": "PSD",
+			"page": 15,
+			"name": "Homarid",
+			"size": "M",
+			"type": "monstrosity",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 44,
+				"formula": "8d8+8"
+			},
+			"speed": {
+				"walk": 20,
+				"swim": 30
+			},
+			"str": 13,
+			"dex": 8,
+			"con": 13,
+			"int": 9,
+			"wis": 14,
+			"cha": 10,
+			"skill": {
+				"perception": "+4",
+				"stealth": "+3"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": 14,
+			"languages": "Homarid",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"The homarid can breathe air and water."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The homarid makes two claw attacks."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d8+1}) slashing damage, and the target is {@condition grappled} (escape DC 11). The homarid has two claws, each of which can grapple only one target."
+					]
+				}
+			]
+		},
+		{
+			"source": "PSD",
+			"page": 24,
+			"name": "Kavu Predator",
+			"size": "L",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 75,
+				"formula": "10d10+20"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 18,
+			"dex": 12,
+			"con": 15,
+			"int": 6,
+			"wis": 14,
+			"cha": 8,
+			"skill": {
+				"perception": "+4",
+				"stealth": "+5"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": 14,
+			"languages": "understands Elvish",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Pounce",
+					"entries": [
+						"If the kavu moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the kavu can make one bite attack against it as a bonus action."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The kavu makes two claw attacks."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) slashing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "PSD",
+			"page": 24,
+			"name": "Steel Leaf Kavu",
+			"size": "L",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 142,
+				"formula": "15d10+60"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 20,
+			"dex": 12,
+			"con": 18,
+			"int": 6,
+			"wis": 14,
+			"cha": 8,
+			"skill": {
+				"perception": "+4"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": 14,
+			"languages": "understands Elvish",
+			"cr": "4",
+			"trait": [
+				{
+					"name": "Raking Charge",
+					"entries": [
+						"If the kavu moves at least 20 feet straight toward a creature and then hits it with a bite attack on the same turn, that target must succeed on a DC 15 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the kavu can make one rend attack against it as a bonus action."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 14 ({@dice 2d8+5}) piercing damage."
+					]
+				},
+				{
+					"name": "Rend",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one {@condition prone} creature. Hit: 23 ({@dice 4d8+5}) slashing damage."
+					]
+				}
+			]
+		}
+	]
+}

@@ -44,6 +44,7 @@ function onJsonLoad (data) {
 	BookUtil.baseDataUrl = "data/";
 	BookUtil.bookIndex = reference;
 	BookUtil.referenceId = "bookref-quick";
+	BookUtil.initLinkGrabbers();
 
 	window.onhashchange = BookUtil.booksHashChange;
 	if (window.location.hash.length) {

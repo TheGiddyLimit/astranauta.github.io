@@ -7,16 +7,19 @@ window.onload = function load () {
 	}, {}, true);
 };
 
-function rarityValue (rarity) { // Ordered by most frequently occurring rarities in the JSON
-	if (rarity === "Rare") return 3;
-	if (rarity === "None") return 0;
-	if (rarity === "Uncommon") return 2;
-	if (rarity === "Very Rare") return 4;
-	if (rarity === "Legendary") return 5;
-	if (rarity === "Artifact") return 6;
-	if (rarity === "Unknown") return 7;
-	if (rarity === "Common") return 1;
-	return 0;
+function rarityValue (rarity) {
+	switch (rarity) {
+		case "Rare": return 3;
+		case "None": return 0;
+		case "Uncommon": return 2;
+		case "Very Rare": return 4;
+		case "Legendary": return 5;
+		case "Artifact": return 6;
+		case "Unknown": return 8;
+		case "Other": return 7;
+		case "Common": return 1;
+		default: return 0;
+	}
 }
 
 function sortItems (a, b, o) {
@@ -71,7 +74,7 @@ let filterBox;
 function populateTablesAndFilters (data) {
 	const rarityFilter = new Filter({
 		header: "Rarity",
-		items: ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown"]
+		items: ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown", "Other"]
 	});
 	const attunementFilter = new Filter({header: "Attunement", items: ["Yes", "By...", "Optional", "No"]});
 	const categoryFilter = new Filter({
@@ -167,6 +170,7 @@ function populateTablesAndFilters (data) {
 	addItems(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -181,6 +185,7 @@ function handleBrew (homebrew) {
 	(homebrew.itemProperty || []).forEach(p => EntryRenderer.item._addProperty(p));
 	(homebrew.itemType || []).forEach(t => EntryRenderer.item._addType(t));
 	addItems(homebrew.item);
+	return Promise.resolve();
 }
 
 let itemList = [];
@@ -327,6 +332,7 @@ function getSublistItem (item, pinId, addCount) {
 				<span class="weight text-align-center col-xs-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>		
 				<span class="price text-align-center col-xs-2">${item.value || "\u2014"}</span>
 				<span class="count text-align-center col-xs-2">${addCount || 1}</span>		
+				<span class="cost hidden">${Parser.coinValueToNumber(item.value)}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
@@ -373,9 +379,9 @@ function loadhash (id) {
 
 	$content.find("td span#value").html(item.value ? item.value + (item.weight ? ", " : "") : "");
 	$content.find("td span#weight").html(item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") + (item.weightNote ? ` ${item.weightNote}` : "") : "");
-	$content.find("td span#rarity").html((item.tier ? ", " + item.tier : "") + (item.rarity && item.rarity !== "None" ? ", " + item.rarity : ""));
+	$content.find("td span#rarity").html((item.tier ? ", " + item.tier : "") + (item.rarity && EntryRenderer.item.doRenderRarity(item.rarity) ? ", " + item.rarity : ""));
 	$content.find("td span#attunement").html(item.reqAttune ? item.reqAttune : "");
-	$content.find("td span#type").html(item.typeText);
+	$content.find("td span#type").html(item.typeText === "Other" ? "" : item.typeText);
 
 	const [damage, damageType, propertiesTxt] = EntryRenderer.item.getDamageAndPropertiesText(item);
 	$content.find("span#damage").html(damage);

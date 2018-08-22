@@ -63,25 +63,25 @@
 				{
 					"name": "Burrowing Tooth",
 					"entries": [
-						"Melee Weapon Attack: {@hit 7} to hit, reach 10 ft., one creature. Hit: 16 ({@dice 3d8+3}) damage, and the target must make a DC 18 Constitution saving throw, or take an additional 4 ({@dice 1d8}) damage at the beginning of its turn each round. A target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"{@atk mw} {@hit 7} to hit, reach 10 ft., one creature. Hit: 16 ({@dice 3d8+3}) damage, and the target must make a DC 18 Constitution saving throw, or take an additional 4 ({@dice 1d8}) damage at the beginning of its turn each round. A target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				},
 				{
 					"name": "Hooked Claw",
 					"entries": [
-						"Melee Weapon Attack: {@hit 7} to hit, range 10 ft., one creature. Hit: 12 ({@dice 2d8+3}) damage, and the target must make a DC 18 Strength saving throw, or be grappled and pulled towards the spider shark. While the target is grappled, attacks against it have advantage."
+						"{@atk mw} {@hit 7} to hit, range 10 ft., one creature. Hit: 12 ({@dice 2d8+3}) damage, and the target must make a DC 18 Strength saving throw, or be {@condition grappled} and pulled towards the spider shark. While the target is {@condition grappled}, attacks against it have advantage."
 					]
 				},
 				{
 					"name": "Barbed Web Attack",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 7} to hit, range 90/90 ft., one creature. Hit: 18 ({@dice 3d10+2}) damage, and the target is retrained. As an action, the restrained creature can make a DC 18 Strength check, destroying from the webbing on a success. The effect ends if the webbing is destroyed. The webbing has AC 15; 25 hit points; is vulnerable to fire damage; and is immune to bludgeoning, poison, and psychic damage."
+						"{@atk rw} {@hit 7} to hit, range 90/90 ft., one creature. Hit: 18 ({@dice 3d10+2}) damage, and the target is retrained. As an action, the {@condition restrained} creature can make a DC 18 Strength check, destroying from the webbing on a success. The effect ends if the webbing is destroyed. The webbing has AC 15; 25 hit points; is vulnerable to fire damage; and is immune to bludgeoning, poison, and psychic damage."
 					]
 				},
 				{
-					"name": "Web Net (Recharge 5\u20136)",
+					"name": "Web Net {@recharge 5}",
 					"entries": [
-						"The spider shark launches webs at a 30-foot radius area within 90 feet. Each creature in that area must succeed on a DC 16 Dexterity save. On a failed save, the creature takes 18 ({@dice 3d10+2}) damage and is restrained by webbing. As an action, the restrained creature can make a DC 18 Strength check, destroying from the webbing on a success. The effect ends if the webbing is destroyed. The webbing has AC 15; 25 hit points; is vulnerable to fire damage; and is immune to bludgeoning, poison, and psychic damage."
+						"The spider shark launches webs at a 30-foot radius area within 90 feet. Each creature in that area must succeed on a DC 16 Dexterity save. On a failed save, the creature takes 18 ({@dice 3d10+2}) damage and is {@condition restrained} by webbing. As an action, the {@condition restrained} creature can make a DC 18 Strength check, destroying from the webbing on a success. The effect ends if the webbing is destroyed. The webbing has AC 15; 25 hit points; is vulnerable to fire damage; and is immune to bludgeoning, poison, and psychic damage."
 					]
 				}
 			],

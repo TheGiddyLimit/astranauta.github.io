@@ -252,7 +252,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -383,6 +383,9 @@
 					"name": "Yuan-ti Pureblood",
 					"source": "VGM"
 				}
+			],
+			"conditionInflict": [
+				"charmed"
 			]
 		},
 		{
@@ -994,6 +997,9 @@
 			"page": 214,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"frightened"
 			]
 		},
 		{
@@ -1447,7 +1453,10 @@
 				"The spell might also end early for you or one of your companions. A successful dispel magic spell used against an astral or physical body ends the spell for that creature. If a creature's original body or its astral form drops to 0 hit points, the spell ends for that creature. If the spell ends and the silver cord is intact, the cord pulls the creature's astral form back to its body, ending its state of suspended animation.",
 				"If you are returned to your body prematurely, your companions remain in their astral forms and must find their own way back to their bodies, usually by dropping to 0 hit points."
 			],
-			"page": 215
+			"page": 215,
+			"conditionInflict": [
+				"unconscious"
+			]
 		},
 		{
 			"name": "Augury",
@@ -1605,7 +1614,8 @@
 			"page": 216,
 			"damageResist": [
 				"necrotic"
-			]
+			],
+			"isHeal": true
 		},
 		{
 			"name": "Aura of Purity",
@@ -1708,7 +1718,8 @@
 			"entries": [
 				"Healing energy radiates from you in an aura with a 30-foot radius. Until the spell ends, the aura moves with you, centered on you. You can use a bonus action to cause one creature in the aura (including you) to regain {@dice 2d6} hit points."
 			],
-			"page": 216
+			"page": 216,
+			"isHeal": true
 		},
 		{
 			"name": "Awaken",
@@ -1758,7 +1769,10 @@
 				"The awakened beast or plant is {@condition charmed} by you for 30 days or until you or your companions do anything harmful to it. When the {@condition charmed} condition ends, the awakened creature chooses whether to remain friendly to you, based on how you treated it while it was {@condition charmed}."
 			],
 			"page": 216,
-			"permanentEffects": true
+			"permanentEffects": true,
+			"conditionInflict": [
+				"charmed"
+			]
 		},
 		{
 			"name": "Bane",
@@ -1930,6 +1944,9 @@
 			"page": 216,
 			"damageInflict": [
 				"force"
+			],
+			"conditionInflict": [
+				"incapacitated"
 			]
 		},
 		{
@@ -2030,7 +2047,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -2040,7 +2057,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -2070,7 +2087,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -2080,7 +2097,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -2108,6 +2125,9 @@
 			"page": 217,
 			"savingThrow": [
 				"charisma"
+			],
+			"conditionInflict": [
+				"incapacitated"
 			]
 		},
 		{
@@ -2267,7 +2287,8 @@
 			"entries": [
 				"This spell bestows hope and vitality. Choose any number of creatures within range. For the duration, each target has advantage on Wisdom saving throws and death saving throws, and regains the maximum number of hit points possible from any healing."
 			],
-			"page": 217
+			"page": 217,
+			"isHeal": true
 		},
 		{
 			"name": "Beast Sense",
@@ -2948,6 +2969,9 @@
 			],
 			"savingThrow": [
 				"constitution"
+			],
+			"conditionInflict": [
+				"blinded"
 			]
 		},
 		{
@@ -3057,6 +3081,10 @@
 			"page": 219,
 			"savingThrow": [
 				"constitution"
+			],
+			"conditionInflict": [
+				"blinded",
+				"deafened"
 			]
 		},
 		{
@@ -3827,6 +3855,9 @@
 					"baseName": "Tiefling",
 					"baseSource": "PHB"
 				}
+			],
+			"conditionInflict": [
+				"charmed"
 			]
 		},
 		{
@@ -4498,7 +4529,10 @@
 					]
 				}
 			],
-			"page": 222
+			"page": 222,
+			"conditionInflict": [
+				"blinded"
+			]
 		},
 		{
 			"name": "Command",
@@ -4675,6 +4709,9 @@
 			"page": 223,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"prone"
 			]
 		},
 		{
@@ -5409,7 +5446,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -6026,7 +6063,7 @@
 					"type": "entries",
 					"name": "Mindfire",
 					"entries": [
-						"The creature's mind becomes feverish. The creature has disadvantage on Intelligence checks and Intelligence saving throws, and the creature behaves as if under the effects of the confusion spell during combat."
+						"The creature's mind becomes feverish. The creature has disadvantage on Intelligence checks and Intelligence saving throws, and the creature behaves as if under the effects of the {@spell confusion} spell during combat."
 					]
 				},
 				{
@@ -6050,6 +6087,10 @@
 			],
 			"spellAttack": [
 				"M"
+			],
+			"conditionInflict": [
+				"blinded",
+				"stunned"
 			]
 		},
 		{
@@ -6994,6 +7035,9 @@
 					"baseName": "Tiefling",
 					"baseSource": "PHB"
 				}
+			],
+			"conditionInflict": [
+				"charmed"
 			]
 		},
 		{
@@ -7181,7 +7225,8 @@
 					"baseName": "Tiefling",
 					"baseSource": "PHB"
 				}
-			]
+			],
+			"isHeal": true
 		},
 		{
 			"name": "Dancing Lights",
@@ -7600,7 +7645,7 @@
 			"page": 230,
 			"races": [
 				{
-					"name": "Aasimar (DMG)",
+					"name": "Aasimar",
 					"source": "DMG"
 				}
 			]
@@ -7934,6 +7979,9 @@
 			],
 			"savingThrow": [
 				"constitution"
+			],
+			"conditionInflict": [
+				"prone"
 			]
 		},
 		{
@@ -8420,7 +8468,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -8430,7 +8478,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -8981,6 +9029,11 @@
 			"page": 234,
 			"savingThrow": [
 				"charisma"
+			],
+			"conditionInflict": [
+				"blinded",
+				"deafened",
+				"stunned"
 			]
 		},
 		{
@@ -9117,6 +9170,9 @@
 			"page": 234,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"charmed"
 			]
 		},
 		{
@@ -9189,6 +9245,9 @@
 			"page": 235,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"charmed"
 			]
 		},
 		{
@@ -9369,6 +9428,9 @@
 			"page": 235,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"charmed"
 			]
 		},
 		{
@@ -9623,6 +9685,9 @@
 			],
 			"opposedCheck": [
 				"strength"
+			],
+			"conditionInflict": [
+				"prone"
 			]
 		},
 		{
@@ -9872,7 +9937,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -10119,6 +10184,9 @@
 			],
 			"opposedCheck": [
 				"strength"
+			],
+			"conditionInflict": [
+				"restrained"
 			]
 		},
 		{
@@ -10172,7 +10240,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -10205,6 +10273,9 @@
 			],
 			"opposedCheck": [
 				"strength"
+			],
+			"conditionInflict": [
+				"restrained"
 			]
 		},
 		{
@@ -10442,6 +10513,9 @@
 			"opposedCheck": [
 				"strength",
 				"dexterity"
+			],
+			"conditionInflict": [
+				"restrained"
 			]
 		},
 		{
@@ -10590,6 +10664,10 @@
 			"page": 238,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"frightened",
+				"unconscious"
 			]
 		},
 		{
@@ -10966,7 +11044,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -11004,6 +11082,9 @@
 			"page": 239,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"frightened"
 			]
 		},
 		{
@@ -11227,6 +11308,10 @@
 				"radiant",
 				"slashing",
 				"thunder"
+			],
+			"conditionInflict": [
+				"blinded",
+				"incapacitated"
 			]
 		},
 		{
@@ -12190,6 +12275,10 @@
 			"page": 243,
 			"savingThrow": [
 				"constitution"
+			],
+			"conditionInflict": [
+				"petrified",
+				"restrained"
 			]
 		},
 		{
@@ -12988,6 +13077,9 @@
 			],
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"charmed"
 			]
 		},
 		{
@@ -13115,7 +13207,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -13316,7 +13408,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -13415,7 +13507,8 @@
 				"Up to ten berries appear in your hand and are infused with magic for the duration. A creature can use its action to eat one berry. Eating a berry restores 1 hit point, and the berry provides enough nourishment to sustain a creature for one day.",
 				"The berries lose their potency if they have not been consumed within 24 hours of the casting of this spell."
 			],
-			"page": 246
+			"page": 246,
+			"isHeal": true
 		},
 		{
 			"name": "Grasping Vine",
@@ -13529,6 +13622,9 @@
 			"page": 246,
 			"savingThrow": [
 				"dexterity"
+			],
+			"conditionInflict": [
+				"prone"
 			]
 		},
 		{
@@ -13630,7 +13726,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -13640,7 +13736,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -13654,7 +13750,10 @@
 			"entries": [
 				"You or a creature you touch becomes {@condition invisible} until the spell ends. Anything the target is wearing or carrying is {@condition invisible} as long as it is on the target's person."
 			],
-			"page": 246
+			"page": 246,
+			"conditionInflict": [
+				"invisible"
+			]
 		},
 		{
 			"name": "Greater Restoration",
@@ -14640,7 +14739,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -14708,7 +14807,8 @@
 					]
 				}
 			],
-			"page": 250
+			"page": 250,
+			"isHeal": true
 		},
 		{
 			"name": "Healing Word",
@@ -14764,7 +14864,8 @@
 					]
 				}
 			],
-			"page": 250
+			"page": 250,
+			"isHeal": true
 		},
 		{
 			"name": "Heat Metal",
@@ -15311,6 +15412,9 @@
 			"page": 251,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"paralyzed"
 			]
 		},
 		{
@@ -15483,6 +15587,9 @@
 			"page": 251,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"paralyzed"
 			]
 		},
 		{
@@ -15534,6 +15641,9 @@
 			"page": 251,
 			"savingThrow": [
 				"constitution"
+			],
+			"conditionInflict": [
+				"blinded"
 			]
 		},
 		{
@@ -15588,6 +15698,9 @@
 			],
 			"savingThrow": [
 				"dexterity"
+			],
+			"conditionInflict": [
+				"blinded"
 			]
 		},
 		{
@@ -15749,6 +15862,10 @@
 			"page": 252,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"charmed",
+				"incapacitated"
 			]
 		},
 		{
@@ -16116,6 +16233,9 @@
 			"page": 252,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"restrained"
 			]
 		},
 		{
@@ -16405,7 +16525,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -16577,6 +16697,9 @@
 					"baseName": "Tiefling",
 					"baseSource": "PHB"
 				}
+			],
+			"conditionInflict": [
+				"invisible"
 			]
 		},
 		{
@@ -17038,7 +17161,7 @@
 			"page": 255,
 			"races": [
 				{
-					"name": "Aasimar (DMG)",
+					"name": "Aasimar",
 					"source": "DMG"
 				}
 			]
@@ -17202,7 +17325,7 @@
 					"baseSource": "VGM"
 				},
 				{
-					"name": "Aasimar (DMG)",
+					"name": "Aasimar",
 					"source": "DMG"
 				},
 				{
@@ -17930,7 +18053,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -17940,7 +18063,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -18454,7 +18577,8 @@
 					]
 				}
 			],
-			"page": 258
+			"page": 258,
+			"isHeal": true
 		},
 		{
 			"name": "Mass Heal",
@@ -18494,7 +18618,8 @@
 			"entries": [
 				"A flood of healing energy flows from you into injured creatures around you. You restore up to 700 hit points, divided as you choose among any number of creatures that you can see within range. Creatures healed by this spell are also cured of all diseases and any effect making them {@condition blinded} or {@condition deafened}. This spell has no effect on undead or constructs."
 			],
-			"page": 258
+			"page": 258,
+			"isHeal": true
 		},
 		{
 			"name": "Mass Healing Word",
@@ -18554,7 +18679,8 @@
 					]
 				}
 			],
-			"page": 258
+			"page": 258,
+			"isHeal": true
 		},
 		{
 			"name": "Mass Suggestion",
@@ -18625,6 +18751,9 @@
 			"page": 258,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"charmed"
 			]
 		},
 		{
@@ -18740,6 +18869,9 @@
 			"page": 259,
 			"damageInflict": [
 				"bludgeoning"
+			],
+			"conditionInflict": [
+				"prone"
 			]
 		},
 		{
@@ -19343,7 +19475,12 @@
 				"You can use your action to move your illusory double up to twice your speed and make it gesture, speak, and behave in whatever way you choose.",
 				"You can see through its eyes and hear through its ears as if you were located where it is. On each of your turns as a bonus action, you can switch from using its senses to using your own, or back again. While you are using its senses, you are {@condition blinded} and {@condition deafened} in regard to your own surroundings."
 			],
-			"page": 260
+			"page": 260,
+			"conditionInflict": [
+				"blinded",
+				"deafened",
+				"invisible"
+			]
 		},
 		{
 			"name": "Misty Step",
@@ -19428,7 +19565,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -19550,7 +19687,11 @@
 			"savingThrow": [
 				"wisdom"
 			],
-			"permanentEffects": true
+			"permanentEffects": true,
+			"conditionInflict": [
+				"charmed",
+				"incapacitated"
+			]
 		},
 		{
 			"name": "Moonbeam",
@@ -20620,6 +20761,9 @@
 			],
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"frightened"
 			]
 		},
 		{
@@ -20706,7 +20850,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You beseech an otherworldly entity for aid. The being must be known to you: a god, a primordial, a demon prince, or some other being of cosmic power. That entity sends a {@filter celestial|bestiary|type=celestial|cr=null|miscellaneous=!swarm}, an {@filter elemental|bestiary|type=elemental|cr=null|miscellaneous=!swarm}, or a {@filter fiend|bestiary|type=fiend|cr=null|miscellaneous=!swarm} loyal to it to aid you, making the creature appear in an unoccupied space within range. If you know a specific creature's name, you can speak that name when you cast this spell to request that creature, though you might get a different creature anyway (DM's choice).",
+				"You beseech an otherworldly entity for aid. The being must be known to you: a god, a primordial, a demon prince, or some other being of cosmic power. That entity sends a {@filter celestial|bestiary|type=celestial|miscellaneous=!swarm}, an {@filter elemental|bestiary|type=elemental|miscellaneous=!swarm}, or a {@filter fiend|bestiary|type=fiend|miscellaneous=!swarm} loyal to it to aid you, making the creature appear in an unoccupied space within range. If you know a specific creature's name, you can speak that name when you cast this spell to request that creature, though you might get a different creature anyway (DM's choice).",
 				"When the creature appears, it is under no compulsion to behave in any particular way. You can ask the creature to perform a service in exchange for payment, but it isn't obliged to do so. The requested task could range from simple (fly us across the chasm, or help us fight a battle) to complex (spy on our enemies, or protect us during our foray into the dungeon). You must be able to communicate with the creature to bargain for its services.",
 				"Payment can take a variety of forms. A celestial might require a sizable donation of gold or magic items to an allied temple, while a fiend might demand a living sacrifice or a gift of treasure. Some creatures might exchange their service for a quest undertaken by you.",
 				"As a rule of thumb, a task that can be measured in minutes requires a payment worth 100 gp per minute. A task measured in hours requires 1,000 gp per hour. And a task measured in days (up to 10 days) requires 10,000 gp per day. The DM can adjust these payments based on the circumstances under which you cast the spell. If the task is aligned with the creature's ethos, the payment might be halved or even waived. Nonhazardous tasks typically require only half the suggested payment, while especially dangerous tasks might require a greater gift. Creatures rarely accept tasks that seem suicidal.",
@@ -20802,7 +20946,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -20812,7 +20956,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -20824,7 +20968,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"With this spell, you attempt to bind a {@filter celestial|bestiary|type=celestial|cr=null|miscellaneous=!swarm}, an {@filter elemental|bestiary|type=elemental|cr=null|miscellaneous=!swarm}, a {@filter fey|bestiary|type=fey|cr=null|miscellaneous=!swarm}, or a {@filter fiend|bestiary|type=fiend|cr=null|miscellaneous=!swarm} to your service. The creature must be within range for the entire casting of the spell. (Typically, the creature is first summoned into the center of an inverted magic circle in order to keep it trapped while this spell is cast.) At the completion of the casting, the target must make a Charisma saving throw. On a failed save, it is bound to serve you for the duration. If the creature was summoned or created by another spell, that spell's duration is extended to match the duration of this spell.",
+				"With this spell, you attempt to bind a {@filter celestial|bestiary|type=celestial|miscellaneous=!swarm}, an {@filter elemental|bestiary|type=elemental|miscellaneous=!swarm}, a {@filter fey|bestiary|type=fey|miscellaneous=!swarm}, or a {@filter fiend|bestiary|type=fiend|miscellaneous=!swarm} to your service. The creature must be within range for the entire casting of the spell. (Typically, the creature is first summoned into the center of an inverted magic circle in order to keep it trapped while this spell is cast.) At the completion of the casting, the target must make a Charisma saving throw. On a failed save, it is bound to serve you for the duration. If the creature was summoned or created by another spell, that spell's duration is extended to match the duration of this spell.",
 				"A bound creature must follow your instructions to the best of its ability. You might command the creature to accompany you on an adventure, to guard a location, or to deliver a message. The creature obeys the letter of your instructions, but if the creature is hostile to you, it strives to twist your words to achieve its own objectives. If the creature carries out your instructions completely before the spell ends, it travels to you to report this fact if you are on the same plane of existence. If you are on a different plane of existence, it returns to the place where you bound it and remains there until the spell ends."
 			],
 			"entriesHigherLevel": [
@@ -21186,7 +21330,8 @@
 			"entries": [
 				"A wave of healing energy washes over the creature you touch. The target regains all its hit points. If the creature is {@condition charmed}, {@condition frightened}, {@condition paralyzed}, or {@condition stunned}, the condition ends. If the creature is {@condition prone}, it can use its reaction to stand up. This spell has no effect on undead or constructs."
 			],
-			"page": 266
+			"page": 266,
+			"isHeal": true
 		},
 		{
 			"name": "Power Word Kill",
@@ -21292,6 +21437,9 @@
 			"page": 267,
 			"savingThrow": [
 				"constitution"
+			],
+			"conditionInflict": [
+				"stunned"
 			]
 		},
 		{
@@ -21340,7 +21488,8 @@
 					]
 				}
 			],
-			"page": 267
+			"page": 267,
+			"isHeal": true
 		},
 		{
 			"name": "Prestidigitation",
@@ -21542,7 +21691,12 @@
 				"constitution",
 				"wisdom"
 			],
-			"permanentEffects": true
+			"permanentEffects": true,
+			"conditionInflict": [
+				"blinded",
+				"petrified",
+				"restrained"
+			]
 		},
 		{
 			"name": "Prismatic Wall",
@@ -21653,7 +21807,12 @@
 				"dexterity",
 				"wisdom"
 			],
-			"permanentEffects": true
+			"permanentEffects": true,
+			"conditionInflict": [
+				"blinded",
+				"petrified",
+				"restrained"
+			]
 		},
 		{
 			"name": "Produce Flame",
@@ -21829,6 +21988,10 @@
 			"page": 270,
 			"opposedCheck": [
 				"intelligence"
+			],
+			"conditionInflict": [
+				"blinded",
+				"deafened"
 			]
 		},
 		{
@@ -21972,7 +22135,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -22091,7 +22254,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -22101,7 +22264,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -22131,7 +22294,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -22141,7 +22304,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -22389,7 +22552,8 @@
 				"This spell closes all mortal wounds, but it doesn't restore missing body parts. If the creature is lacking body parts or organs integral for its survival\u2014its head, for instance\u2014the spell automatically fails.",
 				"Coming back from the dead is an ordeal. The target takes a \u22124 penalty to all attack rolls, saving throws, and ability checks. Every time the target finishes a long rest, the penalty is reduced by 1 until it disappears."
 			],
-			"page": 270
+			"page": 270,
+			"isHeal": true
 		},
 		{
 			"name": "Rary's Telepathic Bond",
@@ -22723,6 +22887,9 @@
 					"baseName": "Tiefling",
 					"baseSource": "PHB"
 				}
+			],
+			"conditionInflict": [
+				"poisoned"
 			]
 		},
 		{
@@ -22776,7 +22943,8 @@
 				"You touch a creature and stimulate its natural healing ability. The target regains {@dice 4d8+15} hit points. For the duration of the spell, the target regains 1 hit point at the start of each of its turns (10 hit points each minute).",
 				"The target's severed body members (fingers, legs, tails, and so on), if any, are restored after 2 minutes. If you have the severed part and hold it to the stump, the spell instantaneously causes the limb to knit to the stump."
 			],
-			"page": 271
+			"page": 271,
+			"isHeal": true
 		},
 		{
 			"name": "Reincarnate",
@@ -23144,7 +23312,8 @@
 				"Coming back from the dead is an ordeal. The target takes a \u22124 penalty to all attack rolls, saving throws, and ability checks. Every time the target finishes a long rest, the penalty is reduced by 1 until it disappears.",
 				"Casting this spell to restore life to a creature that has been dead for one year or longer taxes you greatly. Until you finish a long rest, you can't cast spells again, and you have disadvantage on all attack rolls, ability checks, and saving throws."
 			],
-			"page": 272
+			"page": 272,
+			"isHeal": true
 		},
 		{
 			"name": "Reverse Gravity",
@@ -23307,7 +23476,8 @@
 			"entries": [
 				"You touch a creature that has died within the last minute. That creature returns to life with 1 hit point. This spell can't return to life a creature that has died of old age, nor can it restore any missing body parts."
 			],
-			"page": 272
+			"page": 272,
+			"isHeal": true
 		},
 		{
 			"name": "Rope Trick",
@@ -23373,7 +23543,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -23383,7 +23553,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -24047,7 +24217,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -24057,7 +24227,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -24204,7 +24374,10 @@
 				"If the target is a creature, it falls into a state of suspended animation. Time ceases to flow for it, and it doesn't grow older.",
 				"You can set a condition for the spell to end early. The condition can be anything you choose, but it must occur or be visible within 1 mile of the target. Examples include \"after 1,000 years\" or \"when the tarrasque awakens.\" This spell also ends if the target takes any damage."
 			],
-			"page": 274
+			"page": 274,
+			"conditionInflict": [
+				"invisible"
+			]
 		},
 		{
 			"name": "Shapechange",
@@ -24752,7 +24925,10 @@
 			"entries": [
 				"For the duration, no sound can be created within or pass through a 20-foot-radius sphere centered on a point you choose within range. Any creature or object entirely inside the sphere is immune to thunder damage, and creatures are {@condition deafened} while entirely inside it. Casting a spell that includes a verbal component is impossible there."
 			],
-			"page": 275
+			"page": 275,
+			"conditionInflict": [
+				"deafened"
+			]
 		},
 		{
 			"name": "Silent Image",
@@ -24957,7 +25133,10 @@
 					]
 				}
 			],
-			"page": 276
+			"page": 276,
+			"conditionInflict": [
+				"unconscious"
+			]
 		},
 		{
 			"name": "Sleet Storm",
@@ -25040,6 +25219,9 @@
 			"savingThrow": [
 				"dexterity",
 				"constitution"
+			],
+			"conditionInflict": [
+				"prone"
 			]
 		},
 		{
@@ -26313,6 +26495,9 @@
 			"savingThrow": [
 				"constitution",
 				"dexterity"
+			],
+			"conditionInflict": [
+				"deafened"
 			]
 		},
 		{
@@ -26488,6 +26673,9 @@
 			],
 			"savingThrow": [
 				"constitution"
+			],
+			"conditionInflict": [
+				"blinded"
 			]
 		},
 		{
@@ -26545,6 +26733,9 @@
 			],
 			"savingThrow": [
 				"constitution"
+			],
+			"conditionInflict": [
+				"blinded"
 			]
 		},
 		{
@@ -26720,6 +26911,12 @@
 			],
 			"opposedCheck": [
 				"intelligence"
+			],
+			"conditionInflict": [
+				"frightened",
+				"incapacitated",
+				"stunned",
+				"unconscious"
 			]
 		},
 		{
@@ -26794,6 +26991,10 @@
 					"baseName": "Tiefling",
 					"baseSource": "PHB"
 				}
+			],
+			"conditionInflict": [
+				"incapacitated",
+				"prone"
 			]
 		},
 		{
@@ -26872,7 +27073,10 @@
 				"If the object is worn or carried by a creature, you must make an ability check with your spellcasting ability contested by that creature's Strength check. If you succeed, you pull the object away from that creature and can move it up to 30 feet in any direction but not beyond the range of this spell.",
 				"You can exert fine control on objects with your telekinetic grip, such as manipulating a simple tool, opening a door or a container, stowing or retrieving an item from an open container, or pouring the contents from a vial."
 			],
-			"page": 280
+			"page": 280,
+			"conditionInflict": [
+				"restrained"
+			]
 		},
 		{
 			"name": "Telepathy",
@@ -27156,7 +27360,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -27166,7 +27370,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -27497,6 +27701,9 @@
 			],
 			"savingThrow": [
 				"strength"
+			],
+			"conditionInflict": [
+				"prone"
 			]
 		},
 		{
@@ -27967,7 +28174,8 @@
 				"This spell closes all wounds, neutralizes any poison, cures all diseases, and lifts any curses affecting the creature when it died. The spell replaces damaged or missing organs and limbs. If the creature was undead, it is restored to its non-undead form.",
 				"The spell can even provide a new body if the original no longer exists, in which case you must speak the creature's name. The creature then appears in an unoccupied space you choose within 10 feet of you."
 			],
-			"page": 284
+			"page": 284,
+			"isHeal": true
 		},
 		{
 			"name": "True Seeing",
@@ -28334,7 +28542,8 @@
 			],
 			"spellAttack": [
 				"M"
-			]
+			],
+			"isHeal": true
 		},
 		{
 			"name": "Vicious Mockery",
@@ -29159,6 +29368,9 @@
 					"baseName": "Tiefling",
 					"baseSource": "PHB"
 				}
+			],
+			"conditionInflict": [
+				"restrained"
 			]
 		},
 		{
@@ -29210,6 +29422,9 @@
 			],
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"frightened"
 			]
 		},
 		{
@@ -29256,7 +29471,10 @@
 				"You and up to ten willing creatures you can see within range assume a gaseous form for the duration, appearing as wisps of cloud. While in this cloud form, a creature has a flying speed of 300 feet and has resistance to damage from nonmagical weapons. The only actions a creature can take in this form are the Dash action or to revert to its normal form. Reverting takes 1 minute, during which time a creature is {@condition incapacitated} and can't move. Until the spell ends, a creature can revert to cloud form, which also requires the 1-minute transformation.",
 				"If a creature is in cloud form and flying when the effect ends, the creature descends 60 feet per round for 1 minute until it lands, which it does safely. If it can't land after 1 minute, the creature falls the remaining distance."
 			],
-			"page": 288
+			"page": 288,
+			"conditionInflict": [
+				"incapacitated"
+			]
 		},
 		{
 			"name": "Wind Wall",
@@ -29399,7 +29617,8 @@
 				"radiant",
 				"slashing",
 				"thunder"
-			]
+			],
+			"isHeal": true
 		},
 		{
 			"name": "Witch Bolt",
@@ -29602,6 +29821,9 @@
 			],
 			"opposedCheck": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"frightened"
 			]
 		},
 		{
@@ -29692,7 +29914,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {
@@ -29702,7 +29924,7 @@
 					},
 					{
 						"class": {
-							"name": "Ranger",
+							"name": "Ranger (Revised)",
 							"source": "UATheRangerRevised"
 						},
 						"subclass": {

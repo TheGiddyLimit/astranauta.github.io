@@ -4,6 +4,7 @@
 <head>
 	<!--5ETOOLS_VERSION-->
 	<meta charset="utf-8">
+	<meta name="description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,6 +27,40 @@
 		.outputArea {
 			width: 100%;
 			height: 75vh;
+			margin: 0;
+			resize: none;
+			outline: none;
+			box-shadow: none;
+		}
+
+		.night-mode .outputArea {
+			background: #333;
+		}
+
+		.night-mode .ace-tm {
+			background: #222;
+			color: #bbb;
+		}
+
+		.night-mode .ace-tm .ace_gutter {
+			background: #333;
+			color: #bbb;
+		}
+
+		.night-mode .ace-tm .ace_gutter-active-line {
+			background: #222;
+		}
+
+		.night-mode .ace-tm .ace_marker-layer .ace_selection {
+			background: rgba(181, 213, 255, 0.4);
+		}
+
+		.night-mode .ace-tm .ace_marker-layer .ace_active-line {
+			background: rgba(0, 116, 255, 0.3);
+		}
+
+		.night-mode .ace-tm .ace_cursor {
+			color: #bbb;
 		}
 
 		.select-inline{
@@ -39,6 +74,19 @@
 
 		#lastError {
 			color: red;
+		}
+
+		.conv-ipt {
+			display: inline-block;
+			margin-top: 5px;
+		}
+
+		.conv-ipt__source {
+			width: 130px;
+		}
+
+		.conv-ipt__page {
+			width: 65px;
 		}
 	</style>
 </head>
@@ -60,8 +108,8 @@
 
 		<div class="view-col">
 			<h3>Statblock
-				<button id="parsestatblock" class="btn">Parse</button>
-				<button id="parsestatblockadd" class="btn">Parse and Add</button>
+				<button id="parsestatblock" class="btn btn-default">Parse</button>
+				<button id="parsestatblockadd" class="btn btn-default">Parse and Add</button>
 				<select class="form-control select-inline" id="parse_mode">
 					<option value="txt">Parse as Text</option>
 					<option value="md" selected>Parse as Markdown</option>
@@ -83,7 +131,7 @@ ___
 >- **Saving Throws** Con +10, Int +12, Wis +9
 >- **Skills** Arcana +18, History +12, Insight +9, Perception +9
 >- **Damage Resistances** cold, lightning, necrotic
->- **Damage Immunities** poison, bludgeoning, piercing, and slashing from nonmagical weapons
+>- **Damage Immunities** poison; bludgeoning, piercing, and slashing from nonmagical attacks
 >- **Condition Immunities** charmed, exhaustion, frightened, paralyzed, poisoned
 >- **Senses** truesight 120 ft., passive Perception 19
 >- **Languages** Common plus up to five other languages
@@ -124,11 +172,16 @@ ___
 >
 >
 			</pre>
-			<select id="source" class="form-control select-inline"></select>
-			<input type="text" id="customsourcein" placeholder="Custom source">
-			<button id="addsource" class="btn btn-sm">Save</button>
-			<br>
-			<small>This parser is <em>very</em> particular about its input. Use at your own risk.</small>
+			<div>
+				<label class="flex-label">Title-Case Names <input type="checkbox" checked id="titlecase"></label>
+				Page: <input class="form-control conv-ipt conv-ipt__page" id="page_in" type="number" value="0">
+				Source: <select id="source" class="form-control select-inline"></select>
+				|
+				<input class="form-control conv-ipt conv-ipt__source" type="text" id="customsourcein" placeholder="Custom source">
+				<button id="addsource" class="btn btn-sm btn-default">Add</button> <i>Custom sources will persist through page reloads</i>
+				<hr>
+				<small>This parser is <em>very</em> <span class="help" title="Notably poor at handling text split across multiple lines, as Line Return is used to separate blocks of text.">particular</span> about its input. Use at your own risk.</small>
+			</div>
 		</div>
 
 		<div class="view-col">
@@ -136,6 +189,10 @@ ___
 			<textarea id="jsonoutput" readonly class="outputArea"></textarea>
 			<div id="lastWarnings" class="code"></div>
 			<div id="lastError" class="code"></div>
+			<div style="margin-top: 5px;">
+				<button id="editable" class="btn btn-sm btn-default mr-1">Enable Editing</button>
+				<button id="download" class="btn btn-sm btn-default">Download JSON</button>
+			</div>
 		</div>
 	</main>
 

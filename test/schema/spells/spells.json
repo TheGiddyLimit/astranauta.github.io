@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.2.3",
+	"version": "1.2.4",
 	"title": "SpellsArray",
 	"type": "object",
 
@@ -277,6 +277,15 @@
 						]
 					}
 				},
+				"conditionInflict": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"blinded", "charmed", "deafened", "exhaustion", "frightened", "grappled", "incapacitated", "invisible", "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious"
+						]
+					}
+				},
 				"savingThrow": {
 					"type": "array",
 					"items": {
@@ -309,6 +318,9 @@
 					}
 				},
 				"scalingEffects": {
+					"type": "boolean"
+				},
+				"isHeal": {
 					"type": "boolean"
 				}
 			},

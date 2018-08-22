@@ -164,7 +164,8 @@ class ShapedConverter {
 				'headerEntries',
 				'headerWill',
 				'name',
-				'footerEntries'
+				'footerEntries',
+				'ability'
 			].includes(k))
 			.map(useInfo => {
 				const spellDetails = spellcasting[useInfo];
@@ -233,6 +234,8 @@ class ShapedConverter {
 			.replace(/{@filter ([^|]+)[^}]+}/g, '$1')
 			.replace(/{@hit (\d+)}/g, '+$1')
 			.replace(/{@chance (\d+)[^}]+}/g, '$1 percent')
+			.replace(/{@recharge(?: (\d))?}/g, (m, lower) => `(Recharge ${lower ? `${Number(lower)}\u2013` : ""}6)`)
+			.replace(/{(@atk [A-Za-z,]+})/g, (m, p1) => EntryRenderer.attackTagToFull(p1))
 			.replace(/{@\w+ ((?:[^|}]+\|?){0,3})}/g, (m, p1) => {
 				const parts = p1.split('|');
 				return parts.length === 3 ? parts[2] : parts[0];
@@ -241,7 +244,7 @@ class ShapedConverter {
 	}
 
 	static makeTraitAction (name) {
-		const nameMatch = name.match(/([^(]+)(?:\(([^)]+)\))?/);
+		const nameMatch = this.fixLinks(name).match(/([^(]+)(?:\(([^)]+)\))?/);
 		if (nameMatch && nameMatch[2]) {
 			const rechargeMatch = nameMatch[2].match(/^(?:(.*), )?(\d(?: minute[s]?)?\/(?:Day|Turn|Rest|Hour|Week|Month|Night|Long Rest|Short Rest)|Recharge \d(?:\u20136)?|Recharge[s]? [^),]+)(?:, ([^)]+))?$/i);
 			if (rechargeMatch) {
@@ -451,7 +454,7 @@ class ShapedConverter {
 		const addVariant = (name, text, output, forceActions) => {
 			const newTraitAction = this.makeTraitAction(name);
 			newTraitAction.name = 'Variant: ' + newTraitAction.name;
-			const isAttack = text.match(/{@hit|Attack:/);
+			const isAttack = text.match(/{@hit|Attack:|{@atk/);
 			newTraitAction.text = this.fixLinks(text);
 			if ((newTraitAction.recharge && !text.match(/bonus action/)) || forceActions || isAttack) {
 				actions.push(newTraitAction);

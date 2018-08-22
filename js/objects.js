@@ -28,7 +28,8 @@ function onJsonLoad (data) {
 
 	addObjects(data);
 	BrewUtil.pAddBrewData()
-		.then(addObjects)
+		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -37,6 +38,11 @@ function onJsonLoad (data) {
 
 			History.init(true);
 		});
+}
+
+function handleBrew (homebrew) {
+	addObjects(homebrew);
+	return Promise.resolve();
 }
 
 let objectsList = [];
@@ -105,11 +111,13 @@ function loadhash (jsonIndex) {
 	$content.append(`
 		${EntryRenderer.utils.getBorderTr()}
 		${EntryRenderer.utils.getNameTr(obj)}
-		<tr class="text"><td colspan="6"><i>${obj.type !== "generic" ? `${Parser.sizeAbvToFull(obj.size)} object` : `Variable size object`}</i><br></td></tr>
+		<tr class="text"><td colspan="6"><i>${obj.type !== "GEN" ? `${Parser.sizeAbvToFull(obj.size)} object` : `Variable size object`}</i><br></td></tr>
 		<tr class="text"><td colspan="6">
 			<b>Armor Class:</b> ${obj.ac}<br>
 			<b>Hit Points:</b> ${obj.hp}<br>
 			<b>Damage Immunities:</b> ${obj.immune}<br>
+			${obj.resist ? `<b>Damage Resistances:</b> ${obj.resist}<br>` : ""}
+			${obj.vulnerable ? `<b>Damage Vulnerabilities:</b> ${obj.vulnerable}<br>` : ""}
 		</td></tr>
 		<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>
 		${EntryRenderer.utils.getPageTr(obj)}

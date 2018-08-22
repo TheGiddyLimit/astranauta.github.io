@@ -10,13 +10,6 @@ window.PROF_MODE_BONUS = "bonus";
 window.PROF_MODE_DICE = "dice";
 window.PROF_DICE_MODE = PROF_MODE_BONUS;
 
-function ascSortCr (a, b) {
-	// always put unknown values last
-	if (a === "Unknown" || a === undefined) a = "999";
-	if (b === "Unknown" || b === undefined) b = "999";
-	return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b))
-}
-
 function imgError (x) {
 	$(x).closest("th").css("padding-right", "0.2em");
 	$(x).remove();
@@ -85,12 +78,14 @@ function pLoadFluffIndex () {
 function handleBrew (homebrew) {
 	addLegendaryGroups(homebrew.legendaryGroup);
 	addMonsters(homebrew.monster);
+	return Promise.resolve();
 }
 
 function pPostLoad () {
 	return new Promise(resolve => {
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
+			.then(BrewUtil.pAddLocalBrewData)
 			.catch(BrewUtil.purgeBrew)
 			.then(() => {
 				BrewUtil.makeBrewButton("manage-brew");
@@ -105,13 +100,14 @@ window.onload = function load () {
 	ExcludeUtil.initialise();
 	pLoadMeta()
 		.then(pLoadFluffIndex)
-		.then(multisourceLoad.bind(null, JSON_DIR, JSON_LIST_NAME, pageInit, addMonsters, pPostLoad));
+		.then(multisourceLoad.bind(null, JSON_DIR, JSON_LIST_NAME, pPageInit, addMonsters, pPostLoad))
+		.then(() => onFilterChangeMulti(monsters));
 };
 
 let list;
 let printBookView;
 const sourceFilter = getSourceFilter();
-const crFilter = new Filter({header: "CR"});
+const crFilter = new RangeFilter({header: "CR", labels: true});
 const sizeFilter = new Filter({
 	header: "Size",
 	items: [
@@ -126,14 +122,13 @@ const sizeFilter = new Filter({
 	displayFn: Parser.sizeAbvToFull
 });
 const speedFilter = new Filter({header: "Speed", items: ["walk", "burrow", "climb", "fly", "hover", "swim"], displayFn: StrUtil.uppercaseFirst});
-const strengthFilter = new RangeFilter({header: "Strength"});
-const dexterityFilter = new RangeFilter({header: "Dexterity"});
-const constitutionFilter = new RangeFilter({header: "Constitution"});
-const intelligenceFilter = new RangeFilter({header: "Intelligence"});
-const wisdomFilter = new RangeFilter({header: "Wisdom"});
-const charismaFilter = new RangeFilter({header: "Charisma"});
-const abilityScoreFilter = new MultiFilter("Ability Score", strengthFilter, dexterityFilter, constitutionFilter, intelligenceFilter, wisdomFilter, charismaFilter);
-abilityScoreFilter.setModeAnd();
+const strengthFilter = new RangeFilter({header: "Strength", min: 1, max: 30});
+const dexterityFilter = new RangeFilter({header: "Dexterity", min: 1, max: 30});
+const constitutionFilter = new RangeFilter({header: "Constitution", min: 1, max: 30});
+const intelligenceFilter = new RangeFilter({header: "Intelligence", min: 1, max: 30});
+const wisdomFilter = new RangeFilter({header: "Wisdom", min: 1, max: 30});
+const charismaFilter = new RangeFilter({header: "Charisma", min: 1, max: 30});
+const abilityScoreFilter = new MultiFilter({name: "Ability Scores", compact: true, mode: "and"}, strengthFilter, dexterityFilter, constitutionFilter, intelligenceFilter, wisdomFilter, charismaFilter);
 const acFilter = new RangeFilter({header: "Armor Class"});
 const averageHpFilter = new RangeFilter({header: "Average Hit Points"});
 const typeFilter = new Filter({
@@ -205,7 +200,7 @@ function dispVulnFilter (item) {
 	return `${StrUtil.uppercaseFirst(item)} Vuln`;
 }
 const vulnerableFilter = new Filter({
-	header: "Damage Vulnerabilities",
+	header: "Vulnerabilities",
 	items: DMG_TYPES,
 	displayFn: dispVulnFilter
 });
@@ -213,7 +208,7 @@ function dispResFilter (item) {
 	return `${StrUtil.uppercaseFirst(item)} Res`;
 }
 const resistFilter = new Filter({
-	header: "Damage Resistance",
+	header: "Resistance",
 	items: DMG_TYPES,
 	displayFn: dispResFilter
 });
@@ -221,10 +216,11 @@ function dispImmFilter (item) {
 	return `${StrUtil.uppercaseFirst(item)} Imm`;
 }
 const immuneFilter = new Filter({
-	header: "Damage Immunity",
+	header: "Immunity",
 	items: DMG_TYPES,
 	displayFn: dispImmFilter
 });
+const defenceFilter = new MultiFilter({name: "Damage", mode: "and"}, vulnerableFilter, resistFilter, immuneFilter);
 const conditionImmuneFilter = new Filter({
 	header: "Condition Immunity",
 	items: CONDS,
@@ -252,26 +248,24 @@ const miscFilter = new Filter({
 const filterBox = initFilterBox(
 	sourceFilter,
 	crFilter,
-	sizeFilter,
-	speedFilter,
-	abilityScoreFilter,
-	acFilter,
-	averageHpFilter,
 	typeFilter,
 	tagFilter,
-	alignmentFilter,
 	environmentFilter,
-	vulnerableFilter,
-	resistFilter,
-	immuneFilter,
+	defenceFilter,
 	conditionImmuneFilter,
 	traitFilter,
 	actionReactionFilter,
-	miscFilter
+	miscFilter,
+	sizeFilter,
+	speedFilter,
+	alignmentFilter,
+	acFilter,
+	averageHpFilter,
+	abilityScoreFilter
 );
 
-function pageInit (loadedSources) {
-	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addMonsters)));
+function pPageInit (loadedSources) {
+	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem({item: src, changeFn: loadSource(JSON_LIST_NAME, addMonsters)}));
 	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
@@ -306,22 +300,30 @@ function pageInit (loadedSources) {
 	ListUtil.initGenericAddable();
 
 	// print view
-	printBookView = new BookModeView("bookview", $(`#btn-printbook`), "Please make a list of creatures first",
+	printBookView = new BookModeView("bookview", $(`#btn-printbook`), "If you wish to view multiple creatures, please first make a list",
 		($tbl) => {
 			const toShow = ListUtil.getSublistedIds().map(id => monsters[id]).sort((a, b) => SortUtil.ascSort(a.name, b.name));
 			let numShown = 0;
+
 			const stack = [];
-			stack.push(`<tr class="printbook-bestiary"><td>`);
-			toShow.forEach(mon => {
+
+			const renderCreature = (mon) => {
 				stack.push(`<table class="printbook-bestiary-entry"><tbody>`);
 				stack.push(EntryRenderer.monster.getCompactRenderedString(mon, renderer));
 				stack.push(`</tbody></table>`);
-			});
+			};
+
+			stack.push(`<tr class="printbook-bestiary"><td>`);
+			toShow.forEach(mon => renderCreature(mon));
+			if (!toShow.length && History.lastLoadedId != null) {
+				renderCreature(monsters[History.lastLoadedId]);
+			}
 			stack.push(`</td></tr>`);
+
 			numShown += toShow.length;
 			$tbl.append(stack.join(""));
 			return numShown;
-		}
+		}, true
 	);
 
 	// proficiency bonus/dice toggle
@@ -345,6 +347,8 @@ function pageInit (loadedSources) {
 			});
 		}
 	});
+
+	return Promise.resolve();
 }
 
 function onSublistChange () {
@@ -368,8 +372,23 @@ function handleFilterChange () {
 			f,
 			m.source,
 			m._pCr,
+			m._pTypes.type,
+			m._pTypes.tags,
+			m.environment,
+			[
+				m._fVuln,
+				m._fRes,
+				m._fImm
+			],
+			m._fCondImm,
+			m.traitTags,
+			m.actionTags,
+			m._fMisc,
 			m.size,
 			m._fSpeed,
+			m._fAlign,
+			m._fAc,
+			m._fHp,
 			[
 				m.str,
 				m.dex,
@@ -377,20 +396,7 @@ function handleFilterChange () {
 				m.int,
 				m.wis,
 				m.cha
-			],
-			m._fAc,
-			m._fHp,
-			m._pTypes.type,
-			m._pTypes.tags,
-			m._fAlign,
-			m.environment,
-			m._fVuln,
-			m._fRes,
-			m._fImm,
-			m._fCondImm,
-			m.traitTags,
-			m.actionTags,
-			m._fMisc
+			]
 		);
 	});
 	onFilterChangeMulti(monsters);
@@ -444,7 +450,7 @@ function addMonsters (data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(new FilterItem(mon.source, () => {}));
+		sourceFilter.addIfAbsent(new FilterItem({item: mon.source, changeFn: () => {}}));
 		crFilter.addIfAbsent(mon._pCr);
 		strengthFilter.addIfAbsent(mon.str);
 		dexterityFilter.addIfAbsent(mon.dex);
@@ -459,7 +465,7 @@ function addMonsters (data) {
 		if (mon.familiar) mon._fMisc.push("Familiar");
 		if (mon.type.swarmSize) mon._fMisc.push("Swarm");
 		if (mon.spellcasting) mon._fMisc.push("Spellcaster");
-		if (mon.isNPC) mon._fMisc.push("NPC");
+		if (mon.isNPC) mon._fMisc.push("Named NPC");
 		if (mon.legendaryGroup) {
 			if (meta[mon.legendaryGroup].lairActions) mon._fMisc.push("Lair Actions");
 			if (meta[mon.legendaryGroup].regionalEffects) mon._fMisc.push("Regional Effects");
@@ -470,7 +476,7 @@ function addMonsters (data) {
 
 	// sort filters
 	sourceFilter.items.sort(SortUtil.ascSort);
-	crFilter.items.sort(ascSortCr);
+	crFilter.items.sort(SortUtil.ascSortCr);
 	typeFilter.items.sort(SortUtil.ascSort);
 	tagFilter.items.sort(SortUtil.ascSort);
 
@@ -533,25 +539,40 @@ function getSublistItem (mon, pinId, addCount) {
 
 // sorting for form filtering
 function sortMonsters (a, b, o) {
-	if (o.valueName === "count") return SortUtil.ascSort(Number(a.values().count), Number(b.values().count));
-	a = monsters[a.elm.getAttribute(FLTR_ID)];
-	b = monsters[b.elm.getAttribute(FLTR_ID)];
-	if (o.valueName === "name") return SortUtil.ascSort(a.name, b.name);
-	if (o.valueName === "type") return SortUtil.ascSort(a._pTypes.asText, b._pTypes.asText);
-	if (o.valueName === "source") return SortUtil.ascSort(a.source, b.source);
-	if (o.valueName === "cr") return ascSortCr(a._pCr, b._pCr);
-	return 0;
+	function getPrimary () {
+		if (o.valueName === "count") return SortUtil.ascSort(Number(a.values().count), Number(b.values().count));
+		a = monsters[a.elm.getAttribute(FLTR_ID)];
+		b = monsters[b.elm.getAttribute(FLTR_ID)];
+		switch (o.valueName) {
+			case "name":
+				return SortUtil.ascSort(a.name, b.name);
+			case "type":
+				return SortUtil.ascSort(a._pTypes.asText, b._pTypes.asText);
+			case "source":
+				return SortUtil.ascSort(a.source, b.source);
+			case "cr":
+				return SortUtil.ascSortCr(a._pCr, b._pCr);
+		}
+	}
+	return getPrimary() || SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source);
 }
 
 let profBtn = null;
 // load selected monster stat block
 function loadhash (id) {
+	const mon = monsters[id];
+
+	renderStatblock(mon);
+
+	loadsub([]);
+	ListUtil.updateSelected();
+}
+
+function renderStatblock (mon, isScaled) {
 	renderer.setFirstSection(true);
 
 	const $content = $("#pagecontent").empty();
 	const $wrpBtnProf = $(`#wrp-profbonusdice`);
-
-	const mon = monsters[id];
 
 	if (profBtn !== null) {
 		$wrpBtnProf.append(profBtn);
@@ -586,7 +607,12 @@ function loadhash (id) {
 		<tr><td colspan="6"><strong>Condition Immunities</strong> <span id="conimm">exhaustion</span></td></tr>
 		<tr><td colspan="6"><strong>Senses</strong> <span id="senses">darkvision 30 ft.</span> passive Perception <span id="pp">10</span></td></tr>
 		<tr><td colspan="6"><strong>Languages</strong> <span id="languages">Common</span></td></tr>
-		<tr><td colspan="6"><strong>Challenge</strong> <span id="cr">1 (450 XP)</span></td></tr>
+		<tr><td colspan="6"><strong>Challenge</strong>
+			<span id="cr">1 (450 XP)</span>
+			<span id="btn-scale-cr" title="Scale Creature By CR (Highly Experimental)" class="bestiary__btn-scale-cr btn btn-xs btn-default">
+				<span class="glyphicon ${isScaled ? "glyphicon-refresh" : "glyphicon-signal"}"></span>
+			</span>
+		</td></tr>
 		<tr id="traits"><td class="divider" colspan="6"><div></div></td></tr>
 		<tr class="trait"><td colspan="6"><span class="name">Trait.</span> <span class="content">Content.</span></td></tr>
 		<tr id="actions"><td colspan="6"><span>Actions</span></td></tr>
@@ -606,7 +632,7 @@ function loadhash (id) {
 
 		let renderStack = [];
 		let entryList = {};
-		const name = mon.name;
+		const displayName = mon._displayName || mon.name;
 		let source = Parser.sourceJsonToAbv(mon.source);
 		let sourceFull = Parser.sourceJsonToFull(mon.source);
 		const type = mon._pTypes.asText;
@@ -621,9 +647,9 @@ function loadhash (id) {
 			</span>`;
 		}
 
-		const imgLink = mon.tokenURL || UrlUtil.link(`img/${source}/${name.replace(/"/g, "")}.png`);
+		const imgLink = mon.tokenURL || UrlUtil.link(`img/${source}/${mon.name.replace(/"/g, "")}.png`);
 		$content.find("th.name").html(
-			`<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${mon.source.escapeQuotes()}')">${name}</span>
+			`<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${mon.source.escapeQuotes()}')">${displayName}</span>
 			${mon.soundClip ? getPronunciationButton() : ""}
 		<span class="stats-source source${source}" title="${sourceFull}${EntryRenderer.utils.getSourceSubText(mon)}">${source}</span>
 		<a href="${imgLink}" target="_blank">
@@ -710,6 +736,25 @@ function loadhash (id) {
 		}
 
 		$content.find("td span#cr").html(Parser.monCrToFull(mon.cr));
+
+		const $btnScaleCr = $content.find("#btn-scale-cr");
+		if (Parser.crToNumber(mon.cr.cr || mon.cr) === 100) $btnScaleCr.hide();
+		else $btnScaleCr.show();
+		$btnScaleCr.off("click").click(() => {
+			const $inner = $btnScaleCr.find(`span`);
+			if ($inner.hasClass("glyphicon-signal")) {
+				const targetCr = prompt("Please enter the desired Challenge Rating");
+				if (!targetCr || !targetCr.trim()) return;
+				if (targetCr && targetCr.trim() && /^\d+(\/\d+)?$/.exec(targetCr) && Parser.crToNumber(targetCr) >= 0 && Parser.crToNumber(targetCr) <= 30) {
+					const scaled = ScaleCreature.scale(monsters[History.lastLoadedId], Parser.crToNumber(targetCr));
+					renderStatblock(scaled, true);
+				} else {
+					alert(`Please enter a valid Challenge Rating, between 0 and 30 (fractions may be written as e.g. "1/8").`);
+				}
+			} else {
+				renderStatblock(monsters[History.lastLoadedId]);
+			}
+		});
 
 		$content.find("tr.trait").remove();
 
@@ -808,7 +853,9 @@ function loadhash (id) {
 			const out = [];
 
 			skills.map(s => {
-				const re = /([-+])?\d+|(?:[^+]|\n(?!\+))+/g; // Split before and after each bonus
+				if (!s || !s.trim()) return;
+
+				const re = /([-+])?\d+|(?:[^-+]|\n(?![-+]))+/g; // Split before and after each bonus
 				const spl = s.match(re);
 
 				const skillName = spl[0].trim();
@@ -819,7 +866,7 @@ function loadhash (id) {
 
 					if (b.match(re)) {
 						const bonus = Number(b);
-						const pBonusStr = `+${bonus}`;
+						const pBonusStr = `${bonus >= 0 ? "+" : ""}${bonus}`;
 						skillString += renderSkillOrSaveRoller(skillName, pBonusStr, false);
 					} else {
 						skillString += b;
@@ -854,46 +901,54 @@ function loadhash (id) {
 				// skills and saves can have expertise
 				let expert = 1;
 				let pB = expectedPB;
+				let fromAbility;
+				let ability;
 				if ($(this).parent().prop("id") === "saves") {
 					const title = $(this).attr("title");
-					const ability = title.split(" ")[0].trim().toLowerCase().substring(0, 3);
-					const fromAbility = Parser.getAbilityModNumber(mon[ability]);
+					ability = title.split(" ")[0].trim().toLowerCase().substring(0, 3);
+					fromAbility = Parser.getAbilityModNumber(mon[ability]);
 					pB = bonus - fromAbility;
 					expert = (pB === expectedPB * 2) ? 2 : 1;
 				} else if ($(this).parent().prop("id") === "skills") {
 					const title = $(this).attr("title");
-					const fromAbility = Parser.getAbilityModNumber(mon[getAttribute(title)]);
+					ability = Parser.skillToAbilityAbv(title.toLowerCase().trim());
+					fromAbility = Parser.getAbilityModNumber(mon[ability]);
 					pB = bonus - fromAbility;
 					expert = (pB === expectedPB * 2) ? 2 : 1;
 				}
 				const withoutPB = bonus - pB;
+				try {
+					// if we have proficiency bonus, convert the roller
+					if (expectedPB > 0) {
+						const profDiceString = `${expert}d${pB * (3 - expert)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
 
-				// if we have proficiency bonus, convert the roller
-				if (expectedPB > 0) {
-					const profDiceString = `${expert}d${pB * (3 - expert)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
+						$(this).attr("data-roll-prof-bonus", $(this).text());
+						$(this).attr("data-roll-prof-dice", profDiceString);
+						const parsed = EntryRenderer.dice._parse(profDiceString);
+						const entFormat = parsed.dice.map(d => ({number: d.num, faces: d.faces}));
+						entFormat.unshift({number: 1, faces: 20});
 
-					$(this).attr("data-roll-prof-bonus", $(this).text());
-					$(this).attr("data-roll-prof-dice", profDiceString);
-					const parsed = EntryRenderer.dice._parse(profDiceString);
-					const entFormat = parsed.dice.map(d => ({number: d.num, faces: d.faces}));
-					entFormat.unshift({number: 1, faces: 20});
+						// here be (metallic) dragons
+						const cached = $(this).attr("onclick");
+						const nu = `
+							(function(it) {
+								if (PROF_DICE_MODE === PROF_MODE_DICE) {
+									EntryRenderer.dice.rollerClick(event, it, '{"type":"dice","rollable":true,"toRoll":${JSON.stringify(entFormat)}}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
+								} else {
+									${cached.replace(/this/g, "it")}
+								}
+							})(this)`;
 
-					// here be (metallic) dragons
-					const cached = $(this).attr("onclick");
-					const nu = `
-					(function(it) {
-						if (PROF_DICE_MODE === PROF_MODE_DICE) {
-							EntryRenderer.dice.rollerClick(it, '{"type":"dice","rollable":true,"toRoll":${JSON.stringify(entFormat)}}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
-						} else {
-							${cached.replace(/this/g, "it")}
+						$(this).attr("onclick", nu);
+
+						if (isProfDiceMode) {
+							$(this).html(profDiceString);
 						}
-					})(this)`;
-
-					$(this).attr("onclick", nu);
-
-					if (isProfDiceMode) {
-						$(this).html(profDiceString);
 					}
+				} catch (e) {
+					setTimeout(() => {
+						throw new Error(`Invalid save or skill roller! Bonus was ${bonus >= 0 ? "+" : ""}${bonus}, but creature's PB was +${expectedPB} and relevant ability score (${ability}) was ${fromAbility >= 0 ? "+" : ""}${fromAbility} (should have been ${expectedPB + fromAbility >= 0 ? "+" : ""}${expectedPB + fromAbility} total)`);
+					}, 0);
 				}
 			});
 
@@ -907,7 +962,7 @@ function loadhash (id) {
 					const withoutPB = dc - expectedPB;
 					const profDiceString = `1d${(expectedPB * 2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
 
-					return `DC <span class="dc-roller" mode="${isProfDiceMode ? "dice" : ""}" onclick="dcRollerClick(this, '${profDiceString}')" data-roll-prof-bonus="${capture}" data-roll-prof-dice="${profDiceString}">${isProfDiceMode ? profDiceString : capture}</span>`;
+					return `DC <span class="dc-roller" mode="${isProfDiceMode ? "dice" : ""}" onmousedown="event.preventDefault()" onclick="dcRollerClick(event, this, '${profDiceString}')" data-roll-prof-bonus="${capture}" data-roll-prof-dice="${profDiceString}">${isProfDiceMode ? profDiceString : capture}</span>`;
 				} else {
 					return match; // if there was no proficiency bonus to work with, fall back on this
 				}
@@ -917,7 +972,7 @@ function loadhash (id) {
 
 	function buildFluffTab (showImages) {
 		$content.append(EntryRenderer.utils.getBorderTr());
-		const name = $(EntryRenderer.utils.getNameTr(monsters[id]));
+		const name = $(EntryRenderer.utils.getNameTr(mon));
 		name.find(`th`).css("padding-right", "0.3em");
 		$content.append(name);
 		const $tr = $(`<tr class='text'/>`);
@@ -935,30 +990,48 @@ function loadhash (id) {
 				return;
 			}
 
-			if (fluff._copy) {
-				const cpy = data.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source);
-				// preserve these
-				const name = fluff.name;
-				const src = fluff.source;
-				const images = fluff.images;
-				Object.assign(fluff, cpy);
-				fluff.name = name;
-				fluff.source = src;
-				if (images) fluff.images = images;
-				delete fluff._copy;
+			function handleRecursive (fluff) {
+				const cachedAppendCopy = fluff._appendCopy; // prevent _copy from overwriting this
+
+				if (fluff._copy) {
+					const cpy = data.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source);
+					// preserve these
+					const name = fluff.name;
+					const src = fluff.source;
+					const images = fluff.images;
+
+					// remove this
+					delete fluff._copy;
+
+					Object.assign(fluff, cpy);
+					fluff.name = name;
+					fluff.source = src;
+					if (images) fluff.images = images;
+
+					handleRecursive(fluff);
+				}
+
+				if (cachedAppendCopy) {
+					const cpy = data.monster.find(it => cachedAppendCopy.name === it.name && cachedAppendCopy.source === it.source);
+					if (cpy.images) {
+						if (!fluff.images) fluff.images = cpy.images;
+						else fluff.images = fluff.images.concat(cpy.images);
+					}
+					if (cpy.entries) {
+						if (!fluff.entries) fluff.entries = cpy.entries;
+						else fluff.entries = fluff.entries.concat(cpy.entries);
+					}
+					delete fluff._appendCopy;
+
+					fluff._copy = cpy._copy;
+					fluff._appendCopy = cpy._appendCopy;
+
+					handleRecursive(fluff);
+				}
 			}
 
-			if (fluff._appendCopy) {
-				const cpy = data.monster.find(it => fluff._appendCopy.name === it.name && fluff._appendCopy.source === it.source);
-				if (cpy.images) {
-					if (!fluff.images) fluff.images = cpy.images;
-					else fluff.images = fluff.images.concat(cpy.images);
-				}
-				if (cpy.entries) {
-					if (!fluff.entries) fluff.entries = cpy.entries;
-					else fluff.entries = fluff.entries.concat(cpy.entries);
-				}
-				delete fluff._appendCopy;
+			if (fluff._copy || fluff._appendCopy) {
+				handleRecursive(fluff);
 			}
 
 			if (showImages) {
@@ -1004,9 +1077,6 @@ function loadhash (id) {
 		() => buildFluffTab(true)
 	);
 	EntryRenderer.utils.bindTabButtons(statTab, infoTab, picTab);
-
-	loadsub([]);
-	ListUtil.updateSelected();
 }
 
 function handleUnknownHash (link, sub) {
@@ -1019,7 +1089,7 @@ function handleUnknownHash (link, sub) {
 	}
 }
 
-function dcRollerClick (ele, exp) {
+function dcRollerClick (event, ele, exp) {
 	const parsed = EntryRenderer.dice._parse(exp);
 	const entFormat = parsed.dice.map(d => ({number: d.num, faces: d.faces}));
 	entFormat[0].modifier = parsed.mod;
@@ -1028,39 +1098,12 @@ function dcRollerClick (ele, exp) {
 		rollable: true,
 		toRoll: entFormat
 	};
-	EntryRenderer.dice.rollerClick(ele, JSON.stringify(it));
-}
-
-const SKILL_TO_ATB_ABV = {
-	"athletics": "str",
-	"acrobatics": "dex",
-	"sleight of hand": "dex",
-	"stealth": "dex",
-	"arcana": "int",
-	"history": "int",
-	"investigation": "int",
-	"nature": "int",
-	"religion": "int",
-	"animal handling": "wis",
-	"insight": "wis",
-	"medicine": "wis",
-	"perception": "wis",
-	"survival": "wis",
-	"deception": "cha",
-	"intimidation": "cha",
-	"performance": "cha",
-	"persuasion": "cha"
-};
-
-function getAttribute (skill) {
-	return SKILL_TO_ATB_ABV[skill.toLowerCase().trim()];
+	EntryRenderer.dice.rollerClick(event, ele, JSON.stringify(it));
 }
 
 function loadsub (sub) {
 	filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub, sublistFuncPreload);
 
-	const bookViewHash = sub.find(it => it.startsWith(printBookView.hashKey));
-	if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[printBookView.hashKey][0] === "true") printBookView.open();
-	else printBookView.teardown();
+	printBookView.handleSub(sub);
 }

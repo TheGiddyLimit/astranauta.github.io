@@ -9,7 +9,7 @@
 					"items": [
 						"The aboleth casts {@spell phantasmal force} (no components required) on any number of creatures it can see within 60 feet of it. While maintaining concentration on this effect, the aboleth can't take other lair actions. If a target succeeds on the saving throw or if the effect ends for it, the target is immune to the aboleth's phantasmal force lair action for the next 24 hours, although such a creature can choose to be affected.",
 						"Pools of water within 90 feet of the aboleth surge outward in a grasping tide. Any creature on the ground within 20 feet of such a pool must succeed on a DC 14 Strength saving throw or be pulled up to 20 feet into the water and knocked prone. The aboleth can't use this lair action again until it has used a different one.",
-						"Water in the aboleth's lair magically becomes a conduit for the creature's rage. The aboleth can target any number of creatures it can see in such water within 90 feet of it. A target must succeed on a DC 14 Wisdom saving throw or take 7 (2d6) psychic damage. The aboleth can't use this lair action again until it has used a different one."
+						"Water in the aboleth's lair magically becomes a conduit for the creature's rage. The aboleth can target any number of creatures it can see in such water within 90 feet of it. A target must succeed on a DC 14 Wisdom saving throw or take 7 ({@dice 2d6}) psychic damage. The aboleth can't use this lair action again until it has used a different one."
 					]
 				}
 			],
@@ -23,13 +23,14 @@
 						"As an action, the aboleth can create an illusory image of itself within 1 mile of the lair. The copy can appear at any location the aboleth has seen before or in any location a creature charmed by the aboleth can currently see. Once created, the image lasts for as long as the aboleth maintains concentration, as if concentrating on a spell. Although the image is intangible, it looks, sounds, and can move like the aboleth. The aboleth can sense, speak, and use telepathy from the image's position as if present at that position. If the image takes any damage, it disappears."
 					]
 				},
-				"If the aboleth dies, the first two effects fade over the course of 3d10 days."
+				"If the aboleth dies, the first two effects fade over the course of {@dice 3d10} days."
 			]
 		},
 		{
 			"name": "Aerisi Kalinoth",
 			"lairActions": [
-				"If Aerisi is in the air node while {@creature Yan-C-Bin|PotA} isn't, Aerisi can take lair actions. On initiative count 20 (losing initiative ties), Aerisi uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Aerisi can take no other lair actions while concentrating on a spell cast as a lair action.\nIf Aerisi casts {@spell invisibility} using this lair action, she also draws the power of the air node into herself. By doing so, she regains 15 (3d8+2) hit points."
+				"If Aerisi is in the air node while {@creature Yan-C-Bin|PotA} isn't, Aerisi can take lair actions. On initiative count 20 (losing initiative ties), Aerisi uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Aerisi can take no other lair actions while concentrating on a spell cast as a lair action.",
+				"If Aerisi casts {@spell invisibility} using this lair action, she also draws the power of the air node into herself. By doing so, she regains 15 ({@dice 3d8+2}) hit points."
 			]
 		},
 		{
@@ -55,7 +56,7 @@
 						"If a humanoid spends at least 1 hour within 1 mile of the lair, that creature must succeed on a DC 18 Wisdom saving throw or descend into a madness determined by the Madness of Baphomet table. A creature that succeeds on this saving throw can't be affected by this regional effect again for 24 hours."
 					]
 				},
-				"If Baphomet dies, these effects fade over the course of 1d10 days.",
+				"If Baphomet dies, these effects fade over the course of {@dice 1d10} days.",
 				{
 					"type": "entries",
 					"name": "Madness of Baphomet",
@@ -122,7 +123,7 @@
 						"When the beholder sleeps, minor warps in reality occur within 1 mile of its lair and then vanish 24 hours later. Marks on cave walls might change subtly, an eerie trinket might appear where none existed before, harmless slime might coat a statue, and so on. These effects apply only to natural surfaces and to nonmagical objects that aren't on anyone's person."
 					]
 				},
-				"If the beholder dies, these effects fade over the course of 1d10 days."
+				"If the beholder dies, these effects fade over the course of {@dice 1d10} days."
 			]
 		},
 		{
@@ -133,7 +134,7 @@
 					"type": "list",
 					"items": [
 						"Pools of water that the dragon can see within 120 feet of it surge outward in a grasping tide. Any creature on the ground within 20 feet of such a pool must succeed on a DC 15 Strength saving throw or be pulled up to 20 feet into the water and knocked prone.",
-						"A cloud of swarming insects fills a 20-foot-radius sphere centered on a point the dragon chooses within 120 feet of it. The cloud spreads around corners and remains until the dragon dismisses it as an action, uses this lair action again, or dies. The cloud is lightly obscured. Any creature in the cloud when it appears must make on a DC 15 Constitution saving throw, taking 10 (3d6) piercing damage on a failed save, or half as much damage on a successful one. A creature that ends its turn in the cloud takes 10 (3d6) piercing damage.",
+						"A cloud of swarming insects fills a 20-foot-radius sphere centered on a point the dragon chooses within 120 feet of it. The cloud spreads around corners and remains until the dragon dismisses it as an action, uses this lair action again, or dies. The cloud is lightly obscured. Any creature in the cloud when it appears must make on a DC 15 Constitution saving throw, taking 10 ({@dice 3d6}) piercing damage on a failed save, or half as much damage on a successful one. A creature that ends its turn in the cloud takes 10 ({@dice 3d6}) piercing damage.",
 						"Magical darkness spreads from a point the dragon chooses within 60 feet of it, filling a 15-foot-radius sphere until the dragon dismisses it as an action, uses this lair action again, or dies. The darkness spreads around corners. A creature with darkvision can't see through this darkness, and nonmagical light can't illuminate it. If any of the effect's area overlaps with an area of light created by a spell of 2nd level or lower, the spell that created the light is dispelled."
 					]
 				}
@@ -148,7 +149,7 @@
 						"Fog lightly obscures the land within 6 miles of the lair."
 					]
 				},
-				"If the dragon dies, vegetation remains as it has grown, but other effects fade over 1d10 days."
+				"If the dragon dies, vegetation remains as it has grown, but other effects fade over {@dice 1d10} days."
 			]
 		},
 		{
@@ -158,9 +159,9 @@
 				{
 					"type": "list",
 					"items": [
-						"Part of the ceiling collapses above one creature that the dragon can see within 120 feet of it. The creature must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) bludgeoning damage and be knocked prone and buried. The buried target is restrained and unable to breathe or stand up. A creature can take an action to make a DC 10 Strength check, ending the buried state on a success.",
+						"Part of the ceiling collapses above one creature that the dragon can see within 120 feet of it. The creature must succeed on a DC 15 Dexterity saving throw or take 10 ({@dice 3d6}) bludgeoning damage and be knocked prone and buried. The buried target is restrained and unable to breathe or stand up. A creature can take an action to make a DC 10 Strength check, ending the buried state on a success.",
 						"A cloud of sand swirls about in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The cloud spreads around corners. Each creature in the cloud must succeed on a DC 15 Constitution saving throw or be blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
-						"Lightning arcs, forming a 5-foot-wide line between two of the lair's solid surfaces that the dragon can see. They must be within 120 feet of the dragon and 120 feet of each other. Each creature in that line must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) lightning damage."
+						"Lightning arcs, forming a 5-foot-wide line between two of the lair's solid surfaces that the dragon can see. They must be within 120 feet of the dragon and 120 feet of each other. Each creature in that line must succeed on a DC 15 Dexterity saving throw or take 10 ({@dice 3d6}) lightning damage."
 					]
 				}
 			],
@@ -171,10 +172,10 @@
 					"items": [
 						"Thunderstorms rage within 6 miles of the lair.",
 						"Dust devils scour the land within 6 miles of the lair. A dust devil has the statistics of an air elemental, but it can't fly, has a speed of 50 feet, and has an Intelligence and Charisma of 1 (-5).",
-						"Hidden sinkholes form in and around the dragon's lair. A sinkhole can be spotted from a safe distance with a successful DC 20 Wisdom (Perception) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall 1d6 x 10 feet into the sinkhole."
+						"Hidden sinkholes form in and around the dragon's lair. A sinkhole can be spotted from a safe distance with a successful DC 20 Wisdom (Perception) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall {@dice 1d6} x 10 feet into the sinkhole."
 					]
 				},
-				"If the dragon dies, the dust devils disappear immediately, and the thunderstorms abate within 1d10 days. Any sinkholes remain where they are."
+				"If the dragon dies, the dust devils disappear immediately, and the thunderstorms abate within {@dice 1d10} days. Any sinkholes remain where they are."
 			]
 		},
 		{
@@ -199,7 +200,7 @@
 						"Whenever a creature with an Intelligence of 3 or higher comes within 30 feet of a water source within 1 mile of the dragon's lair, the dragon becomes aware of the creature's presence and location."
 					]
 				},
-				"If the dragon dies, the tracks fade in 1d10 days, but the other effects fade immediately."
+				"If the dragon dies, the tracks fade in {@dice 1d10} days, but the other effects fade immediately."
 			]
 		},
 		{
@@ -210,7 +211,7 @@
 					"type": "list",
 					"items": [
 						"The dragon creates fog as though it had cast the {@spell fog cloud} spell. The fog lasts until initiative count 20 on the next round.",
-						"A thunderclap originates at a point the dragon can see within 120 feet of it. Each creature within a 20-foot radius centered on that point must make a DC 15 Constitution saving throw or take 5 (1d10) thunder damage and be deafened until the end of its next turn."
+						"A thunderclap originates at a point the dragon can see within 120 feet of it. Each creature within a 20-foot radius centered on that point must make a DC 15 Constitution saving throw or take 5 ({@dice 1d10}) thunder damage and be deafened until the end of its next turn."
 					]
 				}
 			],
@@ -224,7 +225,7 @@
 						"Within its lair, the dragon can set illusory sounds, such as soft music and strange echoes, so that they can be heard in various parts of the lair."
 					]
 				},
-				"If the dragon dies, changed weather reverts to normal, as described in the spell, and the other effects fade in 1d10 days."
+				"If the dragon dies, changed weather reverts to normal, as described in the spell, and the other effects fade in {@dice 1d10} days."
 			]
 		},
 		{
@@ -249,7 +250,7 @@
 						"Intelligent creatures within 1 mile of the dragon's lair are prone to fits of giggling. Even serious matters suddenly seem amusing."
 					]
 				},
-				"If the dragon dies, the magic carvings fade over the course of 1d10 days. The other effects end immediately."
+				"If the dragon dies, the magic carvings fade over the course of {@dice 1d10} days. The other effects end immediately."
 			]
 		},
 		{
@@ -272,16 +273,16 @@
 					"type": "list",
 					"items": [
 						"Creatures within 1 mile of the tyrant's lair sometimes feel as if they're being watched even when they aren't.",
-						"When a creature hostile to the tyrant and aware of its existence finishes a long rest within 1 mile of the tyrant's lair, roll a d20 for that creature. On a roll of 10 or lower, the creature is subjected to one random eye ray of the tyrant."
+						"When a creature hostile to the tyrant and aware of its existence finishes a long rest within 1 mile of the tyrant's lair, roll a {@dice d20} for that creature. On a roll of 10 or lower, the creature is subjected to one random eye ray of the tyrant."
 					]
 				},
-				"If the death tyrant dies, these effects fade over the course of 1d10 days."
+				"If the death tyrant dies, these effects fade over the course of {@dice 1d10} days."
 			]
 		},
 		{
 			"name": "Demilich",
 			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the demilich rolls a d20. On a result of 11 or higher, the demilich takes a lair action to cause one of the following effects. It can't use the same effect two rounds in a row.",
+				"On initiative count 20 (losing initiative ties), the demilich rolls a {@dice d20}. On a result of 11 or higher, the demilich takes a lair action to cause one of the following effects. It can't use the same effect two rounds in a row.",
 				{
 					"type": "list",
 					"items": [
@@ -296,7 +297,7 @@
 				{
 					"type": "list",
 					"items": [
-						"The first time a non-evil creature enters the tomb's area, the creature takes 16 (3d10) necrotic damage.",
+						"The first time a non-evil creature enters the tomb's area, the creature takes 16 ({@dice 3d10}) necrotic damage.",
 						"Monsters in the tomb have advantage on saving throws against being charmed or frightened, and against features that turn undead.",
 						"The tomb is warded against the magical travel of creatures the demilich hasn't authorized. Such creatures can't teleport into or out of the tomb's area or use planar travel to enter or leave it. Effects that allow teleportation or planar travel work within the tomb as long as they aren't used to leave or enter the tomb's area."
 					]
@@ -326,7 +327,7 @@
 						"If a humanoid spends at least 1 hour within 1 mile of the lair, that creature must succeed on a DC 23 Wisdom saving throw or descend into a madness determined by the Madness of Demogorgon table. A creature that succeeds on this saving throw can't be affected by this regional effect again for 24 hours."
 					]
 				},
-				"If Demogorgon dies, these effects fade over the course of 1d10 days.",
+				"If Demogorgon dies, these effects fade over the course of {@dice 1d10} days.",
 				{
 					"type": "entries",
 					"name": "Madness of Demogorgon",
@@ -405,7 +406,7 @@
 					"items": [
 						"Fraz-Urb'luu causes up to 5 doors within the lair to be come walls, and an equal number of doors to appear on walls where there previously were none.",
 						"Fraz-Urb'luu chooses one humanoid within the lair and instantly creates a simulacrum of that creature (as if created with the {@spell simulacrum} spell). This simulacrum obeys Fraz-Urb'luu's commands and is destroyed on the next initiative count 20.",
-						"Fraz-Urb'luu creates a wave of anguish. Each creature he can see within the lair must succeed on a DC 23 Wisdom saving throw or take 33 (6d10) psychic damage."
+						"Fraz-Urb'luu creates a wave of anguish. Each creature he can see within the lair must succeed on a DC 23 Wisdom saving throw or take 33 ({@dice 6d10}) psychic damage."
 					]
 				}
 			],
@@ -419,7 +420,7 @@
 						"If a humanoid spends at least 1 hour within 1 mile of the lair, that creature must succeed on a DC 23 Wisdom saving throw or descend into a madness determined by the Madness of Fraz-Urb'luu table. A creature that succeeds on this saving throw can't be affected by this regional effect again for 24 hours."
 					]
 				},
-				"If Fraz-Urb'luu dies, these effects fade over the course of 1d10 days.",
+				"If Fraz-Urb'luu dies, these effects fade over the course of {@dice 1d10} days.",
 				{
 					"type": "entries",
 					"name": "Madness of Fraz-Urb'luu",
@@ -466,7 +467,8 @@
 		{
 			"name": "Gar Shatterkeel",
 			"lairActions": [
-				"If Gar is in the water node while {@creature Olhydra|PotA} isn't, he can take lair actions. On initiative count 20 (losing initiative ties), Gar uses a lair action to use his Multiattack or cast one of his spells, up to 3rd level, without using components or a spell slot. He can't cast the same spell two rounds in a row, but he can continue to concentrate on a spell he previously cast using a lair action. He can take no other lair actions while concentrating on a spell cast as a lair action. His favorite use of this capability is casting {@spell inflict wounds} or {@spell call lightning}.\nIf Gar casts {@spell cure wounds} using this lair action, he regains the maximum number of hit points from the spell (28)."
+				"If Gar is in the water node while {@creature Olhydra|PotA} isn't, he can take lair actions. On initiative count 20 (losing initiative ties), Gar uses a lair action to use his Multiattack or cast one of his spells, up to 3rd level, without using components or a spell slot. He can't cast the same spell two rounds in a row, but he can continue to concentrate on a spell he previously cast using a lair action. He can take no other lair actions while concentrating on a spell cast as a lair action. His favorite use of this capability is casting {@spell inflict wounds} or {@spell call lightning}.",
+				"If Gar casts {@spell cure wounds} using this lair action, he regains the maximum number of hit points from the spell (28)."
 			]
 		},
 		{
@@ -516,7 +518,7 @@
 						"If a humanoid spends at least 1 hour within 1 mile of the lair, that creature must succeed on a DC 23 Wisdom saving throw or descend into a madness determined by the Madness of Graz'zt table. A creature that succeeds on this saving throw can't be affected by this regional effect again for 24 hours."
 					]
 				},
-				"If Graz'zt dies, these effects fade over the course of 1d10 days.",
+				"If Graz'zt dies, these effects fade over the course of {@dice 1d10} days.",
 				{
 					"type": "entries",
 					"name": "Madness of Graz'zt",
@@ -572,7 +574,7 @@
 					"type": "list",
 					"items": [
 						"Grasping roots and vines erupt in a 20-foot radius centered on a point on the ground that the dragon can see within 120 feet of it. That area becomes difficult terrain, and each creature there must succeed on a DC 15 Strength saving throw or be restrained by the roots and vines. A creature can be freed if it or another creature takes an action to make a DC 15 Strength check and succeeds. The roots and vines wilt away when the dragon uses this lair action again or when the dragon dies.",
-						"A wall of tangled brush bristling with thorns springs into existence on a solid surface within 120 feet of the dragon. The wall is up to 60 feet long, 10 feet high, and 5 feet thick, and it blocks line of sight. When the wall appears, each creature in its area must make a DC 15 Dexterity saving throw. A creature that fails the save takes 18 (4d8) piercing damage and is pushed 5 feet out of the wall's space, appearing on whichever side of the wall it wants. A creature can move through the wall, albeit slowly and painfully. For every 1 foot a creature travels through the wall, it must spend 4 feet of movement. Furthermore, a creature in the wall's space must make a DC 15 Dexterity saving throw once each round it's in contact with the wall, taking 18 (4d8) piercing damage on a failed save, or half as much damage on a successful one. Each 10-foot section of wall has AC 5, 15 hit points, vulnerability to fire damage, resistance to bludgeoning and piercing damage, and immunity to psychic damage. The wall sinks back into the ground when the dragon uses this lair action again or when the dragon dies.",
+						"A wall of tangled brush bristling with thorns springs into existence on a solid surface within 120 feet of the dragon. The wall is up to 60 feet long, 10 feet high, and 5 feet thick, and it blocks line of sight. When the wall appears, each creature in its area must make a DC 15 Dexterity saving throw. A creature that fails the save takes 18 ({@dice 4d8}) piercing damage and is pushed 5 feet out of the wall's space, appearing on whichever side of the wall it wants. A creature can move through the wall, albeit slowly and painfully. For every 1 foot a creature travels through the wall, it must spend 4 feet of movement. Furthermore, a creature in the wall's space must make a DC 15 Dexterity saving throw once each round it's in contact with the wall, taking 18 ({@dice 4d8}) piercing damage on a failed save, or half as much damage on a successful one. Each 10-foot section of wall has AC 5, 15 hit points, vulnerability to fire damage, resistance to bludgeoning and piercing damage, and immunity to psychic damage. The wall sinks back into the ground when the dragon uses this lair action again or when the dragon dies.",
 						"Magical fog billows around one creature the dragon can see within 120 feet of it. The creature must succeed on a DC 15 Wisdom saving throw or be charmed by the dragon until initiative count 20 on the next round."
 					]
 				}
@@ -582,12 +584,13 @@
 				{
 					"type": "list",
 					"items": [
-						"Thickets form labyrinthine passages within 1 mile of the dragon's lair. The thickets act as 10-foot-high, 10-foot-thick walls that block line of sight. Creatures can move through the thickets, with every 1 foot a creature moves costing it 4 feet of movement. A creature in the thickets must make a DC 15 Dexterity saving throw once each round it's in contact with the 'thickets or take 3 (1d6) piercing damage from thorns.\nEach 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning and piercing damage, vulnerability to fire damage, and immunity to psychic and thunder damage.",
+						"Thickets form labyrinthine passages within 1 mile of the dragon's lair. The thickets act as 10-foot-high, 10-foot-thick walls that block line of sight. Creatures can move through the thickets, with every 1 foot a creature moves costing it 4 feet of movement. A creature in the thickets must make a DC 15 Dexterity saving throw once each round it's in contact with the 'thickets or take 3 ({@dice 1d6}) piercing damage from thorns.",
+						"Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning and piercing damage, vulnerability to fire damage, and immunity to psychic and thunder damage.",
 						"Within 1 mile of its lair, the dragon leaves no physical evidence of its passage unless it wishes to. Tracking it there is impossible except by magical means. In addition, it ignores movement impediments and damage from plants in this area that are neither magical nor creatures, including the thickets described above. The plants remove themselves from the dragon's path.",
 						"Rodents and birds within 1 mile of the dragon's lair serve as the dragon's eyes and ears. Deer and other large game are strangely absent, hinting at the presence of an unnaturally hungry predator."
 					]
 				},
-				"If the dragon dies, the rodents and birds lose their supernatural link to it. The thickets remain, but within 1d10 days, they become mundane plants and normal difficult terrain, losing their thorns."
+				"If the dragon dies, the rodents and birds lose their supernatural link to it. The thickets remain, but within {@dice 1d10} days, they become mundane plants and normal difficult terrain, losing their thorns."
 			]
 		},
 		{
@@ -598,8 +601,8 @@
 					"type": "list",
 					"items": [
 						"Any fires in the lair flare up drastically, quadrupling in size (for example, a fire blazing in a 5-foot by 5-foot area expands to a 10-foot by 10-foot area). Pools or streams of lava or other molten material are also affected. Creatures caught in the area of an expanded fire are subject to the normal damage for entering or being in the fire. Creatures caught by a sudden flood of lava must succeed on a DC 20 Strength saving throw or be knocked prone, in addition to the normal damage for contact with molten rock.",
-						"A thick cloud of black smoke and burning embers fills a 40-foot-radius sphere within 120 feet of Imix, lasting until initiative count 20 of the next round. Creatures and objects within or beyond the smoke are heavily obscured. A creature that enters the cloud of embers for the first time on a turn or starts its turn there takes 10 (3d6) fire damage.",
-						"A wave of searing heat fills the lair in a 300-foot radius around Imix for an instant. Each creature other than Imix in the area must succeed on a DC 15 Constitution saving throw or take 1d8 fire damage. Creatures that take fire damage from this effect gain one level of exhaustion. In addition, there is a fifty percent chance that any container of fluid held or carried by an affected creature (for example, a magic potion) is destroyed."
+						"A thick cloud of black smoke and burning embers fills a 40-foot-radius sphere within 120 feet of Imix, lasting until initiative count 20 of the next round. Creatures and objects within or beyond the smoke are heavily obscured. A creature that enters the cloud of embers for the first time on a turn or starts its turn there takes 10 ({@dice 3d6}) fire damage.",
+						"A wave of searing heat fills the lair in a 300-foot radius around Imix for an instant. Each creature other than Imix in the area must succeed on a DC 15 Constitution saving throw or take {@dice 1d8} fire damage. Creatures that take fire damage from this effect gain one level of exhaustion. In addition, there is a fifty percent chance that any container of fluid held or carried by an affected creature (for example, a magic potion) is destroyed."
 					]
 				}
 			],
@@ -609,12 +612,12 @@
 					"type": "list",
 					"items": [
 						"A dry, baking heat wave strikes the region within 10 miles of Imix's location. At first, effects are minor - grass turns brown, animals become listless, work and travel become very tiring. The longer Imix remains, the worse the heat becomes; after 5 days, crops die and ponds dry up; after 10 days, unprotected livestock dies, and wells and small rivers dry up; after 20 days, large lakes and rivers are reduced in depth by 20 feet and shrink accordingly.",
-						"Wildfires erupt within a 5-mile radius of Imix's lair. Every hour, there is a ten percent chance that characters in this area are caught in the path of a wildfire moving 50 feet per round. Each character must succeed on a DC 21 Constitution saving throw or take 10 (3d6) fire damage. A wildfire continues to threaten the characters for 1d10 rounds or until they get out of its path. Wooden structures caught in the wildfire are destroyed.",
-						"Lava fountains erupt from the ground within 1 mile of Imix's lair. Every hour, there is a ten percent chance that characters in this area are close enough to an erupting lava fountain to be in danger. A lava fountain creates a vent 20 feet in diameter, and hurls globs of lava up to 200 feet away. Each character within this area must succeed on a DC 21 Dexterity saving throw or take 11 (2d10) bludgeoning damage plus 17 (5d6) fire damage. A fountain lasts for 2d10 rounds before subsiding.",
+						"Wildfires erupt within a 5-mile radius of Imix's lair. Every hour, there is a ten percent chance that characters in this area are caught in the path of a wildfire moving 50 feet per round. Each character must succeed on a DC 21 Constitution saving throw or take 10 ({@dice 3d6}) fire damage. A wildfire continues to threaten the characters for {@dice 1d10} rounds or until they get out of its path. Wooden structures caught in the wildfire are destroyed.",
+						"Lava fountains erupt from the ground within 1 mile of Imix's lair. Every hour, there is a ten percent chance that characters in this area are close enough to an erupting lava fountain to be in danger. A lava fountain creates a vent 20 feet in diameter, and hurls globs of lava up to 200 feet away. Each character within this area must succeed on a DC 21 Dexterity saving throw or take 11 ({@dice 2d10}) bludgeoning damage plus 17 ({@dice 5d6}) fire damage. A fountain lasts for {@dice 2d10} rounds before subsiding.",
 						"Wildfires or volcanic fissures within 1 mile of Imix's lair form intermittent portals to the Elemental Plane of Fire, allowing elemental creatures into the mortal world to dwell near those points."
 					]
 				},
-				"If Imix is destroyed or banished back to his home plane, the regional effects fade over the next 1d10 days."
+				"If Imix is destroyed or banished back to his home plane, the regional effects fade over the next {@dice 1d10} days."
 			]
 		},
 		{
@@ -624,8 +627,8 @@
 				{
 					"type": "list",
 					"items": [
-						"Juiblex slimes a square area of ground it can see within the lair. The area can be up to 10 feet on a side. The slime lasts for 1 hour or until it is burned away with fire. When the slime appears, each creature in that area must succeed on a DC 21 Strength saving throw or become restrained. When a creature enters the area for the first time on a turn or ends its turn there, that creature must make the same save. A restrained creature is stuck as long as it remains in the slimy area or until it breaks free. The restrained creature, or another creature who can reach it, can use its action to try to break free and must succeed on a DC 21 Strength check. If the slime is set on fire, it burns away after 1 round. Any creature that starts its turn in the burning slime takes 22 (4d10) fire damage.",
-						"Juiblex slimes a square area of ground it can see within the lair. The area can be up to 10 feet on a side. The slime lasts for 1 hour or until it is burned away with fire. When the slime appears, each creature on it must succeed on a DC 21 Dexterity saving throw or fall prone and slide 10 feet in a random direction determined by a d8 roll. When a creature enters the area for the first time on a turn or ends its turn there, that creature must make the same save. If the slime is set on fire, it burns away after 1 round. Any creature that starts its turn in the burning slime takes 22 (4d10) fire damage.",
+						"Juiblex slimes a square area of ground it can see within the lair. The area can be up to 10 feet on a side. The slime lasts for 1 hour or until it is burned away with fire. When the slime appears, each creature in that area must succeed on a DC 21 Strength saving throw or become restrained. When a creature enters the area for the first time on a turn or ends its turn there, that creature must make the same save. A restrained creature is stuck as long as it remains in the slimy area or until it breaks free. The restrained creature, or another creature who can reach it, can use its action to try to break free and must succeed on a DC 21 Strength check. If the slime is set on fire, it burns away after 1 round. Any creature that starts its turn in the burning slime takes 22 ({@dice 4d10}) fire damage.",
+						"Juiblex slimes a square area of ground it can see within the lair. The area can be up to 10 feet on a side. The slime lasts for 1 hour or until it is burned away with fire. When the slime appears, each creature on it must succeed on a DC 21 Dexterity saving throw or fall prone and slide 10 feet in a random direction determined by a {@dice d8} roll. When a creature enters the area for the first time on a turn or ends its turn there, that creature must make the same save. If the slime is set on fire, it burns away after 1 round. Any creature that starts its turn in the burning slime takes 22 ({@dice 4d10}) fire damage.",
 						"A green slime (see the Dungeon Master's Guide) appears on a spot on the ceiling that Juiblex chooses within the lair. The slime disintegrates after 1 hour."
 					]
 				}
@@ -639,7 +642,7 @@
 						"If a humanoid spends at least 1 hour within 1 mile of the lair, that creature must succeed on a DC 18 Wisdom saving throw or descend into a madness determined by the Madness of Juiblex table. A creature that succeeds on this saving throw can't be affected by this regional effect again for 24 hours."
 					]
 				},
-				"If Juiblex dies, these effects fade over the course of 1d10 days.",
+				"If Juiblex dies, these effects fade over the course of {@dice 1d10} days.",
 				{
 					"type": "entries",
 					"name": "Madness of Juiblex",
@@ -712,7 +715,7 @@
 					"items": [
 						"A strong current moves through the kraken's lair. Each creature within 60 feet of the kraken must succeed on a DC 23 Strength saving throw or be pushed up to 60 feet away from the kraken. On a success, the creature is pushed 10 feet away from the kraken.",
 						"Creatures in the water within 60 feet of the kraken have vulnerability to lightning damage until initiative count 20 on the next round.",
-						"The water in the kraken's lair becomes electrically charged. All creatures within 120 feet of the kraken must succeed on a DC 23 Constitution saving throw, taking 10 (3d6) lightning damage on a failed save, or half as much damage on a successful one."
+						"The water in the kraken's lair becomes electrically charged. All creatures within 120 feet of the kraken must succeed on a DC 23 Constitution saving throw, taking 10 ({@dice 3d6}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -736,8 +739,8 @@
 				{
 					"type": "list",
 					"items": [
-						"The larva mage rolls a d8 and regains a spell slot of that level or lower. If it has no spent spell slots of that level or lower, nothing happens.",
-						"The larva mage fills its enemies' minds with visions of worms and maggots surging from cracks in the floor and walls and crawling up the targets legs, biting and burrowing into their skin. All enemies within 30 feet of the larva mage must succeed on a DC 18 Wisdom saving throw or take 24 (7d6) psychic damage on a failed save. The vermin then disappear into the cracks and recesses from whence they emerged.",
+						"The larva mage rolls a {@dice d8} and regains a spell slot of that level or lower. If it has no spent spell slots of that level or lower, nothing happens.",
+						"The larva mage fills its enemies' minds with visions of worms and maggots surging from cracks in the floor and walls and crawling up the targets legs, biting and burrowing into their skin. All enemies within 30 feet of the larva mage must succeed on a DC 18 Wisdom saving throw or take 24 ({@dice 7d6}) psychic damage on a failed save. The vermin then disappear into the cracks and recesses from whence they emerged.",
 						"The larva mage conjures masses of foul liquids and bloated vermin that ooze from the walls and floors that sicken creatures by merely looking at it. Creatures that can see the larva mage must succeed on a DC 18 Constitution saving throw or be poisoned for one round."
 					]
 				}
@@ -752,7 +755,7 @@
 						"The stench of decay fills the air within 6 miles of the lair."
 					]
 				},
-				"If the larva mage dies, the first effect ends immediately, the second and third effects fade over the course of 2d10 days."
+				"If the larva mage dies, the first effect ends immediately, the second and third effects fade over the course of {@dice 2d10} days."
 			]
 		},
 		{
@@ -762,9 +765,9 @@
 				{
 					"type": "list",
 					"items": [
-						"The lich rolls a d8 and regains a spell slot of that level or lower. If it has no spent spell slots of that level or lower, nothing happens.",
+						"The lich rolls a {@dice d8} and regains a spell slot of that level or lower. If it has no spent spell slots of that level or lower, nothing happens.",
 						"The lich targets one creature it can see within 30 feet of it. A crackling cord of negative energy tethers the lich to the target. Whenever the lich takes damage, the target must make a DC 18 Constitution saving throw. On a failed save, the lich takes half the damage (rounded down), and the target takes the remaining damage. This tether lasts until initiative count 20 on the next round or until the lich or the target is no longer in the lich's lair.",
-						"The lich calls forth the spirits of creatures that died in its lair. These apparitions materialize and attack one creature that the lich can see within 60 feet of it. The target must succeed on a DC 18 Constitution saving throw, taking 52 (15d6) necrotic damage on a failed save, or half as much damage on a success. The apparitions then disappear."
+						"The lich calls forth the spirits of creatures that died in its lair. These apparitions materialize and attack one creature that the lich can see within 60 feet of it. The target must succeed on a DC 18 Constitution saving throw, taking 52 ({@dice 15d6}) necrotic damage on a failed save, or half as much damage on a success. The apparitions then disappear."
 					]
 				}
 			]
@@ -773,7 +776,7 @@
 			"name": "Marlos Urnrayle",
 			"lairActions": [
 				"If Marlos is in the earth node while {@creature Ogrémoch|PotA} isn't, the medusa can take lair actions. On initiative count 20 (losing initiative ties), Marlos uses a lair action to cast {@spell earthquake} without using components. As long as he maintains concentration on {@spell earthquake}, initiative count 20 is the start of Marlos's turn for the purpose of the spell. He can take no other lair actions while concentrating on {@spell earthquake}.",
-				"Marlos's second option for a lair action is to draw power from the earth node to heal. When he does so, he regains 30 (6d8+3) hit points."
+				"Marlos's second option for a lair action is to draw power from the earth node to heal. When he does so, he regains 30 ({@dice 6d8+3}) hit points."
 			]
 		},
 		{
@@ -785,7 +788,7 @@
 					"items": [
 						"Each undead creature in the lair can pinpoint the location of each living creature within 120 feet of it until initiative count 20 on the next round.",
 						"Each undead in the lair has advantage on saving throws against effects that turn undead until initiative count 20 on the next round.",
-						"Until initiative count 20 on the next round, any non-undead creature that tries to cast a spell of 4th level or lower in the mummy lord's lair is wracked with pain. The creature can choose another action, but if it tries to cast the spell, it must make a DC 16 Constitution saving throw. On a failed save, it takes 1d6 necrotic damage per level of the spell, and the spell has no effect and is wasted."
+						"Until initiative count 20 on the next round, any non-undead creature that tries to cast a spell of 4th level or lower in the mummy lord's lair is wracked with pain. The creature can choose another action, but if it tries to cast the spell, it must make a DC 16 Constitution saving throw. On a failed save, it takes {@dice 1d6} necrotic damage per level of the spell, and the spell has no effect and is wasted."
 					]
 				}
 			],
@@ -810,7 +813,7 @@
 					"type": "list",
 					"items": [
 						"A 10-foot-radius area of rocky or earthy ground within 60 feet of Ogrémoch turns to sticky mud. Any creature on the ground in the area must succeed on a DC 15 Dexterity saving throw or sink 5 feet into the mud and be restrained. A creature can take an action to make a DC 15 Strength check, ending the effect on itself or another creature within its reach on a success.",
-						"Crystalline spikes grow from the ground in a 20-foot-radius area within 60 feet of Ogrémoch. The area becomes difficult terrain. A creature that moves through the affected area takes 1d8 piercing damage for every 5 feet it moves there. Creatures that are knocked prone in the area also take this damage.",
+						"Crystalline spikes grow from the ground in a 20-foot-radius area within 60 feet of Ogrémoch. The area becomes difficult terrain. A creature that moves through the affected area takes {@dice 1d8} piercing damage for every 5 feet it moves there. Creatures that are knocked prone in the area also take this damage.",
 						"A violent tremor shakes the lair in a 120-foot-radius around Ogrémoch. Each creature other than Ogrémoch on the ground in the area must succeed on a DC 15 Strength or Dexterity saving throw (target's choice) or be knocked prone."
 					]
 				}
@@ -820,13 +823,13 @@
 				{
 					"type": "list",
 					"items": [
-						"Earth tremors strike the region within 10 miles of Ogrémoch's location every 2d12 hours, each lasting 1d10 rounds. At first, damage is minor\u2014broken windows, cracked plaster, items toppled off shelves. The longer Ogrémoch remains, the stronger the tremors become. After 5 days, the tremors are strong enough to destroy flimsy structures. After 10 days, they are strong enough to destroy ordinary wooden buildings. After 20 days, they can seriously damage or destroy reinforced or fortified structures.",
+						"Earth tremors strike the region within 10 miles of Ogrémoch's location every {@dice 2d12} hours, each lasting {@dice 1d10} rounds. At first, damage is minor\u2014broken windows, cracked plaster, items toppled off shelves. The longer Ogrémoch remains, the stronger the tremors become. After 5 days, the tremors are strong enough to destroy flimsy structures. After 10 days, they are strong enough to destroy ordinary wooden buildings. After 20 days, they can seriously damage or destroy reinforced or fortified structures.",
 						"Magnetic disturbances within 10 miles of Ogrémoch prevent compasses from functioning there.",
-						"Hidden sinkholes and fissures form within 1 mile of Ogrémoch's location. A hidden sinkhole can be spotted from a safe distance by any creature with a passive Wisdom (Perception) score of 15 or higher or spotted with a successful DC 15 Wisdom (Survival) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall 1d6 x 10 feet into the sinkhole or fissure.",
+						"Hidden sinkholes and fissures form within 1 mile of Ogrémoch's location. A hidden sinkhole can be spotted from a safe distance by any creature with a passive Wisdom (Perception) score of 15 or higher or spotted with a successful DC 15 Wisdom (Survival) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall {@dice 1d6} x 10 feet into the sinkhole or fissure.",
 						"Natural caves and tunnels within 1 mile of Ogrémoch's lair form intermittent portals to the Elemental Plane of Earth, allowing elemental creatures into the mortal world to dwell near those points."
 					]
 				},
-				"If Ogrémoch is destroyed or banished back to his home plane, the regional effects fade over the next 1d10 days."
+				"If Ogrémoch is destroyed or banished back to his home plane, the regional effects fade over the next {@dice 1d10} days."
 			]
 		},
 		{
@@ -838,7 +841,7 @@
 					"items": [
 						"Pools of water in the lair surge outward in a grasping tide. Any creature within 20 feet of such a pool must succeed on a DC 20 Strength saving throw or be pulled up to 20 feet into the water and knocked prone.",
 						"Water within 120 feet of Olhydra becomes murky and opaque until initiative count 20 of the next round. A creature with darkvision can't see through the water, and light can't illuminate it.",
-						"A freezing fog fills a 40-foot-radius sphere within 120 feet of Olhydra, lasting until initiative count 20 of the next round. Creatures and objects within or beyond the fog are heavily obscured. A creature that enters the freezing cloud for the first time on a turn or starts its turn there takes 10 (3d6) cold damage."
+						"A freezing fog fills a 40-foot-radius sphere within 120 feet of Olhydra, lasting until initiative count 20 of the next round. Creatures and objects within or beyond the fog are heavily obscured. A creature that enters the freezing cloud for the first time on a turn or starts its turn there takes 10 ({@dice 3d6}) cold damage."
 					]
 				}
 			],
@@ -847,13 +850,13 @@
 				{
 					"type": "list",
 					"items": [
-						"Violent downpours become frequent within 10 miles of the lair. A downpour occurs once every 2d12 hours, and lasts 1d3 hours. Downpours are so heavy that creatures moving overland travel at half normal speed",
+						"Violent downpours become frequent within 10 miles of the lair. A downpour occurs once every {@dice 2d12} hours, and lasts {@dice 1d3} hours. Downpours are so heavy that creatures moving overland travel at half normal speed",
 						"Within 5 miles of the lair, currents and tides are exceptionally strong and treacherous. Any ability checks made to safely navigate or control a vessel moving through these waters has disadvantage.",
 						"Aquatic creatures that have an Intelligence score of 2 or lower within 1 mile of the lair must succeed on a DC 15 Wisdom saving throw when they enter the area. If the saving throw succeeds, the creature is frightened and attempts to leave the area, remaining frightened while within it. On a failure, the creature becomes highly aggressive and remains in the area for 24 hours. While in this state, the creature gains advantage on saving throws against charm and fear effects.",
 						"Natural springs and pools within 1 mile of the lair form intermittent portals to the Elemental Plane of Water, allowing elemental creatures into the mortal world to dwell near those points."
 					]
 				},
-				"If Olhydra is destroyed or banished back to her home plane, the regional effects fade over the next 1d10 days."
+				"If Olhydra is destroyed or banished back to her home plane, the regional effects fade over the next {@dice 1d10} days."
 			]
 		},
 		{
@@ -879,7 +882,7 @@
 						"If a humanoid spends at least 1 hour within 1 mile of the lair, that creature must succeed on a DC 23 Wisdom saving throw or descend into a madness determined by the Madness of Orcus table. A creature that succeeds on this saving throw can't be affected by this regional effect again for 24 hours."
 					]
 				},
-				"If Orcus dies, these effects fade over the course of 1d10 days.",
+				"If Orcus dies, these effects fade over the course of {@dice 1d10} days.",
 				{
 					"type": "entries",
 					"name": "Madness of Orcus",
@@ -930,7 +933,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Magma erupts from a point on the ground the dragon can see within 120 feet of it, creating a 20-foot-high, 5-foot-radius geyser. Each creature in the geyser's area must make a DC 15 Dexterity saving throw, taking 21 (6d6) fire damage on a failed save, or half as much damage on a successful one.",
+						"Magma erupts from a point on the ground the dragon can see within 120 feet of it, creating a 20-foot-high, 5-foot-radius geyser. Each creature in the geyser's area must make a DC 15 Dexterity saving throw, taking 21 ({@dice 6d6}) fire damage on a failed save, or half as much damage on a successful one.",
 						"A tremor shakes the lair in a 60-foot radius around the dragon. Each creature other than the dragon on the ground in that area must succeed on a DC 15 Dexterity saving throw or be knocked prone.",
 						"Volcanic gases form a cloud in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The sphere spreads a round corners, and its area is lightly obscured. It lasts until initiative count 20 on the next round. Each creature that starts its turn in the cloud must succeed on a DC 13 Constitution saving throw or be poisoned until the end of its turn. While poisoned in this way, a creature is incapacitated."
 					]
@@ -946,7 +949,7 @@
 						"Rocky fissures within 1 mile of the dragon's lair form portals to the Elemental Plane of Fire, allowing creatures of elemental fire into the world to dwell nearby."
 					]
 				},
-				"If the dragon dies, these effects fade over the course of 1d10 days."
+				"If the dragon dies, these effects fade over the course of {@dice 1d10} days."
 			]
 		},
 		{
@@ -957,7 +960,7 @@
 					"type": "list",
 					"items": [
 						"The dragon creates fog as if it had cast the {@spell fog cloud} spell. The fog lasts until initiative count 20 on the next round.",
-						"A blisteringly cold wind blows through the lair near the dragon. Each creature within 120 feet of the dragon must succeed on a DC 15 Constitution saving throw or take 5 (1d10) cold damage. Gases and vapors are dispersed by the wind, and unprotected flames are extinguished. Protected flames, such as lanterns, have a 50 percent chance of being extinguished."
+						"A blisteringly cold wind blows through the lair near the dragon. Each creature within 120 feet of the dragon must succeed on a DC 15 Constitution saving throw or take 5 ({@dice 1d10}) cold damage. Gases and vapors are dispersed by the wind, and unprotected flames are extinguished. Protected flames, such as lanterns, have a 50 percent chance of being extinguished."
 					]
 				}
 			],
@@ -971,7 +974,7 @@
 						"Given days or longer to work, the dragon can make clouds and fog within its lair as solid as stone, forming structures and other objects as it wishes."
 					]
 				},
-				"If the dragon dies, changed weather reverts to normal, as described in the spell, and the other effects fade in 1d10 days."
+				"If the dragon dies, changed weather reverts to normal, as described in the spell, and the other effects fade in {@dice 1d10} days."
 			]
 		},
 		{
@@ -982,7 +985,7 @@
 					"type": "list",
 					"items": [
 						"The flow of time is altered such that every creature in the lair must reroll initiative. The sphinx can choose not to reroll.",
-						"The effects of time are altered such that every creature in the lair must succeed on a DC 15 Constitution saving throw or become 1d20 years older or younger (the sphinx's choice), but never any younger than 1 year old. A {@spell greater restoration} spell can restore a creature's age to normal.",
+						"The effects of time are altered such that every creature in the lair must succeed on a DC 15 Constitution saving throw or become {@dice 1d20} years older or younger (the sphinx's choice), but never any younger than 1 year old. A {@spell greater restoration} spell can restore a creature's age to normal.",
 						"The flow of time within the lair is altered such that everything within moves up to 10 years forward or backward (sphinx's choice). Only the sphinx is immediately aware of the time change. A {@spell wish} spell can return the caster and up to seven other creatures designated by the caster to their normal time.",
 						"The sphinx shifts itself and up to seven other creatures it can see within in its lair to another plane of existence. Once outside its lair, the sphinx can't use lair actions, but it can return to its lair as a bonus action on its turn, taking up to seven creatures with it."
 					]
@@ -1012,7 +1015,7 @@
 						"Flashes of lightning and peals of thunder are continual, day and night, within 5 miles of the lair."
 					]
 				},
-				"If the giant dies, the lightning, thunder, and high wind regional effects end immediately. Rain, snow, and blowing dust abate gradually within 1d8 days."
+				"If the giant dies, the lightning, thunder, and high wind regional effects end immediately. Rain, snow, and blowing dust abate gradually within {@dice 1d8} days."
 			]
 		},
 		{
@@ -1050,7 +1053,8 @@
 		{
 			"name": "Vanifer",
 			"lairActions": [
-				"If Vanifer is in the fire node while {@creature Imix|PotA} isn't, the tiefling can take lair actions. On initiative count 20 (losing initiative ties), Vanifer uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Vanifer can take no other lair actions while concentrating on a spell cast as a lair action. Her favorite use of this capability is casting {@spell fireball} or {@spell hypnotic pattern}.\nIf Vanifer casts {@spell misty step} using this lair action, she also draws the power of the fire node into herself. By doing so, she regains 15 (3d8+2) hit points."
+				"If Vanifer is in the fire node while {@creature Imix|PotA} isn't, the tiefling can take lair actions. On initiative count 20 (losing initiative ties), Vanifer uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Vanifer can take no other lair actions while concentrating on a spell cast as a lair action. Her favorite use of this capability is casting {@spell fireball} or {@spell hypnotic pattern}.",
+				"If Vanifer casts {@spell misty step} using this lair action, she also draws the power of the fire node into herself. By doing so, she regains 15 ({@dice 3d8+2}) hit points."
 			]
 		},
 		{
@@ -1066,7 +1070,7 @@
 						"A creeping fog clings to the ground within 500 feet of the vampire's lair. The fog occasionally takes eerie forms, such as grasping claws and writhing serpents."
 					]
 				},
-				"If the vampire is destroyed, these effects end after 2d6 days."
+				"If the vampire is destroyed, these effects end after {@dice 2d6} days."
 			]
 		},
 		{
@@ -1076,8 +1080,8 @@
 				{
 					"type": "list",
 					"items": [
-						"Freezing fog fills a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The fog spreads around corners, and its area is heavily obscured. Each creature in the fog when it appears must make a DC 10 Constitution saving throw, taking 10 (3d6) cold damage on a failed save, or half as much damage on a successful one. A creature that ends its turn in the fog takes 10 (3d6) cold damage. A wind of at least 20 miles per hour disperses the fog. The fog otherwise lasts until the dragon uses this lair action again or until the dragon dies.",
-						"Jagged ice shards fall from the ceiling, striking up to three creatures underneath that the dragon can see within 120 feet of it. The dragon makes one ranged attack roll (+7 to hit) against each target. On a hit, the target takes 10 (3d6) piercing damage.",
+						"Freezing fog fills a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The fog spreads around corners, and its area is heavily obscured. Each creature in the fog when it appears must make a DC 10 Constitution saving throw, taking 10 ({@dice 3d6}) cold damage on a failed save, or half as much damage on a successful one. A creature that ends its turn in the fog takes 10 ({@dice 3d6}) cold damage. A wind of at least 20 miles per hour disperses the fog. The fog otherwise lasts until the dragon uses this lair action again or until the dragon dies.",
+						"Jagged ice shards fall from the ceiling, striking up to three creatures underneath that the dragon can see within 120 feet of it. The dragon makes one ranged attack roll (+7 to hit) against each target. On a hit, the target takes 10 ({@dice 3d6}) piercing damage.",
 						"The dragon creates an opaque wall of ice on a solid surface it can see within 120 feet of it. The wall can be up to 30 feet long, 30 feet high, and 1 foot thick. When the wall appears, each creature within its area is pushed 5 feet out of the wall's space; appearing on whichever side of the wall it wants. Each 10-foot section of the wall has AC 5, 30 hit points, vulnerability to fire damage, and immunity to acid, cold, necrotic, poison, and psychic damage. The wall disappears when the dragon uses this lair action again or when the dragon dies."
 					]
 				}
@@ -1089,10 +1093,11 @@
 					"items": [
 						"Chilly fog lightly obscures the land within 6 miles of the dragon's lair.",
 						"Freezing precipitation falls within 6 miles of the dragon's lair, sometimes forming blizzard conditions when the dragon is at rest.",
-						"Icy walls block off areas in the dragon's lair. Each wall is 6 inches thick, and a 10-foot section has AC 5, 15 hit points, vulnerability to fire damage, and immunity to acid, cold, necrotic, poison, and psychic damage.\nIf the dragon wishes to move through a wall, it can do so without slowing down. The portion of the wall the dragon moves through is destroyed, however."
+						"Icy walls block off areas in the dragon's lair. Each wall is 6 inches thick, and a 10-foot section has AC 5, 15 hit points, vulnerability to fire damage, and immunity to acid, cold, necrotic, poison, and psychic damage.",
+						"If the dragon wishes to move through a wall, it can do so without slowing down. The portion of the wall the dragon moves through is destroyed, however."
 					]
 				},
-				"If the dragon dies, the fog and precipitation fade within 1 day. The ice walls melt over the course of 1d10 days."
+				"If the dragon dies, the fog and precipitation fade within 1 day. The ice walls melt over the course of {@dice 1d10} days."
 			]
 		},
 		{
@@ -1103,7 +1108,7 @@
 					"type": "list",
 					"items": [
 						"Yan-C-Bin drops the temperature of the air, covering all surfaces with ice. This effect is identical to the {@spell sleet storm} spell.",
-						"Yan-C-Bin controls the surrounding air as an extension of himself. Each creature Yan-C-Bin designates must succeed at a DC 24 Constitution saving throw or be hoisted or flung 3d6 x 10 feet through the air. A creature smashed into a solid object or released in mid-air takes 1d6 bludgeoning damage for every 10 feet moved or fallen.",
+						"Yan-C-Bin controls the surrounding air as an extension of himself. Each creature Yan-C-Bin designates must succeed at a DC 24 Constitution saving throw or be hoisted or flung {@dice 3d6} x 10 feet through the air. A creature smashed into a solid object or released in mid-air takes {@dice 1d6} bludgeoning damage for every 10 feet moved or fallen.",
 						"Yan-C-Bin creates a torrent of debris within 120 feet of him that lasts until initiative count 20 on the next round. The debris lightly obscures every creature and object in the area for the duration. All creatures in the area must succeed at a DC 24 Wisdom saving throw or be blinded until initiative count 20 on the next round."
 					]
 				}
@@ -1114,12 +1119,12 @@
 					"type": "list",
 					"items": [
 						"Gale force winds tear across the landscape in a 5-mile radius, whisking away small or light objects, dismantling roofs and fences, tearing branches from trees, and making flight impossible. Small and Medium creatures move at half speed through the wind; Tiny creatures exposed to the wind are carried away with it at a rate of 40 feet per round unless they succeed at a DC 15 Strength (Athletics) check.",
-						"Thunderstorms erupt in a 5-mile radius centered on Yan-C-Bin's lair, creating deafening cracks of thunder and constant lightning. Every ten minutes the storm rages, creatures standing beneath the open sky have a five percent chance of being struck by lightning. A creature struck by lightning must make a DC 21 Constitution saving throw, taking 21 (6d6) lightning damage on a failed save, or half as much damage on a successful one.",
-						"Cyclones touch down within a 5-mile radius of Yan-C-Bin's lair. Every hour, there is a five percent chance that characters in this area are caught in the path of a cyclone moving 250 feet per round. Each character must succeed on a DC 21 Constitution saving throw or take 33 (6d10) bludgeoning damage. Wooden or flimsy structures in the path of the cyclone are destroyed.",
+						"Thunderstorms erupt in a 5-mile radius centered on Yan-C-Bin's lair, creating deafening cracks of thunder and constant lightning. Every ten minutes the storm rages, creatures standing beneath the open sky have a five percent chance of being struck by lightning. A creature struck by lightning must make a DC 21 Constitution saving throw, taking 21 ({@dice 6d6}) lightning damage on a failed save, or half as much damage on a successful one.",
+						"Cyclones touch down within a 5-mile radius of Yan-C-Bin's lair. Every hour, there is a five percent chance that characters in this area are caught in the path of a cyclone moving 250 feet per round. Each character must succeed on a DC 21 Constitution saving throw or take 33 ({@dice 6d10}) bludgeoning damage. Wooden or flimsy structures in the path of the cyclone are destroyed.",
 						"Natural caverns and windblown canyons within 1 mile of the lair form intermittent portals to the Elemental Plane of Air, allowing elemental creatures into the mortal world to dwell near those locations."
 					]
 				},
-				"If Yan-C-Bin is destroyed or banished back to his home plane, the regional effects fade over the next 1d10 days."
+				"If Yan-C-Bin is destroyed or banished back to his home plane, the regional effects fade over the next {@dice 1d10} days."
 			]
 		},
 		{
@@ -1129,7 +1134,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Yeenoghu causes an iron spike - 5 feet tall and 1 inch in diameter - to burst from the ground at a point he can see within 100 feet of him. Any creature in the space where the spike emerges must make a DC 24 Dexterity saving throw. On a failed save, the creature takes 27 (6d8) piercing damage and is restrained by being impaled on the spike. A creature can use an action to remove itself (or a creature it can reach) from the spike, ending the restrained condition.",
+						"Yeenoghu causes an iron spike - 5 feet tall and 1 inch in diameter - to burst from the ground at a point he can see within 100 feet of him. Any creature in the space where the spike emerges must make a DC 24 Dexterity saving throw. On a failed save, the creature takes 27 ({@dice 6d8}) piercing damage and is restrained by being impaled on the spike. A creature can use an action to remove itself (or a creature it can reach) from the spike, ending the restrained condition.",
 						"Each gnoll or hyena that Yeenoghu can see can use its reaction to move up to its speed.",
 						"Until the next initiative count 20, all gnolls and hyenas within the lair are enraged, causing them to have advantage on melee weapon attack rolls and causing attack rolls to have advantage against them."
 					]
@@ -1145,7 +1150,7 @@
 						"If a humanoid spends at least 1 hour within 1 mile of the lair, that creature must succeed on a DC 17 Wisdom saving throw or descend into a madness determined by the Madness of Yeenoghu table. A creature that succeeds on this saving throw can't be affected by this regional effect again for 24 hours."
 					]
 				},
-				"If Yeenoghu dies, these effects fade over the course of 1d10 days.",
+				"If Yeenoghu dies, these effects fade over the course of {@dice 1d10} days.",
 				{
 					"type": "entries",
 					"name": "Madness of Yeenoghu",
@@ -1212,7 +1217,7 @@
 						"If a humanoid spends at least 1 hour within 1 mile of the lair, that creature must succeed on a DC 17 Wisdom saving throw or descend into a madness determined by the Madness of Zuggtmoy table. A creature that succeeds on this saving throw can't be affected by this regional effect again for 24 hours."
 					]
 				},
-				"If Zuggtmoy dies, these effects fade over the course of 1d10 days.",
+				"If Zuggtmoy dies, these effects fade over the course of {@dice 1d10} days.",
 				{
 					"type": "entries",
 					"name": "Madness of Zuggtmoy",
@@ -1314,7 +1319,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Geryon causes a blast of cold to burst from the ground at a point he can see within 120 feet of him. The cold fills a cube, 10 feet on each side, centered on that point. Each creature in that area must succeed on a DC 21 Constitution saving throw or take 28 (8d6) cold damage.",
+						"Geryon causes a blast of cold to burst from the ground at a point he can see within 120 feet of him. The cold fills a cube, 10 feet on each side, centered on that point. Each creature in that area must succeed on a DC 21 Constitution saving throw or take 28 ({@dice 8d6}) cold damage.",
 						"Geryon targets one creature he can see within 60 feet of him. The target must succeed on a DC 21 Wisdom saving throw or become restrained for 1 minute. The target can end the effect on itself if it deals any damage to one or more of its allies.",
 						"Geryon casts the {@spell banishment} spell."
 					]
@@ -1330,7 +1335,7 @@
 						"Howls and screams fill the air within 1 mile of the lair. Any creature that finishes a short or long rest in this area must succeed on a DC 21 Wisdom saving throw or derive no benefit from the rest."
 					]
 				},
-				"If Geryon dies, these effects fade over the course of 1d10 days."
+				"If Geryon dies, these effects fade over the course of {@dice 1d10} days."
 			]
 		},
 		{
@@ -1351,11 +1356,11 @@
 					"type": "list",
 					"items": [
 						"The area within 9 miles of the lair is filled with screaming voices and the stench of burning meat.",
-						"Once every 60 feet within 1 mile of the lair, 10-foot-high gouts of flame rise from the ground. Any creature or object that touches the flame takes 7 (2d6) fire damage, though it can take this damage no more than once per round.",
+						"Once every 60 feet within 1 mile of the lair, 10-foot-high gouts of flame rise from the ground. Any creature or object that touches the flame takes 7 ({@dice 2d6}) fire damage, though it can take this damage no more than once per round.",
 						"The area within 2 miles, but no closer than 500 feet, of the lair is filled with smoke, which causes the area to be heavily obscured. The smoke can't be cleared away."
 					]
 				},
-				"If Zariel dies, these effects fade over the course of 1d10 days."
+				"If Zariel dies, these effects fade over the course of {@dice 1d10} days."
 			]
 		},
 		{
@@ -1380,7 +1385,7 @@
 						"The anarch stabilizes any object created in Limbo and brought to the Material Plane for as long as the anarch remains within 1 mile of it (no action required)."
 					]
 				},
-				"If the anarch dies, these effects end after 1d6 rounds. All formed substance becomes a chaotic churn of energy and matter, unraveling into unformed substance that dissipates 1d6 rounds later."
+				"If the anarch dies, these effects end after {@dice 1d6} rounds. All formed substance becomes a chaotic churn of energy and matter, unraveling into unformed substance that dissipates {@dice 1d6} rounds later."
 			]
 		},
 		{
@@ -1390,7 +1395,7 @@
 				{
 					"type": "list",
 					"items": [
-						"The ship regains 22 (4d10) hit points.",
+						"The ship regains 22 ({@dice 4d10}) hit points.",
 						"A strong wind propels the ship, increasing its speed by 30 feet until initiative count 20 on the next round.",
 						"The air within 60 feet of the ship is filled with howling wind. Until initiative count 20 on the next round, that area is difficult terrain, and when a Medium or smaller creature flies into that area or starts its turn flying there, it must succeed on a DC 13 Strength saving throw or be knocked prone."
 					]
@@ -1406,7 +1411,7 @@
 						"Creatures the merrenoloth chooses to take on the ship aren't discomfited by wind or weather, though this effect doesn't protect against damage."
 					]
 				},
-				"If the merrenoloth dies, these effects fade over the course of 1d6 hours."
+				"If the merrenoloth dies, these effects fade over the course of {@dice 1d6} hours."
 			]
 		}
 	]

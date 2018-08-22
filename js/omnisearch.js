@@ -6,7 +6,7 @@ const Omnisearch = {
 	_CATEGORY_COUNTS: {},
 	highestId: -1,
 
-	init: init = function () {
+	init: function () {
 		const $nav = $(`#navbar`);
 		$nav.append(`
 			<div class="input-group" id="wrp-omnisearch-input">
@@ -25,7 +25,8 @@ const Omnisearch = {
 
 		let clickFirst = false;
 
-		$(`body`).on("click", () => {
+		const $body = $(`body`);
+		$body.on("click", () => {
 			$searchOutWrapper.hide();
 		});
 
@@ -54,6 +55,9 @@ const Omnisearch = {
 					e.preventDefault();
 					$searchOut.find(`a`).first().focus();
 					break;
+				case 27: // escape
+					$searchIn.val("");
+					$searchIn.blur();
 			}
 			e.stopPropagation();
 		});
@@ -224,6 +228,17 @@ const Omnisearch = {
 				}
 			});
 		}
+
+		$body.on("keypress", (e) => {
+			if (!noModifierKeys(e) || MiscUtil.isInInput(e)) return;
+			if (e.key === "f" || e.key === "F") {
+				const toSel = e.key === "F" ? $(`#omnisearch-input`) : $(`#${ID_SEARCH_BAR}`).find(`.search`);
+				// defer, otherwise the "f" will be input into the search field
+				setTimeout(() => {
+					toSel.select().focus();
+				}, 0);
+			}
+		});
 	},
 
 	doSearchLoad: function () {
@@ -244,6 +259,7 @@ const Omnisearch = {
 			this.addField("s");
 			this.setRef("id");
 		});
+		SearchUtil.removeStemmer(Omnisearch._searchIndex);
 		const addToIndex = (d) => {
 			d.cf = Parser.pageCategoryToFull(d.c);
 			if (!Omnisearch._CATEGORY_COUNTS[d.cf]) Omnisearch._CATEGORY_COUNTS[d.cf] = 1;
@@ -252,7 +268,9 @@ const Omnisearch = {
 		};
 		data.forEach(addToIndex);
 		Omnisearch.highestId = data[data.length - 1].id;
-		BrewUtil.getSearchIndex().forEach(addToIndex); // this doesn't update if the 'Brew changes later, but so be it.
+		BrewUtil.pGetSearchIndex().then(index => {
+			index.forEach(addToIndex); // this doesn't update if the 'Brew changes later, but so be it.
+		})
 	},
 
 	handleLinkKeyDown (e, ele) {

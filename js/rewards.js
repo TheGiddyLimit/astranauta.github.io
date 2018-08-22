@@ -43,7 +43,8 @@ function onJsonLoad (data) {
 
 	addRewards(data);
 	BrewUtil.pAddBrewData()
-		.then(addRewards)
+		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -53,6 +54,11 @@ function onJsonLoad (data) {
 
 			History.init(true);
 		});
+}
+
+function handleBrew (homebrew) {
+	addRewards(homebrew);
+	return Promise.resolve();
 }
 
 let rewardList = [];

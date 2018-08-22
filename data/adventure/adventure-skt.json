@@ -785,7 +785,221 @@
 							"type": "entries",
 							"name": "Giants' Bags",
 							"entries": [
-								"In addition to treasure, giants often possess mundane items that they carry around in leather sacks or store in old chests. As the characters loot corpses and plunder giant hoards, throw in a few items chosen or rolled randomly from the Items in a Giant's Bag table. Items that are not giant-sized are sized for Small or Medium characters."
+								"In addition to treasure, giants often possess mundane items that they carry around in leather sacks or store in old chests. As the characters loot corpses and plunder giant hoards, throw in a few items chosen or rolled randomly from the Items in a Giant's Bag table. Items that are not giant-sized are sized for Small or Medium characters.",
+								{
+									"type": "table",
+									"caption": "Items in a Giant's Bag",
+									"colLabels": [
+										"d100",
+										"Item"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"1-2",
+											"Handaxe blade (used as a hand chopper)"
+										],
+										[
+											"3-4",
+											"Dented metal helm (used as a bowl)"
+										],
+										[
+											"5-6",
+											"Moldy and stinky wheel of cheese"
+										],
+										[
+											"7-8",
+											"Giant-sized shabby cloak (wool or hide)"
+										],
+										[
+											"9-10",
+											"Giant-sized bone comb"
+										],
+										[
+											"11-12",
+											"Iron cooking pot"
+										],
+										[
+											"13-14",
+											"Giant-sized drinking horn"
+										],
+										[
+											"15-16",
+											"Giant-sized skinning knife"
+										],
+										[
+											"17-18",
+											"Haunch of meat"
+										],
+										[
+											"19-20",
+											"Mangy fur pelt"
+										],
+										[
+											"21-22",
+											"Small bag of salt"
+										],
+										[
+											"23-24",
+											"Giant-sized pair of old sandals"
+										],
+										[
+											"25-26",
+											"Giant-sized waterskin (full)"
+										],
+										[
+											"27-28",
+											"Cask of ale (half empty)"
+										],
+										[
+											"29-30",
+											"Giant-sized necklace made of bones (hill), stone beads (stone), dragon fangs (frost), iron ingots (fire), feathers (cloud), or starfish (storm)"
+										],
+										[
+											"31-32",
+											"5-foot length of chain"
+										],
+										[
+											"33-34",
+											"{@dice 1d6} humanoid skulls"
+										],
+										[
+											"35-36",
+											"Bag of dried mushrooms"
+										],
+										[
+											"37-38",
+											"50-foot coil of hempen rope"
+										],
+										[
+											"39-40",
+											"3-foot-tall idol depicting Grolantor (hill), Skoraeus Stonebones (stone), Thrym (frost), Surtur (fire), Memnor (cloud), or Stronmaus (storm)"
+										],
+										[
+											"41-42",
+											"{@dice 1d6} dead trout"
+										],
+										[
+											"43-44",
+											"Dented steel shield"
+										],
+										[
+											"45-46",
+											"Wooden oar"
+										],
+										[
+											"47-48",
+											"Empty wooden barrel"
+										],
+										[
+											"49-50",
+											"30-foot-long hempen rope tied to a wooden bucket"
+										],
+										[
+											"51-52",
+											"Bundled-up tent"
+										],
+										[
+											"53-54",
+											"Riding saddle"
+										],
+										[
+											"55-56",
+											"Stuffed animal"
+										],
+										[
+											"57-58",
+											"Live animal (chicken, goat, pig, or sheep)"
+										],
+										[
+											"59-60",
+											"{@dice 1d6} moldy loaves of bread"
+										],
+										[
+											"61-62",
+											"6-foot-long wooden fence post"
+										],
+										[
+											"63-64",
+											"Wooden door with twisted iron hinges"
+										],
+										[
+											"65-66",
+											"Empty wooden chest (unlocked)"
+										],
+										[
+											"67-68",
+											"Rocking chair"
+										],
+										[
+											"69-70",
+											"Painted rocking horse or wooden toboggan"
+										],
+										[
+											"71-72",
+											"1d6 dragon scales"
+										],
+										[
+											"73-74",
+											"Carved stone statue of a dwarf or human"
+										],
+										[
+											"75-76",
+											"Wooden mannequin or target dummy"
+										],
+										[
+											"77-78",
+											"Coffin or small casket"
+										],
+										[
+											"79-80",
+											"Cauldron or giant-sized kettle"
+										],
+										[
+											"81-82",
+											"Giant-sized smoking pipe"
+										],
+										[
+											"83-84",
+											"Bronze gong"
+										],
+										[
+											"85-86",
+											"Iron bell (with or without its clapper)"
+										],
+										[
+											"87-88",
+											"Beehive"
+										],
+										[
+											"89-90",
+											"Giant-sized drum"
+										],
+										[
+											"91-92",
+											"Carved wooden statue of an elf or halfling"
+										],
+										[
+											"93-94",
+											"Uprooted shrub or berry bush"
+										],
+										[
+											"95-96",
+											"10-foot-long hempen rope tied to a rowboat anchor"
+										],
+										[
+											"97-98",
+											"Wagon wheel"
+										],
+										[
+											"99-100",
+											"Tombstone"
+										]
+									]
+								}
 							]
 						}
 					]
@@ -1916,10 +2130,40 @@
 							"type": "entries",
 							"name": "Treasure:",
 							"entries": [
-								"Amarath's \"smiling bag\" is actually a {@item bag of holding|DMG}. The bag becomes empty once the invisible stalker leaves it. N'von carries a pouch containing ten pinches of pixie dust. He offers the pouch to Zephyros as a gift (see \"Development\")."
+								"Amarath's \"smiling bag\" is actually a {@item bag of holding|DMG}. The bag becomes empty once the invisible stalker leaves it. N'von carries a pouch containing ten pinches of pixie dust. He offers the pouch to Zephyros as a gift (see \"Development\").",
+								"One pinch of the pixie dust can substitute for the material components of any enchantment spell of 3rd level or lower. The pixie dust has other magical effects as well. If a pinch of pixie dust is sprinkled on a creature, roll percentile dice and consult the Pixie Dust table to determine the effect.",
+								{
+									"type": "table",
+									"caption": "Pixie Dust",
+									"colLabels": [
+										"d100",
+										"Magical Effect"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"01-70",
+											"The creature sprinkled with dust gains a flying speed of 60 feet for 10 minutes."
+										],
+										[
+											"71-80 ",
+											"The creature sprinkled with dust must succeed on a DC 11 Constitution saving throw or fall un­conscious for 1 minute. The creature awakens if it takes damage or if it is shaken or slapped as an action."
+										],
+										[
+											"81-90",
+											"The creature sprinkled with dust must succeed on a DC 11 Wisdom saving throw or be affected by a {@spell confusion} spell."
+										],
+										[
+											"91-00",
+											"The creature sprinkled with dust becomes {@condition invisible} for 1 hour. Any equipment it is wearing or carrying is {@condition invisible} as long as it is on the crea­ture's person. The effect on the creature ends if it attacks, deals any damage, or casts a spell."
+										]
+									]
+								}
 							]
 						},
-						"One pinch of the pixie dust can substitute for the material components of any enchantment spell of 3rd level or lower. The pixie dust has other magical effects as well. If a pinch of pixie dust is sprinkled on a creature, roll percentile dice and consult the Pixie Dust table to determine the effect.",
 						{
 							"type": "entries",
 							"name": "Development",
@@ -2999,7 +3243,7 @@
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"A closet-sized vault on the second floor is hidden behind a secret door that requires a successful DC 15 Wisdom (Perception) check to spot. The vault contains an empty {@item Heward's handy haversack|DMG} and a locked iron strongbox that contains 3d10 × 10gp in mixed coinage and a gray {@i bag of tricks}. Alaestra and Narth each carry a key to the strongbox. Its lock can be picked with thieves' tools and a successful DC 20 Dexterity check."
+								"A closet-sized vault on the second floor is hidden behind a secret door that requires a successful DC 15 Wisdom (Perception) check to spot. The vault contains an empty {@item Heward's handy haversack|DMG} and a locked iron strongbox that contains 3d10 × 10gp in mixed coinage and a {@item Bag of Tricks, Gray|dmg|gray bag of tricks}. Alaestra and Narth each carry a key to the strongbox. Its lock can be picked with thieves' tools and a successful DC 20 Dexterity check."
 							]
 						}
 					]
@@ -7121,7 +7365,7 @@
 										[
 											"Haug",
 											"Hill",
-											"Multiple confusion spells activate (save DC 15), such that each creature in the room is targeted once."
+											"Multiple {@spell confusion} spells activate (save DC 15), such that each creature in the room is targeted once."
 										],
 										[
 											"Stein",
@@ -12900,7 +13144,7 @@
 							"type": "entries",
 							"name": "North and East Hallways",
 							"entries": [
-								"A hallway to the east ends at a life-size stone statue of a female storm giant holding a harp and wearing a gown of purple coral. Doors on the south wall of the corridor lead to area 3. Each door is made of ironbound oak, measures 15 feet tall by 7 feet wide, and has AC 15, 50 hit points, and immunity to poison and psychic damage. Neither door has a lock.",
+								"A hallway to the east ends at a life-size stone statue of a female {@creature storm giant} holding a harp and wearing a gown of purple coral. Doors on the south wall of the corridor lead to area 3. Each door is made of ironbound oak, measures 15 feet tall by 7 feet wide, and has AC 15, 50 hit points, and immunity to poison and psychic damage. Neither door has a lock.",
 								"A similar hall stretches northward. The statue at the end of the north hall depicts a male storm giant blowing a pink and blue conch shell. Giant-sized doors to either side of the statue lead to more guest quarters (area 4)."
 							]
 						},
@@ -14566,7 +14810,7 @@
 							"type": "entries",
 							"name": "Lionshield Delivery",
 							"entries": [
-								"Linene Graywind, who runs the trading post in Phandalin on behalf of a mercantile company, the Lionshield Coster, has a colleague, Alaestra Ulgar, who lives in Triboar with her business partner, Narth Tezrin. Linene has written a letter to her friend, describing recent tribulations in Phandalin, and asks the characters to deliver it. In a note attached to the letter, Linene asks Alaestra to reward her messengers with an old gray bag stitched with animal designs. This item is a gray {@i bag of tricks}."
+								"Linene Graywind, who runs the trading post in Phandalin on behalf of a mercantile company, the Lionshield Coster, has a colleague, Alaestra Ulgar, who lives in Triboar with her business partner, Narth Tezrin. Linene has written a letter to her friend, describing recent tribulations in Phandalin, and asks the characters to deliver it. In a note attached to the letter, Linene asks Alaestra to reward her messengers with an old gray bag stitched with animal designs. This item is a {@item Bag of Tricks, Gray|dmg|gray bag of tricks}."
 							]
 						},
 						{
@@ -14760,7 +15004,7 @@
 							},
 							"title": "Conch of Teleportation"
 						},
-						"As an action, you can cast the teleport spell by blowing into the shell. The destination is fixed, and there is no chance of either a mishap or the spell being off tar get. Anyone teleported by the conch appears in a specific location designated by the item's creator at the time the uvar rune is inscribed on the conch. It doesn't allow teleportation to any other destination. Once its spell is cast, the conch can't be used again until the next dawn."
+						"As an action, you can cast the teleport spell by blowing into the shell. The destination is fixed, and there is no chance of either a mishap or the spell being off target. Anyone teleported by the conch appears in a specific location designated by the item's creator at the time the uvar rune is inscribed on the conch. It doesn't allow teleportation to any other destination. Once its spell is cast, the conch can't be used again until the next dawn."
 					]
 				},
 				{
@@ -15190,7 +15434,7 @@
 							"type": "entries",
 							"name": "Change Shape",
 							"entries": [
-								"Iymrith magically polymorphs into a female storm giant or back into her true form. She reverts to her true form if she dies. Any equipment she is wearing or carrying is absorbed or borne by the new form (the dragon's choice)."
+								"Iymrith magically polymorphs into a female {@creature storm giant} or back into her true form. She reverts to her true form if she dies. Any equipment she is wearing or carrying is absorbed or borne by the new form (the dragon's choice)."
 							]
 						},
 						"In storm giant form, Iymrith retains her alignment, hit points, Hit Dice, ability to speak, proficiencies, Legendary Resistance, lair actions, and Intelligence, Wisdom, and Charisma scores, as well as this action. Her statistics are otherwise replaced by those of the new form.",

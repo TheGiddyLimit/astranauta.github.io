@@ -88,7 +88,8 @@ function onJsonLoad (data) {
 
 	addDeities(data);
 	BrewUtil.pAddBrewData()
-		.then(addDeities)
+		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -99,6 +100,11 @@ function onJsonLoad (data) {
 
 			History.init(true);
 		});
+}
+
+function handleBrew (homebrew) {
+	addDeities(homebrew);
+	return Promise.resolve();
 }
 
 let deitiesList = [];

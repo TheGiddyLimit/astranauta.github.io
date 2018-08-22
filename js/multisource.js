@@ -5,22 +5,22 @@ const JSON_SRC_INDEX = "index.json";
 /**
  * @param jsonDir the directory containing JSON for this page
  * @param jsonListName the name of the root JSON property for the list of data
- * @param pageInitFn function to be run once the index has loaded, should accept an object of src:URL mappings
+ * @param pPageInit promise to be run once the index has loaded, should accept an object of src:URL mappings
  * @param dataFn function to be run when all data has been loaded, should accept a list of objects custom to the page
  * @param pOptional optional promise to be run after dataFn, but before page history/etc is init'd
  * (e.g. spell data objects for the spell page) which were found in the `jsonListName` list
  */
-function multisourceLoad (jsonDir, jsonListName, pageInitFn, dataFn, pOptional) {
+function multisourceLoad (jsonDir, jsonListName, pPageInit, dataFn, pOptional) {
 	return new Promise(resolve => {
 		// load the index
 		DataUtil.loadJSON(jsonDir + JSON_SRC_INDEX)
-			.then((index) => _onIndexLoad(index, jsonDir, jsonListName, pageInitFn, dataFn, pOptional))
+			.then((index) => _onIndexLoad(index, jsonDir, jsonListName, pPageInit, dataFn, pOptional))
 			.then(resolve);
 	});
 }
 
 let loadedSources;
-function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn, pOptional) {
+function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pPageInit, addFn, pOptional) {
 	return new Promise(resolve => {
 		// track loaded sources
 		loadedSources = {};
@@ -61,33 +61,38 @@ function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn, pOption
 		// make a list of src : url objects
 		const toLoads = allSources.map(src => ({src: src, url: jsonDir + src2UrlMap[src]}));
 
-		pageInitFn(loadedSources);
-
+		const initPromise = pPageInit(loadedSources);
 		if (toLoads.length > 0) {
 			DataUtil.multiLoadJSON(
 				toLoads,
 				(toLoad) => {
-					loadedSources[toLoad.src].loaded = true;
+					initPromise.then(() => {
+						loadedSources[toLoad.src].loaded = true;
+					});
 				},
 				(dataStack) => {
-					let toAdd = [];
-					dataStack.forEach(d => toAdd = toAdd.concat(d[dataProp]));
-					addFn(toAdd);
+					initPromise.then(() => {
+						let toAdd = [];
+						dataStack.forEach(d => toAdd = toAdd.concat(d[dataProp]));
+						addFn(toAdd);
 
-					const finalise = () => new Promise(resolve => {
-						RollerUtil.addListRollButton();
-						addListShowHide();
+						const finalise = () => new Promise(resolve => {
+							RollerUtil.addListRollButton();
+							addListShowHide();
 
-						History.init(true);
-						resolve();
+							History.init(true);
+							resolve();
+						});
+
+						const p = pOptional ? pOptional().then(finalise) : finalise;
+						p.then(resolve);
 					});
-
-					const p = pOptional ? pOptional().then(finalise) : finalise;
-					p.then(resolve);
 				}
 			);
 		} else {
-			resolve();
+			initPromise.then(() => {
+				resolve();
+			});
 		}
 	});
 }

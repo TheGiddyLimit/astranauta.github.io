@@ -4,6 +4,7 @@
 <head>
 	<!--5ETOOLS_VERSION-->
 	<meta charset="utf-8">
+	<meta name="description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -86,20 +87,22 @@
 				<div id="tabs-right"></div>
 			</div>
 
-			<table id="pagecontent" class="stats monster">
-				<tr><th class="border" colspan="6"></th></tr>
-				<tr><td colspan="6" class="initial-message">Select a creature from the list to view it here</td></tr>
-				<tr><th class="border" colspan="6"></th></tr>
-			</table>
-			<br>
-			<div class="text-align-center">
+			<div class="wrp-stats-table">
+				<table id="pagecontent" class="stats monster">
+					<tr><th class="border" colspan="6"></th></tr>
+					<tr><td colspan="6" class="initial-message">Select a creature from the list to view it here</td></tr>
+					<tr><th class="border" colspan="6"></th></tr>
+				</table>
+			</div>
+
+			<div class="text-align-center wrp-footer-buttons">
 				<div id="wrp-profbonusdice">
-					<button class="btn btn-default btn-sm" type="button" id="profbonusdice"
+					<button class="btn btn-default btn-xs" type="button" id="profbonusdice"
 							title="WARNING: Very experimental &mdash; use with caution">Use Proficiency Dice
 					</button>
 				</div>
-				<button class="btn btn-default btn-sm" id="btn-printbook">Printer View</button>
-				<button class="btn btn-default btn-sm btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+				<button class="btn btn-default btn-xs" id="btn-printbook">Printer View</button>
+				<button class="btn btn-default btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
 			</div>
 		</div>
 	</div>
@@ -115,6 +118,7 @@
 <script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/bestiary.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>

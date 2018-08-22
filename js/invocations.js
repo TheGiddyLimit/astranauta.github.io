@@ -98,7 +98,8 @@ function onJsonLoad (data) {
 
 	addInvocations(data);
 	BrewUtil.pAddBrewData()
-		.then(addInvocations)
+		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -108,6 +109,11 @@ function onJsonLoad (data) {
 
 			History.init(true);
 		});
+}
+
+function handleBrew (homebrew) {
+	addInvocations(homebrew);
+	return Promise.resolve();
 }
 
 let invoList = [];
@@ -238,6 +244,7 @@ function loadhash (jsonIndex) {
 		${Object.keys(inv.prerequisites).length ? `<tr><td colspan="6"><span class="prerequisites">${EntryRenderer.invocation.getPrerequisiteText(inv.prerequisites)}</span></td></tr>` : ""}
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		<tr><td colspan="6">${EntryRenderer.getDefaultRenderer().renderEntry({entries: inv.entries}, 1)}</td></tr>
+		${EntryRenderer.invocation.getPreviouslyPrintedText(inv)}
 		${EntryRenderer.utils.getPageTr(inv)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);

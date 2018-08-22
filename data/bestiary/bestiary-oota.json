@@ -58,7 +58,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"Melee Weapon Attack: {@hit 6} to hit, reach 10 ft., one target. Hit: 14 ({@dice 3d6+4}) bludgeoning damage."
+						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. Hit: 14 ({@dice 3d6+4}) bludgeoning damage."
 					]
 				}
 			],
@@ -141,7 +141,7 @@
 				{
 					"name": "Charge",
 					"entries": [
-						"If Baphomet moves at least 10 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 22 ({@dice 4d10}) piercing damage. If the target is a creature, it must succeed on a DC 25 Strength saving throw or be pushed up to 10 feet away and knocked prone."
+						"If Baphomet moves at least 10 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 22 ({@dice 4d10}) piercing damage. If the target is a creature, it must succeed on a DC 25 Strength saving throw or be pushed up to 10 feet away and knocked {@condition prone}."
 					]
 				},
 				{
@@ -185,25 +185,25 @@
 				{
 					"name": "Heartcleaver",
 					"entries": [
-						"Melee Weapon Attack: {@hit 17} to hit, reach 15 ft., one target. Hit: 24 ({@dice 4d6+10}) slashing damage"
+						"{@atk mw} {@hit 17} to hit, reach 15 ft., one target. Hit: 24 ({@dice 4d6+10}) slashing damage"
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 17} to hit, reach 10 ft., one target. Hit: 19 ({@dice 2d8+10}) piercing damage."
+						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. Hit: 19 ({@dice 2d8+10}) piercing damage."
 					]
 				},
 				{
 					"name": "Gore",
 					"entries": [
-						"Melee Weapon Attack: {@hit 17} to hit, reach 10 ft., one target. Hit: 21 ({@dice 2d10+10}) piercing damage."
+						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. Hit: 21 ({@dice 2d10+10}) piercing damage."
 					]
 				},
 				{
 					"name": "Frightful Presence",
 					"entries": [
-						"Each creature of Baphomet's choice within 120 feet of him and aware of him must succeed on a DC 18 Wisdom saving throw or become frightened for 1 minute. A frightened creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. These later saves have disadvantage if Baphomet is within line of sight of the creature.",
+						"Each creature of Baphomet's choice within 120 feet of him and aware of him must succeed on a DC 18 Wisdom saving throw or become {@condition frightened} for 1 minute. A {@condition frightened} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. These later saves have disadvantage if Baphomet is within line of sight of the creature.",
 						"If a creature succeeds on any of these saves or the effect ends on it, the creature is immune is Baphomet's Frightful Presence for the next 24 hours."
 					]
 				}
@@ -250,7 +250,8 @@
 						"1e": [
 							"{@spell teleport}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"isNamedCreature": true,
@@ -312,7 +313,7 @@
 				{
 					"name": "Hallucination Spores",
 					"entries": [
-						"The bridesmaid ejects spores at one creature it can see within 5 feet of it. The target must succeed on a DC 10 Constitution saving throw or be poisoned for 1 minute. While poisoned in this way, the target is incapacitated. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"The bridesmaid ejects spores at one creature it can see within 5 feet of it. The target must succeed on a DC 10 Constitution saving throw or be {@condition poisoned} for 1 minute. While {@condition poisoned} in this way, the target is {@condition incapacitated}. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				},
 				{
@@ -372,7 +373,7 @@
 				{
 					"name": "Poison Spores",
 					"entries": [
-						"Whenever the chamberlain takes damage, it releases a cloud of spores. Creatures within 5 feet of the chamberlain when this happens must succeed on a DC 12 Constitution saving throw or be poisoned for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on a success."
+						"Whenever the chamberlain takes damage, it releases a cloud of spores. Creatures within 5 feet of the chamberlain when this happens must succeed on a DC 12 Constitution saving throw or be {@condition poisoned} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on a success."
 					]
 				}
 			],
@@ -380,7 +381,7 @@
 				{
 					"name": "Hallucination Spores",
 					"entries": [
-						"The bridesmaid ejects spores at one creature it can see within 5 feet of it. The target must succeed on a DC 10 Constitution saving throw or be poisoned for 1 minute. While poisoned in this way, the target is incapacitated. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"The bridesmaid ejects spores at one creature it can see within 5 feet of it. The target must succeed on a DC 10 Constitution saving throw or be {@condition poisoned} for 1 minute. While {@condition poisoned} in this way, the target is {@condition incapacitated}. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				},
 				{
@@ -392,7 +393,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) bludgeoning damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) bludgeoning damage."
 					]
 				},
 				{
@@ -460,7 +461,7 @@
 				{
 					"name": "Pincer",
 					"entries": [
-						"Melee Weapon Attack: {@hit 6} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage. The target is grappled (Escape DC 14) if it is a Large or smaller creature and the spore servant doesn't have two other creatures grappled."
+						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage. The target is {@condition grappled} (Escape DC 14) if it is a Large or smaller creature and the spore servant doesn't have two other creatures {@condition grappled}."
 					]
 				}
 			],
@@ -563,7 +564,7 @@
 				{
 					"name": "Two Heads",
 					"entries": [
-						"Demogorgon has advantage on saving throws against being blinded, deafened, stunned, and knocked unconscious."
+						"Demogorgon has advantage on saving throws against being {@condition blinded}, {@condition deafened}, {@condition stunned}, and knocked {@condition unconscious}."
 					]
 				}
 			],
@@ -577,17 +578,17 @@
 				{
 					"name": "Tentacle",
 					"entries": [
-						"Melee Weapon Attack: {@hit 17} to hit, reach 10 ft., one target. Hit: 35 ({@dice 4d12+9}) bludgeoning damage. If the target is a creature, it must succeed on a DC 23 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. Hit: 35 ({@dice 4d12+9}) bludgeoning damage. If the target is a creature, it must succeed on a DC 23 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				},
 				{
 					"name": "Gaze",
 					"entries": [
-						"Demogorgon turns his magical gaze toward one creature that he can see within 120 feet of him. That target must make a DC 23 Wisdom saving throw. Unless the target is incapacitated, it can avert its eyes to avoid the gaze and to automatically succeed on the save. If the target does so, it can't see Demogorgon until the start of his next turn. If the target looks at him in the meantime, it must immediately make the save.",
+						"Demogorgon turns his magical gaze toward one creature that he can see within 120 feet of him. That target must make a DC 23 Wisdom saving throw. Unless the target is {@condition incapacitated}, it can avert its eyes to avoid the gaze and to automatically succeed on the save. If the target does so, it can't see Demogorgon until the start of his next turn. If the target looks at him in the meantime, it must immediately make the save.",
 						"If the target fails the save, the target suffers one of the following effects of Demogorgon's choice or at random:",
-						"1. Beguiling Gaze. The target is stunned until the start of Demogorgon's next turn or until Demogorgon is no longer within line of sight.",
-						"2. Hypnotic Gaze. The target is charmed by Demogorgon until the start of Demogorgon's next turn. Demogorgon chooses how the charmed target uses its actions, reactions, and movement. Because this gaze requires Demogorgon to focus both heads on the target, he can't use his Maddening Gaze legendary action until the start of his next turn.",
-						"3. Insanity Gaze. The target suffers the effect of the confusion spell without making a saving throw. The effect lasts until the start of Demogorgon's next turn. Demogorgon doesn't need to concentrate on the spell."
+						"1. Beguiling Gaze. The target is {@condition stunned} until the start of Demogorgon's next turn or until Demogorgon is no longer within line of sight.",
+						"2. Hypnotic Gaze. The target is {@condition charmed} by Demogorgon until the start of Demogorgon's next turn. Demogorgon chooses how the {@condition charmed} target uses its actions, reactions, and movement. Because this gaze requires Demogorgon to focus both heads on the target, he can't use his Maddening Gaze legendary action until the start of his next turn.",
+						"3. Insanity Gaze. The target suffers the effect of the {@spell confusion} spell without making a saving throw. The effect lasts until the start of Demogorgon's next turn. Demogorgon doesn't need to concentrate on the spell."
 					]
 				}
 			],
@@ -597,7 +598,7 @@
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: {@hit 17} to hit, reach 15 ft., one target. Hit: 31 ({@dice 4d10+9}) bludgeoning damage plus 22 ({@dice 4d10}) necrotic damage."
+						"{@atk mw} {@hit 17} to hit, reach 15 ft., one target. Hit: 31 ({@dice 4d10+9}) bludgeoning damage plus 22 ({@dice 4d10}) necrotic damage."
 					],
 					"attack": [
 						"|17|4d10+9+4d10"
@@ -631,7 +632,8 @@
 							"{@spell feeblemind}",
 							"{@spell project image}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"isNamedCreature": true,
@@ -691,7 +693,7 @@
 				{
 					"name": "Insanity",
 					"entries": [
-						"The derro has advantage on saving throws against being charmed or frightened."
+						"The derro has advantage on saving throws against being {@condition charmed} or {@condition frightened}."
 					]
 				},
 				{
@@ -711,13 +713,13 @@
 				{
 					"name": "Hooked Shortspear",
 					"entries": [
-						"Melee Weapon Attack: {@hit 2} to hit, reach 5 ft., one target. Hit: 1 ({@dice 1d4-1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall prone."
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. Hit: 1 ({@dice 1d4-1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall {@condition prone}."
 					]
 				},
 				{
 					"name": "Light Repeating Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 4} to hit, range 40/160 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
+						"{@atk rw} {@hit 4} to hit, range 40/160 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
 					]
 				}
 			],
@@ -774,7 +776,7 @@
 				{
 					"name": "Insanity",
 					"entries": [
-						"The derro has advantage on saving throws against being charmed or frightened."
+						"The derro has advantage on saving throws against being {@condition charmed} or {@condition frightened}."
 					]
 				},
 				{
@@ -794,13 +796,13 @@
 				{
 					"name": "Hooked Shortspear",
 					"entries": [
-						"Melee Weapon Attack: {@hit 2} to hit, reach 5 ft., one target. Hit: 1 ({@dice 1d4-1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall prone."
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. Hit: 1 ({@dice 1d4-1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall {@condition prone}."
 					]
 				},
 				{
 					"name": "Light Repeating Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 4} to hit, range 40/160 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
+						"{@atk rw} {@hit 4} to hit, range 40/160 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
 					]
 				}
 			],
@@ -843,7 +845,8 @@
 								"{@spell lightning bolt}"
 							]
 						}
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/615/derro-savant.mp3",
@@ -908,13 +911,13 @@
 				{
 					"name": "Insanity",
 					"entries": [
-						"Droki has advantage on saving throws against being charmed or frightened."
+						"Droki has advantage on saving throws against being {@condition charmed} or {@condition frightened}."
 					]
 				},
 				{
 					"name": "Sneak Attack (1/Turn)",
 					"entries": [
-						"Droki deals an extra 7 ({@dice 2d6}) damage when he hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of Droki that isn't incapacitated and Droki doesn't have disadvantage on the attack roll."
+						"Droki deals an extra 7 ({@dice 2d6}) damage when he hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of Droki that isn't {@condition incapacitated} and Droki doesn't have disadvantage on the attack roll."
 					]
 				},
 				{
@@ -940,7 +943,7 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage. The sword is coated with serpent venom that wears off after the first hit. A target subjected to the venom must make a DC 11 Constitution saving throw, taking 10 ({@dice 3d6}) poison damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage. The sword is coated with serpent venom that wears off after the first hit. A target subjected to the venom must make a DC 11 Constitution saving throw, taking 10 ({@dice 3d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -968,7 +971,8 @@
 							"{@spell fear}",
 							"{@spell shatter}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"traitTags": [
@@ -1023,7 +1027,7 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],
@@ -1076,7 +1080,7 @@
 				{
 					"name": "Duergar Resilience",
 					"entries": [
-						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
+						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
 					]
 				},
 				{
@@ -1096,19 +1100,19 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage, or 11 ({@dice 2d8+2}) piercing damage while enlarged."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage, or 11 ({@dice 2d8+2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"Melee or Ranged Weapon Attack: {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns invisible until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
 					]
 				}
 			],
@@ -1128,7 +1132,8 @@
 							"{@spell disguise self}",
 							"{@spell sleep}"
 						]
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"traitTags": [
@@ -1194,7 +1199,7 @@
 				{
 					"name": "Duergar Resilience",
 					"entries": [
-						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
+						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
 					]
 				},
 				{
@@ -1214,25 +1219,25 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage, or 11 ({@dice 2d8+2}) piercing damage while enlarged."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage, or 11 ({@dice 2d8+2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"Melee or Ranged Weapon Attack: {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 4} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
+						"{@atk rw} {@hit 4} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
 					]
 				},
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns invisible until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
 					]
 				}
 			],
@@ -1289,7 +1294,7 @@
 				{
 					"name": "Duergar Resilience",
 					"entries": [
-						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
+						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
 					]
 				},
 				{
@@ -1309,19 +1314,19 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage, or 11 ({@dice 2d8+2}) piercing damage while enlarged."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage, or 11 ({@dice 2d8+2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"Melee or Ranged Weapon Attack: {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns invisible until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
 					]
 				}
 			],
@@ -1340,7 +1345,8 @@
 						"1e": [
 							"{@spell command}"
 						]
-					}
+					},
+					"ability": "wis"
 				},
 				{
 					"name": "Spellcasting",
@@ -1370,7 +1376,8 @@
 								"{@spell spiritual weapon}"
 							]
 						}
-					}
+					},
+					"ability": "wis"
 				}
 			],
 			"traitTags": [
@@ -1423,7 +1430,7 @@
 				{
 					"name": "Duergar Resilience",
 					"entries": [
-						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
+						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
 					]
 				},
 				{
@@ -1443,19 +1450,19 @@
 				{
 					"name": "Create Soulblade",
 					"entries": [
-						"The duergar creates a visible, shortsword-sized blade of psionic energy. The weapon appears int he duergar's hand and vanishes if it leaves the duergar's grip, or if the duergar dies or is incapacitated."
+						"The duergar creates a visible, shortsword-sized blade of psionic energy. The weapon appears int he duergar's hand and vanishes if it leaves the duergar's grip, or if the duergar dies or is {@condition incapacitated}."
 					]
 				},
 				{
 					"name": "Soulblade",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) force damage, or 10 ({@dice 2d6+3}) force damage while enlarged. If the soulblade has advantage on the attack roll, the attack deals an extra 3 ({@dice 1d6}) force damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) force damage, or 10 ({@dice 2d6+3}) force damage while enlarged. If the soulblade has advantage on the attack roll, the attack deals an extra 3 ({@dice 1d6}) force damage."
 					]
 				},
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns invisible until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
 					]
 				}
 			],
@@ -1475,7 +1482,8 @@
 							"{@spell jump}",
 							"{@spell hunter's mark}"
 						]
-					}
+					},
+					"ability": "wis"
 				}
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/630/duergar-soulblade.mp3",
@@ -1529,7 +1537,7 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
 					]
 				}
 			],
@@ -1582,7 +1590,7 @@
 				{
 					"name": "Duergar Resilience",
 					"entries": [
-						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
+						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
 					]
 				},
 				{
@@ -1602,19 +1610,19 @@
 				{
 					"name": "King's Knife (Shortsword)",
 					"entries": [
-						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage, or 11 ({@dice 2d6+4}) piercing damage while enlarged."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage, or 11 ({@dice 2d6+4}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"Melee or Ranged Weapon Attack: {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns invisible until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
 					]
 				}
 			],
@@ -1670,7 +1678,7 @@
 				{
 					"name": "Duergar Resilience",
 					"entries": [
-						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
+						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
 					]
 				},
 				{
@@ -1690,11 +1698,11 @@
 				{
 					"name": "Fire Lance",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit (with disadvantage if the target is within 5 feet of the duergar), reach 10 ft., one target. Hit: 9 ({@dice 1d12+3}) piercing damage plus 3 ({@dice 1d6}) fire damage, or 16 ({@dice 2d12+3}) piercing damage plus 3 ({@dice 1d6}) fire damage while enlarged."
+						"{@atk mw} {@hit 5} to hit (with disadvantage if the target is within 5 feet of the duergar), reach 10 ft., one target. Hit: 9 ({@dice 1d12+3}) piercing damage plus 3 ({@dice 1d6}) fire damage, or 16 ({@dice 2d12+3}) piercing damage plus 3 ({@dice 1d6}) fire damage while enlarged."
 					]
 				},
 				{
-					"name": "Fire Spray (Recharge 5\u20136)",
+					"name": "Fire Spray {@recharge 5}",
 					"entries": [
 						"From its fire lance, the duergar shoots a 15-foot cone of fire or a line of fire 30 feet long and 5 feet wide. Each creature in that area must make a DC 12 Dexterity saving throw, taking 10 ({@dice 3d6}) fire damage on a failed save, or half as much damage on a successful one."
 					]
@@ -1702,7 +1710,7 @@
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns invisible until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
 					]
 				}
 			],
@@ -1784,13 +1792,13 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 3} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
+						"{@atk rw} {@hit 3} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
 					]
 				}
 			],
@@ -1856,13 +1864,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+3}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 9 ({@dice 2d8}) acid damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+3}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 9 ({@dice 2d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Sticky Leg (Recharges when the Steeder Has No Creatures Grappled)",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one Medium or smaller creature. Hit: The target is stuck on the steeder's leg and grappled until it escapes (escape DC 12)"
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one Medium or smaller creature. Hit: The target is stuck on the steeder's leg and {@condition grappled} until it escapes (escape DC 12)"
 					]
 				}
 			],
@@ -1981,13 +1989,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 16} to hit, reach 10 ft., one target. Hit: 23 ({@dice 4d6+9}) piercing damage."
+						"{@atk mw} {@hit 16} to hit, reach 10 ft., one target. Hit: 23 ({@dice 4d6+9}) piercing damage."
 					]
 				},
 				{
 					"name": "Fist",
 					"entries": [
-						"Melee Weapon Attack: {@hit 16} to hit, reach 10 ft., one target. Hit: 27 ({@dice 4d8+9}) bludgeoning damage."
+						"{@atk mw} {@hit 16} to hit, reach 10 ft., one target. Hit: 27 ({@dice 4d8+9}) bludgeoning damage."
 					]
 				}
 			],
@@ -1996,7 +2004,7 @@
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: {@hit 16} to hit, reach 15 ft., one target. Hit: 31 ({@dice 4d10+9}) bludgeoning damage. If the target is a Large or smaller creature, it is also grappled (escape DC 24). The grappled target is also restrained. Fraz-Urb'luu can grapple only one creature with his tail at a time."
+						"{@atk mw} {@hit 16} to hit, reach 15 ft., one target. Hit: 31 ({@dice 4d10+9}) bludgeoning damage. If the target is a Large or smaller creature, it is also {@condition grappled} (escape DC 24). The {@condition grappled} target is also {@condition restrained}. Fraz-Urb'luu can grapple only one creature with his tail at a time."
 					],
 					"attack": [
 						"|16|4d10+9"
@@ -2035,7 +2043,8 @@
 							"{@spell modify memory}",
 							"{@spell project image}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"isNamedCreature": true,
@@ -2093,7 +2102,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
 					]
 				}
 			],
@@ -2211,7 +2220,7 @@
 				{
 					"name": "Wave of Sorrow (Greatsword)",
 					"entries": [
-						"Melee Weapon Attack: {@hit 13} to hit, reach 10 ft., one target, Hit; 20 ({@dice 4d6+6}) slashing damage plus 14 ({@dice 4d6}) acid damage."
+						"{@atk mw} {@hit 13} to hit, reach 10 ft., one target, Hit; 20 ({@dice 4d6+6}) slashing damage plus 14 ({@dice 4d6}) acid damage."
 					]
 				},
 				{
@@ -2232,7 +2241,7 @@
 				{
 					"name": "Dance, My Puppet!",
 					"entries": [
-						"One creature charmed by Graz'zt that Graz'zt can see must use its reaction to move up to its speed as Graz'zt directs."
+						"One creature {@condition charmed} by Graz'zt that Graz'zt can see must use its reaction to move up to its speed as Graz'zt directs."
 					]
 				},
 				{
@@ -2275,7 +2284,8 @@
 							"{@spell dominate monster}",
 							"{@spell greater invisibility}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"isNamedCreature": true,
@@ -2351,7 +2361,7 @@
 				{
 					"name": "+1 Flail",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) bludgeoning damage"
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) bludgeoning damage"
 					]
 				}
 			],
@@ -2398,7 +2408,8 @@
 								"{@spell spirit guardians}"
 							]
 						}
-					}
+					},
+					"ability": "wis"
 				}
 			],
 			"actionTags": [
@@ -2457,7 +2468,7 @@
 				{
 					"name": "Hook",
 					"entries": [
-						"Melee Weapon Attack: {@hit 6} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage."
+						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage."
 					]
 				}
 			],
@@ -2505,7 +2516,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
 					]
 				}
 			],
@@ -2514,7 +2525,7 @@
 					"name": "Barbed Tail",
 					"entries": [
 						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
 					]
 				}
 			],
@@ -2559,7 +2570,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
 					]
 				}
 			],
@@ -2568,7 +2579,7 @@
 					"name": "Barbed Tail",
 					"entries": [
 						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
 					]
 				}
 			],
@@ -2607,7 +2618,8 @@
 								"{@spell tongues}"
 							]
 						}
-					}
+					},
+					"ability": "wis"
 				}
 			]
 		},
@@ -2693,7 +2705,7 @@
 				{
 					"name": "Foul",
 					"entries": [
-						"Any creature, other than an ooze, that starts its turn within 10 feet of Juiblex must succeed on a DC 21 Constitution saving throw or be poisoned until the start of the creature's next turn."
+						"Any creature, other than an ooze, that starts its turn within 10 feet of Juiblex must succeed on a DC 21 Constitution saving throw or be {@condition poisoned} until the start of the creature's next turn."
 					]
 				},
 				{
@@ -2737,11 +2749,11 @@
 				{
 					"name": "Acid Lash",
 					"entries": [
-						"Melee Weapon Attack: {@hit 14} to hit, reach 10 ft., one target. Hit: 21 ({@dice 4d6+7}) acid damage. Any creature killed by this attack is drawn into Juiblex's body, and the corpse is obliterated after 1 minute."
+						"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. Hit: 21 ({@dice 4d6+7}) acid damage. Any creature killed by this attack is drawn into Juiblex's body, and the corpse is obliterated after 1 minute."
 					]
 				},
 				{
-					"name": "Eject Slime (Recharge 5\u20136)",
+					"name": "Eject Slime {@recharge 5}",
 					"entries": [
 						"Juiblex spews out a corrosive slime, targeting one creature that it can see within 60 feet of it. The target must make a DC 21 Dexterity saving throw. On a failure, the target takes 55 ({@dice 10d10}) acid damage. Unless the target avoids taking any of this damage, any metal armor worn by the target takes a permanent \u22121 penalty to the AC it offers, and any metal weapon it is carrying or wearing takes a permanent \u22121 penalty to damage rolls. The penalty worsens each time a target is subjected to this effect. If the penalty on an object drops to \u22125, the object is destroyed."
 					]
@@ -2764,7 +2776,7 @@
 				{
 					"name": "Corrupting Touch (Costs 2 Actions)",
 					"entries": [
-						"Melee Weapon Attack: {@hit 14} to hit, reach 10 ft., one creature. Hit: 21 ({@dice 4d6+7}) poison damage, and the target is slimed. Until the slime is scraped off with an action, the target is poisoned, and any creature, other than an ooze, is poisoned while Within 10 of the target."
+						"{@atk mw} {@hit 14} to hit, reach 10 ft., one creature. Hit: 21 ({@dice 4d6+7}) poison damage, and the target is slimed. Until the slime is scraped off with an action, the target is {@condition poisoned}, and any creature, other than an ooze, is {@condition poisoned} while Within 10 of the target."
 					],
 					"attack": [
 						"|14|4d6+7"
@@ -2788,7 +2800,8 @@
 							"{@spell contagion}",
 							"{@spell gaseous form}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"isNamedCreature": true,
@@ -2857,7 +2870,7 @@
 				{
 					"name": "Halberd",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 10ft., one target. Hit: 7 ({@dice 1d10+2}) slashing damage."
+						"{@atk mw} {@hit 4} to hit, reach 10ft., one target. Hit: 7 ({@dice 1d10+2}) slashing damage."
 					]
 				}
 			],
@@ -2919,7 +2932,7 @@
 				{
 					"name": "Sneak Attack (1/Turn)",
 					"entries": [
-						"The spy deals an extra 7 ({@dice 2d6}) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the spy that isn't incapacitated and the spy doesn't have disadvantage on the attack roll."
+						"The spy deals an extra 7 ({@dice 2d6}) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the spy that isn't {@condition incapacitated} and the spy doesn't have disadvantage on the attack roll."
 					]
 				}
 			],
@@ -2933,13 +2946,13 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Hand Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 4} to hit, range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],
@@ -3005,13 +3018,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+2}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 4 ({@dice 1d8}) acid damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+2}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 4 ({@dice 1d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Sticky Leg (Recharges when the Steeder Has No Creatures Grappled)",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one Small or Tiny creature. Hit: The target is stuck on the steeder's leg and grappled until it escapes (escape DC 12)"
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one Small or Tiny creature. Hit: The target is stuck on the steeder's leg and {@condition grappled} until it escapes (escape DC 12)"
 					]
 				}
 			],
@@ -3069,7 +3082,7 @@
 				{
 					"name": "Insanity",
 					"entries": [
-						"Narrak has advantage on saving throws against being charmed or frightened."
+						"Narrak has advantage on saving throws against being {@condition charmed} or {@condition frightened}."
 					]
 				},
 				{
@@ -3095,13 +3108,13 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				},
 				{
 					"name": "One with Shadows",
 					"entries": [
-						"While he is in a dim light or darkness, Narrak can become invisible. He remains so until he moves or takes an action or reaction."
+						"While he is in a dim light or darkness, Narrak can become {@condition invisible}. He remains so until he moves or takes an action or reaction."
 					]
 				}
 			],
@@ -3136,7 +3149,8 @@
 								"{@spell spider climb}"
 							]
 						}
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"traitTags": [
@@ -3245,7 +3259,7 @@
 				{
 					"name": "Master of Undeath",
 					"entries": [
-						"When Orcus casts animate dead or create undead, he chooses the level at which the spell is cast, and the creatures created by the spells remain under his control indefinitely. Additionally, he can cast create undead even when it isn't night."
+						"When Orcus casts {@spell animate dead} or {@spell create undead}, he chooses the level at which the spell is cast, and the creatures created by the spells remain under his control indefinitely. Additionally, he can cast create undead even when it isn't night."
 					]
 				}
 			],
@@ -3259,13 +3273,13 @@
 				{
 					"name": "Wand of Orcus",
 					"entries": [
-						"Melee Weapon Attack: {@hit 19} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d8+8}) bludgeoning damage plus 13 ({@dice 2d12}) necrotic damage."
+						"{@atk mw} {@hit 19} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d8+8}) bludgeoning damage plus 13 ({@dice 2d12}) necrotic damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: {@hit 17} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d8+8}) piercing damage plus 18 ({@dice 4d8}) poison damage."
+						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d8+8}) piercing damage plus 18 ({@dice 4d8}) poison damage."
 					]
 				}
 			],
@@ -3309,7 +3323,8 @@
 							"{@spell create undead}",
 							"{@spell dispel magic}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"isNamedCreature": true,
@@ -3396,7 +3411,7 @@
 				{
 					"name": "Insanity",
 					"entries": [
-						"The Pudding King has advantage on saving throws against being charmed or frightened."
+						"The Pudding King has advantage on saving throws against being {@condition charmed} or {@condition frightened}."
 					]
 				}
 			],
@@ -3404,7 +3419,7 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d8}) piercing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d8}) piercing damage."
 					]
 				},
 				{
@@ -3436,7 +3451,8 @@
 							"{@spell blur}",
 							"{@spell disguise self}"
 						]
-					}
+					},
+					"ability": "int"
 				},
 				{
 					"name": "Spellcasting",
@@ -3489,7 +3505,8 @@
 								"{@spell cloudkill}"
 							]
 						}
-					}
+					},
+					"ability": "cha"
 				}
 			]
 		},
@@ -3547,7 +3564,7 @@
 				{
 					"name": "Stench",
 					"entries": [
-						"Any creature other than a troglodyte that starts its turn within 5 feet of the troglodyte must succeed on a DC 14 Constitution saving throw or be poisoned until the start of the creature's next turn. On a successful saving throw, the creature is immune to the stench of all troglodytes for 1 hour."
+						"Any creature other than a troglodyte that starts its turn within 5 feet of the troglodyte must succeed on a DC 14 Constitution saving throw or be {@condition poisoned} until the start of the creature's next turn. On a successful saving throw, the creature is immune to the stench of all troglodytes for 1 hour."
 					]
 				},
 				{
@@ -3567,23 +3584,23 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d4+4}) piercing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d4+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d4+4}) slashing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d4+4}) slashing damage."
 					]
 				},
 				{
 					"name": "Greatclub",
 					"entries": [
-						"Melee Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage."
 					]
 				},
 				{
-					"name": "Acid Spray (Recharge 6)",
+					"name": "Acid Spray {@recharge}",
 					"entries": [
 						"The troglodyte spits acid in a line 15 feet long and 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 10 ({@dice 3d6}) acid damage on a failed save, or half as much damage on a successful one."
 					]
@@ -3636,7 +3653,7 @@
 				{
 					"name": "Vampiric Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				}
 			],
@@ -3645,7 +3662,7 @@
 					"name": "Barbed Tail",
 					"entries": [
 						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage."
 					]
 				}
 			],
@@ -3690,7 +3707,7 @@
 				{
 					"name": "Vampiric Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				}
 			],
@@ -3699,7 +3716,7 @@
 					"name": "Barbed Tail",
 					"entries": [
 						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"Melee Weapon Attack: {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage."
 					]
 				}
 			],
@@ -3738,7 +3755,8 @@
 								"{@spell tongues}"
 							]
 						}
-					}
+					},
+					"ability": "wis"
 				}
 			]
 		},
@@ -3794,19 +3812,19 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) slashing damage, or 8 ({@dice 1d10+3}) slashing damage if used with two hands."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) slashing damage, or 8 ({@dice 1d10+3}) slashing damage if used with two hands."
 					]
 				},
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 3} to hit, range 100/400 ft., one target. Hit: 6 ({@dice 1d10+1}) piercing damage."
+						"{@atk rw} {@hit 3} to hit, range 100/400 ft., one target. Hit: 6 ({@dice 1d10+1}) piercing damage."
 					]
 				}
 			],
@@ -3917,20 +3935,20 @@
 					"entries": [
 						"Yeenoghu makes three flail attacks. If an attack hits, he can cause it to create an additional effect of his choice or at random (each effect can be used only once per Multi attack):",
 						"1. The attack deals an extra 13 ({@dice 2d12}) bludgeoning damage.",
-						"2. The target must succeed on a DC 17 Constitution saving throw or be paralyzed until the start of Yeenoghu's next turn.",
-						"3. The target must succeed on a DC 17 Wisdom saving throw or be affected by the confusion spell until the start of Yeenoghu's next turn."
+						"2. The target must succeed on a DC 17 Constitution saving throw or be {@condition paralyzed} until the start of Yeenoghu's next turn.",
+						"3. The target must succeed on a DC 17 Wisdom saving throw or be affected by the {@spell confusion} spell until the start of Yeenoghu's next turn."
 					]
 				},
 				{
 					"name": "Flail",
 					"entries": [
-						"Melee Weapon Attack: {@hit 16} to hit, reach 15 ft., one target. Hit: 22 ({@dice 2d12+9}) bludgeoning damage."
+						"{@atk mw} {@hit 16} to hit, reach 15 ft., one target. Hit: 22 ({@dice 2d12+9}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 16} to hit, reach 10 ft., one target. Hit: 31 ({@dice 4d10+9}) piercing damage."
+						"{@atk mw} {@hit 16} to hit, reach 10 ft., one target. Hit: 31 ({@dice 4d10+9}) piercing damage."
 					]
 				}
 			],
@@ -3945,7 +3963,7 @@
 				{
 					"name": "Swat Away",
 					"entries": [
-						"Yeenoghu makes a flail attack. If the attack hits, the target must succeed on a DC 24 Strength saving throw or be pushed 15 feet in a straight line away from Yeenoghu. If the saving throw fails by 5 or more, the target falls prone."
+						"Yeenoghu makes a flail attack. If the attack hits, the target must succeed on a DC 24 Strength saving throw or be pushed 15 feet in a straight line away from Yeenoghu. If the saving throw fails by 5 or more, the target falls {@condition prone}."
 					]
 				},
 				{
@@ -3964,7 +3982,7 @@
 					],
 					"will": [
 						"{@spell detect magic}",
-						"{@spell spiritual weapon} (8th-level spell, 4d8+2 force damage on a hit, appears as a flail)"
+						"{@spell spiritual weapon} (8th-level spell, {@dice 4d8+2} force damage on a hit, appears as a flail)"
 					],
 					"daily": {
 						"1": [
@@ -3975,7 +3993,8 @@
 							"{@spell fear}",
 							"{@spell invisibility}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"isNamedCreature": true,
@@ -4041,7 +4060,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 8 ({@dice 3d4+1}) bludgeoning damage plus 7 ({@dice 3d4}) poison damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 8 ({@dice 3d4+1}) bludgeoning damage plus 7 ({@dice 3d4}) poison damage."
 					]
 				},
 				{
@@ -4152,7 +4171,7 @@
 				{
 					"name": "Duergar Resilience",
 					"entries": [
-						"Horgar has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
+						"Horgar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
 					]
 				},
 				{
@@ -4170,7 +4189,7 @@
 				{
 					"name": "Brave",
 					"entries": [
-						"Horgar has advantage on saving throws against being frightened."
+						"Horgar has advantage on saving throws against being {@condition frightened}."
 					]
 				}
 			],
@@ -4184,7 +4203,7 @@
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"Horgar magically turns invisible until he attacks, casts a spell, or uses his Enlarge, or until his concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment Horgar wears or carries is invisible with him."
+						"Horgar magically turns {@condition invisible} until he attacks, casts a spell, or uses his Enlarge, or until his concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment Horgar wears or carries is invisible with him."
 					]
 				},
 				{
@@ -4196,19 +4215,19 @@
 				{
 					"name": "+2 Warhammer",
 					"entries": [
-						"Melee Weapon Attack: {@hit 8} to hit, reach 5 ft., one target. Hit: 10 ({@dice 1d8+6}) bludgeoning damage, or 11 ({@dice 1d10+6}) bludgeoning damage if used with two hands. While Horgar is enlarged, the damage increases to 15 ({@dice 2d8+6}) or 17 ({@dice 2d10+6}) bludgeoning damage, respectively."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 10 ({@dice 1d8+6}) bludgeoning damage, or 11 ({@dice 1d10+6}) bludgeoning damage if used with two hands. While Horgar is enlarged, the damage increases to 15 ({@dice 2d8+6}) or 17 ({@dice 2d10+6}) bludgeoning damage, respectively."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 2} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
+						"{@atk rw} {@hit 2} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
 					]
 				},
 				{
 					"name": "Leadership (Recharges after a Short or Long Rest)",
 					"entries": [
-						"For 1 minute, Horgar can utter a special command or warning whenever a nonhostile creature that he can see within 30 ft. of Horgar makes an attack roll or a saving throw. The creature can add a d4 to its roll provided it can hear and understand Horgar. A creature can benefit from only one Leadership die at a time. This effect ends if Horgar is incapacitated."
+						"For 1 minute, Horgar can utter a special command or warning whenever a nonhostile creature that he can see within 30 ft. of Horgar makes an attack roll or a saving throw. The creature can add a {@dice d4} to its roll provided it can hear and understand Horgar. A creature can benefit from only one Leadership die at a time. This effect ends if Horgar is {@condition incapacitated}."
 					]
 				}
 			],
@@ -4272,7 +4291,7 @@
 				{
 					"name": "Pack Tactics",
 					"entries": [
-						"The thug has advantage on an attack roll against a creature if at least one of the thug's allies is within 5 feet of the creature and the ally isn't incapacitated."
+						"The thug has advantage on an attack roll against a creature if at least one of the thug's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
 					]
 				}
 			],
@@ -4286,13 +4305,13 @@
 				{
 					"name": "Mace",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) bludgeoning damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 2} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
+						"{@atk rw} {@hit 2} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
 					]
 				}
 			],
@@ -4349,7 +4368,7 @@
 				{
 					"name": "Two Heads",
 					"entries": [
-						"Because of its two heads, the Spider King has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious."
+						"Because of its two heads, the Spider King has advantage on Wisdom (Perception) checks and on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, and knocked {@condition unconscious}."
 					]
 				},
 				{
@@ -4375,13 +4394,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+3}) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 9 ({@dice 2d8}) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+3}) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 9 ({@dice 2d8}) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but {@condition poisoned} for 1 hour, even after regaining hit points, and is {@condition paralyzed} while {@condition poisoned} in this way."
 					]
 				},
 				{
-					"name": "Web (Recharge 5\u20136)",
+					"name": "Web {@recharge 5}",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 5} to hit, range 30/60 ft., one creature. Hit: The target is restrained by webbing. As an action, the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
+						"{@atk rw} {@hit 5} to hit, range 30/60 ft., one creature. Hit: The target is {@condition restrained} by webbing. As an action, the {@condition restrained} target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
 					]
 				}
 			],
@@ -4491,7 +4510,7 @@
 				{
 					"name": "Pseudopod",
 					"entries": [
-						"Melee Weapon Attack: {@hit 13} to hit, reach 10 ft., one target. Hit: 15 ({@dice 2d8+6}) bludgeoning damage plus 9 ({@dice 2d8}) poison damage."
+						"{@atk mw} {@hit 13} to hit, reach 10 ft., one target. Hit: 15 ({@dice 2d8+6}) bludgeoning damage plus 9 ({@dice 2d8}) poison damage."
 					]
 				},
 				{
@@ -4501,9 +4520,9 @@
 					]
 				},
 				{
-					"name": "Mind Control Spores (Recharge 5\u20136)",
+					"name": "Mind Control Spores {@recharge 5}",
 					"entries": [
-						"Zuggtmoy releases spores that burst out in a cloud that fills a 20-foot-radius sphere centered on her, and it lingers for 1 minute. Humanoids and beasts in the cloud when it appears, or that enter it later, must make a DC 19 Wisdom saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the influence of Zuggtmoy for 24 hours. While infected, the creature is charmed by her and can't be reinfected by these spores."
+						"Zuggtmoy releases spores that burst out in a cloud that fills a 20-foot-radius sphere centered on her, and it lingers for 1 minute. Humanoids and beasts in the cloud when it appears, or that enter it later, must make a DC 19 Wisdom saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the influence of Zuggtmoy for 24 hours. While infected, the creature is {@condition charmed} by her and can't be reinfected by these spores."
 					]
 				}
 			],
@@ -4518,7 +4537,7 @@
 				{
 					"name": "Exert Will",
 					"entries": [
-						"One creature charmed by Zuggtmoy that she can see must use its reaction to move up to its speed as she directs or to make a weapon attack against a target that she designates."
+						"One creature {@condition charmed} by Zuggtmoy that she can see must use its reaction to move up to its speed as she directs or to make a weapon attack against a target that she designates."
 					]
 				}
 			],
@@ -4545,7 +4564,8 @@
 							"{@spell entangle}",
 							"{@spell plant growth}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"isNamedCreature": true,

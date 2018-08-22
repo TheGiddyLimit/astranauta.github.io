@@ -44,7 +44,7 @@
 		{
 			"name": "Exhaustion",
 			"entries": [
-				"Some special abilities and environmental hazards, such as starvation and the long-term effects of freezing or scorching temperatures, can lead to a special condition called {@condition exhaustion}. Exhaustion is measured in six levels. An effect can give a creature one or more levels of exhaustion, as specified in the effect's description.",
+				"Some special abilities and environmental hazards, such as starvation and the long-term effects of freezing or scorching temperatures, can lead to a special condition called exhaustion. Exhaustion is measured in six levels. An effect can give a creature one or more levels of exhaustion, as specified in the effect's description.",
 				{
 					"type": "table",
 					"colLabels": [
@@ -244,7 +244,7 @@
 					"type": "list",
 					"items": [
 						"An unconscious creature is {@condition incapacitated}, can't move or speak, and is unaware of its surroundings.",
-						"The creature drops whatever it's holding and falls prone.",
+						"The creature drops whatever it's holding and falls {@condition prone}.",
 						"The creature automatically fails Strength and Dexterity saving throws.",
 						"Attack rolls against the creature have advantage.",
 						"Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature."

@@ -38,9 +38,9 @@ function onJsonLoad (data) {
 			$(".base").on("input", changeBase);
 			$("input.choose").on("change", choose);
 
-			const names = raceData.map(x => x.name).sort();
-			const options = names.map(name => `<option>${name}</option>`).join();
-			$("#race").append(`<option>None</option>`).append(`<option value="_CUSTOM">Custom</option>`).append(options).change(changeRace).change();
+			const races = raceData.map(x => ({name: x.name, source: x.source})).sort((a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source));
+			const options = races.map(it => `<option value="${it.name}_${it.source}">${it.name} ${it.source !== SRC_PHB ? `[${Parser.sourceJsonToAbv(it.source)}]` : ""}</option>`).join("");
+			$("#race").append(`<option value="">None</option>`).append(`<option value="_CUSTOM">Custom</option>`).append(options).change(changeRace).change();
 
 			if (window.location.hash) window.onhashchange();
 			else window.location.hash = "#rolled";
@@ -119,9 +119,9 @@ function changeRace () {
 		})
 	} else {
 		$(`#custom`).hide();
-		const stats = race === "None"
+		const stats = race === ""
 			? {}
-			: raceData.find(({name}) => name === race).ability;
+			: raceData.find(({name, source}) => `${name}_${source}` === race).ability;
 		handleStats(stats);
 	}
 }

@@ -49,7 +49,7 @@
 				{
 					"name": "Dragon Fanatic",
 					"entries": [
-						"The dragonclaw has advantage on saving throws against being charmed or frightened. While the dragonclaw can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonclaw ignores the effects of being charmed or frightened."
+						"The dragonclaw has advantage on saving throws against being {@condition charmed} or {@condition frightened}. While the dragonclaw can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonclaw ignores the effects of being {@condition charmed} or {@condition frightened}."
 					]
 				},
 				{
@@ -61,7 +61,7 @@
 				{
 					"name": "Pack Tactics",
 					"entries": [
-						"The dragonclaw has advantage on an attack roll against a creature if at least one of the dragonclaw's allies is within 5 feet of the creature and the ally isn't incapacitated."
+						"The dragonclaw has advantage on an attack roll against a creature if at least one of the dragonclaw's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
 					]
 				}
 			],
@@ -75,7 +75,7 @@
 				{
 					"name": "Scimitar",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
 					]
 				}
 			],
@@ -148,7 +148,7 @@
 				{
 					"name": "Dragon Fanatic",
 					"entries": [
-						"The dragonfang has advantage on saving throws against being charmed or frightened. While the dragonfang can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonfang ignores the effects of being charmed or frightened."
+						"The dragonfang has advantage on saving throws against being {@condition charmed} or {@condition frightened}. While the dragonfang can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonfang ignores the effects of being {@condition charmed} or {@condition frightened}."
 					]
 				},
 				{
@@ -174,13 +174,13 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage plus 7 ({@dice 2d6}) damage of the type to which the dragonfang has resistance."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage plus 7 ({@dice 2d6}) damage of the type to which the dragonfang has resistance."
 					]
 				},
 				{
 					"name": "Orb of Dragon's Breath (2/Day)",
 					"entries": [
-						"Ranged Spell Attack: {@hit 5} to hit, range 50 ft., one target. Hit: 22 ({@dice 5d8}) damage of the type to which the dragonfang has damage resistance."
+						"{@atk rs} {@hit 5} to hit, range 50 ft., one target. Hit: 22 ({@dice 5d8}) damage of the type to which the dragonfang has damage resistance."
 					]
 				}
 			],
@@ -250,7 +250,7 @@
 				{
 					"name": "Dragon Fanatic",
 					"entries": [
-						"The dragonsoul has advantage on saving throws against being charmed or frightened. While the dragonsoul can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonsoul ignores the effects of being charmed or frightened."
+						"The dragonsoul has advantage on saving throws against being {@condition charmed} or {@condition frightened}. While the dragonsoul can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonsoul ignores the effects of being {@condition charmed} or {@condition frightened}."
 					]
 				},
 				{
@@ -268,7 +268,7 @@
 				{
 					"name": "Pack Tactics",
 					"entries": [
-						"The dragonsoul has advantage on an attack roll against a creature if at least one of the dragonclaw's allies is within 5 feet of the creature and the ally isn't incapacitated."
+						"The dragonsoul has advantage on an attack roll against a creature if at least one of the dragonclaw's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
 					]
 				}
 			],
@@ -282,13 +282,13 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage plus 10 ({@dice 3d6}) damage of the type to which the dragonsoul has resistance."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage plus 10 ({@dice 3d6}) damage of the type to which the dragonsoul has resistance."
 					]
 				},
 				{
 					"name": "Orb of Dragon's Breath (3/Day)",
 					"entries": [
-						"Ranged Spell Attack: {@hit 7} to hit, range 90 ft., one target. Hit: 27 ({@dice 6d8}) damage of the type to which the dragonsoul has damage resistance."
+						"{@atk rs} {@hit 7} to hit, range 90 ft., one target. Hit: 27 ({@dice 6d8}) damage of the type to which the dragonsoul has damage resistance."
 					]
 				}
 			],
@@ -361,7 +361,7 @@
 				{
 					"name": "Dragon Fanatic",
 					"entries": [
-						"The dragonwing has advantage on saving throws against being charmed or frightened. While the dragonwing can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonwing ignores the effects of being charmed or frightened."
+						"The dragonwing has advantage on saving throws against being {@condition charmed} or {@condition frightened}. While the dragonwing can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonwing ignores the effects of being {@condition charmed} or {@condition frightened}."
 					]
 				},
 				{
@@ -379,7 +379,7 @@
 				{
 					"name": "Pack Tactics",
 					"entries": [
-						"The dragonwing has advantage on an attack roll against a creature if at least one of the dragonwing's allies is within 5 feet of the creature and the ally isn't incapacitated."
+						"The dragonwing has advantage on an attack roll against a creature if at least one of the dragonwing's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
 					]
 				}
 			],
@@ -393,7 +393,7 @@
 				{
 					"name": "Scimitar",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage plus 3 ({@dice 1d6}) damage of the type to which the cultist has resistance."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage plus 3 ({@dice 1d6}) damage of the type to which the cultist has resistance."
 					]
 				}
 			],
@@ -454,13 +454,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) bludgeoning damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) bludgeoning damage."
 					]
 				}
 			],
@@ -534,7 +534,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d8}) cold damage. If the target is a Medium or smaller creature it is grappled (escape DC 11). Until this grapple ends, the toad can't bite another target."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d8}) cold damage. If the target is a Medium or smaller creature it is {@condition grappled} (escape DC 11). Until this grapple ends, the toad can't bite another target."
 					]
 				}
 			],
@@ -622,19 +622,19 @@
 				{
 					"name": "Life Drain",
 					"entries": [
-						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one target. Hit: 20 ({@dice 5d6+3}) necrotic damage. The target must succeed on a DC 15 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 20 ({@dice 5d6+3}) necrotic damage. The target must succeed on a DC 15 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
 					]
 				},
 				{
 					"name": "Longsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 9} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d8+5}) slashing damage, or 10 ({@dice 1d10+5}) if used with two hands, plus 10 ({@dice 3d6}) necrotic damage."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d8+5}) slashing damage, or 10 ({@dice 1d10+5}) if used with two hands, plus 10 ({@dice 3d6}) necrotic damage."
 					]
 				},
 				{
 					"name": "Longbow",
 					"entries": [
-						"Ranged Weapon Attack: {@hit 5} to hit, range 150/600 ft., one target. Hit: 5 ({@dice 1d8+1}) piercing damage plus 10 ({@dice 3d6}) necrotic damage."
+						"{@atk rw} {@hit 5} to hit, range 150/600 ft., one target. Hit: 5 ({@dice 1d8+1}) piercing damage plus 10 ({@dice 3d6}) necrotic damage."
 					]
 				}
 			],
@@ -721,19 +721,19 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage plus 13 ({@dice 3d8}) poison damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage plus 13 ({@dice 3d8}) poison damage."
 					]
 				},
 				{
 					"name": "Eldritch Arrow",
 					"entries": [
-						"Ranged Spell Attack: {@hit 7} to hit, range 120 ft., one target. Hit: 11 ({@dice 2d10}) force damage plus 9 ({@dice 2d8}) poison damage."
+						"{@atk rs} {@hit 7} to hit, range 120 ft., one target. Hit: 11 ({@dice 2d10}) force damage plus 9 ({@dice 2d8}) poison damage."
 					]
 				},
 				{
 					"name": "Poisonous Cloud (2/Day)",
 					"entries": [
-						"Poison gas fills a 20-foot-radius sphere centered on a point Neronvain can see within 50 feet of him. The gas spreads around corners and remains until the start of Neronvain's next turn. Each creature that starts its turn in the gas must succeed on a DC 16 Constitution saving throw or be poisoned for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"Poison gas fills a 20-foot-radius sphere centered on a point Neronvain can see within 50 feet of him. The gas spreads around corners and remains until the start of Neronvain's next turn. Each creature that starts its turn in the gas must succeed on a DC 16 Constitution saving throw or be {@condition poisoned} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				}
 			],
@@ -854,7 +854,8 @@
 								"{@spell globe of invulnerability}"
 							]
 						}
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"trait": [
@@ -869,7 +870,7 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d8}) bludgeoning damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d8}) bludgeoning damage."
 					]
 				}
 			],
@@ -992,13 +993,13 @@
 				{
 					"name": "Burning Touch",
 					"entries": [
-						"Melee Spell Attack: {@hit 5} to hit, reach 5 ft., one target. Hit: 18 ({@dice 4d8}) fire damage."
+						"{@atk ms} {@hit 5} to hit, reach 5 ft., one target. Hit: 18 ({@dice 4d8}) fire damage."
 					]
 				},
 				{
 					"name": "Flaming Orb",
 					"entries": [
-						"Ranged Spell Attack: {@hit 5} to hit, range 90 ft., one target. Hit: 40 ({@dice 9d8}) fire damage."
+						"{@atk rs} {@hit 5} to hit, range 90 ft., one target. Hit: 40 ({@dice 9d8}) fire damage."
 					]
 				},
 				{
@@ -1032,7 +1033,7 @@
 				{
 					"name": "Hellish Chains (Costs 3 Actions)",
 					"entries": [
-						"Severin targets one creature he can see within 30 feet of him. The target is wrapped in magical chains of fire and restrained. The restrained target takes 21 ({@dice 6d6}) fire damage at the start of each of its turns. At the end of its turns, the target can make a DC 17 Strength saving throw, ending the effect on itself on a success."
+						"Severin targets one creature he can see within 30 feet of him. The target is wrapped in magical chains of fire and {@condition restrained}. The {@condition restrained} target takes 21 ({@dice 6d6}) fire damage at the start of each of its turns. At the end of its turns, the target can make a DC 17 Strength saving throw, ending the effect on itself on a success."
 					],
 					"attack": [
 						"Hellish Chains||6d6"
@@ -1124,7 +1125,8 @@
 						"3": [
 							"{@spell divine word}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"trait": [
@@ -1155,7 +1157,7 @@
 				{
 					"name": "Multiple Heads",
 					"entries": [
-						"Tiamat can take one reaction per turn, rather than only one per round. She also has advantage on saving throws against being knocked unconscious. If she fails a saving throw against an effect that would stun a creature, one of her unspent legendary actions is spent."
+						"Tiamat can take one reaction per turn, rather than only one per round. She also has advantage on saving throws against being knocked {@condition unconscious}. If she fails a saving throw against an effect that would stun a creature, one of her unspent legendary actions is spent."
 					]
 				},
 				{
@@ -1175,19 +1177,19 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: {@hit 19} to hit, reach 15 ft., one target. Hit: 24 ({@dice 4d6+10}) slashing damage."
+						"{@atk mw} {@hit 19} to hit, reach 15 ft., one target. Hit: 24 ({@dice 4d6+10}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: {@hit 19} to hit, reach 25 ft., one target. Hit: 28 ({@dice 4d8+10}) piercing damage."
+						"{@atk mw} {@hit 19} to hit, reach 25 ft., one target. Hit: 28 ({@dice 4d8+10}) piercing damage."
 					]
 				},
 				{
 					"name": "Frightful Presence",
 					"entries": [
-						"Each creature of Tiamat's choice that is within 240 feet of Tiamat and aware of her must succeed on a DC 26 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to Tiamat's Frightful Presence for the next 24 hours."
+						"Each creature of Tiamat's choice that is within 240 feet of Tiamat and aware of her must succeed on a DC 26 Wisdom saving throw or become {@condition frightened} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to Tiamat's Frightful Presence for the next 24 hours."
 					]
 				}
 			],
@@ -1201,7 +1203,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 19} to hit, reach 20 ft., one target. Hit: 32 ({@dice 4d10+10}) slashing damage plus 14 ({@dice 4d6}) acid damage (black dragon head), lightning damage (blue dragon head), poison damage (green dragon head), fire damage (red dragon head), or cold damage (white dragon head)."
+						"{@atk mw} {@hit 19} to hit, reach 20 ft., one target. Hit: 32 ({@dice 4d10+10}) slashing damage plus 14 ({@dice 4d6}) acid damage (black dragon head), lightning damage (blue dragon head), poison damage (green dragon head), fire damage (red dragon head), or cold damage (white dragon head)."
 					],
 					"attack": [
 						"Bite|19|4d10+10+4d6"

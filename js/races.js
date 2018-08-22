@@ -150,7 +150,8 @@ function onJsonLoad (data) {
 
 	addRaces({race: jsonRaces});
 	BrewUtil.pAddBrewData()
-		.then(addRaces)
+		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -160,6 +161,11 @@ function onJsonLoad (data) {
 
 			History.init(true);
 		});
+}
+
+function handleBrew (homebrew) {
+	addRaces(homebrew);
+	return Promise.resolve();
 }
 
 let raceList = [];

@@ -104,10 +104,12 @@ class ClassList {
 			const curClass = newClasses[i];
 			if (ExcludeUtil.isExcluded(curClass.name, "class", curClass.source)) continue;
 
-			curClass._fSource = SourceUtil.isNonstandardSource(curClass.source) ? "Others" : "Core";
+			curClass._fSource = BrewUtil.hasSourceJson(curClass.source) ? "Homebrew" : SourceUtil.isNonstandardSource(curClass.source) ? "Others" : "Core";
+			sourceFilter.addIfAbsent(curClass._fSource);
 			const id = i + previousClassAmount;
 			tempString += ClassList._renderClass(curClass, id);
 		}
+		sourceFilter.items.sort(SortUtil.ascSort);
 		$classTable.append(tempString);
 	}
 
@@ -130,8 +132,6 @@ class ClassData {
 		const newClasses = data.class;
 		if (!newClasses || !newClasses.length) return;
 
-		ClassData.replaceWarlockInvocationsWithLink(newClasses);
-
 		ClassData.sortSubclasses(newClasses);
 
 		newClasses.filter(c => SourceUtil.isNonstandardSource(c.source) || BrewUtil.hasSourceJson(c.source))
@@ -142,40 +142,6 @@ class ClassData {
 		ClassList.addClasses(newClasses);
 
 		History.hashChange();
-	}
-
-	static replaceWarlockInvocationsWithLink (classes) {
-		const warlock = classes
-			.find(it => it.name === "Warlock" && it.source === SRC_PHB);
-		if (!warlock) {
-			return;
-		}
-		const invocFeature = warlock.classFeatures[1]
-			.find(f => f.name === "Eldritch Invocations");
-		if (!invocFeature) {
-			return;
-		}
-
-		const toRemove = invocFeature.entries.findIndex(it => it.type === "options");
-		const toSwitch = invocFeature.entries.findIndex(it => it.includes("Your invocation options are detailed at the end of the class description."));
-		if (toRemove !== -1 && toSwitch !== -1) {
-			invocFeature.entries[toSwitch] = {
-				type: "inlineBlock",
-				entries: [
-					"At 2nd level, you gain two eldritch invocations of your choice. See the ",
-					{
-						"type": "link",
-						"href": {
-							"type": "internal",
-							"path": "invocations.html"
-						},
-						"text": "Invocations page"
-					},
-					" for the list of available options. When you gain certain warlock levels, you gain additional invocations of your choice."
-				]
-			};
-			invocFeature.entries.splice(toRemove, 1);
-		}
 	}
 
 	static addSubclassData (data) {
@@ -376,7 +342,7 @@ class HashLoad {
 				});
 				if (feature.type !== "inset") featureLinks.push(featureLink);
 
-				const styleClasses = [CLSS_CLASS_FEATURE];
+				const styleClasses = [CLSS_CLASS_FEATURE, "linked-titles--classes"];
 				if (feature.gainSubclassFeature) styleClasses.push(CLSS_GAIN_SUBCLASS_FEATURE);
 
 				renderer.recursiveEntryRender(feature, renderStack, 0, {prefix: `<tr id="${featureId}" class="${styleClasses.join(" ")}"><td colspan="6">`, suffix: `</td></tr>`, forcePrefixSuffix: true});
@@ -447,6 +413,7 @@ class HashLoad {
 
 		// subclass pills
 		const subClasses = ClassDisplay.curClass.subclasses
+			.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source))
 			.map(sc => ({name: sc.name, source: sc.source, shortName: sc.shortName}))
 			.sort(function (a, b) {
 				return SortUtil.ascSort(a.shortName, b.shortName)
@@ -530,10 +497,24 @@ class HashLoad {
 		$pill.click(() => {
 			const [link, ...sub] = History._getHashParts();
 			const outStack = [link];
-			sub.filter(hashPart => !hashPart.startsWith(HASH_SUBCLASS)).forEach(hashPart => outStack.push(hashPart));
+			let singleSelected = null;
+			sub.filter(hashPart => {
+				if (!hashPart.startsWith(HASH_SUBCLASS)) return true;
+				else if (!hashPart.includes(HASH_LIST_SEP) && hashPart.length) singleSelected = hashPart.slice(HASH_SUBCLASS.length);
+			}).forEach(hashPart => outStack.push(hashPart));
 			const hashes = $(`.${CLSS_SUBCLASS_PILL}`).filter(`:visible`)
 				.map((i, e) => HashLoad.getEncodedSubclass($(e).attr(`data-subclass`), $(e).attr(`data-source`))).get();
-			outStack.push(`${HASH_SUBCLASS}${hashes[RollerUtil.roll(hashes.length)]}`);
+
+			const getRolled = () => hashes[RollerUtil.roll(hashes.length)];
+
+			if (singleSelected == null || hashes.length === 1) outStack.push(`${HASH_SUBCLASS}${getRolled()}`);
+			else if (hashes.length > 1) {
+				let rolled;
+				do {
+					rolled = getRolled()
+				} while (rolled === singleSelected);
+				outStack.push(`${HASH_SUBCLASS}${rolled}`);
+			}
 			HashLoad.cleanSetHash(outStack.join(HASH_PART_SEP));
 		});
 	}
@@ -877,7 +858,7 @@ class SubClassLoader {
 		$(`.${CLSS_FEATURE_LINK}`).each(
 			function () {
 				const $this = $(this);
-				this.href = SubClassLoader.getFeatureLink(ATB_DATA_FEATURE_LINK);
+				this.href = SubClassLoader.getFeatureLink($this.attr(ATB_DATA_FEATURE_LINK));
 			}
 		)
 	}
@@ -953,7 +934,7 @@ class SubClassLoader {
 					if (!$e.is(":visible")) return;
 					const idTr = $e.closest(`tr[id]`);
 					const pTr = $e.closest(`tr`);
-					const textNodes = $e.contents().filter(function () {
+					const textNodes = $e.find(`.entry-title-inner`).contents().filter(function () {
 						return this.nodeType === 3;
 					});
 					if (!textNodes.length) return;
@@ -1167,13 +1148,26 @@ ClassBookView._$wrpBook = null;
 ClassBookView._$bkTbl = null;
 ClassBookView._$scToggles = {};
 
+function initLinkGrabbers () {
+	$(`body`).on(`click`, `.linked-titles--classes > td > * > .entry-title .entry-title-inner`, function () {
+		const $this = $(this);
+		const fTag = $this.closest(`tr`).attr("id");
+
+		const hash = `${window.location.hash.slice(1).split(HASH_PART_SEP)
+			.filter(it => !it.startsWith(HASH_FEATURE)).join(HASH_PART_SEP)}${HASH_PART_SEP}${fTag}`;
+
+		copyText(`${window.location.href.split("#")[0]}#${hash}`);
+		showCopiedEffect($this);
+	});
+}
+
 const renderer = EntryRenderer.getDefaultRenderer();
 
 const sourceFilter = new Filter({
 	header: FilterBox.SOURCE_HEADER,
 	minimalUI: true,
 	items: ["Core", "Others"],
-	selFn: (it) => it === "Core"
+	selFn: (it) => it === "Core" || it === "Homebrew"
 });
 
 const filterBox = initFilterBox(sourceFilter);
@@ -1192,6 +1186,7 @@ BrewUtil.makeBrewButton("manage-brew");
 BrewUtil.bind({list: ClassList.classList, filterBox, sourceFilter});
 
 initCompareMode();
+initLinkGrabbers();
 ClassBookView.initButton();
 ExcludeUtil.initialise();
 
@@ -1204,6 +1199,7 @@ DataUtil.class.loadJSON().then((data) => {
 
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			RollerUtil.addListRollButton();
@@ -1214,4 +1210,5 @@ DataUtil.class.loadJSON().then((data) => {
 function handleBrew (homebrew) {
 	addClassData(homebrew);
 	addSubclassData(homebrew);
+	return Promise.resolve();
 }

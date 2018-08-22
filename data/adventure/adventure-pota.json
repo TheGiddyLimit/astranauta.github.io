@@ -1637,7 +1637,7 @@
 							"type": "entries",
 							"name": "Frequency",
 							"entries": [
-								" Check for a random encounter in the morning, afternoon, evening, and midnight. Roll 1d20; an encounter occurs on an 18 or higher."
+								" Check for a random encounter in the morning, afternoon, evening, and midnight. Roll {@dice 1d20}; an encounter occurs on an 18 or higher."
 							]
 						},
 						{
@@ -1651,7 +1651,7 @@
 							"type": "entries",
 							"name": "Difficulty",
 							"entries": [
-								" During chapters 3 and 4, use the \"Early Travels\" random encounter table. During chapter 5, use the \"Later Travels\" table. At any point during travel on or very near the Dessarin River, use the \"River Travels\" table. Roll 1d12+1d8 to determine what the adventurers run into."
+								" During chapters 3 and 4, use the \"Early Travels\" random encounter table. During chapter 5, use the \"Later Travels\" table. At any point during travel on or very near the Dessarin River, use the \"River Travels\" table. Roll {@dice 1d12+1d8} to determine what the adventurers run into."
 							]
 						},
 						{
@@ -1670,15 +1670,15 @@
 								"Night Encounter"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								"",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-5",
+								"col-xs-5"
 							],
 							"rows": [
 								[
 									"2",
 									"Arakocra Scouts*",
-									"1d4+1 jackalweres"
+									"{@dice 1d4+1} jackalweres"
 								],
 								[
 									"3",
@@ -1688,7 +1688,7 @@
 								[
 									"4",
 									"Pilgrims*",
-									"1d2 owlbears"
+									"{@dice 1d2} owlbears"
 								],
 								[
 									"5",
@@ -1697,18 +1697,18 @@
 								],
 								[
 									"6",
-									"1d3 ankhegs",
-									"1d3 ankhegs"
+									"{@dice 1d3} ankhegs",
+									"{@dice 1d3} ankhegs"
 								],
 								[
 									"7",
-									"1d3+1 bugbears",
-									"1d3+1 bugbears"
+									"{@dice 1d3+1} bugbears",
+									"{@dice 1d3+1} bugbears"
 								],
 								[
 									"8",
-									"1d4+1 orcs",
-									"1d4+1 orcs"
+									"{@dice 1d4+1} orcs",
+									"{@dice 1d4+1} orcs"
 								],
 								[
 									"9",
@@ -1733,41 +1733,41 @@
 								[
 									"13",
 									"Water cult marauders*",
-									"1d4+1 gnolls"
+									"{@dice 1d4+1} gnolls"
 								],
 								[
 									"14",
 									"Earth cult robbers*",
-									"1d6+2 wolves"
+									"{@dice 1d6+2} wolves"
 								],
 								[
 									"15",
 									"Fire cult raiders*",
-									"1d3 ogres"
+									"{@dice 1d3} ogres"
 								],
 								[
 									"16",
-									"1d4+1 gnolls",
-									"1d2 gargoyles"
+									"{@dice 1d4+1} gnolls",
+									"{@dice 1d2} gargoyles"
 								],
 								[
 									"17",
 									"Shepherds*",
-									"1d3+1 ghouls"
+									"{@dice 1d3+1} ghouls"
 								],
 								[
 									"18",
-									"1d6+2 wolves",
-									"1d2 perytons"
+									"{@dice 1d6+2} wolves",
+									"{@dice 1d2} perytons"
 								],
 								[
 									"19",
-									"1d3 ogres",
-									"1d3 wights"
+									"{@dice 1d3} ogres",
+									"{@dice 1d3} wights"
 								],
 								[
 									"20",
-									"1d2 perytons",
+									"{@dice 1d2} perytons",
 									"The Watchful Knight*"
 								]
 							]
@@ -1780,8 +1780,8 @@
 								"Encounter"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
@@ -1802,11 +1802,11 @@
 								],
 								[
 									"15-16",
-									"1d4 merrow"
+									"{@dice 1d4} merrow"
 								],
 								[
 									"17-18",
-									"2d4 ghouls"
+									"{@dice 2d4} ghouls"
 								],
 								[
 									"19-20",
@@ -1823,25 +1823,25 @@
 								"Night Encounter"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								"",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-5",
+								"col-xs-5"
 							],
 							"rows": [
 								[
 									"2",
 									"Aarakocra warband*",
-									"2d6 jackalweres"
+									"{@dice 2d6} jackalweres"
 								],
 								[
 									"3",
-									"1d3 manticores",
-									"1d3 manticores"
+									"{@dice 1d3} manticores",
+									"{@dice 1d3} manticores"
 								],
 								[
 									"4",
-									"1d3+1 trolls",
-									"1d3+1 trolls"
+									"{@dice 1d3+1} trolls",
+									"{@dice 1d3+1} trolls"
 								],
 								[
 									"5",
@@ -1851,17 +1851,17 @@
 								[
 									"6",
 									"Knights of Samular*",
-									"1d8 will-o'-wisps"
+									"{@dice 1d8} will-o'-wisps"
 								],
 								[
 									"7",
 									"Homestead*",
-									"1d2 ghasts and 1d4+2 ghouls"
+									"{@dice 1d2} ghasts and {@dice 1d4+2} ghouls"
 								],
 								[
 									"8",
-									"1d4+1 gargoyles",
-									"1d4+1 gargoyles"
+									"{@dice 1d4+1} gargoyles",
+									"{@dice 1d4+1} gargoyles"
 								],
 								[
 									"9",
@@ -1875,8 +1875,8 @@
 								],
 								[
 									"11",
-									"1d6+2 bugbears",
-									"1d6+2 bugbears"
+									"{@dice 1d6+2} bugbears",
+									"{@dice 1d6+2} bugbears"
 								],
 								[
 									"12",
@@ -1890,28 +1890,28 @@
 								],
 								[
 									"14",
-									"2d4 ogres",
-									"2d4 ogres"
+									"{@dice 2d4} ogres",
+									"{@dice 2d4} ogres"
 								],
 								[
 									"15",
 									"Caravan*",
-									"1d4+1 wights"
+									"{@dice 1d4+1} wights"
 								],
 								[
 									"16",
-									"2d4 mephits*",
-									"2d4 mephits*"
+									"{@dice 2d4} mephits*",
+									"{@dice 2d4} mephits*"
 								],
 								[
 									"17",
 									"Dwarf miners*",
-									"1d3 vampire spawn"
+									"{@dice 1d3} vampire spawn"
 								],
 								[
 									"18",
-									"1d3 elementals*",
-									"1d3 elementals*"
+									"{@dice 1d3} elementals*",
+									"{@dice 1d3} elementals*"
 								],
 								[
 									"19",
@@ -1920,8 +1920,8 @@
 								],
 								[
 									"20",
-									"1d2 hill giants",
-									"1d2 hill giants"
+									"{@dice 1d2} hill giants",
+									"{@dice 1d2} hill giants"
 								]
 							]
 						},
@@ -1929,154 +1929,154 @@
 							"type": "entries",
 							"name": "Aarakocra Scouts",
 							"entries": [
-								"These 1d4+1 {@creature aarakocra} attack those who appear to be elemental cultists. Otherwise, the aarakocra might be helpful."
+								"These {@dice 1d4+1} {@creature aarakocra} attack those who appear to be elemental cultists. Otherwise, the aarakocra might be helpful."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Aarakocra War Band",
 							"entries": [
-								"A war band consists of 1d6+3 {@creature aarakocra} and an {@creature air elemental}. They interact like the scouts, above."
+								"A war band consists of {@dice 1d6+3} {@creature aarakocra} and an {@creature air elemental}. They interact like the scouts, above."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Air Cult Scouts",
 							"entries": [
-								"A group of scouts for the air cult consists of 1d4+1 {@creature hurricane|pota|hurricanes} in {@item wingwear|pota}. See chapter 7 for the cultists' statistics and wingwear description."
+								"A group of scouts for the air cult consists of {@dice 1d4+1} {@creature hurricane|pota|hurricanes} in {@item wingwear|pota}. See chapter 7 for the cultists' statistics and wingwear description."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Air Cult Skyriders",
 							"entries": [
-								"One {@creature Feathergale knight|pota} leads 1d4 {@creature Skyweaver|pota|Skyweavers}. They all ride {@creature giant vulture|mm|giant vultures}. See chapter 7 for the cultists' statistics."
+								"One {@creature Feathergale knight|pota} leads {@dice 1d4} {@creature Skyweaver|pota|Skyweavers}. They all ride {@creature giant vulture|mm|giant vultures}. See chapter 7 for the cultists' statistics."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Caravan",
 							"entries": [
-								"A caravan consists of a merchant and his or her entourage heading for the nearest settlement. The group consists of 1d4+2 {@creature guard|mm|guards}, 2d4 {@creature commoner|mm|commoners}, and the caravan leader (a {@creature spy})."
+								"A caravan consists of a merchant and his or her entourage heading for the nearest settlement. The group consists of {@dice 1d4+2} {@creature guard|mm|guards}, {@dice 2d4} {@creature commoner|mm|commoners}, and the caravan leader (a {@creature spy})."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Dwarf Miners",
 							"entries": [
-								"A band of dwarf miners consists of 1d4+1 shield dwarf {@creature scout|mm|scouts} and a pugnacious leader (a shield dwarf {@creature thug})."
+								"A band of dwarf miners consists of {@dice 1d4+1} shield dwarf {@creature scout|mm|scouts} and a pugnacious leader (a shield dwarf {@creature thug})."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Earth Cult Marauders",
 							"entries": [
-								"A band of marauders for the earth cult consists of 1d4+1 {@creature Black Earth guard|pota|Black Earth guards}, a {@creature Black Earth priest|pota}, and 1d4-1 {@creature ogre|mm|ogres}. See chapter 7 for the cultists' statistics."
+								"A band of marauders for the earth cult consists of {@dice 1d4+1} {@creature Black Earth guard|pota|Black Earth guards}, a {@creature Black Earth priest|pota}, and {@dice 1d4-1} {@creature ogre|mm|ogres}. See chapter 7 for the cultists' statistics."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Earth Cult Robbers",
 							"entries": [
-								"These earth cult robbers stake out spots to waylay Passersby. The group consists of 1d4+1 {@creature bandit|mm|bandits} and 1d4 {@creature Black Earth guard|pota|Black Earth guards} (see chapter 7)."
+								"These earth cult robbers stake out spots to waylay Passersby. The group consists of {@dice 1d4+1} {@creature bandit|mm|bandits} and {@dice 1d4} {@creature Black Earth guard|pota|Black Earth guards} (see chapter 7)."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Elementals",
 							"entries": [
-								"A small group of elementals wanders freely. Roll a d4 to determine the type of elementals: 1, {@creature air elemental|mm|air}; 2, {@creature earth elemental|mm|earth}; 3, {@creature fire elemental|mm|fire}; 4, {@creature water elemental|mm|water}."
+								"A small group of elementals wanders freely. Roll a {@dice d4} to determine the type of elementals: 1, {@creature air elemental|mm|air}; 2, {@creature earth elemental|mm|earth}; 3, {@creature fire elemental|mm|fire}; 4, {@creature water elemental|mm|water}."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Elk Tribe Hunters",
 							"entries": [
-								"This group includes a {@creature berserker} and 1d4+1 tribal warriors. They are hostile (see \"The Uthgardt Tribes\" section at the end of this chapter)."
+								"This group includes a {@creature berserker} and {@dice 1d4+1} tribal warriors. They are hostile (see \"The Uthgardt Tribes\" section at the end of this chapter)."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Fire Cult Raiders",
 							"entries": [
-								"The fire cult sends out raiders that include 2d6 {@creature Eternal Flame guardian|pota|Eternal Flame guardians} and an {@creature Eternal Flame priest|pota}. See chapter 7 for the cultists' statistics."
+								"The fire cult sends out raiders that include {@dice 2d6} {@creature Eternal Flame guardian|pota|Eternal Flame guardians} and an {@creature Eternal Flame priest|pota}. See chapter 7 for the cultists' statistics."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Fire Cult War Band",
 							"entries": [
-								"A war band of the fire cult consists of 1d6 {@creature Eternal Flame guardian|pota|Eternal Flame guardians}, an {@creature Eternal Flame priest|pota}, and 1d3 {@creature hell hound|mm|hell hounds}. See chapter 7 for the cultists' statistics."
+								"A war band of the fire cult consists of {@dice 1d6} {@creature Eternal Flame guardian|pota|Eternal Flame guardians}, an {@creature Eternal Flame priest|pota}, and {@dice 1d3} {@creature hell hound|mm|hell hounds}. See chapter 7 for the cultists' statistics."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Homestead",
 							"entries": [
-								"The party discovers a homestead. Roll a d6 to determine the race of the people there: 1-3, Tethyrian human; 4, Illuskan human; 5-6, halfling. A homestead consists of 1d6 adult {@creature commoner|mm|commoners} and 1d6-1 noncombatant children. Residents might provide friendly adventurers with food and shelter."
+								"The party discovers a homestead. Roll a {@dice d6} to determine the race of the people there: 1-3, Tethyrian human; 4, Illuskan human; 5-6, halfling. A homestead consists of {@dice 1d6} adult {@creature commoner|mm|commoners} and {@dice 1d6-1} noncombatant children. Residents might provide friendly adventurers with food and shelter."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Keelboat",
 							"entries": [
-								"A river trader's {@item keelboat} carries 1d4+4 {@creature commoner|mm|commoners} (the sailors), 1d4 {@creature guard|mm|guards}, and a captain (a {@creature spy}). They are willing to offer passage to adventurers heading in the same direction."
+								"A river trader's {@item keelboat} carries {@dice 1d4+4} {@creature commoner|mm|commoners} (the sailors), {@dice 1d4} {@creature guard|mm|guards}, and a captain (a {@creature spy}). They are willing to offer passage to adventurers heading in the same direction."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Knights of Samular",
 							"entries": [
-								"This armed patrol consists of 1d4 {@creature veteran|mm|veterans} and 1d4 {@creature guard|mm|guards}. They hail from Summit Hall and offer a hearty \"Well met!\" to the characters."
+								"This armed patrol consists of {@dice 1d4} {@creature veteran|mm|veterans} and {@dice 1d4} {@creature guard|mm|guards}. They hail from Summit Hall and offer a hearty \"Well met!\" to the characters."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Mephits",
 							"entries": [
-								"Several mephits travel in a pack. Roll a d6 to determine the mephit type: 1, {@creature dust mephit|mm|dust}; 2, {@creature ice mephit|mm|ice}; 3, {@creature magma mephit|mm|magma}; 4, {@creature mud mephit|mm|mud}; 5, {@creature smoke mephit|mm|smoke}; 6, {@creature steam mephit|mm|steam}."
+								"Several mephits travel in a pack. Roll a {@dice d6} to determine the mephit type: 1, {@creature dust mephit|mm|dust}; 2, {@creature ice mephit|mm|ice}; 3, {@creature magma mephit|mm|magma}; 4, {@creature mud mephit|mm|mud}; 5, {@creature smoke mephit|mm|smoke}; 6, {@creature steam mephit|mm|steam}."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Pilgrims",
 							"entries": [
-								"A group of pilgrims includes 2d6 {@creature commoner|mm|commoners}, 1d4+1 {@creature guard|mm|guards}, 1d4 {@creature acolyte|mm|acolytes}, and a {@creature priest} bound for a holy or special site. They're happy for company."
+								"A group of pilgrims includes {@dice 2d6} {@creature commoner|mm|commoners}, {@dice 1d4+1} {@creature guard|mm|guards}, {@dice 1d4} {@creature acolyte|mm|acolytes}, and a {@creature priest} bound for a holy or special site. They're happy for company."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "River Pirates",
 							"entries": [
-								"A {@item keelboat} carries 2d4 {@creature bandit|mm|bandits}, 1d4 {@creature thug|mm|thugs}, and a pirate captain (a {@creature bandit captain})."
+								"A {@item keelboat} carries {@dice 2d4} {@creature bandit|mm|bandits}, {@dice 1d4} {@creature thug|mm|thugs}, and a pirate captain (a {@creature bandit captain})."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Shepherds",
 							"entries": [
-								"A group of shepherds watch over herd animals. Roll a d6 to determine the shepherds' race: 1-4, human; 5-6, halfling. The group consists of 1d4 {@creature commoner|mm|commoners} and 1d2 leaders ({@creature scout|mm|scouts})."
+								"A group of shepherds watch over herd animals. Roll a {@dice d6} to determine the shepherds' race: 1-4, human; 5-6, halfling. The group consists of {@dice 1d4} {@creature commoner|mm|commoners} and {@dice 1d2} leaders ({@creature scout|mm|scouts})."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "The Watchful Knight",
 							"entries": [
-								"Once, this {@creature helmed horror} stood watch in the common room of the Inn of the Watchful Knight in Beliard. It chooses one character at random, advances to within 5 feet, then studies the target for several seconds. If attacked, it fights back, retreating after it loses half its hit points. Otherwise, it follows the chosen character for 1d3 days, guarding its temporary master in combat. At the end of that time the {@creature helmed horror} wanders off again."
+								"Once, this {@creature helmed horror} stood watch in the common room of the Inn of the Watchful Knight in Beliard. It chooses one character at random, advances to within 5 feet, then studies the target for several seconds. If attacked, it fights back, retreating after it loses half its hit points. Otherwise, it follows the chosen character for {@dice 1d3} days, guarding its temporary master in combat. At the end of that time the {@creature helmed horror} wanders off again."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Water Cult Marauders",
 							"entries": [
-								"A marauder gang of the water cult consists of 2d6 {@creature Crushing Wave reaver|pota|Crushing Wave reavers}, a {@creature Crushing Wave priest|pota}, and 1d2 {@creature fathomer|pota|fathomers}. See chapter 7 for the cultists' statistics."
+								"A marauder gang of the water cult consists of {@dice 2d6} {@creature Crushing Wave reaver|pota|Crushing Wave reavers}, a {@creature Crushing Wave priest|pota}, and {@dice 1d2} {@creature fathomer|pota|fathomers}. See chapter 7 for the cultists' statistics."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Water Cult Raiders",
 							"entries": [
-								"A group of raiders from the water cult includes 2d6 {@creature Crushing Wave reaver|pota|Crushing Wave reavers}, a {@creature Crushing Wave priest|pota}, and a {@creature one-eyed shiver|pota}. The leader is a {@creature Dark Tide knight|pota} mounted on a {@creature giant crocodile}. See chapter 7 for the cultists' statistics."
+								"A group of raiders from the water cult includes {@dice 2d6} {@creature Crushing Wave reaver|pota|Crushing Wave reavers}, a {@creature Crushing Wave priest|pota}, and a {@creature one-eyed shiver|pota}. The leader is a {@creature Dark Tide knight|pota} mounted on a {@creature giant crocodile}. See chapter 7 for the cultists' statistics."
 							]
 						}
 					]
@@ -3034,7 +3034,7 @@
 									"type": "entries",
 									"name": "Treasure",
 									"entries": [
-										" Feathergale Knights keep their wealth locked in chests in their cells. Each knight also has 2d10 gp in mixed coinage and minor valuables."
+										" Feathergale Knights keep their wealth locked in chests in their cells. Each knight also has {@dice 2d10} gp in mixed coinage and minor valuables."
 									]
 								},
 								{
@@ -3102,7 +3102,7 @@
 								" The eagle is a battering ram. If released using a lever near the doors to area S4, the ram attacks an area that starts at the doors to area S4, extending 30 feet along a 5-foot-wide path in the center of the hall."
 							]
 						},
-						"Each creature in this area must succeed on a DC 10 Dexterity saving throw or take 3d6 bludgeoning damage. Those who fail the save by 5 or more are swept along with the ram, pushed out of the hall onto the drawbridge, and knocked prone. The eagle resets when it swings back, locking back into place and resetting its activation lever."
+						"Each creature in this area must succeed on a DC 10 Dexterity saving throw or take {@dice 3d6} bludgeoning damage. Those who fail the save by 5 or more are swept along with the ram, pushed out of the hall onto the drawbridge, and knocked prone. The eagle resets when it swings back, locking back into place and resetting its activation lever."
 					]
 				},
 				{
@@ -3176,7 +3176,7 @@
 								"This chamber contains two beds, a fireplace, a closet, two chests, and a small tapestry on the wall."
 							]
 						},
-						"Each knights chest contains valuables worth d100 gp, and a feathered cloak."
+						"Each knights chest contains valuables worth {@dice d100} gp, and a feathered cloak."
 					]
 				},
 				{
@@ -3314,7 +3314,7 @@
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"Thurls ring is worth 250 gp. Thurl also carries 3d10 gp and 2d6 pp in a pouch."
+								"Thurls ring is worth 250 gp. Thurl also carries {@dice 3d10} gp and {@dice 2d6} pp in a pouch."
 							]
 						}
 					]
@@ -3354,10 +3354,10 @@
 									"type": "entries",
 									"name": "Finding the Manticore",
 									"entries": [
-										" At the end of each minute spent searching for the manticore, have each group of hunters in the canyon roll a d20, adding 1 for each character or knight in the group. Any group that rolls a total of 18 or higher comes within 100 feet of the manticore. Any and all groups that find the manticore can engage it in battle."
+										" At the end of each minute spent searching for the manticore, have each group of hunters in the canyon roll a {@dice d20}, adding 1 for each character or knight in the group. Any group that rolls a total of 18 or higher comes within 100 feet of the manticore. Any and all groups that find the manticore can engage it in battle."
 									]
 								},
-								"If the knights find the manticore first, they blow their horns so that other groups can pinpoint the knights location and join the battle in 1d6 rounds.",
+								"If the knights find the manticore first, they blow their horns so that other groups can pinpoint the knights location and join the battle in {@dice 1d6} rounds.",
 								{
 									"type": "entries",
 									"name": "Battling the Manticore",
@@ -3692,7 +3692,7 @@
 									"type": "entries",
 									"name": "Treasure",
 									"entries": [
-										" Each warrior in the keep carries 2d10-2 gp in mixed coinage and minor valuables."
+										" Each warrior in the keep carries {@dice 2d10-2} gp in mixed coinage and minor valuables."
 									]
 								},
 								{
@@ -3746,7 +3746,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If the characters kill some or all the gatehouse guards (areas K2 and K3) and then leave Rivergard, the dead guards are replaced by troops from areas K8 or K20. If those guards are killed too, it takes Grimjaw 1d4+1 days to get reinforcements and replace the gate guards. During this period, the front gate remains barred but unguarded."
+								"If the characters kill some or all the gatehouse guards (areas K2 and K3) and then leave Rivergard, the dead guards are replaced by troops from areas K8 or K20. If those guards are killed too, it takes Grimjaw {@dice 1d4+1} days to get reinforcements and replace the gate guards. During this period, the front gate remains barred but unguarded."
 							]
 						}
 					]
@@ -3823,7 +3823,7 @@
 							"type": "entries",
 							"name": "Random Encounters",
 							"entries": [
-								" Characters lingering in the castle yard are likely to encounter various denizens of Rivergard going about their business. Check for random encounters once per 5 minutes during the day or once per 15 minutes at night. Roll a d20; if the result is 18 or higher, a random encounter occurs. To determine the encounter, roll a d6 and consult the following table:"
+								" Characters lingering in the castle yard are likely to encounter various denizens of Rivergard going about their business. Check for random encounters once per 5 minutes during the day or once per 15 minutes at night. Roll a {@dice d20}; if the result is 18 or higher, a random encounter occurs. To determine the encounter, roll a {@dice d6} and consult the following table:"
 							]
 						},
 						{
@@ -3834,25 +3834,25 @@
 								"Encounter"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
 									"1",
-									"1d3 commoners (see area K17)"
+									"{@dice 1d3} commoners (see area K17)"
 								],
 								[
 									"2",
-									"1d4 bandits (see area K8)"
+									"{@dice 1d4} bandits (see area K8)"
 								],
 								[
 									"3",
-									"1d3 Crushing Wave reavers (see area K20)"
+									"{@dice 1d3} Crushing Wave reavers (see area K20)"
 								],
 								[
 									"4",
-									"1d3 giant rats"
+									"{@dice 1d3} giant rats"
 								],
 								[
 									"5",
@@ -4364,7 +4364,7 @@
 									"type": "entries",
 									"name": "Treasure",
 									"entries": [
-										" {@creature sacred stone monk|PotA|Sacred Stone monks} are ascetics and don't collect individual treasure. Their gilded tin masks are worthless. For the more worldly denizens of the monastery (such as the duergar), each carries 2d10 gp in mixed coinage and minor valuables."
+										" {@creature sacred stone monk|PotA|Sacred Stone monks} are ascetics and don't collect individual treasure. Their gilded tin masks are worthless. For the more worldly denizens of the monastery (such as the duergar), each carries {@dice 2d10} gp in mixed coinage and minor valuables."
 									]
 								},
 								{
@@ -4786,7 +4786,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If the characters kill this group of monsters and leave the dungeon without defeating Hellenrae, within 1d3 days she replaces these guards with six {@creature duergar|MM}. The duergar also arrive if the characters kill Jurth in a random encounter in the mine (area M22)."
+								"If the characters kill this group of monsters and leave the dungeon without defeating Hellenrae, within {@dice 1d3} days she replaces these guards with six {@creature duergar|MM}. The duergar also arrive if the characters kill Jurth in a random encounter in the mine (area M22)."
 							]
 						}
 					]
@@ -4862,7 +4862,7 @@
 								"Behind the iron bars stands a monstrous creature that resembles a cross between a huge ape and a beetle. It has wicked mandibles, powerful claws, and four eye sockets-but two of its eyes have been put out, and its claws are bronze blades. The creature bellows and thrashes in rage, constantly testing the bars and clawing at the walls."
 							]
 						},
-						"The monster in the western portion of the chamber is an {@creature umber hulk|MM}. The cultists partially blinded the creature and removed its natural claws, so the hulk no longer has its Confusing Gaze power or the ability to burrow. However, the artificial blades increase its claw damage to 14 (2d8+5) slashing damage. The angry, trapped umber hulk eagerly attacks anything it can reach. If the characters goad it through the bars (for example, by attacking with ranged weapons or spells), the umber hulk goes berserk. It can use an action to attempt a DC 20 Strength check on each of its turns to wrench the cage door open.",
+						"The monster in the western portion of the chamber is an {@creature umber hulk|MM}. The cultists partially blinded the creature and removed its natural claws, so the hulk no longer has its Confusing Gaze power or the ability to burrow. However, the artificial blades increase its claw damage to 14 ({@dice 2d8+5}) slashing damage. The angry, trapped umber hulk eagerly attacks anything it can reach. If the characters goad it through the bars (for example, by attacking with ranged weapons or spells), the umber hulk goes berserk. It can use an action to attempt a DC 20 Strength check on each of its turns to wrench the cage door open.",
 						"The natural stone column and the floor of loose earth are harmless. The earth is about 5 feet deep with hard rock underneath; its not any harder to walk across than firmly packed sand.",
 						{
 							"type": "entries",
@@ -4898,7 +4898,7 @@
 							"type": "entries",
 							"name": "Random Encounters",
 							"entries": [
-								" The mines aren't heavily trafficked, but the cultists send their captives to work here and sometimes strange creatures wander in. Check for random encounters once per hour. Roll a d20; if the result is 18 or higher, a random encounter occurs. Roll a d6 for day encounters, or a d8 for night encounters:"
+								" The mines aren't heavily trafficked, but the cultists send their captives to work here and sometimes strange creatures wander in. Check for random encounters once per hour. Roll a {@dice d20}; if the result is 18 or higher, a random encounter occurs. Roll a {@dice d6} for day encounters, or a {@dice d8} for night encounters:"
 							]
 						},
 						{
@@ -4909,13 +4909,13 @@
 								"Encounter"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
 									"1",
-									"1d4 {@creature commoner|mm|commoners} (see area M19)"
+									"{@dice 1d4} {@creature commoner|mm|commoners} (see area M19)"
 								],
 								[
 									"2",
@@ -4923,11 +4923,11 @@
 								],
 								[
 									"3",
-									"1d3 {@creature Sacred Stone Monk|pota|Sacred Stone monks} (see area M7)"
+									"{@dice 1d3} {@creature Sacred Stone Monk|pota|Sacred Stone monks} (see area M7)"
 								],
 								[
 									"4",
-									"1d3 {@creature violet fungus|mm|violet fungi}"
+									"{@dice 1d3} {@creature violet fungus|mm|violet fungi}"
 								],
 								[
 									"5",
@@ -4935,7 +4935,7 @@
 								],
 								[
 									"6",
-									"Jurth and 1d2 {@creature orog|mm|orogs} (see area M18)"
+									"Jurth and {@dice 1d2} {@creature orog|mm|orogs} (see area M18)"
 								]
 							]
 						},
@@ -4947,13 +4947,13 @@
 								"Encounter"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
 									"1",
-									"1d4 commoners (see area M19)"
+									"{@dice 1d4} commoners (see area M19)"
 								],
 								[
 									"2",
@@ -4961,23 +4961,23 @@
 								],
 								[
 									"3",
-									"1d3 Sacred Stone monks (see area M7)"
+									"{@dice 1d3} Sacred Stone monks (see area M7)"
 								],
 								[
 									"4",
-									"1d3 violet fungi"
+									"{@dice 1d3} violet fungi"
 								],
 								[
 									"5",
-									"1 grick"
+									"1 {@creature grick}"
 								],
 								[
 									"6",
-									"Jurth and 1d2 orogs (see area M18)"
+									"Jurth and {@dice 1d2} orogs (see area M18)"
 								],
 								[
 									"7-8",
-									"1d3 plus 1 duergar (see area M5)"
+									"{@dice 1d3} plus 1 duergar (see area M5)"
 								]
 							]
 						},
@@ -5071,7 +5071,7 @@
 									"type": "entries",
 									"name": "Fires",
 									"entries": [
-										" A number of bonfires burn on the hillside. A bonfire deals 1d10 fire damage to a creature the first time on a turn it enters the fire, as well as when the creature starts its turn in the fire. You can modify the damage based on the size of the fire. See the \"Damage Severity by Level\" table in chapter 5, \"Adventure Environments,\" of the Dungeon Masters Guide."
+										" A number of bonfires burn on the hillside. A bonfire deals {@dice 1d10} fire damage to a creature the first time on a turn it enters the fire, as well as when the creature starts its turn in the fire. You can modify the damage based on the size of the fire. See the \"Damage Severity by Level\" table in chapter 5, \"Adventure Environments,\" of the Dungeon Masters Guide."
 									]
 								},
 								{
@@ -5092,7 +5092,7 @@
 									"type": "entries",
 									"name": "Treasure",
 									"entries": [
-										" Most of the visitors here carry 2d10 gp in mixed coinage and minor valuables."
+										" Most of the visitors here carry {@dice 2d10} gp in mixed coinage and minor valuables."
 									]
 								}
 							]
@@ -5332,7 +5332,7 @@
 					"name": "H4. Scaffolding",
 					"entries": [
 						"The tower scaffolding is 30 feet high and equally as long. It is easy to climb and has a walkway about every 7 feet up. {@b Two Eternal Flame guardians} (see chapter 7) cover the courtyard from their perches on the scaffolding, preferring not to get drawn into melee combat.",
-						"At your option, perhaps due to a falling lantern or stray fire spell, a portion of the scaffolding can catch fire. Such a fire spreads 5 feet in every direction at the start of each round until the structure is fully engulfed. Starting 1 minute after the scaffolding first catches fire, randomly choose 1d2 10-foot sections to collapse every minute until the whole structure is a flaming ruin."
+						"At your option, perhaps due to a falling lantern or stray fire spell, a portion of the scaffolding can catch fire. Such a fire spreads 5 feet in every direction at the start of each round until the structure is fully engulfed. Starting 1 minute after the scaffolding first catches fire, randomly choose {@dice 1d2} 10-foot sections to collapse every minute until the whole structure is a flaming ruin."
 					]
 				},
 				{
@@ -5394,7 +5394,7 @@
 							"type": "entries",
 							"name": "Weak Floor",
 							"entries": [
-								" The area marked with lines creaks loudly whenever someone steps on it. At the start of every round, roll 1d8. If the result is equal to or lower than the number of creatures standing on the weak floor, it collapses, sending everyone falling 15 feet into area H5 or 35 feet into area H6."
+								" The area marked with lines creaks loudly whenever someone steps on it. At the start of every round, roll {@dice 1d8}. If the result is equal to or lower than the number of creatures standing on the weak floor, it collapses, sending everyone falling 15 feet into area H5 or 35 feet into area H6."
 							]
 						}
 					]
@@ -5702,7 +5702,7 @@
 									"type": "entries",
 									"name": "Treasure",
 									"entries": [
-										" Although air cultists rarely do, many denizens of the air temple carry small amounts of treasure. Kenku value shiny baubles, and they always have such treasure. Creatures that own individual treasure have 4d10 gp worth of mixed coins and other minor valuables."
+										" Although air cultists rarely do, many denizens of the air temple carry small amounts of treasure. Kenku value shiny baubles, and they always have such treasure. Creatures that own individual treasure have {@dice 4d10} gp worth of mixed coins and other minor valuables."
 									]
 								}
 							]
@@ -5898,7 +5898,7 @@
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"If the characters loot the tombs of the Tyar-Besil, they find 3d10 figurines, keepsakes, and funerary masks worth 50 gp each."
+								"If the characters loot the tombs of the Tyar-Besil, they find {@dice 3d10} figurines, keepsakes, and funerary masks worth 50 gp each."
 							]
 						}
 					]
@@ -5988,7 +5988,7 @@
 							"type": "entries",
 							"name": "Storm Boomerang",
 							"entries": [
-								" Ranged Weapon Attack: +5 to hit; range 60/120 ft., one target. Hit: 4 (1d4+2) bludgeoning damage plus 7 (3d4) thunder damage, and the target must succeed on a DC 10 Constitution saving throw or be stunned until the end of its next turn. Miss: The boomerang returns to the hurricanes hand."
+								" Ranged Weapon Attack: +5 to hit; range 60/120 ft., one target. Hit: 4 ({@dice 1d4+2}) bludgeoning damage plus 7 ({@dice 3d4}) thunder damage, and the target must succeed on a DC 10 Constitution saving throw or be stunned until the end of its next turn. Miss: The boomerang returns to the hurricanes hand."
 							]
 						},
 						{
@@ -6015,7 +6015,7 @@
 							"type": "entries",
 							"name": "Random Encounters",
 							"entries": [
-								" Check for a random encounter when the characters enter one of the apartments and every 10 minutes that they remain. Roll a d20 on the following table."
+								" Check for a random encounter when the characters enter one of the apartments and every 10 minutes that they remain. Roll a {@dice d20} on the following table."
 							]
 						},
 						{
@@ -6026,25 +6026,25 @@
 								"Encounter"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
 									"1-2",
-									"2d4 Howling Hatred initiates (see area A3)"
+									"{@dice 2d4} Howling Hatred initiates (see area A3)"
 								],
 								[
 									"3",
-									"1d4 hurricanes (see area A20)"
+									"{@dice 1d4} hurricanes (see area A20)"
 								],
 								[
 									"4",
-									"1d2 skyweavers (see area A20)"
+									"{@dice 1d2} skyweavers (see area A20)"
 								],
 								[
 									"5",
-									"1d2 Howling Hatred priests (see area A3)"
+									"{@dice 1d2} Howling Hatred priests (see area A3)"
 								],
 								[
 									"6",
@@ -6137,7 +6137,7 @@
 							"type": "entries",
 							"name": "Seeker Dart",
 							"entries": [
-								" Ranged Weapon Attack: +4 to hit, and the hurricane gains advantage on the attack roll; range 120 ft., one target. Hit: 4 (1d4+2) piercing damage plus 7 (3d4) lightning damage."
+								" Ranged Weapon Attack: +4 to hit, and the hurricane gains advantage on the attack roll; range 120 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage plus 7 ({@dice 3d4}) lightning damage."
 							]
 						},
 						"If the characters are disguised as air cultists, the cultists stationed here ignore them unless attacked. Otherwise, the cultists cease their chanting and attack. Sounds of combat in this room alert the creatures in area A19, but no reinforcements from that area arrive.",
@@ -6227,7 +6227,7 @@
 							"name": "The Dark Stream",
 							"entries": [
 								"An underground stream connects the Temple of the Crushing Wave to the surface. The stream originates from a large spring in this part of the ancient dwarven stronghold. It flows through tunnels and caverns for about 2 miles before passing under Rivergard Keep and emptying into the Dessarin River. The stream is sluggish, and it isn't hard to row or pole a boat against the current.",
-								"Random Encounters. Each time the characters travel the Dark Stream to or from the Temple of the Crushing Wave, roll a d20 for a random encounter at some point during the underground voyage.",
+								"Random Encounters. Each time the characters travel the Dark Stream to or from the Temple of the Crushing Wave, roll a {@dice d20} for a random encounter at some point during the underground voyage.",
 								"Darkmantles and piercers drop from the tunnel ceiling into the boat. Troglodytes hurl javelins from the shore where the Dark Stream passes through an open cavern. Water weirds and chuuls lurk in the stream and attack from the water.",
 								{
 									"type": "image",
@@ -6253,25 +6253,25 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
-										""
+										"col-xs-2 text-align-center",
+										"col-xs-10"
 									],
 									"rows": [
 										[
 											"1",
-											"1d6 darkmantles"
+											"{@dice 1d6} darkmantles"
 										],
 										[
 											"2",
-											"1d4+1 piercers"
+											"{@dice 1d4+1} piercers"
 										],
 										[
 											"3",
-											"1d4+4 troglodytes"
+											"{@dice 1d4+4} troglodytes"
 										],
 										[
 											"4",
-											"1d4+1 shadows"
+											"{@dice 1d4+1} shadows"
 										],
 										[
 											"5",
@@ -6335,7 +6335,7 @@
 									"type": "entries",
 									"name": "Treasure",
 									"entries": [
-										" Many denizens of the temple carry small amounts of treasure. Creatures that own individual treasure have 4d10 gp worth of mixed coins and other minor valuables."
+										" Many denizens of the temple carry small amounts of treasure. Creatures that own individual treasure have {@dice 4d10} gp worth of mixed coins and other minor valuables."
 									]
 								}
 							]
@@ -6402,7 +6402,7 @@
 							"type": "entries",
 							"name": "Random Encounters",
 							"entries": [
-								" Aquatic creatures wander the canals. Check for a random encounter once every per hour while the party is swimming or moving by boat anywhere on a canal. Roll a d20 and consult the following table:"
+								" Aquatic creatures wander the canals. Check for a random encounter once every per hour while the party is swimming or moving by boat anywhere on a canal. Roll a {@dice d20} and consult the following table:"
 							]
 						},
 						"The giant octopus attacks any small group it encounters. Other monsters attack parties they identify as intruders.",
@@ -6414,21 +6414,21 @@
 								"Encounter"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
 									"1",
-									"1d4+1 ghouls (see area C4)"
+									"{@dice 1d4+1} ghouls (see area C4)"
 								],
 								[
 									"2-3",
-									"1d4+4 lizardfolk (see area C13)"
+									"{@dice 1d4+4} lizardfolk (see area C13)"
 								],
 								[
 									"4",
-									"1d2 trolls (see area C12)"
+									"{@dice 1d2} trolls (see area C12)"
 								],
 								[
 									"5",
@@ -6514,7 +6514,7 @@
 							]
 						},
 						"Crushing Wave cultists who guard the lake landing (area C1) bunk here. Six double bunks serve nine reavers, a priest, a fathomer, and a Dark Tide knight named Eyon. At any given time, five {@creature crushing wave reaver|PotA|Crushing Wave reavers} and one {@creature Crushing Wave priest|PotA} are here (see chapter 7 for the cultists statistics).",
-						"Cultists in this room are usually off-duty and might be asleep; roll 1d6 to see how many cultists are in their bunks. Sounds of fighting nearby rouse the sleeping cultists, who join the fray on their turns during the third round of combat."
+						"Cultists in this room are usually off-duty and might be asleep; roll {@dice 1d6} to see how many cultists are in their bunks. Sounds of fighting nearby rouse the sleeping cultists, who join the fray on their turns during the third round of combat."
 					]
 				},
 				{
@@ -6550,7 +6550,7 @@
 								"This room is bunk room and guard post. Sturdy bronze hasps are fitted to the two stone doors, and each door features a loophole covered by a small iron plate at chest level on a human. A round table and four rickety wooden chairs stand in the middle of the room. There are ten bunks here, although half of them don't appear to be in use."
 							]
 						},
-						"This guard post is manned by a {@creature one-eyed shiver|PotA} named Khalt, a {@creature Dark Tide knight|PotA} named Gordol, and three {@creature crushing wave reaver|PotA|Crushing Wave reavers} (see chapter 7 for all). Khalt is in charge, and he runs a tight ship. These reavers are armed with light crossbows instead of javelins (+4 to hit, 1d8+2 piercing damage), and Gordol also has a light crossbow (+7 to hit, 1d8+3 piercing damage).",
+						"This guard post is manned by a {@creature one-eyed shiver|PotA} named Khalt, a {@creature Dark Tide knight|PotA} named Gordol, and three {@creature crushing wave reaver|PotA|Crushing Wave reavers} (see chapter 7 for all). Khalt is in charge, and he runs a tight ship. These reavers are armed with light crossbows instead of javelins (+4 to hit, {@dice 1d8+2} piercing damage), and Gordol also has a light crossbow (+7 to hit, {@dice 1d8+3} piercing damage).",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -6798,10 +6798,10 @@
 								"A pale glimmer plays over the waters of this subterranean lake. The cavern ceiling is naturally formed and speckled with hundreds of tiny points of blue light, mimicking a starry night. The canal that runs through this lake continues north and south. To the east, a wide quay at the end of the lake leads to a large hall with red pillars."
 							]
 						},
-						"The ceiling is 50 feet above water level. Its \"stars\" are small patches of luminescent lichen. Each patch is an inch in diameter and one-tenth as bright as a candle. If removed, a lichens glow persists for 1d3 days.",
+						"The ceiling is 50 feet above water level. Its \"stars\" are small patches of luminescent lichen. Each patch is an inch in diameter and one-tenth as bright as a candle. If removed, a lichens glow persists for {@dice 1d3} days.",
 						"The lake averages 40 feet deep, shallowing to 10 feet near the east end. It houses the strongest monster in the Crushing Wave cult: a {@creature dragon turtle|MM} with 220 hit points named Bronzefume. Young and impressionable, she was lured to the Temple of the Crushing Wave by Gar Shatterkeels offer of riches. Bronzefume stays out of sight in the western end of the lake, waiting for the water prophet to decide the time is right to seize control of the river. Due to her reduced hit points, Bronzefume has a challenge rating of 13 (10,000 XP).",
 						"If a boat ventures into her half of the lake, Bronzefume surfaces to investigate. She also answers if the gong in area C22 is struck. The dragon turtle attacks only if she's sure those she meets are intruders, such as if she sees water cultists fighting the characters.",
-						"Bronzefume prefers to attack boats rather than people. Given a choice between attacking a character and damaging a boat that character is on, she opts for the boat. Destroying a small skiff takes up her actions for 1d4 rounds, during which she ignores characters who retreat.",
+						"Bronzefume prefers to attack boats rather than people. Given a choice between attacking a character and damaging a boat that character is on, she opts for the boat. Destroying a small skiff takes up her actions for {@dice 1d4} rounds, during which she ignores characters who retreat.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -6828,7 +6828,7 @@
 							"type": "entries",
 							"name": "Random Encounters",
 							"entries": [
-								" Each time the characters pass through this area, roll a d20 on the following table to see what additional creatures, if any, are here."
+								" Each time the characters pass through this area, roll a {@dice d20} on the following table to see what additional creatures, if any, are here."
 							]
 						},
 						{
@@ -6839,25 +6839,25 @@
 								"Encounter"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
 									"1",
-									"1d4+4 lizardfolk (see area C13)"
+									"{@dice 1d4+4} lizardfolk (see area C13)"
 								],
 								[
 									"2-3",
-									"1d4+1 Crushing Wave reavers (see area C7)"
+									"{@dice 1d4+1} Crushing Wave reavers (see area C7)"
 								],
 								[
 									"4",
-									"1d3+1 bugbears (see area C18)"
+									"{@dice 1d3+1} bugbears (see area C18)"
 								],
 								[
 									"5",
-									"1 Crushing Wave priest and 1d4 cultists (see area C27)"
+									"1 Crushing Wave priest and {@dice 1d4} cultists (see area C27)"
 								],
 								[
 									"6",
@@ -6902,7 +6902,7 @@
 								"A stone bridge crosses over the canal fifteen feet above the water level here. Steps on the south side of the canal climb up to the bridge, which leads to a set a stone double doors. Painted on the doors is a large symbol."
 							]
 						},
-						"The mark on the door is the water cults symbol. The doors leading to area C25 are unlocked but protected by a {@spell glyph of warding|PHB}. Any creature that opens either door without first making the hand sign of the water cult (an \"X\" of the forefingers, with thumbs overlapping) triggers the trap. A character searching the door for a trap finds the glyph with a successful DC 14 Wisdom (Perception) check. The glyph deals 5d8 thunder damage on a failed DC 14 Dexterity saving throw or half as much damage on a successful one. Any explosion makes enough noise to alert all of the creatures in the Temple of the Crushing Wave.",
+						"The mark on the door is the water cults symbol. The doors leading to area C25 are unlocked but protected by a {@spell glyph of warding|PHB}. Any creature that opens either door without first making the hand sign of the water cult (an \"X\" of the forefingers, with thumbs overlapping) triggers the trap. A character searching the door for a trap finds the glyph with a successful DC 14 Wisdom (Perception) check. The glyph deals {@dice 5d8} thunder damage on a failed DC 14 Dexterity saving throw or half as much damage on a successful one. Any explosion makes enough noise to alert all of the creatures in the Temple of the Crushing Wave.",
 						{
 							"type": "entries",
 							"name": "Culverts",
@@ -7078,7 +7078,7 @@
 									"type": "entries",
 									"name": "Treasure",
 									"entries": [
-										" Many denizens of the temple carry small amounts of treasure. Creatures that own individual treasure have 4d10 gp worth of mixed coins and other minor valuables."
+										" Many denizens of the temple carry small amounts of treasure. Creatures that own individual treasure have {@dice 4d10} gp worth of mixed coins and other minor valuables."
 									]
 								}
 							]
@@ -7194,7 +7194,7 @@
 							]
 						},
 						"This guardroom serves as the barracks and post of four {@creature duergar|MM} in the service of the Black Earth cult. The gray dwarves don't keep a close watch from the arrow slit to the north, since they know that the gargoyles in area B1 and Narthams guards in area B4 stand watch.",
-						"If alerted by serious fighting or unusual activity outside, two duergar take light crossbows (+2 to hit, 1d8 piercing damage) and post themselves at the arrow slits. The other three prepare to defend the rooms only entrance."
+						"If alerted by serious fighting or unusual activity outside, two duergar take light crossbows (+2 to hit, {@dice 1d8} piercing damage) and post themselves at the arrow slits. The other three prepare to defend the rooms only entrance."
 					]
 				},
 				{
@@ -7207,7 +7207,7 @@
 								"A large pile of rubble from a partially collapsed wall fills the southeast corner of this guardroom, while a narrow fissure mars the wall to the north. Despite these failings, the room serves as a barracks and guardroom. Four plain wooden bunks are arrayed around the room, each with a small footlocker. At the back of an alcove in the northeast wall is an arrow slit."
 							]
 						},
-						"This room served as a guardroom for the Hall of the Gate, but tremors collapsed the doorway that once linked the two rooms and formed the tunnel leading to area B2. A {@creature stonemelder|PotA} named Yarsha and her two {@creature black earth guard|PotA|Black Earth guards} (see chapter 7 for both) dwell here. In addition to normal gear, Yarsha carries a potion of greater healing, and the guards have light crossbows (+3 to hit, 1d8 piercing damage) if they need to defend area B3, but they don't keep a watch posted at the arrow slit.",
+						"This room served as a guardroom for the Hall of the Gate, but tremors collapsed the doorway that once linked the two rooms and formed the tunnel leading to area B2. A {@creature stonemelder|PotA} named Yarsha and her two {@creature black earth guard|PotA|Black Earth guards} (see chapter 7 for both) dwell here. In addition to normal gear, Yarsha carries a potion of greater healing, and the guards have light crossbows (+3 to hit, {@dice 1d8} piercing damage) if they need to defend area B3, but they don't keep a watch posted at the arrow slit.",
 						"Yarsha is murderous, and she has set her sights on assassinating Miraj Vizann and taking his place as the cults second-in-command. If she and her guards are on the verge of defeat, she turns on her own guards and finishes them off so she can try to strike a deal with the characters. Yarsha tells the party that Miraj is the earth prophet, and where they can find him (area B8). She asks nothing for herself other than a temporary truce.",
 						"The cultists don't know about the ledge in area B2 that links the northern tunnel to area B22.",
 						{
@@ -7230,7 +7230,7 @@
 							]
 						},
 						"The Black Earth cultists use these rooms as a barracks. A {@creature burrowshark|PotA} named Dynath, a {@creature Black Earth guard|PotA}, and four {@creature cultist|MM|cultists} occupy the room. (Statistics for the Black Earth guard and burrowshark appear in chapter 7.) Dynaths bulette is stabled in area B9. In addition, the cultists currently on duty in area B20 have bunks in this room.",
-						"The cultists keep odd hours, and at any given time 1d4 are sacked out in their bunks. At least two of the residents are awake even in the middle of the night. They assume that random strangers that blunder in unannounced are enemies and attack. If circumstances permit, the occupants of the room spread the alarm by alerting the cultists in area B4 to the attack.",
+						"The cultists keep odd hours, and at any given time {@dice 1d4} are sacked out in their bunks. At least two of the residents are awake even in the middle of the night. They assume that random strangers that blunder in unannounced are enemies and attack. If circumstances permit, the occupants of the room spread the alarm by alerting the cultists in area B4 to the attack.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -7460,7 +7460,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If the ogres are defeated, Marlos Urnrayle replaces them with an earth elemental myrmidon (see chapter 7) after 1d4 days."
+								"If the ogres are defeated, Marlos Urnrayle replaces them with an earth elemental myrmidon (see chapter 7) after {@dice 1d4} days."
 							]
 						}
 					]
@@ -7498,7 +7498,7 @@
 							]
 						},
 						"A dozen Black Earth cultists are quartered here, but only four {@creature black earth guard|PotA|Black Earth guards} and a {@creature Black Earth priest|PotA} (see chapter 7 for both) are present at any given time. Two guards are sleeping and unarmored; they have AC 10 and wont have time to don their armor if an alarm is raised.",
-						"Two light crossbows are positioned near the arrow slit, so the guards can fire on intruders outside the room (+3 to hit, 1d8 piercing damage on a hit)."
+						"Two light crossbows are positioned near the arrow slit, so the guards can fire on intruders outside the room (+3 to hit, {@dice 1d8} piercing damage on a hit)."
 					]
 				},
 				{
@@ -7530,7 +7530,7 @@
 							"type": "entries",
 							"name": "Random Encounters",
 							"entries": [
-								" The mess hall sees a good deal of traffic, and characters who linger here are likely to run into more members of the Black Earth cult. Each time after the first the characters pass through this area, roll a d20 on the following table:"
+								" The mess hall sees a good deal of traffic, and characters who linger here are likely to run into more members of the Black Earth cult. Each time after the first the characters pass through this area, roll a {@dice d20} on the following table:"
 							]
 						},
 						{
@@ -7541,17 +7541,17 @@
 								"Encounter"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
 									"1-2",
-									"1d3+1 duergar (see area B5)"
+									"{@dice 1d3+1} duergar (see area B5)"
 								],
 								[
 									"3",
-									"1d4 ogres (see area B16)"
+									"{@dice 1d4} ogres (see area B16)"
 								],
 								[
 									"4",
@@ -7559,11 +7559,11 @@
 								],
 								[
 									"5",
-									"1 burrowshark and 1d4 cultists (see area B7)"
+									"1 burrowshark and {@dice 1d4} cultists (see area B7)"
 								],
 								[
 									"6",
-									"1 Black Earth priest and 1d4 Black Earth guards (see area B18)"
+									"1 Black Earth priest and {@dice 1d4} Black Earth guards (see area B18)"
 								],
 								[
 									"7",
@@ -7745,7 +7745,7 @@
 									"type": "entries",
 									"name": "Treasure",
 									"entries": [
-										" Many denizens of the temple carry small amounts of treasure. Creatures that own individual treasure have 4d10 gp worth of mixed coins and other minor valuables."
+										" Many denizens of the temple carry small amounts of treasure. Creatures that own individual treasure have {@dice 4d10} gp worth of mixed coins and other minor valuables."
 									]
 								}
 							]
@@ -7808,7 +7808,7 @@
 								"The obsidian columns transform into pillars of magma that radiate intense heat and light, making the air shimmer."
 							]
 						},
-						"A creature that moves within 10 feet of one or more magma pillars for the first time on a turn or ends its turn there takes 2d10 fire damage. The razerblasts have immunity to fire damage.",
+						"A creature that moves within 10 feet of one or more magma pillars for the first time on a turn or ends its turn there takes {@dice 2d10} fire damage. The razerblasts have immunity to fire damage.",
 						{
 							"type": "entries",
 							"name": "Development",
@@ -7833,7 +7833,7 @@
 							"type": "entries",
 							"name": "Tripwire Trap",
 							"entries": [
-								" A tripwire stretches across the floor between the westernmost pair of niches. Characters with a passive Wisdom (Perception) score of 15 or higher notice it automatically. Otherwise, a character searching the floor for traps spots the tripwire with a successful DC 10 Wisdom (Perception) check. If the wire is tripped, a spring-loaded greataxe disguised to look like part of the southern statue snaps across the hallway and makes an attack against the creature that triggered the trap (+10 to hit; 1d12+5 slashing damage on a hit). The clanging of the axe alerts the guards in area E2, who investigate."
+								" A tripwire stretches across the floor between the westernmost pair of niches. Characters with a passive Wisdom (Perception) score of 15 or higher notice it automatically. Otherwise, a character searching the floor for traps spots the tripwire with a successful DC 10 Wisdom (Perception) check. If the wire is tripped, a spring-loaded greataxe disguised to look like part of the southern statue snaps across the hallway and makes an attack against the creature that triggered the trap (+10 to hit; {@dice 1d12+5} slashing damage on a hit). The clanging of the axe alerts the guards in area E2, who investigate."
 							]
 						},
 						{
@@ -8089,7 +8089,7 @@
 								"A stone bridge stretches across a hot, hazy chasm lit by a river of lava forty feet below. The roof of the chasm hangs fifty feet above the bridge."
 							]
 						},
-						"The stone bridge is safe to cross. A creature takes 6d10 fire damage when it enters the lava for the first time on a turn or ends its turn there.",
+						"The stone bridge is safe to cross. A creature takes {@dice 6d10} fire damage when it enters the lava for the first time on a turn or ends its turn there.",
 						{
 							"type": "entries",
 							"name": "Mechanism",
@@ -8545,8 +8545,8 @@
 								"The smell of smoke drifts on the air. Upwind, plumes of smoke billow up from the hillsides. Grass is catching fire at a furious rate, and the fire is moving quickly your way. Big creatures made of flame race over the ground, while small shapes flit in the smoke."
 							]
 						},
-						"The adventurers detect the fire when it is 500 feet away. It covers a front of about 200 feet. At the start of each round, the fire advances 2d6 x 10 feet. Smoke renders the fires area, and 100 feet ahead of it, lightly obscured.",
-						"A creature that enters the fire for the first time on a turn or starts its turn there takes 1d10 fire damage. If the creature isn't immune to fire and needs to breathe, it must also succeed on a DC 10 Constitution saving throw or be incapacitated from smoke inhalation until the start of its next turn."
+						"The adventurers detect the fire when it is 500 feet away. It covers a front of about 200 feet. At the start of each round, the fire advances {@dice 2d6} x 10 feet. Smoke renders the fires area, and 100 feet ahead of it, lightly obscured.",
+						"A creature that enters the fire for the first time on a turn or starts its turn there takes {@dice 1d10} fire damage. If the creature isn't immune to fire and needs to breathe, it must also succeed on a DC 10 Constitution saving throw or be incapacitated from smoke inhalation until the start of its next turn."
 					]
 				},
 				{
@@ -8791,7 +8791,7 @@
 							]
 						},
 						"If the orb is disturbed, all creatures within 10 feet of it must succeed on a DC 20 Strength saving throw or be swept up into a whirlwind, suspended 20 feet in the air. The orb vanishes as the whirlwind forms.",
-						"Those suspended in the whirlwind are restrained and battered by windblown debris. At the start of each of its turns, a creature restrained by the whirlwind takes 1d10 bludgeoning damage. A creature in the whirlwind can use its action to attempt a DC 20 Strength check. If successful, the creature ends the restrained condition on it, falls 20 feet to the floor, and escapes the whirlwind. A creature outside the whirlwind can attempt a similar check to pull another creature from the whirlwind, assuming it has the ability to reach a target 20 feet in the air. The whirlwind lasts 1 minute and then collapses, releasing creatures caught within it.",
+						"Those suspended in the whirlwind are restrained and battered by windblown debris. At the start of each of its turns, a creature restrained by the whirlwind takes {@dice 1d10} bludgeoning damage. A creature in the whirlwind can use its action to attempt a DC 20 Strength check. If successful, the creature ends the restrained condition on it, falls 20 feet to the floor, and escapes the whirlwind. A creature outside the whirlwind can attempt a similar check to pull another creature from the whirlwind, assuming it has the ability to reach a target 20 feet in the air. The whirlwind lasts 1 minute and then collapses, releasing creatures caught within it.",
 						"While the whirlwind rages, four {@creature flying sword|MM|flying swords} animate from the debris scattered around the cave. The flying swords attack creatures outside the whirlwind."
 					]
 				},
@@ -9027,7 +9027,7 @@
 							]
 						},
 						"The {@creature minotaur|MM} is Zegdar, chief of the Emberhorn tribe. He has 117 hit points, wears a chain mail hauberk (AC 16), has an Intelligence score of 11, speaks Undercommon, and is blessed by Imix. The blessing grants the minotaur immunity to fire damage as well as the following additional action option:",
-						"Burning Breath (Recharge 5-6). The minotaur exhales a cloud of burning embers in a 15-foot cone. Each creature in that area must succeed on a DC 14 Dexterity saving throw, taking 21 (6d6) fire damage on a failed save, or half as much damage on a successful one.",
+						"Burning Breath (Recharge 5-6). The minotaur exhales a cloud of burning embers in a 15-foot cone. Each creature in that area must succeed on a DC 14 Dexterity saving throw, taking 21 ({@dice 6d6}) fire damage on a failed save, or half as much damage on a successful one.",
 						"Vanifer has directed Wyx, a simpering nothic, to act as Zegdars adviser. Wyx flatters Zegdar so that he does his job and doesn't become a problem. The rest of the Emberhorns hate Wyx, but Zegdar sees the nothic as proof of his importance.",
 						{
 							"type": "entries",
@@ -9179,7 +9179,7 @@
 							"type": "entries",
 							"name": "Altar",
 							"entries": [
-								" Any non-evil creature that touches the altar or makes a melee weapon attack against it must succeed on a DC 15 Constitution saving throw or take 22 (4d10) psychic damage. The altar has AC 15, 150 hit points, and immunity to acid, cold, fire, lightning, poison, psychic, and thunder damage, as well as bludgeoning, piercing, and slashing damage from nonmagical weapons. As long as the altar remains intact, servants of Elemental Evil (including members of the hour elemental cults) cant be frightened while in this room."
+								" Any non-evil creature that touches the altar or makes a melee weapon attack against it must succeed on a DC 15 Constitution saving throw or take 22 ({@dice 4d10}) psychic damage. The altar has AC 15, 150 hit points, and immunity to acid, cold, fire, lightning, poison, psychic, and thunder damage, as well as bludgeoning, piercing, and slashing damage from nonmagical weapons. As long as the altar remains intact, servants of Elemental Evil (including members of the hour elemental cults) cant be frightened while in this room."
 							]
 						},
 						{
@@ -9315,7 +9315,7 @@
 								"Suddenly, the air grows very warm. Water rains from above. The ice cracks, and thick waves of steam rise from the pool. Bobbing among the breaking ice, the bloated bodies of small humanoids stare up with wide, dead eyes."
 							]
 						},
-						"The shift to extreme heat, as described in chapter 5 of the {@i Dungeon Masters Guide}, takes only a moment. When the heat begins, the ice cracks at the start of that round and is unable to hold any weight end of the round 3 rounds later. The lake is 12 feet deep and turns to boiling water. A creature that enters the water for the first time on its turn or starts its turn there takes 7 (2d6) fire damage. In addition, steam renders the cave lightly obscured.",
+						"The shift to extreme heat, as described in chapter 5 of the {@i Dungeon Masters Guide}, takes only a moment. When the heat begins, the ice cracks at the start of that round and is unable to hold any weight end of the round 3 rounds later. The lake is 12 feet deep and turns to boiling water. A creature that enters the water for the first time on its turn or starts its turn there takes 7 ({@dice 2d6}) fire damage. In addition, steam renders the cave lightly obscured.",
 						{
 							"type": "entries",
 							"name": "Floating Corpses",
@@ -9350,7 +9350,7 @@
 							]
 						},
 						"The chasm is 50 feet deep, and the lower 40 feet of it is heavily obscured by fog. At the bottom of the chasm are blunt rocks and cave floor. The walls are rough and can be climbed with a successful DC 10 Strength (Athletics) check.",
-						"The chasm fills with wind, thunder, or lightning at random times. If one or more creatures are in the chasm, have them roll initiative. On initiative count 10, roll a d20 and consult the following table to determine what effect, if any, occurs in the chasm:",
+						"The chasm fills with wind, thunder, or lightning at random times. If one or more creatures are in the chasm, have them roll initiative. On initiative count 10, roll a {@dice d20} and consult the following table to determine what effect, if any, occurs in the chasm:",
 						{
 							"type": "table",
 							"caption": "N4. Storm Chasm Random Effect",
@@ -9359,8 +9359,8 @@
 								"Effect"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
@@ -9373,11 +9373,11 @@
 								],
 								[
 									"16-18",
-									"Thunder momentarily fills the chasm. Each creature in the chasm must make a DC 15 Constitution saving throw. On a failure, it takes 10 (3d6) thunder damage and is deafened for 1 minute. On a success, the creature takes half damage and isn't deafened."
+									"Thunder momentarily fills the chasm. Each creature in the chasm must make a DC 15 Constitution saving throw. On a failure, it takes 10 ({@dice 3d6}) thunder damage and is deafened for 1 minute. On a success, the creature takes half damage and isn't deafened."
 								],
 								[
 									"19-20",
-									"Lightning momentarily fills the chasm. Each creature in the chasm must make a DC 15 Dexterity saving throw, taking 28 (8d6) lightning damage on a failure, or half as much damage on a success."
+									"Lightning momentarily fills the chasm. Each creature in the chasm must make a DC 15 Dexterity saving throw, taking 28 ({@dice 8d6}) lightning damage on a failure, or half as much damage on a success."
 								]
 							]
 						}
@@ -9486,7 +9486,7 @@
 							]
 						},
 						"Among the myriad fungi, several are magical and act as potions if eaten. One aqua-spotted toadstool acts as a {@item potion of longevity|DMG}. Two amber toadstools flecked with gray work as {@item potion of heroism|DMG|potions of heroism}. Three pale lavender toadstools are like {@item potion of healing|DMG|potions of healing}. These magical toadstools regrow over the course of the next year.",
-						"Eating any other toadstool forces the eater to make a DC 15 Constitution saving throw after 2d4 minutes. Failure indicates the consumer is poisoned. A creature poisoned in this way can repeat the saving throw at the end of each hour, ending the effect on a success.",
+						"Eating any other toadstool forces the eater to make a DC 15 Constitution saving throw after {@dice 2d4} minutes. Failure indicates the consumer is poisoned. A creature poisoned in this way can repeat the saving throw at the end of each hour, ending the effect on a success.",
 						"The sloping passage to the south leads to area N12."
 					]
 				},
@@ -9746,7 +9746,7 @@
 							"type": "entries",
 							"name": "Aboleth Whispers",
 							"entries": [
-								"Whenever the characters explore a new area, roll a d6. On a roll of 1, choose one character to receive an image of the setting features (but not creatures) in area P4, P5, or P6. The aboleth living in the node is telepathically projecting these images to frighten trespassers and ultimately lure them to its lair.",
+								"Whenever the characters explore a new area, roll a {@dice d6}. On a roll of 1, choose one character to receive an image of the setting features (but not creatures) in area P4, P5, or P6. The aboleth living in the node is telepathically projecting these images to frighten trespassers and ultimately lure them to its lair.",
 								"Whenever a character responds to this telepathic contact, a link is established. The aboleth instantly knows all the characters desires and goals. It then intermittently projects images to the character in which everything the character loves is destroyed by the Cult of the Crushing Wave. After receiving these images, the character must succeed on a DC 10 Wisdom saving throw or suffer a random form of short-term madness, as described in chapter 8, \"Running the Game,\" of the {@i Dungeon Masters Guide}.",
 								{
 									"type": "image",
@@ -9772,8 +9772,8 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
-										""
+										"col-xs-2 text-align-center",
+										"col-xs-10"
 									],
 									"rows": [
 										[
@@ -9782,7 +9782,7 @@
 										],
 										[
 											"2-3",
-											"1d4 ice mephits (see area P14)"
+											"{@dice 1d4} ice mephits (see area P14)"
 										],
 										[
 											"4",
@@ -9794,7 +9794,7 @@
 										],
 										[
 											"6",
-											"1d4 swarms of quippers"
+											"{@dice 1d4} swarms of quippers"
 										],
 										[
 											"7-20",
@@ -10147,7 +10147,7 @@
 							]
 						},
 						"Gar Shatterkeel uses this chamber as his personal retreat, where he reflects on the future of his cult.",
-						"The water here radiates divination magic under the scrutiny of a {@spell detect magic|PHB} spell. Once per day, when a creature touches the narwhal horn to the pool, a scrying spell is instantaneously cast. The spell is limited to creatures and locations within the Plunging Torrents, allows no saving throw, and turns the pools surface into a scrying sensor. If the horns wielder doesn't specify a target before touching the horn to the pool, roll a d20. The roll is the number of the area shown in the pool for the spells duration. (For example, a roll of 9 focuses the scrying sensor on area P9.)",
+						"The water here radiates divination magic under the scrutiny of a {@spell detect magic|PHB} spell. Once per day, when a creature touches the narwhal horn to the pool, a scrying spell is instantaneously cast. The spell is limited to creatures and locations within the Plunging Torrents, allows no saving throw, and turns the pools surface into a scrying sensor. If the horns wielder doesn't specify a target before touching the horn to the pool, roll a {@dice d20}. The roll is the number of the area shown in the pool for the spells duration. (For example, a roll of 9 focuses the scrying sensor on area P9.)",
 						"A submerged passage leads to area P14. Characters swimming underwater spot it automatically.",
 						{
 							"type": "entries",
@@ -10229,7 +10229,7 @@
 					"type": "entries",
 					"name": "P19a-P19b. Vortexes",
 					"entries": [
-						"Strong currents channel water from area P18 to these caves. In the center of each cave is a swirling vortex. Any creature drawn down into the vortex is teleported to a random body of water within the Plunging Torrents. Roll a d20; the number rolled determines of the location where the creature appears. For example, on a roll of 7, the creature teleports to the quipper pit in area P7."
+						"Strong currents channel water from area P18 to these caves. In the center of each cave is a swirling vortex. Any creature drawn down into the vortex is teleported to a random body of water within the Plunging Torrents. Roll a {@dice d20}; the number rolled determines of the location where the creature appears. For example, on a roll of 7, the creature teleports to the quipper pit in area P7."
 					]
 				},
 				{
@@ -10345,7 +10345,7 @@
 							"type": "entries",
 							"name": "Random Encounters",
 							"entries": [
-								"Check for random encounters once every 30 minutes. Roll a d20 and consult the following table to determine what, if anything, the characters encounter:",
+								"Check for random encounters once every 30 minutes. Roll a {@dice d20} and consult the following table to determine what, if anything, the characters encounter:",
 								{
 									"type": "table",
 									"caption": "The Black Geode Random Encounters",
@@ -10354,8 +10354,8 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
-										""
+										"col-xs-2 text-align-center",
+										"col-xs-10"
 									],
 									"rows": [
 										[
@@ -10364,11 +10364,11 @@
 										],
 										[
 											"2",
-											"1 stonemelder and 1d3+1 Black Earth guards (see area G12)"
+											"1 stonemelder and {@dice 1d3+1} Black Earth guards (see area G12)"
 										],
 										[
 											"3",
-											"1d2 earth elementals"
+											"{@dice 1d2} earth elementals"
 										],
 										[
 											"4",
@@ -10380,7 +10380,7 @@
 										],
 										[
 											"6",
-											"Ceiling Collapse. A tremor causes part of the ceiling to collapse above one randonly determined party member. If the party includes NPCs, be sure to count them as well. The target must succeed on a DC 15 Dexterity saving throw or take 21 (6d6) bludgeoning damage and be knocked prone and buried. While buried in this way, the target is restrained and unable to breathe or stand up. A creature can take an action to extricate itself or another buried creature, doing so with a successful DC 15 Strength check."
+											"Ceiling Collapse. A tremor causes part of the ceiling to collapse above one randonly determined party member. If the party includes NPCs, be sure to count them as well. The target must succeed on a DC 15 Dexterity saving throw or take 21 ({@dice 6d6}) bludgeoning damage and be knocked prone and buried. While buried in this way, the target is restrained and unable to breathe or stand up. A creature can take an action to extricate itself or another buried creature, doing so with a successful DC 15 Strength check."
 										],
 										[
 											"7",
@@ -10388,11 +10388,11 @@
 										],
 										[
 											"8",
-											"Fissure. A tremor causes a fissure 1d6 × 10 feet deep to open in the floor beneath one party member (determined randomly). If the party includes NPCs, be sure to count them as well. The affected party member must succeed on a DC 15 Dexterity saving throw or fall into the fissure, taking bludgeoning damage as normal unless it is tied off or otherwise protected against falling. The walls of the fissure are rough and can be climbed with a successful DC 10 Strength (Athletics) check."
+											"Fissure. A tremor causes a fissure {@dice 1d6} × 10 feet deep to open in the floor beneath one party member (determined randomly). If the party includes NPCs, be sure to count them as well. The affected party member must succeed on a DC 15 Dexterity saving throw or fall into the fissure, taking bludgeoning damage as normal unless it is tied off or otherwise protected against falling. The walls of the fissure are rough and can be climbed with a successful DC 10 Strength (Athletics) check."
 										],
 										[
 											"9",
-											"Flowstone Growth. Stalactites within 30 feet of the party begin to drip like melting wax. By the time the change ceases, each stalactite has grown 1d4 feet longer. If a stalactite touches the opposite surface, it becomes a natural column."
+											"Flowstone Growth. Stalactites within 30 feet of the party begin to drip like melting wax. By the time the change ceases, each stalactite has grown {@dice 1d4} feet longer. If a stalactite touches the opposite surface, it becomes a natural column."
 										],
 										[
 											"10-20",
@@ -10411,7 +10411,7 @@
 									"type": "entries",
 									"name": "Ceiling Collapse",
 									"entries": [
-										" A tremor causes part of the ceiling to collapse above one random party member. If the party includes NPCs, be sure to count them as well. The target must succeed on a DC 15 Dexterity saving throw or take 21 (6d6) bludgeoning damage and be knocked prone and buried. While buried in this way, the target is restrained and unable to breathe or stand up. A creature can take an action to extricate itself or another buried creature, doing so with a successful DC 15 Strength check."
+										" A tremor causes part of the ceiling to collapse above one random party member. If the party includes NPCs, be sure to count them as well. The target must succeed on a DC 15 Dexterity saving throw or take 21 ({@dice 6d6}) bludgeoning damage and be knocked prone and buried. While buried in this way, the target is restrained and unable to breathe or stand up. A creature can take an action to extricate itself or another buried creature, doing so with a successful DC 15 Strength check."
 									]
 								},
 								{
@@ -10425,14 +10425,14 @@
 									"type": "entries",
 									"name": "Fissure",
 									"entries": [
-										" A tremor causes a fissure 1d6 10 feet deep to open in the floor beneath one party member (determined randomly). If the party includes NPCs, be sure to count them as well. The affected party member must succeed on a DC 15 Dexterity saving throw or fall into the fissure, taking bludgeoning damage as normal unless it is tied off or otherwise protected against falling. The walls of the fissure are rough and can be climbed with a successful DC 10 Strength (Athletics) check."
+										" A tremor causes a fissure {@dice 1d6} 10 feet deep to open in the floor beneath one party member (determined randomly). If the party includes NPCs, be sure to count them as well. The affected party member must succeed on a DC 15 Dexterity saving throw or fall into the fissure, taking bludgeoning damage as normal unless it is tied off or otherwise protected against falling. The walls of the fissure are rough and can be climbed with a successful DC 10 Strength (Athletics) check."
 									]
 								},
 								{
 									"type": "entries",
 									"name": "Flowstone Growth",
 									"entries": [
-										" Stalactites within 30 feet of the party begin to drip like melting wax. By the time the change ceases, each stalactite has grown 1d4 feet longer. If a stalactite touches the opposite surface, it becomes a natural column."
+										" Stalactites within 30 feet of the party begin to drip like melting wax. By the time the change ceases, each stalactite has grown {@dice 1d4} feet longer. If a stalactite touches the opposite surface, it becomes a natural column."
 									]
 								}
 							]
@@ -10515,8 +10515,8 @@
 								"This cave is a forest of glowing crystals, which grow like foliage on slender stone columns that make it difficult to gauge the chambers true size. Slumped against one of the columns is a dead man wearing a stone breastplate."
 							]
 						},
-						"Any creature entering the cave for the first time on a turn or starting its turn inside must succeed on a DC 10 Wisdom saving throw or suffer the effects of a confusion spell. Once a creature succeeds on its saving throw, it is immune to this effect for 24 hours.",
-						"A thunderous noise emanates from the northeast tunnel, which is only 5 feet high and slopes gently upward to area G6. The tunnel ends at a wall of falling mud (see area G6). Any creature passing under the mud takes 10 (3d6) bludgeoning damage.",
+						"Any creature entering the cave for the first time on a turn or starting its turn inside must succeed on a DC 10 Wisdom saving throw or suffer the effects of a {@spell confusion} spell. Once a creature succeeds on its saving throw, it is immune to this effect for 24 hours.",
+						"A thunderous noise emanates from the northeast tunnel, which is only 5 feet high and slopes gently upward to area G6. The tunnel ends at a wall of falling mud (see area G6). Any creature passing under the mud takes 10 ({@dice 3d6}) bludgeoning damage.",
 						{
 							"type": "entries",
 							"name": "Corpse",
@@ -10563,7 +10563,7 @@
 							"type": "entries",
 							"name": "Hidden Tunnel",
 							"entries": [
-								" A 5-foot-high tunnel hidden behind the mud descends to area G4. A creature must pass though the mud to reach the tunnel, taking 10 (3d6) bludgeoning damage from the falling mud."
+								" A 5-foot-high tunnel hidden behind the mud descends to area G4. A creature must pass though the mud to reach the tunnel, taking 10 ({@dice 3d6}) bludgeoning damage from the falling mud."
 							]
 						},
 						{
@@ -10761,7 +10761,7 @@
 						},
 						"The slabs are worktables covered with tools used for chiseling and carving stone and crystal, as well as weapons and bits of armor (see \"Treasure\" below).",
 						"Two {@creature stonemelder|PotA|stonemelders} (see chapter 7) work here, along with a dwarf master smith Rhundorth-one of the delegates from Mirabar (see below). If {@creature Miraj Vizann|PotA} (see chapter 7) survives, he is here in place of one {@creature stonemelder|PotA}. Three {@creature nothic|MM|nothics} watch from the shadows, ready to provide arcane insight during the forging process. The nothics are unwilling servants and flee toward area G16 if given the opportunity.",
-						"Rhundorth has the statistics of a {@creature guard|MM} but is unarmed and unarmored (AC 11). His Strength is 18, and he speaks Common and Dwarvish. If given a choice of weapons, he prefers a warhammer (+6 to hit, 1d8+4 bludgeoning damage, or 1d10+4 bludgeoning damage while using two hands). He is lawful good.",
+						"Rhundorth has the statistics of a {@creature guard|MM} but is unarmed and unarmored (AC 11). His Strength is 18, and he speaks Common and Dwarvish. If given a choice of weapons, he prefers a warhammer (+6 to hit, {@dice 1d8+4} bludgeoning damage, or {@dice 1d10+4} bludgeoning damage while using two hands). He is lawful good.",
 						{
 							"type": "entries",
 							"name": "Roleplaying Rhundorth",
@@ -10773,7 +10773,7 @@
 							"type": "entries",
 							"name": "Mud Pool",
 							"entries": [
-								" A creature that enters the well of boiling mud for the first time on a turn or starts its turn there takes 10 (3d6) fire damage. The mud is 5 feet deep and heated by a volcanic vent beneath the cave."
+								" A creature that enters the well of boiling mud for the first time on a turn or starts its turn there takes 10 ({@dice 3d6}) fire damage. The mud is 5 feet deep and heated by a volcanic vent beneath the cave."
 							]
 						},
 						{
@@ -10887,7 +10887,7 @@
 									"type": "entries",
 									"name": "Lava",
 									"entries": [
-										" A creature takes 6d10 fire damage when it enters lava for the first time on a turn or when it ends its turn there."
+										" A creature takes {@dice 6d10} fire damage when it enters lava for the first time on a turn or when it ends its turn there."
 									]
 								},
 								{
@@ -10917,7 +10917,7 @@
 							"type": "entries",
 							"name": "Random Encounters",
 							"entries": [
-								"For every 30 minutes the characters spend inside the Weeping Colossus, roll a d20 and consult the following table. In the medium intensity zone, roll a d20 and a d4, subtracting the d4 from the d20 roll. Use a d6 instead of a d4 in the high intensity zone.",
+								"For every 30 minutes the characters spend inside the Weeping Colossus, roll a {@dice d20} and consult the following table. In the medium intensity zone, roll a {@dice d20} and a {@dice d4}, subtracting the {@dice d4} from the {@dice d20} roll. Use a {@dice d6} instead of a {@dice d4} in the high intensity zone.",
 								{
 									"type": "table",
 									"caption": "The Weeping Colossus Random Encounters",
@@ -10926,8 +10926,8 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
-										""
+										"col-xs-2 text-align-center",
+										"col-xs-10"
 									],
 									"rows": [
 										[
@@ -10936,15 +10936,15 @@
 										],
 										[
 											"3",
-											"1d8 magmin"
+											"{@dice 1d8} magmin"
 										],
 										[
 											"4",
-											"1d3 salamanders (see area W7)"
+											"{@dice 1d3} salamanders (see area W7)"
 										],
 										[
 											"5",
-											"Crust Break. A random character steps on a particularly thin spot on the floor. The character must succeed at a DC 10 Dexterity saving throw or fall into a hole (seventy-five percent chance) or lava beneath the thin spot (twenty-five percent chance). If the case of a hole, the character falls 1d4 ? 10 feet into an empty magma pocket. The lava deals damage as described earlier."
+											"Crust Break. A random character steps on a particularly thin spot on the floor. The character must succeed at a DC 10 Dexterity saving throw or fall into a hole (seventy-five percent chance) or lava beneath the thin spot (twenty-five percent chance). If the case of a hole, the character falls {@dice 1d4} ? 10 feet into an empty magma pocket. The lava deals damage as described earlier."
 										],
 										[
 											"6",
@@ -10952,11 +10952,11 @@
 										],
 										[
 											"7",
-											"Lava Rain. At the start of a round, lava droplets form on the ceiling and fall in a 20-foot-diameter area, dealing 9 (2d8) fire damage to any creature that enters the area for the first time on a turn or starts its turn there. The drops ignite exposed flammable objects. The rain ends at the end of a round 2d4 rounds later."
+											"Lava Rain. At the start of a round, lava droplets form on the ceiling and fall in a 20-foot-diameter area, dealing 9 ({@dice 2d8}) fire damage to any creature that enters the area for the first time on a turn or starts its turn there. The drops ignite exposed flammable objects. The rain ends at the end of a round {@dice 2d4} rounds later."
 										],
 										[
 											"8",
-											"Smoke Cloud. A cloud of smoke kicks up, filling an area 40 feet in diameter and causing that area to become lightly obscured. The smoke dissipates in 1d4 minutes unless a wind disperses it."
+											"Smoke Cloud. A cloud of smoke kicks up, filling an area 40 feet in diameter and causing that area to become lightly obscured. The smoke dissipates in {@dice 1d4} minutes unless a wind disperses it."
 										],
 										[
 											"9",
@@ -10976,8 +10976,8 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
-										""
+										"col-xs-2 text-align-center",
+										"col-xs-10"
 									],
 									"rows": [
 										[
@@ -10986,15 +10986,15 @@
 										],
 										[
 											"3",
-											"1d8 magmin"
+											"{@dice 1d8} magmin"
 										],
 										[
 											"4",
-											"1d3 salamanders (see area W7)"
+											"{@dice 1d3} salamanders (see area W7)"
 										],
 										[
 											"5",
-											"Crust Break. A random character steps on a particularly thin spot on the floor. The character must succeed at a DC 10 Dexterity saving throw or fall into a hole (seventy-five percent chance) or lava beneath the thin spot (twenty-five percent chance). If the case of a hole, the character falls 1d4 ? 10 feet into an empty magma pocket. The lava deals damage as described earlier."
+											"Crust Break. A random character steps on a particularly thin spot on the floor. The character must succeed at a DC 10 Dexterity saving throw or fall into a hole (seventy-five percent chance) or lava beneath the thin spot (twenty-five percent chance). If the case of a hole, the character falls {@dice 1d4} ? 10 feet into an empty magma pocket. The lava deals damage as described earlier."
 										],
 										[
 											"6",
@@ -11002,11 +11002,11 @@
 										],
 										[
 											"7",
-											"Lava Rain. At the start of a round, lava droplets form on the ceiling and fall in a 20-foot-diameter area, dealing 9 (2d8) fire damage to any creature that enters the area for the first time on a turn or starts its turn there. The drops ignite exposed flammable objects. The rain ends at the end of a round 2d4 rounds later."
+											"Lava Rain. At the start of a round, lava droplets form on the ceiling and fall in a 20-foot-diameter area, dealing 9 ({@dice 2d8}) fire damage to any creature that enters the area for the first time on a turn or starts its turn there. The drops ignite exposed flammable objects. The rain ends at the end of a round {@dice 2d4} rounds later."
 										],
 										[
 											"8",
-											"Smoke Cloud. A cloud of smoke kicks up, filling an area 40 feet in diameter and causing that area to become lightly obscured. The smoke dissipates in 1d4 minutes unless a wind disperses it."
+											"Smoke Cloud. A cloud of smoke kicks up, filling an area 40 feet in diameter and causing that area to become lightly obscured. The smoke dissipates in {@dice 1d4} minutes unless a wind disperses it."
 										],
 										[
 											"9",
@@ -11026,8 +11026,8 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
-										""
+										"col-xs-2 text-align-center",
+										"col-xs-10"
 									],
 									"rows": [
 										[
@@ -11036,15 +11036,15 @@
 										],
 										[
 											"3",
-											"1d8 magmin"
+											"{@dice 1d8} magmin"
 										],
 										[
 											"4",
-											"1d3 salamanders (see area W7)"
+											"{@dice 1d3} salamanders (see area W7)"
 										],
 										[
 											"5",
-											"Crust Break. A random character steps on a particularly thin spot on the floor. The character must succeed at a DC 10 Dexterity saving throw or fall into a hole (seventy-five percent chance) or lava beneath the thin spot (twenty-five percent chance). If the case of a hole, the character falls 1d4 ? 10 feet into an empty magma pocket. The lava deals damage as described earlier."
+											"Crust Break. A random character steps on a particularly thin spot on the floor. The character must succeed at a DC 10 Dexterity saving throw or fall into a hole (seventy-five percent chance) or lava beneath the thin spot (twenty-five percent chance). If the case of a hole, the character falls {@dice 1d4} ? 10 feet into an empty magma pocket. The lava deals damage as described earlier."
 										],
 										[
 											"6",
@@ -11052,11 +11052,11 @@
 										],
 										[
 											"7",
-											"Lava Rain. At the start of a round, lava droplets form on the ceiling and fall in a 20-foot-diameter area, dealing 9 (2d8) fire damage to any creature that enters the area for the first time on a turn or starts its turn there. The drops ignite exposed flammable objects. The rain ends at the end of a round 2d4 rounds later."
+											"Lava Rain. At the start of a round, lava droplets form on the ceiling and fall in a 20-foot-diameter area, dealing 9 ({@dice 2d8}) fire damage to any creature that enters the area for the first time on a turn or starts its turn there. The drops ignite exposed flammable objects. The rain ends at the end of a round {@dice 2d4} rounds later."
 										],
 										[
 											"8",
-											"Smoke Cloud. A cloud of smoke kicks up, filling an area 40 feet in diameter and causing that area to become lightly obscured. The smoke dissipates in 1d4 minutes unless a wind disperses it."
+											"Smoke Cloud. A cloud of smoke kicks up, filling an area 40 feet in diameter and causing that area to become lightly obscured. The smoke dissipates in {@dice 1d4} minutes unless a wind disperses it."
 										],
 										[
 											"9",
@@ -11088,7 +11088,7 @@
 							"type": "entries",
 							"name": "Brass Plate",
 							"entries": [
-								" A small brass plate is embedded in the north wall of the middle passage, near where the razerblast stands watch. It has an indentation in the shape of a human hand. When pressed, the plate causes basalt pillars to rise from the lava, creating stepping stones between the floating disk and the middle passage. The pillars are hot when they first rise. A creature that comes into contact with a hot pillar for the first time on a turn or starts its turn there takes 3 (1d6) fire damage. After 1 minute, the pillars cool."
+								" A small brass plate is embedded in the north wall of the middle passage, near where the razerblast stands watch. It has an indentation in the shape of a human hand. When pressed, the plate causes basalt pillars to rise from the lava, creating stepping stones between the floating disk and the middle passage. The pillars are hot when they first rise. A creature that comes into contact with a hot pillar for the first time on a turn or starts its turn there takes 3 ({@dice 1d6}) fire damage. After 1 minute, the pillars cool."
 							]
 						},
 						{
@@ -11173,7 +11173,7 @@
 								"The causeway hugs the east wall, narrowing as it travels north until it finally peters out. The magma hisses and roils, and flames dance on its surface."
 							]
 						},
-						"A {@creature roper|MM} made of molten magma lurks in the middle of the lava pool, peeking up occasionally or rising to the sound of the gong. It has immunity to fire damage and vulnerability to cold damage, and its bite attack deals fire damage instead of piercing damage. A hit from the ropers tendril deals 4 (1d8) fire damage, and a creature takes the same damage each time it ends its turn grappled by the roper.",
+						"A {@creature roper|MM} made of molten magma lurks in the middle of the lava pool, peeking up occasionally or rising to the sound of the gong. It has immunity to fire damage and vulnerability to cold damage, and its bite attack deals fire damage instead of piercing damage. A hit from the ropers tendril deals 4 ({@dice 1d8}) fire damage, and a creature takes the same damage each time it ends its turn grappled by the roper.",
 						"When the roper uses its Reel action, it pulls creatures it is grappling into the lava. Because of the lava, the roper has a challenge rating of 11 (7,200 XP)."
 					]
 				},
@@ -11200,7 +11200,7 @@
 							"type": "entries",
 							"name": "Fumes",
 							"entries": [
-								" Due to the height of the room relative to the rest of the node, toxic fumes collect here. Whenever a creature starts its turn inside the room, it must make a DC 15 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one. Holding ones breath doesn't negate the effects."
+								" Due to the height of the room relative to the rest of the node, toxic fumes collect here. Whenever a creature starts its turn inside the room, it must make a DC 15 Constitution saving throw, taking 10 ({@dice 3d6}) poison damage on a failed save, or half as much damage on a successful one. Holding ones breath doesn't negate the effects."
 							]
 						},
 						{
@@ -11237,7 +11237,7 @@
 								"This rough, circular cave is painfully hot. A curved wall of fire stretches from floor to ceiling and leaves only five feet between it and the surrounding walls."
 							]
 						},
-						"The ceiling here is 20 feet high. The fire is a ring-shaped {@spell wall of fire|PHB} spell made permanent (until dispelled) by Vanifer. A creature that ends its turn in this room but outside the ring takes 5d8 fire damage. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there.",
+						"The ceiling here is 20 feet high. The fire is a ring-shaped {@spell wall of fire|PHB} spell made permanent (until dispelled) by Vanifer. A creature that ends its turn in this room but outside the ring takes {@dice 5d8} fire damage. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there.",
 						"Vanifer can control this wall, lowering it (or parts of it) to deposit or extract prisoners and then raising it again. The wall radiates no heat inside the ring, so the prisoners are unharmed while they remain there.",
 						{
 							"type": "entries",
@@ -11248,7 +11248,7 @@
 						},
 						"Kharloss and Jarlee are willing to pay up to 500 gp for an escort to any town in the Dessarin Valley. They're honest. However, it takes several tendays to acquire the necessary coin from their holdings in Waterdeep.",
 						"Dirana is willing to trade information. She can sketch a basic map of the Temple of the Crushing Wave and the Plunging Torrents. She hasnt been to either place in several tendays and doesn't know who or what inhabits most of the chambers.",
-						"Teresiel is a member of the Emerald Enclave. She managed to conceal on her person a tiny leather packet that holds nine yellow seeds. Under the scrutiny of a detect magic spell, each seed radiates an aura of conjuration magic. Plating a seed in fertile earth causes it grow into an {@creature awakened tree|MM} after 1d6 rounds. The awakened tree understands one language known to its creator and follows its creator's commands to the best of its ability. Teresiel doesn't relinquish with the seeds willingly and is determined to deliver them to the abbey at Golden elds. She asks the characters to help her complete the delivery.",
+						"Teresiel is a member of the Emerald Enclave. She managed to conceal on her person a tiny leather packet that holds nine yellow seeds. Under the scrutiny of a detect magic spell, each seed radiates an aura of conjuration magic. Plating a seed in fertile earth causes it grow into an {@creature awakened tree|MM} after {@dice 1d6} rounds. The awakened tree understands one language known to its creator and follows its creator's commands to the best of its ability. Teresiel doesn't relinquish with the seeds willingly and is determined to deliver them to the abbey at Golden elds. She asks the characters to help her complete the delivery.",
 						{
 							"type": "entries",
 							"name": "Development",
@@ -11699,7 +11699,7 @@
 							]
 						},
 						"The boulder is stained with dry blood.",
-						"Above the eastern entrance, two {@creature zombie|MM|zombies} stand on a ledge 10 feet up. They hold a wooden box full of rocks between them. When they spot an intruder, they let the box go so it crashes down on the interloper. The target must succeed on a DC 12 Dexterity saving throw or take 7 (2d6) bludgeoning damage. The zombies then jump down from the ledge (taking 1d6 bludgeoning damage each) to attack."
+						"Above the eastern entrance, two {@creature zombie|MM|zombies} stand on a ledge 10 feet up. They hold a wooden box full of rocks between them. When they spot an intruder, they let the box go so it crashes down on the interloper. The target must succeed on a DC 12 Dexterity saving throw or take 7 ({@dice 2d6}) bludgeoning damage. The zombies then jump down from the ledge (taking {@dice 1d6} bludgeoning damage each) to attack."
 					]
 				},
 				{
@@ -11743,7 +11743,7 @@
 							]
 						},
 						"If Oreioth is in position, he waits until at least two intruders have entered the cave, then he moves away from the peephole and pulls the lever. When he does, he cries, easily audible through the peephole, \"You dare to pit yourselves against the Lord of Lance Rock? Death is your reward!\" Then he continues to cackle as he retreats.",
-						"Those in the room can make DC 10 Dexterity saving throws, taking 7 (2d6) bludgeoning damage on a failure, or half that damage on a success.",
+						"Those in the room can make DC 10 Dexterity saving throws, taking 7 ({@dice 2d6}) bludgeoning damage on a failure, or half that damage on a success.",
 						"The iron chests are empty."
 					]
 				},
@@ -11934,7 +11934,7 @@
 								" Each cages chain runs through a pulley secured to a heavy iron bar just inside the door in area T4. From where he is, Grund can use an action to release two chains. He starts with the cage at the western end of the tunnel, sealing off retreat, followed by a cage dropped on the party. Roll initiative at that point. Grund uses his second turn to block the eastern edge of the passage with a third cage and to drop another cage on characters not already trapped."
 							]
 						},
-						"A falling cage targets the corresponding 10-foot square section of the passage. Targets in the area can stand still, taking no damage as the plaster on the cage bottom breaks and the cage seals them in. Those who wish to avoid a falling cage must succeed on a DC 15 Dexterity saving throw. Those who fail are caught in the cage. Anyone who fails by 5 or more is hit by the iron frame of the cage bottom. Such a creature takes 7 (2d6) bludgeoning damage and is pinned under the cage. While pinned, the character is prone and restrained.",
+						"A falling cage targets the corresponding 10-foot square section of the passage. Targets in the area can stand still, taking no damage as the plaster on the cage bottom breaks and the cage seals them in. Those who wish to avoid a falling cage must succeed on a DC 15 Dexterity saving throw. Those who fail are caught in the cage. Anyone who fails by 5 or more is hit by the iron frame of the cage bottom. Such a creature takes 7 ({@dice 2d6}) bludgeoning damage and is pinned under the cage. While pinned, the character is prone and restrained.",
 						"A character who uses an action to make a successful DC 15 Strength check can lift the cage enough to allow one creature to escape. It takes a successful DC 20 Strength check to bend the rusty bars enough to allow everyone in or under the cage to escape. A character pinned under a cage lacks good leverage and has disadvantage on these Strength checks.",
 						{
 							"type": "entries",
@@ -12046,7 +12046,7 @@
 							"name": "Treasure",
 							"entries": [
 								"Offerings left here by the Believers include 440 cp, 253 sp, and 97 gp. Six small green agates (worth 5 gp each) and two polished moonstones (worth 50 gp each) are among the coins.",
-								"To encourage the Believers, Larrakh left a +1 dagger decorated with star motifs and a grip of night-blue leather. Dried blood still coats the dagger from its use in killing and carving symbols on the murder victims in area T5. The dagger doesn't make noise when it hits or cuts something.",
+								"To encourage the Believers, Larrakh left a {@item reszur|pota|+1 dagger} decorated with star motifs and a grip of night-blue leather. Dried blood still coats the dagger from its use in killing and carving symbols on the murder victims in area T5. The dagger doesn't make noise when it hits or cuts something.",
 								"The name \"Reszur\" is graven on the daggers pommel. If the wielder speaks the name, the blade gives off a faint, cold glow, shedding dim light in a 10-foot radius until the wielder speaks the name again."
 							]
 						},
@@ -12828,7 +12828,7 @@
 								"He points to the Nettlebee ranch in the valley below the barrow. Then, he begins to run in that direction."
 							]
 						},
-						"Uthgardt of the fierce Elk tribe, as can be discerned from their garb and markings, this barbarian raiding band is led by a female {@creature berserker|MM} named Fennor. Other members include ten {@creature tribal warrior|MM|tribal warriors} and a male {@creature berserker|MM} named Padraich. Fennor wears a chain shirt (AC 14), wields a greatsword that deals 10 (2d6+3) slashing damage on a hit, and has the Multiattack action, allowing her to use an action to make two attacks with her sword. She has a challenge rating of 3. Padraich wields a maul that deals 10 (2d6+3) bludgeoning damage on a hit. The two berserkers ride {@creature warhorse|MM|warhorses}.",
+						"Uthgardt of the fierce Elk tribe, as can be discerned from their garb and markings, this barbarian raiding band is led by a female {@creature berserker|MM} named Fennor. Other members include ten {@creature tribal warrior|MM|tribal warriors} and a male {@creature berserker|MM} named Padraich. Fennor wears a chain shirt (AC 14), wields a greatsword that deals 10 ({@dice 2d6+3}) slashing damage on a hit, and has the Multiattack action, allowing her to use an action to make two attacks with her sword. She has a challenge rating of 3. Padraich wields a maul that deals 10 ({@dice 2d6+3}) bludgeoning damage on a hit. The two berserkers ride {@creature warhorse|MM|warhorses}.",
 						"Anyone native to the area knows Uthgardt of the Elk tribe are dangerous raiders. Most locals consider them to be savage bandits. Those who are from other regions know the Elk tribe reputation with a successful DC 10 Intelligence (History) check.",
 						{
 							"type": "entries",
@@ -12964,13 +12964,13 @@
 						"The approach to the Shrine of the Tender Oath begins as a short but steep flight of steps cut into the side of the gorge. Two of the creeks in the Vale of Dancing Waters meet near the steps before tumbling on toward the Dessarin River. The trail continues upriver to other parts of the vale, so unless the characters know about the runes, its easy to miss the beginning of the steps; it takes a successful DC 20 Wisdom (Perception) check to notice them.",
 						"After twenty steps, the stairs turn into a narrow path that follows switchbacks up the wall of the gorge. The characters must walk single-file. The journey takes half an hour.",
 						"Two-thirds of the way up, at a switchback turnaround, Gruminks miners constructed a trap. Its purpose is to make noise and warn the lookouts in area D2 above, but its also dangerous. A character who has a passive Wisdom (Perception) score of 15 or higher notices a steel tripwire fastened between boulders about two inches from the ground. A character who is looking for traps instead finds the tripwire with a successful DC 10 Wisdom (Perception) check.",
-						"If the tripwire is sprung, it tumbles one boulder along with a rush of smaller stones and gravel down the path. The first two creatures ascending the trail must make a DC 15 Dexterity saving throw. On a failure, the creature is knocked prone and takes 2 (1d4) bludgeoning damage. A failure by 5 or more results in the creature being knocked from the pathway, sliding and falling to the next lower level of the path, and taking an additional 10 (3d6) bludgeoning damage.",
+						"If the tripwire is sprung, it tumbles one boulder along with a rush of smaller stones and gravel down the path. The first two creatures ascending the trail must make a DC 15 Dexterity saving throw. On a failure, the creature is knocked prone and takes 2 ({@dice 1d4}) bludgeoning damage. A failure by 5 or more results in the creature being knocked from the pathway, sliding and falling to the next lower level of the path, and taking an additional 10 ({@dice 3d6}) bludgeoning damage.",
 						"Cutting the tripwire triggers the trap. To disarm it, the wire must be disconnected, kept tight, and traced back to the wood panel it holds, shoring up the loose boulder and rocks. Then the boulder must be further supported until it cant fall due to lack of tension on the tripwire. Reworking the trap this way can be done in a few ways, but checks to do so are no worse than DC 10."
 					]
 				},
 				{
 					"type": "entries",
-					"name": "D2. Shrine Entrance",
+					"name": "{@dice D2}. Shrine Entrance",
 					"entries": [
 						"As the characters reach the top of the switchbacks, read the following text:",
 						{
@@ -12979,7 +12979,7 @@
 								"The path levels off and widens before an arch cut from the dark stone of the mountain. Flanking the arch are two statues of dwarves offering a greeting. Beyond the archway is an open courtyard with a statue on a raised platform in the center. All these features have been chiseled out of the side of the mountain rather than built from fitted stonework."
 							]
 						},
-						"Two dwarf {@creature guard|MM|guards} stand watch atop this stony shelf. Instead of spears and shields, they carry warhammers that they wield with two hands (1d10+1 bludgeoning damage on a hit). Without shields, they have AC 14. Whether or not the guards are present depends on how quietly the characters approach:",
+						"Two dwarf {@creature guard|MM|guards} stand watch atop this stony shelf. Instead of spears and shields, they carry warhammers that they wield with two hands ({@dice 1d10+1} bludgeoning damage on a hit). Without shields, they have AC 14. Whether or not the guards are present depends on how quietly the characters approach:",
 						{
 							"type": "list",
 							"items": [
@@ -13023,7 +13023,7 @@
 							]
 						},
 						"If the characters seem suspicious or threaten them in any way, the dwarves end their ruse and attack.",
-						"If the characters think the ceremony is real and join the festivities, the dwarves wait for them to get close before drawing hidden weapons and taking the characters. Characters with a passive Wisdom (Perception) score of 13 or higher notice that the dwarves are wearing chain shirts under their robes; these characters aren't surprised when the dwarves attack. Instead of spears and shields, the dwarves carry warhammers that they wield with two hands (1d10+1 bludgeoning damage on a hit). Without shields, these guards have AC 14.",
+						"If the characters think the ceremony is real and join the festivities, the dwarves wait for them to get close before drawing hidden weapons and taking the characters. Characters with a passive Wisdom (Perception) score of 13 or higher notice that the dwarves are wearing chain shirts under their robes; these characters aren't surprised when the dwarves attack. Instead of spears and shields, the dwarves carry warhammers that they wield with two hands ({@dice 1d10+1} bludgeoning damage on a hit). Without shields, these guards have AC 14.",
 						"Once combat erupts, the oni casts invisibility on itself, gathers its glaive from behind the dais, and uses the statue of Sharindlar for cover while casting spells, doing its best not to affect its allies. The oni reveals its true form only if doing so might terrify the party. When reduced to half its hit points, the oni casts gaseous form on itself and flies through a window into area D7."
 					]
 				},
@@ -13125,7 +13125,7 @@
 										"A team of dwarves is hard at work, pounding on the stone behind the altar with stout tools. Watching them intently is another dwarf wearing black leather armor. Next to him, tapping its foot impatiently, is a blue-skinned ogre."
 									]
 								},
-								"The leather-clad dwarf is {@b Grumink the Renegade} (see \"Other Villains\" in chapter 7), and the \"blue-skinned ogre\" is the {@creature oni|MM}, Obratu. Eight dwarf {@creature guard|MM|guards} are hammering at the stone wall behind the altar. Instead of spears and shields, the guards carry warhammers that they wield with two hands (1d10+1 bludgeoning damage on a hit). Without shields, these guards have AC 14."
+								"The leather-clad dwarf is {@b Grumink the Renegade} (see \"Other Villains\" in chapter 7), and the \"blue-skinned ogre\" is the {@creature oni|MM}, Obratu. Eight dwarf {@creature guard|MM|guards} are hammering at the stone wall behind the altar. Instead of spears and shields, the guards carry warhammers that they wield with two hands ({@dice 1d10+1} bludgeoning damage on a hit). Without shields, these guards have AC 14."
 							]
 						},
 						{
@@ -13639,8 +13639,8 @@
 								"Symbol"
 							],
 							"colStyles": [
-								"",
-								""
+								"col-xs-6 text-align-center",
+								"col-xs-6 text-align-center"
 							],
 							"rows": [
 								[
@@ -13789,7 +13789,7 @@
 							"type": "entries",
 							"name": "Torhilds Dying Breath",
 							"entries": [
-								" Opening the sarcophagus releases a cloud of poisonous gas that fills the room. Any creature in the chamber must make a DC 15 Constitution saving throw, taking 22 (4d10) poison damage on a failed save, or half as much damage on a successful one. A creature that fails the saving throw is also poisoned for 1 minute."
+								" Opening the sarcophagus releases a cloud of poisonous gas that fills the room. Any creature in the chamber must make a DC 15 Constitution saving throw, taking 22 ({@dice 4d10}) poison damage on a failed save, or half as much damage on a successful one. A creature that fails the saving throw is also poisoned for 1 minute."
 							]
 						},
 						"The sarcophagus is empty.",

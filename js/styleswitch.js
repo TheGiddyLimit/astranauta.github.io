@@ -2,7 +2,7 @@
 
 class StyleSwitcher {
 	constructor () {
-		this.currentStylesheet = this.STYLE_DAY;
+		this.currentStylesheet = StyleSwitcher.STYLE_DAY;
 		this.loadStyleFromCookie();
 	}
 
@@ -43,11 +43,11 @@ class StyleSwitcher {
 	}
 
 	static createCookie (value) {
-		Cookies.set("style", value, {expires: 365});
+		StyleSwitcher.storage.setItem(StyleSwitcher.STYLE_STORAGE, value);
 	}
 
 	static readCookie () {
-		return Cookies.get("style");
+		return StyleSwitcher.storage.getItem(StyleSwitcher.STYLE_STORAGE);
 	}
 
 	toggleActiveStyleSheet () {
@@ -56,9 +56,22 @@ class StyleSwitcher {
 	}
 }
 
+StyleSwitcher.STYLE_STORAGE = "StyleSwitcher_style";
 StyleSwitcher.STYLE_DAY = "day";
 StyleSwitcher.STYLE_NIGHT = "night";
 StyleSwitcher.NIGHT_CLASS = "night-mode";
+
+try {
+	StyleSwitcher.storage = window.localStorage;
+} catch (e) { // cookies are disabled
+	StyleSwitcher.storage = {
+		getItem (k) {
+			return StyleSwitcher.STYLE_DAY;
+		},
+
+		setItem (k, v) {}
+	}
+}
 
 // NIGHT MODE ==========================================================================================================
 const styleSwitcher = new StyleSwitcher();

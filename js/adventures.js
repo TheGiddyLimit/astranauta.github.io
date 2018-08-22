@@ -41,13 +41,15 @@ function onJsonLoad (data) {
 
 	handleBrew(data);
 	BrewUtil.pAddBrewData()
-		.then(addAdventures)
+		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => BrewUtil.makeBrewButton("manage-brew"));
 }
 
 function handleBrew (homebrew) {
 	addAdventures(homebrew);
+	return Promise.resolve();
 }
 
 let adventureList = [];

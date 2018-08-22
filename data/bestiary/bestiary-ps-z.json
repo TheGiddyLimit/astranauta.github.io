@@ -74,7 +74,8 @@
 							"{@spell destructive wave}",
 							"{@spell geas}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"trait": [
@@ -113,13 +114,13 @@
 				{
 					"name": "Sword",
 					"entries": [
-						"Melee Weapon Attack: {@hit 8} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) slashing damage plus 13 ({@dice 3d8}) radiant damage."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) slashing damage plus 13 ({@dice 3d8}) radiant damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: {@hit 8} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage plus 13 ({@dice 3d8}) radiant damage."
+						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage plus 13 ({@dice 3d8}) radiant damage."
 					]
 				}
 			],
@@ -185,14 +186,15 @@
 							"{@spell daylight}",
 							"{@spell dispel evil and good}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"trait": [
 				{
 					"name": "Pounce",
 					"entries": [
-						"If the felidar moves at least 20 feet straight toward a creature and then hits it with a claws attack on the same turn, the target must succeed on a DC 15 Strength saving throw or be knocked prone. If the target is prone, the felidar can make one bite attack against it as a bonus action."
+						"If the felidar moves at least 20 feet straight toward a creature and then hits it with a claws attack on the same turn, the target must succeed on a DC 15 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the felidar can make one bite attack against it as a bonus action."
 					]
 				},
 				{
@@ -218,13 +220,13 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) piercing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) piercing damage."
 					]
 				},
 				{
@@ -327,7 +329,8 @@
 							"{@spell control weather}",
 							"{@spell water breathing}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"trait": [
@@ -348,17 +351,17 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: {@hit 14} to hit, reach 10 ft., one target. Hit: 30 ({@dice 6d6+9}) slashing damage."
+						"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. Hit: 30 ({@dice 6d6+9}) slashing damage."
 					]
 				},
 				{
 					"name": "Tentacles",
 					"entries": [
-						"Melee Weapon Attack: {@hit 14} to hit, reach 20 ft., one target. Hit: 30 ({@dice 6d6+9}) bludgeoning damage, and the target is grappled (escape DC 17). Until this grapple ends, the target is restrained."
+						"{@atk mw} {@hit 14} to hit, reach 20 ft., one target. Hit: 30 ({@dice 6d6+9}) bludgeoning damage, and the target is {@condition grappled} (escape DC 17). Until this grapple ends, the target is {@condition restrained}."
 					]
 				},
 				{
-					"name": "Lightning Strike (Recharge 5\u20136)",
+					"name": "Lightning Strike {@recharge 5}",
 					"entries": [
 						"The kraken hurls a magical lightning bolt at a point it can see within 500 feet of it. Each creature within 10 feet of that point must make a DC 17 Dexterity saving throw, taking 54 ({@dice 12d8}) lightning damage on a failed save, or half as much damage on a successful one."
 					]

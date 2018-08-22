@@ -24,6 +24,7 @@
 						"Additionally, {@note note tags}, used for adding errata or Twitter \"designer footnotes.\"",
 						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls, with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7}.",
 						"Chance tags; similar to dice roller tags, but output success/failure. Similar syntax as dice tags: {@chance 50}, {@chance 50|display text}, and {@chance 50|display text|rolled by name}.",
+						"Recharge tags; output success/failure for ability recharge. {@recharge} in an ability title for '(Recharge 6)', {@recharge 4} for '(Recharge 4-6)'.",
 						"Skill and action tags; {@skill Perception} and {@action Dash} (case-sensitive) which provide tooltips on hover.",
 						"The homebrew tag; Can show {@homebrew changes|modifications}, {@homebrew additions} or {@homebrew |removals}.",
 						"Content tags:",
@@ -46,7 +47,9 @@
 								"Boons: {@boon Demogorgon} assumes MTF by default, {@boon Demogorgon|MTF} can have sources added with a pipe, {@boon Demogorgon|MTF|and optional link text added with another pipe}.",
 								"Cults: {@cult Cult of Asmodeus} assumes MTF by default, {@cult Cult of Asmodeus|MTF} can have sources added with a pipe, {@cult Cult of Asmodeus|MTF|and optional link text added with another pipe}.",
 								"Traps: {@trap falling net} assumes DMG by default, {@trap falling portcullis|xge} can have sources added with a pipe, {@trap falling portcullis|xge|and optional link text added with another pipe}.",
-								"Hazards: {@hazard brown mold} assumes DMG by default, {@hazard russet mold|vgm} can have sources added with a pipe, {@hazard russet mold|vgm|and optional link text added with another pipe}."
+								"Hazards: {@hazard brown mold} assumes DMG by default, {@hazard russet mold|vgm} can have sources added with a pipe, {@hazard russet mold|vgm|and optional link text added with another pipe}.",
+								"Deities: {@deity Gond} assumes PHB Forgotten Realms pantheon by default, {@deity Gruumsh|nonhuman} can have pantheons added with a pipe, {@deity Ioun|dawn war|dmg} can have sources added with another pipe, {@deity Ioun|dawn war|dmg|and optional link text added with another pipe}.",
+								"Variant rules: {@variantrule Diagonals} assumes DMG by default, {@variantrule Multiclassing|phb} can have sources added with a pipe, {@variantrule Multiclassing|phb|and optional link text added with another pipe}."
 							]
 						},
 						{
@@ -64,13 +67,48 @@
 								"{@filter Beast with challenge rating 1 or lower|bestiary|cr=0;1/8;1/4;1/2;1|type=beast}",
 								"{@filter Creatures with a Strength score of 18 or more|bestiary|strength=min18}",
 								"{@filter Divination and Evocation spells|spells|school=D;V}",
-								"{@filter All uncommon magic items|items|source=null|type=null|tier=null|rarity=uncommon|property=null|attunement=null|category=null|miscellaneous=Magic}",
+								"{@filter All uncommon magic items|items|source=null|type=null|rarity=uncommon|miscellaneous=Magic}",
 								{
 									"type": "entries",
 									"name": "Note",
 									"entries": [
 										"Setting a filter to null, i.e. ...|school=null|... is equivalent to 'clear the filter,' resetting it to all-white.",
 										"The pages that support this functionality are those with the 'magnet' button; the link this button exports will give clues as to what one could do with the filter tag."
+									]
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Book/Reference Tags",
+							"entries": [
+								"The following tags can be used to link specific sections of adventures/books. Note that chapters and headers are indexed from zero.",
+								{
+									"type": "list",
+									"items": [
+										"Adventure tags: link to an adventure {@adventure display text|CoS}; a chapter in an adventure {@adventure display text|CoS|2}; a heading in a chapter in an adventure {@adventure display text|CoS|2|Treasure}; or the Nth heading of a given name in a chapter in an adventure {@adventure display text|CoS|2|Treasure|1}",
+										"Book tags: link to a book {@book display text|PHB}; a chapter in a book {@book display text|PHB|2}; a heading in a chapter in a book {@book display text|PHB|2|Age}; or the Nth heading of a given name in a chapter in a book {@book display text|PHB|2|Age|0} (although this is generally unnecessary as, unlike adventures, books don't repeat their headings very often."
+									]
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Other Tags",
+							"entries": [
+								"Links:",
+								{
+									"type": "list",
+									"items": [
+										"Internal links: {@5etools This Is Your Life|lifegen.html}",
+										"External links: {@link https://discord.gg/v3AXzcW} or {@link Discord|https://discord.gg/v3AXzcW}"
+									]
+								},
+								"Page specific/other tags:",
+								{
+									"type": "list",
+									"items": [
+										"Bestiary 'attack' tags: {@atk m}, {@atk r}, {@atk m,r}, {@atk mw}, {@atk rw}, {@atk ms}, {@atk rs}; (homebrew only) {@atk a}, {@atk aw}. Commas separate or'd attack types; the general form is: '@atk &lt;m|r|a&gt;[&lt;w|s&gt;][,&lt;m|r|a&gt;[&lt;w|s&gt;][,...]]'"
 									]
 								}
 							]
@@ -529,7 +567,7 @@
 							{
 								"name": "Charge",
 								"entries": [
-									"If the unicorn moves at least 20 ft. straight toward a target and then hits it with a horn attack on the same turn, the target takes an extra 9 (2d8) piercing damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
+									"If the unicorn moves at least 20 ft. straight toward a target and then hits it with a horn attack on the same turn, the target takes an extra 9 ({@dice 2d8}) piercing damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
 								]
 							},
 							{
@@ -555,25 +593,25 @@
 							{
 								"name": "Hooves",
 								"entries": [
-									"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) bludgeoning damage."
+									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage."
 								]
 							},
 							{
 								"name": "Horn",
 								"entries": [
-									"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) piercing damage."
+									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) piercing damage."
 								]
 							},
 							{
 								"name": "Healing Touch (3/Day)",
 								"entries": [
-									"The unicorn touches another creature with its horn. The target magically regains 11 (2d8+2) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target."
+									"The unicorn touches another creature with its horn. The target magically regains 11 ({@dice 2d8+2}) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target."
 								]
 							},
 							{
 								"name": "Teleport (1/Day)",
 								"entries": [
-									"The unicorn magically teleports itself and up to three willing creatures it can see within 5 ft. of it, along with any equipment they are wearing or carrying, to a location the unicorn is familiar with, up to 1 mile away."
+									"The unicorn magically teleports itself and up to three willing creatures it can see within 5 feet of it, along with any equipment they are wearing or carrying, to a location the unicorn is familiar with, up to 1 mile away."
 								]
 							}
 						],
@@ -588,13 +626,13 @@
 							{
 								"name": "Shimmering Shield (Costs 2 Actions)",
 								"entries": [
-									"The unicorn creates a shimmering, magical field around itself or another creature it can see within 60 ft. of it. The target gains a +2 bonus to AC until the end of the unicorn's next turn."
+									"The unicorn creates a shimmering, magical field around itself or another creature it can see within 60 feet of it. The target gains a +2 bonus to AC until the end of the unicorn's next turn."
 								]
 							},
 							{
 								"name": "Heal Self (Costs 3 Actions)",
 								"entries": [
-									"The unicorn magically regains 11 (2d8+2) hit points."
+									"The unicorn magically regains 11 ({@dice 2d8+2}) hit points."
 								]
 							}
 						],
@@ -616,8 +654,21 @@
 										"{@spell dispel evil and good}",
 										"{@spell entangle}"
 									]
-								}
+								},
+								"ability": "cha"
 							}
+						],
+						"environment": [
+							"forest"
+						],
+						"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/503/unicorn.mp3",
+						"traitTags": [
+							"Charge",
+							"Magic Resistance",
+							"Magic Weapons"
+						],
+						"actionTags": [
+							"Multiattack"
 						]
 					}
 				},

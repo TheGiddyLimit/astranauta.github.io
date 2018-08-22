@@ -45,7 +45,8 @@ function onJsonLoad (data) {
 
 	addFeats(data);
 	BrewUtil.pAddBrewData()
-		.then(addFeats)
+		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -55,6 +56,11 @@ function onJsonLoad (data) {
 
 			History.init(true);
 		});
+}
+
+function handleBrew (homebrew) {
+	addFeats(homebrew);
+	return Promise.resolve();
 }
 
 let featList = [];

@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"type": "object",
 	"properties": {
 		"object": {
@@ -22,7 +22,8 @@
 					},
 					"type": {
 						"type": "string",
-						"enum": ["siege weapon", "generic"]
+						"description": "siege weapon; generic; unknown",
+						"enum": ["SW", "GEN", "U"]
 					},
 					"ac": {
 						"type": "string"
@@ -31,6 +32,12 @@
 						"type": "string"
 					},
 					"immune": {
+						"type": "string"
+					},
+					"resist": {
+						"type": "string"
+					},
+					"vulnerable": {
 						"type": "string"
 					},
 					"entries": {

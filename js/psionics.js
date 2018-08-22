@@ -6,13 +6,10 @@ const STR_JOIN_MODE_LIST = ",";
 const TMP_HIDDEN_MODE = `"{0}"`;
 
 const ID_PSIONICS_LIST = "psionicsList";
-const ID_STATS_ORDER_AND_TYPE = "orderAndType";
-const ID_TEXT = "text";
 
 const JSON_ITEM_NAME = "name";
 const JSON_ITEM_SOURCE = "source";
 const JSON_ITEM_TYPE = "type";
-const JSON_ITEM_ORDER = "order";
 const JSON_ITEM_MODES = "modes";
 const JSON_ITEM_SUBMODES = "submodes";
 const CLS_PSIONICS = "psionics";
@@ -51,6 +48,7 @@ window.onload = function load () {
 };
 
 let list;
+let psionicsBookView;
 const sourceFilter = getSourceFilter({
 	deselFn: () => false
 });
@@ -88,18 +86,73 @@ function onJsonLoad (data) {
 	});
 	ListUtil.initGenericPinnable();
 
+	psionicsBookView = new BookModeView("bookview", $(`#btn-psibook`), "If you wish to view multiple psionics, please first make a list",
+		($tbl) => {
+			const toShow = ListUtil.getSublistedIds().map(id => psionicList[id]);
+
+			const stack = [];
+			const renderSpell = (p) => {
+				stack.push(`<table class="spellbook-entry"><tbody>`);
+				stack.push(EntryRenderer.psionic.getCompactRenderedString(p));
+				stack.push(`</tbody></table>`);
+			};
+
+			const renderType = (type) => {
+				const toRender = toShow.filter(p => p.type === type);
+				if (toRender.length) {
+					stack.push(EntryRenderer.utils.getBorderTr(`<span class="spacer-name">${Parser.psiTypeToFull(type)}</span>`));
+
+					stack.push(`<tr class="spellbook-level"><td>`);
+					toRender.forEach(p => renderSpell(p));
+					stack.push(`</td></tr>`);
+				}
+			};
+
+			renderType("T");
+			renderType("D");
+
+			if (!toShow.length && History.lastLoadedId != null) {
+				stack.push(`<tr class="spellbook-level"><td>`);
+				renderSpell(psionicList[History.lastLoadedId]);
+				stack.push(`</td></tr>`);
+			}
+
+			$tbl.append(stack.join(""));
+			return toShow.length;
+		}, true
+	);
+
 	addPsionics(data);
 	BrewUtil.pAddBrewData()
-		.then(addPsionics)
+		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});
 			ListUtil.loadState();
-			RollerUtil.addListRollButton();
 
+			ListUtil.bindShowTableButton(
+				"btn-show-table",
+				"Psionics",
+				psionicList,
+				{
+					name: {name: "Name", transform: true},
+					source: {name: "Source", transform: (it) => `<span class="source${Parser.stringToCasedSlug(it)}" title="${Parser.sourceJsonToFull(it)}">${Parser.sourceJsonToAbv(it)}</span>`},
+					_text: {name: "Text", transform: (it) => it.type === "T" ? EntryRenderer.psionic.getTalentText(it, renderer) : EntryRenderer.psionic.getDisciplineText(it, renderer), flex: 3}
+				},
+				{generator: ListUtil.basicFilterGenerator},
+				(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source)
+			);
+
+			RollerUtil.addListRollButton();
 			History.init(true);
 		});
+}
+
+function handleBrew (homebrew) {
+	addPsionics(homebrew);
+	return Promise.resolve();
 }
 
 let psionicList = [];
@@ -113,7 +166,7 @@ function addPsionics (data) {
 	for (; psI < psionicList.length; psI++) {
 		const p = psionicList[psI];
 		if (ExcludeUtil.isExcluded(p.name, "psionic", p.source)) continue;
-		p[JSON_ITEM_ORDER] = Parser.psiOrderToFull(p[JSON_ITEM_ORDER]);
+		p._fOrder = Parser.psiOrderToFull(p.order);
 
 		tempString += `
 			<li class='row' ${FLTR_ID}="${psI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
@@ -121,7 +174,7 @@ function addPsionics (data) {
 					<span class='${LIST_NAME} ${CLS_COL1}'>${p[JSON_ITEM_NAME]}</span>
 					<span class='${LIST_SOURCE} ${CLS_COL2}' title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
 					<span class='${LIST_TYPE} ${CLS_COL3}'>${Parser.psiTypeToFull(p[JSON_ITEM_TYPE])}</span>
-					<span class='${LIST_ORDER} ${CLS_COL4} ${p[JSON_ITEM_ORDER] === STR_NONE ? CLS_LI_NONE : STR_EMPTY}'>${p[JSON_ITEM_ORDER]}</span>
+					<span class='${LIST_ORDER} ${CLS_COL4} ${p._fOrder === STR_NONE ? CLS_LI_NONE : STR_EMPTY}'>${p._fOrder}</span>
 					<span class='${LIST_MODE_LIST} ${CLS_HIDDEN}'>${getHiddenModeList(p)}</span>
 				</a>
 			</li>
@@ -162,7 +215,7 @@ function handleFilterChange () {
 			f,
 			p.source,
 			p.type,
-			p.order
+			p._fOrder
 		);
 	});
 	FilterBox.nextIfHidden(psionicList);
@@ -174,7 +227,7 @@ function getSublistItem (p, pinId) {
 			<a href="#${UrlUtil.autoEncodeHash(p)}" title="${p.name}">
 				<span class="name col-xs-6">${p.name}</span>
 				<span class="type col-xs-3">${Parser.psiTypeToFull(p.type)}</span>
-				<span class="order col-xs-3 ${p.order === STR_NONE ? CLS_LI_NONE : ""}">${p.order}</span>
+				<span class="order col-xs-3 ${p._fOrder === STR_NONE ? CLS_LI_NONE : ""}">${p._fOrder}</span>
 				<span class="id hidden">${pinId}</span>				
 			</a>
 		</li>
@@ -193,7 +246,7 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getBorderTr()}
 		${EntryRenderer.utils.getNameTr(psi)}
 		<tr>
-			<td colspan="6"><i>${psi.type === "T" ? Parser.psiTypeToFull(psi[JSON_ITEM_TYPE]) : `${psi[JSON_ITEM_ORDER]} ${Parser.psiTypeToFull(psi[JSON_ITEM_TYPE])}`}</i><span id="order"></span> <span id="type"></span></td>
+			<td colspan="6"><i>${psi.type === "T" ? Parser.psiTypeToFull(psi[JSON_ITEM_TYPE]) : `${psi._fOrder} ${Parser.psiTypeToFull(psi[JSON_ITEM_TYPE])}`}</i><span id="order"></span> <span id="type"></span></td>
 		</tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		<tr class="text"><td colspan="6" id="text">${psi.type === "T" ? EntryRenderer.psionic.getTalentText(psi, renderer) : EntryRenderer.psionic.getDisciplineText(psi, renderer)}</td></tr>
@@ -201,10 +254,14 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getBorderTr()}
 	`);
 
+	loadsub([]);
+
 	ListUtil.updateSelected();
 }
 
 function loadsub (sub) {
 	filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
+
+	psionicsBookView.handleSub(sub);
 }

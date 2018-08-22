@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.4.4",
+	"version": "1.4.5",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -907,6 +907,10 @@
 								"items": {
 									"$ref": "/Entry"
 								}
+							},
+							"ability": {
+								"type": "string",
+								"enum": ["str", "dex", "con", "int", "wis", "cha"]
 							}
 						},
 						"required": [

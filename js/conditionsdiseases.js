@@ -50,6 +50,7 @@ function onJsonLoad (data) {
 	addConditions(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -63,6 +64,7 @@ function onJsonLoad (data) {
 
 function handleBrew (homebrew) {
 	addConditions(homebrew);
+	return Promise.resolve();
 }
 
 let conditionList = [];

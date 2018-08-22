@@ -43,7 +43,8 @@ function onJsonLoad (data) {
 
 	addVariantRules(data);
 	BrewUtil.pAddBrewData()
-		.then(addVariantRules)
+		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -51,6 +52,11 @@ function onJsonLoad (data) {
 
 			History.init(true);
 		});
+}
+
+function handleBrew (homebrew) {
+	addVariantRules(homebrew);
+	return Promise.resolve();
 }
 
 let rulesList = [];

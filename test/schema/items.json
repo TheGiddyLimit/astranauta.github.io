@@ -13,7 +13,19 @@
 					"type": "string"
 				},
 				"rarity": {
-					"type": "string"
+					"type": "string",
+					"description": "\"None\" is for mundane items. \"Unknown (Magic)\" is for miscellaneous magical items. \"Unknown\" is for miscellaneous mundane items.",
+					"enum": [
+						"Rare",
+						"None",
+						"Uncommon",
+						"Very Rare",
+						"Legendary",
+						"Artifact",
+						"Unknown",
+						"Common",
+						"Unknown (Magic)"
+					]
 				},
 				"source": {
 					"type": "string"
@@ -106,7 +118,7 @@
 					"type": "array",
 					"items": {
 						"type": "string",
-						"enum": ["T", "V", "H", "2H", "F", "L", "R", "A", "LD", "S", "AF", "RLD", "BF", "EM"]
+						"enum": ["T", "V", "H", "2H", "F", "L", "R", "A", "LD", "S", "AF", "RLD", "BF", "EM", "OTH"]
 					}
 				},
 				"range": {

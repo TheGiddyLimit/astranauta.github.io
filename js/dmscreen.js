@@ -38,6 +38,7 @@ class Board {
 		this.hoveringPanel = null;
 		this.availContent = {};
 		this.availRules = {};
+		this.$cbConfirmTabClose = null;
 	}
 
 	getInitialWidth () {
@@ -64,6 +65,10 @@ class Board {
 
 	getHeight () {
 		return this.height;
+	}
+
+	getConfirmTabClose () {
+		return this.$cbConfirmTabClose == null ? false : this.$cbConfirmTabClose.prop("checked");
 	}
 
 	setDimensions (width, height) {
@@ -103,6 +108,7 @@ class Board {
 	doAdjust$creenCss () {
 		// assumes 7px grid spacing
 		this.$creen.css({
+			marginTop: this.isFullscreen ? 0 : 3,
 			gridGap: 7,
 			width: `calc(100% - ${this._getWidthAdjustment()}px)`,
 			height: `calc(100% - ${this._getHeightAdjustment()}px)`,
@@ -118,7 +124,7 @@ class Board {
 	_getHeightAdjustment () {
 		const panelPart = (this.height - 1) * 7;
 		if (this.isFullscreen) return panelPart;
-		else return 85 + panelPart; // 85 magical pixels
+		else return 78 + panelPart; // 78 magical pixels
 	}
 
 	getPanelDimensions () {
@@ -179,6 +185,7 @@ class Board {
 					this.addField("h");
 					this.setRef("id");
 				});
+				SearchUtil.removeStemmer(this.availRules.ALL);
 
 				data.data.forEach(d => {
 					d.n = data._meta.name[d.b];
@@ -202,6 +209,7 @@ class Board {
 					this.addField("s");
 					this.setRef("id");
 				});
+				SearchUtil.removeStemmer(this.availContent.ALL);
 				// Add main site index
 				let ixMax = 0;
 				data.forEach(d => {
@@ -213,6 +221,7 @@ class Board {
 							this.addField("s");
 							this.setRef("id");
 						});
+						SearchUtil.removeStemmer(this.availContent[d.cf]);
 					}
 					this.availContent.ALL.addDoc(d);
 					this.availContent[d.cf].addDoc(d);
@@ -221,30 +230,32 @@ class Board {
 
 				// Add homebrew
 				Omnisearch.highestId = Math.max(ixMax, Omnisearch.highestId);
-				BrewUtil.getSearchIndex().forEach(d => {
-					if (hasBadCat(d) || fromDeepIndex(d)) return;
-					d.cf = Parser.pageCategoryToFull(d.c);
-					d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
-					this.availContent.ALL.addDoc(d);
-					this.availContent[d.cf].addDoc(d);
+				BrewUtil.pGetSearchIndex().then(index => {
+					index.forEach(d => {
+						if (hasBadCat(d) || fromDeepIndex(d)) return;
+						d.cf = Parser.pageCategoryToFull(d.c);
+						d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
+						this.availContent.ALL.addDoc(d);
+						this.availContent[d.cf].addDoc(d);
+					});
+
+					// add tabs
+					const omniTab = new AddMenuSearchTab(this.availContent);
+					omniTab.setSpotlight(true);
+					const ruleTab = new AddMenuSearchTab(this.availRules, "rules");
+					const embedTab = new AddMenuVideoTab();
+					const imageTab = new AddMenuImageTab();
+					const specialTab = new AddMenuSpecialTab();
+
+					this.menu.addTab(omniTab).addTab(ruleTab).addTab(imageTab).addTab(embedTab).addTab(specialTab);
+
+					this.menu.render();
+
+					this.sideMenu.render();
+
+					resolve();
+					this.doHideLoading();
 				});
-
-				// add tabs
-				const omniTab = new AddMenuSearchTab(this.availContent);
-				omniTab.setSpotlight(true);
-				const ruleTab = new AddMenuSearchTab(this.availRules, "rules");
-				const embedTab = new AddMenuVideoTab();
-				const imageTab = new AddMenuImageTab();
-				const specialTab = new AddMenuSpecialTab();
-
-				this.menu.addTab(omniTab).addTab(ruleTab).addTab(imageTab).addTab(embedTab).addTab(specialTab);
-
-				this.menu.render();
-
-				this.sideMenu.render();
-
-				resolve();
-				this.doHideLoading();
 			});
 		});
 	}
@@ -339,6 +350,7 @@ class Board {
 		return {
 			w: this.width,
 			h: this.height,
+			ctc: this.getConfirmTabClose(),
 			ps: Object.values(this.panels).map(p => p.getSaveableState()),
 			ex: this.exiledPanels.map(p => p.getSaveableState())
 		};
@@ -349,6 +361,8 @@ class Board {
 	}
 
 	doLoadStateFrom (toLoad) {
+		if (this.$cbConfirmTabClose) this.$cbConfirmTabClose.prop("checked", toLoad.ctc);
+
 		// re-exile
 		toLoad.ex.filter(Boolean).reverse().forEach(saved => {
 			const p = Panel.fromSavedState(this, saved);
@@ -485,6 +499,10 @@ class SideMenu {
 		});
 		renderDivider();
 
+		const $wrpCbConfirm = $(`<div class="dm-sidemenu-row"><label class="dm-sidemenu-row-label dm-sidemenu-row-label--cb-label">Confirm on Tab Close </label></div>`).appendTo(this.$mnu);
+		this.board.$cbConfirmTabClose = $(`<input type="checkbox" class="dm-sidemenu-row-label-cb">`).appendTo($wrpCbConfirm.find(`label`));
+		renderDivider();
+
 		const $btnReset = $(`<div class="btn btn-danger">Reset Screen</div>`).appendTo(this.$mnu);
 		$btnReset.on("click", () => {
 			if (window.confirm("Are you sure?")) {
@@ -608,6 +626,8 @@ class Panel {
 		this.isTabs = false;
 		this.tabIndex = null;
 		this.tabDatas = [];
+		this.tabCanRename = false;
+		this.tabRenamed = false;
 
 		this.$btnAdd = null;
 		this.$btnAddInner = null;
@@ -628,7 +648,11 @@ class Panel {
 		const p = new Panel(board, saved.x, saved.y, saved.w, saved.h);
 		p.render();
 
-		function loadState (saved, skipSetTab) {
+		function loadState (saved, skipSetTab, ixTab) {
+			function handleTabRenamed (p) {
+				if (saved.r != null) p.tabDatas[ixTab].tabRenamed = true;
+			}
+
 			switch (saved.t) {
 				case PANEL_TYP_EMPTY:
 					return p;
@@ -650,7 +674,8 @@ class Panel {
 					EntryRenderer.dice.bindDmScreenPanel(p);
 					return p;
 				case PANEL_TYP_TEXTBOX:
-					p.doPopulate_TextBox(saved.s.x);
+					p.doPopulate_TextBox(saved.s.x, saved.r);
+					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_INITIATIVE_TRACKER:
 					p.doPopulate_InitiativeTracker(saved.s);
@@ -659,19 +684,24 @@ class Panel {
 					p.doPopulate_UnitConverter(saved.s);
 					return p;
 				case PANEL_TYP_TUBE:
-					p.doPopulate_YouTube(saved.c.u);
+					p.doPopulate_YouTube(saved.c.u, saved.r);
+					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_TWITCH:
-					p.doPopulate_Twitch(saved.c.u);
+					p.doPopulate_Twitch(saved.c.u, saved.r);
+					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_TWITCH_CHAT:
-					p.doPopulate_TwitchChat(saved.c.u);
+					p.doPopulate_TwitchChat(saved.c.u, saved.r);
+					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_GENERIC_EMBED:
-					p.doPopulate_GenericEmbed(saved.c.u);
+					p.doPopulate_GenericEmbed(saved.c.u, saved.r);
+					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_IMAGE:
-					p.doPopulate_Image(saved.c.u);
+					p.doPopulate_Image(saved.c.u, saved.r);
+					handleTabRenamed(p);
 					return p;
 				default:
 					throw new Error(`Unhandled panel type ${saved.t}`);
@@ -681,7 +711,7 @@ class Panel {
 		if (saved.a) {
 			p.isTabs = true;
 			p.doRenderTabs();
-			saved.a.forEach(tab => loadState(tab, true));
+			saved.a.forEach((tab, ix) => loadState(tab, true, ix));
 			p.setActiveTab(saved.b);
 		} else {
 			loadState(saved);
@@ -792,9 +822,9 @@ class Panel {
 		});
 	}
 
-	set$ContentTab (type, contentMeta, $content, title) {
+	set$ContentTab (type, contentMeta, $content, title, tabCanRename, tabRenamed) {
 		const ix = this.isTabs ? this.getNextTabIndex() : 0;
-		return this.set$Tab(ix, type, contentMeta, $content, title);
+		return this.set$Tab(ix, type, contentMeta, $content, title, tabCanRename, tabRenamed);
 	}
 
 	doPopulate_Rollbox () {
@@ -824,56 +854,61 @@ class Panel {
 		);
 	}
 
-	doPopulate_TextBox (content) {
+	doPopulate_TextBox (content, title = "Notes") {
 		this.set$ContentTab(
 			PANEL_TYP_TEXTBOX,
 			null,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(NoteBox.make$Notebox(content)),
-			"Notes"
+			title,
+			true
 		);
 	}
 
-	doPopulate_YouTube (url) {
+	doPopulate_YouTube (url, title = "YouTube") {
 		const meta = {u: url};
 		this.set$ContentTab(
 			PANEL_TYP_TUBE,
 			meta,
 			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?autoplay=1&enablejsapi=1&modestbranding=1&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen /></div>`),
-			"YouTube"
+			title,
+			true
 		);
 	}
 
-	doPopulate_Twitch (url) {
+	doPopulate_Twitch (url, title = "Twitch") {
 		const meta = {u: url};
 		this.set$ContentTab(
 			PANEL_TYP_TWITCH,
 			meta,
 			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no" allowfullscreen/></div>`),
-			"Twitch"
+			title,
+			true
 		);
 	}
 
-	doPopulate_TwitchChat (url) {
+	doPopulate_TwitchChat (url, title = "Twitch Chat") {
 		const meta = {u: url};
 		this.set$ContentTab(
 			PANEL_TYP_TWITCH_CHAT,
 			meta,
 			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no"/></div>`),
-			"Twitch Chat"
+			title,
+			true
 		);
 	}
 
-	doPopulate_GenericEmbed (url) {
+	doPopulate_GenericEmbed (url, title = "Embed") {
 		const meta = {u: url};
 		this.set$ContentTab(
 			PANEL_TYP_GENERIC_EMBED,
 			meta,
 			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}"/></div>`),
-			"Embed"
+			title,
+			true
 		);
 	}
 
-	doPopulate_Image (url, ixOpt) {
+	doPopulate_Image (url, ixOpt, title = "Image") {
 		const meta = {u: url};
 		const $wrpPanel = $(`<div class="panel-content-wrapper-inner"/>`);
 		const $wrpImage = $(`<div class="panel-content-wrapper-img"/>`).appendTo($wrpPanel);
@@ -884,8 +919,9 @@ class Panel {
 			PANEL_TYP_IMAGE,
 			meta,
 			$wrpPanel,
-			"Image",
-			ixOpt
+			title,
+			true,
+			ixOpt // FIXME never used?
 		);
 		$img.panzoom({
 			$reset: $iptReset,
@@ -1064,7 +1100,9 @@ class Panel {
 			title: this.title,
 			isTabs: this.isTabs,
 			tabIndex: this.tabIndex,
-			tabDatas: this.tabDatas
+			tabDatas: this.tabDatas,
+			tabCanRename: this.tabCanRename,
+			tabRenamed: this.tabRenamed
 		}
 	}
 
@@ -1279,14 +1317,16 @@ class Panel {
 	}
 
 	close$TabContent (ixOpt = 0) {
-		return this.set$Tab(-1 * (ixOpt + 1), PANEL_TYP_EMPTY, null, null, null);
+		return this.set$Tab(-1 * (ixOpt + 1), PANEL_TYP_EMPTY, null, null, null, false);
 	}
 
-	set$Content (type, contentMeta, $content, title) {
+	set$Content (type, contentMeta, $content, title, tabCanRename, tabRenamed) {
 		this.type = type;
 		this.contentMeta = contentMeta;
 		this.$content = $content;
 		this.title = title;
+		this.tabCanRename = tabCanRename;
+		this.tabRenamed = tabRenamed;
 
 		this.$pnlWrpContent.children().detach();
 		if ($content === null) this.$pnlWrpContent.append(this.$btnAdd);
@@ -1300,14 +1340,16 @@ class Panel {
 		this.isTabs = hisMeta.isTabs;
 		this.tabIndex = hisMeta.tabIndex;
 		this.tabDatas = hisMeta.tabDatas;
+		this.tabCanRename = hisMeta.tabCanRename;
+		this.tabRenamed = hisMeta.tabRenamed;
 
-		this.set$Tab(hisMeta.tabIndex, hisMeta.type, hisMeta.contentMeta, $hisContent, hisMeta.title);
+		this.set$Tab(hisMeta.tabIndex, hisMeta.type, hisMeta.contentMeta, $hisContent, hisMeta.title, hisMeta.tabCanRename, hisMeta.tabRenamed);
 		hisMeta.tabDatas
 			.forEach((it, ix) => {
 				if (!it.isDeleted && it.$tabButton) {
 					// regenerate tab buttons to refer to the correct tab
 					it.$tabButton.remove();
-					it.$tabButton = this._get$BtnSelTab(ix, it.title);
+					it.$tabButton = this._get$BtnSelTab(ix, it.title, it.tabCanRename);
 					this.$pnlTabs.children().last().before(it.$tabButton);
 				}
 			});
@@ -1326,25 +1368,42 @@ class Panel {
 		);
 	}
 
-	_get$BtnSelTab (ix, title) {
+	_get$BtnSelTab (ix, title, tabCanRename) {
 		title = title || "[Untitled]";
-		const $btnSelTab = $(`<div class="btn btn-default content-tab"><span class="content-tab-title">${title}</span></div>`)
+		const $btnSelTab = $(`<div class="btn btn-default content-tab ${tabCanRename ? "content-tab-can-rename" : ""}"><span class="content-tab-title">${title}</span></div>`)
 			.on("mousedown", (evt) => {
 				if (evt.which === 1) {
 					this.setActiveTab(ix);
 				} else if (evt.which === 2) {
 					this.doCloseTab(ix);
 				}
+			})
+			.on("contextmenu", (evt) => {
+				if (!evt.ctrlKey && $btnSelTab.hasClass("content-tab-can-rename")) {
+					const nuTitle = prompt("Rename tab to:");
+					if (nuTitle && nuTitle.trim()) {
+						$btnSelTab.find(`.content-tab-title`).text(nuTitle);
+						const x = this.tabDatas[ix];
+						x.title = nuTitle;
+						x.tabRenamed = true;
+						if (this.tabIndex === ix) {
+							this.title = nuTitle;
+							this.tabRenamed = true;
+						}
+					}
+					evt.stopPropagation();
+					evt.preventDefault();
+				}
 			});
 		const $btnCloseTab = $(`<span class="glyphicon glyphicon-remove content-tab-remove"/>`)
 			.on("mousedown", (evt) => {
 				evt.stopPropagation();
-				this.doCloseTab(ix);
+				if (!this.board.getConfirmTabClose() || (this.board.getConfirmTabClose() && confirm(`Are you sure you want to close tab "${this.title}"?`))) this.doCloseTab(ix);
 			}).appendTo($btnSelTab);
 		return $btnSelTab;
 	}
 
-	set$Tab (ix, type, contentMeta, $content, title) {
+	set$Tab (ix, type, contentMeta, $content, title, tabCanRename, tabRenamed) {
 		if (ix === null) ix = 0;
 		if (ix < 0) {
 			const ixPos = Math.abs(ix + 1);
@@ -1359,7 +1418,9 @@ class Panel {
 				type: type,
 				contentMeta: contentMeta,
 				$content: $content,
-				title: title
+				title: title,
+				tabCanRename: !!tabCanRename,
+				tabRenamed: !!tabRenamed
 			};
 			if ($btnOld) this.tabDatas[ix].$tabButton = $btnOld;
 
@@ -1371,6 +1432,8 @@ class Panel {
 
 			if (!this.tabDatas[ix].$tabButton) this.tabDatas[ix].$tabButton = doAdd$BtnSelTab(ix, title);
 			else this.tabDatas[ix].$tabButton.find(`.content-tab-title`).text(title);
+
+			this.tabDatas[ix].$tabButton.toggleClass("content-tab-can-rename", tabCanRename);
 		}
 
 		this.setActiveTab(ix);
@@ -1382,7 +1445,9 @@ class Panel {
 			const handleNoTabs = () => {
 				this.isTabs = false;
 				this.tabIndex = 0;
-				this.set$Content(PANEL_TYP_EMPTY, null, null);
+				this.tabCanRename = false;
+				this.tabRenamed = false;
+				this.set$Content(PANEL_TYP_EMPTY, null, null, null, false);
 			};
 
 			if (this.isTabs) {
@@ -1394,7 +1459,7 @@ class Panel {
 		} else {
 			this.tabIndex = ix;
 			const tabData = this.tabDatas[ix];
-			this.set$Content(tabData.type, tabData.contentMeta, tabData.$content, tabData.title);
+			this.set$Content(tabData.type, tabData.contentMeta, tabData.$content, tabData.title, tabData.tabCanRename, tabData.tabRenamed);
 		}
 	}
 
@@ -1437,18 +1502,21 @@ class Panel {
 			t: this.type
 		};
 
-		function getSaveableContent (type, contentMeta, $content) {
+		function getSaveableContent (type, contentMeta, $content, tabRenamed, tabTitle) {
+			const toSaveTitle = tabRenamed ? tabTitle : undefined;
 			switch (type) {
 				case PANEL_TYP_EMPTY:
 					return null;
 
 				case PANEL_TYP_ROLLBOX:
 					return {
-						t: type
+						t: type,
+						r: toSaveTitle
 					};
 				case PANEL_TYP_STATS:
 					return {
 						t: type,
+						r: toSaveTitle,
 						c: {
 							p: contentMeta.p,
 							s: contentMeta.s,
@@ -1458,6 +1526,7 @@ class Panel {
 				case PANEL_TYP_RULES:
 					return {
 						t: type,
+						r: toSaveTitle,
 						c: {
 							b: contentMeta.b,
 							c: contentMeta.c,
@@ -1467,6 +1536,7 @@ class Panel {
 				case PANEL_TYP_TEXTBOX:
 					return {
 						t: type,
+						r: toSaveTitle,
 						s: {
 							x: $content ? $content.find(`textarea`).val() : ""
 						}
@@ -1474,12 +1544,14 @@ class Panel {
 				case PANEL_TYP_INITIATIVE_TRACKER: {
 					return {
 						t: type,
+						r: toSaveTitle,
 						s: $content.find(`.dm-init`).data("getState")()
 					};
 				}
 				case PANEL_TYP_UNIT_CONVERTER: {
 					return {
 						t: type,
+						r: toSaveTitle,
 						s: $content.find(`.dm-unitconv`).data("getState")()
 					};
 				}
@@ -1490,6 +1562,7 @@ class Panel {
 				case PANEL_TYP_IMAGE:
 					return {
 						t: type,
+						r: toSaveTitle,
 						c: {
 							u: contentMeta.u
 						}
@@ -1503,7 +1576,7 @@ class Panel {
 		if (toSave) Object.assign(out, toSave);
 
 		if (this.isTabs) {
-			out.a = this.tabDatas.filter(it => !it.isDeleted).map(td => getSaveableContent(td.type, td.contentMeta, td.$content));
+			out.a = this.tabDatas.filter(it => !it.isDeleted).map(td => getSaveableContent(td.type, td.contentMeta, td.$content, td.tabRenamed, td.title));
 			// offset saved tabindex by number of deleted tabs that come before
 			let delCount = 0;
 			for (let i = 0; i < this.tabIndex; ++i) {
@@ -2156,6 +2229,7 @@ class AddMenuListTab extends AddMenuTab {
 					valueNames: ["name"],
 					listClass: "panel-tab-list"
 				});
+				ListUtil.bindEscapeKey(tab.list, this.$srch);
 			}
 		}, 1);
 	}
@@ -2498,7 +2572,7 @@ class InitiativeTracker {
 			if (isLocked) return;
 			makeRow();
 			doSort(sort);
-			checkSetActive();
+			checkSetFirstActive();
 		});
 
 		$btnAddMonster.on("click", () => {
@@ -2556,7 +2630,7 @@ class InitiativeTracker {
 						const source = r.doc.s;
 						makeRow(name, "", "", false, source, [], $cbRoll.prop("checked"));
 						doSort(sort);
-						checkSetActive();
+						checkSetFirstActive();
 						doClose();
 					};
 
@@ -2622,29 +2696,38 @@ class InitiativeTracker {
 		(state.r || []).forEach(r => {
 			makeRow(r.n, r.h, r.i, r.a, r.s, r.c);
 		});
-		checkSetActive();
+		checkSetFirstActive();
 
 		function setNextActive () {
 			const $rows = $wrpEntries.find(`.dm-init-row`);
-			const ix = $rows.index($rows.filter(`.dm-init-row-active`).get(0));
-			const $curr = $($rows.get(ix));
-			$curr.removeClass(`dm-init-row-active`);
 
-			// tick down any conditions
-			const $conds = $curr.find(`.dm-init-cond`);
-			if ($conds.length) $conds.each((i, e) => $(e).data("doTickDown")());
+			const $rowsActive = $rows.filter(`.dm-init-row-active`).each((i, e) => {
+				const $e = $(e);
 
-			const nxt = $rows.get(ix + 1);
+				// tick down any conditions
+				const $conds = $e.find(`.dm-init-cond`);
+				if ($conds.length) $conds.each((i, e) => $(e).data("doTickDown")());
+
+				$e.removeClass(`dm-init-row-active`);
+			});
+
+			let ix = $rows.index($rowsActive.get($rowsActive.length - 1)) + 1;
+
+			const nxt = $rows.get(ix++);
 			if (nxt) {
-				$(nxt).addClass(`dm-init-row-active`);
-				// if names and initiatives are the same, skip forwards (groups of monsters)
-				if ($curr.find(`input.name`).val() === $(nxt).find(`input.name`).val() &&
-					$curr.find(`input.score`).val() === $(nxt).find(`input.score`).val()) {
-					setTimeout(() => setNextActive(), 30); // add a small delay for visibility
-				}
-			} else {
-				$($rows.get(0)).addClass(`dm-init-row-active`);
-			}
+				const $nxt = $(nxt);
+				let $curr = $nxt;
+				do {
+					// if names and initiatives are the same, skip forwards (groups of monsters)
+					if ($curr.find(`input.name`).val() === $nxt.find(`input.name`).val() &&
+						$curr.find(`input.score`).val() === $nxt.find(`input.score`).val()) {
+						$curr.addClass(`dm-init-row-active`);
+						const curr = $rows.get(ix++);
+						if (curr) $curr = $(curr);
+						else $curr = null;
+					} else break;
+				} while ($curr);
+			} else checkSetFirstActive();
 		}
 
 		function makeRow (name = "", hp = "", init = "", isActive, source, conditions = [], rollHp = false) {
@@ -2884,8 +2967,21 @@ class InitiativeTracker {
 			$wrpRow.appendTo($wrpEntries);
 		}
 
-		function checkSetActive () {
-			if ($wrpEntries.find(`.dm-init-row`).length && !$wrpEntries.find(`.dm-init-row-active`).length) $($wrpEntries.find(`.dm-init-row`).get(0)).addClass(`dm-init-row-active`);
+		function checkSetFirstActive () {
+			if ($wrpEntries.find(`.dm-init-row`).length && !$wrpEntries.find(`.dm-init-row-active`).length) {
+				const $rows = $wrpEntries.find(`.dm-init-row`);
+				const $first = $($rows.get(0));
+				$first.addClass(`dm-init-row-active`);
+				if ($rows.length > 1) {
+					for (let i = 1; i < $rows.length; ++i) {
+						const $nxt = $($rows.get(i));
+						if ($nxt.find(`input.name`).val() === $first.find(`input.name`).val() &&
+							$nxt.find(`input.score`).val() === $first.find(`input.score`).val()) {
+							$nxt.addClass(`dm-init-row-active`);
+						} else break;
+					}
+				}
+			}
 		}
 
 		function doSort (mode) {
