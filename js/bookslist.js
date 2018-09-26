@@ -36,7 +36,7 @@ class BooksList {
 				$this.attr("sortby", "asc");
 				$this.find('span').addClass("caret")
 			}
-			list.sort($this.data("sort"), {order: $this.attr("sortby"), sortFunction: this.sortFn});
+			$this.list.sort($this.data("sort"), {order: $this.attr("sortby"), sortFunction: this.sortFn});
 		});
 
 		this.list.sort("name");
