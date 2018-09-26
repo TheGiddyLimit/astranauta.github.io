@@ -21,7 +21,7 @@ class LootGen {
 		});
 		$selTables.on("change", () => {
 			const v = $selTables.val();
-			if (v !== "") this.displayTable(v);
+			this.displayTable(v);
 		});
 	}
 
@@ -32,28 +32,32 @@ class LootGen {
 
 	displayTable (arrayEntry) {
 		const itemsTable = lootList.magicitems[arrayEntry];
-		let htmlText = `
-		<table id="stats">
+		if (arrayEntry === "") {
+			$("div#classtable").hide();
+		} else {
+			let htmlText = `
+			<table id="stats">
 			<caption>${itemsTable.name}</caption>
 			<thead>
-				<tr>
-					<th class="col-xs-2 text-align-center"><span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry});">d100</span></th>
-					<th class="col-xs-10">Magic Item</th>
-				</tr>
+			<tr>
+			<th class="col-xs-2 text-align-center"><span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry});">d100</span></th>
+			<th class="col-xs-10">Magic Item</th>
+			</tr>
 			</thead>`;
-		itemsTable.table.forEach(it => {
-			const range = it.min === it.max ? it.min : `${it.min}-${it.max}`;
-			htmlText += `<tr><td class="text-align-center">${range}</td><td>${lootGen.parseLink(it.item)}${it.table ? ` (roll <span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry}, ${it.min})">d${LootGen.getMaxRoll(it.table)}</span>)` : ""}</td></tr>`;
-			if (it.table) {
-				it.table.forEach(r => {
-					htmlText += `<tr><td></td><td><span style="display: inline-block; min-width: 40px;">${r.min}${r.max ? `\u2212${r.max}` : ""}</span> ${lootGen.parseLink(r.item)}</td></tr>`;
-				})
-			}
-		});
-		htmlText += `
-		</table>
-		<small><b>Source:</b> <i>${Parser.sourceJsonToFull(itemsTable.source)}</i>, page ${itemsTable.page}</small>`;
-		$("div#classtable").html(htmlText).show();
+			itemsTable.table.forEach(it => {
+				const range = it.min === it.max ? it.min : `${it.min}-${it.max}`;
+				htmlText += `<tr><td class="text-align-center">${range}</td><td>${lootGen.parseLink(it.item)}${it.table ? ` (roll <span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry}, ${it.min})">d${LootGen.getMaxRoll(it.table)}</span>)` : ""}</td></tr>`;
+				if (it.table) {
+					it.table.forEach(r => {
+						htmlText += `<tr><td></td><td><span style="display: inline-block; min-width: 40px;">${r.min}${r.max ? `\u2212${r.max}` : ""}</span> ${lootGen.parseLink(r.item)}</td></tr>`;
+					})
+				}
+			});
+			htmlText += `
+			</table>
+			<small><b>Source:</b> <i>${Parser.sourceJsonToFull(itemsTable.source)}</i>, page ${itemsTable.page}</small>`;
+			$("div#classtable").html(htmlText).show();
+		}
 	}
 
 	rollAgainstTable (ixTable, parentRoll) {
