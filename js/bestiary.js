@@ -108,6 +108,7 @@ window.onload = function load () {
 		.then(() => {
 			if (History.lastLoadedId == null) History._freshLoad();
 		});
+	initializeFunctions.initHandleFilterButtonClicks();
 };
 
 let list;

@@ -25,7 +25,6 @@ class BooksList {
 		list = this.list;
 
 		$("#filtertools").find("button.sort").on(EVNT_CLICK, function (evt) {
-			// console.log ('evt', evt);
 			const $this = $(this);
 			$('#filtertools').find('.caret').removeClass('caret-reverse caret');
 
