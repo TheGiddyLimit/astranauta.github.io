@@ -113,16 +113,23 @@ function populateTablesAndFilters (data) {
 		}
 	}
 
-	$("#filtertools-mundane").find("button.sort").off("click").on("click", function (evt) {
+	$("#filtertools-mundane").find("button.sort").on("click", function (evt) {
 		evt.stopPropagation();
-		$(this).data("sortby", $(this).data("sortby") === "asc" ? "desc" : "asc");
-		mundanelist.sort($(this).data("sort"), {order: $(this).data("sortby"), sortFunction: sortItems});
+		var $this = $(this);
+		var direction = $this.data("sortby") === "asc" ? "desc" : "asc"
+		$this.data("sortby", direction);
+		$$filterButtonFunction.call(this, "#filtertools-mundane", $this, direction);
+		mundanelist.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortItems});
 	});
 
 	$("#filtertools-magic").find("button.sort").on("click", function (evt) {
 		evt.stopPropagation();
-		$(this).data("sortby", $(this).data("sortby") === "asc" ? "desc" : "asc");
-		magiclist.sort($(this).data("sort"), {order: $(this).data("sortby"), sortFunction: sortItems});
+		var $this = $(this);
+		var direction = $this.data("sortby") === "asc" ? "desc" : "asc"
+
+		$this.data("sortby", direction);
+		$$filterButtonFunction.call(this, "#filtertools-magic", $this, direction);
+		magiclist.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortItems});
 	});
 
 	$("#itemcontainer").find("h3").not(":has(input)").click(function () {
@@ -324,9 +331,9 @@ function getSublistItem (item, pinId, addCount) {
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(item)}" title="${item.name}">
 				<span class="name col-xs-6">${item.name}</span>
-				<span class="weight text-align-center col-xs-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>		
+				<span class="weight text-align-center col-xs-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
 				<span class="price text-align-center col-xs-2">${item.value || "\u2014"}</span>
-				<span class="count text-align-center col-xs-2">${addCount || 1}</span>		
+				<span class="count text-align-center col-xs-2">${addCount || 1}</span>
 				<span class="cost hidden">${item._fCost}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
@@ -355,7 +362,7 @@ function loadhash (id) {
 		</tr>
 		<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
 		${EntryRenderer.utils.getPageTr(item)}
-		${EntryRenderer.utils.getBorderTr()}	
+		${EntryRenderer.utils.getBorderTr()}
 	`);
 	$content.append($toAppend);
 

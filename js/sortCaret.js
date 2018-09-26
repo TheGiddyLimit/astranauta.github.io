@@ -1,13 +1,11 @@
-var $$filterButtonFunction = function (evt) {
-  console.log('evt:', evt);
-	var $this = $(this);
-	var sorted = $this.hasClass("asc")
+var $$filterButtonFunction = function (target, $this = $(this), direction) {
+	if (!direction) {
+		direction = $this.hasClass("asc") || $this.attr("data-sortby") === "asc" ? "asc" : "desc";
+	}
 
-	$("#filtertools").find(".caret").removeClass("caret");
+	$(target).find(".caret").removeClass("caret");
 	$this.find("span").addClass("caret")
-		.toggleClass("caret-reverse", $this.hasClass("asc"));
+		.toggleClass("caret-reverse", direction === "asc");
 };
 
-$("#filtertools-mundane").find("button.sort").on(EVNT_CLICK, $$filterButtonFunction);
-$("#filtertools-magic").find("button.sort").on(EVNT_CLICK, $$filterButtonFunction);
-$("#filtertools").find("button.sort").on(EVNT_CLICK, $$filterButtonFunction);
+$("#filtertools").find("button.sort").click(function () { $$filterButtonFunction.call(this, "#filtertools"); });
