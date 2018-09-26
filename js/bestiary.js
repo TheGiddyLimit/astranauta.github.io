@@ -316,6 +316,8 @@ function pPageInit (loadedSources) {
 	$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
 		const $this = $(this);
 		$this.data("sortby", $this.data("sortby") === "asc" ? "desc" : "asc");
+		$('#filtertools').find('.caret').removeClass("caret-reverse caret");
+		$this.find('span').addClass($this.data("sortby") === "asc" ? "caret" : "caret caret-reverse");
 		list.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortMonsters});
 	});
 
@@ -615,10 +617,10 @@ function pGetSublistItem (mon, pinId, addCount, data = {}) {
 					<a href="#${UrlUtil.autoEncodeHash(mon)}${subHash}" title="${mon._displayName || mon.name}">
 						<span class="name col-xs-4">${mon._displayName || mon.name}</span>
 						<span class="type col-xs-3">${mon._pTypes.asText.uppercaseFirst()}</span>
-						<span class="cr col-xs-3 text-align-center">${mon._pCr}</span>		
-						<span class="count col-xs-2 text-align-center">${addCount || 1}</span>		
-						<span class="id hidden">${pinId}</span>				
-						<span class="uid hidden">${data.uid || ""}</span>				
+						<span class="cr col-xs-3 text-align-center">${mon._pCr}</span>
+						<span class="count col-xs-2 text-align-center">${addCount || 1}</span>
+						<span class="id hidden">${pinId}</span>
+						<span class="uid hidden">${data.uid || ""}</span>
 					</a>
 				</li>
 			`);
