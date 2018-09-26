@@ -1,4 +1,5 @@
-var $$filterButtonFunction = function () {
+var $$filterButtonFunction = function (evt) {
+  console.log('evt:', evt);
 	var $this = $(this);
 	var sorted = $this.hasClass("asc")
 
