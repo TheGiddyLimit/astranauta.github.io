@@ -315,8 +315,10 @@ function pPageInit (loadedSources) {
 	// sorting headers
 	$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
 		const $this = $(this);
-		$this.data("sortby", $this.data("sortby") === "desc" ? "asc" : "desc");
-		$('#filtertools').find('.caret').removeClass("caret-reverse caret");
+		var direction = $this.data("sortby") === "desc" ? "asc" : "desc"
+
+		$this.data("sortby", direction);
+		$$filterButtonFunction.call(this, "#filtertools-magic", $this, direction);
 		$this.find('span').addClass($this.data("sortby") === "desc" ? "caret" : "caret caret-reverse");
 		list.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortMonsters});
 	});
