@@ -57,7 +57,7 @@ const adventuresList = new BooksList({
 });
 
 window.onload = function () {
-	adventuresList.onPageLoad.bind(adventuresList);
+	adventuresList.onPageLoad.bind(adventuresList)();
 	initializationFunctions.initHandleFilterButtonClicks();
 }
 
