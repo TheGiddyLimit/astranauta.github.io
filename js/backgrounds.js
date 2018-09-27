@@ -6,6 +6,7 @@ const renderer = EntryRenderer.getDefaultRenderer();
 window.onload = function load () {
 	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 let list;
@@ -115,8 +116,8 @@ function getSublistItem (bg, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(bg)}" title="${bg.name}">
-				<span class="name col-xs-12">${bg.name}</span>		
-				<span class="id hidden">${pinId}</span>				
+				<span class="name col-xs-12">${bg.name}</span>
+				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
 	`;

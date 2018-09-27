@@ -4,6 +4,7 @@ const entryRenderer = EntryRenderer.getDefaultRenderer();
 
 window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 function conditionDiseaseTypeToFull (type) {
@@ -122,8 +123,8 @@ function getSublistItem (cond, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(cond)}">
-				<span class="name col-xs-12">${cond.name}</span>		
-				<span class="id hidden">${pinId}</span>				
+				<span class="name col-xs-12">${cond.name}</span>
+				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
 	`;

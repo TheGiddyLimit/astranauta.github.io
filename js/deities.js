@@ -5,6 +5,7 @@ const STR_REPRINTED = "reprinted";
 window.onload = function load () {
 	ExcludeUtil.initialise();
 	DataUtil.deity.loadJSON().then(onJsonLoad);
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 let list;
@@ -203,7 +204,7 @@ function getSublistItem (g, pinId) {
 				<span class="pantheon col-xs-2">${g.pantheon}</span>
 				<span class="alignment col-xs-2">${g.alignment.join("")}</span>
 				<span class="domains col-xs-4 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""}">${g.domains.join(", ")}</span>
-				<span class="id hidden">${pinId}</span>				
+				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
 	`;

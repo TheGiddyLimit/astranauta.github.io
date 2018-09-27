@@ -56,7 +56,10 @@ const adventuresList = new BooksList({
 	}
 });
 
-window.onload = adventuresList.onPageLoad.bind(adventuresList);
+window.onload = function () {
+	adventuresList.onPageLoad.bind(adventuresList)();
+	initializationFunctions.initHandleFilterButtonClicks();
+}
 
 function handleBrew (homebrew) {
 	adventuresList.addData(homebrew);

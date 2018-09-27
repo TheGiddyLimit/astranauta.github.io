@@ -118,7 +118,7 @@ function populateTablesAndFilters (data) {
 		var $this = $(this);
 		var direction = $this.data("sortby") === "asc" ? "desc" : "asc"
 		$this.data("sortby", direction);
-		$$filterButtonFunction.call(this, "#filtertools-mundane", $this, direction);
+		SortUtil.handleFilterButtonClick.call(this, "#filtertools-mundane", $this, direction);
 		mundanelist.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortItems});
 	});
 
@@ -128,7 +128,7 @@ function populateTablesAndFilters (data) {
 		var direction = $this.data("sortby") === "asc" ? "desc" : "asc"
 
 		$this.data("sortby", direction);
-		$$filterButtonFunction.call(this, "#filtertools-magic", $this, direction);
+		SortUtil.handleFilterButtonClick.call(this, "#filtertools-magic", $this, direction);
 		magiclist.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortItems});
 	});
 

@@ -34,6 +34,10 @@ const ATB_DATA_SC_LIST = "data-subclass-list";
 
 let subclassComparisonView;
 
+window.onload = function () {
+	initializationFunctions.initHandleFilterButtonClicks();
+}
+
 // Exported to history.js, gets called on hash change
 function loadhash (id) {
 	HashLoad.loadhash(id);

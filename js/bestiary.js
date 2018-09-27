@@ -108,6 +108,7 @@ window.onload = function load () {
 		.then(() => {
 			if (History.lastLoadedId == null) History._freshLoad();
 		});
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 let list;
@@ -315,10 +316,10 @@ function pPageInit (loadedSources) {
 	// sorting headers
 	$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
 		const $this = $(this);
-		var direction = $this.data("sortby") === "desc" ? "asc" : "desc"
+		let direction = $this.data("sortby") === "desc" ? "asc" : "desc"
 
 		$this.data("sortby", direction);
-		$$filterButtonFunction.call(this, "#filtertools-magic", $this, direction);
+		ut.call(this, "#filtertools-magic", $this, direction);
 		$this.find('span').addClass($this.data("sortby") === "desc" ? "caret" : "caret caret-reverse");
 		list.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortMonsters});
 	});

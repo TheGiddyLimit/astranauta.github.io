@@ -3,6 +3,7 @@ const JSON_URL = "data/cultsboons.json";
 
 window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 function cultBoonTypeToFull (type) {

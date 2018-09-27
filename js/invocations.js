@@ -30,6 +30,7 @@ const LIST_SPELL = "spell";
 window.onload = function load () {
 	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 function sortLevelAsc (a, b) {

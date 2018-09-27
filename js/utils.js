@@ -3283,6 +3283,16 @@ SortUtil = {
 		if (a === "Unknown" || a === undefined) a = "999";
 		if (b === "Unknown" || b === undefined) b = "999";
 		return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b));
+	},
+
+	handleFilterButtonClick (target, $this = $(this), direction) {
+		if (!direction) {
+			direction = $this.hasClass("asc") || $this.attr("data-sortby") === "asc" ? "asc" : "desc";
+		}
+
+		$(target).find(".caret").removeClass("caret");
+		$this.find("span").addClass("caret")
+			.toggleClass("caret-reverse", direction === "asc");
 	}
 };
 
@@ -3473,7 +3483,7 @@ function addListShowHide () {
 		<div class="col-xs-12" id="showsearch">
 			<button class="btn btn-block btn-default btn-xs" type="button">Show Search</button>
 			<br>
-		</div>	
+		</div>
 	`;
 
 	const toInjectHide = `
@@ -3778,7 +3788,7 @@ BrewUtil = {
 			const $lst = $(`
 				<div id="brewlistcontainer" class="listcontainer homebrew-window dropdown-menu">
 					<h4><span>Get Homebrew 2.0</span></h4>
-					<p><i>A list of homebrew available in the public repository. Click a name to load the homebrew, or view the source directly.<br> 
+					<p><i>A list of homebrew available in the public repository. Click a name to load the homebrew, or view the source directly.<br>
 					Contributions are welcome; see the <a href="https://github.com/TheGiddyLimit/homebrew/blob/master/README.md" target="_blank">README</a>, or stop by our <a href="https://discord.gg/WH6kdUn" target="_blank">Discord</a>.</i></p>
 					<hr class="manbrew__hr">
 					<input type="search" class="search manbrew__search form-control" placeholder="Find homebrew..." style="width: 100%">
@@ -4788,6 +4798,14 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 		const bookViewHash = sub.find(it => it.startsWith(this.hashKey));
 		if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[this.hashKey][0] === "true") this.open();
 		else this.teardown();
+	}
+}
+
+initializationFunctions = {
+	initHandleFilterButtonClicks (target = "#filtertools") {
+		$("#filtertools").find("button.sort").click(function () {
+			SortUtil.handleFilterButtonClick.call(this, target);
+		});
 	}
 }
 

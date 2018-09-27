@@ -4,7 +4,8 @@ const JSON_FLUFF_URL = "data/fluff-races.json";
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
-	DataUtil.loadJSON(JSON_URL).then(onJsonLoad)
+	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 function getAbilityObjs (abils) {
@@ -278,10 +279,10 @@ function getSublistItem (race, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(race)}" title="${race.name}">
-				<span class="name col-xs-5">${race.name}</span>		
-				<span class="ability col-xs-5">${race._slAbility}</span>		
-				<span class="size col-xs-2">${Parser.sizeAbvToFull(race.size)}</span>		
-				<span class="id hidden">${pinId}</span>				
+				<span class="name col-xs-5">${race.name}</span>
+				<span class="ability col-xs-5">${race._slAbility}</span>
+				<span class="size col-xs-2">${Parser.sizeAbvToFull(race.size)}</span>
+				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
 	`;
@@ -313,7 +314,7 @@ function loadhash (id) {
 		<tr><td id="speed" colspan="6">Speed: <span>30 ft.</span></td></tr>
 		<tr id="traits"><td class="divider" colspan="6"><div></div></td></tr>
 		${EntryRenderer.utils.getBorderTr()}
-		</tbody>		
+		</tbody>
 		`);
 
 		$pgContent.find("th.name").html(`

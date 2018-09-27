@@ -5,6 +5,7 @@ const JSON_URL = "data/trapshazards.json";
 window.onload = function load () {
 	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 const sourceFilter = getSourceFilter();
@@ -149,9 +150,9 @@ function getSublistItem (it, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-				<span class="name col-xs-8">${it.name}</span>		
-				<span class="type col-xs-4">${Parser.trapHazTypeToFull(it.trapHazType)}</span>		
-				<span class="id hidden">${pinId}</span>				
+				<span class="name col-xs-8">${it.name}</span>
+				<span class="type col-xs-4">${Parser.trapHazTypeToFull(it.trapHazType)}</span>
+				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
 	`;

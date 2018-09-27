@@ -5,6 +5,7 @@ const JSON_URL = "data/rewards.json";
 window.onload = function load () {
 	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 let list;
@@ -127,8 +128,8 @@ function getSublistItem (reward, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(reward)}" title="${reward.name}">
-				<span class="name col-xs-12">${reward.name}</span>		
-				<span class="id hidden">${pinId}</span>				
+				<span class="name col-xs-12">${reward.name}</span>
+				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
 	`;
