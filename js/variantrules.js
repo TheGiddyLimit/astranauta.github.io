@@ -4,7 +4,7 @@ const JSON_URL = "data/variantrules.json";
 window.onload = function load () {
 	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-	initializeFunctions.initHandleFilterButtonClicks();
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 const entryRenderer = EntryRenderer.getDefaultRenderer();

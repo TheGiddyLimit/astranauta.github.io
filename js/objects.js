@@ -5,7 +5,7 @@ const JSON_URL = "data/objects.json";
 window.onload = function load () {
 	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-	initializeFunctions.initHandleFilterButtonClicks();
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 let list;

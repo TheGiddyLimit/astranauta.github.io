@@ -4,7 +4,7 @@ const entryRenderer = EntryRenderer.getDefaultRenderer();
 
 window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-	initializeFunctions.initHandleFilterButtonClicks();
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 function conditionDiseaseTypeToFull (type) {

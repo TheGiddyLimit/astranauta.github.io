@@ -5,7 +5,7 @@ const STR_REPRINTED = "reprinted";
 window.onload = function load () {
 	ExcludeUtil.initialise();
 	DataUtil.deity.loadJSON().then(onJsonLoad);
-	initializeFunctions.initHandleFilterButtonClicks();
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 let list;

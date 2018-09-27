@@ -4801,10 +4801,10 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 	}
 }
 
-initializeFunctions = {
-	initHandleFilterButtonClicks () {
+initializationFunctions = {
+	initHandleFilterButtonClicks (target = "#filtertools") {
 		$("#filtertools").find("button.sort").click(function () {
-			SortUtil.handleFilterButtonClick.call(this, "#filtertools");
+			SortUtil.handleFilterButtonClick.call(this, target);
 		});
 	}
 }

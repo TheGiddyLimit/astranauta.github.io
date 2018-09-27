@@ -6,7 +6,7 @@ const CLS_NONE = "list-entry-none";
 window.onload = function load () {
 	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-	initializeFunctions.initHandleFilterButtonClicks();
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 function listSortOptFeatures (a, b, o) {

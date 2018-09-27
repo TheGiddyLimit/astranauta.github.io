@@ -280,7 +280,7 @@ window.onload = function load () {
 		.then(() => {
 			if (History.lastLoadedId == null) History._freshLoad();
 		});
-	initializeFunctions.initHandleFilterButtonClicks();
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 let list;
