@@ -1,9 +1,14 @@
 "use strict";
 const LOOT_JSON_URL = "data/loot.json";
+const ITEMS_URL = "data/items.json";
 const MULT_SIGN = "×";
 const MAX_HIST = 9;
 const renderer = new EntryRenderer();
 let lootList;
+const randomtableLists = {
+	Major: {},
+	Minor: {}
+};
 
 class LootGen {
 	constructor () {
@@ -299,8 +304,42 @@ class LootGen {
 	}
 }
 
+const randomLootTables = {
+	init () {
+		DataUtil.loadJSON(ITEMS_URL)
+			.then(({item: items}) => {
+				for (let item of items) {
+					let rarity = item.rarity;
+					let tier = item.tier;
+					if (!randomtableLists[tier]) randomtableLists[tier] = {};
+					let tableTier = randomtableLists[tier];
+					if (!tableTier[rarity]) tableTier[rarity] = [];
+					tableTier[rarity].push(item);
+				}
+				return randomtableLists;
+			})
+			.then(randomtableLists => {
+				let $selector = $("#random-from-loot-table");
+				for (let nameTier of Object.keys(randomtableLists)) {
+					for (let nameRarity of Object.keys(randomtableLists[nameTier])) {
+						if (nameRarity !== undefined && nameRarity !== "None" && nameTier && nameTier !== "undefined") {
+							$selector.append(`<option value="${nameTier}-${nameRarity}">${nameTier} ${nameRarity}</option>`);
+						}
+					}
+				}
+			});
+	}
+};
+
 const lootGen = new LootGen();
 window.onload = function load () {
 	DataUtil.loadJSON(LOOT_JSON_URL).then(lootGen.loadLoot.bind(lootGen));
 	$(`body`).on("mousedown", ".roller", (e) => e.preventDefault());
+
+	let $charLevSelector = $('#character-level-selector');
+	for (let i = 1; i < 21; i++) {
+		$charLevSelector.append(`<option value="${i}">${i}</option>`);
+	}
+
+	randomLootTables.init();
 };
