@@ -19,6 +19,7 @@
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
+
 </head>
 
 <body>
@@ -35,10 +36,55 @@
 <main class="container bodyContent">
 	<div class="row">
 		<div class="col-sm-5">
-			<form id="controls">
+			<div class="input-group">
+				<span class="input-group-addon btn" id="btn-lootgen">Treasure Tables</span>
+				<span class="input-group-addon btn" id="btn-loot-table">Loot Table</span>
+				<span class="input-group-addon btn" id="btn-random-magic-item">Magic Item</span>
+			</div>
+			<br/>
+
+			<div id="container-lootgen">
+				<form id="controls">
+					<div class="input-group">
+						<span class="input-group-addon">Challenge Rating</span>
+						<select class="form-control" id="cr">
+							<option value="0" selected>0-4</option>
+							<option value="5">5-10</option>
+							<option value="11">11-16</option>
+							<option value="17">17+</option>
+						</select>
+						<span class="input-group-addon" style="padding: 0;">
+							<label for="hoard" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+								Hoard? <input type="checkbox" id="hoard" value="0" style="vertical-align: bottom;">
+							</label>
+						</span>
+					</div>
+					<br>
+					<button type="button" class="col-xs-9 btn btn-default" id="genloot">Roll Loot!</button>
+					<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right" id="clear">Clear</button>
+					<p>
+						<small>Based on the tables and rules in the <em>Dungeon Master's Guide</em>, pages 133-149.</small>
+					</p>
+				</form>
+			</div>
+
+			<div id="container-loot-table" >
 				<div class="input-group">
-					<span class="input-group-addon">Challenge Rating</span>
-					<select class="form-control" id="cr">
+					<select class="form-control" id="table-sel">  <!-- class="form-control" -->
+						<option value="" selected>View individual tables...</option>
+					</select>
+				</div>
+				<br>
+					<button type="button" class="col-xs-9 btn btn-default" id="genloot">Roll Loot!</button>
+					<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default" id="clear">Clear</button>
+			</div>
+
+			<div id="container-random-magic-item">
+				<p>Generate a random piece of magical loot or get loot for a new high level character</p>
+				<form>
+					<div class="input-group">
+					<span class="input-group-addon" >Character Level</span>
+					<select class="form-control" id="charLevel">
 						<option value="0" selected>0-4</option>
 						<option value="5">5-10</option>
 						<option value="11">11-16</option>
@@ -46,34 +92,19 @@
 					</select>
 					<span class="input-group-addon" style="padding: 0;">
 						<label for="hoard" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
-							Hoard? <input type="checkbox" id="hoard" value="0" style="vertical-align: bottom;">
+							New? <input type="checkbox" id="hoard" value="0" style="vertical-align: bottom;">
 						</label>
 					</span>
-				</div>
-				<br>
-				<button type="button" class="col-xs-9 btn btn-default" id="genloot">Roll Loot!</button>
-				<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right" id="clear">Clear</button>
+					</div>
+					<select class="form-control" id="random-from-loot-table">
+						<option value="" selected>Select a loot range</option>
+					</select>
+				</form>
 				<p>
-					<small>Based on the tables and rules in the <em>Dungeon Master's Guide</em>, pages 133-149.</small>
+					<small>Based on the tables and rules in the <em>Xanathar's Guide to Everything</em>, pages 135.</small>
 				</p>
-			</form>
-
-			<select class="form-control" id="table-sel">
-				<option value="" selected>View individual tables...</option>
-			</select>
-			<br/>
-			<form>
-				<select class="form-control" id="random-from-loot-table">
-					<option value="" selected>Select a loot range</option>
-				</select>
-				<select class="form-control" id="character-level-selector">
-						<option value="" selected>Fill items for a Character level - Optional</option>
-
-				</select>
-			</form>
-			<p>
-				<small>Based on the tables and rules in the <em>Xanathar's Guide to Everything</em>, pages 135.</small>
-			</p>
+			</div>
+			<hr/>
 			<div id="classtable"></div>
 		</div>
 		<div class="col-sm-7">
@@ -99,5 +130,15 @@
 <script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>
-
+	<style>
+	hr {
+		border-top: 2px solid #ccc;
+	}
+	.btn-selected {
+		background-color:lightgray;
+	}
+	.hidden {
+		display: none;
+	}
+	</style>
 </html>

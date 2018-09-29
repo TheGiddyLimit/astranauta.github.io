@@ -305,6 +305,67 @@ class LootGen {
 }
 
 const randomLootTables = {
+	_selectorTarget: "#random-from-loot-table",
+
+	_table: {
+		"1-4": {
+			"Major": {
+				"Uncommon": 2,
+				"Rare": 0,
+				"Very Rare": 0,
+				"Legendary": 0
+			},
+			"Minor": {
+				"Common": 6,
+				"Uncommon": 2,
+				"Rare": 1,
+				"Very Rare": 0
+			}
+		},
+		"5-10": {
+			"Major": {
+				"Uncommon": 5,
+				"Rare": 1,
+				"Very Rare": 0,
+				"Legendary": 0
+			},
+			"Minor": {
+				"Common": 10,
+				"Uncommon": 12,
+				"Rare": 5,
+				"Very Rare": 1
+			}
+		},
+		"11-15": {
+			"Major": {
+				"Uncommon": 1,
+				"Rare": 2,
+				"Very Rare": 2,
+				"Legendary": 0
+			},
+			"Minor": {
+				"Common": 3,
+				"Uncommon": 6,
+				"Rare": 9,
+				"Very Rare": 5
+			}
+		},
+		"15+": {
+			"Major": {
+				"Uncommon": 0,
+				"Rare": 1,
+				"Very Rare": 2,
+				"Legendary": 3
+			},
+			"Minor": {
+				"Common": 0,
+				"Uncommon": 0,
+				"Rare": 4,
+				"Very Rare": 9
+			}
+		}
+	},
+
 	init () {
 		DataUtil.loadJSON(ITEMS_URL)
 			.then(({item: items}) => {
@@ -319,7 +380,7 @@ const randomLootTables = {
 				return randomtableLists;
 			})
 			.then(randomtableLists => {
-				let $selector = $("#random-from-loot-table");
+				let $selector = $(randomLootTables._selectorTarget);
 				for (let nameTier of Object.keys(randomtableLists)) {
 					for (let nameRarity of Object.keys(randomtableLists[nameTier])) {
 						if (nameRarity !== undefined && nameRarity !== "None" && nameTier && nameTier !== "undefined") {
@@ -331,7 +392,70 @@ const randomLootTables = {
 	}
 };
 
+const ViewManinpulation = class ViewManinpulation {
+	constructor (...names) {
+		this._views = names;
+		this._containers = (function (views) {
+			let containers = {};
+			views.forEach(view => {
+				let container = this.returnContainerName(view);
+				containers[view] = $("#" + container);
+			})
+			return containers;
+		}.bind(this)(names));
+
+		this._buttons = (function (names) {
+			let buttons = {};
+			names.forEach(name => {
+				let button = this.returnButtonName(name);
+				buttons[name] = $("#" + button);
+			})
+			return buttons;
+		}.bind(this)(names));
+		this.setClicks();
+	}
+
+	returnName (nameStr) {
+		return nameStr.split("-").slice(1).join("-");
+	}
+
+	returnContainerName (view) {
+		return "container-" + view;
+	}
+
+	returnButtonName (view) {
+		return "btn-" + view;
+	}
+
+	each (target, cb) {
+		for (let name of Object.keys(target)) cb.call(this, target[name], name);
+	}
+
+	setClicks () {
+		this.each(this._buttons, view => {
+			view.click((evt) => {
+				let name = this.returnName(evt.currentTarget.id);
+				this.switchView(name)
+			});
+		});
+	}
+
+	switchView (name) {
+		// this.hideAllExcept(this._containers, name);
+		this._views.forEach((view) => {
+			let $button = this._buttons[view];
+			let $container = this._containers[view];
+			$button.toggleClass("btn-selected", name === view);
+			$container.toggleClass("hidden", name !== view);
+		})
+		this.each(this._buttons, ($button, buttonName) => {
+		})
+	}
+}
+
 const lootGen = new LootGen();
+let viewManinpulation;
+
 window.onload = function load () {
 	DataUtil.loadJSON(LOOT_JSON_URL).then(lootGen.loadLoot.bind(lootGen));
 	$(`body`).on("mousedown", ".roller", (e) => e.preventDefault());
@@ -340,6 +464,7 @@ window.onload = function load () {
 	for (let i = 1; i < 21; i++) {
 		$charLevSelector.append(`<option value="${i}">${i}</option>`);
 	}
-
+	viewManinpulation = new ViewManinpulation("lootgen", "loot-table", "random-magic-item");
+	viewManinpulation.switchView("lootgen");
 	randomLootTables.init();
 };
