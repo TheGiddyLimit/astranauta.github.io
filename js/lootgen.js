@@ -441,15 +441,13 @@ const ViewManinpulation = class ViewManinpulation {
 	}
 
 	switchView (name) {
-		// this.hideAllExcept(this._containers, name);
 		this._views.forEach((view) => {
 			let $button = this._buttons[view];
 			let $container = this._containers[view];
 			$button.toggleClass("btn-selected", name === view);
 			$container.toggleClass("hidden", name !== view);
 		})
-		this.each(this._buttons, ($button, buttonName) => {
-		})
+		Cookies.set("lootGenViewState", name);
 	}
 }
 
@@ -464,7 +462,8 @@ window.onload = function load () {
 	for (let i = 1; i < 21; i++) {
 		$charLevSelector.append(`<option value="${i}">${i}</option>`);
 	}
+
 	viewManinpulation = new ViewManinpulation("lootgen", "loot-table", "random-magic-item");
-	viewManinpulation.switchView("lootgen");
+	viewManinpulation.switchView(Cookies.get("lootGenViewState") || "lootgen");
 	randomLootTables.init();
 };
