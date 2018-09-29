@@ -308,7 +308,7 @@ const randomLootTables = {
 	_selectorTarget: "#random-from-loot-table",
 
 	_table: {
-		"1-4": {
+		4: {
 			"Major": {
 				"Uncommon": 2,
 				"Rare": 0,
@@ -322,7 +322,7 @@ const randomLootTables = {
 				"Very Rare": 0
 			}
 		},
-		"5-10": {
+		5: {
 			"Major": {
 				"Uncommon": 5,
 				"Rare": 1,
@@ -336,7 +336,7 @@ const randomLootTables = {
 				"Very Rare": 1
 			}
 		},
-		"11-15": {
+		11: {
 			"Major": {
 				"Uncommon": 1,
 				"Rare": 2,
@@ -350,7 +350,7 @@ const randomLootTables = {
 				"Very Rare": 5
 			}
 		},
-		"15+": {
+		15: {
 			"Major": {
 				"Uncommon": 0,
 				"Rare": 1,
@@ -463,7 +463,7 @@ window.onload = function load () {
 		$charLevSelector.append(`<option value="${i}">${i}</option>`);
 	}
 
+	randomLootTables.init();
 	viewManinpulation = new ViewManinpulation("lootgen", "loot-table", "random-magic-item");
 	viewManinpulation.switchView(Cookies.get("lootGenViewState") || "lootgen");
-	randomLootTables.init();
 };
