@@ -389,6 +389,29 @@ const randomLootTables = {
 					}
 				}
 			});
+	},
+
+	getNumberOfItemsNeeded (charLevel, estimateBetweenLevels = false) {
+		let count = { Major: 0, Minor: 0 };
+		let last = 0;
+
+		for (let [level, props] of Object.keys(randomLootTables._table).sort()) {
+			if (level <= charLevel) {
+				last = level;
+				ObjUtil.mergeWith(props, count, {depth: 2}, (val, sum) => val + sum);
+			} else if (estimateBetweenLevels) {
+				let difference = level - last;
+				ObjUtil.mergeWith(props, count, {depth: 2}, (val, sum) => (sum + ~~(val / difference)));
+				break;
+			} else {
+				break;
+			}
+		}
+		return count;
+	},
+
+	randomItem (tier, rarity) {
+
 	}
 };
 
@@ -462,8 +485,37 @@ window.onload = function load () {
 	for (let i = 1; i < 21; i++) {
 		$charLevSelector.append(`<option value="${i}">${i}</option>`);
 	}
+	viewManinpulation = new ViewManinpulation("lootgen", "loot-table", "random-magic-item")
+		.switchView(Cookies.get("lootGenViewState") || "lootgen");
+
+	$(".slider")
+		.slider({min: 1, max: 20})
+		.slider('pips', {rest: "label"})
+		.slider('float');
 
 	randomLootTables.init();
-	viewManinpulation = new ViewManinpulation("lootgen", "loot-table", "random-magic-item");
-	viewManinpulation.switchView(Cookies.get("lootGenViewState") || "lootgen");
+
+	$(".slider").hide();
+	$("#closest-tier").change((evt) => {
+		if (evt.currentTarget.checked) {
+			$(".slider").hide();
+			$("#random-magic-item-select-tier").show();
+		} else {
+			$(".slider").show();
+			$("#random-magic-item-select-tier").hide();
+		}
+	})
+
+	$("#get-random-item-from-table").click(evt => {
+		if ($("#closest-tier").prop("checked")) {
+			randomLootTables()
+		}
+	});
+
+	$("#target").html(lootGen.parseLink("{@item Adamantine Plate Armor}"))
+	$("#rollAgaintTable").click(function (evt) {
+		let val = $("#table-sel").val();
+		if (val === "") return;
+		lootGen.rollAgainstTable(val);
+	})
 };
