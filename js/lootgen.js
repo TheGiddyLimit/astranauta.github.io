@@ -18,7 +18,7 @@ class LootGen {
 
 	loadLoot (lootData) {
 		lootList = lootData;
-		$("button#clear").click(() => $("#lootoutput").html(""));
+		$("button.id-clear").click(() => $("#lootoutput").html(""));
 		$("button#genloot").click(lootGen.rollLoot);
 		const $selTables = $(`#table-sel`);
 		lootData.magicitems.forEach((t, i) => {
