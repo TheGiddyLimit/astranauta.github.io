@@ -69,7 +69,8 @@
 			</div>
 
 			<div id="container-loot-table" >
-				<div class="input-group">
+				<div class="input-group full-width">
+					<span class="input-group-addon" >Select your </span>
 					<select class="form-control" id="table-sel">  <!-- class="form-control" -->
 						<option value="" selected>View individual tables...</option>
 					</select>
@@ -83,32 +84,44 @@
 			<div id="container-random-magic-item">
 				<p>Generate a random piece of magical loot or get loot for a new high level character</p>
 				<form>
-					<div class="input-group">
-					<span class="input-group-addon" >Character Level</span>
-					<select class="form-control" id="charLevel">
-						<option value="0" selected>0-4</option>
-						<option value="5">5-10</option>
-						<option value="11">11-16</option>
-						<option value="17">17+</option>
-					</select>
-					<span class="input-group-addon" style="padding: 0;">
-						<label for="hoard" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
-							New? <input type="checkbox" id="hoard" value="0" style="vertical-align: bottom;">
-						</label>
-					</span>
+					Select Character Level
+					<br/>
+					<div class="slider" class="full-width"></div>
+
+					<div id="random-magic-item-select-tier" class="input-group">
+						<span class="input-group-addon" >Character Level</span>
+						<select class="form-control" id="charLevel">
+							<option value="0" selected>0-4</option>
+							<option value="5">5-10</option>
+							<option value="11">11-16</option>
+							<option value="17">17+</option>
+						</select>
 					</div>
-					<select class="form-control" id="random-from-loot-table">
-						<option value="" selected>Select a loot range</option>
-					</select>
+
+					<br/>
+					<div class="input-group">
+						<select class="form-control" id="random-from-loot-table">
+							<option value="" selected>Select a loot range</option>
+						</select>
+						<span class="input-group-addon" style="padding: 0;">
+								<label style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+									Round to Closest Tier? <input type="checkbox" checked id="closest-tier" value="0" style="vertical-align: bottom;">
+								</label>
+							</span>
+					</div>
 				</form>
 				<br>
-				<button type="button" class="col-xs-9 btn btn-default" id="genloot">Roll Loot!</button>
-				<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right" id="clear">Clear</button>
+				<div style="display: flex; justify-content: space-between">
+					<button type="button" class="btn col-xs-4 btn-default" style="margin-right: 3px; float: none; flex: 2" id="get-random-item-from-table">Pick Random Item</button>
+					<button type="button" class="btn col-xs-4 btn-default" style="margin-right: 3px; float: none; flex: 2;">Generate Items <br/> for a Character</button>
+					<button type="button" class="btn btn-default col-xs-2 col-xs-2-9" style="float: none; flex: 1" id="clear">Clear</button>
+				</div>
 				<p>
 					<small>Based on the tables and rules in the <em>Xanathar's Guide to Everything</em>, pages 135.</small>
 				</p>
 			</div>
 			<hr/>
+			<div id="target">test</div>
 			<div id="classtable"></div>
 		</div>
 		<div class="col-sm-7">
