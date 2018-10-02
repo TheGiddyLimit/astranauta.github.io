@@ -263,6 +263,27 @@ Array.prototype.peek = Array.prototype.peek ||
 		return this.slice(-1)[0];
 	};
 
+ObjUtil = {
+	mergeWith: function (source, target, options, cb) {
+		if (typeof options === "function") {
+			cb = options;
+			options = {
+				depth: 1
+			}
+		}
+		if (!source || !target || typeof cb !== "function") throw new Error("Must include a source, target and a callback to handle merging");
+
+		let recursive = function (deepSource, deepTarget, depth = 1) {
+			if (depth > options.depth || !deepSource || !deepTarget) return;
+			for (let prop of Object.keys(deepSource)) {
+				deepTarget[prop] = cb(deepSource[prop], deepTarget[prop], source, target);
+				recursive(source[prop], deepTarget[prop], depth + 1);
+			}
+		}
+		recursive(source, target, 1);
+	}
+};
+
 StrUtil = {
 	uppercaseFirst: function (string) {
 		return string.uppercaseFirst();
