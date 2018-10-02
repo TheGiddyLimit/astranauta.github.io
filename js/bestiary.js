@@ -14,6 +14,7 @@ window.PROF_DICE_MODE = PROF_MODE_BONUS;
 function imgError (x) {
 	$(x).closest("th").css("padding-right", "0.2em");
 	$(x).remove();
+	$(`.mon__wrp_hp`).css("max-width", "none");
 }
 
 function getAllImmRest (toParse, key) {
@@ -102,13 +103,13 @@ function pPostLoad () {
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
+	SortUtil.initHandleFilterButtonClicks();
 	pLoadMeta()
 		.then(pLoadFluffIndex)
 		.then(multisourceLoad.bind(null, JSON_DIR, JSON_LIST_NAME, pPageInit, addMonsters, pPostLoad))
 		.then(() => {
 			if (History.lastLoadedId == null) History._freshLoad();
 		});
-	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 let list;
@@ -300,7 +301,7 @@ function pPageInit (loadedSources) {
 	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
-		valueNames: ["name", "source", "type", "cr", "group"],
+		valueNames: ["name", "source", "type", "cr", "group", "alias"],
 		listClass: "monsters"
 	});
 	list.on("updated", () => {
@@ -316,11 +317,10 @@ function pPageInit (loadedSources) {
 	// sorting headers
 	$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
 		const $this = $(this);
-		let direction = $this.data("sortby") === "desc" ? "asc" : "desc"
+		let direction = $this.data("sortby") === "desc" ? "asc" : "desc";
 
 		$this.data("sortby", direction);
-		ut.call(this, "#filtertools-magic", $this, direction);
-		$this.find('span').addClass($this.data("sortby") === "desc" ? "caret" : "caret caret-reverse");
+		$this.find('span').addClass($this.data("sortby") === "desc" ? "caret" : "caret caret--reverse");
 		list.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortMonsters});
 	});
 
@@ -522,6 +522,7 @@ function addMonsters (data) {
 					<span class="type col-xs-4 col-xs-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
 					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon._pCr}</span>
 					${mon.group ? `<span class="group hidden">${mon.group}</span>` : ""}
+					<span class="alias hidden">${(mon.alias || []).map(it => `"${it}"`).join(",")}</span>
 				</a>
 			</li>`;
 
@@ -682,7 +683,7 @@ function renderStatblock (mon, isScaled) {
 		<tr><td id="sizetypealignment" colspan="6"><span id="size">${Parser.sizeAbvToFull(mon.size)}</span> <span id="type">type</span>, <span id="alignment">alignment</span></td></tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		<tr><td colspan="6"><strong>Armor Class</strong> <span id="ac">## (source)</span></td></tr>
-		<tr><td colspan="6"><strong>Hit Points</strong> <span id="hp">hp</span></td></tr>
+		<tr><td colspan="6"><div class="mon__wrp_hp"><strong>Hit Points</strong> <span id="hp">hp</span></div></td></tr>
 		<tr><td colspan="6"><strong>Speed</strong> <span id="speed">30 ft.</span></td></tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		<tr id="abilitynames"><th>STR</th><th>DEX</th><th>CON</th><th>INT</th><th>WIS</th><th>CHA</th></tr>

@@ -40,6 +40,7 @@ function navigation () {
 	UL('rules', 'ul_rules', 'dropdown-menu');
 	LI('ul_rules', 'quickreference.html', 'Quick Reference');
 	LI('ul_rules', 'variantrules.html', 'Variant & Optional Rules');
+	LI('ul_rules', 'tables.html', 'Tables');
 	LIDivider('ul_rules');
 	LI('ul_rules', 'book.html', "Dungeon Master's Guide", "DMG");
 	LI('ul_rules', 'book.html', "Monster Manual", "MM");
@@ -100,6 +101,8 @@ function navigation () {
 	LI('ul_utils', 'demo.html', 'Renderer Demo');
 	LI('ul_utils', 'roll20.html', 'Roll20 Script Help');
 	LI('ul_utils', 'makeshaped.html', 'Roll20 Shaped Sheet JS Builder');
+	LIDivider('ul_utils');
+	LI('ul_utils', 'donate.html', 'Donate');
 
 	LISwitcher('navbar', 'daynightMode', 'nightModeToggle', '#', 'styleSwitcher.toggleActiveStyleSheet(); return false;');
 

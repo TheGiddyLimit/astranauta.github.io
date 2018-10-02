@@ -4,8 +4,8 @@ const JSON_URL = "data/rewards.json";
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 let list;

@@ -115,8 +115,8 @@ function populateTablesAndFilters (data) {
 
 	$("#filtertools-mundane").find("button.sort").on("click", function (evt) {
 		evt.stopPropagation();
-		var $this = $(this);
-		var direction = $this.data("sortby") === "asc" ? "desc" : "asc"
+		const $this = $(this);
+		const direction = $this.data("sortby") === "asc" ? "desc" : "asc";
 		$this.data("sortby", direction);
 		SortUtil.handleFilterButtonClick.call(this, "#filtertools-mundane", $this, direction);
 		mundanelist.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortItems});
@@ -124,8 +124,8 @@ function populateTablesAndFilters (data) {
 
 	$("#filtertools-magic").find("button.sort").on("click", function (evt) {
 		evt.stopPropagation();
-		var $this = $(this);
-		var direction = $this.data("sortby") === "asc" ? "desc" : "asc"
+		const $this = $(this);
+		const direction = $this.data("sortby") === "asc" ? "desc" : "asc";
 
 		$this.data("sortby", direction);
 		SortUtil.handleFilterButtonClick.call(this, "#filtertools-magic", $this, direction);
@@ -223,7 +223,7 @@ function addItems (data) {
 			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
 					<span class="name col-xs-3">${name}</span>
-					<span class="type col-xs-4 col-xs-4-3">${curitem.typeText}</span>
+					<span class="type col-xs-4 col-xs-4-3">${curitem.typeListText}</span>
 					<span class="col-xs-1 col-xs-1-5 text-align-center">${curitem.value || "\u2014"}</span>
 					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
 					<span class="source col-xs-1 col-xs-1-7 ${Parser.sourceJsonToColor(curitem.source)}" title="${sourceFull}">${sourceAbv}</span>
@@ -236,7 +236,7 @@ function addItems (data) {
 			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
 					<span class="name col-xs-3 col-xs-3-5">${name}</span>
-					<span class="type col-xs-3 col-xs-3-3">${curitem.typeText}</span>
+					<span class="type col-xs-3 col-xs-3-3">${curitem.typeListText}</span>
 					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
 					<span class="rarity col-xs-2">${rarity}</span>
 					<span class="source col-xs-1 col-xs-1-7 ${Parser.sourceJsonToColor(curitem.source)}" title="${sourceFull}">${sourceAbv}</span>

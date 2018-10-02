@@ -5,7 +5,7 @@
 	"id": "/Entry",
 	"description": "A recursively renderable object.",
 	"type": ["string", "integer", "object"],
-	"version": "1.2.2",
+	"version": "1.2.4",
 
 	"definitions" : {
 		"entry": {
@@ -50,6 +50,7 @@
 							}
 						},
 						"data": {
+							"description": "A generic object for storing special data for external use-cases.",
 							"type": "object"
 						}
 					},
@@ -246,9 +247,36 @@
 							"items": {
 								"$ref": "/Entry"
 							}
+						},
+						"data": {
+							"type": "object"
 						}
 					},
 					"required": ["rows"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryTableGroup": {
+			"description": "Used to group related tables together; has no effect on rendering.",
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "tableGroup"},
+						"tables": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/entryTable"
+							}
+						},
+						"name": {
+							"type": "string"
+						},
+						"data": {
+							"type": "object"
+						}
+					},
 					"additionalProperties": false
 				}
 			]
@@ -916,6 +944,7 @@
 		{"$ref": "#/definitions/entryInlineEntries"},
 		{"$ref": "#/definitions/entryEntriesInlineEntries"},
 		{"$ref": "#/definitions/entryOptions"},
+		{"$ref": "#/definitions/entryTableGroup"},
 		{"$ref": "#/definitions/entryTable"},
 		{"$ref": "#/definitions/entryTableRow"},
 		{"$ref": "#/definitions/entryTableCell"},

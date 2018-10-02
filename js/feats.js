@@ -4,8 +4,8 @@ let list;
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 const sourceFilter = getSourceFilter();

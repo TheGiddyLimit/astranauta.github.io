@@ -1,9 +1,9 @@
 "use strict";
 
 class Books {
-	static sortBooks (a, b) {
-		a = bookList[a.elm.getAttribute(FLTR_ID)];
-		b = bookList[b.elm.getAttribute(FLTR_ID)];
+	static sortBooks (dataList, a, b) {
+		a = dataList[a.elm.getAttribute(FLTR_ID)];
+		b = dataList[b.elm.getAttribute(FLTR_ID)];
 		return SortUtil.ascSort(a.name, b.name);
 	}
 }

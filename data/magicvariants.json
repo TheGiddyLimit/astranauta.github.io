@@ -7,9 +7,11 @@
 				"Ammunition made of or coated with adamantine is unusually effective when used to break objects. Whenever a piece of adamantine ammunition hits an object, the hit is a critical hit.",
 				"The adamantine version of ten pieces of ammunition costs 500 gp more than the normal version, whether the ammunition is made of the metal or coated with it."
 			],
-			"requires": {
-				"ammunition": true
-			},
+			"requires": [
+				{
+					"ammunition": true
+				}
+			],
 			"inherits": {
 				"tier": "Minor",
 				"rarity": "Unknown",
@@ -24,8 +26,16 @@
 		{
 			"name": "Adamantine Armor",
 			"type": "GV",
-			"requires": {
-				"type": "HA"
+			"requires": [
+				{
+					"type": "HA"
+				},
+				{
+					"type": "MA"
+				}
+			],
+			"excludes": {
+				"name": "Hide Armor"
 			},
 			"inherits": {
 				"tier": "Major",
@@ -39,35 +49,17 @@
 			}
 		},
 		{
-			"name": "Adamantine Armor Medium",
-			"requires": {
-				"type": "MA"
-			},
-			"excludes": {
-				"name": "Hide Armor"
-			},
-			"inherits": {
-				"tier": "Major",
-				"rarity": "Uncommon",
-				"source": "DMG",
-				"page": 150,
-				"namePrefix": "Adamantine ",
-				"entries": [
-					"This suit of armor is reinforced with adamantine, one of the hardest substances in existence. While you're wearing it, any critical hit against you becomes a normal hit."
-				]
-			},
-			"noDisplay": true
-		},
-		{
 			"name": "Adamantine Weapon",
 			"type": "GV",
 			"entries": [
 				"Melee weapons made of or coated with adamantine are unusually effective when used to break objects. Whenever an adamantine weapon hits an object, the hit is a critical hit.",
 				"The adamantine version of a melee weapon costs 500 gp more than the normal version, whether the weapon is made of the metal or coated with it."
 			],
-			"requires": {
-				"weapon": true
-			},
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
 			"excludes": {
 				"name": "Net"
 			},
@@ -88,9 +80,11 @@
 			"entries": [
 				"You have a +1 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
 			],
-			"requires": {
-				"ammunition": true
-			},
+			"requires": [
+				{
+					"ammunition": true
+				}
+			],
 			"inherits": {
 				"genericBonus": "+1",
 				"tier": "Minor",
@@ -125,9 +119,11 @@
 			"entries": [
 				"You have a +2 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
 			],
-			"requires": {
-				"ammunition": true
-			},
+			"requires": [
+				{
+					"ammunition": true
+				}
+			],
 			"inherits": {
 				"genericBonus": "+2",
 				"tier": "Minor",
@@ -162,9 +158,11 @@
 			"entries": [
 				"You have a +3 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
 			],
-			"requires": {
-				"ammunition": true
-			},
+			"requires": [
+				{
+					"ammunition": true
+				}
+			],
 			"inherits": {
 				"genericBonus": "+3",
 				"tier": "Minor",
@@ -196,9 +194,11 @@
 		{
 			"name": "Armblade",
 			"type": "GV",
-			"requires": {
-				"type": "M"
-			},
+			"requires": [
+				{
+					"type": "M"
+				}
+			],
 			"excludes": {
 				"property": "2H"
 			},
@@ -220,9 +220,11 @@
 			"entries": [
 				"You have a +1 bonus to AC while wearing this armor."
 			],
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"genericBonus": "+1",
 				"tier": "Major",
@@ -250,9 +252,11 @@
 			"entries": [
 				"You have a +2 bonus to AC while wearing this armor."
 			],
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"genericBonus": "+2",
 				"tier": "Major",
@@ -280,9 +284,11 @@
 			"entries": [
 				"You have a +3 bonus to AC while wearing this armor."
 			],
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"genericBonus": "+3",
 				"tier": "Major",
@@ -307,9 +313,11 @@
 		{
 			"name": "Armor of Acid Resistance",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"resist": "acid",
 				"tier": "Major",
@@ -323,9 +331,11 @@
 		{
 			"name": "Armor of Cold Resistance",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"resist": "cold",
 				"tier": "Major",
@@ -339,9 +349,11 @@
 		{
 			"name": "Armor of Fire Resistance",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"resist": "fire",
 				"tier": "Major",
@@ -355,9 +367,11 @@
 		{
 			"name": "Armor of Force Resistance",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"resist": "force",
 				"tier": "Major",
@@ -371,9 +385,11 @@
 		{
 			"name": "Armor of Gleaming",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"tier": "Minor",
 				"rarity": "Common",
@@ -388,9 +404,11 @@
 		{
 			"name": "Armor of Lightning Resistance",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"resist": "lightning",
 				"tier": "Major",
@@ -404,9 +422,11 @@
 		{
 			"name": "Armor of Necrotic Resistance",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"resist": "necrotic",
 				"tier": "Major",
@@ -420,9 +440,11 @@
 		{
 			"name": "Armor of Poison Resistance",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"resist": "poison",
 				"tier": "Major",
@@ -436,9 +458,11 @@
 		{
 			"name": "Armor of Psychic Resistance",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"resist": "psychic",
 				"tier": "Major",
@@ -452,9 +476,11 @@
 		{
 			"name": "Armor of Radiant Resistance",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"resist": "radiant",
 				"tier": "Major",
@@ -468,9 +494,11 @@
 		{
 			"name": "Armor of Thunder Resistance",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"resist": "thunder",
 				"tier": "Major",
@@ -489,9 +517,11 @@
 				"Once an {@italic arrow of slaying} deals its extra damage to a creature, it becomes a nonmagical arrow.",
 				"Other types of magic ammunition of this kind exist, such as bolts of slaying meant for a crossbow, though arrows are most common."
 			],
-			"requires": {
-				"ammunition": true
-			},
+			"requires": [
+				{
+					"ammunition": true
+				}
+			],
 			"excludes": {
 				"page": 268
 			},
@@ -510,9 +540,11 @@
 		{
 			"name": "Berserker Axe",
 			"type": "GV",
-			"requires": {
-				"axe": true
-			},
+			"requires": [
+				{
+					"axe": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Rare",
@@ -553,9 +585,11 @@
 		{
 			"name": "Cast-Off Armor",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"tier": "Minor",
 				"rarity": "Common",
@@ -570,9 +604,11 @@
 		{
 			"name": "Dancing Sword",
 			"type": "GV",
-			"requires": {
-				"sword": true
-			},
+			"requires": [
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Very Rare",
@@ -590,9 +626,11 @@
 		{
 			"name": "Defender",
 			"type": "GV",
-			"requires": {
-				"sword": true
-			},
+			"requires": [
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Legendary",
@@ -609,9 +647,11 @@
 		{
 			"name": "Dragon Slayer",
 			"type": "GV",
-			"requires": {
-				"sword": true
-			},
+			"requires": [
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Rare",
@@ -643,9 +683,11 @@
 		{
 			"name": "Flame Tongue",
 			"type": "GV",
-			"requires": {
-				"sword": true
-			},
+			"requires": [
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Rare",
@@ -661,9 +703,11 @@
 		{
 			"name": "Frost Brand",
 			"type": "GV",
-			"requires": {
-				"sword": true
-			},
+			"requires": [
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Very Rare",
@@ -681,9 +725,14 @@
 		{
 			"name": "Giant Slayer",
 			"type": "GV",
-			"requires": {
-				"axe": true
-			},
+			"requires": [
+				{
+					"axe": true
+				},
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Rare",
@@ -713,45 +762,13 @@
 			}
 		},
 		{
-			"name": "Giant Slayer Sword",
-			"requires": {
-				"sword": true
-			},
-			"inherits": {
-				"tier": "Major",
-				"rarity": "Rare",
-				"source": "DMG",
-				"page": 172,
-				"namePrefix": "Giant Slayer ",
-				"entries": [
-					"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
-					"When you hit a giant with it, the giant takes an extra {@dice 2d6} damage of the weapon's type and must succeed on a DC 15 Strength saving throw or fall {@condition prone}. For the purpose of this weapon, \"giant\" refers to any creature with the giant type, including ettins and trolls."
-				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "melee attacks +1",
-						"toString": [
-							null
-						]
-					},
-					{
-						"_category": "bonus",
-						"__text": "melee damage +1",
-						"toString": [
-							null
-						]
-					}
-				]
-			},
-			"noDisplay": true
-		},
-		{
 			"name": "Holy Avenger",
 			"type": "GV",
-			"requires": {
-				"sword": true
-			},
+			"requires": [
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Legendary",
@@ -784,10 +801,12 @@
 		{
 			"name": "Imbued Wood (Fernian Ash)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Crystal",
@@ -810,10 +829,12 @@
 		{
 			"name": "Imbued Wood (Irian Rosewood)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Crystal",
@@ -836,10 +857,12 @@
 		{
 			"name": "Imbued Wood (Kythrian Manchineel)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Crystal",
@@ -862,10 +885,12 @@
 		{
 			"name": "Imbued Wood (Lamannian Oak)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Crystal",
@@ -888,10 +913,12 @@
 		{
 			"name": "Imbued Wood (Mabaran Ebony)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Crystal",
@@ -914,10 +941,12 @@
 		{
 			"name": "Imbued Wood (Quori Beech)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Crystal",
@@ -940,10 +969,12 @@
 		{
 			"name": "Imbued Wood (Risian Pine)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Crystal",
@@ -966,10 +997,12 @@
 		{
 			"name": "Imbued Wood (Shavarran Birch)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Crystal",
@@ -992,10 +1025,12 @@
 		{
 			"name": "Imbued Wood (Xorian Wenge)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Crystal",
@@ -1035,9 +1070,11 @@
 					]
 				}
 			],
-			"requires": {
-				"sword": true
-			},
+			"requires": [
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Legendary",
@@ -1098,9 +1135,11 @@
 		{
 			"name": "Mariner's Armor",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"tier": "Minor",
 				"rarity": "Uncommon",
@@ -1115,9 +1154,11 @@
 		{
 			"name": "Mind Blade",
 			"type": "GV",
-			"requires": {
-				"sword": true
-			},
+			"requires": [
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"rarity": "Rare",
 				"source": "VGM",
@@ -1132,9 +1173,11 @@
 		{
 			"name": "Mind Carapace Armor",
 			"type": "GV",
-			"requires": {
-				"type": "HA"
-			},
+			"requires": [
+				{
+					"type": "HA"
+				}
+			],
 			"inherits": {
 				"rarity": "Uncommon",
 				"source": "VGM",
@@ -1149,8 +1192,16 @@
 		{
 			"name": "Mithral Armor",
 			"type": "GV",
-			"requires": {
-				"type": "HA"
+			"requires": [
+				{
+					"type": "HA"
+				},
+				{
+					"type": "MA"
+				}
+			],
+			"excludes": {
+				"name": "Hide Armor"
 			},
 			"inherits": {
 				"tier": "Minor",
@@ -1165,32 +1216,13 @@
 			}
 		},
 		{
-			"name": "Mithral Armor Medium",
-			"requires": {
-				"type": "MA"
-			},
-			"excludes": {
-				"name": "Hide Armor"
-			},
-			"inherits": {
-				"tier": "Minor",
-				"rarity": "Uncommon",
-				"source": "DMG",
-				"page": 182,
-				"stealth": false,
-				"namePrefix": "Mithral ",
-				"entries": [
-					"Mithral is a light, flexible metal. A mithral chain shirt or breastplate can be worn under normal clothes. If the armor normally imposes disadvantage on Dexterity ({@skill Stealth}) checks or has a Strength requirement, the mithral version of the armor doesn't."
-				]
-			},
-			"noDisplay": true
-		},
-		{
 			"name": "Moon-Touched Sword",
 			"type": "GV",
-			"requires": {
-				"sword": true
-			},
+			"requires": [
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"tier": "Minor",
 				"rarity": "Common",
@@ -1205,9 +1237,11 @@
 		{
 			"name": "Nine Lives Stealer",
 			"type": "GV",
-			"requires": {
-				"sword": true
-			},
+			"requires": [
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Very Rare",
@@ -1241,10 +1275,12 @@
 		{
 			"name": "Orb of Shielding (Fernian Basalt)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Staff",
@@ -1267,10 +1303,12 @@
 		{
 			"name": "Orb of Shielding (Irian Quartz)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Staff",
@@ -1293,10 +1331,12 @@
 		{
 			"name": "Orb of Shielding (Kythrian Skarn)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Staff",
@@ -1319,10 +1359,12 @@
 		{
 			"name": "Orb of Shielding (Lamannian Flint)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Staff",
@@ -1345,10 +1387,12 @@
 		{
 			"name": "Orb of Shielding (Mabaran Obsidian)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Staff",
@@ -1371,10 +1415,12 @@
 		{
 			"name": "Orb of Shielding (Quori Celestine)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Staff",
@@ -1397,10 +1443,12 @@
 		{
 			"name": "Orb of Shielding (Risian Shale)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Staff",
@@ -1423,10 +1471,12 @@
 		{
 			"name": "Orb of Shielding (Shavaran Chert)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Staff",
@@ -1449,10 +1499,12 @@
 		{
 			"name": "Orb of Shielding (Xorian Marble)",
 			"type": "GV",
-			"requires": {
-				"type": "SCF",
-				"scfType": "arcane"
-			},
+			"requires": [
+				{
+					"type": "SCF",
+					"scfType": "arcane"
+				}
+			],
 			"excludes": {
 				"name": [
 					"Staff",
@@ -1478,9 +1530,11 @@
 			"entries": [
 				"While holding this shield, you have a +1 bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
 			],
-			"requires": {
-				"type": "S"
-			},
+			"requires": [
+				{
+					"type": "S"
+				}
+			],
 			"inherits": {
 				"genericBonus": "+1",
 				"tier": "Major",
@@ -1508,9 +1562,11 @@
 			"entries": [
 				"While holding this shield, you have a +2 bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
 			],
-			"requires": {
-				"type": "S"
-			},
+			"requires": [
+				{
+					"type": "S"
+				}
+			],
 			"inherits": {
 				"genericBonus": "+2",
 				"tier": "Major",
@@ -1538,9 +1594,11 @@
 			"entries": [
 				"While holding this shield, you have a +3 bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
 			],
-			"requires": {
-				"type": "S"
-			},
+			"requires": [
+				{
+					"type": "S"
+				}
+			],
 			"inherits": {
 				"genericBonus": "+3",
 				"tier": "Major",
@@ -1568,9 +1626,11 @@
 			"entries": [
 				"Some monsters that have immunity or resistance to nonmagical weapons are susceptible to silver ammunition, so cautious adventurers invest extra coin to plate their ammunition in silver. You can silver ten pieces of ammunition for 100 gp. This cost represents not only the price of the silver, but the time and expertise needed to add silver to the ammunition without making it less effective."
 			],
-			"requires": {
-				"ammunition": true
-			},
+			"requires": [
+				{
+					"ammunition": true
+				}
+			],
 			"inherits": {
 				"tier": "Minor",
 				"rarity": "Unknown",
@@ -1585,9 +1645,11 @@
 			"entries": [
 				"Some monsters that have immunity or resistance to nonmagical weapons are susceptible to silver weapons, so cautious adventurers invest extra coin to plate their weapons with silver. You can silver a single weapon for 100 gp. This cost represents not only the price of the silver, but the time and expertise needed to add silver to the weapon without making it less effective."
 			],
-			"requires": {
-				"weapon": true
-			},
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
 			"excludes": {
 				"name": "Net"
 			},
@@ -1602,9 +1664,11 @@
 		{
 			"name": "Smoldering Armor",
 			"type": "GV",
-			"requires": {
-				"armor": true
-			},
+			"requires": [
+				{
+					"armor": true
+				}
+			],
 			"inherits": {
 				"tier": "Minor",
 				"rarity": "Common",
@@ -1619,9 +1683,11 @@
 		{
 			"name": "Sword of Life Stealing",
 			"type": "GV",
-			"requires": {
-				"sword": true
-			},
+			"requires": [
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Rare",
@@ -1638,10 +1704,12 @@
 		{
 			"name": "Sword of Sharpness",
 			"type": "GV",
-			"requires": {
-				"sword": true,
-				"dmgType": "S"
-			},
+			"requires": [
+				{
+					"sword": true,
+					"dmgType": "S"
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Very Rare",
@@ -1660,9 +1728,11 @@
 		{
 			"name": "Sword of Vengeance",
 			"type": "GV",
-			"requires": {
-				"sword": true
-			},
+			"requires": [
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Uncommon",
@@ -1704,9 +1774,11 @@
 		{
 			"name": "Sword of Wounding",
 			"type": "GV",
-			"requires": {
-				"sword": true
-			},
+			"requires": [
+				{
+					"sword": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Rare",
@@ -1723,9 +1795,11 @@
 		{
 			"name": "Vicious Weapon",
 			"type": "GV",
-			"requires": {
-				"weapon": true
-			},
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
 			"excludes": {
 				"name": "Net"
 			},
@@ -1744,10 +1818,12 @@
 		{
 			"name": "Vorpal Sword",
 			"type": "GV",
-			"requires": {
-				"sword": true,
-				"dmgType": "S"
-			},
+			"requires": [
+				{
+					"sword": true,
+					"dmgType": "S"
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Legendary",
@@ -1780,9 +1856,11 @@
 		{
 			"name": "Walloping Ammunition",
 			"type": "GV",
-			"requires": {
-				"ammunition": true
-			},
+			"requires": [
+				{
+					"ammunition": true
+				}
+			],
 			"inherits": {
 				"tier": "Minor",
 				"rarity": "Common",
@@ -1800,9 +1878,11 @@
 			"entries": [
 				"You have a +1 bonus to attack rolls made with this weapon."
 			],
-			"requires": {
-				"name": "Net"
-			},
+			"requires": [
+				{
+					"name": "Net"
+				}
+			],
 			"inherits": {
 				"genericBonus": "+1",
 				"tier": "Major",
@@ -1821,9 +1901,11 @@
 			"entries": [
 				"You have a +2 bonus to attack rolls made with this weapon."
 			],
-			"requires": {
-				"name": "Net"
-			},
+			"requires": [
+				{
+					"name": "Net"
+				}
+			],
 			"inherits": {
 				"genericBonus": "+2",
 				"tier": "Major",
@@ -1842,9 +1924,11 @@
 			"entries": [
 				"You have a +3 bonus to attack rolls made with this weapon."
 			],
-			"requires": {
-				"name": "Net"
-			},
+			"requires": [
+				{
+					"name": "Net"
+				}
+			],
 			"inherits": {
 				"genericBonus": "+3",
 				"tier": "Major",
@@ -1863,9 +1947,11 @@
 			"entries": [
 				"You have a +1 bonus to attack and damage rolls made with this weapon."
 			],
-			"requires": {
-				"weapon": true
-			},
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
 			"excludes": {
 				"name": "Net"
 			},
@@ -1887,9 +1973,11 @@
 			"entries": [
 				"You have a +2 bonus to attack and damage rolls made with this weapon."
 			],
-			"requires": {
-				"weapon": true
-			},
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
 			"excludes": {
 				"name": "Net"
 			},
@@ -1911,9 +1999,11 @@
 			"entries": [
 				"You have a +3 bonus to attack and damage rolls made with this weapon."
 			],
-			"requires": {
-				"weapon": true
-			},
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
 			"excludes": {
 				"name": "Net"
 			},
@@ -1932,9 +2022,11 @@
 		{
 			"name": "Weapon of Warning",
 			"type": "GV",
-			"requires": {
-				"weapon": true
-			},
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Uncommon",

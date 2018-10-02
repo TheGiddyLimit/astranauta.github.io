@@ -1,9 +1,9 @@
 "use strict";
 
 class Adventures {
-	static sortAdventures (a, b, o) {
-		a = adventuresList[a.elm.getAttribute(FLTR_ID)];
-		b = adventuresList[b.elm.getAttribute(FLTR_ID)];
+	static sortAdventures (dataList, a, b, o) {
+		a = dataList[a.elm.getAttribute(FLTR_ID)];
+		b = dataList[b.elm.getAttribute(FLTR_ID)];
 
 		if (o.valueName === "name") return byName();
 		if (o.valueName === "storyline") return orFallback(SortUtil.ascSort, "storyline");
@@ -20,7 +20,7 @@ class Adventures {
 
 		function orFallback (func, prop) {
 			const initial = func(a[prop], b[prop]);
-			return initial !== 0 ? initial : byName();
+			return initial || byName();
 		}
 	}
 
@@ -31,14 +31,9 @@ class Adventures {
 
 	static getDateStr (adv) {
 		const date = new Date(adv.published);
-		return `${Adventures.MONTH_NAMES[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+		return MiscUtil.dateToStr(date);
 	}
 }
-Adventures.MONTH_NAMES = [
-	"January", "February", "March", "April", "May", "June",
-	"July", "August", "September", "October", "November", "December"
-];
-
 const adventuresList = new BooksList({
 	contentsUrl: "data/adventures.json",
 	sortFn: Adventures.sortAdventures,
@@ -56,10 +51,7 @@ const adventuresList = new BooksList({
 	}
 });
 
-window.onload = function () {
-	adventuresList.onPageLoad.bind(adventuresList)();
-	initializationFunctions.initHandleFilterButtonClicks();
-}
+window.onload = adventuresList.onPageLoad.bind(adventuresList);
 
 function handleBrew (homebrew) {
 	adventuresList.addData(homebrew);

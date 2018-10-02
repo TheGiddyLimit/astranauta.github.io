@@ -276,11 +276,11 @@ function pPostLoad () {
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
+	SortUtil.initHandleFilterButtonClicks();
 	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addSpells, pPostLoad)
 		.then(() => {
 			if (History.lastLoadedId == null) History._freshLoad();
 		});
-	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 let list;

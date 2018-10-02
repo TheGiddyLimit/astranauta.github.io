@@ -2148,7 +2148,6 @@
 										"The world of the Forgotten Realms uses the Calendar of Harptos, named after the long-dead wizard who invented it. Each year of 365 days is divided into twelve months of thirty days each, which roughly correspond to months in the real-world Gregorian calendar. Each month is divided into three tendays. Five special holidays fall between the months and mark the seasons. Another special holiday, Shieldmeet, is inserted into the calendar after Midsummer every four years, much like leap years in the modern Gregorian calendar.",
 										{
 											"type": "table",
-											"caption": "",
 											"colLabels": [
 												"Month",
 												"Name",
@@ -2934,7 +2933,7 @@
 							"type": "entries",
 							"name": "Astral Projection",
 							"entries": [
-								"Traveling through the Astral Plane by means of the astral projection spell involves projecting one's consciousness there, usually in search of a gateway to an Outer Plane to visit. Since the Outer Planes are as much spiritual states of being as they are physical places, this allows a character to manifest in an Outer Plane as if he or she had physically traveled there, but as in a dream.",
+								"Traveling through the Astral Plane by means of the {@spell astral projection} spell involves projecting one's consciousness there, usually in search of a gateway to an Outer Plane to visit. Since the Outer Planes are as much spiritual states of being as they are physical places, this allows a character to manifest in an Outer Plane as if he or she had physically traveled there, but as in a dream.",
 								"A character's death-either in the Astral Plane or on the destination plane-causes no actual harm. Only the severing of a character's silver cord while on the Astral Plane (or the death of his or her helpless physical body on the Material Plane) can result in the character's true death. Thus, high-level characters sometimes travel to the Outer Planes by way of astral projection rather than seek out a portal or use a more direct spell.",
 								"Only a few things can sever a traveler's silver cord, the most common being a psychic wind (described below). The legendary silver swords of the githyanki also have this ability. A character who travels bodily to the Astral Plane (by means of the plane shift spell or one of the rare portals that leads directly there) has no silver cord."
 							]
@@ -3066,70 +3065,76 @@
 								"The psychic wind has two kinds of effects: a location effect and a mental effect. A group of travelers journeying together suffers the same location effect.",
 								"Each traveler affected by the wind must also make a DC 15 Intelligence saving throw. On a failed save, the traveler suffers the mental effect as well. Roll a {@dice d20} twice and consult the Psychic Wind Effects tables to determine the location and mental effects.",
 								{
-									"type": "table",
-									"caption": "Psychic Wind Effects",
-									"colLabels": [
-										"d20",
-										"Location Effect"
-									],
-									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
-									],
-									"rows": [
-										[
-											"1-8",
-											"Diverted, add {@dice 1d6} hours to travel time"
-										],
-										[
-											"9-12",
-											"Blown off course, add {@dice 3d10} hours to travel time"
-										],
-										[
-											"13-16",
-											"Lost, at the end of the travel time, characters arrive at a location other than the intended destination"
-										],
-										[
-											"17-20",
-											"Sent through color pool to a random plane. Roll on {@b Astral Color Pools} table"
-										]
-									]
-								},
-								{
-									"type": "table",
-									"colLabels": [
-										"d20",
-										"Mental Effect"
-									],
-									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
-									],
-									"rows": [
-										[
-											"1-8",
-											"Stunned for 1 minute - you can repeat the saving throw at the end of each of your turns to end the effect on yourself"
-										],
-										[
-											"9-10",
-											"Short-term madness (see chapter 8)"
-										],
-										[
-											"11-12",
-											"{@dice 2d10} psychic damage"
-										],
-										[
-											"13-16",
-											"{@dice 4d10} psychic damage"
-										],
-										[
-											"17-18",
-											"Long-term madness (see chapter 8)"
-										],
-										[
-											"19-20",
-											"Unconscious for {@dice 1d10} minutes - the effect on you ends if you take damage or if another creature uses an action to shake you awake"
-										]
+									"type": "tableGroup",
+									"name": "Psychic Wind",
+									"tables": [
+										{
+											"type": "table",
+											"caption": "Psychic Wind Effects",
+											"colLabels": [
+												"d20",
+												"Location Effect"
+											],
+											"colStyles": [
+												"col-xs-2 text-align-center",
+												"col-xs-10"
+											],
+											"rows": [
+												[
+													"1-8",
+													"Diverted, add {@dice 1d6} hours to travel time"
+												],
+												[
+													"9-12",
+													"Blown off course, add {@dice 3d10} hours to travel time"
+												],
+												[
+													"13-16",
+													"Lost, at the end of the travel time, characters arrive at a location other than the intended destination"
+												],
+												[
+													"17-20",
+													"Sent through color pool to a random plane. Roll on {@b Astral Color Pools} table"
+												]
+											]
+										},
+										{
+											"type": "table",
+											"colLabels": [
+												"d20",
+												"Mental Effect"
+											],
+											"colStyles": [
+												"col-xs-2 text-align-center",
+												"col-xs-10"
+											],
+											"rows": [
+												[
+													"1-8",
+													"Stunned for 1 minute\u2014you can repeat the saving throw at the end of each of your turns to end the effect on yourself"
+												],
+												[
+													"9-10",
+													"Short-term madness (see chapter 8)"
+												],
+												[
+													"11-12",
+													"{@dice 2d10} psychic damage"
+												],
+												[
+													"13-16",
+													"{@dice 4d10} psychic damage"
+												],
+												[
+													"17-18",
+													"Long-term madness (see chapter 8)"
+												],
+												[
+													"19-20",
+													"Unconscious for {@dice 1d10} minutes\u2014the effect on you ends if you take damage or if another creature uses an action to shake you awake"
+												]
+											]
+										}
 									]
 								}
 							]
@@ -3650,7 +3655,7 @@
 							"type": "entries",
 							"name": "Traveling the Outer Planes",
 							"entries": [
-								"Traveling between the Outer Planes isn't dissimilar from reaching the Outer Planes in the first place. Characters traveling by means of the astral projection spell can go from one plane into the Astral Plane, and there search out a color pool leading to the desired destination. Characters can also use plane shift to reach a different plane more directly. Most often, though, characters use portals-either a portal that links the two planes directly or a portal leading to Sigil, City of Doors, which holds portals to all the planes.",
+								"Traveling between the Outer Planes isn't dissimilar from reaching the Outer Planes in the first place. Characters traveling by means of the {@spell astral projection} spell can go from one plane into the Astral Plane, and there search out a color pool leading to the desired destination. Characters can also use plane shift to reach a different plane more directly. Most often, though, characters use portals-either a portal that links the two planes directly or a portal leading to Sigil, City of Doors, which holds portals to all the planes.",
 								"Two planar features connect multiple Outer Planes together: the River Styx and the Infinite Staircase. Other planar crossings might exist in your campaign, such as a World Tree whose roots touch the Lower Planes and whose branches reach to the Upper Planes, or it might be possible to walk from one plane to another in your cosmology.",
 								{
 									"type": "entries",
@@ -6394,7 +6399,7 @@
 									"type": "entries",
 									"name": "Probabilities",
 									"entries": [
-										"A random encounter table can be created in a number of ways, ranging from simple (roll {@dice {@dice 1d6}} for one of six possible encounters) to complicated (roll percentile dice, modify for time of day, and cross- index the modified number with the dungeon level). The sample encounter table presented here uses a range of 2 to 20 (nineteen entries total), generated using {@dice {@dice 1d12 + 1d8}}. The probability curve ensures that encounters appearing in the middle of the table are more likely to occur than encounters placed at the beginning or end of the table. A roll of 2 or 20 is rare (about a 1 percent chance of either), while each of the rolls from 9 to 13 occurs a little over 8 percent of the time.",
+										"A random encounter table can be created in a number of ways, ranging from simple (roll {@dice {@dice 1d6}} for one of six possible encounters) to complicated (roll percentile dice, modify for time of day, and cross- index the modified number with the dungeon level). The sample encounter table presented here uses a range of 2 to 20 (nineteen entries total), generated using {@dice {@dice 1d12 + 1d8}}. The probability curve ensures that encounters appearing in the middle of the table are more likely to occur than encounters placed at the beginning or end of the table. A roll of 2 or 20 is rare (about a {@chance 1} chance of either), while each of the rolls from 9 to 13 occurs a little over 8 percent of the time.",
 										"The Sylvan Forest Encounters table is an example of a random encounter table that implements the ideas mentioned above. Creature names in bold refer to stat blocks that appear in the {@i Monster Manual}.",
 										{
 											"type": "table",
@@ -7017,231 +7022,237 @@
 									"entries": [
 										"In a sentence, describe one ideal that the NPC holds dear and which governs his or her greater actions. Player characters who uncover an NPC's ideal can use what they've learned to influence the NPC in asocial interaction (as discussed in chapter 8, \"Running the Game\"). Ideals can connect to alignment, as shown on the NPC Ideals table. The alignment connections here are suggestions only; an evil character could have beauty as an ideal, for instance.",
 										{
-											"type": "table",
-											"caption": "Good Ideals",
-											"colLabels": [
-												"d6",
-												"Ideal"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-10"
-											],
-											"rows": [
-												[
-													"1",
-													"Beauty"
-												],
-												[
-													"2",
-													"Charity"
-												],
-												[
-													"3",
-													"Greater good"
-												],
-												[
-													"4",
-													"Life"
-												],
-												[
-													"5",
-													"Respect"
-												],
-												[
-													"6",
-													"Self-sacrifice"
-												]
-											]
-										},
-										{
-											"type": "table",
-											"caption": "Evil Ideals",
-											"colLabels": [
-												"d6",
-												"Ideal"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-10"
-											],
-											"rows": [
-												[
-													"1",
-													"Domination"
-												],
-												[
-													"2",
-													"Greed"
-												],
-												[
-													"3",
-													"Might"
-												],
-												[
-													"4",
-													"Pain"
-												],
-												[
-													"5",
-													"Retribution"
-												],
-												[
-													"6",
-													"Slaughter"
-												]
-											]
-										},
-										{
-											"type": "table",
-											"caption": "Lawful Ideals",
-											"colLabels": [
-												"d6",
-												"Ideal"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-10"
-											],
-											"rows": [
-												[
-													"1",
-													"Community"
-												],
-												[
-													"2",
-													"Fairness"
-												],
-												[
-													"3",
-													"Honor"
-												],
-												[
-													"4",
-													"Logic"
-												],
-												[
-													"5",
-													"Responsibility"
-												],
-												[
-													"6",
-													"Tradition"
-												]
-											]
-										},
-										{
-											"type": "table",
-											"caption": "Chaotic Ideals",
-											"colLabels": [
-												"d6",
-												"Ideal"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-10"
-											],
-											"rows": [
-												[
-													"1",
-													"Change"
-												],
-												[
-													"2",
-													"Creativity"
-												],
-												[
-													"3",
-													"Freedom"
-												],
-												[
-													"4",
-													"Independence"
-												],
-												[
-													"5",
-													"No limits"
-												],
-												[
-													"6",
-													"Whimsy"
-												]
-											]
-										},
-										{
-											"type": "table",
-											"caption": "Neutral Ideals",
-											"colLabels": [
-												"d6",
-												"Ideal"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-10"
-											],
-											"rows": [
-												[
-													"1",
-													"Balance"
-												],
-												[
-													"2",
-													"Knowledge"
-												],
-												[
-													"3",
-													"Live and let live"
-												],
-												[
-													"4",
-													"Moderation"
-												],
-												[
-													"5",
-													"Neutrality"
-												],
-												[
-													"6",
-													"People"
-												]
-											]
-										},
-										{
-											"type": "table",
-											"caption": "Other Ideals",
-											"colLabels": [
-												"d6",
-												"Ideal"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-10"
-											],
-											"rows": [
-												[
-													"1",
-													"Aspiration"
-												],
-												[
-													"2",
-													"Discovery"
-												],
-												[
-													"3",
-													"Glory"
-												],
-												[
-													"4",
-													"Nation"
-												],
-												[
-													"5",
-													"Redemption"
-												],
-												[
-													"6",
-													"Self-knowledge"
-												]
+											"type": "tableGroup",
+											"name": "Ideals",
+											"tables": [
+												{
+													"type": "table",
+													"caption": "Good Ideals",
+													"colLabels": [
+														"d6",
+														"Ideal"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-10"
+													],
+													"rows": [
+														[
+															"1",
+															"Beauty"
+														],
+														[
+															"2",
+															"Charity"
+														],
+														[
+															"3",
+															"Greater good"
+														],
+														[
+															"4",
+															"Life"
+														],
+														[
+															"5",
+															"Respect"
+														],
+														[
+															"6",
+															"Self-sacrifice"
+														]
+													]
+												},
+												{
+													"type": "table",
+													"caption": "Evil Ideals",
+													"colLabels": [
+														"d6",
+														"Ideal"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-10"
+													],
+													"rows": [
+														[
+															"1",
+															"Domination"
+														],
+														[
+															"2",
+															"Greed"
+														],
+														[
+															"3",
+															"Might"
+														],
+														[
+															"4",
+															"Pain"
+														],
+														[
+															"5",
+															"Retribution"
+														],
+														[
+															"6",
+															"Slaughter"
+														]
+													]
+												},
+												{
+													"type": "table",
+													"caption": "Lawful Ideals",
+													"colLabels": [
+														"d6",
+														"Ideal"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-10"
+													],
+													"rows": [
+														[
+															"1",
+															"Community"
+														],
+														[
+															"2",
+															"Fairness"
+														],
+														[
+															"3",
+															"Honor"
+														],
+														[
+															"4",
+															"Logic"
+														],
+														[
+															"5",
+															"Responsibility"
+														],
+														[
+															"6",
+															"Tradition"
+														]
+													]
+												},
+												{
+													"type": "table",
+													"caption": "Chaotic Ideals",
+													"colLabels": [
+														"d6",
+														"Ideal"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-10"
+													],
+													"rows": [
+														[
+															"1",
+															"Change"
+														],
+														[
+															"2",
+															"Creativity"
+														],
+														[
+															"3",
+															"Freedom"
+														],
+														[
+															"4",
+															"Independence"
+														],
+														[
+															"5",
+															"No limits"
+														],
+														[
+															"6",
+															"Whimsy"
+														]
+													]
+												},
+												{
+													"type": "table",
+													"caption": "Neutral Ideals",
+													"colLabels": [
+														"d6",
+														"Ideal"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-10"
+													],
+													"rows": [
+														[
+															"1",
+															"Balance"
+														],
+														[
+															"2",
+															"Knowledge"
+														],
+														[
+															"3",
+															"Live and let live"
+														],
+														[
+															"4",
+															"Moderation"
+														],
+														[
+															"5",
+															"Neutrality"
+														],
+														[
+															"6",
+															"People"
+														]
+													]
+												},
+												{
+													"type": "table",
+													"caption": "Other Ideals",
+													"colLabels": [
+														"d6",
+														"Ideal"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-10"
+													],
+													"rows": [
+														[
+															"1",
+															"Aspiration"
+														],
+														[
+															"2",
+															"Discovery"
+														],
+														[
+															"3",
+															"Glory"
+														],
+														[
+															"4",
+															"Nation"
+														],
+														[
+															"5",
+															"Redemption"
+														],
+														[
+															"6",
+															"Self-knowledge"
+														]
+													]
+												}
 											]
 										}
 									]
@@ -10525,19 +10536,19 @@
 											"rows": [
 												[
 													"2",
-													"Sunken ship covered in barnacles (25 percent chance that the ship contains treasure - roll randomly on the treasure tables in chapter 7)"
+													"Sunken ship covered in barnacles ({@chance 25} chance that the ship contains treasure\u2014roll randomly on the treasure tables in chapter 7)"
 												],
 												[
 													"3",
-													"Sunken ship with reef sharks (shallow waters) or hunter sharks (deep waters) circling around it (50 percent chance that the ship contains treasure - roll randomly on the treasure tables in chapter 7)"
+													"Sunken ship with {@creature reef shark|MM|reef sharks} (shallow waters) or {@creature hunter shark|MM|hunter sharks} (deep waters) circling around it ({@chance 50} chance that the ship contains treasure\u2014roll randomly on the treasure tables in chapter 7)"
 												],
 												[
 													"4",
-													"Bed of giant oysters (each oyster has a 1 percent chance of having a giant 5,000 gp pearl inside)"
+													"Bed of giant oysters (each oyster has a {@chance 1} chance of having a giant 5,000 gp pearl inside)"
 												],
 												[
 													"5",
-													"Underwater steam vent (25 percent chance that the vent is a portal to the Elemental Plane of Fire)"
+													"Underwater steam vent ({@chance 25} chance that the vent is a portal to the Elemental Plane of Fire)"
 												],
 												[
 													"6",
@@ -10553,15 +10564,15 @@
 												],
 												[
 													"9",
-													"Friendly and curious giant sea horse"
+													"Friendly and curious {@creature giant sea horse}"
 												],
 												[
 													"10",
-													"Patrol of friendly merfolk"
+													"Patrol of friendly {@creature merfolk}"
 												],
 												[
 													"11",
-													"Patrol of hostile merrow (coastal waters) or sahuagin (deep waters)"
+													"Patrol of hostile {@creature merrow} (coastal waters) or {@creature sahuagin} (deep waters)"
 												],
 												[
 													"12",
@@ -10573,19 +10584,19 @@
 												],
 												[
 													"14",
-													"Undersea cave (sea hag lair)"
+													"Undersea cave ({@creature sea hag} lair)"
 												],
 												[
 													"15",
-													"Undersea cave (merfolk lair)"
+													"Undersea cave ({@creature merfolk} lair)"
 												],
 												[
 													"16",
-													"Undersea cave (giant octopus lair)"
+													"Undersea cave ({@creature giant octopus} lair)"
 												],
 												[
 													"17",
-													"Undersea cave (dragon turtle lair)"
+													"Undersea cave ({@creature dragon turtle} lair)"
 												],
 												[
 													"18",
@@ -10593,11 +10604,11 @@
 												],
 												[
 													"19",
-													"Storm giant walking on the ocean floor"
+													"{@creature Storm giant} walking on the ocean floor"
 												],
 												[
 													"20",
-													"Sunken treasure chest (25 percent chance that it contains something of value - roll treasure randomly using the tables in chapter 7)"
+													"Sunken treasure chest ({@chance 25} chance that it contains something of value\u2014roll treasure randomly using the tables in chapter 7)"
 												]
 											]
 										}
@@ -10696,11 +10707,11 @@
 												],
 												[
 													"4",
-													"Whirlpool (25 percent chance that the whirlpool is a portal to the Elemental Plane of Water)"
+													"Whirlpool ({@chance 25} chance that the whirlpool is a portal to the Elemental Plane of Water)"
 												],
 												[
 													"5",
-													"Merfolk traders"
+													"{@creature Merfolk} traders"
 												],
 												[
 													"6",
@@ -10716,7 +10727,7 @@
 												],
 												[
 													"11-12",
-													"Killer whale sighting"
+													"{@creature Killer whale} sighting"
 												],
 												[
 													"13-14",
@@ -10724,11 +10735,11 @@
 												],
 												[
 													"15",
-													"Longship crewed by hostile berserkers"
+													"Longship crewed by hostile {@creature berserker|MM|berserkers}"
 												],
 												[
 													"16",
-													"Hostile griffons or harpies"
+													"Hostile {@creature griffon|MM|griffons} or {@creature harpy|MM|harpies}"
 												],
 												[
 													"17",
@@ -10736,7 +10747,7 @@
 												],
 												[
 													"18",
-													"Sahuagin boarding party"
+													"{@creature Sahuagin} boarding party"
 												],
 												[
 													"19",
@@ -10744,7 +10755,7 @@
 												],
 												[
 													"20",
-													"Sea monster (such as a dragon turtle or kraken)"
+													"Sea monster (such as a {@creature dragon turtle} or {@creature kraken})"
 												]
 											]
 										}
@@ -12133,703 +12144,727 @@
 										"If a treasure hoard seems too small, you can roll multiple times on the table. Use this approach for monsters that are particularly fond of amassing treasure. Legendary creatures that accumulate treasure are wealthier than normal. Always roll at least twice on the appropriate table and add the results together.",
 										"You can hand out as much or as little treasure as you want. Over the course of a typical campaign, a party finds treasure hoards amounting to seven rolls on the Challenge 0-4 table, eighteen rolls on the Challenge 5-10 table, twelve rolls on the Challenge 11-16 table, and eight rolls on the Challenge 17+ table.",
 										{
-											"type": "table",
-											"caption": "Treasure Hoard: Challenge 0\u20144",
-											"colLabels": [
-												"",
-												"CP",
-												"SP",
-												"EP",
-												"GP",
-												"PP"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center"
-											],
-											"rows": [
-												[
-													"{@b Coins}",
-													"{@dice 6d6 × 100} (2,100)",
-													"{@dice 3d6 × 100} (1,050)",
-													"\u2014",
-													"{@dice 2d6 × 10} (70)",
-													"\u2014"
-												]
+											"type": "tableGroup",
+											"name": "Treasure Hoard: Challenge 0\u20144",
+											"tables": [
+												{
+													"type": "table",
+													"caption": "Treasure Hoard: Challenge 0\u20144",
+													"colLabels": [
+														"",
+														"CP",
+														"SP",
+														"EP",
+														"GP",
+														"PP"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center"
+													],
+													"rows": [
+														[
+															"{@b Coins}",
+															"{@dice 6d6 × 100} (2,100)",
+															"{@dice 3d6 × 100} (1,050)",
+															"\u2014",
+															"{@dice 2d6 × 10} (70)",
+															"\u2014"
+														]
+													]
+												},
+												{
+													"type": "table",
+													"colLabels": [
+														"d100",
+														"Gems or Art Objects",
+														"Magic Items"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-3",
+														"col-xs-9"
+													],
+													"rows": [
+														[
+															"01-06",
+															"\u2014",
+															"\u2014"
+														],
+														[
+															"07-16",
+															"{@dice 2d6} (7) 10 gp gems",
+															"\u2014"
+														],
+														[
+															"17-26",
+															"{@dice 2d4} (5) 25 gp art objects",
+															"\u2014"
+														],
+														[
+															"27-36",
+															"{@dice 2d6} (7) 50 gp gems",
+															"\u2014"
+														],
+														[
+															"37-44",
+															"{@dice 2d6} (7) 10 gp gems",
+															"Roll1 {@dice d6} times on Magic Item Table A."
+														],
+														[
+															"45-52",
+															"{@dice 2d4} (5) 25 gp art objects",
+															"Roll {@dice 1d6} times on Magic Item Table A."
+														],
+														[
+															"53-60",
+															"{@dice 2d6} (7) 50 gp gems",
+															"Roll {@dice 1d6} times on Magic Item Table A."
+														],
+														[
+															"61-65",
+															"{@dice 2d6} (7) 10 gp gems",
+															"Roll {@dice 1d4} times on Magic lt~m Table B."
+														],
+														[
+															"66-70",
+															"{@dice 2d4} (5) 25 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table B."
+														],
+														[
+															"71-75",
+															"{@dice 2d6} (7) 50 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table B."
+														],
+														[
+															"76-78",
+															"{@dice 2d6} (7) 10 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table C."
+														],
+														[
+															"79-80",
+															"{@dice 2d4} (5) 25 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table C."
+														],
+														[
+															"81-85",
+															"{@dice 2d6} (7) 50 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table C."
+														],
+														[
+															"86-92",
+															"{@dice 2d4} (5) 25 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table F."
+														],
+														[
+															"93-97",
+															"{@dice 2d6} (7) 50 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table F."
+														],
+														[
+															"98-99",
+															"{@dice 2d4} (5) 25 gp art objects",
+															"Roll once on Magic Item Table G."
+														],
+														[
+															"00",
+															"{@dice 2d6} (7) 50 gp gems",
+															"Roll once on Magic Item Table G."
+														]
+													]
+												}
 											]
 										},
 										{
-											"type": "table",
-											"colLabels": [
-												"d100",
-												"Gems or Art Objects",
-												"Magic Items"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-3",
-												"col-xs-9"
-											],
-											"rows": [
-												[
-													"01-06",
-													"\u2014",
-													"\u2014"
-												],
-												[
-													"07-16",
-													"{@dice 2d6} (7) 10 gp gems",
-													"\u2014"
-												],
-												[
-													"17-26",
-													"{@dice 2d4} (5) 25 gp art objects",
-													"\u2014"
-												],
-												[
-													"27-36",
-													"{@dice 2d6} (7) 50 gp gems",
-													"\u2014"
-												],
-												[
-													"37-44",
-													"{@dice 2d6} (7) 10 gp gems",
-													"Roll1 {@dice d6} times on Magic Item Table A."
-												],
-												[
-													"45-52",
-													"{@dice 2d4} (5) 25 gp art objects",
-													"Roll {@dice 1d6} times on Magic Item Table A."
-												],
-												[
-													"53-60",
-													"{@dice 2d6} (7) 50 gp gems",
-													"Roll {@dice 1d6} times on Magic Item Table A."
-												],
-												[
-													"61-65",
-													"{@dice 2d6} (7) 10 gp gems",
-													"Roll {@dice 1d4} times on Magic lt~m Table B."
-												],
-												[
-													"66-70",
-													"{@dice 2d4} (5) 25 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table B."
-												],
-												[
-													"71-75",
-													"{@dice 2d6} (7) 50 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table B."
-												],
-												[
-													"76-78",
-													"{@dice 2d6} (7) 10 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table C."
-												],
-												[
-													"79-80",
-													"{@dice 2d4} (5) 25 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table C."
-												],
-												[
-													"81-85",
-													"{@dice 2d6} (7) 50 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table C."
-												],
-												[
-													"86-92",
-													"{@dice 2d4} (5) 25 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table F."
-												],
-												[
-													"93-97",
-													"{@dice 2d6} (7) 50 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table F."
-												],
-												[
-													"98-99",
-													"{@dice 2d4} (5) 25 gp art objects",
-													"Roll once on Magic Item Table G."
-												],
-												[
-													"00",
-													"{@dice 2d6} (7) 50 gp gems",
-													"Roll once on Magic Item Table G."
-												]
+											"type": "tableGroup",
+											"name": "Treasure Hoard: Challenge 5\u201410",
+											"tables": [
+												{
+													"type": "table",
+													"caption": "Treasure Hoard: Challenge 5\u201410",
+													"colLabels": [
+														"",
+														"CP",
+														"SP",
+														"EP",
+														"GP",
+														"PP"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center"
+													],
+													"rows": [
+														[
+															"{@b Coins}",
+															"{@dice 2d6 × 100} (700)",
+															"{@dice 2d6 × 1},000 (7,000)",
+															"\u2014",
+															"{@dice 6d6 × 100} (2,100)",
+															"{@dice 3d6 × 10} (105)"
+														]
+													]
+												},
+												{
+													"type": "table",
+													"colLabels": [
+														"d100",
+														"Gems or Art Objects",
+														"Magic Items"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-3",
+														"col-xs-9"
+													],
+													"rows": [
+														[
+															"01-04",
+															"\u2014",
+															"\u2014"
+														],
+														[
+															"05-10",
+															"{@dice 2d4} (5) 25 gp art objects",
+															"\u2014"
+														],
+														[
+															"11-16",
+															"{@dice 3d6} (10) 50 gp gems",
+															"\u2014"
+														],
+														[
+															"17-22",
+															"{@dice 3d6} (10) 100 gp gems",
+															"\u2014"
+														],
+														[
+															"23-28",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"\u2014"
+														],
+														[
+															"29-32",
+															"{@dice 2d4} (5) 25 gp art objects",
+															"Roll {@dice 1d6} times on Magic Item Table A."
+														],
+														[
+															"33-36",
+															"{@dice 3d6} (10) 50 gp gems",
+															"Roll {@dice 1d6} times on Magic Item Table A."
+														],
+														[
+															"37-40",
+															"{@dice 3d6} (10) 100 gp gems",
+															"Roll {@dice 1d6} times on Magic Item Table A."
+														],
+														[
+															"41- 44",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll {@dice 1d6} times on Magic Item Table A."
+														],
+														[
+															"45-49",
+															"{@dice 2d4} (5) 25 gp art objects.",
+															"Roll {@dice 1d4} times on Magic Item Table B."
+														],
+														[
+															"50-54",
+															"{@dice 3d6} (10) 50 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table B."
+														],
+														[
+															"55-59",
+															"{@dice 3d6} (10) 100 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table B."
+														],
+														[
+															"60-63",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table B."
+														],
+														[
+															"64-66",
+															"{@dice 2d4} (5) 25 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table C."
+														],
+														[
+															"67-69",
+															"{@dice 3d6} (10) 50 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table C."
+														],
+														[
+															"70-72",
+															"{@dice 3d6} (10) 100 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table C."
+														],
+														[
+															"73-74",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table C."
+														],
+														[
+															"75-76",
+															"{@dice 2d4} (5) 25 gp art objects",
+															"Roll once on Magic Item Table D."
+														],
+														[
+															"77-78",
+															"{@dice 3d6} (10) 50 gp gems",
+															"Roll once on Magic Item Table D."
+														],
+														[
+															"79",
+															"{@dice 3d6} (10) 100 gp gems",
+															"Roll once on Magic Item Table D."
+														],
+														[
+															"80",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll once on Magic Item Table D."
+														],
+														[
+															"81- 84",
+															"{@dice 2d4} (5) 25 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table F."
+														],
+														[
+															"85-88",
+															"{@dice 3d6} (10) 50 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table F."
+														],
+														[
+															"89-91",
+															"{@dice 3d6} (10) 100 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table F."
+														],
+														[
+															"92-94",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table F."
+														],
+														[
+															"95-96",
+															"{@dice 3d6} (10) 100 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table G."
+														],
+														[
+															"97-98",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table G."
+														],
+														[
+															"99",
+															"{@dice 3d6} (10) 100 gp gems",
+															"Roll once on Magic Item Table H."
+														],
+														[
+															"00",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll once on Magic Item Table H."
+														]
+													]
+												}
 											]
 										},
 										{
-											"type": "table",
-											"caption": "Treasure Hoard: Challenge 5\u201410",
-											"colLabels": [
-												"",
-												"CP",
-												"SP",
-												"EP",
-												"GP",
-												"PP"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center"
-											],
-											"rows": [
-												[
-													"{@b Coins}",
-													"{@dice 2d6 × 100} (700)",
-													"{@dice 2d6 × 1},000 (7,000)",
-													"\u2014",
-													"{@dice 6d6 × 100} (2,100)",
-													"{@dice 3d6 × 10} (105)"
-												]
+											"type": "tableGroup",
+											"name": "Treasure Hoard: Challenge 11\u201416",
+											"tables": [
+												{
+													"type": "table",
+													"caption": "Treasure Hoard: Challenge 11\u201416",
+													"colLabels": [
+														"",
+														"CP",
+														"SP",
+														"EP",
+														"GP",
+														"PP"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center"
+													],
+													"rows": [
+														[
+															"{@b Coins}",
+															"\u2014",
+															"\u2014",
+															"\u2014",
+															"{@dice 4d6 × 1},000 (14,000)",
+															"{@dice 5d6 × 100} (1,750)"
+														]
+													]
+												},
+												{
+													"type": "table",
+													"colLabels": [
+														"d100",
+														"Gems or Art Objects",
+														"Magic Items"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-3",
+														"col-xs-9"
+													],
+													"rows": [
+														[
+															"01-03",
+															"\u2014",
+															"\u2014"
+														],
+														[
+															"04-06",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"\u2014"
+														],
+														[
+															"07-09",
+															"{@dice 2d4} (5) 750 gp art objects",
+															"\u2014"
+														],
+														[
+															"10-12",
+															"{@dice 3d6} (10) 500 gp gems",
+															"\u2014"
+														],
+														[
+															"13-15",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"\u2014"
+														],
+														[
+															"16-19",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table A and {@dice 1d6} times on Magic Item Table B."
+														],
+														[
+															"20-23",
+															"{@dice 2d4} (5) 750 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table A and {@dice 1d6} times on Magic Item Table B."
+														],
+														[
+															"24-26",
+															"{@dice 3d6} (10) 500 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table A and {@dice 1d6} times on Magic Item Table B."
+														],
+														[
+															"27-29",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table A and {@dice 1d6} times on Magic Item Table B."
+														],
+														[
+															"30-35",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll {@dice 1d6} times on Magic Item Table C."
+														],
+														[
+															"36-40",
+															"{@dice 2d4} (5) 750 gp art objects",
+															"Roll {@dice 1d6} times on Magic Item Table C."
+														],
+														[
+															"41-45",
+															"{@dice 3d6} (10) 500 gp gems",
+															"Roll {@dice 1d6} times on Magic Item Table C.."
+														],
+														[
+															"46-50",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"Roll {@dice 1d6} times on Magic Item Table C."
+														],
+														[
+															"51-54",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table D."
+														],
+														[
+															"55-58",
+															"{@dice 2d4} (5) 750 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table D."
+														],
+														[
+															"59-62",
+															"{@dice 3d6} (10) 500 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table D."
+														],
+														[
+															"63-66",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table D."
+														],
+														[
+															"67-68",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll once on Magic Item Table E."
+														],
+														[
+															"69-70",
+															"{@dice 2d4} (5) 750 gp art objects",
+															"Roll once on Magic Item Table E."
+														],
+														[
+															"71-72",
+															"{@dice 3d6} (10) 500 gp gems",
+															"Roll once on Magic Item Table E."
+														],
+														[
+															"73-74",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"Roll once on Magic Item Table E."
+														],
+														[
+															"75-76",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll once on Magic Item Table F and {@dice 1d4} times on Magic Item Table G."
+														],
+														[
+															"77-78",
+															"{@dice 2d4} (5) 750 gp art objects",
+															"Roll once on Magic Item Table F and {@dice 1d4} times on Magic Item Table G."
+														],
+														[
+															"79-80",
+															"{@dice 3d6} (10) 500 gp gems",
+															"Roll once on Magic Item Table F and {@dice 1d4} times on Magic Item Table G."
+														],
+														[
+															"81-82",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"Roll once on Magic Item Table F and {@dice 1d4} times on Magic Item Table G."
+														],
+														[
+															"83-85",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table H."
+														],
+														[
+															"86-88",
+															"{@dice 2d4} (5) 750 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table H."
+														],
+														[
+															"89-90",
+															"{@dice 3d6} (10) 500 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table H."
+														],
+														[
+															"91-92",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table H."
+														],
+														[
+															"93-94",
+															"{@dice 2d4} (5) 250 gp art objects",
+															"Roll once on Magic Item Table I."
+														],
+														[
+															"95-96",
+															"{@dice 2d4} (5) 750 gp art objects",
+															"Roll once on Magic Item Table I."
+														],
+														[
+															"97-98",
+															"{@dice 3d6} (10) 500 gp gems",
+															"Roll once on Magic Item Table I."
+														],
+														[
+															"99-00",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"Roll once on Magic Item Table I."
+														]
+													]
+												}
 											]
 										},
 										{
-											"type": "table",
-											"colLabels": [
-												"d100",
-												"Gems or Art Objects",
-												"Magic Items"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-3",
-												"col-xs-9"
-											],
-											"rows": [
-												[
-													"01-04",
-													"\u2014",
-													"\u2014"
-												],
-												[
-													"05-10",
-													"{@dice 2d4} (5) 25 gp art objects",
-													"\u2014"
-												],
-												[
-													"11-16",
-													"{@dice 3d6} (10) 50 gp gems",
-													"\u2014"
-												],
-												[
-													"17-22",
-													"{@dice 3d6} (10) 100 gp gems",
-													"\u2014"
-												],
-												[
-													"23-28",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"\u2014"
-												],
-												[
-													"29-32",
-													"{@dice 2d4} (5) 25 gp art objects",
-													"Roll {@dice 1d6} times on Magic Item Table A."
-												],
-												[
-													"33-36",
-													"{@dice 3d6} (10) 50 gp gems",
-													"Roll {@dice 1d6} times on Magic Item Table A."
-												],
-												[
-													"37-40",
-													"{@dice 3d6} (10) 100 gp gems",
-													"Roll {@dice 1d6} times on Magic Item Table A."
-												],
-												[
-													"41- 44",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll {@dice 1d6} times on Magic Item Table A."
-												],
-												[
-													"45-49",
-													"{@dice 2d4} (5) 25 gp art objects.",
-													"Roll {@dice 1d4} times on Magic Item Table B."
-												],
-												[
-													"50-54",
-													"{@dice 3d6} (10) 50 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table B."
-												],
-												[
-													"55-59",
-													"{@dice 3d6} (10) 100 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table B."
-												],
-												[
-													"60-63",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table B."
-												],
-												[
-													"64-66",
-													"{@dice 2d4} (5) 25 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table C."
-												],
-												[
-													"67-69",
-													"{@dice 3d6} (10) 50 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table C."
-												],
-												[
-													"70-72",
-													"{@dice 3d6} (10) 100 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table C."
-												],
-												[
-													"73-74",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table C."
-												],
-												[
-													"75-76",
-													"{@dice 2d4} (5) 25 gp art objects",
-													"Roll once on Magic Item Table D."
-												],
-												[
-													"77-78",
-													"{@dice 3d6} (10) 50 gp gems",
-													"Roll once on Magic Item Table D."
-												],
-												[
-													"79",
-													"{@dice 3d6} (10) 100 gp gems",
-													"Roll once on Magic Item Table D."
-												],
-												[
-													"80",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll once on Magic Item Table D."
-												],
-												[
-													"81- 84",
-													"{@dice 2d4} (5) 25 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table F."
-												],
-												[
-													"85-88",
-													"{@dice 3d6} (10) 50 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table F."
-												],
-												[
-													"89-91",
-													"{@dice 3d6} (10) 100 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table F."
-												],
-												[
-													"92-94",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table F."
-												],
-												[
-													"95-96",
-													"{@dice 3d6} (10) 100 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table G."
-												],
-												[
-													"97-98",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table G."
-												],
-												[
-													"99",
-													"{@dice 3d6} (10) 100 gp gems",
-													"Roll once on Magic Item Table H."
-												],
-												[
-													"00",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll once on Magic Item Table H."
-												]
-											]
-										},
-										{
-											"type": "table",
-											"caption": "Treasure Hoard: Challenge 11\u201416",
-											"colLabels": [
-												"",
-												"CP",
-												"SP",
-												"EP",
-												"GP",
-												"PP"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center"
-											],
-											"rows": [
-												[
-													"{@b Coins}",
-													"\u2014",
-													"\u2014",
-													"\u2014",
-													"{@dice 4d6 × 1},000 (14,000)",
-													"{@dice 5d6 × 100} (1,750)"
-												]
-											]
-										},
-										{
-											"type": "table",
-											"colLabels": [
-												"d100",
-												"Gems or Art Objects",
-												"Magic Items"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-3",
-												"col-xs-9"
-											],
-											"rows": [
-												[
-													"01-03",
-													"\u2014",
-													"\u2014"
-												],
-												[
-													"04-06",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"\u2014"
-												],
-												[
-													"07-09",
-													"{@dice 2d4} (5) 750 gp art objects",
-													"\u2014"
-												],
-												[
-													"10-12",
-													"{@dice 3d6} (10) 500 gp gems",
-													"\u2014"
-												],
-												[
-													"13-15",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"\u2014"
-												],
-												[
-													"16-19",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table A and {@dice 1d6} times on Magic Item Table B."
-												],
-												[
-													"20-23",
-													"{@dice 2d4} (5) 750 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table A and {@dice 1d6} times on Magic Item Table B."
-												],
-												[
-													"24-26",
-													"{@dice 3d6} (10) 500 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table A and {@dice 1d6} times on Magic Item Table B."
-												],
-												[
-													"27-29",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table A and {@dice 1d6} times on Magic Item Table B."
-												],
-												[
-													"30-35",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll {@dice 1d6} times on Magic Item Table C."
-												],
-												[
-													"36-40",
-													"{@dice 2d4} (5) 750 gp art objects",
-													"Roll {@dice 1d6} times on Magic Item Table C."
-												],
-												[
-													"41-45",
-													"{@dice 3d6} (10) 500 gp gems",
-													"Roll {@dice 1d6} times on Magic Item Table C.."
-												],
-												[
-													"46-50",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"Roll {@dice 1d6} times on Magic Item Table C."
-												],
-												[
-													"51-54",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table D."
-												],
-												[
-													"55-58",
-													"{@dice 2d4} (5) 750 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table D."
-												],
-												[
-													"59-62",
-													"{@dice 3d6} (10) 500 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table D."
-												],
-												[
-													"63-66",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table D."
-												],
-												[
-													"67-68",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll once on Magic Item Table E."
-												],
-												[
-													"69-70",
-													"{@dice 2d4} (5) 750 gp art objects",
-													"Roll once on Magic Item Table E."
-												],
-												[
-													"71-72",
-													"{@dice 3d6} (10) 500 gp gems",
-													"Roll once on Magic Item Table E."
-												],
-												[
-													"73-74",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"Roll once on Magic Item Table E."
-												],
-												[
-													"75-76",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll once on Magic Item Table F and {@dice 1d4} times on Magic Item Table G."
-												],
-												[
-													"77-78",
-													"{@dice 2d4} (5) 750 gp art objects",
-													"Roll once on Magic Item Table F and {@dice 1d4} times on Magic Item Table G."
-												],
-												[
-													"79-80",
-													"{@dice 3d6} (10) 500 gp gems",
-													"Roll once on Magic Item Table F and {@dice 1d4} times on Magic Item Table G."
-												],
-												[
-													"81-82",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"Roll once on Magic Item Table F and {@dice 1d4} times on Magic Item Table G."
-												],
-												[
-													"83-85",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table H."
-												],
-												[
-													"86-88",
-													"{@dice 2d4} (5) 750 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table H."
-												],
-												[
-													"89-90",
-													"{@dice 3d6} (10) 500 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table H."
-												],
-												[
-													"91-92",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table H."
-												],
-												[
-													"93-94",
-													"{@dice 2d4} (5) 250 gp art objects",
-													"Roll once on Magic Item Table I."
-												],
-												[
-													"95-96",
-													"{@dice 2d4} (5) 750 gp art objects",
-													"Roll once on Magic Item Table I."
-												],
-												[
-													"97-98",
-													"{@dice 3d6} (10) 500 gp gems",
-													"Roll once on Magic Item Table I."
-												],
-												[
-													"99-00",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"Roll once on Magic Item Table I."
-												]
-											]
-										},
-										{
-											"type": "table",
-											"caption": "Treasure Hoard: Challenge 17+",
-											"colLabels": [
-												"",
-												"CP",
-												"SP",
-												"EP",
-												"GP",
-												"PP"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center",
-												"col-xs-2 text-align-center"
-											],
-											"rows": [
-												[
-													"{@b Coins}",
-													"\u2014",
-													"\u2014",
-													"\u2014",
-													"{@dice 12d6 × 1},000 (42,000)",
-													"{@dice 8d6 × 1},000 (28,000)"
-												]
-											]
-										},
-										{
-											"type": "table",
-											"colLabels": [
-												"d100",
-												"Gems or Art Objects",
-												"Magic Items"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-3",
-												"col-xs-9"
-											],
-											"rows": [
-												[
-													"01-02",
-													"\u2014",
-													"\u2014"
-												],
-												[
-													"03-05",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"Roll {@dice 1d8} times on Magic Item Table C."
-												],
-												[
-													"06-08",
-													"{@dice 1d10} (5) 2,500 gp art objects",
-													"Roll {@dice 1d8} times on Magic Item Table C."
-												],
-												[
-													"09-11",
-													"{@dice 1d4} (2) 7,500 gp art objects",
-													"Roll {@dice 1d8} times on Magic Item Table C."
-												],
-												[
-													"12-14",
-													"{@dice 1d8} (4) 5,000 gp gems",
-													"Roll {@dice 1d8} times on Magic Item Table C."
-												],
-												[
-													"15-22",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"Roll {@dice 1d6} times on Magic Item Table D."
-												],
-												[
-													"23-30",
-													"{@dice 1d10} (5) 2,500 gp art objects",
-													"Roll {@dice 1d6} times on Magic Item Table D."
-												],
-												[
-													"31-38",
-													"{@dice 1d4} (2) 7,500 gp art objects",
-													"Roll {@dice 1d6} times on Magic Item Table D."
-												],
-												[
-													"39-46",
-													"{@dice 1d8} (4) 5,000 gp gems",
-													"Roll {@dice 1d6} times on Magic Item Table D."
-												],
-												[
-													"47-52",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"Roll {@dice 1d6} times on Magic Item Table E."
-												],
-												[
-													"53-58",
-													"{@dice 1d10} (5) 2,500 gp art objects",
-													"Roll {@dice 1d6} times on Magic Item Table E."
-												],
-												[
-													"59-63",
-													"{@dice 1d4} (2) 7,500 gp art objects",
-													"Roll {@dice 1d6} times on Magic Item Table E."
-												],
-												[
-													"64-68",
-													"{@dice 1d8} (4) 5,000 gp gems",
-													"Roll {@dice 1d6} times on Magic Item Table E."
-												],
-												[
-													"69",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table G."
-												],
-												[
-													"70",
-													"{@dice 1d10} (5) 2,500 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table G."
-												],
-												[
-													"71",
-													"{@dice 1d4} (2) 7,500 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table G."
-												],
-												[
-													"72",
-													"{@dice 1d8} (4) 5,000 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table G."
-												],
-												[
-													"73-74",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table H."
-												],
-												[
-													"75-76",
-													"{@dice 1d10} (5) 2,500 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table H."
-												],
-												[
-													"77-78",
-													"{@dice 1d4} (2) 7,500 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table H."
-												],
-												[
-													"79-80",
-													"{@dice 1d8} (4) 5,000 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table H."
-												],
-												[
-													"81- 85",
-													"{@dice 3d6} (10) 1,000 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table I."
-												],
-												[
-													"86-90",
-													"{@dice 1d10} (5) 2,500 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table I."
-												],
-												[
-													"91-95",
-													"{@dice 1d4} (2) 7,500 gp art objects",
-													"Roll {@dice 1d4} times on Magic Item Table I."
-												],
-												[
-													"96-00",
-													"{@dice 1d8} (4) 5,000 gp gems",
-													"Roll {@dice 1d4} times on Magic Item Table I."
-												]
+											"type": "tableGroup",
+											"name": "Treasure Hoard: Challenge 17+",
+											"tables": [
+												{
+													"type": "table",
+													"caption": "Treasure Hoard: Challenge 17+",
+													"colLabels": [
+														"",
+														"CP",
+														"SP",
+														"EP",
+														"GP",
+														"PP"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center",
+														"col-xs-2 text-align-center"
+													],
+													"rows": [
+														[
+															"{@b Coins}",
+															"\u2014",
+															"\u2014",
+															"\u2014",
+															"{@dice 12d6 × 1},000 (42,000)",
+															"{@dice 8d6 × 1},000 (28,000)"
+														]
+													]
+												},
+												{
+													"type": "table",
+													"colLabels": [
+														"d100",
+														"Gems or Art Objects",
+														"Magic Items"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-3",
+														"col-xs-9"
+													],
+													"rows": [
+														[
+															"01-02",
+															"\u2014",
+															"\u2014"
+														],
+														[
+															"03-05",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"Roll {@dice 1d8} times on Magic Item Table C."
+														],
+														[
+															"06-08",
+															"{@dice 1d10} (5) 2,500 gp art objects",
+															"Roll {@dice 1d8} times on Magic Item Table C."
+														],
+														[
+															"09-11",
+															"{@dice 1d4} (2) 7,500 gp art objects",
+															"Roll {@dice 1d8} times on Magic Item Table C."
+														],
+														[
+															"12-14",
+															"{@dice 1d8} (4) 5,000 gp gems",
+															"Roll {@dice 1d8} times on Magic Item Table C."
+														],
+														[
+															"15-22",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"Roll {@dice 1d6} times on Magic Item Table D."
+														],
+														[
+															"23-30",
+															"{@dice 1d10} (5) 2,500 gp art objects",
+															"Roll {@dice 1d6} times on Magic Item Table D."
+														],
+														[
+															"31-38",
+															"{@dice 1d4} (2) 7,500 gp art objects",
+															"Roll {@dice 1d6} times on Magic Item Table D."
+														],
+														[
+															"39-46",
+															"{@dice 1d8} (4) 5,000 gp gems",
+															"Roll {@dice 1d6} times on Magic Item Table D."
+														],
+														[
+															"47-52",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"Roll {@dice 1d6} times on Magic Item Table E."
+														],
+														[
+															"53-58",
+															"{@dice 1d10} (5) 2,500 gp art objects",
+															"Roll {@dice 1d6} times on Magic Item Table E."
+														],
+														[
+															"59-63",
+															"{@dice 1d4} (2) 7,500 gp art objects",
+															"Roll {@dice 1d6} times on Magic Item Table E."
+														],
+														[
+															"64-68",
+															"{@dice 1d8} (4) 5,000 gp gems",
+															"Roll {@dice 1d6} times on Magic Item Table E."
+														],
+														[
+															"69",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table G."
+														],
+														[
+															"70",
+															"{@dice 1d10} (5) 2,500 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table G."
+														],
+														[
+															"71",
+															"{@dice 1d4} (2) 7,500 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table G."
+														],
+														[
+															"72",
+															"{@dice 1d8} (4) 5,000 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table G."
+														],
+														[
+															"73-74",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table H."
+														],
+														[
+															"75-76",
+															"{@dice 1d10} (5) 2,500 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table H."
+														],
+														[
+															"77-78",
+															"{@dice 1d4} (2) 7,500 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table H."
+														],
+														[
+															"79-80",
+															"{@dice 1d8} (4) 5,000 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table H."
+														],
+														[
+															"81- 85",
+															"{@dice 3d6} (10) 1,000 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table I."
+														],
+														[
+															"86-90",
+															"{@dice 1d10} (5) 2,500 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table I."
+														],
+														[
+															"91-95",
+															"{@dice 1d4} (2) 7,500 gp art objects",
+															"Roll {@dice 1d4} times on Magic Item Table I."
+														],
+														[
+															"96-00",
+															"{@dice 1d8} (4) 5,000 gp gems",
+															"Roll {@dice 1d4} times on Magic Item Table I."
+														]
+													]
+												}
 											]
 										}
 									]
@@ -13504,7 +13539,7 @@
 							"name": "Cursed Items",
 							"entries": [
 								"Some magic items bear curses that bedevil their users, sometimes long after a user has stopped using an item. A magic item's description specifies whether the item is cursed. Most methods of identifying items, including the identify spell, fail to reveal such a curse, although lore might hint at it. A curse should be a surprise to the item's user when the curse's effects are revealed.",
-								"Attunement to a cursed item can't be ended voluntarily unless the curse is broken first, such as with the remove curse spell."
+								"Attunement to a cursed item can't be ended voluntarily unless the curse is broken first, such as with the {@spell remove curse} spell."
 							]
 						},
 						{
@@ -15734,79 +15769,85 @@
 									"entries": [
 										"When the adventurers get to the point of their request, demand, or suggestion-or if you decide the conversation has run its course-call for a Charisma check. Any character who has actively participated in the conversation can make the check. Depending on how the adventurers handled the conversation, the Persuasion, Deception, or Intimidation skill might apply to the check. The creature's current attitude determines the DC required to achieve a specific reaction, as shown in the Conversation Reaction table.",
 										{
-											"type": "table",
-											"caption": "Conversation Reaction",
-											"colLabels": [
-												"DC",
-												"Friendly Creature's Reaction"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-10"
-											],
-											"rows": [
-												[
-													"0",
-													"The creature does as asked without taking risks or making sacrifices."
-												],
-												[
-													"10",
-													"The creature accepts a minor risk or sacrifice to do as asked."
-												],
-												[
-													"20",
-													"The creature accepts a significant risk or sacrifice to do as asked."
-												]
-											]
-										},
-										{
-											"type": "table",
-											"colLabels": [
-												"DC",
-												"Indifferent Creature's Reaction"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-10"
-											],
-											"rows": [
-												[
-													"0",
-													"The creature offers no help but does no harm."
-												],
-												[
-													"10",
-													"The creature does as asked as long as no risks or sacrifices are involved."
-												],
-												[
-													"20",
-													"The creature accepts a minor risk or sacrifice to do as asked."
-												]
-											]
-										},
-										{
-											"type": "table",
-											"colLabels": [
-												"DC",
-												"Hostile Creature's Reaction"
-											],
-											"colStyles": [
-												"col-xs-2 text-align-center",
-												"col-xs-10"
-											],
-											"rows": [
-												[
-													"0",
-													"The creature opposes the adventurers' actions and might take risks to do so."
-												],
-												[
-													"10",
-													"The creature offers no help but does no harm."
-												],
-												[
-													"20",
-													"The creature does as asked as long as no risks or sacrifices are involved."
-												]
+											"type": "tableGroup",
+											"name": "Conversation Reaction",
+											"tables": [
+												{
+													"type": "table",
+													"caption": "Conversation Reaction",
+													"colLabels": [
+														"DC",
+														"Friendly Creature's Reaction"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-10"
+													],
+													"rows": [
+														[
+															"0",
+															"The creature does as asked without taking risks or making sacrifices."
+														],
+														[
+															"10",
+															"The creature accepts a minor risk or sacrifice to do as asked."
+														],
+														[
+															"20",
+															"The creature accepts a significant risk or sacrifice to do as asked."
+														]
+													]
+												},
+												{
+													"type": "table",
+													"colLabels": [
+														"DC",
+														"Indifferent Creature's Reaction"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-10"
+													],
+													"rows": [
+														[
+															"0",
+															"The creature offers no help but does no harm."
+														],
+														[
+															"10",
+															"The creature does as asked as long as no risks or sacrifices are involved."
+														],
+														[
+															"20",
+															"The creature accepts a minor risk or sacrifice to do as asked."
+														]
+													]
+												},
+												{
+													"type": "table",
+													"colLabels": [
+														"DC",
+														"Hostile Creature's Reaction"
+													],
+													"colStyles": [
+														"col-xs-2 text-align-center",
+														"col-xs-10"
+													],
+													"rows": [
+														[
+															"0",
+															"The creature opposes the adventurers' actions and might take risks to do so."
+														],
+														[
+															"10",
+															"The creature offers no help but does no harm."
+														],
+														[
+															"20",
+															"The creature does as asked as long as no risks or sacrifices are involved."
+														]
+													]
+												}
 											]
 										},
 										{
@@ -17749,244 +17790,250 @@
 							]
 						},
 						{
-							"type": "table",
-							"caption": "Firearms",
-							"colLabels": [
-								"Renaissance Item",
-								"Cost",
-								"Damage",
-								"Weight",
-								"Properties"
-							],
-							"colStyles": [
-								"col-xs-3",
-								"col-xs-1",
-								"col-xs-2",
-								"col-xs-1",
-								"col-xs-5"
-							],
-							"rows": [
-								[
-									"{@i Martial Ranged Weapons}",
-									"",
-									"",
-									"",
-									""
-								],
+							"type": "tableGroup",
+							"name": "Firearms",
+							"tables": [
 								{
-									"type": "row",
-									"style": "row-indent-first",
-									"row": [
-										"Pistol",
-										"250 gp",
-										"{@dice 1d10} piercing",
-										"3 lb.",
-										"Ammunition (range 30/90), loading"
+									"type": "table",
+									"caption": "Firearms",
+									"colLabels": [
+										"Renaissance Item",
+										"Cost",
+										"Damage",
+										"Weight",
+										"Properties"
+									],
+									"colStyles": [
+										"col-xs-3",
+										"col-xs-1",
+										"col-xs-2",
+										"col-xs-1",
+										"col-xs-5"
+									],
+									"rows": [
+										[
+											"{@i Martial Ranged Weapons}",
+											"",
+											"",
+											"",
+											""
+										],
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Pistol",
+												"250 gp",
+												"{@dice 1d10} piercing",
+												"3 lb.",
+												"Ammunition (range 30/90), loading"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Musket",
+												"500 gp",
+												"{@dice 1d12} piercing",
+												"10 lb.",
+												"Ammunition (range 40/120), loading, two-handed"
+											]
+										},
+										[
+											"{@i Ammunition}",
+											"",
+											"",
+											"",
+											""
+										],
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Bullets (10)",
+												"3 gp",
+												"\u2014",
+												"2 lb.",
+												"\u2014"
+											]
+										}
 									]
 								},
 								{
-									"type": "row",
-									"style": "row-indent-first",
-									"row": [
-										"Musket",
-										"500 gp",
-										"{@dice 1d12} piercing",
-										"10 lb.",
-										"Ammunition (range 40/120), loading, two-handed"
-									]
-								},
-								[
-									"{@i Ammunition}",
-									"",
-									"",
-									"",
-									""
-								],
-								{
-									"type": "row",
-									"style": "row-indent-first",
-									"row": [
-										"Bullets (10)",
-										"3 gp",
-										"\u2014",
-										"2 lb.",
-										"\u2014"
-									]
-								}
-							]
-						},
-						{
-							"type": "table",
-							"colLabels": [
-								"Modern Item",
-								"Cost",
-								"Damage",
-								"Weight",
-								"Properties"
-							],
-							"colStyles": [
-								"col-xs-3",
-								"col-xs-1",
-								"col-xs-2",
-								"col-xs-1",
-								"col-xs-5"
-							],
-							"rows": [
-								[
-									"{@i Martial Ranged Weapons}",
-									"",
-									"",
-									"",
-									""
-								],
-								{
-									"type": "row",
-									"style": "row-indent-first",
-									"row": [
-										"Pistol, automatic",
-										"\u2014",
-										"{@dice 2d6} piercing",
-										"3 lb.",
-										"Ammunition (range 50/150), reload (15 shots)"
-									]
-								},
-								{
-									"type": "row",
-									"style": "row-indent-first",
-									"row": [
-										"Revolver",
-										"\u2014",
-										"{@dice 2d8} piercing",
-										"3 lb.",
-										"Ammunition (range 40/120), reload (6 shots)"
-									]
-								},
-								{
-									"type": "row",
-									"style": "row-indent-first",
-									"row": [
-										"Rifle, hunting",
-										"\u2014",
-										"{@dice 2d10} piercing",
-										"8 lb.",
-										"Ammunition (range 80/240), reload (5 shots), two-handed"
-									]
-								},
-								{
-									"type": "row",
-									"style": "row-indent-first",
-									"row": [
-										"Rifle, automatic",
-										"\u2014",
-										"{@dice 2d8} piercing",
-										"8 lb.",
-										"Ammunition (range 80/240), burst fire, reload (30 shots), two-handed"
-									]
-								},
-								{
-									"type": "row",
-									"style": "row-indent-first",
-									"row": [
-										"Shotgun",
-										"\u2014",
-										"{@dice 2d8} piercing",
-										"7 lb.",
-										"Ammunition (range 30/90), reload (2 shots), two-handed"
-									]
-								},
-								[
-									"{@i Ammunition}",
-									"",
-									"",
-									"",
-									""
-								],
-								{
-									"type": "row",
-									"style": "row-indent-first",
-									"row": [
-										"Bullets (10)",
-										"\u2014",
-										"\u2014",
-										"1 lb.",
-										"\u2014"
-									]
-								}
-							]
-						},
-						{
-							"type": "table",
-							"colLabels": [
-								"Futuristic Item",
-								"Cost",
-								"Damage",
-								"Weight",
-								"Properties"
-							],
-							"colStyles": [
-								"col-xs-3",
-								"col-xs-1",
-								"col-xs-2",
-								"col-xs-1",
-								"col-xs-5"
-							],
-							"rows": [
-								[
-									"{@i Martial Ranged Weapons}",
-									"",
-									"",
-									"",
-									""
-								],
-								{
-									"type": "row",
-									"style": "row-indent-first",
-									"row": [
-										"Laser pistol",
-										"\u2014",
-										"{@dice 3d6} radiant",
-										"2 lb.",
-										"Ammunition (range 40/120), reload (50 shots)"
+									"type": "table",
+									"colLabels": [
+										"Modern Item",
+										"Cost",
+										"Damage",
+										"Weight",
+										"Properties"
+									],
+									"colStyles": [
+										"col-xs-3",
+										"col-xs-1",
+										"col-xs-2",
+										"col-xs-1",
+										"col-xs-5"
+									],
+									"rows": [
+										[
+											"{@i Martial Ranged Weapons}",
+											"",
+											"",
+											"",
+											""
+										],
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Pistol, automatic",
+												"\u2014",
+												"{@dice 2d6} piercing",
+												"3 lb.",
+												"Ammunition (range 50/150), reload (15 shots)"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Revolver",
+												"\u2014",
+												"{@dice 2d8} piercing",
+												"3 lb.",
+												"Ammunition (range 40/120), reload (6 shots)"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Rifle, hunting",
+												"\u2014",
+												"{@dice 2d10} piercing",
+												"8 lb.",
+												"Ammunition (range 80/240), reload (5 shots), two-handed"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Rifle, automatic",
+												"\u2014",
+												"{@dice 2d8} piercing",
+												"8 lb.",
+												"Ammunition (range 80/240), burst fire, reload (30 shots), two-handed"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Shotgun",
+												"\u2014",
+												"{@dice 2d8} piercing",
+												"7 lb.",
+												"Ammunition (range 30/90), reload (2 shots), two-handed"
+											]
+										},
+										[
+											"{@i Ammunition}",
+											"",
+											"",
+											"",
+											""
+										],
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Bullets (10)",
+												"\u2014",
+												"\u2014",
+												"1 lb.",
+												"\u2014"
+											]
+										}
 									]
 								},
 								{
-									"type": "row",
-									"style": "row-indent-first",
-									"row": [
-										"Antimatter rifle",
-										"\u2014",
-										"{@dice 6d8} necrotic",
-										"10 lb.",
-										"Ammunition (range 120/360), reload (2 shots), two-handed"
-									]
-								},
-								{
-									"type": "row",
-									"style": "row-indent-first",
-									"row": [
-										"Laser rifle",
-										"\u2014",
-										"{@dice 3d8} radiant",
-										"7 lb.",
-										"Ammunition (range 100/300), reload (30 shots), two-handed"
-									]
-								},
-								[
-									"{@i Ammunition}",
-									"",
-									"",
-									"",
-									""
-								],
-								{
-									"type": "row",
-									"style": "row-indent-first",
-									"row": [
-										"Energy cell",
-										"\u2014",
-										"\u2014",
-										"5 oz.",
-										"\u2014"
+									"type": "table",
+									"colLabels": [
+										"Futuristic Item",
+										"Cost",
+										"Damage",
+										"Weight",
+										"Properties"
+									],
+									"colStyles": [
+										"col-xs-3",
+										"col-xs-1",
+										"col-xs-2",
+										"col-xs-1",
+										"col-xs-5"
+									],
+									"rows": [
+										[
+											"{@i Martial Ranged Weapons}",
+											"",
+											"",
+											"",
+											""
+										],
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Laser pistol",
+												"\u2014",
+												"{@dice 3d6} radiant",
+												"2 lb.",
+												"Ammunition (range 40/120), reload (50 shots)"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Antimatter rifle",
+												"\u2014",
+												"{@dice 6d8} necrotic",
+												"10 lb.",
+												"Ammunition (range 120/360), reload (2 shots), two-handed"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Laser rifle",
+												"\u2014",
+												"{@dice 3d8} radiant",
+												"7 lb.",
+												"Ammunition (range 100/300), reload (30 shots), two-handed"
+											]
+										},
+										[
+											"{@i Ammunition}",
+											"",
+											"",
+											"",
+											""
+										],
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Energy cell",
+												"\u2014",
+												"\u2014",
+												"5 oz.",
+												"\u2014"
+											]
+										}
 									]
 								}
 							]
@@ -18048,7 +18095,7 @@
 									"type": "entries",
 									"name": "Initiative Score",
 									"entries": [
-										"With this optional rule, creature don't roll initiative at the start of combat. Instead, each creature has an initiative score, which is a passive Dexterity check: 10 + Dexterity modifier.",
+										"With this optional rule, creatures don't roll initiative at the start of combat. Instead, each creature has an initiative score, which is a passive Dexterity check: 10 + Dexterity modifier.",
 										"By cutting down on die rolls, math done on the fly, and the process of asking for and recording totals, you can speed your game up considerably\u2014at the cost of an initiative order that is often predictable."
 									]
 								},
@@ -18077,74 +18124,80 @@
 											]
 										},
 										{
-											"type": "table",
-											"caption": "Speed Factor Initiative Modifiers",
-											"colLabels": [
-												"Factor",
-												"Initiative Modifier"
-											],
-											"colStyles": [
-												"col-xs-6",
-												"col-xs-6"
-											],
-											"rows": [
-												[
-													"Spellcasting",
-													"Subtract the spell's level"
-												],
-												[
-													"Melee, heavy weapon",
-													"-2"
-												],
-												[
-													"Melee, light or finesse weapon",
-													"+2"
-												],
-												[
-													"Melee, two-handed weapon",
-													"-2"
-												],
-												[
-													"Ranged, loading weapon",
-													"-5"
-												]
-											]
-										},
-										{
-											"type": "table",
-											"colLabels": [
-												"Creature Size",
-												"Initiative Modifier"
-											],
-											"colStyles": [
-												"col-xs-6",
-												"col-xs-6"
-											],
-											"rows": [
-												[
-													"Tiny",
-													"+5"
-												],
-												[
-													"Small",
-													"+2"
-												],
-												[
-													"Medium",
-													"+0"
-												],
-												[
-													"Large",
-													"-2"
-												],
-												[
-													"Huge",
-													"-5"
-												],
-												[
-													"Gargantuan",
-													"-8"
-												]
+											"type": "tableGroup",
+											"name": "Speed Factor Initiative Modifiers",
+											"tables": [
+												{
+													"type": "table",
+													"caption": "Speed Factor Initiative Modifiers",
+													"colLabels": [
+														"Factor",
+														"Initiative Modifier"
+													],
+													"colStyles": [
+														"col-xs-6",
+														"col-xs-6"
+													],
+													"rows": [
+														[
+															"Spellcasting",
+															"Subtract the spell's level"
+														],
+														[
+															"Melee, heavy weapon",
+															"-2"
+														],
+														[
+															"Melee, light or finesse weapon",
+															"+2"
+														],
+														[
+															"Melee, two-handed weapon",
+															"-2"
+														],
+														[
+															"Ranged, loading weapon",
+															"-5"
+														]
+													]
+												},
+												{
+													"type": "table",
+													"colLabels": [
+														"Creature Size",
+														"Initiative Modifier"
+													],
+													"colStyles": [
+														"col-xs-6",
+														"col-xs-6"
+													],
+													"rows": [
+														[
+															"Tiny",
+															"+5"
+														],
+														[
+															"Small",
+															"+2"
+														],
+														[
+															"Medium",
+															"+0"
+														],
+														[
+															"Large",
+															"-2"
+														],
+														[
+															"Huge",
+															"-5"
+														],
+														[
+															"Gargantuan",
+															"-8"
+														]
+													]
+												}
 											]
 										},
 										"Don't apply the same modifier more than once on a creature's turn. For example, a rogue fighting with two daggers gains the +2 bonus for using a light or finesse weapon only once. In the case of spellcasting, apply only the modifier from the highest-level spell.",
@@ -19677,7 +19730,7 @@
 										[
 											"Relentless",
 											"Wereboar",
-											"Increase the monster's effective hit points based on the expected challenge rating: 1-4, 7 hp: 5-10, 14 hp: 11-16, 21 hp: 17 or higher, 28 hp.:"
+											"Increase the monster's effective hit points based on the expected challenge rating: 1-4, 7 hp: 5-10, 14 hp: 11-16, 21 hp: 17 or higher, 28 hp."
 										],
 										[
 											"Shadow Stealth",
@@ -20704,7 +20757,7 @@
 								],
 								[
 									"10",
-									"Continue straight 20 ft., comes to a dead end; 10 percent chance of a secret door"
+									"Continue straight 20 ft., comes to a dead end; {@chance 10} chance of a secret door"
 								],
 								[
 									"11-12",
@@ -21226,7 +21279,7 @@
 										],
 										[
 											"9-11",
-											"Vault for holding important treasures, accessible only by locked or secret door (75 percent chance of being trapped)"
+											"Vault for holding important treasures, accessible only by locked or secret door ({@chance 75} chance of being trapped)"
 										],
 										[
 											"12-14",
@@ -21420,7 +21473,7 @@
 										],
 										[
 											"10-15",
-											"Lode where metal ore is mined (75 percent chance of being depleted)"
+											"Lode where metal ore is mined ({@chance 75} chance of being depleted)"
 										],
 										[
 											"16",
@@ -21534,7 +21587,7 @@
 										],
 										[
 											"86-87",
-											"Planar junction, where the gate to another plane once stood (25 percent chance of being active)"
+											"Planar junction, where the gate to another plane once stood ({@chance 25} chance of being active)"
 										],
 										[
 											"88-90",
@@ -21668,7 +21721,7 @@
 										],
 										[
 											"87",
-											"Strong room or vault for protecting important treasures (75 percent chance of being hidden behind a secret door)"
+											"Strong room or vault for protecting important treasures ({@chance 75} chance of being hidden behind a secret door)"
 										],
 										[
 											"88-92",
@@ -22474,11 +22527,11 @@
 										],
 										[
 											"15",
-											"Lava flows through the area (50 percent chance of a stone bridge crossing it)"
+											"Lava flows through the area ({@chance 50} chance of a stone bridge crossing it)"
 										],
 										[
 											"16",
-											"Overgrown mushrooms block progress and must be hacked down (25 percent chance of a mold or fungus dungeon hazard hidden among them)"
+											"Overgrown mushrooms block progress and must be hacked down ({@chance 25} chance of a mold or fungus dungeon hazard hidden among them)"
 										],
 										[
 											"17",
@@ -22663,7 +22716,7 @@
 										],
 										[
 											"63-67",
-											"Hidden pit opens beneath characters (25 percent chance that a {@creature black pudding} or {@creature gelatinous cube} fills the bottom of the pit)"
+											"Hidden pit opens beneath characters ({@chance 25} chance that a {@creature black pudding} or {@creature gelatinous cube} fills the bottom of the pit)"
 										],
 										[
 											"68-70",

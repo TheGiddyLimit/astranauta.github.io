@@ -2536,7 +2536,6 @@
 										"Jarlaxle is a consummate actor who never lets down his guard. Even if the characters discern his true identity, he never admits to being anything other than what he pretends to be.",
 										{
 											"type": "table",
-											"caption": "",
 											"colLabels": [
 												"Party Level",
 												"Mission Brief",
@@ -2632,7 +2631,6 @@
 										"In her disembodied state, Jeryth can't be harmed. If the need arises, Jeryth can cast any spell on the {@filter druid|spells|class=druid} spell list. She uses her spells in defense of her estate and its beautiful gardens. A member of the Emerald Enclave can petition Jeryth to cast a spell, which she is happy to do if that character's renown in the enclave equals or exceeds the spell's level.",
 										{
 											"type": "table",
-											"caption": "",
 											"colLabels": [
 												"Party Level",
 												"Mission Brief",
@@ -2690,7 +2688,6 @@
 										"Vajra offers the characters membership in the Gray Hands, a private security force under her command. She doles out missions designed to tax the characters' resources and test their loyalty to Waterdeep. Characters who complete these missions won't gain enough renown to join Force Grey yet, but they will gain something valuable: the Blackstaff's patronage. Vajra continues to take an interest in their adventuring careers, helping out when she can.",
 										{
 											"type": "table",
-											"caption": "",
 											"colLabels": [
 												"Party Level",
 												"Mission Brief",
@@ -2748,7 +2745,6 @@
 										"Lightsinger Theater is a high-end establishment located in the Castle Ward. If the characters meet Mirt in his private box during the opera's intermission, he describes the Harpers and offers membership to eligible characters. Characters who accept receive a silver pin of a harp within a crescent moon, along with their first mission (see the Harpers Missions table). Mirt also tells them that if they ever need to speak with him directly, they are welcome to visit his manor in the Sea Ward. If the characters do visit Mirt's manor, there's a {@chance 90|90 percent chance} that Mirt isn't home and no one answers the door.",
 										{
 											"type": "table",
-											"caption": "",
 											"colLabels": [
 												"Party Level",
 												"Mission Brief",
@@ -2799,7 +2795,6 @@
 										"Jalester offers membership in the Lords' Alliance to those who qualify. Members are expected to complete whatever missions are assigned to them in a timely, professional manner. Refusing to accept or complete a mission can result in suspension or dismissal. An alliance member who is suspended receives no alliance missions until the suspension ends, while dismissal from the alliance means a loss of membership and the loss of all renown in the faction.",
 										{
 											"type": "table",
-											"caption": "",
 											"colLabels": [
 												"Party Level",
 												"Mission Brief",
@@ -2850,7 +2845,6 @@
 										"The Belabrantas are a Waterdavian noble family that raises griffons for the Griffon Cavalry. Savra is trying to regain her honor by serving Tyr, thus atoning for the evil acts she committed as a member of an evil elemental cult called the Howling Hatred. Savra's sins are irrelevant to this adventure, but you can learn more about her past in {@adventure Princes of the Apocalypse|pota}. Whenever she has a mission for the characters, she communicates the missive to them herself.",
 										{
 											"type": "table",
-											"caption": "",
 											"colLabels": [
 												"Party Level",
 												"Mission Brief",
@@ -2932,7 +2926,6 @@
 										"Weeks after his arrest, Davil is released from custody once the Lords of Waterdeep are satisfied that neither he nor his associates are responsible for the recent violence.",
 										{
 											"type": "table",
-											"caption": "",
 											"colLabels": [
 												"Party Level",
 												"Mission Brief",
@@ -6961,7 +6954,6 @@
 						},
 						{
 							"type": "table",
-							"caption": "",
 							"colLabels": [
 								"1d6",
 								"First Key",
@@ -7947,16 +7939,15 @@
 										{
 											"type": "table",
 											"caption": "Cell Occupants",
-											"colLabels": [],
+											"colLabels": [
+												"Cell",
+												"Prisoners"
+											],
 											"colStyles": [
 												"col-xs-0",
 												"col-xs-12"
 											],
 											"rows": [
-												[
-													"Cell",
-													"Prisoners"
-												],
 												[
 													"A",
 													"A male half-ogre named Groz, a minotaur named Umpok, and a female orog named Charworl"
@@ -10860,35 +10851,34 @@
 										"The following creatures are kept in the twelve pens:",
 										{
 											"type": "table",
-											"colLabels": [],
 											"colStyles": [
 												"col-xs-5",
 												"col-xs-7"
 											],
 											"rows": [
 												[
-													"Two apes",
-													"Four giant fire beetles"
+													"Two {@creature ape|MM|apes}",
+													"Four {@creature giant fire beetle|MM|giant fire beetles}"
 												],
 												[
-													"One rhinoceros",
-													"One hippogriff"
+													"One {@creature rhinoceros}",
+													"One {@creature hippogriff}"
 												],
 												[
-													"One tiger",
-													"One axe beak"
+													"One {@creature tiger}",
+													"One {@creature axe beak}"
 												],
 												[
-													"One allosaurus",
-													"Two death dogs"
+													"One {@creature allosaurus}",
+													"Two {@creature death dog|MM|death dogs}"
 												],
 												[
-													"Two panthers",
-													"One giant vulture"
+													"Two {@creature panther|MM|panthers}",
+													"One {@creature giant vulture}"
 												],
 												[
-													"One owlbear",
-													"One polar bear"
+													"One {@creature owlbear}",
+													"One {@creature polar bear}"
 												]
 											]
 										},

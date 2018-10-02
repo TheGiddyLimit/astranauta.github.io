@@ -5,14 +5,18 @@ const CLS_NONE = "list-entry-none";
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-	initializationFunctions.initHandleFilterButtonClicks();
 };
 
+const SORT_VALUES = {
+	"-1": 0,
+	"-2": Number.MIN_SAFE_INTEGER
+};
 function listSortOptFeatures (a, b, o) {
 	function sortByLevel (a, b) {
-		if (a === "-1") a = 0;
-		if (b === "-1") b = 0;
+		a = SORT_VALUES[a] || a;
+		b = SORT_VALUES[b] || b;
 		return Number(b) - Number(a);
 	}
 
@@ -35,7 +39,7 @@ let list;
 const sourceFilter = getSourceFilter();
 const typeFilter = new Filter({
 	header: "Feature Type",
-	items: ["EI", "MM", "MV:B"],
+	items: ["EI", "MM", "MV:B", "OTH", "FS:F", "FS:B", "FS:P", "FS:R"],
 	displayFn: Parser.optFeatureTypeToFull
 });
 const pactFilter = new Filter({
@@ -118,6 +122,7 @@ function addOptionalfeatures (data) {
 
 		it.featureType = it.featureType || "OTH";
 		if (it.prerequisite) {
+			it._sPrereq = true;
 			it._fPrereqPact = it.prerequisite.filter(it => it.type === "prereqPact").map(it => {
 				pactFilter.addIfAbsent(it.entry);
 				return it.entry;
@@ -132,9 +137,19 @@ function addOptionalfeatures (data) {
 			});
 			it._fPrereqLevel = it.prerequisite.filter(it => it.type === "prereqLevel").map(it => {
 				const item = getLevelFilterNestedItem(it);
+				it._sLevel = it._sLevel || it.level;
 				levelFilter.addIfAbsent(item);
 				return item;
 			});
+		}
+
+		if (it.featureType instanceof Array) {
+			it._dFeatureType = it.featureType.map(ft => Parser.optFeatureTypeToFull(ft));
+			it._lFeatureType = it.featureType.join(", ");
+			it.featureType.sort((a, b) => SortUtil.ascSortLower(Parser.optFeatureTypeToFull(a), Parser.optFeatureTypeToFull(b)));
+		} else {
+			it._dFeatureType = Parser.optFeatureTypeToFull(it.featureType);
+			it._lFeatureType = it.featureType;
 		}
 
 		tempString += `
@@ -142,9 +157,9 @@ function addOptionalfeatures (data) {
 				<a id="${ivI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 					<span class="name col-xs-3 col-xs-3-2">${it.name}</span>
 					<span class="source col-xs-1 col-xs-1-5 ${Parser.sourceJsonToColor(it.source)} text-align-center" title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
-					<span class="source col-xs-1 col-xs-1-5 text-align-center type" title="${Parser.optFeatureTypeToFull(it.featureType)}">${it.featureType}</span>
+					<span class="source col-xs-1 col-xs-1-5 text-align-center type" title="${it._dFeatureType}">${it._lFeatureType}</span>
 					<span class="prerequisite col-xs-5 col-xs-5-8 ${it.prerequisite == null ? CLS_NONE : ""}">${EntryRenderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
-					<span class="hidden sortIndex">${it._fPrereqLevel && it._fPrereqLevel.length ? it._fPrereqLevel[0] : -1}</span>
+					<span class="hidden sortIndex">${it._sLevel ? it._sLevel : it._sPrereq ? -1 : -2}</span>
 				</a>
 			</li>
 		`;
@@ -220,12 +235,27 @@ function loadhash (jsonIndex) {
 
 	const $wrpTab = $(`#stat-tabs`);
 	$wrpTab.find(`.opt-feature-type`).remove();
-	$(`<span class="opt-feature-type roller">${Parser.optFeatureTypeToFull(it.featureType)}</span>`)
-		.click(() => {
-			filterBox.setFromValues({"Feature Type": [it.featureType.toLowerCase()]});
-			handleFilterChange();
-		})
-		.prependTo($wrpTab);
+	const $wrpOptFeatType = $(`<div class="opt-feature-type"/>`).prependTo($wrpTab);
+	if (it.featureType instanceof Array) {
+		const commonPrefix = MiscUtil.findCommonPrefix(it.featureType.map(fs => Parser.optFeatureTypeToFull(fs)));
+		if (commonPrefix) $wrpOptFeatType.append(`${commonPrefix.trim()} `);
+		it.featureType.forEach((ft, i) => {
+			if (i > 0) $wrpOptFeatType.append("/");
+			$(`<span class="roller">${Parser.optFeatureTypeToFull(ft).substring(commonPrefix.length)}</span>`)
+				.click(() => {
+					filterBox.setFromValues({"Feature Type": [ft.toLowerCase()]});
+					handleFilterChange();
+				})
+				.appendTo($wrpOptFeatType);
+		});
+	} else {
+		$(`<span class="roller">${Parser.optFeatureTypeToFull(it.featureType)}</span>`)
+			.click(() => {
+				filterBox.setFromValues({"Feature Type": [it.featureType.toLowerCase()]});
+				handleFilterChange();
+			})
+			.appendTo($wrpOptFeatType);
+	}
 
 	$content.append(`
 		${EntryRenderer.utils.getBorderTr()}

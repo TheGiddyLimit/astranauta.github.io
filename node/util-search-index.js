@@ -22,7 +22,7 @@ UtilSearchIndex._test_getBasicVariantItems = function () {
 		basics.basicitem.forEach(b => {
 			variants.forEach(v => {
 				let hasRequired = b.name.indexOf(" (") === -1;
-				hasRequired = hasRequired && Object.keys(v.requires).every(req => b[req] === v.requires[req]);
+				hasRequired = hasRequired && v.requires.find(r => Object.keys(r).every(req => b[req] === r[req]));
 				if (v.excludes) {
 					hasRequired = hasRequired && Object.keys(v.excludes).every(ex => b[ex] !== v.excludes[ex]);
 				}

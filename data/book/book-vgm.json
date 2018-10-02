@@ -286,7 +286,7 @@
 										],
 										[
 											"10",
-											"Metallic (roll d6 for color)"
+											"Metallic (roll {@dice d6} for color)"
 										]
 									]
 								},
@@ -933,12 +933,12 @@
 										{
 											"type": "item",
 											"name": "Death Ray:",
-											"entry": "{@spell circle of death} (10-foot-radius sphere; 4d6 necrotic damage to all creatures in the area), {@spell feeblemind}"
+											"entry": "{@spell circle of death} (10-foot-radius sphere; {@dice 4d6} necrotic damage to all creatures in the area), {@spell feeblemind}"
 										},
 										{
 											"type": "item",
 											"name": "Disintegration Ray:",
-											"entry": "{@spell chain lightning} (primary target takes 6d8 lightning damage; two secondary targets within 30 feet of the primary target take 3d8 lightning damage each), {@spell eyebite} (sickened effect; 1 minute)"
+											"entry": "{@spell chain lightning} (primary target takes {@dice 6d8} lightning damage; two secondary targets within 30 feet of the primary target take {@dice 3d8} lightning damage each), {@spell eyebite} (sickened effect; 1 minute)"
 										},
 										{
 											"type": "item",
@@ -1639,8 +1639,8 @@
 										"Life Span"
 									],
 									"colStyles": [
-										"col-xs-4",
-										"col-xs-8"
+										"col-xs-6",
+										"col-xs-6"
 									],
 									"rows": [
 										[
@@ -2280,217 +2280,223 @@
 								"Gnolls have little variation in personality and outlook. They are collectively an elemental force, driven by a demon lord to spread death and destruction.",
 								"The only real opportunity for interaction with gnolls is provided by the cultists that sometimes accompany a war band. This humanoid rabble might have information the characters need or could even be former friends corrupted to the worship of Yeenoghu. To portray a gnoll that is more intelligent or social than the usual, you can give it characteristics similar to Yeenoghu cultists.",
 								{
-									"type": "table",
-									"caption": "Gnoll/Cultist Physical Features",
-									"colLabels": [
-										"d12",
-										"Physical Feature"
-									],
-									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
-									],
-									"rows": [
-										[
-											"1",
-											"Missing an arm"
-										],
-										[
-											"2",
-											"Infested with maggots"
-										],
-										[
-											"3",
-											"Fur matted with dried blood"
-										],
-										[
-											"4",
-											"Missing an eye"
-										],
-										[
-											"5",
-											"Walks with a severe limp"
-										],
-										[
-											"6",
-											"Covered in burn wounds"
-										],
-										[
-											"7",
-											"Vestigial twin embedded on back"
-										],
-										[
-											"8",
-											"Loud, wheezing breaths"
-										],
-										[
-											"9",
-											"Drool is mildly acidic"
-										],
-										[
-											"10",
-											"Covered in weeping sores"
-										],
-										[
-											"11",
-											"Horrific smell of rot"
-										],
-										[
-											"12",
-											"Weapon still embedded in old wound"
-										]
-									]
-								},
-								{
-									"type": "table",
-									"caption": "Gnoll/Cultist Personality Trait",
-									"colLabels": [
-										"d6",
-										"Personality Trait"
-									],
-									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
-									],
-									"rows": [
-										[
-											"1",
-											"Once an enemy defies me, I dedicate everything to its destruction."
-										],
-										[
-											"2",
-											"The best enemy to fight is one caught by surprise."
-										],
-										[
-											"3",
-											"I hate the sun and travel only by night."
-										],
-										[
-											"4",
-											"I have stopped using language and instead rely on growls and shrieks."
-										],
-										[
-											"5",
-											"I have no fear of death and welcome it in battle."
-										],
-										[
-											"6",
-											"My berserk fury makes a rabid dog look gentle."
-										]
-									]
-								},
-								{
-									"type": "table",
-									"caption": "Gnoll/Cultist Ideals",
-									"colLabels": [
-										"d6",
-										"Ideal"
-									],
-									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
-									],
-									"rows": [
-										[
-											"1",
-											"Strength. I must remain strong to survive. (Any)"
-										],
-										[
-											"2",
-											"Slaughter. If I destroy the weak, I please Yeenoghu. (Evil)"
-										],
-										[
-											"3",
-											"Destruction. Yeenoghu will return when only those worthy of his fury remain. (Evil)"
-										],
-										[
-											"4",
-											"Paranoia. Others are planning to kill and eat me. I must find a way to kill and eat them first. (Chaotic)"
-										],
-										[
-											"5",
-											"Self-Sufficiency. When the time comes, even my allies will die by my hand. (Evil)"
-										],
-										[
-											"6",
-											"Leadership. I am not part of the pack. I am above it. (Chaotic)"
-										]
-									]
-								},
-								{
-									"type": "table",
-									"caption": "Gnoll/Cultist Bonds",
-									"colLabels": [
-										"d6",
-										"Bond"
-									],
-									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
-									],
-									"rows": [
-										[
-											"1",
-											"I would die before betraying the Lord of Savagery."
-										],
-										[
-											"2",
-											"I would follow the leader of our war band anywhere and gladly sacrifice myself to protect him or her."
-										],
-										[
-											"3",
-											"I cull the weak from our war band, so that we remain strong."
-										],
-										[
-											"4",
-											"Yeenoghu's omens guide my every choice."
-										],
-										[
-											"5",
-											"If I die in battle, I was simply too weak to please Yeenoghu."
-										],
-										[
-											"6",
-											"I devour the weak to purge them from the world, the strong to blunt their power."
-										]
-									]
-								},
-								{
-									"type": "table",
-									"caption": "Gnoll/Cultist Flaws",
-									"colLabels": [
-										"d6",
-										"Flaw"
-									],
-									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
-									],
-									"rows": [
-										[
-											"1",
-											"I lack tactical guile and rely on overwhelming attacks."
-										],
-										[
-											"2",
-											"I flee from opponents that can match my strength."
-										],
-										[
-											"3",
-											"My supposed allies are my first victims."
-										],
-										[
-											"4",
-											"Deep down inside, I am terrified I will fail Yeenoghu."
-										],
-										[
-											"5",
-											"My desire to torment my foes sometimes gives them the opportunity to outwit me."
-										],
-										[
-											"6",
-											"My arrogance causes me to overlook opportunities."
-										]
+									"type": "tableGroup",
+									"name": "Roleplaying Gnolls and Cultists of Yeenoghu",
+									"tables": [
+										{
+											"type": "table",
+											"caption": "Gnoll/Cultist Physical Features",
+											"colLabels": [
+												"d12",
+												"Physical Feature"
+											],
+											"colStyles": [
+												"col-xs-2 text-align-center",
+												"col-xs-10"
+											],
+											"rows": [
+												[
+													"1",
+													"Missing an arm"
+												],
+												[
+													"2",
+													"Infested with maggots"
+												],
+												[
+													"3",
+													"Fur matted with dried blood"
+												],
+												[
+													"4",
+													"Missing an eye"
+												],
+												[
+													"5",
+													"Walks with a severe limp"
+												],
+												[
+													"6",
+													"Covered in burn wounds"
+												],
+												[
+													"7",
+													"Vestigial twin embedded on back"
+												],
+												[
+													"8",
+													"Loud, wheezing breaths"
+												],
+												[
+													"9",
+													"Drool is mildly acidic"
+												],
+												[
+													"10",
+													"Covered in weeping sores"
+												],
+												[
+													"11",
+													"Horrific smell of rot"
+												],
+												[
+													"12",
+													"Weapon still embedded in old wound"
+												]
+											]
+										},
+										{
+											"type": "table",
+											"caption": "Gnoll/Cultist Personality Trait",
+											"colLabels": [
+												"d6",
+												"Personality Trait"
+											],
+											"colStyles": [
+												"col-xs-2 text-align-center",
+												"col-xs-10"
+											],
+											"rows": [
+												[
+													"1",
+													"Once an enemy defies me, I dedicate everything to its destruction."
+												],
+												[
+													"2",
+													"The best enemy to fight is one caught by surprise."
+												],
+												[
+													"3",
+													"I hate the sun and travel only by night."
+												],
+												[
+													"4",
+													"I have stopped using language and instead rely on growls and shrieks."
+												],
+												[
+													"5",
+													"I have no fear of death and welcome it in battle."
+												],
+												[
+													"6",
+													"My berserk fury makes a rabid dog look gentle."
+												]
+											]
+										},
+										{
+											"type": "table",
+											"caption": "Gnoll/Cultist Ideals",
+											"colLabels": [
+												"d6",
+												"Ideal"
+											],
+											"colStyles": [
+												"col-xs-2 text-align-center",
+												"col-xs-10"
+											],
+											"rows": [
+												[
+													"1",
+													"Strength. I must remain strong to survive. (Any)"
+												],
+												[
+													"2",
+													"Slaughter. If I destroy the weak, I please Yeenoghu. (Evil)"
+												],
+												[
+													"3",
+													"Destruction. Yeenoghu will return when only those worthy of his fury remain. (Evil)"
+												],
+												[
+													"4",
+													"Paranoia. Others are planning to kill and eat me. I must find a way to kill and eat them first. (Chaotic)"
+												],
+												[
+													"5",
+													"Self-Sufficiency. When the time comes, even my allies will die by my hand. (Evil)"
+												],
+												[
+													"6",
+													"Leadership. I am not part of the pack. I am above it. (Chaotic)"
+												]
+											]
+										},
+										{
+											"type": "table",
+											"caption": "Gnoll/Cultist Bonds",
+											"colLabels": [
+												"d6",
+												"Bond"
+											],
+											"colStyles": [
+												"col-xs-2 text-align-center",
+												"col-xs-10"
+											],
+											"rows": [
+												[
+													"1",
+													"I would die before betraying the Lord of Savagery."
+												],
+												[
+													"2",
+													"I would follow the leader of our war band anywhere and gladly sacrifice myself to protect him or her."
+												],
+												[
+													"3",
+													"I cull the weak from our war band, so that we remain strong."
+												],
+												[
+													"4",
+													"Yeenoghu's omens guide my every choice."
+												],
+												[
+													"5",
+													"If I die in battle, I was simply too weak to please Yeenoghu."
+												],
+												[
+													"6",
+													"I devour the weak to purge them from the world, the strong to blunt their power."
+												]
+											]
+										},
+										{
+											"type": "table",
+											"caption": "Gnoll/Cultist Flaws",
+											"colLabels": [
+												"d6",
+												"Flaw"
+											],
+											"colStyles": [
+												"col-xs-2 text-align-center",
+												"col-xs-10"
+											],
+											"rows": [
+												[
+													"1",
+													"I lack tactical guile and rely on overwhelming attacks."
+												],
+												[
+													"2",
+													"I flee from opponents that can match my strength."
+												],
+												[
+													"3",
+													"My supposed allies are my first victims."
+												],
+												[
+													"4",
+													"Deep down inside, I am terrified I will fail Yeenoghu."
+												],
+												[
+													"5",
+													"My desire to torment my foes sometimes gives them the opportunity to outwit me."
+												],
+												[
+													"6",
+													"My arrogance causes me to overlook opportunities."
+												]
+											]
+										}
 									]
 								}
 							]
@@ -2761,23 +2767,23 @@
 									"rows": [
 										[
 											"Gnoll fangs ofYeenoghu",
-											"1d4+1"
+											"{@dice 1d4 + 1}"
 										],
 										[
 											"Gnoll hunters",
-											"1d4 + 1"
+											"{@dice 1d4 + 1}"
 										],
 										[
 											"Gnoll flesh gnawers",
-											"2d4"
+											"{@dice 2d4}"
 										],
 										[
 											"Warriors (common gnolls)",
-											"6d6"
+											"{@dice 6d6}"
 										],
 										[
 											"Hyenas",
-											"4d6"
+											"{@dice 4d6}"
 										]
 									]
 								},
@@ -3209,7 +3215,7 @@
 											"type": "entries",
 											"name": "Booyahg Whip",
 											"entries": [
-												"Khurgorbaeyag saw fit to gift this goblin with powers that enable it to dominate others. The goblin has 1d3 other goblins that slavishly obey its orders."
+												"Khurgorbaeyag saw fit to gift this goblin with powers that enable it to dominate others. The goblin has {@dice 1d3} other goblins that slavishly obey its orders."
 											]
 										},
 										{
@@ -3323,7 +3329,7 @@
 									"entries": [
 										"Bugbears have no use for priests or shamans. No one needs to tell them what their gods want. If the brother gods are angry with them, they let the bugbears know with bolts of lightning (Hruggek) or by striking them blind or dead (Grankhul). Bugbears worship their gods simply by preying on other creatures, using no other sort of ceremony to show obeisance-with one exception.",
 										"In an act of worship that also sometimes attracts favorable attention from their gods, bugbears sever the heads of defeated foes, cut away or stitch open the eyelids, and leave the mouths hanging open. The heads are then placed on spikes or hung from cords around a bugbear den. The heads themselves are trophies that honor Hruggek, and their ever-staring eyes are an homage to sleepless Grankhul.",
-										"The heads of leaders and mighty opponents are particularly sacred, and offering up such a trophy can provide a bugbear gang with a special boon. A gang that gains the favor of Hruggek and Grankhul in this way might find that the head will emit a shout when an enemy gets too close (in the fashion of an alarm spell). Sometimes the heads of people who have information the bugbears need speak their secrets amid blubbered pleas for mercy (as with the speak with dead spell)."
+										"The heads of leaders and mighty opponents are particularly sacred, and offering up such a trophy can provide a bugbear gang with a special boon. A gang that gains the favor of Hruggek and Grankhul in this way might find that the head will emit a shout when an enemy gets too close (in the fashion of an alarm spell). Sometimes the heads of people who have information the bugbears need speak their secrets amid blubbered pleas for mercy (as with the {@spell speak with dead} spell)."
 									]
 								}
 							]
@@ -4384,7 +4390,7 @@
 										{
 											"type": "list",
 											"items": [
-												"The hag creates a thick cloud of caustic black smoke that fills a 20-foot-radius sphere centered on a point she can see within 120 feet her. The cloud lasts until initiative count 20 on the next round. Creatures and objects in or behind the smoke are heavily obscured. A creature that enters the cloud for the first time on a turn or starts its turn there takes 10 (3d6) acid damage."
+												"The hag creates a thick cloud of caustic black smoke that fills a 20-foot-radius sphere centered on a point she can see within 120 feet her. The cloud lasts until initiative count 20 on the next round. Creatures and objects in or behind the smoke are heavily obscured. A creature that enters the cloud for the first time on a turn or starts its turn there takes 10 ({@dice 3d6}) acid damage."
 											]
 										},
 										"A powerful {@b bheur hag} might have the following additional lair action:",
@@ -4406,7 +4412,7 @@
 											"type": "list",
 											"items": [
 												"One creature the hag can see within 120 feet of her must succeed on a DC 15 Charisma saving throw or be banished to a prison demiplane. To escape, the creature must use its action to make a Charisma check contested by the hag's. If the creature wins, it escapes the demiplane. Otherwise, the effect ends on initiative count 20 on the next round. When the effect ends, the creature reappears in the space it left or in the nearest unoccupied space if that one is occupied.",
-												"The hag targets up to three creatures that she can see within 60 feet of her. Each target must succeed on a DC 15 Constitution saving throw or be flung up to 30 feet through the air. A creature that strikes a solid object or is released in midair takes 1d6 bludgeoning damage for every 10 feet moved or fallen."
+												"The hag targets up to three creatures that she can see within 60 feet of her. Each target must succeed on a DC 15 Constitution saving throw or be flung up to 30 feet through the air. A creature that strikes a solid object or is released in midair takes {@dice 1d6} bludgeoning damage for every 10 feet moved or fallen."
 											]
 										},
 										"A powerful {@b sea hag} might have the following additional lair actions:",
@@ -4426,7 +4432,7 @@
 							"name": "Regional Effects",
 							"entries": [
 								"A hag's foul nature slowly suffuses the environment around her lair, twisting it to evil.",
-								"Each hag's lair is the source of three to five regional effects; the home of a grandmother, an auntie, or a coven has more effects than the lair of a single hag, including some that can directly harm intruders. Any regional effect that requires a creature to make a saving throw uses the save DC of the hag's most powerful ability. These effects either end immediately if the hag dies or abandons the lair, or take up to 2d10 days to fade away.",
+								"Each hag's lair is the source of three to five regional effects; the home of a grandmother, an auntie, or a coven has more effects than the lair of a single hag, including some that can directly harm intruders. Any regional effect that requires a creature to make a saving throw uses the save DC of the hag's most powerful ability. These effects either end immediately if the hag dies or abandons the lair, or take up to {@dice 2d10} days to fade away.",
 								{
 									"type": "entries",
 									"name": "Regional Effects",
@@ -4456,7 +4462,7 @@
 											"items": [
 												"Small avalanches of snow intermittently fall, blocking a path or burying intruders. A buried creature is restrained and has to hold its breath until it is dug out.",
 												"Human-sized blocks of ice appear, containing frozen corpses. These corpses might break free and attack as zombies, or their spirits might attack as specters.",
-												"Blizzards come without warning. A blizzard occurs once every 2d12 hours and lasts 1d3 hours. During a storm, creatures moving overland travel at half normal speed, and normal visibility is reduced to 30 feet.",
+												"Blizzards come without warning. A blizzard occurs once every {@dice 2d12} hours and lasts {@dice 1d3} hours. During a storm, creatures moving overland travel at half normal speed, and normal visibility is reduced to 30 feet.",
 												"Roads, paths, and trails twist and turn back on themselves, making navigation in the area exceedingly difficult."
 											]
 										},
@@ -4544,7 +4550,7 @@
 												],
 												[
 													"7",
-													"2d4 {@creature swarm of insects|mm|swarms of insects} or {@creature swarm of rats|mm|swarms of rats}"
+													"{@dice 2d4} {@creature swarm of insects|mm|swarms of insects} or {@creature swarm of rats|mm|swarms of rats}"
 												],
 												[
 													"8",
@@ -4661,7 +4667,7 @@
 												],
 												[
 													"5",
-													"A seemingly empty, sealed jar. If opened, the person standing closest to the jar suddenly recalls 1d6 happy memories from the life of a long dead elf lord."
+													"A seemingly empty, sealed jar. If opened, the person standing closest to the jar suddenly recalls {@dice 1d6} happy memories from the life of a long dead elf lord."
 												],
 												[
 													"6",
@@ -5587,7 +5593,7 @@
 								"A mind flayer might use its psionic ability to send visions to a humanoid shaman, causing it to proclaim the mind flayers as emissaries  of the gods. With that ruse in place, the \"gods\" then dictate strict rules that cause some members of the tribe to be branded as heretics, to provide the pretense for occasionally seizing a humanoid and devouring its brain. After the colony depletes and demoralizes the population sufficiently, the illithids might move in en masse and attempt to turn the remaining followers into thralls.",
 								"The process of transforming a creature into a thrall requires the entire colony's energy and attention, making it no small matter. Although it takes only one mind flayer to perform the process, any illithid not directly involved in the process is required to donate its psionic power to the effort while otherwise remaining inactive.",
 								"A thrall-to-be is first rendered docile through psionic means. Using a low-power version of its Mind Blast ability, the mind flayer bombards the victim with energy that washes through its synapses like acid, clearing away its former personality and leaving it a partially empty shell. This step takes 24 hours. Over the next 48 hours, the illithids rebuild the victim's memories and personality, and the victim gains the skills and talents it needs to perform its intended function.",
-								"The process that creates a thrall changes almost everything about the victim. The creature retains its Hit Dice, hit points, racial traits (but not proficiencies granted by race), and all of its ability scores except for Intelligence. After the first stage of the process, the creature's Intelligence is halved; when the second stage is over, its Intelligence score increases by 1d6.",
+								"The process that creates a thrall changes almost everything about the victim. The creature retains its Hit Dice, hit points, racial traits (but not proficiencies granted by race), and all of its ability scores except for Intelligence. After the first stage of the process, the creature's Intelligence is halved; when the second stage is over, its Intelligence score increases by {@dice 1d6}.",
 								"To complete the process, the thrall receives a new set of proficiencies, a new alignment, and a new personality. Some colonies have learned how to salvage a victim's psionic abilities during the process or how to implant psionic powers into their thralls. Also, some colonies know how to leave a victim's persona intact while infusing it with a fanatical loyalty to the colony's elder brain as well as telepathic power that allows the victim to communicate with its new masters as if it were a mind flayer. This sort of thrall makes a perfect spy, since most would never suspect its true nature.",
 								"A thrall can be restored to its former self through a combination of spells and ministration. The thrall must have regeneration, heal, and greater restoration cast on it once per day for three consecutive days. The victim is restored to normal when the final round of spells is cast.",
 								"Mind flayers vastly prefer to use humanoids as thralls, since they have a good balance of physical attributes and proper anatomy. Animals, in contrast, require a lot of direct oversight and lack the ability to use tools to help maintain the colony. Among the variety of humanoids available to the illithids, they have some preferences and tendencies.",
@@ -5700,7 +5706,7 @@
 									"type": "inset",
 									"name": "Funerary Brain Jars",
 									"entries": [
-										"When a mind flayer dies, other mind flayers try to salvage the dead illithid's brain and bring it to the colony's brine pool for the elder brain to consume. For this purpose, mind flayers craft funerary brain jars made of stone. Every jar is made for an individual, inscribed with Qualith and artwork that relate the mind flayer's accomplishments. Often a mind flayer's funerary brain jar is created long before the illithid's death and updated as the years pass, with the jar serving as a diary of sorts for the one whose brain will eventually fill it. After it is filled with brine, a funerary brain jar can preserve a brain without spoiling for 1d4 + 10 days."
+										"When a mind flayer dies, other mind flayers try to salvage the dead illithid's brain and bring it to the colony's brine pool for the elder brain to consume. For this purpose, mind flayers craft funerary brain jars made of stone. Every jar is made for an individual, inscribed with Qualith and artwork that relate the mind flayer's accomplishments. Often a mind flayer's funerary brain jar is created long before the illithid's death and updated as the years pass, with the jar serving as a diary of sorts for the one whose brain will eventually fill it. After it is filled with brine, a funerary brain jar can preserve a brain without spoiling for {@dice 1d4 + 10} days."
 									]
 								},
 								{
@@ -5837,7 +5843,7 @@
 									"name": "Mind Blade",
 									"entries": [
 										"{@i Weapon (any sword), rare (requires attunement by a specific individual)}",
-										"Mind flayers can turn any nonmagical sword into a mind blade. Only one creature can attune to it: either a specific mind flayer or one of its thralls. In the hands of any other creature, the mind blade functions as a normal sword of its kind. In the hands of its intended wielder, the mind blade is a magic weapon that deals an extra 2d6 psychic damage to any target it hits."
+										"Mind flayers can turn any nonmagical sword into a mind blade. Only one creature can attune to it: either a specific mind flayer or one of its thralls. In the hands of any other creature, the mind blade functions as a normal sword of its kind. In the hands of its intended wielder, the mind blade is a magic weapon that deals an extra {@dice 2d6} psychic damage to any target it hits."
 									]
 								},
 								{
@@ -5853,7 +5859,7 @@
 									"name": "Mind Lash",
 									"entries": [
 										"{@i Weapon (whip), rare (requires attunement by a mind flayer)}",
-										"In the hands of a creature other than a mind flayer, a mind lash functions as a normal whip. In the hands of an illithid, this magic weapon strips away a creature's will to survive as it also strips away flesh, dealing an extra 2d4 psychic damage to any target it hits. Any creature that takes psychic damage from the mind lash must also succeed on a DC 15 Wisdom saving throw or have disadvantage on Intelligence, Wisdom, and Charisma saving throws for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+										"In the hands of a creature other than a mind flayer, a mind lash functions as a normal whip. In the hands of an illithid, this magic weapon strips away a creature's will to survive as it also strips away flesh, dealing an extra {@dice 2d4} psychic damage to any target it hits. Any creature that takes psychic damage from the mind lash must also succeed on a DC 15 Wisdom saving throw or have disadvantage on Intelligence, Wisdom, and Charisma saving throws for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 									]
 								},
 								{
@@ -5862,7 +5868,7 @@
 									"entries": [
 										"{@i Armor (shield), rare}",
 										"A mind flayer skilled at crafting magic items creates a shield of far sight by harvesting an eye from an intelligent humanoid and magically implanting it on the outer surface of a nonmagical shield. The shield becomes a magic item once the eye is implanted, whereupon the mind flayer can give the shield to a thrall or hang it on a wall in its lair. As long as the shield is on the same plane of existence as its creator, the mind flayer can see through the shield's eye, which has darkvision out to a range of 60 feet. While peering through this magical eye, the mind flayer can use its Mind Blast action as though it were standing behind the shield.",
-										"If a shield of far sight is destroyed, the mind flayer that created it is blinded for 2d12 hours."
+										"If a shield of far sight is destroyed, the mind flayer that created it is blinded for {@dice 2d12} hours."
 									]
 								}
 							]
@@ -5877,7 +5883,7 @@
 									"name": "Flensing Claws",
 									"entries": [
 										"Illithids don't always provide their thralls with normal weapons, such as swords and axes. Sometimes they improve the natural capabilities of thralls by giving them new anatomy. Flensing claws take the form of articulated digits that extend into long metal blades. The claws are knitted into the flesh and bones of a creature's arms and can't be removed without surgical amputation.",
-										"Each set of flensing claws is designed for a specific creature and can't be used by anyone else. A creature equipped with flensing claws can use its action to make one melee weapon attack with the claws. The claws deal slashing damage based on the creature's size: Small, 1d8; Medium, 1d10; Large, 1d12; or Huge, 2d8. The creature adds its proficiency bonus and Strength modifier to any attack roll made with the claws, and its Strength modifier to its damage roll when it hits a target with the claws. Tiny and Gargantuan creatures can't be fitted with flensing claws."
+										"Each set of flensing claws is designed for a specific creature and can't be used by anyone else. A creature equipped with flensing claws can use its action to make one melee weapon attack with the claws. The claws deal slashing damage based on the creature's size: Small, {@dice 1d8}; Medium, {@dice 1d10}; Large, {@dice 1d12}; or Huge, {@dice 2d8}. The creature adds its proficiency bonus and Strength modifier to any attack roll made with the claws, and its Strength modifier to its damage roll when it hits a target with the claws. Tiny and Gargantuan creatures can't be fitted with flensing claws."
 									]
 								},
 								{
@@ -6689,15 +6695,15 @@
 									"rows": [
 										[
 											"1",
-											"1d12 elf ears"
+											"{@dice 1d12} elf ears"
 										],
 										[
 											"2",
-											"1d4 dwarf beards"
+											"{@dice 1d4} dwarf beards"
 										],
 										[
 											"3",
-											"1d6 human heads"
+											"{@dice 1d6} human heads"
 										],
 										[
 											"4",
@@ -6709,11 +6715,11 @@
 										],
 										[
 											"6",
-											"1d20 severed fingers"
+											"{@dice 1d20} severed fingers"
 										],
 										[
 											"7",
-											"1d8 eyeballs"
+											"{@dice 1d8} eyeballs"
 										],
 										[
 											"8",
@@ -7417,7 +7423,7 @@
 											"type": "entries",
 											"name": "Acid Slime (Abomination, Anathema, or Malison Only)",
 											"entries": [
-												"As a bonus action, the yuan-ti can coat its body in a slimy acid that lasts for 1 minute. A creature that touches the yuan-ti, hits it with a melee attack while within 5 feet of it, or is hit by its constrict attack takes 5 (1d10) acid damage."
+												"As a bonus action, the yuan-ti can coat its body in a slimy acid that lasts for 1 minute. A creature that touches the yuan-ti, hits it with a melee attack while within 5 feet of it, or is hit by its constrict attack takes 5 ({@dice 1d10}) acid damage."
 											]
 										},
 										{
@@ -7452,7 +7458,7 @@
 											"type": "entries",
 											"name": "Bite (Pureblood Only)",
 											"entries": [
-												"Melee Weapon Attack: +3 to hit, reach 5 ft., one creature. Hit: 3 (1d4) piercing damage plus 3 (1d6) poison damage. If the pureblood uses Multiattack, it can make two melee attacks, but can use its bite only once."
+												"Melee Weapon Attack: +3 to hit, reach 5 ft., one creature. Hit: 3 ({@dice 1d4}) piercing damage plus 3 ({@dice 1d6}) poison damage. If the pureblood uses Multiattack, it can make two melee attacks, but can use its bite only once."
 											]
 										},
 										{

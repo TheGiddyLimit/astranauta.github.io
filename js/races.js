@@ -4,8 +4,8 @@ const JSON_FLUFF_URL = "data/fluff-races.json";
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 function getAbilityObjs (abils) {
