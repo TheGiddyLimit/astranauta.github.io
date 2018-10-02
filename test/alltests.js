@@ -13,7 +13,7 @@ const expectedDirs = {};
 const existing = [];
 
 require("../js/utils");
-require("./check-links");
+require("./check-tags");
 
 function loadJSON (file) {
 	const data = fs.readFileSync(file, "utf8")

@@ -326,6 +326,7 @@ dialog.dialog-modal {
 	display: none;
 }
 
+.glyphicon.top-border-icon,
 .glyphicon.delete-icon {
 	top: 0;
 	margin-left: auto;
@@ -396,6 +397,14 @@ dialog.dialog-modal {
 	overflow-y: auto;
 	animation-name: kf-fade-in, kf-pop-in;
 	animation-duration: 150ms, 75ms;
+
+	&--popout {
+		box-shadow: initial;
+		max-width: 100%;
+		width: 100%;
+		max-height: 100%;
+		animation-duration: initial;
+	}
 
 	@media (max-width: 1023px) {
 		max-width: 95vw;
@@ -680,6 +689,12 @@ dialog.dialog-modal {
 
 	&__col--tall {
 		line-height: 30px;
+	}
+
+	&__load_all_wrp {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 2px;
 	}
 }
 
@@ -988,6 +1003,10 @@ span {
 	&.sourceWDH {
 		color: #d4af37;
 	}
+
+	&.sourceAL {
+		color: #ed1c24;
+	}
 }
 
 table.stats {
@@ -1112,6 +1131,10 @@ th#author {
 
 .monster th.name {
 	padding-right: calc(5.1em + 2px);
+}
+
+.mon__wrp_hp {
+	max-width: calc(100% - 5.2em);
 }
 
 table.stats td#sizetypealignment {
@@ -2109,6 +2132,10 @@ body.dm-screen-fullscreen .dm-sidemenu-burger {
 	width: 48.33333333333333%;
 }
 
+.col-xs-5-3 {
+	width: 44.16666666666666%;
+}
+
 .col-xs-4-7 {
 	width: 39.16666666666666%;
 }
@@ -2763,9 +2790,8 @@ span.showhide {
 	padding: 1px 7px;
 }
 
-.caret-reverse {
+.caret--reverse {
 	transform: rotate(180deg);
-	-webkit-transform: rotate(180deg);
 }
 
 /* ENTRY RENDERING CSS */
@@ -3648,6 +3674,32 @@ table.stats tr.homebrew-hover {
 	}
 }
 
+.don {
+	&__bar {
+		width: calc(100% - 40px);
+		height: 20px;
+		margin: 20px 20px 5px;
+		box-shadow: 0 0 3px 0 black;
+		border-radius: 4px;
+		border: 1px solid #ccc;
+		background: #f0f0f0;
+	}
+
+	&__bar--home {
+		width: calc(100% - 10px);
+		height: 20px;
+		margin: 5px;
+	}
+
+	&__bar_inner {
+		height: 18px;
+		background: gold;
+		width: 0;
+		text-align: right;
+		color: black;
+	}
+}
+
 /* Day Mode End */
 
 /* Night Mode */
@@ -4364,6 +4416,15 @@ table.stats tr.homebrew-hover {
 	/* Bootstrap overrides */
 	.table-striped > tbody > tr:nth-of-type(odd) {
 		background-color: #444;
+	}
+
+	.alert-info {
+		color: white;
+		background-color: #354e5a;
+	}
+
+	.don__bar {
+		background: $bg-color;
 	}
 
 	/* *** */

@@ -177,7 +177,7 @@ class Board {
 	pLoadIndex () {
 		return new Promise((resolve, reject) => {
 			elasticlunr.clearStopWords();
-			EntryRenderer.item.populatePropertyAndTypeReference().then(() => DataUtil.loadJSON("data/bookref-dmscreen-index.json")).then((data) => {
+			EntryRenderer.item.populatePropertyAndTypeReference().then(() => DataUtil.loadJSON("data/generated/bookref-dmscreen-index.json")).then((data) => {
 				this.availRules.ALL = elasticlunr(function () {
 					this.addField("b");
 					this.addField("s");
@@ -855,6 +855,7 @@ class Panel {
 			}, true);
 		});
 		$contentStats.off("click", ".mon__btn-reset-cr").on("click", ".mon__btn-reset-cr", function () {
+			$contentStats.empty().append(EntryRenderer.monster.getCompactRenderedString(mon, null, {showScaler: true, isScaled: false}));
 			self.set$Tab(
 				self.tabIndex,
 				PANEL_TYP_STATS,
@@ -2952,8 +2953,8 @@ class InitiativeTracker {
 					.data("doTickDown", tickDown)
 					.data("doTickUp", tickUp)
 					.data("getState", () => JSON.parse(JSON.stringify(state)))
-					.on("contextmenu", (e) => e.ctrlKey || (e.preventDefault() || tickUp(true)))
-					.click(() => tickDown(true))
+					.on("contextmenu", (e) => e.ctrlKey || (e.preventDefault() || tickDown(true)))
+					.click(() => tickUp(true))
 					.appendTo($conds);
 				if (name) {
 					const cond = InitiativeTracker.getConditions().find(it => it.condName !== null && it.name.toLowerCase() === name.toLowerCase().trim());

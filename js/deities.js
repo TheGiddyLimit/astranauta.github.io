@@ -4,8 +4,8 @@ const STR_REPRINTED = "reprinted";
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.deity.loadJSON().then(onJsonLoad);
-	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 let list;
@@ -220,13 +220,9 @@ function loadhash (jsonIndex) {
 		if (deity.entries) renderer.recursiveEntryRender({entries: deity.entries}, renderStack);
 		return `
 		${reprintIndex ? `<tr><td colspan="6"><i class="text-muted">${reprintIndex === 1 ? `This deity is a reprint.` : ""} The version below was printed in an older publication (${Parser.sourceJsonToFull(deity.source)}${deity.page ? `, page ${deity.page}` : ""}).</i></td></tr>` : ""}
-		<tr><td colspan="6"><span class="bold">Pantheon: </span>${deity.pantheon}</td></tr>
-		${deity.category ? `<tr><td colspan="6"><span class="bold">Category: </span>${deity.category}</td></tr>` : ""}
-		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => Parser.alignmentAbvToFull(a)).join(" ")}</td></tr>
-		<tr><td colspan="6"><span class="bold">Domains: </span>${deity.domains.join(", ")}</td></tr>
-		${deity.province ? `<tr><td colspan="6"><span class="bold">Province: </span>${deity.province}</td></tr>` : ""}
-		${deity.altNames ? `<tr><td colspan="6"><span class="bold">Alternate Names: </span>${deity.altNames.join(", ")}</td></tr>` : ""}
-		<tr><td colspan="6"><span class="bold">Symbol: </span>${deity.symbol}</td></tr>
+		
+		${EntryRenderer.deity.getOrderedParts(deity, `<tr><td colspan="6">`, `</td></tr>`)}
+		
 		${deity.symbolImg ? `<tr><td colspan="6">${renderer.renderEntry({entries: [deity.symbolImg]})}</td></tr>` : ""}
 		${renderStack.length ? `<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>` : ""}
 		`;

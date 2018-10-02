@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--5ETOOLS_VERSION-->
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Donate - 5etools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script type="text/javascript" src="lib/js-cookie.js"></script>
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
+</head>
+
+<body>
+<header class="hidden-xs hidden-sm">
+	<div class="container">
+
+		<h1>Donate</h1>
+		<p>Please?</p>
+	</div>
+</header>
+<nav class="container" id="navigation"><ul class="nav nav-pills" id="navbar"></ul></nav>
+<main class="container bodyContent">
+	<div class="row">
+		<div class="col-xs-12">
+			<h4 class="text-align-center">5etools, LLC. gratefully accepts donations.</h4>
+			<p>
+				Any monies raised are used to help cover the costs associated with running the site. These costs come from renting servers, and the bandwidth they consume every month. We don't have any advertisements or <span class="help" title="honest, guv">shady</span> monetization techniques, nor do we sell anything. If you are financially able, please consider making a donation to help us support those that are providing servers and bandwidth. Any donation, no matter the size, is greatly appreciated.
+			</p>
+			<p>
+				Server upkeep donation addresses (note that the development team <b>does not</b> receive any payments made to these addresses; donations go directly to the host responsible for keeping the site online):
+			</p>
+			<p class="code">
+				BTC: <a href="bitcoin:1Fkk1vTBZaEsFFZ3yoGo4W1DNq7fYQjxmV">1Fkk1vTBZaEsFFZ3yoGo4W1DNq7fYQjxmV</a>
+				<br>
+				BCH: <a href="bitcoincash:1Fhq7TBpJimdRa5TAmtuzxz3RveFqoBsJE">1Fhq7TBpJimdRa5TAmtuzxz3RveFqoBsJE</a>
+				<br>
+				ETH: <a href="ethereum:0x7717ecCEbFadBB559E290FB5748f8cb279B656F0">0x7717ecCEbFadBB559E290FB5748f8cb279B656F0</a>
+				<br>
+				LTC: <a href="litecoin:LZ5gjbi5bCHyV75684gkMPcFvkKFaVFZE9">LZ5gjbi5bCHyV75684gkMPcFvkKFaVFZE9</a>
+			</p>
+			<p><i>Those with a keen eye might notice these are the same donation addresses as those found <a href="https://rpg.rem.uz?ref=5etools">here</a>. This is no coincidence; the services are hosted on the same machine. By supporting 5etools, you are supporting The Archive, and vice-versa.</i></p>
+		</div>
+	</div>
+	<hr>
+	<div class="row" id="don-wrapper">
+		<div class="col-xs-12">
+			<p>
+				Below is the current amount donated versus the total cost for this quarter:
+			</p>
+			<div class="don__bar">
+				<div class="don__bar_inner"></div>
+			</div>
+			<div class="split">
+				<span>€0.00</span>
+				<span id="don-total">Loading...</span>
+			</div>
+			<p>
+				<br>
+				<i>Please note that all values here are estimations, and, due to the nature of our donation &quot;system,&quot; are not updated automatically.</i>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+
+	</div>
+</main>
+<footer class="container">
+
+</footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/genutils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/lifegen.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+<script>
+	DataUtil.loadJSON(`https://get.5etools.com/money.php`).then(dosh => {
+		const pct = Number(dosh.donated) / Number(dosh.Goal);
+		$(`#don-total`).text(`€${dosh.Goal}`);
+		if (isNaN(pct)) {
+			throw new Error(`Was not a number! Values were ${dosh.donated} and ${dosh.Goal}`);
+		} else {
+			const $bar = $(`.don__bar_inner`);
+			$bar.css("width", `${Math.min(Math.ceil(100 * pct), 100)}%`).html(pct !== 0 ? `€${dosh.donated}&nbsp;` : "");
+			if (pct >= 1) $bar.css("background-color", "lightgreen");
+		}
+	}).catch(noDosh => {
+		$(`#don-wrapper`).remove();
+		throw noDosh;
+	})
+</script>
+
+</body>
+</html>

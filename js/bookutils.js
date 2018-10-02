@@ -60,7 +60,7 @@ const BookUtil = {
 			out +=
 				`<li>
 				<a href="${options.addPrefix || ""}#${options.book.id},${i}" ${options.addOnclick ? `onclick="BookUtil.scrollPageTop()"` : ""}>
-					<span class="sect">${BookUtil.getOrdinalText(c.ordinal)}${c.name}</span>
+					<span class="sect">${Parser.bookOrdinalToAbv(c.ordinal)}${c.name}</span>
 				</a>
 			</li>`;
 			out += BookUtil.makeHeadersBlock(options.book.id, i, c, options.addPrefix, options.addOnclick, options.defaultHeadersHidden);
@@ -69,11 +69,6 @@ const BookUtil = {
 		out +=
 			"</ul>";
 		return out;
-	},
-
-	getOrdinalText: (ordinal) => {
-		if (ordinal === undefined) return "";
-		return `${ordinal.type === "part" ? `Part ${ordinal.identifier} \u2014 ` : ordinal.type === "chapter" ? `Ch. ${ordinal.identifier}: ` : ordinal.type === "episode" ? `Ep. ${ordinal.identifier}: ` : `App. ${ordinal.identifier}: `}`;
 	},
 
 	makeHeadersBlock: (bookId, chapterIndex, chapter, addPrefix, addOnclick, defaultHeadersHidden) => {
@@ -514,7 +509,7 @@ const BookUtil = {
 								const $ptLink = $(`<span/>`);
 								const $link = $(
 									`<a href="#${getHash(f)}">
-									<i>${BookUtil.getOrdinalText(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name}${f.header ? ` \u2013 ${f.headerMatches ? `<span class="highlight">` : ""}${f.header}${f.headerMatches ? `</span>` : ""}` : ""}</i>
+									<i>${Parser.bookOrdinalToAbv(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name}${f.header ? ` \u2013 ${f.headerMatches ? `<span class="highlight">` : ""}${f.header}${f.headerMatches ? `</span>` : ""}` : ""}</i>
 								</a>`
 								);
 								$ptLink.append($link);
@@ -606,6 +601,8 @@ const BookUtil = {
 					const toSearch = r.row ? r.row : r;
 					toSearch.forEach(c => searchEntriesFor(chapterIndex, lastName, appendTo, term, c));
 				})
+			} else if (obj.tables) {
+				obj.tables.forEach(t => searchEntriesFor(chapterIndex, lastName, appendTo, term, t))
 			} else if (obj.entry) {
 				searchEntriesFor(chapterIndex, lastName, appendTo, term, obj.entry)
 			} else if (typeof obj === "string" || typeof obj === "number") {

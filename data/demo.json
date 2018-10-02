@@ -23,7 +23,7 @@
 					"items": [
 						"Style tags; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand}), {@strike some text to strike-through}, (alternative {@s shorthand})",
 						"Additionally, {@note note tags}, used for adding errata or Twitter \"designer footnotes.\"",
-						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls, with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7} (and rolls advantage on shift-click). There's also {@damage 1d12+3} which will roll critical hits on shift-click, and {@d20 -4} which will roll advantage on shift-click. although @hit tags are preferred where appropriate.",
+						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls, with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7} (and rolls advantage on shift-click). There's also {@damage 1d12+3} which will roll critical hits on shift-click, and {@d20 -4} which will roll advantage on shift-click, although @hit tags are preferred where appropriate. Spells can have scaling-dice tags, (damage of 2d6 or 3d6 at level 1, add an extra {@scaledice 2d6;3d6|2-9|1d6} for each level beyond 2nd), for when a spell effect scales at higher levels.",
 						"Chance tags; similar to dice roller tags, but output success/failure. Similar syntax as dice tags: {@chance 50}, {@chance 50|display text}, and {@chance 50|display text|rolled by name}.",
 						"Recharge tags; output success/failure for ability recharge. {@recharge} in an ability title for '(Recharge 6)', {@recharge 4} for '(Recharge 4-6)'.",
 						"Skill and action tags; {@skill Athletics}/{@skill Perception} and {@action Dash}/{@action Hide} (case-sensitive) which provide tooltips on hover.",
@@ -50,7 +50,8 @@
 								"Traps: {@trap falling net} assumes DMG by default, {@trap falling portcullis|xge} can have sources added with a pipe, {@trap falling portcullis|xge|and optional link text added with another pipe}.",
 								"Hazards: {@hazard brown mold} assumes DMG by default, {@hazard russet mold|vgm} can have sources added with a pipe, {@hazard russet mold|vgm|and optional link text added with another pipe}.",
 								"Deities: {@deity Gond} assumes PHB Forgotten Realms pantheon by default, {@deity Gruumsh|nonhuman} can have pantheons added with a pipe, {@deity Ioun|dawn war|dmg} can have sources added with another pipe, {@deity Ioun|dawn war|dmg|and optional link text added with another pipe}.",
-								"Variant rules: {@variantrule Diagonals} assumes DMG by default, {@variantrule Multiclassing|phb} can have sources added with a pipe, {@variantrule Multiclassing|phb|and optional link text added with another pipe}."
+								"Variant rules: {@variantrule Diagonals} assumes DMG by default, {@variantrule Multiclassing|phb} can have sources added with a pipe, {@variantrule Multiclassing|phb|and optional link text added with another pipe}.",
+								"Tables: {@table 25gp Art Objects} assumes DMG by default, {@table Adventuring Gear|phb} can have sources added with a pipe, {@table Adventuring Gear|phb|and optional link text added with another pipe}."
 							]
 						},
 						{

@@ -1,7 +1,7 @@
 "use strict";
 
 class History {
-	static hashChange (evt) {
+	static hashChange (forceLoad) {
 		if (History.isHistorySuppressed) {
 			History.setSuppressHistory(false);
 			return;
@@ -10,7 +10,7 @@ class History {
 		const [link, ...sub] = History._getHashParts();
 
 		let blankFilterLoad = false;
-		if (link !== History.lastLoadedLink || sub.length === 0) {
+		if (link !== History.lastLoadedLink || sub.length === 0 || forceLoad) {
 			History.lastLoadedLink = link;
 			if (link === HASH_BLANK) {
 				blankFilterLoad = true;
@@ -36,7 +36,7 @@ class History {
 			}
 		}
 
-		if (typeof loadsub === "function" && sub.length > 0) loadsub(sub);
+		if (typeof loadsub === "function" && (sub.length > 0 || forceLoad)) loadsub(sub);
 		if (blankFilterLoad) {
 			window.location.hash = "";
 		}

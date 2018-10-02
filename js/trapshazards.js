@@ -4,8 +4,8 @@ const JSON_URL = "data/trapshazards.json";
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 const sourceFilter = getSourceFilter();

@@ -30,6 +30,12 @@
 			padding: 0 5px;
 			width: 50%;
 		}
+
+		#don-wrapper {
+			position: relative;
+			margin-bottom: 7px;
+			padding: 5px 15px;
+		}
 	</style>
 </head>
 <body>
@@ -49,6 +55,22 @@
 	<!--<div class="alert alert-warning">-->
 		<!--<p><strong>Discord update:</strong> A recent bot-hijack resulted in many accounts being banned from our Discord server, along with a general server reset. Besides bans, no user accounts were affected, and the server has largely been restored to its former state. <a class="alert-link" href="https://discord.gg/AzyBjtQ" target="_blank">You can rejoin here.</a></p>-->
 	<!--</div>-->
+
+	<div id="don-wrapper" class="alert alert-info" style="display: none">
+		<div class="split" style="align-items: center">
+			<div class="text-align-center" style="max-width: 260px; padding-right: 10px;">For those with an abundance of gold, we accept <a href="donate.html">donations</a>.</div>
+			<div style="width: 100%">
+				<div class="don__bar don__bar--home">
+					<div class="don__bar_inner"></div>
+				</div>
+				<div class="split">
+					<span>€0.00</span>
+					<span id="don-total">Loading...</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="row">
 		<table class="home-table">
 			<tr>
@@ -58,7 +80,7 @@
 						To run a local (offline) copy, <span class="help" title="For Firefox, this works. For Chrome/derivatives, you need to use '--allow-file-access-from-files' (Google it.)">simply</span>
 						download the project, extract it all to a folder, and open the html files in a browser.
 						You're free to host your own mirror, or contribute to the project via
-						<a href="https://github.com/TheGiddyLimit/TheGiddyLimit.github.io">GitHub</a>.</p>
+						<a href="https://github.com/TheGiddyLimit/TheGiddyLimit.github.io">GitHub</a>. Additionally, we have a community-run <a href="https://5etools.wikia.com/wiki/5eTool_Wiki">wiki</a>, which we encourage you to view and edit.</p>
 				</td>
 			</tr>
 			<tr>
@@ -217,7 +239,7 @@
 <footer class="container">
 	<p class="text-align-center">
 		Version
-		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.62.15<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
+		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.63.1<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
 		| <span style="text-decoration: red line-through">&nbsp;&copy;&nbsp;</span>2018 5etools
 	</p>
 </footer>
@@ -235,6 +257,20 @@
 <script>
 	const $demoRoller = $(`#demo_roller`);
 	$demoRoller.html(EntryRenderer.getDefaultRenderer().renderEntry(`{@dice ${$demoRoller.html()}}`));
+
+	if (!_Donate.notDonating()) {
+		const $wrpDon = $(`#don-wrapper`).show();
+		$(`<div><span class="glyphicon glyphicon-remove"></span></div>`).css({
+			position: "absolute",
+			top: 0,
+			right: 2,
+			cursor: "pointer"
+		}).click(() => {
+			StorageUtil.set("notDonating", true);
+			$wrpDon.remove();
+		}).appendTo($wrpDon);
+		_Donate.init();
+	}
 </script>
 </body>
 </html>

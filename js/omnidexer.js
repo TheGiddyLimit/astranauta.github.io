@@ -338,7 +338,7 @@ Omnidexer.TO_INDEX = [
 	},
 	{
 		category: 18,
-		file: "bookref-quick.json",
+		file: "generated/bookref-quick.json",
 		listProp: "data.bookref-quick",
 		baseUrl: "quickreference.html",
 		hashBuilder: (it, i) => {
@@ -383,6 +383,20 @@ Omnidexer.TO_INDEX = [
 		file: "conditionsdiseases.json",
 		listProp: "disease",
 		baseUrl: "conditionsdiseases.html",
+		hover: true
+	},
+	{
+		category: 24,
+		file: "generated/gendata-tables.json",
+		listProp: "table",
+		baseUrl: "tables.html",
+		hover: true
+	},
+	{
+		category: 25,
+		file: "generated/gendata-tables.json",
+		listProp: "tableGroup",
+		baseUrl: "tables.html",
 		hover: true
 	}
 ];

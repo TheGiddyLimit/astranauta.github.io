@@ -1162,7 +1162,15 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 	EI: "Eldritch Invocation",
 	MM: "Metamagic",
 	"MV:B": "Maneuver, Battlemaster",
-	OTH: "Other"
+	"MV:C2-UA": "Maneuver, Cavalier V2 (UA)",
+	"AS:V1-UA": "Arcane Shot, V1 (UA)",
+	"AS:V2-UA": "Arcane Shot, V2 (UA)",
+	"AS": "Arcane Shot",
+	OTH: "Other",
+	"FS:F": "Fighting Style; Fighter",
+	"FS:B": "Fighting Style; Bard",
+	"FS:P": "Fighting Style; Paladin",
+	"FS:R": "Fighting Style; Ranger"
 };
 
 Parser.optFeatureTypeToFull = function (type) {
@@ -1258,6 +1266,8 @@ Parser.CAT_ID_BOON = 20;
 Parser.CAT_ID_DISEASE = 21;
 Parser.CAT_ID_METAMAGIC = 22;
 Parser.CAT_ID_MANEUVER_BATTLEMASTER = 23;
+Parser.CAT_ID_TABLE = 24;
+Parser.CAT_ID_TABLE_GROUP = 25;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1283,6 +1293,8 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOON] = "Boon";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DISEASE] = "Disease";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_METAMAGIC] = "Metamagic";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = "Maneuver; Battlemaster";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TABLE] = "Table";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TABLE_GROUP] = "Table";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1395,6 +1407,17 @@ Parser.TRAP_INIT_TO_FULL[3] = "initiative count 20 and initiative count 10";
 Parser.ATK_TYPE_TO_FULL = {};
 Parser.ATK_TYPE_TO_FULL["MW"] = "Melee Weapon Attack";
 Parser.ATK_TYPE_TO_FULL["RW"] = "Ranged Weapon Attack";
+
+Parser.bookOrdinalToAbv = (ordinal, preNoSuff) => {
+	if (ordinal === undefined) return "";
+	switch (ordinal.type) {
+		case "part": return `${preNoSuff ? " " : ""}Part ${ordinal.identifier}${preNoSuff ? "" : " \u2014 "}`;
+		case "chapter": return `${preNoSuff ? " " : ""}Ch. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
+		case "episode": return `${preNoSuff ? " " : ""}Ep. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
+		case "appendix": return `${preNoSuff ? " " : ""}App. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
+		default: throw new Error(`Unhandled ordinal type "${ordinal.type}"`);
+	}
+};
 
 SKL_ABV_ABJ = "A";
 SKL_ABV_EVO = "V";
@@ -1534,6 +1557,8 @@ SRC_XGE = "XGE";
 SRC_OGA = "OGA";
 SRC_MTF = "MTF";
 SRC_WDH = "WDH";
+SRC_AL = "AL";
+SRC_SCREEN = "Screen";
 
 SRC_ALCoS = "ALCurseOfStrahd";
 SRC_ALEE = "ALElementalEvil";
@@ -1639,6 +1664,8 @@ Parser.SOURCE_JSON_TO_FULL[SRC_XGE] = "Xanathar's Guide to Everything";
 Parser.SOURCE_JSON_TO_FULL[SRC_OGA] = "One Grung Above";
 Parser.SOURCE_JSON_TO_FULL[SRC_MTF] = "Mordenkainen's Tome of Foes";
 Parser.SOURCE_JSON_TO_FULL[SRC_WDH] = "Waterdeep: Dragon Heist";
+Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
+Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = AL_PREFIX + "Elemental Evil";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALRoD] = AL_PREFIX + "Rage of Demons";
@@ -1727,6 +1754,8 @@ Parser.SOURCE_JSON_TO_ABV[SRC_XGE] = "XGE";
 Parser.SOURCE_JSON_TO_ABV[SRC_OGA] = "OGA";
 Parser.SOURCE_JSON_TO_ABV[SRC_MTF] = "MTF";
 Parser.SOURCE_JSON_TO_ABV[SRC_WDH] = "WDH";
+Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
+Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALRoD] = "ALRoD";
@@ -2145,6 +2174,91 @@ MiscUtil = {
 	expEval (str) {
 		// eslint-disable-next-line no-new-func
 		return new Function(`return ${str.replace(/[^-()\d/*+.]/g, "")}`)();
+	},
+
+	parseNumberRange (input, min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
+		function errInvalid (input) {
+			throw new Error(`Could not parse range input "${input}"`);
+		}
+
+		function errOutOfRange () {
+			throw new Error(`Number was out of range! Range was ${min}-${max} (inclusive).`);
+		}
+
+		function isOutOfRange (num) {
+			return num < min || num > max;
+		}
+
+		function addToRangeVal (range, num) {
+			range.add(num);
+		}
+
+		function addToRangeLoHi (range, lo, hi) {
+			for (let i = lo; i <= hi; ++i) range.add(i);
+		}
+
+		while (true) {
+			if (input && input.trim()) {
+				const clean = input.replace(/\s*/g, "");
+				if (/^((\d+-\d+|\d+),)*(\d+-\d+|\d+)$/.exec(clean)) {
+					const parts = clean.split(",");
+					const out = new Set();
+
+					for (const part of parts) {
+						if (part.includes("-")) {
+							const spl = part.split("-");
+							const numLo = Number(spl[0]);
+							const numHi = Number(spl[1]);
+
+							if (isNaN(numLo) || isNaN(numHi) || numLo === 0 || numHi === 0 || numLo > numHi) errInvalid();
+
+							if (isOutOfRange(numLo) || isOutOfRange(numHi)) errOutOfRange();
+
+							if (numLo === numHi) addToRangeVal(out, numLo);
+							else addToRangeLoHi(out, numLo, numHi);
+						} else {
+							const num = Number(part);
+							if (isNaN(num) || num === 0) errInvalid();
+							else {
+								if (isOutOfRange(num)) errOutOfRange();
+								addToRangeVal(out, num);
+							}
+						}
+					}
+
+					return out;
+				} else errInvalid();
+			} else return null;
+		}
+	},
+
+	MONTH_NAMES: [
+		"January", "February", "March", "April", "May", "June",
+		"July", "August", "September", "October", "November", "December"
+	],
+	dateToStr (date, short) {
+		const month = MiscUtil.MONTH_NAMES[date.getMonth()];
+		return `${short ? month.substring(0, 3) : month} ${date.getDate()}, ${date.getFullYear()}`
+	},
+
+	findCommonPrefix (strArr) {
+		let prefix = null;
+		strArr.forEach(s => {
+			if (prefix == null) {
+				prefix = s;
+			} else {
+				const minLen = Math.min(s.length, prefix.length);
+				for (let i = 0; i < minLen; ++i) {
+					const cp = prefix[i];
+					const cs = s[i];
+					if (cp !== cs) {
+						prefix = prefix.substring(0, i);
+						break;
+					}
+				}
+			}
+		});
+		return prefix;
 	}
 };
 
@@ -2152,10 +2266,21 @@ MiscUtil = {
 ContextUtil = {
 	_ctxInit: {},
 	_ctxClick: {},
+	_ctxOpenRefsNextId: 1,
+	_ctxOpenRefs: {},
 	_handlePreInitContextMenu: (menuId) => {
 		if (ContextUtil._ctxInit[menuId]) return;
 		ContextUtil._ctxInit[menuId] = true;
-		$("body").click(() => $(`#${menuId}`).hide());
+		const clickId = `click.${menuId}`
+		$("body").off(clickId).on(clickId, (evt) => {
+			if ($(evt.target).data("ctx-id") != null) return; // ignore clicks on context menus
+
+			Object.entries(ContextUtil._ctxOpenRefs[menuId] || {}).forEach(([k, v]) => {
+				v(false);
+				delete ContextUtil._ctxOpenRefs[menuId][k];
+			})
+			$(`#${menuId}`).hide();
+		});
 	},
 
 	_getMenuPosition: (menuId, mouse, direction, scrollDir) => {
@@ -2175,20 +2300,25 @@ ContextUtil = {
 		let i = 0;
 		labels.forEach(it => {
 			if (it === null) tempString += `<li class="divider"/>`;
-			else {
+			else if (it.disabled) {
+				tempString += `<li class="disabled"><a href="${STR_VOID_LINK}">${it.text}</a></li>`;
+			} else {
 				tempString += `<li><a data-ctx-id="${i}" href="${STR_VOID_LINK}">${it}</a></li>`;
 				i++;
 			}
 		});
 		tempString += `</ul>`;
+		$(`#${menuId}`).remove();
 		$("body").append(tempString);
 	},
 
-	handleOpenContextMenu: (evt, ele, menuId) => {
+	handleOpenContextMenu: (evt, ele, menuId, closeHandler) => {
 		if (evt.ctrlKey) return;
 		evt.preventDefault();
+		evt.stopPropagation();
+		const thisId = ContextUtil._ctxOpenRefsNextId++;
+		(ContextUtil._ctxOpenRefs[menuId] = ContextUtil._ctxOpenRefs[menuId] || {})[thisId] = closeHandler || (() => {});
 		const $menu = $(`#${menuId}`)
-			.data("invokedOn", $(evt.target).closest(`li.row`))
 			.show()
 			.css({
 				position: "absolute",
@@ -2198,9 +2328,12 @@ ContextUtil = {
 			.off("click")
 			.on("click", "a", function (e) {
 				$menu.hide();
-				const $invokedOn = $menu.data("invokedOn");
+				if (ContextUtil._ctxOpenRefs[menuId][thisId]) ContextUtil._ctxOpenRefs[menuId][thisId](true);
+				delete ContextUtil._ctxOpenRefs[menuId][thisId];
+				const $invokedOn = $(evt.target).closest(`li.row`);
 				const $selectedMenu = $(e.target);
-				ContextUtil._ctxClick[menuId](evt, ele, $invokedOn, $selectedMenu);
+				const invokedOnId = Number($selectedMenu.data("ctx-id"));
+				ContextUtil._ctxClick[menuId](e, ele, $invokedOn, $selectedMenu, isNaN(invokedOnId) ? null : invokedOnId);
 			});
 	}
 };
@@ -2841,7 +2974,7 @@ ListUtil = {
 		const uid = $invokedOn.find(`.uid`).text();
 		switch (Number($selectedMenu.data("ctx-id"))) {
 			case 0:
-				EntryRenderer.hover.doPopout($invokedOn, itemList, itId, evt.clientX);
+				EntryRenderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
 				break;
 			case 1:
 				if (uid) ListUtil.doSublistRemove(itId, {uid: uid});
@@ -3137,6 +3270,7 @@ UrlUtil.PG_TRAPS_HAZARDS = "trapshazards.html";
 UrlUtil.PG_QUICKREF = "quickreference.html";
 UrlUtil.PG_MAKE_SHAPED = "makeshaped.html";
 UrlUtil.PG_MANAGE_BREW = "managebrew.html";
+UrlUtil.PG_TABLES = "tables.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -3157,6 +3291,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash(
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CULTS_BOONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OBJECTS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAPS_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 
 UrlUtil.CAT_TO_PAGE = {};
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURE] = UrlUtil.PG_BESTIARY;
@@ -3182,6 +3317,8 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_QUICKREF] = UrlUtil.PG_QUICKREF;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CULT] = UrlUtil.PG_CULTS_BOONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOON] = UrlUtil.PG_CULTS_BOONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DISEASE] = UrlUtil.PG_CONDITIONS_DISEASES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE] = UrlUtil.PG_TABLES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE_GROUP] = UrlUtil.PG_TABLES;
 
 UrlUtil.bindLinkExportButton = (filterBox) => {
 	const $btn = ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
@@ -3306,14 +3443,17 @@ SortUtil = {
 		return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b));
 	},
 
+	initHandleFilterButtonClicks (target = "#filtertools") {
+		$("#filtertools").find("button.sort").click(function () {
+			SortUtil.handleFilterButtonClick.call(this, target);
+		});
+	},
+
 	handleFilterButtonClick (target, $this = $(this), direction) {
-		if (!direction) {
-			direction = $this.hasClass("asc") || $this.attr("data-sortby") === "asc" ? "asc" : "desc";
-		}
+		if (!direction) direction = $this.hasClass("asc") || $this.attr("data-sortby") === "asc" ? "asc" : "desc";
 
 		$(target).find(".caret").removeClass("caret");
-		$this.find("span").addClass("caret")
-			.toggleClass("caret-reverse", direction === "asc");
+		$this.find(".caret_wrp").addClass("caret").toggleClass("caret--reverse", direction === "asc");
 	}
 };
 
@@ -3816,11 +3956,15 @@ BrewUtil = {
 					<div class="filtertools manbrew__filtertools sortlabel btn-group">
 						<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="name">Name</button>
 						<button class="col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" data-sort="category">Category</button>
-						<button class="col-xs-6 col-xs-6-5 sort btn btn-default btn-xs" disabled>Source</button>
+						<button class="col-xs-1 col-xs-1-2 sort btn btn-default btn-xs" data-sort="timestamp">Added</button>
+						<button class="col-xs-5 col-xs-5-3 sort btn btn-default btn-xs" disabled>Source</button>
 					</div>
 					<ul class="list brew-list">
 						<li><section><span style="font-style: italic;">Loading...</span></section></li>
 					</ul>
+					<div class="manbrew__load_all_wrp">
+						<button class="btn btn-default btn-xs manbrew__load_all" disabled>Add All</button>
+					</div>
 				</div>
 			`);
 			const $nxt = makeNextOverlay(getBrewOnClose);
@@ -3828,6 +3972,8 @@ BrewUtil = {
 			$lst.on("click", (evt) => {
 				evt.stopPropagation();
 			});
+
+			const $btnAll = $lst.find(`.manbrew__load_all`);
 
 			// populate list
 			const $ul = $lst.find(`ul`);
@@ -3867,6 +4013,8 @@ BrewUtil = {
 						return ["adventure"];
 					case UrlUtil.PG_BOOKS:
 						return ["book"];
+					case UrlUtil.PG_TABLES:
+						return ["table"];
 					case UrlUtil.PG_MAKE_SHAPED:
 						return ["spell", "creature"];
 					case UrlUtil.PG_MANAGE_BREW:
@@ -3875,7 +4023,30 @@ BrewUtil = {
 						throw new Error(`No homebrew properties defined for category ${page}`);
 				}
 			}
-			DataUtil.loadJSON(`https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/collection/index.json`)
+
+			let dataList;
+			function sortFunction (a, b, o) {
+				a = dataList[a.elm.getAttribute(FLTR_ID)];
+				b = dataList[b.elm.getAttribute(FLTR_ID)];
+
+				if (o.valueName === "name") return byName();
+				if (o.valueName === "category") return orFallback(SortUtil.ascSortLower, "_brewCat");
+				if (o.valueName === "timestamp") return orFallback(SortUtil.ascSort, "_brewAdded");
+
+				function byName () {
+					return SortUtil.ascSortLower(a._brewName, b._brewName);
+				}
+
+				function orFallback (func, prop) {
+					const initial = func(a[prop], b[prop]);
+					return initial || byName();
+				}
+			}
+
+			let timestamps = {};
+			DataUtil.loadJSON(`https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_generated/index-timestamps.json`)
+				.then(data => timestamps = data)
+				.then(() => DataUtil.loadJSON(`https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/collection/index.json`))
 				.then((data) => {
 					const dirs = new Set(getBrewDirs());
 					return Object.keys(data).filter(k => data[k].find(it => dirs.has(it)));
@@ -3896,13 +4067,17 @@ BrewUtil = {
 							const all = [].concat.apply([], json);
 							all.forEach(it => it._brewName = it.name.trim().replace(/\.json$/, ""));
 							all.sort((a, b) => SortUtil.ascSortLower(a._brewName, b._brewName));
-							all.filter(it => !it._brewSkip).forEach(it => {
+							dataList = all.filter(it => !it._brewSkip);
+							dataList.forEach((it, i) => {
+								it._brewAdded = timestamps[it.path] || 0;
+								it._brewCat = BrewUtil._getDisplayCat(BrewUtil._dirToCat(it._cat));
 								stack += `
-									<li>
+									<li ${FLTR_ID}="${i}">
 										<section>
-											<span class="col-xs-4 name" onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").escapeQuotes()}', true)">${it._brewName}</span>
-											<span class="col-xs-1 col-xs-1-5 category">${BrewUtil._getDisplayCat(BrewUtil._dirToCat(it._cat))}</span>
-											<span class="col-xs-6 col-xs-6-5 source manbrew__source"><a href="${it.download_url}" target="_blank">${StrUtil.elipsisTruncate(it.download_url, 34, 55)}</a></span>
+											<span class="col-xs-4 name manbrew__load_from_url" onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").escapeQuotes()}', true)">${it._brewName}</span>
+											<span class="col-xs-1 col-xs-1-5 category text-align-center">${it._brewCat}</span>
+											<span class="col-xs-1 col-xs-1-2 timestamp text-align-center">${it._brewAdded ? MiscUtil.dateToStr(new Date(it._brewAdded * 1000), true) : ""}</span>
+											<span class="col-xs-5 col-xs-5-3 source manbrew__source"><a href="${it.download_url}" target="_blank">${StrUtil.elipsisTruncate(it.download_url, 24, 55)}</a></span>
 										</section>
 									</li>`;
 							});
@@ -3911,11 +4086,13 @@ BrewUtil = {
 							$ul.append(stack);
 
 							const list = new List("brewlistcontainer", {
-								valueNames: ["name", "category"],
+								valueNames: ["name", "category", "timestamp"],
 								listClass: "brew-list",
-								sortFunction: SortUtil.listSort
+								sortFunction
 							});
 							ListUtil.bindEscapeKey(list, $lst.find(`.search`), true);
+
+							$btnAll.prop("disabled", false).click(() => $lst.find(`.manbrew__load_from_url`).click());
 						}
 					);
 				});
@@ -4198,6 +4375,8 @@ BrewUtil = {
 				case "legendaryGroup":
 				case "condition":
 				case "disease":
+				case "table":
+				case "tableGroup":
 					return deleteGenericBrew(category);
 				case "subclass":
 					return deleteSubclassBrew;
@@ -4276,7 +4455,7 @@ BrewUtil = {
 	},
 
 	_DIRS: ["spell", "class", "subclass", "creature", "background", "feat", "optionalfeature", "race", "object", "trap", "hazard", "deity", "item", "reward", "psionic", "variantrule", "condition", "disease", "adventure", "book"],
-	_STORABLE: ["class", "subclass", "spell", "monster", "background", "feat", "optionalfeature", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup", "condition", "disease", "adventure", "adventureData", "book", "bookData"],
+	_STORABLE: ["class", "subclass", "spell", "monster", "background", "feat", "optionalfeature", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup"],
 	doHandleBrewJson: function (json, page, funcRefresh) {
 		function storePrep (arrName) {
 			if (json[arrName]) {
@@ -4769,7 +4948,10 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 		self.active = true;
 
 		const $body = $(`body`);
-		const $wrpBook = $(`<div class="book-mode"/>`);
+		const $wrpBook = $(`<div class="book-mode"/>`).click((evt) => {
+			if ($wrpBook[0] !== evt.target) return;
+			hashTeardown();
+		});
 		self._$body = $body;
 		self._$wrpBook = $wrpBook;
 		$body.css("overflow", "hidden");
@@ -4819,14 +5001,6 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 		const bookViewHash = sub.find(it => it.startsWith(this.hashKey));
 		if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[this.hashKey][0] === "true") this.open();
 		else this.teardown();
-	}
-}
-
-initializationFunctions = {
-	initHandleFilterButtonClicks (target = "#filtertools") {
-		$("#filtertools").find("button.sort").click(function () {
-			SortUtil.handleFilterButtonClick.call(this, target);
-		});
 	}
 }
 
@@ -4913,4 +5087,27 @@ if (!IS_ROLL20 && typeof window !== "undefined") {
 		$(`body`).append($wrpBanner);
 		/* eslint-enable */
 	});
+}
+
+_Donate = {
+	init () {
+		DataUtil.loadJSON(`https://get.5etools.com/money.php`).then(dosh => {
+			const pct = Number(dosh.donated) / Number(dosh.Goal);
+			$(`#don-total`).text(`€${dosh.Goal}`);
+			if (isNaN(pct)) {
+				throw new Error(`Was not a number! Values were ${dosh.donated} and ${dosh.Goal}`);
+			} else {
+				const $bar = $(`.don__bar_inner`);
+				$bar.css("width", `${Math.min(Math.ceil(100 * pct), 100)}%`).html(pct !== 0 ? `€${dosh.donated}&nbsp;` : "");
+				if (pct >= 1) $bar.css("background-color", "lightgreen");
+			}
+		}).catch(noDosh => {
+			$(`#don-wrapper`).remove();
+			throw noDosh;
+		})
+	},
+
+	notDonating () {
+		return StorageUtil.isFake() || StorageUtil.get("notDonating");
+	}
 }

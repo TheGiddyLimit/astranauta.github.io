@@ -17,7 +17,7 @@ function readJSON (path) {
 
 function listFiles (dir) {
 	const dirContent = fs.readdirSync(dir, "utf8")
-		.filter(file => !file.startsWith("bookref-") && !file.startsWith("roll20-module-"))
+		.filter(file => !file.startsWith("bookref-") && !file.startsWith("roll20-module-") && !file.startsWith("gendata-"))
 		.map(file => `${dir}/${file}`);
 	return dirContent.reduce((acc, file) => {
 		if (isDirectory(file)) {
@@ -45,6 +45,7 @@ function cleanFolder (folder) {
 	console.log(`Cleaning directory ${folder}...`);
 	const files = listFiles(folder);
 	files
+		.filter(file => file.endsWith(".json"))
 		.map(file => {
 			console.log(`\tCleaning ${file}...`);
 			return {
