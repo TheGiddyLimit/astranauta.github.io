@@ -20,6 +20,20 @@
 	<script defer type="text/javascript" src="js/styleswitch.js"></script>
 	<script defer type="text/javascript" src="js/navigation.js"></script>
 
+	<script defer  type="text/javascript" src="lib/jquery.js"></script>
+	<script defer type="text/javascript" src="lib/jquery-ui.js"></script>
+	<script defer type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+	<script defer type="text/javascript" src="lib/bootstrap.js"></script>
+	<script defer type="text/javascript" src="lib/elasticlunr.js"></script>
+	<script defer type="text/javascript" src="lib/js-cookie.js"></script>
+	<script defer type="text/javascript" src="js/utils.js"></script>
+	<script defer type="text/javascript" src="js/genutils.js"></script>
+	<script defer type="text/javascript" src="js/omnidexer.js"></script>
+	<script defer type="text/javascript" src="js/omnisearch.js"></script>
+	<script defer type="text/javascript" src="js/entryrender.js"></script>
+	<script defer type="text/javascript" src="js/scalecreature.js"></script>
+	<script defer type="text/javascript" src="js/lootgen.js"></script>
+	<script defer type="text/javascript" src="lib/list.js"></script>
 </head>
 
 <body>
@@ -91,10 +105,11 @@
 					<div id="random-magic-item-select-tier" class="input-group">
 						<span class="input-group-addon" >Character Level</span>
 						<select class="form-control" id="charLevel">
-							<option value="0" selected>0-4</option>
+							<option value="1" selected>0-4</option>
 							<option value="5">5-10</option>
 							<option value="11">11-16</option>
-							<option value="17">17+</option>
+							<option value="17">17-19</option>
+							<option value="20">20</option>
 						</select>
 					</div>
 
@@ -112,8 +127,8 @@
 				</form>
 				<br>
 				<div style="display: flex; justify-content: space-between">
-					<button type="button" class="btn col-xs-4 btn-default" style="margin-right: 3px; float: none; flex: 2" id="get-random-item-from-table">Pick Random Item</button>
-					<button type="button" class="btn col-xs-4 btn-default" style="margin-right: 3px; float: none; flex: 2;">Generate Items <br/> for a Character</button>
+					<button type="button" class="btn col-xs-4 btn-default word-wrap" style="margin-right: 3px; float: none; flex: 2" id="get-random-item-from-table">Pick Random Item</button>
+					<button type="button" class="btn col-xs-4 btn-default word-wrap" style="margin-right: 3px; float: none; flex: 2;" id="get-group-of-items-for-character">Generate Items for a Character</button>
 					<button type="button" class="btn btn-default col-xs-2 col-xs-2-9 id-clear" style="float: none; flex: 1">Clear</button>
 				</div>
 				<p>
@@ -133,20 +148,7 @@
 <footer class="container">
 
 </footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
-<script defer  type="text/javascript" src="lib/jquery.js"></script>
-<script defer type="text/javascript" src="lib/jquery-ui.js"></script>
-<script defer type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
-<script defer type="text/javascript" src="lib/bootstrap.js"></script>
-<script defer type="text/javascript" src="lib/elasticlunr.js"></script>
-<script defer type="text/javascript" src="lib/js-cookie.js"></script>
-<script defer type="text/javascript" src="js/utils.js"></script>
-<script defer type="text/javascript" src="js/genutils.js"></script>
-<script defer type="text/javascript" src="js/omnidexer.js"></script>
-<script defer type="text/javascript" src="js/omnisearch.js"></script>
-<script defer type="text/javascript" src="js/entryrender.js"></script>
-<script defer type="text/javascript" src="js/scalecreature.js"></script>
-<script defer type="text/javascript" src="js/lootgen.js"></script>
-<script defer type="text/javascript" src="lib/list.js"></script>
+
 
 </body>
 	<style>
@@ -163,6 +165,10 @@
 	}
 	.hidden {
 		display: none;
+	}
+	.word-wrap {
+		white-space: normal;
+		word-wrap: break-word;
 	}
 	</style>
 </html>

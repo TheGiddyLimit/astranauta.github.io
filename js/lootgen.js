@@ -306,9 +306,24 @@ class LootGen {
 
 const randomLootTables = {
 	_selectorTarget: "#random-from-loot-table",
-
+	_items: null,
 	_table: {
-		4: {
+		1: {
+			"Major": {
+				"Uncommon": 0,
+				"Rare": 0,
+				"Very Rare": 0,
+				"Legendary": 0
+			},
+			"Minor": {
+				"Common": 0,
+				"Uncommon": 0,
+				"Rare": 0,
+				"Very Rare": 0,
+				"Legendary": 0
+			}
+		},
+		5: {
 			"Major": {
 				"Uncommon": 2,
 				"Rare": 0,
@@ -319,10 +334,11 @@ const randomLootTables = {
 				"Common": 6,
 				"Uncommon": 2,
 				"Rare": 1,
-				"Very Rare": 0
+				"Very Rare": 0,
+				"Legendary": 0
 			}
 		},
-		5: {
+		11: {
 			"Major": {
 				"Uncommon": 5,
 				"Rare": 1,
@@ -333,24 +349,26 @@ const randomLootTables = {
 				"Common": 10,
 				"Uncommon": 12,
 				"Rare": 5,
-				"Very Rare": 1
+				"Very Rare": 1,
+				"Legendary": 0
 			}
 		},
-		11: {
+		17: {
 			"Major": {
 				"Uncommon": 1,
 				"Rare": 2,
 				"Very Rare": 2,
-				"Legendary": 0
+				"Legendary": 1
 			},
 			"Minor": {
 				"Common": 3,
 				"Uncommon": 6,
 				"Rare": 9,
-				"Very Rare": 5
+				"Very Rare": 5,
+				"Legendary": 1
 			}
 		},
-		15: {
+		20: {
 			"Major": {
 				"Uncommon": 0,
 				"Rare": 1,
@@ -361,7 +379,8 @@ const randomLootTables = {
 				"Common": 0,
 				"Uncommon": 0,
 				"Rare": 4,
-				"Very Rare": 9
+				"Very Rare": 9,
+				"Legendary": 6
 			}
 		}
 	},
@@ -388,26 +407,56 @@ const randomLootTables = {
 						}
 					}
 				}
+				return randomtableLists;
+			})
+			.then(items => {
+				randomLootTables._items = items;
 			});
 	},
 
 	getNumberOfItemsNeeded (charLevel, estimateBetweenLevels = false) {
-		let count = { Major: 0, Minor: 0 };
-		let last = 0;
+		let count = {
+			"Major": {
+				"Uncommon": 0,
+				"Rare": 0,
+				"Very Rare": 0,
+				"Legendary": 0
+			},
+			"Minor": {
+				"Common": 0,
+				"Uncommon": 0,
+				"Rare": 0,
+				"Very Rare": 0,
+				"Legendary": 0
+			}
+		};
 
-		for (let [level, props] of Object.keys(randomLootTables._table).sort()) {
+		let last = 1;
+
+		let keys = Object.keys(randomLootTables._table).sort((a, b) => a - b);
+		for (let i = 0; i <= keys.length; i++) {
+			let level = keys[i]
+			let props = randomLootTables._table[level];
 			if (level <= charLevel) {
+				if (estimateBetweenLevels && charLevel > last) {
+					let differenceLevels = level - last;
+					let charDifferenceLevels = charLevel - last;
+					let ratio = charDifferenceLevels / differenceLevels;
+					ObjUtil.mergeWith(props, count, {depth: 2}, (val, sum) => typeof val === "number" ? sum + ~~(ratio * val) : sum);
+					break;
+				} else {
+					ObjUtil.mergeWith(props, count, {depth: 2}, (val, sum) => typeof val === "number" ? val + sum : sum);
+				}
 				last = level;
-				ObjUtil.mergeWith(props, count, {depth: 2}, (val, sum) => val + sum);
-			} else if (estimateBetweenLevels) {
-				let difference = level - last;
-				ObjUtil.mergeWith(props, count, {depth: 2}, (val, sum) => (sum + ~~(val / difference)));
-				break;
 			} else {
 				break;
 			}
 		}
 		return count;
+	},
+
+	createLink (item) {
+		return lootGen.parseLink(`{@item ${item.name}`);
 	},
 
 	randomItem (tier, rarity) {
@@ -507,12 +556,21 @@ window.onload = function load () {
 	})
 
 	$("#get-random-item-from-table").click(evt => {
-		if ($("#closest-tier").prop("checked")) {
-			randomLootTables()
-		}
 	});
 
-	$("#target").html(lootGen.parseLink("{@item Adamantine Plate Armor}"))
+	$("#get-group-of-items-for-character").click(evt => {
+		let level;
+		let checked = $("#closest-tier").prop("checked");
+
+		if (checked) {
+			level = $("#charLevel").val();
+		} else {
+			level = $(".slider").slider("value");
+		}
+		console.log('checked:', checked, level);
+		console.log(randomLootTables.getNumberOfItemsNeeded(Number(level), !checked));
+	});
+
 	$("#rollAgaintTable").click(function (evt) {
 		let val = $("#table-sel").val();
 		if (val === "") return;
