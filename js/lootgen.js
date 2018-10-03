@@ -310,6 +310,7 @@ class LootGen {
 const randomLootTables = {
 	_selectorTarget: "#random-from-loot-table",
 	_items: null,
+	_rarityOrder: ["Common", "Uncommon", "Rare", "Very Rare", "Legendary"],
 	_table: {
 		1: {
 			"Major": {
@@ -449,6 +450,7 @@ const randomLootTables = {
 			if (val !== "") {
 				let [tier, rarity] = val.split("-");
 				randomLootTables.displayTable(randomtableLists[tier][rarity], tier, rarity);
+				$("#random-from-loot-table").removeClass("error-background");
 			} else {
 				randomLootTables.displayTable("");
 			}
@@ -456,7 +458,15 @@ const randomLootTables = {
 		})
 
 		$("#get-random-item-from-table").click(evt => {
-			console.log (randomLootTables.getRandomItem("Major", "Uncommon"))
+			let [tier, rarity] = $("#random-from-loot-table").val().split("-");
+			$("#random-from-loot-table").toggleClass("error-background", !tier && !rarity);
+			if (tier && rarity) {
+				let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
+				console.log(roll, item);
+				let text = lootGen.parseLink(`{@item ${item.name}}`);
+				let $el = $(`<div>Rolled a ${roll + 1} on a table for ${tier} ${rarity} items<ul><li>${text}</li></ul></div>`);
+				lootOutput.add($el);
+			}
 		});
 
 		$("#get-group-of-items-for-character").click(evt => {
@@ -519,7 +529,8 @@ const randomLootTables = {
 	},
 
 	getRandomItem (tier, rarity) {
-		return randomtableLists[tier][rarity][RollerUtil.randomise(randomtableLists[tier][rarity].length - 1, 0)];
+		let roll = RollerUtil.randomise(randomtableLists[tier][rarity].length - 1, 0);
+		return {roll, item: randomtableLists[tier][rarity][roll]};
 	},
 
 	displayTable (itemsArray, tier, rarity) {
