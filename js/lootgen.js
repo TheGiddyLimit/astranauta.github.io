@@ -462,9 +462,8 @@ const randomLootTables = {
 			$("#random-from-loot-table").toggleClass("error-background", !tier && !rarity);
 			if (tier && rarity) {
 				let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
-				console.log(roll, item);
 				let text = lootGen.parseLink(`{@item ${item.name}}`);
-				let $el = $(`<div>Rolled a ${roll + 1} on a table for ${tier} ${rarity} items<ul><li>${text}</li></ul></div>`);
+				let $el = $(`<ul><li>Rolled a ${roll + 1} on a table for ${tier} ${rarity} items <ul><li>${text}</li></ul></li></ul>`);
 				lootOutput.add($el);
 			}
 		});
