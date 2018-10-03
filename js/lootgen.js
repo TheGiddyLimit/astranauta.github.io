@@ -18,7 +18,7 @@ class LootGen {
 
 	loadLoot (lootData) {
 		lootList = lootData;
-		$("button.id-clear").click(() => $("#lootoutput").html(""));
+		$("button.id-clear").click(() => lootOutput.clear());
 		$("button#genloot").click(lootGen.rollLoot);
 		const $selTables = $(`#table-sel`);
 		lootData.magicitems.forEach((t, i) => {
@@ -87,16 +87,13 @@ class LootGen {
 		}
 
 		const message = row.table ? getMessageSub() : getMessage();
-
-		$(`#lootoutput > ul:eq(${MAX_HIST}), #lootoutput > hr:eq(${MAX_HIST})`).remove();
-		$("#lootoutput").prepend(`<ul><li>${message}</li></ul><hr>`);
+		lootOutput.addList(message);
 	}
 
 	rollLoot () {
 		const cr = $("#cr").val();
 		const hoard = $("#hoard").prop("checked");
-		$(`#lootoutput > ul:eq(${MAX_HIST}), #lootoutput > hr:eq(${MAX_HIST})`).remove();
-		$("#lootoutput").prepend("<ul></ul><hr>");
+		const $el = $("<ul></ul>");
 		const tableset = hoard ? lootList.hoard : lootList.individual;
 		let curtable = null;
 		for (let i = 0; i < tableset.length; i++) if (cr >= tableset[i].mincr && cr <= tableset[i].maxcr) curtable = tableset[i];
@@ -116,7 +113,7 @@ class LootGen {
 				const roll = EntryRenderer.dice.parseRandomise2(artgems.amount);
 				const gems = [];
 				for (let i = 0; i < roll; i++) gems.push(artgemstable.table[lootGen.randomNumber(0, artgemstable.table.length - 1)]);
-				$("#lootoutput ul:eq(0)").append(`<li>${Parser._addCommas(artgems.type)} gp ${loot.artobjects ? "art object" : "gemstone"}${roll > 1 ? "s" : ""}${roll > 1 ? ` (${MULT_SIGN}${roll})` : ""}:<ul>${lootGen.sortArrayAndCountDupes(gems)}</ul></li>`);
+				$el.append(`<li>${Parser._addCommas(artgems.type)} gp ${loot.artobjects ? "art object" : "gemstone"}${roll > 1 ? "s" : ""}${roll > 1 ? ` (${MULT_SIGN}${roll})` : ""}:<ul>${lootGen.sortArrayAndCountDupes(gems)}</ul></li>`);
 			}
 			if (loot.magicitems) {
 				const magicitemtabletype = [];
@@ -151,13 +148,14 @@ class LootGen {
 							roll: itemRoll
 						});
 					}
-					$("#lootoutput ul:eq(0)").append(`<li>Magic Item${roll > 1 ? "s" : ""} (<span class="roller" onclick="lootGen.displayTable(${tablearrayentry});">Table ${curtype}</span>)${magicitems.length > 1 ? ` (${MULT_SIGN}${magicitems.length})` : ""}:<ul>${lootGen.sortArrayAndCountDupes(magicitems)}</ul></li>`);
+					$el.append(`<li>Magic Item${roll > 1 ? "s" : ""} (<span class="roller" onclick="lootGen.displayTable(${tablearrayentry});">Table ${curtype}</span>)${magicitems.length > 1 ? ` (${MULT_SIGN}${magicitems.length})` : ""}:<ul>${lootGen.sortArrayAndCountDupes(magicitems)}</ul></li>`);
 				}
 			}
-			for (let i = 0; i < treasure.length; i++) $("#lootoutput ul:eq(0)").prepend(`<li>${treasure[i]}</li>`);
+			for (let i = 0; i < treasure.length; i++) $el.prepend(`<li>${treasure[i]}</li>`);
 		} else {
-			$("#lootoutput ul:eq(0)").prepend(`<li>${lootGen.getFormattedCoinsForDisplay(loot.coins)}</li>`);
+			$el.prepend(`<li>${lootGen.getFormattedCoinsForDisplay(loot.coins)}</li>`);
 		}
+		lootOutput.add($el);
 	}
 
 	sortArrayAndCountDupes (arr) {
@@ -412,6 +410,16 @@ const randomLootTables = {
 			.then(items => {
 				randomLootTables._items = items;
 			});
+
+		$("#random-from-loot-table").change(function (evt) {
+			let val = evt.currentTarget.value;
+			if (val !== "") {
+				let [tier, rarity] = val.split("-");
+				randomLootTables.displayTable(randomtableLists[tier][rarity], tier, rarity);
+			} else {
+				randomLootTables.displayTable();
+			}
+		})
 	},
 
 	getNumberOfItemsNeeded (charLevel, estimateBetweenLevels = false) {
@@ -459,10 +467,62 @@ const randomLootTables = {
 		return lootGen.parseLink(`{@item ${item.name}`);
 	},
 
-	randomItem (tier, rarity) {
+	getRandomItem (tier, rarity) {
+		return randomtableLists[tier][rarity][RollerUtil.randomise(randomtableLists[tier][rarity].length - 1, 0)];
+	},
 
+	displayTable (itemsArray, tier, rarity) {
+		if (!itemsArray === "") {
+			$("div#classtable").hide();
+		} else {
+			let htmlText = `
+			<table id="stats">
+			<caption>Table for ${tier} Magic items that are ${rarity}</caption>
+			<thead>
+			<tr>
+			<th class="col-xs-2 text-align-center"><span class="roller" onclick="randomLootTables.getRandomItem('${tier}', '${rarity}');">d${itemsArray.length}</span></th>
+			<th class="col-xs-10">${tier} ${rarity} Magic Items</th>
+			</tr>
+			</thead>`;
+			itemsArray.forEach((item, index) => {
+				htmlText += `<tr><td class="text-align-center">${index + 1}</td><td>${lootGen.parseLink("{@item " + item.name + "}")}`
+			});
+			htmlText += "</table>"
+			$("div#classtable").html(htmlText).show();
+		}
 	}
 };
+
+const lootOutput = (function () {
+	const $table = $("#lootoutput");
+	const checkSize = function () {
+		$(`#lootoutput > ul:eq(${MAX_HIST}), #lootoutput > hr:eq(${MAX_HIST})`).remove();
+	}
+	const clear = function () {
+		$table.html("");
+	}
+
+	const addList = function (html) {
+		add($(`<ul><li>${html}</li></ul>`));
+	}
+
+	const add = function (html) {
+		checkSize();
+		if (typeof html === "string") {
+			$table.prepend(html);
+		} else if (html.jquery) {
+			let $el = $("<div></div>");
+			$el.prepend(html).append("<hr>");
+			$table.prepend($el);
+		}
+	}
+	return {
+		add,
+		addList,
+		clear,
+		checkSize
+	}
+})();
 
 const ViewManinpulation = class ViewManinpulation {
 	constructor (...names) {
@@ -556,6 +616,7 @@ $("document").ready(function load () {
 	})
 
 	$("#get-random-item-from-table").click(evt => {
+		console.log (randomLootTables.getRandomItem("Major", "Uncommon"))
 	});
 
 	$("#get-group-of-items-for-character").click(evt => {
