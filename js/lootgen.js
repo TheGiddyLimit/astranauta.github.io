@@ -519,7 +519,7 @@ const ViewManinpulation = class ViewManinpulation {
 			$button.toggleClass("btn-selected", name === view);
 			$container.toggleClass("hidden", name !== view);
 		})
-		Cookies.set("lootGenViewState", name);
+		StorageUtil.set("lootGenViewState", name);
 	}
 }
 
@@ -535,7 +535,7 @@ window.onload = function load () {
 		$charLevSelector.append(`<option value="${i}">${i}</option>`);
 	}
 	viewManinpulation = new ViewManinpulation("lootgen", "loot-table", "random-magic-item")
-		.switchView(Cookies.get("lootGenViewState") || "lootgen");
+	viewManinpulation.switchView(StorageUtil.get("lootGenViewState") || "lootgen");
 
 	$(".slider")
 		.slider({min: 1, max: 20})
