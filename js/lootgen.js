@@ -14,6 +14,11 @@ class LootGen {
 	constructor () {
 		this._spells = null;
 		this._loadingSpells = false;
+		$("#rollAgaintTable").click(function () {
+			let val = $("#table-sel").val();
+			if (val === "") return;
+			lootGen.rollAgainstTable(val);
+		})
 	}
 
 	loadLoot (lootData) {
@@ -411,6 +416,27 @@ const randomLootTables = {
 				randomLootTables._items = items;
 			});
 
+		let $charLevSelector = $('#character-level-selector');
+		for (let i = 1; i < 21; i++) {
+			$charLevSelector.append(`<option value="${i}">${i}</option>`);
+		}
+
+		$(".slider")
+			.hide()
+			.slider({min: 1, max: 20})
+			.slider('pips', {rest: "label"})
+			.slider('float');
+
+		$("#closest-tier").change((evt) => {
+			if (evt.currentTarget.checked) {
+				$(".slider").hide();
+				$("#random-magic-item-select-tier").show();
+			} else {
+				$(".slider").show();
+				$("#random-magic-item-select-tier").hide();
+			}
+		})
+
 		$("#random-from-loot-table").change(function (evt) {
 			let val = evt.currentTarget.value;
 			if (val !== "") {
@@ -420,6 +446,23 @@ const randomLootTables = {
 				randomLootTables.displayTable();
 			}
 		})
+
+		$("#get-random-item-from-table").click(evt => {
+			console.log (randomLootTables.getRandomItem("Major", "Uncommon"))
+		});
+
+		$("#get-group-of-items-for-character").click(evt => {
+			let level;
+			let checked = $("#closest-tier").prop("checked");
+
+			if (checked) {
+				level = $("#charLevel").val();
+			} else {
+				level = $(".slider").slider("value");
+			}
+			console.log('checked:', checked, level);
+			console.log(randomLootTables.getNumberOfItemsNeeded(Number(level), !checked));
+		});
 	},
 
 	getNumberOfItemsNeeded (charLevel, estimateBetweenLevels = false) {
@@ -590,51 +633,8 @@ $("document").ready(function load () {
 	DataUtil.loadJSON(LOOT_JSON_URL).then(lootGen.loadLoot.bind(lootGen));
 	$(`body`).on("mousedown", ".roller", (e) => e.preventDefault());
 
-	let $charLevSelector = $('#character-level-selector');
-	for (let i = 1; i < 21; i++) {
-		$charLevSelector.append(`<option value="${i}">${i}</option>`);
-	}
 	viewManinpulation = new ViewManinpulation("lootgen", "loot-table", "random-magic-item")
 	viewManinpulation.switchView(StorageUtil.get("lootGenViewState") || "lootgen");
 
-	$(".slider")
-		.slider({min: 1, max: 20})
-		.slider('pips', {rest: "label"})
-		.slider('float');
-
 	randomLootTables.init();
-
-	$(".slider").hide();
-	$("#closest-tier").change((evt) => {
-		if (evt.currentTarget.checked) {
-			$(".slider").hide();
-			$("#random-magic-item-select-tier").show();
-		} else {
-			$(".slider").show();
-			$("#random-magic-item-select-tier").hide();
-		}
-	})
-
-	$("#get-random-item-from-table").click(evt => {
-		console.log (randomLootTables.getRandomItem("Major", "Uncommon"))
-	});
-
-	$("#get-group-of-items-for-character").click(evt => {
-		let level;
-		let checked = $("#closest-tier").prop("checked");
-
-		if (checked) {
-			level = $("#charLevel").val();
-		} else {
-			level = $(".slider").slider("value");
-		}
-		console.log('checked:', checked, level);
-		console.log(randomLootTables.getNumberOfItemsNeeded(Number(level), !checked));
-	});
-
-	$("#rollAgaintTable").click(function (evt) {
-		let val = $("#table-sel").val();
-		if (val === "") return;
-		lootGen.rollAgainstTable(val);
-	})
 });
