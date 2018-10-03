@@ -99,10 +99,19 @@
 				<form>
 					Select Character Level
 					<br/>
-					<div class="slider" class="full-width"></div>
-
-					<div id="random-magic-item-select-tier" class="input-group">
-						<span class="input-group-addon" >Character Level</span>
+					<div class="mb-3">
+						<div class="slider" class="full-width"></div>
+						<div class="input-group">
+							<span class="input-group-addon">Character Level</span>
+							<span class="form-control"></span>
+							<span class="input-group-addon" style="padding: 0;">
+								<label style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+									Round to Closest Tier? <input type="checkbox" checked id="closest-tier" style="vertical-align: bottom;">
+								</label>
+							</span>
+						</div>
+					</div>
+					<div id="random-magic-item-select-tier" class="input-group full-width">
 						<select class="form-control" id="charLevel">
 							<option value="1" selected>0-4</option>
 							<option value="5">5-10</option>
@@ -119,7 +128,7 @@
 						</select>
 						<span class="input-group-addon" style="padding: 0;">
 								<label style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
-									Round to Closest Tier? <input type="checkbox" checked id="closest-tier" style="vertical-align: bottom;">
+									Show Table <input type="checkbox" id="showLootTable" style="vertical-align: bottom;">
 								</label>
 							</span>
 					</div>
@@ -135,7 +144,6 @@
 				</p>
 			</div>
 			<hr/>
-			<div id="target">test</div>
 			<div id="classtable"></div>
 		</div>
 		<div class="col-sm-7">
