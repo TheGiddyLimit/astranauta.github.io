@@ -437,14 +437,22 @@ const randomLootTables = {
 			}
 		})
 
+		$("#showLootTable").click(function (evt) {
+			if (evt.currentTarget.checked) {
+				return $("#classtable").show();
+			}
+			$("#classtable").hide();
+		})
+
 		$("#random-from-loot-table").change(function (evt) {
 			let val = evt.currentTarget.value;
 			if (val !== "") {
 				let [tier, rarity] = val.split("-");
 				randomLootTables.displayTable(randomtableLists[tier][rarity], tier, rarity);
 			} else {
-				randomLootTables.displayTable();
+				randomLootTables.displayTable("");
 			}
+			$("#showLootTable").prop("checked") ? $("#classtable").show() : $("#classtable").hide();
 		})
 
 		$("#get-random-item-from-table").click(evt => {
@@ -515,7 +523,7 @@ const randomLootTables = {
 	},
 
 	displayTable (itemsArray, tier, rarity) {
-		if (!itemsArray === "") {
+		if (itemsArray === "") {
 			$("div#classtable").hide();
 		} else {
 			let htmlText = `
@@ -531,7 +539,7 @@ const randomLootTables = {
 				htmlText += `<tr><td class="text-align-center">${index + 1}</td><td>${lootGen.parseLink("{@item " + item.name + "}")}`
 			});
 			htmlText += "</table>"
-			$("div#classtable").html(htmlText).show();
+			$("div#classtable").html(htmlText);
 		}
 	}
 };
