@@ -526,7 +526,7 @@ const ViewManinpulation = class ViewManinpulation {
 const lootGen = new LootGen();
 let viewManinpulation;
 
-window.onload = function load () {
+$("document").ready(function load () {
 	DataUtil.loadJSON(LOOT_JSON_URL).then(lootGen.loadLoot.bind(lootGen));
 	$(`body`).on("mousedown", ".roller", (e) => e.preventDefault());
 
@@ -576,4 +576,4 @@ window.onload = function load () {
 		if (val === "") return;
 		lootGen.rollAgainstTable(val);
 	})
-};
+});
