@@ -422,6 +422,10 @@ const randomLootTables = {
 			$charLevSelector.append(`<option value="${i}">${i}</option>`);
 		}
 
+		randomLootTables.setEvents();
+	},
+
+	setEvents () {
 		$(".slider")
 			.hide()
 			.slider({min: 1, max: 20})
@@ -462,7 +466,7 @@ const randomLootTables = {
 			$("#random-from-loot-table").toggleClass("error-background", !tier && !rarity);
 			if (tier && rarity) {
 				let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
-				let text = lootGen.parseLink(`{@item ${item.name}}`);
+				let text = lootGen.parseLink(`{@item ${item.name}|${item.source}}`);
 				let $el = $(`<ul><li>Rolled a ${roll + 1} on a table for ${tier} ${rarity} items <ul><li>${text}</li></ul></li></ul>`);
 				lootOutput.add($el);
 			}
@@ -477,8 +481,30 @@ const randomLootTables = {
 			} else {
 				level = $(".slider").slider("value");
 			}
-			console.log('checked:', checked, level);
-			console.log(randomLootTables.getNumberOfItemsNeeded(Number(level), !checked));
+
+			const itemsNeeded = randomLootTables.getNumberOfItemsNeeded(Number(level), !checked);
+			const $el = $("<ul></ul>");
+			let current;
+			ObjUtil.forEachDeep(itemsNeeded, {depth: 1}, function (rarityValues, path, depth) {
+				let tier = path[0];
+				let $tier = $(`<ul tier="${tier}"><li>${tier} items</li></ul>`);
+
+				Object.keys(rarityValues).forEach(rarity => {
+					let count = rarityValues[rarity];
+					let $rarity = $(`<ul tier="${tier}"><li>${rarity} items(${count})</li></ul>`);
+					let $items = $(`<ul tier="${tier}"></ul>`);
+					for (let i = 0; i < count; i++) {
+						let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
+						let text = lootGen.parseLink(`{@item ${item.name}|${item.source}}`);
+						let $item = $(`<li>Rolled ${roll} for a ${text}</li>`);
+						$items.append($item);
+					}
+					$rarity.append($items);
+					$tier.append($rarity);
+				})
+				$el.append($tier);
+			});
+			lootOutput.add($el);
 		});
 	},
 

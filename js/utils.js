@@ -281,6 +281,27 @@ ObjUtil = {
 			}
 		}
 		recursive(source, target, 1);
+	},
+
+	forEachDeep: function (source, options, callback) {
+		if (typeof options === 'function') {
+			callback = options;
+			options = {depth: Infinity};
+		}
+
+		const path = [];
+		const diveDeep = function (val, path, depth = 0) {
+			if (options.depth === depth || typeof val !== 'object') {
+				callback(val, path, depth);
+			} else {
+				Object.keys(val).forEach(key => {
+					path.push(key);
+					diveDeep(val[key], path, depth + 1);
+				});
+			}
+			path.pop();
+		};
+		diveDeep(source, path);
 	}
 };
 
