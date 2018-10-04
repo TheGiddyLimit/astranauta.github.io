@@ -3750,58 +3750,54 @@ RollerUtil = {
 RollerUtil.DICE_REGEX = new RegExp(RollerUtil._DICE_REGEX_STR, "g");
 
 // STORAGE =============================================================================================================
-StorageUtil = {
-	_fakeStorage: {},
-	getStorage: () => {
+CreateStorageUtil = class CreateStorageUtil {
+	constructor (target) {
 		try {
-			return window.localStorage;
+			this._storage = target;
+			this._isFake = false;
 		} catch (e) {
-			// if the user has disabled cookies, build a fake version
-			return {
-				isFake: true,
-				getItem: (k) => {
-					return StorageUtil._fakeStorage[k];
-				},
-				removeItem: (k) => {
-					delete StorageUtil._fakeStorage[k];
-				},
-				setItem: (k, v) => {
-					StorageUtil._fakeStorage[k] = v;
-				}
-			};
+			this._storage = {};
+			this._isFake = true;
 		}
-	},
+	}
+
+	getStorage () {
+		return this._storage;
+	}
 
 	isFake () {
-		return StorageUtil.getStorage().isFake
-	},
+		return this.getStorage().isFake
+	}
 
-	setForPage: (key, value) => {
-		StorageUtil.set(`${key}_${UrlUtil.getCurrentPage()}`, value);
-	},
+	setForPage (key, value) {
+		this.set(`${key}_${UrlUtil.getCurrentPage()}`, value);
+	}
 
 	set (key, value) {
-		StorageUtil.getStorage().setItem(key, JSON.stringify(value));
-	},
+		this.getStorage().setItem(key, JSON.stringify(value));
+	}
 
-	getForPage: (key) => {
-		return StorageUtil.get(`${key}_${UrlUtil.getCurrentPage()}`);
-	},
+	getForPage (key) {
+		return this.get(`${key}_${UrlUtil.getCurrentPage()}`);
+	}
 
 	get (key) {
-		const rawOut = StorageUtil.getStorage().getItem(key);
+		const rawOut = this.getStorage().getItem(key);
 		if (rawOut && rawOut !== "undefined" && rawOut !== "null") return JSON.parse(rawOut);
 		return null;
-	},
+	}
 
-	removeForPage: (key) => {
-		StorageUtil.remove(`${key}_${UrlUtil.getCurrentPage()}`)
-	},
+	removeForPage (key) {
+		this.remove(`${key}_${UrlUtil.getCurrentPage()}`)
+	}
 
 	remove (key) {
-		StorageUtil.getStorage().removeItem(key);
+		this.getStorage().removeItem(key);
 	}
 };
+
+StorageUtil = new CreateStorageUtil(window.localStorage);
+SessionStorageUtil = new CreateStorageUtil(window.sessionStorage);
 
 // HOMEBREW ============================================================================================================
 BrewUtil = {
