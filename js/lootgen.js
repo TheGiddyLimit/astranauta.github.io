@@ -466,8 +466,7 @@ const randomLootTables = {
 			$("#random-from-loot-table").toggleClass("error-background", !tier && !rarity);
 			if (tier && rarity) {
 				let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
-				let text = lootGen.parseLink(`{@item ${item.name}|${item.source}}`);
-				let $el = $(`<ul><li>Rolled a ${roll + 1} on a table for ${tier} ${rarity} items <ul><li>${text}</li></ul></li></ul>`);
+				let $el = $(`<ul><li>Rolled a ${roll + 1} on a table for ${tier} ${rarity} items <ul><li>${randomLootTables.createLink(item)}</li></ul></li></ul>`);
 				lootOutput.add($el);
 			}
 		});
@@ -495,8 +494,7 @@ const randomLootTables = {
 					let $items = $(`<ul tier="${tier}"></ul>`);
 					for (let i = 0; i < count; i++) {
 						let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
-						let text = lootGen.parseLink(`{@item ${item.name}|${item.source}}`);
-						let $item = $(`<li>Rolled ${roll} for a ${text}</li>`);
+						let $item = $(`<li>Rolled ${roll} for a ${randomLootTables.createLink(item)}</li>`);
 						$items.append($item);
 					}
 					$rarity.append($items);
@@ -549,7 +547,7 @@ const randomLootTables = {
 	},
 
 	createLink (item) {
-		return lootGen.parseLink(`{@item ${item.name}`);
+		return lootGen.parseLink(`{@item ${item.name}|${item.source}`);
 	},
 
 	getRandomItem (tier, rarity) {
