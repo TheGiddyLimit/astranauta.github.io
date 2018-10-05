@@ -475,17 +475,17 @@ const randomLootTables = {
 		$("#get-group-of-items-for-character").click(evt => {
 			let level;
 			let checked = $("#closest-tier").prop("checked");
-
 			if (checked) {
 				level = $("#charLevel").val();
 			} else {
 				level = $(".slider").slider("value");
 			}
+			let text = !checked ? "level " + level : "tier " + $(`#charLevel option[value=${level}]`).text();
 
 			const itemsNeeded = randomLootTables.getNumberOfItemsNeeded(Number(level), !checked);
-			const $el = $("<ul></ul>");
+			const $el = $(`<ul><h4>Magical Items for a ${text} Character:</h4></ul>`);
 			let current;
-			ObjUtil.forEachDeep(itemsNeeded, {depth: 1}, function (rarityValues, path, depth) {
+			ObjUtil.forEachDeep(itemsNeeded, {depth: 1}, function (rarityValues, path) {
 				let tier = path[0];
 				let $tier = $(`<ul tier="${tier}"><li>${tier} items</li></ul>`);
 
@@ -529,22 +529,21 @@ const randomLootTables = {
 
 		let keys = Object.keys(randomLootTables._table).sort((a, b) => a - b);
 		for (let i = 0; i <= keys.length; i++) {
-			let level = keys[i]
+			let level = keys[i];
 			let props = randomLootTables._table[level];
 			if (level <= charLevel) {
-				if (estimateBetweenLevels && charLevel > last) {
-					let differenceLevels = level - last;
-					let charDifferenceLevels = charLevel - last;
-					let ratio = charDifferenceLevels / differenceLevels;
-					ObjUtil.mergeWith(props, count, {depth: 2}, (val, sum) => typeof val === "number" ? sum + ~~(ratio * val) : sum);
-					break;
-				} else {
-					ObjUtil.mergeWith(props, count, {depth: 2}, (val, sum) => typeof val === "number" ? val + sum : sum);
-				}
-				last = level;
+				ObjUtil.mergeWith(props, count, {depth: 2}, (val, sum) => typeof val === "number" ? val + sum : sum);
+			} else if (level > charLevel && estimateBetweenLevels) {
+				let differenceLevels = level - last;
+				let charDifferenceLevels = level - charLevel;
+				let levelsToCalc = differenceLevels - charDifferenceLevels;
+				let ratio = levelsToCalc / differenceLevels;
+				ObjUtil.mergeWith(props, count, {depth: 2}, (val, sum) => typeof val === "number" ? sum + ~~(ratio * val) : sum);
+				break;
 			} else {
 				break;
 			}
+			last = level;
 		}
 		return count;
 	},

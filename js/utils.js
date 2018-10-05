@@ -286,19 +286,22 @@ ObjUtil = {
 	forEachDeep: function (source, options, callback) {
 		if (typeof options === 'function') {
 			callback = options;
-			options = {depth: Infinity};
+			options = {depth: Infinity, callEachLevel: false};
 		}
 
 		const path = [];
 		const diveDeep = function (val, path, depth = 0) {
-			if (options.depth === depth || typeof val !== 'object') {
+			if (options.callEachLevel || typeof val !== 'object' || options.depth === depth) {
 				callback(val, path, depth);
-			} else {
+			}
+
+			if (options.depth !== depth && typeof val === 'object') {
 				Object.keys(val).forEach(key => {
 					path.push(key);
 					diveDeep(val[key], path, depth + 1);
 				});
 			}
+
 			path.pop();
 		};
 		diveDeep(source, path);
