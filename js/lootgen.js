@@ -290,7 +290,10 @@ class LootGen {
 
 	loadRollSpell (ele, level) {
 		const output = () => {
-			$(ele).removeClass("roller").attr("onclick", "").html(`${renderer.renderEntry(this.getRandomSpell(level))}`)
+			$(ele)
+				.removeClass("roller").attr("onclick", "")
+				.html(`${renderer.renderEntry(this.getRandomSpell(level))} `)
+				.append($(`<a onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>`));
 		};
 
 		if (!this.hasLoadedSpells()) {
