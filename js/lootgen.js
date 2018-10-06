@@ -421,25 +421,23 @@ const randomLootTables = {
 		for (let i = 1; i < 21; i++) {
 			$charLevSelector.append(`<option value="${i}">${i}</option>`);
 		}
-
+		$("#closest-tier").prop("checked", SessionStorageUtil.get("lootgen-closest-tier"));
+		$("#random-magic-item-select-tier").toggle(!SessionStorageUtil.get("lootgen-closest-tier"))
 		randomLootTables.setEvents();
 	},
 
 	setEvents () {
 		$(".slider")
-			.hide()
+			.toggle($("#closest-tier").prop("checked"))
 			.slider({min: 1, max: 20})
 			.slider('pips', {rest: "label"})
 			.slider('float');
 
 		$("#closest-tier").change((evt) => {
-			if (evt.currentTarget.checked) {
-				$(".slider").hide();
-				$("#random-magic-item-select-tier").show();
-			} else {
-				$(".slider").show();
-				$("#random-magic-item-select-tier").hide();
-			}
+			let toggled = evt.currentTarget.checked;
+			$(".slider").toggle(toggled);
+			$("#random-magic-item-select-tier").toggle(!toggled);
+			SessionStorageUtil.set("lootgen-closest-tier", toggled)
 		})
 
 		$("#showLootTable").click(function (evt) {
@@ -474,16 +472,15 @@ const randomLootTables = {
 		$("#get-group-of-items-for-character").click(evt => {
 			let level;
 			let checked = $("#closest-tier").prop("checked");
-			if (checked) {
-				level = $("#charLevel").val();
-			} else {
-				level = $(".slider").slider("value");
-			}
-			let text = !checked ? "level " + level : "tier " + $(`#charLevel option[value=${level}]`).text();
 
+			if (checked) {
+				level = $(".slider").slider("value");
+			} else {
+				level = $("#charLevel").val();
+			}
+			let text = checked ? "level " + level : "tier " + $(`#charLevel option[value=${level}]`).text();
 			const itemsNeeded = randomLootTables.getNumberOfItemsNeeded(Number(level), !checked);
 			const $el = $(`<ul><h4>Magical Items for a ${text} Character:</h4></ul>`);
-			let current;
 			ObjUtil.forEachDeep(itemsNeeded, {depth: 1}, function (rarityValues, path) {
 				let tier = path[0];
 				let $tier = $(`<ul tier="${tier}"><li>${tier} items</li></ul>`);
@@ -524,7 +521,6 @@ const randomLootTables = {
 		};
 
 		let last = 1;
-
 		let keys = Object.keys(randomLootTables._table).sort((a, b) => a - b);
 		for (let i = 0; i <= keys.length; i++) {
 			let level = keys[i];
@@ -609,8 +605,9 @@ const lootOutput = (function () {
 })();
 
 const ViewManinpulation = class ViewManinpulation {
-	constructor (...names) {
-		this._views = names;
+	constructor (name, viewNames) {
+		this.name = name;
+		this._views = viewNames;
 		this._containers = (function (views) {
 			let containers = {};
 			views.forEach(view => {
@@ -618,7 +615,7 @@ const ViewManinpulation = class ViewManinpulation {
 				containers[view] = $("#" + container);
 			})
 			return containers;
-		}.bind(this)(names));
+		}.bind(this)(viewNames));
 
 		this._buttons = (function (names) {
 			let buttons = {};
@@ -627,8 +624,13 @@ const ViewManinpulation = class ViewManinpulation {
 				buttons[name] = $("#" + button);
 			})
 			return buttons;
-		}.bind(this)(names));
+		}.bind(this)(viewNames));
 		this.setClicks();
+		this.switchView(SessionStorageUtil.get(this.returnStorageName()) || viewNames[0]);
+	}
+
+	returnStorageName() {
+		return "view-" + this.name;
 	}
 
 	returnName (nameStr) {
@@ -663,7 +665,7 @@ const ViewManinpulation = class ViewManinpulation {
 			$button.toggleClass("btn-selected", name === view);
 			$container.toggleClass("hidden", name !== view);
 		})
-		StorageUtil.set("lootGenViewState", name);
+		SessionStorageUtil.set(this.returnStorageName(), name);
 	}
 }
 
@@ -674,8 +676,7 @@ $("document").ready(function load () {
 	DataUtil.loadJSON(LOOT_JSON_URL).then(lootGen.loadLoot.bind(lootGen));
 	$(`body`).on("mousedown", ".roller", (e) => e.preventDefault());
 
-	viewManinpulation = new ViewManinpulation("lootgen", "loot-table", "random-magic-item")
-	viewManinpulation.switchView(StorageUtil.get("lootGenViewState") || "lootgen");
+	viewManinpulation = new ViewManinpulation("lootgen-tables", ["lootgen", "loot-table", "random-magic-item"])
 
 	randomLootTables.init();
 });
