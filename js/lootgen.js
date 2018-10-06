@@ -490,7 +490,7 @@ const randomLootTables = {
 
 				Object.keys(rarityValues).forEach(rarity => {
 					let count = rarityValues[rarity];
-					let $rarity = $(`<ul tier="${tier}"><li>${rarity} items(${count})</li></ul>`);
+					let $rarity = $(`<ul rarity="${rarity}"><li>${rarity} items(${count})</li></ul>`);
 					let $items = $(`<ul tier="${tier}"></ul>`);
 					for (let i = 0; i < count; i++) {
 						$items.append(randomLootTables.getRandomItemHtml(tier, rarity));
@@ -502,10 +502,6 @@ const randomLootTables = {
 			});
 			lootOutput.add($el);
 		});
-	},
-
-	rerollItem (ele) {
-		$(ele).parents("li").html("");
 	},
 
 	getNumberOfItemsNeeded (charLevel, estimateBetweenLevels = false) {
@@ -558,7 +554,14 @@ const randomLootTables = {
 
 	getRandomItemHtml (tier, rarity) {
 		let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
-		return $(`<li><span>${randomLootTables.createLink(item)}</span> (Rolled ${roll}) <a onclick="randomLootTables.rerollItem(this)">[reroll]</a></li>`);
+		return $(`<li><span>${randomLootTables.createLink(item)}</span> (Rolled ${roll + 1}) <a onclick="randomLootTables.rerollItem(this)">[reroll]</a></li>`);
+	},
+
+	rerollItem (ele) {
+		let $ele = $(ele);
+		let rarity = $ele.closest("[rarity]").attr("rarity");
+		let tier = $ele.closest("[tier]").attr("tier");
+		$ele.parent("li").replaceWith(randomLootTables.getRandomItemHtml(tier, rarity));
 	},
 
 	displayTable (itemsArray, tier, rarity) {
