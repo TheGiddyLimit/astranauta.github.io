@@ -493,9 +493,7 @@ const randomLootTables = {
 					let $rarity = $(`<ul tier="${tier}"><li>${rarity} items(${count})</li></ul>`);
 					let $items = $(`<ul tier="${tier}"></ul>`);
 					for (let i = 0; i < count; i++) {
-						let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
-						let $item = $(`<li>Rolled ${roll} for a ${randomLootTables.createLink(item)}</li>`);
-						$items.append($item);
+						$items.append(randomLootTables.getRandomItemHtml(tier, rarity));
 					}
 					$rarity.append($items);
 					$tier.append($rarity);
@@ -504,6 +502,10 @@ const randomLootTables = {
 			});
 			lootOutput.add($el);
 		});
+	},
+
+	rerollItem (ele) {
+		$(ele).parents("li").html("");
 	},
 
 	getNumberOfItemsNeeded (charLevel, estimateBetweenLevels = false) {
@@ -552,6 +554,11 @@ const randomLootTables = {
 	getRandomItem (tier, rarity) {
 		let roll = RollerUtil.randomise(randomtableLists[tier][rarity].length - 1, 0);
 		return {roll, item: randomtableLists[tier][rarity][roll]};
+	},
+
+	getRandomItemHtml (tier, rarity) {
+		let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
+		return $(`<li><span>${randomLootTables.createLink(item)}</span> (Rolled ${roll}) <a onclick="randomLootTables.rerollItem(this)">[reroll]</a></li>`);
 	},
 
 	displayTable (itemsArray, tier, rarity) {
