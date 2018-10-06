@@ -249,11 +249,13 @@ class LootGen {
 			if (options.rollSpellScroll && rawText.toLowerCase().startsWith("{@item spell scroll")) {
 				const m = /spell scroll \((.*?)\)/.exec(rawText.toLowerCase());
 				const level = m[1] === "cantrip" ? 0 : Number(m[1][0]); // 1st letter is the spell level
-				if (this.hasLoadedSpells()) {
-					stack.push(` <i>(<span>${renderer.renderEntry(this.getRandomSpell(level))}</span> or ${this._getOrViewSpellsPart(level)})</i>`);
-				} else {
-					stack.push(` <i>(<span class="roller" onclick="lootGen.loadRollSpell.bind(lootGen)(this, ${level})">roll</span> or ${this._getOrViewSpellsPart(level)})</i>`);
-				}
+				stack.push(lootGen.returnSpellHtml(level));
+			// 	if (this.hasLoadedSpells()) {
+			// 		stack.push(` <i>(<span>${renderer.renderEntry(this.getRandomSpell(level))}</span> <a target="_empty" onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>or ${this._getOrViewSpellsPart(level)})</i>`);
+			// 	} else {
+			// 		stack.push(` <i>(<span class="roller" onclick="lootGen.loadRollSpell.bind(lootGen)(this, ${level})">roll</span> or ${this._getOrViewSpellsPart(level)})</i>`);
+			// 	}
+			// }
 			}
 			return stack.join("");
 		} else return rawText;
@@ -288,12 +290,25 @@ class LootGen {
 		}
 	}
 
+	returnSpellHtml (level) {
+		if (this.hasLoadedSpells()) {
+			return `\
+				<i>(\
+					<span>${renderer.renderEntry(this.getRandomSpell(level))}\
+						<a onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>\
+					</span> \
+					or ${this._getOrViewSpellsPart(level)}\
+				)</i>`;
+		}
+		return `<i>(<span class="roller" onclick="lootGen.loadRollSpell.bind(lootGen)(this, ${level})">roll</span> or ${this._getOrViewSpellsPart(level)})</i>`;
+	}
+
 	loadRollSpell (ele, level) {
 		const output = () => {
 			$(ele)
 				.removeClass("roller").attr("onclick", "")
 				.html(`${renderer.renderEntry(this.getRandomSpell(level))} `)
-				.append($(`<a onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>`));
+				.append($(`<a target="_empty" onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>`));
 		};
 
 		if (!this.hasLoadedSpells()) {
@@ -482,7 +497,7 @@ const randomLootTables = {
 			} else {
 				level = $("#charLevel").val();
 			}
-			let text = checked ? "level " + level : "tier " + $(`#charLevel option[value=${level}]`).text();
+			let text = checked ? "level " + level : "level " + $(`#charLevel option[value=${level}]`).text();
 			const itemsNeeded = randomLootTables.getNumberOfItemsNeeded(Number(level), !checked);
 			const $el = $(`<ul><h4>Magical Items for a ${text} Character:</h4></ul>`);
 			ObjUtil.forEachDeep(itemsNeeded, {depth: 1}, function (rarityValues, path) {
