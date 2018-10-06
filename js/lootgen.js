@@ -408,7 +408,8 @@ const randomLootTables = {
 			.then(randomtableLists => {
 				let $selector = $(randomLootTables._selectorTarget);
 				for (let nameTier of Object.keys(randomtableLists)) {
-					for (let nameRarity of Object.keys(randomtableLists[nameTier])) {
+					let keys = Object.keys(randomtableLists[nameTier]).sort((a, b) => randomLootTables._rarityOrder.findIndex((aa) => aa === a) - randomLootTables._rarityOrder.findIndex((bb) => bb === b));
+					for (let nameRarity of keys) {
 						if (nameRarity !== undefined && nameRarity !== "None" && nameTier && nameTier !== "undefined") {
 							$selector.append(`<option value="${nameTier}-${nameRarity}">${nameTier} ${nameRarity}</option>`);
 						}
