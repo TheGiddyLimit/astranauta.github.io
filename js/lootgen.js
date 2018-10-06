@@ -543,7 +543,7 @@ const randomLootTables = {
 	},
 
 	createLink (item) {
-		return lootGen.parseLink(`{@item ${item.name}|${item.source}`);
+		return lootGen.parseLink(`{@item ${item.name}|${item.source}`, {rollSpellScroll: true});
 	},
 
 	getRandomItem (tier, rarity) {
@@ -629,7 +629,7 @@ const ViewManinpulation = class ViewManinpulation {
 		this.switchView(SessionStorageUtil.get(this.returnStorageName()) || viewNames[0]);
 	}
 
-	returnStorageName() {
+	returnStorageName () {
 		return "view-" + this.name;
 	}
 
