@@ -5,10 +5,6 @@ const MULT_SIGN = "×";
 const MAX_HIST = 9;
 const renderer = new EntryRenderer();
 let lootList;
-const randomtableLists = {
-	Major: {},
-	Minor: {}
-};
 const views = {};
 
 class LootGen {
@@ -319,10 +315,14 @@ class LootGen {
 		return rollAgainst[this.randomNumber(0, rollAgainst.length - 1)];
 	}
 }
-
+// randomLootTables._items
 const randomLootTables = {
 	_selectorTarget: "#random-from-loot-table",
-	_items: null,
+	_items: {
+		Major: {},
+		Minor: {},
+		Other: {}
+	},
 	_rarityOrder: ["Common", "Uncommon", "Rare", "Very Rare", "Legendary"],
 	_table: {
 		1: {
@@ -418,27 +418,24 @@ const randomLootTables = {
 				for (let item of items) {
 					let rarity = item.rarity;
 					let tier = item.tier;
-					if (!randomtableLists[tier]) randomtableLists[tier] = {};
-					let tableTier = randomtableLists[tier];
+					tier = tier || "Other";
+					if (!randomLootTables._items[tier]) randomLootTables._items[tier] = {};
+					let tableTier = randomLootTables._items[tier];
 					if (!tableTier[rarity]) tableTier[rarity] = [];
 					tableTier[rarity].push(item);
 				}
-				return randomtableLists;
+				return randomLootTables._items;
 			})
-			.then(randomtableLists => {
+			.then(itemList => {
 				let $selector = $(randomLootTables._selectorTarget);
-				for (let nameTier of Object.keys(randomtableLists)) {
-					let keys = Object.keys(randomtableLists[nameTier]).sort((a, b) => randomLootTables._rarityOrder.findIndex((aa) => aa === a) - randomLootTables._rarityOrder.findIndex((bb) => bb === b));
+				for (let nameTier of Object.keys(itemList)) {
+					let keys = Object.keys(itemList[nameTier]).sort((a, b) => randomLootTables._rarityOrder.findIndex((aa) => aa === a) - randomLootTables._rarityOrder.findIndex((bb) => bb === b));
 					for (let nameRarity of keys) {
 						if (nameRarity !== undefined && nameRarity !== "None" && nameTier && nameTier !== "undefined") {
 							$selector.append(`<option value="${nameTier}-${nameRarity}">${nameTier} ${nameRarity}</option>`);
 						}
 					}
 				}
-				return randomtableLists;
-			})
-			.then(items => {
-				randomLootTables._items = items;
 			});
 
 		let $charLevSelector = $('#character-level-selector');
@@ -475,7 +472,7 @@ const randomLootTables = {
 			let val = evt.currentTarget.value;
 			if (val !== "") {
 				let [tier, rarity] = val.split("-");
-				randomLootTables.displayTable(randomtableLists[tier][rarity], tier, rarity);
+				randomLootTables.displayTable(randomLootTables._items[tier][rarity], tier, rarity);
 				$("#random-from-loot-table").removeClass("error-background");
 			} else {
 				randomLootTables.displayTable("");
@@ -525,6 +522,10 @@ const randomLootTables = {
 		});
 	},
 
+	itemHtml () {
+
+	},
+
 	getNumberOfItemsNeeded (charLevel, estimateBetweenLevels = false) {
 		let count = {
 			"Major": {
@@ -569,8 +570,8 @@ const randomLootTables = {
 	},
 
 	getRandomItem (tier, rarity) {
-		let roll = RollerUtil.randomise(randomtableLists[tier][rarity].length - 1, 0);
-		return {roll, item: randomtableLists[tier][rarity][roll]};
+		let roll = RollerUtil.randomise(randomLootTables._items[tier][rarity].length - 1, 0);
+		return {roll, item: randomLootTables._items[tier][rarity][roll]};
 	},
 
 	getRandomItemHtml (tier, rarity) {
@@ -599,7 +600,7 @@ const randomLootTables = {
 			</tr>
 			</thead>`;
 			itemsArray.forEach((item, index) => {
-				htmlText += `<tr><td class="text-align-center">${index + 1}</td><td>${lootGen.parseLink("{@item " + item.name + "}")}`
+				htmlText += `<tr><td class="text-align-center">${index + 1}</td><td>${lootGen.parseLink("{@item " + item.name + "|" + item.source + "}")}`
 			});
 			htmlText += "</table>"
 			$("div#classtable").html(htmlText);
@@ -704,7 +705,6 @@ const ViewManinpulation = class ViewManinpulation {
 }
 
 const lootGen = new LootGen();
-let viewManinpulation;
 
 $("document").ready(function load () {
 	DataUtil.loadJSON(LOOT_JSON_URL).then(lootGen.loadLoot.bind(lootGen));
