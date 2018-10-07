@@ -608,7 +608,7 @@ const randomLootTables = {
 	}
 };
 
-const lootOutput = (function () {
+const lootOutput = (function lootOutput () {
 	const $table = $("#lootoutput");
 	const checkSize = function () {
 		$(`#lootoutput > div:eq(${MAX_HIST}), #lootoutput > hr:eq(${MAX_HIST})`).remove();
