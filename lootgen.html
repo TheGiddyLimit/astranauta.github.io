@@ -51,12 +51,11 @@
 		<div class="col-sm-5">
 			<div class="input-group">
 				<span class="input-group-addon btn" id="btn-lootgen">Treasure Tables</span>
-				<span class="input-group-addon btn" id="btn-loot-table">Loot Table</span>
-				<span class="input-group-addon btn" id="btn-random-magic-item">Magic Item</span>
+				<span class="input-group-addon btn" id="btn-loot-table">Loot Tables</span>
+				<span class="input-group-addon btn" id="btn-random-magic-item">New Character</span>
 			</div>
-			<br/>
-
 			<div id="container-lootgen">
+				<br/>
 				<form id="controls">
 					<div class="input-group">
 						<span class="input-group-addon">Challenge Rating</span>
@@ -81,17 +80,45 @@
 				</form>
 			</div>
 
-			<div id="container-loot-table" >
-				<div class="input-group full-width">
-					<span class="input-group-addon" >Select your </span>
-					<select class="form-control" id="table-sel">  <!-- class="form-control" -->
-						<option value="" selected>View individual tables...</option>
-					</select>
+			<div id="container-loot-table">
+				<div class="input-group">
+					<span class="input-group-addon btn" id="btn-dmg-loot-table">DMG</span>
+					<span class="input-group-addon btn" id="btn-xge-loot-table">XGE</span>
 				</div>
-				<br>
+				<br/>
+				<div id="container-dmg-loot-table">
+					<div class="input-group full-width">
+						<span class="input-group-addon" >Select your </span>
+						<select class="form-control" id="table-sel">  <!-- class="form-control" -->
+							<option value="" selected>View individual tables...</option>
+						</select>
+					</div>
+					<br>
 					<button type="button" class="col-xs-9 btn btn-default" id="rollAgaintTable">Roll Loot!</button>
 					<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right id-clear">Clear</button>
 					<small>Based on the tables and rules in the <a href="/book.html#DMG,7,random%20treasure" target="_blank"><em>Dungeon Master's Guide</em>, pages 133-149.</a></small>
+				</div>
+				<div id="container-xge-loot-table">
+					<div class="input-group">
+						<span class="input-group-addon" >Select your </span>
+						<select class="form-control" id="random-from-loot-table">
+							<option value="" selected>Select a loot range</option>
+						</select>
+						<span class="input-group-addon" style="padding: 0;">
+								<label style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+									Show Table <input checked type="checkbox" id="showLootTable" style="vertical-align: bottom;">
+								</label>
+							</span>
+						</div>
+						<br/>
+					<div style="display: flex; justify-content: space-between">
+						<button type="button" class="btn col-xs-4 btn-default word-wrap" style="margin-right: 3px; float: none; flex: 2" id="get-random-item-from-table">Pick Random Item</button>
+						<button type="button" class="btn btn-default col-xs-2 col-xs-2-9 id-clear" style="float: none; flex: 1">Clear</button>
+						</div>
+						<p>
+							<small>Based on the tables and rules in the <a href="/book.html#XGE,2,awarding%20magic%20items" target="_blank"><em>Xanathar's Guide to Everything</em>, pages 135</a>.</small>
+						</p>
+				</div>
 			</div>
 
 			<div id="container-random-magic-item">
@@ -120,22 +147,9 @@
 							<option value="20">20</option>
 						</select>
 					</div>
-
-					<br/>
-					<div class="input-group">
-						<select class="form-control" id="random-from-loot-table">
-							<option value="" selected>Select a loot range</option>
-						</select>
-						<span class="input-group-addon" style="padding: 0;">
-								<label style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
-									Show Table <input checked type="checkbox" id="showLootTable" style="vertical-align: bottom;">
-								</label>
-							</span>
-					</div>
 				</form>
 				<br>
 				<div style="display: flex; justify-content: space-between">
-					<button type="button" class="btn col-xs-4 btn-default word-wrap" style="margin-right: 3px; float: none; flex: 2" id="get-random-item-from-table">Pick Random Item</button>
 					<button type="button" class="btn col-xs-4 btn-default word-wrap" style="margin-right: 3px; float: none; flex: 2;" id="get-group-of-items-for-character">Generate Items for a Character</button>
 					<button type="button" class="btn btn-default col-xs-2 col-xs-2-9 id-clear" style="float: none; flex: 1">Clear</button>
 				</div>

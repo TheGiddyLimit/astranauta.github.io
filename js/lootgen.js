@@ -9,6 +9,7 @@ const randomtableLists = {
 	Major: {},
 	Minor: {}
 };
+const views = {};
 
 class LootGen {
 	constructor () {
@@ -705,7 +706,8 @@ $("document").ready(function load () {
 	DataUtil.loadJSON(LOOT_JSON_URL).then(lootGen.loadLoot.bind(lootGen));
 	$(`body`).on("mousedown", ".roller", (e) => e.preventDefault());
 
-	viewManinpulation = new ViewManinpulation("lootgen-tables", ["lootgen", "loot-table", "random-magic-item"])
+	views.mainView = new ViewManinpulation("lootgen-tables", ["lootgen", "loot-table", "random-magic-item"])
+	views.lootTables = new ViewManinpulation("lootTables", ["dmg-loot-table", "xge-loot-table"])
 
 	randomLootTables.init();
 });
