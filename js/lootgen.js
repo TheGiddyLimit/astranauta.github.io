@@ -251,12 +251,6 @@ class LootGen {
 				const m = /spell scroll \((.*?)\)/.exec(rawText.toLowerCase());
 				const level = m[1] === "cantrip" ? 0 : Number(m[1][0]); // 1st letter is the spell level
 				stack.push(lootGen.returnSpellHtml(level));
-			// 	if (this.hasLoadedSpells()) {
-			// 		stack.push(` <i>(<span>${renderer.renderEntry(this.getRandomSpell(level))}</span> <a target="_empty" onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>or ${this._getOrViewSpellsPart(level)})</i>`);
-			// 	} else {
-			// 		stack.push(` <i>(<span class="roller" onclick="lootGen.loadRollSpell.bind(lootGen)(this, ${level})">roll</span> or ${this._getOrViewSpellsPart(level)})</i>`);
-			// 	}
-			// }
 			}
 			return stack.join("");
 		} else return rawText;
@@ -409,8 +403,18 @@ const randomLootTables = {
 	},
 
 	init () {
+		let items;
 		DataUtil.loadJSON(ITEMS_URL)
-			.then(({item: items}) => {
+			.then(loadedItems => {
+				items = loadedItems.item;
+				return BrewUtil.pAddBrewData()
+			})
+			.then((brew) => {
+				if (brew && brew.item) brew.item.forEach(item => items.push(item));
+				return items;
+			})
+			.catch(BrewUtil.purgeBrew)
+			.then((items) => {
 				for (let item of items) {
 					let rarity = item.rarity;
 					let tier = item.tier;
