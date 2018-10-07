@@ -499,7 +499,7 @@ const randomLootTables = {
 				level = $("#charLevel").val();
 			}
 			let text = checked ? "level " + level : "level " + $(`#charLevel option[value=${level}]`).text();
-			const itemsNeeded = randomLootTables.getNumberOfItemsNeeded(Number(level), !checked);
+			const itemsNeeded = randomLootTables.getNumberOfItemsNeeded(Number(level), checked);
 			const $el = $(`<ul><h4>Magical Items for a ${text} Character:</h4></ul>`);
 			ObjUtil.forEachDeep(itemsNeeded, {depth: 1}, function (rarityValues, path) {
 				let tier = path[0];
