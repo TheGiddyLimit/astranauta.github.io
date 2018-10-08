@@ -66,7 +66,7 @@ class LootGen {
 			});
 			htmlText += `
 			</table>
-			<small><b>Source:</b> <i>${Parser.sourceJsonToFull(itemsTable.source)}</i>, page ${itemsTable.page}</small>`;
+			<small><strong>Source:</strong> <em>${Parser.sourceJsonToFull(itemsTable.source)}</em>, page ${itemsTable.page}</small>`;
 			$("div#classtable").html(htmlText).show();
 		}
 	}
@@ -178,7 +178,7 @@ class LootGen {
 		} else {
 			$el.prepend(`<li>${lootGen.getFormattedCoinsForDisplay(loot.coins)}</li>`);
 		}
-		let title = hoard ? `Hoard for challange rating: <b>${challangeRatingRange[cr]}</b>` : `Individual Treasure for challange rating: <b>${challangeRatingRange[cr]}</b>`;
+		let title = hoard ? `Hoard for challange rating: <strong>${challangeRatingRange[cr]}</strong>` : `Individual Treasure for challange rating: <strong>${challangeRatingRange[cr]}</strong>`;
 		lootOutput.add($el, title);
 	}
 
@@ -306,14 +306,14 @@ class LootGen {
 	returnSpellHtml (level) {
 		if (this.hasLoadedSpells()) {
 			return `\
-				<i>(\
+				<em>(\
 					<span>${renderer.renderEntry(this.getRandomSpell(level))}\
 						<a onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>\
 					</span> \
 					or ${this._getOrViewSpellsPart(level)}\
-				)</i>`;
+				)</em>`;
 		}
-		return `<i>(<span class="roller" onclick="lootGen.loadRollSpell.bind(lootGen)(this, ${level})">roll</span> or ${this._getOrViewSpellsPart(level)})</i>`;
+		return `<em>(<span class="roller" onclick="lootGen.loadRollSpell.bind(lootGen)(this, ${level})">roll</span> or ${this._getOrViewSpellsPart(level)})</em>`;
 	}
 
 	loadRollSpell (ele, level) {
@@ -509,7 +509,7 @@ const randomLootTables = {
 				let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
 				let $ul = $(`<ul rarity="${rarity}" tier="${tier}"></ul>`).append(randomLootTables.getRandomItemHtml(tier, rarity));
 				// let $el = $(`<ul ><li> </li></ul>`).append($ul);
-				lootOutput.add($ul, `Rolled on the table for <b>${tier} ${rarity}</b> items`);
+				lootOutput.add($ul, `Rolled on the table for <strong>${tier} ${rarity}</strong> items`);
 			}
 		});
 
@@ -660,7 +660,7 @@ const lootOutput = (function lootOutput () {
 		if (typeof html === "string") {
 			addRaw(html);
 		} else if (html.jquery) {
-			let $el = $("<div id='test'></div>").append(title);
+			let $el = $("<div'></div>").append(title);
 			$el.append(html).append("<hr/>");
 			addRaw($el);
 		}
