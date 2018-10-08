@@ -67,16 +67,14 @@ class LootGen {
 		}
 	}
 
-	rollAgainstTable (ixTable, parentRoll) {
+	randomItemHtml (ixTable, parentRoll) {
 		const table = lootList.magicitems[ixTable];
-
 		const rowRoll = parentRoll || lootGen.randomNumber(1, 100);
 		const row = GenUtil.getFromTable(table.table, rowRoll);
 
 		function getMessage () {
 			const item = lootGen.parseLink(row.item, {rollSpellScroll: true});
-
-			return `Rolled a ${rowRoll} against ${table.name}:<ul><li>${item}</li></ul>`;
+			return `<ul><li>${item} <a onclick="lootGen.rerollItem(this, ${ixTable})">[reroll]</a></li></ul>`;
 		}
 
 		function getMessageSub () {
@@ -85,11 +83,34 @@ class LootGen {
 			const rolled = GenUtil.getFromTable(row.table, roll);
 			const item = lootGen.parseLink(rolled.item, {rollSpellScroll: true});
 
-			return `Rolled a ${rowRoll} (${roll + 1}) against ${table.name}:<ul><li>${item}</li></ul>`;
+			return `<ul><li>${item} <a onclick="lootGen.rerollItem(this, ${ixTable})">[reroll]</a></li></ul>`;
 		}
 
-		const message = row.table ? getMessageSub() : getMessage();
-		lootOutput.addList(message);
+		return row.table ? getMessageSub() : getMessage();
+	}
+
+	itemTitleHtml (roll, table) {
+		return $(`<ul class="id-top"><li>Rolled a ${roll} against ${table.name}:</li></ul>`);
+	}
+
+	rollAgainstTable (ixTable, parentRoll) {
+		const table = lootList.magicitems[ixTable];
+		const rowRoll = parentRoll || lootGen.randomNumber(1, 100);
+		let title = this.itemTitleHtml(rowRoll, table)
+
+		let $el = $(title).append(this.randomItemHtml(ixTable, rowRoll));
+		lootOutput.add($el);
+	}
+
+	rerollItem (el, ixTable) {
+		let $el = $(el);
+		let roll = lootGen.randomNumber(1, 100);
+		const table = lootList.magicitems[ixTable];
+
+		let $element = this.itemTitleHtml(roll, table).append(this.randomItemHtml(ixTable, roll));
+		let $parent = $(".id-top").has($el)
+
+		$parent.replaceWith($element);
 	}
 
 	rollLoot () {
@@ -315,7 +336,7 @@ class LootGen {
 		return rollAgainst[this.randomNumber(0, rollAgainst.length - 1)];
 	}
 }
-// randomLootTables._items
+
 const randomLootTables = {
 	_selectorTarget: "#random-from-loot-table",
 	_items: {
@@ -485,7 +506,8 @@ const randomLootTables = {
 			$("#random-from-loot-table").toggleClass("error-background", !tier && !rarity);
 			if (tier && rarity) {
 				let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
-				let $el = $(`<ul><li>Rolled a ${roll + 1} on a table for ${tier} ${rarity} items <ul><li>${randomLootTables.createLink(item)}</li></ul></li></ul>`);
+				let $ul = $(`<ul></ul>`).append(randomLootTables.getRandomItemHtml(tier, rarity));
+				let $el = $(`<ul rarity="${rarity}" tier="${tier}"><li>Rolled on the table for <b>${tier} ${rarity}</b> items </li></ul>`).append($ul);
 				lootOutput.add($el);
 			}
 		});
@@ -609,26 +631,31 @@ const randomLootTables = {
 };
 
 const lootOutput = (function lootOutput () {
-	const $table = $("#lootoutput");
+	const $table = function () { return $("#lootoutput"); };
 	const checkSize = function () {
 		$(`#lootoutput > div:eq(${MAX_HIST}), #lootoutput > hr:eq(${MAX_HIST})`).remove();
 	}
 	const clear = function () {
-		$table.html("");
+		$table().html("");
 	}
 
 	const addList = function (html) {
-		add($(`<ul><li>${html}</li></ul>`));
+		if (html.jquery) {
+			let $li = $("<li></li>").append(html);
+			add($("<ul></ul>").append($li));
+		} else if (typeof html === "string") {
+			add($(`<ul><li>${html}</li></ul>`));
+		}
 	}
 
 	const add = function (html) {
 		checkSize();
 		if (typeof html === "string") {
-			$table.prepend(html);
+			$table().prepend(html);
 		} else if (html.jquery) {
-			let $el = $("<div></div>");
-			$el.prepend(html).append("<hr>");
-			$table.prepend($el);
+			let $el = $("<div id='test'></div>");
+			$el.append(html).append("<hr/>");
+			$table().prepend($el);
 		}
 	}
 	return {
