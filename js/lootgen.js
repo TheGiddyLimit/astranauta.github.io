@@ -431,16 +431,15 @@ const randomLootTables = {
 				items = loadedItems.item;
 				return BrewUtil.pAddBrewData()
 			})
-			.then((brew) => {
+			.then(brew => {
 				if (brew && brew.item) brew.item.forEach(item => items.push(item));
 				return items;
 			})
 			.catch(BrewUtil.purgeBrew)
-			.then((items) => {
+			.then(items => {
 				for (let item of items) {
 					let rarity = item.rarity;
-					let tier = item.tier;
-					tier = tier || "Other";
+					let tier = item.tier || "Other";
 					if (!randomLootTables._items[tier]) randomLootTables._items[tier] = {};
 					let tableTier = randomLootTables._items[tier];
 					if (!tableTier[rarity]) tableTier[rarity] = [];
@@ -506,9 +505,7 @@ const randomLootTables = {
 			let [tier, rarity] = $("#random-from-loot-table").val().split("-");
 			$("#random-from-loot-table").toggleClass("error-background", !tier && !rarity);
 			if (tier && rarity) {
-				let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
 				let $ul = $(`<ul rarity="${rarity}" tier="${tier}"></ul>`).append(randomLootTables.getRandomItemHtml(tier, rarity));
-				// let $el = $(`<ul ><li> </li></ul>`).append($ul);
 				lootOutput.add($ul, `Rolled on the table for <strong>${tier} ${rarity}</strong> items`);
 			}
 		});
@@ -544,10 +541,6 @@ const randomLootTables = {
 			});
 			lootOutput.add($el, title);
 		});
-	},
-
-	itemHtml () {
-
 	},
 
 	getNumberOfItemsNeeded (charLevel, estimateBetweenLevels = false) {
@@ -645,15 +638,6 @@ const lootOutput = (function lootOutput () {
 		$table().prepend(html);
 	}
 
-	const addList = function (html) {
-		if (html.jquery) {
-			let $li = $("<li></li>").append(html);
-			add($("<ul></ul>").append($li));
-		} else if (typeof html === "string") {
-			add($(`<ul><li>${html}</li></ul>`));
-		}
-	}
-
 	const add = function (html, title) {
 		checkSize();
 		title = $("<div class='loot-title'></div>").append(title);
@@ -667,9 +651,7 @@ const lootOutput = (function lootOutput () {
 	}
 	return {
 		add,
-		addList,
-		clear,
-		checkSize
+		clear
 	}
 })();
 
@@ -721,7 +703,7 @@ const ViewManinpulation = class ViewManinpulation {
 
 	setClicks () {
 		this.each(this._buttons, view => {
-			view.click((evt) => {
+			view.click(evt => {
 				let name = this.returnName(evt.currentTarget.id);
 				this.switchView(name);
 			});
@@ -729,7 +711,7 @@ const ViewManinpulation = class ViewManinpulation {
 	}
 
 	switchView (name) {
-		this._views.forEach((view) => {
+		this._views.forEach(view => {
 			let $button = this._buttons[view];
 			let $container = this._containers[view];
 			$button.toggleClass("btn-selected", name === view);
