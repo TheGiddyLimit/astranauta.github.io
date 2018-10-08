@@ -74,7 +74,7 @@ class LootGen {
 
 		function getMessage () {
 			const item = lootGen.parseLink(row.item, {rollSpellScroll: true});
-			return `<ul><li>${item} <a onclick="lootGen.rerollItem(this, ${ixTable})">[reroll]</a></li></ul>`;
+			return `<ul><li>${item} (rolled ${rowRoll}) <a onclick="lootGen.rerollItem(this, ${ixTable})">[reroll]</a></li></ul>`;
 		}
 
 		function getMessageSub () {
@@ -83,23 +83,23 @@ class LootGen {
 			const rolled = GenUtil.getFromTable(row.table, roll);
 			const item = lootGen.parseLink(rolled.item, {rollSpellScroll: true});
 
-			return `<ul><li>${item} <a onclick="lootGen.rerollItem(this, ${ixTable})">[reroll]</a></li></ul>`;
+			return `<ul><li>${item} (rolled ${roll}) <a onclick="lootGen.rerollItem(this, ${ixTable})">[reroll]</a></li></ul>`;
 		}
 
 		return row.table ? getMessageSub() : getMessage();
 	}
 
-	itemTitleHtml (roll, table) {
-		return $(`<ul class="id-top"><li>Rolled a ${roll} against ${table.name}:</li></ul>`);
+	itemTitleHtml (table) {
+		return $(`<div class="id-top">Rolled against ${table.name}:</div>`);
 	}
 
 	rollAgainstTable (ixTable, parentRoll) {
 		const table = lootList.magicitems[ixTable];
 		const rowRoll = parentRoll || lootGen.randomNumber(1, 100);
-		let title = this.itemTitleHtml(rowRoll, table)
+		let title = this.itemTitleHtml(table)
 
-		let $el = $(title).append(this.randomItemHtml(ixTable, rowRoll));
-		lootOutput.add($el);
+		// let $el = .append();
+		lootOutput.add($(this.randomItemHtml(ixTable, rowRoll)), title);
 	}
 
 	rerollItem (el, ixTable) {
@@ -107,8 +107,8 @@ class LootGen {
 		let roll = lootGen.randomNumber(1, 100);
 		const table = lootList.magicitems[ixTable];
 
-		let $element = this.itemTitleHtml(roll, table).append(this.randomItemHtml(ixTable, roll));
-		let $parent = $(".id-top").has($el)
+		let $element = $(this.randomItemHtml(ixTable, roll));
+		let $parent = $el.parents("ul");
 
 		$parent.replaceWith($element);
 	}
@@ -506,9 +506,9 @@ const randomLootTables = {
 			$("#random-from-loot-table").toggleClass("error-background", !tier && !rarity);
 			if (tier && rarity) {
 				let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
-				let $ul = $(`<ul></ul>`).append(randomLootTables.getRandomItemHtml(tier, rarity));
-				let $el = $(`<ul rarity="${rarity}" tier="${tier}"><li>Rolled on the table for <b>${tier} ${rarity}</b> items </li></ul>`).append($ul);
-				lootOutput.add($el);
+				let $ul = $(`<ul rarity="${rarity}" tier="${tier}"></ul>`).append(randomLootTables.getRandomItemHtml(tier, rarity));
+				// let $el = $(`<ul ><li> </li></ul>`).append($ul);
+				lootOutput.add($ul, `Rolled on the table for <b>${tier} ${rarity}</b> items`);
 			}
 		});
 
@@ -523,7 +523,8 @@ const randomLootTables = {
 			}
 			let text = checked ? "level " + level : "level " + $(`#charLevel option[value=${level}]`).text();
 			const itemsNeeded = randomLootTables.getNumberOfItemsNeeded(Number(level), checked);
-			const $el = $(`<ul><h4>Magical Items for a ${text} Character:</h4></ul>`);
+			const title = `Magical Items for a ${text} Character:`;
+			const $el = $(`<div></div>`);
 			ObjUtil.forEachDeep(itemsNeeded, {depth: 1}, function (rarityValues, path) {
 				let tier = path[0];
 				let $tier = $(`<ul tier="${tier}"><li>${tier} items</li></ul>`);
@@ -540,7 +541,7 @@ const randomLootTables = {
 				})
 				$el.append($tier);
 			});
-			lootOutput.add($el);
+			lootOutput.add($el, title);
 		});
 	},
 
@@ -639,6 +640,10 @@ const lootOutput = (function lootOutput () {
 		$table().html("");
 	}
 
+	const addRaw = function (html) {
+		$table().prepend(html);
+	}
+
 	const addList = function (html) {
 		if (html.jquery) {
 			let $li = $("<li></li>").append(html);
@@ -648,14 +653,15 @@ const lootOutput = (function lootOutput () {
 		}
 	}
 
-	const add = function (html) {
+	const add = function (html, title) {
 		checkSize();
+		title = $("<h4></h4>").append(title);
 		if (typeof html === "string") {
-			$table().prepend(html);
+			addRaw(html);
 		} else if (html.jquery) {
-			let $el = $("<div id='test'></div>");
+			let $el = $("<div id='test'></div>").append(title);
 			$el.append(html).append("<hr/>");
-			$table().prepend($el);
+			addRaw($el);
 		}
 	}
 	return {
