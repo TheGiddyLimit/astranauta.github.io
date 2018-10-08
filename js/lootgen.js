@@ -6,6 +6,7 @@ const MAX_HIST = 9;
 const renderer = new EntryRenderer();
 let lootList;
 const views = {};
+const challangeRatingRange = {0: "1-4", 1: "1-4", 5: "5-10", 11: "11-16", 17: "17-20"};
 
 class LootGen {
 	constructor () {
@@ -13,7 +14,10 @@ class LootGen {
 		this._loadingSpells = false;
 		$("#rollAgaintTable").click(function () {
 			let val = $("#table-sel").val();
+
+			$("#table-sel").toggleClass("error-background", val === "")
 			if (val === "") return;
+
 			lootGen.rollAgainstTable(val);
 		})
 	}
@@ -98,19 +102,15 @@ class LootGen {
 		const rowRoll = parentRoll || lootGen.randomNumber(1, 100);
 		let title = this.itemTitleHtml(table)
 
-		// let $el = .append();
 		lootOutput.add($(this.randomItemHtml(ixTable, rowRoll)), title);
 	}
 
 	rerollItem (el, ixTable) {
 		let $el = $(el);
 		let roll = lootGen.randomNumber(1, 100);
-		const table = lootList.magicitems[ixTable];
 
 		let $element = $(this.randomItemHtml(ixTable, roll));
-		let $parent = $el.parents("ul");
-
-		$parent.replaceWith($element);
+		$el.parents("ul").replaceWith($element);
 	}
 
 	rollLoot () {
@@ -178,7 +178,8 @@ class LootGen {
 		} else {
 			$el.prepend(`<li>${lootGen.getFormattedCoinsForDisplay(loot.coins)}</li>`);
 		}
-		lootOutput.add($el);
+		let title = hoard ? `Hoard for challange rating: <b>${challangeRatingRange[cr]}</b>` : `Individual Treasure for challange rating: <b>${challangeRatingRange[cr]}</b>`;
+		lootOutput.add($el, title);
 	}
 
 	sortArrayAndCountDupes (arr) {
@@ -655,7 +656,7 @@ const lootOutput = (function lootOutput () {
 
 	const add = function (html, title) {
 		checkSize();
-		title = $("<h4></h4>").append(title);
+		title = $("<div class='loot-title'></div>").append(title);
 		if (typeof html === "string") {
 			addRaw(html);
 		} else if (html.jquery) {
@@ -675,6 +676,7 @@ const lootOutput = (function lootOutput () {
 const ViewManinpulation = class ViewManinpulation {
 	constructor (name, viewNames) {
 		this.name = name;
+		this.events = {};
 		this._views = viewNames;
 		this._containers = (function (views) {
 			let containers = {};
@@ -721,7 +723,7 @@ const ViewManinpulation = class ViewManinpulation {
 		this.each(this._buttons, view => {
 			view.click((evt) => {
 				let name = this.returnName(evt.currentTarget.id);
-				this.switchView(name)
+				this.switchView(name);
 			});
 		});
 	}
@@ -732,8 +734,23 @@ const ViewManinpulation = class ViewManinpulation {
 			let $container = this._containers[view];
 			$button.toggleClass("btn-selected", name === view);
 			$container.toggleClass("hidden", name !== view);
+			this.emit("change", name);
 		})
 		SessionStorageUtil.set(this.returnStorageName(), name);
+	}
+
+	on (name, func) {
+		if (!this.events[name]) this.events[name] = [];
+		this.events[name].push(func);
+	}
+
+	emit (name, ...args) {
+		let event = this.events[name];
+		if (event) {
+			event.forEach(func => {
+				func.apply(this, args);
+			})
+		}
 	}
 }
 
@@ -745,6 +762,10 @@ $("document").ready(function load () {
 
 	views.mainView = new ViewManinpulation("lootgen-tables", ["lootgen", "loot-table", "random-magic-item"])
 	views.lootTables = new ViewManinpulation("lootTables", ["dmg-loot-table", "xge-loot-table"])
+
+	views.mainView.on("change", function () {
+		$("#classtable").hide();
+	});
 
 	randomLootTables.init();
 });

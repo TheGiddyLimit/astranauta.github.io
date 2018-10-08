@@ -1267,6 +1267,13 @@ div#lootoutput {
 	clear: both;
 }
 
+div #lootoutput .loot-title {
+	font-size: 1.3em;
+	color: #822000;
+	font-family: 'Andada', serif;
+	font-variant: small-caps;
+}
+
 #crcalc {
 	input[type=number],
 	input[type=checkbox],
@@ -3809,6 +3816,11 @@ table.stats tr.homebrew-hover {
 	.btn-default {
 		background-color: transparent;
 		color: $font-color;
+	}
+
+	.btn-nowrap {
+		word-wrap: break-word;
+		overflow-wrap: break-word
 	}
 
 	dialog.dialog-modal,
