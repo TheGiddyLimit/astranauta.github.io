@@ -354,7 +354,7 @@ const randomLootTables = {
 		Other: {}
 	},
 	_rarityOrder: ["Common", "Uncommon", "Rare", "Very Rare", "Legendary"],
-	_table: {
+	_tableItemCountPerLevelTier: {
 		1: {
 			"Major": {
 				"Uncommon": 0,
@@ -569,10 +569,10 @@ const randomLootTables = {
 		};
 
 		let last = 1;
-		let keys = Object.keys(randomLootTables._table).sort((a, b) => a - b);
+		let keys = Object.keys(randomLootTables._tableItemCountPerLevelTier).sort((a, b) => a - b);
 		for (let i = 0; i <= keys.length; i++) {
 			let level = keys[i];
-			let props = randomLootTables._table[level];
+			let props = randomLootTables._tableItemCountPerLevelTier[level];
 			if (level <= charLevel) {
 				ObjUtil.mergeWith(props, count, {depth: 2}, (val, sum) => typeof val === "number" ? val + sum : sum);
 			} else if (level > charLevel && estimateBetweenLevels) {
