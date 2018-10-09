@@ -15,11 +15,11 @@ class LootGen {
 		$("#rollAgaintTable").click(function () {
 			let val = $("#table-sel").val();
 
-			$("#table-sel").toggleClass("error-background", val === "")
+			$("#table-sel").toggleClass("error-background", val === "");
 			if (val === "") return;
 
 			lootGen.rollAgainstTable(val);
-		})
+		});
 	}
 
 	loadLoot (lootData) {
@@ -46,26 +46,26 @@ class LootGen {
 		if (arrayEntry === "") {
 			$("div#classtable").hide();
 		} else {
-			let htmlText = `
-			<table id="stats">
-			<caption>${itemsTable.name}</caption>
-			<thead>
-			<tr>
-			<th class="col-xs-2 text-align-center"><span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry});">d100</span></th>
-			<th class="col-xs-10">Magic Item</th>
-			</tr>
-			</thead>`;
+			let htmlText = `\
+			<table id="stats">\
+				<caption>${itemsTable.name}</caption>\
+				<thead>\
+				<tr>\
+					<th class="col-xs-2 text-align-center"><span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry});">d100</span></th>\
+					<th class="col-xs-10">Magic Item</th>\
+				</tr>\
+				</thead>`;
 			itemsTable.table.forEach(it => {
 				const range = it.min === it.max ? it.min : `${it.min}-${it.max}`;
 				htmlText += `<tr><td class="text-align-center">${range}</td><td>${lootGen.parseLink(it.item)}${it.table ? ` (roll <span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry}, ${it.min})">d${LootGen.getMaxRoll(it.table)}</span>)` : ""}</td></tr>`;
 				if (it.table) {
 					it.table.forEach(r => {
 						htmlText += `<tr><td></td><td><span style="display: inline-block; min-width: 40px;">${r.min}${r.max ? `\u2212${r.max}` : ""}</span> ${lootGen.parseLink(r.item)}</td></tr>`;
-					})
+					});
 				}
 			});
-			htmlText += `
-			</table>
+			htmlText += `\
+			</table>\
 			<small><strong>Source:</strong> <em>${Parser.sourceJsonToFull(itemsTable.source)}</em>, page ${itemsTable.page}</small>`;
 			$("div#classtable").html(htmlText).show();
 		}
@@ -94,13 +94,13 @@ class LootGen {
 	}
 
 	itemTitleHtml (table) {
-		return $(`<div class="id-top">Rolled against ${table.name}:</div>`);
+		return $(`<div class="id-top">Rolled against <strong>${table.name}</strong>:</div>`);
 	}
 
 	rollAgainstTable (ixTable, parentRoll) {
 		const table = lootList.magicitems[ixTable];
 		const rowRoll = parentRoll || lootGen.randomNumber(1, 100);
-		let title = this.itemTitleHtml(table)
+		let title = this.itemTitleHtml(table);
 
 		lootOutput.add($(this.randomItemHtml(ixTable, rowRoll)), title);
 	}
@@ -145,7 +145,7 @@ class LootGen {
 				magicitemtableamounts.push(loot.magicitems.amount.split(",")[0]);
 				if (loot.magicitems.type.indexOf(",") !== -1) {
 					magicitemtabletype.push(loot.magicitems.type.split(",")[1]);
-					magicitemtableamounts.push(loot.magicitems.amount.split(",")[1])
+					magicitemtableamounts.push(loot.magicitems.amount.split(",")[1]);
 				}
 				for (let v = 0; v < magicitemtabletype.length; v++) {
 					const curtype = magicitemtabletype[v];
@@ -171,14 +171,22 @@ class LootGen {
 							roll: itemRoll
 						});
 					}
-					$el.append(`<li>Magic Item${roll > 1 ? "s" : ""} (<span class="roller" onclick="lootGen.displayTable(${tablearrayentry});">Table ${curtype}</span>)${magicitems.length > 1 ? ` (${MULT_SIGN}${magicitems.length})` : ""}:<ul>${lootGen.sortArrayAndCountDupes(magicitems)}</ul></li>`);
+					$el.append(`\
+						<li>\
+							Magic Item${roll > 1 ? "s" : ""} \
+							(<span class="roller" onclick="lootGen.displayTable(${tablearrayentry});"> Table ${curtype}</span>)\
+							${magicitems.length > 1 ? ` (${MULT_SIGN}${magicitems.length})` : ""}:\
+							<ul>${lootGen.sortArrayAndCountDupes(magicitems)}</ul>\
+						</li>`);
 				}
 			}
 			for (let i = 0; i < treasure.length; i++) $el.prepend(`<li>${treasure[i]}</li>`);
 		} else {
 			$el.prepend(`<li>${lootGen.getFormattedCoinsForDisplay(loot.coins)}</li>`);
 		}
-		let title = hoard ? `Hoard for challange rating: <strong>${challangeRatingRange[cr]}</strong>` : `Individual Treasure for challange rating: <strong>${challangeRatingRange[cr]}</strong>`;
+		let title = hoard
+			? `<strong>Hoard</strong> for challange rating: <strong>${challangeRatingRange[cr]}</strong>`
+			: `<strong>Individual Treasure</strong> for challange rating: <strong>${challangeRatingRange[cr]}</strong>`;
 		lootOutput.add($el, title);
 	}
 
@@ -429,7 +437,7 @@ const randomLootTables = {
 		DataUtil.loadJSON(ITEMS_URL)
 			.then(loadedItems => {
 				items = loadedItems.item;
-				return BrewUtil.pAddBrewData()
+				return BrewUtil.pAddBrewData();
 			})
 			.then(brew => {
 				if (brew && brew.item) brew.item.forEach(item => items.push(item));
@@ -464,7 +472,7 @@ const randomLootTables = {
 			$charLevSelector.append(`<option value="${i}">${i}</option>`);
 		}
 		$("#closest-tier").prop("checked", SessionStorageUtil.get("lootgen-closest-tier"));
-		$("#random-magic-item-select-tier").toggle(!SessionStorageUtil.get("lootgen-closest-tier"))
+		$("#random-magic-item-select-tier").toggle(!SessionStorageUtil.get("lootgen-closest-tier"));
 		randomLootTables.setEvents();
 	},
 
@@ -479,15 +487,15 @@ const randomLootTables = {
 			let toggled = evt.currentTarget.checked;
 			$(".slider").toggle(toggled);
 			$("#random-magic-item-select-tier").toggle(!toggled);
-			SessionStorageUtil.set("lootgen-closest-tier", toggled)
-		})
+			SessionStorageUtil.set("lootgen-closest-tier", toggled);
+		});
 
 		$("#showLootTable").click(function (evt) {
 			if (evt.currentTarget.checked) {
 				return $("#classtable").show();
 			}
 			$("#classtable").hide();
-		})
+		});
 
 		$("#random-from-loot-table").change(function (evt) {
 			let val = evt.currentTarget.value;
@@ -499,7 +507,7 @@ const randomLootTables = {
 				randomLootTables.displayTable("");
 			}
 			$("#showLootTable").prop("checked") ? $("#classtable").show() : $("#classtable").hide();
-		})
+		});
 
 		$("#get-random-item-from-table").click(evt => {
 			let [tier, rarity] = $("#random-from-loot-table").val().split("-");
@@ -536,7 +544,7 @@ const randomLootTables = {
 					}
 					$rarity.append($items);
 					$tier.append($rarity);
-				})
+				});
 				$el.append($tier);
 			});
 			lootOutput.add($el, title);
@@ -607,19 +615,19 @@ const randomLootTables = {
 		if (itemsArray === "") {
 			$("div#classtable").hide();
 		} else {
-			let htmlText = `
-			<table id="stats">
-			<caption>Table for ${tier} Magic items that are ${rarity}</caption>
-			<thead>
-			<tr>
-			<th class="col-xs-2 text-align-center"><span class="roller" onclick="randomLootTables.getRandomItem('${tier}', '${rarity}');">d${itemsArray.length}</span></th>
-			<th class="col-xs-10">${tier} ${rarity} Magic Items</th>
-			</tr>
-			</thead>`;
+			let htmlText = `\
+			<table id="stats">\
+				<caption>Table for ${tier} Magic items that are ${rarity}</caption>\
+				<thead>\
+				<tr>\
+					<th class="col-xs-2 text-align-center"><span class="roller" onclick="randomLootTables.getRandomItem('${tier}', '${rarity}');">d${itemsArray.length}</span></th>\
+					<th class="col-xs-10">${tier} ${rarity} Magic Items</th>\
+				</tr>\
+				</thead>`;
 			itemsArray.forEach((item, index) => {
-				htmlText += `<tr><td class="text-align-center">${index + 1}</td><td>${lootGen.parseLink("{@item " + item.name + "|" + item.source + "}")}`
+				htmlText += `<tr><td class="text-align-center">${index + 1}</td><td>${lootGen.parseLink("{@item " + item.name + "|" + item.source + "}")}`;
 			});
-			htmlText += "</table>"
+			htmlText += "</table>";
 			$("div#classtable").html(htmlText);
 		}
 	}
@@ -629,14 +637,14 @@ const lootOutput = (function lootOutput () {
 	const $table = function () { return $("#lootoutput"); };
 	const checkSize = function () {
 		$(`#lootoutput > div:eq(${MAX_HIST}), #lootoutput > hr:eq(${MAX_HIST})`).remove();
-	}
+	};
 	const clear = function () {
 		$table().html("");
-	}
+	};
 
 	const addRaw = function (html) {
 		$table().prepend(html);
-	}
+	};
 
 	const add = function (html, title) {
 		checkSize();
@@ -648,11 +656,11 @@ const lootOutput = (function lootOutput () {
 			$el.append(html).append("<hr/>");
 			addRaw($el);
 		}
-	}
+	};
 	return {
 		add,
 		clear
-	}
+	};
 })();
 
 const ViewManinpulation = class ViewManinpulation {
@@ -665,7 +673,7 @@ const ViewManinpulation = class ViewManinpulation {
 			views.forEach(view => {
 				let container = this.returnContainerName(view);
 				containers[view] = $("#" + container);
-			})
+			});
 			return containers;
 		}.bind(this)(viewNames));
 
@@ -674,7 +682,7 @@ const ViewManinpulation = class ViewManinpulation {
 			names.forEach(name => {
 				let button = this.returnButtonName(name);
 				buttons[name] = $("#" + button);
-			})
+			});
 			return buttons;
 		}.bind(this)(viewNames));
 		this.setClicks();
@@ -717,7 +725,7 @@ const ViewManinpulation = class ViewManinpulation {
 			$button.toggleClass("btn-selected", name === view);
 			$container.toggleClass("hidden", name !== view);
 			this.emit("change", name);
-		})
+		});
 		SessionStorageUtil.set(this.returnStorageName(), name);
 	}
 
@@ -731,10 +739,10 @@ const ViewManinpulation = class ViewManinpulation {
 		if (event) {
 			event.forEach(func => {
 				func.apply(this, args);
-			})
+			});
 		}
 	}
-}
+};
 
 const lootGen = new LootGen();
 
@@ -742,8 +750,8 @@ $("document").ready(function load () {
 	DataUtil.loadJSON(LOOT_JSON_URL).then(lootGen.loadLoot.bind(lootGen));
 	$(`body`).on("mousedown", ".roller", (e) => e.preventDefault());
 
-	views.mainView = new ViewManinpulation("lootgen-tables", ["lootgen", "loot-table", "random-magic-item"])
-	views.lootTables = new ViewManinpulation("lootTables", ["dmg-loot-table", "xge-loot-table"])
+	views.mainView = new ViewManinpulation("lootgen-tables", ["lootgen", "loot-table", "random-magic-item"]);
+	views.lootTables = new ViewManinpulation("lootTables", ["dmg-loot-table", "xge-loot-table"]);
 
 	views.mainView.on("change", function () {
 		$("#classtable").hide();
