@@ -269,7 +269,7 @@ ObjUtil = {
 			cb = options;
 			options = {
 				depth: 1
-			}
+			};
 		}
 		if (!source || !target || typeof cb !== "function") throw new Error("Must include a source, target and a callback to handle merging");
 
@@ -279,7 +279,7 @@ ObjUtil = {
 				deepTarget[prop] = cb(deepSource[prop], deepTarget[prop], source, target);
 				recursive(source[prop], deepTarget[prop], depth + 1);
 			}
-		}
+		};
 		recursive(source, target, 1);
 	},
 
@@ -332,7 +332,7 @@ StrUtil = {
 			if (i < atLeastPre) out += c;
 			else if ((remain--) > 0) out += c;
 		}
-		if (remain < 0) out += "..."
+		if (remain < 0) out += "...";
 		out += str.substring(str.length - atLeastSuff, str.length);
 		return out;
 	},
@@ -343,7 +343,7 @@ StrUtil = {
 };
 
 RegExp.escape = function (string) {
-	return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
+	return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 };
 
 // TEXT COMBINING ======================================================================================================
@@ -372,7 +372,7 @@ function utils_getAbilityData (abObj) {
 
 	function handleAllAbilities (abilityList) {
 		for (let a = 0; a < ABILITIES.length; ++a) {
-			handleAbility(abilityList, ABILITIES[a])
+			handleAbility(abilityList, ABILITIES[a]);
 		}
 	}
 
@@ -421,7 +421,7 @@ function utils_getAbilityData (abObj) {
 								if (j === item.from.length - 2) {
 									suffix = " or ";
 								} else if (j < item.from.length - 2) {
-									suffix = ", "
+									suffix = ", ";
 								}
 							}
 							let thsAmount = " " + amount;
@@ -468,7 +468,7 @@ Parser._parse_bToA = function (abMap, b) {
 	if (typeof b === "string") b = b.trim();
 	for (const v in abMap) {
 		if (!abMap.hasOwnProperty(v)) continue;
-		if (abMap[v] === b) return v
+		if (abMap[v] === b) return v;
 	}
 	return b;
 };
@@ -746,7 +746,7 @@ Parser.sourceJsonToFull = function (source) {
 	source = Parser._getSourceStringFromSource(source);
 	if (Parser.hasSourceFull(source)) return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, STR_APOSTROPHE);
 	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToFull(source).replace(/'/g, STR_APOSTROPHE);
-	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, STR_APOSTROPHE)
+	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, STR_APOSTROPHE);
 };
 Parser.sourceJsonToFullCompactPrefix = function (source) {
 	return Parser.sourceJsonToFull(source)
@@ -810,7 +810,7 @@ Parser.weightValueToNumber = function (value) {
 	if (/[x×]\s*\d+/i.test(value.trim())) return 0;
 
 	if (Number(value)) return Number(value);
-	else throw new Error(`Badly formatted value ${value}`)
+	else throw new Error(`Badly formatted value ${value}`);
 };
 
 Parser.dmgTypeToFull = function (dmgType) {
@@ -901,7 +901,7 @@ Parser.spTimeListToFull = function (times) {
 };
 
 Parser.getTimeToFull = function (time) {
-	return `${time.number} ${time.unit === "bonus" ? "bonus action" : time.unit}${time.number > 1 ? "s" : ""}`
+	return `${time.number} ${time.unit === "bonus" ? "bonus action" : time.unit}${time.number > 1 ? "s" : ""}`;
 };
 
 Parser.spRangeToFull = function (range) {
@@ -950,7 +950,7 @@ Parser.spRangeToFull = function (range) {
 				case RNG_HEMISPHERE:
 					return `-radius ${range.type}`;
 				default:
-					return ` ${range.type}`
+					return ` ${range.type}`;
 			}
 		}
 	}
@@ -990,7 +990,7 @@ Parser.spDurationToFull = function (dur) {
 				return `${d.concentration ? "Concentration, " : ""}${d.concentration ? "u" : d.duration.upTo ? "U" : ""}${d.concentration || d.duration.upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? d.duration.type : `${d.duration.type}s`}`;
 			case "permanent":
 				if (d.ends) {
-					return `Until ${d.ends.map(m => m === "dispel" ? "dispelled" : m === "trigger" ? "triggered" : m === "discharge" ? "discharged" : undefined).join(" or ")}`
+					return `Until ${d.ends.map(m => m === "dispel" ? "dispelled" : m === "trigger" ? "triggered" : m === "discharge" ? "discharged" : undefined).join(" or ")}`;
 				} else {
 					return "Permanent";
 				}
@@ -1121,7 +1121,7 @@ Parser.monImmResToFull = function (toParse) {
 
 Parser.monCondImmToFull = function (condImm) {
 	function render (condition) {
-		return EntryRenderer.getDefaultRenderer().renderEntry(`{@condition ${condition}}`)
+		return EntryRenderer.getDefaultRenderer().renderEntry(`{@condition ${condition}}`);
 	}
 	return condImm.map(it => {
 		if (it.special) return it.special;
@@ -1167,7 +1167,7 @@ Parser.prereqSpellOrFeatureToFull = function (spell) {
 	if (spell === "eldritch blast") return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}} cantrip`);
 	else if (spell === "hex/curse") return EntryRenderer.getDefaultRenderer().renderEntry("{@spell hex} spell or a warlock feature that curses");
 	else if (spell) return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}}`);
-	return STR_NONE
+	return STR_NONE;
 };
 
 Parser.prereqPactToFull = function (pact) {
@@ -1200,7 +1200,7 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 Parser.optFeatureTypeToFull = function (type) {
 	if (Parser.OPT_FEATURE_TYPE_TO_FULL[type]) return Parser.OPT_FEATURE_TYPE_TO_FULL[type];
 	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.optionalFeatureTypes && BrewUtil.homebrewMeta.optionalFeatureTypes[type]) return BrewUtil.homebrewMeta.optionalFeatureTypes[type];
-	return type
+	return type;
 };
 
 Parser.alignmentAbvToFull = function (alignment) {
@@ -2026,7 +2026,7 @@ SourceUtil = {
 
 	getFilterGroup (source) {
 		if (BrewUtil.hasSourceJson(source)) return 2;
-		return Number(SourceUtil.isNonstandardSource(source))
+		return Number(SourceUtil.isNonstandardSource(source));
 	}
 };
 
@@ -2262,7 +2262,7 @@ MiscUtil = {
 	],
 	dateToStr (date, short) {
 		const month = MiscUtil.MONTH_NAMES[date.getMonth()];
-		return `${short ? month.substring(0, 3) : month} ${date.getDate()}, ${date.getFullYear()}`
+		return `${short ? month.substring(0, 3) : month} ${date.getDate()}, ${date.getFullYear()}`;
 	},
 
 	findCommonPrefix (strArr) {
@@ -2295,14 +2295,14 @@ ContextUtil = {
 	_handlePreInitContextMenu: (menuId) => {
 		if (ContextUtil._ctxInit[menuId]) return;
 		ContextUtil._ctxInit[menuId] = true;
-		const clickId = `click.${menuId}`
+		const clickId = `click.${menuId}`;
 		$("body").off(clickId).on(clickId, (evt) => {
 			if ($(evt.target).data("ctx-id") != null) return; // ignore clicks on context menus
 
 			Object.entries(ContextUtil._ctxOpenRefs[menuId] || {}).forEach(([k, v]) => {
 				v(false);
 				delete ContextUtil._ctxOpenRefs[menuId][k];
-			})
+			});
 			$(`#${menuId}`).hide();
 		});
 	},
@@ -2498,7 +2498,7 @@ ListUtil = {
 				}
 			});
 		}
-		return list
+		return list;
 	},
 
 	toggleSelected: (evt, ele) => {
@@ -2520,7 +2520,7 @@ ListUtil = {
 	},
 
 	initSubContextMenu: (clickFn, ...labels) => {
-		ContextUtil.doInitContextMenu("listSub", clickFn, labels)
+		ContextUtil.doInitContextMenu("listSub", clickFn, labels);
 	},
 
 	openContextMenu: (evt, ele) => {
@@ -2669,7 +2669,7 @@ ListUtil = {
 				Object.keys(unpacked)
 					.filter(k => k !== ListUtil.SUB_HASH_PREFIX)
 					.forEach(k => {
-						outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].join(HASH_SUB_LIST_SEP)}`)
+						outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].join(HASH_SUB_LIST_SEP)}`);
 					});
 				History.setSuppressHistory(true);
 				window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
@@ -2729,7 +2729,7 @@ ListUtil = {
 					ListUtil.$sublist.append(r);
 					if (doFinalise) ListUtil._finaliseSublist();
 					return Promise.resolve();
-				})
+				});
 			} else {
 				ListUtil.$sublist.append(sl);
 				if (doFinalise) ListUtil._finaliseSublist();
@@ -2858,7 +2858,7 @@ ListUtil = {
 		} catch (e) {
 			StorageUtil.removeForPage("sublist");
 			setTimeout(() => {
-				throw e
+				throw e;
 			});
 		}
 	},
@@ -2874,7 +2874,7 @@ ListUtil = {
 				if (ListUtil._uidUnpackFn && it.uid) out.data = ListUtil._uidUnpackFn(it.uid);
 				return out;
 			}
-			return null
+			return null;
 		}).filter(it => it);
 
 		const promises = toLoad.map(it => ListUtil.doSublistAdd(it.index, false, it.addCount, it.data));
@@ -2950,7 +2950,7 @@ ListUtil = {
 					$sequence[i][0].click();
 					if (i === timers.length - 1) ListUtil._isRolling = false;
 				}, total);
-			})
+			});
 		}
 	},
 
@@ -3024,7 +3024,7 @@ ListUtil = {
 		return Object.entries(ListUtil.getSublisted()).map(([id, it]) => {
 			return Object.keys(it).map(k => {
 				const it = ListUtil._allItems[id];
-				return k === "_" ? Promise.resolve(MiscUtil.copy(it)) : pMapUid(it, k)
+				return k === "_" ? Promise.resolve(MiscUtil.copy(it)) : pMapUid(it, k);
 			}).reduce((a, b) => a.concat(b), []);
 		}).reduce((a, b) => a.concat(b), []);
 	},
@@ -3069,7 +3069,7 @@ ListUtil = {
 
 	toggleCheckbox (evt, ele) {
 		const $ipt = $(ele).find(`input`);
-		$ipt.prop("checked", !$ipt.prop("checked"))
+		$ipt.prop("checked", !$ipt.prop("checked"));
 	},
 
 	getCompleteSources (it) {
@@ -3114,7 +3114,7 @@ ListUtil = {
 						toToggle.hide();
 					}
 				})
-				.appendTo($wrpCb)
+				.appendTo($wrpCb);
 		});
 		const $pnlBtns = $(`<div/>`).appendTo($pnlControl);
 		function getAsCsv () {
@@ -3255,7 +3255,7 @@ UrlUtil.unpackSubHash = function (subHash, unencode) {
 		if (out[k].length === 1 && out[k] === HASH_SUB_NONE) out[k] = [];
 		return out;
 	} else {
-		throw new Error(`Baldy formatted subhash ${subHash}`)
+		throw new Error(`Baldy formatted subhash ${subHash}`);
 	}
 };
 
@@ -3366,7 +3366,7 @@ UrlUtil.bindLinkExportButton = (filterBox) => {
 			copyText(parts.join(HASH_PART_SEP));
 			showCopiedEffect($btn);
 		})
-		.attr("title", "Get Link to Filters (SHIFT adds List)")
+		.attr("title", "Get Link to Filters (SHIFT adds List)");
 };
 
 if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
@@ -3446,7 +3446,7 @@ SortUtil = {
 		if (!b) return 1;
 		if (a.toLowerCase().trim() === "special equipment") return -1;
 		if (b.toLowerCase().trim() === "special equipment") return 1;
-		return SortUtil.ascSort(a, b)
+		return SortUtil.ascSort(a, b);
 	},
 
 	_alignFirst: ["L", "C"],
@@ -3609,7 +3609,7 @@ DataUtil = {
 					Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${baseUrl}data/class/${it}`))).then((all) => {
 						resolve(all.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []}));
 					});
-				})
+				});
 			});
 		}
 	},
@@ -3656,7 +3656,7 @@ DataUtil = {
 			return new Promise((resolve) => {
 				DataUtil.loadJSON(`${baseUrl}data/deities.json`).then((data) => {
 					DataUtil.deity.doPostLoad(data, resolve);
-				})
+				});
 			});
 		}
 	}
@@ -3790,7 +3790,7 @@ CreateStorageUtil = class CreateStorageUtil {
 	}
 
 	isFake () {
-		return this.getStorage().isFake
+		return this.getStorage().isFake;
 	}
 
 	setForPage (key, value) {
@@ -3812,7 +3812,7 @@ CreateStorageUtil = class CreateStorageUtil {
 	}
 
 	removeForPage (key) {
-		this.remove(`${key}_${UrlUtil.getCurrentPage()}`)
+		this.remove(`${key}_${UrlUtil.getCurrentPage()}`);
 	}
 
 	remove (key) {
@@ -3873,7 +3873,7 @@ BrewUtil = {
 		window.location.hash = "";
 		if (error) {
 			setTimeout(() => {
-				throw error
+				throw error;
 			}, 1);
 		}
 	},
@@ -3960,7 +3960,7 @@ BrewUtil = {
 				return;
 			}
 			BrewUtil.addBrewRemote(null, parsedUrl.href).catch(() => {
-				window.alert('Could not load homebrew from the given URL.')
+				window.alert('Could not load homebrew from the given URL.');
 			});
 		});
 
@@ -4080,7 +4080,7 @@ BrewUtil = {
 						urls,
 						(url, json) => {
 							if (url._collection) json.filter(it => it.name === "index.json" || !collectionFiles.includes(it.name)).forEach(it => it._brewSkip = true);
-							json.forEach(it => it._cat = url._cat)
+							json.forEach(it => it._cat = url._cat);
 						},
 						(json) => {
 							let stack = "";
@@ -4189,7 +4189,7 @@ BrewUtil = {
 									<span class="category_raw hidden">${cat}</span>
 								</section></li>
 							`;
-						})
+						});
 					});
 					$ul.empty();
 					if (stack) $ul.append(stack);
@@ -4448,7 +4448,7 @@ BrewUtil = {
 		function deleteGenericBrew (category) {
 			return (uniqueId, doRefresh) => {
 				doRemove(category, uniqueId, doRefresh);
-			}
+			};
 		}
 
 		function deleteGenericBookBrew (type) {
@@ -4500,7 +4500,7 @@ BrewUtil = {
 					if (data) {
 						data.parentUniqueId = adv.uniqueId;
 					}
-				})
+				});
 			}
 		});
 
@@ -4541,7 +4541,7 @@ BrewUtil = {
 							break;
 						}
 					}
-				})
+				});
 			}
 			return areNew;
 		}
@@ -5021,7 +5021,7 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 		const bookViewHash = sub.find(it => it.startsWith(this.hashKey));
 		if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[this.hashKey][0] === "true") this.open();
 		else this.teardown();
-	}
+	};
 }
 
 // CONTENT EXCLUSION ===================================================================================================
@@ -5040,7 +5040,7 @@ ExcludeUtil = {
 				ExcludeUtil._excludes = null;
 				window.location.hash = "";
 				setTimeout(() => {
-					throw e
+					throw e;
 				});
 			}
 		} else {
@@ -5124,10 +5124,10 @@ _Donate = {
 		}).catch(noDosh => {
 			$(`#don-wrapper`).remove();
 			throw noDosh;
-		})
+		});
 	},
 
 	notDonating () {
 		return StorageUtil.isFake() || StorageUtil.get("notDonating");
 	}
-}
+};
