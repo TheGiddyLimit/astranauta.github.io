@@ -100,16 +100,16 @@ class LootGen {
 	rollAgainstTable (ixTable, parentRoll) {
 		const table = lootList.magicitems[ixTable];
 		const rowRoll = parentRoll || lootGen.randomNumber(1, 100);
-		let title = this.itemTitleHtml(table);
+		const title = this.itemTitleHtml(table);
 
 		lootOutput.add($(this.randomItemHtml(ixTable, rowRoll)), title);
 	}
 
 	rerollItem (el, ixTable) {
-		let $el = $(el);
-		let roll = lootGen.randomNumber(1, 100);
+		const $el = $(el);
+		const roll = lootGen.randomNumber(1, 100);
+		const $element = $(this.randomItemHtml(ixTable, roll));
 
-		let $element = $(this.randomItemHtml(ixTable, roll));
 		$el.parents("ul").replaceWith($element);
 	}
 
@@ -440,7 +440,9 @@ const randomLootTables = {
 				return BrewUtil.pAddBrewData();
 			})
 			.then(brew => {
-				if (brew && brew.item) brew.item.forEach(item => items.push(item));
+				if (brew && brew.item) {
+					brew.item.forEach(item => items.push(item));
+				}
 				return items;
 			})
 			.catch(BrewUtil.purgeBrew)
@@ -460,7 +462,7 @@ const randomLootTables = {
 				return randomLootTables._items;
 			})
 			.then(itemList => {
-				let $selector = $(randomLootTables._selectorTarget);
+				const $selector = $(randomLootTables._selectorTarget);
 				for (let nameTier of Object.keys(itemList)) {
 					let keys = Object.keys(itemList[nameTier]).sort((a, b) => randomLootTables._rarityOrder.findIndex(val => val === a) - randomLootTables._rarityOrder.findIndex((val) => val === b));
 					for (let nameRarity of keys) {
@@ -471,10 +473,6 @@ const randomLootTables = {
 				}
 			});
 
-		// let $charLevSelector = $('#character-level-selector');
-		// for (let i = 1; i < 21; i++) {
-		// 	$charLevSelector.append(`<option value="${i}">${i}</option>`);
-		// }
 		$("#closest-tier").prop("checked", SessionStorageUtil.get("lootgen-closest-tier"));
 		$("#random-magic-item-select-tier").toggle(!SessionStorageUtil.get("lootgen-closest-tier"));
 		randomLootTables.setEvents();
@@ -488,7 +486,7 @@ const randomLootTables = {
 			.slider('float');
 
 		$("#closest-tier").change((evt) => {
-			let toggled = evt.currentTarget.checked;
+			const toggled = evt.currentTarget.checked;
 			$(".slider").toggle(toggled);
 			$("#random-magic-item-select-tier").toggle(!toggled);
 			SessionStorageUtil.set("lootgen-closest-tier", toggled);
@@ -502,9 +500,9 @@ const randomLootTables = {
 		});
 
 		$("#random-from-loot-table").change(function (evt) {
-			let val = evt.currentTarget.value;
+			const val = evt.currentTarget.value;
 			if (val !== "") {
-				let [tier, rarity] = val.split("-");
+				const [tier, rarity] = val.split("-");
 				randomLootTables.displayTable(randomLootTables._items[tier][rarity], tier, rarity);
 				$("#random-from-loot-table").removeClass("error-background");
 			} else {
@@ -517,21 +515,21 @@ const randomLootTables = {
 			let [tier, rarity] = $("#random-from-loot-table").val().split("-");
 			$("#random-from-loot-table").toggleClass("error-background", !tier && !rarity);
 			if (tier && rarity) {
-				let $ul = $(`<ul rarity="${rarity}" tier="${tier}"></ul>`).append(randomLootTables.getRandomItemHtml(tier, rarity));
+				const $ul = $(`<ul rarity="${rarity}" tier="${tier}"></ul>`).append(randomLootTables.getRandomItemHtml(tier, rarity));
 				lootOutput.add($ul, `Rolled on the table for <strong>${tier} ${rarity}</strong> items`);
 			}
 		});
 
-		$("#get-group-of-items-for-character").click(evt => {
+		$("#get-group-of-items-for-character").click(() => {
 			let level;
-			let checked = $("#closest-tier").prop("checked");
+			const checked = $("#closest-tier").prop("checked");
 
 			if (checked) {
 				level = $(".slider").slider("value");
 			} else {
 				level = $("#charLevel").val();
 			}
-			let text = checked ? "level " + level : "level " + $(`#charLevel option[value=${level}]`).text();
+			const text = checked ? "level " + level : "level " + $(`#charLevel option[value=${level}]`).text();
 			const itemsNeeded = randomLootTables.getNumberOfItemsNeeded(Number(level), checked);
 			const title = `Magical Items for a <strong>${text}</strong> Character:`;
 			const $el = $(`<div></div>`);
@@ -556,7 +554,7 @@ const randomLootTables = {
 	},
 
 	getNumberOfItemsNeeded (charLevel, estimateBetweenLevels = false) {
-		let count = {
+		const count = {
 			"Major": {
 				"Uncommon": 0,
 				"Rare": 0,
@@ -573,7 +571,7 @@ const randomLootTables = {
 		};
 
 		let last = 1;
-		let keys = Object.keys(randomLootTables._tableItemCountPerLevelTier).sort((a, b) => a - b);
+		const keys = Object.keys(randomLootTables._tableItemCountPerLevelTier).sort((a, b) => a - b);
 		for (let i = 0; i <= keys.length; i++) {
 			let level = keys[i];
 			let props = randomLootTables._tableItemCountPerLevelTier[level];
@@ -599,19 +597,19 @@ const randomLootTables = {
 	},
 
 	getRandomItem (tier, rarity) {
-		let roll = RollerUtil.randomise(randomLootTables._items[tier][rarity].length - 1, 0);
+		const roll = RollerUtil.randomise(randomLootTables._items[tier][rarity].length - 1, 0);
 		return {roll, item: randomLootTables._items[tier][rarity][roll]};
 	},
 
 	getRandomItemHtml (tier, rarity) {
-		let {roll, item} = randomLootTables.getRandomItem(tier, rarity);
+		const {roll, item} = randomLootTables.getRandomItem(tier, rarity);
 		return $(`<li><span>${randomLootTables.createLink(item)}</span> (Rolled ${roll + 1}) <a onclick="randomLootTables.rerollItem(this)">[reroll]</a></li>`);
 	},
 
 	rerollItem (ele) {
-		let $ele = $(ele);
-		let rarity = $ele.closest("[rarity]").attr("rarity");
-		let tier = $ele.closest("[tier]").attr("tier");
+		const $ele = $(ele);
+		const rarity = $ele.closest("[rarity]").attr("rarity");
+		const tier = $ele.closest("[tier]").attr("tier");
 		$ele.parent("li").replaceWith(randomLootTables.getRandomItemHtml(tier, rarity));
 	},
 
@@ -638,7 +636,7 @@ const randomLootTables = {
 };
 
 const lootOutput = (function lootOutput () {
-	const $table = function () { return $("#lootoutput"); };
+	const $table = () => $("#lootoutput");
 	const checkSize = function () {
 		$(`#lootoutput > div:eq(${MAX_HIST}), #lootoutput > hr:eq(${MAX_HIST})`).remove();
 	};
@@ -673,7 +671,7 @@ const ViewManinpulation = class ViewManinpulation {
 		this.events = {};
 		this._views = viewNames;
 		this._containers = (function (views) {
-			let containers = {};
+			const containers = {};
 			views.forEach(view => {
 				let container = this.returnContainerName(view);
 				containers[view] = $("#" + container);
@@ -682,13 +680,14 @@ const ViewManinpulation = class ViewManinpulation {
 		}.bind(this)(viewNames));
 
 		this._buttons = (function (names) {
-			let buttons = {};
+			const buttons = {};
 			names.forEach(name => {
 				let button = this.returnButtonName(name);
 				buttons[name] = $("#" + button);
 			});
 			return buttons;
 		}.bind(this)(viewNames));
+
 		this.setClicks();
 		this.switchView(SessionStorageUtil.get(this.returnStorageName()) || viewNames[0]);
 	}
@@ -718,7 +717,7 @@ const ViewManinpulation = class ViewManinpulation {
 	setClicks () {
 		this.each(this._buttons, view => {
 			view.click(evt => {
-				let name = this.returnName(evt.currentTarget.id);
+				const name = this.returnName(evt.currentTarget.id);
 				this.switchView(name);
 			});
 		});
@@ -726,8 +725,8 @@ const ViewManinpulation = class ViewManinpulation {
 
 	switchView (name) {
 		this._views.forEach(view => {
-			let $button = this._buttons[view];
-			let $container = this._containers[view];
+			const $button = this._buttons[view];
+			const $container = this._containers[view];
 			$button.toggleClass("btn-selected", name === view);
 			$container.toggleClass("hidden", name !== view);
 			this.emit("change", name);
@@ -736,12 +735,14 @@ const ViewManinpulation = class ViewManinpulation {
 	}
 
 	on (name, func) {
-		if (!this.events[name]) this.events[name] = [];
+		if (!this.events[name]) {
+			this.events[name] = [];
+		}
 		this.events[name].push(func);
 	}
 
 	emit (name, ...args) {
-		let event = this.events[name];
+		const event = this.events[name];
 		if (event) {
 			event.forEach(func => {
 				func.apply(this, args);
