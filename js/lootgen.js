@@ -448,9 +448,13 @@ const randomLootTables = {
 				for (let item of items) {
 					let rarity = item.rarity;
 					let tier = item.tier || "Other";
-					if (!randomLootTables._items[tier]) randomLootTables._items[tier] = {};
+					if (!randomLootTables._items[tier]) {
+						randomLootTables._items[tier] = {};
+					}
 					let tableTier = randomLootTables._items[tier];
-					if (!tableTier[rarity]) tableTier[rarity] = [];
+					if (!tableTier[rarity]) {
+						tableTier[rarity] = [];
+					}
 					tableTier[rarity].push(item);
 				}
 				return randomLootTables._items;
@@ -458,7 +462,7 @@ const randomLootTables = {
 			.then(itemList => {
 				let $selector = $(randomLootTables._selectorTarget);
 				for (let nameTier of Object.keys(itemList)) {
-					let keys = Object.keys(itemList[nameTier]).sort((a, b) => randomLootTables._rarityOrder.findIndex((aa) => aa === a) - randomLootTables._rarityOrder.findIndex((bb) => bb === b));
+					let keys = Object.keys(itemList[nameTier]).sort((a, b) => randomLootTables._rarityOrder.findIndex(val => val === a) - randomLootTables._rarityOrder.findIndex((val) => val === b));
 					for (let nameRarity of keys) {
 						if (nameRarity !== undefined && nameRarity !== "None" && nameTier && nameTier !== "undefined") {
 							$selector.append(`<option value="${nameTier}-${nameRarity}">${nameTier} ${nameRarity}</option>`);
@@ -467,10 +471,10 @@ const randomLootTables = {
 				}
 			});
 
-		let $charLevSelector = $('#character-level-selector');
-		for (let i = 1; i < 21; i++) {
-			$charLevSelector.append(`<option value="${i}">${i}</option>`);
-		}
+		// let $charLevSelector = $('#character-level-selector');
+		// for (let i = 1; i < 21; i++) {
+		// 	$charLevSelector.append(`<option value="${i}">${i}</option>`);
+		// }
 		$("#closest-tier").prop("checked", SessionStorageUtil.get("lootgen-closest-tier"));
 		$("#random-magic-item-select-tier").toggle(!SessionStorageUtil.get("lootgen-closest-tier"));
 		randomLootTables.setEvents();
@@ -529,7 +533,7 @@ const randomLootTables = {
 			}
 			let text = checked ? "level " + level : "level " + $(`#charLevel option[value=${level}]`).text();
 			const itemsNeeded = randomLootTables.getNumberOfItemsNeeded(Number(level), checked);
-			const title = `Magical Items for a ${text} Character:`;
+			const title = `Magical Items for a <strong>${text}</strong> Character:`;
 			const $el = $(`<div></div>`);
 			ObjUtil.forEachDeep(itemsNeeded, {depth: 1}, function (rarityValues, path) {
 				let tier = path[0];
@@ -648,7 +652,7 @@ const lootOutput = (function lootOutput () {
 
 	const add = function (html, title) {
 		checkSize();
-		title = $("<div class='loot-title'></div>").append(title);
+		title = $("<div class='loot-title statsBlockSectionHead'></div>").append(title);
 		if (typeof html === "string") {
 			addRaw(html);
 		} else if (html.jquery) {
@@ -706,7 +710,9 @@ const ViewManinpulation = class ViewManinpulation {
 	}
 
 	each (target, cb) {
-		for (let name of Object.keys(target)) cb.call(this, target[name], name);
+		for (let name of Object.keys(target)) {
+			cb.call(this, target[name], name);
+		}
 	}
 
 	setClicks () {
