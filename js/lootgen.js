@@ -544,8 +544,10 @@ const randomLootTables = {
 					for (let i = 0; i < count; i++) {
 						$items.append(randomLootTables.getRandomItemHtml(tier, rarity));
 					}
-					$rarity.append($items);
-					$tier.append($rarity);
+					if ($items.find("li").length > 0) {
+						$rarity.append($items);
+						$tier.append($rarity);
+					}
 				});
 				$el.append($tier);
 			});
