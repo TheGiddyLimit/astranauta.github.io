@@ -492,11 +492,10 @@ const randomLootTables = {
 			SessionStorageUtil.set("lootgen-closest-tier", toggled);
 		});
 
-		$("#showLootTable").click(function (evt) {
-			if (evt.currentTarget.checked) {
-				return $("#classtable").show();
-			}
-			$("#classtable").hide();
+		$(".id-showLootTable").click(function (evt) {
+			let checked = evt.currentTarget.checked;
+			$(".id-showLootTable").prop("checked", checked);
+			$("#classtable").toggle(checked);
 		});
 
 		$("#random-from-loot-table").change(function (evt) {
@@ -508,7 +507,7 @@ const randomLootTables = {
 			} else {
 				randomLootTables.displayTable("");
 			}
-			$("#showLootTable").prop("checked") ? $("#classtable").show() : $("#classtable").hide();
+			$(".id-showLootTable").prop("checked") ? $("#classtable").show() : $("#classtable").hide();
 		});
 
 		$("#get-random-item-from-table").click(evt => {

@@ -49,7 +49,7 @@
 <main class="container bodyContent">
 	<div class="row">
 		<div class="col-sm-5">
-			<div class="input-group flex" style="display:flex">
+			<div class="input-group">
 				<span class="input-group-addon btn-default flex-1" id="btn-lootgen">Treasure Tables</span>
 				<span class="input-group-addon btn-default flex-1" id="btn-loot-table">Loot Tables</span>
 				<span class="input-group-addon btn-default flex-1" id="btn-random-magic-item">New Character</span>
@@ -71,11 +71,11 @@
 							</label>
 						</span>
 					</div>
-					<br>
+					<br/>
 					<button type="button" class="col-xs-9 btn btn-default" id="genloot">Roll Loot!</button>
 					<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right id-clear">Clear</button>
 					<p>
-					<small>Based on the tables and rules in the <a href="/book.html#DMG,7,treasure%20tables,0" target="_blank"><em>Dungeon Master's Guide</em>, pages 133-149.</a></small>
+						<small>Based on the tables and rules in the <a href="/book.html#DMG,7,treasure%20tables,0" target="_blank"><em>Dungeon Master's Guide</em>, pages 133-149.</a></small>
 					</p>
 				</form>
 			</div>
@@ -93,6 +93,11 @@
 						<select class="form-control" id="table-sel">  <!-- class="form-control" -->
 							<option value="" selected>View individual tables...</option>
 						</select>
+						<span class="input-group-addon" style="padding: 0;">
+							<label style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+								Show Table <input checked type="checkbox" class="id-showLootTable" style="vertical-align: bottom;">
+							</label>
+						</span>
 					</div>
 					<br>
 					<button type="button" class="col-xs-9 btn btn-default" id="rollAgaintTable">Roll Loot!</button>
@@ -106,12 +111,12 @@
 							<option value="" selected>Select a loot range</option>
 						</select>
 						<span class="input-group-addon" style="padding: 0;">
-								<label style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
-									Show Table <input checked type="checkbox" id="showLootTable" style="vertical-align: bottom;">
-								</label>
-							</span>
-						</div>
-						<br/>
+							<label style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+								Show Table <input checked type="checkbox" class="id-showLootTable" style="vertical-align: bottom;">
+							</label>
+						</span>
+					</div>
+					<br/>
 					<div style="display: flex; justify-content: space-between">
 						<button type="button" class="col-xs-9 btn btn-default" id="get-random-item-from-table">Pick Random Item</button>
 						<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right id-clear">Clear</button>
@@ -171,9 +176,6 @@
 	</div>
 </main>
 <footer class="container">
-
 </footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
-
-
 </body>
 </html>
