@@ -35,7 +35,7 @@
 	<script defer type="text/javascript" src="lib/list.js"></script>
 </head>
 
-<body>
+<body id="lootgen">
 <header class="hidden-xs hidden-sm">
 	<div class="container">
 		<h1>Loot Gen</h1>
@@ -50,9 +50,9 @@
 	<div class="row">
 		<div class="col-sm-5">
 			<div class="input-group flex" style="display:flex">
-				<span class="input-group-addon btn flex-1 btn-nowrap" id="btn-lootgen">Treasure Tables</span>
-				<span class="input-group-addon btn flex-1 btn-nowrap" id="btn-loot-table">Loot Tables</span>
-				<span class="input-group-addon btn flex-1 btn-nowrap" id="btn-random-magic-item">New Character</span>
+				<span class="input-group-addon btn-default flex-1" id="btn-lootgen">Treasure Tables</span>
+				<span class="input-group-addon btn-default flex-1" id="btn-loot-table">Loot Tables</span>
+				<span class="input-group-addon btn-default flex-1" id="btn-random-magic-item">New Character</span>
 			</div>
 			<div id="container-lootgen">
 				<br/>
@@ -81,11 +81,12 @@
 			</div>
 
 			<div id="container-loot-table">
-					<br/>
+				<div class="mb-2"> </div>
 				<div class="input-group">
-					<span class="input-group-addon btn" id="btn-dmg-loot-table">DMG</span>
-					<span class="input-group-addon btn" id="btn-xge-loot-table">XGE</span>
+					<span class="input-group-addon btn-default" id="btn-dmg-loot-table">DMG</span>
+					<span class="input-group-addon btn-default" id="btn-xge-loot-table">XGE</span>
 				</div>
+				<br/>
 				<div id="container-dmg-loot-table">
 					<div class="input-group full-width">
 						<span class="input-group-addon" >Select your </span>
@@ -112,8 +113,8 @@
 						</div>
 						<br/>
 					<div style="display: flex; justify-content: space-between">
-						<button type="button" class="btn col-xs-4 btn-default word-wrap" style="margin-right: 3px; float: none; flex: 2" id="get-random-item-from-table">Pick Random Item</button>
-						<button type="button" class="btn btn-default col-xs-2 col-xs-2-9 id-clear" style="float: none; flex: 1">Clear</button>
+						<button type="button" class="col-xs-9 btn btn-default" id="get-random-item-from-table">Pick Random Item</button>
+						<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right id-clear">Clear</button>
 						</div>
 						<p>
 							<small>Based on the tables and rules in the <a href="/book.html#XGE,2,awarding%20magic%20items" target="_blank"><em>Xanathar's Guide to Everything</em>, pages 135</a>.</small>
@@ -129,10 +130,9 @@
 					<li>Clicking "by level", the number of items will be rounded to the closest level (modified rule)</li>
 				</ul>
 				<form>
-					Select Character Level
 					<div class="mb-3">
 						<div class="input-group">
-							<span class="input-group-addon">Character Level</span>
+							<span class="input-group-addon">Select Character Level</span>
 							<span class="form-control"></span>
 							<span class="input-group-addon" style="padding: 0;">
 								<label style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
@@ -154,8 +154,8 @@
 				</form>
 				<br>
 				<div style="display: flex; justify-content: space-between">
-					<button type="button" class="btn col-xs-4 btn-default word-wrap" style="margin-right: 3px; float: none; flex: 2;" id="get-group-of-items-for-character">Generate Items for a Character</button>
-					<button type="button" class="btn btn-default col-xs-2 col-xs-2-9 id-clear" style="float: none; flex: 1">Clear</button>
+					<button type="button" class="col-xs-9 btn btn-default" id="get-group-of-items-for-character">Generate Items for a Character</button>
+					<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right id-clear" >Clear</button>
 				</div>
 				<p>
 					<small>*Based on the tables and rules in the <a href="/book.html#XGE,2,awarding%20magic%20items" target="_blank"><em>Xanathar's Guide to Everything</em>, pages 135</a>.</small>
@@ -176,24 +176,4 @@
 
 
 </body>
-	<style>
-	hr {
-		border-top: 2px solid #ccc;
-	}
-	.btn-selected:hover {
-		color: lightgray;
-
-	}
-	.btn-selected {
-		background-color:#006bc4;
-		color: white;
-	}
-	.hidden {
-		display: none;
-	}
-	.word-wrap {
-		white-space: normal;
-		word-wrap: break-word;
-	}
-	</style>
 </html>
