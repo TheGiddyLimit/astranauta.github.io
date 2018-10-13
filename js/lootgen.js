@@ -759,11 +759,10 @@ $("document").ready(function load () {
 	$(`body`).on("mousedown", ".roller", (e) => e.preventDefault());
 
 	views.mainView = new ViewManinpulation("lootgen-tables", ["lootgen", "loot-table", "random-magic-item"]);
-	views.lootTables = new ViewManinpulation("lootTables", ["dmg-loot-table", "xge-loot-table"]);
+	views.mainView.on("change", () => $("#classtable").hide());
 
-	views.mainView.on("change", function () {
-		$("#classtable").hide();
-	});
+	views.lootTables = new ViewManinpulation("lootTables", ["dmg-loot-table", "xge-loot-table"]);
+	views.lootTables.on("change", () => randomLootTables.displayTable(""));
 
 	randomLootTables.init();
 });
