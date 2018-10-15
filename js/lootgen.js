@@ -46,14 +46,14 @@ class LootGen {
 		if (arrayEntry === "") {
 			$("div#classtable").hide();
 		} else {
-			let htmlText = `\
-			<table id="stats">\
-				<caption>${itemsTable.name}</caption>\
-				<thead>\
-				<tr>\
-					<th class="col-xs-2 text-align-center"><span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry});">d100</span></th>\
-					<th class="col-xs-10">Magic Item</th>\
-				</tr>\
+			let htmlText = `
+			<table id="stats">
+				<caption>${itemsTable.name}</caption>
+				<thead>
+				<tr>
+					<th class="col-xs-2 text-align-center"><span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry});">d100</span></th>
+					<th class="col-xs-10">Magic Item</th>
+				</tr>
 				</thead>`;
 			itemsTable.table.forEach(it => {
 				const range = it.min === it.max ? it.min : `${it.min}-${it.max}`;
@@ -64,8 +64,8 @@ class LootGen {
 					});
 				}
 			});
-			htmlText += `\
-			</table>\
+			htmlText += `
+			</table>
 			<small><strong>Source:</strong> <em>${Parser.sourceJsonToFull(itemsTable.source)}</em>, page ${itemsTable.page}</small>`;
 			$("div#classtable").html(htmlText).show();
 		}
@@ -171,12 +171,12 @@ class LootGen {
 							roll: itemRoll
 						});
 					}
-					$el.append(`\
-						<li>\
-							Magic Item${roll > 1 ? "s" : ""} \
-							(<span class="roller" onclick="lootGen.displayTable(${tablearrayentry});"> Table ${curtype}</span>)\
-							${magicitems.length > 1 ? ` (${MULT_SIGN}${magicitems.length})` : ""}:\
-							<ul>${lootGen.sortArrayAndCountDupes(magicitems)}</ul>\
+					$el.append(`
+						<li>
+							Magic Item${roll > 1 ? "s" : ""}
+							(<span class="roller" onclick="lootGen.displayTable(${tablearrayentry});"> Table ${curtype}</span>)
+							${magicitems.length > 1 ? ` (${MULT_SIGN}${magicitems.length})` : ""}:
+							<ul>${lootGen.sortArrayAndCountDupes(magicitems)}</ul>
 						</li>`);
 				}
 			}
@@ -313,12 +313,12 @@ class LootGen {
 
 	returnSpellHtml (level) {
 		if (this.hasLoadedSpells()) {
-			return `\
-				<em>(\
-					<span>${renderer.renderEntry(this.getRandomSpell(level))}\
-						<a onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>\
-					</span> \
-					or ${this._getOrViewSpellsPart(level)}\
+			return `
+				<em>(
+					<span>${renderer.renderEntry(this.getRandomSpell(level))}
+						<a onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>
+					</span>
+					or ${this._getOrViewSpellsPart(level)}
 				)</em>`;
 		}
 		return `<em>(<span class="roller" onclick="lootGen.loadRollSpell.bind(lootGen)(this, ${level})">roll</span> or ${this._getOrViewSpellsPart(level)})</em>`;
@@ -618,14 +618,14 @@ const randomLootTables = {
 		if (itemsArray === "") {
 			$("div#classtable").hide();
 		} else {
-			let htmlText = `\
-			<table id="stats">\
-				<caption>Table for ${tier} Magic items that are ${rarity}</caption>\
-				<thead>\
-				<tr>\
-					<th class="col-xs-2 text-align-center"><span class="roller" onclick="randomLootTables.getRandomItem('${tier}', '${rarity}');">d${itemsArray.length}</span></th>\
-					<th class="col-xs-10">${tier} ${rarity} Magic Items</th>\
-				</tr>\
+			let htmlText = `
+			<table id="stats">
+				<caption>Table for ${tier} Magic items that are ${rarity}</caption>
+				<thead>
+				<tr>
+					<th class="col-xs-2 text-align-center"><span class="roller" onclick="randomLootTables.getRandomItem('${tier}', '${rarity}');">d${itemsArray.length}</span></th>
+					<th class="col-xs-10">${tier} ${rarity} Magic Items</th>
+				</tr>
 				</thead>`;
 			itemsArray.forEach((item, index) => {
 				htmlText += `<tr><td class="text-align-center">${index + 1}</td><td>${lootGen.parseLink("{@item " + item.name + "|" + item.source + "}")}`;
