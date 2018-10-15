@@ -1,5 +1,6 @@
 // ************************************************************************* //
 // Strict mode should not be used, as the roll20 script depends on this file //
+// Do not use classes 																											 //
 // ************************************************************************* //
 
 // in deployment, `_IS_DEPLOYED = "<version number>";` should be prepended here
@@ -3774,50 +3775,48 @@ RollerUtil = {
 RollerUtil.DICE_REGEX = new RegExp(RollerUtil._DICE_REGEX_STR, "g");
 
 // STORAGE =============================================================================================================
-CreateStorageUtil = class CreateStorageUtil {
-	constructor (target) {
-		try {
-			this._storage = target;
-			this._isFake = false;
-		} catch (e) {
-			this._storage = {};
-			this._isFake = true;
-		}
+CreateStorageUtil = function CreateStorageUtil (target) {
+	try {
+		this._storage = target;
+		this._isFake = false;
+	} catch (e) {
+		this._storage = {};
+		this._isFake = true;
 	}
+};
 
-	getStorage () {
-		return this._storage;
-	}
+CreateStorageUtil.prototype.getStorage = function () {
+	return this._storage;
+};
 
-	isFake () {
-		return this.getStorage().isFake;
-	}
+CreateStorageUtil.prototype.isFake = function () {
+	return this.getStorage().isFake;
+};
 
-	setForPage (key, value) {
-		this.set(`${key}_${UrlUtil.getCurrentPage()}`, value);
-	}
+CreateStorageUtil.prototype.setForPage = function (key, value) {
+	this.set(`${key}_${UrlUtil.getCurrentPage()}`, value);
+};
 
-	set (key, value) {
-		this.getStorage().setItem(key, JSON.stringify(value));
-	}
+CreateStorageUtil.prototype.set = function (key, value) {
+	this.getStorage().setItem(key, JSON.stringify(value));
+};
 
-	getForPage (key) {
-		return this.get(`${key}_${UrlUtil.getCurrentPage()}`);
-	}
+CreateStorageUtil.prototype.getForPage = function (key) {
+	return this.get(`${key}_${UrlUtil.getCurrentPage()}`);
+};
 
-	get (key) {
-		const rawOut = this.getStorage().getItem(key);
-		if (rawOut && rawOut !== "undefined" && rawOut !== "null") return JSON.parse(rawOut);
-		return null;
-	}
+CreateStorageUtil.prototype.get = function (key) {
+	const rawOut = this.getStorage().getItem(key);
+	if (rawOut && rawOut !== "undefined" && rawOut !== "null") return JSON.parse(rawOut);
+	return null;
+};
 
-	removeForPage (key) {
-		this.remove(`${key}_${UrlUtil.getCurrentPage()}`);
-	}
+CreateStorageUtil.prototype.removeForPage = function (key) {
+	this.remove(`${key}_${UrlUtil.getCurrentPage()}`);
+};
 
-	remove (key) {
-		this.getStorage().removeItem(key);
-	}
+CreateStorageUtil.prototype.remove = function (key) {
+	this.getStorage().removeItem(key);
 };
 
 StorageUtil = new CreateStorageUtil(window.localStorage);
