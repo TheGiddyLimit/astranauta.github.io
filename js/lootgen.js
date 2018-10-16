@@ -528,7 +528,7 @@ const randomLootTables = {
 			} else {
 				level = $("#charLevel").val();
 			}
-			const text = checked ? "level " + level : "level " + $(`#charLevel option[value=${level}]`).text();
+			const text = checked ? `level ${level}` : `level ${$(`#charLevel option[value=${level}]`).text()}`;
 			const itemsNeeded = randomLootTables.getNumberOfItemsNeeded(Number(level), checked);
 			const title = `Magical Items for a <strong>${text}</strong> Character:`;
 			const $el = $(`<div></div>`);
@@ -675,7 +675,7 @@ const ViewManinpulation = class ViewManinpulation {
 			const containers = {};
 			views.forEach(view => {
 				let container = this.returnContainerName(view);
-				containers[view] = $("#" + container);
+				containers[view] = $(`#${container}`);
 			});
 			return containers;
 		}.bind(this)(viewNames));
@@ -694,7 +694,7 @@ const ViewManinpulation = class ViewManinpulation {
 	}
 
 	returnStorageName () {
-		return "view-" + this.name;
+		return `view-${this.name}`;
 	}
 
 	returnName (nameStr) {
@@ -702,11 +702,11 @@ const ViewManinpulation = class ViewManinpulation {
 	}
 
 	returnContainerName (view) {
-		return "container-" + view;
+		return `container-${view}`;
 	}
 
 	returnButtonName (view) {
-		return "btn-" + view;
+		return `btn-${view}`;
 	}
 
 	each (target, cb) {
