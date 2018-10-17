@@ -46,7 +46,7 @@ class LootGen {
 		if (arrayEntry === "") {
 			$("div#classtable").hide();
 		} else {
-			let htmlText = `
+			let html = $(`
 			<table id="stats">
 				<caption>${itemsTable.name}</caption>
 				<thead>
@@ -54,20 +54,19 @@ class LootGen {
 					<th class="col-xs-2 text-align-center"><span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry});">d100</span></th>
 					<th class="col-xs-10">Magic Item</th>
 				</tr>
-				</thead>`;
+				</thead>
+				</table>
+				<small><strong>Source:</strong> <em>${Parser.sourceJsonToFull(itemsTable.source)}</em>, page ${itemsTable.page}</small>`);
 			itemsTable.table.forEach(it => {
 				const range = it.min === it.max ? it.min : `${it.min}-${it.max}`;
-				htmlText += `<tr><td class="text-align-center">${range}</td><td>${lootGen.parseLink(it.item)}${it.table ? ` (roll <span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry}, ${it.min})">d${LootGen.getMaxRoll(it.table)}</span>)` : ""}</td></tr>`;
+				html.find('thead').append(`<tr><td class="text-align-center">${range}</td><td>${lootGen.parseLink(it.item)}${it.table ? ` (roll <span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry}, ${it.min})">d${LootGen.getMaxRoll(it.table)}</span>)` : ""}</td></tr>`);
 				if (it.table) {
 					it.table.forEach(r => {
-						htmlText += `<tr><td></td><td><span style="display: inline-block; min-width: 40px;">${r.min}${r.max ? `\u2212${r.max}` : ""}</span> ${lootGen.parseLink(r.item)}</td></tr>`;
+						html.find('thead').append(`<tr><td></td><td><span style="display: inline-block; min-width: 40px;">${r.min}${r.max ? `\u2212${r.max}` : ""}</span> ${lootGen.parseLink(r.item)}</td></tr>`);
 					});
 				}
 			});
-			htmlText += `
-			</table>
-			<small><strong>Source:</strong> <em>${Parser.sourceJsonToFull(itemsTable.source)}</em>, page ${itemsTable.page}</small>`;
-			$("div#classtable").html(htmlText).show();
+			$("div#classtable").html(html).show();
 		}
 	}
 
@@ -618,7 +617,7 @@ const randomLootTables = {
 		if (itemsArray === "") {
 			$("div#classtable").hide();
 		} else {
-			let htmlText = `
+			let html = $(`
 			<table id="stats">
 				<caption>Table for ${tier} Magic items that are ${rarity}</caption>
 				<thead>
@@ -626,12 +625,12 @@ const randomLootTables = {
 					<th class="col-xs-2 text-align-center"><span class="roller" onclick="randomLootTables.getRandomItem('${tier}', '${rarity}');">d${itemsArray.length}</span></th>
 					<th class="col-xs-10">${tier} ${rarity} Magic Items</th>
 				</tr>
-				</thead>`;
+				</thead>
+			</table>`);
 			itemsArray.forEach((item, index) => {
-				htmlText += `<tr><td class="text-align-center">${index + 1}</td><td>${lootGen.parseLink("{@item " + item.name + "|" + item.source + "}")}`;
+				html.find('thead').append(`<tr><td class="text-align-center">${index + 1}</td><td>${lootGen.parseLink("{@item " + item.name + "|" + item.source + "}")}`);
 			});
-			htmlText += "</table>";
-			$("div#classtable").html(htmlText);
+			$("div#classtable").html(html);
 		}
 	}
 };
