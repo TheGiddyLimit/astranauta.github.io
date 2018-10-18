@@ -753,7 +753,7 @@ const ViewManinpulation = class ViewManinpulation {
 
 const lootGen = new LootGen();
 
-$("document").ready(function load () {
+window.addEventListener("load", function load () {
 	DataUtil.loadJSON(LOOT_JSON_URL).then(lootGen.loadLoot.bind(lootGen));
 	$(`body`).on("mousedown", ".roller", (e) => e.preventDefault());
 
