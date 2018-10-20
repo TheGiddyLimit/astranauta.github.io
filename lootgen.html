@@ -50,16 +50,16 @@
 	<div class="row">
 		<div class="col-sm-5">
 			<div class="input-group">
-				<span class="input-group-addon btn-default flex-1" id="btn-lootgen">Find Treasure</span>
-				<span class="input-group-addon btn-default flex-1" id="btn-loot-table">Loot Tables</span>
-				<span class="input-group-addon btn-default flex-1" id="btn-random-magic-item">New Character</span>
+				<span class="input-group-addon btn-default flex-1 clickable" id="btn-lootgen">Find Treasure</span>
+				<span class="input-group-addon btn-default flex-1 clickable" id="btn-loot-table">Loot Tables</span>
+				<span class="input-group-addon btn-default flex-1 clickable" id="btn-random-magic-item">New Character</span>
 			</div>
 			<div id="container-lootgen">
 				<br/>
 				<form id="controls">
 					<div class="input-group">
 						<span class="input-group-addon">Challenge Rating</span>
-						<select class="form-control" id="cr">
+						<select class="form-control clickable" id="cr">
 							<option value="0" selected>1-4</option>
 							<option value="5">5-10</option>
 							<option value="11">11-16</option>
@@ -83,14 +83,14 @@
 			<div id="container-loot-table">
 				<div class="mb-2"> </div>
 				<div class="input-group">
-					<span class="input-group-addon btn-default" id="btn-dmg-loot-table">DMG</span>
-					<span class="input-group-addon btn-default" id="btn-xge-loot-table">XGE</span>
+					<span class="input-group-addon btn-default clickable" id="btn-dmg-loot-table">DMG</span>
+					<span class="input-group-addon btn-default clickable" id="btn-xge-loot-table">XGE</span>
 				</div>
 				<br/>
 				<div id="container-dmg-loot-table">
 					<div class="input-group full-width">
 						<span class="input-group-addon" >Select your </span>
-						<select class="form-control" id="table-sel">  <!-- class="form-control" -->
+						<select class="form-control clickable" id="table-sel">  <!-- class="form-control" -->
 							<option value="" selected>View individual tables...</option>
 						</select>
 						<span class="input-group-addon" style="padding: 0;">
@@ -107,7 +107,7 @@
 				<div id="container-xge-loot-table">
 					<div class="input-group">
 						<span class="input-group-addon" >Select your </span>
-						<select class="form-control" id="random-from-loot-table">
+						<select class="form-control clickable" id="random-from-loot-table">
 							<option value="" selected>Select a loot range</option>
 						</select>
 						<span class="input-group-addon" style="padding: 0;">
@@ -148,7 +148,7 @@
 					</div>
 					<div class="slider" class="full-width"></div>
 					<div id="random-magic-item-select-tier" class="input-group full-width">
-						<select class="form-control" id="charLevel">
+						<select class="form-control clickable" id="charLevel">
 							<option value="1" selected>0-4</option>
 							<option value="5">5-10</option>
 							<option value="11">11-16</option>
