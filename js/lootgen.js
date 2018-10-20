@@ -78,7 +78,7 @@ class LootGen {
 
 		function getMessage () {
 			const item = lootGen.parseLink(row.item, {rollSpellScroll: true});
-			return `<ul><li>${item} (rolled ${rowRoll}) <a onclick="lootGen.rerollItem(this, ${ixTable})">[reroll]</a></li></ul>`;
+			return `<ul><li>${item} (rolled ${rowRoll}) <a class="clickable" onclick="lootGen.rerollItem(this, ${ixTable})">[reroll]</a></li></ul>`;
 		}
 
 		function getMessageSub () {
@@ -87,7 +87,7 @@ class LootGen {
 			const rolled = GenUtil.getFromTable(row.table, roll);
 			const item = lootGen.parseLink(rolled.item, {rollSpellScroll: true});
 
-			return `<ul><li>${item} (rolled ${roll}) <a onclick="lootGen.rerollItem(this, ${ixTable})">[reroll]</a></li></ul>`;
+			return `<ul><li>${item} (rolled ${roll}) <a class="clickable" onclick="lootGen.rerollItem(this, ${ixTable})">[reroll]</a></li></ul>`;
 		}
 
 		return row.table ? getMessageSub() : getMessage();
@@ -316,7 +316,7 @@ class LootGen {
 			return `
 				<em>(
 					<span>${renderer.renderEntry(this.getRandomSpell(level))}
-						<a onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>
+						<a class="clickable" onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>
 					</span>
 					or ${this._getOrViewSpellsPart(level)}
 				)</em>`;
@@ -329,7 +329,7 @@ class LootGen {
 			$(ele)
 				.removeClass("roller").attr("onclick", "")
 				.html(`${renderer.renderEntry(this.getRandomSpell(level))} `)
-				.append($(`<a target="_empty" onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>`));
+				.append($(`<a  class="clickable" target="_empty" onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>`));
 		};
 
 		if (!this.hasLoadedSpells()) {
@@ -604,7 +604,7 @@ const randomLootTables = {
 
 	getRandomItemHtml (tier, rarity) {
 		const {roll, item} = randomLootTables.getRandomItem(tier, rarity);
-		return $(`<li><span>${randomLootTables.createLink(item)}</span> (Rolled ${roll + 1}) <a onclick="randomLootTables.rerollItem(this)">[reroll]</a></li>`);
+		return $(`<li><span>${randomLootTables.createLink(item)}</span> (Rolled ${roll + 1}) <a  class="clickable" onclick="randomLootTables.rerollItem(this)">[reroll]</a></li>`);
 	},
 
 	rerollItem (ele) {
