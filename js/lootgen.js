@@ -47,6 +47,7 @@ class LootGen {
 			$("div#classtable").hide();
 		} else {
 			let html = $(`
+			<hr/>
 			<table id="stats">
 				<caption>${itemsTable.name}</caption>
 				<thead>
@@ -618,6 +619,7 @@ const randomLootTables = {
 			$("div#classtable").hide();
 		} else {
 			let html = $(`
+			<hr/>
 			<table id="stats">
 				<caption>Table for ${tier} Magic items that are ${rarity}</caption>
 				<thead>
