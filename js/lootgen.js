@@ -329,7 +329,7 @@ class LootGen {
 			$(ele)
 				.removeClass("roller").attr("onclick", "")
 				.html(`${renderer.renderEntry(this.getRandomSpell(level))} `)
-				.append($(`<a  class="clickable" target="_empty" onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>`));
+				.append($(`<a class="clickable" target="_empty" onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>`));
 		};
 
 		if (!this.hasLoadedSpells()) {
@@ -604,7 +604,7 @@ const randomLootTables = {
 
 	getRandomItemHtml (tier, rarity) {
 		const {roll, item} = randomLootTables.getRandomItem(tier, rarity);
-		return $(`<li><span>${randomLootTables.createLink(item)}</span> (Rolled ${roll + 1}) <a  class="clickable" onclick="randomLootTables.rerollItem(this)">[reroll]</a></li>`);
+		return $(`<li><span>${randomLootTables.createLink(item)}</span> (Rolled ${roll + 1}) <a class="clickable" onclick="randomLootTables.rerollItem(this)">[reroll]</a></li>`);
 	},
 
 	rerollItem (ele) {
@@ -652,7 +652,7 @@ const lootOutput = (function lootOutput () {
 
 	const add = function (html, title) {
 		checkSize();
-		title = $("<div class='loot-title statsBlockSectionHead'></div>").append(title);
+		title = $("<h4 class='wrp-sect-head'></h4>").append(title);
 		if (typeof html === "string") {
 			addRaw(html);
 		} else if (html.jquery) {
