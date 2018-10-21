@@ -115,6 +115,14 @@ ROLLER_MACRO_STORAGE = "ROLLER_MACRO_STORAGE";
 
 JSON_HOMEBREW_INDEX = `homebrew/index.json`;
 
+const storageLocations = (function () {
+	try {
+		return { localStorage: window.localStorage, sessionStorage: window.sessionStorage };
+	} catch (err) {
+		return { localStorage: null, sessionStorage: null };
+	}
+}());
+
 // STRING ==============================================================================================================
 String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 	function () {
@@ -373,7 +381,7 @@ function utils_getAbilityData (abObj) {
 
 	function handleAllAbilities (abilityList, targetList) {
 		for (let a = 0; a < ABILITIES.length; ++a) {
-			handleAbility(abilityList, ABILITIES[a], targetList)
+			handleAbility(abilityList, ABILITIES[a], targetList);
 		}
 	}
 
@@ -3856,6 +3864,7 @@ RollerUtil.DICE_REGEX = new RegExp(RollerUtil._DICE_REGEX_STR, "g");
 // STORAGE =============================================================================================================
 CreateStorageUtil = function CreateStorageUtil (target) {
 	try {
+		if (!target) throw new Error("Invalid target, switch to catch case");
 		this._storage = target;
 		this._isFake = false;
 	} catch (e) {
@@ -3898,8 +3907,8 @@ CreateStorageUtil.prototype.remove = function (key) {
 	this.getStorage().removeItem(key);
 };
 
-StorageUtil = new CreateStorageUtil(window.localStorage);
-SessionStorageUtil = new CreateStorageUtil(window.sessionStorage);
+StorageUtil = new CreateStorageUtil(storageLocations.localStorage);
+SessionStorageUtil = new CreateStorageUtil(storageLocations.sessionStorage);
 
 // HOMEBREW ============================================================================================================
 BrewUtil = {
@@ -5221,22 +5230,6 @@ if (!IS_ROLL20 && typeof window !== "undefined") {
 
 _Donate = {
 	init () {
-<<<<<<< HEAD
-		DataUtil.loadJSON(`https://get.5etools.com/money.php`).then(dosh => {
-			const pct = Number(dosh.donated) / Number(dosh.Goal);
-			$(`#don-total`).text(`€${dosh.Goal}`);
-			if (isNaN(pct)) {
-				throw new Error(`Was not a number! Values were ${dosh.donated} and ${dosh.Goal}`);
-			} else {
-				const $bar = $(`.don__bar_inner`);
-				$bar.css("width", `${Math.min(Math.ceil(100 * pct), 100)}%`).html(pct !== 0 ? `€${dosh.donated}&nbsp;` : "");
-				if (pct >= 1) $bar.css("background-color", "lightgreen");
-			}
-		}).catch(noDosh => {
-			$(`#don-wrapper`).remove();
-			throw noDosh;
-		});
-=======
 		if (IS_DEPLOYED) {
 			DataUtil.loadJSON(`https://get.5etools.com/money.php`).then(dosh => {
 				const pct = Number(dosh.donated) / Number(dosh.Goal);
@@ -5251,9 +5244,8 @@ _Donate = {
 			}).catch(noDosh => {
 				$(`#don-wrapper`).remove();
 				throw noDosh;
-			})
+			});
 		}
->>>>>>> 099af0e6bdb11b1d7758ed0b87cbec93779eee7e
 	},
 
 	notDonating () {
