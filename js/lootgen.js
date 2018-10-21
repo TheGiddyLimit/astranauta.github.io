@@ -67,7 +67,7 @@ class LootGen {
 					});
 				}
 			});
-			$("div#classtable").html(html).show();
+			$("div#classtable").html(html).toggle($(".id-showLootTable").prop("checked"));
 		}
 	}
 
