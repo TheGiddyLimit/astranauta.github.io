@@ -16,11 +16,6 @@ const META_ADD_MB_HEAL = "Healing";
 const META_RITUAL = "Ritual";
 const META_TECHNOMAGIC = "Technomagic";
 
-const P_LEVEL = "level";
-const P_NORMALISED_TIME = "_normalisedTime";
-const P_SCHOOL = "school";
-const P_NORMALISED_RANGE = "_normalisedRange";
-
 const STR_WIZARD = "Wizard";
 const STR_FIGHTER = "Fighter";
 const STR_ROGUE = "Rogue";
@@ -215,10 +210,10 @@ function getMetaFilterObj (s) {
 	if (s.meta && s.meta.ritual) out.push(META_RITUAL);
 	if (s.meta && s.meta.technomagic) out.push(META_TECHNOMAGIC);
 	if (s.duration.filter(d => d.concentration).length) out.push(META_ADD_CONC);
-	if (s.components.v) out.push(META_ADD_V);
-	if (s.components.s) out.push(META_ADD_S);
-	if (s.components.m) out.push(META_ADD_M);
-	if (s.components.m && s.components.m.cost) out.push(META_ADD_M_COST);
+	if (s.components && s.components.v) out.push(META_ADD_V);
+	if (s.components && s.components.s) out.push(META_ADD_S);
+	if (s.components && s.components.m) out.push(META_ADD_M);
+	if (s.components && s.components.m && s.components.m.cost) out.push(META_ADD_M_COST);
 	if (s.permanentEffects || s.duration.filter(it => it.type === "permanent").length) out.push(META_ADD_MB_PERMANENT);
 	if (s.scalingEffects || s.entriesHigherLevel) out.push(META_ADD_MB_SCALING);
 	if (s.isHeal) out.push(META_ADD_MB_HEAL);
@@ -280,6 +275,7 @@ window.onload = function load () {
 	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addSpells, pPostLoad)
 		.then(() => {
 			if (History.lastLoadedId == null) History._freshLoad();
+			ExcludeUtil.checkShowAllExcluded(spellList, $(`#pagecontent`));
 		});
 };
 
@@ -404,7 +400,8 @@ function pPageInit (loadedSources) {
 
 	list = ListUtil.search({
 		valueNames: ["name", "source", "level", "time", "school", "range", "classes", "uniqueid"],
-		listClass: "spells"
+		listClass: "spells",
+		sortFunction: sortSpells
 	});
 	list.on("updated", () => {
 		filterBox.setCount(list.visibleItems.length, list.items.length);
@@ -629,8 +626,8 @@ function addSpells (data) {
 		}
 
 		// used for sorting
-		spell[P_NORMALISED_TIME] = getNormalisedTime(spell.time);
-		spell[P_NORMALISED_RANGE] = getNormalisedRange(spell.range);
+		spell._normalisedTime = getNormalisedTime(spell.time);
+		spell._normalisedRange = getNormalisedRange(spell.range);
 
 		// used for filtering
 		spell._fSources = ListUtil.getCompleteSources(spell);
@@ -732,19 +729,19 @@ function sortSpells (a, b, o) {
 	}
 
 	if (o.valueName === "level") {
-		return orFallback(SortUtil.ascSort, P_LEVEL);
+		return orFallback(SortUtil.ascSort, "level");
 	}
 
 	if (o.valueName === "time") {
-		return orFallback(SortUtil.ascSort, P_NORMALISED_TIME);
+		return orFallback(SortUtil.ascSort, "_normalisedTime");
 	}
 
 	if (o.valueName === "school") {
-		return orFallback(SortUtil.ascSort, P_SCHOOL);
+		return orFallback(SortUtil.ascSort, "school");
 	}
 
 	if (o.valueName === "range") {
-		return orFallback(SortUtil.ascSort, P_NORMALISED_RANGE);
+		return orFallback(SortUtil.ascSort, "_normalisedRange");
 	}
 
 	return 0;
@@ -764,7 +761,7 @@ function sortSpells (a, b, o) {
 
 	function orFallback (func, prop) {
 		const initial = func(a[prop], b[prop]);
-		return initial !== 0 ? initial : fallback();
+		return initial || fallback();
 	}
 }
 

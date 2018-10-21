@@ -22,17 +22,17 @@ function getAbilityObjs (abils) {
 	const out = new CollectionUtil.ObjectSet();
 	if (abils.choose) {
 		abils.choose.forEach(ch => {
-			const by = ch.amount || 1;
-			ch.from.forEach(asi => {
-				out.add(makeAbilObj(asi, by));
-			});
+			if (ch.predefined) {
+				ch.predefined.forEach(pre => {
+					Object.keys(pre).forEach(abil => out.add(makeAbilObj(abil, pre[abil])));
+				});
+			} else {
+				const by = ch.amount || 1;
+				ch.from.forEach(asi => out.add(makeAbilObj(asi, by)));
+			}
 		});
 	}
-	Object.keys(abils).forEach(abil => {
-		if (abil !== "choose") {
-			out.add(makeAbilObj(abil, abils[abil]));
-		}
-	});
+	Object.keys(abils).filter(abil => abil !== "choose").forEach(abil => out.add(makeAbilObj(abil, abils[abil])));
 	return Array.from(out.values());
 }
 
@@ -162,6 +162,7 @@ function onJsonLoad (data) {
 			RollerUtil.addListRollButton();
 
 			History.init(true);
+			ExcludeUtil.checkShowAllExcluded(raceList, $(`#pagecontent`));
 		});
 }
 
@@ -308,28 +309,18 @@ function loadhash (id) {
 		$pgContent.append(`
 		<tbody>
 		${EntryRenderer.utils.getBorderTr()}
-		<tr><th class="name" colspan="6">Name</th></tr>
-		<tr><td id="ability" colspan="6">Ability Scores: <span>+1 Dex</span></td></tr>
-		<tr><td id="size" colspan="6">Size: <span>Medium</span></td></tr>
-		<tr><td id="speed" colspan="6">Speed: <span>30 ft.</span></td></tr>
+		<tr><th class="name" colspan="6">
+		<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${race.source.escapeQuotes()}')">${race.name}</span>
+		${race.soundClip ? getPronunciationButton() : ""}
+		<span class="stats-source ${Parser.sourceJsonToColor(race.source)}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
+		</th></tr>
+		<tr><td colspan="6"><b>Ability Scores:</b> ${(race.ability ? utils_getAbilityData(race.ability) : {asText: "None"}).asText}</td></tr>
+		<tr><td colspan="6"><b>Size:</b> ${Parser.sizeAbvToFull(race.size)}</td></tr>
+		<tr><td colspan="6"><b>Speed:</b> ${Parser.getSpeedString(race)}</td></tr>
 		<tr id="traits"><td class="divider" colspan="6"><div></div></td></tr>
 		${EntryRenderer.utils.getBorderTr()}
 		</tbody>
 		`);
-
-		$pgContent.find("th.name").html(`
-			<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${race.source.escapeQuotes()}')">${race.name}</span>
-			${race.soundClip ? getPronunciationButton() : ""}
-			<span class="stats-source ${Parser.sourceJsonToColor(race.source)}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
-		`);
-
-		const size = Parser.sizeAbvToFull(race.size);
-		$pgContent.find("td#size span").html(size);
-
-		const ability = race.ability ? utils_getAbilityData(race.ability) : {asText: "None"};
-		$pgContent.find("td#ability span").html(ability.asText);
-
-		$pgContent.find("td#speed span").html(Parser.getSpeedString(race));
 
 		const renderStack = [];
 		renderStack.push("<tr class='text'><td colspan='6'>");
@@ -406,7 +397,7 @@ function loadhash (id) {
 						appendCopy(subFluff);
 					} else if (subFluff && (subFluff.entries || subFluff._appendCopy) && baseFluff && (baseFluff.entries || baseFluff._appendCopy)) {
 						renderer.setFirstSection(true);
-						$td.append(renderer.renderEntry({type: "section", entries: subFluff.entries}));
+						if (subFluff.entries) $td.append(renderer.renderEntry({type: "section", entries: subFluff.entries}));
 						appendCopy(subFluff);
 						let $tr2 = get$Tr();
 						let $td2 = get$Td().appendTo($tr2);

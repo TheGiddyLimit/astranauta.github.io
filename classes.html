@@ -411,8 +411,8 @@
 	<div class="row" id="desktop-flex">
 		<div class="col-md-3">
 			<div id="button-wrapper" class="text-align-center wrp-btn-readmode">
-				<button class="btn btn-default btn-xs" id="btn-comparemode" title="A pop-up table which can be used to compare subclass features.">Subclass Comparison</button>
-				<button class="btn btn-default btn-xs" id="btn-readmode" title="A pop-up reading mode thatkeeps class and subclass information separated, matching the books.">Book View</button>
+				<button class="btn btn-default btn-xs noprint" id="btn-comparemode" title="A pop-up table which can be used to compare subclass features.">Subclass Comparison</button>
+				<button class="btn btn-default btn-xs noprint" id="btn-readmode" title="A pop-up reading mode thatkeeps class and subclass information separated, matching the books.">Book View</button>
 			</div>
 			<table id="statsprof" class="stats shadow-big">
 				<tr>
@@ -491,20 +491,14 @@
 		<div class="col-md-9">
 			<div id="subclasses"></div>
 			<table id="pagecontent" class="stats shadow-big">
-				<tr id="ftTopBorder">
-					<th class="border" colspan="6"></th>
-				</tr>
+				<tr id="ftTopBorder"><th class="border" colspan="6"></th></tr>
 
 				<tr><td colspan="6" id="msg-no-class-selected" class="initial-message">Select a class from the list to view it here</td></tr>
 
 				<!-- populate with JS -->
 
-				<tr id="please-select-message">
-					<td colspan="6"></td>
-				</tr>
-				<tr>
-					<th class="border" colspan="6"></th>
-				</tr>
+				<tr id="please-select-message"><td colspan="6"></td></tr>
+				<tr><th class="border" colspan="6"></th></tr>
 			</table>
 
 		</div>

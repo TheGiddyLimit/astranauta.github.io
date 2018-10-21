@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.4.1",
+	"version": "1.5.0",
 	"title": "Optional Features",
 	"type": "object",
 
@@ -61,7 +61,20 @@
 					},
 					{
 						"properties": {
-							"type": {"const": "prereqSpellOrFeature"},
+							"type": {"const": "prereqSpell"},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry"
+								}
+							}
+						},
+						"required": ["entries"],
+						"additionalProperties": false
+					},
+					{
+						"properties": {
+							"type": {"const": "prereqFeature"},
 							"entries": {
 								"type": "array",
 								"items": {

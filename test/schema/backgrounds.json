@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"type": "object",
 	"properties": {
 		"background": {
@@ -19,7 +19,242 @@
 						"type": "integer"
 					},
 					"skillProficiencies": {
-						"type": "string"
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"acrobatics": {
+									"type": "boolean"
+								},
+								"animal handling": {
+									"type": "boolean"
+								},
+								"arcana": {
+									"type": "boolean"
+								},
+								"athletics": {
+									"type": "boolean"
+								},
+								"deception": {
+									"type": "boolean"
+								},
+								"history": {
+									"type": "boolean"
+								},
+								"insight": {
+									"type": "boolean"
+								},
+								"intimidation": {
+									"type": "boolean"
+								},
+								"investigation": {
+									"type": "boolean"
+								},
+								"medicine": {
+									"type": "boolean"
+								},
+								"nature": {
+									"type": "boolean"
+								},
+								"perception": {
+									"type": "boolean"
+								},
+								"performance": {
+									"type": "boolean"
+								},
+								"persuasion": {
+									"type": "boolean"
+								},
+								"religion": {
+									"type": "boolean"
+								},
+								"sleight of hand": {
+									"type": "boolean"
+								},
+								"stealth": {
+									"type": "boolean"
+								},
+								"survival": {
+									"type": "boolean"
+								},
+								"choose": {
+									"type": "object",
+									"properties": {
+										"from": {
+											"type": "array",
+											"items": {
+												"enum": [
+													"acrobatics",
+													"animal handling",
+													"arcana",
+													"athletics",
+													"deception",
+													"history",
+													"insight",
+													"intimidation",
+													"investigation",
+													"medicine",
+													"nature",
+													"perception",
+													"performance",
+													"persuasion",
+													"religion",
+													"sleight of hand",
+													"stealth",
+													"survival"
+												]
+											}
+										},
+										"count": {
+											"description": "defaults to 1 if not specified",
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					},
+					"toolProficiencies": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"artisan's tools": {
+									"type": "boolean"
+								},
+								"cartographer's tools": {
+									"type": "boolean"
+								},
+								"disguise kit": {
+									"type": "boolean"
+								},
+								"forgery kit": {
+									"type": "boolean"
+								},
+								"gaming set": {
+									"type": "boolean"
+								},
+								"herbalism kit": {
+									"type": "boolean"
+								},
+								"musical instrument": {
+									"type": "boolean"
+								},
+								"navigator's tools": {
+									"type": "boolean"
+								},
+								"thieves' tools": {
+									"type": "boolean"
+								},
+								"vehicles (land)": {
+									"type": "boolean"
+								},
+								"vehicles (water)": {
+									"type": "boolean"
+								},
+								"any": {
+									"type": "integer"
+								},
+								"choose": {
+									"type": "object",
+									"properties": {
+										"from": {
+											"type": "array",
+											"items": {
+												"enum": [
+													"artisan's tools",
+													"cartographer's tools",
+													"disguise kit",
+													"forgery kit",
+													"gaming set",
+													"herbalism kit",
+													"musical instrument",
+													"navigator's tools",
+													"thieves' tools",
+													"vehicles (land)",
+													"vehicles (water)",
+													"alchemist's supplies"
+												]
+											}
+										},
+										"count": {
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					},
+					"languageProficiencies": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"choose": {
+									"type": "object",
+									"properties": {
+										"from": {
+											"type": "array",
+											"items": {
+												"enum": [
+													"abyssal",
+													"celestial",
+													"deep speech",
+													"draconic",
+													"infernal",
+													"primordial",
+													"sylvan",
+													"undercommon",
+													"dwarvish",
+													"elvish",
+													"giant",
+													"other"
+												]
+											}
+										},
+										"count": {
+											"type": "integer"
+										}
+									}
+								},
+								"abyssal": {
+									"type": "boolean"
+								},
+								"celestial": {
+									"type": "boolean"
+								},
+								"deep speech": {
+									"type": "boolean"
+								},
+								"draconic": {
+									"type": "boolean"
+								},
+								"infernal": {
+									"type": "boolean"
+								},
+								"primordial": {
+									"type": "boolean"
+								},
+								"sylvan": {
+									"type": "boolean"
+								},
+								"undercommon": {
+									"type": "boolean"
+								},
+								"dwarvish": {
+									"type": "boolean"
+								},
+								"elvish": {
+									"type": "boolean"
+								},
+								"giant": {
+									"type": "boolean"
+								},
+								"other": {
+									"type": "boolean"
+								}
+							}
+						}
 					},
 					"entries": {
 						"type": "array",

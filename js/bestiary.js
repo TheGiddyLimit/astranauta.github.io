@@ -109,6 +109,7 @@ window.onload = function load () {
 		.then(multisourceLoad.bind(null, JSON_DIR, JSON_LIST_NAME, pPageInit, addMonsters, pPostLoad))
 		.then(() => {
 			if (History.lastLoadedId == null) History._freshLoad();
+			ExcludeUtil.checkShowAllExcluded(monsters, $(`#pagecontent`));
 		});
 };
 
@@ -302,7 +303,8 @@ function pPageInit (loadedSources) {
 
 	list = ListUtil.search({
 		valueNames: ["name", "source", "type", "cr", "group", "alias"],
-		listClass: "monsters"
+		listClass: "monsters",
+		sortFunction: sortMonsters
 	});
 	list.on("updated", () => {
 		filterBox.setCount(list.visibleItems.length, list.items.length);
@@ -372,6 +374,11 @@ function pPageInit (loadedSources) {
 					const renderCreature = (mon) => {
 						stack.push(`<table class="printbook-bestiary-entry"><tbody>`);
 						stack.push(EntryRenderer.monster.getCompactRenderedString(mon, renderer));
+						if (mon.legendaryGroup) {
+							const thisGroup = meta[mon.legendaryGroup];
+							stack.push(EntryRenderer.monster.getCompactRenderedStringSection(thisGroup, renderer, "Lair Actions", "lairActions", 0));
+							stack.push(EntryRenderer.monster.getCompactRenderedStringSection(thisGroup, renderer, "Regional Effects", "regionalEffects", 0));
+						}
 						stack.push(`</tbody></table>`);
 					};
 
@@ -547,6 +554,8 @@ function addMonsters (data) {
 			if (meta[mon.legendaryGroup].lairActions) mon._fMisc.push("Lair Actions");
 			if (meta[mon.legendaryGroup].regionalEffects) mon._fMisc.push("Regional Effects");
 		}
+		traitFilter.addIfAbsent(mon.traitTags);
+		actionReactionFilter.addIfAbsent(mon.actionTags);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	table.append(textStack);

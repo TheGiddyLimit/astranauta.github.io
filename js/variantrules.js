@@ -48,6 +48,7 @@ function onJsonLoad (data) {
 			BrewUtil.bind({list, filterBox, sourceFilter});
 
 			History.init(true);
+			ExcludeUtil.checkShowAllExcluded(rulesList, $(`#pagecontent`));
 		});
 }
 

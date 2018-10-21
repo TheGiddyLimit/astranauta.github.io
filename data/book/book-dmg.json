@@ -12228,7 +12228,7 @@
 														[
 															"61-65",
 															"{@dice 2d6} (7) 10 gp gems",
-															"Roll {@dice 1d4} times on Magic lt~m Table B."
+															"Roll {@dice 1d4} times on Magic Item Table B."
 														],
 														[
 															"66-70",
@@ -12306,7 +12306,7 @@
 														[
 															"{@b Coins}",
 															"{@dice 2d6 × 100} (700)",
-															"{@dice 2d6 × 1},000 (7,000)",
+															"{@dice 2d6 × 1,000} (7,000)",
 															"\u2014",
 															"{@dice 6d6 × 100} (2,100)",
 															"{@dice 3d6 × 10} (105)"
@@ -12504,7 +12504,7 @@
 															"\u2014",
 															"\u2014",
 															"\u2014",
-															"{@dice 4d6 × 1},000 (14,000)",
+															"{@dice 4d6 × 1,000} (14,000)",
 															"{@dice 5d6 × 100} (1,750)"
 														]
 													]
@@ -12720,8 +12720,8 @@
 															"\u2014",
 															"\u2014",
 															"\u2014",
-															"{@dice 12d6 × 1},000 (42,000)",
-															"{@dice 8d6 × 1},000 (28,000)"
+															"{@dice 12d6 × 1,000} (42,000)",
+															"{@dice 8d6 × 1,000} (28,000)"
 														]
 													]
 												},
@@ -12876,7 +12876,7 @@
 										"If a treasure hoard includes gemstones, you can use the following tables to randomly determine the kind of gemstones found, based on their value. You can roll once and assume all the gems are the same, or roll multiple times to create mixed collections of gemstones.",
 										{
 											"type": "table",
-											"caption": "10gp Gemstones",
+											"caption": "10 gp Gemstones",
 											"colLabels": [
 												"d12",
 												"Stone Description"
@@ -12938,7 +12938,7 @@
 										},
 										{
 											"type": "table",
-											"caption": "50gp Gemstones",
+											"caption": "50 gp Gemstones",
 											"colLabels": [
 												"d12",
 												"Stone Description"
@@ -13000,7 +13000,7 @@
 										},
 										{
 											"type": "table",
-											"caption": "100gp Gemstones",
+											"caption": "100 gp Gemstones",
 											"colLabels": [
 												"d10",
 												"Stone Description"
@@ -13054,7 +13054,7 @@
 										},
 										{
 											"type": "table",
-											"caption": "500gp Gemstones",
+											"caption": "500 gp Gemstones",
 											"colLabels": [
 												"d6",
 												"Stone Description"
@@ -13092,7 +13092,7 @@
 										},
 										{
 											"type": "table",
-											"caption": "1,000gp Gemstones",
+											"caption": "1,000 gp Gemstones",
 											"colLabels": [
 												"d8",
 												"Stone Description"
@@ -13138,7 +13138,7 @@
 										},
 										{
 											"type": "table",
-											"caption": "5,000gp Gemstones",
+											"caption": "5,000 gp Gemstones",
 											"colLabels": [
 												"d4",
 												"Stone Description"
@@ -13175,7 +13175,7 @@
 										"If a treasure hoard includes art objects, you can use the following tables to randomly determine what art objects are found, based on their value. Roll on a table as many times as there are art objects in the treasure hoard. There can be more than one of a given art object.",
 										{
 											"type": "table",
-											"caption": "25gp Art Objects",
+											"caption": "25 gp Art Objects",
 											"colLabels": [
 												"d12",
 												"Stone Description"
@@ -13229,7 +13229,7 @@
 										},
 										{
 											"type": "table",
-											"caption": "250gp Art Objects",
+											"caption": "250 gp Art Objects",
 											"colLabels": [
 												"d12",
 												"Stone Description"
@@ -13283,7 +13283,7 @@
 										},
 										{
 											"type": "table",
-											"caption": "750gp Art Objects",
+											"caption": "750 gp Art Objects",
 											"colLabels": [
 												"d12",
 												"Stone Description"
@@ -13337,7 +13337,7 @@
 										},
 										{
 											"type": "table",
-											"caption": "2,500gp Art Objects",
+											"caption": "2,500 gp Art Objects",
 											"colLabels": [
 												"d12",
 												"Stone Description"
@@ -13391,7 +13391,7 @@
 										},
 										{
 											"type": "table",
-											"caption": "7,500gp Art Objects",
+											"caption": "7,500 gp Art Objects",
 											"colLabels": [
 												"d12",
 												"Stone Description"
@@ -13841,6 +13841,7 @@
 							"name": "Activating an Item",
 							"entries": [
 								"Activating some magic items requires a user to do something in particular, such as holding the item and uttering a command word, reading the item if it is a scroll, or drinking it if it is a potion. The description of each item category or individual item details how an item is activated. Certain items use one or more of the following rules related to their activation.",
+								"If an item requires an action to activate, that action isn't a function of the {@action Use an Object} action, so a feature such as the rogue's Fast Hands can't be used to activate the item.",
 								{
 									"type": "entries",
 									"name": "Command Word",
@@ -14180,19 +14181,1676 @@
 							"type": "entries",
 							"name": "Random Magic Items",
 							"entries": [
+								"When you use a Treasure Hoard table to randomly determine the contents of a treasure hoard and your roll indicates the presence of one or more magic items, you can determine the specific magic items by rolling on the appropriate table(s) here.",
+								"{@note See the {@5etools Loot Generator|lootgen.html} page for an automated version of the tables below.}",
 								{
-									"type": "inline",
-									"entries": [
-										"When you use a Treasure Hoard table to randomly determine the contents of a treasure hoard and your roll indicates the presence of one or more magic items, you can determine the specific magic items by rolling on the appropriate table(s) listed on the ",
-										{
-											"type": "link",
-											"href": {
-												"type": "internal",
-												"path": "lootgen.html"
-											},
-											"text": "lootgen"
-										},
-										" page."
+									"type": "table",
+									"caption": "Magic Item Table A",
+									"colLabels": [
+										"d100",
+										"Magic Item"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"01-50",
+											"{@item Potion of Healing}"
+										],
+										[
+											"51-60",
+											"{@item Spell Scroll (Cantrip)}"
+										],
+										[
+											"61-70",
+											"{@item Potion of Climbing}"
+										],
+										[
+											"71-90",
+											"{@item Spell Scroll (1st Level)}"
+										],
+										[
+											"91-94",
+											"{@item Spell Scroll (2nd Level)}"
+										],
+										[
+											"95-98",
+											"{@item Potion of Greater Healing}"
+										],
+										[
+											"99",
+											"{@item Bag of Holding}"
+										],
+										[
+											"00",
+											"{@item Driftglobe}"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Magic Item Table B",
+									"colLabels": [
+										"d100",
+										"Magic Item"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"01-15",
+											"{@item Potion of Greater Healing}"
+										],
+										[
+											"16-22",
+											"{@item Potion of Fire Breath}"
+										],
+										[
+											"23-29",
+											"{@item Potion of Resistance}"
+										],
+										[
+											"30-34",
+											"{@item Ammunition +1|dmg}"
+										],
+										[
+											"35-39",
+											"{@item Potion of Animal Friendship}"
+										],
+										[
+											"40-44",
+											"{@item Potion of Hill Giant Strength}"
+										],
+										[
+											"45-49",
+											"{@item Potion of Growth}"
+										],
+										[
+											"50-54",
+											"{@item Potion of Water Breathing}"
+										],
+										[
+											"55-59",
+											"{@item Spell Scroll (2nd Level)}"
+										],
+										[
+											"60-64",
+											"{@item Spell Scroll (3rd Level)}"
+										],
+										[
+											"65-67",
+											"{@item Bag of Holding}"
+										],
+										[
+											"68-70",
+											"{@item Keoghtom's Ointment}"
+										],
+										[
+											"71-73",
+											"{@item Oil of Slipperiness}"
+										],
+										[
+											"74-75",
+											"{@item Dust of Disappearance}"
+										],
+										[
+											"76-77",
+											"{@item Dust of Dryness}"
+										],
+										[
+											"78-79",
+											"{@item Dust of Sneezing and Choking}"
+										],
+										[
+											"80-81",
+											"{@item Elemental Gem, Red Corundum|dmg|Elemental Gem}"
+										],
+										[
+											"82-83",
+											"{@item Philter of Love}"
+										],
+										[
+											"84",
+											"{@item Alchemy Jug}"
+										],
+										[
+											"85",
+											"{@item Cap of Water Breathing}"
+										],
+										[
+											"86",
+											"{@item Cloak of the Manta Ray}"
+										],
+										[
+											"87",
+											"{@item Driftglobe}"
+										],
+										[
+											"88",
+											"{@item Goggles of Night}"
+										],
+										[
+											"89",
+											"{@item Helm of Comprehending Languages}"
+										],
+										[
+											"90",
+											"{@item Immovable Rod}"
+										],
+										[
+											"91",
+											"{@item Lantern of Revealing}"
+										],
+										[
+											"92",
+											"{@item Mariner's Armor}"
+										],
+										[
+											"93",
+											"{@item Mithral Armor}"
+										],
+										[
+											"94",
+											"{@item Potion of Poison}"
+										],
+										[
+											"95",
+											"{@item Ring of Swimming}"
+										],
+										[
+											"96",
+											"{@item Robe of Useful Items}"
+										],
+										[
+											"97",
+											"{@item Rope of Climbing}"
+										],
+										[
+											"98",
+											"{@item Saddle of the Cavalier}"
+										],
+										[
+											"99",
+											"{@item Wand of Magic Detection}"
+										],
+										[
+											"00",
+											"{@item Wand of Secrets}"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Magic Item Table C",
+									"colLabels": [
+										"d100",
+										"Magic Item"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"01-15",
+											"{@item Potion of Superior Healing}"
+										],
+										[
+											"16-22",
+											"{@item Spell Scroll (4th Level)}"
+										],
+										[
+											"23-27",
+											"{@item Ammunition +2|dmg}"
+										],
+										[
+											"28-32",
+											"{@item Potion of Clairvoyance}"
+										],
+										[
+											"33-37",
+											"{@item Potion of Diminution}"
+										],
+										[
+											"38-42",
+											"{@item Potion of Gaseous Form}"
+										],
+										[
+											"43-47",
+											"{@item Potion of Frost Giant Strength}"
+										],
+										[
+											"48-52",
+											"{@item Potion of Stone Giant Strength}"
+										],
+										[
+											"53-57",
+											"{@item Potion of Heroism}"
+										],
+										[
+											"58-62",
+											"{@item Potion of Invulnerability}"
+										],
+										[
+											"63-67",
+											"{@item Potion of Mind Reading}"
+										],
+										[
+											"68-72",
+											"{@item Spell Scroll (5th Level)}"
+										],
+										[
+											"73-75",
+											"{@item Elixir of Health}"
+										],
+										[
+											"76-78",
+											"{@item Oil of Etherealness}"
+										],
+										[
+											"79-81",
+											"{@item Potion of Fire Giant Strength}"
+										],
+										[
+											"82-84",
+											"{@item Quaal's Feather Token, Anchor|dmg|Quaal's Feather Token}"
+										],
+										[
+											"85-87",
+											"{@item Scroll of Protection from Aberrations|dmg|Scroll of Protection}"
+										],
+										[
+											"88-89",
+											"{@item Bag of Beans}"
+										],
+										[
+											"90-91",
+											"{@item Bead of Force}"
+										],
+										[
+											"92",
+											"{@item Chime of Opening}"
+										],
+										[
+											"93",
+											"{@item Decanter of Endless Water}"
+										],
+										[
+											"94",
+											"{@item Eyes of Minute Seeing}"
+										],
+										[
+											"95",
+											"{@item Folding Boat}"
+										],
+										[
+											"96",
+											"{@item Heward's Handy Haversack}"
+										],
+										[
+											"97",
+											"{@item Horseshoes of Speed}"
+										],
+										[
+											"98",
+											"{@item Necklace of Fireballs}"
+										],
+										[
+											"99",
+											"{@item Periapt of Health}"
+										],
+										[
+											"00",
+											"{@item Sending Stones}"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Magic Item Table D",
+									"colLabels": [
+										"d100",
+										"Magic Item"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"01-20",
+											"{@item Potion of Supreme Healing}"
+										],
+										[
+											"21-30",
+											"{@item Potion of Invisibility}"
+										],
+										[
+											"31-40",
+											"{@item Potion of Speed}"
+										],
+										[
+											"41-50",
+											"{@item Spell Scroll (6th level)}"
+										],
+										[
+											"51-57",
+											"{@item Spell Scroll (7th level)}"
+										],
+										[
+											"58-62",
+											"{@item Ammunition +3|dmg}"
+										],
+										[
+											"63-67",
+											"{@item Oil of Sharpness}"
+										],
+										[
+											"68-72",
+											"{@item Potion of Flying}"
+										],
+										[
+											"73-77",
+											"{@item Potion of Cloud Giant Strength}"
+										],
+										[
+											"78-82",
+											"{@item Potion of Longevity}"
+										],
+										[
+											"83-87",
+											"{@item Potion of Vitality}"
+										],
+										[
+											"88-92",
+											"{@item Spell Scroll (8th level)}"
+										],
+										[
+											"93-95",
+											"{@item Horseshoes of a Zephyr}"
+										],
+										[
+											"96-98",
+											"{@item Nolzur's Marvelous Pigments}"
+										],
+										[
+											"99",
+											"{@item Bag of Devouring}"
+										],
+										[
+											"00",
+											"{@item Portable Hole}"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Magic Item Table E",
+									"colLabels": [
+										"d100",
+										"Magic Item"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"01-30",
+											"{@item Spell Scroll (8th level)}"
+										],
+										[
+											"31-55",
+											"{@item Potion of Storm Giant Strength}"
+										],
+										[
+											"56-70",
+											"{@item Potion of Supreme Healing}"
+										],
+										[
+											"71-86",
+											"{@item Spell Scroll (9th level)}"
+										],
+										[
+											"86-93",
+											"{@item Universal Solvent}"
+										],
+										[
+											"94-98",
+											"{@item Arrow of Slaying}"
+										],
+										[
+											"99-100",
+											"{@item Sovereign Glue}"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Magic Item Table F",
+									"colLabels": [
+										"d100",
+										"Magic Item"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"01-15",
+											"{@item Weapon +1|dmg}"
+										],
+										[
+											"16-18",
+											"{@item Shield +1|dmg}"
+										],
+										[
+											"19-21",
+											"{@item Sentinel Shield}"
+										],
+										[
+											"22-23",
+											"{@item Amulet of Proof Against Detection and Location}"
+										],
+										[
+											"24-25",
+											"{@item Boots of Elvenkind}"
+										],
+										[
+											"26-27",
+											"{@item Boots of Striding and Springing}"
+										],
+										[
+											"28-29",
+											"{@item Bracers of Archery}"
+										],
+										[
+											"30-31",
+											"{@item Brooch of Shielding}"
+										],
+										[
+											"32-33",
+											"{@item Broom of Flying}"
+										],
+										[
+											"34-35",
+											"{@item Cloak of Elvenkind}"
+										],
+										[
+											"36-37",
+											"{@item Cloak of Protection}"
+										],
+										[
+											"38-39",
+											"{@item Gauntlets of Ogre Power}"
+										],
+										[
+											"40-41",
+											"{@item Hat of Disguise}"
+										],
+										[
+											"42-43",
+											"{@item Javelin of Lightning}"
+										],
+										[
+											"44-45",
+											"{@item Pearl of Power}"
+										],
+										[
+											"46-47",
+											"{@item Rod of the Pact Keeper, +1|dmg}"
+										],
+										[
+											"48-49",
+											"{@item Slippers of Spider Climbing}"
+										],
+										[
+											"50-51",
+											"{@item Staff of the Adder}"
+										],
+										[
+											"52-53",
+											"{@item Staff of the Python}"
+										],
+										[
+											"54-55",
+											"{@item Sword of Vengeance}"
+										],
+										[
+											"56-57",
+											"{@item Trident of Fish Command}"
+										],
+										[
+											"58-59",
+											"{@item Wand of Magic Missiles}"
+										],
+										[
+											"60-61",
+											"{@item Wand of the War Mage, +1|dmg}"
+										],
+										[
+											"62-63",
+											"{@item Wand of Web}"
+										],
+										[
+											"64-65",
+											"{@item Weapon of Warning}"
+										],
+										[
+											"66",
+											"{@item Adamantine Chain Mail}"
+										],
+										[
+											"67",
+											"{@item Adamantine Chain Shirt}"
+										],
+										[
+											"68",
+											"{@item Adamantine Scale Mail}"
+										],
+										[
+											"69",
+											"{@item Bag of Tricks, Gray|dmg}"
+										],
+										[
+											"70",
+											"{@item Bag of Tricks, Rust|dmg}"
+										],
+										[
+											"71",
+											"{@item Bag of Tricks, Tan|dmg}"
+										],
+										[
+											"72",
+											"{@item Boots of the Winterlands}"
+										],
+										[
+											"73",
+											"{@item Circlet of Blasting}"
+										],
+										[
+											"74",
+											"{@item Deck of Illusions}"
+										],
+										[
+											"75",
+											"{@item Eversmoking Bottle}"
+										],
+										[
+											"76",
+											"{@item Eyes of Charming}"
+										],
+										[
+											"77",
+											"{@item Eyes of the Eagle}"
+										],
+										[
+											"78",
+											"{@item Figurine of Wondrous Power, Silver Raven|dmg}"
+										],
+										[
+											"79",
+											"{@item Gem of Brightness}"
+										],
+										[
+											"80",
+											"{@item Gloves of Missile Snaring}"
+										],
+										[
+											"81",
+											"{@item Gloves of Swimming and Climbing}"
+										],
+										[
+											"82",
+											"{@item Gloves of Thievery}"
+										],
+										[
+											"83",
+											"{@item Headband of Intellect}"
+										],
+										[
+											"84",
+											"{@item Helm of Telepathy}"
+										],
+										[
+											"85",
+											"{@item Instrument of the Bards, Doss Lute|dmg}"
+										],
+										[
+											"86",
+											"{@item Instrument of the Bards, Fochlucan Bandore|dmg}"
+										],
+										[
+											"87",
+											"{@item Instrument of the Bards, Mac-Fuirmidh Cittern|dmg}"
+										],
+										[
+											"88",
+											"{@item Medallion of Thoughts}"
+										],
+										[
+											"89",
+											"{@item Necklace of Adaptation}"
+										],
+										[
+											"90",
+											"{@item Periapt of Wound Closure}"
+										],
+										[
+											"91",
+											"{@item Pipes of Haunting}"
+										],
+										[
+											"92",
+											"{@item Pipes of the Sewers}"
+										],
+										[
+											"93",
+											"{@item Ring of Jumping}"
+										],
+										[
+											"94",
+											"{@item Ring of Mind Shielding}"
+										],
+										[
+											"95",
+											"{@item Ring of Warmth}"
+										],
+										[
+											"96",
+											"{@item Ring of Water Walking}"
+										],
+										[
+											"97",
+											"{@item Quiver of Ehlonna}"
+										],
+										[
+											"98",
+											"{@item Stone of Good Luck}"
+										],
+										[
+											"99",
+											"{@item Wind Fan}"
+										],
+										[
+											"00",
+											"{@item Winged Boots}"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Magic Item Table G",
+									"colLabels": [
+										"d100",
+										"Magic Item"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"01-11",
+											"{@item Weapon +2|dmg}"
+										],
+										[
+											"12-14",
+											{
+												"type": "table",
+												"caption": "Figurine of Wondrous Power",
+												"colLabels": [
+													"d8",
+													"Magic Item"
+												],
+												"colStyles": [
+													"col-xs-2 text-align-center",
+													"col-xs-10"
+												],
+												"rows": [
+													[
+														"01",
+														"{@item Figurine of Wondrous Power, Bronze Griffon|dmg}"
+													],
+													[
+														"02",
+														"{@item Figurine of Wondrous Power, Ebony Fly|dmg}"
+													],
+													[
+														"03",
+														"{@item Figurine of Wondrous Power, Golden Lions|dmg}"
+													],
+													[
+														"04",
+														"{@item Figurine of Wondrous Power, Ivory Goats|dmg}"
+													],
+													[
+														"05",
+														"{@item Figurine of Wondrous Power, Marble Elephant|dmg}"
+													],
+													[
+														"06-07",
+														"{@item Figurine of Wondrous Power, Onyx Dog|dmg}"
+													],
+													[
+														"08",
+														"{@item Figurine of Wondrous Power, Serpentine Owl|dmg}"
+													]
+												],
+												"data": {
+													"tableIgnore": true
+												}
+											}
+										],
+										[
+											"15",
+											"{@item Adamantine Breastplate}"
+										],
+										[
+											"16",
+											"{@item Adamantine Splint Armor}"
+										],
+										[
+											"17",
+											"{@item Amulet of Health}"
+										],
+										[
+											"18",
+											"{@item Armor of Vulnerability (Bludgeoning)|dmg|Armor of Vulnerability}"
+										],
+										[
+											"19",
+											"{@item Arrow-catching Shield|dmg}"
+										],
+										[
+											"20",
+											"{@item Belt of Dwarvenkind}"
+										],
+										[
+											"21",
+											"{@item Belt of Hill Giant Strength}"
+										],
+										[
+											"22",
+											"{@item Berserker Axe}"
+										],
+										[
+											"23",
+											"{@item Boots of Levitation}"
+										],
+										[
+											"24",
+											"{@item Boots of Speed}"
+										],
+										[
+											"25",
+											"{@item Bowl of Commanding Water Elementals}"
+										],
+										[
+											"26",
+											"{@item Bracers of Defense}"
+										],
+										[
+											"27",
+											"{@item Brazier of Commanding Fire Elementals}"
+										],
+										[
+											"28",
+											"{@item Cape of the Mountebank}"
+										],
+										[
+											"29",
+											"{@item Censer of Controlling Air Elementals}"
+										],
+										[
+											"30",
+											"{@item Chain Mail +1|dmg}"
+										],
+										[
+											"31",
+											"Chain Mail of Resistance"
+										],
+										[
+											"32",
+											"{@item Chain Shirt +1|dmg}"
+										],
+										[
+											"33",
+											"Chain Shirt of Resistance"
+										],
+										[
+											"34",
+											"{@item Cloak of Displacement}"
+										],
+										[
+											"35",
+											"{@item Cloak of the Bat}"
+										],
+										[
+											"36",
+											"{@item Cube of Force}"
+										],
+										[
+											"37",
+											"{@item Daern's Instant Fortress}"
+										],
+										[
+											"38",
+											"{@item Dagger of Venom}"
+										],
+										[
+											"39",
+											"{@item Dimensional Shackles}"
+										],
+										[
+											"40",
+											"{@item Dragon Slayer}"
+										],
+										[
+											"41",
+											"{@item Elven Chain}"
+										],
+										[
+											"42",
+											"{@item Flame Tongue}"
+										],
+										[
+											"43",
+											"{@item Gem of Seeing}"
+										],
+										[
+											"44",
+											"{@item Giant Slayer}"
+										],
+										[
+											"45",
+											"{@item Glamoured Studded Leather}"
+										],
+										[
+											"46",
+											"{@item Helm of Teleportation}"
+										],
+										[
+											"47",
+											"{@item Horn of Blasting}"
+										],
+										[
+											"48",
+											"Horn of Valhalla ({@item Horn of Valhalla, Silver|dmg|silver} or {@item Horn of Valhalla, Brass|dmg|brass})"
+										],
+										[
+											"49",
+											"{@item Instrument of the Bards, Canaith Mandolin|dmg}"
+										],
+										[
+											"50",
+											"{@item Instrument of the Bards, Cli Lyre|dmg}"
+										],
+										[
+											"51",
+											"{@item Ioun Stone, Awareness|dmg}"
+										],
+										[
+											"52",
+											"{@item Ioun Stone, Protection|dmg}"
+										],
+										[
+											"53",
+											"{@item Ioun Stone, Reserve|dmg}"
+										],
+										[
+											"54",
+											"{@item Ioun Stone, Sustenance|dmg}"
+										],
+										[
+											"55",
+											"{@item Iron Bands of Bilarro}"
+										],
+										[
+											"56",
+											"{@item Leather Armor +1|dmg}"
+										],
+										[
+											"57",
+											"Leather Armor of Resistance"
+										],
+										[
+											"58",
+											"{@item Mace of Disruption}"
+										],
+										[
+											"59",
+											"{@item Mace of Smiting}"
+										],
+										[
+											"60",
+											"{@item Mace of Terror}"
+										],
+										[
+											"61",
+											"{@item Mantle of Spell Resistance}"
+										],
+										[
+											"62",
+											"{@item Necklace of Prayer Beads}"
+										],
+										[
+											"63",
+											"{@item Periapt of Proof Against Poison}"
+										],
+										[
+											"64",
+											"{@item Ring of Animal Influence}"
+										],
+										[
+											"65",
+											"{@item Ring of Evasion}"
+										],
+										[
+											"66",
+											"{@item Ring of Feather Falling}"
+										],
+										[
+											"67",
+											"{@item Ring of Free Action}"
+										],
+										[
+											"68",
+											"{@item Ring of Protection}"
+										],
+										[
+											"69",
+											"{@item Ring of Resistance}"
+										],
+										[
+											"70",
+											"{@item Ring of Spell Storing}"
+										],
+										[
+											"71",
+											"{@item Ring of the Ram}"
+										],
+										[
+											"72",
+											"{@item Ring of X-ray Vision|dmg}"
+										],
+										[
+											"73",
+											"{@item Robe of Eyes}"
+										],
+										[
+											"74",
+											"{@item Rod of Rulership}"
+										],
+										[
+											"75",
+											"{@item Rod of the Pact Keeper, +2|dmg}"
+										],
+										[
+											"76",
+											"{@item Rope of Entanglement}"
+										],
+										[
+											"77",
+											"{@item Scale Mail +1|dmg}"
+										],
+										[
+											"78",
+											"Scale Mail of Resistance"
+										],
+										[
+											"79",
+											"{@item Shield +2|dmg}"
+										],
+										[
+											"80",
+											"{@item Shield of Missile Attraction}"
+										],
+										[
+											"81",
+											"{@item Staff of Charming}"
+										],
+										[
+											"82",
+											"{@item Staff of Healing}"
+										],
+										[
+											"83",
+											"{@item Staff of Swarming Insects}"
+										],
+										[
+											"84",
+											"{@item Staff of the Woodlands}"
+										],
+										[
+											"85",
+											"{@item Staff of Withering}"
+										],
+										[
+											"86",
+											"{@item Stone of Controlling Earth Elementals}"
+										],
+										[
+											"87",
+											"{@item Sun Blade}"
+										],
+										[
+											"88",
+											"{@item Sword of Life Stealing}"
+										],
+										[
+											"89",
+											"{@item Sword of Wounding}"
+										],
+										[
+											"90",
+											"{@item Tentacle Rod}"
+										],
+										[
+											"91",
+											"{@item Vicious Weapon}"
+										],
+										[
+											"92",
+											"{@item Wand of Binding}"
+										],
+										[
+											"93",
+											"{@item Wand of Enemy Detection}"
+										],
+										[
+											"94",
+											"{@item Wand of Fear}"
+										],
+										[
+											"95",
+											"{@item Wand of Fireballs}"
+										],
+										[
+											"96",
+											"{@item Wand of Lightning Bolts}"
+										],
+										[
+											"97",
+											"{@item Wand of Paralysis}"
+										],
+										[
+											"98",
+											"{@item Wand of the War Mage, +2|dmg}"
+										],
+										[
+											"99",
+											"{@item Wand of Wonder}"
+										],
+										[
+											"00",
+											"{@item Wings of Flying}"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Magic Item Table H",
+									"colLabels": [
+										"d100",
+										"Magic Item"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"01-10",
+											"{@item Weapon +3|dmg}"
+										],
+										[
+											"11-12",
+											"{@item Amulet of the Planes}"
+										],
+										[
+											"13-14",
+											"{@item Carpet of Flying}"
+										],
+										[
+											"15-16",
+											"{@item Crystal Ball}"
+										],
+										[
+											"17-18",
+											"{@item Ring of Regeneration}"
+										],
+										[
+											"19-20",
+											"{@item Ring of Shooting Stars}"
+										],
+										[
+											"21-22",
+											"{@item Ring of Telekinesis}"
+										],
+										[
+											"23-24",
+											"{@item Robe of Scintillating Colors}"
+										],
+										[
+											"25-26",
+											"{@item Robe of Stars}"
+										],
+										[
+											"27-28",
+											"{@item Rod of absorption}"
+										],
+										[
+											"29-30",
+											"{@item Rod of Alertness}"
+										],
+										[
+											"31-32",
+											"{@item Rod of Security}"
+										],
+										[
+											"33-34",
+											"{@item Rod of the Pact Keeper, +3|dmg}"
+										],
+										[
+											"35-36",
+											"{@item Scimitar of Speed}"
+										],
+										[
+											"37-38",
+											"{@item Shield +3|dmg}"
+										],
+										[
+											"39-40",
+											"{@item Staff of Fire}"
+										],
+										[
+											"41-42",
+											"{@item Staff of Frost}"
+										],
+										[
+											"43-44",
+											"{@item Staff of Power}"
+										],
+										[
+											"45-46",
+											"{@item Staff of Striking}"
+										],
+										[
+											"47-48",
+											"{@item Staff of Thunder and Lightning}"
+										],
+										[
+											"49-50",
+											"{@item Sword of Sharpness}"
+										],
+										[
+											"51-52",
+											"{@item Wand of Polymorph}"
+										],
+										[
+											"53-54",
+											"{@item Wand of the War Mage, +3|dmg}"
+										],
+										[
+											"55",
+											"{@item Adamantine Half Plate Armor}"
+										],
+										[
+											"56",
+											"{@item Adamantine Plate Armor}"
+										],
+										[
+											"57",
+											"{@item Animated Shield}"
+										],
+										[
+											"58",
+											"{@item Belt of Fire Giant Strength}"
+										],
+										[
+											"59",
+											"Belt of {@item Belt of Frost Giant Strength|dmg|frost} or {@item Belt of Stone Giant Strength|dmg|stone} giant strength"
+										],
+										[
+											"60",
+											"{@item Breastplate +1|dmg}"
+										],
+										[
+											"61",
+											"Breastplate of Resistance"
+										],
+										[
+											"62",
+											"{@item Candle of Invocation}"
+										],
+										[
+											"63",
+											"{@item Chain Mail +2|dmg}"
+										],
+										[
+											"64",
+											"{@item Chain Shirt +2|dmg}"
+										],
+										[
+											"65",
+											"{@item Cloak of Arachnida}"
+										],
+										[
+											"66",
+											"{@item Dancing Sword}"
+										],
+										[
+											"67",
+											"{@item Demon Armor}"
+										],
+										[
+											"68",
+											"Dragon Scale Mail"
+										],
+										[
+											"69",
+											"{@item Dwarven Plate}"
+										],
+										[
+											"70",
+											"{@item Dwarven Thrower}"
+										],
+										[
+											"71",
+											"{@item Efreeti Bottle}"
+										],
+										[
+											"72",
+											"{@item Figurine of Wondrous Power, Obsidian Steed|dmg}"
+										],
+										[
+											"73",
+											"{@item Frost Brand}"
+										],
+										[
+											"74",
+											"{@item Helm of Brilliance}"
+										],
+										[
+											"75",
+											"{@item Horn of Valhalla, Bronze|dmg}"
+										],
+										[
+											"76",
+											"{@item Instrument of the Bards, Anstruth Harp|dmg}"
+										],
+										[
+											"77",
+											"{@item Ioun Stone, Absorption|dmg},"
+										],
+										[
+											"78",
+											"{@item Ioun Stone, Agility|dmg},"
+										],
+										[
+											"79",
+											"{@item Ioun Stone, Fortitude|dmg},"
+										],
+										[
+											"80",
+											"{@item Ioun Stone, Insight|dmg}"
+										],
+										[
+											"81",
+											"{@item Ioun Stone, Intellect|dmg}"
+										],
+										[
+											"82",
+											"{@item Ioun Stone, Leadership|dmg}"
+										],
+										[
+											"83",
+											"{@item Ioun Stone, Strength|dmg}"
+										],
+										[
+											"84",
+											"{@item Leather Armor +2|dmg}"
+										],
+										[
+											"85",
+											"{@item Manual of Bodily Health}"
+										],
+										[
+											"86",
+											"{@item Manual of Gainful Exercise}"
+										],
+										[
+											"87",
+											"{@item Manual of Clay Golems|dmg|Manual of Golems}"
+										],
+										[
+											"88",
+											"{@item Manual of Quickness of Action}"
+										],
+										[
+											"89",
+											"{@item Mirror of Life Trapping}"
+										],
+										[
+											"90",
+											"{@item Nine Lives Stealer}"
+										],
+										[
+											"91",
+											"{@item Oathbow}"
+										],
+										[
+											"92",
+											"{@item Scale Mail +2|dmg}"
+										],
+										[
+											"93",
+											"{@item Spellguard Shield}"
+										],
+										[
+											"94",
+											"{@item Splint Armor +1|dmg}"
+										],
+										[
+											"95",
+											"Splint Armor of Resistance"
+										],
+										[
+											"96",
+											"{@item Studded Leather Armor +1|dmg}"
+										],
+										[
+											"97",
+											"Studded Leather Armor of Resistance"
+										],
+										[
+											"98",
+											"{@item Tome of Clear Thought}"
+										],
+										[
+											"99",
+											"{@item Tome of Leadership and Influence}"
+										],
+										[
+											"00",
+											"{@item Tome of Understanding}"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Magic Item Table I",
+									"colLabels": [
+										"d100",
+										"Magic Item"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"01-05",
+											"{@item Defender}"
+										],
+										[
+											"06-10",
+											"{@item Hammer of Thunderbolts}"
+										],
+										[
+											"11-15",
+											"{@item Luck Blade}"
+										],
+										[
+											"16-20",
+											"{@item Sword of Answering}"
+										],
+										[
+											"21-23",
+											"{@item Holy Avenger}"
+										],
+										[
+											"24-26",
+											"{@item Ring of Djinni Summoning}"
+										],
+										[
+											"27-29",
+											"{@item Ring of Invisibility}"
+										],
+										[
+											"30-32",
+											"{@item Ring of Spell Turning}"
+										],
+										[
+											"33-35",
+											"{@item Rod of Lordly Might}"
+										],
+										[
+											"36-38",
+											"{@item Staff of the Magi}"
+										],
+										[
+											"39-41",
+											"{@item Vorpal sword}"
+										],
+										[
+											"42-43",
+											"{@item Belt of Cloud Giant Strength}"
+										],
+										[
+											"44-45",
+											"{@item Breastplate +2|dmg}"
+										],
+										[
+											"46-47",
+											"{@item Chain Mail +3|dmg}"
+										],
+										[
+											"48-49",
+											"{@item Chain Shirt +3|dmg}"
+										],
+										[
+											"50-51",
+											"{@item Cloak of Invisibility}"
+										],
+										[
+											"52-53",
+											"Crystal Ball (legendary version)"
+										],
+										[
+											"54-55",
+											"{@item Half Plate Armor +1|dmg}"
+										],
+										[
+											"56-57",
+											"{@item Iron Flask}"
+										],
+										[
+											"58-59",
+											"{@item Leather Armor +3|dmg}"
+										],
+										[
+											"60-61",
+											"{@item Plate Armor +1|dmg}"
+										],
+										[
+											"62-63",
+											"{@item Robe of the Archmagi}"
+										],
+										[
+											"64-65",
+											"{@item Rod of Resurrection}"
+										],
+										[
+											"66-67",
+											"{@item Scale Mail +1|dmg}"
+										],
+										[
+											"68-69",
+											"{@item Scarab of Protection}"
+										],
+										[
+											"70-71",
+											"{@item Splint Armor +2|dmg}"
+										],
+										[
+											"72-73",
+											"{@item Studded Leather Armor +2|dmg}"
+										],
+										[
+											"74-75",
+											"{@item Well of Many Worlds}"
+										],
+										[
+											"76",
+											{
+												"type": "table",
+												"caption": "Magic armor",
+												"colLabels": [
+													"1d12",
+													""
+												],
+												"colStyles": [
+													"col-xs-2 text-align-center",
+													"col-xs-10"
+												],
+												"rows": [
+													[
+														"1-2",
+														"{@item Half Plate Armor +2|dmg}"
+													],
+													[
+														"3-4",
+														"{@item Plate Armor +2|dmg}"
+													],
+													[
+														"5-6",
+														"{@item Studded Leather Armor +3|dmg}"
+													],
+													[
+														"7-8",
+														"{@item Breastplate +3|dmg}"
+													],
+													[
+														"9-10",
+														"{@item Splint Armor +3|dmg}"
+													],
+													[
+														"11",
+														"{@item Half Plate Armor +3|dmg}"
+													],
+													[
+														"12",
+														"{@item Plate Armor +3|dmg}"
+													]
+												],
+												"data": {
+													"tableIgnore": true
+												}
+											}
+										],
+										[
+											"77",
+											"{@item Apparatus of Kwalish}"
+										],
+										[
+											"78",
+											"{@item Armor of Invulnerability}"
+										],
+										[
+											"79",
+											"{@item Belt of Storm Giant Strength}"
+										],
+										[
+											"80",
+											"{@item Cubic Gate}"
+										],
+										[
+											"81",
+											"{@item Deck of Many Things}"
+										],
+										[
+											"82",
+											"{@item Efreeti Chain}"
+										],
+										[
+											"83",
+											"Half Plate Armor of Resistance"
+										],
+										[
+											"84",
+											"{@item Horn of Valhalla, Iron|dmg}"
+										],
+										[
+											"85",
+											"{@item Instrument of the Bards, Ollamh Harp|dmg}"
+										],
+										[
+											"86",
+											"{@item Ioun Stone, Greater Absorption|dmg}"
+										],
+										[
+											"87",
+											"{@item Ioun Stone, Mastery|dmg}"
+										],
+										[
+											"88",
+											"{@item Ioun Stone, Regeneration|dmg}"
+										],
+										[
+											"89",
+											"{@item Plate armor of etherealness}"
+										],
+										[
+											"90",
+											"Plate Armor of Resistance"
+										],
+										[
+											"91",
+											"{@item Ring of Air Elemental Command}"
+										],
+										[
+											"92",
+											"{@item Ring of Earth Elemental Command}"
+										],
+										[
+											"93",
+											"{@item Ring of Fire Elemental Command}"
+										],
+										[
+											"94",
+											"{@item Ring of Three Wishes}"
+										],
+										[
+											"95",
+											"{@item Ring of Water Elemental Command}"
+										],
+										[
+											"96",
+											"{@item Sphere of Annihilation}"
+										],
+										[
+											"97",
+											"{@item Talisman of Pure Good}"
+										],
+										[
+											"98",
+											"{@item Talisman of the Sphere}"
+										],
+										[
+											"99",
+											"{@item Talisman of Ultimate Evil}"
+										],
+										[
+											"00",
+											"{@item Tome of the Stilled Tongue}"
+										]
 									]
 								}
 							]
@@ -20454,7 +22112,7 @@
 												],
 												[
 													"6th",
-													8
+													9
 												],
 												[
 													"7th",

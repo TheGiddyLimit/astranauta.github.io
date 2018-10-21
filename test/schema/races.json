@@ -80,6 +80,77 @@
 				"Terran",
 				"Undercommon"
 			]
+		},
+
+		"abilityScores": {
+			"type": "object",
+			"properties": {
+				"str": {
+					"type": "integer"
+				},
+				"dex": {
+					"type": "integer"
+				},
+				"con": {
+					"type": "integer"
+				},
+				"int": {
+					"type": "integer"
+				},
+				"wis": {
+					"type": "integer"
+				},
+				"cha": {
+					"type": "integer"
+				},
+				"choose": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"from": {
+								"type": "array",
+								"items": {
+									"enum": ["str", "dex", "con", "int", "wis", "cha"]
+								},
+								"uniqueItems": true
+							},
+							"count": {
+								"type": "integer"
+							},
+							"amount": {
+								"type": "integer"
+							},
+							"predefined": {
+								"type": "object",
+								"items": {
+									"type": "object",
+									"properties": {
+										"str": {
+											"type": "integer"
+										},
+										"dex": {
+											"type": "integer"
+										},
+										"con": {
+											"type": "integer"
+										},
+										"int": {
+											"type": "integer"
+										},
+										"wis": {
+											"type": "integer"
+										},
+										"cha": {
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	},
 
@@ -118,7 +189,7 @@
 						}
 					},
 					"ability": {
-						"type": "object"
+						"$ref": "#/definitions/abilityScores"
 					},
 					"speed": {
 						"$ref": "#/definitions/speed"
@@ -170,7 +241,7 @@
 									}
 								},
 								"ability": {
-									"type": "object"
+									"$ref": "#/definitions/abilityScores"
 								},
 								"speed": {
 									"$ref": "#/definitions/speed"

@@ -48,7 +48,10 @@
 					"ability": "con"
 				}
 			],
-			"languages": "Common, Primordial"
+			"languages": "Common, Primordial",
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"name": "Avi",
@@ -346,7 +349,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) piercing damage + 4 ({@damage 1d8}) acid damage"
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) piercing damage plus 4 ({@damage 1d8}) acid damage."
 					]
 				}
 			],
@@ -362,6 +365,7 @@
 		},
 		{
 			"name": "Flying Staff",
+			"group": "Animated Objects",
 			"size": "S",
 			"type": "construct",
 			"source": "WDH",
@@ -439,6 +443,9 @@
 			"traitTags": [
 				"Antimagic Susceptibility",
 				"False Appearance"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -503,6 +510,9 @@
 						"{@atk mw} {@hit 4} to hit, reach 0 ft., one creature in the swarm's space. Hit: 5 ({@damage 2d4}) bludgeoning damage, or 2 ({@damage 1d4}) bludgeoning damage if the swarm has half of its hit points or fewer."
 					]
 				}
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -1015,6 +1025,9 @@
 				"Spider Climb",
 				"Web Sense",
 				"Web Walker"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -2440,6 +2453,9 @@
 			],
 			"languageTags": [
 				"AQ"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -3984,7 +4000,7 @@
 				{
 					"name": "Fey Ancestry",
 					"entries": [
-						"Fala has advantage on saving throws against being {@condition charmed}, and magic can't put him to sleep."
+						"Fala has advantage on saving throws against being {@condition charmed}, and magic can't put them to sleep."
 					]
 				}
 			],
@@ -4000,7 +4016,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Fala is a 4th-level spellcaster. Her spellcasting ability is Wisdom. She has the following druid spells prepared:"
+						"Fala is a 4th-level spellcaster. Their spellcasting ability is Wisdom. They have the following druid spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -4375,7 +4391,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Ammalia is a 9th-level spellcaster. Her spellcasting ability is Intelligence. She has the following wizard spells prepared:"
+						"Ammalia is a 9th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). She has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {

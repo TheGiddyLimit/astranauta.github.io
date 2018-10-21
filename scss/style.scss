@@ -1130,11 +1130,11 @@ th#author {
 }
 
 .monster th.name {
-	padding-right: calc(5.1em + 2px);
+	padding-right: calc(11.2rem + 2px);
 }
 
 .mon__wrp_hp {
-	max-width: calc(100% - 5.2em);
+	max-width: calc(100% - 11rem);
 }
 
 table.stats td#sizetypealignment {
@@ -1654,10 +1654,10 @@ img.token {
 	position: absolute;
 	z-index: 10;
 	top: 0;
-	right: 0.1em;
+	right: 0.5rem;
 	float: right;
 	width: auto;
-	max-width: 5em;
+	max-width: 11rem;
 	height: auto;
 }
 
@@ -1672,18 +1672,6 @@ img.token:hover {
 
 #classtable tr th {
 	padding: 1px 0.2em;
-}
-
-table.stats #ability,
-table.stats #size,
-table.stats #speed {
-	font-weight: bold;
-}
-
-table.stats #ability span,
-table.stats #size span,
-table.stats #speed span {
-	font-weight: normal !important;
 }
 
 .monster-disclaimer {
@@ -1977,6 +1965,10 @@ body.dm-screen-fullscreen .dm-sidemenu-burger {
 		display: none;
 	}
 
+	#sticky-nav {
+		display: none !important;
+	}
+
 	table {
 		width: 100%;
 		margin-bottom: 5mm;
@@ -2029,6 +2021,11 @@ body.dm-screen-fullscreen .dm-sidemenu-burger {
 		th.border {
 			border: 0 !important;
 			padding: 0 !important;
+		}
+
+		// classes page book view
+		.pnl-menu {
+			display: none;
 		}
 	}
 
@@ -3370,14 +3367,14 @@ table.stats.stats-book--hover {
 
 table.stats table.striped-odd > tbody > tr:nth-child(odd),
 table.stats table.striped-even > tbody > tr:nth-child(even) {
-	background: #e4d8c3;
+	background: #cbbfaa80; // pre-blend: e4 d8 c3
 }
 
 table.stats.stats-book table.striped-odd > tbody > tr:nth-child(odd),
 table.stats.stats-book table.striped-even > tbody > tr:nth-child(even),
 table.stats.stats-book--hover table.striped-odd > tbody > tr:nth-child(odd),
 table.stats.stats-book--hover table.striped-even > tbody > tr:nth-child(even) {
-	background: #e0e0e0;
+	background: #c0c0c080; // pre-blend: e0 e0 e0
 }
 
 table.stats table.no-stripes > tbody > tr:nth-child(odd),
@@ -3977,6 +3974,7 @@ table.stats tr.homebrew-hover {
 
 	#crcalc label span.explanation {
 		border: 1px solid black;
+		background: $bg-color;
 	}
 
 	#msbcr tr:nth-child(even) {
@@ -4138,6 +4136,10 @@ table.stats tr.homebrew-hover {
 	#monsterfeatures tr:nth-child(odd),
 	ul.bk-headers li:nth-child(odd) {
 		background: rgba(0, 0, 0, 0.31);
+	}
+
+	ul.list-display-only.brew-list--groups li:nth-child(odd) {
+		background: initial;
 	}
 
 	ul.list.encounters > li > span:first-child,

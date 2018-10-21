@@ -4,7 +4,12 @@
 			"name": "Acolyte",
 			"source": "PHB",
 			"page": 127,
-			"skillProficiencies": "Insight, Religion",
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"religion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -201,13 +206,23 @@
 						}
 					]
 				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 2
+				}
 			]
 		},
 		{
 			"name": "Anthropologist",
 			"source": "ToA",
 			"page": 191,
-			"skillProficiencies": "Insight, Religion",
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"religion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -447,13 +462,23 @@
 						}
 					]
 				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 2
+				}
 			]
 		},
 		{
 			"name": "Archaeologist",
 			"source": "ToA",
 			"page": 192,
-			"skillProficiencies": "History, Survival",
+			"skillProficiencies": [
+				{
+					"history": true,
+					"survival": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -707,13 +732,33 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"navigator's tools",
+							"cartographer's tools"
+						]
+					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "Black Fist Double Agent",
 			"source": "ALCurseOfStrahd",
 			"page": 2,
-			"skillProficiencies": "Deception, Insight",
+			"skillProficiencies": [
+				{
+					"deception": true,
+					"insight": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -924,13 +969,29 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"disguise kit": true,
+					"choose": {
+						"from": [
+							"artisan's tools",
+							"gaming set"
+						]
+					}
+				}
 			]
 		},
 		{
 			"name": "Caravan Specialist",
 			"source": "ALElementalEvil",
 			"page": 2,
-			"skillProficiencies": "Animal Handling, Survival",
+			"skillProficiencies": [
+				{
+					"animal handling": true,
+					"survival": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -944,7 +1005,7 @@
 						{
 							"type": "item",
 							"name": "Tool Proficiencies",
-							"entry": "Land Vehicles"
+							"entry": "Vehicles (land)"
 						},
 						{
 							"type": "item",
@@ -1144,13 +1205,28 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"vehicles (land)": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "Charlatan",
 			"source": "PHB",
 			"page": 128,
-			"skillProficiencies": "Deception, Sleight of Hand",
+			"skillProficiencies": [
+				{
+					"deception": true,
+					"sleight of hand": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -1390,13 +1466,24 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"disguise kit": true,
+					"forgery kit": true
+				}
 			]
 		},
 		{
 			"name": "City Watch",
 			"source": "SCAG",
 			"page": 145,
-			"skillProficiencies": "Athletics, Insight",
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"insight": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -1437,13 +1524,23 @@
 						"Your bond is likely associated with your fellow watch members or the watch organization itself and almost certainly concerns your community. Your ideal probably involves the fostering of peace and safety. An investigator is likely to have an ideal connected to achieving justice by successfully solving crimes."
 					]
 				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 2
+				}
 			]
 		},
 		{
 			"name": "Clan Crafter",
 			"source": "SCAG",
 			"page": 145,
-			"skillProficiencies": "History, Insight",
+			"skillProficiencies": [
+				{
+					"history": true,
+					"insight": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -1489,13 +1586,37 @@
 						"Your bond is almost certainly related to the master or the clan that taught you, or else to the work that you produce. Your ideal might have to do with maintaining the high quality of your work or preserving the dwarven traditions of craftsmanship."
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"artisan's tools": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"dwarvish": true
+				},
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "Cloistered Scholar",
 			"source": "SCAG",
 			"page": 146,
-			"skillProficiencies": "History",
+			"skillProficiencies": [
+				{
+					"history": true,
+					"choose": {
+						"from": [
+							"arcana",
+							"nature",
+							"religion"
+						]
+					}
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -1538,13 +1659,23 @@
 						"Your bond is almost certainly associated either with the place where you grew up or with the knowledge you hope to acquire through adventuring. Your ideal is no doubt related to how you view the quest for knowledge and truth - perhaps as a worthy goal in itself, or maybe as a means to a desirable end."
 					]
 				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 2
+				}
 			]
 		},
 		{
 			"name": "Cormanthor Refugee",
 			"source": "ALRageOfDemons",
 			"page": 5,
-			"skillProficiencies": "Nature, Survival",
+			"skillProficiencies": [
+				{
+					"nature": true,
+					"survival": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -1758,13 +1889,23 @@
 					],
 					"name": "Suggested Characteristics"
 				}
+			],
+			"toolProficiencies": [
+				{
+					"artisan's tools": true
+				}
 			]
 		},
 		{
 			"name": "Courtier",
 			"source": "SCAG",
 			"page": 146,
-			"skillProficiencies": "Insight, Persuasion",
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"persuasion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -1805,13 +1946,23 @@
 						"The noble court or bureaucratic organization where you got your start is directly or indirectly associated with your bond (which could pertain to certain individuals in the group, such as your sponsor or mentor). Your ideal might be concerned with the prevailing philosophy of your court or organization."
 					]
 				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 2
+				}
 			]
 		},
 		{
 			"name": "Criminal",
 			"source": "PHB",
 			"page": 129,
-			"skillProficiencies": "Deception, Stealth",
+			"skillProficiencies": [
+				{
+					"deception": true,
+					"stealth": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -2059,13 +2210,18 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"gaming set": true,
+					"thieves' tools": true
+				}
 			]
 		},
 		{
 			"name": "Dissenter",
 			"source": "PSA",
 			"page": 11,
-			"skillProficiencies": "",
 			"entries": [
 				{
 					"name": "Overview",
@@ -2073,7 +2229,7 @@
 					"entries": [
 						"Even in the carefully constructed and curated city-state of Naktamun, and in the presence of the five gods, some people rebel against the doctrines of the God-Pharaoh. They don't challenge the existence of the gods, of course, for those gods are visible nearly every day in the streets of the city. Nor do they question the fact of life after death, which is plain to see in the anointed mummies that surround them, as well as the marauding mummies outside the Hekma. Rather, these dissenters simply refuse to follow the ordained course of life that leads to the glorious afterlife.",
 						"Some dissenters are spurred by fear, not wanting to subject themselves to a violent death in the trials (or in training for the trials). Some are moved by conscience, unwilling to kill their crop-mates in the trials. For while they cannot deny that the gods exist, they can deny that the gods are just\u2014and can fight to prove that the dictates of an unjust god need not be obeyed. Some believe that one god (probably Bontu) has corrupted the process of the trials and the path to the afterlife. Others correctly intuit that the God-Pharaoh did not actually have the people's best interests in mind when he ordered their society.",
-						"A character who is identified as a dissenter loses the benefit of the initiate's or vizier's background feature. In its place, the character gains the following feature:"
+						"A character who is identified as a dissenter loses the benefit of the {@background initiate|psa}'s or {@background vizier|psa}'s background feature. In its place, the character gains the following feature:"
 					]
 				},
 				{
@@ -2086,13 +2242,28 @@
 						"isFeature": true
 					}
 				}
+			],
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"intimidation": true
+				},
+				{
+					"history": true,
+					"religion": true
+				}
 			]
 		},
 		{
 			"name": "Dragon Casualty",
 			"source": "ALCurseOfStrahd",
 			"page": 3,
-			"skillProficiencies": "Intimidation, Survival",
+			"skillProficiencies": [
+				{
+					"intimidation": true,
+					"survival": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -2182,7 +2353,7 @@
 								[
 									"6",
 									"Scholar/Healer",
-									"Alchemists Supplies or Herbalism Kit"
+									"Alchemist's Supplies or Herbalism Kit"
 								],
 								[
 									"7",
@@ -2423,13 +2594,65 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"vehicles (water)": true
+				},
+				{
+					"artisan's tools": true
+				},
+				{
+					"choose": {
+						"from": [
+							"gaming set",
+							"vehicles (land)"
+						]
+					}
+				},
+				{
+					"vehicles (land)": true
+				},
+				{
+					"musical instrument": true
+				},
+				{
+					"choose": {
+						"from": [
+							"alchemist's supplies",
+							"herbalism kit"
+						]
+					}
+				},
+				{
+					"choose": {
+						"from": [
+							"thieves' tools",
+							"forgery kit",
+							"disguise kit"
+						]
+					}
+				},
+				{
+					"gaming set": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"draconic": true
+				}
 			]
 		},
 		{
 			"name": "Earthspur Miner",
 			"source": "ALElementalEvil",
 			"page": 3,
-			"skillProficiencies": "Athletics, Survival",
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"survival": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -2443,7 +2666,7 @@
 						{
 							"type": "item",
 							"name": "Languages",
-							"entry": "Dwarven and Undercommon "
+							"entry": "Dwarvish and Undercommon "
 						},
 						{
 							"type": "item",
@@ -2638,13 +2861,24 @@
 					],
 					"name": "Suggested Characteristics"
 				}
+			],
+			"languageProficiencies": [
+				{
+					"dwarvish": true,
+					"undercommon": true
+				}
 			]
 		},
 		{
 			"name": "Entertainer",
 			"source": "PHB",
 			"page": 130,
-			"skillProficiencies": "Acrobatics, Performance",
+			"skillProficiencies": [
+				{
+					"acrobatics": true,
+					"performance": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -2900,13 +3134,41 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"disguise kit": true,
+					"musical instrument": true
+				}
 			]
 		},
 		{
 			"name": "Faction Agent",
 			"source": "SCAG",
 			"page": 147,
-			"skillProficiencies": "Insight",
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"choose": {
+						"from": [
+							"arcana",
+							"animal handling",
+							"deception",
+							"history",
+							"insight",
+							"intimidation",
+							"investigation",
+							"medicine",
+							"nature",
+							"perception",
+							"performance",
+							"persuasion",
+							"religion",
+							"survival"
+						]
+					}
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -2947,13 +3209,23 @@
 						"Your bond might be associated with other members of your faction, or a location or an object that is important to your faction. The ideal you strive for is probably in keeping with the tenets and principles of your faction, but might be more personal in nature."
 					]
 				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 2
+				}
 			]
 		},
 		{
 			"name": "Far Traveler",
 			"source": "SCAG",
 			"page": 148,
-			"skillProficiencies": "Insight, Perception",
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"perception": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -3190,13 +3462,33 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"musical instrument",
+							"gaming set"
+						]
+					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "Folk Hero",
 			"source": "PHB",
 			"page": 131,
-			"skillProficiencies": "Animal Handling, Survival",
+			"skillProficiencies": [
+				{
+					"animal handling": true,
+					"survival": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -3452,13 +3744,24 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"artisan's tools": true,
+					"vehicles (land)": true
+				}
 			]
 		},
 		{
 			"name": "Gate Urchin",
 			"source": "ALRageOfDemons",
 			"page": 6,
-			"skillProficiencies": "Deception, Sleight of Hand",
+			"skillProficiencies": [
+				{
+					"deception": true,
+					"sleight of hand": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -3667,13 +3970,24 @@
 					],
 					"name": "Suggested Characteristics"
 				}
+			],
+			"toolProficiencies": [
+				{
+					"thieves' tools": true,
+					"musical instrument": true
+				}
 			]
 		},
 		{
 			"name": "Guild Artisan",
 			"source": "PHB",
 			"page": 132,
-			"skillProficiencies": "Insight, Persuasion",
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"persuasion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -3688,6 +4002,11 @@
 							"type": "item",
 							"name": "Tool Proficiencies",
 							"entry": "One type of artisan's tools"
+						},
+						{
+							"type": "item",
+							"name": "Languages",
+							"entry": "One of your choice"
 						},
 						{
 							"type": "item",
@@ -3971,13 +4290,28 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"artisan's tools": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "Harborfolk",
 			"source": "ALElementalEvil",
 			"page": 4,
-			"skillProficiencies": "Athletics, Sleight of Hand",
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"sleight of hand": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -4186,13 +4520,18 @@
 					],
 					"name": "Suggested Characteristics"
 				}
+			],
+			"toolProficiencies": [
+				{
+					"gaming set": true,
+					"vehicles (water)": true
+				}
 			]
 		},
 		{
 			"name": "Haunted One",
 			"source": "CoS",
 			"page": 209,
-			"skillProficiencies": "",
 			"entries": [
 				{
 					"type": "list",
@@ -4448,13 +4787,47 @@
 						}
 					]
 				}
+			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"arcana",
+							"investigation",
+							"religion",
+							"survival"
+						],
+						"count": 2
+					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"abyssal",
+							"celestial",
+							"deep speech",
+							"draconic",
+							"infernal",
+							"primordial",
+							"sylvan",
+							"undercommon"
+						]
+					}
+				}
 			]
 		},
 		{
 			"name": "Hermit",
 			"source": "PHB",
 			"page": 134,
-			"skillProficiencies": "Medicine, Religion",
+			"skillProficiencies": [
+				{
+					"medicine": true,
+					"religion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -4708,13 +5081,28 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"herbalism kit": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "Hillsfar Merchant",
 			"source": "ALRageOfDemons",
 			"page": 7,
-			"skillProficiencies": "Insight, Persuasion",
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"persuasion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -4935,13 +5323,24 @@
 					],
 					"name": "Suggested Characteristics"
 				}
+			],
+			"toolProficiencies": [
+				{
+					"vehicles (land)": true,
+					"vehicles (water)": true
+				}
 			]
 		},
 		{
 			"name": "Hillsfar Smuggler",
 			"source": "ALRageOfDemons",
 			"page": 8,
-			"skillProficiencies": "Perception, Stealth",
+			"skillProficiencies": [
+				{
+					"perception": true,
+					"stealth": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -5156,13 +5555,28 @@
 					],
 					"name": "Suggested Characteristics"
 				}
+			],
+			"toolProficiencies": [
+				{
+					"forgery kit": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "House Agent",
 			"source": "UAWGE",
 			"page": 94,
-			"skillProficiencies": "Investigation, Persuasion",
+			"skillProficiencies": [
+				{
+					"investigation": true,
+					"persuasion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -5431,13 +5845,79 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"alchemist's supplies": true,
+					"tinker's tools": true
+				},
+				{
+					"gaming set": true,
+					"vehicles (land)": true
+				},
+				{
+					"brewer's supplies": true,
+					"cook's utensils": true
+				},
+				{
+					"alchemist's supplies": true,
+					"herbalism kit": true
+				},
+				{
+					"tinker's tools": true,
+					"thieves' tools": true
+				},
+				{
+					"vehicles (sea)": true,
+					"vehicles (air)": true,
+					"navigator's tools": true
+				},
+				{
+					"thieves' tools": true,
+					"disguise kit": true
+				},
+				{
+					"vehicles (land)": true,
+					"one gaming set": true
+				},
+				{
+					"disguise kit": true,
+					"one musical instrument": true
+				},
+				{
+					"calligrapher's tools": true,
+					"forgery kit": true
+				},
+				{
+					"thieves' tools": true,
+					"one gaming set": true
+				},
+				{
+					"poisoner's kit": true,
+					"one musical instrument": true
+				},
+				{
+					"vehicles (land)": true,
+					"herbalism kit": true
+				}
 			]
 		},
 		{
 			"name": "Inheritor",
 			"source": "SCAG",
 			"page": 150,
-			"skillProficiencies": "Survival",
+			"skillProficiencies": [
+				{
+					"survival": true,
+					"choose": {
+						"from": [
+							"arcana",
+							"history",
+							"religion"
+						]
+					}
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -5526,13 +6006,33 @@
 						"Your bond might be directly related to your inheritance, or to the person from whom you received it. Your ideal might be influenced by what you know about your inheritance, or by what you intend to do with your gift once you realize what it is capable of."
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"musical instrument",
+							"gaming set"
+						]
+					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "Initiate",
 			"source": "PSA",
 			"page": 8,
-			"skillProficiencies": "Athletics, Intimidation",
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"intimidation": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -5771,13 +6271,24 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"gaming set": true,
+					"vehicles (land)": true
+				}
 			]
 		},
 		{
 			"name": "Inquisitor",
 			"source": "PSI",
 			"page": 12,
-			"skillProficiencies": "Investigation, Religion",
+			"skillProficiencies": [
+				{
+					"investigation": true,
+					"religion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -5791,7 +6302,7 @@
 						{
 							"type": "item",
 							"name": "Tool Proficiencies",
-							"entry": "Thieves' tools, one set of artisan's tools of your choice"
+							"entry": "Thieves' tools, one type of artisan's tools"
 						},
 						{
 							"type": "item",
@@ -5810,13 +6321,24 @@
 						"isFeature": true
 					}
 				}
+			],
+			"toolProficiencies": [
+				{
+					"thieves' tools": true,
+					"artisan's tools": true
+				}
 			]
 		},
 		{
 			"name": "Iron Route Bandit",
 			"source": "ALCurseOfStrahd",
 			"page": 5,
-			"skillProficiencies": "Animal Handling, Stealth",
+			"skillProficiencies": [
+				{
+					"animal handling": true,
+					"stealth": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -6025,13 +6547,31 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"gaming set": true,
+					"vehicles (land)": true
+				}
 			]
 		},
 		{
 			"name": "Knight of the Order",
 			"source": "SCAG",
 			"page": 151,
-			"skillProficiencies": "Persuasion",
+			"skillProficiencies": [
+				{
+					"persuasion": true,
+					"choose": {
+						"from": [
+							"arcana",
+							"history",
+							"nature",
+							"religion"
+						]
+					}
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -6078,13 +6618,33 @@
 						"Your bond almost always involves the order to which you belong (or at least key members of it), and it is highly unusual for a knight's ideal not to reflect the agenda, sentiment, or philosophy of one's order."
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"musical instrument",
+							"gaming set"
+						]
+					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "Mercenary Veteran",
 			"source": "SCAG",
 			"page": 152,
-			"skillProficiencies": "Athletics, Persuasion",
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"persuasion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -6125,13 +6685,24 @@
 						"Your bond could be associated with the company you traveled with previously, or with some of the comrades you served with. The ideal you embrace largely depends on your worldview and your motivation for fighting."
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"gaming set": true,
+					"vehicles (land)": true
+				}
 			]
 		},
 		{
 			"name": "Mulmaster Aristocrat",
 			"source": "ALElementalEvil",
 			"page": 5,
-			"skillProficiencies": "Deception, Performance",
+			"skillProficiencies": [
+				{
+					"deception": true,
+					"performance": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -6340,13 +6911,24 @@
 					],
 					"name": "Suggested Characteristics"
 				}
+			],
+			"toolProficiencies": [
+				{
+					"artisan's tools": true,
+					"musical instrument": true
+				}
 			]
 		},
 		{
 			"name": "Noble",
 			"source": "PHB",
 			"page": 135,
-			"skillProficiencies": "History, Persuasion",
+			"skillProficiencies": [
+				{
+					"history": true,
+					"persuasion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -6547,13 +7129,28 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"gaming set": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "Outlander",
 			"source": "PHB",
 			"page": 136,
-			"skillProficiencies": "Athletics, Survival",
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"survival": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -6814,13 +7411,28 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"musical instrument": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "Phlan Insurgent",
 			"source": "ALCurseOfStrahd",
 			"page": 6,
-			"skillProficiencies": "Stealth, Survival",
+			"skillProficiencies": [
+				{
+					"stealth": true,
+					"survival": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -6921,7 +7533,7 @@
 					]
 				},
 				{
-					"name": "Feature: Guerilla",
+					"name": "Feature: Guerrilla",
 					"type": "entries",
 					"entries": [
 						"You've come to know the surrounding forests, streams, caves, and other natural features in which you can take refuge--or set up ambushes. You can quickly survey your environment for advantageous features. Additionally, you can scavenge around your natural surroundings to cobble together simple supplies (such as improvised torches, rope, patches of fabric, etc.) that are consumed after use. Note: This feature is a variant of the Outlander feature."
@@ -7093,13 +7705,24 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"artisan's tools": true,
+					"vehicles (land)": true
+				}
 			]
 		},
 		{
 			"name": "Phlan Refugee",
 			"source": "ALElementalEvil",
 			"page": 6,
-			"skillProficiencies": "Insight, Athletics",
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"athletics": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -7113,12 +7736,12 @@
 						{
 							"type": "item",
 							"name": "Tool Proficiencies",
-							"entry": "One type of Artisan tools"
+							"entry": "One type of Artisan's tools"
 						},
 						{
 							"type": "item",
 							"name": "Languages",
-							"entry": "One of your choosing."
+							"entry": "One of your choice"
 						},
 						{
 							"type": "item",
@@ -7313,13 +7936,28 @@
 					],
 					"name": "Suggested Characteristics"
 				}
+			],
+			"toolProficiencies": [
+				{
+					"artisan's tools": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "Sage",
 			"source": "PHB",
 			"page": 137,
-			"skillProficiencies": "Arcana, History",
+			"skillProficiencies": [
+				{
+					"arcana": true,
+					"history": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -7567,13 +8205,23 @@
 						}
 					]
 				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 2
+				}
 			]
 		},
 		{
 			"name": "Sailor",
 			"source": "PHB",
 			"page": 139,
-			"skillProficiencies": "Athletics, Perception",
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"perception": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -7769,13 +8417,24 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"navigator's tools": true,
+					"vehicles (water)": true
+				}
 			]
 		},
 		{
 			"name": "Secret Identity",
 			"source": "ALRageOfDemons",
 			"page": 9,
-			"skillProficiencies": "Deception, Stealth",
+			"skillProficiencies": [
+				{
+					"deception": true,
+					"stealth": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -7984,13 +8643,24 @@
 					],
 					"name": "Suggested Characteristics"
 				}
+			],
+			"toolProficiencies": [
+				{
+					"disguise kit": true,
+					"forgery kit": true
+				}
 			]
 		},
 		{
 			"name": "Shade Fanatic",
 			"source": "ALRageOfDemons",
 			"page": 10,
-			"skillProficiencies": "Deception, Intimidation",
+			"skillProficiencies": [
+				{
+					"deception": true,
+					"intimidation": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -8205,13 +8875,28 @@
 					],
 					"name": "Suggested Characteristics"
 				}
+			],
+			"toolProficiencies": [
+				{
+					"forgery kit": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"other": true
+				}
 			]
 		},
 		{
 			"name": "Soldier",
 			"source": "PHB",
 			"page": 140,
-			"skillProficiencies": "Athletics, Intimidation",
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"intimidation": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -8459,13 +9144,24 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"gaming set": true,
+					"vehicles (land)": true
+				}
 			]
 		},
 		{
 			"name": "Stojanow Prisoner",
 			"source": "ALCurseOfStrahd",
 			"page": 8,
-			"skillProficiencies": "Deception, Perception",
+			"skillProficiencies": [
+				{
+					"deception": true,
+					"perception": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -8675,13 +9371,24 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"gaming set": true,
+					"thieves' tools": true
+				}
 			]
 		},
 		{
 			"name": "Ticklebelly Nomad",
 			"source": "ALCurseOfStrahd",
 			"page": 9,
-			"skillProficiencies": "Animal Handling, Nature",
+			"skillProficiencies": [
+				{
+					"animal handling": true,
+					"nature": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -8897,13 +9604,28 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"herbalism kit": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"giant": true
+				}
 			]
 		},
 		{
-			"name": "Trade Sherrif",
+			"name": "Trade Sheriff",
 			"source": "ALRageOfDemons",
 			"page": 11,
-			"skillProficiencies": "Investigation, Persuasion",
+			"skillProficiencies": [
+				{
+					"investigation": true,
+					"persuasion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -8922,12 +9644,12 @@
 						{
 							"type": "item",
 							"name": "Languages",
-							"entry": "Elven"
+							"entry": "Elvish"
 						},
 						{
 							"type": "item",
 							"name": "Equipment",
-							"entry": "{@item Thieves' tools|phb}, a gray cloak, Sherrif's insignia (badge) a set of {@item fine clothes|phb}, and 17 gp"
+							"entry": "{@item Thieves' tools|phb}, a gray cloak, Sheriff's insignia (badge) a set of {@item fine clothes|phb}, and 17 gp"
 						}
 					]
 				},
@@ -9066,7 +9788,7 @@
 								],
 								[
 									"4",
-									"I need to prove my worth to my fellow Sherrifs"
+									"I need to prove my worth to my fellow Sheriffs"
 								],
 								[
 									"5",
@@ -9118,13 +9840,22 @@
 					],
 					"name": "Suggested Characteristics"
 				}
+			],
+			"toolProficiencies": [
+				{
+					"thieves' tools": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"elvish": true
+				}
 			]
 		},
 		{
 			"name": "Urban Bounty Hunter",
 			"source": "SCAG",
 			"page": 153,
-			"skillProficiencies": "",
 			"entries": [
 				{
 					"type": "list",
@@ -9138,7 +9869,7 @@
 						{
 							"type": "item",
 							"name": "Tool Proficiencies",
-							"entry": "Choose two from among one type of gaming set, one musical instrument, and thieves's tools"
+							"entry": "Choose two from among one type of gaming set, one musical instrument, and thieves' tools"
 						},
 						{
 							"type": "item",
@@ -9165,13 +9896,43 @@
 						"For instance, your bond might involve other bounty hunters or the organizations or individuals that employ you. Your ideal could be associated with your determination always to catch your quarry or your desire to maintain your reputation for being dependable."
 					]
 				}
+			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"deception",
+							"insight",
+							"persuasion",
+							"stealth"
+						],
+						"count": 2
+					}
+				}
+			],
+			"toolProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"gaming set",
+							"musical instrument",
+							"thieves' tools"
+						],
+						"count": 2
+					}
+				}
 			]
 		},
 		{
 			"name": "Urchin",
 			"source": "PHB",
 			"page": 141,
-			"skillProficiencies": "Sleight of Hand, Stealth",
+			"skillProficiencies": [
+				{
+					"sleight of hand": true,
+					"stealth": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -9367,13 +10128,24 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"disguise kit": true,
+					"thieves' tools": true
+				}
 			]
 		},
 		{
 			"name": "Uthgardt Tribe Member",
 			"source": "SCAG",
 			"page": 153,
-			"skillProficiencies": "{@skill Athletics}, {@skill Survival}",
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"survival": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -9421,13 +10193,33 @@
 						"Your bond is undoubtedly associated with your tribe or some aspect of Uthgardt philosophy or culture (perhaps even Uthgar himself). Your ideal is a personal choice that probably hews closely to the ethos of your people and certainly doesn't contradict or compromise what being an Uthgardt stands for."
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"musical instrument",
+							"artisan's tools"
+						]
+					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "Variant City Watch (Investigator)",
 			"source": "SCAG",
 			"page": 145,
-			"skillProficiencies": "Insight, Investigation",
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"investigation": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -9468,13 +10260,23 @@
 						"Your bond is likely associated with your fellow watch members or the watch organization itself and almost certainly concerns your community. Your ideal probably involves the fostering of peace and safety. An investigator is likely to have an ideal connected to achieving justice by successfully solving crimes."
 					]
 				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 2
+				}
 			]
 		},
 		{
 			"name": "Variant Criminal (Spy)",
 			"source": "PHB",
 			"page": 130,
-			"skillProficiencies": "Deception, Stealth",
+			"skillProficiencies": [
+				{
+					"deception": true,
+					"stealth": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -9507,13 +10309,24 @@
 						"isFeature": true
 					}
 				}
+			],
+			"toolProficiencies": [
+				{
+					"gaming set": true,
+					"thieves' tools": true
+				}
 			]
 		},
 		{
 			"name": "Variant Entertainer (Gladiator)",
 			"source": "PHB",
 			"page": 131,
-			"skillProficiencies": "Acrobatics, Performance",
+			"skillProficiencies": [
+				{
+					"acrobatics": true,
+					"performance": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -9546,13 +10359,24 @@
 						"isFeature": true
 					}
 				}
+			],
+			"toolProficiencies": [
+				{
+					"disguise kit": true,
+					"musical instrument": true
+				}
 			]
 		},
 		{
 			"name": "Variant Guild Artisan (Guild Merchant)",
 			"source": "PHB",
 			"page": 133,
-			"skillProficiencies": "Insight, Persuasion",
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"persuasion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -9566,12 +10390,12 @@
 						{
 							"type": "item",
 							"name": "Tool Proficiencies",
-							"entry": "Navigator's Tools or an additional language"
+							"entry": "One type of artisan's tools, or navigator's Tools, or an additional language"
 						},
 						{
 							"type": "item",
 							"name": "Equipment",
-							"entry": "A {@item mule|phb} and {@item cart|phb}, a letter of introduction from your guild, a set of {@item traveler's clothes|phb}, and a belt {@item pouch|phb} containing 15 gp"
+							"entry": "A set of {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan tool} (one of your choice) or a {@item mule|phb} and {@item cart|phb}, a letter of introduction from your guild, a set of {@item traveler's clothes|phb}, and a belt {@item pouch|phb} containing 15 gp"
 						}
 					]
 				},
@@ -9587,13 +10411,28 @@
 						"isFeature": true
 					}
 				}
+			],
+			"toolProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"artisan's tools",
+							"navigator's tools"
+						]
+					}
+				}
 			]
 		},
 		{
 			"name": "Variant Noble (Knight)",
 			"source": "PHB",
 			"page": 136,
-			"skillProficiencies": "History, Persuasion",
+			"skillProficiencies": [
+				{
+					"history": true,
+					"persuasion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -9640,13 +10479,28 @@
 						"isFeature": true
 					}
 				}
+			],
+			"toolProficiencies": [
+				{
+					"gaming set": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
 			]
 		},
 		{
 			"name": "Variant Sailor (Pirate)",
 			"source": "PHB",
 			"page": 139,
-			"skillProficiencies": "Athletics, Perception",
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"perception": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -9679,13 +10533,24 @@
 						"isFeature": true
 					}
 				}
+			],
+			"toolProficiencies": [
+				{
+					"navigator's tools": true,
+					"vehicles (water)": true
+				}
 			]
 		},
 		{
 			"name": "Vizier",
 			"source": "PSA",
 			"page": 10,
-			"skillProficiencies": "History, Religion",
+			"skillProficiencies": [
+				{
+					"history": true,
+					"religion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -9889,13 +10754,24 @@
 						}
 					]
 				}
+			],
+			"toolProficiencies": [
+				{
+					"artisan's tools": true,
+					"musical instrument": true
+				}
 			]
 		},
 		{
 			"name": "Waterdhavian Noble",
 			"source": "SCAG",
 			"page": 154,
-			"skillProficiencies": "History, Persuasion",
+			"skillProficiencies": [
+				{
+					"history": true,
+					"persuasion": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -9914,7 +10790,7 @@
 						{
 							"type": "item",
 							"name": "Tool Proficiencies",
-							"entry": "One type of gaming set or one musical instrument"
+							"entry": "One type of gaming set or musical instrument"
 						},
 						{
 							"type": "item",
@@ -9941,6 +10817,21 @@
 						"Use the tables for the {@background noble} background in the Player's Handbook as the basis for your traits and motivations, modifying the entries when appropriate to suit your identity as a member of a Waterdhavian family.",
 						"Like other nobles, you were born and raised in a different world from the one that most folk know - one that grants you privilege but also calls you to fulfill a duty befitting your station. Your bond might be associated with your family alone, or it could be concerned with another noble house that sides with or opposes your own. Your ideal depends to some extent on how you view your role in the family, and how you intend to conduct yourself in the world at large as a representative of your house."
 					]
+				}
+			],
+			"toolProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"gaming set",
+							"musical instrument"
+						]
+					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
 				}
 			]
 		}

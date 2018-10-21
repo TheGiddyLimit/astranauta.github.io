@@ -3,6 +3,7 @@ const JSON_URL = "data/generated/gendata-tables.json";
 const renderer = EntryRenderer.getDefaultRenderer();
 
 window.onload = function load () {
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
@@ -11,7 +12,7 @@ let filterBox;
 let list;
 function onJsonLoad (data) {
 	list = ListUtil.search({
-		valueNames: ["name", "source"],
+		valueNames: ["name", "source", "sort-name"],
 		listClass: "tablesdata"
 	});
 
@@ -72,11 +73,14 @@ function addTables (data) {
 	for (; cdI < tableList.length; cdI++) {
 		const it = tableList[cdI];
 
+		const sortName = it.name.replace(/^([\d,.]+)gp/, (...m) => m[1].replace(Parser._numberCleanRegexp, "").padStart(9, "0"));
+
 		tempString += `
 			<li class="row" ${FLTR_ID}="${cdI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${cdI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 					<span class='name col-xs-10'>${it.name}</span>
 					<span class='source col-xs-2 text-align-center ${Parser.sourceJsonToColor(it.source)}' title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
+					<span class="hidden sort-name">${sortName}</span>
 				</a>
 			</li>`;
 
@@ -91,7 +95,7 @@ function addTables (data) {
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
-	list.sort("name");
+	list.sort("sort-name");
 	filterBox.render();
 	handleFilterChange();
 

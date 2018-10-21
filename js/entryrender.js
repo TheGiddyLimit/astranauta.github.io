@@ -453,6 +453,8 @@ function EntryRenderer () {
 			if (entry.href.type === "internal") {
 				const imgPart = `img/${entry.href.path}`;
 				href = this.baseUrl !== "" ? `${this.baseUrl}${imgPart}` : UrlUtil.link(imgPart);
+			} else if (entry.href.type === "external") {
+				href = entry.href.url;
 			}
 			textStack[0] += `
 					<div class="img__wrapper">
@@ -1667,12 +1669,58 @@ EntryRenderer.background = {
 			<tr class="text"><td colspan="6">
 		`);
 		if (bg.skillProficiencies) {
-			renderer.recursiveEntryRender({name: "Skill Proficiencies", entries: [bg.skillProficiencies]}, renderStack, 2);
+			renderer.recursiveEntryRender({name: "Skill Proficiencies", entries: [EntryRenderer.background.getSkillSummary(bg.skillProficiencies)]}, renderStack, 2);
 		}
 		renderer.recursiveEntryRender({entries: bg.entries.filter(it => it.data && it.data.isFeature)}, renderStack, 1);
 		renderStack.push(`</td></tr>`);
 
 		return renderStack.join("");
+	},
+
+	getSkillSummary (skillProfsArr, short, collectIn) {
+		return EntryRenderer.background._summariseProfs(skillProfsArr, short, collectIn, `skill`);
+	},
+
+	getToolSummary (toolProfsArray, short, collectIn) {
+		return EntryRenderer.background._summariseProfs(toolProfsArray, short, collectIn);
+	},
+
+	getLanguageSummary (toolProfsArray, short, collectIn) {
+		return EntryRenderer.background._summariseProfs(toolProfsArray, short, collectIn);
+	},
+
+	_summariseProfs (profGroupArr, short, collectIn, hoverTag) {
+		if (!profGroupArr) return "";
+
+		function getEntry (s) {
+			return short ? s.toTitleCase() : hoverTag ? `{@${hoverTag} ${s.toTitleCase()}}` : s.toTitleCase();
+		}
+
+		function sortKeys (a, b) {
+			if (a === b) return 0;
+			if (a === "choose") return 1;
+			if (b === "choose") return -1;
+			return SortUtil.ascSort(a, b);
+		}
+
+		return profGroupArr.map(profGroup => {
+			let sep = ", ";
+			const toJoin = Object.keys(profGroup).sort(sortKeys).filter(k => profGroup[k]).map((k, i) => {
+				if (k === "choose") {
+					sep = "; ";
+					const choose = profGroup[k];
+					const chooseProfs = choose.from.map(s => {
+						collectIn && !collectIn.includes(s) && collectIn.push(s);
+						return getEntry(s);
+					});
+					return `${short ? `${i === 0 ? "C" : "c"}hoose ` : ""}${choose.count || 1} ${short ? `of` : `from`} ${chooseProfs.joinConjunct(", ", " or ")}`;
+				} else {
+					collectIn && !collectIn.includes(k) && collectIn.push(k);
+					return getEntry(k);
+				}
+			});
+			return toJoin.join(sep);
+		}).join("/");
 	}
 };
 
@@ -1681,8 +1729,9 @@ EntryRenderer.optionalfeature = {
 		prereqLevel: 0,
 		prereqPact: 1,
 		prereqPatron: 2,
-		prereqSpellOrFeature: 3,
-		[undefined]: 4
+		prereqSpell: 3,
+		prereqFeature: 4,
+		[undefined]: 5
 	},
 	getPrerequisiteText: (prerequisites, listMode) => {
 		if (!prerequisites) return STR_NONE;
@@ -1700,8 +1749,10 @@ EntryRenderer.optionalfeature = {
 					return Parser.prereqPactToFull(it.entry);
 				case "prereqPatron":
 					return listMode ? `${Parser.prereqPatronToShort(it.entry)} patron` : `${it.entry} patron`;
-				case "prereqSpellOrFeature":
-					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.map(sp => Parser.prereqSpellOrFeatureToFull(sp)).joinConjunct(", ", " or ");
+				case "prereqSpell":
+					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.map(sp => Parser.prereqSpellToFull(sp)).joinConjunct(", ", " or ");
+				case "prereqFeature":
+					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.joinConjunct(", ", " or ");
 				default: // string
 					return it;
 			}
@@ -2290,22 +2341,22 @@ EntryRenderer.monster = {
 		$btnScaleCr.after($wrp);
 	},
 
+	getCompactRenderedStringSection (mon, renderer, title, key, depth) {
+		return mon[key] ? `
+		<tr class="mon-sect-header"><td colspan="6"><span>${title}</span></td></tr>
+		<tr class="text compact"><td colspan="6">
+		${key === "legendary" && mon.legendary ? `<p>${EntryRenderer.monster.getLegendaryActionIntro(mon)}</p>` : ""}
+		${mon[key].map(it => it.rendered || renderer.renderEntry(it, depth)).join("")}
+		</td></tr>
+		` : "";
+	},
+
 	getCompactRenderedString: (mon, renderer, options = {}) => {
 		renderer = renderer || EntryRenderer.getDefaultRenderer();
 
 		function makeAbilityRoller (ability) {
 			const mod = Parser.getAbilityModifier(mon[ability]);
 			return renderer.renderEntry(`{@d20 ${mod}|${mon[ability]} (${mod})|${Parser.attAbvToFull(ability)}`);
-		}
-
-		function getSection (title, key, depth) {
-			return mon[key] ? `
-			<tr class="mon-sect-header"><td colspan="6"><span>${title}</span></td></tr>
-			<tr class="text compact"><td colspan="6">
-			${key === "legendary" && mon.legendary ? `<p>${EntryRenderer.monster.getLegendaryActionIntro(mon)}</p>` : ""}
-			${mon[key].map(it => it.rendered || renderer.renderEntry(it, depth)).join("")}
-			</td></tr>
-			` : ""
 		}
 
 		const renderStack = [];
@@ -2380,9 +2431,9 @@ EntryRenderer.monster = {
 			<tr class="text compact"><td colspan="6">
 			${EntryRenderer.monster.getOrderedTraits(mon, renderer).map(it => it.rendered || renderer.renderEntry(it, 3)).join("")}
 			</td></tr>` : ""}
-			${getSection("Actions", "action", 3)}
-			${getSection("Reactions", "reaction", 3)}
-			${getSection("Legendary Actions", "legendary", 3)}
+			${EntryRenderer.monster.getCompactRenderedStringSection(mon, renderer, "Actions", "action", 3)}
+			${EntryRenderer.monster.getCompactRenderedStringSection(mon, renderer, "Reactions", "reaction", 3)}
+			${EntryRenderer.monster.getCompactRenderedStringSection(mon, renderer, "Legendary Actions", "legendary", 3)}
 			${mon.variant || (mon.dragonCastingColor && !mon.spellcasting) ? `
 			<tr class="text compact"><td colspan="6">
 			${mon.variant ? mon.variant.map(it => it.rendered || renderer.renderEntry(it)).join("") : ""}
@@ -2805,6 +2856,7 @@ EntryRenderer.item = {
 
 		// bake in types
 		const type = [];
+		const filterType = [];
 		const typeListText = [];
 		if (item.wondrous) {
 			type.push("Wondrous Item");
@@ -2812,25 +2864,31 @@ EntryRenderer.item = {
 		}
 		if (item.technology) {
 			type.push(item.technology);
+			filterType.push(item.technology);
 			typeListText.push(item.technology);
 		}
 		if (item.age) {
 			type.push(item.age);
+			filterType.push(item.age);
 			typeListText.push(item.age);
 		}
 		if (item.weaponCategory) {
 			type.push(`${item.weaponCategory} Weapon${item.baseItem ? ` (${EntryRenderer.getDefaultRenderer().renderEntry(`{@item ${item.baseItem}`)})` : ""}`);
+			filterType.push(`${item.weaponCategory} Weapon`);
 			typeListText.push(`${item.weaponCategory} Weapon`);
 		}
 		if (item.type) {
-			type.push(Parser.itemTypeToAbv(item.type));
-			typeListText.push(Parser.itemTypeToAbv(item.type));
+			const abv = Parser.itemTypeToAbv(item.type);
+			type.push(abv);
+			filterType.push(abv);
+			typeListText.push(abv);
 		}
 		if (item.poison) {
 			type.push("Poison");
+			filterType.push("Poison");
 			typeListText.push("Poison");
 		}
-		item.procType = type;
+		item.procType = filterType;
 		item.typeText = type.join(", ");
 		item.typeListText = typeListText.join(", ");
 
@@ -4045,7 +4103,7 @@ EntryRenderer.dice = {
 		const entry = JSON.parse(packed);
 		function attemptToGetTitle () {
 			// try use table caption
-			let titleMaybe = $(ele).closest(`table:not(.stats)`).find(`caption`).text();
+			let titleMaybe = $(ele).closest(`table:not(.stats)`).children(`caption`).text();
 			if (titleMaybe) return titleMaybe;
 			// ty use list item title
 			titleMaybe = $(ele).parent().children(`.list-item-title`).text();
@@ -4075,8 +4133,10 @@ EntryRenderer.dice = {
 		}
 
 		function getThRoll (total) {
-			const $td = $ele.closest(`table`).find(`td`).filter((i, e) => {
+			const $table = $ele.closest(`table`);
+			const $td = $table.find(`td`).filter((i, e) => {
 				const $e = $(e);
+				if (!$e.closest(`table`).is($table)) return false;
 				return total >= Number($e.data("roll-min")) && total <= Number($e.data("roll-max"));
 			});
 			if ($td.length && $td.nextAll().length) {
@@ -4867,7 +4927,7 @@ if (!IS_ROLL20 && typeof window !== "undefined") {
  */
 EntryRenderer.getNames = function (nameStack, entry, maxDepth = -1, depth = 0) {
 	if (maxDepth !== -1 && depth > maxDepth) return;
-	if (entry.name) nameStack.push(entry.name);
+	if (entry.name) nameStack.push(EntryRenderer.stripTags(entry.name));
 	if (entry.entries) {
 		for (const eX of entry.entries) {
 			EntryRenderer.getNames(nameStack, eX, maxDepth, depth + 1);
@@ -4884,8 +4944,29 @@ EntryRenderer.getNumberedNames = function (entry) {
 	renderer.renderEntry(entry);
 	const titles = renderer.getTrackedTitles();
 	const out = {};
-	Object.entries(titles).forEach(([k, v]) => out[v] = Number(k));
+	Object.entries(titles).forEach(([k, v]) => {
+		v = EntryRenderer.stripTags(v);
+		out[v] = Number(k);
+	});
 	return out;
+};
+
+EntryRenderer.stripTags = function (str) {
+	if (str.includes("{@")) {
+		const tagSplit = EntryRenderer.splitByTags(str);
+		return tagSplit.filter(it => it).map(it => {
+			if (it.startsWith("@")) {
+				const [tag, text] = EntryRenderer.splitFirstSpace(it);
+				switch (tag) {
+					case "@creature": {
+						const parts = text.split("|");
+						return parts.length >= 3 ? parts[2] : parts[0];
+					}
+					default: throw new Error(`Unhandled tag: "${tag}"`);
+				}
+			} else return str;
+		}).join("");
+	} return str;
 };
 
 EntryRenderer._onImgLoad = function () {

@@ -1,0 +1,171 @@
+{
+	"spell": [
+		{
+			"name": "Enter Mindscape",
+			"level": 0,
+			"school": "P",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psion",
+						"source": "Stream"
+					}
+				]
+			},
+			"source": "Stream",
+			"entries": [
+				"By shutting down your normal senses, you extend your mind into the psionics landscape around you. For the duration you can use a bonus action to sense the presence of creatures within a 60-foot cone. You learn the number of creatures within the cone and their creature type. You cannot detect undead or constructs with this spell.",
+				"This spell is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead,or 3 feet of wood or dirt.",
+				"This spell's duration cannot be ended due to damage."
+			]
+		},
+		{
+			"name": "Mind Fist",
+			"level": 0,
+			"school": "P",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psion",
+						"source": "Stream"
+					}
+				]
+			},
+			"source": "Stream",
+			"entries": [
+				"You point at one creature you can see within range and project a focused beam of telekinetic power at it. The target must succeed on a Strength saving throw or take {@dice 1d6} bludgeoning damage and be pushed up to 15 feet away from you.",
+				"This spell's damage increases by one die when you reach 5th level ({@dice 2d6}), 11th level ({@dice 3d6}), and 17th level ({@dice 4d6})."
+			],
+			"damageInflict": [
+				"bludgeoning"
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"scalingEffects": true
+		},
+		{
+			"name": "Mind Strike",
+			"level": 0,
+			"school": "P",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psion",
+						"source": "Stream"
+					}
+				]
+			},
+			"source": "Stream",
+			"entries": [
+				"You point at one creature you can see within range, and a psychic bolt pierces its mind. The target must succeed on an Intelligence saving throw or take 1d10 psychic damage.",
+				"This spell's damage increases by one die when you reach 5th level ({@dice 2d10}), 11th level ({@dice 3d10}), and 17th level ({@dice 4d10})."
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"scalingEffects": true
+		},
+		{
+			"name": "Psychic Step",
+			"level": 0,
+			"school": "P",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psion",
+						"source": "Stream"
+					}
+				]
+			},
+			"source": "Stream",
+			"entries": [
+				"You alter the composition of your body in a subtle manner, allowing you to take seemingly impossible steps.",
+				"Until the end of your turn, you speed increases by 10 feet and you can walk across vertical surfaces without falling. If you end your turn on such a surface, you immediately fall."
+			]
+		}
+	]
+}

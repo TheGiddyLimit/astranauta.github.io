@@ -72,13 +72,15 @@ function populateTablesAndFilters (data) {
 	const mundaneOptions = {
 		valueNames: ["name", "type", "cost", "weight", "source"],
 		listClass: "mundane",
-		sortClass: "none"
+		sortClass: "none",
+		sortFunction: sortItems
 	};
 	mundanelist = ListUtil.search(mundaneOptions);
 	const magicOptions = {
 		valueNames: ["name", "type", "weight", "rarity", "source"],
 		listClass: "magic",
-		sortClass: "none"
+		sortClass: "none",
+		sortFunction: sortItems
 	};
 	magiclist = ListUtil.search(magicOptions);
 
@@ -174,6 +176,7 @@ function populateTablesAndFilters (data) {
 			ListUtil.loadState();
 
 			History.init(true);
+			ExcludeUtil.checkShowAllExcluded(itemList, $(`#pagecontent`));
 		});
 }
 
@@ -224,7 +227,7 @@ function addItems (data) {
 				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
 					<span class="name col-xs-3">${name}</span>
 					<span class="type col-xs-4 col-xs-4-3">${curitem.typeListText}</span>
-					<span class="col-xs-1 col-xs-1-5 text-align-center">${curitem.value || "\u2014"}</span>
+					<span class="col-xs-1 col-xs-1-5 text-align-center">${curitem.value ? curitem.value.replace(/ +/g, "\u00A0") : "\u2014"}</span>
 					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
 					<span class="source col-xs-1 col-xs-1-7 ${Parser.sourceJsonToColor(curitem.source)}" title="${sourceFull}">${sourceAbv}</span>
 					<span class="cost hidden">${curitem._fCost}</span>
@@ -270,8 +273,8 @@ function addItems (data) {
 		mundanelist.search(lastSearch);
 		magiclist.search(lastSearch);
 	}
-	mundanelist.sort("name");
-	magiclist.sort("name");
+	mundanelist.sort("name", {order: "desc"});
+	magiclist.sort("name", {order: "desc"});
 	filterBox.render();
 	handleFilterChange();
 
@@ -332,7 +335,7 @@ function getSublistItem (item, pinId, addCount) {
 			<a href="#${UrlUtil.autoEncodeHash(item)}" title="${item.name}">
 				<span class="name col-xs-6">${item.name}</span>
 				<span class="weight text-align-center col-xs-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
-				<span class="price text-align-center col-xs-2">${item.value || "\u2014"}</span>
+				<span class="price text-align-center col-xs-2">${item.value ? item.value.replace(/ +/g, "\u00A0") : "\u2014"}</span>
 				<span class="count text-align-center col-xs-2">${addCount || 1}</span>
 				<span class="cost hidden">${item._fCost}</span>
 				<span class="id hidden">${pinId}</span>

@@ -38,6 +38,7 @@ function onJsonLoad (data) {
 			ListUtil.loadState();
 
 			History.init(true);
+			ExcludeUtil.checkShowAllExcluded(objectsList, $(`#pagecontent`));
 		});
 }
 

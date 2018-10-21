@@ -360,32 +360,38 @@ class AbilityData {
 function utils_getAbilityData (abObj) {
 	const ABILITIES = ["Str", "Dex", "Con", "Int", "Wis", "Cha"];
 	const mainAbs = [];
-	const allAbs = [];
-	const negMods = [];
-	const abs = [];
-	const shortAbs = [];
+	const asCollection = [];
+	const areNegative = [];
+	const toConvertToText = [];
+	const toConvertToShortText = [];
 	if (abObj !== undefined) {
 		handleAllAbilities(abObj);
 		handleAbilitiesChoose();
-		return new AbilityData(abs.join("; "), shortAbs.join("; "), allAbs, negMods);
+		return new AbilityData(toConvertToText.join("; "), toConvertToShortText.join("; "), asCollection, areNegative);
 	}
 	return new AbilityData("", "", [], []);
 
-	function handleAllAbilities (abilityList) {
+	function handleAllAbilities (abilityList, targetList) {
 		for (let a = 0; a < ABILITIES.length; ++a) {
-			handleAbility(abilityList, ABILITIES[a]);
+			handleAbility(abilityList, ABILITIES[a], targetList)
 		}
 	}
 
-	function handleAbility (parent, ab) {
+	function handleAbility (parent, ab, optToConvertToTextStorage) {
 		if (parent[ab.toLowerCase()] !== undefined) {
 			const isNegMod = parent[ab.toLowerCase()] < 0;
 			const toAdd = `${ab} ${(isNegMod ? "" : "+")}${parent[ab.toLowerCase()]}`;
-			abs.push(toAdd);
-			shortAbs.push(toAdd);
+
+			if (optToConvertToTextStorage) {
+				optToConvertToTextStorage.push(toAdd);
+			} else {
+				toConvertToText.push(toAdd);
+				toConvertToShortText.push(toAdd);
+			}
+
 			mainAbs.push(ab);
-			allAbs.push(ab.toLowerCase());
-			if (isNegMod) negMods.push(ab.toLowerCase());
+			asCollection.push(ab.toLowerCase());
+			if (isNegMod) areNegative.push(ab.toLowerCase());
 		}
 	}
 
@@ -397,7 +403,7 @@ function utils_getAbilityData (abObj) {
 				if (item.predefined !== undefined) {
 					for (let j = 0; j < item.predefined.length; ++j) {
 						const subAbs = [];
-						handleAllAbilities(subAbs, item.predefined[j]);
+						handleAllAbilities(item.predefined[j], subAbs);
 						outStack += subAbs.join(", ") + (j === item.predefined.length - 1 ? "" : " or ");
 					}
 				} else {
@@ -435,8 +441,8 @@ function utils_getAbilityData (abObj) {
 						}
 					}
 				}
-				abs.push("Choose " + outStack);
-				shortAbs.push(outStack.uppercaseFirst());
+				toConvertToText.push("Choose " + outStack);
+				toConvertToShortText.push(outStack.uppercaseFirst());
 			}
 		}
 	}
@@ -449,7 +455,7 @@ function utils_getAbilityData (abObj) {
 		for (let i = 0; i < chooseAbs.from.length; ++i) {
 			const ab = chooseAbs.from[i].toLowerCase();
 			if (!tempAbilities.includes(ab)) tempAbilities.push(ab);
-			if (!allAbs.includes(ab.toLowerCase)) allAbs.push(ab.toLowerCase());
+			if (!asCollection.includes(ab.toLowerCase)) asCollection.push(ab.toLowerCase());
 		}
 		return tempAbilities.length === 6;
 	}
@@ -582,7 +588,7 @@ Parser.getSpeedString = (it) => {
 		}
 		return stack.join(joiner);
 	} else {
-		return it.speed + (it.speed === "Varies" ? "" : "ft. ");
+		return it.speed + (it.speed === "Varies" ? "" : " ft. ");
 	}
 };
 
@@ -973,6 +979,7 @@ Parser.getSingletonUnit = function (unit) {
 };
 
 Parser.spComponentsToFull = function (comp) {
+	if (!comp) return "None";
 	const out = [];
 	if (comp.v) out.push("V");
 	if (comp.s) out.push("S");
@@ -1164,7 +1171,7 @@ Parser.levelToFull = function (level) {
 	return level + "th";
 };
 
-Parser.prereqSpellOrFeatureToFull = function (spell) {
+Parser.prereqSpellToFull = function (spell) {
 	if (spell === "eldritch blast") return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}} cantrip`);
 	else if (spell === "hex/curse") return EntryRenderer.getDefaultRenderer().renderEntry("{@spell hex} spell or a warlock feature that curses");
 	else if (spell) return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}}`);
@@ -1452,6 +1459,7 @@ SKL_ABV_DIV = "D";
 SKL_ABV_NEC = "N";
 SKL_ABV_TRA = "T";
 SKL_ABV_CON = "C";
+SKL_ABV_PSI = "P";
 
 SKL_ABJ = "Abjuration";
 SKL_EVO = "Evocation";
@@ -1461,6 +1469,7 @@ SKL_DIV = "Divination";
 SKL_NEC = "Necromancy";
 SKL_TRA = "Transmutation";
 SKL_CON = "Conjuration";
+SKL_PSI = "Psionic";
 
 Parser.SP_SCHOOL_ABV_TO_FULL = {};
 Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_ABJ] = SKL_ABJ;
@@ -1471,6 +1480,7 @@ Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_DIV] = SKL_DIV;
 Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_NEC] = SKL_NEC;
 Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_TRA] = SKL_TRA;
 Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_CON] = SKL_CON;
+Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_PSI] = SKL_PSI;
 
 Parser.SP_SCHOOL_ABV_TO_SHORT = {};
 Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_ABJ] = "Abj.";
@@ -1481,6 +1491,7 @@ Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_DIV] = "Divin.";
 Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_NEC] = "Necro.";
 Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_TRA] = "Trans.";
 Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_CON] = "Conj.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_PSI] = "Psi.";
 
 Parser.ATB_ABV_TO_FULL = {
 	"str": "Strength",
@@ -2284,6 +2295,17 @@ MiscUtil = {
 			}
 		});
 		return prefix;
+	},
+
+	/**
+	 * @param fgHexTarget Target/resultant color for the foreground item
+	 * @param fgOpacity Desired foreground transparency (0-1 inclusive)
+	 * @param bgHex Background color
+	 */
+	calculateBlendedColor (fgHexTarget, fgOpacity, bgHex) {
+		const fgDcTarget = CryptUtil.hex2Dec(fgHexTarget);
+		const bgDc = CryptUtil.hex2Dec(bgHex);
+		return ((fgDcTarget - ((1 - fgOpacity) * bgDc)) / fgOpacity).toString(16);
 	}
 };
 
@@ -2502,13 +2524,63 @@ ListUtil = {
 		return list;
 	},
 
+	_lastSelected: null,
 	toggleSelected: (evt, ele) => {
-		if (evt.shiftKey) {
-			evt.preventDefault();
-			$(ele).toggleClass("list-multi-selected");
-		} else {
+		function doSingle () {
 			ListUtil._primaryLists.forEach(l => ListUtil.deslectAll(l));
 			$(ele).addClass("list-multi-selected");
+		}
+
+		function getListPos (selected) {
+			let i, j, list, listItem;
+			outer: for (i = 0; i < ListUtil._primaryLists.length; ++i) {
+				const l = ListUtil._primaryLists[i];
+				for (j = 0; j < l.visibleItems.length; ++j) {
+					const it = l.visibleItems[j];
+					if (selected === it.elm.getAttribute("filterid")) {
+						list = l;
+						listItem = it;
+						break outer;
+					}
+				}
+			}
+			return list && listItem ? {ixList: i, list, ixItem: j, listItem} : null;
+		}
+
+		const nextSelected = $(ele).attr("filterid");
+
+		if (evt.shiftKey && ListUtil._lastSelected) {
+			evt.preventDefault();
+			const lastItem = getListPos(ListUtil._lastSelected);
+			if (!lastItem) {
+				doSingle();
+				ListUtil._lastSelected = nextSelected;
+			} else {
+				ListUtil._primaryLists.forEach(l => ListUtil.deslectAll(l));
+
+				const nextItem = getListPos(nextSelected);
+
+				const [min, max] = [lastItem, nextItem].sort((a, b) => {
+					if (a.ixList < b.ixList) return 1;
+					else if (a.ixList > b.ixList) return -1;
+					else if (a.ixItem > b.ixItem) return 1;
+					else if (a.ixItem < b.ixItem) return -1;
+					else return 0;
+				});
+
+				for (let i = min.ixList; i <= max.ixList; ++i) {
+					const l = ListUtil._primaryLists[i];
+					const rangeStart = i < max.ixList ? 0 : min.ixItem;
+					const rangeEnd = max.ixList > i ? l.visibleItems.length : max.ixItem;
+
+					for (let j = rangeStart; j <= rangeEnd; ++j) {
+						$(l.visibleItems[j].elm).addClass("list-multi-selected");
+					}
+				}
+			}
+		} else {
+			doSingle();
+			ListUtil._lastSelected = nextSelected;
 		}
 	},
 
@@ -2904,7 +2976,7 @@ ListUtil = {
 				break;
 			case 1:
 				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelected(l, (it) => ListUtil.isSublisted(it) ? Promise.resolve() : ListUtil.doSublistAdd(it)))))
-					.then(ListUtil._finaliseSublist);
+					.then(() => ListUtil._finaliseSublist());
 				break;
 		}
 	},
@@ -2989,7 +3061,10 @@ ListUtil = {
 				break;
 			case 1:
 				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelected(l, (it) => ListUtil.doSublistAdd(it)))))
-					.then(ListUtil._finaliseSublist);
+					.then(() => {
+						ListUtil._finaliseSublist();
+						ListUtil.updateSelected();
+					});
 				break;
 		}
 	},
@@ -3137,7 +3212,9 @@ ListUtil = {
 		if (typeof filter === "object" && filter.generator) filter = filter.generator();
 
 		let temp = `<table class="table-striped stats stats-book" style="width: 100%;"><thead><tr>${Object.values(colTransforms).map((c, i) => `<th class="col_${i} px-2" colspan="${c.flex || 1}">${c.name}</th>`).join("")}</tr></thead><tbody>`;
-		(sorter ? JSON.parse(JSON.stringify(dataList)).sort(sorter) : dataList).filter((it, i) => filter ? filter(i) : it).forEach(it => {
+		const listCopy = JSON.parse(JSON.stringify(dataList)).filter((it, i) => filter ? filter(i) : it);
+		if (sorter) listCopy.sort(sorter);
+		listCopy.forEach(it => {
 			temp += `<tr class="data-row">`;
 			temp += Object.keys(colTransforms).map((k, i) => {
 				const c = colTransforms[k];
@@ -3400,7 +3477,7 @@ SortUtil = {
 	ascSortNumericalSuffix (a, b) {
 		function popEndNumber (str) {
 			const spl = str.split(" ");
-			return spl.last().isNumeric() ? [spl.slice(0, -1).join(" "), Number(spl.last())] : [spl.join(" "), 0];
+			return spl.last().isNumeric() ? [spl.slice(0, -1).join(" "), Number(spl.last().replace(Parser._numberCleanRegexp, ""))] : [spl.join(" "), 0];
 		}
 
 		const [aStr, aNum] = popEndNumber(a.item || a);
@@ -3470,7 +3547,9 @@ SortUtil = {
 
 	initHandleFilterButtonClicks (target = "#filtertools") {
 		$("#filtertools").find("button.sort").click(function () {
-			SortUtil.handleFilterButtonClick.call(this, target);
+			setTimeout(() => { // defer to allow button to update
+				SortUtil.handleFilterButtonClick.call(this, target);
+			}, 1);
 		});
 	},
 
@@ -4132,7 +4211,7 @@ BrewUtil = {
 		$appendTo.append($overlay);
 
 		function refreshBrewList () {
-			function showSourceManager (source, $overlay2) {
+			function showSourceManager (source, $overlay2, showAll) {
 				const $wrpBtnDel = $(`<h4 class="split"><span>View/Manage ${source ? `Source Contents: ${Parser.sourceJsonToFull(source)}` : `Entries with No Source`}</span></h4>`);
 				const $lst = $(`
 					<div id="brewlistcontainer" class="listcontainer homebrew-window dropdown-menu">
@@ -4176,7 +4255,7 @@ BrewUtil = {
 
 					const $ul = $lst.find(`ul`);
 					let stack = "";
-					const isMatchingSource = (itSrc) => itSrc === source || (source === undefined && !BrewUtil.hasSourceJson(itSrc));
+					const isMatchingSource = (itSrc) => showAll || (itSrc === source || (source === undefined && !BrewUtil.hasSourceJson(itSrc)));
 					BrewUtil._getBrewCategories().forEach(cat => {
 						BrewUtil.homebrew[cat].filter(it => isMatchingSource(it.source)).sort((a, b) => SortUtil.ascSort(a.name, b.name)).forEach(it => {
 							stack += `
@@ -4240,44 +4319,58 @@ BrewUtil = {
 							<button class="col-xs-1 btn btn-default btn-xs" disabled>Source</button>
 							<button class="col-xs-2 btn btn-default btn-xs" disabled>&nbsp;</button>
 						</div>
-						<ul class="list-display-only brew-list"></ul>
+						<ul class="list-display-only brew-list brew-list--target"></ul>
+						<ul class="list-display-only brew-list brew-list--groups"></ul>
 					</div>
-				`);
-				$brewList.append($lst);
+				`).appendTo($brewList);
 
 				// populate list
-				const $ul = $lst.find(`ul`);
-				$ul.empty();
+				const $ul = $lst.find(`ul.brew-list--target`).empty();
+				const $ulGroup = $lst.find(`ul.brew-list--groups`).empty();
 
-				const allSources = MiscUtil.copy(BrewUtil.getJsonSources());
-				allSources.sort((a, b) => SortUtil.ascSort(a.full, b.full));
-				allSources.push({full: "No Source", json: undefined, _unknown: true});
-				allSources.forEach(src => {
-					const $row = $(`<li class="row manbrew__row no-click">
-						<span class="col-xs-5 manbrew__col--tall source manbrew__source">${src._unknown ? "<i>" : ""}${src.full}${src._unknown ? "</i>" : ""}</span>
-						<span class="col-xs-4 manbrew__col--tall authors">${(src.authors || []).join(", ")}</span>
-						<${src.url ? "a" : "span"} class="col-xs-1 manbrew__col--tall text-align-center" ${src.url ? `href="${src.url}" target="_blank"` : ""}>${src.url ? "View Source" : ""}</${src.url ? "a" : "span"}>
-					</li>`);
+				const createButtons = (src, $row) => {
 					const $btns = $(`<span class="col-xs-2 text-align-right"/>`).appendTo($row);
 					$(`<button class="btn btn-sm btn-default">View/Manage</button>`)
 						.on("click", () => {
 							const $nxt = makeNextOverlay();
-							showSourceManager(src.json, $nxt);
+							showSourceManager(src.json, $nxt, src._all);
 						})
 						.appendTo($btns);
 					$btns.append(" ");
 					$(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>`)
 						.on("click", () => deleteSource(src.json, true))
 						.appendTo($btns);
+				};
 
+				const allSources = MiscUtil.copy(BrewUtil.getJsonSources());
+				allSources.sort((a, b) => SortUtil.ascSort(a.full, b.full));
+
+				allSources.forEach(src => {
+					const isGroup = src._unknown || src._all;
+					const $row = $(`<li class="row manbrew__row">
+						<span class="col-xs-5 manbrew__col--tall source manbrew__source">${isGroup ? "<i>" : ""}${src.full}${isGroup ? "</i>" : ""}</span>
+						<span class="col-xs-4 manbrew__col--tall authors">${(src.authors || []).join(", ")}</span>
+						<${src.url ? "a" : "span"} class="col-xs-1 manbrew__col--tall text-align-center" ${src.url ? `href="${src.url}" target="_blank"` : ""}>${src.url ? "View Source" : ""}</${src.url ? "a" : "span"}>
+					</li>`);
+					createButtons(src, $row);
 					$ul.append($row);
 				});
+
+				const createGroupRow = (fullText, modeProp) => {
+					const $row = $(`<li class="row manbrew__row" style="border-bottom: 0">
+						<span class="col-xs-10 manbrew__col--tall source manbrew__source text-align-right"><i>${fullText}</i></span>
+					</li>`);
+					createButtons({[modeProp]: true}, $row);
+					$ulGroup.append($row);
+				};
+				createGroupRow("Entries From All Sources", "_all");
+				createGroupRow("Entries Without Sources", "_unknown");
 
 				// hack to delay list indexing, otherwise it seems to fail
 				setTimeout(() => {
 					const list = new List("outerbrewlistcontainer", {
 						valueNames: ["source", "authors"],
-						listClass: "brew-list"
+						listClass: "brew-list--target"
 					});
 					ListUtil.bindEscapeKey(list, $lst.find(`.search`), true);
 				}, 5);
@@ -4582,6 +4675,7 @@ BrewUtil = {
 			case UrlUtil.PG_BOOK:
 			case UrlUtil.PG_BOOKS:
 			case UrlUtil.PG_MAKE_SHAPED:
+			case UrlUtil.PG_TABLES:
 				handleBrew(toAdd);
 				break;
 			case UrlUtil.PG_MANAGE_BREW:
@@ -4837,6 +4931,10 @@ CryptUtil = {
 		return x.join('');
 	},
 
+	hex2Dec (hex) {
+		return parseInt(`0x${hex}`);
+	},
+
 	md5: (s) => {
 		return CryptUtil.hex(CryptUtil._md51(s));
 	},
@@ -5056,10 +5154,23 @@ ExcludeUtil = {
 		ExcludeUtil._save();
 	},
 
+	_excludeCount: 0,
 	isExcluded (name, category, source) {
 		if (!ExcludeUtil._excludes) return false;
 		source = source.source || source;
-		return !!ExcludeUtil._excludes.find(row => (row.source === "*" || row.source === source) && (row.category === "*" || row.category === category) && (row.name === "*" || row.name === name));
+		const out = !!ExcludeUtil._excludes.find(row => (row.source === "*" || row.source === source) && (row.category === "*" || row.category === category) && (row.name === "*" || row.name === name));
+		if (out) ++ExcludeUtil._excludeCount;
+		return out;
+	},
+
+	checkShowAllExcluded (list, $pagecontent) {
+		if ((!list.length && ExcludeUtil._excludeCount) || (list.length > 0 && list.length === ExcludeUtil._excludeCount)) {
+			$pagecontent.html(`
+				<tr><th class="border" colspan="6"></th></tr>
+				<tr><td colspan="6" class="initial-message">(Content <a href="blacklist.html">blacklisted</a>)</td></tr>
+				<tr><th class="border" colspan="6"></th></tr>
+			`);
+		}
 	},
 
 	addExclude (name, category, source) {
@@ -5110,6 +5221,7 @@ if (!IS_ROLL20 && typeof window !== "undefined") {
 
 _Donate = {
 	init () {
+<<<<<<< HEAD
 		DataUtil.loadJSON(`https://get.5etools.com/money.php`).then(dosh => {
 			const pct = Number(dosh.donated) / Number(dosh.Goal);
 			$(`#don-total`).text(`€${dosh.Goal}`);
@@ -5124,6 +5236,24 @@ _Donate = {
 			$(`#don-wrapper`).remove();
 			throw noDosh;
 		});
+=======
+		if (IS_DEPLOYED) {
+			DataUtil.loadJSON(`https://get.5etools.com/money.php`).then(dosh => {
+				const pct = Number(dosh.donated) / Number(dosh.Goal);
+				$(`#don-total`).text(`€${dosh.Goal}`);
+				if (isNaN(pct)) {
+					throw new Error(`Was not a number! Values were ${dosh.donated} and ${dosh.Goal}`);
+				} else {
+					const $bar = $(`.don__bar_inner`);
+					$bar.css("width", `${Math.min(Math.ceil(100 * pct), 100)}%`).html(pct !== 0 ? `€${dosh.donated}&nbsp;` : "");
+					if (pct >= 1) $bar.css("background-color", "lightgreen");
+				}
+			}).catch(noDosh => {
+				$(`#don-wrapper`).remove();
+				throw noDosh;
+			})
+		}
+>>>>>>> 099af0e6bdb11b1d7758ed0b87cbec93779eee7e
 	},
 
 	notDonating () {

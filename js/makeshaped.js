@@ -581,6 +581,7 @@ class ShapedConverter {
 	}
 
 	static processSpellComponents (components, newSpell) {
+		components = components || {};
 		const shapedComponents = {};
 		if (components.v) shapedComponents.verbal = true;
 		if (components.s) shapedComponents.somatic = true;

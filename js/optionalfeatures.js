@@ -52,15 +52,19 @@ const patronFilter = new Filter({
 	items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Kraken", "The Raven Queen", "The Seeker"],
 	displayFn: Parser.prereqPatronToShort
 });
-const spellOrFeatureFilter = new Filter({
-	header: "Spell or Feature",
+const spellFilter = new Filter({
+	header: "Spell",
 	items: ["eldritch blast", "hex/curse"],
+	displayFn: StrUtil.toTitleCase
+});
+const featureFilter = new Filter({
+	header: "Feature",
 	displayFn: StrUtil.toTitleCase
 });
 const levelFilter = new Filter({
 	header: "Level"
 });
-const prerequisiteFilter = new MultiFilter({name: "Prerequisite"}, pactFilter, patronFilter, spellOrFeatureFilter, levelFilter);
+const prerequisiteFilter = new MultiFilter({name: "Prerequisite"}, pactFilter, patronFilter, spellFilter, levelFilter, featureFilter);
 let filterBox;
 function onJsonLoad (data) {
 	filterBox = initFilterBox(sourceFilter, typeFilter, prerequisiteFilter);
@@ -100,6 +104,7 @@ function onJsonLoad (data) {
 			RollerUtil.addListRollButton();
 
 			History.init(true);
+			ExcludeUtil.checkShowAllExcluded(optfList, $(`#pagecontent`));
 		});
 }
 
@@ -131,13 +136,17 @@ function addOptionalfeatures (data) {
 				patronFilter.addIfAbsent(it.entry);
 				return it.entry;
 			});
-			it._fprereqSpellOrFeature = it.prerequisite.filter(it => it.type === "prereqSpellOrFeature").map(it => {
-				spellOrFeatureFilter.addIfAbsent(it.entries);
+			it._fprereqSpell = it.prerequisite.filter(it => it.type === "prereqSpell").map(it => {
+				spellFilter.addIfAbsent(it.entries);
 				return it.entries;
 			});
-			it._fPrereqLevel = it.prerequisite.filter(it => it.type === "prereqLevel").map(it => {
-				const item = getLevelFilterNestedItem(it);
-				it._sLevel = it._sLevel || it.level;
+			it._fprereqFeature = it.prerequisite.filter(it => it.type === "prereqFeature").map(it => {
+				featureFilter.addIfAbsent(it.entries);
+				return it.entries;
+			});
+			it._fPrereqLevel = it.prerequisite.filter(it => it.type === "prereqLevel").map(lvl => {
+				const item = getLevelFilterNestedItem(lvl);
+				it._sLevel = it._sLevel || lvl.level;
 				levelFilter.addIfAbsent(item);
 				return item;
 			});
@@ -173,7 +182,7 @@ function addOptionalfeatures (data) {
 
 	// sort filters
 	sourceFilter.items.sort(SortUtil.ascSort);
-	spellOrFeatureFilter.items.sort(SortUtil.ascSort);
+	spellFilter.items.sort(SortUtil.ascSort);
 	levelFilter.items.sort(SortUtil.ascSortNumericalSuffix);
 	typeFilter.items.sort((a, b) => SortUtil.ascSort(Parser.optFeatureTypeToFull(a), Parser.optFeatureTypeToFull(b)));
 
@@ -206,8 +215,9 @@ function handleFilterChange () {
 			[
 				it._fPrereqPact,
 				it._fPrereqPatron,
-				it._fprereqSpellOrFeature,
-				it._fPrereqLevel
+				it._fprereqSpell,
+				it._fPrereqLevel,
+				it._fprereqFeature
 			]
 		);
 	});

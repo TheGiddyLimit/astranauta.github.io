@@ -54,6 +54,7 @@ function onJsonLoad (data) {
 			RollerUtil.addListRollButton();
 
 			History.init(true);
+			ExcludeUtil.checkShowAllExcluded(rewardList, $(`#pagecontent`));
 		});
 }
 

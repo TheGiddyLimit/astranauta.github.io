@@ -2498,7 +2498,7 @@ class AddMenuSearchTab extends AddMenuTab {
 
 class RuleLoader {
 	static pFill (book) {
-		return DataUtil.loadJSON(`data/${book}.json`).then(data => new Promise((resolve) => {
+		return DataUtil.loadJSON(`data/generated/${book}.json`).then(data => new Promise((resolve) => {
 			const $$$ = RuleLoader.cache;
 
 			Object.keys(data.data).forEach(b => {

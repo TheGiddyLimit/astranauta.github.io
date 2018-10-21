@@ -111,6 +111,7 @@ function onJsonLoad (data) {
 			addListShowHide();
 
 			History.init(true);
+			ExcludeUtil.checkShowAllExcluded(deitiesList, $(`#pagecontent`));
 		});
 }
 

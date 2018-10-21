@@ -1048,6 +1048,7 @@ class ClassBookView {
 		ClassBookView._$wrpBook = $wrpBook;
 
 		$body.css("overflow", "hidden");
+		$body.addClass("book-mode-active");
 
 		// main panel
 		const $pnlContent = $(`<div class="pnl-content"/>`);
@@ -1138,6 +1139,7 @@ class ClassBookView {
 			ClassBookView._$scToggles = {};
 
 			ClassBookView._$body.css("overflow", "");
+			ClassBookView._$body.removeClass("book-mode-active");
 			ClassBookView._$wrpBook.remove();
 			ClassBookView.bookViewActive = false;
 		}
@@ -1187,8 +1189,9 @@ ClassBookView._$bkTbl = null;
 ClassBookView._$scToggles = {};
 
 function initLinkGrabbers () {
-	$(`body`).on(`mousedown`, `.linked-titles--classes > td > * > .entry-title .entry-title-inner`, (evt) => evt.preventDefault());
-	$(`body`).on(`click`, `.linked-titles--classes > td > * > .entry-title .entry-title-inner`, function (evt) {
+	const $body = $(`body`);
+	$body.on(`mousedown`, `.linked-titles--classes > td > * > .entry-title .entry-title-inner`, (evt) => evt.preventDefault());
+	$body.on(`click`, `.linked-titles--classes > td > * > .entry-title .entry-title-inner`, function (evt) {
 		const $this = $(this);
 
 		if (evt.shiftKey) {
@@ -1250,6 +1253,7 @@ DataUtil.class.loadJSON().then((data) => {
 		.then(() => {
 			RollerUtil.addListRollButton();
 			History.init(true);
+			ExcludeUtil.checkShowAllExcluded(ClassData.classes, $(`#pagecontent`));
 		});
 });
 

@@ -56,6 +56,7 @@ function onJsonLoad (data) {
 			RollerUtil.addListRollButton();
 
 			History.init(true);
+			ExcludeUtil.checkShowAllExcluded(featList, $(`#pagecontent`));
 		});
 }
 

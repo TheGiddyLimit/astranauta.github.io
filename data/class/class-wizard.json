@@ -2518,6 +2518,101 @@
 					],
 					"source": "UAThreeSubclasses",
 					"shortName": "Invention (UA)"
+				},
+				{
+					"name": "School of Psionics (Livestream)",
+					"subclassFeatures": [
+						[
+							{
+								"name": "School of Psionics (Livestream)",
+								"entries": [
+									"The School of Psionics emphasizes the power of the mind, granting its practitioners the ability to read minds and transform the energy of their thoughts into tangible, physical force.",
+									"Known as psions, members of this school are rare and usually meet in secretive enclaves that delve into the mysteries of aberrations and other bizarre creatures.",
+									{
+										"type": "entries",
+										"name": "ESP",
+										"entries": [
+											"At 2nd level, you gain the ability to contact other creatures' minds. You can cast {@spell detect thoughts} using this ability. When you cast that spell, whether with thisa bility or from some other ability, it has the following modifications:",
+											{
+												"type": "list",
+												"items": [
+													"The spell does not require concentration.",
+													"The benefits that require you to use an action instead require the use of a bonus action.",
+													"If you use the option to probe deeper and the target fails its Wisdom saving throw, it is vulnerable to psychic damage you inflict until the end of your next turn."
+												]
+											},
+											"Once you cast {@spell detect thoughts} using this ability, you can't use it again until you complete a short or long rest."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Telepath",
+										"entries": [
+											"Starting at 2nd level, you gain telepathy with a range of 30 feet.",
+											"When you select spells, you can choose spells from the psionic spell list, even if they do not appear on your class list."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Telekinetic Mind",
+										"entries": [
+											"Starting at 6th level, you gain the ability to transform your thoughts into tangible force. You can cast {@spell telekinesis} using this ability. When you cast that spell, whether with this ability or from some other ability, it has the following modifications:",
+											{
+												"type": "list",
+												"items": [
+													"The spell does not require concentration.",
+													"The benefits that require you to use an action instead require the use of a bonus action.",
+													"The spell's duration is 1 minute, and you cannot choose a new target after selecting your initial one. This restriction no longer applies once you reach 9th level."
+												]
+											},
+											"Once you cast {@spell telekinesis} using this ability, you can't use it again until you complete a short or long rest."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Superior ESP",
+										"entries": [
+											"At 10th level, your proficiency with the detect thoughts spell grows. You gain the following additional benefits when you cast the spell:",
+											{
+												"type": "list",
+												"items": [
+													"The spell now targets a number of creatures equal to your Intelligence modifier (minimum 1).",
+													"If you use the option to probe deeper and the target fails its Wisdom saving throw, you can choose to charm it instead of making it vulnerable to psychic damage. It makes another Wisdom saving throw at the end of its turn, ending this effect with a successful save or if it takes damage from you or your allies."
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Improved Telekinesis",
+										"entries": [
+											"At 14th level, you master the full potential of your mind to project physical force into the world. When you cast {@spell telekinesis} and each time you select a new target for the spell, you can instead choose a number of targets up to your Intelligence bonus (minimum 1)."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "Stream",
+					"shortName": "Psionics (Stream)"
 				}
 			],
 			"fluff": [
