@@ -89,7 +89,7 @@
 				<br/>
 				<div id="container-dmg-loot-table">
 					<div class="input-group full-width">
-						<span class="input-group-addon" >Select table </span>
+						<span class="input-group-addon" >Select Table </span>
 						<select class="form-control clickable" id="table-sel">  <!-- class="form-control" -->
 							<option value="" selected>View individual tables...</option>
 						</select>
@@ -106,9 +106,9 @@
 				</div>
 				<div id="container-xge-loot-table">
 					<div class="input-group">
-						<span class="input-group-addon">Select your </span>
+						<span class="input-group-addon">Select Category</span>
 						<select class="form-control clickable" id="random-from-loot-table">
-							<option value="" selected>Select a loot range</option>
+							<option value="" selected>View Loot Category...</option>
 						</select>
 						<span class="input-group-addon" style="padding: 0;">
 							<label class="clickable" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
@@ -131,16 +131,16 @@
 				<br/>
 				<ul style="padding-inline-start:15px;">
 					<li>Generates a set of magical items for a new character.</li>
-					<li>Unclicking "by level", will produce a complete set of items for tier the character has completed*.</li>
-					<li>Clicking "by level", the number of items will be rounded to the closest level (modified rules)</li>
+					<li>Unclicking "Exact Level?", will produce a complete set of items for tier the character has completed.</li>
+					<li>Clicking "Exact Level?", the number of items will be rounded to the closest level (<i>modified rules*</i>)</li>
 				</ul>
 				<form>
 					<div class="mb-3">
 						<div class="input-group">
-							<span class="input-group-addon" style="width: 10%">Select Character Level</span>
+							<span class="input-group-addon" style="width: 10%" id="selectCharLevel">Select Character Level</span>
 							<span class="input-group-addon" style="padding: 0; border-left: 1px solid #cccccc;">
 								<label class="clickable" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
-									By Level? <input type="checkbox" checked id="closest-tier" class="clickable" style="vertical-align: bottom;">
+									Exact Level? <input type="checkbox" checked id="closest-tier" class="clickable" style="vertical-align: bottom;">
 								</label>
 							</span>
 						</div>
