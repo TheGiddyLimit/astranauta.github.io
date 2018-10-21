@@ -766,4 +766,6 @@ window.addEventListener("load", function load () {
 	views.lootTables.on("change", () => randomLootTables.displayTable(""));
 
 	randomLootTables.init();
+
+	$("select").on("change", (evt) =>	$(evt.currentTarget).removeClass("error-background", $(evt.currentTarget).val() === ""));
 });
