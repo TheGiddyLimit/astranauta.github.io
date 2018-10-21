@@ -32,7 +32,7 @@ class Board {
 		this.height = this.getInitialHeight();
 		this.sideMenu = new SideMenu(this);
 		this.menu = new AddMenu();
-		this.storage = StorageUtil.getStorage();
+		this.storage = StorageUtil;
 		this.isFullscreen = false;
 
 		this.nextId = 1;
@@ -2697,7 +2697,7 @@ class InitiativeTracker {
 			const $controls = $(`<div class="split" style="flex-shrink: 0"/>`).appendTo($menuInner);
 			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($controls);
 			const $wrpCount = $(`
-				<div class="panel-tab-search-sub-wrp" style="padding-right: 0;"> 
+				<div class="panel-tab-search-sub-wrp" style="padding-right: 0;">
 					<div style="margin-right: 7px;">Add</div>
 					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="1" checked> 1</label>
 					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="2"> 2</label>

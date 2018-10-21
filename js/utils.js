@@ -3873,12 +3873,8 @@ CreateStorageUtil = function CreateStorageUtil (target) {
 	}
 };
 
-CreateStorageUtil.prototype.getStorage = function () {
-	return this._storage;
-};
-
 CreateStorageUtil.prototype.isFake = function () {
-	return this.getStorage().isFake;
+	return this._isFake;
 };
 
 CreateStorageUtil.prototype.setForPage = function (key, value) {
@@ -3886,7 +3882,7 @@ CreateStorageUtil.prototype.setForPage = function (key, value) {
 };
 
 CreateStorageUtil.prototype.set = function (key, value) {
-	this.getStorage().setItem(key, JSON.stringify(value));
+	this._storage[key] = JSON.stringify(value);
 };
 
 CreateStorageUtil.prototype.getForPage = function (key) {
@@ -3894,17 +3890,19 @@ CreateStorageUtil.prototype.getForPage = function (key) {
 };
 
 CreateStorageUtil.prototype.get = function (key) {
-	const rawOut = this.getStorage().getItem(key);
+	const rawOut = this._storage[key];
 	if (rawOut && rawOut !== "undefined" && rawOut !== "null") return JSON.parse(rawOut);
 	return null;
 };
+
+CreateStorageUtil.prototype.getItem = CreateStorageUtil.prototype.get;
 
 CreateStorageUtil.prototype.removeForPage = function (key) {
 	this.remove(`${key}_${UrlUtil.getCurrentPage()}`);
 };
 
 CreateStorageUtil.prototype.remove = function (key) {
-	this.getStorage().removeItem(key);
+	this._storage[key] = undefined;
 };
 
 StorageUtil = new CreateStorageUtil(storageLocations.localStorage);
@@ -3915,7 +3913,7 @@ BrewUtil = {
 	homebrew: null,
 	homebrewMeta: null,
 	_lists: null,
-	storage: StorageUtil.getStorage(),
+	storage: StorageUtil,
 	_sourceCache: null,
 	_filterBox: null,
 	_sourceFilter: null,
@@ -5133,7 +5131,7 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 // CONTENT EXCLUSION ===================================================================================================
 ExcludeUtil = {
 	_excludes: null,
-	storage: StorageUtil.getStorage(),
+	storage: StorageUtil,
 
 	initialise () {
 		const raw = ExcludeUtil.storage.getItem(EXCLUDES_STORAGE);

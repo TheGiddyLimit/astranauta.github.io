@@ -356,8 +356,8 @@ function EntryRenderer () {
 					renderPrefix();
 					textStack[0] += `<table class="statsDataInset">`;
 					textStack[0] += `<thead><tr><th class="dataCreature__header" colspan="6" onclick="((ele) => {
-						$(ele).find('.dataCreature__name').toggle(); 
-						$(ele).find('.dataCreature__showHide').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
+						$(ele).find('.dataCreature__name').toggle();
+						$(ele).find('.dataCreature__showHide').text($(ele).text().includes('+') ? '[\u2013]' : '[+]');
 						$(ele).closest('table').find('tbody').toggle()
 					})(this)">
 						<span style="display: none;" class="dataCreature__name">${entry.dataCreature.name}</span>
@@ -1558,7 +1558,7 @@ EntryRenderer.spell = {
 						<th colspan="1">School</th>
 						<th colspan="2">Casting Time</th>
 						<th colspan="2">Range</th>
-					</tr>	
+					</tr>
 					<tr>
 						<td colspan="1">${Parser.spLevelToFull(spell.level)}${Parser.spMetaToFull(spell.meta)}</td>
 						<td colspan="1">${Parser.spSchoolAbvToFull(spell.school)}</td>
@@ -1568,7 +1568,7 @@ EntryRenderer.spell = {
 					<tr>
 						<th colspan="4">Components</th>
 						<th colspan="2">Duration</th>
-					</tr>	
+					</tr>
 					<tr>
 						<td colspan="4">${Parser.spComponentsToFull(spell.components)}</td>
 						<td colspan="2">${Parser.spDurationToFull(spell.duration)}</td>
@@ -1959,7 +1959,7 @@ EntryRenderer.object = {
 						<th colspan="5" class="text-align-center">Damage Imm.</th>
 					</tr>
 					<tr>
-						<td colspan="3" class="text-align-center">${Parser.sizeAbvToFull(obj.size)} object</td>					
+						<td colspan="3" class="text-align-center">${Parser.sizeAbvToFull(obj.size)} object</td>
 						<td colspan="2" class="text-align-center">${obj.ac}</td>
 						<td colspan="2" class="text-align-center">${obj.hp}</td>
 						<td colspan="5" class="text-align-center">${obj.immune}</td>
@@ -1974,7 +1974,7 @@ EntryRenderer.object = {
 						${obj.vulnerable ? `<td colspan="${row2Width}" class="text-align-center">${obj.vulnerable}</td>` : ""}
 					</tr>
 					` : ""}
-				</table>			
+				</table>
 			</td></tr>
 			<tr class="text"><td colspan="6">
 			${obj.entries ? renderer.renderEntry({entries: obj.entries}, 2) : ""}
@@ -2374,9 +2374,9 @@ EntryRenderer.monster = {
 						<th>Challenge Rating</th>
 					</tr>
 					<tr>
-						<td>${Parser.acToFull(mon.ac)}</td>					
-						<td>${EntryRenderer.monster.getRenderedHp(mon.hp)}</td>					
-						<td>${Parser.getSpeedString(mon)}</td>					
+						<td>${Parser.acToFull(mon.ac)}</td>
+						<td>${EntryRenderer.monster.getRenderedHp(mon.hp)}</td>
+						<td>${Parser.getSpeedString(mon)}</td>
 						<td>
 							${Parser.monCrToFull(mon.cr)}
 							${options.showScaler && Parser.isValidCr(mon.cr.cr || mon.cr) ? `
@@ -2389,9 +2389,9 @@ EntryRenderer.monster = {
 								<span class="glyphicon glyphicon-refresh"></span>
 							</span>
 							` : ""}
-						</td>					
+						</td>
 					</tr>
-				</table>			
+				</table>
 			</td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
@@ -2403,7 +2403,7 @@ EntryRenderer.monster = {
 						<th class="col-xs-2 text-align-center">INT</th>
 						<th class="col-xs-2 text-align-center">WIS</th>
 						<th class="col-xs-2 text-align-center">CHA</th>
-					</tr>	
+					</tr>
 					<tr>
 						<td class="text-align-center">${makeAbilityRoller("str")}</td>
 						<td class="text-align-center">${makeAbilityRoller("dex")}</td>
@@ -3998,7 +3998,7 @@ EntryRenderer.dice = {
 
 		$(`body`).append($minRoll).append($wrpRoll);
 
-		EntryRenderer.dice.storage = JSON.parse(StorageUtil.getStorage().getItem(ROLLER_MACRO_STORAGE) || "{}");
+		EntryRenderer.dice.storage = StorageUtil.get(ROLLER_MACRO_STORAGE) || "{}";
 	},
 
 	_prevHistory: () => {
