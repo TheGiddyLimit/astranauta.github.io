@@ -1263,7 +1263,7 @@ span.dc-roller[mode=dice] {
 
 div#lootoutput {
 	height: 100%;
-	padding-top: 1em;
+	// padding-top: 1em;
 	clear: both;
 }
 
@@ -3532,6 +3532,23 @@ table.stats td._class_feature table th {
 
 /* end section: class features */
 
+/* start section: lootgen */
+
+#lootgen hr {
+	border-top: 2px solid #ccc;
+}
+
+#lootgen .btn-selected {
+	background-color:#006bc4 ;
+	color: white;
+}
+
+#lootgen .btn-selected:hover {
+	color: lightgray;
+}
+
+/* end section: lootgen */
+
 #classtable table {
 	background: $bg-orange;
 }
@@ -3697,6 +3714,11 @@ table.stats tr.homebrew-hover {
 	}
 }
 
+.error-background {
+	background-color: $active-red--light;
+	color: white;
+}
+
 /* Day Mode End */
 
 /* Night Mode */
@@ -3803,6 +3825,11 @@ table.stats tr.homebrew-hover {
 		color: $font-color;
 	}
 
+	.btn-nowrap {
+		word-wrap: break-word;
+		overflow-wrap: break-word
+	}
+
 	dialog.dialog-modal,
 	.dropdown-menu {
 		background: #232323;
@@ -3905,16 +3932,13 @@ table.stats tr.homebrew-hover {
 		background: white;
 	}
 
-	tr.text td {
+	tr.text td,
+	#lootgen.loot-title {
 		color: $font-color !important;
 	}
 
 	table.stats td#typerarityattunement {
 		color: $font-color;
-	}
-
-	tr.text td {
-		color: $font-color !important;
 	}
 
 	table.stats td#sizetypealignment {
@@ -4415,6 +4439,22 @@ table.stats tr.homebrew-hover {
 
 	/* *** */
 
+	/* 	start section: lootgen */
+
+	div.statsBlockSectionHead.loot-title {
+	color: $class-main-color;
+	}
+	.btn-selected {
+		background-color:#006bc4;
+		color: white;
+	}
+
+	div #lootoutput .loot-title {
+		color: $class-main-color;
+	}
+
+	/* 	end section: lootgen */
+
 	/* Bootstrap overrides */
 	.table-striped > tbody > tr:nth-of-type(odd) {
 		background-color: #444;
@@ -4427,6 +4467,11 @@ table.stats tr.homebrew-hover {
 
 	.don__bar {
 		background: $bg-color;
+	}
+
+	.input-group-addon, .form-control {
+		background: transparent;
+		color: #bbb;
 	}
 
 	/* *** */
