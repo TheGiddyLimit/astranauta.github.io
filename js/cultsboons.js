@@ -1,7 +1,10 @@
 "use strict";
+
 const JSON_URL = "data/cultsboons.json";
 
 window.onload = function load () {
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
@@ -13,9 +16,9 @@ let cultsAndBoonsList;
 const sourceFilter = getSourceFilter();
 let filterBox;
 let list;
-function onJsonLoad (data) {
+async function onJsonLoad (data) {
 	list = ListUtil.search({
-		valueNames: ['name', "source", "type"],
+		valueNames: ['name', "source", "type", "uniqueid"],
 		listClass: "cultsboons",
 		sortFunction: SortUtil.listSort
 	});
@@ -25,7 +28,7 @@ function onJsonLoad (data) {
 		items: ["b", "c"],
 		displayFn: cultBoonTypeToFull
 	});
-	filterBox = initFilterBox(
+	filterBox = await pInitFilterBox(
 		sourceFilter,
 		typeFilter
 	);
@@ -45,13 +48,15 @@ function onJsonLoad (data) {
 	cultsAndBoonsList = data.cult.concat(data.boon);
 
 	let tempString = "";
-	cultsAndBoonsList.forEach((it, i) => {
+	cultsAndBoonsList.forEach((it, bcI) => {
 		tempString += `
-			<li class="row" ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)">
-				<a id="${i}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class="type col-xs-3 text-align-center">${cultBoonTypeToFull(it._type)}</span>
-					<span class="name col-xs-7">${it.name}</span>
-					<span class="source col-xs-2 source${it.source}" title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
+			<li class="row" ${FLTR_ID}="${bcI}" onclick="ListUtil.toggleSelected(event, this)">
+				<a id="${bcI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
+					<span class="type col-3 text-align-center">${cultBoonTypeToFull(it._type)}</span>
+					<span class="name col-7">${it.name}</span>
+					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
+					
+					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : bcI}</span>
 				</a>
 			</li>`;
 
@@ -75,6 +80,10 @@ function onJsonLoad (data) {
 		itemList: cultsAndBoonsList,
 		primaryLists: [list]
 	});
+
+	RollerUtil.addListRollButton();
+	ListUtil.addListShowHide();
+
 	History.init(true);
 }
 
@@ -112,14 +121,15 @@ function loadhash (id) {
 			${EntryRenderer.utils.getBorderTr()}
 		`);
 	} else if (it._type === "b") {
+		it._displayName = it._displayName || `Demonic Boon: ${it.name}`;
 		EntryRenderer.cultboon.doRenderBoonParts(it, renderer, renderStack);
 		renderer.recursiveEntryRender({entries: it.entries}, renderStack, 1);
 		$("#pagecontent").html(`
-			<tr><th class="border" colspan="6"></th></tr>
-			<tr><th class="name" colspan="6"><span class="stats-name">${it._type === "b" ? `Demonic Boon: ` : ""}${it.name}</span><span class="stats-source source${it.source}" title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span></th></tr>
+			${EntryRenderer.utils.getBorderTr()}
+			${EntryRenderer.utils.getNameTr(it)}
 			<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>
 			${EntryRenderer.utils.getPageTr(it)}
-			<tr><th class="border" colspan="6"></th></tr>
+			${EntryRenderer.utils.getBorderTr()}
 		`);
 	}
 

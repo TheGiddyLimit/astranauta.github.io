@@ -1,7 +1,7 @@
 "use strict";
 
 class History {
-	static hashChange (evt) {
+	static hashChange (forceLoad) {
 		if (History.isHistorySuppressed) {
 			History.setSuppressHistory(false);
 			return;
@@ -10,7 +10,8 @@ class History {
 		const [link, ...sub] = History._getHashParts();
 
 		let blankFilterLoad = false;
-		if (!evt || sub.length === 0) {
+		if (link !== History.lastLoadedLink || sub.length === 0 || forceLoad) {
+			History.lastLoadedLink = link;
 			if (link === HASH_BLANK) {
 				blankFilterLoad = true;
 			} else {
@@ -35,9 +36,9 @@ class History {
 			}
 		}
 
-		if (typeof loadsub === "function" && sub.length > 0) loadsub(sub);
+		if (typeof loadsub === "function" && (sub.length > 0 || forceLoad)) loadsub(sub);
 		if (blankFilterLoad) {
-			window.location.hash = "";
+			History._freshLoad();
 		}
 	}
 
@@ -70,7 +71,7 @@ class History {
 	}
 
 	static _getHashParts () {
-		return window.location.hash.slice(1).replace(/%27/g, "'").split(HASH_PART_SEP);
+		return window.location.hash.slice(1).toLowerCase().replace(/%27/g, "'").split(HASH_PART_SEP);
 	}
 
 	static _getListElem (link, getIndex) {
@@ -96,14 +97,50 @@ class History {
 		// defer this, in case the list needs to filter first
 		setTimeout(() => {
 			const goTo = $("#listcontainer").find(".list a").attr('href');
-			if (goTo) location.replace(goTo);
+			if (goTo) {
+				const parts = location.hash.split(HASH_PART_SEP);
+				const fullHash = `${goTo}${parts.length > 1 ? `${HASH_PART_SEP}${parts.slice(1).join(HASH_PART_SEP)}` : ""}`;
+				location.replace(fullHash);
+			}
 		}, 1);
 	}
 
 	static cleanSetHash (toSet) {
 		window.location.hash = toSet.replace(/,+/g, ",").replace(/,$/, "").toLowerCase();
 	}
+
+	static getHashSource () {
+		const [link, ...sub] = History._getHashParts();
+		// by convention, the source is the last hash segment
+		return link ? link.split(HASH_LIST_SEP).last() : null;
+	}
+
+	static getSubHash (key) {
+		const [link, ...sub] = History._getHashParts();
+		const hKey = `${key}${HASH_SUB_KV_SEP}`;
+		const part = sub.find(it => it.startsWith(hKey));
+		if (part) return part.slice(hKey.length);
+		return null;
+	}
+
+	/**
+	 * Sets a subhash with the key specified, overwriting any existing.
+	 * @param key Subhash key.
+	 * @param val Subhash value. Passing a nully object removes the k/v pair.
+	 */
+	static setSubhash (key, val) {
+		const [link, ...sub] = History._getHashParts();
+		if (!link) History.cleanSetHash("");
+
+		const hKey = `${key}${HASH_SUB_KV_SEP}`;
+		const out = [link];
+		if (sub.length) sub.filter(it => !it.startsWith(hKey)).forEach(it => out.push(it));
+		if (val != null) out.push(`${hKey}${val}`);
+
+		History.cleanSetHash(out.join(HASH_PART_SEP));
+	}
 }
+History.lastLoadedLink = null;
 History.lastLoadedId = null;
 History.initialLoad = true;
 History.isHistorySuppressed = false;

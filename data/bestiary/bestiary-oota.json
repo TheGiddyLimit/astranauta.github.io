@@ -18,7 +18,7 @@
 			],
 			"hp": {
 				"average": 59,
-				"formula": "7d12+14"
+				"formula": "7d12 + 14"
 			},
 			"speed": {
 				"walk": 20
@@ -58,13 +58,16 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. Hit: 14 ({@dice 3d6+4}) bludgeoning damage."
+						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. {@h}14 ({@damage 3d6 + 4}) bludgeoning damage."
 					]
 				}
 			],
 			"page": 230,
 			"traitTags": [
 				"False Appearance"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -91,7 +94,7 @@
 			],
 			"hp": {
 				"average": 333,
-				"formula": "23d12+184"
+				"formula": "23d12 + 184"
 			},
 			"speed": {
 				"walk": 40
@@ -141,7 +144,7 @@
 				{
 					"name": "Charge",
 					"entries": [
-						"If Baphomet moves at least 10 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 22 ({@dice 4d10}) piercing damage. If the target is a creature, it must succeed on a DC 25 Strength saving throw or be pushed up to 10 feet away and knocked {@condition prone}."
+						"If Baphomet moves at least 10 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 22 ({@damage 4d10}) piercing damage. If the target is a creature, it must succeed on a DC 25 Strength saving throw or be pushed up to 10 feet away and knocked {@condition prone}."
 					]
 				},
 				{
@@ -185,19 +188,19 @@
 				{
 					"name": "Heartcleaver",
 					"entries": [
-						"{@atk mw} {@hit 17} to hit, reach 15 ft., one target. Hit: 24 ({@dice 4d6+10}) slashing damage"
+						"{@atk mw} {@hit 17} to hit, reach 15 ft., one target. {@h}24 ({@damage 4d6 + 10}) slashing damage"
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. Hit: 19 ({@dice 2d8+10}) piercing damage."
+						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. {@h}19 ({@damage 2d8 + 10}) piercing damage."
 					]
 				},
 				{
 					"name": "Gore",
 					"entries": [
-						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. Hit: 21 ({@dice 2d10+10}) piercing damage."
+						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. {@h}21 ({@damage 2d10 + 10}) piercing damage."
 					]
 				},
 				{
@@ -208,24 +211,21 @@
 					]
 				}
 			],
-			"legendaryGroup": "Baphomet",
+			"legendaryGroup": {
+				"name": "Baphomet",
+				"source": "MTF"
+			},
 			"legendary": [
 				{
 					"name": "Heartcleaver Attack",
 					"entries": [
 						"Baphomet makes a melee attack with Heartcleaver."
-					],
-					"attack": [
-						"|17|4d6+10"
 					]
 				},
 				{
 					"name": "Charge (Costs 2 Actions)",
 					"entries": [
 						"Baphomet moves up to his speed, then makes a gore attack."
-					],
-					"attack": [
-						"|17|2d10+10"
 					]
 				}
 			],
@@ -265,6 +265,16 @@
 			"actionTags": [
 				"Multiattack",
 				"Frightful Presence"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -323,7 +333,14 @@
 					]
 				}
 			],
-			"page": 230
+			"page": 230,
+			"languageTags": [
+				"AB",
+				"CS"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"name": "Chamberlain of Zuggtmoy",
@@ -344,7 +361,7 @@
 			],
 			"hp": {
 				"average": 45,
-				"formula": "6d10+12"
+				"formula": "6d10 + 12"
 			},
 			"speed": {
 				"walk": 20
@@ -393,7 +410,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) bludgeoning damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) bludgeoning damage."
 					]
 				},
 				{
@@ -406,6 +423,13 @@
 			"page": 230,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"AB",
+				"U"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -426,7 +450,7 @@
 			],
 			"hp": {
 				"average": 93,
-				"formula": "11d10+33"
+				"formula": "11d10 + 33"
 			},
 			"speed": {
 				"walk": 30,
@@ -461,13 +485,166 @@
 				{
 					"name": "Pincer",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage. The target is {@condition grappled} (Escape DC 14) if it is a Large or smaller creature and the spore servant doesn't have two other creatures {@condition grappled}."
+						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d6 + 4}) bludgeoning damage. The target is {@condition grappled} (Escape DC 14) if it is a Large or smaller creature and the spore servant doesn't have two other creatures {@condition grappled}."
 					]
 				}
 			],
 			"page": 228,
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"B"
+			]
+		},
+		{
+			"name": "Deepking Horgar Steelshadow V",
+			"isNPC": true,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"source": "OotA",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 20,
+					"from": [
+						"{@item dwarven plate|dmg}"
+					]
+				}
+			],
+			"hp": {
+				"average": 52,
+				"formula": "8d8 + 16"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 19,
+			"dex": 11,
+			"con": 14,
+			"int": 11,
+			"wis": 11,
+			"cha": 15,
+			"save": {
+				"con": "+4",
+				"wis": "+2"
+			},
+			"passive": 10,
+			"languages": "Draconic, Giant, and Dwarvish",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "(Optional) Indefinite Madness",
+					"entries": [
+						{
+							"type": "inline",
+							"entries": [
+								"Horgar has been affected by the demon lords let loose in the Abyss during the Rage of Demons storyline. Roll on the ",
+								{
+									"type": "link",
+									"href": {
+										"type": "internal",
+										"path": "variantrules.html",
+										"hash": "madness_dmg"
+									},
+									"text": "Indefinite Madness table"
+								},
+								" to determine Horgar's flaw."
+							]
+						}
+					]
+				},
+				{
+					"name": "Duergar Resilience",
+					"entries": [
+						"Horgar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"While in sunlight, Horgar has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+					]
+				},
+				{
+					"name": "Gauntlets of Ogre Power",
+					"entries": [
+						"Horgar wields {@item Gauntlets of Ogre Power} giving him a Strength score of 19 (+4)."
+					]
+				},
+				{
+					"name": "Brave",
+					"entries": [
+						"Horgar has advantage on saving throws against being {@condition frightened}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Enlarge (Recharges after a Short or Long Rest)",
+					"entries": [
+						"For 1 minute, Horgar magically increases in size, along with anything he is wearing or carrying. While enlarged, Horgar is Large, doubles his damage dice on Strength-based weapon attacks (included in the attacks), and makes Strength checks and Strength saving throws with advantage. If Horgar lacks the room to become Large, he attains the maximum size possible in the space available."
+					]
+				},
+				{
+					"name": "Invisibility (Recharges after a Short or Long Rest)",
+					"entries": [
+						"Horgar magically turns {@condition invisible} until he attacks, casts a spell, or uses his Enlarge, or until his concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment Horgar wears or carries is invisible with him."
+					]
+				},
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Horgar makes two melee attacks."
+					]
+				},
+				{
+					"name": "+2 Warhammer",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}10 ({@damage 1d8 + 6}) bludgeoning damage, or 11 ({@damage 1d10 + 6}) bludgeoning damage if used with two hands. While Horgar is enlarged, the damage increases to 15 ({@dice 2d8 + 6}) or 17 ({@damage 2d10 + 6}) bludgeoning damage, respectively."
+					]
+				},
+				{
+					"name": "Heavy Crossbow",
+					"entries": [
+						"{@atk rw} {@hit 2} to hit, range 100/400 ft., one target. {@h}5 ({@damage 1d10}) piercing damage."
+					]
+				},
+				{
+					"name": "Leadership (Recharges after a Short or Long Rest)",
+					"entries": [
+						"For 1 minute, Horgar can utter a special command or warning whenever a nonhostile creature that he can see within 30 ft. of Horgar makes an attack roll or a saving throw. The creature can add a {@dice d4} to its roll provided it can hear and understand Horgar. A creature can benefit from only one Leadership die at a time. This effect ends if Horgar is {@condition incapacitated}."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Parry",
+					"entries": [
+						"Horgar adds 2 to its AC against one melee attack that would hit him. To do so, Horgar must see the attacker and be wielding a melee weapon."
+					]
+				}
+			],
+			"page": 82,
+			"traitTags": [
+				"Sunlight Sensitivity"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Parry"
+			],
+			"languageTags": [
+				"DR",
+				"GI",
+				"D"
 			]
 		},
 		{
@@ -494,7 +671,7 @@
 			],
 			"hp": {
 				"average": 496,
-				"formula": "34d12+272"
+				"formula": "34d12 + 272"
 			},
 			"speed": {
 				"walk": 50,
@@ -578,7 +755,7 @@
 				{
 					"name": "Tentacle",
 					"entries": [
-						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. Hit: 35 ({@dice 4d12+9}) bludgeoning damage. If the target is a creature, it must succeed on a DC 23 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. {@h}35 ({@damage 4d12 + 9}) bludgeoning damage. If the target is a creature, it must succeed on a DC 23 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				},
 				{
@@ -592,16 +769,16 @@
 					]
 				}
 			],
-			"legendaryGroup": "Demogorgon",
+			"legendaryGroup": {
+				"name": "Demogorgon",
+				"source": "MTF"
+			},
 			"legendaryActions": 2,
 			"legendary": [
 				{
 					"name": "Tail",
 					"entries": [
-						"{@atk mw} {@hit 17} to hit, reach 15 ft., one target. Hit: 31 ({@dice 4d10+9}) bludgeoning damage plus 22 ({@dice 4d10}) necrotic damage."
-					],
-					"attack": [
-						"|17|4d10+9+4d10"
+						"{@atk mw} {@hit 17} to hit, reach 15 ft., one target. {@h}31 ({@damage 4d10 + 9}) bludgeoning damage plus 22 ({@damage 4d10}) necrotic damage."
 					]
 				},
 				{
@@ -645,6 +822,16 @@
 			"actionTags": [
 				"Multiattack",
 				"Tentacles"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -671,7 +858,7 @@
 			],
 			"hp": {
 				"average": 13,
-				"formula": "3d6+3"
+				"formula": "3d6 + 3"
 			},
 			"speed": {
 				"walk": 30
@@ -705,7 +892,7 @@
 				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
-						"While in sunlight, the derro has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+						"While in sunlight, the derro has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 					]
 				}
 			],
@@ -713,13 +900,13 @@
 				{
 					"name": "Hooked Shortspear",
 					"entries": [
-						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. Hit: 1 ({@dice 1d4-1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall {@condition prone}."
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall {@condition prone}."
 					]
 				},
 				{
 					"name": "Light Repeating Crossbow",
 					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 40/160 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
+						"{@atk rw} {@hit 4} to hit, range 40/160 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage."
 					]
 				}
 			],
@@ -728,6 +915,13 @@
 			"traitTags": [
 				"Magic Resistance",
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -754,7 +948,7 @@
 			],
 			"hp": {
 				"average": 49,
-				"formula": "11d6+11"
+				"formula": "11d6 + 11"
 			},
 			"speed": {
 				"walk": 30
@@ -788,7 +982,7 @@
 				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
-						"While in sunlight, the derro has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+						"While in sunlight, the derro has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 					]
 				}
 			],
@@ -796,13 +990,13 @@
 				{
 					"name": "Hooked Shortspear",
 					"entries": [
-						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. Hit: 1 ({@dice 1d4-1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall {@condition prone}."
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall {@condition prone}."
 					]
 				},
 				{
 					"name": "Light Repeating Crossbow",
 					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 40/160 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
+						"{@atk rw} {@hit 4} to hit, range 40/160 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage."
 					]
 				}
 			],
@@ -853,6 +1047,16 @@
 			"traitTags": [
 				"Magic Resistance",
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"spellcastingTags": [
+				"CS"
 			]
 		},
 		{
@@ -880,7 +1084,7 @@
 			],
 			"hp": {
 				"average": 31,
-				"formula": "7d6+7"
+				"formula": "7d6 + 7"
 			},
 			"speed": {
 				"walk": {
@@ -929,7 +1133,7 @@
 				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
-						"While in sunlight, the derro has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+						"While in sunlight, the derro has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 					]
 				}
 			],
@@ -943,7 +1147,7 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage. The sword is coated with serpent venom that wears off after the first hit. A target subjected to the venom must make a DC 11 Constitution saving throw, taking 10 ({@dice 3d6}) poison damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage. The sword is coated with serpent venom that wears off after the first hit. A target subjected to the venom must make a DC 11 Constitution saving throw, taking 10 ({@damage 3d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -983,6 +1187,16 @@
 			"actionTags": [
 				"Multiattack",
 				"Parry"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -1027,11 +1241,14 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
 					]
 				}
 			],
-			"page": 229
+			"page": 229,
+			"senseTags": [
+				"B"
+			]
 		},
 		{
 			"name": "Duergar Darkhaft",
@@ -1058,7 +1275,7 @@
 			],
 			"hp": {
 				"average": 26,
-				"formula": "4d8+4"
+				"formula": "4d8 + 4"
 			},
 			"speed": {
 				"walk": 25
@@ -1086,7 +1303,7 @@
 				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
-						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 					]
 				}
 			],
@@ -1100,13 +1317,13 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage, or 11 ({@dice 2d8+2}) piercing damage while enlarged."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage, or 11 ({@damage 2d8 + 2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage, or 9 ({@damage 2d6 + 2}) piercing damage while enlarged."
 					]
 				},
 				{
@@ -1138,6 +1355,17 @@
 			],
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"spellcastingTags": [
+				"P",
+				"I"
 			]
 		},
 		{
@@ -1165,7 +1393,7 @@
 			],
 			"hp": {
 				"average": 26,
-				"formula": "4d8+4"
+				"formula": "4d8 + 4"
 			},
 			"speed": {
 				"walk": 25
@@ -1205,7 +1433,7 @@
 				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
-						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 					]
 				}
 			],
@@ -1219,19 +1447,19 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage, or 11 ({@dice 2d8+2}) piercing damage while enlarged."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage, or 11 ({@damage 2d8 + 2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage, or 9 ({@damage 2d6 + 2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
+						"{@atk rw} {@hit 4} to hit, range 100/400 ft., one target. {@h}5 ({@damage 1d10}) piercing damage."
 					]
 				},
 				{
@@ -1245,6 +1473,13 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/627/duergar-kavalrachni.mp3",
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -1272,7 +1507,7 @@
 			],
 			"hp": {
 				"average": 26,
-				"formula": "4d8+4"
+				"formula": "4d8 + 4"
 			},
 			"speed": {
 				"walk": 25
@@ -1300,7 +1535,7 @@
 				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
-						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 					]
 				}
 			],
@@ -1314,13 +1549,13 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage, or 11 ({@dice 2d8+2}) piercing damage while enlarged."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage, or 11 ({@damage 2d8 + 2}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage, or 9 ({@damage 2d6 + 2}) piercing damage while enlarged."
 					]
 				},
 				{
@@ -1382,6 +1617,18 @@
 			],
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"spellcastingTags": [
+				"P",
+				"I",
+				"CC"
 			]
 		},
 		{
@@ -1436,7 +1683,7 @@
 				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
-						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 					]
 				}
 			],
@@ -1450,13 +1697,13 @@
 				{
 					"name": "Create Soulblade",
 					"entries": [
-						"The duergar creates a visible, shortsword-sized blade of psionic energy. The weapon appears int he duergar's hand and vanishes if it leaves the duergar's grip, or if the duergar dies or is {@condition incapacitated}."
+						"The duergar creates a visible, shortsword-sized blade of psionic energy. The weapon appears in the duergar's hand and vanishes if it leaves the duergar's grip, or if the duergar dies or is {@condition incapacitated}."
 					]
 				},
 				{
 					"name": "Soulblade",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) force damage, or 10 ({@dice 2d6+3}) force damage while enlarged. If the soulblade has advantage on the attack roll, the attack deals an extra 3 ({@dice 1d6}) force damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) force damage, or 10 ({@damage 2d6 + 3}) force damage while enlarged. If the soulblade has advantage on the attack roll, the attack deals an extra 3 ({@damage 1d6}) force damage."
 					]
 				},
 				{
@@ -1489,6 +1736,17 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/630/duergar-soulblade.mp3",
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"spellcastingTags": [
+				"P",
+				"I"
 			]
 		},
 		{
@@ -1510,7 +1768,7 @@
 			],
 			"hp": {
 				"average": 26,
-				"formula": "4d8+8"
+				"formula": "4d8 + 8"
 			},
 			"speed": {
 				"walk": 15
@@ -1537,11 +1795,14 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage."
 					]
 				}
 			],
-			"page": 229
+			"page": 229,
+			"senseTags": [
+				"B"
+			]
 		},
 		{
 			"name": "Duergar Stone Guard",
@@ -1568,7 +1829,7 @@
 			],
 			"hp": {
 				"average": 39,
-				"formula": "6d8+12"
+				"formula": "6d8 + 12"
 			},
 			"speed": {
 				"walk": 25
@@ -1596,7 +1857,7 @@
 				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
-						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 					]
 				}
 			],
@@ -1610,13 +1871,13 @@
 				{
 					"name": "King's Knife (Shortsword)",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage, or 11 ({@dice 2d6+4}) piercing damage while enlarged."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) piercing damage, or 11 ({@damage 2d6 + 4}) piercing damage while enlarged."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 9 ({@dice 2d6+2}) piercing damage while enlarged."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage, or 9 ({@damage 2d6 + 2}) piercing damage while enlarged."
 					]
 				},
 				{
@@ -1630,6 +1891,13 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/631/duergar-stone-guard.mp3",
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -1656,7 +1924,7 @@
 			],
 			"hp": {
 				"average": 26,
-				"formula": "4d8+8"
+				"formula": "4d8 + 8"
 			},
 			"speed": {
 				"walk": 25
@@ -1684,7 +1952,7 @@
 				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
-						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 					]
 				}
 			],
@@ -1698,13 +1966,13 @@
 				{
 					"name": "Fire Lance",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit (with disadvantage if the target is within 5 feet of the duergar), reach 10 ft., one target. Hit: 9 ({@dice 1d12+3}) piercing damage plus 3 ({@dice 1d6}) fire damage, or 16 ({@dice 2d12+3}) piercing damage plus 3 ({@dice 1d6}) fire damage while enlarged."
+						"{@atk mw} {@hit 5} to hit (with disadvantage if the target is within 5 feet of the duergar), reach 10 ft., one target. {@h}9 ({@damage 1d12 + 3}) piercing damage plus 3 ({@damage 1d6}) fire damage, or 16 ({@damage 2d12 + 3}) piercing damage plus 3 ({@damage 1d6}) fire damage while enlarged."
 					]
 				},
 				{
 					"name": "Fire Spray {@recharge 5}",
 					"entries": [
-						"From its fire lance, the duergar shoots a 15-foot cone of fire or a line of fire 30 feet long and 5 feet wide. Each creature in that area must make a DC 12 Dexterity saving throw, taking 10 ({@dice 3d6}) fire damage on a failed save, or half as much damage on a successful one."
+						"From its fire lance, the duergar shoots a 15-foot cone of fire or a line of fire 30 feet long and 5 feet wide. Each creature in that area must make a DC 12 Dexterity saving throw, taking 10 ({@damage 3d6}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
@@ -1718,6 +1986,13 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/633/duergar-xarrorn.mp3",
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -1744,7 +2019,7 @@
 			],
 			"hp": {
 				"average": 19,
-				"formula": "3d8+6"
+				"formula": "3d8 + 6"
 			},
 			"speed": {
 				"walk": 25
@@ -1778,7 +2053,7 @@
 				{
 					"name": "Keen Hearing and Sight",
 					"entries": [
-						"The scout has advantage on Wisdom (Perception) checks that rely on hearing or sight."
+						"The scout has advantage on Wisdom ({@skill Perception}) checks that rely on hearing or sight."
 					]
 				}
 			],
@@ -1792,13 +2067,13 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"{@atk rw} {@hit 3} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
+						"{@atk rw} {@hit 3} to hit, range 100/400 ft., one target. {@h}5 ({@damage 1d10}) piercing damage."
 					]
 				}
 			],
@@ -1808,6 +2083,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"D"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -1828,7 +2110,7 @@
 			],
 			"hp": {
 				"average": 30,
-				"formula": "4d10+8"
+				"formula": "4d10 + 8"
 			},
 			"speed": {
 				"walk": 30,
@@ -1864,13 +2146,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+3}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 9 ({@dice 2d8}) acid damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. {@h}7 ({@damage 1d8 + 3}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 9 ({@damage 2d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Sticky Leg (Recharges when the Steeder Has No Creatures Grappled)",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one Medium or smaller creature. Hit: The target is stuck on the steeder's leg and {@condition grappled} until it escapes (escape DC 12)"
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one Medium or smaller creature. {@h}The target is stuck on the steeder's leg and {@condition grappled} until it escapes (escape DC 12)"
 					]
 				}
 			],
@@ -1878,6 +2160,9 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/639/female-steeder.mp3",
 			"traitTags": [
 				"Spider Climb"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -1904,7 +2189,7 @@
 			],
 			"hp": {
 				"average": 350,
-				"formula": "28d10+196"
+				"formula": "28d10 + 196"
 			},
 			"speed": {
 				"walk": 40,
@@ -1989,25 +2274,25 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 16} to hit, reach 10 ft., one target. Hit: 23 ({@dice 4d6+9}) piercing damage."
+						"{@atk mw} {@hit 16} to hit, reach 10 ft., one target. {@h}23 ({@damage 4d6 + 9}) piercing damage."
 					]
 				},
 				{
 					"name": "Fist",
 					"entries": [
-						"{@atk mw} {@hit 16} to hit, reach 10 ft., one target. Hit: 27 ({@dice 4d8+9}) bludgeoning damage."
+						"{@atk mw} {@hit 16} to hit, reach 10 ft., one target. {@h}27 ({@damage 4d8 + 9}) bludgeoning damage."
 					]
 				}
 			],
-			"legendaryGroup": "Fraz-Urb'luu",
+			"legendaryGroup": {
+				"name": "Fraz-Urb'luu",
+				"source": "MTF"
+			},
 			"legendary": [
 				{
 					"name": "Tail",
 					"entries": [
-						"{@atk mw} {@hit 16} to hit, reach 15 ft., one target. Hit: 31 ({@dice 4d10+9}) bludgeoning damage. If the target is a Large or smaller creature, it is also {@condition grappled} (escape DC 24). The {@condition grappled} target is also {@condition restrained}. Fraz-Urb'luu can grapple only one creature with his tail at a time."
-					],
-					"attack": [
-						"|16|4d10+9"
+						"{@atk mw} {@hit 16} to hit, reach 15 ft., one target. {@h}31 ({@damage 4d10 + 9}) bludgeoning damage. If the target is a Large or smaller creature, it is also {@condition grappled} (escape DC 24). The {@condition grappled} target is also {@condition restrained}. Fraz-Urb'luu can grapple only one creature with his tail at a time."
 					]
 				},
 				{
@@ -2055,6 +2340,16 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -2075,7 +2370,7 @@
 			],
 			"hp": {
 				"average": 19,
-				"formula": "3d10+3"
+				"formula": "3d10 + 3"
 			},
 			"speed": {
 				"walk": 30,
@@ -2102,13 +2397,16 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage."
 					]
 				}
 			],
 			"page": 131,
 			"traitTags": [
 				"Spider Climb"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -2136,7 +2434,7 @@
 			],
 			"hp": {
 				"average": 378,
-				"formula": "36d10+180"
+				"formula": "36d10 + 180"
 			},
 			"speed": {
 				"walk": 40
@@ -2220,7 +2518,7 @@
 				{
 					"name": "Wave of Sorrow (Greatsword)",
 					"entries": [
-						"{@atk mw} {@hit 13} to hit, reach 10 ft., one target, Hit; 20 ({@dice 4d6+6}) slashing damage plus 14 ({@dice 4d6}) acid damage."
+						"{@atk mw} {@hit 13} to hit, reach 10 ft., one target, Hit; 20 ({@damage 4d6 + 6}) slashing damage plus 14 ({@damage 4d6}) acid damage."
 					]
 				},
 				{
@@ -2230,7 +2528,10 @@
 					]
 				}
 			],
-			"legendaryGroup": "Graz'zt",
+			"legendaryGroup": {
+				"name": "Graz'zt",
+				"source": "MTF"
+			},
 			"legendary": [
 				{
 					"name": "Attack",
@@ -2298,6 +2599,16 @@
 			"actionTags": [
 				"Multiattack",
 				"Teleport"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -2329,7 +2640,7 @@
 			],
 			"hp": {
 				"average": 33,
-				"formula": "6d8+6"
+				"formula": "6d8 + 6"
 			},
 			"speed": {
 				"walk": 30
@@ -2361,7 +2672,7 @@
 				{
 					"name": "+1 Flail",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) bludgeoning damage"
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) bludgeoning damage"
 					]
 				}
 			],
@@ -2414,6 +2725,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"U"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -2434,7 +2752,7 @@
 			],
 			"hp": {
 				"average": 75,
-				"formula": "10d10+10"
+				"formula": "10d10 + 10"
 			},
 			"speed": {
 				"walk": 20,
@@ -2468,13 +2786,16 @@
 				{
 					"name": "Hook",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage."
+						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d6 + 4}) piercing damage."
 					]
 				}
 			],
 			"page": 68,
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -2496,7 +2817,7 @@
 			],
 			"hp": {
 				"average": 18,
-				"formula": "4d6+4"
+				"formula": "4d6 + 4"
 			},
 			"speed": {
 				"walk": 0,
@@ -2516,7 +2837,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) piercing damage."
 					]
 				}
 			],
@@ -2525,11 +2846,18 @@
 					"name": "Barbed Tail",
 					"entries": [
 						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
 					]
 				}
 			],
-			"page": 225
+			"page": 225,
+			"languageTags": [
+				"AB",
+				"OTH"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"name": "Ixitxachitl Cleric",
@@ -2550,7 +2878,7 @@
 			],
 			"hp": {
 				"average": 18,
-				"formula": "4d6+4"
+				"formula": "4d6 + 4"
 			},
 			"speed": {
 				"walk": 0,
@@ -2570,7 +2898,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) piercing damage."
 					]
 				}
 			],
@@ -2579,7 +2907,7 @@
 					"name": "Barbed Tail",
 					"entries": [
 						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
 					]
 				}
 			],
@@ -2621,6 +2949,16 @@
 					},
 					"ability": "wis"
 				}
+			],
+			"languageTags": [
+				"AB",
+				"OTH"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -2647,7 +2985,7 @@
 			],
 			"hp": {
 				"average": 350,
-				"formula": "28d12+168"
+				"formula": "28d12 + 168"
 			},
 			"speed": {
 				"walk": 30
@@ -2749,17 +3087,20 @@
 				{
 					"name": "Acid Lash",
 					"entries": [
-						"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. Hit: 21 ({@dice 4d6+7}) acid damage. Any creature killed by this attack is drawn into Juiblex's body, and the corpse is obliterated after 1 minute."
+						"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. {@h}21 ({@damage 4d6 + 7}) acid damage. Any creature killed by this attack is drawn into Juiblex's body, and the corpse is obliterated after 1 minute."
 					]
 				},
 				{
 					"name": "Eject Slime {@recharge 5}",
 					"entries": [
-						"Juiblex spews out a corrosive slime, targeting one creature that it can see within 60 feet of it. The target must make a DC 21 Dexterity saving throw. On a failure, the target takes 55 ({@dice 10d10}) acid damage. Unless the target avoids taking any of this damage, any metal armor worn by the target takes a permanent \u22121 penalty to the AC it offers, and any metal weapon it is carrying or wearing takes a permanent \u22121 penalty to damage rolls. The penalty worsens each time a target is subjected to this effect. If the penalty on an object drops to \u22125, the object is destroyed."
+						"Juiblex spews out a corrosive slime, targeting one creature that it can see within 60 feet of it. The target must make a DC 21 Dexterity saving throw. On a failure, the target takes 55 ({@damage 10d10}) acid damage. Unless the target avoids taking any of this damage, any metal armor worn by the target takes a permanent \u22121 penalty to the AC it offers, and any metal weapon it is carrying or wearing takes a permanent \u22121 penalty to damage rolls. The penalty worsens each time a target is subjected to this effect. If the penalty on an object drops to \u22125, the object is destroyed."
 					]
 				}
 			],
-			"legendaryGroup": "Juiblex",
+			"legendaryGroup": {
+				"name": "Juiblex",
+				"source": "MTF"
+			},
 			"legendary": [
 				{
 					"name": "Acid Splash",
@@ -2776,10 +3117,7 @@
 				{
 					"name": "Corrupting Touch (Costs 2 Actions)",
 					"entries": [
-						"{@atk mw} {@hit 14} to hit, reach 10 ft., one creature. Hit: 21 ({@dice 4d6+7}) poison damage, and the target is slimed. Until the slime is scraped off with an action, the target is {@condition poisoned}, and any creature, other than an ooze, is {@condition poisoned} while Within 10 of the target."
-					],
-					"attack": [
-						"|14|4d6+7"
+						"{@atk mw} {@hit 14} to hit, reach 10 ft., one creature. {@h}21 ({@damage 4d6 + 7}) poison damage, and the target is slimed. Until the slime is scraped off with an action, the target is {@condition poisoned}, and any creature, other than an ooze, is {@condition poisoned} while Within 10 of the target."
 					]
 				}
 			],
@@ -2814,6 +3152,16 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -2841,7 +3189,7 @@
 			],
 			"hp": {
 				"average": 11,
-				"formula": "2d8+2"
+				"formula": "2d8 + 2"
 			},
 			"speed": {
 				"walk": 30
@@ -2855,7 +3203,7 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"senses": "darkvision 60ft.",
+			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"cr": "1/4",
 			"trait": [
@@ -2870,11 +3218,14 @@
 				{
 					"name": "Halberd",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 10ft., one target. Hit: 7 ({@dice 1d10+2}) slashing damage."
+						"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}7 ({@damage 1d10 + 2}) slashing damage."
 					]
 				}
 			],
-			"page": 131
+			"page": 131,
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"source": "OotA",
@@ -2946,13 +3297,13 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
 					]
 				},
 				{
 					"name": "Hand Crossbow",
 					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
 					]
 				}
 			],
@@ -2962,6 +3313,10 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"D"
 			]
 		},
 		{
@@ -2982,7 +3337,7 @@
 			],
 			"hp": {
 				"average": 13,
-				"formula": "2d8+4"
+				"formula": "2d8 + 4"
 			},
 			"speed": {
 				"walk": 30,
@@ -3018,13 +3373,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+2}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 4 ({@dice 1d8}) acid damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}7 ({@damage 1d8 + 2}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 4 ({@damage 1d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Sticky Leg (Recharges when the Steeder Has No Creatures Grappled)",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one Small or Tiny creature. Hit: The target is stuck on the steeder's leg and {@condition grappled} until it escapes (escape DC 12)"
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one Small or Tiny creature. {@h}The target is stuck on the steeder's leg and {@condition grappled} until it escapes (escape DC 12)"
 					]
 				}
 			],
@@ -3032,6 +3387,9 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/659/male-steeder.mp3",
 			"traitTags": [
 				"Spider Climb"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -3059,7 +3417,7 @@
 			],
 			"hp": {
 				"average": 40,
-				"formula": "9d6+9"
+				"formula": "9d6 + 9"
 			},
 			"speed": {
 				"walk": 30
@@ -3094,7 +3452,7 @@
 				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
-						"While in sunlight, Narrak has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+						"While in sunlight, Narrak has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 					]
 				}
 			],
@@ -3108,7 +3466,7 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
 					]
 				},
 				{
@@ -3156,6 +3514,16 @@
 			"traitTags": [
 				"Magic Resistance",
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"spellcastingTags": [
+				"CL"
 			]
 		},
 		{
@@ -3182,7 +3550,7 @@
 			],
 			"hp": {
 				"average": 405,
-				"formula": "30d12+210"
+				"formula": "30d12 + 210"
 			},
 			"speed": {
 				"walk": 40,
@@ -3234,8 +3602,8 @@
 				{
 					"name": "Wand of Orcus",
 					"entries": [
-						"The wand has 7 charges, and any of its properties that require a saving throw have a save DC of 18. While holding it, Orcus can use an action to cast animate dead, blight, or speak with dead. Alternatively, he can expend or 1 or more of the wand's charges to cast one of the following spells from it: circle of death (1 charge), finger of death (1 charge), or power word kill (2 charges). The wand regains {@dice 1d4+3} charges daily at dawn.",
-						"While holding the wand, Orcus gains +3 AC and can use an action to conjure undead creatures whose combined average hit points don't exceed 500, These undead magically rise up from the ground or otherwise form in unoccupied spaces within 300 feet of Orcus and obey his commands until they are destroyed or until he dismisses them as an action. Once this property of the wand is used, the property can't be used again until the next dawn."
+						"The wand has 7 charges, and any of its properties that require a saving throw have a save DC of 18. While holding it, Orcus can use an action to cast {@spell animate dead}, {@spell blight}, or {@spell speak with dead}. Alternatively, he can expend 1 or more of the wand's charges to cast one of the following spells from it: {@spell circle of death} (1 charge), {@spell finger of death} (1 charge), or {@spell power word kill} (2 charges). The wand regains {@dice 1d4 + 3} charges daily at dawn.",
+						"While holding the wand, Orcus can use an action to conjure undead creatures whose combined average hit points don't exceed 500. These undead magically rise up from the ground or otherwise form in unoccupied spaces within 300 feet of Orcus and obey his commands until they are destroyed or until he dismisses them as an action. Once this property of the wand is used, the property can't be used again until the next dawn."
 					]
 				},
 				{
@@ -3273,17 +3641,20 @@
 				{
 					"name": "Wand of Orcus",
 					"entries": [
-						"{@atk mw} {@hit 19} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d8+8}) bludgeoning damage plus 13 ({@dice 2d12}) necrotic damage."
+						"{@atk mw} {@hit 19} to hit, reach 10 ft., one target. {@h}21 ({@damage 3d8 + 8}) bludgeoning damage plus 13 ({@damage 2d12}) necrotic damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d8+8}) piercing damage plus 18 ({@dice 4d8}) poison damage."
+						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. {@h}21 ({@damage 3d8 + 8}) piercing damage plus 18 ({@damage 4d8}) poison damage."
 					]
 				}
 			],
-			"legendaryGroup": "Orcus",
+			"legendaryGroup": {
+				"name": "Orcus",
+				"source": "MTF"
+			},
 			"legendary": [
 				{
 					"name": "Tail",
@@ -3335,6 +3706,108 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
+			],
+			"spellcastingTags": [
+				"I"
+			]
+		},
+		{
+			"name": "Spider King",
+			"size": "L",
+			"type": "beast",
+			"source": "OotA",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 44,
+				"formula": "4d10 + 22"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 14,
+			"dex": 16,
+			"con": 12,
+			"int": 2,
+			"wis": 11,
+			"cha": 4,
+			"save": {
+				"con": "+3",
+				"wis": "+2"
+			},
+			"skill": {
+				"stealth": "+7",
+				"perception": "+4"
+			},
+			"senses": "blindsight 10 ft., darkvision 60 ft.",
+			"passive": 14,
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Two Heads",
+					"entries": [
+						"Because of its two heads, the Spider King has advantage on Wisdom ({@skill Perception}) checks and on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, and knocked {@condition unconscious}."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				},
+				{
+					"name": "Web Sense",
+					"entries": [
+						"While in contact with a web, the spider knows the exact location of any other creature in contact with the same web."
+					]
+				},
+				{
+					"name": "Web Walker",
+					"entries": [
+						"The spider ignores movement restrictions caused by webbing."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. {@h}7 ({@damage 1d8 + 3}) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 9 ({@damage 2d8}) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but {@condition poisoned} for 1 hour, even after regaining hit points, and is {@condition paralyzed} while {@condition poisoned} in this way."
+					]
+				},
+				{
+					"name": "Web {@recharge 5}",
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, range 30/60 ft., one creature. {@h}The target is {@condition restrained} by webbing. As an action, the {@condition restrained} target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
+					]
+				}
+			],
+			"page": 74,
+			"traitTags": [
+				"Spider Climb",
+				"Web Sense",
+				"Web Walker"
+			],
+			"senseTags": [
+				"B",
+				"D"
 			]
 		},
 		{
@@ -3363,7 +3836,7 @@
 			],
 			"hp": {
 				"average": 49,
-				"formula": "9d6+18"
+				"formula": "9d6 + 18"
 			},
 			"speed": {
 				"walk": 30
@@ -3419,7 +3892,7 @@
 				{
 					"name": "War Pick",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d8}) piercing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d8}) piercing damage."
 					]
 				},
 				{
@@ -3508,6 +3981,19 @@
 					},
 					"ability": "cha"
 				}
+			],
+			"languageTags": [
+				"AB",
+				"G",
+				"T",
+				"U"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"I",
+				"CS"
 			]
 		},
 		{
@@ -3534,7 +4020,7 @@
 			],
 			"hp": {
 				"average": 59,
-				"formula": "7d8+28"
+				"formula": "7d8 + 28"
 			},
 			"speed": {
 				"walk": 30
@@ -3570,7 +4056,7 @@
 				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
-						"While in sunlight, the troglodyte has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+						"While in sunlight, the troglodyte has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 					]
 				}
 			],
@@ -3584,25 +4070,25 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d4+4}) piercing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d4 + 4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d4+4}) slashing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d4 + 4}) slashing damage."
 					]
 				},
 				{
 					"name": "Greatclub",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Acid Spray {@recharge}",
 					"entries": [
-						"The troglodyte spits acid in a line 15 feet long and 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 10 ({@dice 3d6}) acid damage on a failed save, or half as much damage on a successful one."
+						"The troglodyte spits acid in a line 15 feet long and 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 10 ({@damage 3d6}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -3612,6 +4098,12 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -3633,7 +4125,7 @@
 			],
 			"hp": {
 				"average": 44,
-				"formula": "8d8+8"
+				"formula": "8d8 + 8"
 			},
 			"speed": {
 				"walk": 0,
@@ -3653,7 +4145,7 @@
 				{
 					"name": "Vampiric Bite",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				}
 			],
@@ -3662,11 +4154,18 @@
 					"name": "Barbed Tail",
 					"entries": [
 						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d10 + 4}) piercing damage."
 					]
 				}
 			],
-			"page": 226
+			"page": 226,
+			"languageTags": [
+				"AB",
+				"OTH"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"name": "Vampiric Ixitxachitl Cleric",
@@ -3687,7 +4186,7 @@
 			],
 			"hp": {
 				"average": 44,
-				"formula": "8d8+8"
+				"formula": "8d8 + 8"
 			},
 			"speed": {
 				"walk": 0,
@@ -3707,7 +4206,7 @@
 				{
 					"name": "Vampiric Bite",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				}
 			],
@@ -3716,7 +4215,7 @@
 					"name": "Barbed Tail",
 					"entries": [
 						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d10 + 4}) piercing damage."
 					]
 				}
 			],
@@ -3758,6 +4257,16 @@
 					},
 					"ability": "wis"
 				}
+			],
+			"languageTags": [
+				"AB",
+				"OTH"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -3784,7 +4293,7 @@
 			],
 			"hp": {
 				"average": 58,
-				"formula": "9d8+18"
+				"formula": "9d8 + 18"
 			},
 			"speed": {
 				"walk": 30
@@ -3812,25 +4321,29 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) slashing damage, or 8 ({@dice 1d10+3}) slashing damage if used with two hands."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage, or 8 ({@damage 1d10 + 3}) slashing damage if used with two hands."
 					]
 				},
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"{@atk rw} {@hit 3} to hit, range 100/400 ft., one target. Hit: 6 ({@dice 1d10+1}) piercing damage."
+						"{@atk rw} {@hit 3} to hit, range 100/400 ft., one target. {@h}6 ({@damage 1d10 + 1}) piercing damage."
 					]
 				}
 			],
 			"page": 130,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"D"
 			]
 		},
 		{
@@ -3857,7 +4370,7 @@
 			],
 			"hp": {
 				"average": 348,
-				"formula": "24d12+192"
+				"formula": "24d12 + 192"
 			},
 			"speed": {
 				"walk": 50
@@ -3934,7 +4447,7 @@
 					"name": "Multiattack",
 					"entries": [
 						"Yeenoghu makes three flail attacks. If an attack hits, he can cause it to create an additional effect of his choice or at random (each effect can be used only once per Multi attack):",
-						"1. The attack deals an extra 13 ({@dice 2d12}) bludgeoning damage.",
+						"1. The attack deals an extra 13 ({@damage 2d12}) bludgeoning damage.",
 						"2. The target must succeed on a DC 17 Constitution saving throw or be {@condition paralyzed} until the start of Yeenoghu's next turn.",
 						"3. The target must succeed on a DC 17 Wisdom saving throw or be affected by the {@spell confusion} spell until the start of Yeenoghu's next turn."
 					]
@@ -3942,17 +4455,20 @@
 				{
 					"name": "Flail",
 					"entries": [
-						"{@atk mw} {@hit 16} to hit, reach 15 ft., one target. Hit: 22 ({@dice 2d12+9}) bludgeoning damage."
+						"{@atk mw} {@hit 16} to hit, reach 15 ft., one target. {@h}22 ({@damage 2d12 + 9}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 16} to hit, reach 10 ft., one target. Hit: 31 ({@dice 4d10+9}) piercing damage."
+						"{@atk mw} {@hit 16} to hit, reach 10 ft., one target. {@h}31 ({@damage 4d10 + 9}) piercing damage."
 					]
 				}
 			],
-			"legendaryGroup": "Yeenoghu",
+			"legendaryGroup": {
+				"name": "Yeenoghu",
+				"source": "MTF"
+			},
 			"legendary": [
 				{
 					"name": "Charge",
@@ -4006,6 +4522,16 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -4027,7 +4553,7 @@
 			],
 			"hp": {
 				"average": 75,
-				"formula": "10d10+20"
+				"formula": "10d10 + 20"
 			},
 			"speed": {
 				"walk": 30
@@ -4060,7 +4586,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 8 ({@dice 3d4+1}) bludgeoning damage plus 7 ({@dice 3d4}) poison damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}8 ({@damage 3d4 + 1}) bludgeoning damage plus 7 ({@damage 3d4}) poison damage."
 					]
 				},
 				{
@@ -4081,19 +4607,13 @@
 				{
 					"name": "Corpse Burst",
 					"entries": [
-						"Gore, offal, and acid erupt from a corpse within 20 feet of Yestabrod. Creatures within 10 feet of the corpse must succeed on a DC 12 Dexterity saving throw or take 7 ({@dice 2d6}) acid damage."
-					],
-					"attack": [
-						"||2d6"
+						"Gore, offal, and acid erupt from a corpse within 20 feet of Yestabrod. Creatures within 10 feet of the corpse must succeed on a DC 12 Dexterity saving throw or take 7 ({@damage 2d6}) acid damage."
 					]
 				},
 				{
 					"name": "Foul Absorption",
 					"entries": [
-						"Yestabrod absorbs putrescence from a corpse within 5 feet of it, regaining {@dice 1d8+2} hit points"
-					],
-					"attack": [
-						"||1d8+2"
+						"Yestabrod absorbs putrescence from a corpse within 5 feet of it, regaining {@dice 1d8 + 2} hit points"
 					]
 				}
 			],
@@ -4101,151 +4621,13 @@
 			"isNamedCreature": true,
 			"traitTags": [
 				"Legendary Resistances"
-			]
-		},
-		{
-			"name": "Deepking Horgar Steelshadow V",
-			"isNPC": true,
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"dwarf"
-				]
-			},
-			"source": "OotA",
-			"alignment": [
-				"L",
-				"E"
 			],
-			"ac": [
-				{
-					"ac": 20,
-					"from": [
-						"{@item dwarven plate|dmg}"
-					]
-				}
+			"languageTags": [
+				"AB",
+				"TP"
 			],
-			"hp": {
-				"average": 52,
-				"formula": "8d8+16"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 19,
-			"dex": 11,
-			"con": 14,
-			"int": 11,
-			"wis": 11,
-			"cha": 15,
-			"save": {
-				"con": "+4",
-				"wis": "+2"
-			},
-			"passive": 10,
-			"languages": "Draconic, Giant, and Dwarvish",
-			"cr": "3",
-			"trait": [
-				{
-					"name": "(Optional) Indefinite Madness",
-					"entries": [
-						{
-							"type": "inline",
-							"entries": [
-								"Horgar has been affected by the demon lords let loose in the Abyss during the Rage of Demons storyline. Roll on the ",
-								{
-									"type": "link",
-									"href": {
-										"type": "internal",
-										"path": "variantrules.html",
-										"hash": "madness_dmg"
-									},
-									"text": "Indefinite Madness table"
-								},
-								" to determine Horgar's flaw."
-							]
-						}
-					]
-				},
-				{
-					"name": "Duergar Resilience",
-					"entries": [
-						"Horgar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
-					]
-				},
-				{
-					"name": "Sunlight Sensitivity",
-					"entries": [
-						"While in sunlight, Horgar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
-					]
-				},
-				{
-					"name": "Gauntlets of Ogre Power",
-					"entries": [
-						"Horgar wields {@item Gauntlets of Ogre Power} giving him a Strength score of 19 (+4)."
-					]
-				},
-				{
-					"name": "Brave",
-					"entries": [
-						"Horgar has advantage on saving throws against being {@condition frightened}."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Enlarge (Recharges after a Short or Long Rest)",
-					"entries": [
-						"For 1 minute, Horgar magically increases in size, along with anything he is wearing or carrying. While enlarged, Horgar is Large, doubles his damage dice on Strength-based weapon attacks (included in the attacks), and makes Strength checks and Strength saving throws with advantage. If Horgar lacks the room to become Large, he attains the maximum size possible in the space available."
-					]
-				},
-				{
-					"name": "Invisibility (Recharges after a Short or Long Rest)",
-					"entries": [
-						"Horgar magically turns {@condition invisible} until he attacks, casts a spell, or uses his Enlarge, or until his concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment Horgar wears or carries is invisible with him."
-					]
-				},
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Horgar makes two melee attacks."
-					]
-				},
-				{
-					"name": "+2 Warhammer",
-					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 10 ({@dice 1d8+6}) bludgeoning damage, or 11 ({@dice 1d10+6}) bludgeoning damage if used with two hands. While Horgar is enlarged, the damage increases to 15 ({@dice 2d8+6}) or 17 ({@dice 2d10+6}) bludgeoning damage, respectively."
-					]
-				},
-				{
-					"name": "Heavy Crossbow",
-					"entries": [
-						"{@atk rw} {@hit 2} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
-					]
-				},
-				{
-					"name": "Leadership (Recharges after a Short or Long Rest)",
-					"entries": [
-						"For 1 minute, Horgar can utter a special command or warning whenever a nonhostile creature that he can see within 30 ft. of Horgar makes an attack roll or a saving throw. The creature can add a {@dice d4} to its roll provided it can hear and understand Horgar. A creature can benefit from only one Leadership die at a time. This effect ends if Horgar is {@condition incapacitated}."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"name": "Parry",
-					"entries": [
-						"Horgar adds 2 to its AC against one melee attack that would hit him. To do so, Horgar must see the attacker and be wielding a melee weapon."
-					]
-				}
-			],
-			"page": 82,
-			"traitTags": [
-				"Sunlight Sensitivity"
-			],
-			"actionTags": [
-				"Multiattack",
-				"Parry"
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -4271,7 +4653,7 @@
 			],
 			"hp": {
 				"average": 32,
-				"formula": "5d8+10"
+				"formula": "5d8 + 10"
 			},
 			"speed": {
 				"walk": 30
@@ -4305,13 +4687,13 @@
 				{
 					"name": "Mace",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) bludgeoning damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"{@atk rw} {@hit 2} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
+						"{@atk rw} {@hit 2} to hit, range 100/400 ft., one target. {@h}5 ({@damage 1d10}) piercing damage."
 					]
 				}
 			],
@@ -4321,94 +4703,6 @@
 			],
 			"actionTags": [
 				"Multiattack"
-			]
-		},
-		{
-			"name": "Spider King",
-			"size": "L",
-			"type": "beast",
-			"source": "OotA",
-			"alignment": [
-				"U"
-			],
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 44,
-				"formula": "4d10+22"
-			},
-			"speed": {
-				"walk": 30,
-				"climb": 30
-			},
-			"str": 14,
-			"dex": 16,
-			"con": 12,
-			"int": 2,
-			"wis": 11,
-			"cha": 4,
-			"save": {
-				"con": "+3",
-				"wis": "+2"
-			},
-			"skill": {
-				"stealth": "+7",
-				"perception": "+4"
-			},
-			"senses": "blindsight 10 ft., darkvision 60 ft.",
-			"passive": 14,
-			"cr": "1",
-			"trait": [
-				{
-					"name": "Two Heads",
-					"entries": [
-						"Because of its two heads, the Spider King has advantage on Wisdom (Perception) checks and on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, and knocked {@condition unconscious}."
-					]
-				},
-				{
-					"name": "Spider Climb",
-					"entries": [
-						"The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
-					]
-				},
-				{
-					"name": "Web Sense",
-					"entries": [
-						"While in contact with a web, the spider knows the exact location of any other creature in contact with the same web."
-					]
-				},
-				{
-					"name": "Web Walker",
-					"entries": [
-						"The spider ignores movement restrictions caused by webbing."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+3}) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 9 ({@dice 2d8}) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but {@condition poisoned} for 1 hour, even after regaining hit points, and is {@condition paralyzed} while {@condition poisoned} in this way."
-					]
-				},
-				{
-					"name": "Web {@recharge 5}",
-					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 30/60 ft., one creature. Hit: The target is {@condition restrained} by webbing. As an action, the {@condition restrained} target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
-					]
-				}
-			],
-			"page": 74,
-			"traitTags": [
-				"Spider Climb",
-				"Web Sense",
-				"Web Walker"
 			]
 		},
 		{
@@ -4435,7 +4729,7 @@
 			],
 			"hp": {
 				"average": 304,
-				"formula": "32d10+128"
+				"formula": "32d10 + 128"
 			},
 			"speed": {
 				"walk": 30
@@ -4510,7 +4804,7 @@
 				{
 					"name": "Pseudopod",
 					"entries": [
-						"{@atk mw} {@hit 13} to hit, reach 10 ft., one target. Hit: 15 ({@dice 2d8+6}) bludgeoning damage plus 9 ({@dice 2d8}) poison damage."
+						"{@atk mw} {@hit 13} to hit, reach 10 ft., one target. {@h}15 ({@damage 2d8 + 6}) bludgeoning damage plus 9 ({@damage 2d8}) poison damage."
 					]
 				},
 				{
@@ -4526,7 +4820,10 @@
 					]
 				}
 			],
-			"legendaryGroup": "Zuggtmoy",
+			"legendaryGroup": {
+				"name": "Zuggtmoy",
+				"source": "MTF"
+			},
 			"legendary": [
 				{
 					"name": "Attack",
@@ -4576,6 +4873,16 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		}
 	]

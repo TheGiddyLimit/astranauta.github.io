@@ -103,6 +103,15 @@
 						"In cities deep in the Underdark live the duergar, or gray dwarves. These vicious, stealthy slave traders raid the surface world for captives, then sell their prey to the other races of the Underdark. They have innate magical abilities to become invisible and to temporarily grow to giant size."
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Dwarf.png"
+					}
+				}
 			]
 		},
 		{
@@ -203,6 +212,15 @@
 						}
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Elf.png"
+					}
+				}
 			]
 		},
 		{
@@ -219,7 +237,8 @@
 						"Drow grow up believing that surface dwelling races are worthless except as slaves. Drow who develop a conscience or find it necessary to cooperate with members of other races find it hard to overcome that prejudice, especially when they are so often on the receiving end of hatred."
 					]
 				}
-			]
+			],
+			"_excludeBaseImages": true
 		},
 		{
 			"name": "Halfling",
@@ -321,6 +340,15 @@
 							]
 						}
 					]
+				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Halfling.png"
+					}
 				}
 			]
 		},
@@ -478,7 +506,7 @@
 										{
 											"type": "item",
 											"name": "Mulan Names:",
-											"entry": "(Male)} Aoth, Bareris, Ehput-Ki, Kethoth, Mumed, Ramas, So-Kehur, Thazar-De, Urhur; (female)} Arizima, Chathi, Nephis, Nulara, Murithi, Sefris, Thola, Umara, Zolis; (surnames) Ankhalab, Anskuld, Fezim, Hahpet, Nathandem, Sepret, Uuthrakt"
+											"entry": "(Male) Aoth, Bareris, Ehput-Ki, Kethoth, Mumed, Ramas, So-Kehur, Thazar-De, Urhur; (female) Arizima, Chathi, Nephis, Nulara, Murithi, Sefris, Thola, Umara, Zolis; (surnames) Ankhalab, Anskuld, Fezim, Hahpet, Nathandem, Sepret, Uuthrakt"
 										}
 									]
 								}
@@ -514,7 +542,7 @@
 										{
 											"type": "item",
 											"name": "Shou Names:",
-											"entry": "(Male) An, Chen, Chi, Fai, ]iang, ]un, Lian, Long, Meng, On, Shan, Shui, Wen; (female)} Bai, Chao, Lia, Lei, Mei, Qiao, Shui, Tai; (surnames) Chien, Huang, Kao, Kung, Lao, Ling, Mei, Pin, Shin, Sum, Tan, Wan"
+											"entry": "(Male) An, Chen, Chi, Fai, ]iang, ]un, Lian, Long, Meng, On, Shan, Shui, Wen; (female) Bai, Chao, Lia, Lei, Mei, Qiao, Shui, Tai; (surnames) Chien, Huang, Kao, Kung, Lao, Ling, Mei, Pin, Shin, Sum, Tan, Wan"
 										}
 									]
 								}
@@ -546,6 +574,15 @@
 							]
 						}
 					]
+				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Human.png"
+					}
 				}
 			]
 		},
@@ -612,7 +649,16 @@
 					]
 				}
 			],
-			"uncommon": true
+			"uncommon": true,
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Dragonborn.png"
+					}
+				}
+			]
 		},
 		{
 			"name": "Gnome",
@@ -624,8 +670,13 @@
 					"name": "Vibrant Expression",
 					"entries": [
 						"A gnome's energy and enthusiasm for living shines through every inch his or her tiny body. Gnomes average slightly over 3 feet tall and weigh 40 to 45 pounds. Their tan or brown face's are usually adorned with broad smiles (beneath their prodigious noses), and their bright eyes shine with excitement. Their fair hair has a tendency to stick out in every direction, as if expressing the gnome's insatiable interest in everything around.",
-						"A gnome's personality is writ large in his or her appearance. A male gnome's beard, in contrast to his wild hair, is kept carefully trimmed but often styled into curious forks or neat points. A gnome's clothing, though usually made in modest earth tones, is elaborately decorated with embroidery, embossing, or gleaming jewels.",
-						"Delighted Dedication",
+						"A gnome's personality is writ large in his or her appearance. A male gnome's beard, in contrast to his wild hair, is kept carefully trimmed but often styled into curious forks or neat points. A gnome's clothing, though usually made in modest earth tones, is elaborately decorated with embroidery, embossing, or gleaming jewels."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Delighted Dedication",
+					"entries": [
 						"As far as gnomes are concerned, being alive is a wonderful thing, and they squeeze every ounce of enjoyment out of their three to five centuries of life. Humans might wonder about getting bored over the course of such a long life, and elves take plenty of time to savor the beauties of the world in their long years, but gnomes seem to worry that even with all that time, they can't get in enough of the things they want to do and see.",
 						"Gnomes speak as if they can't get the thoughts out of their heads fast enough. Even as they offer ideas and opinions on a range of subjects, they manage to listen carefully to others, adding the appropriate exclamations of surprise and appreciation along the way.",
 						"Though gnomes love jokes of all kinds, particularly puns and pranks, they're just as dedicated to the more serious tasks they undertake. Many gnomes are skilled engineers, alchemists, tinkerers, and inventors. They're willing to make mistakes and laugh at themselves in the process of perfecting what they do, taking bold (sometimes foolhardy) risks and dreaming large."
@@ -687,7 +738,16 @@
 					]
 				}
 			],
-			"uncommon": true
+			"uncommon": true,
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Gnome.png"
+					}
+				}
+			]
 		},
 		{
 			"name": "Half-Elf",
@@ -713,7 +773,7 @@
 					"type": "entries",
 					"name": "Half-Elf Names",
 					"entries": [
-						"Half-elves use either human or elven naming conventions. As if to emphasize that they don't really fit in to either society, half- elves raised among humans are often given elven names, and those raised among elves often take human names."
+						"Half-elves use either human or elven naming conventions. As if to emphasize that they don't really fit in to either society, half-elves raised among humans are often given elven names, and those raised among elves often take human names."
 					]
 				},
 				{
@@ -724,7 +784,16 @@
 					]
 				}
 			],
-			"uncommon": true
+			"uncommon": true,
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Half-Elf.png"
+					}
+				}
+			]
 		},
 		{
 			"name": "Half-Orc",
@@ -778,7 +847,16 @@
 					]
 				}
 			],
-			"uncommon": true
+			"uncommon": true,
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Half-Orc.png"
+					}
+				}
+			]
 		},
 		{
 			"name": "Tiefling",
@@ -836,7 +914,16 @@
 					]
 				}
 			],
-			"uncommon": true
+			"uncommon": true,
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Tiefling.png"
+					}
+				}
+			]
 		},
 		{
 			"name": "Aarakocra",
@@ -915,6 +1002,15 @@
 						"The small colonies of aarakocra are insular and remote, and few aarakocra live away from their roosts. In the Star Mounts of the High Forest in the Forgotten Realms, no more than a few dozen aarakocra live away from the nests of their families. Those that do are usually rangers or fighters, constantly patrolling for outside threats."
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Aarakocra.png"
+					}
+				}
 			]
 		},
 		{
@@ -992,7 +1088,8 @@
 						"In the Forgotten Realms, deep gnomes live within a perilous, subterranean world known as the Underdark. This maze of caverns and tunnels is home to some of the most feared creatures in Faerûn. Because of this, the svirfneblin that dwell here are much more distrusting and wary than their kin on other worlds. Rarely do they allow strangers within their midst, and those that they must deal with are kept at arms length. If one is lucky enough to be trusted by the deep gnomes, they are a friend for life. For the svirfneblin of the Underdark, genuine trust is a commodity far more valuable than gold."
 					]
 				}
-			]
+			],
+			"_excludeBaseImages": true
 		},
 		{
 			"name": "Genasi",
@@ -1038,6 +1135,15 @@
 						"Genasi use the naming conventions of the people among whom they were raised. They might later assume distinctive names to capture their heritage, such as Flame, Ember, Wave, or Onyx."
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Genasi.png"
+					}
+				}
 			]
 		},
 		{
@@ -1074,7 +1180,7 @@
 		},
 		{
 			"name": "Goliath",
-			"source": "EEPC",
+			"source": "VGM",
 			"entries": [
 				"At the highest mountain peaks-far above the slopes where trees grow and where the air is thin and the frigid winds howl-dwell the reclusive goliaths. Few folk can claim to have seen a goliath, and fewer still can claim friendship with them. Goliaths wander a bleak realm of rock, wind, and cold. Their bodies look as if they are carved from mountain stone and give them great physical power. Their spirits take after the wandering wind, making them nomads who wander from peak to peak. Their hearts are infused with the cold regard of their frigid realm, leaving each goliath with the responsibility to earn a place in the tribe or die trying.",
 				{
@@ -1135,17 +1241,27 @@
 						}
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Goliath.png"
+					}
+				}
 			]
 		},
 		{
 			"name": "Dwarf (Duergar)",
 			"source": "SCAG",
 			"entries": [
-				"The gray dwarves, or duergar, live deep in the Underdark. After delving deeper than any other dwarves, they were enslaved by mind flayers for eons. Although they eventually won their freedom, these grim, ashen- skinned dwarves now take slaves of their own and are as tyrannical as their former masters.",
+				"The gray dwarves, or duergar, live deep in the Underdark. After delving deeper than any other dwarves, they were enslaved by mind flayers for eons. Although they eventually won their freedom, these grim, ashen-skinned dwarves now take slaves of their own and are as tyrannical as their former masters.",
 				"Physically similar to other dwarves in some ways, duergar are wiry and lean, with black eyes and bald heads, with the males growing long, unkempt, gray beards.",
 				"Duergar value toil above all else. Showing emotions other than grim determination or wrath is frowned on in their culture, but they can sometimes seem joyful when at work. They have the typical dwarven appreciation for order, tradition, and impeccable craftsmanship, but their goods are purely utilitarian, disdaining aesthetic or artistic value.",
 				"Few duergar become adventurers, fewer still on the surface world, because they are a hidebound and suspicious race. Those who leave their subterranean cities are usually exiles. Check with your Dungeon Master to see if you can play a gray dwarf character."
-			]
+			],
+			"_excludeBaseImages": true
 		},
 		{
 			"name": "Halfling (Ghostwise)",
@@ -1223,6 +1339,15 @@
 						}
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Tortle.png"
+					}
+				}
 			]
 		},
 		{
@@ -1259,19 +1384,18 @@
 					"type": "entries",
 					"name": "Aasimar Guides",
 					"entries": [
-						"An aasimar, except for one who has turned to evil, has a link to an angelic being. That being-usually a deva- provides guidance to the aasimar, though this connection functions only in dreams. As such, the guidance is not a direct command or a simple spoken word. Instead, the aasimar receives visions, prophecies, and feelings.",
+						"An aasimar, except for one who has turned to evil, has a link to an angelic being. That being\u2014usually a deva\u2014provides guidance to the aasimar, though this connection functions only in dreams. As such, the guidance is not a direct command or a simple spoken word. Instead, the aasimar receives visions, prophecies, and feelings.",
 						"The angelic being is far from omniscient. Its guidance is based on its understanding of the tenets of law and good, and it might have insight into combating especially powerful evils that it knows about.",
 						"As part of fleshing out an aasimar character, consider the nature of that character's angelic guide. The Angelic Guide tables offer names and natures that you can use to flesh out your character's guide.",
 						{
 							"type": "table",
-							"caption": "",
 							"colLabels": [
 								"d6",
 								"Name"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -1302,14 +1426,13 @@
 						},
 						{
 							"type": "table",
-							"caption": "",
 							"colLabels": [
 								"d6",
 								"Nature"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -1364,6 +1487,15 @@
 						"Most aasimar are born from human parents, and they use the same naming conventions as their native culture."
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Aasimar.png"
+					}
+				}
 			]
 		},
 		{
@@ -1406,7 +1538,19 @@
 					"name": "Natural Druids",
 					"entries": [
 						"Firbolgs have a talent for druidic magic. Their cultural reverence for nature, combined with their strong and insightful minds, makes learning such magic an instinctive part of their development. Almost every firbolg learns a few spells, typically those used to mask their presence, and many go on to master nature magic.",
-						"Firbolgs who become druids serve as stronghold leaders. With every action the tribe takes, the druids weigh not only the group's needs, but the effect each action will have on the forest and the rest of the natural world. Firbolg tribes would rather go hungry than strain the land during a famine."
+						"Firbolgs who become druids serve as stronghold leaders. With every action the tribe takes, the druids weigh not only the group's needs, but the effect each action will have on the forest and the rest of the natural world. Firbolg tribes would rather go hungry than strain the land during a famine.",
+						{
+							"type": "inset",
+							"name": "Firbolg Classes",
+							"entries": [
+								"Most firbolgs are druids, rangers, or fighters. Among their kind, these vocations are passed down from one generation to the next. The firbolgs' magical heritage also expresses itself in other ways; those who become bards preserve the clan's lore, and firbolg sorcerers defend their communities. Firbolg wizards arise when a clan becomes friendly with elves.",
+								"Firbolg rogues are typically scouts tasked with spying on neighboring folk to determine their intentions. They are most common among firbolgs whose homes border human settlements.",
+								"Firbolg barbarians are rare except among clans that face constant threats from evil humanoids and other invaders.",
+								"Firbolg clerics and paladins are usually dedicated to nature gods and are seen as enforcers of that god's will.",
+								"Firbolg warlocks are rare, but some clans forge alliances and arcane pacts with powerful fey beings.",
+								"Firbolg monks are almost entirely unheard of, though a monastery might take in the young survivors of a devastated firbolg clan."
+							]
+						}
 					]
 				},
 				{
@@ -1436,8 +1580,8 @@
 								"Reason for Adventuring"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -1483,6 +1627,15 @@
 						"Firbolg adopt elven names when they must deal with outsiders, although the concept of names strikes them as strange. They know the animals and plants of the forest without formal names, and instead identify the forest's children by their deeds, habits, and other actions.",
 						"By the same token, their tribe names merely refer to their homes. When dealing with other races, firbolgs refer to their lands by whatever name the surrounding folk use, as a matter of tact and hospitality, but among their own kind they simply call it \"home.\" Sometimes firbolgs adopt the nicknames or titles outsiders give them under the assumption that those who need names can call them whatever they wish."
 					]
+				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Firbolg.png"
+					}
 				}
 			]
 		},
@@ -1554,6 +1707,15 @@
 						"Some kenku turn their back on crime to pursue legitimate trades. These kenku adopt noises made as part of their craft. A sailor duplicates the sound of a fluttering sail, while a smith mimics the clanging of a hammer on metal. Non-kenku describe these folk by their trade sounds, such as Sail Snap, Hammerer, and Cutter."
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Kenku.png"
+					}
+				}
 			]
 		},
 		{
@@ -1612,8 +1774,8 @@
 								"Quirk"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -1680,6 +1842,15 @@
 							]
 						}
 					]
+				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Lizardfolk.png"
+					}
 				}
 			]
 		},
@@ -1768,8 +1939,8 @@
 								"My curiosity is currently fixed on ..."
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -1814,8 +1985,8 @@
 								"Quirk"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -1868,6 +2039,15 @@
 					"entries": [
 						"In the Forgotten Realms, tabaxi hail from Maztica, a realm located far across the ocean west of the Sword Coast. The tabaxi of Maztica are known for their isolation, and until recently they never ventured from their homeland. The tabaxi say little of why that has changed, though rumors persist of strange happenings in that distant land."
 					]
+				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Tabaxi.png"
+					}
 				}
 			]
 		},
@@ -1927,8 +2107,8 @@
 								"Quirk"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -1987,32 +2167,86 @@
 						}
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Triton.png"
+					}
+				}
 			]
 		},
 		{
 			"name": "Bugbear",
 			"source": "VGM",
-			"monstrous": true
+			"monstrous": true,
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Bugbear.png"
+					}
+				}
+			]
 		},
 		{
 			"name": "Goblin",
 			"source": "VGM",
-			"monstrous": true
+			"monstrous": true,
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Goblin.png"
+					}
+				}
+			]
 		},
 		{
 			"name": "Hobgoblin",
 			"source": "VGM",
-			"monstrous": true
+			"monstrous": true,
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Hobgoblin.png"
+					}
+				}
+			]
 		},
 		{
 			"name": "Orc",
 			"source": "VGM",
-			"monstrous": true
+			"monstrous": true,
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Orc.png"
+					}
+				}
+			]
 		},
 		{
 			"name": "Yuan-ti Pureblood",
-			"source": "",
-			"monstrous": true
+			"source": "VGM",
+			"monstrous": true,
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Yuan-ti Pureblood.png"
+					}
+				}
+			]
 		},
 		{
 			"name": "Dwarf (Hill)",
@@ -2101,13 +2335,15 @@
 						"Centaurs rarely use family names, but wear symbols that represent their family membership. These symbols might include graphical representations of plants or animals, printed mottos, braids and beads worn in the hair and tail, or even specific patterns of woven fabric."
 					]
 				}
-			]
-		},
-		{
-			"name": "Minotaur",
-			"source": "UACentaursMinotaurs",
-			"entries": [
-				"{@i In 2015, minotaurs appeared as a playtest option in Unearthed Arcana. Here is a revised set of traits for minotaur player characters. These traits are suitable for minotaurs on Krynn and in other D&D worlds where these people have avoided the demonic influence of Baphomet.}"
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Centaur.png"
+					}
+				}
 			]
 		},
 		{
@@ -2151,8 +2387,8 @@
 						"Autumn Personality Trait"
 					],
 					"colStyles": [
-						"col-xs-2 text-align-center",
-						"col-xs-10"
+						"col-2 text-align-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2180,8 +2416,8 @@
 						"Autumn Flaw"
 					],
 					"colStyles": [
-						"col-xs-2 text-align-center",
-						"col-xs-10"
+						"col-2 text-align-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2210,8 +2446,8 @@
 						"Winter Personality Trait"
 					],
 					"colStyles": [
-						"col-xs-2 text-align-center",
-						"col-xs-10"
+						"col-2 text-align-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2239,8 +2475,8 @@
 						"Winter Flaw"
 					],
 					"colStyles": [
-						"col-xs-2 text-align-center",
-						"col-xs-10"
+						"col-2 text-align-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2269,8 +2505,8 @@
 						"Spring Personality Trait"
 					],
 					"colStyles": [
-						"col-xs-2 text-align-center",
-						"col-xs-10"
+						"col-2 text-align-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2298,8 +2534,8 @@
 						"Spring Flaw"
 					],
 					"colStyles": [
-						"col-xs-2 text-align-center",
-						"col-xs-10"
+						"col-2 text-align-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2328,8 +2564,8 @@
 						"Summer Personality Trait"
 					],
 					"colStyles": [
-						"col-xs-2 text-align-center",
-						"col-xs-10"
+						"col-2 text-align-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2357,8 +2593,8 @@
 						"Summer Flaw"
 					],
 					"colStyles": [
-						"col-xs-2 text-align-center",
-						"col-xs-10"
+						"col-2 text-align-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2394,14 +2630,16 @@
 						"Adding to the tension, the sahuagin worship Sekolah, the shark god, while Deep Sashelas, the sea deity of the elves, is a sworn enemy of all sharks. But even if the sea elves inexplicably began worshiping Sekolah, the sahuagin still wouldn't be able to get along with them-in the grip of a blood frenzy, sahuagin will tear apart even others of their own kind!"
 					]
 				}
-			]
+			],
+			"_excludeBaseImages": true
 		},
 		{
 			"name": "Elf (Shadar-kai)",
 			"source": "MTF",
 			"entries": [
 				"Sworn to the Raven Queen's service, the mysterious shadar-kai venture into the Material Plane from the Shadowfell to advance her will. Once they were fey like the rest of their elven kin, and now they exist in a strange state between life and death. Eladrin and shadar-kai are like reflections of each other: one bursting with emotion, the other nearly devoid of it."
-			]
+			],
+			"_excludeBaseImages": true
 		},
 		{
 			"name": "Tiefling (Asmodeus)",
@@ -2470,7 +2708,16 @@
 			"name": "Gith (Githyanki)",
 			"source": "MTF",
 			"entries": [
-				"The brutal githyanki are trained from birth as warriors."
+				"The brutal githyanki are trained from birth as warriors."
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Githyanki.png"
+					}
+				}
 			]
 		},
 		{
@@ -2527,6 +2774,15 @@
 						}
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Changeling.png"
+					}
+				}
 			]
 		},
 		{
@@ -2546,7 +2802,7 @@
 					"name": "Bound to Spirits",
 					"entries": [
 						"Every kalashtar has a connection to a spirit of light, shared by other members of their bloodline. Physically, kalashtar appear human, but the spiritual connection affects them in a variety of ways. Kalashtar have symmetrical, slightly angular features. Their movements and body language are different from those of humans; most beings find it graceful, but to some it feels unnerving. The eyes of a kalashtar often glow when it is focused on a task or feeling strong emotions.",
-						"The kalashtar can't directly communicate with their quori spirits. A kalashtar might experience the relationship as a sense of instinct and inspiration, drawing on the memories of the spirit when they dream. This connection grants the kalashtar minor psionic abilities, as well as protection from psychic attacks. All of these dream-spirits are virtuous, but some are warriors, while others are more contemplative or kind; a kalashtar player and DM can work together to determine the nature of the linked spirit. Typically, a kalashtar knows the name and nature of their spirit, but some\u2014for instance, an orphan kalashtar raised among outsiders\u2014 might know nothing of their spirit or the source of their psychic gifts.",
+						"The kalashtar can't directly communicate with their quori spirits. A kalashtar might experience the relationship as a sense of instinct and inspiration, drawing on the memories of the spirit when they dream. This connection grants the kalashtar minor psionic abilities, as well as protection from psychic attacks. All of these dream-spirits are virtuous, but some are warriors, while others are more contemplative or kind; a kalashtar player and DM can work together to determine the nature of the linked spirit. Typically, a kalashtar knows the name and nature of their spirit, but some\u2014for instance, an orphan kalashtar raised among outsiders\u2014might know nothing of their spirit or the source of their psychic gifts.",
 						"The bond to the spirit can cause some kalashtar to display unusual quirks of behavior. A kalashtar player can roll or select a trait from the following table.",
 						{
 							"type": "table",
@@ -2556,8 +2812,8 @@
 								"Quirk"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -2639,6 +2895,15 @@
 							]
 						}
 					]
+				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Kalashtar.png"
+					}
 				}
 			]
 		},
@@ -2724,6 +2989,15 @@
 						}
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Shifter.png"
+					}
+				}
 			]
 		},
 		{
@@ -2779,10 +3053,10 @@
 				},
 				{
 					"type": "entries",
-					"name": "",
+					"name": "Warforged Personality",
 					"entries": [
 						"The warforged were built to serve and to fight. For most of their existence, warforged had a clearly defined function and were encouraged to focus purely on that role. The Treaty of Thronehold gave them freedom, but many warforged struggle both to find a place in the post-war world and to relate to the creatures that created them.",
-						"The typical warforged shows little emotion. Many warforged embrace a concrete purpose\u2014 protecting allies, completing a contract, or other pursuits\u2014and devote themselves to this task as they once did to war. However, there are warforged who delight in exploring their feelings and their freedom. Most warforged have no interest in religion, but some embrace faith and mysticism, seeking higher purpose and deeper meaning.",
+						"The typical warforged shows little emotion. Many warforged embrace a concrete purpose\u2014protecting allies, completing a contract, or other pursuits\u2014and devote themselves to this task as they once did to war. However, there are warforged who delight in exploring their feelings and their freedom. Most warforged have no interest in religion, but some embrace faith and mysticism, seeking higher purpose and deeper meaning.",
 						"The typical warforged has a muscular, sexless body shape. Some warforged ignore the concept of gender entirely, while others adopt a gender identity in emulation of the creatures around them."
 					]
 				},
@@ -2799,8 +3073,8 @@
 								"Quirk"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -2864,6 +3138,15 @@
 							]
 						}
 					]
+				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Warforged.png"
+					}
 				}
 			]
 		},
@@ -2990,7 +3273,7 @@
 			}
 		},
 		{
-			"name": "The Mark of Handling",
+			"name": "Human (Mark of Handling)",
 			"source": "UAWGE",
 			"entries": [
 				{
@@ -3413,7 +3696,7 @@
 					"type": "entries",
 					"name": "House Kundarak",
 					"entries": [
-						"If you want to keep something safe\u2014jewels, secrets, prisoners\u2014Kundarak is there to help. The Defenders Guild of House Kundarak trains locksmiths, security specialists, and more. It maintains the infamous prison of Dreadhold, along with a number of smaller prisons. As useful as these services are, it's the Banking Guild that truly defines the house. Kundarak's lands in the Mror Holds include deep veins of precious metals and stones, and the dwarves have used this wealth to establish the banking industry of Khorvaire. Anyone who makes a living from coin\u2014from bankers to goldsmiths\u2014 likely learned their skills at House Kundarak. The security of Kundarak banks is legendary. The house also provides a special service to those who can afford it: a system of extradimensional vaults, allowing a client to store their goods in one location and retrieve them at any other Kundarak enclave.",
+						"If you want to keep something safe\u2014jewels, secrets, prisoners\u2014Kundarak is there to help. The Defenders Guild of House Kundarak trains locksmiths, security specialists, and more. It maintains the infamous prison of Dreadhold, along with a number of smaller prisons. As useful as these services are, it's the Banking Guild that truly defines the house. Kundarak's lands in the Mror Holds include deep veins of precious metals and stones, and the dwarves have used this wealth to establish the banking industry of Khorvaire. Anyone who makes a living from coin\u2014from bankers to goldsmiths\u2014likely learned their skills at House Kundarak. The security of Kundarak banks is legendary. The house also provides a special service to those who can afford it: a system of extradimensional vaults, allowing a client to store their goods in one location and retrieve them at any other Kundarak enclave.",
 						"House Kundarak has a close alliance with House Sivis. Like the House of Scribing, Kundarak has worked to earn the trust of its clients and to establish a reputation for unshakeable integrity. The house has no love of renegade dwarves using their marks to turn a profit, and such rogues will want to avoid the eye of Kundarak."
 					]
 				},
@@ -3490,13 +3773,22 @@
 						}
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Vedalken.png"
+					}
+				}
 			]
 		},
 		{
 			"name": "Loxodon",
 			"source": "UARacesOfRavnica",
 			"entries": [
-				"Humanoid elephants, loxodons are often oases of calm in the busy streets of Ravnica. They hum or chant in their sonorous tones and move slowly or sit in perfect stillness. Provoked to action, loxodons are holy terrors\u2014bellowing with rage, trumpeting and flapping their ears. Their still wisdom and their furious strength\u2014as well as their fierce loyalty and unwavering conviction\u2014 are tremendous assets to their guilds.",
+				"Humanoid elephants, loxodons are often oases of calm in the busy streets of Ravnica. They hum or chant in their sonorous tones and move slowly or sit in perfect stillness. Provoked to action, loxodons are holy terrors\u2014bellowing with rage, trumpeting and flapping their ears. Their still wisdom and their furious strength\u2014as well as their fierce loyalty and unwavering conviction\u2014are tremendous assets to their guilds.",
 				{
 					"type": "entries",
 					"name": "Lumbering Giants",
@@ -3550,6 +3842,15 @@
 						}
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Loxodon.png"
+					}
+				}
 			]
 		},
 		{
@@ -3573,10 +3874,19 @@
 						"A hybrid usually bears the name given by their human, elf, or vedalken parents. But some hybrids assume a new name after their transformation, a name chosen by themselves or by those who transformed them."
 					]
 				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Simic Hybrid.png"
+					}
+				}
 			]
 		},
 		{
-			"name": "Simic Hybrid",
+			"name": "Viashino",
 			"source": "UARacesOfRavnica",
 			"entries": [
 				"Many reptiles derive their body warmth and energy from the sun, but the humanoid viashino are fueled by an inner fire of zeal. Open with their emotions, viashino can be hot-tempered, but they are also quick to their hissing laughter. And they easily form close bonds of friendship. They are fierce warriors and passionate advocates for their guilds and causes.",
@@ -3612,6 +3922,331 @@
 							]
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Centaur",
+			"source": "GGR",
+			"entries": [
+				"In the sprawling city of Ravnica, where \"open road\" seems like a contradiction and \"open plain\" is sheer nonsense, centaurs nevertheless retain a love of wide spaces and the freedom to travel. As much as they can, centaurs run\u2014in wide plazas, spacious parks, and expanses of rubble and ruin. They race the wind, hooves thundering and tails streaming behind them, until the next wall looms in their path and brings them to a stop.",
+				{
+					"type": "entries",
+					"name": "Nature's Cavalry",
+					"entries": [
+						"Centaurs have the upper bodies, down to the waist, of muscular humans, displaying all the human variety of skin tones and features. Their ears are slightly pointed, but their faces are wider and squarer than those of elves. Below the waist, they have the bodies of small horses, with a similar range of coloration\u2014from various shades of chestnut or bay to dappled or even zebra-like striped patterns. Most centaurs style their hair and their tails in a similar way. Selesnya centaurs favor long, flowing hair. Gruul centaurs cut their hair in rough, spiky styles.",
+						"The upper bodies of centaurs are comparable to human torsos in size, and their lower equine bodies average about 4 feet tall at the withers. Though they are smaller than a human rider mounted on a horse, they fill similar roles as cavalry warriors, messengers, outriders, and scouts."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Affinity for Nature",
+					"entries": [
+						"Centaurs have an affinity for the natural world. Among the guilds that share that affinity, centaurs favor the rubblebelts of the Gruul Clans and the wide plazas of the Selesnya Conclave over the undercity tunnels of the Golgari and the laboratories of the Simic.",
+						"Centaurs celebrate life and growth, and the birth of a foal is always cause for festivities. At the same time, they revere the traditions of the past, and among both the Gruul and the Selesnya they are voices of memory and history, preserving old ways and keeping alive the legends of ancestral heroes. They feel a close kinship with wild animals, perhaps because of their own horse-like bodies, and delight in the feeling of running alongside herds and packs of other beasts."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Clans and Community",
+					"entries": [
+						"Centaurs sense the interconnectedness of the natural world. Thus, they celebrate family and community as microcosms of that greater connection. Among the Gruul, they have a strong clan identity, and Selesnya centaurs are fiercely loyal to their individual communities as well as the guild as a whole. Their love of history and tradition also means that centaurs are more likely than most other Ravnicans to join the same guild that their parents did."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Centaur Names",
+					"entries": [
+						"Centaurs' given names are passed down through family lines. The name bestowed on a new foal is typically the name of the most recently deceased family member of the same gender, keeping alive the memory\u2014and, the centaurs believe, some shard of the spirit\u2014of the departed. Centaurs don't use family names, but they wear symbols that represent their family membership. These symbols might include graphical representations of plants or animals, printed mottoes, braids and beads worn in the hair and tail, or even specific patterns of woven fabric.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Male Names:",
+									"entry": "Bonmod, Boruvo, Chodi, Drozan, Kozim, Milosh, Ninos, Oleksi, Orval, Radovas, Radom, Rostis, Svetyos, Tomis, Trijiro, Volim, Vlodim, Yarog"
+								},
+								{
+									"type": "item",
+									"name": "Female Names:",
+									"entry": "Daiva, Dunja, Elnaya, Galisnya, Irinya, Kotyali, Lalya, Litisia, Madya, Mira, Nedja, Nikya, Ostani, Pinya, Rada, Raisya, Stasolya, Tatna, Zhendoya, Zoria"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Goblin",
+			"source": "GGR",
+			"entries": [
+				"Whether sniveling in fear, cackling with mad laughter, or snarling in a fury, goblins are wretched and inconsequential\u2014at least in the eyes of most of Ravnica's other folk. In their own minds, though, they are content to lurk in the shadows only until they fully come into their own and receive the recognition they believe they deserve. They are entitled to some credit for their tenacity, agility, crafty ingenuity, and dumb luck, all of which has enabled them to survive in a world overrun with creatures larger and more powerful than they are.",
+				{
+					"type": "entries",
+					"name": "Small and Wiry",
+					"entries": [
+						"Standing around 3 feet tall and covered in warty green or red skin, goblins have huge noses and ears. Their wiry bodies are surprisingly strong, and their mouths are full of sharp, crooked teeth.",
+						"Most goblins are bald, either by heredity or by choice, but a few boast shocks of red or black hair. Their arms and legs are elongated in proportion to their small bodies, and their fingers and toes are also long and slender. Many goblins prefer to go unshod to leave their toes exposed for climbing."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Unfettered Emotion",
+					"entries": [
+						"Creatures of raw impulse, goblins are found among guilds that value that quality, particularly the Izzet (where they typically serve as attendants for researchers), the Gruul (in camps that form hapless buffers between the clans and civilized regions), the Rakdos (putting their love of explosions to good use), and occasionally the Boros (if they discover a well of discipline and courage within themselves, or find themselves unable to resist the shininess of Boros weapons and armor). Many goblins are guildless and make their way as members of street gangs.",
+						"Sometimes driven by wild mood swings, goblins have an inclination toward destruction, which can take a playful form but is often anything but. Some goblins clobber things, others like to light them on fire, and many love to blow things up.",
+						"Goblins have an outrageous sense of humor, usually expressed through mischievous pranks. The malicious among them find pleasure in the misfortune of others and tend to cackle maniacally whenever they're amused. They can act with apparent randomness, sometimes just to confuse and befuddle others."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Goblin Names",
+					"entries": [
+						"The Goblin language is fond of certain sounds, and goblin names tend to repeat those sounds to form what can sound like nonsense words. A goblin's name gives no indication of gender.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Goblin Names:",
+									"entry": "Azzinax, Babolax, Blixanix, Crixizix, Dazzaz, Estrix, Finizix, Juzba, Kaluzax, Lyzaxa, Mizzix, Myznar, Nixispix, Paxizaz, Ravixiz, Stixil, Sunnix, Tozinox, Uxivozi, Vazozav, Wexiny, Zizzix"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Loxodon",
+			"source": "GGR",
+			"entries": [
+				"The humanoid elephants called loxodons are often oases of calm in the busy streets of Ravnica. They hum or chant in sonorous tones and move slowly or sit in perfect stillness. If provoked to action, loxodons are true terrors\u2014bellowing with rage, trumpeting and flapping their ears. Their serene wisdom, fierce loyalty, and unwavering conviction are tremendous assets to their guilds.",
+				{
+					"type": "entries",
+					"name": "Lumbering Giants",
+					"entries": [
+						"Loxodons tower above most other humanoids, standing over 7 feet tall. They have the heads\u2014trunks, tusks, ears, and faces\u2014of elephants, and hulking bipedal bodies covered by thick, leathery skin. Each of their hands has four thick digits, and their feet are the flat-bottomed, oval-shaped feet of elephants.",
+						"Like that of an elephant, a loxodon's trunk is a useful appendage. In addition to providing a keen sense of smell, the trunk can be used to lift and carry even heavy objects. The trunk can be used to carry both food and liquid to the mouth and can even act as a snorkel."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Gifted Stoneworkers",
+					"entries": [
+						"Loxodons are tireless, patient artisans with an unrivaled intuition about their craft. Although they make nurturing spiritual leaders, their gift for stonework is so ingrained that they are often at a loss when they try to impart that knowledge to others. Among the Selesnya, it primarily falls to loxodons to build the guild's magnificent, cathedral-like arboretum structures."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Relentlessly Loyal",
+					"entries": [
+						"Loxodons believe in the value of community and life, and thus are most often found in the Selesnya Conclave. Some find fulfillment in the cause of order by joining the Orzhov Syndicate or the Azorius Senate.",
+						"Loxodons believe that the members of a group have a responsibility to look out for each other. Once they have joined a guild or bonded with other individuals in any capacity, loxodons devote themselves to maintaining that bond. They coordinate their efforts and are often willing to sacrifice themselves for the sake of the group. They expect reciprocal loyalty and commitment from the other members of their communities and can be severe in their disappointment when their trust is betrayed.",
+						"The primary difference between loxodons who join different guilds is their sense of the size of the community they belong to. For loxodons in the Selesnya Conclave, their community is the world and all living beings in it\u2014everything valuable, meant to live in harmony, and interdependent. For Azorius loxodons, community primarily means a society of different peoples who need adherence to law and order so they can function together. For those in the Orzhov Syndicate, community means the syndicate alone, with its interests taking priority over those of any other group."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Loxodon Names",
+					"entries": [
+						"A loxodon's name includes subtle tones, produced in a loxodon's resonant nasal chambers, that indicate status, family connection, and community role. Since most non-loxodons can't distinguish these underlying tones, let alone produce them, loxodons often translate them into titles, such as Hierarch, Revered, Grandmother, Healer, or Saint, when interacting with other races.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Male Names:",
+									"entry": "Bayul, Berov, Brooj, Chedumov, Dobrun, Droozh, Golomov, Heruj, Ilromov, Kel, Nikoom, Ondros, Radomov, Svetel, Tamuj, Throom, Vasool"
+								}
+							]
+						},
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Female Names:",
+									"entry": "Ajj, Boja, Dancu, Dooja, Elyuja, Fanoor, Irij, Jasoo, Katrun, Lyooda, Mayja, Radu, Shuja, Soofya, Totoor, Verij, Vesmova, Yoolna, Zarij, Zoorja"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Minotaur",
+			"source": "GGR",
+			"entries": [
+				"The minotaurs of Ravnica are strong in body, dedication, and courage. They are at home on the battlefield, willing to fight for their various causes. They combine a burning fury in battle with keen tactics that make them excellent commanders as well as valuable shock troops.",
+				{
+					"type": "entries",
+					"name": "Horns and Hooves",
+					"entries": [
+						"Minotaurs are barrel-chested humanoids with heads resembling those of bulls. Their horns range in size from about 1 foot long to great, curling weapons easily three times that length. They often ornament their horns with metal rings or sheathe them in metal to protect them from damage.",
+						"Manes of shaggy fur extend down minotaurs' necks and powerful backs, and males have long tufts of hair on their chins and cheeks. Their legs end in heavy, cloven hooves. Minotaurs are born with long, tufted tails, but minotaurs of the Ordruun clan (and some others) have their tails docked as part of a coming-of-age ceremony; they find the heavy armor of the Boros legion much more comfortable without a long tail in the way."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Strength and Zeal",
+					"entries": [
+						"Minotaurs are zealous and love battle. They are found among the Gruul Clans, but the minotaurs of the Ordruun family line, long associated with the Boros Legion, are much better known and respected. Boros minotaurs choose the precision of the legion over the fury of the pack.",
+						"Minotaurs tend to vent their outrage through violence, but they aren't generally quick to anger. They are passionate, loving their friends and partners fiercely, and they laugh loud and long at good jokes."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Family and Guild",
+					"entries": [
+						"Minotaur legends describe a small pantheon of heroes\u2014perhaps they were once thought of as gods\u2014who established the minotaurs' place in the world. Every minotaur in Ravnica claims descent from one of these heroes. The Ordruun line is the most prominent, with thousands of members descended from an ancient hero who is said to have taught minotaurs the arts of war. Other important family lines include the Kharran line (primarily associated with the Gruul Scab clan), the Drendaa line (found scattered among the Gruul Clans), and the Tazgral line (divided between the Boros and the Gruul, with a significant number in the Rakdos as well).",
+						"Since each family line has so many members, minotaurs don't usually find it helpful to connect the name of the line to their personal names; even though Commander Grozdan of the Boros Legion's Kamen Fortress is a prominent member of the Ordruun line, he would never call himself Grozdan Ordruun the way a human would."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Minotaur Names",
+					"entries": [
+						"The legends that recount the deeds of ancient minotaur heroes are full of other names as well: those of the retainers, allies, lovers, servants, enemies, and others who played roles, however small, in the lives of the heroes. Almost every minotaur name is drawn from that long list of minor characters of legend, so that those folk are never forgotten.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Male Names:",
+									"entry": "Alovnek, Brogmir, Brozhdar, Dornik, Drakmir, Drazhan, Grozdan, Kalazmir, Klattic, Melislek, Nirikov, Prezhlek, Radolak, Rugilar, Sarovnek, Svarakov, Trovik, Vraslak, Yarvem"
+								}
+							]
+						},
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Female Names:",
+									"entry": "Akra, Bolsa, Cica, Dakka, Drakisla, Eleska, Enka, Irnaya, Jaska, Kalka, Makla, Noraka, Pesha, Raisha, Sokali, Takyat, Vrokya, Veska, Yelka, Zarka, Zoka"
+								}
+							]
+						}
+					]
+				}
+			],
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Minotaur.png"
+					}
+				}
+			]
+		},
+		{
+			"name": "Simic Hybrid",
+			"source": "GGR",
+			"entries": [
+				"The Simic Combine uses magic to fuse different life forms together. In recent years, the Simic Combine has extended this research to humanoid subjects, magically transferring the traits of various animals into humans, elves, and vedalken. The goal of the Guardian Project is to build a Simic army of soldiers perfectly adapted to a variety of combat situations. These hyper-evolved specimens are called Simic hybrids, though they sometimes refer to themselves as guardians.",
+				{
+					"type": "entries",
+					"name": "Extensive Adaptation",
+					"entries": [
+						"A hybrid's biological enhancements can change its appearance drastically, though most hybrids retain their basic physical form. All are augmented with characteristics of animals, mostly aquatic, reptilian, or amphibian creatures. These include crab claws, squid tentacles, wings or fins like those of manta rays, translucent or camouflaged skin, or shark-like maws filled with sharp teeth.",
+						"Hybrids are the product of Simic magic. It's not impossible for a hybrid to leave the Simic Combine and join another guild, but the Simic would consider the individual a deserter. And the new guild might never fully welcome a hybrid who could easily be a Simic spy."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Simic Hybrid Names",
+					"entries": [
+						"A hybrid usually bears the name given by their human, elf, or vedalken parents. Some hybrids assume a new name after their transformation\u2014a name chosen personally or by those who transformed them."
+					]
+				}
+			]
+		},
+		{
+			"name": "Vedalken",
+			"source": "GGR",
+			"entries": [
+				"Nothing is perfect. Vedalken not only believe this fact, they rejoice in it. Every imperfection is a chance for improvement, and progress is an endless march toward a state of perfection that can never be reached. This viewpoint leads vedalken to pursue their work with delighted enthusiasm, never deterred by setbacks and excited by every opportunity for improvement.",
+				"Vedalken are tall and slender, standing almost a head taller than humans on average but weighing about the same. Their hairless skin comes in a range of shades of blue. Their eyes are darker shades of blue or violet. They lack external ears, their noses are broad and flat, and they are partially amphibious.",
+				{
+					"type": "entries",
+					"name": "Cool Rationality",
+					"entries": [
+						"Despite being talkative, vedalken keep their personal lives private, and they tend to engage more with ideas than with people. They form close friendships based on mutual interests or compelling disagreements, and their interactions dwell on their thoughts about those issues rather than their feelings about them.",
+						"To members of other races, vedalken often seem cold, even emotionless. That assessment isn't fair\u2014they feel emotion every bit as intensely as other folk do, but they are skilled at not displaying it. Cool rationality guides their actions, they make and follow careful plans, and they are patient enough to do nothing when the ideal outcome relies on such inaction."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Reasoning toward Perfection",
+					"entries": [
+						"Their curious intellects and rational minds incline vedalken toward membership in the Azorius Senate, the Simic Combine, and (less often) the Izzet League. Whatever their guild affiliation, they put their intelligence to use in crafting and improving things, whether those things are laws, procedures, or magical sciences.",
+						"Vedalken believe that the path toward the impossible goal of perfection is paved with bricks of education, careful deliberation, and controlled experimentation. Some vedalken direct their energy toward perfecting themselves, whether by means of Simic bioengineering or through extensive study, and others concentrate on perfecting society through the careful drafting and application of laws."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Vedalken Names",
+					"entries": [
+						"Vedalken are given names at birth, but usually choose new names for themselves as part of their transition into adulthood. They rarely use family names.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Male Names:",
+									"entry": "Aglar, Bellin, Dallid, Firellan, Kavin, Koplony, Lomar, Mathvan, Modar, Nebun, Nhillosh, Nitt, Otrovac, Ovlan, Pelener, Rill, Trivaz, Uldin, Yolov, Zataz"
+								}
+							]
+						},
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Female Names:",
+									"entry": "Azi, Barvisa, Brazia, Direll, Fainn, Griya, Hallia, Katrille, Kovel, Lilla, Mirela, Morai, Nedress, Ossya, Pierenn, Roya, Sestri, Triel, Uzana, Yaraghiya, Zlovol"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Kobold",
+			"source": "VGM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Kobold.png"
+					}
+				}
+			]
+		},
+		{
+			"name": "Tiefling (Variant)",
+			"source": "SCAG",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "races/Feral Tiefling.png"
+					}
 				}
 			]
 		}
@@ -3696,14 +4331,13 @@
 						"The Monstrous Origin table gives a number of ideas for adding a monstrous character to the campaign.",
 						{
 							"type": "table",
-							"caption": "",
 							"colLabels": [
 								"d8",
 								"Origin"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[

@@ -1,0 +1,229 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.0",
+	"type": "object",
+
+	"definitions": {
+		"ship": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"type": "integer"
+				},
+				"size": {
+					"type": "string",
+					"enum": [
+						"F",
+						"D",
+						"T",
+						"S",
+						"M",
+						"L",
+						"H",
+						"G",
+						"C",
+						"V"
+					]
+				},
+				"capCrew": {
+					"type": "integer"
+				},
+				"capPassenger": {
+					"type": "integer"
+				},
+				"capCargo": {
+					"type": "number"
+				},
+				"pace": {
+					"type": "integer"
+				},
+				"str": {
+					"type": "integer"
+				},
+				"dex": {
+					"type": "integer"
+				},
+				"con": {
+					"type": "integer"
+				},
+				"int": {
+					"type": "integer"
+				},
+				"wis": {
+					"type": "integer"
+				},
+				"cha": {
+					"type": "integer"
+				},
+				"conditionImmune": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry#/definitions/dataCondImmune"
+					}
+				},
+				"immune": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry#/definitions/dataDamImmune"
+					}
+				},
+				"hull": {
+					"type": "object",
+					"properties": {
+						"ac": {
+							"type": "integer"
+						},
+						"hp": {
+							"type": "integer"
+						},
+						"dt": {
+							"type": "integer"
+						}
+					},
+					"required": ["ac", "hp"],
+					"additionalProperties": false
+				},
+				"control": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"ac": {
+								"type": "integer"
+							},
+							"hp": {
+								"type": "integer"
+							},
+							"dt": {
+								"type": "integer"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry"
+								}
+							}
+						},
+						"required": ["ac", "hp", "entries"],
+						"additionalProperties": false
+					}
+				},
+				"movement": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"isControl": {
+								"type": "boolean"
+							},
+							"ac": {
+								"type": "integer"
+							},
+							"hp": {
+								"type": "integer"
+							},
+							"hpNote": {
+								"type": "string"
+							},
+							"dt": {
+								"type": "integer"
+							},
+							"locomotion": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"mode": {
+											"type": "string"
+										},
+										"entries": {
+											"type": "array",
+											"items": {
+												"$ref": "/Entry"
+											}
+										}
+									},
+									"required": ["mode", "entries"],
+									"additionalProperties": false
+								}
+							}
+						},
+						"required": ["ac", "hp", "locomotion"],
+						"additionalProperties": false
+					}
+				},
+				"weapon": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"ac": {
+								"type": "integer"
+							},
+							"hp": {
+								"type": "integer"
+							},
+							"count": {
+								"type": "integer"
+							},
+							"dt": {
+								"type": "integer"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry"
+								}
+							}
+						},
+						"required": ["ac", "hp", "entries"],
+						"additionalProperties": false
+					}
+				},
+				"other": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry"
+								}
+							}
+						},
+						"required": ["entries"],
+						"additionalProperties": false
+					}
+				}
+			}
+		}
+	},
+
+	"properties": {
+		"ship": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/ship"
+			}
+		}
+	},
+	"additionalProperties": false
+}

@@ -34,7 +34,25 @@
 								"headers": {
 									"type": "array",
 									"items": {
-										"type": "string"
+										"oneOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "object",
+												"properties": {
+													"depth": {
+														"type": "integer"
+													},
+													"header": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"depth", "header"
+												]
+											}
+										]
 									}
 								},
 								"ordinal": {
@@ -42,7 +60,7 @@
 									"properties": {
 										"type": {
 											"type": "string",
-											"enum": ["chapter", "appendix", "part", "episode"]
+											"enum": ["chapter", "appendix", "part", "episode", "level"]
 										},
 										"identifier": {
 											"type": ["integer", "string"]

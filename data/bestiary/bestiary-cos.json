@@ -26,7 +26,7 @@
 			],
 			"hp": {
 				"average": 120,
-				"formula": "16d8+48"
+				"formula": "16d8 + 48"
 			},
 			"speed": {
 				"walk": 30
@@ -152,7 +152,7 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) bludgeoning damage, or 8 ({@dice 1d8+4}) bludgeoning damage if wielded with two hands."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) bludgeoning damage, or 8 ({@damage 1d8 + 4}) bludgeoning damage if wielded with two hands."
 					]
 				},
 				{
@@ -168,6 +168,16 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"AB",
+				"C",
+				"DR",
+				"D",
+				"GI"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -189,7 +199,7 @@
 			],
 			"hp": {
 				"average": 263,
-				"formula": "17d20+85"
+				"formula": "17d20 + 85"
 			},
 			"speed": {
 				"walk": 30
@@ -253,13 +263,13 @@
 				{
 					"name": "Root",
 					"entries": [
-						"{@atk mw} {@hit 12} to hit, reach 60 ft., one target. Hit: 30 ({@dice 4d10+8}) bludgeoning damage."
+						"{@atk mw} {@hit 12} to hit, reach 60 ft., one target. {@h}30 ({@damage 4d10 + 8}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Rock",
 					"entries": [
-						"{@atk rw} {@hit 12} to hit, range 120 ft., one target. Hit: 21 ({@dice 3d8+8}) bludgeoning damage."
+						"{@atk rw} {@hit 12} to hit, range 120 ft., one target. {@h}21 ({@damage 3d8 + 8}) bludgeoning damage."
 					]
 				}
 			],
@@ -270,6 +280,9 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -291,7 +304,7 @@
 			],
 			"hp": {
 				"average": 16,
-				"formula": "3d8+3"
+				"formula": "3d8 + 3"
 			},
 			"speed": {
 				"walk": 30
@@ -347,17 +360,26 @@
 				{
 					"name": "Claws (Requires Alter Self)",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage. This attack is magical."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) slashing damage. This attack is magical."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 2} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage."
+						"{@atk mw,rw} {@hit 2} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}2 ({@damage 1d4}) piercing damage."
 					]
 				}
 			],
-			"page": 229
+			"page": 229,
+			"languageTags": [
+				"C"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"CW"
+			]
 		},
 		{
 			"name": "Broom of Animated Attack",
@@ -442,7 +464,7 @@
 				{
 					"name": "Broomstick",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d4+3}) bludgeoning damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d4 + 3}) bludgeoning damage."
 					]
 				}
 			],
@@ -461,6 +483,9 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -488,7 +513,7 @@
 			],
 			"hp": {
 				"average": 82,
-				"formula": "11d8+33"
+				"formula": "11d8 + 33"
 			},
 			"speed": {
 				"walk": 30
@@ -584,19 +609,19 @@
 				{
 					"name": "Rapier +1",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d8+5}) piercing damage."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d8 + 5}) piercing damage."
 					]
 				},
 				{
 					"name": "Handaxe +1",
 					"entries": [
-						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
+						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
 					]
 				},
 				{
 					"name": "Silvered Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) piercing damage."
 					]
 				},
 				{
@@ -615,6 +640,13 @@
 			"page": 231,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"E"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -706,6 +738,16 @@
 			"traitTags": [
 				"Antimagic Susceptibility",
 				"False Appearance"
+			],
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -733,7 +775,7 @@
 			],
 			"hp": {
 				"average": 112,
-				"formula": "15d8+45"
+				"formula": "15d8 + 45"
 			},
 			"speed": {
 				"walk": 30
@@ -769,13 +811,13 @@
 				{
 					"name": "Battleaxe",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) slashing damage, or 15 ({@dice 2d10+4}) when used with two hands."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d8 + 4}) slashing damage, or 15 ({@dice 2d10 + 4}) when used with two hands."
 					]
 				},
 				{
 					"name": "Hurl Flame",
 					"entries": [
-						"{@atk rs} {@hit 5} to hit, range 60 ft., one target. Hit: 10 ({@dice 3d6}) fire damage. If the target is a flammable object that isn't being worn or carried, it catches fire."
+						"{@atk rs} {@hit 5} to hit, range 60 ft., one target. {@h}10 ({@damage 3d6}) fire damage. If the target is a flammable object that isn't being worn or carried, it catches fire."
 					]
 				}
 			],
@@ -785,6 +827,9 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C"
 			]
 		},
 		{
@@ -807,7 +852,7 @@
 			],
 			"hp": {
 				"average": 88,
-				"formula": "16d8+16"
+				"formula": "16d8 + 16"
 			},
 			"speed": {
 				"walk": 20
@@ -916,7 +961,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}2 ({@damage 1d4}) piercing damage."
 					]
 				},
 				{
@@ -932,7 +977,16 @@
 					]
 				}
 			],
-			"page": 233
+			"page": 233,
+			"languageTags": [
+				"AB",
+				"C",
+				"E",
+				"I"
+			],
+			"spellcastingTags": [
+				"CC"
+			]
 		},
 		{
 			"name": "Mongrelfolk",
@@ -957,7 +1011,7 @@
 			],
 			"hp": {
 				"average": 26,
-				"formula": "4d8+8"
+				"formula": "4d8 + 8"
 			},
 			"speed": {
 				"walk": 20
@@ -984,10 +1038,10 @@
 						"1\u20133: Amphibious. The mongrelfolk can breathe air and water.",
 						"4\u20139: Darkvision. The mongrelfolk has darkvision out to a range of 60 feet.",
 						"10: Flight. The mongrelfolk has leathery wings and a flying speed of 40 feet.",
-						"11\u201315: Keen Hearing and Smell. The mongrelfolk has advantage on Wisdom (Perception) checks that rely on hearing or smell.",
+						"11\u201315: Keen Hearing and Smell. The mongrelfolk has advantage on Wisdom ({@skill Perception}) checks that rely on hearing or smell.",
 						"16\u201317: Spider Climb. The mongrelfolk can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check.",
 						"18\u201319: Standing Leap. The mongrelfolk's long jump is up to 20 feet and its high jump up to 10 feet, with or without a running start.",
-						"20: Two-Headed. The mongrelfolk has advantage on Wisdom (Perception) checks and on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, or knocked {@condition unconscious}."
+						"20: Two-Headed. The mongrelfolk has advantage on Wisdom ({@skill Perception}) checks and on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, or knocked {@condition unconscious}."
 					]
 				},
 				{
@@ -1007,25 +1061,28 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) slashing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d4 + 1}) slashing damage."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
+						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
 					]
 				}
 			],
 			"page": 234,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C"
 			]
 		},
 		{
@@ -1041,7 +1098,7 @@
 			],
 			"hp": {
 				"average": 45,
-				"formula": "6d8+18"
+				"formula": "6d8 + 18"
 			},
 			"speed": {
 				"walk": 30
@@ -1096,7 +1153,7 @@
 				{
 					"name": "Incorporeal Movement",
 					"entries": [
-						"The phantom warrior can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@dice 1d10}) force damage if it ends its turn inside an object."
+						"The phantom warrior can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
 					]
 				},
 				{
@@ -1116,7 +1173,7 @@
 				{
 					"name": "Spectral Longsword",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) force damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) force damage."
 					]
 				},
 				{
@@ -1132,6 +1189,9 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -1191,19 +1251,22 @@
 				{
 					"name": "Club",
 					"entries": [
-						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) bludgeoning damage."
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}2 ({@damage 1d4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Dart",
 					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 20/60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
+						"{@atk rw} {@hit 4} to hit, range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
 					]
 				}
 			],
 			"page": 236,
 			"traitTags": [
 				"Ambusher"
+			],
+			"languageTags": [
+				"C"
 			]
 		},
 		{
@@ -1231,7 +1294,7 @@
 			],
 			"hp": {
 				"average": 135,
-				"formula": "18d8+54"
+				"formula": "18d8 + 54"
 			},
 			"speed": {
 				"walk": 35
@@ -1280,7 +1343,7 @@
 				{
 					"name": "Deathly Choir",
 					"entries": [
-						"Any creature within 10 feet of Rahadin that isn't protected by a {@spell mind blank} spell hears in its mind the screams of the thousands of people Rahadin has killed. As a bonus action, Rahadin can force all creatures that can hear the screams to make a DC 16 Wisdom saving throw. Each creature takes 16 ({@dice 3d10}) psychic damage on a failed save, or half as much damage on a successful one."
+						"Any creature within 10 feet of Rahadin that isn't protected by a {@spell mind blank} spell hears in its mind the screams of the thousands of people Rahadin has killed. As a bonus action, Rahadin can force all creatures that can hear the screams to make a DC 16 Wisdom saving throw. Each creature takes 16 ({@damage 3d10}) psychic damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
@@ -1306,13 +1369,13 @@
 				{
 					"name": "Scimitar",
 					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d6+6}) slashing damage."
+						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d6 + 6}) slashing damage."
 					]
 				},
 				{
 					"name": "Poisoned Dart",
 					"entries": [
-						"{@atk rw} {@hit 10} to hit, range 20/60 ft., one target. Hit: 8 ({@dice 1d4+6}) piercing damage plus 5 ({@dice 2d4}) poison damage."
+						"{@atk rw} {@hit 10} to hit, range 20/60 ft., one target. {@h}8 ({@damage 1d4 + 6}) piercing damage plus 5 ({@damage 2d4}) poison damage."
 					]
 				}
 			],
@@ -1322,6 +1385,16 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"E"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -1349,7 +1422,7 @@
 			],
 			"hp": {
 				"average": 77,
-				"formula": "14d8+14"
+				"formula": "14d8 + 14"
 			},
 			"speed": {
 				"walk": 30
@@ -1456,13 +1529,22 @@
 				{
 					"name": "Sword Cane",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage (wooden cane) or piercing damage (silvered sword)."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) bludgeoning damage (wooden cane) or piercing damage (silvered sword)."
 					]
 				}
 			],
 			"page": 238,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"AB",
+				"C",
+				"E",
+				"I"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -1489,7 +1571,7 @@
 			],
 			"hp": {
 				"average": 144,
-				"formula": "17d8+68"
+				"formula": "17d8 + 68"
 			},
 			"speed": {
 				"walk": 30
@@ -1638,13 +1720,13 @@
 				{
 					"name": "Unarmed Strike (Vampire Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage, plus 14 ({@dice 4d6}) necrotic damage. If the target is a creature, Strahd can grapple it (escape DC 18) instead of dealing the bludgeoning damage."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) bludgeoning damage, plus 14 ({@damage 4d6}) necrotic damage. If the target is a creature, Strahd can grapple it (escape DC 18) instead of dealing the bludgeoning damage."
 					]
 				},
 				{
 					"name": "Bite (Bat or Vampire Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by Strahd, {@condition incapacitated}, or {@condition restrained}. Hit: 7 ({@dice 1d6+4}) piercing damage plus 10 ({@dice 3d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and Strahd regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0. A humanoid slain in this way and then buried in the ground rises the following night as a {@creature vampire spawn} under Strahd's control."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by Strahd, {@condition incapacitated}, or {@condition restrained}. {@h}7 ({@damage 1d6 + 4}) piercing damage plus 10 ({@damage 3d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and Strahd regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0. A humanoid slain in this way and then buried in the ground rises the following night as a {@creature vampire spawn} under Strahd's control."
 					]
 				},
 				{
@@ -1661,7 +1743,10 @@
 					]
 				}
 			],
-			"legendaryGroup": "Strahd von Zarovich",
+			"legendaryGroup": {
+				"name": "Strahd von Zarovich",
+				"source": "CoS"
+			},
 			"legendary": [
 				{
 					"name": "Move",
@@ -1690,6 +1775,20 @@
 				"Legendary Resistances",
 				"Regeneration",
 				"Spider Climb"
+			],
+			"languageTags": [
+				"AB",
+				"C",
+				"DR",
+				"E",
+				"GI",
+				"I"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -1705,7 +1804,7 @@
 			],
 			"hp": {
 				"average": 30,
-				"formula": "4d8+12"
+				"formula": "4d8 + 12"
 			},
 			"speed": {
 				"walk": 20
@@ -1755,19 +1854,25 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) slashing damage."
 					]
 				}
 			],
 			"page": 241,
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"CS"
 			]
 		},
 		{
@@ -1789,7 +1894,7 @@
 			],
 			"hp": {
 				"average": 112,
-				"formula": "15d8+45"
+				"formula": "15d8 + 45"
 			},
 			"speed": {
 				"walk": 30
@@ -1856,13 +1961,13 @@
 				{
 					"name": "Greatsword",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) slashing damage plus 3 ({@dice 1d6}) lightning damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) slashing damage plus 3 ({@damage 1d6}) lightning damage."
 					]
 				},
 				{
 					"name": "Shocking Bolt",
 					"entries": [
-						"{@atk rs} {@hit 4} to hit (with advantage on the attack roll if the target is wearing armor made of metal), range 60 ft., one target. Hit: 10 ({@dice 3d6}) lightning damage."
+						"{@atk rs} {@hit 4} to hit (with advantage on the attack roll if the target is wearing armor made of metal), range 60 ft., one target. {@h}10 ({@damage 3d6}) lightning damage."
 					]
 				}
 			],
@@ -1873,6 +1978,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"CS"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -1894,7 +2006,7 @@
 			],
 			"hp": {
 				"average": 149,
-				"formula": "13d12+65"
+				"formula": "13d12 + 65"
 			},
 			"speed": {
 				"walk": 30
@@ -1937,19 +2049,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 19 ({@dice 3d8+6}) piercing damage."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}19 ({@damage 3d8 + 6}) piercing damage."
 					]
 				},
 				{
 					"name": "Branch",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 15 ft., one target. Hit: 16 ({@dice 3d6+6}) bludgeoning damage."
+						"{@atk mw} {@hit 9} to hit, reach 15 ft., one target. {@h}16 ({@damage 3d6 + 6}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Grasping Root",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 15 ft., one creature not {@condition grappled} by the blight. Hit: The target is {@condition grappled} (escape DC 15). Until the grapple ends, the target takes 9 ({@dice 1d6+6}) bludgeoning damage at the start of each of its turns. The root has AC 15 and can be severed by dealing 6 slashing damage or more to it at once. Cutting the root doesn't hurt the blight, but ends the grapple."
+						"{@atk mw} {@hit 9} to hit, reach 15 ft., one creature not {@condition grappled} by the blight. {@h}The target is {@condition grappled} (escape DC 15). Until the grapple ends, the target takes 9 ({@damage 1d6 + 6}) bludgeoning damage at the start of each of its turns. The root has AC 15 and can be severed by dealing 6 slashing damage or more to it at once. Cutting the root doesn't hurt the blight, but ends the grapple."
 					]
 				}
 			],
@@ -1960,6 +2072,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DU"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -1982,7 +2101,7 @@
 			],
 			"hp": {
 				"average": 192,
-				"formula": "16d8+64"
+				"formula": "16d8 + 64"
 			},
 			"speed": {
 				"walk": 30
@@ -2060,13 +2179,13 @@
 				{
 					"name": "Fist",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage. Strahd, the target of Vladimir's sworn vengeance, takes an extra 14 ({@dice 4d6}) bludgeoning damage. Instead of dealing damage, Vladimir can grapple the target (escape DC 14) provided the target is Large or smaller."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) bludgeoning damage. Strahd, the target of Vladimir's sworn vengeance, takes an extra 14 ({@damage 4d6}) bludgeoning damage. Instead of dealing damage, Vladimir can grapple the target (escape DC 14) provided the target is Large or smaller."
 					]
 				},
 				{
 					"name": "Greatsword +2",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 20 ({@dice 4d6+4}) slashing damage. Against Strahd, Vladimir deals an extra 14 ({@dice 4d6}) slashing damage with this weapon."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}20 ({@damage 4d6 + 4}) slashing damage. Against Strahd, Vladimir deals an extra 14 ({@damage 4d6}) slashing damage with this weapon."
 					]
 				},
 				{
@@ -2084,6 +2203,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -2162,25 +2288,29 @@
 				{
 					"name": "Beak (Raven or Hybrid Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 1 piercing damage in raven form, or 4 ({@dice 1d4+2}) piercing damage in hybrid form. If the target is humanoid, it must succeed on a DC 10 Constitution saving throw or be cursed with wereraven lycanthropy."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}1 piercing damage in raven form, or 4 ({@damage 1d4 + 2}) piercing damage in hybrid form. If the target is humanoid, it must succeed on a DC 10 Constitution saving throw or be cursed with wereraven lycanthropy."
 					]
 				},
 				{
 					"name": "Shortsword (Human or Hybrid Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
 					]
 				},
 				{
 					"name": "Hand Crossbow (Human or Hybrid Form Only)",
 					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
 					]
 				}
 			],
 			"page": 242,
 			"traitTags": [
 				"Shapechanger"
+			],
+			"languageTags": [
+				"C",
+				"CS"
 			]
 		}
 	]

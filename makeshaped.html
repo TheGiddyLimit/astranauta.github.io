@@ -10,10 +10,11 @@
 	<title>Make Shaped JS - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 
@@ -66,18 +67,18 @@
 	</style>
 </head>
 <body>
-<header class="hidden-xs hidden-sm">
+<header class="hidden-xs hidden-sm page__header">
 	<div class="container">
 
-		<h1>Shaped JS Builder</h1>
-		<p>Select options, and hit Prepare.</p>
+		<h1 class="page__title">Shaped JS Builder</h1>
+		<p class="page__subtitle">Select options, and hit Prepare.</p>
 	</div>
 </header>
-<nav class="container" id="navigation">
+<nav class="container page__nav" id="navigation">
 	<ul class="nav nav-pills" id="navbar">
 	</ul>
 </nav>
-<main class="container bodyContent">
+<main class="container">
 	<div class="row">
 		<div class="shaped-cols">
 			<div class="wrp-shaped-list">
@@ -93,33 +94,35 @@
 			<div class="shaped-wrp-controls">
 				<div class="mb-2">
 					<p class="shaped-help">
-						If you use the <a href="https://github.com/mlenser/roll20-character-sheets/tree/master/5eShaped" target="_blank">5e Shaped character sheet</a> on Roll20 with its <a href="https://github.com/mlenser/roll20-api-scripts/tree/master/5eShapedScript" target="_blank">companion script</a>, this page will allow you to generate a supplementary script file that will load additional monsters and spells from the 5eTools data set for use with the <span class="code">!shaped-import-monster</span> and <span class="code">!shaped-import-spell</span> commands. Select the sources that you wish to include, click the "Prepare JS" button and then, once the data has populated into the text box below, click the "Copy JS" button to copy it to the clipboard. You should then paste it into a new API script file in your Roll20 campaign. See the <a href="https://bitbucket.org/mlenser/5eshapedscript/wiki/Home" target="_blank">script documentation</a> for more details on how to import spells and monsters into your game once you've loaded the additional data.
+						If you use the <a href="https://github.com/mlenser/roll20-character-sheets/tree/master/5eShaped" target="_blank" rel="noopener">5e Shaped character sheet</a> on Roll20 with its <a href="https://github.com/mlenser/roll20-api-scripts/tree/master/5eShapedScript" target="_blank" rel="noopener">companion script</a>, this page will allow you to generate a supplementary script file that will load additional monsters and spells from the 5etools data set for use with the <span class="code">!shaped-import-monster</span> and <span class="code">!shaped-import-spell</span> commands. Select the sources that you wish to include, click the "Prepare JS" button and then, once the data has populated into the text box below, click the "Copy JS" button to copy it to the clipboard. You should then paste it into a new API script file in your Roll20 campaign. See the <a href="https://bitbucket.org/mlenser/5eshapedscript/wiki/Home" target="_blank" rel="noopener">script documentation</a> for more details on how to import spells and monsters into your game once you've loaded the additional data.
 					</p>
 					<p>
 						<strong>Important Note:</strong> Please do not paste links to this tool on public forums - especially not on the Roll20 forums.
 					</p>
 				</div>
 				<div class="mb-2 text-align-center" id="buttons">
-					<div class="btn btn-primary" id="copyJS" disabled="disabled">Copy JS</div>
+					<button class="btn btn-primary" id="copyJS" disabled="disabled">Copy JS</button>
 				</div>
 				<div class="mb-2 shaped-wrp-output">
-					<textarea id="shapedJS"></textarea>
+					<textarea id="shapedJS" class="form-control"></textarea>
 				</div>
 			</div>
 		</div>
 	</div>
 </main>
-<footer class="container">
-
-</footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/genutils.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/makeshaped.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
-<script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>
 </html>

@@ -17,7 +17,7 @@ function readJSON (path) {
 
 function listFiles (dir) {
 	const dirContent = fs.readdirSync(dir, "utf8")
-		.filter(file => !file.startsWith("bookref-"))
+		.filter(file => !file.startsWith("bookref-") && !file.startsWith("roll20-module-") && !file.startsWith("gendata-"))
 		.map(file => `${dir}/${file}`);
 	return dirContent.reduce((acc, file) => {
 		if (isDirectory(file)) {
@@ -36,7 +36,8 @@ const replacements = {
 	"’": "'",
 	"“": '\\"',
 	"”": '\\"',
-	"…": "..."
+	"…": "...",
+	" ": " " // non-breaking space
 };
 
 const replacementRegex = new RegExp(Object.keys(replacements).join("|"), 'g');
@@ -45,26 +46,15 @@ function cleanFolder (folder) {
 	console.log(`Cleaning directory ${folder}...`);
 	const files = listFiles(folder);
 	files
-		.map(file => {
-			console.log(`\tCleaning ${file}...`);
-			return {
-				name: file,
-				contents: readJSON(file)
-			};
-		})
-		.map(file => {
-			file.contents = JSON.stringify(file.contents, null, "\t") + "\n";
-			return file;
-		})
-		.map(file => {
-			file.contents = file.contents.replace(replacementRegex, (match) => {
-				return replacements[match];
-			});
-			return file;
-		})
+		.filter(file => file.endsWith(".json"))
 		.forEach(file => {
-			fs.writeFileSync(file.name, file.contents);
-		});
+			console.log(`\tCleaning ${file}...`);
+			let contents = readJSON(file);
+			contents = JSON.stringify(contents, null, "\t") + "\n";
+			contents = contents.replace(replacementRegex, (match) => replacements[match]);
+			contents = contents.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1");
+			fs.writeFileSync(file, contents);
+		})
 }
 
 const data = `./data`;

@@ -2,9 +2,6 @@
 
 const JSON_URL = "data/psionics.json";
 
-const STR_JOIN_MODE_LIST = ",";
-const TMP_HIDDEN_MODE = `"{0}"`;
-
 const ID_PSIONICS_LIST = "psionicsList";
 
 const JSON_ITEM_NAME = "name";
@@ -13,10 +10,10 @@ const JSON_ITEM_TYPE = "type";
 const JSON_ITEM_MODES = "modes";
 const JSON_ITEM_SUBMODES = "submodes";
 const CLS_PSIONICS = "psionics";
-const CLS_COL1 = "col-xs-5";
-const CLS_COL2 = "col-xs-2";
-const CLS_COL3 = "col-xs-2";
-const CLS_COL4 = "col-xs-2";
+const CLS_COL1 = "col-6";
+const CLS_COL2 = "col-2";
+const CLS_COL3 = "col-2";
+const CLS_COL4 = "col-2";
 const CLS_HIDDEN = "hidden";
 const CLS_LI_NONE = "list-entry-none";
 
@@ -31,19 +28,20 @@ function getHiddenModeList (psionic) {
 	if (modeList === undefined) return STR_EMPTY;
 	const outArray = [];
 	for (let i = 0; i < modeList.length; ++i) {
-		outArray.push(TMP_HIDDEN_MODE.formatUnicorn(modeList[i].name));
+		outArray.push(`"${modeList[i].name}"`);
 		if (modeList[i][JSON_ITEM_SUBMODES] !== undefined) {
 			const subModes = modeList[i][JSON_ITEM_SUBMODES];
 			for (let j = 0; j < subModes.length; ++j) {
-				outArray.push(TMP_HIDDEN_MODE.formatUnicorn(subModes[j].name))
+				outArray.push(`"${subModes[j].name}"`)
 			}
 		}
 	}
-	return outArray.join(STR_JOIN_MODE_LIST);
+	return outArray.join(",");
 }
 
-window.onload = function load () {
-	ExcludeUtil.initialise();
+window.onload = async function load () {
+	await ExcludeUtil.pInitialise();
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
@@ -53,17 +51,17 @@ const sourceFilter = getSourceFilter({
 	deselFn: () => false
 });
 let filterBox;
-function onJsonLoad (data) {
+async function onJsonLoad (data) {
 	const typeFilter = new Filter({header: "Type", items: [Parser.PSI_ABV_TYPE_TALENT, Parser.PSI_ABV_TYPE_DISCIPLINE], displayFn: Parser.psiTypeToFull});
 	const orderFilter = new Filter({
 		header: "Order",
 		items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", Parser.PSI_ORDER_NONE]
 	});
 
-	filterBox = initFilterBox(sourceFilter, typeFilter, orderFilter);
+	filterBox = await pInitFilterBox(sourceFilter, typeFilter, orderFilter);
 
 	list = ListUtil.search({
-		valueNames: [LIST_NAME, LIST_SOURCE, LIST_TYPE, LIST_ORDER, LIST_MODE_LIST],
+		valueNames: [LIST_NAME, LIST_SOURCE, LIST_TYPE, LIST_ORDER, LIST_MODE_LIST, "uniqueid"],
 		listClass: CLS_PSIONICS,
 		sortFunction: SortUtil.listSort
 	});
@@ -76,8 +74,6 @@ function onJsonLoad (data) {
 		FilterBox.EVNT_VALCHANGE,
 		handleFilterChange
 	);
-
-	RollerUtil.addListRollButton();
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "type", "order", "id"],
@@ -125,12 +121,13 @@ function onJsonLoad (data) {
 	addPsionics(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(() => BrewUtil.bind({list}))
 		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
-		.then(() => {
+		.catch(BrewUtil.pPurgeBrew)
+		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
-			BrewUtil.bind({list, filterBox, sourceFilter});
-			ListUtil.loadState();
+			BrewUtil.bind({filterBox, sourceFilter});
+			await ListUtil.pLoadState();
 
 			ListUtil.bindShowTableButton(
 				"btn-show-table",
@@ -138,7 +135,7 @@ function onJsonLoad (data) {
 				psionicList,
 				{
 					name: {name: "Name", transform: true},
-					source: {name: "Source", transform: (it) => `<span class="source${Parser.stringToCasedSlug(it)}" title="${Parser.sourceJsonToFull(it)}">${Parser.sourceJsonToAbv(it)}</span>`},
+					source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}">${Parser.sourceJsonToAbv(it)}</span>`},
 					_text: {name: "Text", transform: (it) => it.type === "T" ? EntryRenderer.psionic.getTalentText(it, renderer) : EntryRenderer.psionic.getDisciplineText(it, renderer), flex: 3}
 				},
 				{generator: ListUtil.basicFilterGenerator},
@@ -146,7 +143,10 @@ function onJsonLoad (data) {
 			);
 
 			RollerUtil.addListRollButton();
+			ListUtil.addListShowHide();
+
 			History.init(true);
+			ExcludeUtil.checkShowAllExcluded(psionicList, $(`#pagecontent`));
 		});
 }
 
@@ -172,10 +172,12 @@ function addPsionics (data) {
 			<li class='row' ${FLTR_ID}="${psI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id='${psI}' href='#${UrlUtil.autoEncodeHash(p)}' title="${p[JSON_ITEM_NAME]}">
 					<span class='${LIST_NAME} ${CLS_COL1}'>${p[JSON_ITEM_NAME]}</span>
-					<span class='${LIST_SOURCE} ${CLS_COL2}' title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
 					<span class='${LIST_TYPE} ${CLS_COL3}'>${Parser.psiTypeToFull(p[JSON_ITEM_TYPE])}</span>
 					<span class='${LIST_ORDER} ${CLS_COL4} ${p._fOrder === STR_NONE ? CLS_LI_NONE : STR_EMPTY}'>${p._fOrder}</span>
+					<span class='${LIST_SOURCE} ${CLS_COL2} text-align-center' title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
+					
 					<span class='${LIST_MODE_LIST} ${CLS_HIDDEN}'>${getHiddenModeList(p)}</span>
+					<span class="uniqueid hidden">${p.uniqueId ? p.uniqueId : psI}</span>
 				</a>
 			</li>
 		`;
@@ -225,10 +227,10 @@ function getSublistItem (p, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(p)}" title="${p.name}">
-				<span class="name col-xs-6">${p.name}</span>
-				<span class="type col-xs-3">${Parser.psiTypeToFull(p.type)}</span>
-				<span class="order col-xs-3 ${p._fOrder === STR_NONE ? CLS_LI_NONE : ""}">${p._fOrder}</span>
-				<span class="id hidden">${pinId}</span>				
+				<span class="name col-6">${p.name}</span>
+				<span class="type col-3">${Parser.psiTypeToFull(p.type)}</span>
+				<span class="order col-3 ${p._fOrder === STR_NONE ? CLS_LI_NONE : ""}">${p._fOrder}</span>
+				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
 	`;

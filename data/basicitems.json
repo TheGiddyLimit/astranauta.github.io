@@ -1,722 +1,46 @@
 {
 	"basicitem": [
 		{
-			"name": "Battleaxe",
-			"type": "M",
-			"axe": true,
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "10gp",
-			"weight": "4",
-			"dmg1": "{@dice 1d8}",
-			"dmg2": "{@dice 1d10}",
-			"dmgType": "S",
-			"property": [
-				"V"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Blowgun",
-			"type": "R",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "10gp",
-			"weight": "1",
-			"dmg1": "1",
-			"dmgType": "P",
-			"property": [
-				"A",
-				"LD"
-			],
-			"range": "25/100",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Club",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "1sp",
-			"weight": "2",
-			"dmg1": "{@dice 1d4}",
-			"dmgType": "B",
-			"property": [
-				"L"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Dagger",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "2gp",
-			"weight": "1",
-			"dmg1": "{@dice 1d4}",
-			"dmgType": "P",
-			"property": [
-				"F",
-				"L",
-				"T"
-			],
-			"range": "20/60",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Dart",
-			"type": "R",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "5cp",
-			"weight": "0.25",
-			"dmg1": "{@dice 1d4}",
-			"dmgType": "P",
-			"property": [
-				"F",
-				"T"
-			],
-			"range": "20/60",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Flail",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "10gp",
-			"weight": "2",
-			"dmg1": "{@dice 1d8}",
-			"dmgType": "B",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Glaive",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "20gp",
-			"weight": "6",
-			"dmg1": "{@dice 1d10}",
-			"dmgType": "S",
-			"property": [
-				"H",
-				"R",
-				"2H"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Greataxe",
-			"type": "M",
-			"weapon": true,
-			"axe": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "30gp",
-			"weight": "7",
-			"dmg1": "{@dice 1d12}",
-			"dmgType": "S",
-			"property": [
-				"H",
-				"2H"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Greatclub",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "2sp",
-			"weight": "10",
-			"dmg1": "{@dice 1d8}",
-			"dmgType": "B",
-			"property": [
-				"2H"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Greatsword",
-			"type": "M",
-			"weapon": true,
-			"sword": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "50gp",
-			"weight": "6",
-			"dmg1": "{@dice 2d6}",
-			"dmgType": "S",
-			"property": [
-				"H",
-				"2H"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Halberd",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "20gp",
-			"weight": "6",
-			"dmg1": "{@dice 1d10}",
-			"dmgType": "S",
-			"property": [
-				"H",
-				"R",
-				"2H"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Handaxe",
-			"type": "M",
-			"weapon": true,
-			"axe": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "5gp",
-			"weight": "2",
-			"dmg1": "{@dice 1d6}",
-			"dmgType": "S",
-			"property": [
-				"L",
-				"T"
-			],
-			"range": "20/60",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Hand Crossbow",
-			"type": "R",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "75gp",
-			"weight": "3",
-			"dmg1": "{@dice 1d6}",
-			"dmgType": "P",
-			"property": [
-				"A",
-				"L",
-				"LD"
-			],
-			"range": "30/120",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Heavy Crossbow",
-			"type": "R",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "50gp",
-			"weight": "18",
-			"dmg1": "{@dice 1d10}",
-			"dmgType": "P",
-			"property": [
-				"A",
-				"H",
-				"LD",
-				"2H"
-			],
-			"range": "100/400",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Javelin",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "2sp",
-			"weight": "2",
-			"dmg1": "{@dice 1d6}",
-			"dmgType": "P",
-			"property": [
-				"T"
-			],
-			"range": "30/120",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Lance",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "10gp",
-			"weight": "6",
-			"dmg1": "{@dice 1d12}",
-			"dmgType": "P",
-			"property": [
-				"R",
-				"S"
-			],
-			"source": "PHB",
-			"page": 149,
-			"entries": [
-				{
-					"type": "entries",
-					"name": "Special",
-					"entries": [
-						"You have disadvantage when you use a lance to attack a target within 5 feet of you. Also, a lance requires two hands to wield when you aren't mounted."
-					]
-				}
-			]
-		},
-		{
-			"name": "Light Crossbow",
-			"type": "R",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "25gp",
-			"weight": "5",
-			"dmg1": "{@dice 1d8}",
-			"dmgType": "P",
-			"property": [
-				"A",
-				"LD",
-				"2H"
-			],
-			"range": "80/320",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Light Hammer",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "2gp",
-			"weight": "2",
-			"dmg1": "{@dice 1d4}",
-			"dmgType": "B",
-			"property": [
-				"L",
-				"T"
-			],
-			"range": "20/60",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Longbow",
-			"type": "R",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "50gp",
-			"weight": "2",
-			"dmg1": "{@dice 1d8}",
-			"dmgType": "P",
-			"property": [
-				"A",
-				"H",
-				"2H"
-			],
-			"range": "150/600",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Longsword",
-			"type": "M",
-			"weapon": true,
-			"sword": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "15gp",
-			"weight": "3",
-			"dmg1": "{@dice 1d8}",
-			"dmg2": "{@dice 1d10}",
-			"dmgType": "S",
-			"property": [
-				"V"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Mace",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "5gp",
-			"weight": "4",
-			"dmg1": "{@dice 1d6}",
-			"dmgType": "B",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Maul",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "10gp",
-			"weight": "10",
-			"dmg1": "{@dice 2d6}",
-			"dmgType": "B",
-			"property": [
-				"H",
-				"2H"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Morningstar",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "15gp",
-			"weight": "4",
-			"dmg1": "{@dice 1d8}",
-			"dmgType": "P",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Net",
-			"type": "R",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "1gp",
-			"weight": "3",
-			"property": [
-				"S",
-				"T"
-			],
-			"range": "5/15",
-			"source": "PHB",
-			"page": 149,
-			"entries": [
-				{
-					"type": "entries",
-					"name": "Special",
-					"entries": [
-						"A Large or smaller creature hit by a net is {@condition restrained} until it is freed. A net has no effect on creatures that are formless, or creatures that are Huge or larger. A creature can use its action to make a DC 10 Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the net (AC 10) also frees the creature without harming it, ending the effect and destroying the net. When you use an action, bonus action, or reaction to attack with a net, you can make only one attack regardless of the number of attacks you can normally make."
-					]
-				}
-			]
-		},
-		{
-			"name": "Pike",
-			"rarity": "None",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"value": "5gp",
-			"weight": "18",
-			"dmg1": "{@dice 1d10}",
-			"dmgType": "P",
-			"property": [
-				"H",
-				"R",
-				"2H"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Quarterstaff",
-			"type": "M",
-			"technology": "Staff",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "2sp",
-			"weight": "4",
-			"dmg1": "{@dice 1d6}",
-			"dmg2": "{@dice 1d8}",
-			"dmgType": "B",
-			"property": [
-				"V"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Rapier",
-			"type": "M",
-			"weapon": true,
-			"sword": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "25gp",
-			"weight": "2",
-			"dmg1": "{@dice 1d8}",
-			"dmgType": "P",
-			"property": [
-				"F"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Scimitar",
-			"type": "M",
-			"weapon": true,
-			"sword": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "25gp",
-			"weight": "3",
-			"dmg1": "{@dice 1d6}",
-			"dmgType": "S",
-			"property": [
-				"F",
-				"L"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Shortbow",
-			"type": "R",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "25gp",
-			"weight": "2",
-			"dmg1": "{@dice 1d6}",
-			"dmgType": "P",
-			"property": [
-				"A",
-				"2H"
-			],
-			"range": "80/320",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Shortsword",
-			"type": "M",
-			"weapon": true,
-			"sword": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "10gp",
-			"weight": "2",
-			"dmg1": "{@dice 1d6}",
-			"dmgType": "P",
-			"property": [
-				"F",
-				"L"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Sickle",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "1gp",
-			"weight": "2",
-			"dmg1": "{@dice 1d4}",
-			"dmgType": "S",
-			"property": [
-				"L"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Sling",
-			"type": "R",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "1sp",
-			"dmg1": "{@dice 1d4}",
-			"dmgType": "B",
-			"property": [
-				"A"
-			],
-			"range": "30/120",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Spear",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "1gp",
-			"weight": "3",
-			"dmg1": "{@dice 1d6}",
-			"dmg2": "{@dice 1d8}",
-			"dmgType": "P",
-			"property": [
-				"T",
-				"V"
-			],
-			"range": "20/60",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Trident",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "5gp",
-			"weight": "4",
-			"dmg1": "{@dice 1d6}",
-			"dmg2": "{@dice 1d8}",
-			"dmgType": "P",
-			"property": [
-				"T",
-				"V"
-			],
-			"range": "20/60",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "War Pick",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "5gp",
-			"weight": "2",
-			"dmg1": "{@dice 1d8}",
-			"dmgType": "P",
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Warhammer",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "15gp",
-			"weight": "2",
-			"dmg1": "{@dice 1d8}",
-			"dmg2": "{@dice 1d10}",
-			"dmgType": "B",
-			"property": [
-				"V"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Whip",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "2gp",
-			"weight": "3",
-			"dmg1": "{@dice 1d4}",
-			"dmgType": "S",
-			"property": [
-				"F",
-				"R"
-			],
-			"source": "PHB",
-			"page": 149
-		},
-		{
-			"name": "Yklwa",
-			"type": "M",
-			"weapon": true,
-			"weaponCategory": "Simple",
-			"rarity": "None",
-			"value": "1gp",
-			"weight": "3",
-			"dmg1": "{@dice 1d8}",
-			"dmgType": "P",
-			"property": [
-				"T"
-			],
-			"range": "10/30",
-			"source": "ToA",
-			"page": 32,
-			"entries": [
-				"A yklwa (pronounced YICK-ul-wah) is a simple melee weapon that is the traditional weapon of Chultan warriors. A yklwa consists of a 3-foot wooden shaft with a steel or stone blade up to 18 inches long. Although it has the thrown weapon property, the yklwa is not well balanced for throwing."
-			]
-		},
-		{
-			"name": "Pistol",
+			"name": "Antimatter Rifle",
 			"type": "R",
 			"technology": "Firearm",
 			"weapon": true,
 			"weaponCategory": "Martial",
-			"age": "Renaissance",
+			"age": "Futuristic",
 			"rarity": "None",
-			"value": "250gp",
-			"weight": "3",
-			"dmg1": "{@dice 1d10}",
-			"dmgType": "P",
+			"weight": "10",
+			"dmg1": "{@dice 6d8}",
+			"dmgType": "N",
 			"property": [
 				"AF",
-				"LD"
+				"RLD",
+				"2H"
 			],
-			"range": "30/90",
+			"range": "120/360",
+			"reload": "2",
 			"source": "DMG",
 			"page": 268
 		},
 		{
-			"name": "Musket",
-			"type": "R",
-			"technology": "Firearm",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"age": "Renaissance",
+			"name": "Arrow",
+			"type": "A",
+			"ammunition": true,
 			"rarity": "None",
-			"value": "500gp",
-			"weight": "10",
-			"dmg1": "{@dice 1d12}",
-			"dmgType": "P",
-			"property": [
-				"AF",
-				"LD",
-				"2H"
-			],
-			"range": "40/120",
-			"source": "DMG",
-			"page": 268
+			"value": "5 cp",
+			"weight": "0.05",
+			"source": "PHB",
+			"page": 150
+		},
+		{
+			"name": "Arrows (20)",
+			"type": "A",
+			"ammunition": true,
+			"rarity": "None",
+			"value": "1 gp",
+			"weight": "1",
+			"source": "PHB",
+			"page": 150,
+			"quantity": 20
 		},
 		{
 			"name": "Automatic Pistol",
@@ -735,47 +59,6 @@
 			],
 			"range": "50/150",
 			"reload": "15",
-			"source": "DMG",
-			"page": 268
-		},
-		{
-			"name": "Revolver",
-			"type": "R",
-			"technology": "Firearm",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"age": "Modern",
-			"rarity": "None",
-			"weight": "3",
-			"dmg1": "{@dice 2d8}",
-			"dmgType": "P",
-			"property": [
-				"AF",
-				"RLD"
-			],
-			"range": "40/120",
-			"reload": "6",
-			"source": "DMG",
-			"page": 268
-		},
-		{
-			"name": "Hunting Rifle",
-			"type": "R",
-			"technology": "Firearm",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"age": "Modern",
-			"rarity": "None",
-			"weight": "8",
-			"dmg1": "{@dice 2d10}",
-			"dmgType": "P",
-			"property": [
-				"AF",
-				"RLD",
-				"2H"
-			],
-			"range": "80/240",
-			"reload": "5",
 			"source": "DMG",
 			"page": 268
 		},
@@ -802,25 +85,479 @@
 			"page": 268
 		},
 		{
-			"name": "Shotgun",
+			"name": "Battleaxe",
+			"type": "M",
+			"axe": true,
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "10 gp",
+			"weight": "4",
+			"dmg1": "{@dice 1d8}",
+			"dmg2": "{@dice 1d10}",
+			"dmgType": "S",
+			"property": [
+				"V"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Blowgun",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "10 gp",
+			"weight": "1",
+			"dmg1": "1",
+			"dmgType": "P",
+			"property": [
+				"A",
+				"LD"
+			],
+			"range": "25/100",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Blowgun Needle",
+			"type": "A",
+			"ammunition": true,
+			"rarity": "None",
+			"value": "2 cp",
+			"weight": "0.02",
+			"source": "PHB",
+			"page": 150
+		},
+		{
+			"name": "Blowgun Needles (50)",
+			"type": "A",
+			"ammunition": true,
+			"rarity": "None",
+			"value": "1 gp",
+			"weight": "1",
+			"source": "PHB",
+			"page": 150,
+			"quantity": 50
+		},
+		{
+			"name": "Breastplate",
+			"type": "MA",
+			"armor": true,
+			"rarity": "None",
+			"value": "400 gp",
+			"weight": "20",
+			"ac": 14,
+			"source": "PHB",
+			"page": 145,
+			"entries": [
+				"This armor consists of a fitted metal chest piece worn with supple leather. Although it leaves the legs and arms relatively unprotected, this armor provides good protection for the wearer's vital organs while leaving the wearer relatively unencumbered."
+			]
+		},
+		{
+			"name": "Chain Mail",
+			"type": "HA",
+			"armor": true,
+			"rarity": "None",
+			"value": "75 gp",
+			"weight": "55",
+			"ac": 16,
+			"strength": "13",
+			"stealth": true,
+			"source": "PHB",
+			"page": 145,
+			"entries": [
+				"Made of interlocking metal rings, chain mail includes a layer of quilted fabric worn underneath the mail to prevent chafing and to cushion the impact of blows. The suit includes gauntlets."
+			]
+		},
+		{
+			"name": "Chain Shirt",
+			"type": "MA",
+			"armor": true,
+			"rarity": "None",
+			"value": "50 gp",
+			"weight": "20",
+			"ac": 13,
+			"source": "PHB",
+			"page": 144,
+			"entries": [
+				"Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer's upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers."
+			]
+		},
+		{
+			"name": "Club",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "1 sp",
+			"weight": "2",
+			"dmg1": "{@dice 1d4}",
+			"dmgType": "B",
+			"property": [
+				"L"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Crossbow Bolt",
+			"type": "A",
+			"ammunition": true,
+			"rarity": "None",
+			"value": "5 cp",
+			"weight": "0.075",
+			"source": "PHB",
+			"page": 150
+		},
+		{
+			"name": "Crossbow Bolts (20)",
+			"type": "A",
+			"ammunition": true,
+			"rarity": "None",
+			"value": "1 gp",
+			"weight": "1.5",
+			"source": "PHB",
+			"page": 150,
+			"quantity": 20
+		},
+		{
+			"name": "Crystal",
+			"type": "SCF",
+			"scfType": "arcane",
+			"rarity": "None",
+			"value": "10 gp",
+			"weight": "1",
+			"source": "PHB",
+			"page": 151
+		},
+		{
+			"name": "Dagger",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "2 gp",
+			"weight": "1",
+			"dmg1": "{@dice 1d4}",
+			"dmgType": "P",
+			"property": [
+				"F",
+				"L",
+				"T"
+			],
+			"range": "20/60",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Dart",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "5 cp",
+			"weight": "0.25",
+			"dmg1": "{@dice 1d4}",
+			"dmgType": "P",
+			"property": [
+				"F",
+				"T"
+			],
+			"range": "20/60",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Double-Bladed Scimitar",
+			"type": "M",
+			"weapon": true,
+			"sword": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "100 gp",
+			"weight": "6",
+			"dmg1": "{@dice 2d4}",
+			"dmg2": "{@dice 1d4}",
+			"dmgType": "S",
+			"property": [
+				"S",
+				"2H"
+			],
+			"source": "UAWGE",
+			"page": 74,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Special",
+					"entries": [
+						"When you take the attack action and make a two-handed attack with a double-bladed scimitar, you can use a bonus action to make a melee attack with the blade at the opposite end of the weapon. This attack uses the same ability modifier as the primary attack. The weapon's damage die for this attack is a d4, and it deals slashing damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Energy Cell",
+			"type": "AF",
+			"ammunition": true,
+			"age": "Futuristic",
+			"rarity": "None",
+			"weight": "0.3125",
+			"source": "DMG",
+			"page": 268
+		},
+		{
+			"name": "Flail",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "10 gp",
+			"weight": "2",
+			"dmg1": "{@dice 1d8}",
+			"dmgType": "B",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Glaive",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "20 gp",
+			"weight": "6",
+			"dmg1": "{@dice 1d10}",
+			"dmgType": "S",
+			"property": [
+				"H",
+				"R",
+				"2H"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Greataxe",
+			"type": "M",
+			"weapon": true,
+			"axe": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "30 gp",
+			"weight": "7",
+			"dmg1": "{@dice 1d12}",
+			"dmgType": "S",
+			"property": [
+				"H",
+				"2H"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Greatclub",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "2 sp",
+			"weight": "10",
+			"dmg1": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"2H"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Greatsword",
+			"type": "M",
+			"weapon": true,
+			"sword": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "50 gp",
+			"weight": "6",
+			"dmg1": "{@dice 2d6}",
+			"dmgType": "S",
+			"property": [
+				"H",
+				"2H"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Halberd",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "20 gp",
+			"weight": "6",
+			"dmg1": "{@dice 1d10}",
+			"dmgType": "S",
+			"property": [
+				"H",
+				"R",
+				"2H"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Half Plate Armor",
+			"type": "MA",
+			"armor": true,
+			"rarity": "None",
+			"value": "750 gp",
+			"weight": "40",
+			"ac": 15,
+			"stealth": true,
+			"source": "PHB",
+			"page": 145,
+			"entries": [
+				"Half plate consists of shaped metal plates that cover most of the wearer's body. It does not include leg protection beyond simple greaves that are attached with leather straps."
+			]
+		},
+		{
+			"name": "Hand Crossbow",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "75 gp",
+			"weight": "3",
+			"dmg1": "{@dice 1d6}",
+			"dmgType": "P",
+			"property": [
+				"A",
+				"L",
+				"LD"
+			],
+			"range": "30/120",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Handaxe",
+			"type": "M",
+			"weapon": true,
+			"axe": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "5 gp",
+			"weight": "2",
+			"dmg1": "{@dice 1d6}",
+			"dmgType": "S",
+			"property": [
+				"L",
+				"T"
+			],
+			"range": "20/60",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Heavy Crossbow",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "50 gp",
+			"weight": "18",
+			"dmg1": "{@dice 1d10}",
+			"dmgType": "P",
+			"property": [
+				"A",
+				"H",
+				"LD",
+				"2H"
+			],
+			"range": "100/400",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Hide Armor",
+			"type": "MA",
+			"armor": true,
+			"rarity": "None",
+			"value": "10 gp",
+			"weight": "12",
+			"ac": 12,
+			"source": "PHB",
+			"page": 144,
+			"entries": [
+				"This crude armor consists of thick furs and pelts. It is commonly worn by barbarian tribes, evil humanoids, and other folk who lack access to the tools and materials needed to create better armor."
+			]
+		},
+		{
+			"name": "Hunting Rifle",
 			"type": "R",
 			"technology": "Firearm",
 			"weapon": true,
 			"weaponCategory": "Martial",
 			"age": "Modern",
 			"rarity": "None",
-			"weight": "7",
-			"dmg1": "{@dice 2d8}",
+			"weight": "8",
+			"dmg1": "{@dice 2d10}",
 			"dmgType": "P",
 			"property": [
 				"AF",
 				"RLD",
 				"2H"
 			],
-			"range": "30/90",
-			"reload": "2",
+			"range": "80/240",
+			"reload": "5",
 			"source": "DMG",
 			"page": 268
+		},
+		{
+			"name": "Javelin",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "5 sp",
+			"weight": "2",
+			"dmg1": "{@dice 1d6}",
+			"dmgType": "P",
+			"property": [
+				"T"
+			],
+			"range": "30/120",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Lance",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "10 gp",
+			"weight": "6",
+			"dmg1": "{@dice 1d12}",
+			"dmgType": "P",
+			"property": [
+				"R",
+				"S"
+			],
+			"source": "PHB",
+			"page": 149,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Special",
+					"entries": [
+						"You have disadvantage when you use a lance to attack a target within 5 feet of you. Also, a lance requires two hands to wield when you aren't mounted."
+					]
+				}
+			]
 		},
 		{
 			"name": "Laser Pistol",
@@ -839,27 +576,6 @@
 			],
 			"range": "30/120",
 			"reload": "50",
-			"source": "DMG",
-			"page": 268
-		},
-		{
-			"name": "Antimatter Rifle",
-			"type": "R",
-			"technology": "Firearm",
-			"weapon": true,
-			"weaponCategory": "Martial",
-			"age": "Futuristic",
-			"rarity": "None",
-			"weight": "10",
-			"dmg1": "{@dice 6d8}",
-			"dmgType": "N",
-			"property": [
-				"AF",
-				"RLD",
-				"2H"
-			],
-			"range": "120/360",
-			"reload": "2",
 			"source": "DMG",
 			"page": 268
 		},
@@ -885,223 +601,11 @@
 			"page": 268
 		},
 		{
-			"name": "Double-Bladed Scimitar",
-			"type": "M",
-			"weapon": true,
-			"sword": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": "100gp",
-			"weight": "6",
-			"dmg1": "{@dice 2d4}",
-			"dmg2": "{@dice 1d4}",
-			"dmgType": "S",
-			"property": [
-				"S",
-				"2H"
-			],
-			"source": "UAWGE",
-			"page": 74,
-			"entries": [
-				{
-					"type": "entries",
-					"name": "Special",
-					"entries": [
-						"When you take the attack action and make a two-handed attack with a double-bladed scimitar, you can use a bonus action to make a melee attack with the blade at the opposite end of the weapon. This attack uses the same ability modifier as the primary attack. The weapon's damage die for this attack is a d4, and it deals slashing damage."
-					]
-				}
-			]
-		},
-		{
-			"name": "Arrow",
-			"type": "A",
-			"ammunition": true,
-			"rarity": "None",
-			"value": "5cp",
-			"weight": "0.05",
-			"source": "PHB",
-			"page": 150
-		},
-		{
-			"name": "Arrows (20)",
-			"type": "A",
-			"ammunition": true,
-			"rarity": "None",
-			"value": "1gp",
-			"weight": "1",
-			"source": "PHB",
-			"page": 150
-		},
-		{
-			"name": "Blowgun Needle",
-			"type": "A",
-			"ammunition": true,
-			"rarity": "None",
-			"value": "2cp",
-			"weight": "0.02",
-			"source": "PHB",
-			"page": 150
-		},
-		{
-			"name": "Blowgun Needles (50)",
-			"type": "A",
-			"ammunition": true,
-			"rarity": "None",
-			"value": "1gp",
-			"weight": "1",
-			"source": "PHB",
-			"page": 150
-		},
-		{
-			"name": "Crossbow Bolt",
-			"type": "A",
-			"ammunition": true,
-			"rarity": "None",
-			"value": "5cp",
-			"weight": "0.075",
-			"source": "PHB",
-			"page": 150
-		},
-		{
-			"name": "Crossbow Bolts (20)",
-			"type": "A",
-			"ammunition": true,
-			"rarity": "None",
-			"value": "1gp",
-			"weight": "1.5",
-			"source": "PHB",
-			"page": 150
-		},
-		{
-			"name": "Sling Bullet",
-			"type": "A",
-			"ammunition": true,
-			"rarity": "None",
-			"value": "0.2cp",
-			"weight": "0.075",
-			"source": "PHB",
-			"page": 150
-		},
-		{
-			"name": "Sling Bullets (20)",
-			"type": "A",
-			"ammunition": true,
-			"rarity": "None",
-			"value": "4cp",
-			"weight": "1.5",
-			"source": "PHB",
-			"page": 150
-		},
-		{
-			"name": "Renaissance Bullets (10)",
-			"type": "AF",
-			"ammunition": true,
-			"age": "Renaissance",
-			"rarity": "None",
-			"value": "3gp",
-			"weight": "2",
-			"source": "DMG",
-			"page": 268
-		},
-		{
-			"name": "Modern Bullets (10)",
-			"type": "AF",
-			"ammunition": true,
-			"age": "Modern",
-			"rarity": "None",
-			"weight": "1",
-			"source": "DMG",
-			"page": 268
-		},
-		{
-			"name": "Energy Cell",
-			"type": "AF",
-			"ammunition": true,
-			"age": "Futuristic",
-			"rarity": "None",
-			"weight": "0.3125",
-			"source": "DMG",
-			"page": 268
-		},
-		{
-			"name": "Breastplate",
-			"type": "MA",
-			"armor": true,
-			"rarity": "None",
-			"value": "400gp",
-			"weight": "20",
-			"ac": 14,
-			"source": "PHB",
-			"page": 145,
-			"entries": [
-				"This armor consists of a fitted metal chest piece worn with supple leather. Although it leaves the legs and arms relatively unprotected, this armor provides good protection for the wearer's vital organs while leaving the wearer relatively unencumbered."
-			]
-		},
-		{
-			"name": "Chain Mail",
-			"type": "HA",
-			"armor": true,
-			"rarity": "None",
-			"value": "75gp",
-			"weight": "55",
-			"ac": 16,
-			"strength": "13",
-			"stealth": true,
-			"source": "PHB",
-			"page": 145,
-			"entries": [
-				"Made of interlocking metal rings, chain mail includes a layer of quilted fabric worn underneath the mail to prevent chafing and to cushion the impact of blows. The suit includes gauntlets."
-			]
-		},
-		{
-			"name": "Chain Shirt",
-			"type": "MA",
-			"armor": true,
-			"rarity": "None",
-			"value": "50gp",
-			"weight": "20",
-			"ac": 13,
-			"source": "PHB",
-			"page": 144,
-			"entries": [
-				"Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer's upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers."
-			]
-		},
-		{
-			"name": "Half Plate Armor",
-			"type": "MA",
-			"armor": true,
-			"rarity": "None",
-			"value": "750gp",
-			"weight": "40",
-			"ac": 15,
-			"stealth": true,
-			"source": "PHB",
-			"page": 145,
-			"entries": [
-				"Half plate consists of shaped metal plates that cover most of the wearer's body. It does not include leg protection beyond simple greaves that are attached with leather straps."
-			]
-		},
-		{
-			"name": "Hide Armor",
-			"type": "MA",
-			"armor": true,
-			"rarity": "None",
-			"value": "10gp",
-			"weight": "12",
-			"ac": 12,
-			"source": "PHB",
-			"page": 144,
-			"entries": [
-				"This crude armor consists of thick furs and pelts. It is commonly worn by barbarian tribes, evil humanoids, and other folk who lack access to the tools and materials needed to create better armor."
-			]
-		},
-		{
 			"name": "Leather Armor",
 			"type": "LA",
 			"armor": true,
 			"rarity": "None",
-			"value": "10gp",
+			"value": "10 gp",
 			"weight": "10",
 			"ac": 11,
 			"source": "PHB",
@@ -1111,11 +615,195 @@
 			]
 		},
 		{
+			"name": "Light Crossbow",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "25 gp",
+			"weight": "5",
+			"dmg1": "{@dice 1d8}",
+			"dmgType": "P",
+			"property": [
+				"A",
+				"LD",
+				"2H"
+			],
+			"range": "80/320",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Light Hammer",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "2 gp",
+			"weight": "2",
+			"dmg1": "{@dice 1d4}",
+			"dmgType": "B",
+			"property": [
+				"L",
+				"T"
+			],
+			"range": "20/60",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Longbow",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "50 gp",
+			"weight": "2",
+			"dmg1": "{@dice 1d8}",
+			"dmgType": "P",
+			"property": [
+				"A",
+				"H",
+				"2H"
+			],
+			"range": "150/600",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Longsword",
+			"type": "M",
+			"weapon": true,
+			"sword": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "15 gp",
+			"weight": "3",
+			"dmg1": "{@dice 1d8}",
+			"dmg2": "{@dice 1d10}",
+			"dmgType": "S",
+			"property": [
+				"V"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Mace",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "5 gp",
+			"weight": "4",
+			"dmg1": "{@dice 1d6}",
+			"dmgType": "B",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Maul",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "10 gp",
+			"weight": "10",
+			"dmg1": "{@dice 2d6}",
+			"dmgType": "B",
+			"property": [
+				"H",
+				"2H"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Modern Bullets (10)",
+			"type": "AF",
+			"ammunition": true,
+			"age": "Modern",
+			"rarity": "None",
+			"weight": "1",
+			"source": "DMG",
+			"page": 268,
+			"quantity": 10
+		},
+		{
+			"name": "Morningstar",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "15 gp",
+			"weight": "4",
+			"dmg1": "{@dice 1d8}",
+			"dmgType": "P",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Musket",
+			"type": "R",
+			"technology": "Firearm",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"age": "Renaissance",
+			"rarity": "None",
+			"value": "500 gp",
+			"weight": "10",
+			"dmg1": "{@dice 1d12}",
+			"dmgType": "P",
+			"property": [
+				"AF",
+				"LD",
+				"2H"
+			],
+			"range": "40/120",
+			"source": "DMG",
+			"page": 268
+		},
+		{
+			"name": "Net",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "1 gp",
+			"weight": "3",
+			"property": [
+				"S",
+				"T"
+			],
+			"range": "5/15",
+			"source": "PHB",
+			"page": 149,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Special",
+					"entries": [
+						"A Large or smaller creature hit by a net is {@condition restrained} until it is freed. A net has no effect on creatures that are formless, or creatures that are Huge or larger. A creature can use its action to make a DC 10 Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the net (AC 10) also frees the creature without harming it, ending the effect and destroying the net. When you use an action, bonus action, or reaction to attack with a net, you can make only one attack regardless of the number of attacks you can normally make."
+					]
+				}
+			]
+		},
+		{
+			"name": "Orb",
+			"type": "SCF",
+			"scfType": "arcane",
+			"rarity": "None",
+			"value": "25 gp",
+			"weight": "3",
+			"source": "PHB",
+			"page": 151
+		},
+		{
 			"name": "Padded Armor",
 			"type": "LA",
 			"armor": true,
 			"rarity": "None",
-			"value": "5gp",
+			"value": "5 gp",
 			"weight": "8",
 			"ac": 11,
 			"stealth": true,
@@ -1126,11 +814,49 @@
 			]
 		},
 		{
+			"name": "Pike",
+			"rarity": "None",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"value": "5 gp",
+			"weight": "18",
+			"dmg1": "{@dice 1d10}",
+			"dmgType": "P",
+			"property": [
+				"H",
+				"R",
+				"2H"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Pistol",
+			"type": "R",
+			"technology": "Firearm",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"age": "Renaissance",
+			"rarity": "None",
+			"value": "250 gp",
+			"weight": "3",
+			"dmg1": "{@dice 1d10}",
+			"dmgType": "P",
+			"property": [
+				"AF",
+				"LD"
+			],
+			"range": "30/90",
+			"source": "DMG",
+			"page": 268
+		},
+		{
 			"name": "Plate Armor",
 			"type": "HA",
 			"armor": true,
 			"rarity": "None",
-			"value": "1500gp",
+			"value": "1500 gp",
 			"weight": "65",
 			"ac": 18,
 			"strength": "15",
@@ -1142,11 +868,78 @@
 			]
 		},
 		{
+			"name": "Quarterstaff",
+			"type": "M",
+			"technology": "Staff",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "2 sp",
+			"weight": "4",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Rapier",
+			"type": "M",
+			"weapon": true,
+			"sword": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "25 gp",
+			"weight": "2",
+			"dmg1": "{@dice 1d8}",
+			"dmgType": "P",
+			"property": [
+				"F"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Renaissance Bullets (10)",
+			"type": "AF",
+			"ammunition": true,
+			"age": "Renaissance",
+			"rarity": "None",
+			"value": "3 gp",
+			"weight": "2",
+			"source": "DMG",
+			"page": 268,
+			"quantity": 10
+		},
+		{
+			"name": "Revolver",
+			"type": "R",
+			"technology": "Firearm",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"age": "Modern",
+			"rarity": "None",
+			"weight": "3",
+			"dmg1": "{@dice 2d8}",
+			"dmgType": "P",
+			"property": [
+				"AF",
+				"RLD"
+			],
+			"range": "40/120",
+			"reload": "6",
+			"source": "DMG",
+			"page": 268
+		},
+		{
 			"name": "Ring Mail",
 			"type": "HA",
 			"armor": true,
 			"rarity": "None",
-			"value": "30gp",
+			"value": "30 gp",
 			"weight": "40",
 			"ac": 14,
 			"stealth": true,
@@ -1157,11 +950,21 @@
 			]
 		},
 		{
+			"name": "Rod",
+			"type": "SCF",
+			"scfType": "arcane",
+			"rarity": "None",
+			"value": "10 gp",
+			"weight": "2",
+			"source": "PHB",
+			"page": 151
+		},
+		{
 			"name": "Scale Mail",
 			"type": "MA",
 			"armor": true,
 			"rarity": "None",
-			"value": "50gp",
+			"value": "50 gp",
 			"weight": "45",
 			"ac": 14,
 			"stealth": true,
@@ -1172,14 +975,174 @@
 			]
 		},
 		{
+			"name": "Scimitar",
+			"type": "M",
+			"weapon": true,
+			"sword": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "25 gp",
+			"weight": "3",
+			"dmg1": "{@dice 1d6}",
+			"dmgType": "S",
+			"property": [
+				"F",
+				"L"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Shield",
+			"type": "S",
+			"rarity": "None",
+			"value": "10 gp",
+			"weight": "6",
+			"ac": 2,
+			"source": "PHB",
+			"page": 144,
+			"entries": [
+				"A shield is made from wood or metal and is carried in one hand. Wielding a shield increases your Armor Class by 2. You can benefit from only one shield at a time."
+			]
+		},
+		{
+			"name": "Shortbow",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "25 gp",
+			"weight": "2",
+			"dmg1": "{@dice 1d6}",
+			"dmgType": "P",
+			"property": [
+				"A",
+				"2H"
+			],
+			"range": "80/320",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Shortsword",
+			"type": "M",
+			"weapon": true,
+			"sword": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "10 gp",
+			"weight": "2",
+			"dmg1": "{@dice 1d6}",
+			"dmgType": "P",
+			"property": [
+				"F",
+				"L"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Shotgun",
+			"type": "R",
+			"technology": "Firearm",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"age": "Modern",
+			"rarity": "None",
+			"weight": "7",
+			"dmg1": "{@dice 2d8}",
+			"dmgType": "P",
+			"property": [
+				"AF",
+				"RLD",
+				"2H"
+			],
+			"range": "30/90",
+			"reload": "2",
+			"source": "DMG",
+			"page": 268
+		},
+		{
+			"name": "Sickle",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "1 gp",
+			"weight": "2",
+			"dmg1": "{@dice 1d4}",
+			"dmgType": "S",
+			"property": [
+				"L"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Sling",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "1 sp",
+			"dmg1": "{@dice 1d4}",
+			"dmgType": "B",
+			"property": [
+				"A"
+			],
+			"range": "30/120",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Sling Bullet",
+			"type": "A",
+			"ammunition": true,
+			"rarity": "None",
+			"value": "0.2 cp",
+			"weight": "0.075",
+			"source": "PHB",
+			"page": 150
+		},
+		{
+			"name": "Sling Bullets (20)",
+			"type": "A",
+			"ammunition": true,
+			"rarity": "None",
+			"value": "4 cp",
+			"weight": "1.5",
+			"source": "PHB",
+			"page": 150,
+			"quantity": 20
+		},
+		{
+			"name": "Spear",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "1 gp",
+			"weight": "3",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "P",
+			"property": [
+				"T",
+				"V"
+			],
+			"range": "20/60",
+			"source": "PHB",
+			"page": 149
+		},
+		{
 			"name": "Spiked Armor",
 			"type": "MA",
 			"armor": true,
-			"value": "75gp",
+			"value": "75 gp",
 			"weight": "45",
 			"ac": 14,
 			"stealth": true,
-			"rarity": "Rare",
+			"rarity": "Unknown",
 			"source": "SCAG",
 			"page": 121,
 			"entries": [
@@ -1191,7 +1154,7 @@
 			"type": "HA",
 			"armor": true,
 			"rarity": "None",
-			"value": "200gp",
+			"value": "200 gp",
 			"weight": "60",
 			"ac": 17,
 			"strength": "15",
@@ -1203,11 +1166,22 @@
 			]
 		},
 		{
+			"name": "Staff",
+			"type": "SCF",
+			"technology": "Staff",
+			"scfType": "arcane",
+			"rarity": "None",
+			"value": "5 gp",
+			"weight": "4",
+			"source": "PHB",
+			"page": 151
+		},
+		{
 			"name": "Studded Leather Armor",
 			"type": "LA",
 			"armor": true,
 			"rarity": "None",
-			"value": "45gp",
+			"value": "45 gp",
 			"weight": "13",
 			"ac": 12,
 			"source": "PHB",
@@ -1217,68 +1191,100 @@
 			]
 		},
 		{
-			"name": "Shield",
-			"type": "S",
+			"name": "Trident",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Martial",
 			"rarity": "None",
-			"value": "10gp",
-			"weight": "6",
-			"ac": 2,
-			"source": "PHB",
-			"page": 144,
-			"entries": [
-				"A shield is made from wood or metal and is carried in one hand. Wielding a shield increases your Armor Class by 2. You can benefit from only one shield at a time."
-			]
-		},
-		{
-			"name": "Crystal",
-			"type": "SCF",
-			"scfType": "arcane",
-			"rarity": "None",
-			"value": "10gp",
-			"weight": "1",
-			"source": "PHB",
-			"page": 151
-		},
-		{
-			"name": "Orb",
-			"type": "SCF",
-			"scfType": "arcane",
-			"rarity": "None",
-			"value": "25gp",
-			"weight": "3",
-			"source": "PHB",
-			"page": 151
-		},
-		{
-			"name": "Rod",
-			"type": "SCF",
-			"scfType": "arcane",
-			"rarity": "None",
-			"value": "10gp",
-			"weight": "2",
-			"source": "PHB",
-			"page": 151
-		},
-		{
-			"name": "Staff",
-			"type": "SCF",
-			"technology": "Staff",
-			"scfType": "arcane",
-			"rarity": "None",
-			"value": "5gp",
+			"value": "5 gp",
 			"weight": "4",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "P",
+			"property": [
+				"T",
+				"V"
+			],
+			"range": "20/60",
 			"source": "PHB",
-			"page": 151
+			"page": 149
 		},
 		{
 			"name": "Wand",
 			"type": "SCF",
 			"scfType": "arcane",
 			"rarity": "None",
-			"value": "10gp",
+			"value": "10 gp",
 			"weight": "1",
 			"source": "PHB",
 			"page": 151
+		},
+		{
+			"name": "War Pick",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "5 gp",
+			"weight": "2",
+			"dmg1": "{@dice 1d8}",
+			"dmgType": "P",
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Warhammer",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "15 gp",
+			"weight": "2",
+			"dmg1": "{@dice 1d8}",
+			"dmg2": "{@dice 1d10}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Whip",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": "2 gp",
+			"weight": "3",
+			"dmg1": "{@dice 1d4}",
+			"dmgType": "S",
+			"property": [
+				"F",
+				"R"
+			],
+			"source": "PHB",
+			"page": 149
+		},
+		{
+			"name": "Yklwa",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "None",
+			"value": "1 gp",
+			"weight": "3",
+			"dmg1": "{@dice 1d8}",
+			"dmgType": "P",
+			"property": [
+				"T"
+			],
+			"range": "10/30",
+			"source": "ToA",
+			"page": 32,
+			"entries": [
+				"A yklwa (pronounced YICK-ul-wah) is a simple melee weapon that is the traditional weapon of Chultan warriors. A yklwa consists of a 3-foot wooden shaft with a steel or stone blade up to 18 inches long. Although it has the thrown weapon property, the yklwa is not well balanced for throwing."
+			]
 		}
 	],
 	"itemProperty": [

@@ -11,10 +11,11 @@
 	<title>This Is Your Life - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 
@@ -67,45 +68,52 @@
 		.btn-reroll::before {
 			content: "Reroll";
 		}
+
+		.output {
+			margin: 1em 0;
+			padding: 0.2em 0.7em;
+			border-radius: 0.2em;
+			display: none;
+		}
 	</style>
 </head>
 
 <body>
-<header class="hidden-xs hidden-sm">
+<header class="hidden-xs hidden-sm page__header">
 	<div class="container">
 
-		<h1>This Is Your Life</h1>
-		<p>Select options, and hit generate.</p>
+		<h1 class="page__title">This Is Your Life</h1>
+		<p class="page__subtitle">Select options, and hit generate.</p>
 	</div>
 </header>
-<nav class="container" id="navigation">
+<nav class="container page__nav" id="navigation">
 	<ul class="nav nav-pills" id="navbar">
 	</ul>
 </nav>
-<main class="container bodyContent">
+<main class="container">
 
 	<div class="row noprint">
-		<div class="form-group col-xs-2 col-xs-2-4">
+		<div class="form-group col-2-4">
 			<label for="race">Race</label>
 			<select class="form-control form-inline" id="race"></select>
 		</div>
 
-		<div class="form-group col-xs-2 col-xs-2-4">
+		<div class="form-group col-2-4">
 			<label for="cha">Charisma Modifier</label>
 			<select class="form-control form-inline" id="cha"></select>
 		</div>
 
-		<div class="form-group col-xs-2 col-xs-2-4">
+		<div class="form-group col-2-4">
 			<label for="race">Background</label>
 			<select class="form-control form-inline" id="background"></select>
 		</div>
 
-		<div class="form-group col-xs-2 col-xs-2-4">
+		<div class="form-group col-2-4">
 			<label for="race">Class</label>
 			<select class="form-control form-inline" id="class"></select>
 		</div>
 
-		<div class="form-group col-xs-2 col-xs-2-4">
+		<div class="form-group col-2-4">
 			<label for="age"><i>Age</i></label>
 			<select class="form-control form-inline" id="age">
 				<option value="" style="font-style: normal;">Random</option>
@@ -119,8 +127,8 @@
 		</div>
 	</div>
 	<div class="row noprint">
-		<div class="form-group col-xs-12">
-			<button type="button" class="btn btn-default" onclick="roll()">Generate</button>
+		<div class="form-group col-12">
+			<button class="btn btn-default" onclick="roll()">Generate</button>
 		</div>
 	</div>
 
@@ -131,46 +139,47 @@
 
 	<hr class="output" style="display: none;">
 	<div class="row output" style="display: none;">
-		<div class="wrp-sect-head"><h4>Parents</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectParents()"></button></div>
+		<div class="wrp-sect-head"><h4>Parents</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectParents()"></button></div>
 		<p id="parents"></p>
 	</div>
 	<div class="row output" style="display: none;">
-		<div class="wrp-sect-head"><h4>Birthplace</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectBirthplace()"></button></div>
+		<div class="wrp-sect-head"><h4>Birthplace</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectBirthplace()"></button></div>
 		<p id="birthplace"></p>
 	</div>
 	<div class="row output" style="display: none;">
-		<div class="wrp-sect-head"><h4>Siblings</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectSiblings()"></button></div>
+		<div class="wrp-sect-head"><h4>Siblings</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectSiblings()"></button></div>
 		<p id="siblings"></p>
 	</div>
 	<div class="row output" style="display: none;">
-		<div class="wrp-sect-head"><h4>Family and Friends</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectFamily()"></button></div>
+		<div class="wrp-sect-head"><h4>Family and Friends</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectFamily()"></button></div>
 		<p id="family"></p>
 	</div>
 	<div class="row output" style="display: none;">
-		<div class="wrp-sect-head"><h4>Personal Decisions</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectPersonalDecisions()"></button></div>
+		<div class="wrp-sect-head"><h4>Personal Decisions</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectPersonalDecisions()"></button></div>
 		<p id="personal"></p>
 	</div>
 	<div class="row output" style="display: none;">
-		<div class="wrp-sect-head"><h4>Class Training</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectClassTraining()"></button></div>
+		<div class="wrp-sect-head"><h4>Class Training</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectClassTraining()"></button></div>
 		<p id="clss"></p>
 	</div>
 	<div class="row output" style="display: none;">
-		<div class="wrp-sect-head"><h4>Life Events</h4><button type="button" class="btn btn-xs btn-default btn-reroll" onclick="sectLifeEvents()"></button></div>
+		<div class="wrp-sect-head"><h4>Life Events</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectLifeEvents()"></button></div>
 		<p id="events"></p>
 	</div>
 </main>
-<footer class="container">
-
-</footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/genutils.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/lifegen.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
-<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>
 

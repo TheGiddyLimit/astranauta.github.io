@@ -18,7 +18,7 @@
 			],
 			"hp": {
 				"average": 22,
-				"formula": "4d6+8"
+				"formula": "4d6 + 8"
 			},
 			"speed": {
 				"walk": 30
@@ -58,13 +58,20 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) piercing damage."
 					]
 				}
 			],
 			"page": 88,
 			"traitTags": [
 				"Pack Tactics"
+			],
+			"languageTags": [
+				"DR",
+				"CS"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -92,7 +99,7 @@
 			],
 			"hp": {
 				"average": 39,
-				"formula": "6d8+12"
+				"formula": "6d8 + 12"
 			},
 			"speed": {
 				"walk": 30
@@ -184,11 +191,21 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 5 ({@dice 1d4+3}) piercing damage."
+						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or ranged 20/60 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
 					]
 				}
 			],
-			"page": 88
+			"page": 88,
+			"languageTags": [
+				"C",
+				"DR",
+				"I",
+				"P",
+				"OTH"
+			],
+			"spellcastingTags": [
+				"CW"
+			]
 		},
 		{
 			"name": "Blagothkus",
@@ -215,7 +232,7 @@
 			],
 			"hp": {
 				"average": 138,
-				"formula": "12d12+60"
+				"formula": "12d12 + 60"
 			},
 			"speed": {
 				"walk": 40
@@ -298,7 +315,7 @@
 				{
 					"name": "Keen Smell",
 					"entries": [
-						"Blagothkus has advantage on Wisdom (Perception) checks that rely on smell."
+						"Blagothkus has advantage on Wisdom ({@skill Perception}) checks that rely on smell."
 					]
 				}
 			],
@@ -312,7 +329,7 @@
 				{
 					"name": "Morningstar",
 					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d8+8}) piercing damage."
+						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. {@h}21 ({@damage 3d8 + 8}) piercing damage."
 					]
 				}
 			],
@@ -322,6 +339,15 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"GI"
+			],
+			"spellcastingTags": [
+				"I",
+				"CW"
 			]
 		},
 		{
@@ -350,7 +376,7 @@
 			],
 			"hp": {
 				"average": 93,
-				"formula": "11d10+33"
+				"formula": "11d10 + 33"
 			},
 			"speed": {
 				"walk": 30
@@ -398,19 +424,24 @@
 				{
 					"name": "Flail",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Spear",
 					"entries": [
-						"{@atk mw,rw} {@hit 7} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
+						"{@atk mw,rw} {@hit 7} to hit, reach 5 ft. or ranged 20/60 ft., one target. {@h}7 ({@damage 1d6 + 4}) piercing damage."
 					]
 				}
 			],
 			"page": 89,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"GI"
 			]
 		},
 		{
@@ -439,7 +470,7 @@
 			],
 			"hp": {
 				"average": 52,
-				"formula": "7d10+14"
+				"formula": "7d10 + 14"
 			},
 			"speed": {
 				"walk": 30
@@ -529,13 +560,13 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) slashing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) slashing damage."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 6 ({@dice 1d4+4}) piercing damage."
+						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or ranged 20/60 ft., one target. {@h}6 ({@damage 1d4 + 4}) piercing damage."
 					]
 				}
 			],
@@ -545,6 +576,20 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"OTH",
+				"DR",
+				"E",
+				"GO",
+				"S"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -572,7 +617,7 @@
 			],
 			"hp": {
 				"average": 44,
-				"formula": "8d8+8"
+				"formula": "8d8 + 8"
 			},
 			"speed": {
 				"walk": 30
@@ -647,13 +692,21 @@
 				{
 					"name": "Halberd",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. Hit: 7 ({@dice 1d10+2}) bludgeoning damage."
+						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. {@h}7 ({@damage 1d10 + 2}) bludgeoning damage."
 					]
 				}
 			],
 			"page": 90,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"I"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -680,7 +733,7 @@
 			],
 			"hp": {
 				"average": 22,
-				"formula": "4d6+8"
+				"formula": "4d6 + 8"
 			},
 			"speed": {
 				"walk": 25
@@ -759,13 +812,25 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage, or 9 ({@dice 1d6+3}) plus ({@dice 1d6}) piercing damage if the target is Medium or larger."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage, or 9 ({@dice 1d6 + 3}) plus ({@dice 1d6}) piercing damage if the target is Medium or larger."
 					]
 				}
 			],
 			"page": 91,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"G",
+				"GO",
+				"S"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -793,7 +858,7 @@
 			],
 			"hp": {
 				"average": 57,
-				"formula": "6d12+18"
+				"formula": "6d12 + 18"
 			},
 			"speed": {
 				"walk": 30
@@ -844,25 +909,33 @@
 				{
 					"name": "Greatsword",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) slashing damage."
 					]
 				},
 				{
 					"name": "Spear",
 					"entries": [
-						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
+						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or ranged 20/60 ft., one target. {@h}7 ({@damage 1d6 + 4}) piercing damage."
 					]
 				},
 				{
 					"name": "Lightning Breath {@recharge 5}",
 					"entries": [
-						"Langdedrosa breathes lightning in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 13 Dexterity saving throw, taking 22 ({@dice 4d10}) lightning damage on a failed save, or half as much damage on a successful one."
+						"Langdedrosa breathes lightning in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 13 Dexterity saving throw, taking 22 ({@damage 4d10}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
 			"page": 91,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR"
+			],
+			"senseTags": [
+				"B",
+				"D"
 			]
 		},
 		{
@@ -891,7 +964,7 @@
 			],
 			"hp": {
 				"average": 59,
-				"formula": "7d8+28"
+				"formula": "7d8 + 28"
 			},
 			"speed": {
 				"walk": 20,
@@ -967,7 +1040,7 @@
 				{
 					"name": "Poison Strike (3/Day)",
 					"entries": [
-						"Once per turn, when Pharblex hits with a melee attack, he can expend a use of this trait to deal an extra 9 ({@dice 2d8}) poison damage."
+						"Once per turn, when Pharblex hits with a melee attack, he can expend a use of this trait to deal an extra 9 ({@damage 2d8}) poison damage."
 					]
 				},
 				{
@@ -979,7 +1052,7 @@
 				{
 					"name": "Swamp Camouflage",
 					"entries": [
-						"Pharblex has advantage on Dexterity (Stealth) checks made to hide in swampy terrain."
+						"Pharblex has advantage on Dexterity ({@skill Stealth}) checks made to hide in swampy terrain."
 					]
 				}
 			],
@@ -993,13 +1066,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
 					]
 				},
 				{
 					"name": "Spear",
 					"entries": [
-						"{@atk mw,rw} {@hit 5} to hit. reach 5 ft. or ranged 20/60 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk mw,rw} {@hit 5} to hit. reach 5 ft. or ranged 20/60 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
 					]
 				}
 			],
@@ -1009,6 +1082,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"OTH"
+			],
+			"spellcastingTags": [
+				"CD"
 			]
 		},
 		{
@@ -1035,7 +1115,7 @@
 			],
 			"hp": {
 				"average": 90,
-				"formula": "12d8+36"
+				"formula": "12d8 + 36"
 			},
 			"speed": {
 				"walk": 30
@@ -1107,19 +1187,19 @@
 				{
 					"name": "Greatsword (Hazirawn)",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d6+6}) slashing damage plus 7 ({@dice 2d6}) necrotic damage. If the target is a creature, it can't regain hit points for 1 minute. The target can make a DC 15 Constitution saving throw at the end of each of its turns, ending this effect early on a success."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d6 + 6}) slashing damage plus 7 ({@damage 2d6}) necrotic damage. If the target is a creature, it can't regain hit points for 1 minute. The target can make a DC 15 Constitution saving throw at the end of each of its turns, ending this effect early on a success."
 					]
 				},
 				{
 					"name": "Caustic Bolt",
 					"entries": [
-						"{@atk rs} {@hit 8} to hit, range 90 ft., one target. Hit: 18 ({@dice 4d8}) acid damage."
+						"{@atk rs} {@hit 8} to hit, range 90 ft., one target. {@h}18 ({@damage 4d8}) acid damage."
 					]
 				},
 				{
 					"name": "Acid Breath {@recharge 5}",
 					"entries": [
-						"Rezmir breathes acid in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 14 Dexterity saving throw, taking 22 ({@dice 5d8}) acid damage on a failed save, or half as much damage on a successful one."
+						"Rezmir breathes acid in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 14 Dexterity saving throw, taking 22 ({@damage 5d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -1150,6 +1230,17 @@
 			"traitTags": [
 				"Amphibious",
 				"Legendary Resistances"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"I",
+				"GI",
+				"OTH"
+			],
+			"senseTags": [
+				"B",
+				"SD"
 			]
 		},
 		{
@@ -1178,7 +1269,7 @@
 			],
 			"hp": {
 				"average": 58,
-				"formula": "9d8+18"
+				"formula": "9d8 + 18"
 			},
 			"speed": {
 				"walk": 30
@@ -1275,7 +1366,7 @@
 				{
 					"name": "Winter Strike (3/Day)",
 					"entries": [
-						"Once per turn, when Talis hits with a melee attack, she can expend a use of this trait to deal an extra 9 ({@dice 2d8}) cold damage."
+						"Once per turn, when Talis hits with a melee attack, she can expend a use of this trait to deal an extra 9 ({@damage 2d8}) cold damage."
 					]
 				}
 			],
@@ -1283,13 +1374,25 @@
 				{
 					"name": "Spear",
 					"entries": [
-						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 6 ({@dice 1d6+2}) piercing damage."
+						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or ranged 20/60 ft., one target. {@h}6 ({@damage 1d6 + 2}) piercing damage."
 					]
 				}
 			],
 			"page": 93,
 			"traitTags": [
 				"Fey Ancestry"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"E",
+				"I"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -1311,7 +1414,8 @@
 				}
 			],
 			"hp": {
-				"special": "84"
+				"average": 84,
+				"formula": "8d10 + 40"
 			},
 			"speed": {
 				"walk": 30
@@ -1333,7 +1437,7 @@
 				{
 					"name": "Keen Smell",
 					"entries": [
-						"The troll has advantage on Wisdom (Perception) checks that rely on smell."
+						"The troll has advantage on Wisdom ({@skill Perception}) checks that rely on smell."
 					]
 				},
 				{
@@ -1353,13 +1457,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit +7} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
+						"{@atk mw} {@hit +7} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit +7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
+						"{@atk mw} {@hit +7} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) slashing damage."
 					]
 				}
 			],
@@ -1370,6 +1474,12 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"GI"
+			],
+			"senseTags": [
+				"D"
 			]
 		}
 	]

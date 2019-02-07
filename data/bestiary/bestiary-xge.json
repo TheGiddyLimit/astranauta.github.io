@@ -51,11 +51,14 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d4+3}) bludgeoning damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d4 + 3}) bludgeoning damage."
 					]
 				}
 			],
-			"page": 169
+			"page": 169,
+			"senseTags": [
+				"B"
+			]
 		}
 	]
 }

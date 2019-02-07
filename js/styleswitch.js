@@ -65,7 +65,7 @@ try {
 	StyleSwitcher.storage = window.localStorage;
 } catch (e) { // cookies are disabled
 	StyleSwitcher.storage = {
-		getItem (k) {
+		getItem () {
 			return StyleSwitcher.STYLE_DAY;
 		},
 

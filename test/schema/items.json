@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.1.3",
+	"version": "1.2.2",
 	"type": "object",
 	"definitions": {
 		"item": {
@@ -14,7 +14,7 @@
 				},
 				"rarity": {
 					"type": "string",
-					"description": "\"None\" is for mundane items. \"Unknown (Magic)\" is for miscellaneous magical items. \"Unknown\" is for miscellaneous mundane items.",
+					"description": "\"None\" is for mundane items. \"Unknown (Magic)\" is for miscellaneous magical items. \"Unknown\" is for miscellaneous mundane items. \"Varies\" is for item groups.",
 					"enum": [
 						"Rare",
 						"None",
@@ -24,7 +24,8 @@
 						"Artifact",
 						"Unknown",
 						"Common",
-						"Unknown (Magic)"
+						"Unknown (Magic)",
+						"Varies"
 					]
 				},
 				"source": {
@@ -51,6 +52,9 @@
 						],
 						"additionalProperties": false
 					}
+				},
+				"baseItem": {
+					"type": "string"
 				},
 				"ac": {
 					"type": "integer"
@@ -199,6 +203,67 @@
 				},
 				"vehDmgThresh": {
 					"type": "integer"
+				},
+				"charges": {
+					"type": ["string", "integer"]
+				},
+				"attachedSpells": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"items": {
+					"description": "This is required for itemGroup entries.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"ability": {
+					"description": "Item ability score adjustments.",
+					"type": "object",
+					"properties": {
+						"choose": {
+							"type": "array"
+						},
+						"static": {
+							"type": "object"
+						},
+						"str":  {
+							"type": "integer"
+						},
+						"dex": {
+							"type": "integer"
+						},
+						"con":  {
+							"type": "integer"
+						},
+						"int": {
+							"type": "integer"
+						},
+						"wis":  {
+							"type": "integer"
+						},
+						"cha": {
+							"type": "integer"
+						}
+					}
+				},
+				"focus": {
+					"description": "Item can be used as a spellcasting focus",
+					"oneOf": [
+						{
+							"type": "boolean"
+						},
+						{
+							"type": "array",
+							"items": {
+								"type": "string",
+								"enum": ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"]
+							}
+						}
+					]
 				}
 			},
 			"required": [
@@ -212,7 +277,6 @@
 	"properties": {
 		"item": {
 			"type": "array",
-			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/item"
 			}
@@ -220,7 +284,6 @@
 		"itemGroup": {
 			"description": "Used to create fake item entries for groups of related items, often referred to as a single item (e.g. arcane foci)",
 			"type": "array",
-			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/item"
 			}

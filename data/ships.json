@@ -1,0 +1,685 @@
+{
+	"ship": [
+		{
+			"name": "Airship",
+			"source": "UAOfShipsAndSea",
+			"page": 2,
+			"size": "G",
+			"dimensions": [
+				"80 ft.",
+				"20 ft."
+			],
+			"capCrew": 20,
+			"capPassenger": 10,
+			"capCargo": 1,
+			"pace": 9,
+			"str": 14,
+			"dex": 14,
+			"con": 12,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 13,
+				"hp": 300
+			},
+			"control": [
+				{
+					"name": "Helm",
+					"ac": 16,
+					"hp": 50,
+					"entries": [
+						"Move up to the speed of its elemental engine, with one 90-degree turn. If the helm is destroyed, the airship can't turn."
+					]
+				}
+			],
+			"movement": [
+				{
+					"name": "Elemental Engine",
+					"ac": 18,
+					"hp": 100,
+					"hpNote": "-20 ft. speed per 25 damage taken",
+					"locomotion": [
+						{
+							"mode": "air",
+							"entries": [
+								"elemental power, speed 80 ft. If the engine is destroyed, the ship immediately crashes."
+							]
+						}
+					]
+				}
+			],
+			"weapon": [
+				{
+					"name": "Ballistas",
+					"count": 4,
+					"ac": 15,
+					"hp": 50,
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+					]
+				}
+			],
+			"other": [
+				{
+					"name": "Actions",
+					"entries": [
+						"On its turn, the airship can use its helm to move using its elemental engine. It can also fire its ballistas. If it has half its crew or fewer, it can fire only two of the ballistas."
+					]
+				}
+			]
+		},
+		{
+			"name": "Galley",
+			"source": "UAOfShipsAndSea",
+			"page": 2,
+			"size": "G",
+			"dimensions": [
+				"130 ft.",
+				"20 ft."
+			],
+			"capCrew": 80,
+			"capPassenger": 40,
+			"capCargo": 150,
+			"pace": 4,
+			"str": 24,
+			"dex": 4,
+			"con": 20,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 15,
+				"hp": 500,
+				"dt": 20
+			},
+			"control": [
+				{
+					"name": "Helm",
+					"ac": 16,
+					"hp": 50,
+					"entries": [
+						"Move up to the speed of one of its movement components, with one 90-degree turn. If the helm is destroyed, the galley can't turn."
+					]
+				}
+			],
+			"movement": [
+				{
+					"name": "Sails",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-10 ft. speed per 25 damage taken",
+					"locomotion": [
+						{
+							"mode": "water",
+							"entries": [
+								"sails, speed 35 ft.; 15 ft. while sailing into the wind; 50 ft. while sailing with the wind."
+							]
+						}
+					]
+				},
+				{
+					"name": "Oars",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 25 damage taken",
+					"locomotion": [
+						{
+							"mode": "water",
+							"entries": [
+								"oars, speed 30 ft."
+							]
+						}
+					]
+				}
+			],
+			"weapon": [
+				{
+					"name": "Ballistas",
+					"count": 4,
+					"ac": 15,
+					"hp": 50,
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+					]
+				},
+				{
+					"name": "Mangonels",
+					"count": 2,
+					"ac": 15,
+					"hp": 100,
+					"entries": [
+						"Ranged Weapon Attack: +5 to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. Hit: 27 (5d10) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Ram",
+					"ac": 20,
+					"hp": 100,
+					"dt": 10,
+					"entries": [
+						"The galley has advantage on all saving throws relating to crashing when it crashes into a creature or object, and any damage it suffers from the crash is instead applied to the ram. These benefits do not apply if a vehicle crashes into the galley."
+					]
+				}
+			],
+			"other": [
+				{
+					"name": "Actions",
+					"entries": [
+						"On its turn, the galley can move using its helm. It can also fire its ballistas and its mangonels. If it has half its crew or fewer, it moves at half speed and can fire only half of its weapons."
+					]
+				}
+			]
+		},
+		{
+			"name": "Keelboat",
+			"source": "UAOfShipsAndSea",
+			"page": 3,
+			"size": "G",
+			"dimensions": [
+				"60 ft.",
+				"20 ft."
+			],
+			"capCrew": 3,
+			"capPassenger": 4,
+			"capCargo": 0.5,
+			"pace": 3,
+			"str": 16,
+			"dex": 7,
+			"con": 13,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 15,
+				"hp": 100,
+				"dt": 10
+			},
+			"control": [
+				{
+					"name": "Helm",
+					"ac": 12,
+					"hp": 50,
+					"entries": [
+						"Move up to the speed of one of its movement components, with one 90-degree turn. If the helm is destroyed, the keelboat can't turn."
+					]
+				}
+			],
+			"movement": [
+				{
+					"name": "Sails",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 20 damage taken ",
+					"locomotion": [
+						{
+							"mode": "water",
+							"entries": [
+								"sails, speed 25 ft.; 15 ft. while sailing into the wind; 35 ft. while sailing with the wind."
+							]
+						}
+					]
+				},
+				{
+					"name": "Oars",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 25 damage taken",
+					"locomotion": [
+						{
+							"mode": "water",
+							"entries": [
+								"oars, speed 20 ft."
+							]
+						}
+					]
+				}
+			],
+			"weapon": [
+				{
+					"name": "Ballista",
+					"ac": 15,
+					"hp": 50,
+					"entries": [
+						"Ranged Weapon Attack: +6 to hit, range 120/480 ft., one target. Hit: 16 (3d10) piercing damage. Keelboats typically include a ballista only when they are equipped for combat."
+					]
+				}
+			],
+			"other": [
+				{
+					"name": "Actions",
+					"entries": [
+						"On its turn, the keelboat can move using its helm. It can also fire its ballista if it is equipped with one. If it has half its crew or fewer, it moves at half speed and can't use its ballista."
+					]
+				}
+			]
+		},
+		{
+			"name": "Longship",
+			"source": "UAOfShipsAndSea",
+			"page": 4,
+			"size": "G",
+			"dimensions": [
+				"70 ft.",
+				"20 ft."
+			],
+			"capCrew": 40,
+			"capPassenger": 100,
+			"capCargo": 10,
+			"pace": 5,
+			"str": 20,
+			"dex": 6,
+			"con": 17,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 15,
+				"hp": 300,
+				"dt": 15
+			},
+			"control": [
+				{
+					"name": "Helm",
+					"ac": 16,
+					"hp": 50,
+					"entries": [
+						"Move up to the speed of one of its movement components, with one 90-degree turn. If the helm is destroyed, the longship can't turn."
+					]
+				}
+			],
+			"movement": [
+				{
+					"name": "Sails",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-10 ft. speed per 25 damage taken",
+					"locomotion": [
+						{
+							"mode": "water",
+							"entries": [
+								"sails, speed 45 ft.; 15 ft. while sailing into the wind; 60 ft. while sailing with the wind."
+							]
+						}
+					]
+				},
+				{
+					"name": "Oars",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 25 damage taken",
+					"locomotion": [
+						{
+							"mode": "water",
+							"entries": [
+								"oars, speed 20 ft."
+							]
+						}
+					]
+				}
+			],
+			"other": [
+				{
+					"name": "Actions",
+					"entries": [
+						"On its turn, the longship can move using its helm. If the longship loses half or more of its crew, it moves at half speed."
+					]
+				}
+			]
+		},
+		{
+			"name": "Rowboat",
+			"source": "UAOfShipsAndSea",
+			"page": 4,
+			"size": "L",
+			"dimensions": [
+				"10 ft.",
+				"5 ft."
+			],
+			"capCrew": 2,
+			"capPassenger": 2,
+			"capCargo": 0.25,
+			"pace": 3,
+			"str": 11,
+			"dex": 8,
+			"con": 11,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 11,
+				"hp": 50,
+				"dt": 0
+			},
+			"movement": [
+				{
+					"name": "Oars",
+					"isControl": true,
+					"ac": 12,
+					"hp": 25,
+					"locomotion": [
+						{
+							"mode": "water",
+							"entries": [
+								"oars, speed 15 ft. Move up to its speed, with one 90-degree turn. Without oars, the rowboat's speed is 0."
+							]
+						}
+					]
+				}
+			],
+			"other": [
+				{
+					"name": "Actions",
+					"entries": [
+						"On its turn, the rowboat can move using its oars."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sailing Ship",
+			"source": "UAOfShipsAndSea",
+			"page": 4,
+			"size": "G",
+			"dimensions": [
+				"80 ft.",
+				"20 ft."
+			],
+			"capCrew": 30,
+			"capPassenger": 20,
+			"capCargo": 100,
+			"pace": 5,
+			"str": 20,
+			"dex": 7,
+			"con": 17,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 15,
+				"hp": 300,
+				"dt": 15
+			},
+			"control": [
+				{
+					"name": "Helm",
+					"ac": 18,
+					"hp": 50,
+					"entries": [
+						"Move up to the speed of its sails, with one 90-degree turn. If the helm is destroyed, the ship can't turn."
+					]
+				}
+			],
+			"movement": [
+				{
+					"name": "Sails",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 25 damage taken",
+					"locomotion": [
+						{
+							"mode": "water",
+							"entries": [
+								"sails, speed 45 ft.; 15 ft. while sailing into the wind; 60 ft. while sailing with the wind."
+							]
+						}
+					]
+				}
+			],
+			"weapon": [
+				{
+					"name": "Ballista",
+					"ac": 15,
+					"hp": 50,
+					"entries": [
+						"Ranged Weapon Attack: +6 to hit, range 120/480 ft., one target. Hit: 16 (3d10) piercing damage."
+					]
+				},
+				{
+					"name": "Mangonel",
+					"ac": 15,
+					"hp": 100,
+					"entries": [
+						"Ranged Weapon Attack: +5 to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. Hit: 27 (5d10) bludgeoning damage."
+					]
+				}
+			],
+			"other": [
+				{
+					"name": "Actions",
+					"entries": [
+						"On its turn, the sailing ship can move using its helm. It can also fire its ballista and its mangonel. If it has half its crew or fewer, it moves at half speed and can fire either its ballista or its mangonel."
+					]
+				}
+			]
+		},
+		{
+			"name": "Warship",
+			"source": "UAOfShipsAndSea",
+			"page": 5,
+			"size": "G",
+			"dimensions": [
+				"100 ft.",
+				"20 ft."
+			],
+			"capCrew": 40,
+			"capPassenger": 60,
+			"capCargo": 200,
+			"pace": 4,
+			"str": 20,
+			"dex": 4,
+			"con": 20,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 15,
+				"hp": 500,
+				"dt": 20
+			},
+			"control": [
+				{
+					"name": "Helm",
+					"ac": 18,
+					"hp": 50,
+					"entries": [
+						"Move up to the speed of one of its movement components, with one 90-degree turn. If the helm is destroyed, the warship can't turn."
+					]
+				}
+			],
+			"movement": [
+				{
+					"name": "Sails",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-10 ft. speed per 25 damage taken",
+					"locomotion": [
+						{
+							"mode": "water",
+							"entries": [
+								"sails, speed 35 ft.; 15 ft. while sailing into the wind; 50 ft. while sailing with the wind."
+							]
+						}
+					]
+				},
+				{
+					"name": "Oars",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 25 damage taken",
+					"locomotion": [
+						{
+							"mode": "water",
+							"entries": [
+								"oars, speed 20 ft. with 80 or more rowers, 10 feet with 40 or more rowers, 5 ft. with 20 or more rowers."
+							]
+						}
+					]
+				}
+			],
+			"weapon": [
+				{
+					"name": "Ballistas",
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"entries": [
+						"Ranged Weapon Attack: +6 to hit, range 120/480 ft., one target. Hit: 16 (3d10) piercing damage."
+					]
+				},
+				{
+					"name": "Mangonels",
+					"count": 2,
+					"ac": 15,
+					"hp": 100,
+					"entries": [
+						"Ranged Weapon Attack: +5 to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. Hit: 27 (5d10) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Ram",
+					"ac": 20,
+					"hp": 100,
+					"dt": 10,
+					"entries": [
+						"The warship has advantage on all saving throws relating to crashing when it crashes into a creature or object. Any damage it suffers from the crash is instead applied to the ram. These benefits do not apply if another vessel crashes into the warship."
+					]
+				}
+			],
+			"other": [
+				{
+					"name": "Actions",
+					"entries": [
+						"On its turn, the warship can move using its helm. It can also fire its ballistas and mangonels. If it has half its crew or fewer, it moves at half speed and can fire only half of its weapons."
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,81 @@
+{
+	"monster": [
+		{
+			"name": "Blazing Skeleton",
+			"size": "M",
+			"type": "undead",
+			"source": "Stream",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 14
+				}
+			],
+			"hp": {
+				"average": 27,
+				"formula": "5d8 + 5"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 7,
+			"dex": 18,
+			"con": 13,
+			"int": 8,
+			"wis": 10,
+			"cha": 14,
+			"save": {
+				"dex": "+6",
+				"cha": "+4"
+			},
+			"vulnerable": [
+				"bludgeoning"
+			],
+			"immune": [
+				"fire",
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"poisoned"
+			],
+			"senses": "darkvision 60 ft.",
+			"passive": 10,
+			"languages": "Common, Abyssal",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Fiery Aura",
+					"entries": [
+						"A creature that enters the area or begins its turn within 5 feet of the blazing skeleton takes 3 ({@damage 1d6}) fire damage."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Fiery Touch",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d4 + 4}) fire damage."
+					]
+				},
+				{
+					"name": "Explosive Ember",
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120 ft., one target. {@h}7 ({@damage 1d6 + 4}) fire damage, and creatures within 5 feet of the target take 3 ({@damage 1d6}) fire damage."
+					]
+				}
+			],
+			"page": 0,
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"AB",
+				"C"
+			]
+		}
+	]
+}

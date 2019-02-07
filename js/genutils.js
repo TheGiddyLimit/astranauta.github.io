@@ -11,6 +11,7 @@ class GenUtil {
 				it[k] = it[k]();
 			}
 		});
+		if (it.display && !it.result) it.result = it.display;
 		return it;
 	}
 }

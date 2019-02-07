@@ -42,7 +42,7 @@
 							"name": "The Forge of Fury",
 							"entries": [
 								"{@i The Forge of Fury,} written by Richard Baker, was published in 2000 shortly after The Sunless Citadel. Characters who succeeded in that mission and advanced to 3rd level were now ready to take on the challenges of a ruined dwarven fortress.",
-								"Like its predecessor, {@i The Forge of Fury} is tailored to provide increasingly tougher threats as the characters make their way through the fortress. Those who survive the experience can expect to advance to 5th level- seasoned adventurers ready to strive for greater glory and renown."
+								"Like its predecessor, {@i The Forge of Fury} is tailored to provide increasingly tougher threats as the characters make their way through the fortress. Those who survive the experience can expect to advance to 5th level\u2014seasoned adventurers ready to strive for greater glory and renown."
 							]
 						},
 						{
@@ -159,8 +159,8 @@
 								"Item"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -269,8 +269,8 @@
 								"Objective"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -315,8 +315,8 @@
 								"Secret"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -333,7 +333,7 @@
 								],
 								[
 									"4",
-									"Is a devil in disguise"
+									"Is a {@filter devil|bestiary|tag=devil} in disguise"
 								],
 								[
 									"5",
@@ -341,15 +341,15 @@
 								],
 								[
 									"6",
-									"Is the charmed thrall of a mind flayer"
+									"Is the charmed thrall of a {@creature mind flayer}"
 								],
 								[
 									"7",
-									"Is possessed by a ghost"
+									"Is possessed by a {@creature ghost}"
 								],
 								[
 									"8",
-									"Is a solar in disguise"
+									"Is a {@creature solar} in disguise"
 								]
 							]
 						},
@@ -411,8 +411,8 @@
 										"Denizen"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
-										""
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -645,7 +645,7 @@
 					"type": "entries",
 					"name": "Monsters on Alert",
 					"entries": [
-						"The kobolds and the goblins respond similarly if attacked. Intruders who fall back to take a long rest before dealing with the leaders of an attacked community allow the creatures time to make preparations. Alerted monsters reinforce cleared rooms with forces previously stationed in other rooms. For example, three kobolds from one area 16 could be stationed in area 15 with orders to set an ambush for returning invaders. Or, four goblins from one area 36 could be redeployed to area 32 to guard against another intrusion. Keep track of such changes, so that the characters don't encounter the same kobolds or goblins twice."
+						"The kobolds and the goblins respond similarly if attacked. Intruders who fall back to take a long rest before dealing with the leaders of an attacked community allow the creatures time to make preparations. Alerted monsters reinforce cleared rooms with forces previously stationed in other rooms. For example, three kobolds from one {@area 1>16} could be stationed in {@area 1>15} with orders to set an ambush for returning invaders. Or, four goblins from one {@area 1>36} could be redeployed to {@area 1>32} to guard against another intrusion. Keep track of such changes, so that the characters don't encounter the same kobolds or goblins twice."
 					]
 				},
 				{
@@ -691,7 +691,7 @@
 								"The rope tied to one of the leaning pillars hangs down into the darkness of the ravine. Judging by its good condition, the rope couldn't have been tied there any longer than two or three weeks ago. From the edge of the ravine, older and weathered handholds and footholds can be seen carved into the cliff face. These are goblin-carved."
 							]
 						},
-						"Adventurers can easily climb down the knotted rope, using the wall to brace themselves. Using the carved indentations is slower but only slightly harder. The descent is 50 feet to the ledge (area 1).",
+						"Adventurers can easily climb down the knotted rope, using the wall to brace themselves. Using the carved indentations is slower but only slightly harder. The descent is 50 feet to the ledge ({@area 1>1}).",
 						{
 							"type": "entries",
 							"name": "General Features",
@@ -708,7 +708,7 @@
 									"type": "entries",
 									"name": "Light",
 									"entries": [
-										"Beyond area 2, many rooms in the underground dungeon are lightless. Descriptions assume that the characters have a suitable light source and are able to see their surroundings."
+										"Beyond {@area 1>2}, many rooms in the underground dungeon are lightless. Descriptions assume that the characters have a suitable light source and are able to see their surroundings."
 									]
 								},
 								{
@@ -783,8 +783,8 @@
 					"type": "entries",
 					"name": "2. Switchback Stairs",
 					"entries": [
-						"The 5-foot-wide stairs that descend from area 1 are roughly carved. They aren't dangerous to traverse, however, except that combat while on the narrow path can be risky. Three small landings lie along the route, the first at 60 feet above the floor in area 3, the second at 40 feet, and the third at 20 feet.",
-						"The characters might be able to see area 3 as they descend.",
+						"The 5-foot-wide stairs that descend from {@area 1>1} are roughly carved. They aren't dangerous to traverse, however, except that combat while on the narrow path can be risky. Three small landings lie along the route, the first at 60 feet above the floor in {@area 1>3}, the second at 40 feet, and the third at 20 feet.",
+						"The characters might be able to see {@area 1>3} as they descend.",
 						{
 							"type": "inset",
 							"entries": [
@@ -838,7 +838,7 @@
 							"type": "entries",
 							"name": "Hidden Pit",
 							"entries": [
-								"The map shows the location of a concealed trapdoor that covers a 10-foot-square, 10-foot-deep pit. A 2-foot-wide catwalk on the west edge allows access to the door that leads to area 4. It takes a successful DC 15 Wisdom (Perception) check to note the trapdoor's unmortared edge. Then, a successful DC 10 Intelligence (Investigation) check lets a character deduce the location of the catwalk and how the pit operates."
+								"The map shows the location of a concealed trapdoor that covers a 10-foot-square, 10-foot-deep pit. A 2-foot-wide catwalk on the west edge allows access to the door that leads to {@area 1>4}. It takes a successful DC 15 Wisdom (Perception) check to note the trapdoor's unmortared edge. Then, a successful DC 10 Intelligence (Investigation) check lets a character deduce the location of the catwalk and how the pit operates."
 							]
 						},
 						"If a creature steps on the trapdoor, the lid flips open, dumping the creature into the pit. With a successful DC 15 Dexterity check, a creature can use thieves' tools to jam the lid shut. A mechanism resets the trap 1 minute after the door opens, pushing it back into the closed position. The mechanism is in the pit wall under the catwalk. A creature can jam it in the open position with a successful DC 15 Dexterity check using thieves' tools. If this check succeeds by 5 or more, the mechanism can be permanently disabled if desired.",
@@ -879,7 +879,7 @@
 							"type": "entries",
 							"name": "Secret Door",
 							"entries": [
-								"A trapped secret door leads to area 5. Finding the door requires a successful DC 20 Wisdom (Perception) check. The door opens by way of a masonry block that also serves as a lever, which can be pushed in on the left side or pulled out from the right."
+								"A trapped secret door leads to {@area 1>5}. Finding the door requires a successful DC 20 Wisdom (Perception) check. The door opens by way of a masonry block that also serves as a lever, which can be pushed in on the left side or pulled out from the right."
 							]
 						},
 						{
@@ -925,7 +925,7 @@
 							"type": "entries",
 							"name": "Dragon Door",
 							"entries": [
-								"The door that is carved to look like a dragon has a mechanical lock as well as an {@spell arcane lock|PHB} spell cast on it. The Strength (Athletics) check to defeat the arcane lock is DC 30, and the Dexterity check to bypass the magical lock using thieves' tools is DC 25. Casting a {@spell knock|PHB} spell on the door suppresses the magical lock for 10 minutes, lowering the DCs by 10 during that time. The mechanical lock remains intact if the magical lock is bypassed, requiring another {@spell knock|PHB} spell or the use of the key. The key, which bypasses the magical lock as well as the mechanical one, is in area 21."
+								"The door that is carved to look like a dragon has a mechanical lock as well as an {@spell arcane lock|PHB} spell cast on it. The Strength (Athletics) check to defeat the arcane lock is DC 30, and the Dexterity check to bypass the magical lock using thieves' tools is DC 25. Casting a {@spell knock|PHB} spell on the door suppresses the magical lock for 10 minutes, lowering the DCs by 10 during that time. The mechanical lock remains intact if the magical lock is bypassed, requiring another {@spell knock|PHB} spell or the use of the key. The key, which bypasses the magical lock as well as the mechanical one, is in {@area 1>21}."
 							]
 						},
 						{
@@ -948,8 +948,8 @@
 								"Three alcoves are on the north wall, and one is on the south wall. Each alcove contains a dust-covered stone pedestal with a fist-sized crystalline globe resting on it. The globes in the northern alcoves are cracked and dark, but the globe in the southern alcove glows with a soft blue light. Faint tinkling notes issue from it."
 							]
 						},
-						"If a character moves within 5 feet of the lit globe, brooding music begins to play throughout the area, and the sound carries into areas 6, 8, and 9 if the doors to those areas are open. Any creature that can hear the music must make a DC 15 Wisdom saving throw. On a successful save, a creature is immune to the music of the globe for 24 hours. On a failed save, a creature becomes charmed and, while charmed in this way, can take only the Dash action and move toward area 3.",
-						"The effect on a creature ends once that creature reaches the floor beyond the pit trap in area 3. If an affected creature is prevented from moving to area 3, the creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a successful save. The effect ends on its own 1 minute after the creature can no longer hear the music. A creature can escape the music by being on the other side of a closed door that leads to the gallery, or by vacating the area (including adjacent rooms) where the music is audible.",
+						"If a character moves within 5 feet of the lit globe, brooding music begins to play throughout the area, and the sound carries into areas 6, 8, and 9 if the doors to those areas are open. Any creature that can hear the music must make a DC 15 Wisdom saving throw. On a successful save, a creature is immune to the music of the globe for 24 hours. On a failed save, a creature becomes charmed and, while charmed in this way, can take only the Dash action and move toward {@area 1>3}.",
+						"The effect on a creature ends once that creature reaches the floor beyond the pit trap in {@area 1>3}. If an affected creature is prevented from moving to {@area 1>3}, the creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a successful save. The effect ends on its own 1 minute after the creature can no longer hear the music. A creature can escape the music by being on the other side of a closed door that leads to the gallery, or by vacating the area (including adjacent rooms) where the music is audible.",
 						"The globe has AC 10 and 10 hit points. If it is attacked or handled, the music becomes louder, audible in areas 4 and 10 if the doors to those areas are open. The DC of the Wisdom saving throw then increases to 20. If the globe is reduced to 0 hit points or taken from the room, it cracks and goes dark and silent. It no longer functions."
 					]
 				},
@@ -1012,7 +1012,7 @@
 							"type": "entries",
 							"name": "Secret Door",
 							"entries": [
-								"A secret door in the western wall leads to area 10. Finding the door requires a successful DC 20 Wisdom (Perception) check. Under the scrutiny of detect magic, the door radiates a faint aura of abjuration magic. The door comes open, pivoting into the room, only if someone speaks the answer to the riddle."
+								"A secret door in the western wall leads to {@area 1>10}. Finding the door requires a successful DC 20 Wisdom (Perception) check. Under the scrutiny of detect magic, the door radiates a faint aura of abjuration magic. The door comes open, pivoting into the room, only if someone speaks the answer to the riddle."
 							]
 						},
 						"Once the door is opened, it closes on its own 1 minute later, although any obstruction placed in the doorway prevents it from doing so. The door can be opened from the western side with a simple push."
@@ -1039,14 +1039,14 @@
 							"type": "entries",
 							"name": "Spiked Pit",
 							"entries": [
-								"The pit is 10 feet deep, and its bottom is filled with spikes that deal 11 (2d10) piercing damage to a creature that falls in, as well as falling damage. The walls of the pit are rough, and they offer handholds to climbers. Area 12 begins on its far side."
+								"The pit is 10 feet deep, and its bottom is filled with spikes that deal 11 (2d10) piercing damage to a creature that falls in, as well as falling damage. The walls of the pit are rough, and they offer handholds to climbers. {@area 1>12|u} begins on its far side."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Creature",
 							"entries": [
-								"A {@creature quasit|MM} named Jot was bound in the southwestern alcove an age ago to guard the contents of the sarcophagus in area 12. It was in suspended animation until a few decades ago, and it now waits on the other side of the arch just out of sight in area 12. Jot is alerted by any light source the characters have, so it can prepare for them. (If the characters have no light source and are stealthy, Jot might not become aware of them.) The quasit darts out of its hiding place and attacks the first creature that climbs out of the pit on the western side."
+								"A {@creature quasit|MM} named Jot was bound in the southwestern alcove an age ago to guard the contents of the sarcophagus in {@area 1>12}. It was in suspended animation until a few decades ago, and it now waits on the other side of the arch just out of sight in {@area 1>12}. Jot is alerted by any light source the characters have, so it can prepare for them. (If the characters have no light source and are stealthy, Jot might not become aware of them.) The quasit darts out of its hiding place and attacks the first creature that climbs out of the pit on the western side."
 							]
 						},
 						{
@@ -1101,7 +1101,7 @@
 							"type": "entries",
 							"name": "Secret Door",
 							"entries": [
-								"A secret trapdoor in the floor requires a successful DC 20 Wisdom (Perception) check to find. The door opens by pulling it upward. It leads to a 3-foot by-3-foot crawl space that connects to a similar trapdoor in area 12."
+								"A secret trapdoor in the floor requires a successful DC 20 Wisdom (Perception) check to find. The door opens by pulling it upward. It leads to a 3-foot by-3-foot crawl space that connects to a similar trapdoor in {@area 1>12}."
 							]
 						}
 					]
@@ -1219,33 +1219,33 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
-										""
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
 											"1",
-											"1d6 kobolds"
+											"{@dice 1d6} {@creature kobold|mm|kobolds}"
 										],
 										[
 											"2",
-											"1d6 giant rats"
+											"{@dice 1d6} {@creature giant rat|mm|giant rats}"
 										],
 										[
 											"3",
-											"1d4 goblins"
+											"{@dice 1d4} {@creature goblin|mm|goblins}"
 										],
 										[
 											"4",
-											"1d2 hobgoblins"
+											"{@dice 1d2} {@creature hobgoblin|mm|hobgoblins}"
 										],
 										[
 											"5",
-											"1d4 skeletons"
+											"{@dice 1d4} {@creature skeleton|mm|skeletons}"
 										],
 										[
 											"6",
-											"1d6 twig blights"
+											"{@dice 1d6} {@creature twig blight|mm|twig blights}"
 										],
 										[
 											"7-20",
@@ -1300,7 +1300,7 @@
 							],
 							"name": "Meepo"
 						},
-						"Meepo perks up as he senses the possibility of getting the dragon back. True to his word, he guides the characters to area 21. Along the way, he shouts out (in Draconic)",
+						"Meepo perks up as he senses the possibility of getting the dragon back. True to his word, he guides the characters to {@area 1>21}. Along the way, he shouts out (in Draconic)",
 						{
 							"type": "inset",
 							"entries": [
@@ -1313,7 +1313,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If combat occurs in this chamber, the kobolds in the nearby area 16 are alerted, and they rush out to meet enemies."
+								"If combat occurs in this chamber, the kobolds in the nearby {@area 1>16} are alerted, and they rush out to meet enemies."
 							]
 						},
 						{
@@ -1359,7 +1359,7 @@
 								"The room serves as a barracks and guard post for the kobold tribe's warriors. Three {@creature kobold|MM|kobolds} stand guard inside, unless they have already come forth to reinforce other kobolds."
 							]
 						},
-						"If the characters try to talk and the interaction is successful, the kobolds direct the characters to head toward \"Yusdrayl on her dragon throne,\" giving them simple directions to area 21 and warning them to avoid rousing the ire of Yusdrayl's elite guards."
+						"If the characters try to talk and the interaction is successful, the kobolds direct the characters to head toward \"Yusdrayl on her dragon throne,\" giving them simple directions to {@area 1>21} and warning them to avoid rousing the ire of Yusdrayl's elite guards."
 					]
 				},
 				{
@@ -1377,7 +1377,7 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"The rats are used as food for the dragon wyrmling that was once stabled in area 15. Since the abduction of the dragon, the kobolds have neglected the rats, and in the meantime the rodents have chewed away the fastenings of the barrier. One round after someone opens the door, the rats knock the barrier over and rush out, attacking as a {@creature swarm of rats|MM} for 1 round, after which they disperse into the dungeon."
+								"The rats are used as food for the dragon wyrmling that was once stabled in {@area 1>15}. Since the abduction of the dragon, the kobolds have neglected the rats, and in the meantime the rodents have chewed away the fastenings of the barrier. One round after someone opens the door, the rats knock the barrier over and rush out, attacking as a {@creature swarm of rats|MM} for 1 round, after which they disperse into the dungeon."
 							]
 						}
 					]
@@ -1417,14 +1417,14 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"An elite squad of three {@creature kobold|MM|kobolds} (each with 7 hit points) patrols the hall, considering the duty an honor. The guards pay particular attention to the door that leads to area 24, which is along the route traditionally used by goblin raiders. These kobolds react to the character's presence in the same way as the ordinary ones described in area 16. If the characters head for area 21 without causing hostilities, these guards follow the characters into Yusdrayl's presence."
+								"An elite squad of three {@creature kobold|MM|kobolds} (each with 7 hit points) patrols the hall, considering the duty an honor. The guards pay particular attention to the door that leads to {@area 1>24}, which is along the route traditionally used by goblin raiders. These kobolds react to the character's presence in the same way as the ordinary ones described in {@area 1>16}. If the characters head for {@area 1>21} without causing hostilities, these guards follow the characters into Yusdrayl's presence."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If combat erupts here, the result is likely to be deadly for the party. Any kobolds remaining in the areas nearby enter the room as reinforcements. Yusdrayl and her two guards arrive from area 21 at the start of the second round of combat. At the start of the fifth round, the kobolds in the area 16 to the southwest of this room come on the scene. At the start of the eighth round, the kobolds from area 23 enter the fray."
+								"If combat erupts here, the result is likely to be deadly for the party. Any kobolds remaining in the areas nearby enter the room as reinforcements. Yusdrayl and her two guards arrive from {@area 1>21} at the start of the second round of combat. At the start of the fifth round, the kobolds in the {@area 1>16} to the southwest of this room come on the scene. At the start of the eighth round, the kobolds from {@area 1>23} enter the fray."
 							]
 						},
 						{
@@ -1440,7 +1440,7 @@
 					"type": "entries",
 					"name": "20. Kobold Colony",
 					"entries": [
-						"The strong wooden door that leads to the kobolds' living quarters is barred from the inside. Characters who give the proper password (\"Ticklecorn!\" spoken in Draconic; see area 15) or who make a successful DC 15 Charisma (Deception) check can convince the kobolds within to unbar the door. Otherwise, the kobolds open the door only when guards return to the room for a shift change.",
+						"The strong wooden door that leads to the kobolds' living quarters is barred from the inside. Characters who give the proper password (\"Ticklecorn!\" spoken in Draconic; see {@area 1>15}) or who make a successful DC 15 Charisma (Deception) check can convince the kobolds within to unbar the door. Otherwise, the kobolds open the door only when guards return to the room for a shift change.",
 						{
 							"type": "inset",
 							"entries": [
@@ -1449,7 +1449,7 @@
 						},
 						"Twenty-four kobolds occupy the room, but only three {@creature kobold|MM|kobolds} are capable warriors that challenge unescorted intruders. Seven other kobolds are {@creature commoner|MM|commoners}, but with 3 hit points each, and a -1 reduction to hit and damage compared to the Monster Manual statistics. The other tribe members here are too young, too old, or too cowardly to defend themselves; they flee if combat breaks out and are worth no XP. Even the kobolds capable of fighting run away if they are outmatched.",
 						"The kobolds here answer all questions with a quick \"Yusdrayl knows.\"",
-						"An attack on these kobolds brings reinforcements, as described in area 19, though each group arrives 1 round later because of the extra distance it must traverse."
+						"An attack on these kobolds brings reinforcements, as described in {@area 1>19}, though each group arrives 1 round later because of the extra distance it must traverse."
 					]
 				},
 				{
@@ -1513,13 +1513,13 @@
 							],
 							"name": "Yusdrayl"
 						},
-						"If the characters decide to go looking for the dragon, the kobolds direct them toward the passage that connects area 15 and area 25, which is the \"back way\" into goblin territory. Yusdrayl and her followers know nothing useful about the goblin lair. If the characters take Meepo with them, he can serve as their guide to that location. If Meepo goes along and is slain, the kobolds count it as a small loss as long as the dragon is rescued.",
+						"If the characters decide to go looking for the dragon, the kobolds direct them toward the passage that connects {@area 1>15} and {@area 1>25}, which is the \"back way\" into goblin territory. Yusdrayl and her followers know nothing useful about the goblin lair. If the characters take Meepo with them, he can serve as their guide to that location. If Meepo goes along and is slain, the kobolds count it as a small loss as long as the dragon is rescued.",
 						"Possible rewards include the key in the carved dragon's mouth, or any two of the items on the altar. Yusdrayl is also willing to sell the key for 50 gp. (See parcel - table contents below)",
 						{
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If hostilities break out, reinforcements arrive in the manner described in area 19."
+								"If hostilities break out, reinforcements arrive in the manner described in {@area 1>19}."
 							]
 						},
 						"If the characters return Calcryx, Yusdrayl can be convinced to aid them in an assault on the remaining goblins. You determine the nature of the aid.",
@@ -1527,7 +1527,7 @@
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"The key clenched in the mouth of the carved dragon opens the door to area 7. Yusdrayl has keys to area 18 and the chains there, a key to the doors in area 24, and a key that once fit the cage in area 15. She also has 35 gp."
+								"The key clenched in the mouth of the carved dragon opens the door to {@area 1>7}. Yusdrayl has keys to {@area 1>18} and the chains there, a key to the doors in {@area 1>24}, and a key that once fit the cage in {@area 1>15}. She also has 35 gp."
 							]
 						},
 						"The items assembled on the altar include a {@item Quaal's Feather Token, Tree|DMG|Quaal's feather token (tree)}, three spell scrolls, ({@spell mage armor|PHB}, {@spell spider climb|PHB}, and {@spell knock|PHB}), and a small flask that contains three doses of {@item elixir of health|DMG}."
@@ -1562,7 +1562,7 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"If they have not come forth as reinforcements, three {@creature kobold|MM|kobolds} camp here, serving as hunters and guardians of the tunnel. They react as described in area 16."
+								"If they have not come forth as reinforcements, three {@creature kobold|MM|kobolds} camp here, serving as hunters and guardians of the tunnel. They react as described in {@area 1>16}."
 							]
 						}
 					]
@@ -1611,7 +1611,7 @@
 							"type": "entries",
 							"name": "Trap",
 							"entries": [
-								"The door that connects the northernmost empty chamber with area 31 contains a trap. See area 31 for more details."
+								"The door that connects the northernmost empty chamber with {@area 1>31} contains a trap. See {@area 1>31} for more details."
 							]
 						}
 					]
@@ -1631,7 +1631,7 @@
 							"type": "entries",
 							"name": "Investigating",
 							"entries": [
-								"The debris and dust covering the floor display the same tracks described in area 25."
+								"The debris and dust covering the floor display the same tracks described in {@area 1>25}."
 							]
 						},
 						{
@@ -1748,19 +1748,19 @@
 								"The two marked areas on the map are traps that were jammed open by the lost adventuring party. Examining each one reveals a 20-foot-deep pit containing only rat bones, rusted metal bits, and filth."
 							]
 						},
-						"Chances to find or follow the trail noted in area 28 are similar here. The trail of the missing adventuring party skirts around the traps and leads to the western wooden door.",
+						"Chances to find or follow the trail noted in {@area 1>28} are similar here. The trail of the missing adventuring party skirts around the traps and leads to the western wooden door.",
 						{
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"Those who spend more than 3 rounds in the chamber conversing in normal tones, or otherwise making noise, draw the attention of the inhabitants of area 30, who hide to ready an ambush."
+								"Those who spend more than 3 rounds in the chamber conversing in normal tones, or otherwise making noise, draw the attention of the inhabitants of {@area 1>30}, who hide to ready an ambush."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Trapped Fountain",
 							"entries": [
-								"The dry fountain on the northern wall looks remarkably like the one described in area 26. Under the scrutiny of a {@spell detect magic|PHB} spell, the fountain emits a faint aura of evocation. A successful DC 20 Wisdom (Perception) check reveals suspicious metallic tubes in the carved dragon's mouth, as well as a small, rusted iron canister. A character who makes a successful DC 15 Wisdom (Perception) check notices a mostly worn-away inscription in Draconic on the front of the basin. It reads, \"Let there be death.\""
+								"The dry fountain on the northern wall looks remarkably like the one described in {@area 1>26}. Under the scrutiny of a {@spell detect magic|PHB} spell, the fountain emits a faint aura of evocation. A successful DC 20 Wisdom (Perception) check reveals suspicious metallic tubes in the carved dragon's mouth, as well as a small, rusted iron canister. A character who makes a successful DC 15 Wisdom (Perception) check notices a mostly worn-away inscription in Draconic on the front of the basin. It reads, \"Let there be death.\""
 							]
 						},
 						"Anyone who speaks this phrase aloud in Draconic triggers the trap. A poison mist sprays forth from the dragon's mouth, filling a 20-foot cube and expending the canister's last charge. Those in the area must make a DC 10 Constitution saving throw. On a failed save, a creature takes 5 (1d10) poison damage and becomes poisoned for 10 minutes. On a successful save, the creature takes only half the poison damage and is poisoned for 1 minute.",
@@ -1812,7 +1812,7 @@
 					"entries": [
 						"The door that leads north into this hallway is closed and fitted with a bell that clangs if someone opens the door without doing so very slowly.",
 						"With a successful DC 15 Wisdom (Perception) check, someone who carefully opens the door might spot the bell attached to the door about 3 feet off the ground. A character who examines the space around the door before opening it and succeeds on a DC 15 Wisdom (Perception) check notices the damage done to the door when the goblins fastened the bell to it.",
-						"If the bell rings, the noise alerts the goblins in area 32. They duck behind the low wall and wait to ambush intruders that enter the corridor.",
+						"If the bell rings, the noise alerts the goblins in {@area 1>32}. They duck behind the low wall and wait to ambush intruders that enter the corridor.",
 						{
 							"type": "inset",
 							"entries": [
@@ -1830,7 +1830,7 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"Two {@creature goblin|MM|goblins} in area 32 pop up over the wall if they are alerted to the characters' presence. The creatures use ranged attacks as the characters move through the hall."
+								"Two {@creature goblin|MM|goblins} in {@area 1>32} pop up over the wall if they are alerted to the characters' presence. The creatures use ranged attacks as the characters move through the hall."
 							]
 						},
 						{
@@ -1856,14 +1856,14 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"Two {@creature goblin|MM|goblins} are stationed behind the rough, 3-foot-high wall. They are hostile to intruders, but unwilling to die facing a superior force. If captured, these goblins know the same information that {@creature Erky Timbers|tftyp} in area 34 does."
+								"Two {@creature goblin|MM|goblins} are stationed behind the rough, 3-foot-high wall. They are hostile to intruders, but unwilling to die facing a superior force. If captured, these goblins know the same information that {@creature Erky Timbers|tftyp} in {@area 1>34} does."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If one of the goblins gets away, it warns the goblins in area 33. The alerted goblins prepare an ambush for intruders in that area."
+								"If one of the goblins gets away, it warns the goblins in {@area 1>33}. The alerted goblins prepare an ambush for intruders in that area."
 							]
 						},
 						{
@@ -1898,14 +1898,14 @@
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"One goblin has a silver flask of dwarven make (worth 50 gp) filled with vile goblin wine. Another goblin has a key to open the locked door to area 34."
+								"One goblin has a silver flask of dwarven make (worth 50 gp) filled with vile goblin wine. Another goblin has a key to open the locked door to {@area 1>34}."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If things go badly for the goblins, one of them attempts to warn the goblin warriors in area 39."
+								"If things go badly for the goblins, one of them attempts to warn the goblin warriors in {@area 1>39}."
 							]
 						}
 					]
@@ -1985,7 +1985,7 @@
 							"type": "entries",
 							"name": "Manacles",
 							"entries": [
-								"The rusted iron restraints can bind a Small or Medium creature. If the characters are taken prisoner (see area 36) and bound here, escaping from the manacles requires a successful DC 20 Dexterity check. A set of manacles can be broken with a successful DC 20 Strength check, or a character proficient with thieves' tools can pick the lock on a set of manacles with a successful DC 15 Dexterity check. Manacles have AC 15 and 15 hit points."
+								"The rusted iron restraints can bind a Small or Medium creature. If the characters are taken prisoner (see {@area 1>36}) and bound here, escaping from the manacles requires a successful DC 20 Dexterity check. A set of manacles can be broken with a successful DC 20 Strength check, or a character proficient with thieves' tools can pick the lock on a set of manacles with a successful DC 15 Dexterity check. Manacles have AC 15 and 15 hit points."
 							]
 						}
 					]
@@ -2006,7 +2006,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If characters fall into the pit or otherwise make excessive noise, the goblins in the area 36 to the north are alerted. Alerted goblins respond in 2 rounds. These goblins also check the trap and manually reset it."
+								"If characters fall into the pit or otherwise make excessive noise, the goblins in the {@area 1>36} to the north are alerted. Alerted goblins respond in 2 rounds. These goblins also check the trap and manually reset it."
 							]
 						},
 						{
@@ -2033,17 +2033,17 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"Three {@creature goblin|MM|goblins}, who proudly call themselves bandits, are in the room when the characters enter. In better times, two or more bandit groups would hunt the Old Road together, preying on travelers. Now, the bandits content themselves with an occasional hunt in the wilds of the Underdark (see area 43), as well as preying on the kobolds."
+								"Three {@creature goblin|MM|goblins}, who proudly call themselves bandits, are in the room when the characters enter. In better times, two or more bandit groups would hunt the Old Road together, preying on travelers. Now, the bandits content themselves with an occasional hunt in the wilds of the Underdark (see {@area 2>43}), as well as preying on the kobolds."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"The goblins might try to knock the characters unconscious and imprison them in area 34, locking victims into manacles. They take captured equipment to the goblin chief in area 41. The bandits are likely to try to ransom the prisoners to someone in Oakhurst. Kerowyn Hucrele is prepared to pay such a ransom, taking it out of the characters' prospective reward."
+								"The goblins might try to knock the characters unconscious and imprison them in {@area 1>34}, locking victims into manacles. They take captured equipment to the goblin chief in {@area 1>41}. The bandits are likely to try to ransom the prisoners to someone in Oakhurst. Kerowyn Hucrele is prepared to pay such a ransom, taking it out of the characters' prospective reward."
 							]
 						},
-						"If things go badly for the goblins, one of them attempts to warn the goblin warriors in area 39.",
+						"If things go badly for the goblins, one of them attempts to warn the goblin warriors in {@area 1>39}.",
 						{
 							"type": "entries",
 							"name": "Investigating",
@@ -2114,7 +2114,7 @@
 							]
 						},
 						"As long as the torches burn, the hall is lighted, but the haze makes the area lightly obscured. The haze never builds to suffocating levels, thanks to natural ventilation.",
-						"Any loud noise in the chamber attracts the attention of goblins in the area 36 to the south, as well as in area 40. The goblins in area 40 prepare for danger but don't leave their stations, while those in area 36 come to investigate within 2 rounds."
+						"Any loud noise in the chamber attracts the attention of goblins in the {@area 1>36} to the south, as well as in {@area 1>40}. The goblins in {@area 1>40} prepare for danger but don't leave their stations, while those in {@area 1>36} come to investigate within 2 rounds."
 					]
 				},
 				{
@@ -2135,19 +2135,19 @@
 								"Thirty-four goblins are at home when the characters arrive, but only four of the {@creature goblin|MM|goblins} are warriors. Ten of the other goblins are {@creature commoner|MM|commoners}, but with 3 hit points each and a -1 reduction to hit and damage compared to the Monster Manual statistics. The other twenty creatures are noncombatants, too feeble or too fearful to defend themselves; they try to flee through the northernmost or the eastern exit. This stampede should dominate the first moments of battle, and even the goblins capable of fighting refuse to stick around just to lose their lives. Noncombatants are worth no XP."
 							]
 						},
-						"These goblinoids know the same information, in cruder form, that Erky in area 34 knows.",
+						"These goblinoids know the same information, in cruder form, that Erky in {@area 1>34} knows.",
 						{
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"An attack on the goblins brings reinforcements from area 36 and warns the goblin chief in area 41 that something is amiss. {@creature Grenl|tftyp}, the goblin shaman in area 41, might emerge to protect the tribe."
+								"An attack on the goblins brings reinforcements from {@area 1>36} and warns the goblin chief in {@area 1>41} that something is amiss. {@creature Grenl|tftyp}, the goblin shaman in {@area 1>41}, might emerge to protect the tribe."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Investigating",
 							"entries": [
-								"The goblins collect the phosphorescent fungi from the grove below. They need its light for close work, such as reading, and the fungus is edible. Crude equipment for cooking, skinning game, tanning hides, and other basic gear fills the area. Food is usually collected from the Underdark through area 43."
+								"The goblins collect the phosphorescent fungi from the grove below. They need its light for close work, such as reading, and the fungus is edible. Crude equipment for cooking, skinning game, tanning hides, and other basic gear fills the area. Food is usually collected from the Underdark through {@area 2>43}."
 							]
 						},
 						{
@@ -2164,7 +2164,7 @@
 					"type": "entries",
 					"name": "41. Hall of the Goblin Chief",
 					"entries": [
-						"If the goblinoid guards in the chief's hall have been alerted, or if they hear conflict in area 40, they cover the door for 10 minutes, then investigate the source of the disruptions at their leader's behest.",
+						"If the goblinoid guards in the chief's hall have been alerted, or if they hear conflict in {@area 1>40}, they cover the door for 10 minutes, then investigate the source of the disruptions at their leader's behest.",
 						{
 							"type": "inset",
 							"entries": [
@@ -2188,7 +2188,7 @@
 						},
 						"Cantrips (at will): {@spell poison spray|PHB}, {@spell thaumaturgy|PHB}",
 						"1st level (2 slots): {@spell bane|PHB}, {@spell inflict wounds|PHB}",
-						"A {@creature twig blight|MM}, a gift from {@creature Belak the Outcast|tftyp} and a pet of {@creature Durnn|tftyp}'s, is in the stone pot, and goblins from area 40 occasionally enter the chamber to see to the needs of the tribe's elite that languish here.",
+						"A {@creature twig blight|MM}, a gift from {@creature Belak the Outcast|tftyp} and a pet of {@creature Durnn|tftyp}'s, is in the stone pot, and goblins from {@area 1>40} occasionally enter the chamber to see to the needs of the tribe's elite that languish here.",
 						{
 							"type": "entries",
 							"name": "Development",
@@ -2196,10 +2196,10 @@
 								"{@creature Durnn|tftyp} has a {@item potion of healing|DMG} and two vials of antitoxin. {@creature Grenl|tftyp} has a {@item Spell Scroll (1st level)|DMG|scroll of} {@spell faerie fire|PHB} and another of {@spell expeditious retreat|PHB}."
 							]
 						},
-						"The goblins in area 40 don't join the battle if they hear sounds of violence coming from the north. If the fight turns against the chief, however, he might open the door to area 40 and call for aid, or withdraw to area 40 to continue the fight.",
+						"The goblins in {@area 1>40} don't join the battle if they hear sounds of violence coming from the north. If the fight turns against the chief, however, he might open the door to {@area 1>40} and call for aid, or withdraw to {@area 1>40} to continue the fight.",
 						"{@creature Durnn|tftyp} can't surrender for fear of losing face. He won't give up if the opposition includes kobolds. Otherwise, he might call for parley if doing so allows him to avoid death. But he must still look strong while negotiating, so he's unwilling to capitulate in an arrangement that makes him look weak.",
 						"Because {@creature Durnn|tftyp} and his hobgoblins usurped control of the Durbuluk tribe, {@creature Grenl|tftyp} hates them. She also wants to protect her tribe, so she is willing to negotiate a truce if {@creature Durnn|tftyp} falls. {@creature Grenl|tftyp} also hates and envies Belak, and she wants him gone from the citadel so she can control the Gulthias Tree.",
-						"If captured and interrogated, the goblinoids here know what Erky in area 34 knows, with the following addition: Belak wanted all the living human prisoners sent down to him, but in a fit of anger, {@creature Durnn|tftyp} slew Talgen. Thus, {@creature Durnn|tftyp} sent only Sharwyn and Sir Braford down to the Twilight Grove.",
+						"If captured and interrogated, the goblinoids here know what Erky in {@area 1>34} knows, with the following addition: Belak wanted all the living human prisoners sent down to him, but in a fit of anger, {@creature Durnn|tftyp} slew Talgen. Thus, {@creature Durnn|tftyp} sent only Sharwyn and Sir Braford down to the Twilight Grove.",
 						{
 							"type": "entries",
 							"name": "Shaft",
@@ -2207,7 +2207,7 @@
 								"The shaft has a 2-foot wall around it, much like the upper end of a well. Because of the wall, a creature pushed toward the shaft can avoid going over the edge by falling prone and succeeding on a DC 10 Dexterity saving throw. Thick, pale vines line the shaft. The vines are as good as knotted rope for the purpose of climbing."
 							]
 						},
-						"A creature that falls into the shaft can make a DC 15 Dexterity saving throw to catch the vines. On a failed save, the creature falls 80 feet to the floor of area 42.",
+						"A creature that falls into the shaft can make a DC 15 Dexterity saving throw to catch the vines. On a failed save, the creature falls 80 feet to the floor of {@area 2>42}.",
 						{
 							"type": "entries",
 							"name": "Trapped Chest",
@@ -2232,7 +2232,7 @@
 			"type": "section",
 			"name": "Locations on the Grove Level",
 			"entries": [
-				"The grove level and the fortress level connect through the shaft that leads from area 41 to 42. The following locations are identified on the map.",
+				"The grove level and the fortress level connect through the shaft that leads from {@area 1>41} to 42. The following locations are identified on the map.",
 				{
 					"type": "entries",
 					"name": "Maps",
@@ -2276,7 +2276,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"The creatures in area 43 investigate any disturbance in the garden after 3 rounds."
+								"The creatures in {@area 2>43} investigate any disturbance in the garden after 3 rounds."
 							]
 						}
 					]
@@ -2317,7 +2317,7 @@
 							"type": "entries",
 							"name": "Underdark Access",
 							"entries": [
-								"In the dark of the northern cavern section, a crude tunnel leads away, angling west and downward. The tunnel is like the one in area 23."
+								"In the dark of the northern cavern section, a crude tunnel leads away, angling west and downward. The tunnel is like the one in {@area 1>23}."
 							]
 						},
 						{
@@ -2411,7 +2411,7 @@
 							"type": "entries",
 							"name": "Northwest Chamber",
 							"entries": [
-								"Snores are audible from the room to the northwest, which is a rough barracks. Sixteen small pallets of matted fur cover the floor. Two pallets currently hold a sleeping {@creature goblin|MM} and two goblin {@creature commoner|MM|commoners} (like those in area 40)."
+								"Snores are audible from the room to the northwest, which is a rough barracks. Sixteen small pallets of matted fur cover the floor. Two pallets currently hold a sleeping {@creature goblin|MM} and two goblin {@creature commoner|MM|commoners} (like those in {@area 1>40})."
 							]
 						},
 						{
@@ -2447,7 +2447,7 @@
 							"type": "entries",
 							"name": "Southeast Chamber",
 							"entries": [
-								"The room stands empty, and the caved-in back wall leads to a natural rift in the earth (see area 44)."
+								"The room stands empty, and the caved-in back wall leads to a natural rift in the earth (see {@area 2>44})."
 							]
 						}
 					]
@@ -2482,7 +2482,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"The neighboring arboretums (area 49) contain additional monsters. The closed doors and stone walls prevent sound from entering these four areas. The creatures within join the battle here at your discretion."
+								"The neighboring arboretums ({@area 2>49}) contain additional monsters. The closed doors and stone walls prevent sound from entering these four areas. The creatures within join the battle here at your discretion."
 							]
 						}
 					]
@@ -2502,14 +2502,14 @@
 							"type": "entries",
 							"name": "Southern Arboretum",
 							"entries": [
-								"A {@creature goblin|MM} and three goblin {@creature commoner|MM|commoners} gather fungus for use in area 47."
+								"A {@creature goblin|MM} and three goblin {@creature commoner|MM|commoners} gather fungus for use in {@area 2>47}."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Southeast Arboretum",
 							"entries": [
-								"Several growths in the chamber are scorched and dead. Fungus shrouds holes similar to those found in area 45, and a {@creature fire snake|MM} lurks inside one of these openings. It emerges if anyone pokes into or closely examines the holes. If the snake comes out, a character who reaches into the snake's burrow can recover two sapphires (worth 50 gp each)."
+								"Several growths in the chamber are scorched and dead. Fungus shrouds holes similar to those found in {@area 2>45}, and a {@creature fire snake|MM} lurks inside one of these openings. It emerges if anyone pokes into or closely examines the holes. If the snake comes out, a character who reaches into the snake's burrow can recover two sapphires (worth 50 gp each)."
 							]
 						},
 						{
@@ -2519,7 +2519,7 @@
 								"Three {@creature skeleton|MM|skeletons} -AC 12, 3 (1d6) bludgeoning damage with shovels or rakes-are at work, clearing scorched plants. One {@creature twig blight|MM}, which is hostile to the adventurers, is with them. The skeletons attack anything the twig blight attacks."
 							]
 						},
-						"Fungus shrouds holes similar to those in area 45.",
+						"Fungus shrouds holes similar to those in {@area 2>45}.",
 						{
 							"type": "entries",
 							"name": "Northern Arboretum",
@@ -2598,7 +2598,7 @@
 								"Damp and crumbled steps descend sharply."
 							]
 						},
-						"The steps descend 15 feet. An 8-foot-high stone corridor passes about 7 feet below the northern arboretum (area 49), connecting the stairways on either side."
+						"The steps descend 15 feet. An 8-foot-high stone corridor passes about 7 feet below the northern arboretum ({@area 2>49}), connecting the stairways on either side."
 					]
 				},
 				{
@@ -2624,7 +2624,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If any obvious disturbance occurs here, the goblins in area 54 set an ambush for intruders. They wait at least 10 minutes before coming to investigate."
+								"If any obvious disturbance occurs here, the goblins in {@area 2>54} set an ambush for intruders. They wait at least 10 minutes before coming to investigate."
 							]
 						},
 						{
@@ -2664,14 +2664,14 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"Sometimes the twig blights in area 55 attack the goblins out of sheer malice. Thus, a call from the goblins doesn't bring all the forces of the cavern down on the characters. But if the goblins do call, four {@creature twig blight|MM|twig blights} arrive from area 55 and attack."
+								"Sometimes the twig blights in {@area 2>55} attack the goblins out of sheer malice. Thus, a call from the goblins doesn't bring all the forces of the cavern down on the characters. But if the goblins do call, four {@creature twig blight|MM|twig blights} arrive from {@area 2>55} and attack."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Investigating",
 							"entries": [
-								"Any character who gazes into area 55 and succeeds on a DC 10 Wisdom (Perception) check spots the blackened top of the Gulthias Tree in the distance. If the check succeeds by 3 or more, the character also spots the twig blights creeping around in area 55."
+								"Any character who gazes into {@area 2>55} and succeeds on a DC 10 Wisdom (Perception) check spots the blackened top of the Gulthias Tree in the distance. If the check succeeds by 3 or more, the character also spots the twig blights creeping around in {@area 2>55}."
 							]
 						}
 					]
@@ -2699,14 +2699,14 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"Ten {@creature twig blight|MM|twig blights}, less any that were dispatched in area 54, are spread about the grove. After moving 50 feet into the cavern, the characters come upon 1d4 of the hostile creatures. Any significant noise, such as from combat or clearing the briars, also attracts 1d4-1 twig blights (minimum 0) each round."
+								"Ten {@creature twig blight|MM|twig blights}, less any that were dispatched in {@area 2>54}, are spread about the grove. After moving 50 feet into the cavern, the characters come upon 1d4 of the hostile creatures. Any significant noise, such as from combat or clearing the briars, also attracts 1d4-1 twig blights (minimum 0) each round."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If the characters get to area 56 before all the twig blights have engaged, the rest of the monsters hold off their attacks. Any conflict that involves yelling in a language other than Goblin, the use of flashy magical effects, or similar noticeable elements alerts Belak in area 56 to the approach of invaders."
+								"If the characters get to {@area 2>56} before all the twig blights have engaged, the rest of the monsters hold off their attacks. Any conflict that involves yelling in a language other than Goblin, the use of flashy magical effects, or similar noticeable elements alerts Belak in {@area 2>56} to the approach of invaders."
 							]
 						}
 					]
@@ -2812,7 +2812,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"During a battle, if any twig blights remain in area 55, 1d4-1 of them (minimum 0) enter this area each round."
+								"During a battle, if any twig blights remain in {@area 2>55}, 1d4-1 of them (minimum 0) enter this area each round."
 							]
 						},
 						{
@@ -2833,7 +2833,7 @@
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"Belak has a key (to area 53), three {@item potion of healing|DMG|potions of healing}, two doses of {@item antitoxin|PHB}, and his {@item wand of entangle|TftYP}. Sharwyn wears her gold Hucrele signet ring (worth 20 gp)."
+								"Belak has a key (to {@area 2>53}), three {@item potion of healing|DMG|potions of healing}, two doses of {@item antitoxin|PHB}, and his {@item wand of entangle|TftYP}. Sharwyn wears her gold Hucrele signet ring (worth 20 gp)."
 							]
 						},
 						{

@@ -186,11 +186,25 @@
 			"startingEquipment": {
 				"additionalFromBackground": true,
 				"default": [
-					"(a) a {@item greataxe|phb} or (b) any {@filter martial melee weapon|items|source=phb|category=basic|type=martial weapon;melee weapon}",
+					"(a) a {@item greataxe|phb} or (b) any {@filter martial melee weapon|items|source=phb|category=basic|type=martial weapon;melee weapon=&}",
 					"(a) two {@item handaxe|phb|handaxes} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
 					"An {@item explorer's pack|phb}, and four {@item javelin|phb|javelins}"
 				],
-				"goldAlternative": "2d4 × 10"
+				"goldAlternative": "{@dice 2d4×10|2d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"str": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"shields"
+					],
+					"weapons": [
+						"simple",
+						"martial"
+					]
+				}
 			},
 			"classFeatures": [
 				[
@@ -255,7 +269,7 @@
 					{
 						"name": "Extra Attack",
 						"entries": [
-							"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+							"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 						]
 					},
 					{
@@ -332,7 +346,8 @@
 					{
 						"name": "Brutal Critical (2 dice)",
 						"entries": [
-							"You now roll two additional weapon damage dice when determining the extra damage for a critical hit with a melee attack."
+							"At 13th level, you can roll two additional weapon damage dice when determining the extra damage for a critical hit with a melee attack.",
+							"This increases to three additional dice at 17th level.\n\n"
 						]
 					}
 				],
@@ -366,7 +381,7 @@
 					{
 						"name": "Brutal Critical (3 dice)",
 						"entries": [
-							"You now roll three additional weapon damage dice when determining the extra damage for a critical hit with a melee attack."
+							"At 17th level, you can roll three additional weapon damage dice when determining the extra damage for a critical hit with a melee attack."
 						]
 					}
 				],
@@ -473,7 +488,7 @@
 										"type": "entries",
 										"name": "Spirit Seeker",
 										"entries": [
-											"Yours is a path that seeks attunement with the natural world, giving you a kinship with beasts. At 3rd level when you adopt this path, you gain the ability to cast the {@spell beast sense} and {@spell speak with animals} spells, but only as rituals, as described in chapter 10."
+											"Yours is a path that seeks attunement with the natural world, giving you a kinship with beasts. At 3rd level when you adopt this path, you gain the ability to cast the {@spell beast sense} and {@spell speak with animals} spells, but only as rituals, as described in {@book chapter 10|PHB|10|rituals}."
 										]
 									},
 									{
@@ -501,7 +516,7 @@
 														"type": "entries",
 														"name": "Eagle",
 														"entries": [
-															"While you're raging and aren't wearing heavy armor, other creatures have disadvantage on opportunity attack rolls against you, and you can use the Dash action as a bonus action on your turn. The spirit of the eagle makes you into a predator who can weave through the fray with ease."
+															"While you're raging and aren't wearing heavy armor, other creatures have disadvantage on opportunity attack rolls against you, and you can use the {@action Dash} action as a bonus action on your turn. The spirit of the eagle makes you into a predator who can weave through the fray with ease."
 														]
 													}
 												]
@@ -513,7 +528,7 @@
 														"type": "entries",
 														"name": "Elk",
 														"entries": [
-															"While you're raging and aren't wearing heaving armor, your walking speed increases by 15 feet. The spirit of the elk makes you extraordinarily swift."
+															"While you're raging and aren't wearing heavy armor, your walking speed increases by 15 feet. The spirit of the elk makes you extraordinarily swift."
 														]
 													}
 												]
@@ -574,7 +589,7 @@
 														"type": "entries",
 														"name": "Eagle",
 														"entries": [
-															"You gain the eyesight of an eagle. You can see up to 1 mile away with no difficulty, able to discern even fine details as though looking at something no more than 100 feet away from you. Additionally, dim light doesn't impose disadvantage on your Wisdom (Perception) checks."
+															"You gain the eyesight of an eagle. You can see up to 1 mile away with no difficulty, able to discern even fine details as though looking at something no more than 100 feet away from you. Additionally, dim light doesn't impose disadvantage on your Wisdom ({@skill Perception}) checks."
 														]
 													}
 												]
@@ -598,7 +613,7 @@
 														"type": "entries",
 														"name": "Tiger",
 														"entries": [
-															"You gain proficiency in two skills from the following list: Athletics, Acrobatics, Stealth, and Survival. The cat spirit hones your survival instincts."
+															"You gain proficiency in two skills from the following list: {@skill Athletics}, {@skill Acrobatics}, {@skill Stealth}, and {@skill Survival}. The cat spirit hones your survival instincts."
 														]
 													}
 												]
@@ -672,7 +687,7 @@
 														"type": "entries",
 														"name": "Elk",
 														"entries": [
-															"While raging, you can use a bonus action during your move to pass through the space of a Large or smaller creature. That creature must succeed on a Strength saving throw (DC 8 + your Strength bonus + your proficiency bonus) or be knocked {@condition prone} and take bludgeoning damage equal to 1d12 + your strength modifier."
+															"While raging, you can use a bonus action during your move to pass through the space of a Large or smaller creature. That creature must succeed on a Strength saving throw (DC 8 + your Strength bonus + your proficiency bonus) or be knocked {@condition prone} and take bludgeoning damage equal to {@dice 1d12} + your Strength modifier."
 														]
 													}
 												]
@@ -731,8 +746,8 @@
 										"name": "Battlerager Armor",
 										"entries": [
 											"When you choose this path at 3rd level, you gain the ability to use {@item spiked armor|scag} as a weapon.",
-											"While you are wearing {@item spiked armor|scag} and are raging, you can use a bonus action to make one melee weapon attack with your armor spikes at a target within 5 feet of you. If the attack hits, the spikes deal 1d4 piercing damage. You use your Strength modifier for the attack and damage rolls.",
-											"Additionally, when you use the Attack action to grapple a creature, the target takes 3 piercing damage if your grapple check succeeds."
+											"While you are wearing {@item spiked armor|scag} and are raging, you can use a bonus action to make one melee weapon attack with your armor spikes at a target within 5 feet of you. If the attack hits, the spikes deal {@dice 1d4} piercing damage. You use your Strength modifier for the attack and damage rolls.",
+											"Additionally, when you use the {@action Attack} action to grapple a creature, the target takes 3 piercing damage if your grapple check succeeds."
 										]
 									}
 								]
@@ -745,7 +760,7 @@
 										"type": "entries",
 										"name": "Reckless Abandon",
 										"entries": [
-											"Beginning at 6th level, when you use Reckless Attack while raging, you also gain temporary hit points equal to your Constitution modifier (minimum of 1). They vanish if any of them are left when your rage ends."
+											"Beginning at 6th level, when you use Reckless {@action Attack} while raging, you also gain temporary hit points equal to your Constitution modifier (minimum of 1). They vanish if any of them are left when your rage ends."
 										]
 									}
 								]
@@ -758,7 +773,7 @@
 										"type": "entries",
 										"name": "Battlerager Charge",
 										"entries": [
-											"Beginning at 10th level, you can take the Dash action as a bonus action while you are raging."
+											"Beginning at 10th level, you can take the {@action Dash} action as a bonus action while you are raging."
 										]
 									}
 								]
@@ -795,7 +810,7 @@
 										"type": "entries",
 										"name": "Ancestral Protectors",
 										"entries": [
-											"Starting when you choose this path at 3rd level, spectral warriors appear when you rage. These warriors distract a foe you designate and hinder its attempts to evade you. While you're raging, you can use a bonus action on your turn to choose one creature you can see within 5 feet of you. Until the start of your next turn or until your rage ends, the chosen creature has disadvantage on any attack roll that doesn't target you, and if the creature takes the Disengage action within 5 feet of you, its speed is halved until the end of its turn."
+											"Starting when you choose this path at 3rd level, spectral warriors appear when you rage. These warriors distract a foe you designate and hinder its attempts to evade you. While you're raging, you can use a bonus action on your turn to choose one creature you can see within 5 feet of you. Until the start of your next turn or until your rage ends, the chosen creature has disadvantage on any attack roll that doesn't target you, and if the creature takes the {@action Disengage} action within 5 feet of you, its speed is halved until the end of its turn."
 										]
 									}
 								]
@@ -834,7 +849,7 @@
 										"type": "entries",
 										"name": "Vengeful Ancestors",
 										"entries": [
-											"At 14th level, your ancestral spirits grow powerful enough to strike your foes. When you or an ally you can see within 30 feet of you is damaged by a melee attack while you're raging, you can use your reaction to cause the attacker to take 2d8 force damage from the spirits."
+											"At 14th level, your ancestral spirits grow powerful enough to strike your foes. When you or an ally you can see within 30 feet of you is damaged by a melee attack while you're raging, you can use your reaction to cause the attacker to take {@dice 2d8} force damage from the spirits."
 										]
 									}
 								]
@@ -871,7 +886,7 @@
 										"type": "entries",
 										"name": "Ancestral Shield",
 										"entries": [
-											"Beginning at 6th level, the guardian spirits that aid you can provide protection for your allies. If you are raging and a creature you can see within 30 feet of you takes damage, you can use your reaction and reduce that damage by 2d8. When you reach certain levels in this class, you can reduce the damage by more: by 3d8 at 10th level and by 4d8 at 14th level."
+											"Beginning at 6th level, the guardian spirits that aid you can provide protection for your allies. If you are raging and a creature you can see within 30 feet of you takes damage, you can use your reaction and reduce that damage by {@dice 2d8}. When you reach certain levels in this class, you can reduce the damage by more: by {@dice 3d8} at 10th level and by {@dice 4d8} at 14th level."
 										]
 									}
 								]
@@ -940,7 +955,7 @@
 														"type": "entries",
 														"name": "Sea",
 														"entries": [
-															"At the end of each of your turns, you can choose a creature in your aura other than yourself. The target must make a Dexterity saving throw against a DC equal to 8 + your proficiency bonus + your Constitution modifier. The target takes 2d6 lightning damage on a failed save, and half as much damage on a successful one. This damage increases to 3d6 at 10th level and to 4d6 at 15th level."
+															"At the end of each of your turns, you can choose a creature in your aura other than yourself. The target must make a Dexterity saving throw against a DC equal to 8 + your proficiency bonus + your Constitution modifier. The target takes {@dice 2d6} lightning damage on a failed save, and half as much damage on a successful one. This damage increases to {@dice 3d6} at 10th level and to {@dice 4d6} at 15th level."
 														]
 													}
 												]
@@ -1090,7 +1105,7 @@
 										"type": "entries",
 										"name": "Divine Fury",
 										"entries": [
-											"Starting when you choose this path at 3rd level, you can channel divine fury when you start to rage. If you do so, you become cloaked in an aura of divine power until the rage ends. At the end of each of your turns for that duration, each creature within 5 feet of you takes damage equal to 1d6 + half your barbarian level. The damage is necrotic or radiant; you choose the type of damage when you gain this feature."
+											"Starting when you choose this path at 3rd level, you can channel divine fury when you start to rage. If you do so, you become cloaked in an aura of divine power until the rage ends. At the end of each of your turns for that duration, each creature within 5 feet of you takes damage equal to {@dice 1d6} + half your barbarian level. The damage is necrotic or radiant; you choose the type of damage when you gain this feature."
 										]
 									},
 									{
@@ -1174,8 +1189,8 @@
 										"type": "entries",
 										"name": "Spirit Shield",
 										"entries": [
-											"Beginning at 6th level, the guardian spirits that aid you can provide supernatural protection to those you defend. If you are raging and another creature you can see within 30 feet of you takes damage, you can use your reaction to reduce that damage by 2d6.",
-											"When you reach certain levels in this class, you can reduce the damage by more: by 3d6 at 10th level and by 4d6 at 14th level."
+											"Beginning at 6th level, the guardian spirits that aid you can provide supernatural protection to those you defend. If you are raging and another creature you can see within 30 feet of you takes damage, you can use your reaction to reduce that damage by {@dice 2d6}.",
+											"When you reach certain levels in this class, you can reduce the damage by more: by {@dice 3d6} at 10th level and by {@dice 4d6} at 14th level."
 										]
 									}
 								]
@@ -1242,7 +1257,7 @@
 														"type": "entries",
 														"name": "Sea",
 														"entries": [
-															"When this effect is activated, you can choose one other creature you can see in your aura. The target must make a Dexterity saving throw. The target takes 1d6 lightning damage on a failed save, or half as much damage on a successful one. The damage increases when you reach certain levels in this class, increasing to 2d6 at 10th level, 3d6 at 15th level, and 4d6 at 20th level."
+															"When this effect is activated, you can choose one other creature you can see in your aura. The target must make a Dexterity saving throw. The target takes {@dice 1d6} lightning damage on a failed save, or half as much damage on a successful one. The damage increases when you reach certain levels in this class, increasing to {@dice 2d6} at 10th level, {@dice 3d6} at 15th level, and {@dice 4d6} at 20th level."
 														]
 													},
 													{
@@ -1367,7 +1382,7 @@
 										"type": "entries",
 										"name": "Divine Fury",
 										"entries": [
-											"Starting when you choose this path at 3rd level, you can channel divine fury into your weapon strikes. While you're raging, the first creature you hit on each of your turns with a weapon attack takes extra damage equal to 1d6 + half your barbarian level. The extra damage is necrotic or radiant; you choose the type of damage when you gain this feature."
+											"Starting when you choose this path at 3rd level, you can channel divine fury into your weapon strikes. While you're raging, the first creature you hit on each of your turns with a weapon attack takes extra damage equal to {@dice 1d6} + half your barbarian level. The extra damage is necrotic or radiant; you choose the type of damage when you gain this feature."
 										]
 									},
 									{
@@ -1428,247 +1443,294 @@
 			],
 			"fluff": [
 				{
-					"type": "quote",
 					"entries": [
-						"I have witnessed the indomitable performance of barbarians on the field of battle, and it makes me wonder what force lies at the heart of their rage."
+						"A tall human tribesman strides through a blizzard, draped in fur and hefting his axe. He laughs as he charges toward the frost giant who dared poach his people's elk herd.",
+						"A half-orc snarls at the latest challenger to her authority over their savage tribe, ready to break his neck with her bare hands as she did to the last six rivals.",
+						"Frothing at the mouth, a dwarf slams his helmet into the face of his drow foe, then turns to drive his armored elbow into the gut of another.",
+						"These barbarians, different as they might be, are defined by their rage: unbridled, unquenchable, and unthinking fury. More than a mere emotion, their anger is the ferocity of a cornered predator, the unrelenting assault of a storm, the churning turmoil of the sea.",
+						"For some, their rage springs from a communion with fierce animal spirits. Others draw from a roiling reservoir of anger at a world full of pain. For every barbarian, rage is a power that fuels not just a battle frenzy but also uncanny reflexes, resilience, and feats of strength.",
+						{
+							"type": "entries",
+							"name": "Primal Instinct",
+							"entries": [
+								"People of towns and cities take pride in how their civilized ways set them apart from animals, as if denying one's own nature was a mark of superiority. To a barbarian, though, civilization is no virtue, but a sign of weakness. The strong embrace their animal nature\u2014keen instincts, primal physicality, and ferocious rage. Barbarians are uncomfortable when hedged in by walls and crowds. They thrive in the wilds of their homelands: the tundra, jungle, or grasslands where their tribes live and hunt.",
+								"Barbarians come alive in the chaos of combat. They can enter a berserk state where rage takes over, giving them superhuman strength and resilience. A barbarian can draw on this reservoir of fury only a few times without resting, but those few rages are usually sufficient to defeat whatever threats arise."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "A Life of Danger",
+							"entries": [
+								"Not every member of the tribes deemed \"barbarians\" by scions of civilized society has the barbarian class. A true barbarian among these people is as uncommon as a skilled fighter in a town, and he or she plays a similar role as a protector of the people and a leader in times of war. Life in the wild places of the world is fraught with peril: rival tribes, deadly weather, and terrifying monsters. Barbarians charge headlong into that danger so that their people don't have to.",
+								"Their courage in the face of danger makes barbarians perfectly suited for adventuring. Wandering is often a way of life for their native tribes, and the rootless life of the adventurer is little hardship for a barbarian. Some barbarians miss the close-knit family structures of the tribe, but eventually find them replaced by the bonds formed among the members of their adventuring parties."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Barbarian",
+							"entries": [
+								"When creating a barbarian character, think about where your character comes from and his or her place in the world. Talk with your DM about an appropriate origin for your barbarian. Did you come from a distant land, making you a stranger in the area of the campaign? Or is the campaign set in a rough-and-tumble frontier where barbarians are common?",
+								"What led you to take up the adventuring life? Were you lured to settled lands by the promise of riches? Did you join forces with soldiers of those lands to face a shared threat? Did monsters or an invading horde drive you out of your homeland, making you a rootless refugee? Perhaps you were a prisoner of war, brought in chains to \"civilized\" lands and only now able to win your freedom. Or you might have been cast out from your people because of a crime you committed, a taboo you violated, or a coup that removed you from a position of authority.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"You can make a barbarian quickly by following these suggestions. First, put your highest ability score in Strength, followed by Constitution. Second, choose the {@background outlander} background."
+									]
+								}
+							]
+						}
 					],
-					"by": "Seret, archwizard"
-				},
-				"The anger felt by a normal person resembles the rage of a barbarian in the same way that a gentle breeze is akin to a furious thunderstorm. The barbarian's driving force comes from a place that transcends mere emotion, making its manifestation all the more terrible. Whether the impetus for the fury comes entirely from within or from forging a link with a spirit animal, a raging barbarian becomes able to perform supernatural feats of strength and endurance. The outburst is temporary, but while it lasts, it takes over body and mind, driving the barbarian on despite peril and injury, until the last enemy falls.",
-				"It can be tempting to play a barbarian character that is a straightforward application of the classic archetype\u2014a brute, and usually a dimwitted one at that, who rushes in where others fear to tread. But not all the barbarians in the world are cut from that cloth, so you can certainly put your own spin on things. Either way, consider adding some flourishes to make your barbarian stand out from all others; see the following sections for some ideas.",
-				{
-					"type": "entries",
-					"name": "Personal Totems",
-					"entries": [
-						"Barbarians tend to travel light, carrying little in the way of personal effects or other unnecessary gear. The few possessions they do carry often include small items that have special significance. A personal totem is significant because it has a mystical origin or is tied to an important moment in the character's life\u2014perhaps a remembrance from the barbarian's past or a harbinger of what lies ahead.",
-						"A personal totem of this sort might be associated with a barbarian's spirit animal, or might actually be the totem object for the animal, but such a connection is not essential. One who has a bear totem spirit, for instance, could still carry an eagle's feather as a personal totem.",
-						"Consider creating one or more personal totems for your character\u2014objects that hold a special link to your character's past or future. Think about how a totem might affect your character's actions.",
-						{
-							"type": "table",
-							"caption": "Personal Totems",
-							"colLabels": [
-								"{@dice d6}",
-								"Totem"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"A tuft of fur from a solitary wolf that you befriended during a hunt"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Three eagle feathers given to you by a wise shaman, who told you they would play a role in determining your fate"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"A necklace made from the claws of a young cave bear that you slew singlehandedly as a child"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"A small leather pouch holding three stones that represent your ancestors"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"A few small bones from the first beast you killed, tied together with colored wool"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"An egg-sized stone in the shape of your spirit animal that appeared one day in your belt pouch"
-								]
-							]
-						}
-					]
+					"source": "PHB",
+					"page": 46
 				},
 				{
-					"type": "entries",
-					"name": "Tattoos",
 					"entries": [
-						"The members of many barbarian clans decorate their bodies with tattoos, each of which represents a significant moment in the life of the bearer or the bearer's ancestors, or which symbolizes a feeling or an attitude. As with personal totems, a barbarian's tattoos might or might not be related to an animal spirit.",
-						"Each tattoo a barbarian displays contributes to that individual's identity. If your character wears tattoos, what do they look like, and what do they represent?",
 						{
-							"type": "table",
-							"caption": "Tattoos",
-							"colLabels": [
-								"{@dice d6}",
-								"Tattoo"
+							"type": "quote",
+							"entries": [
+								"I have witnessed the indomitable performance of barbarians on the field of battle, and it makes me wonder what force lies at the heart of their rage."
 							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"The wings of an eagle are spread wide across your upper back."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Etched on the backs of your hands are the paws of a cave bear."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"The symbols of your clan are displayed in viny patterns along your arms."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"The antlers of an elk are inked across your back."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Images of your spirit animal are tattooed along your weapon arm and hand."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"The eyes of a wolf are marked on your back to help you see and ward off evil spirits."
-								]
+							"by": "Seret, archwizard"
+						},
+						"The anger felt by a normal person resembles the rage of a barbarian in the same way that a gentle breeze is akin to a furious thunderstorm. The barbarian's driving force comes from a place that transcends mere emotion, making its manifestation all the more terrible. Whether the impetus for the fury comes entirely from within or from forging a link with a spirit animal, a raging barbarian becomes able to perform supernatural feats of strength and endurance. The outburst is temporary, but while it lasts, it takes over body and mind, driving the barbarian on despite peril and injury, until the last enemy falls.",
+						"It can be tempting to play a barbarian character that is a straightforward application of the classic archetype\u2014a brute, and usually a dimwitted one at that, who rushes in where others fear to tread. But not all the barbarians in the world are cut from that cloth, so you can certainly put your own spin on things. Either way, consider adding some flourishes to make your barbarian stand out from all others; see the following sections for some ideas.",
+						{
+							"type": "entries",
+							"name": "Personal Totems",
+							"entries": [
+								"Barbarians tend to travel light, carrying little in the way of personal effects or other unnecessary gear. The few possessions they do carry often include small items that have special significance. A personal totem is significant because it has a mystical origin or is tied to an important moment in the character's life\u2014perhaps a remembrance from the barbarian's past or a harbinger of what lies ahead.",
+								"A personal totem of this sort might be associated with a barbarian's spirit animal, or might actually be the totem object for the animal, but such a connection is not essential. One who has a bear totem spirit, for instance, could still carry an eagle's feather as a personal totem.",
+								"Consider creating one or more personal totems for your character\u2014objects that hold a special link to your character's past or future. Think about how a totem might affect your character's actions.",
+								{
+									"type": "table",
+									"caption": "Personal Totems",
+									"colLabels": [
+										"{@dice d6}",
+										"Totem"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"A tuft of fur from a solitary wolf that you befriended during a hunt"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Three eagle feathers given to you by a wise shaman, who told you they would play a role in determining your fate"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"A necklace made from the claws of a young cave bear that you slew singlehandedly as a child"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"A small leather pouch holding three stones that represent your ancestors"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"A few small bones from the first beast you killed, tied together with colored wool"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"An egg-sized stone in the shape of your spirit animal that appeared one day in your belt pouch"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Tattoos",
+							"entries": [
+								"The members of many barbarian clans decorate their bodies with tattoos, each of which represents a significant moment in the life of the bearer or the bearer's ancestors, or which symbolizes a feeling or an attitude. As with personal totems, a barbarian's tattoos might or might not be related to an animal spirit.",
+								"Each tattoo a barbarian displays contributes to that individual's identity. If your character wears tattoos, what do they look like, and what do they represent?",
+								{
+									"type": "table",
+									"caption": "Tattoos",
+									"colLabels": [
+										"{@dice d6}",
+										"Tattoo"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"The wings of an eagle are spread wide across your upper back."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Etched on the backs of your hands are the paws of a cave bear."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"The symbols of your clan are displayed in viny patterns along your arms."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"The antlers of an elk are inked across your back."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Images of your spirit animal are tattooed along your weapon arm and hand."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"The eyes of a wolf are marked on your back to help you see and ward off evil spirits."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Superstitions",
+							"entries": [
+								"Barbarians vary widely in how they understand life. Some follow gods and look for guidance from those deities in the cycles of nature and the animals they encounter. These barbarians believe that spirits inhabit the plants and animals of the world, and the barbarians look to them for omens and power.",
+								"Other barbarians trust only in the blood that runs in their veins and the steel they hold in their hands. They have no use for the invisible world, instead relying on their senses to hunt and survive like the wild beasts they emulate.",
+								"Both of these attitudes can give rise to superstitions. These beliefs are often passed down within a family or shared among the members of a clan or a hunting group.",
+								"If your barbarian character has any superstitions, were they ingrained in you by your family, or are they the result of personal experience?",
+								{
+									"type": "table",
+									"caption": "Superstition",
+									"colLabels": [
+										"{@dice d6}",
+										"Superstition"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"If you disturb the bones of the dead, you inherit all the troubles that plagued them in life."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Never trust a wizard. They're all devils in disguise, especially the friendly ones."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Dwarves have lost their spirits, and are almost like the undead. That's why they live underground."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Magical things bring trouble. Never sleep with a magic object within ten feet of you."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"When you walk through a graveyard, be sure to wear silver, or a ghost might jump into your body."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"If an elf looks you in the eyes, she's trying to read your thoughts."
+										]
+									]
+								}
 							]
 						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Superstitions",
-					"entries": [
-						"Barbarians vary widely in how they understand life. Some follow gods and look for guidance from those deities in the cycles of nature and the animals they encounter. These barbarians believe that spirits inhabit the plants and animals of the world, and the barbarians look to them for omens and power.",
-						"Other barbarians trust only in the blood that runs in their veins and the steel they hold in their hands. They have no use for the invisible world, instead relying on their senses to hunt and survive like the wild beasts they emulate.",
-						"Both of these attitudes can give rise to superstitions. These beliefs are often passed down within a family or shared among the members of a clan or a hunting group.",
-						"If your barbarian character has any superstitions, were they ingrained in you by your family, or are they the result of personal experience?",
-						{
-							"type": "table",
-							"caption": "Superstition",
-							"colLabels": [
-								"{@dice d6}",
-								"Superstition"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"If you disturb the bones of the dead, you inherit all the troubles that plagued them in life."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Never trust a wizard. They're all devils in disguise, especially the friendly ones."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"Dwarves have lost their spirits, and are almost like the undead. That's why they live underground."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"Magical things bring trouble. Never sleep with a magic object within ten feet of you."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"When you walk through a graveyard, be sure to wear silver, or a ghost might jump into your body."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"If an elf looks you in the eyes, she's trying to read your thoughts."
-								]
-							]
-						}
-					]
+					],
+					"source": "XGE",
+					"page": 8
 				}
-			],
-			"fluffPage": 8
+			]
 		}
 	]
 }

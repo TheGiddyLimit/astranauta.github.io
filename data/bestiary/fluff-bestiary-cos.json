@@ -136,7 +136,7 @@
 					"name": "Flying Broom",
 					"type": "entries",
 					"entries": [
-						"Some brooms of animated attack allow their creators to ride them, in which case they behave like typical brooms of flying. A broom of animated attack, however, can carry only half the weight that a broom of flying can (see chapter 7, \"Treasure,\" of the Dungeon Master's Guide )."
+						"Some brooms of animated attack allow their creators to ride them, in which case they behave like typical brooms of flying. A broom of animated attack, however, can carry only half the weight that a broom of flying can (see chapter 7, \"Treasure,\" of the Dungeon Master's Guide)."
 					]
 				}
 			]
@@ -735,17 +735,15 @@
 					"entries": [
 						{
 							"type": "table",
-							"caption": "",
-							"colLabels": [],
+							"colLabels": [
+								"d20",
+								"Creatures"
+							],
 							"colStyles": [
-								"col-xs-6",
-								"col-xs-6"
+								"col-6",
+								"col-6"
 							],
 							"rows": [
-								[
-									"d20",
-									"Creatures"
-								],
 								[
 									"1\u20133",
 									"1d4 + 2 dire wolves"
@@ -788,23 +786,6 @@
 						"The effect of the protection afforded by the Heart of Sorrow can be chilling to behold, as damage to Strahd is quickly undone. For example, a critical hit might dislocate Strahd's jaw, but only for a moment; then the vampire's jaw quickly resets itself.",
 						"The ability of the Heart of Sorrow to absorb damage is suppressed if it or Strahd is fully within an antimagic field."
 					]
-				},
-				{
-					"type": "entries",
-					"name": "Lair Actions",
-					"entries": [
-						"While Strahd is in Castle Ravenloft, he can take lair actions as long as he isn't incapacitated.",
-						"On initiative count 20 (losing initiative ties), Strahd can take one of the following lair action options, or forgo using any of them in that round:",
-						{
-							"type": "list",
-							"items": [
-								"Until initiative count 20 of the next round, Strahd can pass through solid walls, doors, ceilings, and floors as if they weren't there.",
-								"Strahd targets any number of doors and windows that he can see, causing each one to either open or close as he wishes. Closed doors can be magically locked (needing a successful DC 20 Strength check to force open) until Strahd chooses to end the effect, or until Strahd uses this lair action again.",
-								"Strahd summons the angry spirit of one who has died in the castle. The apparition appears next to a hostile creature that Strahd can see, makes an attack against that creature, and then disappears. The apparition has the statistics of a specter.",
-								"Strahd targets one Medium or smaller creature that casts a shadow. The target's shadow must be visible to Strahd and within 30 feet of him. If the target fails a DC 17 Charisma saving throw, its shadow detaches from it and becomes a shadow that obeys Strahd's commands, acting on initiative count 20. A greater restoration spell or a remove curse spell cast on the target restores its natural shadow, but only if its undead shadow has been destroyed."
-							]
-						}
-					]
 				}
 			]
 		},
@@ -844,12 +825,12 @@
 				{
 					"type": "entries",
 					"entries": [
-						"Blights (as described in the Monster Manual ) are evil, ambulatory plant creatures, and a tree blight is a particularly enormous variety. It looks like a dead tree or treant, 30 feet tall, with spongy wooden flesh, thorny branches, and rubbery roots that trail behind it. It has blood for sap and is so saturated with blood that it doesn't catch fire easily.",
+						"Blights (as described in the Monster Manual) are evil, ambulatory plant creatures, and a tree blight is a particularly enormous variety. It looks like a dead tree or treant, 30 feet tall, with spongy wooden flesh, thorny branches, and rubbery roots that trail behind it. It has blood for sap and is so saturated with blood that it doesn't catch fire easily.",
 						{
 							"name": "Vicious Carnivore",
 							"type": "entries",
 							"entries": [
-								"A tree blight feeds on warmblooded prey and takes perverse delight in causing carnage. It strikes with its heavy branches and crushes prey to death with its roots. It can open its gaping, tooth-filled mouth and bite a creature caught in its roots. The roots of a tree blight can be severed, though cutting them causes the blight no harm."
+								"A tree blight feeds on warm-blooded prey and takes perverse delight in causing carnage. It strikes with its heavy branches and crushes prey to death with its roots. It can open its gaping, tooth-filled mouth and bite a creature caught in its roots. The roots of a tree blight can be severed, though cutting them causes the blight no harm."
 							]
 						},
 						{
@@ -939,9 +920,14 @@
 					"type": "entries",
 					"name": "Revenant",
 					"entries": [
-						"A revenant forms from the soul of a mortal who met a cruel and undeserving fate. It claws its way back into the world to seek revenge against the one who wronged it. The revenant reclaims its mortal body and superficially resembles a zombie. However, instead of lifeless eyes, a revenant's eyes burn with resolve and flare in the presence of its adversary. If the revenant's original body was destroyed or is otherwise unavailable, the spirit of the revenant enters another humanoid corpse.",
-						"Regardless of the body the revenant uses as a vessel, its adversary always recognizes the revenant for what it truly is.",
-						"Hunger for Revenge. A revenant has only one year to exact revenge. When its adversary dies, or if the revenant fails to kill its adversary before its time runs out, it crumbles to dust and its soul fades into the afterlife. If its foe is too powerful for the revenant to destroy on its own,it seeks worthy allies to help it fulfill its quest.",
+						"A revenant forms from the soul of a mortal who met a cruel and undeserving fate. It claws its way back into the world to seek revenge against the one who wronged it. The revenant reclaims its mortal body and superficially resembles a zombie. However, instead of lifeless eyes, a revenant's eyes burn with resolve and flare in the presence of its adversary. If the revenant's original body was destroyed or is otherwise unavailable, the spirit of the revenant enters another humanoid corpse. Regardless of the body the revenant uses as a vessel, its adversary always recognizes the revenant for what it truly is.",
+						{
+							"type": "entries",
+							"name": "Hunger for Revenge",
+							"entries": [
+								"A revenant has only one year to exact revenge. When its adversary dies, or if the revenant fails to kill its adversary before its time runs out, it crumbles to dust and its soul fades into the afterlife. If its foe is too powerful for the revenant to destroy on its own, it seeks worthy allies to help it fulfill its quest."
+							]
+						},
 						{
 							"name": "Divine Justice",
 							"type": "entries",
@@ -953,9 +939,7 @@
 							"name": "Undead Nature",
 							"type": "entries",
 							"entries": [
-								"A revenant doesn't require air, food, drink, or sleep.",
-								"Variant: Revenants with Spells and Weapons",
-								"Revenants that were spellcasters before they died might retain some or all of their spellcasting capabilities. Similarly, revenants that wore armor and wielded weapons in life might continue to do so."
+								"A revenant doesn't require air, food, drink, or sleep."
 							]
 						}
 					]

@@ -11,34 +11,98 @@
 	<title>CR Calc - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
+
+	<style>
+		.crc__reset {
+			min-width: 10rem;
+			display: block;
+			margin: 0 auto;
+		}
+
+		.crc__row {
+			display: flex;
+			align-items: center;
+			height: 30px;
+			justify-content: space-between;
+		}
+
+		.crc__row label {
+			margin-bottom: 0;
+		}
+
+		.crc__row input[type=checkbox] {
+			margin: 0;
+		}
+
+		.crc__hdr_mon_features {
+			font-weight: bold;
+		}
+
+		.crc__mon_feature {
+			width: 100%;
+			font-weight: initial;
+			cursor: pointer;
+			font-size: 0.8em;
+			display: flex;
+			align-items: center;
+			margin-bottom: 0;
+			padding: 4px 0;
+		}
+
+		.crc__mon_feature_wrp_cb {
+			display: flex;
+			white-space: nowrap;
+			justify-content: space-around;
+			align-items: center;
+		}
+
+		.crc__mon_feature input[type=number] {
+			width: 3em;
+			vertical-align: middle;
+			text-align: right;
+		}
+
+		.crc__mon_feature input[type=checkbox] {
+			margin: 0;
+		}
+
+		.crc__mon_feature:nth-child(even) {
+			background: lightgrey;
+		}
+
+		.night-mode .crc__mon_feature:nth-child(even) {
+			background: rgba(0, 0, 0, 0.31);
+		}
+	</style>
 </head>
 
 <body>
-<header class="hidden-xs hidden-sm">
+<header class="hidden-xs hidden-sm page__header">
 	<div class="container">
 
-		<h1>CR Calculator</h1>
-		<p>Put in the values and press calculate.</p>
+		<h1 class="page__title">CR Calculator</h1>
+		<p class="page__subtitle">Easily build custom creatures.</p>
 	</div>
 </header>
-<nav class="container" id="navigation">
+<nav class="container page__nav" id="navigation">
 	<ul class="nav nav-pills" id="navbar">
 	</ul>
 </nav>
-<main class="container bodyContent">
+<main class="container">
 
 	<form id="crcalc" autocomplete="off">
 		<div class="row">
 			<div class="col-sm-6">
 				<div id="croutput">Waiting for calculation...</div>
 				<br/>
-				<input type="button" id="reset" value="Reset">
+				<button class="btn btn-sm btn-danger crc__reset" id="crcalc_reset" type="button">Reset</button>
 				<h4>Instructions</h4>
 				<ol>
 					<li>Enter expected CR of creature.</li>
@@ -56,16 +120,19 @@
 					</small>
 				</p>
 				<hr>
-				<label for="expectedcr" style="font-size: 1em;">Expected CR:
-					<span class="explanation">
+				<div class="crc__row">
+					<label for="expectedcr" class="help--subtle" style="font-size: 1em;">
+						Expected CR:
+						<span class="explanation">
 							CR calculation begins by determining what you want the final CR of the monster to be.
 						</span>
-				</label>
-				<span class="inputwrap">
+					</label>
+					<span class="inputwrap">
 						<input type="text" id="expectedcr" value="0" size="2">
-					</span><br/>
+					</span>
+				</div>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-6 text-align-center">
 				<h4>Monster Statistics by Challenge Rating</h4>
 				<table id="msbcr">
 					<tr>
@@ -84,52 +151,75 @@
 		<hr>
 		<div class="row">
 			<div class="col-sm-6">
-				<input type="button" id="calculate" value="Calculate" style="display: none;">
 				<h4>Defensive</h4>
-				<label for="hp">Hit Points:
-					<span class="explanation">
+
+				<div class="crc__row">
+					<label for="hp" class="help--subtle">
+						Hit Points:
+						<span class="explanation">
 							A creature's hit points determine its defensive CR before it is adjusted by its AC.
 						</span>
-				</label>
-				<input type="number" id="hp" placeholder="Average HP" value="1" min="0" max="850"><br/>
-				<label for="ac">Armor Class:
-					<span class="explanation">
+					</label>
+					<input type="number" id="hp" placeholder="Average HP" value="1" min="0" max="850">
+				</div>
+
+				<div class="crc__row">
+					<label for="ac" class="help--subtle">
+						Armor Class:
+						<span class="explanation">
 							A creature's AC adjusts its defensive CR.
 						</span>
-				</label>
-				<input type="number" id="ac" placeholder="AC" value="13" min="1" max="40">
+					</label>
+					<input type="number" id="ac" placeholder="AC" value="13" min="1" max="40">
+				</div>
 			</div>
+
 			<div class="col-sm-6">
 				<h4>Offensive</h4>
-				<label for="dpr">Damage Per Round:
-					<span class="explanation">
+
+				<div class="crc__row">
+					<label for="dpr" class="help--subtle">
+						Damage Per Round:
+						<span class="explanation">
 							A creature's damage per round (DPR) determines its offensive CR, which is offset by its attack bonus or save DC. DPR is determined by averaging its maximum damage output (taking the average of dice rolls, ignoring critics and accuracy) over three rounds. Areas of effect are treated as though they hit two creatures, which fail any involved saving throws.
 						</span>
-				</label>
-				<input type="number" id="dpr" placeholder="Average DPR" value="1" min="0" max="320"><br/>
-				<label for="attackbonus">Attack Bonus/Save DC:
-					<span class="explanation">
+					</label>
+					<input type="number" id="dpr" placeholder="Average DPR" value="1" min="0" max="320">
+				</div>
+
+				<div class="crc__row">
+					<label for="attackbonus" class="help--subtle">
+						Attack Bonus/Save DC:
+						<span class="explanation">
 							A creature's attack bonus or save DC adjusts its offensive CR.
 						</span>
-				</label>
-				<input type="number" id="attackbonus" placeholder="Attack Bonus" value="3" min="-5" max="19"><br/>
-				<label for="saveinstead">Use Saves?
-					<span class="explanation">
+					</label>
+					<input type="number" id="attackbonus" placeholder="Attack Bonus" value="3" min="-5" max="19">
+				</div>
+
+				<div class="crc__row">
+					<label for="saveinstead" class="help--subtle">
+						Use Saves?
+						<span class="explanation">
 							If a creature's damage output is more dependent on save-based abilities, its save DC is used for adjusting its offensive CR instead of its attack bonus.
 						</span>
-				</label>
-				<input type="checkbox" id="saveinstead" value="0">
+					</label>
+					<input type="checkbox" id="saveinstead" value="0">
+				</div>
 			</div>
 		</div>
 		<hr>
 		<div class="row">
 			<div class="col-sm-6">
-				<label for="size">Size:
-					<span class="explanation">
+
+				<div class="crc__row">
+					<label for="size" class="help--subtle">
+						Size:
+						<span class="explanation">
 							A creature's size determines the size of its individual hit dice.
 						</span>
-				</label>
-				<span class="inputwrap">
+					</label>
+					<span class="inputwrap">
 						<select id="size">
 							<option value="Tiny">Tiny</option>
 							<option value="Small">Small</option>
@@ -138,60 +228,86 @@
 							<option value="Huge">Huge</option>
 							<option value="Gargantuan">Gargantuan</option>
 						</select>
-					</span><br/>
-				<label for="hd">Hit Dice:
-					<span class="explanation">
+					</span>
+				</div>
+
+				<div class="crc__row">
+					<label for="hd" class="help--subtle">
+						Hit Dice:
+						<span class="explanation">
 							Unlike player characters, the number of hit dice an NPC gets is completely arbitrary. Adjust this amount to taste.
 						</span>
-				</label>
-				<span class="inputwrap">
+					</label>
+					<span class="inputwrap">
 						<input type="number" id="hd" value="1" min="1" max="999"><span id="hdval">d8</span>
-					</span><br/>
-				<label for="con">Constitution:
-					<span class="explanation">
+					</span>
+				</div>
+
+				<div class="crc__row">
+					<label for="con" class="help--subtle">
+						Constitution:
+						<span class="explanation">
 							A creature's HP is increases by its Constitution modifier for each hit die it has.
 						</span>
-				</label>
-				<input type="number" id="con" value="10" min="1" max="30"><br/>
-				<input type="button" id="calculatehp" value="Calculate Average HP" style="display: none;">
+					</label>
+					<input type="number" id="con" value="10" min="1" max="30">
+				</div>
+
 			</div>
+
 			<div class="col-sm-6">
-				<label for="vulnerabilities">Vulnerabilities:
-					<span class="explanation">
+
+				<div class="crc__row">
+					<label for="vulnerabilities" class="help--subtle">
+						Vulnerabilities:
+						<span class="explanation">
 							If a creature is vulnerable to common damage types (especially bludgeoning, piercing, and slashing damage), its effective hit points are halved.
 						</span>
-				</label>
-				<input type="checkbox" id="vulnerabilities"><br/>
-				<label for="resistances">Resistances/Immunities:
-					<span class="explanation">
+					</label>
+					<input type="checkbox" id="vulnerabilities">
+				</div>
+
+				<div class="crc__row">
+					<label for="resistances" class="help--subtle">
+						Resistances/Immunities:
+						<span class="explanation">
 							A monster's HP is multiplied based on the resistances and immunities has to common damage types (non-magical bludgeoning, piercing, and slashing chief among them).
 						</span>
-				</label>
-				<span class="inputwrap">
+					</label>
+					<span class="inputwrap">
 						<select id="resistances">
 							<option value="0" selected>None</option>
 							<option value="res">Resistances</option>
 							<option value="imm">Immunities</option>
 						</select>
-					</span><br/>
-				<label for="flying">Flying at CRs 0-9:
-					<span class="explanation">
+					</span>
+				</div>
+
+				<div class="crc__row">
+					<label for="flying" class="help--subtle">
+						Flying at CRs 0-9:
+						<span class="explanation">
 							A monster's effective AC is increased by 2 if it can fly and deal damage at range, though only if its expected challenge rating is 10 or lower.
 						</span>
-				</label>
-				<input type="checkbox" id="flying"><br/>
-				<label for="saveprofs">Save Proficiencies:
-					<span class="explanation">
+					</label>
+					<input type="checkbox" id="flying">
+				</div>
+
+				<div class="crc__row">
+					<label for="saveprofs" class="help--subtle">
+						Save Proficiencies:
+						<span class="explanation">
 							Increase a creature's effective AC by 2 if it has 3 or 4 saving throw proficiencies, or by 4 if it has 5 or 6.
 						</span>
-				</label>
-				<span class="inputwrap">
+					</label>
+					<span class="inputwrap">
 						<select id="saveprofs">
 							<option value="0" selected>0-2</option>
 							<option value="2">3-4</option>
 							<option value="4">5-6</option>
 						</select>
-					</span><br/>
+					</span>
+				</div>
 			</div>
 		</div>
 	</form>
@@ -199,14 +315,15 @@
 	<div class="row">
 		<div class="col-sm-12" id="monsterfeatures">
 			<h4>Monster Features</h4>
-			<table>
-				<tr>
-					<th>Use?</th>
-					<th>Name</th>
-					<th style="white-space: nowrap">Example Monster</th>
-					<th>Feature Description</th>
-				</tr>
-			</table>
+			<div class="row crc__hdr_mon_features">
+				<div class="col-1"></div>
+				<div class="col-2">Name</div>
+				<div class="col-2">Example Monster</div>
+				<div class="col-7">Feature Description</div>
+			</div>
+			<div class="crc__wrp_mon_features">
+				<!-- populate with JS -->
+			</div>
 			<p>
 				<small><em>Note: Not all monster features are covered here. The DMG has specific instructions on how to
 					manage other features.</em></small>
@@ -215,17 +332,19 @@
 	</div>
 	<hr>
 </main>
-<footer class="container">
-
-</footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/history.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/crcalculator.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
-<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>
 

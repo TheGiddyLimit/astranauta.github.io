@@ -2,10 +2,10 @@
 	"trap": [
 		{
 			"name": "Collapsing Roof",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				"This trap uses a trip wire to collapse the supports keeping an unstable section of a ceiling in place.",
-				"The trip wire is 3 inches off the ground and stretches between two support beams. The DC to spot the trip wire is 10. A successful DC 15 Dexterity check using thieves' tools disables the trip wire harmlessly. A character without thieves' tools can attempt this check with disadvantage using any edged weapon or edged tool. On a failed check, the trap triggers.",
+				"The trip wire is 3 inches off the ground and stretches between two support beams. The DC to spot the trip wire is 10. A successful DC 15 Dexterity check using {@item thieves' tools|phb} disables the trip wire harmlessly. A character without {@item thieves' tools|phb} can attempt this check with disadvantage using any edged weapon or edged tool. On a failed check, the trap triggers.",
 				"Anyone who inspects the beams can easily determine that they are merely wedged in place. As an action, a character can knock over a beam, causing the trap to trigger.",
 				"The ceiling above the trip wire is in bad repair, and anyone who can see it can tell that it's in danger of collapse.",
 				"When the trap is triggered, the unstable ceiling collapses. Any creature in the area beneath the unstable section must succeed on a DC 15 Dexterity saving throw, taking 22 ({@dice 4d10}) bludgeoning damage on a failed save, or half as much damage on a successful one. Once the trap is triggered, the floor of the area is filled with rubble and becomes difficult terrain."
@@ -15,7 +15,7 @@
 		},
 		{
 			"name": "Falling Net",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				"This trap uses a trip wire to release a net suspended from the ceiling.",
 				"The trip wire is 3 inches off the ground and stretches between two columns or trees. The net is hidden by cobwebs or foliage. The DC to spot the trip wire and net is 10. A successful DC 15 Dexterity check using thieves' tools breaks the trip wire harmlessly. A character without thieves' tools can attempt this check with disadvantage using any edged weapon or edged tool. On a failed check, the trap triggers.",
@@ -28,7 +28,7 @@
 		},
 		{
 			"name": "Fire-Breathing Statue",
-			"trapType": "MAG",
+			"trapHazType": "MAG",
 			"entries": [
 				"This trap is activated when an intruder steps on a hidden pressure plate, releasing a magical gout of flame from a nearby statue. The statue can be of anything, including a dragon or a wizard casting a spell.",
 				"The DC is 15 to spot the pressure plate, as well as faint scorch marks on the floor and walls. A spell or other effect that can sense the presence of magic, such as detect magic, reveals an aura of evocation magic around the statue.",
@@ -40,7 +40,7 @@
 		},
 		{
 			"name": "Pits",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				{
 					"type": "entries",
@@ -81,7 +81,7 @@
 		},
 		{
 			"name": "Poison Darts",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				"When a creature steps on a hidden pressure plate, poison-tipped darts shoot from spring-loaded or pressurized tubes cleverly embedded in the surrounding walls. An area might include multiple pressure plates, each one rigged to its own set of darts.",
 				"The tiny holes in the walls are obscured by dust and cobwebs, or cleverly hidden amid bas-reliefs, murals, or frescoes that adorn the walls. The DC to spot them is 15. With a successful DC 15 Intelligence (Investigation) check, a character can deduce the presence of the pressure plate from variations in the mortar and stone used to create it, compared to the surrounding floor. Wedging an iron spike or other object under the pressure plate prevents the trap from activating. Stuffing the holes with cloth or wax prevents the darts contained within from launching.",
@@ -92,19 +92,19 @@
 		},
 		{
 			"name": "Poison Needle",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				"A poisoned needle is hidden within a treasure chest's lock, or in something else that a creature might open. Opening the chest without the proper key causes the needle to spring out, delivering a dose of poison.",
 				"When the trap is triggered, the needle extends 3 inches straight out from the lock. A creature within range takes 1 piercing damage and 11 ({@dice 2d10}) poison damage, and must succeed on a DC 15 Constitution saving throw or be {@condition poisoned} for 1 hour.",
 				"A successful DC 20 Intelligence (Investigation) check allows a character to deduce the trap's presence from alterations made to the lock to accommodate the needle.",
-				"A successful DC 15 Dexterity check using thieves' tools disarms the trap, removing the needle from the lock. Unsuccessfully attempting to pick the lock triggers the trap."
+				"A successful DC 15 Dexterity check using {@item thieves' tools|phb} disarms the trap, removing the needle from the lock. Unsuccessfully attempting to pick the lock triggers the trap."
 			],
 			"source": "DMG",
 			"page": 123
 		},
 		{
 			"name": "Rolling Sphere",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				"When 20 or more pounds of pressure are placed on this trap's pressure plate, a hidden trapdoor in the ceiling opens, releasing a 10-foot-diameter rolling sphere of solid stone.",
 				"With a successful DC 15 Wisdom (Perception) check, a character can spot the trapdoor and pressure plate.",
@@ -119,7 +119,7 @@
 		},
 		{
 			"name": "Sphere of Annihilation",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				"Magical, impenetrable darkness fills the gaping mouth of a stone face carved into a wall. The mouth is 2 feet in diameter and roughly circular. No sound issues from it, no light can illuminate the inside of it, and any matter that enters it is instantly obliterated.",
 				"A successful DC 20 Intelligence (Arcana) check reveals that the mouth contains a sphere of annihilation that can't be controlled or moved. It is otherwise identical to a normal {@item sphere of annihilation}, as described in chapter 7, \"Treasure.\" Some versions of the trap include an enchantment placed on the stone face, such that specified creatures feel an overwhelming urge to approach it and crawl inside its mouth. This effect is otherwise like the sympathy aspect of the antipathy/sympathy spell.",
@@ -130,7 +130,7 @@
 		},
 		{
 			"name": "Bear Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 1,
 			"threat": 2,
 			"entries": [
@@ -140,17 +140,17 @@
 				"A creature that steps on the bear trap triggers it."
 			],
 			"effect": [
-				"Melee weapon attack: +8 to hit, triggering creature. Hit: 5 ({@dice 1d10}) piercing damage. This attack can't gain advantage or disadvantage. A creature hit by the trap has its speed reduced to 0. It can't move until it breaks free of the trap, which requires a successful DC 15 Strength check by the creature or another creature adjacent to the trap."
+				"Melee weapon attack: {@hit 8} to hit, triggering creature. Hit: 5 ({@dice 1d10}) piercing damage. This attack can't gain advantage or disadvantage. A creature hit by the trap has its speed reduced to 0. It can't move until it breaks free of the trap, which requires a successful DC 15 Strength check by the creature or another creature adjacent to the trap."
 			],
 			"countermeasures": [
-				"A successful DC 10 Wisdom (Perception) check reveals the trap. A successful DC 10 Dexterity check using thieves' tools disables it."
+				"A successful DC 10 Wisdom (Perception) check reveals the trap. A successful DC 10 Dexterity check using {@item thieves' tools|phb} disables it."
 			],
 			"source": "XGE",
 			"page": 113
 		},
 		{
 			"name": "Crossbow Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 1,
 			"threat": 2,
 			"entries": [
@@ -163,14 +163,14 @@
 				"The trap makes two attacks against the triggering creature. Ranged Weapon Attack +8 to hit, two attacks; Hit: 5 ({@dice 1d10}) piercing damage on a hit. This attack can't gain advantage or disadvantage."
 			],
 			"countermeasures": [
-				"A successful DC 15 Wisdom (Perception) check reveals the trip wire. A successful DC 15 Dexterity check using thieves' tools disables the trip wire, and a check with a total of 5 or lower triggers the trap."
+				"A successful DC 15 Wisdom (Perception) check reveals the trip wire. A successful DC 15 Dexterity check using {@item thieves' tools|phb} disables the trip wire, and a check with a total of 5 or lower triggers the trap."
 			],
 			"source": "XGE",
 			"page": 113
 		},
 		{
 			"name": "Falling Portcullis",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 1,
 			"threat": 1,
 			"entries": [
@@ -183,14 +183,14 @@
 				"An iron portcullis drops from the ceiling, blocking an exit or a passageway."
 			],
 			"countermeasures": [
-				"A successful DC 20 Wisdom (Perception) check reveals the pressure plate. A successful DC 20 Dexterity check using thieves' tools disables it, and a check with a total of 5 or lower triggers the trap."
+				"A successful DC 20 Wisdom (Perception) check reveals the pressure plate. A successful DC 20 Dexterity check using {@item thieves' tools|phb} disables it, and a check with a total of 5 or lower triggers the trap."
 			],
 			"source": "XGE",
 			"page": 113
 		},
 		{
 			"name": "Fiery Blast Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 2,
 			"threat": 2,
 			"entries": [
@@ -210,7 +210,7 @@
 		},
 		{
 			"name": "Net Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 1,
 			"threat": 2,
 			"entries": [
@@ -223,14 +223,14 @@
 				"A net covering a 10-foot-by-10-foot area centered on the trip wire falls to the floor as a bell rings. Any creature fully within this area must succeed on a DC 15 Dexterity saving throw or be restrained. A creature can use its action to make a DC 10 Strength check to try to free itself or another creature in the net. Dealing 5 slashing damage to the net (AC 10, 20hp) also frees a creature without harming the creature."
 			],
 			"countermeasures": [
-				"A successful DC 15 Wisdom (Perception) check reveals the trip wire and the net. A successful DC 15 Dexterity check using thieves' tools disables the trip wire without causing the net to drop or the bell to ring; failing the check causes the trap to activate."
+				"A successful DC 15 Wisdom (Perception) check reveals the trip wire and the net. A successful DC 15 Dexterity check using {@item thieves' tools|phb} disables the trip wire without causing the net to drop or the bell to ring; failing the check causes the trap to activate."
 			],
 			"source": "XGE",
 			"page": 113
 		},
 		{
 			"name": "Pit Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 1,
 			"threat": 1,
 			"entries": [
@@ -250,7 +250,7 @@
 		},
 		{
 			"name": "Poison Needle Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 1,
 			"threat": 3,
 			"entries": [
@@ -263,14 +263,14 @@
 				"The triggering creature must make a DC 20 Constitution saving throw. On a failed save, the creature takes 14 ({@dice 4d6}) poison damage and is poisoned for 10 minutes. While poisoned in this way, the creature is paralyzed. On a successful save, the creature takes half as much damage and isn't poisoned."
 			],
 			"countermeasures": [
-				"A successful DC 20 Wisdom (Perception) check reveals the needle, but only if a character inspects the lock. A successful DC 20 Dexterity check using thieves' tools disables the needle, and a check with a total of 10 or lower triggers the trap."
+				"A successful DC 20 Wisdom (Perception) check reveals the needle, but only if a character inspects the lock. A successful DC 20 Dexterity check using {@item thieves' tools|phb} disables the needle, and a check with a total of 10 or lower triggers the trap."
 			],
 			"source": "XGE",
 			"page": 114
 		},
 		{
 			"name": "Scything Blade Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 2,
 			"threat": 2,
 			"entries": [
@@ -283,14 +283,14 @@
 				"Each Medium or larger creature in a 5-foot-wide, 20-foot-long area must make a DC 15 Dexterity saving throw, taking 14 ({@dice 4d6}) slashing damage on a failed save, or half as much damage on a successful one."
 			],
 			"countermeasures": [
-				"The lever isn't hidden. A successful DC 15 Wisdom (Perception) check involving the surfaces in the trap's area of effect reveals scrape marks and bloodstains on the walls and floor. A successful DC 15 Dexterity check using thieves' tools disables the lever."
+				"The lever isn't hidden. A successful DC 15 Wisdom (Perception) check involving the surfaces in the trap's area of effect reveals scrape marks and bloodstains on the walls and floor. A successful DC 15 Dexterity check using {@item thieves' tools|phb} disables the lever."
 			],
 			"source": "XGE",
 			"page": 114
 		},
 		{
 			"name": "Sleep of Ages Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 3,
 			"threat": 3,
 			"entries": [
@@ -310,7 +310,7 @@
 		},
 		{
 			"name": "Path of Blades",
-			"trapType": "CMPX",
+			"trapHazType": "CMPX",
 			"tier": 1,
 			"threat": 2,
 			"entries": [
@@ -406,7 +406,7 @@
 						{
 							"type": "itemSub",
 							"name": "Dexterity check using thieves' tools, DC 15.",
-							"entry": "Creatures can use thieves' tools in the area attacked by the blades to foil their mechanism. A successful check reduces the Whirling Blades attack bonus by 2."
+							"entry": "Creatures can use {@item thieves' tools|phb} in the area attacked by the blades to foil their mechanism. A successful check reduces the Whirling Blades attack bonus by 2."
 						},
 						{
 							"type": "item",
@@ -426,7 +426,7 @@
 		},
 		{
 			"name": "Sphere of Crushing Doom",
-			"trapType": "CMPX",
+			"trapHazType": "CMPX",
 			"tier": 2,
 			"threat": 3,
 			"entries": [
@@ -493,7 +493,7 @@
 		},
 		{
 			"name": "Poisoned Tempest",
-			"trapType": "CMPX",
+			"trapHazType": "CMPX",
 			"tier": 3,
 			"threat": 3,
 			"entries": [
@@ -608,11 +608,210 @@
 			"name": "Russet Mold",
 			"entries": [
 				"The fungus known as russet mold is reddish-brown in color and found only in places that are dark, warm, and wet. Russet mold that spreads out across a metal object can be mistaken for natural rust, and a successful DC 15 Intelligence (Nature) or Wisdom (Survival) check is required to identify it accurately by sight in such a case.",
-				"Any creature that comes within 5 feet of russet mold must make a DC 13 Constitution saving throw as the mold emits a puff of spores. On a failed save, the creature becomes {@condition poisoned}. While {@condition poisoned} in this way, the creature takes 7 (2d6) poison damage at the start of each of its turns, sprouting mold as it takes damage. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. Any magic that neutralizes poison or cures disease kills the infestation. A creature reduced to 0 hit points by the mold's poison damage dies. If the dead creature is a beast, a giant, or a humanoid, one or more newborn vegepygmies emerge from its body 24 hours later: one newborn from a Small corpse, two from a Medium corpse, four from a Large corpse, eight from a Huge corpse, or sixteen from a Gargantuan corpse.",
+				"Any creature that comes within 5 feet of russet mold must make a DC 13 Constitution saving throw as the mold emits a puff of spores. On a failed save, the creature becomes {@condition poisoned}. While {@condition poisoned} in this way, the creature takes 7 ({@dice 2d6}) poison damage at the start of each of its turns, sprouting mold as it takes damage. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. Any magic that neutralizes poison or cures disease kills the infestation. A creature reduced to 0 hit points by the mold's poison damage dies. If the dead creature is a beast, a giant, or a humanoid, one or more newborn vegepygmies emerge from its body 24 hours later: one newborn from a Small corpse, two from a Medium corpse, four from a Large corpse, eight from a Huge corpse, or sixteen from a Gargantuan corpse.",
 				"Russet mold can be hard to kill, since weapons and most types of damage do it no harm. Effects that deal acid, necrotic, or radiant damage kill 1 square foot of russet mold per 1 damage dealt. A pound of salt, a gallon of alcohol, or a magical effect that cures disease kills russet mold in a square area that is 10 feet on a side. Sunlight kills any russet mold in the light's area."
 			],
 			"source": "VGM",
 			"page": 196
+		},
+		{
+			"name": "Extreme Cold",
+			"trapHazType": "WTH",
+			"entries": [
+				"Whenever the temperature is at or below 0 degrees Fahrenheit, a creature exposed to the cold must succeed on a DC 10 Constitution saving throw at the end of each hour or gain one level of {@condition exhaustion}. Creatures with resistance or immunity to cold damage automatically succeed on the saving throw, as do creatures wearing cold weather gear (thick coats, gloves, and the like) and creatures naturally adapted to cold climates."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Extreme Heat",
+			"trapHazType": "WTH",
+			"entries": [
+				"When the temperature is at or above 100 degrees Fahrenheit, a creature exposed to the heat and without access to drinkable water must succeed on a Constitution saving throw at the end of each hour or gain one level of {@condition exhaustion}. The DC is 5 for the first hour and increases by 1 for each additional hour.",
+				"Creatures wearing medium or heavy armor, or who are clad in heavy clothing, have disadvantage on the saving throw. Creatures with resistance or immunity to fire damage automatically succeed on the saving throw, as do creatures naturally adapted to hot climates."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Strong Wind",
+			"trapHazType": "WTH",
+			"entries": [
+				"A strong wind imposes disadvantage on ranged weapon attack rolls and Wisdom ({@skill Perception}) checks that rely on hearing. A strong wind also extinguishes open flames, disperses fog, and makes flying by nonmagical means nearly impossible. A flying creature in a strong wind must land at the end of its turn or fall.",
+				"A strong wind in a desert can create a sandstorm that imposes disadvantage on Wisdom ({@skill Perception}) checks that rely on sight."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Heavy Precipitation",
+			"trapHazType": "WTH",
+			"entries": [
+				"Everything within an area of heavy rain or heavy snowfall is lightly obscured, and creatures in the area have disadvantage on Wisdom ({@skill Perception}) checks that rely on sight. Heavy rain also extinguishes open flames and imposes disadvantage on Wisdom ({@skill Perception}) checks that rely on hearing."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "High Altitude",
+			"trapHazType": "ENV",
+			"entries": [
+				"Traveling at altitudes of 10,000 feet or higher above sea level is taxing for a creature that needs to breathe, because of the reduced amount of oxygen in the air. Each hour such a creature spends traveling at high altitude counts as 2 hours for the purpose of determining how long that creature can travel.",
+				"Breathing creatures can become acclimated to a high altitude by spending 30 days or more at this elevation. Breathing creatures can't become acclimated to elevations above 20,000 feet unless they are native to such environments."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Desecrated Ground",
+			"trapHazType": "WLD",
+			"entries": [
+				"Some cemeteries and catacombs are imbued with the unseen traces of ancient evil. An area of desecrated ground can be any size, and a {@spell detect evil and good} spell cast within range reveals its presence.",
+				"Undead standing on desecrated ground have advantage on all saving throws.",
+				"A vial of {@item holy water (flask)|phb|holy water} purifies a 10-foot-square area of desecrated ground when sprinkled on it, and a {@spell hallow} spell purifies desecrated ground within its area."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Frigid Water",
+			"trapHazType": "WLD",
+			"entries": [
+				"A creature can be immersed in frigid water for a number of minutes equal to its Constitution score before suffering any ill effects. Each additional minute spent in frigid water requires the creature to succeed on a DC 10 Constitution saving throw or gain one level of {@condition exhaustion}. Creatures with resistance or immunity to cold damage automatically succeed on the saving throw, as do creatures that are naturally adapted to living in ice-cold water."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Quicksand",
+			"trapHazType": "WLD",
+			"entries": [
+				"A quicksand pit covers the ground in roughly a 10-foot square area and is usually 10 feet deep. When a creature enters the area, it sinks {@dice 1d4+1} feet into the quicksand and becomes restrained. At the start of each of the creature's turns, it sinks another {@dice 1d4} feet. As long as the creature isn't completely submerged in quicksand, it can escape by using its action and succeeding on a Strength check. The DC is 10 plus the number of feet the creature has sunk into the quicksand. A creature that is completely submerged in quicksand can't breathe (see the {@book suffocation|phb|8|suffocating} rules in the {@i Player's Handbook}).",
+				"A creature can pull another creature within its reach out of a quicksand pit by using its action and succeeding on a Strength check. The DC is 5 plus the number of feet the target creature has sunk into the quicksand."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Razorvine",
+			"trapHazType": "WLD",
+			"entries": [
+				"Razorvine is a plant that grows in wild tangles and hedges. It also clings to the sides of buildings and other surfaces as ivy does. A 10-foot-high, 10-foot-wide, 5-foot-thick wall or hedge of razorvine has AC 11, 25 hit points, and immunity to bludgeoning, piercing, and psychic damage.",
+				"When a creature comes into direct contact with razorvine for the first time on a turn, the creature must succeed on a DC 10 Dexterity saving throw or take 5 ({@dice 1d10}) slashing damage from the razorvine's bladelike thorns."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Slippery Ice",
+			"trapHazType": "WLD",
+			"entries": [
+				"Slippery ice is difficult terrain. When a creature moves onto slippery ice for the first time on a turn, it must succeed on a DC 10 Dexterity (Acrobatics) check or fall {@condition prone}."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Thin Ice",
+			"trapHazType": "WLD",
+			"entries": [
+				"Thin ice has a weight tolerance of 3d10 × 10 pounds per 10-foot-square area. Whenever the total weight on an area of thin ice exceeds its tolerance, the ice in that area breaks. All creatures on broken ice fall through."
+			],
+			"source": "DMG",
+			"page": 111
+		},
+		{
+			"name": "Improvised Damage",
+			"trapHazType": "GEN",
+			"entries": [
+				"In some cases you need to determine damage on the fly. The Improvising Damage table gives you suggestions for when you do so.",
+				{
+					"type": "table",
+					"caption": "Improvising Damage",
+					"colLabels": [
+						"Dice",
+						"Examples"
+					],
+					"colStyles": [
+						"col-2 text-align-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"{@dice 1d10}",
+							"Burned by coals, hit by a falling bookcase, pricked by a poison needle"
+						],
+						[
+							"{@dice 2d10}",
+							"Being struck by lightning, stumbling into a fire pit"
+						],
+						[
+							"{@dice 4d10}",
+							"Hit by falling rubble in a collapsing tunnel, stumbling into a vat of acid"
+						],
+						[
+							"{@dice 10d10}",
+							"Crushed by compacting walls, hit by whirling steel blades, wading through a lava stream"
+						],
+						[
+							"{@dice 18d10}",
+							"Being submerged in lava, being hit by a crashing flying fortress"
+						],
+						[
+							"{@dice 24d10}",
+							"Tumbling into a vortex of fire on the Elemental Plane of Fire, being crushed in the jaws of a godlike creature or a moon-sized monster"
+						]
+					]
+				},
+				"The Damage Severity and Level table is a guide to how deadly these damage numbers are for characters of various levels. Cross-reference a character's level with the damage being dealt to gauge the severity of the damage.",
+				{
+					"type": "table",
+					"caption": "Damage Severity and Level",
+					"colLabels": [
+						"Character Level",
+						"Setback",
+						"Dangerous",
+						"Deadly"
+					],
+					"colStyles": [
+						"col-3 text-align-center",
+						"col-3 text-align-center",
+						"col-3 text-align-center",
+						"col-3 text-align-center"
+					],
+					"rows": [
+						[
+							"1st-4th",
+							"{@dice 1d10}",
+							"{@dice 2d10}",
+							"{@dice 4d10}"
+						],
+						[
+							"5th-10th",
+							"{@dice 2d10}",
+							"{@dice 4d10}",
+							"{@dice 10d10}"
+						],
+						[
+							"11th-16th",
+							"{@dice 4d10}",
+							"{@dice 10d10}",
+							"{@dice 18d10}"
+						],
+						[
+							"17th-20th",
+							"{@dice 10d10}",
+							"{@dice 18d10}",
+							"{@dice 24d10}"
+						]
+					]
+				},
+				"Damage sufficient to cause a {@b setback} rarely poses a risk of death to characters of the level shown, but a severely weakened character might be laid low by this damage.",
+				"In contrast, {@b dangerous} damage values pose a significant threat to weaker characters and could potentially kill a character of the level shown if that character is missing many hit points.",
+				"As the name suggests, {@b deadly} damage is enough to drop a character of the level shown to 0 hit points. This level of damage can kill even powerful characters outright if they are already wounded."
+			],
+			"source": "DMG",
+			"page": 249
 		}
 	]
 }

@@ -33,7 +33,7 @@
 			"entries": [
 				"As an action, you plant a false belief in the mind of one creature that you can see within 60 feet of you. You can create a sound or an image. Only the target of this talent perceives the sound or image you create.",
 				"If you create a sound, its volume can range from a whisper to a scream. It can be your voice, someone else's voice, a creature's roar, a musical instrument, or any other sound you pick. It lasts for 1 minute.",
-				"If you create an object, it must fit within a 5- foot cube and can't move or be reflective. The image can't create any effect that influences a sense other than sight. The image lasts for 1 minute, and it disappears if the creature touches it."
+				"If you create an object, it must fit within a 5-foot cube and can't move or be reflective. The image can't create any effect that influences a sense other than sight. The image lasts for 1 minute, and it disappears if the creature touches it."
 			],
 			"type": "T",
 			"page": 27
@@ -122,7 +122,7 @@
 			"source": "UATheMysticClass",
 			"type": "D",
 			"description": "You have learned to harvest seeds of despair in a creature's psyche, wracking it with self-doubt and inaction",
-			"focus": "While focused on this discipline, you have advantage on Charisma (Intimidation) checks.",
+			"focus": "While focused on this discipline, you have advantage on Charisma ({@skill Intimidation}) checks.",
 			"modes": [
 				{
 					"cost": {
@@ -484,7 +484,7 @@
 			"source": "UATheMysticClass",
 			"type": "D",
 			"description": "You tap into a well of primal fear and turn yourself into a beacon of terror to your enemies.",
-			"focus": "While focused on this discipline, you have advantage on Charisma (Intimidation) checks.",
+			"focus": "While focused on this discipline, you have advantage on Charisma ({@skill Intimidation}) checks.",
 			"modes": [
 				{
 					"cost": {
@@ -537,7 +537,7 @@
 			"source": "UATheMysticClass",
 			"type": "D",
 			"description": "You tap into the joy within you, radiating it outward in soothing, psychic energy that brings hope and comfort to creatures around you.",
-			"focus": "While focused on this discipline, you have advantage on Charisma (Persuasion) checks",
+			"focus": "While focused on this discipline, you have advantage on Charisma ({@skill Persuasion}) checks",
 			"modes": [
 				{
 					"cost": {
@@ -574,7 +574,7 @@
 					},
 					"name": "Aura of Jubilation",
 					"entries": [
-						"As a bonus action, you radiate a distracting mirth until your concentration ends. Each creature within 60 feet of you that can see you suffers disadvantage on any checks using the Perception and Investigation skills."
+						"As a bonus action, you radiate a distracting mirth until your concentration ends. Each creature within 60 feet of you that can see you suffers disadvantage on any checks using the {@skill Perception} and {@skill Investigation} skills."
 					]
 				},
 				{
@@ -789,9 +789,9 @@
 								"Bludgeoning Damage"
 							],
 							"colStyles": [
-								"col-xs-3 text-align-center",
-								"col-xs-6 text-align-center",
-								"col-xs-3 text-align-center"
+								"col-3 text-align-center",
+								"col-6 text-align-center",
+								"col-3 text-align-center"
 							],
 							"rows": [
 								[
@@ -1283,7 +1283,7 @@
 			"source": "UATheMysticClass",
 			"type": "D",
 			"description": "You refocus your sight to see the energy that surrounds all creatures. You perceive auras, energy signatures that can reveal key elements of a creature's nature.",
-			"focus": "While focused on this discipline, you have advantage on Wisdom (Insight) checks.",
+			"focus": "While focused on this discipline, you have advantage on Wisdom ({@skill Insight}) checks.",
 			"modes": [
 				{
 					"cost": {
@@ -1316,7 +1316,7 @@
 					},
 					"name": "View Aura",
 					"entries": [
-						"As an action, you study one creature's aura. Until your concentration ends, while you can see the target, you learn if it's under the effect of any magical or psionic effects, its current hit point total, and its basic emotional state. While this effect lasts, you have advantage on Wisdom (Insight) and Charisma checks you make against it."
+						"As an action, you study one creature's aura. Until your concentration ends, while you can see the target, you learn if it's under the effect of any magical or psionic effects, its current hit point total, and its basic emotional state. While this effect lasts, you have advantage on Wisdom ({@skill Insight}) and Charisma checks you make against it."
 					]
 				},
 				{
@@ -1556,7 +1556,7 @@
 			"source": "UATheMysticClass",
 			"type": "D",
 			"description": "You create psychic static that disrupts other creatures' ability to think clearly.",
-			"focus": "While focused on this discipline, you have advantage on Charisma (Deception) checks.",
+			"focus": "While focused on this discipline, you have advantage on Charisma ({@skill Deception}) checks.",
 			"modes": [
 				{
 					"cost": {
@@ -1660,7 +1660,7 @@
 			"source": "UATheMysticClass",
 			"type": "D",
 			"description": "Your power reaches into a creature's mind and causes it false perceptions",
-			"focus": "While focused on this discipline, you have advantage on Charisma (Deception) checks.",
+			"focus": "While focused on this discipline, you have advantage on Charisma ({@skill Deception}) checks.",
 			"modes": [
 				{
 					"cost": {
@@ -1851,7 +1851,7 @@
 			"source": "UATheMysticClass",
 			"type": "D",
 			"description": "You transform your body, gaining traits of different beasts",
-			"focus": "While focused on this discipline, you have advantage on Wisdom (Animal Handling) checks.",
+			"focus": "While focused on this discipline, you have advantage on Wisdom ({@skill Animal Handling}) checks.",
 			"modes": [
 				{
 					"cost": {
@@ -1906,7 +1906,7 @@
 							},
 							"name": "Keen Senses",
 							"entries": [
-								"Your eyes and ears become more sensitive. You gain advantage on Wisdom (Perception) checks."
+								"Your eyes and ears become more sensitive. You gain advantage on Wisdom ({@skill Perception}) checks."
 							]
 						},
 						{
@@ -1950,7 +1950,7 @@
 			"source": "UATheMysticClass",
 			"type": "D",
 			"description": "You augment your natural strength with psionic energy, granting you the ability to achieve incredible feats of might.",
-			"focus": "While focused on this discipline, you have advantage on Strength (Athletics) checks",
+			"focus": "While focused on this discipline, you have advantage on Strength ({@skill Athletics}) checks",
 			"modes": [
 				{
 					"cost": {
@@ -2123,7 +2123,7 @@
 			"source": "UATheMysticClass",
 			"type": "D",
 			"description": "You manipulate the matter that composes your body, drastically reducing your size without surrendering any of your might.",
-			"focus": "While focused on this discipline, you have advantage on Dexterity (Stealth) checks.",
+			"focus": "While focused on this discipline, you have advantage on Dexterity ({@skill Stealth}) checks.",
 			"modes": [
 				{
 					"cost": {
@@ -2136,7 +2136,7 @@
 					},
 					"name": "Miniature Form",
 					"entries": [
-						"As a bonus action, you become Tiny until your concentration ends. While this size, you gain a +5 bonus to Dexterity (Stealth) checks and can move through gaps up to 6 inches across without squeezing."
+						"As a bonus action, you become Tiny until your concentration ends. While this size, you gain a +5 bonus to Dexterity ({@skill Stealth}) checks and can move through gaps up to 6 inches across without squeezing."
 					]
 				},
 				{
@@ -2170,7 +2170,7 @@
 					},
 					"name": "Microscopic Form",
 					"entries": [
-						"As a bonus action, you become smaller than Tiny until your concentration ends. While this size, you gain a +10 bonus to Dexterity (Stealth) checks and a +5 bonus to AC, you can move through gaps up to 1 inch across without squeezing, and you can't make weapon attacks."
+						"As a bonus action, you become smaller than Tiny until your concentration ends. While this size, you gain a +10 bonus to Dexterity ({@skill Stealth}) checks and a +5 bonus to AC, you can move through gaps up to 1 inch across without squeezing, and you can't make weapon attacks."
 					]
 				}
 			],
@@ -2407,7 +2407,7 @@
 			"source": "UATheMysticClass",
 			"type": "D",
 			"description": "You create a screen of psychic power that distorts your appearance, allowing you to blend into the background or even turn invisible.",
-			"focus": "While focused on this discipline, you have advantage on Dexterity (Stealth) checks.",
+			"focus": "While focused on this discipline, you have advantage on Dexterity ({@skill Stealth}) checks.",
 			"modes": [
 				{
 					"cost": {
@@ -2469,7 +2469,7 @@
 					},
 					"name": "Wandering Mind",
 					"entries": [
-						"You enter a deep contemplation. If you concentrate for this option's full duration, you then gain proficiency with up to three of the following skills (one skill for every 2 psi points spent): Animal Handling, Arcana, History, Medicine, Nature, Performance, Religion, and Survival. The benefit lasts for 1 hour, no concentration required."
+						"You enter a deep contemplation. If you concentrate for this option's full duration, you then gain proficiency with up to three of the following skills (one skill for every 2 psi points spent): {@skill Animal Handling}, {@skill Arcana}, {@skill History}, {@skill Medicine}, {@skill Nature}, {@skill Performance}, {@skill Religion}, and {@skill Survival}. The benefit lasts for 1 hour, no concentration required."
 					]
 				},
 				{

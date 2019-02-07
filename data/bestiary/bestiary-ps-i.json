@@ -15,7 +15,7 @@
 			],
 			"hp": {
 				"average": 21,
-				"formula": "6d4+6"
+				"formula": "6d4 + 6"
 			},
 			"speed": {
 				"walk": 40
@@ -70,13 +70,13 @@
 				{
 					"name": "Scissors",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) slashing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}7 ({@damage 2d4 + 2}) slashing damage."
 					]
 				},
 				{
 					"name": "Psychic Assault",
 					"entries": [
-						"The creepy doll targets one creature it can see within 10 feet of it that has a brain. The target must succeed on a DC 12 Intelligence saving throw or take 11 ({@dice 2d10}) psychic damage. Also on a failure, roll {@dice 3d6}. If the total equals or exceeds the target's Intelligence score, that score is reduced to 0. The target is {@condition stunned} until it regains at least one point of Intelligence, as from the {@spell greater restoration} spell or similar magic."
+						"The creepy doll targets one creature it can see within 10 feet of it that has a brain. The target must succeed on a DC 12 Intelligence saving throw or take 11 ({@damage 2d10}) psychic damage. Also on a failure, roll {@dice 3d6}. If the total equals or exceeds the target's Intelligence score, that score is reduced to 0. The target is {@condition stunned} until it regains at least one point of Intelligence, as from the {@spell greater restoration} spell or similar magic."
 					]
 				},
 				{
@@ -92,6 +92,9 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -173,7 +176,7 @@
 				{
 					"name": "Geist Powers: Horrifying Visage",
 					"entries": [
-						"Black-aligned geists can make themselves terrible to behold, even when they are possessing the living. Each non-undead creature within 60 feet of the geist that can see it must succeed on a DC 13 Wisdom saving throw or be {@condition frightened} for 1 minute. If the save fails by 5 or more, the target also ages {@dice 1d4} × 10 years. A {@condition frightened} target can repeat the saving throw at the end of each of its turns, ending the {@condition frightened} condition on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to this geist's Horrifying Visage for the next 24 hours. The aging effect can be reversed with a {@spell greater restoration} spell, but only within 24 hours of it occurring."
+						"Black-aligned geists can make themselves terrible to behold, even when they are possessing the living. Each non-undead creature within 60 feet of the geist that can see it must succeed on a DC 13 Wisdom saving throw or be {@condition frightened} for 1 minute. If the save fails by 5 or more, the target also ages {@dice 1d4    ×    10} years. A {@condition frightened} target can repeat the saving throw at the end of each of its turns, ending the {@condition frightened} condition on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to this geist's Horrifying Visage for the next 24 hours. The aging effect can be reversed with a {@spell greater restoration} spell, but only within 24 hours of it occurring."
 					]
 				}
 			],
@@ -181,7 +184,7 @@
 				{
 					"name": "Withering Touch",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target Hit: 17 ({@dice 4d6+3}) necrotic damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target {@h}17 ({@damage 4d6 + 3}) necrotic damage."
 					]
 				},
 				{
@@ -199,6 +202,9 @@
 			],
 			"traitTags": [
 				"Incorporeal Movement"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -215,7 +221,7 @@
 			],
 			"hp": {
 				"average": 93,
-				"formula": "11d8+44"
+				"formula": "11d8 + 44"
 			},
 			"speed": {
 				"walk": 30
@@ -309,7 +315,7 @@
 				{
 					"name": "Skaab Characteristic: Three Heads",
 					"entries": [
-						"The skaab has advantage on Wisdom (Perception) checks and on saving throws against being {@condition blinded}, {@condition deafened}, {@condition stunned}, and knocked {@condition unconscious}. (Its challenge rating doesn't change.)"
+						"The skaab has advantage on Wisdom ({@skill Perception}) checks and on saving throws against being {@condition blinded}, {@condition deafened}, {@condition stunned}, and knocked {@condition unconscious}. (Its challenge rating doesn't change.)"
 					]
 				},
 				{
@@ -335,7 +341,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) bludgeoning damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d8 + 4}) bludgeoning damage."
 					]
 				}
 			],
@@ -347,6 +353,9 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -369,7 +378,7 @@
 			],
 			"hp": {
 				"average": 82,
-				"formula": "11d8+33"
+				"formula": "11d8 + 33"
 			},
 			"speed": {
 				"walk": 30
@@ -451,13 +460,13 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one creature. Hit: 8 ({@dice 2d4+3}) slashing damage. Instead of dealing damage, the vampire can grapple the target (escape DC 13)."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one creature. {@h}8 ({@damage 2d4 + 3}) slashing damage. Instead of dealing damage, the vampire can grapple the target (escape DC 13)."
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by the vampire, {@condition incapacitated}, or {@condition restrained}. Hit: 6 ({@dice 1d6+3}) piercing damage plus 7 ({@dice 2d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and the vampire regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by the vampire, {@condition incapacitated}, or {@condition restrained}. {@h}6 ({@damage 1d6 + 3}) piercing damage plus 7 ({@damage 2d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and the vampire regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
 					]
 				},
 				{
@@ -487,6 +496,12 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -520,7 +535,7 @@
 			],
 			"hp": {
 				"average": 58,
-				"formula": "9d8+18"
+				"formula": "9d8 + 18"
 			},
 			"speed": {
 				"walk": {
@@ -561,7 +576,7 @@
 				{
 					"name": "Keen Hearing and Smell",
 					"entries": [
-						"The werewolf has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+						"The werewolf has advantage on Wisdom ({@skill Perception}) checks that rely on hearing or smell."
 					]
 				},
 				{
@@ -581,19 +596,19 @@
 				{
 					"name": "Bite (Canid Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws (Canid Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) slashing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}7 ({@damage 2d4 + 2}) slashing damage."
 					]
 				},
 				{
 					"name": "Spear (Human Form Only)",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 6 ({@dice 1d8+2}) piercing damage if used with two hands to make a melee attack."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage, or 6 ({@damage 1d8 + 2}) piercing damage if used with two hands to make a melee attack."
 					]
 				}
 			],
@@ -623,6 +638,10 @@
 			"traitTags": [
 				"Shapechanger",
 				"Keen Senses"
+			],
+			"languageTags": [
+				"C",
+				"CS"
 			]
 		}
 	]

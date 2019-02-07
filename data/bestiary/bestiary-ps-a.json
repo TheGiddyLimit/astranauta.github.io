@@ -1,5 +1,362 @@
 {
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		}
+	},
 	"monster": [
+		{
+			"name": "Angel of Amonkhet",
+			"source": "PSA",
+			"_copy": {
+				"name": "Deva",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "deva",
+						"with": "angel"
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Mace",
+						"with": {
+							"name": "Staff",
+							"entries": [
+								"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 4}) bludgeoning damage plus 18 ({@damage 4d8}) radiant damage, and the target is {@condition grappled} (escape DC 17). Until this grapple ends, the target is {@condition restrained}, and the angel can't attack another target with its staff."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Archfiend of Ifnir",
+			"source": "PSA",
+			"_copy": {
+				"name": "Nalfeshnee",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "nalfeshnee",
+						"with": "archfiend"
+					},
+					"variant": "remove"
+				}
+			}
+		},
+		{
+			"name": "Ammit",
+			"source": "PSA",
+			"_copy": {
+				"name": "Giant Crocodile",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "crocodile",
+						"with": "ammit"
+					}
+				}
+			}
+		},
+		{
+			"name": "Soulstringer Demon",
+			"source": "PSA",
+			"_copy": {
+				"name": "Bone Devil",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "devil",
+						"with": "demon"
+					},
+					"variant": "remove"
+				}
+			},
+			"type": {
+				"type": "fiend",
+				"tags": [
+					"demon"
+				]
+			}
+		},
+		{
+			"name": "Amonkhet Sphinx",
+			"source": "PSA",
+			"_copy": {
+				"name": "Androsphinx",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Ancient Amonkhet Dragon",
+			"source": "PSA",
+			"_copy": {
+				"name": "Ancient Red Dragon",
+				"source": "MM"
+			},
+			"int": 10
+		},
+		{
+			"name": "Adult Amonkhet Dragon",
+			"source": "PSA",
+			"_copy": {
+				"name": "Adult Red Dragon",
+				"source": "MM"
+			},
+			"int": 8
+		},
+		{
+			"name": "Young Amonkhet Dragon",
+			"source": "PSA",
+			"_copy": {
+				"name": "Young Red Dragon",
+				"source": "MM"
+			},
+			"int": 6
+		},
+		{
+			"name": "Amonkhet Dragon Wyrmling",
+			"source": "PSA",
+			"_copy": {
+				"name": "Red Dragon Wyrmling",
+				"source": "MM"
+			},
+			"int": 5
+		},
+		{
+			"name": "Large Drake",
+			"source": "PSA",
+			"_copy": {
+				"name": "Giant Eagle",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "eagle",
+						"with": "drake"
+					}
+				}
+			}
+		},
+		{
+			"name": "Small Drake",
+			"source": "PSA",
+			"_copy": {
+				"name": "Pteranodon",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "pteranodon",
+						"with": "drake"
+					}
+				}
+			}
+		},
+		{
+			"name": "Mindless Marauder",
+			"source": "PSA",
+			"_copy": {
+				"name": "Mummy",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "mummy",
+						"with": "marauder"
+					}
+				}
+			}
+		},
+		{
+			"name": "Mindful Marauder",
+			"source": "PSA",
+			"_copy": {
+				"name": "Mummy Lord",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "mummy lord",
+						"with": "marauder"
+					}
+				}
+			}
+		},
+		{
+			"name": "Anointed",
+			"source": "PSA",
+			"_copy": {
+				"name": "Zombie",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "zombie",
+						"with": "anointed"
+					}
+				}
+			}
+		},
+		{
+			"name": "Eternal",
+			"source": "PSA",
+			"_copy": {
+				"name": "Wight",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "wight",
+						"with": "eternal"
+					}
+				}
+			}
+		},
+		{
+			"name": "Sandwurm",
+			"source": "PSA",
+			"_copy": {
+				"name": "Purple Worm",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "worm",
+						"with": "wurm"
+					}
+				}
+			}
+		},
+		{
+			"name": "Amonkhet Hydra",
+			"source": "PSA",
+			"_copy": {
+				"name": "Hydra",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Bite",
+						"with": {
+							"name": "Bite",
+							"entries": [
+								"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. {@h}7 ({@damage 1d4 + 5}) piercing damage, and the target must make on a DC 16 Constitution saving throw, taking 7 ({@damage 2d6}) poison damage on a failed save, or half as much damage on a successful one."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Cerodon",
+			"source": "PSA",
+			"_copy": {
+				"name": "Mammoth",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "mammoth",
+						"with": "cerodon"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Siege Monster",
+							"entries": [
+								"The cerodon deals double damage to objects and structures."
+							]
+						}
+					}
+				}
+			},
+			"traitTags": [
+				"Siege Monster"
+			]
+		},
+		{
+			"name": "Hippopotamus",
+			"source": "PSA",
+			"_copy": {
+				"name": "Elephant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "elephant",
+						"with": "hippopotamus"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Hold Breath",
+							"entries": [
+								"The hippopotamus can hold its breath for 30 minutes."
+							]
+						}
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Gore",
+						"with": {
+							"name": "Bite",
+							"entries": [
+								"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}19 ({@damage 3d8 + 6}) piercing damage."
+							]
+						}
+					}
+				}
+			},
+			"speed": {
+				"walk": 40,
+				"swim": 30
+			},
+			"traitTags": [
+				"Hold Breath"
+			]
+		},
+		{
+			"name": "River Serpent",
+			"source": "PSA",
+			"_copy": {
+				"name": "Giant Constrictor Snake",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "snake",
+						"with": "serpent"
+					}
+				}
+			}
+		},
+		{
+			"name": "Giant River Serpent",
+			"source": "PSA",
+			"_copy": {
+				"name": "Behir",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "behir",
+						"with": "serpent"
+					},
+					"action": {
+						"mode": "removeArr",
+						"names": "Lightning Breath {@recharge 5}"
+					}
+				}
+			},
+			"immune": null
+		},
 		{
 			"source": "PSA",
 			"page": 32,
@@ -19,7 +376,7 @@
 			],
 			"hp": {
 				"average": 228,
-				"formula": "24d10+96"
+				"formula": "24d10 + 96"
 			},
 			"speed": {
 				"walk": 30,
@@ -82,13 +439,13 @@
 				{
 					"name": "Ram",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 17 ({@dice 3d8+4}) bludgeoning damage."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}17 ({@damage 3d8 + 4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) slashing damage."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d8 + 4}) slashing damage."
 					]
 				}
 			],
@@ -111,6 +468,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"OTH"
+			],
+			"senseTags": [
+				"U"
 			]
 		},
 		{
@@ -133,7 +497,7 @@
 			],
 			"hp": {
 				"average": 136,
-				"formula": "16d10+48"
+				"formula": "16d10 + 48"
 			},
 			"speed": {
 				"walk": 50
@@ -160,24 +524,27 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) slashing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d8 + 4}) slashing damage."
 					]
 				},
 				{
 					"name": "Stinger",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage. The target must make a DC 14 Constitution saving throw, taking 24 ({@dice 7d6}) poison damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 7} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d6 + 4}) piercing damage. The target must make a DC 14 Constitution saving throw, taking 24 ({@damage 7d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -194,7 +561,7 @@
 			],
 			"hp": {
 				"average": 52,
-				"formula": "7d10+14"
+				"formula": "7d10 + 14"
 			},
 			"speed": {
 				"walk": 40
@@ -215,7 +582,7 @@
 				{
 					"name": "Keen Smell",
 					"entries": [
-						"The serpopard has advantage on Wisdom (Perception) checks that rely on smell."
+						"The serpopard has advantage on Wisdom ({@skill Perception}) checks that rely on smell."
 					]
 				},
 				{
@@ -229,7 +596,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage, and the target must make a DC 14 Constitution saving throw, taking 10 ({@dice 3d6}) poison damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d10 + 4}) piercing damage, and the target must make a DC 14 Constitution saving throw, taking 10 ({@damage 3d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],

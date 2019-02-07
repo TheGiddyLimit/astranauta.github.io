@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"definitions": {
 		"cr": {
 			"type": "integer",
@@ -261,6 +261,9 @@
 								},
 								"item": {
 									"type": "string"
+								},
+								"spellLevel": {
+									"type": "integer"
 								}
 							}
 						}

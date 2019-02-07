@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"type": "object",
 	"properties": {
 		"monster": {
@@ -12,6 +12,9 @@
 						"type": "string"
 					},
 					"source": {
+						"type": "string"
+					},
+					"type": {
 						"type": "string"
 					},
 					"images": {

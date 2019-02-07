@@ -11,59 +11,22 @@
 	<title>Stat Block Converter - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 
 	<style>
-		.inputArea {
-			width: 100%;
-			height: 75vh;
-		}
-
+		.inputArea,
 		.outputArea {
 			width: 100%;
-			height: 75vh;
-			margin: 0;
-			resize: none;
-			outline: none;
-			box-shadow: none;
+			height: 100%;
 		}
 
-		.night-mode .outputArea {
-			background: #333;
-		}
-
-		.night-mode .ace-tm {
-			background: #222;
-			color: #bbb;
-		}
-
-		.night-mode .ace-tm .ace_gutter {
-			background: #333;
-			color: #bbb;
-		}
-
-		.night-mode .ace-tm .ace_gutter-active-line {
-			background: #222;
-		}
-
-		.night-mode .ace-tm .ace_marker-layer .ace_selection {
-			background: rgba(181, 213, 255, 0.4);
-		}
-
-		.night-mode .ace-tm .ace_marker-layer .ace_active-line {
-			background: rgba(0, 116, 255, 0.3);
-		}
-
-		.night-mode .ace-tm .ace_cursor {
-			color: #bbb;
-		}
-
-		.select-inline{
+		.select-inline {
 			display: inline-block;
 			width: initial;
 		}
@@ -76,138 +39,101 @@
 			color: red;
 		}
 
-		.conv-ipt {
-			display: inline-block;
+		#lastWarnings,
+		#lastError {
 			margin-top: 5px;
+			margin-bottom: 10px;
+			display: none;
+			flex-shrink: 0;
+			padding: 9px;
+			font-size: 13px;
+			line-height: 1.4;
+			background-color: #f5f5f5;
+			border: 1px solid #ccc;
+			border-radius: 4px;
 		}
 
-		.conv-ipt__source {
-			width: 130px;
+		.conv__head {
+			margin-top: 0;
+			margin-bottom: 2px;
 		}
 
-		.conv-ipt__page {
-			width: 65px;
+		.conv__col {
+			margin-top: 0;
+		}
+
+		.conv__out_control__wrp {
+			padding: 0 2rem;
+			flex-shrink: 0;
 		}
 	</style>
 </head>
 
 <body>
 <div class="viewport-wrapper">
-	<header class="hidden-xs hidden-sm">
+	<div class="sidemenu__toggle">
+		<div class="sidemenu__hotzone"></div>
+		<div class="sidemenu__burger"></div>
+		<div class="sidemenu__burger"></div>
+		<div class="sidemenu__burger"></div>
+		<div class="sidemenu"></div>
+	</div>
+
+	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
 
-			<h1>Stat Block Converter</h1>
-			<p>Input stat block on left, hit parse, copy JSON from right.</p>
+			<h1 class="page__title">Text Converter</h1>
+			<p class="page__subtitle">Input text on left, hit parse, copy JSON from right.</p>
 		</div>
 	</header>
-	<nav class="container" id="navigation">
+	<nav class="container page__nav" id="navigation">
 		<ul class="nav nav-pills" id="navbar">
 		</ul>
 	</nav>
-	<main class="bodyContent view-col-wrapper">
+	<main class="view-col-wrapper">
 
-		<div class="view-col">
-			<h3>Statblock
-				<button id="parsestatblock" class="btn btn-default">Parse</button>
-				<button id="parsestatblockadd" class="btn btn-default">Parse and Add</button>
-				<select class="form-control select-inline" id="parse_mode">
-					<option value="txt">Parse as Text</option>
-					<option value="md" selected>Parse as Markdown</option>
-				</select>
-			</h3>
-			<pre id="statblock" class="inputArea">
-___
->## Lich
->*Medium undead, any evil alignment*
->___
->- **Armor Class** 17
->- **Hit Points** 135 (18d8 + 54)
->- **Speed** 30 ft.
->___
->|STR|DEX|CON|INT|WIS|CHA|
->|:---:|:---:|:---:|:---:|:---:|:---:|
->|11 (+0)|16 (+3)|16 (+3)|20 (+5)|14 (+2)|16 (+3)|
->___
->- **Saving Throws** Con +10, Int +12, Wis +9
->- **Skills** Arcana +18, History +12, Insight +9, Perception +9
->- **Damage Resistances** cold, lightning, necrotic
->- **Damage Immunities** poison; bludgeoning, piercing, and slashing from nonmagical attacks
->- **Condition Immunities** charmed, exhaustion, frightened, paralyzed, poisoned
->- **Senses** truesight 120 ft., passive Perception 19
->- **Languages** Common plus up to five other languages
->- **Challenge** 21 (33000 XP)
->___
->***Legendary Resistance (3/Day).*** If the lich fails a saving throw, it can choose to succeed instead.
->
->***Rejuvenation.*** If it has a phylactery, a destroyed lich gains a new body in 1d10 days, regaining all its hit points and becoming active again. The new body appears within 5 feet of the phylactery.
->
->***Spellcasting.*** The lich is an 18th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 20, +12 to hit with spell attacks). The lich has the following wizard spells prepared:
->
->• Cantrips (at will): mage hand, prestidigitation, ray of frost
->• 1st level (4 slots): detect magic, magic missile, shield, thunderwave
->• 2nd level (3 slots): detect thoughts, invisibility, Melf's acid arrow, mirror image
->• 3rd level (3 slots): animate dead, counterspell, dispel magic, fireball
->• 4th level (3 slots): blight, dimension door
->• 5th level (3 slots): cloudkill, scrying
->• 6th level (1 slot): disintegrate, globe of invulnerability
->• 7th level (1 slot): finger of death, plane shift
->• 8th level (1 slot): dominate monster, power word stun
->• 9th level (1 slot): power word kill
->
->***Turn Resistance.*** The lich has advantage on saving throws against any effect that turns undead.
->
->### Actions
->***Paralyzing Touch.*** Melee Spell Attack: +12 to hit, reach 5 ft., one creature. Hit: 10 (3d6) cold damage. The target must succeed on a DC 18 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
->
->### Legendary Actions
->The lich can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The lich regains spent legendary actions at the start of its turn.
->
->***Cantrip.*** The lich casts a cantrip.
->
->***Paralyzing Touch (Costs 2 Actions).*** The lich uses its Paralyzing Touch.
->
->***Frightening Gaze (Costs 2 Actions).*** The lich fixes its gaze on one creature it can see within 10 feet of it. The target must succeed on a DC 18 Wisdom saving throw against this magic or become frightened for 1 minute. The frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to the lich's gaze for the next 24 hours.
->
->***Disrupt Life (Costs 3 Actions).*** Each living creature within 20 feet of the lich must make a DC 18 Constitution saving throw against this magic, taking 21 (6d6) necrotic damage on a failed save, or half as much damage on a successful one.
->
->
-			</pre>
+		<div class="view-col conv__col">
+			<h3 class="conv__head">Input</h3>
+			<pre id="converter_input" class="inputArea ace_editor"></pre>
 			<div>
-				<label class="flex-label">Title-Case Names <input type="checkbox" checked id="titlecase"></label>
-				Page: <input class="form-control conv-ipt conv-ipt__page" id="page_in" type="number" value="0">
-				Source: <select id="source" class="form-control select-inline"></select>
-				|
-				<input class="form-control conv-ipt conv-ipt__source" type="text" id="customsourcein" placeholder="Custom source">
-				<button id="addsource" class="btn btn-sm btn-default">Add</button> <i>Custom sources will persist through page reloads</i>
-				<hr>
-				<small>This parser is <em>very</em> <span class="help" title="Notably poor at handling text split across multiple lines, as Line Return is used to separate blocks of text.">particular</span> about its input. Use at your own risk.</small>
+				<div class="text-align-right" style="padding: 0 2rem;">
+					<button id="parsestatblock" class="btn btn-sm btn-default">Parse</button>
+					<button id="parsestatblockadd" class="btn btn-sm btn-default">Parse and Add</button>
+				</div>
 			</div>
 		</div>
 
-		<div class="view-col">
-			<h3>Output</h3>
-			<textarea id="jsonoutput" readonly class="outputArea"></textarea>
-			<div id="lastWarnings" class="code"></div>
-			<div id="lastError" class="code"></div>
-			<div style="margin-top: 5px;">
-				<button id="editable" class="btn btn-sm btn-default mr-1">Enable Editing</button>
+		<div class="view-col conv__col">
+			<h3 class="conv__head">Output</h3>
+
+			<pre id="converter_output" class="outputArea ace_editor"></pre>
+
+			<div class="split conv__out_control__wrp">
+				<button id="editable" class="btn btn-sm btn-default">Enable Editing</button>
 				<button id="download" class="btn btn-sm btn-default">Download JSON</button>
 			</div>
+
+			<div id="lastWarnings" class="code"></div>
+			<div id="lastError" class="code"></div>
 		</div>
 	</main>
-
-	<!--5ETOOLS_SCRIPT_ANCHOR-->
-	<script type="text/javascript" src="js/utils.js"></script>
-	<script type="text/javascript" src="js/omnidexer.js"></script>
-	<script type="text/javascript" src="js/omnisearch.js"></script>
-	<script type="text/javascript" src="js/entryrender.js"></script>
-	<script type="text/javascript" src="js/converterutils.js"></script>
-	<script type="text/javascript" src="js/converter.js"></script>
-	<script type="text/javascript" src="lib/list.js"></script>
-	<script type="text/javascript" src="lib/jquery.js"></script>
-	<script type="text/javascript" src="lib/bootstrap.js"></script>
-	<script type="text/javascript" src="lib/elasticlunr.js"></script>
-	<script type="text/javascript" src="lib/ace.js"></script>
 </div>
+
+<!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_SCRIPT_ANCHOR__ACE-JS-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/converterutils.js"></script>
+<script type="text/javascript" src="js/converter.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+<script type="text/javascript" src="lib/ace.js"></script>
 </body>
 </html>

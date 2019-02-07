@@ -11,27 +11,16 @@
 	<title>Adventures - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 	<style>
-		body {
-			overflow-y: scroll;
-		}
-
-		#listcontainer > ul > li {
-			max-height: initial;
-		}
-
 		ul.list li:hover {
 			background: inherit;
-		}
-
-		ul.list li:active {
-			color: inherit;
 		}
 
 		ul.books > li:last-child,
@@ -43,16 +32,6 @@
 			display: initial;
 		}
 
-		#listcontainer .list a.adv-name {
-			display: flex;
-			justify-content: space-between;
-			padding: 0;
-		}
-
-		span.name {
-			width: 100%;
-		}
-
 		span.name > span {
 			display: inline-block;
 		}
@@ -60,37 +39,27 @@
 </head>
 
 <body>
-<header class="hidden-xs hidden-sm">
+<header class="hidden-xs hidden-sm page__header">
 	<div class="container">
-
-		<h1>Adventures</h1>
-		<p>Browse adventures by name and contents</p>
+		<h1 class="page__title">Adventures</h1>
+		<p class="page__subtitle">Browse adventures by name and contents</p>
 	</div>
 </header>
-<nav class="container" id="navigation">
-	<ul class="nav nav-pills" id="navbar">
-	</ul>
-</nav>
+
+<nav class="container page__nav" id="navigation"><ul class="nav nav-pills" id="navbar"></ul></nav>
 
 <div class="container view-col-wrapper">
 	<div class="view-col" id="listcontainer">
 		<div class="input-group">
 			<input type="search" id="search" class="search form-control" placeholder="Find adventure...">
-			<span class="input-group-btn">
-						<button class="btn btn-default" type="button" id="reset">Reset</button>
-					</span>
+			<span class="input-group-btn"><button class="btn btn-default" id="reset">Reset</button></span>
 		</div>
 
 		<div id="filtertools" class="sortlabel btn-group">
-			<button class="col-xs-6 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-			<button class="col-xs-2 col-xs-2-5 sort btn btn-default btn-xs" type="button" data-sort="storyline">
-				Storyline
-			</button>
-			<button class="col-xs-1 col-xs-1-3 sort btn btn-default btn-xs" type="button" data-sort="level">Levels
-			</button>
-			<button class="col-xs-2 col-xs-2-2 sort btn btn-default btn-xs" type="button" data-sort="published">
-				Published
-			</button>
+			<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+			<button class="col-2-5 sort btn btn-default btn-xs" data-sort="storyline">Storyline <span class="caret_wrp"></span></button>
+			<button class="col-1-3 sort btn btn-default btn-xs" data-sort="level">Levels <span class="caret_wrp"></span></button>
+			<button class="col-2-2 sort btn btn-default btn-xs" data-sort="published">Published <span class="caret_wrp"></span></button>
 		</div>
 
 		<ul class="list books">
@@ -103,17 +72,20 @@
 	</div>
 </div>
 
-<footer class="container"></footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/bookutils.js"></script>
+<script type="text/javascript" src="js/bookslist.js"></script>
 <script type="text/javascript" src="js/adventures.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
-<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>
-
 </html>

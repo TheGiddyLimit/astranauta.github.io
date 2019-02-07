@@ -11,10 +11,11 @@
 	<title>Objects - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 
@@ -22,19 +23,24 @@
 		.stats-source {
 			margin-right: 5em;
 		}
+
+		img.token {
+			font-size: 1.6em;
+			right: 0.4em;
+		}
 	</style>
 </head>
 
 <body>
 <div class="viewport-wrapper">
-	<header class="hidden-xs hidden-sm">
+	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
 
-			<h1>Objects</h1>
-			<p>Search by name on the left, click object name to display on the right.</p>
+			<h1 class="page__title">Objects</h1>
+			<p class="page__subtitle">Search by name on the left, click object name to display on the right.</p>
 		</div>
 	</header>
-	<nav class="container" id="navigation">
+	<nav class="container page__nav" id="navigation">
 		<ul class="nav nav-pills" id="navbar">
 		</ul>
 	</nav>
@@ -43,12 +49,12 @@
 		<div class="view-col" id="listcontainer">
 			<div class="input-group" id="filter-search-input-group">
 				<input type="search" id="search" class="search form-control" placeholder="Find objects...">
-				<span class="input-group-btn"><button class="btn btn-default" type="button" id="reset">Reset</button></span>
+				<span class="input-group-btn"><button class="btn btn-default" id="reset">Reset</button></span>
 			</div>
 			<div id="filtertools" class="sortlabel btn-group">
-				<button class="col-xs-8 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-				<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="size">Size</button>
-				<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+				<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+				<button class="col-2 sort btn btn-default btn-xs" data-sort="size">Size <span class="caret_wrp"></span></button>
+				<button class="col-2 sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
 			</div>
 
 			<ul id="objectsList" class="list objects">
@@ -57,10 +63,10 @@
 		</div>
 
 		<div id="contentwrapper" class="view-col">
-			<div id="sublistcontainer">
+			<div id="sublistcontainer" class="sublist">
 				<div id="sublistsort" class="sortlabel btn-group">
-					<button class="col-xs-9 sort btn btn-default btn-xs" data-sort="name">Name</button>
-					<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="size">Size</button>
+					<button class="col-9 sort btn btn-default btn-xs" data-sort="name">Name</button>
+					<button class="col-3 sort btn btn-default btn-xs" data-sort="size">Size</button>
 				</div>
 				<ul class="list subobjects">
 					<!-- populate with JS -->
@@ -69,12 +75,14 @@
 
 			<div class="wrp-stat-tab">
 				<div id="tabs-right">
-					<span class="stat-tab btn btn-default" id="btn-pin"><span class="glyphicon glyphicon-pushpin"></span></span>
-					<span class="stat-tab btn btn-default" id="btn-popout"><span class="glyphicon glyphicon-new-window"></span></span>
+					<button class="stat-tab btn btn-default" id="btn-pin"><span class="glyphicon glyphicon-pushpin"></span></button>
+					<button class="stat-tab btn btn-default" id="btn-popout"><span class="glyphicon glyphicon-new-window"></span></button>
 				</div>
 			</div>
 
-			<div class="wrp-stats-table">
+			<div id="float-token" style="position: relative;"></div>
+
+			<div class="wrp-stats-table" onscroll="handleStatblockScroll(event, this)">
 				<table id="pagecontent" class="stats">
 					<tr><th class="border" colspan="6"></th></tr>
 					<tr><td colspan="6" class="initial-message">Select an object from the list to view it here</td></tr>
@@ -89,15 +97,18 @@
 	</div>
 </div>    <!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/history.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/objects.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
-<script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 
 </body>

@@ -11,73 +11,175 @@
 	<title>Lootgen - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 </head>
 
-<body>
-<header class="hidden-xs hidden-sm">
+<body id="lootgen">
+<header class="hidden-xs hidden-sm page__header">
 	<div class="container">
-		<h1>Loot Gen</h1>
-		<p>Choose Challenge Rating, if it's a hoard or not, then Roll Loot!</p>
+		<h1 class="page__title">Loot Generator</h1>
+		<p class="page__subtitle">Choose Challenge Rating, if it's a hoard or not, then Roll Loot!</p>
 	</div>
 </header>
-<nav class="container" id="navigation">
+<nav class="container page__nav" id="navigation">
 	<ul class="nav nav-pills" id="navbar">
 	</ul>
 </nav>
-<main class="container bodyContent">
+<main class="container">
 	<div class="row">
 		<div class="col-sm-5">
-			<form id="controls">
+			<div class="input-group">
+				<span class="input-group-addon btn-default flex-1 clickable" id="btn-lootgen">Find Treasure</span>
+				<span class="input-group-addon btn-default flex-1 clickable" id="btn-loot-table">Loot Tables</span>
+				<span class="input-group-addon btn-default flex-1 clickable" id="btn-random-magic-item">Party Loot</span>
+			</div>
+
+			<div id="container-lootgen" class="hidden">
+				<br/>
+				<div id="controls">
+					<div class="input-group">
+						<span class="input-group-addon">Challenge Rating</span>
+						<select class="form-control clickable" id="cr">
+							<option value="0" selected>1-4</option>
+							<option value="5">5-10</option>
+							<option value="11">11-16</option>
+							<option value="17">17+</option>
+						</select>
+						<span class="input-group-addon" style="padding: 0;">
+							<label for="hoard" class="clickable" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+								Hoard? <input type="checkbox" id="hoard" value="0" class="clickable" style="vertical-align: bottom;">
+							</label>
+						</span>
+					</div>
+					<br/>
+					<button class="col-9 btn btn-default" id="genloot">Roll Loot!</button>
+					<button class="col-2-9 btn btn-default pull-right id-clear">Clear</button>
+					<p>
+						<small>Based on the tables and rules in the
+							<a href="book.html#DMG,7,treasure%20tables,0"><em>Dungeon Master's Guide</em>, pages 133-149.</a>
+						</small>
+					</p>
+				</div>
+			</div>
+
+			<div id="container-loot-table" class="hidden">
+				<div class="mb-2"></div>
 				<div class="input-group">
-					<span class="input-group-addon">Challenge Rating</span>
-					<select class="form-control" id="cr">
-						<option value="0" selected>0-4</option>
-						<option value="5">5-10</option>
-						<option value="11">11-16</option>
-						<option value="17">17+</option>
-					</select>
-					<span class="input-group-addon" style="padding: 0;">
-						<label for="hoard" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
-							Hoard? <input type="checkbox" id="hoard" value="0" style="vertical-align: bottom;">
-						</label>
-					</span>
+					<span class="input-group-addon btn-default clickable" id="btn-dmg-loot-table">DMG</span>
+					<span class="input-group-addon btn-default clickable" id="btn-xge-loot-table">XGE</span>
+				</div>
+				<br/>
+				<div id="container-dmg-loot-table">
+					<div class="input-group full-width">
+						<span class="input-group-addon">Select Table </span>
+						<select class="form-control clickable" id="table-sel">
+							<option value="" selected>View individual tables...</option>
+						</select>
+						<span class="input-group-addon" style="padding: 0;">
+							<label class="clickable" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+								Show Table <input checked type="checkbox" class="id-showLootTable clickable" style="vertical-align: bottom;">
+							</label>
+						</span>
+					</div>
+					<br>
+					<button class="col-9 btn btn-default" id="rollAgaintTable">Roll Loot!</button>
+					<button class="col-2-9 btn btn-default pull-right id-clear">Clear</button>
+					<small>Based on the tables and rules in the
+						<a href="book.html#DMG,7,random%20treasure"><em>Dungeon Master's Guide</em>, pages 133-149.</a>
+					</small>
+				</div>
+				<div id="container-xge-loot-table">
+					<div class="input-group">
+						<span class="input-group-addon">Select Category</span>
+						<select class="form-control clickable" id="random-from-loot-table">
+							<option value="" selected>View Loot Category...</option>
+						</select>
+						<span class="input-group-addon" style="padding: 0;">
+							<label class="clickable" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+								Show Table <input checked type="checkbox" class="id-showLootTable clickable" style="vertical-align: bottom;">
+							</label>
+						</span>
+					</div>
+					<br/>
+					<div style="display: flex; justify-content: space-between">
+						<button class="col-9 btn btn-default" id="get-random-item-from-table">Pick Random Item</button>
+						<button class="col-2-9 btn btn-default pull-right id-clear">Clear</button>
+					</div>
+					<p>
+						<small>Based on the tables and rules in the
+							<a href="book.html#XGE,2,awarding%20magic%20items"><em>Xanathar's Guide to Everything</em>, pages 135</a>.
+						</small>
+					</p>
+				</div>
+			</div>
+
+			<div id="container-random-magic-item" class="hidden">
+				<br/>
+				<p>
+					Generates a set of magical items for a party, based on the tables and rules in <a href="book.html#XGE,2,awarding%20magic%20items"><em>Xanathar's Guide to Everything</em>, pages 135</a>.
+				</p>
+				<p><i>
+					If the "Exact Level" option is selected, the output will include a proportional number of items for any partially-completed tier.
+				</i></p>
+				<div>
+					<div class="mb-3">
+						<div class="input-group">
+							<span class="input-group-addon" style="width: 10%" id="selectCharLevel">Character Level</span>
+							<span class="input-group-addon" style="padding: 0; border-left: 1px solid #ccc;">
+								<label class="clickable" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+									Exact Level? <input type="checkbox" checked id="closest-tier" class="clickable" style="vertical-align: bottom;">
+								</label>
+							</span>
+						</div>
+					</div>
+					<div class="slider full-width" style="margin-bottom: 23px;"></div>
+					<div id="random-magic-item-select-tier" class="input-group full-width">
+						<select class="form-control clickable" id="charLevel" style="border-top-right-radius: 3px; border-bottom-right-radius: 3px;">
+							<option value="4" selected>1-4</option>
+							<option value="10">5-10</option>
+							<option value="16">11-16</option>
+							<option value="20">17+</option>
+						</select>
+						<span class="input-group-addon" style="padding: 0; display: none;" id="wrp-char-cumulative">
+							<label class="clickable" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+								Cumulative with Previous Tiers? <input type="checkbox" checked id="char-cumulative" class="clickable" style="vertical-align: bottom;">
+							</label>
+						</span>
+					</div>
 				</div>
 				<br>
-				<button type="button" class="col-xs-9 btn btn-default" id="genloot">Roll Loot!</button>
-				<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right" id="clear">Clear</button>
-				<p>
-					<small>Based on the tables and rules in the <em>Dungeon Master's Guide</em>, pages 133-149.</small>
-				</p>
-			</form>
-			<select class="form-control" id="table-sel">
-				<option value="" disabled selected>View individual tables...</option>
-			</select>
+				<div style="display: flex; justify-content: space-between">
+					<button class="col-9 btn btn-default" id="get-group-of-items-for-character">Generate Items for a Party</button>
+					<button class="col-2-9 btn btn-default pull-right id-clear">Clear</button>
+				</div>
+			</div>
 			<div id="classtable"></div>
 		</div>
 		<div class="col-sm-7">
-			<h4>Loot</h4>
 			<div id="lootoutput"></div>
 		</div>
 	</div>
 </main>
-<footer class="container">
-
-</footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
+<script type="text/javascript" src="js/genutils.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/lootgen.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
-<script type="text/javascript" src="lib/jquery.js"></script>
-<script type="text/javascript" src="lib/bootstrap.js"></script>
-<script type="text/javascript" src="lib/elasticlunr.js"></script>
-</body>
 
+</body>
 </html>

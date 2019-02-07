@@ -42,7 +42,7 @@
 							"name": "The Forge of Fury",
 							"entries": [
 								"{@i The Forge of Fury,} written by Richard Baker, was published in 2000 shortly after The Sunless Citadel. Characters who succeeded in that mission and advanced to 3rd level were now ready to take on the challenges of a ruined dwarven fortress.",
-								"Like its predecessor, {@i The Forge of Fury} is tailored to provide increasingly tougher threats as the characters make their way through the fortress. Those who survive the experience can expect to advance to 5th level- seasoned adventurers ready to strive for greater glory and renown."
+								"Like its predecessor, {@i The Forge of Fury} is tailored to provide increasingly tougher threats as the characters make their way through the fortress. Those who survive the experience can expect to advance to 5th level\u2014seasoned adventurers ready to strive for greater glory and renown."
 							]
 						},
 						{
@@ -159,7 +159,7 @@
 								"Item"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -269,7 +269,7 @@
 								"Objective"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -315,7 +315,7 @@
 								"Secret"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -411,7 +411,7 @@
 										"Denizen"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -533,7 +533,7 @@
 										"Item in Bag"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -651,7 +651,7 @@
 					"name": "Adventure Start",
 					"entries": [
 						"It is assumed that the party has safely arrived at a spot near the giants' stronghold-a small cave, well hidden, where they can hide mounts and equipment. They come to the place of the giants just at dusk. No windows are visible, nor can giants or any other creatures be seen about the place, although occasional bursts of shouting and laughter can be heard faintly from within. The characters have been warned to expect guards at the great doors to the steading, but none are visible. (If the party returns to the stronghold after an initial foray, there will be guards present on the second and subsequent visits.) The time has come to see what is afoot!",
-						"If the party decides to retire between forays against the steading, they can retreat to the relative safety of the hidden cave base camp to rest and regain spells- provided they take moderate precautions not to leave a plain trail or be followed to this sanctuary. Failure to take such basic precautions may lead to disaster! The characters are assumed to have brought sufficient supplies for several weeks' stay with them."
+						"If the party decides to retire between forays against the steading, they can retreat to the relative safety of the hidden cave base camp to rest and regain spells\u2014provided they take moderate precautions not to leave a plain trail or be followed to this sanctuary. Failure to take such basic precautions may lead to disaster! The characters are assumed to have brought sufficient supplies for several weeks' stay with them."
 					]
 				},
 				{
@@ -679,7 +679,7 @@
 							"type": "entries",
 							"name": "Ceilings",
 							"entries": [
-								"Ceiling height varies from about 16 feet at the edges to 32 feet at the center, the roof being held up by great, smoke-blackened rafters. The open yard (area 22) has no roof."
+								"Ceiling height varies from about 16 feet at the edges to 32 feet at the center, the roof being held up by great, smoke-blackened rafters. The open yard ({@area 1>22>0}) has no roof."
 							]
 						},
 						{
@@ -713,15 +713,15 @@
 									"type": "entries",
 									"name": "Entryway and Long Corridor",
 									"entries": [
-										"If the characters are in area 1 or in the corridor that leads to area 11, choose from the following possibilities:"
+										"If the characters are in {@area 1>1>0} or in the corridor that leads to {@area 1>11>0}, choose from the following possibilities:"
 									]
 								},
 								{
 									"type": "list",
 									"items": [
-										"Two hot-headed {@creature hill giant|MM|hill giants} heading for the weapons room (area 13) from the great hall (area 11), intending to fight an impromptu duel",
-										"The {@creature cloud giant|MM} from the great hall (area 11) heading for the front gate (area 1)",
-										"The {@creature stone giant|MM} from the great hall (area 11) heading for the front gate (area 1)"
+										"Two hot-headed {@creature hill giant|MM|hill giants} heading for the weapons room ({@area 1>13>0}) from the great hall ({@area 1>11>0}), intending to fight an impromptu duel",
+										"The {@creature cloud giant|MM} from the great hall ({@area 1>11>0}) heading for the front gate ({@area 1>1>0})",
+										"The {@creature stone giant|MM} from the great hall ({@area 1>11>0}) heading for the front gate ({@area 1>1>0})"
 									]
 								},
 								{
@@ -732,7 +732,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -760,10 +760,10 @@
 								{
 									"type": "list",
 									"items": [
-										"Grutha, the chief's wife, coming from the great hall (area 11) to get her pet cave bear from her room (see area 7)",
-										"A {@creature hill giant|MM} with four {@creature dire wolf|MM|dire wolves} from the open yard (area 22) going to the barracks (area 4)",
-										"Chief Nosnra (see area 11) and two {@creature ogre|MM|ogres} going to get some trophies from the chief's hall (area 6) to show off in the great hall",
-										"1d4+1 young hill giants (use the {@creature orc|MM} statistics) from the dormitory (area 3) heading through the open yard (area 22) to raid the pantry (area 18A)"
+										"Grutha, the chief's wife, coming from the great hall ({@area 1>11>0}) to get her pet cave bear from her room (see {@area 1>7>0})",
+										"A {@creature hill giant|MM} with four {@creature dire wolf|MM|dire wolves} from the open yard ({@area 1>22>0}) going to the barracks ({@area 1>4>0})",
+										"Chief Nosnra (see {@area 1>11>0}) and two {@creature ogre|MM|ogres} going to get some trophies from the chief's hall ({@area 1>6>0}) to show off in the great hall",
+										"1d4+1 young hill giants (use the {@creature orc|MM} statistics) from the dormitory ({@area 1>3>0}) heading through the open yard ({@area 1>22>0}) to raid the pantry ({@area 1>18A})"
 									]
 								},
 								{
@@ -774,7 +774,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -806,10 +806,10 @@
 								{
 									"type": "list",
 									"items": [
-										"2d6 orc slaves ({@creature commoner|MM|commoners}) rushing to get shields (from area 12 or 13) to use as platters",
-										"Two {@creature hill giant|MM|hill giants} from the great hall (area 11) going to sleep off a drunk (in area 15 or 16)",
-										"Three {@creature ogre|MM|ogres} from the great hall (area 11) going to get one of the guards from the entryway (area 1)",
-										"A {@creature hill giant|MM} from the great hall (area 11) taking a stroll to clear his head"
+										"2d6 orc slaves ({@creature commoner|MM|commoners}) rushing to get shields (from {@area 1>12>0} or {@area 1>13>0||13}) to use as platters",
+										"Two {@creature hill giant|MM|hill giants} from the great hall ({@area 1>11>0}) going to sleep off a drunk (in {@area 1>15>0} or {@area 1>16>0||16})",
+										"Three {@creature ogre|MM|ogres} from the great hall ({@area 1>11>0}) going to get one of the guards from the entryway ({@area 1>1>0})",
+										"A {@creature hill giant|MM} from the great hall ({@area 1>11>0}) taking a stroll to clear his head"
 									]
 								},
 								{
@@ -820,7 +820,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -846,7 +846,7 @@
 									"type": "entries",
 									"name": "Yard and Barracks Rooms",
 									"entries": [
-										"If the characters are in areas 22 through 25, they might encounter a {@creature hill giant|MM} from the great hall (area 11) heading for bed."
+										"If the characters are in areas 22 through 25, they might encounter a {@creature hill giant|MM} from the great hall ({@area 1>11>0}) heading for bed."
 									]
 								}
 							]
@@ -918,7 +918,7 @@
 								"Item in Bag"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -1016,7 +1016,7 @@
 							"type": "entries",
 							"name": "Guards at the Gate",
 							"entries": [
-								"Two snoring {@creature hill giant|MM|hill giants}, supposedly guarding the entrance, lie curled up blissfully asleep just inside the front gate, a nearly empty keg of ale between them. If these guards are attacked and not killed in a single round, they alert the third guard (posted in the watch tower at area 1B)."
+								"Two snoring {@creature hill giant|MM|hill giants}, supposedly guarding the entrance, lie curled up blissfully asleep just inside the front gate, a nearly empty keg of ale between them. If these guards are attacked and not killed in a single round, they alert the third guard (posted in the watch tower at {@area 1>1B})."
 							]
 						}
 					]
@@ -1104,7 +1104,7 @@
 					"type": "entries",
 					"name": "7. Chamber of the Chief's Wife",
 					"entries": [
-						"Grutha, the chief's wife, is at feast in the great hall (area 11), while her pet cave bear (use the cave bear variant with the {@creature polar bear|MM} statistics) stays in her room. The creature acts as a guard and immediately attacks any intruder, for it can smell the person at the door. The bear makes no noise until it attacks.",
+						"Grutha, the chief's wife, is at feast in the great hall ({@area 1>11>0}), while her pet cave bear (use the cave bear variant with the {@creature polar bear|MM} statistics) stays in her room. The creature acts as a guard and immediately attacks any intruder, for it can smell the person at the door. The bear makes no noise until it attacks.",
 						"The room has a bed, a small table, a chair, a stool, two chests, and a coffer, plus rugs, hides, and the like. The chests contain only clothing, since she is wearing her jewelry at the banquet.",
 						{
 							"type": "entries",
@@ -1126,7 +1126,7 @@
 					"type": "entries",
 					"name": "9. Arms Room",
 					"entries": [
-						"The chief's best personal armor, shields, and weapons are stored in a chamber that can be accessed only by going through the dining room (area 10). There are also four huge fur capes among the dozen or so items in the place.",
+						"The chief's best personal armor, shields, and weapons are stored in a chamber that can be accessed only by going through the dining room ({@area 1>10>0}). There are also four huge fur capes among the dozen or so items in the place.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -1163,7 +1163,7 @@
 					"type": "entries",
 					"name": "11. Great Hall",
 					"entries": [
-						"The long corridor that leads north from area 1 is dim, shadowy, and generally deserted and ignored, for all of the feasting and fun lies beyond, in the great hall itself. A few torches burn smokily high up along either wall.",
+						"The long corridor that leads north from {@area 1>1>0} is dim, shadowy, and generally deserted and ignored, for all of the feasting and fun lies beyond, in the great hall itself. A few torches burn smokily high up along either wall.",
 						{
 							"type": "image",
 							"href": {
@@ -1189,7 +1189,7 @@
 								"The subchief, also seated at the head table, is a hill giant that fights as a {@creature stone giant|MM}, without Stone Camouflage. His AC is from splint armor.",
 								"A {@creature cloud giant|MM} ambassador stands near the firepit.",
 								"A {@creature stone giant|MM} visitor is seated at the head table.",
-								"Seven {@creature hill giant|MM|hill giants}, including the sergeant from area 25 (who has AC 16 from chain mail and 115 hit points), six hill giant servants (use the {@creature ogre|MM} statistics), and eight {@creature ogre|MM|ogres} are scattered around the room."
+								"Seven {@creature hill giant|MM|hill giants}, including the sergeant from {@area 1>25>0} (who has AC 16 from chain mail and 115 hit points), six hill giant servants (use the {@creature ogre|MM} statistics), and eight {@creature ogre|MM|ogres} are scattered around the room."
 							]
 						},
 						"There are no throwing rocks here, aside from the few that some of the giants, especially the stone giant, might carry. On the wall directly behind the chief is a small ballista, which he uses as a heavy crossbow (2d10 piercing damage). It fires spears instead of bolts, and six of those projectiles are ready to hand.",
@@ -1200,7 +1200,7 @@
 								"Each giant wears one to four pieces of jewelry worth 250 gp each. Ogres each wear one or two pieces worth 100 gp each. The subchief, decked out for the occasion, has four pieces. Nosnra and Grutha also wear four pieces of jewelry each, worth 1,000 gp per item. The bear has a jewel-studded collar with six rubies, worth a total of 250 gp."
 							]
 						},
-						"The largest ogre has a key to the chest in area 21."
+						"The largest ogre has a key to the chest in {@area 1>21>0}."
 					]
 				},
 				{
@@ -1228,7 +1228,7 @@
 					"type": "entries",
 					"name": "14. Main Guest Chamber",
 					"entries": [
-						"The cloud giant ambassador and the stone giant visitor (currently in the great hall, area 11) are lodged here. In all, the room holds seven beds and various small furnishings including chairs, nightstands, and chests. One torch burns at the west end of the room in a sconce; on the opposite wall is a sconce holding a large, unlit torch. Various skins and hides cover the floors. Several others hang on the walls alongside giant garments on pegs. All are worthless, as are the contents of all the chests and the bags tucked under four of the beds. Still, a valuable reward waits for those who can find it.",
+						"The cloud giant ambassador and the stone giant visitor (currently in the great hall, {@area 1>11>0}) are lodged here. In all, the room holds seven beds and various small furnishings including chairs, nightstands, and chests. One torch burns at the west end of the room in a sconce; on the opposite wall is a sconce holding a large, unlit torch. Various skins and hides cover the floors. Several others hang on the walls alongside giant garments on pegs. All are worthless, as are the contents of all the chests and the bags tucked under four of the beds. Still, a valuable reward waits for those who can find it.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -1249,7 +1249,7 @@
 					"type": "entries",
 					"name": "16. Common Room",
 					"entries": [
-						"This place is almost identical to the matching room across the hall (area 15), with the addition of a few cloaks plus some hides on the floors and walls.",
+						"This place is almost identical to the matching room across the hall ({@area 1>15>0}), with the addition of a few cloaks plus some hides on the floors and walls.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -1278,7 +1278,7 @@
 					"type": "entries",
 					"name": "18A. Pantry",
 					"entries": [
-						"The room to the south contains more provisions of the same types found in the kitchen workroom (area 18), as well as stairs that lead to the dungeon level."
+						"The room to the south contains more provisions of the same types found in the kitchen workroom ({@area 1>18>0}), as well as stairs that lead to the dungeon level."
 					]
 				},
 				{
@@ -1286,7 +1286,7 @@
 					"name": "19. Servants' Quarters",
 					"entries": [
 						"A large common room in the extreme north end of the stronghold has various cots, tables, chairs, stools, and the like. It is cluttered with old clothing and junk. Six hill giant servants (use the {@creature ogre|MM} statistics) are here, and a few are flirting with a handsome male {@creature hill giant|MM}. The giant enters combat to show off for his admirers. He will not call for help unless his current hit points drop to less than half of his hit point maximum. On the round when this happens, he begins to shout. Some of the servants aid him if he starts to cry out, but others prefer to avoid direct conflict, perhaps taking the opportunity to hurt or disadvantage a character from the blind side.",
-						"The giant warrior is the keeper of the wolves in area 22. His whip is hanging beside the door in the southeast corner of this room; this whip need only be shown to the wolves to make them whimper, cower, and fall back."
+						"The giant warrior is the keeper of the wolves in {@area 1>22>0}. His whip is hanging beside the door in the southeast corner of this room; this whip need only be shown to the wolves to make them whimper, cower, and fall back."
 					]
 				},
 				{
@@ -1294,14 +1294,14 @@
 					"name": "20. Orc Slave Quarters",
 					"entries": [
 						"This hall is a messy and smelly place filled with pallets and junk. The two orc slaves ({@creature commoner|MM|commoners}) currently in this place are too injured to work (since giants' kicks break bones). All the other slaves are elsewhere, helping with the feast.",
-						"The two slaves will happily aid the characters if allowed to do so. These orcs know about the rebellion in the dungeons, and they tell the party that any orcs they see down there should be hailed as friends. Aside from that, they are familiar with only the servants' quarters (area 19), the kitchen (area 17), and the great hall (area 11)."
+						"The two slaves will happily aid the characters if allowed to do so. These orcs know about the rebellion in the dungeons, and they tell the party that any orcs they see down there should be hailed as friends. Aside from that, they are familiar with only the servants' quarters ({@area 1>19>0}), the kitchen ({@area 1>17>0}), and the great hall ({@area 1>11>0})."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "21. Ogre Quarters",
 					"entries": [
-						"The hill giants employ ogres as scouts, messengers, servants, and the like, for the ogres are trusty flunkies as well as hard workers and fighters. In addition to those in the great hall (area 11) and the youngsters at work in the kitchen (area 17), five more {@creature ogre|MM|ogres} are in their quarters playing at knucklebones and drinking beer. Ogres are a rowdy lot; hence, noise from this place attracts no attention. Scattered on the floor of the room are nearly a dozen heaps of skins on which the ogres sleep, and a locked iron chest is tucked into one corner.",
+						"The hill giants employ ogres as scouts, messengers, servants, and the like, for the ogres are trusty flunkies as well as hard workers and fighters. In addition to those in the great hall ({@area 1>11>0}) and the youngsters at work in the kitchen ({@area 1>17>0}), five more {@creature ogre|MM|ogres} are in their quarters playing at knucklebones and drinking beer. Ogres are a rowdy lot; hence, noise from this place attracts no attention. Scattered on the floor of the room are nearly a dozen heaps of skins on which the ogres sleep, and a locked iron chest is tucked into one corner.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -1310,14 +1310,14 @@
 							]
 						},
 						"One ogre wears a gem (worth 250 gp) on a thong around his neck. The creatures have 381 cp between them as the stakes for their game.",
-						"The lock on the chest can be opened by a character who succeeds on a DC 15 Dexterity check using thieves' tools, or by someone who uses the key that is carried by one of the ogres in the great hall (area 11). The chest holds 955 sp, 202 gp, and 19 pp."
+						"The lock on the chest can be opened by a character who succeeds on a DC 15 Dexterity check using thieves' tools, or by someone who uses the key that is carried by one of the ogres in the great hall ({@area 1>11>0}). The chest holds 955 sp, 202 gp, and 19 pp."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "22. Open Yard",
 					"entries": [
-						"Fourteen {@creature dire wolf|MM|dire wolves} run free here, and they immediately attack any humanoid that enters their area. If they see the whip from area 19, however, they cower and whimper, allowing the intruders to pass unchallenged."
+						"Fourteen {@creature dire wolf|MM|dire wolves} run free here, and they immediately attack any humanoid that enters their area. If they see the whip from {@area 1>19>0}, however, they cower and whimper, allowing the intruders to pass unchallenged."
 					]
 				},
 				{
@@ -1338,7 +1338,7 @@
 					"type": "entries",
 					"name": "25. Barracks Room",
 					"entries": [
-						"This room's contents are similar to those in area 24 (see above), except for the partially enclosed area to the northwest. This alcove belongs to the sergeant of the guards, who is now away feasting. There are three chests in the space, all filled with clothing and equipment for the troops and herself. Giant-sized boots are gathered in a sack that hangs from the wall.",
+						"This room's contents are similar to those in {@area 1>24>0} (see above), except for the partially enclosed area to the northwest. This alcove belongs to the sergeant of the guards, who is now away feasting. There are three chests in the space, all filled with clothing and equipment for the troops and herself. Giant-sized boots are gathered in a sack that hangs from the wall.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -1354,10 +1354,18 @@
 					"entries": [
 						"The map shows the layout of the steading's lower level. The stonework is ancient but holding up well, patched in places with new mortar or shored up with newly hewn stone. All natural cave areas have stalagmites, but for ease of passage the giants have removed stalactites from the central caverns (areas 19-21).",
 						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/TftYP/AtGHill-L2-DM.png"
+							},
+							"title": "Map 6.2: Hill Giant Stronghold, Dungeon Level"
+						},
+						{
 							"type": "entries",
 							"name": "Ceilings",
 							"entries": [
-								"Passageways have ceilings that are arched, and buttressed every 10 feet, with the peak of the arch about 18 feet overhead. The ceiling height in most smallish rooms in the dungeon is 20 feet or so, again arched and buttressed. In the large rooms and chambers, the ceilings are 30 feet high. The roof in the natural caverns to the southeast (areas 19-21) is of varying height, the passages about 15 feet high and the large areas some 20 feet or more. The roof of the carrion crawlers' lair (area 23) is about 40 feet high."
+								"Passageways have ceilings that are arched, and buttressed every 10 feet, with the peak of the arch about 18 feet overhead. The ceiling height in most smallish rooms in the dungeon is 20 feet or so, again arched and buttressed. In the large rooms and chambers, the ceilings are 30 feet high. The roof in the natural caverns to the southeast (areas 19-21) is of varying height, the passages about 15 feet high and the large areas some 20 feet or more. The roof of the carrion crawlers' lair ({@area 1>23>1}) is about 40 feet high."
 							]
 						},
 						{
@@ -1390,14 +1398,14 @@
 									"type": "entries",
 									"name": "Excavated Rooms and Passages",
 									"entries": [
-										"If the characters are in areas 1 through 18, area 22, or areas 24 through 33, roll a d12. On a roll of 1, which indicates a random encounter, choose from the following possibilities:"
+										"If the characters are in areas 1 through 18, {@area 1>22>1}, or areas 24 through 33, roll a d12. On a roll of 1, which indicates a random encounter, choose from the following possibilities:"
 									]
 								},
 								{
 									"type": "list",
 									"items": [
 										"Four {@creature ogre|MM|ogres} seeking some orcs",
-										"The Keeper (see area 2), out inspecting, accompanied by an {@creature ape|MM} (one of his pets)",
+										"The Keeper (see {@area 1>2>1}), out inspecting, accompanied by an {@creature ape|MM} (one of his pets)",
 										"Twelve rebel {@creature orc|MM|orcs} out raiding for food, two armed with heavy crossbows and poisoned bolts"
 									]
 								},
@@ -1409,7 +1417,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -1431,14 +1439,14 @@
 									"type": "entries",
 									"name": "Caverns",
 									"entries": [
-										"If the characters are in areas 19 through 21 or area 23, roll a d20. On a roll of 1, which indicates a random encounter, choose from the following possibilities:"
+										"If the characters are in areas 19 through 21 or {@area 1>23>1}, roll a d20. On a roll of 1, which indicates a random encounter, choose from the following possibilities:"
 									]
 								},
 								{
 									"type": "list",
 									"items": [
-										"1d4 young {@creature giant lizard|MM|giant lizards} from area 21",
-										"1d3 {@creature carrion crawler|MM|carrion crawlers} coming from area 22 by way of the sinkholes"
+										"1d4 young {@creature giant lizard|MM|giant lizards} from {@area 1>21>1}",
+										"1d3 {@creature carrion crawler|MM|carrion crawlers} coming from {@area 1>22>1} by way of the sinkholes"
 									]
 								},
 								{
@@ -1476,7 +1484,7 @@
 					"type": "entries",
 					"name": "1. Marshaling Area",
 					"entries": [
-						"At the bottom of the stairs that lead from area 18A on the upper level is a room where slaves are rounded up and sent about their tasks under guard. It is also used for the revels of the off-duty dungeon crew. A few smoky torches burn along the walls. Several benches and tables are pushed out of the way against the walls, revealing a floor of black stone, much worn by the tread of countless feet.",
+						"At the bottom of the stairs that lead from {@area 1>18A} on the upper level is a room where slaves are rounded up and sent about their tasks under guard. It is also used for the revels of the off-duty dungeon crew. A few smoky torches burn along the walls. Several benches and tables are pushed out of the way against the walls, revealing a floor of black stone, much worn by the tread of countless feet.",
 						{
 							"type": "image",
 							"href": {
@@ -1551,7 +1559,7 @@
 							"type": "entries",
 							"name": "Fifth Cell",
 							"entries": [
-								"Five captured {@creature orc|MM} rebels are crammed into the easternmost cell. Three others of their number have already been tortured to death and eaten, so they will be very willing to help any creature promising them escape from the toils of the giants. These orcs can lead the characters south and east to the rebels' hideout (area 19) and will see them safely past the guards behind the barricade to the south (at the location marked B) if the characters can handle the bugbear at the watch post (W) to the west of that place."
+								"Five captured {@creature orc|MM} rebels are crammed into the easternmost cell. Three others of their number have already been tortured to death and eaten, so they will be very willing to help any creature promising them escape from the toils of the giants. These orcs can lead the characters south and east to the rebels' hideout ({@area 1>19>1}) and will see them safely past the guards behind the barricade to the south (at the location marked B) if the characters can handle the bugbear at the watch post (W) to the west of that place."
 							]
 						}
 					]
@@ -1587,14 +1595,14 @@
 							"type": "entries",
 							"name": "6. Barracks",
 							"entries": [
-								"This small barracks is similar to area 5, with eight sleeping {@creature bugbear|MM|bugbears}."
+								"This small barracks is similar to {@area 1>5>1}, with eight sleeping {@creature bugbear|MM|bugbears}."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "7. Chamber of the Bugbear Captain",
 							"entries": [
-								"Currently, five bugbears-the captain (a {@creature bugbear chief|MM}) and four lieutenants ({@creature bugbear|MM|bugbears}) -are sitting around a crude table drinking ale and discussing a plan to wipe out the rebel orcs in area 19. All these bugbears have longswords that deal 11 (2d8+2) slashing damage on a hit. All five are carrying 50 gp each. The captain also has thirty-one 10 gp gems hidden in a pouch under his armor."
+								"Currently, five bugbears-the captain (a {@creature bugbear chief|MM}) and four lieutenants ({@creature bugbear|MM|bugbears}) -are sitting around a crude table drinking ale and discussing a plan to wipe out the rebel orcs in {@area 1>19>1}. All these bugbears have longswords that deal 11 (2d8+2) slashing damage on a hit. All five are carrying 50 gp each. The captain also has thirty-one 10 gp gems hidden in a pouch under his armor."
 							]
 						},
 						{
@@ -1740,12 +1748,12 @@
 					"entries": [
 						"In their excavations, the ancient builders of the stronghold stumbled upon an enormous expanse of natural caves and caverns. The southern part of this network is now inhabited by seventy-eight escaped orc slaves, including two {@creature orog|MM|orogs}, twenty-six {@creature orc|MM|orcs}, and fifty orc {@creature commoner|MM|commoners}, for whom the place is a sanctuary.",
 						"The orcs, making ready for a rebellion against the giants, are armed with clubs, axes, daggers, and various cast-off weapons, as well as seven highly prized crossbows. They obtain food from raids, supplemented by fungus they find in a subterranean cave accessed through the sinkhole along the southwest edge of the cavern.",
-						"The rebel orcs have an uneasy truce with the nearby troglodytes (see area 20) and trade food to these creatures in exchange for water. If the orcs are approached in a non-hostile manner, they become agreeable immediately if the characters mention the possibility of fighting against bugbears or giants.",
+						"The rebel orcs have an uneasy truce with the nearby troglodytes (see {@area 1>20>1}) and trade food to these creatures in exchange for water. If the orcs are approached in a non-hostile manner, they become agreeable immediately if the characters mention the possibility of fighting against bugbears or giants.",
 						{
 							"type": "entries",
 							"name": "Guard Posts",
 							"entries": [
-								"The orcs have guards at several locations (marked G on the map) whose main function is to act as lookouts in case of incursion from any of the adjoining areas. These orcs will flee into area 19 to warn the others if they spot trouble."
+								"The orcs have guards at several locations (marked G on the map) whose main function is to act as lookouts in case of incursion from any of the adjoining areas. These orcs will flee into {@area 1>19>1} to warn the others if they spot trouble."
 							]
 						},
 						{
@@ -1761,7 +1769,7 @@
 					"type": "entries",
 					"name": "20. Troglodyte Cavern",
 					"entries": [
-						"A tribe of troglodytes dwells in the central portion of the cavern complex. The group includes twenty-three adult {@creature troglodyte|MM|troglodytes} and fourteen young (use the {@creature kobold|MM} statistics). Trapped as they are between the orcs in area 19 and the lizards at area 21, they are trying to make do until they can escape.",
+						"A tribe of troglodytes dwells in the central portion of the cavern complex. The group includes twenty-three adult {@creature troglodyte|MM|troglodytes} and fourteen young (use the {@creature kobold|MM} statistics). Trapped as they are between the orcs in {@area 1>19>1} and the lizards at {@area 1>21>1}, they are trying to make do until they can escape.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -1784,7 +1792,7 @@
 					"name": "22. Partially Cleared Passage to Cistern",
 					"entries": [
 						"The well-like chamber at the end of the broad corridor is filled with a deep pool of water. This dark liquid is cool and wholesome to drink, and only a few albino tadpoles dwell in it. It is an emergency water supply fed from several spouting springs that come through holes in the wall to the west.",
-						"The pool is 14 feet deep, and at the bottom is an outlet large enough for a Medium humanoid to pass through, The opening is finished stone, obviously constructed. This outlet slants upward, providing access to the stream that flows through area 23. Anyone who travels downstream, along a route that is underwater the whole time, comes out about three miles below the stronghold in a small pond."
+						"The pool is 14 feet deep, and at the bottom is an outlet large enough for a Medium humanoid to pass through, The opening is finished stone, obviously constructed. This outlet slants upward, providing access to the stream that flows through {@area 1>23>1}. Anyone who travels downstream, along a route that is underwater the whole time, comes out about three miles below the stronghold in a small pond."
 					]
 				},
 				{
@@ -1822,7 +1830,7 @@
 					"type": "entries",
 					"name": "25. Wine Cellar",
 					"entries": [
-						"A padlocked door identical to the one at area 24 blocks entry to the wine cellar. Inside, in addition to several large barrels, and various kegs, thirteen casks of exceptional wine, holding 5 gallons each, are stored here. Each of the casks has a bung seal with a blob of black wax impressed with a death's head.",
+						"A padlocked door identical to the one at {@area 1>24>0} blocks entry to the wine cellar. Inside, in addition to several large barrels, and various kegs, thirteen casks of exceptional wine, holding 5 gallons each, are stored here. Each of the casks has a bung seal with a blob of black wax impressed with a death's head.",
 						"The wine is black, has a slightly earthy smell, tastes like no other drink, and is of such excellence that it is difficult to stop drinking it. A character who tastes the wine must succeed on a DC 15 Constitution or Wisdom saving throw (drinker's choice) to keep from becoming intoxicated. (One quart is enough to make a giant reel, while a pint will make a human drunk.) On a failed save, the drinker becomes drunk (poisoned) for 1 hour, and must then repeat the saving throw.",
 						"On a successful save after 1 hour, a character stops drinking and is no longer drunk. On a failed save after 1 hour, the character continues to drink until falling unconscious for several hours, then awakens and remains drunk for 1 hour thereafter.",
 						"Once a character's drunken state ends, whether after 1 hour or several hours, the drinker suffers one level of {@condition exhaustion}.",
@@ -1868,9 +1876,9 @@
 					"type": "entries",
 					"name": "29. False Treasure",
 					"entries": [
-						"If the characters descend the stairs in area 10A and follow the obvious route, they come to a large chamber in which a faint glint of light shines from the far western wall. A collection of coffers can be found in that area, one tipped so that some of the gems it held are strewn before it. (The gems are worthless rocks, and the unopened coffers hold more of the same.)",
+						"If the characters descend the stairs in {@area 1>10A} and follow the obvious route, they come to a large chamber in which a faint glint of light shines from the far western wall. A collection of coffers can be found in that area, one tipped so that some of the gems it held are strewn before it. (The gems are worthless rocks, and the unopened coffers hold more of the same.)",
 						"To the south, thick iron bars separate this room from another chamber that is shrouded in darkness.",
-						"If a character touches one of the coffers or the spilled contents, thick iron bars drop from above the entrance. This portcullis can be lifted by someone who makes a successful DC 25 Strength (Athletics) check. At the same time, the bars that block entry into the adjacent room (area 30) lift into the ceiling, allowing the creatures therein to emerge and attack."
+						"If a character touches one of the coffers or the spilled contents, thick iron bars drop from above the entrance. This portcullis can be lifted by someone who makes a successful DC 25 Strength (Athletics) check. At the same time, the bars that block entry into the adjacent room ({@area 1>30}) lift into the ceiling, allowing the creatures therein to emerge and attack."
 					]
 				},
 				{
@@ -1912,7 +1920,7 @@
 					"name": "32. Secret Room",
 					"entries": [
 						"This hideaway is equipped with spy-holes for the chief so he can look out upon areas 1 or 29. (There are also smaller spy-holes at about 5 feet off the ground that the hill giant has never noticed.)",
-						"Two levers are set in the west wall. These control the thick portcullises that can block off entry to area 29 or release the manticores in area 30."
+						"Two levers are set in the west wall. These control the thick portcullises that can block off entry to {@area 1>29} or release the manticores in {@area 1>30}."
 					]
 				},
 				{
@@ -2028,7 +2036,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -2135,7 +2143,7 @@
 							},
 							"title": "Frost L1 1-Players"
 						},
-						"The room contains piles of hides, a giant sack, and a pile of rocks and ice chunks for hurling. The guard certainly hurls missiles if not immediately forced into melee. His treasure is at area 6. Note that the giant in area 2 will hear sounds of combat here and rush to aid his comrade (and vice versa)."
+						"The room contains piles of hides, a giant sack, and a pile of rocks and ice chunks for hurling. The guard certainly hurls missiles if not immediately forced into melee. His treasure is at {@area 2>6>1}. Note that the giant in {@area 2>2>1} will hear sounds of combat here and rush to aid his comrade (and vice versa)."
 					]
 				},
 				{
@@ -2143,7 +2151,7 @@
 					"name": "2. Guardroom Ice Cave",
 					"entries": [
 						"One {@creature frost giant|MM} waits here on standby guard. On the floor of the cave are a pile of sleeping skins and two bags. The guard has an ample supply of rocks and ice blocks at hand for hurling at opponents.",
-						"If the giant hears noise from area 1, he rushes there to help; conversely, if attacked, he will raise a cry to bring the guard from area 1 to aid him.",
+						"If the giant hears noise from {@area 2>1>1}, he rushes there to help; conversely, if attacked, he will raise a cry to bring the guard from {@area 2>1>1} to aid him.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -2200,7 +2208,7 @@
 								"A human wearing gleaming armor that is actually {@i armor of vulnerability} (DM's choice)"
 							]
 						},
-						"Strong vibrations here, such as from loud noise, can cause a cave-in like that described in area 3."
+						"Strong vibrations here, such as from loud noise, can cause a cave-in like that described in {@area 2>3>1}."
 					]
 				},
 				{
@@ -2230,7 +2238,7 @@
 							},
 							"title": "Frost L1 2-Players"
 						},
-						"The hides cover four sleeping {@creature ogre|MM|ogres}, who are awaiting an audience with the jarl. Any noise will awaken them, and they will give the alarm to their fellows in area 8 as well as attempting to give the party the slip and warn the giants too.",
+						"The hides cover four sleeping {@creature ogre|MM|ogres}, who are awaiting an audience with the jarl. Any noise will awaken them, and they will give the alarm to their fellows in {@area 2>8>1} as well as attempting to give the party the slip and warn the giants too.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -2262,7 +2270,7 @@
 					"type": "entries",
 					"name": "Cavern Guard Post (Areas 9 and 10)",
 					"entries": [
-						"Giants encountered here are always alert (not sleeping). To determine the position of each guard when the characters first enter, roll a d4 twice. Use one of the results as the location of the guard in area 9. Add 4 to the other roll and use it as the location of the guard in area 10. These guards will cooperate and attempt to set up ambushes.",
+						"Giants encountered here are always alert (not sleeping). To determine the position of each guard when the characters first enter, roll a d4 twice. Use one of the results as the location of the guard in area 9. Add 4 to the other roll and use it as the location of the guard in {@area 2>10>1}. These guards will cooperate and attempt to set up ambushes.",
 						{
 							"type": "entries",
 							"name": "9. Northwest Chamber",
@@ -2281,7 +2289,7 @@
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"The guard wears an armband that is a token of free passage like the one described at area 8. Eight bags are piled along the south wall (near guard position 8), each holding 200 gp."
+								"The guard wears an armband that is a token of free passage like the one described at {@area 2>8>1}. Eight bags are piled along the south wall (near guard position 8), each holding 200 gp."
 							]
 						},
 						"A rock ledge on the southeast wall, 9 feet off the ground, has a stone box atop it. The stone box cannot be seen by a human-sized creature standing on the floor. Inside this box are two more armbands and a pouch of five gems (worth 100 gp each).",
@@ -2289,7 +2297,7 @@
 							"type": "entries",
 							"name": "Exit to Lower Level",
 							"entries": [
-								"The passage leading west from this area intersects with a down-sloping tunnel that descends 100 feet before opening onto area 1 of the lower level (see map 6.4)."
+								"The passage leading west from this area intersects with a down-sloping tunnel that descends 100 feet before opening onto {@area 2>1>1} of the lower level (see map 6.4)."
 							]
 						}
 					]
@@ -2298,7 +2306,7 @@
 					"type": "entries",
 					"name": "11. Cave of Bones",
 					"entries": [
-						"This place is the disposal area for unwanted bodies and similar refuse tossed into the place by the various giants in the upper area. If the characters decide to look through the refuse, it takes 10 minutes to search a 10-foot-square area, and the toads from area 12 come into the place to look for food if they hear any noise. Even if the characters are quiet, there is a cumulative 15 percent chance for every 10 minutes that passes that the toads will come looking for food.",
+						"This place is the disposal area for unwanted bodies and similar refuse tossed into the place by the various giants in the upper area. If the characters decide to look through the refuse, it takes 10 minutes to search a 10-foot-square area, and the toads from {@area 2>12>1} come into the place to look for food if they hear any noise. Even if the characters are quiet, there is a cumulative 15 percent chance for every 10 minutes that passes that the toads will come looking for food.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -2312,7 +2320,7 @@
 					"type": "entries",
 					"name": "12. Lower Bone Cave",
 					"entries": [
-						"This place has many bones and skulls littering it and serves as the lair of five {@creature giant ice toad|TftYP|giant ice toads}. These creatures feed on the leavings in area 11. The toads rest on small ledges from 8 to 12 feet above the cave floor, and they will hop down and savagely attack anything that touches it.",
+						"This place has many bones and skulls littering it and serves as the lair of five {@creature giant ice toad|TftYP|giant ice toads}. These creatures feed on the leavings in {@area 2>11>1}. The toads rest on small ledges from 8 to 12 feet above the cave floor, and they will hop down and savagely attack anything that touches it.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -2356,7 +2364,7 @@
 					"type": "entries",
 					"name": "15. Ice Cave",
 					"entries": [
-						"This is the den of two large snow leopards (use the {@creature tiger|MM} statistics), which serve as pets of the yetis in area 13. These creatures lair on a ledge above the floor of the cave, and they try to take intruders by surprise."
+						"This is the den of two large snow leopards (use the {@creature tiger|MM} statistics), which serve as pets of the yetis in {@area 2>13>1}. These creatures lair on a ledge above the floor of the cave, and they try to take intruders by surprise."
 					]
 				},
 				{
@@ -2436,7 +2444,7 @@
 								"Item in Bag"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -2552,7 +2560,7 @@
 								"Item in Bag"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -2650,7 +2658,7 @@
 							"type": "entries",
 							"name": "Exit to Lower Level",
 							"entries": [
-								"The passage leading east from this area eventually intersects with a down-sloping tunnel that descends 100 feet before opening onto area 1 of the lower level."
+								"The passage leading east from this area eventually intersects with a down-sloping tunnel that descends 100 feet before opening onto {@area 2>1>1} of the lower level."
 							]
 						}
 					]
@@ -2676,7 +2684,7 @@
 								"Item in Bag"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -2806,7 +2814,7 @@
 								"Item in Bag"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -2987,7 +2995,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -3093,7 +3101,7 @@
 					"name": "2. Vaulted Cavern",
 					"entries": [
 						"The noise of moving the boulder that closes the place off from the rest of the complex awakens a mated pair of {@creature young white dragon|MM|young white dragons} that are kept here, along with a great pile of treasure. If they have enough warning, both the dragons hide and wait to see who enters.",
-						"The only intruders that the dragons do not object to are frost giants coming to feed them or bearing treasure to add to the dragons' hoard. Unless the male dragon is hiding, he sits proudly atop a heap of valuable items in the north end of the cavern. The female rests nearby on a ledge that projects from the western wall of the chamber (see area 2A).",
+						"The only intruders that the dragons do not object to are frost giants coming to feed them or bearing treasure to add to the dragons' hoard. Unless the male dragon is hiding, he sits proudly atop a heap of valuable items in the north end of the cavern. The female rests nearby on a ledge that projects from the western wall of the chamber (see {@area 2>2A}).",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -3145,12 +3153,12 @@
 					"type": "entries",
 					"name": "4. Deserted Cavern",
 					"entries": [
-						"Broken items of giant-sized furniture litter this place- the remnants of tables, benches, stools, and chairs. Soot-covered wall cressets hold burned-out torches. Three skeletons of frost giants are plainly visible near the center of the cavern.",
+						"Broken items of giant-sized furniture litter this place\u2014the remnants of tables, benches, stools, and chairs. Soot-covered wall cressets hold burned-out torches. Three skeletons of frost giants are plainly visible near the center of the cavern.",
 						{
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"Loose coins amounting to 500 gp, spilled from a rotted sack, are scattered around the frost giant skeletons. Note that the monsters at area 4B will attack any creatures that poke around in these bones."
+								"Loose coins amounting to 500 gp, spilled from a rotted sack, are scattered around the frost giant skeletons. Note that the monsters at {@area 2>4B} will attack any creatures that poke around in these bones."
 							]
 						}
 					]
@@ -3172,7 +3180,7 @@
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"One of the giant's skeletal hands clutches an iron tube containing a map that shows areas 1, 2, 3, and 4 of the lower level. Area 1 is labeled (in Common) as \"Grand Entry,\" area 2 as \"Storage Place,\" area 3 as \"Provisions,\" and area 4 as \"Great Hall of the Jarl.\" The map also shows a passage leading south from this chamber (along the way now blocked by rubble), which after some 60 feet reaches a complex of caves and caverns, including various barracks room, the jarl's private chambers, and a treasure room."
+								"One of the giant's skeletal hands clutches an iron tube containing a map that shows areas 1, 2, 3, and 4 of the lower level. {@area 2>1>1|u} is labeled (in Common) as \"Grand Entry,\" {@area 2>2>1} as \"Storage Place,\" {@area 2>3>1} as \"Provisions,\" and {@area 2>4>1} as \"Great Hall of the Jarl.\" The map also shows a passage leading south from this chamber (along the way now blocked by rubble), which after some 60 feet reaches a complex of caves and caverns, including various barracks room, the jarl's private chambers, and a treasure room."
 							]
 						},
 						"This map is actually a fake, a ruse perpetrated by the jarl to mislead would-be robbers. If the characters attempt to dig out the rubble to find the supposed treasure room, they succeed only in making a lot of noise-no passage beyond can be unearthed."
@@ -3206,7 +3214,7 @@
 								"Item in Bag"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -3455,7 +3463,7 @@
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"Each giant warrior in the place has 1,000 gp plus an armband that is a token of free passage (identical to the one described at area 8 of the upper level). Each other adult giant has 500 gp. The young have no treasure."
+								"Each giant warrior in the place has 1,000 gp plus an armband that is a token of free passage (identical to the one described at {@area 2>8>1} of the upper level). Each other adult giant has 500 gp. The young have no treasure."
 							]
 						},
 						{
@@ -3706,7 +3714,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -3728,7 +3736,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -3802,7 +3810,7 @@
 					"type": "entries",
 					"name": "1. Entry Passage",
 					"entries": [
-						"The floor here is polished obsidian, and great wall hangings can be seen by the characters as soon as they enter. The tapestries displayed between the torches are rendered in bloody colors and show victorious fire giants. The door guard is hidden in the alcove (area 1A).",
+						"The floor here is polished obsidian, and great wall hangings can be seen by the characters as soon as they enter. The tapestries displayed between the torches are rendered in bloody colors and show victorious fire giants. The door guard is hidden in the alcove ({@area 3>1A}).",
 						{
 							"type": "image",
 							"href": {
@@ -3817,7 +3825,7 @@
 					"type": "entries",
 					"name": "1A. Alcove",
 					"entries": [
-						"The tapestry that covers the opening to this guard post is of loose weave, allowing the {@creature fire giant|MM} guard in the dark recess to clearly see whoever enters the corridor. If intruders are spotted, he sounds his great bronze horn to warn the hall (see area 2). The giant has four rocks for throwing.",
+						"The tapestry that covers the opening to this guard post is of loose weave, allowing the {@creature fire giant|MM} guard in the dark recess to clearly see whoever enters the corridor. If intruders are spotted, he sounds his great bronze horn to warn the hall (see {@area 3>2>0}). The giant has four rocks for throwing.",
 						"If the characters are returning after severely defeating the giants, a ballista (from the arsenal at 10A) will be set up at the far end of the hallway in anticipation of a second raid. This weapon is triggered by a nearly invisible tripwire set 30 feet inside the entrance, and someone must succeed on a DC 20 Wisdom (Perception) check to find the wire. Once the wire is found, it can be avoided, but cutting it sets off the ballista. The ballista fires an array of bolts down the length of the hall, so each creature in it is subjected to one attack at a +6 bonus to hit, dealing 11 (2d10) piercing damage on a hit."
 					]
 				},
@@ -3825,7 +3833,7 @@
 					"type": "entries",
 					"name": "2. Grand Hall",
 					"entries": [
-						"Two {@creature ettin|MM|ettins} are always in the hall that runs east-west off the entry passage, using their four heads to watch in all directions. If the guard at the gate sounds the alarm, these creatures move to hold the mouth of the entryway until help arrives from area 3, area 18, or areas 21-25.",
+						"Two {@creature ettin|MM|ettins} are always in the hall that runs east-west off the entry passage, using their four heads to watch in all directions. If the guard at the gate sounds the alarm, these creatures move to hold the mouth of the entryway until help arrives from {@area 3>3>0}, {@area 3>18>0}, or areas 21-25.",
 						{
 							"type": "entries",
 							"name": "Links",
@@ -3995,7 +4003,7 @@
 					"type": "entries",
 					"name": "10. Arsenal Complex",
 					"entries": [
-						"A {@creature fire giant|MM} is always at the ready inside the entrance to this storage area. If summoned or attacked, the guard fetches the chimera from area 11. The guard has three throwing rocks at hand. Torches provide light, and a bench offers a place to sit down.",
+						"A {@creature fire giant|MM} is always at the ready inside the entrance to this storage area. If summoned or attacked, the guard fetches the chimera from {@area 3>11>0}. The guard has three throwing rocks at hand. Torches provide light, and a bench offers a place to sit down.",
 						{
 							"type": "entries",
 							"name": "10A. West Arsenal",
@@ -4038,7 +4046,7 @@
 					"name": "12. Advisor's Quarters",
 					"entries": [
 						"A corridor heads westward from the pillared hallway. The corridor and the chamber beyond contain furnishings of various sizes. The smallest of them are a table, a plush chair with a footstool, and a couch. Other items are more or less human-sized, including a long table, two benches, two chairs, and twelve chests. Finally, there are four huge chairs, a table, and a footstool sized for giants. Rugs on the floor, tapestries on the walls, and bronze cressets with flaming torches complete the decor.",
-						"Eight {@creature gnoll|MM} servants/bodyguards are lounging in this area, awaiting orders. They obey only the commands of King Snurre, Queen Frupy, or the Advisor-who is is a grossly fat but very strong and quite fast renegade mountain dwarf named Obmi (see area 12A).",
+						"Eight {@creature gnoll|MM} servants/bodyguards are lounging in this area, awaiting orders. They obey only the commands of King Snurre, Queen Frupy, or the Advisor-who is is a grossly fat but very strong and quite fast renegade mountain dwarf named Obmi (see {@area 3>12A}).",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -4137,7 +4145,7 @@
 							"type": "entries",
 							"name": "Slippery Exit",
 							"entries": [
-								"The chute to the northwest goes down to the lava pool on the second level (area 6). Six feet in diameter, it is slippery and greasy from garbage and empties out 2 feet above the lava."
+								"The chute to the northwest goes down to the lava pool on the second level ({@area 3>6>1}). Six feet in diameter, it is slippery and greasy from garbage and empties out 2 feet above the lava."
 							]
 						}
 					]
@@ -4183,7 +4191,7 @@
 					"type": "entries",
 					"name": "19. Servants' Quarters",
 					"entries": [
-						"This room currently holds four fire giant servants (use the {@creature hill giant|MM} statistics, plus immunity to fire damage). The others that live here are presently at work in the kitchen (area 15). This torch-lit chamber has seven cots, various pieces of smaller furniture, and pegs on the walls that hold garments and the like.",
+						"This room currently holds four fire giant servants (use the {@creature hill giant|MM} statistics, plus immunity to fire damage). The others that live here are presently at work in the kitchen ({@area 3>15>0}). This torch-lit chamber has seven cots, various pieces of smaller furniture, and pegs on the walls that hold garments and the like.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -4212,14 +4220,14 @@
 					"type": "entries",
 					"name": "21. Entry Hall of the Kennels",
 					"entries": [
-						"Four {@creature hell hound|MM|hell hounds} scuffle and play just inside the doors. They are part of the pack at area 22 and will flee thereto by the safest route if threatened."
+						"Four {@creature hell hound|MM|hell hounds} scuffle and play just inside the doors. They are part of the pack at {@area 3>22} and will flee thereto by the safest route if threatened."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "22. Kennel Chamber",
 					"entries": [
-						"Four {@creature hell hound|MM|hell hounds} are here. If those in area 21 are attacked and yelp for assistance, these beasts split into pairs and station themselves in the north and south ends of the open area, from where they spring to the aid of the others. The hell hounds love their handler at area 23 and come to his rescue if he whistles.",
+						"Four {@creature hell hound|MM|hell hounds} are here. If those in {@area 3>21} are attacked and yelp for assistance, these beasts split into pairs and station themselves in the north and south ends of the open area, from where they spring to the aid of the others. The hell hounds love their handler at {@area 3>23} and come to his rescue if he whistles.",
 						"The kennel contains no treasure, other than the hounds' prized bones (of interest only to other hell hounds)."
 					]
 				},
@@ -4323,7 +4331,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -4345,7 +4353,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -4418,7 +4426,7 @@
 							"type": "entries",
 							"name": "Secret Exit",
 							"entries": [
-								"The tunnel behind the secret door in the southeast corner is about 5 feet in diameter. It twists and turns so that any person using it will lose all sense of direction before exiting at area 2 on map 6.7."
+								"The tunnel behind the secret door in the southeast corner is about 5 feet in diameter. It twists and turns so that any person using it will lose all sense of direction before exiting at {@area 3>2>1} on map 6.7."
 							]
 						}
 					]
@@ -4427,7 +4435,7 @@
 					"type": "entries",
 					"name": "2. Ettin Guards' Chamber",
 					"entries": [
-						"Four {@creature ettin|MM|ettins} reside here when they are not on duty near the main entrance to the grand hall (level 1, area 2). Two are asleep, their weapons within easy reach, while the other two quite alert. The chamber has a rude table, a bench, two stools, and four cots. Torches light the place. Nine pegs on the walls hold clothing and six giants' bags.",
+						"Four {@creature ettin|MM|ettins} reside here when they are not on duty near the main entrance to the grand hall (level 1, {@area 3>2>0}). Two are asleep, their weapons within easy reach, while the other two quite alert. The chamber has a rude table, a bench, two stools, and four cots. Torches light the place. Nine pegs on the walls hold clothing and six giants' bags.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -4547,7 +4555,7 @@
 							"type": "entries",
 							"name": "Cell 4C",
 							"entries": [
-								"The cell is empty. On the west wall is a secret door that opens only with a key held by the drow high priestess at area 12."
+								"The cell is empty. On the west wall is a secret door that opens only with a key held by the drow high priestess at {@area 3>12>1}."
 							]
 						},
 						{
@@ -4627,7 +4635,7 @@
 								"One {@creature fire giant|MM} guard and three {@creature wererat|MM|wererats} in human form (appearing as female humans in tattered clothing) are conversing here by torchlight. The giant has two rocks nearby. In the room are a table, a chair, a stool, a bench, three kegs on the floor, and a small, covered jar on the table. The first keg holds small beer, the second one water, and the third one mead. The jar contains oil of taggit; anyone who opens the jar is exposed to the poison and has disadvantage on the saving throw. On the walls are pegs holding a giant's bag, a cape, a shield, keys to the cells, and a shirt."
 							]
 						},
-						"If the guard is subdued and interrogated, he knows nothing of the secret tunnel to area 8 (and thus does not volunteer that information). If the disguised wererats are conversed with, they claim to be captives forced to labor for the giants as scullions. If they are attacked, the wererats assume the form of giant rats and escape through a drain hole in the northwest corner of the room, traveling from there to alert the drow of intruders.",
+						"If the guard is subdued and interrogated, he knows nothing of the secret tunnel to {@area 3>8>1} (and thus does not volunteer that information). If the disguised wererats are conversed with, they claim to be captives forced to labor for the giants as scullions. If they are attacked, the wererats assume the form of giant rats and escape through a drain hole in the northwest corner of the room, traveling from there to alert the drow of intruders.",
 						"The secret door to the east opens into a passage about 2 feet wide and 1 1/2 feet high. It is rough, and a human in armor could not hope to pass along its length; even a halfling would have to struggle to get through it.",
 						{
 							"type": "entries",
@@ -4642,7 +4650,7 @@
 					"type": "entries",
 					"name": "8. Secret Room",
 					"entries": [
-						"This place, pitch dark, is the lair of seven {@creature wererat|MM|wererats}. If the encounter is going badly for them, survivors flee down the northeast passageway to area 15 on the third level (map 6.7) and warn the drow.",
+						"This place, pitch dark, is the lair of seven {@creature wererat|MM|wererats}. If the encounter is going badly for them, survivors flee down the northeast passageway to {@area 3>15>1} on the third level (map 6.7) and warn the drow.",
 						"Aside from stolen cloaks piled here and there like nests, the chief features in this secret room are three heavy iron chests. All are locked, and each key is on a different wererat. The chests are also trapped with poison needles (see \"Sample Traps\" in chapter 5 of the {@i Dungeon Master's Guide} ). The poison on these needles is oil of taggit (see \"Sample Poisons\" in chapter 8 of the {@i Dungeon Master's Guide} ).",
 						"The third chest the characters investigate is additionally trapped so that two poisoned darts fire upward from the inside when the lid is opened. Each dart has a range of 30 feet and a +8 bonus to hit. It deals 2 (1d4) piercing damage on a hit and subjects its victim to exposure to drow poison (see \"Sample Poisons\" in chapter 8 of the {@i Dungeon Master's Guide} ). The mechanism for this trap is inside the chest, thus it cannot be detected from the outside. A character who succeeds on a DC 20 Wisdom (Perception) check while beginning to open the lid notices that it opens stiffly, with resistance from the inside. Those near the chest have a brief moment of warning before the lid springs fully open and the darts shoot forth; anyone who ducks down or lunges away from the chest can avoid being hit.",
 						{
@@ -4675,7 +4683,7 @@
 							"type": "entries",
 							"name": "9. Giants' Worship Area",
 							"entries": [
-								"Each pillar radiates a sense of unease and insecurity in a 5-foot radius (simulate this by making players uneasy in whatever way you find best). The wall to the west is a mural showing giants bowing before a black cairn, offering sacrifices and giving gifts. The floor in the western half of the area is of porphyry, and the pillars are made of serpentine. Their well-polished surfaces reflect the strange light that permeates the place. The scenes on the west wall grow more gruesome as the viewer proceeds north, culminating in scenes showing human and giant sacrifice near the end closest to the altar (area 11)."
+								"Each pillar radiates a sense of unease and insecurity in a 5-foot radius (simulate this by making players uneasy in whatever way you find best). The wall to the west is a mural showing giants bowing before a black cairn, offering sacrifices and giving gifts. The floor in the western half of the area is of porphyry, and the pillars are made of serpentine. Their well-polished surfaces reflect the strange light that permeates the place. The scenes on the west wall grow more gruesome as the viewer proceeds north, culminating in scenes showing human and giant sacrifice near the end closest to the altar ({@area 3>11>1})."
 							]
 						},
 						{
@@ -4694,7 +4702,7 @@
 							]
 						},
 						"The floor of the first tier is black stone shot through with veins of violet. A great drum of blackened skin and chitinous material rests on the western side of the first tier. On the eastern side is a rack from which hang nine silver cylinders, apparently a set of chimes. (these chime tubes are hollow and are worth 100 gp each).",
-						"The large pillar to the east on the first tier is made of malachite and is covered with graven signs and sigils. A casting of detect magic reveals that the glyphs radiate an aura of conjuration magic. If the correct pair of gylphs are touched, the creature touching them will be transported to area 18 on the third level. You should devise the twenty-four glyphs upon this pillar and select which two are the trigger mechanism.",
+						"The large pillar to the east on the first tier is made of malachite and is covered with graven signs and sigils. A casting of detect magic reveals that the glyphs radiate an aura of conjuration magic. If the correct pair of gylphs are touched, the creature touching them will be transported to {@area 3>18>1} on the third level. You should devise the twenty-four glyphs upon this pillar and select which two are the trigger mechanism.",
 						"The second tier is dark gray stone, with specks of lilac and orange and purple. It holds a huge stone altar block of dull, porous-looking, somewhat rust-colored black mineral. To either side of the altar are large bronze braziers whose corroded green coloration is particularly nauseating in this setting. Flanking the braziers, in the form of triangles pointing downward, are two sets of candelabra, each candelabrum having three branches. These are made of bronze that is green with age, and each branch holds a fat black candle that burns with a flame of leaping lavender and deep glowing purple but never grows shorter.",
 						"The third tier is dull black stone with whorls of plum and lavender and splotches of red. The metal triangle stands upon the third tier. If the altar stone is touched by living flesh or hit by a weapon (or any object), it begins to fade in color, and in 3 rounds becomes a translucent amethyst color with a black, amorphous center. A creature that touches or strikes the altar when it is in this form must succeed on a DC 15 Wisdom saving throw or become paralyzed for 1 hour.",
 						"If the drum on the first tier is beaten, the chimes are rung, and the triangle is struck while the altar is in this translucent state, a glowing golden eye swims into view in the stone's writhing center. For each creature that sees the eye, roll a d12 and consult the following table. The creature is affected as if by a symbol spell of the indicated type (save DC 15).",
@@ -4706,7 +4714,7 @@
 								"Symbol Spell Effect"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -4737,7 +4745,7 @@
 							]
 						},
 						"Except for the death effect, these effects are curses and can be removed only as such.",
-						"If the three tentacle rods from area 12 are in the characters' possession when the eye appears, and the braziers remain lit, then the altar becomes a means of summoning an Elder Elemental God-it turns a transparent heliotrope in color, the black mass at the center grows larger and shows swollen veins of purple, and the eye is a fiery red-orange. Then a tentacle comes out of the altar and grabs the nearest living creature. The tentacle has a reach of 20 feet and a +11 bonus to hit. A creature hit by the tentacle is drawn into the stone-totally gone, destroyed.",
+						"If the three tentacle rods from {@area 3>12>1} are in the characters' possession when the eye appears, and the braziers remain lit, then the altar becomes a means of summoning an Elder Elemental God-it turns a transparent heliotrope in color, the black mass at the center grows larger and shows swollen veins of purple, and the eye is a fiery red-orange. Then a tentacle comes out of the altar and grabs the nearest living creature. The tentacle has a reach of 20 feet and a +11 bonus to hit. A creature hit by the tentacle is drawn into the stone-totally gone, destroyed.",
 						"If a creature is drawn into the altar, the altar returns to its dormant state, and atop it will be the thing most wished for by the party-or something that will enable the characters to attain the end or state they most desire.",
 						"If a second summoning of this Elder Elemental God is attempted within the same day, roll a d12 and apply the indicated result from the table below.",
 						{
@@ -4748,7 +4756,7 @@
 								"Horrible thing"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -4785,7 +4793,7 @@
 					"entries": [
 						"The entrance to this chamber is protected by a wall of tentacles (not depicted on the map). It appears as rough brown-purple stone. This magic wall is like two ropers combined into one creature, giving it two bite attacks and eight tendrils that it can employ every round (though the tendrils have a range of only 20 feet). The wall has resistance to bludgeoning, piercing, and slashing damage from nonmagical weapons. A casting of dispel magic deals the wall 50 damage, and disintegrate deals it 100 damage.",
 						"Drow can freely pass through the wall. If any other creature touches it, the wall attacks and emits a hissing and champing noise to alert the occupants of the chamber beyond it. If its current hit points drop to half its hit point maximum or lower, the wall casts darkness on itself (affecting only the outside of the wall, not its inner surface).",
-						"The chamber south of the wall is lit by the same everburning black candles that are found in the temple (area 11), so the illumination is eerie and dim. The walls are hung with purple cloth, and the floor is thickly carpeted in black. The inner room to the east is screened off from the outer room by a brocaded hanging of black with orange, gold, lilac, and mauve.",
+						"The chamber south of the wall is lit by the same everburning black candles that are found in the temple ({@area 3>11>1}), so the illumination is eerie and dim. The walls are hung with purple cloth, and the floor is thickly carpeted in black. The inner room to the east is screened off from the outer room by a brocaded hanging of black with orange, gold, lilac, and mauve.",
 						{
 							"type": "entries",
 							"name": "Outer Chamber",
@@ -4887,7 +4895,7 @@
 					"type": "entries",
 					"name": "17. Thrall Pen",
 					"entries": [
-						"Ten unarmed {@creature gnoll|MM|gnolls} dwell here. They will behave in all respects like their kin in area 16."
+						"Ten unarmed {@creature gnoll|MM|gnolls} dwell here. They will behave in all respects like their kin in {@area 3>16>1}."
 					]
 				},
 				{
@@ -4906,7 +4914,7 @@
 							"type": "entries",
 							"name": "Illumination",
 							"entries": [
-								"Most areas here are dark and still; only a few are lit, such as the lava cavern (areas 19 and 20) and the giants' final refuge in a crisis (area 5). If you like, add a few patches of phosphorescent growth as dungeon dressing-the light making it possible to see movement across it but not sufficient to illuminate an area."
+								"Most areas here are dark and still; only a few are lit, such as the lava cavern (areas 19 and 20) and the giants' final refuge in a crisis ({@area 3>5>2}). If you like, add a few patches of phosphorescent growth as dungeon dressing-the light making it possible to see movement across it but not sufficient to illuminate an area."
 							]
 						},
 						{
@@ -4937,7 +4945,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -4959,7 +4967,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -5056,7 +5064,7 @@
 					"type": "entries",
 					"name": "6. Great Vaulted Cavern",
 					"entries": [
-						"In the middle of this place is a permanent illusion of a huge red dragon dozing atop a mound of treasure (appearing like area 7, below). What is actually in that spot is a {@creature gorgon|MM} that obeys drow and has been instructed to ignore the presence of such creatures as hell hounds and fire giants and trolls. If any other kind of creature speaks to it from a distance in Common or Draconic, it has been instructed to stand quietly but then to breathe upon intruders as soon as they are within range. The illusion disappears once the gorgon attacks."
+						"In the middle of this place is a permanent illusion of a huge red dragon dozing atop a mound of treasure (appearing like {@area 3>7>2}, below). What is actually in that spot is a {@creature gorgon|MM} that obeys drow and has been instructed to ignore the presence of such creatures as hell hounds and fire giants and trolls. If any other kind of creature speaks to it from a distance in Common or Draconic, it has been instructed to stand quietly but then to breathe upon intruders as soon as they are within range. The illusion disappears once the gorgon attacks."
 					]
 				},
 				{
@@ -5141,7 +5149,7 @@
 					"type": "entries",
 					"name": "Stinking Caverns (Areas 11-13)",
 					"entries": [
-						"The large spaces along the southern side of this level are inhabited by troll servants of King Snurre. The stink that comes from these creatures, their nests, and the offal and remnants of rotted meat they leave about is noticeable from as far away as the head of the corridor that leads southwest from near area 9.",
+						"The large spaces along the southern side of this level are inhabited by troll servants of King Snurre. The stink that comes from these creatures, their nests, and the offal and remnants of rotted meat they leave about is noticeable from as far away as the head of the corridor that leads southwest from near {@area 3>9>2}.",
 						"These caverns are very dangerous. If the trolls hear suspicious noises, or if any of them are assaulted, they split up to use the multiple passages in these areas to surprise and surround their attackers, leaping out of the darkness to tear them to shreds. An assault from nine trolls is nothing to sneeze at, even for a high-level party.",
 						{
 							"type": "entries",
@@ -5185,7 +5193,7 @@
 					"name": "15. Gray Cavern",
 					"entries": [
 						"This dark-walled place is the drow strong point, and a {@creature drow|MM} watches each of the six routes that meet at this cavern. Four more drow are stationed in the chamber itself, for a total of ten.",
-						"In addition, the eastern alcove serves as a field headquarters for two {@creature drow elite warrior|MM|drow elite warriors} (the female is in command) and a {@creature drow mage|MM}. Near this alcove, a narrow passage leads east and then south, ending at a set of rough-hewn stairs that ascend to the second level, emerging near area 8.",
+						"In addition, the eastern alcove serves as a field headquarters for two {@creature drow elite warrior|MM|drow elite warriors} (the female is in command) and a {@creature drow mage|MM}. Near this alcove, a narrow passage leads east and then south, ending at a set of rough-hewn stairs that ascend to the second level, emerging near {@area 3>8>2}.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -5223,7 +5231,7 @@
 					"type": "entries",
 					"name": "18. Small Cavern",
 					"entries": [
-						"The cave at the end of the passage to the northeast is another drow guardroom, with occupants and contents identical to area 8: three {@creature drow elite warrior|MM|drow elite warriors} and six {@creature drow|MM}, two of which are on duty at all times near the entrance.",
+						"The cave at the end of the passage to the northeast is another drow guardroom, with occupants and contents identical to {@area 3>8>2}: three {@creature drow elite warrior|MM|drow elite warriors} and six {@creature drow|MM}, two of which are on duty at all times near the entrance.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -5238,7 +5246,7 @@
 					"name": "19. Salamander Central",
 					"entries": [
 						"The huge cavern in the northwest corner of this level is lit up in reddish light from the bubbling, steaming river of molten lava that flows through the place. The cavern stinks of sulfur and heated rock, and the temperature here is very hot, although a strong draft cools it somewhat. The roof is no less than 60 feet high.",
-						"A rope bridge is suspended about 15 feet above the lava river, offering safe access to the northern chamber (area 20). The ropes have been specially treated to keep them from bursting into flame. A creature that comes within 10 feet of the lava for the first time on a turn, or starts its turn within 10 feet of the lava, takes 11 (2d10) fire damage. A creature that enters or touches the lava for the first time on a turn, or starts its turn in the lava, takes 33 (6d10) fire damage.",
+						"A rope bridge is suspended about 15 feet above the lava river, offering safe access to the northern chamber ({@area 3>20>1}). The ropes have been specially treated to keep them from bursting into flame. A creature that comes within 10 feet of the lava for the first time on a turn, or starts its turn within 10 feet of the lava, takes 11 (2d10) fire damage. A creature that enters or touches the lava for the first time on a turn, or starts its turn in the lava, takes 33 (6d10) fire damage.",
 						"Amid this vaporous inferno in the area to the southeast are two {@creature salamander|MM|salamanders} enjoying a change of clime. The flames and smoke render the area lightly obscured. The salamanders are totally indifferent with respect to whom they attack, although they know and respect the drow."
 					]
 				},

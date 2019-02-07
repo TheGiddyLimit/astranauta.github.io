@@ -1,12 +1,15 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"type": "object",
 	"definitions": {
 		"legendaryGroup": {
 			"type": "object",
 			"properties": {
 				"name": {
+					"type": "string"
+				},
+				"source": {
 					"type": "string"
 				},
 				"lairActions": {
@@ -34,6 +37,9 @@
 			"type": "array",
 			"uniqueItems": true,
 			"items": {"$ref": "#/definitions/legendaryGroup"}
+		},
+		"language": {
+			"type": "object"
 		}
 	},
 	"additionalProperties": false

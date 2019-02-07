@@ -20,7 +20,7 @@
 			],
 			"hp": {
 				"average": 136,
-				"formula": "16d8+64"
+				"formula": "16d8 + 64"
 			},
 			"speed": {
 				"walk": 30,
@@ -114,13 +114,13 @@
 				{
 					"name": "Sword",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) slashing damage plus 13 ({@dice 3d8}) radiant damage."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) slashing damage plus 13 ({@damage 3d8}) radiant damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage plus 13 ({@dice 3d8}) radiant damage."
+						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d6 + 4}) piercing damage plus 13 ({@damage 3d8}) radiant damage."
 					]
 				}
 			],
@@ -129,6 +129,16 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -146,7 +156,7 @@
 			],
 			"hp": {
 				"average": 67,
-				"formula": "9d10+18"
+				"formula": "9d10 + 18"
 			},
 			"speed": {
 				"walk": 50
@@ -220,19 +230,19 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) slashing damage."
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) piercing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) piercing damage."
 					]
 				},
 				{
 					"name": "Healing Touch (3/Day)",
 					"entries": [
-						"The felidar touches another creature with its horns. The target magically regains 11 ({@dice 2d8+2}) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target"
+						"The felidar touches another creature with its horns. The target magically regains 11 ({@dice 2d8 + 2}) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target"
 					]
 				},
 				{
@@ -258,7 +268,7 @@
 				{
 					"name": "Heal Self (Costs 3 Actions)",
 					"entries": [
-						"The felidar magically regains 11 ({@dice 2d8+2}) hit points."
+						"The felidar magically regains 11 ({@dice 2d8 + 2}) hit points."
 					]
 				}
 			],
@@ -269,6 +279,16 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"CE",
+				"TP"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -291,7 +311,7 @@
 			],
 			"hp": {
 				"average": 230,
-				"formula": "20d12+100"
+				"formula": "20d12 + 100"
 			},
 			"speed": {
 				"walk": 30,
@@ -351,19 +371,19 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. Hit: 30 ({@dice 6d6+9}) slashing damage."
+						"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. {@h}30 ({@damage 6d6 + 9}) slashing damage."
 					]
 				},
 				{
 					"name": "Tentacles",
 					"entries": [
-						"{@atk mw} {@hit 14} to hit, reach 20 ft., one target. Hit: 30 ({@dice 6d6+9}) bludgeoning damage, and the target is {@condition grappled} (escape DC 17). Until this grapple ends, the target is {@condition restrained}."
+						"{@atk mw} {@hit 14} to hit, reach 20 ft., one target. {@h}30 ({@damage 6d6 + 9}) bludgeoning damage, and the target is {@condition grappled} (escape DC 17). Until this grapple ends, the target is {@condition restrained}."
 					]
 				},
 				{
 					"name": "Lightning Strike {@recharge 5}",
 					"entries": [
-						"The kraken hurls a magical lightning bolt at a point it can see within 500 feet of it. Each creature within 10 feet of that point must make a DC 17 Dexterity saving throw, taking 54 ({@dice 12d8}) lightning damage on a failed save, or half as much damage on a successful one."
+						"The kraken hurls a magical lightning bolt at a point it can see within 500 feet of it. Each creature within 10 feet of that point must make a DC 17 Dexterity saving throw, taking 54 ({@damage 12d8}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -374,6 +394,15 @@
 			"actionTags": [
 				"Multiattack",
 				"Tentacles"
+			],
+			"languageTags": [
+				"C"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		}
 	]

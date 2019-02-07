@@ -15,10 +15,10 @@
 				{
 					"colLabels": [
 						"{@filter Cantrips Known|spells|level=0|class=Warlock}",
-						"Spells Known",
+						"{@filter Spells Known|spells|class=Warlock}",
 						"Spell Slots",
 						"Slot Level",
-						"Invocations Known"
+						"{@filter Invocations Known|optionalfeatures|feature type=ei}"
 					],
 					"rows": [
 						[
@@ -192,14 +192,27 @@
 					"(a) a {@item scholar's pack|phb} or (b) a {@item dungeoneer's pack|phb}",
 					"{@item Leather armor|phb}, any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}, and two {@item dagger|phb|daggers}"
 				],
-				"goldAlternative": "4d4 × 10"
+				"goldAlternative": "{@dice 4d4×10|4d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"cha": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light"
+					],
+					"weapons": [
+						"simple"
+					]
+				}
 			},
 			"classFeatures": [
 				[
 					{
 						"name": "Pact Magic",
 						"entries": [
-							"Your arcane research and the magic bestowed on you by your patron have given you facility with spells. See chapter 10 for the general rules of spellcasting and chapter 11 for the warlock spell list.",
+							"Your arcane research and the magic bestowed on you by your patron have given you facility with spells. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for the {@filter warlock spell list|spells|class=warlock}.",
 							{
 								"type": "entries",
 								"name": "Cantrips",
@@ -211,8 +224,8 @@
 								"type": "entries",
 								"name": "Spell Slots",
 								"entries": [
-									"The Warlock table shows how many spell slots you have. The table also shows what the level of those slots is; all of your spell slots are the same level. To cast one of your warlock spells of 1st level or higher, you must expend a spell slot. You regain all expended spell slots when you finish a short or long rest.",
-									"For example, when you are 5th level, you have two 3rd-level spell slots. To cast the 1st-level spell {@spell thunderwave}, you must spend one of those slots, and you cast it as a 3rd-level spell."
+									"The Warlock table shows how many spell slots you have to cast your {@filter warlock spells|spells|class=warlock} of 1st through 5th level. The table also shows what the level of those slots is; all of your spell slots are the same level. To cast one of your warlock spells of 1st level or higher, you must expend a spell slot. You regain all expended spell slots when you finish a short or long rest.",
+									"For example, when you are 5th level, you have two 3rd-level spell slots. To cast the 1st-level spell {@spell witch bolt}, you must spend one of those slots, and you cast it as a 3rd-level spell."
 								]
 							},
 							{
@@ -270,16 +283,7 @@
 							{
 								"type": "inlineBlock",
 								"entries": [
-									"At 2nd level, you gain two eldritch invocations of your choice. See the ",
-									{
-										"type": "link",
-										"href": {
-											"type": "internal",
-											"path": "invocations.html"
-										},
-										"text": "Invocations page"
-									},
-									" for the list of available options. When you gain certain warlock levels, you gain additional invocations of your choice."
+									"At 2nd level, you gain two eldritch invocations of your choice. A list of the available options can be found on the {@filter Optional Features|optionalfeatures|Feature Type=EI} page. When you gain certain warlock levels, you gain additional invocations of your choice."
 								]
 							},
 							"Additionally, when you gain a level in this class, you can choose one of the invocations you know and replace it with another invocation that you could learn at that level.",
@@ -301,7 +305,7 @@
 										"entries": [
 											"You learn the {@spell find familiar} spell and can cast it as a ritual. The spell doesn't count against your number of spells known.",
 											"When you cast the spell, you can choose one of the normal forms for your familiar or one of the following special forms: {@creature imp}, {@creature pseudodragon}, {@creature quasit}, or {@creature sprite}.",
-											"Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to use its reaction to make one attack of its own."
+											"Additionally, when you take the {@action Attack} action, you can forgo one of your own attacks to allow your familiar to use its reaction to make one attack of its own."
 										]
 									},
 									{
@@ -486,8 +490,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -592,8 +596,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -637,7 +641,7 @@
 										"type": "entries",
 										"name": "Dark One's Own Luck",
 										"entries": [
-											"Starting at 6th level, you can call on your patron to alter fate in your favor. When you make an ability check or a saving throw, you can use this feature to add a d10 to your roll. You can do so after seeing the initial roll but before any of the roll's effects occur.",
+											"Starting at 6th level, you can call on your patron to alter fate in your favor. When you make an ability check or a saving throw, you can use this feature to add a {@dice d10} to your roll. You can do so after seeing the initial roll but before any of the roll's effects occur.",
 											"Once you use this feature, you can't use it again until you finish a short or long rest."
 										]
 									}
@@ -665,7 +669,7 @@
 										"name": "Hurl Through Hell",
 										"entries": [
 											"Starting at 14th level, when you hit a creature with an attack, you can use this feature to instantly transport the target through the lower planes. The creature disappears and hurtles through a nightmare landscape.",
-											"At the end of your next turn, the target returns to the space it previously occupied, or the nearest unoccupied space. If the target is not a fiend, it takes 10d10 psychic damage as it reels from its horrific experience.",
+											"At the end of your next turn, the target returns to the space it previously occupied, or the nearest unoccupied space. If the target is not a fiend, it takes {@dice 10d10} psychic damage as it reels from its horrific experience.",
 											"Once you use this feature, you can't use it again until you finish a long rest."
 										]
 									}
@@ -698,8 +702,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -777,7 +781,7 @@
 										"type": "entries",
 										"name": "Technovirus",
 										"entries": [
-											"At 14th level, you gain the ability to infect a humanoid's body with living circuitry. You can use an action to make a melee attack against a humanoid creature using your spell attack modifier. The target must make a Constitution saving throw against your spell save DC as a techno-organic virus quickly spreads through its body. On a failed save, the target takes 8d10 psychic damage, or half as much damage on a successful one.",
+											"At 14th level, you gain the ability to infect a humanoid's body with living circuitry. You can use an action to make a melee attack against a humanoid creature using your spell attack modifier. The target must make a Constitution saving throw against your spell save DC as a techno-organic virus quickly spreads through its body. On a failed save, the target takes {@dice 8d10} psychic damage, or half as much damage on a successful one.",
 											"Additionally, if the target fails the saving throw, you can use an action to issue it a single command, as if you were casting the {@spell command} spell. The target makes its saving throw against your {@spell command} with disadvantage. You can issue this {@spell command} at any time while the target remains infected.",
 											"Once you use this feature, you can't use it again until you finish a long rest, at which point the target is cured of the technovirus. The infection can also be removed with a lesser restoration spell."
 										]
@@ -810,8 +814,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -915,8 +919,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -961,7 +965,7 @@
 										"type": "entries",
 										"name": "Defy Death",
 										"entries": [
-											"Starting at 6th level, you can give yourself vitality when you cheat death or when you help someone else cheat it. You can regain hit points equal to 1d8 + your Constitution modifier (minimum of 1 hit point) when you succeed on a death saving throw or when you stabilize a creature with spare the dying.",
+											"Starting at 6th level, you can give yourself vitality when you cheat death or when you help someone else cheat it. You can regain hit points equal to {@dice 1d8} + your Constitution modifier (minimum of 1 hit point) when you succeed on a death saving throw or when you stabilize a creature with {@spell spare the dying}.",
 											"Once you use this feature, you can't use it again until you finish a long rest."
 										]
 									}
@@ -989,7 +993,7 @@
 										"type": "entries",
 										"name": "Indestructible Life",
 										"entries": [
-											"When you reach 14th level, you partake some of the true secrets of the Undying. On your turn, you can use a bonus action to regain hit points equal to 1d8 + your warlock level. Additionally, if you put a severed body part of yours back in place when you use this feature, the part reattaches.",
+											"When you reach 14th level, you partake some of the true secrets of the Undying. On your turn, you can use a bonus action to regain hit points equal to {@dice 1d8} + your warlock level. Additionally, if you put a severed body part of yours back in place when you use this feature, the part reattaches.",
 											"Once you use this feature, you can't use it again until you finish a short or long rest."
 										]
 									}
@@ -1018,8 +1022,8 @@
 											"Quirk"
 										],
 										"colStyles": [
-											"col-xs-1 text-align-center",
-											"col-xs-11"
+											"col-1 text-align-center",
+											"col-11"
 										],
 										"rows": [
 											[
@@ -1061,8 +1065,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1133,7 +1137,7 @@
 										"type": "entries",
 										"name": "Healing Light",
 										"entries": [
-											"At 14th level, you gain the ability to channel the Undying Light to heal yourself and other creatures. As a bonus action, you can touch a creature and heal it. With each touch, a creature regains from 1d6 to 5d6 hit points (your choice). You have a total pool of 15d6 you can expend. Subtract the dice you use with each touch from that total.",
+											"At 14th level, you gain the ability to channel the Undying Light to heal yourself and other creatures. As a bonus action, you can touch a creature and heal it. With each touch, a creature regains from {@dice 1d6} to {@dice 5d6} hit points (your choice). You have a total pool of {@dice 15d6} you can expend. Subtract the dice you use with each touch from that total.",
 											"You regain all expended dice from your pool when you finish a long rest."
 										]
 									}
@@ -1166,8 +1170,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1205,7 +1209,7 @@
 										"type": "entries",
 										"name": "Healing Light",
 										"entries": [
-											"At 1st level, you gain the ability to channel celestial energy to heal wounds. You have a pool of d6s that you spend to fuel this healing. The number of dice in the pool equals 1 + your warlock level.",
+											"At 1st level, you gain the ability to channel celestial energy to heal wounds. You have a pool of {@dice d6}s that you spend to fuel this healing. The number of dice in the pool equals 1 + your warlock level.",
 											"As a bonus action, you can touch a creature and heal it, spending dice from the pool. The maximum number of dice you can spend at once equals your Charisma modifier (minimum of one die). Roll the dice you spend, add them together, and restore a number of hit points equal to the total.",
 											"Your pool regains all expended dice when you finish a long rest."
 										]
@@ -1246,7 +1250,7 @@
 										"type": "entries",
 										"name": "Healing Light",
 										"entries": [
-											"Starting at 14th level, the radiant energy you channel allows you to overcome grievous injuries. When you have to make a death saving throw at the start of your turn, you can instead spring back to your feet with a burst of radiant energy. You regain hit points equal to half your hit point maximum, and then you stand up, if you so choose. Each creature of your choice that is within 30 feet of you takes radiant damage equal to 2d8 + your Charisma modifier, and it is {@condition blinded} until the end of the current turn.",
+											"Starting at 14th level, the radiant energy you channel allows you to overcome grievous injuries. When you have to make a death saving throw at the start of your turn, you can instead spring back to your feet with a burst of radiant energy. You regain hit points equal to half your hit point maximum, and then you stand up, if you so choose. Each creature of your choice that is within 30 feet of you takes radiant damage equal to {@dice 2d8} + your Charisma modifier, and it is {@condition blinded} until the end of the current turn.",
 											"Once you use this feature, you can't use it again until you finish a long rest."
 										]
 									}
@@ -1279,8 +1283,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1386,8 +1390,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1419,7 +1423,7 @@
 										"name": "Sentinel Raven",
 										"entries": [
 											"Starting at 1st level, you gain the service of a spirit sent by the Raven Queen to watch over you. The spirit assumes the form and game statistics of a raven, and it always obeys your commands, which you can give telepathically while it is within 100 feet of you.",
-											"While the raven is perched on your shoulder, you gain darkvision with a range of 30 feet and a bonus to your passive Wisdom (Perception) score and to Wisdom (Perception) checks. The bonus equals your Charisma modifier. While perched on your shoulder, the raven can't be targeted by any attack or other harmful effect; only you can cast spells on it; it can't take damage; and it is {@condition incapacitated}.",
+											"While the raven is perched on your shoulder, you gain darkvision with a range of 30 feet and a bonus to your passive Wisdom ({@skill Perception}) score and to Wisdom ({@skill Perception}) checks. The bonus equals your Charisma modifier. While perched on your shoulder, the raven can't be targeted by any attack or other harmful effect; only you can cast spells on it; it can't take damage; and it is {@condition incapacitated}.",
 											"You can see through the raven's eyes and hear what it hears while it is within 100 feet of you. In combat, you roll initiative for the raven and control how it acts. If it is slain by a creature, you gain advantage on all attack rolls against the killer for the next 24 hours.",
 											"The raven doesn't require sleep. While it is within 100 feet of you, it can awaken you from sleep as a bonus action. The raven vanishes when it dies, if you die, or if the two of you are separated by more than 5 miles.",
 											"At the end of a short or long rest, you can call the raven back to you\u2014no matter where it is or whether it died\u2014and it reappears within 5 feet of you."
@@ -1435,7 +1439,7 @@
 										"type": "entries",
 										"name": "Soul of the Raven",
 										"entries": [
-											"At 6th level, you gain the ability to merge with your raven spirit. As a bonus action when your raven is perched on your shoulder, your body merges with your raven's form. While merged, you become Tiny, you replace your speed with the raven's, and you can use your action only to Dash, Disengage, Dodge, Help, Hide, or Search. During this time, you gain the benefits of your raven being perched on your shoulder. As an action, you and the raven return to normal."
+											"At 6th level, you gain the ability to merge with your raven spirit. As a bonus action when your raven is perched on your shoulder, your body merges with your raven's form. While merged, you become Tiny, you replace your speed with the raven's, and you can use your action only to {@action Dash}, {@action Disengage}, {@action Dodge}, {@action Help}, {@action Hide}, or {@action Search}. During this time, you gain the benefits of your raven being perched on your shoulder. As an action, you and the raven return to normal."
 										]
 									}
 								]
@@ -1492,8 +1496,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1536,7 +1540,7 @@
 												"type": "list",
 												"items": [
 													"You gain a bonus to damage rolls against the cursed target. The bonus equals your proficiency bonus.",
-													"Any attack roll you make against the cursed target is a critical hit on a roll of 19 or 20 on the d20.",
+													"Any attack roll you make against the cursed target is a critical hit on a roll of 19 or 20 on the {@dice d20}.",
 													"If the cursed target dies, you regain hit points equal to your warlock level + your Charisma modifier."
 												]
 											},
@@ -1567,7 +1571,7 @@
 										"type": "entries",
 										"name": "Armor of Hexes",
 										"entries": [
-											"At 10th level, your hex grows more powerful. If the target cursed by your Hexblade's Curse hits you with an attack roll, roll a d6. On a 4 or higher, the attack instead misses you."
+											"At 10th level, your hex grows more powerful. If the target cursed by your Hexblade's Curse hits you with an attack roll, roll a {@dice d6}. On a 4 or higher, the attack instead misses you."
 										]
 									}
 								]
@@ -1612,8 +1616,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1651,7 +1655,7 @@
 										"type": "entries",
 										"name": "Healing Light",
 										"entries": [
-											"At 1st level, you gain the ability to channel celestial energy to heal wounds. You have a pool of d6s that you spend to fuel this healing. The number of dice in the pool equals 1 + your warlock level.",
+											"At 1st level, you gain the ability to channel celestial energy to heal wounds. You have a pool of {@dice d6}s that you spend to fuel this healing. The number of dice in the pool equals 1 + your warlock level.",
 											"As a bonus action, you can heal one creature you can see within 60 feet of you, spending dice from the pool. The maximum number of dice you can spend at once equals your Charisma modifier (minimum of one die). Roll the dice you spend, add them together, and restore a number of hit points equal to the total.",
 											"Your pool regains all expended dice when you finish a long rest."
 										]
@@ -1692,7 +1696,7 @@
 										"type": "entries",
 										"name": "Searing Vengeance",
 										"entries": [
-											"Starting at 14th level, the radiant energy you channel allows you to resist death. When you have to make a death saving throw at the start of your turn, you can instead spring back to your feet with a burst of radiant energy. You regain hit points equal to half your hit point maximum, and then you stand up if you so choose. Each creature of your choice that is within 30 feet of you takes radiant damage equal to 2d8 + your Charisma modifier, and it is {@condition blinded} until the end of the current turn.",
+											"Starting at 14th level, the radiant energy you channel allows you to resist death. When you have to make a death saving throw at the start of your turn, you can instead spring back to your feet with a burst of radiant energy. You regain hit points equal to half your hit point maximum, and then you stand up if you so choose. Each creature of your choice that is within 30 feet of you takes radiant damage equal to {@dice 2d8} + your Charisma modifier, and it is {@condition blinded} until the end of the current turn.",
 											"Once you use this feature, you can't use it again until you finish a long rest."
 										]
 									}
@@ -1725,8 +1729,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1762,7 +1766,7 @@
 												"type": "list",
 												"items": [
 													"You gain a bonus to damage rolls against the cursed target. The bonus equals your proficiency bonus.",
-													"Any attack roll you make against the cursed target is a critical hit on a roll of 19 or 20 on the d20.",
+													"Any attack roll you make against the cursed target is a critical hit on a roll of 19 or 20 on the {@dice d20}.",
 													"If the cursed target dies, you regain hit points equal to your warlock level + your Charisma modifier (minimum of 1 hit point)."
 												]
 											},
@@ -1802,7 +1806,7 @@
 										"type": "entries",
 										"name": "Armor of Hexes",
 										"entries": [
-											"At 10th level, your hex grows more powerful. If the target cursed by your Hexblade's Curse hits you with an attack roll, you can use your reaction to roll a d6. On a 4 or higher, the attack instead misses you, regardless of its roll."
+											"At 10th level, your hex grows more powerful. If the target cursed by your Hexblade's Curse hits you with an attack roll, you can use your reaction to roll a {@dice d6}. On a 4 or higher, the attack instead misses you, regardless of its roll."
 										]
 									}
 								]
@@ -1846,8 +1850,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1878,7 +1882,7 @@
 										"type": "entries",
 										"name": "Grasp of the Kraken",
 										"entries": [
-											"Starting at 1st level, you gain the ability to call forth spectral tentacles that grab at your foes. As an action, pick a point that you can see within 60 ft. of you. A horde of grasping tendrils appears at that point. Creatures of your choice within 10 ft. of that point must make a Strength saving throw against your Warlock spell save DC. Creatures that fail their saving throws are {@condition grappled} for 1 minute or until you use this ability again. The spectral tentacle's Strength (Athletics) bonus is 2 + your proficiency bonus and its reach is 10 feet."
+											"Starting at 1st level, you gain the ability to call forth spectral tentacles that grab at your foes. As an action, pick a point that you can see within 60 ft. of you. A horde of grasping tendrils appears at that point. Creatures of your choice within 10 ft. of that point must make a Strength saving throw against your Warlock spell save DC. Creatures that fail their saving throws are {@condition grappled} for 1 minute or until you use this ability again. The spectral tentacle's Strength ({@skill Athletics}) bonus is 2 + your proficiency bonus and its reach is 10 feet."
 										]
 									}
 								]
@@ -1980,8 +1984,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -2022,25 +2026,25 @@
 													"Damage"
 												],
 												"colStyles": [
-													"col-xs-6 text-align-center",
-													"col-xs-6 text-align-center"
+													"col-6 text-align-center",
+													"col-6 text-align-center"
 												],
 												"rows": [
 													[
 														"1st\u20144th",
-														"1d10 poison"
+														"{@dice 1d10} poison"
 													],
 													[
 														"5th\u201410th",
-														"2d10 poison"
+														"{@dice 2d10} poison"
 													],
 													[
 														"11th\u201416th",
-														"3d10 poison"
+														"{@dice 3d10} poison"
 													],
 													[
 														"17th+",
-														"4d10 poison"
+														"{@dice 4d10} poison"
 													]
 												]
 											}
@@ -2082,7 +2086,7 @@
 										"type": "entries",
 										"name": "Kiss of the Spider Queen",
 										"entries": [
-											"Starting at 14th level, you can channel Lolth's malevolence into a deadly kiss. As an action, you touch a creature within your reach. The target takes 12d10 poison or psychic damage (your choice), or half as much on a successful Constitution save. A creature {@condition charmed} by you has disadvantage on its saving throw. After you use this ability, you cannot cast it again until you complete a long rest."
+											"Starting at 14th level, you can channel Lolth's malevolence into a deadly kiss. As an action, you touch a creature within your reach. The target takes {@dice 12d10} poison or psychic damage (your choice), or half as much on a successful Constitution save. A creature {@condition charmed} by you has disadvantage on its saving throw. After you use this ability, you cannot cast it again until you complete a long rest."
 										]
 									}
 								]
@@ -2095,215 +2099,264 @@
 			],
 			"fluff": [
 				{
-					"type": "quote",
 					"entries": [
-						"You think me mad? I think true insanity is being content to live a life of mortal drudgery when knowledge and power is there for the taking in the realm beyond."
+						"With a pseudodragon curled on his shoulder, a young elf in golden robes smiles warmly, weaving a magical charm into his honeyed words and bending the palace sentinel to his will.",
+						"As flames spring to life in her hands, a wizened human whispers the secret name of her demonic patron, infusing her spell with fiendish magic.",
+						"Shifting his gaze between a battered tome and the odd alignment of the stars overhead, a wild-eyed tiefling chants the mystic ritual that will open a doorway to a distant world.",
+						"Warlocks are seekers of the knowledge that lies hidden in the fabric of the multiverse. Through pacts made with mysterious beings of supernatural power, warlocks unlock magical effects both subtle and spectacular. Drawing on the ancient knowledge of beings such as fey nobles, demons, devils, hags, and alien entities of the Far Realm, warlocks piece together arcane secrets to bolster their own power.",
+						{
+							"type": "entries",
+							"name": "Sworn and Beholden",
+							"entries": [
+								"A warlock is defined by a pact with an otherworldly being. Sometimes the relationship between warlock and patron is like that of a cleric and a deity, though the beings that serve as patrons for warlocks are not gods. A warlock might lead a cult dedicated to a demon prince, an archdevil, or an utterly alien entity\u2014beings not typically served by clerics. More often, though, the arrangement is similar to that between a master and an apprentice. The warlock learns and grows in power, at the cost of occasional services performed on the patron's behalf.",
+								"The magic bestowed on a warlock ranges from minor but lasting alterations to the warlock's being (such as the ability to see in darkness or to read any language) to access to powerful spells. Unlike bookish wizards, warlocks supplement their magic with some facility at hand-to-hand combat. They are comfortable in light armor and know how to use simple weapons."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Delvers into Secrets",
+							"entries": [
+								"Warlocks are driven by an insatiable need for knowledge and power, which compels them into their pacts and shapes their lives. This thirst drives warlocks into their pacts and shapes their later careers as well.",
+								"Stories of warlocks binding themselves to fiends are widely known. But many warlocks serve patrons that are not fiendish. Sometimes a traveler in the wilds comes to a strangely beautiful tower, meets its fey lord or lady, and stumbles into a pact without being fully aware of it. And sometimes, while poring over tomes of forbidden lore, a brilliant but crazed student's mind is opened to realities beyond the material world and to the alien beings that dwell in the outer void.",
+								"Once a pact is made, a warlock's thirst for knowledge and power can't be slaked with mere study and research. No one makes a pact with such a mighty patron if he or she doesn't intend to use the power thus gained. Rather, the vast majority of warlocks spend their days in active pursuit of their goals, which typically means some kind of adventuring. Furthermore, the demands of their patrons drive warlocks toward adventure."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Warlock",
+							"entries": [
+								"As you make your warlock character, spend some time thinking about your patron and the obligations that your pact imposes upon you. What led you to make the pact, and how did you make contact with your patron? Were you seduced into summoning a devil, or did you seek out the ritual that would allow you to make contact with an alien elder god? Did you search for your patron, or did your patron find and choose you? Do you chafe under the obligations of your pact or serve joyfully in anticipation of the rewards promised to you?",
+								"Work with your DM to determine how big a part your pact will play in your character's adventuring career. Your patron's demands might drive you into adventures, or they might consist entirely of small favors you can do between adventures.",
+								"What kind of relationship do you have with your patron? Is it friendly, antagonistic, uneasy, or romantic? How important does your patron consider you to be? What part do you play in your patron's plans? Do you know other servants of your patron?",
+								"How does your patron communicate with you? If you have a familiar, it might occasionally speak with your patron's voice. Some warlocks find messages from their patrons etched on trees, mingled among tea leaves, or adrift in the clouds\u2014messages that only the warlock can see. Other warlocks converse with their patrons in dreams or waking visions, or deal only with intermediaries.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"You can make a warlock quickly by following these suggestions. First, Charisma should be your highest ability score, followed by Constitution. Second, choose the {@background charlatan} background. Third, choose the {@spell eldritch blast} and {@spell chill touch} cantrips, along with the 1st-level spells {@spell charm person} and {@spell witch bolt}."
+									]
+								}
+							]
+						}
 					],
-					"by": "Xarren, herald of Acamar"
-				},
-				"Warlocks are finders and keepers of secrets. They push at the edge of our understanding of the world, always seeking to expand their expertise. Where sages or wizards might heed a clear sign of danger and end their research, a warlock plunges ahead, heedless of the cost. Thus, it takes a peculiar mixture of intelligence, curiosity, and recklessness to produce a warlock. Many folk would describe that combination as evidence of madness. Warlocks see it as a demonstration of bravery.",
-				"Warlocks are defined by two elements that work in concert to forge their path into this class. The first element is the event or circumstances that led to a warlock's entering into a pact with a planar entity. The second one is the nature of the entity a warlock is bound to. Unlike clerics, who typically embrace a deity and that god's ethos, a warlock might have no love for a patron, or vice versa.",
-				"The sections that follow provide ways to embellish a warlock character that could generate some intriguing story and roleplaying opportunities.",
-				{
-					"type": "entries",
-					"name": "Patron's Attitude",
-					"entries": [
-						"Every relationship is a two-way street, but in the case of warlocks and their patrons it's not necessarily true that both sides of the street are the same width or made of the same stuff. The feeling that a warlock holds for their patron, whether positive or negative, might be reciprocated by the patron, or the two participants in the pact might view one another with opposing emotions.",
-						"When you determine the attitude your warlock character holds toward your patron, also consider how things look from the patron's perspective. How does your patron behave toward you? Is your patron a friend and ally, or an enemy that grants you power only because you forced a pact upon it?",
-						{
-							"type": "table",
-							"caption": "Patron Attitudes",
-							"colLabels": [
-								"{@dice d6}",
-								"Attitude"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"Your patron has guided and helped your family for generations and is kindly toward you."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Each interaction with your capricious patron is a surprise, whether pleasant or painful."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"Your patron is the spirit of a long-dead hero who sees your pact as a way for it to continue to influence the world."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"Your patron is a strict disciplinarian but treats you with a measure of respect."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Your patron tricked you into a pact and treats you as a slave."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"You are mostly left to your own devices with no interference from your patron. Sometimes you dread the demands it will make when it does appear."
-								]
-							]
-						}
-					]
+					"page": 105,
+					"source": "PHB"
 				},
 				{
-					"type": "entries",
-					"name": "Special Terms of the Pact",
 					"entries": [
-						"A pact can range from a loose agreement to a formal contract with lengthy, detailed clauses and lists of requirements. The terms of a pact\u2014what a warlock must do to receive a patron's favor\u2014are always dictated by the patron. On occasion, those terms include a special proviso that might seem odd or whimsical, but warlocks take these dictates as seriously as they do the other requirements of their pacts.",
-						"Does your character have a pact that requires you to change your behavior in an unusual or seemingly frivolous way? Even if your patron hasn't imposed such a duty on you already, that's not to say it couldn't still happen.",
 						{
-							"type": "table",
-							"caption": "Special Terms",
-							"colLabels": [
-								"{@dice d6}",
-								"Term"
+							"type": "quote",
+							"entries": [
+								"You think me mad? I think true insanity is being content to live a life of mortal drudgery when knowledge and power is there for the taking in the realm beyond."
 							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"When directed, you must take immediate action against a specific enemy of your patron."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Your pact tests your willpower; you are required to abstain from alcohol and other intoxicants."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"At least once a day, you must inscribe or carve your patron's name or symbol on the wall of a building."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"You must occasionally conduct bizarre rituals to maintain your pact."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"You can never wear the same outfit twice, since your patron finds such predictability to be boring."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"When you use an eldritch invocation, you must speak your patron's name aloud or risk incurring its displeasure."
-								]
+							"by": "Xarren, herald of Acamar"
+						},
+						"Warlocks are finders and keepers of secrets. They push at the edge of our understanding of the world, always seeking to expand their expertise. Where sages or wizards might heed a clear sign of danger and end their research, a warlock plunges ahead, heedless of the cost. Thus, it takes a peculiar mixture of intelligence, curiosity, and recklessness to produce a warlock. Many folk would describe that combination as evidence of madness. Warlocks see it as a demonstration of bravery.",
+						"Warlocks are defined by two elements that work in concert to forge their path into this class. The first element is the event or circumstances that led to a warlock's entering into a pact with a planar entity. The second one is the nature of the entity a warlock is bound to. Unlike clerics, who typically embrace a deity and that god's ethos, a warlock might have no love for a patron, or vice versa.",
+						"The sections that follow provide ways to embellish a warlock character that could generate some intriguing story and roleplaying opportunities.",
+						{
+							"type": "entries",
+							"name": "Patron's Attitude",
+							"entries": [
+								"Every relationship is a two-way street, but in the case of warlocks and their patrons it's not necessarily true that both sides of the street are the same width or made of the same stuff. The feeling that a warlock holds for their patron, whether positive or negative, might be reciprocated by the patron, or the two participants in the pact might view one another with opposing emotions.",
+								"When you determine the attitude your warlock character holds toward your patron, also consider how things look from the patron's perspective. How does your patron behave toward you? Is your patron a friend and ally, or an enemy that grants you power only because you forced a pact upon it?",
+								{
+									"type": "table",
+									"caption": "Patron Attitudes",
+									"colLabels": [
+										"{@dice d6}",
+										"Attitude"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Your patron has guided and helped your family for generations and is kindly toward you."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Each interaction with your capricious patron is a surprise, whether pleasant or painful."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Your patron is the spirit of a long-dead hero who sees your pact as a way for it to continue to influence the world."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Your patron is a strict disciplinarian but treats you with a measure of respect."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Your patron tricked you into a pact and treats you as a slave."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"You are mostly left to your own devices with no interference from your patron. Sometimes you dread the demands it will make when it does appear."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Special Terms of the Pact",
+							"entries": [
+								"A pact can range from a loose agreement to a formal contract with lengthy, detailed clauses and lists of requirements. The terms of a pact\u2014what a warlock must do to receive a patron's favor\u2014are always dictated by the patron. On occasion, those terms include a special proviso that might seem odd or whimsical, but warlocks take these dictates as seriously as they do the other requirements of their pacts.",
+								"Does your character have a pact that requires you to change your behavior in an unusual or seemingly frivolous way? Even if your patron hasn't imposed such a duty on you already, that's not to say it couldn't still happen.",
+								{
+									"type": "table",
+									"caption": "Special Terms",
+									"colLabels": [
+										"{@dice d6}",
+										"Term"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"When directed, you must take immediate action against a specific enemy of your patron."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Your pact tests your willpower; you are required to abstain from alcohol and other intoxicants."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"At least once a day, you must inscribe or carve your patron's name or symbol on the wall of a building."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"You must occasionally conduct bizarre rituals to maintain your pact."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"You can never wear the same outfit twice, since your patron finds such predictability to be boring."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"When you use an eldritch invocation, you must speak your patron's name aloud or risk incurring its displeasure."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Binding Mark",
+							"entries": [
+								"Some patrons make a habit of, and often enjoy, marking the warlocks under their sway in some fashion. A binding mark makes it clear\u2014to those who know about such things\u2014that the individual in question is bound to the patron's service. A warlock might take advantage of such a mark, claiming it as proof of one's pact, or might want to keep it under wraps (if possible) to avoid the difficulties it might bring.",
+								"If your warlock's pact comes with a binding mark, how you feel about displaying it probably depends on the nature of your relationship with the one who gave it to you. Is the mark a source of pride or something you are secretly ashamed of?",
+								{
+									"type": "table",
+									"caption": "Binding Marks",
+									"colLabels": [
+										"d6",
+										"Mark"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											"1",
+											"One of your eyes looks the same as one of your patron's eyes."
+										],
+										[
+											"2",
+											"Each time you wake up, the small blemish on your face appears in a different place."
+										],
+										[
+											"3",
+											"You display outward symptoms of a disease but suffer no ill effects from it."
+										],
+										[
+											"4",
+											"Your tongue is an unnatural color."
+										],
+										[
+											"5",
+											"You have a vestigial tail."
+										],
+										[
+											"6",
+											"Your nose glows in the dark."
+										]
+									]
+								}
 							]
 						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Binding Mark",
-					"entries": [
-						"Some patrons make a habit of, and often enjoy, marking the warlocks under their sway in some fashion. A binding mark makes it clear\u2014to those who know about such things\u2014that the individual in question is bound to the patron's service. A warlock might take advantage of such a mark, claiming it as proof of one's pact, or might want to keep it under wraps (if possible) to avoid the difficulties it might bring.",
-						"If your warlock's pact comes with a binding mark, how you feel about displaying it probably depends on the nature of your relationship with the one who gave it to you. Is the mark a source of pride or something you are secretly ashamed of?",
-						{
-							"type": "table",
-							"caption": "Binding Marks",
-							"colLabels": [
-								"d6",
-								"Mark"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									"1",
-									"One of your eyes looks the same as one of your patron's eyes."
-								],
-								[
-									"2",
-									"Each time you wake up, the small blemish on your face appears in a different place."
-								],
-								[
-									"3",
-									"You display outward symptoms of a disease but suffer no ill effects from it."
-								],
-								[
-									"4",
-									"Your tongue is an unnatural color."
-								],
-								[
-									"5",
-									"You have a vestigial tail."
-								],
-								[
-									"6",
-									"Your nose glows in the dark."
-								]
-							]
-						}
-					]
+					],
+					"page": 53,
+					"source": "XGE"
 				}
-			],
-			"fluffPage": 53
+			]
 		}
 	]
 }

@@ -2,8 +2,9 @@
 
 const JSON_URL = "data/rewards.json";
 
-window.onload = function load () {
-	ExcludeUtil.initialise();
+window.onload = async function load () {
+	await ExcludeUtil.pInitialise();
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
@@ -18,11 +19,11 @@ const typeFilter = new Filter({
 	]
 });
 let filterBox;
-function onJsonLoad (data) {
-	filterBox = initFilterBox(sourceFilter, typeFilter);
+async function onJsonLoad (data) {
+	filterBox = await pInitFilterBox(sourceFilter, typeFilter);
 
 	list = ListUtil.search({
-		valueNames: ["name", "source"],
+		valueNames: ["name", "source", "uniqueid"],
 		listClass: "rewards"
 	});
 	list.on("updated", () => {
@@ -44,15 +45,18 @@ function onJsonLoad (data) {
 	addRewards(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(() => BrewUtil.bind({list}))
 		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
-		.then(() => {
+		.catch(BrewUtil.pPurgeBrew)
+		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
-			BrewUtil.bind({list, filterBox, sourceFilter});
-			ListUtil.loadState();
+			BrewUtil.bind({filterBox, sourceFilter});
+			await ListUtil.pLoadState();
 			RollerUtil.addListRollButton();
+			ListUtil.addListShowHide();
 
 			History.init(true);
+			ExcludeUtil.checkShowAllExcluded(rewardList, $(`#pagecontent`));
 		});
 }
 
@@ -76,8 +80,10 @@ function addRewards (data) {
 		tempString += `
 			<li class='row' ${FLTR_ID}='${rwI}' onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id='${rwI}' href="#${UrlUtil.autoEncodeHash(reward)}" title="${reward.name}">
-					<span class='name col-xs-10'>${reward.name}</span>
-					<span class='source col-xs-2 source${Parser.sourceJsonToAbv(reward.source)}' title="${Parser.sourceJsonToFull(reward.source)}">${Parser.sourceJsonToAbv(reward.source)}</span>
+					<span class='name col-10'>${reward.name}</span>
+					<span class='source col-2 text-align-center ${Parser.sourceJsonToColor(reward.source)}' title="${Parser.sourceJsonToFull(reward.source)}">${Parser.sourceJsonToAbv(reward.source)}</span>
+					
+					<span class="uniqueid hidden">${reward.uniqueId ? reward.uniqueId : rwI}</span>
 				</a>
 			</li>`;
 
@@ -127,8 +133,8 @@ function getSublistItem (reward, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(reward)}" title="${reward.name}">
-				<span class="name col-xs-12">${reward.name}</span>		
-				<span class="id hidden">${pinId}</span>				
+				<span class="name col-12">${reward.name}</span>
+				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
 	`;
@@ -144,6 +150,7 @@ function loadhash (id) {
 		${EntryRenderer.utils.getNameTr(reward)}
 		<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
 		${EntryRenderer.reward.getRenderedString(reward)}
+		${EntryRenderer.utils.getPageTr(reward)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
 

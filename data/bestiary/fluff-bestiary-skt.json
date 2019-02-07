@@ -546,7 +546,7 @@
 							"name": "Hoarders of Gems",
 							"type": "entries",
 							"entries": [
-								"Though blue dragons collect anything that looks valuable, they are especially fond of gems. Considering blue to be the most noble and beautiful of colors, they covet sapphires, favoring jewellery and magic items adorned with those gems.",
+								"Though blue dragons collect anything that looks valuable, they are especially fond of gems. Considering blue to be the most noble and beautiful of colors, they covet sapphires, favoring jewelery and magic items adorned with those gems.",
 								"A blue dragon buries its most valuable treasures deep in the sand, while scattering a few less valuable trinkets in plainer sight over hidden sinkholes to punish and eliminate would-be thieves."
 							]
 						}
@@ -566,38 +566,6 @@
 				},
 				{
 					"type": "entries",
-					"name": "Lair Actions",
-					"entries": [
-						"On initiative count 20 (losing initiative ties), the dragon",
-						"takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
-						{
-							"type": "list",
-							"items": [
-								"Part of the ceiling collapses above one creature that the dragon can see within 120 feet of it. The creature must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) bludgeoning damage and be knocked prone and buried. The buried target is restrained and unable to breathe or stand up. A creature can take an action to make a DC 10 Strength check, ending the buried state on a success.",
-								"A cloud of sand swirls about in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The cloud spreads around corners. Each creature in the cloud must succeed on a DC 15 Constitution saving throw or be blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
-								"Lightning arcs, forming a 5-foot-wide line between two of the lair's solid surfaces that the dragon can see. They must be within 120 feet of the dragon and 120 feet of each other. Each creature in that line must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) lightning damage."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a legendary blue dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"Thunderstorms rage within 6 miles of the lair.",
-								"Dust devils scour the land within 6 miles of the lair. A dust devil has the statistics of an air elemental, but it can't fly, has a speed of 50 feet, and has an Intelligence and Charisma of 1 (-5).",
-								"Hidden sinkholes form in and around the dragon's lair. A sinkhole can be spotted from a safe distance with a successful DC 20 Wisdom (Perception) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall 1d6 + 10 feet into the sinkhole."
-							]
-						},
-						"If the dragon dies, the dust devils disappear immediately, and the thunderstorms abate within 1d10days. Any sinkholes remain where they are."
-					]
-				},
-				{
-					"type": "entries",
 					"name": "Dragons",
 					"entries": [
 						"True dragons are winged reptiles of ancient lineage and fearsome power. They are known and feared for their predatory cunning and greed, with the oldest dragons accounted as some of the most powerful creatures in the world. Dragons are also magical creatures whose innate power fuels their dreaded breath weapons and other preternatural abilities.",
@@ -607,18 +575,17 @@
 						"Dragon Age Categories",
 						{
 							"type": "table",
-							"caption": "",
-							"colLabels": [],
+							"colLabels": [
+								"Category",
+								"Size",
+								"Age Range"
+							],
 							"colStyles": [
-								"col-xs-6",
-								"col-xs-6"
+								"col-4",
+								"col-4",
+								"col-4"
 							],
 							"rows": [
-								[
-									"Category",
-									"Size",
-									"Age Range"
-								],
 								[
 									"Wyrmling",
 									"Medium",
@@ -868,37 +835,6 @@
 				},
 				{
 					"type": "entries",
-					"name": "Lair Actions",
-					"entries": [
-						"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
-						{
-							"type": "list",
-							"items": [
-								"Magma erupts from a point on the ground the dragon can see within 120 feet of it, creating a 20-foot-high, 5-foot-radius geyser. Each creature in the geyser's area must make a DC 15 Dexterity saving throw, taking 21 (6d6) fire damage on a failed save, or half as much damage on a successful one.",
-								"A tremor shakes the lair in a 60-foot radius around the dragon. Each creature other than the dragon on the ground in that area must succeed on a DC 15 Dexterity saving throw or be knocked prone.",
-								"Volcanic gases form a cloud in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The sphere spreads around corners, and its area is lightly obscured. It lasts until initiative count 20 on the next round. Each creature that starts its turn in the cloud must succeed on a DC 13 Constitution saving throw or be poisoned until the end of its turn. While poisoned in this way, a creature is incapacitated."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a legendary red dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"Small earthquakes are common within 6 miles of the dragon's lair.",
-								"Water sources within 1 mile of the lair are supernaturally warm and tainted by sulfur.",
-								"Rocky fissures within 1 mile of the dragon's lair form portals to the Elemental Plane of Fire, allowing creatures of elemental fire into the world to dwell nearby."
-							]
-						},
-						"If the dragon dies, these effects fade over the course of 1d10 days."
-					]
-				},
-				{
-					"type": "entries",
 					"name": "Dragons",
 					"entries": [
 						"True dragons are winged reptiles of ancient lineage and fearsome power. They are known and feared for their predatory cunning and greed, with the oldest dragons accounted as some of the most powerful creatures in the world. Dragons are also magical creatures whose innate power fuels their dreaded breath weapons and other preternatural abilities.",
@@ -908,18 +844,17 @@
 						"Dragon Age Categories",
 						{
 							"type": "table",
-							"caption": "",
-							"colLabels": [],
+							"colLabels": [
+								"Category",
+								"Size",
+								"Age Range"
+							],
 							"colStyles": [
-								"col-xs-6",
-								"col-xs-6"
+								"col-4",
+								"col-4",
+								"col-4"
 							],
 							"rows": [
-								[
-									"Category",
-									"Size",
-									"Age Range"
-								],
 								[
 									"Wyrmling",
 									"Medium",
@@ -1274,37 +1209,6 @@
 					"entries": [
 						"A kraken lives in dark depths, usually a sunken rift or a cavern filled with detritus, treasure, and wrecked ships."
 					]
-				},
-				{
-					"type": "entries",
-					"name": "Lair Actions",
-					"entries": [
-						"On initiative count 20 (losing initiative ties), the kraken takes a lair action to cause one of the following magical effects:",
-						{
-							"type": "list",
-							"items": [
-								"A strong current moves through the kraken's lair. Each creature within 60 feet of the kraken must succeed on a DC 23 Strength saving throw or be pushed up to 60 feet away from the kraken. On a success, the creature is pushed 10 feet away from the kraken.",
-								"Creatures in the water within 60 feet of the kraken have vulnerability to lightning damage until initiative count 20 on the next round.",
-								"The water in the kraken's lair becomes electrically charged. All creatures within 120 feet of the kraken must succeed on a DC 23 Constitution saving throw, taking 10 (3d6) lightning damage on a failed save, or half as much damage on a successful one."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a kraken's lair is warped by the creature's blasphemous presence, creating the following magical effects:",
-						{
-							"type": "list",
-							"items": [
-								"The kraken can alter the weather at will in a 6-mile radius centered on its lair. The effect is identical to the control weather spell.",
-								"Water elementals coalesce within 6 miles of the lair. These elementals can't leave the water and have Intelligence and Charisma scores of 1 (-5).",
-								"Aquatic creatures within 6 miles of the lair that have an Intelligence score of 2 or lower are charmed by the kraken and aggressive toward intruders in the area."
-							]
-						},
-						"When the kraken dies, all of these regional effects fade immediately."
-					]
 				}
 			]
 		},
@@ -1553,7 +1457,7 @@
 							"name": "Skin Crawlers",
 							"type": "entries",
 							"entries": [
-								"A yakfolk's most frightening weapon is its ability to magically crawl under another creature's skin, control its body, and suppress its mind. The yak- folk use this ability to spy on enemies, rob them, murder their leaders, and kidnap their young."
+								"A yakfolk's most frightening weapon is its ability to magically crawl under another creature's skin, control its body, and suppress its mind. The yak-folk use this ability to spy on enemies, rob them, murder their leaders, and kidnap their young."
 							]
 						}
 					]

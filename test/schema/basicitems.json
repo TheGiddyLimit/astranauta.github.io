@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"definitions": {
 		"itemLookup": {
 			"type": "array",
@@ -162,6 +162,9 @@
 					},
 					"weight": {
 						"type": "string"
+					},
+					"quantity": {
+						"type": "integer"
 					}
 				},
 				"required": [

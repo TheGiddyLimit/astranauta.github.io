@@ -19,7 +19,7 @@
 			],
 			"hp": {
 				"average": 285,
-				"formula": "30d8+150"
+				"formula": "30d8 + 150"
 			},
 			"speed": {
 				"walk": 30
@@ -184,13 +184,13 @@
 				{
 					"name": "Paralyzing Touch",
 					"entries": [
-						"{@atk ms} {@hit 15} to hit, reach 5 ft., one creature. Hit: 10 ({@dice 3d6}) cold damage, and the target must succeed on a DC 20 Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"{@atk ms} {@hit 15} to hit, reach 5 ft., one creature. {@h}10 ({@damage 3d6}) cold damage, and the target must succeed on a DC 20 Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				},
 				{
 					"name": "Staff (+3 Quarterstaff)",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) bludgeoning damage plus 10 ({@dice 3d6}) necrotic damage, or 8 ({@dice 1d8+4}) bludgeoning damage plus 10 ({@dice 3d6}) necrotic damage when used with two hands."
+						"{@atk mw} {@hit 11} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) bludgeoning damage plus 10 ({@damage 3d6}) necrotic damage, or 8 ({@damage 1d8 + 4}) bludgeoning damage plus 10 ({@damage 3d6}) necrotic damage when used with two hands."
 					]
 				},
 				{
@@ -228,7 +228,7 @@
 				{
 					"name": "Disrupt Life (Costs 3 Actions)",
 					"entries": [
-						"Each creature within 20 feet of Acererak must make a DC 20 Constitution saving throw against this magic, taking 42 ({@dice 12d6}) necrotic damage on a failed save, or half as much damage on a successful one."
+						"Each creature within 20 feet of Acererak must make a DC 20 Constitution saving throw against this magic, taking 42 ({@damage 12d6}) necrotic damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -239,71 +239,24 @@
 				"Legendary Resistances",
 				"Rejuvenation",
 				"Turn Resistance"
+			],
+			"languageTags": [
+				"AB",
+				"C",
+				"DR",
+				"D",
+				"E",
+				"GI",
+				"I",
+				"P",
+				"U"
+			],
+			"senseTags": [
+				"U"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
-		},
-		{
-			"source": "ToA",
-			"name": "Albino Dwarf Warrior",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"dwarf"
-				]
-			},
-			"alignment": [
-				"A"
-			],
-			"ac": [
-				{
-					"ac": 13,
-					"from": [
-						"{@item hide armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 30,
-				"formula": "4d8+12"
-			},
-			"speed": {
-				"walk": 25
-			},
-			"str": 13,
-			"dex": 13,
-			"con": 17,
-			"int": 12,
-			"wis": 14,
-			"cha": 11,
-			"skill": {
-				"perception": "+4",
-				"stealth": "+3",
-				"survival": "+4"
-			},
-			"resist": [
-				"poison"
-			],
-			"senses": "darkvision 60 ft.",
-			"passive": 14,
-			"languages": "Common, Dwarvish",
-			"cr": "1/4",
-			"trait": [
-				{
-					"name": "Dwarven Resilience",
-					"entries": [
-						"The dwarf has advantage on saving throws against poison."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Handaxe",
-					"entries": [
-						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage."
-					]
-				}
-			],
-			"page": 210
 		},
 		{
 			"source": "ToA",
@@ -328,7 +281,7 @@
 			],
 			"hp": {
 				"average": 30,
-				"formula": "4d8+12"
+				"formula": "4d8 + 12"
 			},
 			"speed": {
 				"walk": 25
@@ -381,11 +334,92 @@
 				{
 					"name": "Handaxe",
 					"entries": [
-						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage."
+						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d6 + 1}) slashing damage."
 					]
 				}
 			],
-			"page": 210
+			"page": 210,
+			"languageTags": [
+				"C",
+				"D"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"I"
+			]
+		},
+		{
+			"source": "ToA",
+			"name": "Albino Dwarf Warrior",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item hide armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 30,
+				"formula": "4d8 + 12"
+			},
+			"speed": {
+				"walk": 25
+			},
+			"str": 13,
+			"dex": 13,
+			"con": 17,
+			"int": 12,
+			"wis": 14,
+			"cha": 11,
+			"skill": {
+				"perception": "+4",
+				"stealth": "+3",
+				"survival": "+4"
+			},
+			"resist": [
+				"poison"
+			],
+			"senses": "darkvision 60 ft.",
+			"passive": 14,
+			"languages": "Common, Dwarvish",
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Dwarven Resilience",
+					"entries": [
+						"The dwarf has advantage on saving throws against poison."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Handaxe",
+					"entries": [
+						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d6 + 1}) slashing damage."
+					]
+				}
+			],
+			"page": 210,
+			"languageTags": [
+				"C",
+				"D"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"source": "ToA",
@@ -406,7 +440,7 @@
 			],
 			"hp": {
 				"average": 49,
-				"formula": "9d8+9"
+				"formula": "9d8 + 9"
 			},
 			"speed": {
 				"walk": 20,
@@ -447,7 +481,7 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d8+1}) slashing damage, and the target is {@condition grappled} (escape DC 11). The aldani has two claws, each of which can grapple only one target."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d8 + 1}) slashing damage, and the target is {@condition grappled} (escape DC 11). The aldani has two claws, each of which can grapple only one target."
 					]
 				}
 			],
@@ -457,6 +491,12 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -494,7 +534,7 @@
 				{
 					"name": "Keen Senses",
 					"entries": [
-						"The almiraj has advantage on Wisdom (Perception) checks that rely on hearing or sight."
+						"The almiraj has advantage on Wisdom ({@skill Perception}) checks that rely on hearing or sight."
 					]
 				},
 				{
@@ -508,7 +548,7 @@
 				{
 					"name": "Horn",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d4+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
 					]
 				}
 			],
@@ -516,6 +556,9 @@
 			"familiar": true,
 			"traitTags": [
 				"Keen Senses"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -536,7 +579,7 @@
 			],
 			"hp": {
 				"average": 68,
-				"formula": "8d12+16"
+				"formula": "8d12 + 16"
 			},
 			"speed": {
 				"walk": 20
@@ -568,13 +611,16 @@
 				{
 					"name": "Tail",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target Hit: 18 ({@dice 4d6+4}) bludgeoning damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked {@condition prone}."
+						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target {@h}18 ({@damage 4d6 + 4}) bludgeoning damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked {@condition prone}."
 					]
 				}
 			],
 			"page": 240,
 			"traitTags": [
 				"Undead Fortitude"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -602,7 +648,7 @@
 			],
 			"hp": {
 				"average": 82,
-				"formula": "15d8+15"
+				"formula": "15d8 + 15"
 			},
 			"speed": {
 				"walk": 30
@@ -640,10 +686,15 @@
 					"entries": [
 						"Artus wears the {@item Ring of Winter|toa}. He and the ring can't be targeted by divination magic or perceived through magical scrying sensors. While attuned to and wearing the ring, Artus ceases to age and is immune to cold damage and the effects of extreme cold.",
 						"Artus wields {@item Bookmark|toa} a +3 dagger with additional magical properties. As a bonus action, Artus can activate any one of the following properties while attuned to the dagger, provided he has the weapon drawn:",
-						"• Cause a blue gem set into the dagger's pommel to shed bright light in a 20-foot radius and dim light for an additional 20 feet, or make the gem go dark.",
-						"• Turn the dagger into a compass that, while resting on your palm, points north.",
-						"• Cast {@spell dimension door} from the dagger. Once this property is used, it can't be used again until the next dawn.",
-						"• Cast {@spell compulsion} (save DC 15) from the dagger. The range of the spell increases to 90 feet but it targets only spiders that are beasts. Once this property is used, it can't be used again until the next dawn."
+						{
+							"type": "list",
+							"items": [
+								"Cause a blue gem set into the dagger's pommel to shed bright light in a 20-foot radius and dim light for an additional 20 feet, or make the gem go dark.",
+								"Turn the dagger into a compass that, while resting on your palm, points north.",
+								"Cast {@spell dimension door} from the dagger. Once this property is used, it can't be used again until the next dawn.",
+								"Cast {@spell compulsion} (save DC 15) from the dagger. The range of the spell increases to 90 feet but it targets only spiders that are beasts. Once this property is used, it can't be used again until the next dawn."
+							]
+						}
 					]
 				}
 			],
@@ -657,28 +708,165 @@
 				{
 					"name": "Bookmark (+3 Dagger)",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d4+5}) piercing damage."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d4 + 5}) piercing damage."
 					]
 				},
 				{
 					"name": "Longbow",
 					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 150/600 ft., one target Hit: 6 ({@dice 1d8+2}) piercing damage."
+						"{@atk rw} {@hit 5} to hit, range 150/600 ft., one target {@h}6 ({@damage 1d8 + 2}) piercing damage."
 					]
 				},
 				{
 					"name": "Ring of Winter",
 					"entries": [
 						"The Ring of Winter has 12 charges and regains all its expended charges daily at dawn. While attuned to and wearing the ring, Artus can expend the necessary number of charges to activate one of the following properties:",
-						"• Artus can expend 1 charge and use the ring to lower the temperature in a 120-foot-radius sphere centered on a point he can see within 300 feet of him. The temperature in that area drops 20 degrees per minute, to a minimum of \u221230 degrees Fahrenheit. Frost and ice begin to form on surfaces once the temperature drops below 32 degrees. This effect is permanent unless Artus uses the ring to end the effect as an action, at which point the temperature in the area returns to normal at a rate of 10 degrees per minute.",
-						"• Artus can cast one of the following spells from the ring (spell save DC 17) by expending the necessary number of charges: {@spell Bigby's hand} (2 charges) the hand is made of ice, is immune to cold damage, and deals bludgeoning damage instead of force damage as a clenched fist, {@spell cone of cold} (2 charges), {@spell flesh to stone|phb|flesh to ice} (3 charges); as flesh to stone except that the target turns to solid ice with the density and durability of stone, {@spell ice storm} (2 charges), {@spell Otiluke's freezing sphere} (3 charges), {@spell sleet storm} (1 charge), {@spell spike growth} (1 charge) the spikes are made of ice, or {@spell wall of ice} (2 charges).",
-						"• Artus can expend the necessary number of charges and use the ring to create either an inanimate ice object (2 charges) or an animated ice creature (4 charges). The ice object can't have any moving parts, must be able to fit inside a 10-foot cube, and has the density and durability of metal or stone (Artus's choice). The ice creature must be modeled after a beast with a challenge rating of 2 or less. The ice creature has the same statistics as the beast it models, with the following changes: the creature is a construct with vulnerability to fire damage, immunity to cold and poison damage, and immunity to the following conditions: {@condition charmed}, {@condition exhaustion}, {@condition frightened}, {@condition paralyzed}, {@condition petrified}, and {@condition poisoned}. The ice creature obeys only its creator's commands. The the object or creature appears in an unoccupied space within 60 feet of Artus. It melts into a pool of normal water after 24 hours or when it drops to 0 hit points. In extreme heat, it loses 5 ({@dice 1d10}) hit points per minute as it melts. Use the guidelines in chapter 8 of the Dungeon Master's Guide to determine the hit points of an inanimate object if they become necessary."
+						{
+							"type": "list",
+							"items": [
+								"Artus can expend 1 charge and use the ring to lower the temperature in a 120-foot-radius sphere centered on a point he can see within 300 feet of him. The temperature in that area drops 20 degrees per minute, to a minimum of \u221230 degrees Fahrenheit. Frost and ice begin to form on surfaces once the temperature drops below 32 degrees. This effect is permanent unless Artus uses the ring to end the effect as an action, at which point the temperature in the area returns to normal at a rate of 10 degrees per minute.",
+								"Artus can cast one of the following spells from the ring (spell save DC 17) by expending the necessary number of charges: {@spell Bigby's hand} (2 charges) the hand is made of ice, is immune to cold damage, and deals bludgeoning damage instead of force damage as a clenched fist, {@spell cone of cold} (2 charges), {@spell flesh to stone|phb|flesh to ice} (3 charges); as flesh to stone except that the target turns to solid ice with the density and durability of stone, {@spell ice storm} (2 charges), {@spell Otiluke's freezing sphere} (3 charges), {@spell sleet storm} (1 charge), {@spell spike growth} (1 charge) the spikes are made of ice, or {@spell wall of ice} (2 charges).",
+								"Artus can expend the necessary number of charges and use the ring to create either an inanimate ice object (2 charges) or an animated ice creature (4 charges). The ice object can't have any moving parts, must be able to fit inside a 10-foot cube, and has the density and durability of metal or stone (Artus's choice). The ice creature must be modeled after a beast with a challenge rating of 2 or less. The ice creature has the same statistics as the beast it models, with the following changes: the creature is a construct with vulnerability to fire damage, immunity to cold and poison damage, and immunity to the following conditions: {@condition charmed}, {@condition exhaustion}, {@condition frightened}, {@condition paralyzed}, {@condition petrified}, and {@condition poisoned}. The ice creature obeys only its creator's commands. The object or creature appears in an unoccupied space within 60 feet of Artus. It melts into a pool of normal water after 24 hours or when it drops to 0 hit points. In extreme heat, it loses 5 ({@dice 1d10}) hit points per minute as it melts. Use the guidelines in chapter 8 of the Dungeon Master's Guide to determine the hit points of an inanimate object if they become necessary."
+							]
+						}
 					]
 				}
 			],
 			"page": 212,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"D",
+				"GO"
+			]
+		},
+		{
+			"name": "Asharra",
+			"isNPC": true,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"aarakocra"
+				]
+			},
+			"source": "ToA",
+			"alignment": [
+				"L",
+				"N"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 31,
+				"formula": "7d8"
+			},
+			"speed": {
+				"walk": 20,
+				"fly": 50
+			},
+			"str": 10,
+			"dex": 14,
+			"con": 10,
+			"int": 14,
+			"wis": 17,
+			"cha": 11,
+			"skill": {
+				"history": "+4",
+				"insight": "+5",
+				"perception": "+7"
+			},
+			"passive": 17,
+			"languages": "Auran, Common",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Dive Attack",
+					"entries": [
+						"If the aarakocra is flying and dives at least 30 ft. straight toward a target and then hits it with a melee weapon attack, the attack deals an extra 3 ({@dice 1d6}) damage to the target."
+					]
+				},
+				{
+					"type": "inset",
+					"name": "Dance of the Seven Winds",
+					"entries": [
+						"Asharra knows a ritual called the Dance of the Seven Winds, which temporarily grants magical flight to as many as ten nonflying creatures. The ritual, which takes 10 minutes to complete, can only be performed by an aarakocra elder and requires a black orchid as a material component.",
+						"Asharra must grind the orchid to powder, inhale it, and dance in circles around the ritual's beneficiaries uninterrupted while seven other aarakocra chant prayers to the Wind Dukes of Aaqa. When the dance concludes, Asharra's wings disappear and she loses the ability to fly. The ritual's beneficiaries each gain a magical flying speed of 30 feet (allowing them to fly 4 miles per hour). This benefit lasts for 3 days, after which Asharra's wings reappear and she regains the ability to fly."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Talon",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) slashing damage."
+					]
+				},
+				{
+					"name": "Javelin",
+					"entries": [
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
+					]
+				},
+				{
+					"name": "Summon Air Elemental",
+					"entries": [
+						"Five aarakocra within 30 feet of each other can magically summon an {@creature air elemental}. Each of the five must use its action and movement on three consecutive turns to perform an aerial dance and must maintain concentration while doing so (as if concentrating on a spell). When all five have finished their third turn of the dance, the elemental appears in an unoccupied space within 60 feet of them. It is friendly toward them and obeys their spoken commands. It remains for 1 hour, until it or all its summoners die, or until any of its summoners dismisses it as a bonus action. A summoner can't perform the dance again until it finishes a short rest. When the elemental returns to the Elemental Plane of Air, any aarakocra within 5 feet of it can return with it."
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Asharra is a 5th-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 13, {@hit 5} to hit with spell attacks). Asharra has the following druid spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell druidcraft}",
+								"{@spell mending}",
+								"{@spell produce flame}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell faerie fire}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell gust of wind}",
+								"{@spell hold person}",
+								"{@spell lesser restoration}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell call lightning}",
+								"{@spell wind wall}"
+							]
+						}
+					},
+					"ability": "wis"
+				}
+			],
+			"page": 69,
+			"languageTags": [
+				"AU",
+				"C"
+			],
+			"spellcastingTags": [
+				"CD"
 			]
 		},
 		{
@@ -699,7 +887,7 @@
 			],
 			"hp": {
 				"average": 85,
-				"formula": "10d10+30"
+				"formula": "10d10 + 30"
 			},
 			"speed": {
 				"walk": 5,
@@ -736,7 +924,7 @@
 				{
 					"name": "Constrict",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 20 ft., one creature. Hit: The target takes 11 ({@dice 2d6+4}) bludgeoning damage, and it is {@condition grappled} (escape DC 14). Until this grapple ends, the target is {@condition restrained}, and it takes 21 ({@dice 6d6}) poison damage at the start of each of its turns. The vine can constrict only one target at a time."
+						"{@atk mw} {@hit 6} to hit, reach 20 ft., one creature. {@h}The target takes 11 ({@damage 2d6 + 4}) bludgeoning damage, and it is {@condition grappled} (escape DC 14). Until this grapple ends, the target is {@condition restrained}, and it takes 21 ({@damage 6d6}) poison damage at the start of each of its turns. The vine can constrict only one target at a time."
 					]
 				},
 				{
@@ -749,6 +937,9 @@
 			"page": 213,
 			"traitTags": [
 				"False Appearance"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -770,7 +961,7 @@
 			],
 			"hp": {
 				"average": 225,
-				"formula": "18d12+108"
+				"formula": "18d12 + 108"
 			},
 			"speed": {
 				"walk": 0,
@@ -831,7 +1022,7 @@
 				{
 					"name": "Negative Energy Aura",
 					"entries": [
-						"Creatures within 30 feet of the atropal can't regain hit points, and any creature that starts its turn within 30 feet of the atropal takes 10 ({@dice 3d6}) necrotic damage. If the atropal is struck by a vorpal sword, the wielder can cut the atropal's umbilical cord instead of dealing damage. If its umbilical cord is cut, the atropal loses this feature."
+						"Creatures within 30 feet of the atropal can't regain hit points, and any creature that starts its turn within 30 feet of the atropal takes 10 ({@damage 3d6}) necrotic damage. If the atropal is struck by a vorpal sword, the wielder can cut the atropal's umbilical cord instead of dealing damage. If its umbilical cord is cut, the atropal loses this feature."
 					]
 				},
 				{
@@ -845,25 +1036,25 @@
 				{
 					"name": "Touch",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 10 ({@dice 3d6}) necrotic damage."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}10 ({@damage 3d6}) necrotic damage."
 					]
 				},
 				{
 					"name": "Ray of Cold",
 					"entries": [
-						"{@atk rs} {@hit 12} to hit, range 120 ft., one target. Hit: 21 ({@dice 6d6}) cold damage."
+						"{@atk rs} {@hit 12} to hit, range 120 ft., one target. {@h}21 ({@damage 6d6}) cold damage."
 					]
 				},
 				{
 					"name": "Life Drain",
 					"entries": [
-						"The atropal targets one creature it can see within 120 feet of it. The target must succeed on a DC 19 Constitution saving throw, taking 36 ({@dice 8d8}) necrotic damage on a failed save, or half as much damage on a successful one. The atropal regains a number of hit points equal to half the amount of damage dealt."
+						"The atropal targets one creature it can see within 120 feet of it. The target must succeed on a DC 19 Constitution saving throw, taking 36 ({@damage 8d8}) necrotic damage on a failed save, or half as much damage on a successful one. The atropal regains a number of hit points equal to half the amount of damage dealt."
 					]
 				},
 				{
 					"name": "Summon Wraith {@recharge}",
 					"entries": [
-						"The atropal summons a wraith which materializes within 30 feet of it in an unoccupied space it can see. The wraith obeys its summoner's commands and can't be controlled by any other creature. The Wraith vanishes when it drops to 0 hit points or when its summoner dies."
+						"The atropal summons a {@creature wraith} which materializes within 30 feet of it in an unoccupied space it can see. The wraith obeys its summoner's commands and can't be controlled by any other creature. The Wraith vanishes when it drops to 0 hit points or when its summoner dies."
 					]
 				}
 			],
@@ -891,6 +1082,135 @@
 			"traitTags": [
 				"Magic Resistance",
 				"Turn Resistance"
+			],
+			"languageTags": [
+				"CE"
+			],
+			"senseTags": [
+				"SD",
+				"U"
+			]
+		},
+		{
+			"name": "Bag of Nails",
+			"isNPC": true,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"tabaxi"
+				]
+			},
+			"source": "ToA",
+			"alignment": [
+				"C",
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 78,
+				"formula": "12d8 + 24"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 20
+			},
+			"str": 11,
+			"dex": 16,
+			"con": 14,
+			"int": 13,
+			"wis": 11,
+			"cha": 10,
+			"save": {
+				"dex": "+6",
+				"int": "+4"
+			},
+			"skill": {
+				"acrobatics": "+6",
+				"deception": "+3",
+				"perception": "+3",
+				"stealth": "+9"
+			},
+			"resist": [
+				"poison"
+			],
+			"senses": "darkvision 60 ft.",
+			"passive": 13,
+			"languages": "Thieves' cant, Common, Dwarvish",
+			"cr": "8",
+			"page": 102,
+			"trait": [
+				{
+					"name": "Feline Agility",
+					"entries": [
+						"When Bag of Nails moves on its turn in combat, he can double his speed until the end of the turn. Once he uses this trait, Bag of Nails can't use it again until he moves 0 feet on one of his turns."
+					]
+				},
+				{
+					"name": "Assassinate",
+					"entries": [
+						"During his first turn, Bag of Nails has advantage on attack rolls against any creature that hasn't taken a turn. Any hit Bag of Nails scores against a surprised creature is a critical hit."
+					]
+				},
+				{
+					"name": "Evasion",
+					"entries": [
+						"If Bag of Nails is subjected to an effect that allows him to make a Dexterity saving throw to take only half damage, Bag of Nails instead takes no damage if he succeeds on the saving throw, and only half damage if it fails."
+					]
+				},
+				{
+					"name": "Sneak Attack (1/Turn)",
+					"entries": [
+						"Bag of Nails deals an extra 14 ({@dice 4d6}) damage when he hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of his that isn't {@condition incapacitated} and Bag of Nails doesn't have disadvantage on the attack roll."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Bag of Nails makes two shortsword attacks."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}2 ({@damage 1d4}) slashing damage."
+					]
+				},
+				{
+					"name": "Shortsword",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage, and the target must make a DC 15 Constitution saving throw, taking 24 ({@damage 7d6}) poison damage on a failed save, or half as much damage on a successful one."
+					]
+				},
+				{
+					"name": "Longbow",
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 150/600 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage, and the target must make a DC 15 Constitution saving throw, taking 24 ({@damage 7d6}) poison damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"traitTags": [
+				"Sneak Attack"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"TC",
+				"C",
+				"D"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -970,7 +1290,120 @@
 					]
 				}
 			],
-			"page": 216
+			"page": 216,
+			"senseTags": [
+				"B"
+			],
+			"spellcastingTags": [
+				"I"
+			]
+		},
+		{
+			"name": "Clay Gladiator",
+			"size": "M",
+			"type": "construct",
+			"source": "ToA",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 112,
+				"formula": "15d8 + 45"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 18,
+			"dex": 15,
+			"con": 16,
+			"int": 10,
+			"wis": 12,
+			"cha": 15,
+			"save": {
+				"str": "+7",
+				"dex": "+5",
+				"con": "+6"
+			},
+			"skill": {
+				"athletics": "+10",
+				"intimidation": "+5"
+			},
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"poisoned"
+			],
+			"passive": 11,
+			"cr": "5",
+			"page": 100,
+			"trait": [
+				{
+					"name": "Climbing",
+					"entries": [
+						"The gladiator can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				},
+				{
+					"name": "Steadfast",
+					"entries": [
+						"The gladiator can't be disarmed, and cannot make ranged attacks."
+					]
+				},
+				{
+					"name": "Brute",
+					"entries": [
+						"A melee weapon deals one extra die of its damage when the gladiator hits with it (included in the attack)."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The gladiator makes three melee attacks."
+					]
+				},
+				{
+					"name": "Spear",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) piercing damage, or 13 ({@damage 2d8 + 4}) piercing damage if used with two hands."
+					]
+				},
+				{
+					"name": "Shield Bash",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one creature. {@h}9 ({@damage 2d4 + 4}) bludgeoning damage. If the target is a Medium or smaller creature, it must succeed on a DC 15 Strength saving throw or be knocked {@condition prone}."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Parry",
+					"entries": [
+						"The gladiator adds 3 to its AC against one melee attack that would hit it. To do so, the gladiator must see the attacker and be wielding a melee weapon."
+					]
+				}
+			],
+			"traitTags": [
+				"Brute"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Parry"
+			]
 		},
 		{
 			"source": "ToA",
@@ -998,7 +1431,7 @@
 			],
 			"hp": {
 				"average": 120,
-				"formula": "16d8+48"
+				"formula": "16d8 + 48"
 			},
 			"speed": {
 				"walk": 30
@@ -1044,7 +1477,7 @@
 				{
 					"name": "Holy Avenger (+3 Longsword)",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d8+5}) slashing damage, or 10 ({@dice 1d10+5}) slashing damage when used with two hands. If the target is a fiend or an undead it takes an extra 11 ({@dice 2d10}) radiant damage."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d8 + 5}) slashing damage, or 10 ({@damage 1d10 + 5}) slashing damage when used with two hands. If the target is a fiend or an undead it takes an extra 11 ({@damage 2d10}) radiant damage."
 					]
 				},
 				{
@@ -1060,6 +1493,10 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"CS"
 			]
 		},
 		{
@@ -1076,7 +1513,7 @@
 			],
 			"hp": {
 				"average": 26,
-				"formula": "4d10+4"
+				"formula": "4d10 + 4"
 			},
 			"speed": {
 				"walk": 30,
@@ -1120,13 +1557,20 @@
 				{
 					"name": "Beak",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target Hit: 5 ({@dice 1d4+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target {@h}5 ({@damage 1d4 + 3}) piercing damage."
 					]
 				}
 			],
 			"page": 219,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"AU",
+				"C"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -1142,7 +1586,7 @@
 			],
 			"hp": {
 				"average": 3,
-				"formula": "1d6+4"
+				"formula": "1d6"
 			},
 			"speed": {
 				"walk": 30,
@@ -1163,20 +1607,27 @@
 					"entries": [
 						"The flying monkey has advantage on an attack roll against a creature if at least one of the monkey's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
 					]
+				},
+				{
+					"name": "Familiar",
+					"entries": [
+						"With the DM's permission, the {@spell find familiar} spell can summon a flying monkey."
+					]
 				}
 			],
 			"action": [
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 1} to hit, reach 5 ft., one target Hit: 1 ({@dice 1d4-1}) piercing damage."
+						"{@atk mw} {@hit 1} to hit, reach 5 ft., one target {@h}1 ({@damage 1d4 - 1}) piercing damage."
 					]
 				}
 			],
 			"page": 220,
 			"traitTags": [
 				"Pack Tactics"
-			]
+			],
+			"familiar": true
 		},
 		{
 			"source": "ToA",
@@ -1197,7 +1648,7 @@
 			],
 			"hp": {
 				"average": 147,
-				"formula": "14d10+70"
+				"formula": "14d10 + 70"
 			},
 			"speed": {
 				"walk": 30,
@@ -1255,13 +1706,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 9 ({@dice 2d4+4}) slashing damage."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}9 ({@damage 2d4 + 4}) slashing damage."
 					]
 				}
 			],
@@ -1271,6 +1722,12 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"T"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -1295,7 +1752,7 @@
 			],
 			"hp": {
 				"average": 75,
-				"formula": "10d10+20"
+				"formula": "10d10 + 20"
 			},
 			"speed": {
 				"walk": 30,
@@ -1328,13 +1785,16 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 18 ({@dice 4d6+4}) slashing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}18 ({@damage 4d6 + 4}) slashing damage."
 					]
 				}
 			],
 			"page": 222,
 			"traitTags": [
 				"Amphibious"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -1356,7 +1816,7 @@
 			],
 			"hp": {
 				"average": 59,
-				"formula": "7d10+21"
+				"formula": "7d10 + 21"
 			},
 			"speed": {
 				"walk": 30,
@@ -1401,13 +1861,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d4+4}) slashing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d4 + 4}) slashing damage."
 					]
 				}
 			],
@@ -1418,6 +1878,89 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"name": "Hew Hackinstone",
+			"isNPC": true,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"source": "ToA",
+			"alignment": [
+				"C",
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item hide armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 67,
+				"formula": "9d8 + 27"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 12,
+			"con": 17,
+			"int": 9,
+			"wis": 11,
+			"cha": 9,
+			"skill": {
+				"survival": "+4"
+			},
+			"resist": [
+				"poison"
+			],
+			"senses": "darkvision 60 ft.",
+			"passive": 10,
+			"languages": "any one language (usually Common)",
+			"cr": "2",
+			"page": 33,
+			"trait": [
+				{
+					"name": "Dwarven Resilience",
+					"entries": [
+						"Hew has resistance to poison damage and advantage on saving throws against being {@condition poisoned}."
+					]
+				},
+				{
+					"name": "Reckless",
+					"entries": [
+						"At the start of his turn, Hew can gain advantage on all melee weapon attack rolls during that turn, but attack rolls against him have advantage until the start of his next turn."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Battleaxe",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Reckless"
+			],
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -1468,7 +2011,7 @@
 				{
 					"name": "Keen Smell",
 					"entries": [
-						"The jaculi has advantage on Wisdom (Perception) checks that rely on smell."
+						"The jaculi has advantage on Wisdom ({@skill Perception}) checks that rely on smell."
 					]
 				}
 			],
@@ -1476,19 +2019,22 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 9 ({@dice 2d6+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}9 ({@damage 2d6 + 2}) piercing damage."
 					]
 				},
 				{
 					"name": "Spring",
 					"entries": [
-						"The jaculi springs up to 30 feet in a straight line and makes a bite attack against a target within its reach. This attack has advantage if the jaculi springs at least 10 feet. If the attack hits, the bite deals an extra 7 ({@dice 2d6}) piercing damage."
+						"The jaculi springs up to 30 feet in a straight line and makes a bite attack against a target within its reach. This attack has advantage if the jaculi springs at least 10 feet. If the attack hits, the bite deals an extra 7 ({@damage 2d6}) piercing damage."
 					]
 				}
 			],
 			"page": 225,
 			"traitTags": [
 				"Keen Senses"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -1509,7 +2055,7 @@
 			],
 			"hp": {
 				"average": 67,
-				"formula": "9d10+18"
+				"formula": "9d10 + 18"
 			},
 			"speed": {
 				"walk": 30
@@ -1530,7 +2076,7 @@
 				{
 					"name": "Keen Smell",
 					"entries": [
-						"The kamadan has advantage on Wisdom (Perception) checks that rely on smell."
+						"The kamadan has advantage on Wisdom ({@skill Perception}) checks that rely on smell."
 					]
 				},
 				{
@@ -1550,19 +2096,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
 					]
 				},
 				{
 					"name": "Snakes",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. Hit: 6 ({@dice 1d6+3}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 21 ({@dice 6d6}) poison damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. {@h}6 ({@damage 1d6 + 3}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 21 ({@damage 6d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
@@ -1579,6 +2125,104 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			]
+		},
+		{
+			"name": "King of Feathers",
+			"isNPC": true,
+			"size": "H",
+			"type": "monstrosity",
+			"source": "ToA",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 200,
+				"formula": "19d12 + 52"
+			},
+			"speed": {
+				"walk": 50
+			},
+			"str": 25,
+			"dex": 10,
+			"con": 19,
+			"int": 2,
+			"wis": 12,
+			"cha": 9,
+			"skill": {
+				"perception": "+4"
+			},
+			"passive": 14,
+			"cr": "8",
+			"trait": [
+				{
+					"name": "Detect Invisibility",
+					"entries": [
+						"The King of Feathers can see {@condition invisible} creatures and objects as if they were visible."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"If the King of Feathers fails a saving throw, it can choose to succeed instead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The King of Feathers makes two attacks: one with its bite and one with its tail. It can't make both attacks against the same target."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. {@h}33 ({@damage 4d12 + 7}) piercing damage. If the target is a Medium or smaller creature, it is {@condition grappled} (escape DC 17). Until this grapple ends, the target is {@condition restrained}, and the tyrannosaurus can't bite another target."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. {@h}20 ({@damage 3d8 + 7}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Summon Swarm {@recharge 5}",
+					"entries": [
+						"The King of Feathers exhales a swarm of insects (wasps) that forms in a space within 20 feet of it. The swarm acts as an ally of the King of Feathers and takes its turn immediately after it. The swarm disperses after 1 minute. It can't use the Summon Swarm action while it is grappling a creature with its jaws."
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The King of Feathers's innate spellcasting ability is Wisdom. It can innately cast the following spell, requiring no material components:"
+					],
+					"will": [
+						"{@spell misty step}"
+					],
+					"ability": "wis"
+				}
+			],
+			"page": 106,
+			"traitTags": [
+				"Legendary Resistances"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -1607,7 +2251,7 @@
 			],
 			"hp": {
 				"average": 84,
-				"formula": "13d8+26"
+				"formula": "13d8 + 26"
 			},
 			"speed": {
 				"walk": 30
@@ -1641,7 +2285,7 @@
 				{
 					"name": "Flaming Fury",
 					"entries": [
-						"Once per turn, when Liara hits a creature with a melee weapon, she can cause fire to magically erupt from her weapon and deal an extra 10 ({@dice 3d6}) fire damage to the target."
+						"Once per turn, when Liara hits a creature with a melee weapon, she can cause fire to magically erupt from her weapon and deal an extra 10 ({@damage 3d6}) fire damage to the target."
 					]
 				}
 			],
@@ -1655,19 +2299,24 @@
 				{
 					"name": "Battleaxe",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) slashing damage, or 8 ({@dice 1d10+3}) slashing damage when used with two hands."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage, or 8 ({@damage 1d10 + 3}) slashing damage when used with two hands."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"{@atk rw} {@hit 3} to hit, range 100/400 ft., one target. Hit: 6 ({@dice 1d10+1}) piercing damage."
+						"{@atk rw} {@hit 3} to hit, range 100/400 ft., one target. {@h}6 ({@damage 1d10 + 1}) piercing damage."
 					]
 				}
 			],
 			"page": 227,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"D"
 			]
 		},
 		{
@@ -1683,7 +2332,7 @@
 			],
 			"hp": {
 				"average": 45,
-				"formula": "7d10+7"
+				"formula": "7d10 + 7"
 			},
 			"speed": {
 				"walk": 5
@@ -1725,13 +2374,16 @@
 				{
 					"name": "Engulf",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one Medium or smaller creature. Hit: The target is trapped inside the mantrap's leafy jaws. While trapped in this way, the target is {@condition blinded} and {@condition restrained}, has total cover from an attacks and other effects outside the mantrap, and takes 14 ({@dice 4d6}) acid damage at the start of each of the target's turns. If the mantrap dies, the creature inside it is no longer {@condition restrained} by it. A mantrap can engulf only one creature at a time."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one Medium or smaller creature. {@h}The target is trapped inside the mantrap's leafy jaws. While trapped in this way, the target is {@condition blinded} and {@condition restrained}, has total cover from an attacks and other effects outside the mantrap, and takes 14 ({@damage 4d6}) acid damage at the start of each of the target's turns. If the mantrap dies, the creature inside it is no longer {@condition restrained} by it. A mantrap can engulf only one creature at a time."
 					]
 				}
 			],
 			"page": 227,
 			"traitTags": [
 				"False Appearance"
+			],
+			"senseTags": [
+				"T"
 			]
 		},
 		{
@@ -1803,11 +2455,19 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 2} to hit. reach 5 ft. or range 20/60 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage."
+						"{@atk mw,rw} {@hit 2} to hit. reach 5 ft. or range 20/60 ft., one target. {@h}2 ({@damage 1d4}) piercing damage."
 					]
 				}
 			],
-			"page": 228
+			"page": 228,
+			"languageTags": [
+				"AU",
+				"C",
+				"TP"
+			],
+			"spellcastingTags": [
+				"CL"
+			]
 		},
 		{
 			"source": "ToA",
@@ -1828,7 +2488,7 @@
 			],
 			"hp": {
 				"average": 26,
-				"formula": "4d10+4"
+				"formula": "4d10 + 4"
 			},
 			"speed": {
 				"walk": 30,
@@ -1865,25 +2525,28 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}7 ({@damage 2d4 + 2}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) slashing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) slashing damage."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 9 ({@dice 2d6+2}) piercing damage."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. {@h}9 ({@damage 2d6 + 2}) piercing damage."
 					]
 				}
 			],
 			"page": 229,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C"
 			]
 		},
 		{
@@ -2053,19 +2716,19 @@
 				{
 					"name": "Bite (Snake Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d4+3}) piercing damage plus 7 ({@dice 2d6}) poison damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage plus 7 ({@damage 2d6}) poison damage."
 					]
 				},
 				{
 					"name": "Constrict",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one creature. Hit: 10 ({@dice 2d6+3}) bludgeoning damage, and the target is {@condition grappled} (escape DC 14). Until this grapple ends, the target is {@condition restrained}, and Ras Nsi can't constrict another target."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one creature. {@h}10 ({@damage 2d6 + 3}) bludgeoning damage, and the target is {@condition grappled} (escape DC 14). Until this grapple ends, the target is {@condition restrained}, and Ras Nsi can't constrict another target."
 					]
 				},
 				{
 					"name": "Flame Tongue Longsword (Yuan-ti Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) slashing damage, or 8 ({@dice 1d10+3}) slashing damage when used with two hands, plus 7 ({@dice 2d6}) fire damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage, or 8 ({@damage 1d10 + 3}) slashing damage when used with two hands, plus 7 ({@damage 2d6}) fire damage."
 					]
 				}
 			],
@@ -2076,6 +2739,139 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"AB",
+				"C",
+				"DR"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"I",
+				"CW"
+			]
+		},
+		{
+			"name": "Spiked Tomb Guardian",
+			"size": "M",
+			"type": "construct",
+			"source": "ToA",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				17
+			],
+			"hp": {
+				"average": 93,
+				"formula": "11d8 + 44"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 19,
+			"dex": 9,
+			"con": 18,
+			"int": 6,
+			"wis": 10,
+			"cha": 5,
+			"immune": [
+				"lightning",
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks that aren't adamantine"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"senses": "darkvision 60 ft.",
+			"passive": 10,
+			"languages": "understands the languages of its creator but can't speak",
+			"cr": "6",
+			"page": 154,
+			"trait": [
+				{
+					"name": "Berserk",
+					"entries": [
+						"Whenever the tomb guardian starts its turn with 40 hit points or fewer, roll a {@dice d6}. On a 6, the tomb guardian goes berserk. On each of its turns while berserk, the tomb guardian attacks the nearest creature it can see. If no creature is near enough to move to and attack, the tomb guardian attacks an object, with preference for an object smaller than itself. Once the tomb guardian goes berserk, it continues to do so until it is destroyed or regains all its hit points. The golem's creator, if within 60 feet of the berserk tomb guardian, can try to calm it by speaking firmly and persuasively. The tomb guardian must be able to hear its creator, who must take an action to make a DC 15 Charisma (Persuasion) check. If the check succeeds, the tomb guardian ceases being berserk. If it takes damage while still at 40 hit points or fewer, the tomb guardian might go berserk again."
+					]
+				},
+				{
+					"name": "Aversion of Fire",
+					"entries": [
+						"If the tomb guardian takes fire damage, it has disadvantage on attack rolls and ability checks until the end of its next turn."
+					]
+				},
+				{
+					"name": "Immutable Form",
+					"entries": [
+						"The tomb guardian is immune to any spell or effect that would alter its form."
+					]
+				},
+				{
+					"name": "Lightning Absorption",
+					"entries": [
+						"Whenever the tomb guardian is subjected to lightning damage, it takes no damage and instead regains a number of hit points equal to the lightning damage dealt."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The tomb guardian has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"The golem's weapon attacks are magical."
+					]
+				},
+				{
+					"name": "Chained",
+					"entries": [
+						"{@note This trait applies when two guardians are chained together.}",
+						"A magical spiked chain that binds a pair of guardians together prevents them from moving more than 15 feet apart. Additionally, as long as the chain is intact, damage dealt to either guardian is divided evenly between them. The spiked chain can be attacked separately and has AC 18, a damage threshold of 10, 5 hit points, and immunity to poison and psychic damage. If the chain breaks, both tomb guardians instantly go berserk."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The tomb guardian makes two spiked gauntlet attacks."
+					]
+				},
+				{
+					"name": "Spiked Gauntlet",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d8 + 4}) bludgeoning damage plus 9 ({@damage 2d6}) piercing damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Immutable Form",
+				"Damage Absorption",
+				"Magic Resistance",
+				"Magic Weapons"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -2096,7 +2892,7 @@
 			],
 			"hp": {
 				"average": 157,
-				"formula": "15d10+75"
+				"formula": "15d10 + 75"
 			},
 			"speed": {
 				"walk": {
@@ -2139,7 +2935,7 @@
 				{
 					"name": "Devastating Roll",
 					"entries": [
-						"The juggernaut can move through the space of a {@condition prone} creature. A creature whose space the juggernaut enters for the first time on a turn must make a DC 17 Dexterity saving throw, taking 55 ({@dice 10d10}) bludgeoning damage on a failed save, or half as much damage on a successful one."
+						"The juggernaut can move through the space of a {@condition prone} creature. A creature whose space the juggernaut enters for the first time on a turn must make a DC 17 Dexterity saving throw, taking 55 ({@damage 10d10}) bludgeoning damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
@@ -2165,7 +2961,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. Hit: 25 ({@dice 3d12+6}) bludgeoning damage. If the target is a Large or smaller creature, it must succeed on a DC 17 Strength saving throw or be knocked {@condition prone}."
+						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. {@h}25 ({@damage 3d12 + 6}) bludgeoning damage. If the target is a Large or smaller creature, it must succeed on a DC 17 Strength saving throw or be knocked {@condition prone}."
 					]
 				}
 			],
@@ -2174,6 +2970,9 @@
 				"Immutable Form",
 				"Regeneration",
 				"Siege Monster"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -2190,7 +2989,7 @@
 			],
 			"hp": {
 				"average": 27,
-				"formula": "5d8+5"
+				"formula": "5d8 + 5"
 			},
 			"speed": {
 				"walk": 30,
@@ -2218,19 +3017,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) slashing damage, or 12 ({@dice 4d4+2}) slashing damage if the su-monster is hanging by its tail and all four of its limbs are free."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}7 ({@damage 2d4 + 2}) slashing damage, or 12 ({@damage 4d4 + 2}) slashing damage if the su-monster is hanging by its tail and all four of its limbs are free."
 					]
 				},
 				{
 					"name": "Psychic Crush {@recharge 5}",
 					"entries": [
-						"The su-monster targets one creature it can see within 30 feet of it. The target must succeed on a DC 11 Wisdom saving throw or take 17 ({@dice 5d6}) psychic damage and be {@condition stunned} for 1 minute. The {@condition stunned} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"The su-monster targets one creature it can see within 30 feet of it. The target must succeed on a DC 11 Wisdom saving throw or take 17 ({@damage 5d6}) psychic damage and be {@condition stunned} for 1 minute. The {@condition stunned} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				}
 			],
@@ -2303,25 +3102,32 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) slashing damage."
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}2 ({@damage 1d4}) slashing damage."
 					]
 				},
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
 					]
 				},
 				{
 					"name": "Shortbow",
 					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 80/320 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage."
+						"{@atk rw} {@hit 5} to hit, range 80/320 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage."
 					]
 				}
 			],
 			"page": 232,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -2389,19 +3195,241 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) slashing damage."
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}2 ({@damage 1d4}) slashing damage."
 					]
 				},
 				{
 					"name": "Dart",
 					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 20/ 60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
+						"{@atk rw} {@hit 4} to hit, range 20/ 60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
 					]
 				}
 			],
 			"page": 233,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"name": "Tomb Dwarf",
+			"size": "M",
+			"type": "undead",
+			"source": "ToA",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 45,
+				"formula": "6d8 + 18"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 15,
+			"dex": 14,
+			"con": 16,
+			"int": 10,
+			"wis": 13,
+			"cha": 15,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"resist": [
+				"necrotic",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks that aren't silvered"
+				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"poisoned"
+			],
+			"senses": "darkvision 60 ft.",
+			"passive": 13,
+			"languages": "the languages it knew in life",
+			"cr": "3",
+			"page": 135,
+			"trait": [
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"While in sunlight, the tomb dwarf has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The tomb dwarf makes two longsword attacks or two crossbow attacks. It can use its Life Drain in place of one longsword attack."
+					]
+				},
+				{
+					"name": "Life Drain",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}5 ({@damage 1d6 + 2}) necrotic damage. The target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0.A humanoid slain by this attack rises 24 hours later as a zombie under the tomb dwarf's control, unless the humanoid is restored to life or its body is destroyed. The tomb dwarf can have no more than twelve zombies under its control at one time."
+					]
+				},
+				{
+					"name": "Battleaxe",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) slashing damage, or 7 ({@damage 1d10 + 2}) slashing damage if used with two hands."
+					]
+				},
+				{
+					"name": "Light Crossbow",
+					"entries": [
+						"{@atk rw} {@hit 4} to hit, range 80/320 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Sunlight Sensitivity"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"name": "Tomb Guardian",
+			"size": "M",
+			"type": "construct",
+			"source": "ToA",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				17
+			],
+			"hp": {
+				"average": 93,
+				"formula": "11d8 + 44"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 19,
+			"dex": 9,
+			"con": 18,
+			"int": 6,
+			"wis": 10,
+			"cha": 5,
+			"immune": [
+				"lightning",
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks that aren't adamantine"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"senses": "darkvision 60 ft.",
+			"passive": 10,
+			"languages": "understands the languages of its creator but can't speak",
+			"cr": "5",
+			"page": 127,
+			"trait": [
+				{
+					"name": "Berserk",
+					"entries": [
+						"Whenever the tomb guardian starts its turn with 40 hit points or fewer, roll a {@dice d6}. On a 6, the tomb guardian goes berserk. On each of its turns while berserk, the tomb guardian attacks the nearest creature it can see. If no creature is near enough to move to and attack, the tomb guardian attacks an object, with preference for an object smaller than itself. Once the tomb guardian goes berserk, it continues to do so until it is destroyed or regains all its hit points. The golem's creator, if within 60 feet of the berserk tomb guardian, can try to calm it by speaking firmly and persuasively. The tomb guardian must be able to hear its creator, who must take an action to make a DC 15 Charisma (Persuasion) check. If the check succeeds, the tomb guardian ceases being berserk. If it takes damage while still at 40 hit points or fewer, the tomb guardian might go berserk again."
+					]
+				},
+				{
+					"name": "Aversion of Fire",
+					"entries": [
+						"If the tomb guardian takes fire damage, it has disadvantage on attack rolls and ability checks until the end of its next turn."
+					]
+				},
+				{
+					"name": "Immutable Form",
+					"entries": [
+						"The tomb guardian is immune to any spell or effect that would alter its form."
+					]
+				},
+				{
+					"name": "Lightning Absorption",
+					"entries": [
+						"Whenever the tomb guardian is subjected to lightning damage, it takes no damage and instead regains a number of hit points equal to the lightning damage dealt."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The tomb guardian has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"The golem's weapon attacks are magical."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The tomb guardian makes two slam attacks."
+					]
+				},
+				{
+					"name": "Slam",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d8 + 4}) bludgeoning damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Immutable Form",
+				"Damage Absorption",
+				"Magic Resistance",
+				"Magic Weapons"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -2417,7 +3445,7 @@
 			],
 			"hp": {
 				"average": 11,
-				"formula": "2d8+2"
+				"formula": "2d8 + 2"
 			},
 			"speed": {
 				"walk": 5
@@ -2459,13 +3487,16 @@
 				{
 					"name": "Red Blossom",
 					"entries": [
-						"{@atk mw} {@hit 2} to hit, reach 5 ft., one creature. Hit: 2 ({@dice 1d4}) piercing damage, and the target is {@condition grappled} (escape DC 11). Until this grapple ends, the target takes 5 ({@dice 2d4}) poison damage at the start of each of its turns. The red blossom can grapple only one target at a time. Another creature within reach of the tri-flower frond can use its action to end the grapple on the target."
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one creature. {@h}2 ({@damage 1d4}) piercing damage, and the target is {@condition grappled} (escape DC 11). Until this grapple ends, the target takes 5 ({@damage 2d4}) poison damage at the start of each of its turns. The red blossom can grapple only one target at a time. Another creature within reach of the tri-flower frond can use its action to end the grapple on the target."
 					]
 				}
 			],
 			"page": 234,
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -2486,7 +3517,7 @@
 			],
 			"hp": {
 				"average": 136,
-				"formula": "13d12+52"
+				"formula": "13d12 + 52"
 			},
 			"speed": {
 				"walk": 40
@@ -2510,7 +3541,7 @@
 				{
 					"name": "Disgorge Zombie",
 					"entries": [
-						"As a bonus action, the tyrannosaurus zombie can disgorge a normal zombie, which appears in an unoccupied space within 10 feet of it. The disgorged zombie acts on its own initiative count. After a zombie is disgorged, roll a {@dice d6}. On a roll of 1, the tyrannosaurus zombie runs out of zombies to disgorge and loses this trait. If the tyrannosaurus zombie still has this trait when it dies, {@dice 1d4} normal zombies erupt from its corpse at the start of its next turn. These zombies act on their own initiative count."
+						"As a bonus action, the tyrannosaurus zombie can disgorge a normal {@creature zombie}, which appears in an unoccupied space within 10 feet of it. The disgorged {@creature zombie} acts on its own initiative count. After a zombie is disgorged, roll a {@dice d6}. On a roll of 1, the tyrannosaurus zombie runs out of zombies to disgorge and loses this trait. If the tyrannosaurus zombie still has this trait when it dies, {@dice 1d4} normal zombies erupt from its corpse at the start of its next turn. These zombies act on their own initiative count."
 					]
 				},
 				{
@@ -2530,13 +3561,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. Hit: 33 ({@dice 4d12+7}) piercing damage. If the target is a Medium or smaller creature, it is {@condition grappled} (escape DC 17). Until this grapple ends, the target is {@condition restrained} and the tyrannosaurus zombie can't bite another target or disgorge zombies."
+						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. {@h}33 ({@damage 4d12 + 7}) piercing damage. If the target is a Medium or smaller creature, it is {@condition grappled} (escape DC 17). Until this grapple ends, the target is {@condition restrained} and the tyrannosaurus zombie can't bite another target or disgorge zombies."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. Hit: 20 ({@dice 3d8+7}) bludgeoning damage."
+						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. {@h}20 ({@damage 3d8 + 7}) bludgeoning damage."
 					]
 				}
 			],
@@ -2546,6 +3577,252 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"name": "Valindra Shadowmantle",
+			"isNPC": true,
+			"size": "M",
+			"type": "undead",
+			"source": "ToA",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 135,
+				"formula": "18d8 + 54"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 11,
+			"dex": 16,
+			"con": 16,
+			"int": 20,
+			"wis": 14,
+			"cha": 16,
+			"save": {
+				"con": "+10",
+				"int": "+12",
+				"wis": "+9"
+			},
+			"skill": {
+				"arcana": "+18",
+				"history": "+12",
+				"insight": "+9",
+				"perception": "+9"
+			},
+			"resist": [
+				"cold",
+				"lightning",
+				"necrotic"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"poisoned"
+			],
+			"senses": "truesight 120 ft.",
+			"passive": 19,
+			"languages": "Common, Abyssal, Draconic, Dwarvish, Elvish, Infernal",
+			"cr": "21",
+			"page": 58,
+			"trait": [
+				{
+					"name": "Mask",
+					"entries": [
+						"As a bonus action, Valindra can mask her shriveled flesh and appear to be a living elf. This magical illusion lasts until she ends it as a bonus action or until she uses her Frightening Gaze legendary action. The effect also ends if Valindra drops to 30 hit points or fewer, or if dispel magic is cast on her."
+					]
+				},
+				{
+					"name": "Preparation",
+					"entries": [
+						"When preparing her spells, Valindra can swap out any spell on her list of prepared spells for another wizard spell of the same level."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"If Valindra fails a saving throw, she can choose to succeed instead."
+					]
+				},
+				{
+					"name": "Rejuvenation",
+					"entries": [
+						"If destroyed Valindra gains a new body in {@dice 1d10} days, regaining all her hit points and becoming active again. The new body appears within 5 feet of the phylactery."
+					]
+				},
+				{
+					"name": "Turn Resistance",
+					"entries": [
+						"Valindra has advantage on saving throws against any effect that turns undead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Paralyzing Touch",
+					"entries": [
+						"{@atk ms} {@hit 12} to hit, reach 5 ft., one creature. {@h}10 ({@damage 3d6}) cold damage. The target must succeed on a DC 18 Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Cantrip",
+					"entries": [
+						"Valindra casts a cantrip."
+					]
+				},
+				{
+					"name": "Paralyzing Touch (Costs 2 Actions)",
+					"entries": [
+						"Valindra uses her Paralyzing Touch."
+					]
+				},
+				{
+					"name": "Frightening Gaze (Costs 2 Actions)",
+					"entries": [
+						"Valindra fixes her gaze on one creature she can see within 10 feet of her. The target must succeed on a DC 18 Wisdom saving throw against this magic or become {@condition frightened} for 1 minute. The {@condition frightened} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to the Valindra's gaze for the next 24 hours."
+					]
+				},
+				{
+					"name": "Disrupt Life (Costs 3 Actions)",
+					"entries": [
+						"Each non-undead creature within 20 feet of Valindra must make a DC 18 Constitution saving throw against this magic, taking 21 ({@damage 6d6}) necrotic damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Valindra is an 18th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 20, {@hit 12} to hit with spell attacks). Valindra has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell magic missile}",
+								"{@spell shield}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell invisibility}",
+								"{@spell Melf's acid arrow}",
+								"{@spell mirror image}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell animate dead}",
+								"{@spell counterspell}",
+								"{@spell dispel magic}",
+								"{@spell fireball}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell blight}",
+								"{@spell dimension door}"
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								"{@spell cloudkill}",
+								"{@spell scrying}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell disintegrate}",
+								"{@spell globe of invulnerability}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell finger of death}",
+								"{@spell plane shift}"
+							]
+						},
+						"8": {
+							"slots": 1,
+							"spells": [
+								"{@spell dominate monster}",
+								"{@spell power word stun}"
+							]
+						},
+						"9": {
+							"slots": 1,
+							"spells": [
+								"{@spell power word kill}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
+			"isNamedCreature": true,
+			"traitTags": [
+				"Legendary Resistances",
+				"Rejuvenation",
+				"Turn Resistance"
+			],
+			"languageTags": [
+				"C",
+				"AB",
+				"DR",
+				"D",
+				"E",
+				"I"
+			],
+			"senseTags": [
+				"U"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -2629,11 +3906,186 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
+						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
 					]
 				}
 			],
-			"page": 235
+			"page": 235,
+			"otherSources": [
+				{
+					"source": "WDH"
+				}
+			],
+			"languageTags": [
+				"C",
+				"D",
+				"E"
+			],
+			"spellcastingTags": [
+				"CW"
+			]
+		},
+		{
+			"name": "Withers",
+			"isNPC": true,
+			"size": "M",
+			"type": "undead",
+			"source": "ToA",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 45,
+				"formula": "6d8 + 18"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 15,
+			"dex": 14,
+			"con": 16,
+			"int": 16,
+			"wis": 13,
+			"cha": 15,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"resist": [
+				"necrotic",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks that aren't silvered"
+				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"poisoned"
+			],
+			"senses": "darkvision 60 ft.",
+			"passive": 13,
+			"languages": "the languages he knew in life",
+			"cr": "4",
+			"trait": [
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Withers carries the {@item amulet of the black skull|ToA}."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"While in sunlight, Withers has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Withers makes two longsword attacks. He can use his Life Drain in place of one longsword attack."
+					]
+				},
+				{
+					"name": "Life Drain",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}5 ({@damage 1d6 + 2}) necrotic damage. The target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0.",
+						"A humanoid slain by this attack rises 24 hours later as a zombie under the Withers's control, unless the humanoid is restored to life or its body is destroyed. Withers can have no more than twelve zombies under its control at one time."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) slashing damage, or 7 ({@damage 1d10 + 2}) slashing damage if used with two hands."
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Withers is a 9th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 13, {@hit 5} to hit with spell attacks). Withers has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell acid splash}",
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell expeditious retreat}",
+								"{@spell feather fall}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 4,
+							"spells": [
+								"{@spell darkness}",
+								"{@spell hold person}",
+								"{@spell thunderwave}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell blight}",
+								"{@spell wall of fire}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell telekinesis}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
+			"page": 145,
+			"traitTags": [
+				"Sunlight Sensitivity"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"CW"
+			]
 		},
 		{
 			"source": "ToA",
@@ -2660,7 +4112,7 @@
 			],
 			"hp": {
 				"average": 71,
-				"formula": "11d8+22"
+				"formula": "11d8 + 22"
 			},
 			"speed": {
 				"walk": 30
@@ -2752,11 +4204,21 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d6}) bludgeoning damage, or 4 ({@dice 1d8}) bludgeoning damage when used with two hands."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d6}) bludgeoning damage, or 4 ({@damage 1d8}) bludgeoning damage when used with two hands."
 					]
 				}
 			],
-			"page": 236
+			"page": 236,
+			"languageTags": [
+				"C",
+				"DR",
+				"D",
+				"E",
+				"H"
+			],
+			"spellcastingTags": [
+				"CS"
+			]
 		},
 		{
 			"source": "ToA",
@@ -2771,7 +4233,7 @@
 			],
 			"hp": {
 				"average": 60,
-				"formula": "11d8+11"
+				"formula": "11d8 + 11"
 			},
 			"speed": {
 				"walk": 5,
@@ -2810,7 +4272,7 @@
 				{
 					"name": "Touch",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one creature. Hit: 13 ({@dice 3d8}) psychic damage. If the target is a humanoid that drops to 0 hit points as a result of this damage, it dies and is implanted with a yellow musk creeper bulb. Unless the bulb is destroyed, the corpse animates as a yellow musk zombie after being dead for 24 hours. The bulb is destroyed if the creature is raised from the dead before it can transform into a yellow musk zombie, or if the corpse is targeted by a {@spell remove curse} spell or similar magic before it animates."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one creature. {@h}13 ({@damage 3d8}) psychic damage. If the target is a humanoid that drops to 0 hit points as a result of this damage, it dies and is implanted with a yellow musk creeper bulb. Unless the bulb is destroyed, the corpse animates as a yellow musk zombie after being dead for 24 hours. The bulb is destroyed if the creature is raised from the dead before it can transform into a yellow musk zombie, or if the corpse is targeted by a {@spell remove curse} spell or similar magic before it animates."
 					]
 				},
 				{
@@ -2824,6 +4286,9 @@
 			"traitTags": [
 				"False Appearance",
 				"Regeneration"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -2839,7 +4304,7 @@
 			],
 			"hp": {
 				"average": 33,
-				"formula": "6d8+6"
+				"formula": "6d8 + 6"
 			},
 			"speed": {
 				"walk": 20
@@ -2869,13 +4334,16 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d8+1}) bludgeoning damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d8 + 1}) bludgeoning damage."
 					]
 				}
 			],
 			"page": 237,
 			"traitTags": [
 				"Undead Fortitude"
+			],
+			"senseTags": [
+				"B"
 			]
 		},
 		{
@@ -2903,7 +4371,7 @@
 			],
 			"hp": {
 				"average": 110,
-				"formula": "17d8+34"
+				"formula": "17d8 + 34"
 			},
 			"speed": {
 				"walk": 30
@@ -3012,7 +4480,7 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) bludgeoning damage, or 6 ({@dice 1d8+2}) bludgeoning damage when used with two hands."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) bludgeoning damage, or 6 ({@damage 1d8 + 2}) bludgeoning damage when used with two hands."
 					]
 				},
 				{
@@ -3024,7 +4492,7 @@
 				{
 					"name": "Fire Breath",
 					"entries": [
-						"Zindar exhales fire in a 15-foot cone. Each creature in that area must make a DC 15 Dexterity saving throw, taking 22 ({@dice 4d10}) fire damage on a failed save, or half as much damage on a successful one."
+						"Zindar exhales fire in a 15-foot cone. Each creature in that area must make a DC 15 Dexterity saving throw, taking 22 ({@damage 4d10}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
@@ -3034,7 +4502,20 @@
 					]
 				}
 			],
-			"page": 239
+			"page": 239,
+			"languageTags": [
+				"C",
+				"DR",
+				"D",
+				"P"
+			],
+			"senseTags": [
+				"B",
+				"D"
+			],
+			"spellcastingTags": [
+				"CS"
+			]
 		},
 		{
 			"source": "ToA",
@@ -3054,7 +4535,7 @@
 			],
 			"hp": {
 				"average": 27,
-				"formula": "6d6+6"
+				"formula": "6d6 + 6"
 			},
 			"speed": {
 				"walk": 30,
@@ -3089,1232 +4570,13 @@
 				{
 					"name": "Destructive Claws",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 8 ({@dice 2d6+1}) slashing damage, and if the target is a creature wearing armor, carrying a shield, or in possession of a magic item that improves its AC, it must make a DC 11 Dexterity saving throw. On a failed save, one such item worn or carried by the creature (the target's choice) magically deteriorates, taking a permanent and cumulative \u22121 penalty to the AC it offers, and the zorbo gains a +1 bonus to AC until the start of its next turn. Armor reduced to an AC of 10 or a shield or magic item that drops to a 0 AC increase is destroyed."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}8 ({@damage 2d6 + 1}) slashing damage, and if the target is a creature wearing armor, carrying a shield, or in possession of a magic item that improves its AC, it must make a DC 11 Dexterity saving throw. On a failed save, one such item worn or carried by the creature (the target's choice) magically deteriorates, taking a permanent and cumulative \u22121 penalty to the AC it offers, and the zorbo gains a +1 bonus to AC until the start of its next turn. Armor reduced to an AC of 10 or a shield or magic item that drops to a 0 AC increase is destroyed."
 					]
 				}
 			],
 			"page": 241,
 			"traitTags": [
 				"Magic Resistance"
-			]
-		},
-		{
-			"name": "King of Feathers",
-			"isNPC": true,
-			"size": "H",
-			"type": "monstrosity",
-			"source": "ToA",
-			"alignment": [
-				"U"
-			],
-			"ac": [
-				{
-					"ac": 13,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 200,
-				"formula": "19d12+52"
-			},
-			"speed": {
-				"walk": 50
-			},
-			"str": 25,
-			"dex": 10,
-			"con": 19,
-			"int": 2,
-			"wis": 12,
-			"cha": 9,
-			"skill": {
-				"perception": "+4"
-			},
-			"passive": 14,
-			"cr": "8",
-			"trait": [
-				{
-					"name": "Detect Invisibility",
-					"entries": [
-						"The King of Feathers can see {@condition invisible} creatures and objects as if they were visible."
-					]
-				},
-				{
-					"name": "Legendary Resistance (3/Day)",
-					"entries": [
-						"If the King of Feathers fails a saving throw, it can choose to succeed instead."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The King of Feathers makes two attacks: one with its bite and one with its tail. It can't make both attacks against the same target."
-					]
-				},
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. Hit: 33 ({@dice 4d12+7}) piercing damage. If the target is a Medium or smaller creature, it is {@condition grappled} (escape DC 17). Until this grapple ends, the target is {@condition restrained}, and the tyrannosaurus can't bite another target."
-					]
-				},
-				{
-					"name": "Tail",
-					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. Hit: 20 ({@dice 3d8+7}) bludgeoning damage."
-					]
-				},
-				{
-					"name": "Summon Swarm {@recharge 5}",
-					"entries": [
-						"The King of Feathers exhales a swarm of insects (wasps) that forms in a space within 20 feet of it. The swarm acts as an ally of the King of Feathers and takes its turn immediately after it. The swarm disperses after 1 minute. It can't use the Summon Swarm action while it is grappling a creature with its jaws."
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The King of Feathers's innate spellcasting ability is Wisdom. It can innately cast the following spell, requiring no material components:"
-					],
-					"will": [
-						"{@spell misty step}"
-					],
-					"ability": "wis"
-				}
-			],
-			"page": 106,
-			"traitTags": [
-				"Legendary Resistances"
-			],
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "Withers",
-			"isNPC": true,
-			"size": "M",
-			"type": "undead",
-			"source": "ToA",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"{@item studded leather armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 45,
-				"formula": "6d8+18"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 15,
-			"dex": 14,
-			"con": 16,
-			"int": 16,
-			"wis": 13,
-			"cha": 15,
-			"skill": {
-				"perception": "+3",
-				"stealth": "+4"
-			},
-			"resist": [
-				"necrotic",
-				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks that aren't silvered"
-				}
-			],
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"exhaustion",
-				"poisoned"
-			],
-			"senses": "darkvision 60 ft.",
-			"passive": 13,
-			"languages": "the languages he knew in life",
-			"cr": "4",
-			"trait": [
-				{
-					"name": "Special Equipment",
-					"entries": [
-						"Withers carries the {@item amulet of the black skull|ToA}."
-					]
-				},
-				{
-					"name": "Sunlight Sensitivity",
-					"entries": [
-						"While in sunlight, Withers has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Withers makes two longsword attacks. He can use his Life Drain in place of one longsword attack."
-					]
-				},
-				{
-					"name": "Life Drain",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. Hit: 5 ({@dice 1d6+2}) necrotic damage. The target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0.",
-						"A humanoid slain by this attack rises 24 hours later as a zombie under the Withers's control, unless the humanoid is restored to life or its body is destroyed. Withers can have no more than twelve zombies under its control at one time."
-					]
-				},
-				{
-					"name": "Longsword",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) slashing damage, or 7 ({@dice 1d10+2}) slashing damage if used with two hands."
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Withers is a 9th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 13, {@hit 5} to hit with spell attacks). Withers has the following wizard spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell acid splash}",
-								"{@spell mage hand}",
-								"{@spell minor illusion}",
-								"{@spell prestidigitation}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell detect magic}",
-								"{@spell expeditious retreat}",
-								"{@spell feather fall}",
-								"{@spell thunderwave}"
-							]
-						},
-						"2": {
-							"slots": 4,
-							"spells": [
-								"{@spell darkness}",
-								"{@spell hold person}",
-								"{@spell thunderwave}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell dispel magic}",
-								"{@spell lightning bolt}"
-							]
-						},
-						"4": {
-							"slots": 3,
-							"spells": [
-								"{@spell blight}",
-								"{@spell wall of fire}"
-							]
-						},
-						"5": {
-							"slots": 1,
-							"spells": [
-								"{@spell telekinesis}"
-							]
-						}
-					},
-					"ability": "int"
-				}
-			],
-			"page": 145,
-			"traitTags": [
-				"Sunlight Sensitivity"
-			],
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "Asharra",
-			"isNPC": true,
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"aarakocra"
-				]
-			},
-			"source": "ToA",
-			"alignment": [
-				"L",
-				"N"
-			],
-			"ac": [
-				12
-			],
-			"hp": {
-				"average": 31,
-				"formula": "7d8"
-			},
-			"speed": {
-				"walk": 20,
-				"fly": 50
-			},
-			"str": 10,
-			"dex": 14,
-			"con": 10,
-			"int": 14,
-			"wis": 17,
-			"cha": 11,
-			"skill": {
-				"history": "+4",
-				"insight": "+5",
-				"perception": "+7"
-			},
-			"passive": 17,
-			"languages": "Auran, Common",
-			"cr": "2",
-			"trait": [
-				{
-					"name": "Dive Attack",
-					"entries": [
-						"If the aarakocra is flying and dives at least 30 ft. straight toward a target and then hits it with a melee weapon attack, the attack deals an extra 3 ({@dice 1d6}) damage to the target."
-					]
-				},
-				{
-					"type": "inset",
-					"name": "Dance of the Seven Winds",
-					"entries": [
-						"Asharra knows a ritual called the Dance of the Seven Winds, which temporarily grants magical flight to as many as ten nonflying creatures. The ritual, which takes 10 minutes to complete, can only be performed by an aarakocra elder and requires a black orchid as a material component.",
-						"Asharra must grind the orchid to powder, inhale it, and dance in circles around the ritual's beneficiaries uninterrupted while seven other aarakocra chant prayers to the Wind Dukes of Aaqa. When the dance concludes, Asharra's wings disappear and she loses the ability to fly. The ritual's beneficiaries each gain a magical flying speed of 30 feet (allowing them to fly 4 miles per hour). This benefit lasts for 3 days, after which Asharra's wings reappear and she regains the ability to fly."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Talon",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) slashing damage."
-					]
-				},
-				{
-					"name": "Javelin",
-					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
-					]
-				},
-				{
-					"name": "Summon Air Elemental",
-					"entries": [
-						"Five aarakocra within 30 feet of each other can magically summon an {@creature air elemental}. Each of the five must use its action and movement on three consecutive turns to perform an aerial dance and must maintain concentration while doing so (as if concentrating on a spell). When all five have finished their third turn of the dance, the elemental appears in an unoccupied space within 60 feet of them. It is friendly toward them and obeys their spoken commands. It remains for 1 hour, until it or all its summoners die, or until any of its summoners dismisses it as a bonus action. A summoner can't perform the dance again until it finishes a short rest. When the elemental returns to the Elemental Plane of Air, any aarakocra within 5 feet of it can return with it."
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Asharra is a 5th-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 13, {@hit 5} to hit with spell attacks). Asharra has the following druid spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell druidcraft}",
-								"{@spell mending}",
-								"{@spell produce flame}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell detect magic}",
-								"{@spell faerie fire}",
-								"{@spell thunderwave}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell gust of wind}",
-								"{@spell hold person}",
-								"{@spell lesser restoration}"
-							]
-						},
-						"3": {
-							"slots": 2,
-							"spells": [
-								"{@spell call lightning}",
-								"{@spell wind wall}"
-							]
-						}
-					},
-					"ability": "wis"
-				}
-			],
-			"page": 69
-		},
-		{
-			"name": "Valindra Shadowmantle",
-			"isNPC": true,
-			"size": "M",
-			"type": "undead",
-			"source": "ToA",
-			"alignment": [
-				"N",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 17,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 135,
-				"formula": "18d8+54"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 11,
-			"dex": 16,
-			"con": 16,
-			"int": 20,
-			"wis": 14,
-			"cha": 16,
-			"save": {
-				"con": "+10",
-				"int": "+12",
-				"wis": "+9"
-			},
-			"skill": {
-				"arcana": "+18",
-				"history": "+12",
-				"insight": "+9",
-				"perception": "+9"
-			},
-			"resist": [
-				"cold",
-				"lightning",
-				"necrotic"
-			],
-			"immune": [
-				"poison",
-				{
-					"immune": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks"
-				}
-			],
-			"conditionImmune": [
-				"charmed",
-				"exhaustion",
-				"frightened",
-				"paralyzed",
-				"poisoned"
-			],
-			"senses": "truesight 120 ft.",
-			"passive": 19,
-			"languages": "Common, Abyssal, Draconic, Dwarvish, Elvish, Infernal",
-			"cr": "21",
-			"page": 58,
-			"trait": [
-				{
-					"name": "Mask",
-					"entries": [
-						"As a bonus action, Valindra can mask her shriveled flesh and appear to be a living elf. This magical illusion lasts until she ends it as a bonus action or until she uses her Frightening Gaze legendary action. The effect also ends if Valindra drops to 30 hit points or fewer, or if dispel magic is cast on her."
-					]
-				},
-				{
-					"name": "Preparation",
-					"entries": [
-						"When preparing her spells, Valindra can swap out any spell on her list of prepared spells for another wizard spell of the same level."
-					]
-				},
-				{
-					"name": "Legendary Resistance (3/Day)",
-					"entries": [
-						"If Valindra fails a saving throw, she can choose to succeed instead."
-					]
-				},
-				{
-					"name": "Rejuvenation",
-					"entries": [
-						"If destroyed Valindra gains a new body in {@dice 1d10} days, regaining all her hit points and becoming active again. The new body appears within 5 feet of the phylactery."
-					]
-				},
-				{
-					"name": "Turn Resistance",
-					"entries": [
-						"Valindra has advantage on saving throws against any effect that turns undead."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Paralyzing Touch",
-					"entries": [
-						"{@atk ms} {@hit 12} to hit, reach 5 ft., one creature. Hit: 10 ({@dice 3d6}) cold damage. The target must succeed on a DC 18 Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
-					]
-				}
-			],
-			"legendary": [
-				{
-					"name": "Cantrip",
-					"entries": [
-						"Valindra casts a cantrip."
-					]
-				},
-				{
-					"name": "Paralyzing Touch (Costs 2 Actions)",
-					"entries": [
-						"Valindra uses her Paralyzing Touch."
-					]
-				},
-				{
-					"name": "Frightening Gaze (Costs 2 Actions)",
-					"entries": [
-						"Valindra fixes her gaze on one creature she can see within 10 feet of her. The target must succeed on a DC 18 Wisdom saving throw against this magic or become {@condition frightened} for 1 minute. The {@condition frightened} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to the Valindra's gaze for the next 24 hours."
-					]
-				},
-				{
-					"name": "Disrupt Life (Costs 3 Actions)",
-					"entries": [
-						"Each non-undead creature within 20 feet of Valindra must make a DC 18 Constitution saving throw against this magic, taking 21 ({@dice 6d6}) necrotic damage on a failed save, or half as much damage on a successful one."
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Valindra is an 18th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 20, {@hit 12} to hit with spell attacks). Valindra has the following wizard spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell mage hand}",
-								"{@spell prestidigitation}",
-								"{@spell ray of frost}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell detect magic}",
-								"{@spell magic missile}",
-								"{@spell shield}",
-								"{@spell thunderwave}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell detect thoughts}",
-								"{@spell invisibility}",
-								"{@spell Melf's acid arrow}",
-								"{@spell mirror image}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell animate dead}",
-								"{@spell counterspell}",
-								"{@spell dispel magic}",
-								"{@spell fireball}"
-							]
-						},
-						"4": {
-							"slots": 3,
-							"spells": [
-								"{@spell blight}",
-								"{@spell dimension door}"
-							]
-						},
-						"5": {
-							"slots": 3,
-							"spells": [
-								"{@spell cloudkill}",
-								"{@spell scrying}"
-							]
-						},
-						"6": {
-							"slots": 1,
-							"spells": [
-								"{@spell disintegrate}",
-								"{@spell globe of invulnerability}"
-							]
-						},
-						"7": {
-							"slots": 1,
-							"spells": [
-								"{@spell finger of death}",
-								"{@spell plane shift}"
-							]
-						},
-						"8": {
-							"slots": 1,
-							"spells": [
-								"{@spell dominate monster}",
-								"{@spell power word stun}"
-							]
-						},
-						"9": {
-							"slots": 1,
-							"spells": [
-								"{@spell power word kill}"
-							]
-						}
-					},
-					"ability": "int"
-				}
-			],
-			"isNamedCreature": true,
-			"traitTags": [
-				"Legendary Resistances",
-				"Rejuvenation",
-				"Turn Resistance"
-			]
-		},
-		{
-			"name": "Hew Hackinstone",
-			"isNPC": true,
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"dwarf"
-				]
-			},
-			"source": "ToA",
-			"alignment": [
-				"C",
-				"N"
-			],
-			"ac": [
-				{
-					"ac": 13,
-					"from": [
-						"{@item hide armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 67,
-				"formula": "9d8+27"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 16,
-			"dex": 12,
-			"con": 17,
-			"int": 9,
-			"wis": 11,
-			"cha": 9,
-			"skill": {
-				"survival": "+4"
-			},
-			"resist": [
-				"poison"
-			],
-			"senses": "darkvision 60 ft.",
-			"passive": 10,
-			"languages": "any one language (usually Common)",
-			"cr": "2",
-			"page": 33,
-			"trait": [
-				{
-					"name": "Dwarven Resilience",
-					"entries": [
-						"Hew has resistance to poison damage and advantage on saving throws against being {@condition poisoned}."
-					]
-				},
-				{
-					"name": "Reckless",
-					"entries": [
-						"At the start of his turn, Hew can gain advantage on all melee weapon attack rolls during that turn, but attack rolls against him have advantage until the start of his next turn."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Battleaxe",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) slashing damage."
-					]
-				}
-			],
-			"traitTags": [
-				"Reckless"
-			]
-		},
-		{
-			"name": "Clay Gladiator",
-			"size": "M",
-			"type": "construct",
-			"source": "ToA",
-			"alignment": [
-				"U"
-			],
-			"ac": [
-				{
-					"ac": 17,
-					"from": [
-						"natural armor",
-						"{@item shield|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 112,
-				"formula": "15d8+45"
-			},
-			"speed": {
-				"walk": 30,
-				"climb": 30
-			},
-			"str": 18,
-			"dex": 15,
-			"con": 16,
-			"int": 10,
-			"wis": 12,
-			"cha": 15,
-			"save": {
-				"str": "+7",
-				"dex": "+5",
-				"con": "+6"
-			},
-			"skill": {
-				"athletics": "+10",
-				"intimidation": "+5"
-			},
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"charmed",
-				"frightened",
-				"poisoned"
-			],
-			"passive": 11,
-			"languages": "none",
-			"cr": "5",
-			"page": 100,
-			"trait": [
-				{
-					"name": "Climbing",
-					"entries": [
-						"The gladiator can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
-					]
-				},
-				{
-					"name": "Steadfast",
-					"entries": [
-						"The gladiator can't be disarmed, and cannot make ranged attacks."
-					]
-				},
-				{
-					"name": "Brute",
-					"entries": [
-						"A melee weapon deals one extra die of its damage when the gladiator hits with it (included in the attack)."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The gladiator makes three melee attacks."
-					]
-				},
-				{
-					"name": "Spear",
-					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) piercing damage, or 13 ({@dice 2d8+4}) piercing damage if used with two hands."
-					]
-				},
-				{
-					"name": "Shield Bash",
-					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one creature. Hit: 9 ({@dice 2d4+4}) bludgeoning damage. If the target is a Medium or smaller creature, it must succeed on a DC 15 Strength saving throw or be knocked {@condition prone}."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"name": "Parry",
-					"entries": [
-						"The gladiator adds 3 to its AC against one melee attack that would hit it. To do so, the gladiator must see the attacker and be wielding a melee weapon."
-					]
-				}
-			],
-			"traitTags": [
-				"Brute"
-			],
-			"actionTags": [
-				"Multiattack",
-				"Parry"
-			]
-		},
-		{
-			"name": "Spiked Tomb Guardian",
-			"size": "M",
-			"type": "construct",
-			"source": "ToA",
-			"alignment": [
-				"N"
-			],
-			"ac": [
-				17
-			],
-			"hp": {
-				"average": 93,
-				"formula": "11d8+44"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 19,
-			"dex": 9,
-			"con": 18,
-			"int": 6,
-			"wis": 10,
-			"cha": 5,
-			"immune": [
-				"lightning",
-				"poison",
-				{
-					"immune": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks that aren't adamantine"
-				}
-			],
-			"conditionImmune": [
-				"charmed",
-				"exhaustion",
-				"frightened",
-				"paralyzed",
-				"petrified",
-				"poisoned"
-			],
-			"senses": "darkvision 60 ft., passive Perception 10",
-			"passive": 10,
-			"languages": "understands the languages of its creator but can't speak",
-			"cr": "6",
-			"page": 154,
-			"trait": [
-				{
-					"name": "Berserk",
-					"entries": [
-						"Whenever the tomb guardian starts its turn with 40 hit points or fewer, roll a {@dice d6}. On a 6, the tomb guardian goes berserk. On each of its turns while berserk, the tomb guardian attacks the nearest creature it can see. If no creature is near enough to move to and attack, the tomb guardian attacks an object, with preference for an object smaller than itself. Once the tomb guardian goes berserk, it continues to do so until it is destroyed or regains all its hit points. The golem's creator, if within 60 feet of the berserk tomb guardian, can try to calm it by speaking firmly and persuasively. The tomb guardian must be able to hear its creator, who must take an action to make a DC 15 Charisma (Persuasion) check. If the check succeeds, the tomb guardian ceases being berserk. If it takes damage while still at 40 hit points or fewer, the tomb guardian might go berserk again."
-					]
-				},
-				{
-					"name": "Aversion of Fire",
-					"entries": [
-						"If the tomb guardian takes fire damage, it has disadvantage on attack rolls and ability checks until the end of its next turn."
-					]
-				},
-				{
-					"name": "Immutable Form",
-					"entries": [
-						"The tomb guardian is immune to any spell or effect that would alter its form."
-					]
-				},
-				{
-					"name": "Lightning Absorption",
-					"entries": [
-						"Whenever the tomb guardian is subjected to lightning damage, it takes no damage and instead regains a number of hit points equal to the lightning damage dealt."
-					]
-				},
-				{
-					"name": "Magic Resistance",
-					"entries": [
-						"The tomb guardian has advantage on saving throws against spells and other magical effects."
-					]
-				},
-				{
-					"name": "Magic Weapons",
-					"entries": [
-						"The golem's weapon attacks are magical."
-					]
-				},
-				{
-					"name": "Chained",
-					"entries": [
-						"As long as the Guardian remains chained to another any damage done to one is divided evenly between them. If the chain is broken the Guardian immediately goes berserk."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The tomb guardian makes two spiked gauntlet attacks."
-					]
-				},
-				{
-					"name": "Spiked Gauntlet",
-					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) bludgeoning damage plus 9 ({@dice 2d6}) piercing damage."
-					]
-				}
-			],
-			"traitTags": [
-				"Immutable Form",
-				"Damage Absorption",
-				"Magic Resistance",
-				"Magic Weapons"
-			],
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "Tomb Guardian",
-			"size": "M",
-			"type": "construct",
-			"source": "ToA",
-			"alignment": [
-				"N"
-			],
-			"ac": [
-				17
-			],
-			"hp": {
-				"average": 93,
-				"formula": "11d8+44"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 19,
-			"dex": 9,
-			"con": 18,
-			"int": 6,
-			"wis": 10,
-			"cha": 5,
-			"immune": [
-				"lightning",
-				"poison",
-				{
-					"immune": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks that aren't adamantine"
-				}
-			],
-			"conditionImmune": [
-				"charmed",
-				"exhaustion",
-				"frightened",
-				"paralyzed",
-				"petrified",
-				"poisoned"
-			],
-			"senses": "darkvision 60 ft.",
-			"passive": 10,
-			"languages": "understands the languages of its creator but can't speak",
-			"cr": "5",
-			"page": 127,
-			"trait": [
-				{
-					"name": "Berserk",
-					"entries": [
-						"Whenever the tomb guardian starts its turn with 40 hit points or fewer, roll a {@dice d6}. On a 6, the tomb guardian goes berserk. On each of its turns while berserk, the tomb guardian attacks the nearest creature it can see. If no creature is near enough to move to and attack, the tomb guardian attacks an object, with preference for an object smaller than itself. Once the tomb guardian goes berserk, it continues to do so until it is destroyed or regains all its hit points. The golem's creator, if within 60 feet of the berserk tomb guardian, can try to calm it by speaking firmly and persuasively. The tomb guardian must be able to hear its creator, who must take an action to make a DC 15 Charisma (Persuasion) check. If the check succeeds, the tomb guardian ceases being berserk. If it takes damage while still at 40 hit points or fewer, the tomb guardian might go berserk again."
-					]
-				},
-				{
-					"name": "Aversion of Fire",
-					"entries": [
-						"If the tomb guardian takes fire damage, it has disadvantage on attack rolls and ability checks until the end of its next turn."
-					]
-				},
-				{
-					"name": "Immutable Form",
-					"entries": [
-						"The tomb guardian is immune to any spell or effect that would alter its form."
-					]
-				},
-				{
-					"name": "Lightning Absorption",
-					"entries": [
-						"Whenever the tomb guardian is subjected to lightning damage, it takes no damage and instead regains a number of hit points equal to the lightning damage dealt."
-					]
-				},
-				{
-					"name": "Magic Resistance",
-					"entries": [
-						"The tomb guardian has advantage on saving throws against spells and other magical effects."
-					]
-				},
-				{
-					"name": "Magic Weapons",
-					"entries": [
-						"The golem's weapon attacks are magical."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The tomb guardian makes two slam attacks."
-					]
-				},
-				{
-					"name": "Slam",
-					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) bludgeoning damage."
-					]
-				}
-			],
-			"traitTags": [
-				"Immutable Form",
-				"Damage Absorption",
-				"Magic Resistance",
-				"Magic Weapons"
-			],
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "Tomb Dwarf",
-			"size": "M",
-			"type": "undead",
-			"source": "ToA",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"{@item studded leather armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 45,
-				"formula": "6d8+18"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 15,
-			"dex": 14,
-			"con": 16,
-			"int": 10,
-			"wis": 13,
-			"cha": 15,
-			"skill": {
-				"perception": "+3",
-				"stealth": "+4"
-			},
-			"resist": [
-				"necrotic",
-				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks that aren't silvered"
-				}
-			],
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"exhaustion",
-				"poisoned"
-			],
-			"senses": "darkvision 60 ft., passive Perception 13",
-			"passive": 13,
-			"languages": "the languages it knew in life",
-			"cr": "3",
-			"page": 135,
-			"trait": [
-				{
-					"name": "Sunlight Sensitivity",
-					"entries": [
-						"While in sunlight, the tomb dwarf has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The tomb dwarf makes two longsword attacks or two crossbow attacks. It can use its Life Drain in place of one longsword attack."
-					]
-				},
-				{
-					"name": "Life Drain",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. Hit: 5 ({@dice 1d6+2}) necrotic damage. The target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0.A humanoid slain by this attack rises 24 hours later as a zombie under the tomb dwarf's control, unless the humanoid is restored to life or its body is destroyed. The tomb dwarf can have no more than twelve zombies under its control at one time."
-					]
-				},
-				{
-					"name": "Battleaxe",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) slashing damage, or 7 ({@dice 1d10+2}) slashing damage if used with two hands."
-					]
-				},
-				{
-					"name": "Light Crossbow",
-					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 80/320 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
-					]
-				}
-			],
-			"traitTags": [
-				"Sunlight Sensitivity"
-			],
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "Bag of Nails",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"Tabaxi"
-				]
-			},
-			"source": "ToA",
-			"alignment": [
-				"C",
-				"N"
-			],
-			"ac": [
-				{
-					"ac": 15,
-					"from": [
-						"{@item studded leather armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 78,
-				"formula": "12d8+24"
-			},
-			"speed": {
-				"walk": 30,
-				"climb": 20
-			},
-			"str": 11,
-			"dex": 16,
-			"con": 14,
-			"int": 13,
-			"wis": 11,
-			"cha": 10,
-			"save": {
-				"dex": "+6",
-				"int": "+4"
-			},
-			"skill": {
-				"acrobatics": "+6",
-				"deception": "+3",
-				"perception": "+3",
-				"stealth": "+9"
-			},
-			"resist": [
-				"poison"
-			],
-			"senses": "darkvision 60 ft.",
-			"passive": 13,
-			"languages": "Thieves' cant, Common, Dwarvish",
-			"cr": "8",
-			"page": 102,
-			"trait": [
-				{
-					"name": "Feline Agility",
-					"entries": [
-						"When Bag of Nails moves on its turn in combat, he can double his speed until the end of the turn. Once he uses this trait, Bag of Nails can't use it again until he moves 0 feet on one of his turns."
-					]
-				},
-				{
-					"name": "Assassinate",
-					"entries": [
-						"During his first turn, Bag of Nails has advantage on attack rolls against any creature that hasn't taken a turn. Any hit Bag of Nails scores against a surprised creature is a critical hit."
-					]
-				},
-				{
-					"name": "Evasion",
-					"entries": [
-						"If Bag of Nails is subjected to an effect that allows him to make a Dexterity saving throw to take only half damage, Bag of Nails instead takes no damage if he succeeds on the saving throw, and only half damage if it fails."
-					]
-				},
-				{
-					"name": "Sneak Attack (1/Turn)",
-					"entries": [
-						"Bag of Nails deals an extra 14 ({@dice 4d6}) damage when he hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of his that isn't {@condition incapacitated} and Bag of Nails doesn't have disadvantage on the attack roll."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Bag of Nails makes two shortsword attacks."
-					]
-				},
-				{
-					"name": "Claw",
-					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) slashing damage."
-					]
-				},
-				{
-					"name": "Shortsword",
-					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage, and the target must make a DC 15 Constitution saving throw, taking 24 ({@dice 7d6}) poison damage on a failed save, or half as much damage on a successful one."
-					]
-				},
-				{
-					"name": "Longbow",
-					"entries": [
-						"{@atk rw} {@hit 6} to hit, range 150/600 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage, and the target must make a DC 15 Constitution saving throw, taking 24 ({@dice 7d6}) poison damage on a failed save, or half as much damage on a successful one."
-					]
-				}
-			],
-			"traitTags": [
-				"Sneak Attack"
-			],
-			"actionTags": [
-				"Multiattack"
 			]
 		}
 	]

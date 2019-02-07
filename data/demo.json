@@ -10,7 +10,8 @@
 					"entries": [
 						"Look, don't quote me on this, but"
 					],
-					"by": "Anon"
+					"by": "Anon",
+					"from": "Archive of Lost Chats"
 				},
 				"This is a demo of the JSON format, and how it (usually) gets rendered. You can edit this text, and it will reset on refresh.",
 				"{@b If a JSON property is described as 'optional,' the property may be excluded, unless otherwise noted.}",
@@ -22,11 +23,12 @@
 					"items": [
 						"Style tags; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand}), {@strike some text to strike-through}, (alternative {@s shorthand})",
 						"Additionally, {@note note tags}, used for adding errata or Twitter \"designer footnotes.\"",
-						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls, with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7}.",
+						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls, with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7} (and rolls advantage on shift-click). There's also {@damage 1d12+3} which will roll critical hits on shift-click, and {@d20 -4} which will roll advantage on shift-click, although @hit tags are preferred where appropriate. Spells can have scaling-dice tags, (damage of 2d6 or 3d6 at level 1, add an extra {@scaledice 2d6;3d6|2-9|1d6} for each level beyond 2nd), for when a spell effect scales at higher levels.",
 						"Chance tags; similar to dice roller tags, but output success/failure. Similar syntax as dice tags: {@chance 50}, {@chance 50|display text}, and {@chance 50|display text|rolled by name}.",
 						"Recharge tags; output success/failure for ability recharge. {@recharge} in an ability title for '(Recharge 6)', {@recharge 4} for '(Recharge 4-6)'.",
-						"Skill and action tags; {@skill Perception} and {@action Dash} (case-sensitive) which provide tooltips on hover.",
-						"The homebrew tag; Can show {@homebrew changes|modifications}, {@homebrew additions} or {@homebrew |removals}.",
+						"Skill, action, and sense tags; {@skill Athletics}/{@skill Perception} (case sensitive), {@action Dash}/{@action Hide} (case sensitive), and {@sense Truesight}/{@sense darkvision} (case insensitive) which provide tooltips on hover.",
+						"Footnote tags; allows a footnote to be embedded {@footnote directly in text|This is primarily for homebrew purposes, as the official texts (so far) avoid using footnotes}, with {@footnote optional reference information|This is the footnote. References are free text.|Footnote 1, page 20}.",
+						"The homebrew tag; can show {@homebrew changes|modifications}, {@homebrew additions} or {@homebrew |removals}.",
 						"Content tags:",
 						{
 							"type": "list",
@@ -36,7 +38,7 @@
 								"Creatures: {@creature goblin} assumes MM by default, {@creature cow|vgm} can have sources added with a pipe, {@creature cow|vgm|and optional link text added with another pipe}.",
 								"Backgrounds: {@background Charlatan} assumes PHB by default, {@background Anthropologist|toa} can have sources added with a pipe, {@background Anthropologist|ToA|and optional link text added with another pipe}.",
 								"Races: {@race Human} assumes PHB by default, {@race Aarakocra|eepc} can have sources added with a pipe, {@race Aarakocra|eepc|and optional link text added with another pipe}.",
-								"Invocations: {@invocation Agonizing Blast} assumes PHB by default, {@invocation Aspect of the Moon|xge} can have sources added with a pipe, {@invocation Aspect of the Moon|xge|and optional link text added with another pipe}.",
+								"Invocations and Other Optional Features: {@optfeature Agonizing Blast} assumes PHB by default, {@optfeature Aspect of the Moon|xge} can have sources added with a pipe, {@optfeature Aspect of the Moon|xge|and optional link text added with another pipe}.",
 								"Classes: {@class fighter} assumes PHB by default, {@class artificer|uaartificer} can have sources added with a pipe, {@class fighter|phb|optional link text added with another pipe}, {@class fighter|phb|subclasses added|Eldritch Knight} with another pipe, {@class fighter|phb|and class feature added|Eldritch Knight|phb|Martial Archetype 3} with another pipe (number denotes level, since names can be duplicate).",
 								"Conditions: {@condition stunned} assumes PHB by default, {@condition stunned|phb} can have sources added with a pipe (not that it's ever useful), {@condition stunned|phb|and optional link text added with another pipe}.",
 								"Diseases: {@disease cackle fever} assumes DMG by default, {@disease cackle fever|dmg} can have sources added with a pipe, {@disease cackle fever|dmg|and optional link text added with another pipe}.",
@@ -49,7 +51,8 @@
 								"Traps: {@trap falling net} assumes DMG by default, {@trap falling portcullis|xge} can have sources added with a pipe, {@trap falling portcullis|xge|and optional link text added with another pipe}.",
 								"Hazards: {@hazard brown mold} assumes DMG by default, {@hazard russet mold|vgm} can have sources added with a pipe, {@hazard russet mold|vgm|and optional link text added with another pipe}.",
 								"Deities: {@deity Gond} assumes PHB Forgotten Realms pantheon by default, {@deity Gruumsh|nonhuman} can have pantheons added with a pipe, {@deity Ioun|dawn war|dmg} can have sources added with another pipe, {@deity Ioun|dawn war|dmg|and optional link text added with another pipe}.",
-								"Variant rules: {@variantrule Diagonals} assumes DMG by default, {@variantrule Multiclassing|phb} can have sources added with a pipe, {@variantrule Multiclassing|phb|and optional link text added with another pipe}."
+								"Variant rules: {@variantrule Diagonals} assumes DMG by default, {@variantrule Multiclassing|phb} can have sources added with a pipe, {@variantrule Multiclassing|phb|and optional link text added with another pipe}.",
+								"Tables: {@table 25 gp Art Objects} assumes DMG by default, {@table Adventuring Gear|phb} can have sources added with a pipe, {@table Adventuring Gear|phb|and optional link text added with another pipe}."
 							]
 						},
 						{
@@ -59,15 +62,16 @@
 								"Another tag that appears occasionally in the data is the @filter tag. This tag can be tricky to use, and generally relies on knowledge of the internals of each page. As such, use with caution, and if you're not sure about something, don't be afraid to drop by our {@link Discord|https://discord.gg/v3AXzcW} and ask questions.",
 								"The syntax for the @filter tag is as follows:",
 								"(open curly brace)@filter display text|page_without_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;...(close curly brace)",
-								"The purpose of this tag is to open the given page, pre-filtered with the specified filtering options. There's one major caveat that makes this tricky to use for aspiring JSONtranauts \u2014 the filter values use the {@i internal} version, as you'd find in the data. So, for example, ...|school=D|... would filter spells to Divination school spells, as 'D' is the Divination identifier in the data. Trying to do e.g. ...|school=Divination|... will not work.",
+								"The purpose of this tag is to open the given page, pre-filtered with the specified filtering options. There's one major caveat that makes this tricky to use for aspiring JSONtranauts\u2014the filter values use the {@i internal} version, as you'd find in the data. So, for example, ...|school=D|... would filter spells to Divination school spells, as 'D' is the Divination identifier in the data. Trying to do e.g. ...|school=Divination|... will not work.",
 								"The 'filter_name_X' here matches the literal text name of the filter, as displayed in the dropdown.",
 								"Some examples of the tag in action:",
 								"{@filter Races that have a bonus to Intelligence|races|Ability Bonus (Including Subrace)=Intelligence +2;Intelligence +1}",
 								"{@filter Bard cantrips and first-level spells|spells|level=0;1|class=bard}",
-								"{@filter Beast with challenge rating 1 or lower|bestiary|cr=0;1/8;1/4;1/2;1|type=beast}",
+								"{@filter Beast with challenge rating 1 or lower|bestiary|challenge rating=0;1/8;1/4;1/2;1|type=beast}",
 								"{@filter Creatures with a Strength score of 18 or more|bestiary|strength=min18}",
 								"{@filter Divination and Evocation spells|spells|school=D;V}",
 								"{@filter All uncommon magic items|items|source=null|type=null|rarity=uncommon|miscellaneous=Magic}",
+								"{@filter Simple melee weapons|items|source=phb|category=basic|type=simple weapon;melee weapon=&}",
 								{
 									"type": "entries",
 									"name": "Note",
@@ -210,21 +214,30 @@
 					"caption": "Optional Caption",
 					"colLabels": [
 						"Col 1",
-						"Column the Second"
+						"Column the Second",
+						"Third Col"
 					],
 					"colStyles": [
-						"col-xs-6 text-align-center",
-						"col-xs-5",
-						"col-xs-1 text-align-right bold"
+						"col-6 text-align-center",
+						"col-4-5 text-align-right ",
+						"col-1-5"
+					],
+					"intro": [
+						"Optional outro entries."
+					],
+					"outro": [
+						"Optional outro entries."
 					],
 					"rows": [
 						[
 							"This is a table row",
-							"The number of entries should match the number of columns, naturally*"
+							"The number of entries should match the number of columns, naturally*",
+							""
 						],
 						[
 							"The 'colStyles' list is literally used as CSS classes",
-							"And since we use bootstrap, that means col-xs-whatever. See the bootstrap docs for more info; we use bootstrap 3."
+							"Column widths can be specified in 12ths, as `col-[1 to 12]` (e.g. col-12 is 100% width, and col-xs-6 is 50% width)",
+							"**"
 						],
 						[
 							{
@@ -234,19 +247,22 @@
 									"Although why you would put a list in a table is beyond me."
 								]
 							},
-							"{@spell bless|phb|Spells, on the other hand, make sense.}"
+							"{@spell bless|phb|Spells, on the other hand, make sense.}",
+							""
 						],
 						{
 							"type": "row",
 							"style": "row-indent-first",
 							"row": [
 								"Rows may also be defined",
-								"As objects with additional properties"
+								"As objects with additional properties",
+								""
 							]
 						}
 					],
 					"footnotes": [
-						"* Optional footer entries"
+						"* Optional footer entries",
+						"** As an extension to Bootstrap's 1-to-12 system, 1/10th subdivisions can be used, e.g. col-1-5 for 1.5/12. The total column widths should still sum to exactly 12; enjoy doing the math."
 					]
 				},
 				"Rollable tables can be made like so (note the 'pad' to format single digit numbers e.g. '01' for tables with >10 rows):",
@@ -258,8 +274,8 @@
 						"Item"
 					],
 					"colStyles": [
-						"col-xs-1 text-align-center",
-						"col-xs-11"
+						"col-1 text-align-center",
+						"col-11"
 					],
 					"rows": [
 						[
@@ -456,13 +472,13 @@
 					"text": "The full 'entry' schema."
 				},
 				"Internal links are also possible, but generally covered by @tags. Check out the schema linked above for the full usage; it's massive and horrible so I'm not going to go into detail here.",
-				"Invocations:",
+				"Invocations/Other Optional Features:",
 				{
-					"type": "invocation",
-					"name": "Invocation Name",
-					"prerequisite": "Optional stuff",
+					"type": "optfeature",
+					"name": "Optional Feature Name",
+					"prerequisite": "Optional prerequisite, which can include tags {@spell eldritch blast}",
 					"entries": [
-						"Edgy invocation text."
+						"Optional feature text."
 					]
 				},
 				"Patrons:",
@@ -540,7 +556,7 @@
 						],
 						"hp": {
 							"average": 67,
-							"formula": "9d10+18"
+							"formula": "9d10 + 18"
 						},
 						"speed": {
 							"walk": 50
@@ -593,19 +609,19 @@
 							{
 								"name": "Hooves",
 								"entries": [
-									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage."
+									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@damage 2d6 + 4}) bludgeoning damage."
 								]
 							},
 							{
 								"name": "Horn",
 								"entries": [
-									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) piercing damage."
+									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d8 + 4}) piercing damage."
 								]
 							},
 							{
 								"name": "Healing Touch (3/Day)",
 								"entries": [
-									"The unicorn touches another creature with its horn. The target magically regains 11 ({@dice 2d8+2}) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target."
+									"The unicorn touches another creature with its horn. The target magically regains 11 ({@dice 2d8 + 2}) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target."
 								]
 							},
 							{
@@ -632,7 +648,7 @@
 							{
 								"name": "Heal Self (Costs 3 Actions)",
 								"entries": [
-									"The unicorn magically regains 11 ({@dice 2d8+2}) hit points."
+									"The unicorn magically regains 11 ({@dice 2d8 + 2}) hit points."
 								]
 							}
 						],

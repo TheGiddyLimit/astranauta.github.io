@@ -1,0 +1,995 @@
+{
+	"class": [
+		{
+			"name": "Warrior Sidekick",
+			"source": "UASidekicks",
+			"classFeatures": [
+				[
+					{
+						"type": "inset",
+						"name": "Sidekick Class",
+						"entries": [
+							"{@note Note: this class is intended for NPC {@variantrule sidekicks|uasidekicks}.}"
+						]
+					},
+					{
+						"name": "Bonus Proficiencies",
+						"entries": [
+							"At 1st level, the sidekick gains proficiency in one saving throw of your choice: Strength, Dexterity, or Constitution.",
+							"In addition, the sidekick gains proficiency in three skills of your choice from the following list: {@skill Acrobatics}, {@skill Animal Handling}, {@skill Athletics}, {@skill Intimidation}, {@skill Nature}, {@skill Perception}, and {@skill Survival}. If the sidekick is a humanoid, it also gains proficiency with all armor, shields, and simple martial weapons."
+						]
+					},
+					{
+						"name": "Second Wind",
+						"entries": [
+							"Starting at 1st level, the sidekick can use a bonus action on its turn to regain hit points equal to 1d10 + its level in this class. Once it uses this feature, it must finish a short or long rest before it can use it again.",
+							"The sidekick can use this feature twice between rests starting at 18th level."
+						]
+					}
+				],
+				[
+					{
+						"name": "Danger Sense",
+						"entries": [
+							"Beginning at 2nd level, the sidekick has advantage on Dexterity saving throws against effects that it can see, such as traps and spells. This feature doesn't work if the sidekick is incapacitated."
+						]
+					}
+				],
+				[
+					{
+						"name": "Improved Critical",
+						"entries": [
+							"Starting at 3rd level, the sidekick's attack rolls score a critical hit on a roll of 19 or 20 on the d20."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 4th level, and again at 6th, 8th, 12th, 14th, 16th, and 19th level, the sidekick increases one ability score of your choice by 2, or the sidekick increases two ability scores of your choice by 1. The sidekick can't increase an ability score above 20 using this feature."
+						]
+					}
+				],
+				[
+					{
+						"name": "Extra Attack (1 extra)",
+						"entries": [
+							"Beginning at 5th level, the sidekick can attach twice, instead of once, whenever it takes the Attack action on its turn.",
+							"The number of attacks increases to three when the sidekick reaches 11th level and to four when it reaches 20th level."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 6th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Battle Readiness",
+						"entries": [
+							"After the sidekick reaches 7th level, it has advantage on initiative rolls."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 8th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Indomitable (1 use)",
+						"entries": [
+							"Starting at 9th level, the sidekick can reroll a saving throw that it fails, but it must use the new roll. When it uses this feature, it can't use the feature again unless it finishes a long rest.",
+							"The sidekick can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level."
+						]
+					}
+				],
+				[
+					{
+						"name": "Improved Defense",
+						"entries": [
+							"At 10th level, the sidekick's Armor Class increases by 1."
+						]
+					}
+				],
+				[
+					{
+						"name": "Extra Attack (2 extra)",
+						"entries": [
+							"At 11th level, you gain another Extra Attack."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 12th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Indomitable (2 uses)",
+						"entries": [
+							"At 13th level, you gain another use of Indomitable."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 14th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Superior Critical",
+						"entries": [
+							"Starting at 15th level, the sidekick's attack rolls score a critical hit on a roll of 18-20 on the d20."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 16th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Indomitable (3 uses)",
+						"entries": [
+							"At 17th level, you gain another use of Indomitable."
+						]
+					}
+				],
+				[
+					{
+						"name": "Second Wind (2 uses)",
+						"entries": [
+							"At 18th level, you gain another use of Second Wind."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 19th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Extra Attack (3 extra)",
+						"entries": [
+							"At 20th level, you gain another Extra Attack."
+						]
+					}
+				]
+			],
+			"fluff": [
+				{
+					"entries": [
+						"A warrior sidekick grows in martial prowess as it fights by your side. It might be a soldier, a town guard, a battle-trained beast, or any other creature honed for combat."
+					],
+					"source": "UASidekicks",
+					"page": 2
+				}
+			]
+		},
+		{
+			"name": "Expert Sidekick",
+			"source": "UASidekicks",
+			"classFeatures": [
+				[
+					{
+						"type": "inset",
+						"name": "Sidekick Class",
+						"entries": [
+							"To gain the expert class, a creature must have at least one language in its stat block that it can speak.",
+							"{@note Note: this class is intended for NPC {@variantrule sidekicks|uasidekicks}.}"
+						]
+					},
+					{
+						"name": "Bonus Proficiencies",
+						"entries": [
+							"At 1st level, the sidekick gains proficiency in one saving throw of your choice: Dexterity, Intelligence, or Constitution.",
+							"In addition, the sidekick gains proficiency in five skills of your choice. If the sidekick is a humanoid, it also gains proficiency with light armor, simple weapons, and two tools of your choice.",
+							"At 13th level, the sidekick gains proficiency in one skill of your choice. If the sidekick is a humanoid, it also gains proficiency with one tool of your choice."
+						]
+					},
+					{
+						"name": "Expertise",
+						"entries": [
+							"At 1st level, choose two of the sidekick's skill proficiencies. The sidekick's proficiency bonus is doubled for any ability check it makes that uses either of the chosen proficiencies.",
+							"At 6th level and again at 17th level, choose two more of the sidekick's skill proficiencies to gain this benefit."
+						]
+					},
+					{
+						"name": "Helpful",
+						"entries": [
+							"The sidekick is adept at giving well-timed assistance; the sidekick can take the Help action as a bonus action."
+						]
+					}
+				],
+				[
+					{
+						"name": "Cunning Action",
+						"entries": [
+							"Starting at 2nd level, the sidekick's agility or quick thinking allows it to act speedily. On its turn in combat, it can take the Dash, Disengage, or Hide action as a bonus action."
+						]
+					}
+				],
+				[
+					{
+						"name": "Jack of Many Trades",
+						"entries": [
+							"Beginning at 3rd level, the sidekick can add half its proficiency bonus to any ability check it makes that uses a skill but doesn't already include its proficiency bonus."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 4th level, and again at 8th, 10th, 12th, 14th, 16th, and 19th level, the sidekick increases one ability score of your choice by 2, or the sidekick increases two ability scores of your choice by 1. The sidekick can't increase an ability score above 20 using this feature."
+						]
+					}
+				],
+				[
+					{
+						"name": "Extra Attack",
+						"entries": [
+							"Starting at 5th level, the sidekick can attack twice, instead of once, whenever it takes the Attack action on its turn."
+						]
+					}
+				],
+				[
+					{
+						"name": "Expertise",
+						"entries": [
+							"At 6th level, you gain another Expertise."
+						]
+					}
+				],
+				[
+					{
+						"name": "Evasion",
+						"entries": [
+							"Beginning at 7th level, because of exrtraordinary good luck, the sidekick is skilled at avoiding certain dangers. When the sidekick is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it failed. The sidekick doesn't benefit from this feature while incapacitated."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 8th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Inspiring Help (1d6)",
+						"entries": [
+							"Starting at 9th level, the sidekick's assistance becomes especially inspiring. When the sidekick uses its Helpful bonus action, the creature who receives the help also gains a 1d6 bonus to the d20 roll. If that roll is an attack roll, the creature can forgo adding the bonus to it, and then if the attack hits, the creature can add the bonus to the attack's damage roll against one target.",
+							"At 18th level, the bonus increases to 2d6."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 10th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Reliable Talent",
+						"entries": [
+							"By 11th level, the sidekick has refined its skills to an exceptional degree. Whenever the sidekick makes an ability check that includes its whole proficiency bonus, it can treat a d20 roll of 9 or lower as a 10."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 12th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Bonus Proficiencies",
+						"entries": [
+							"At 13th level, you gain more Bonus Proficiencies."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 14th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Sharp Mind",
+						"entries": [
+							"At 15th level, the sidekick gains proficiency in Intelligence, Wisdom, or Charisma saving throws (your choice)."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 16th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Expertise",
+						"entries": [
+							"At 17th level, you gain another Expertise."
+						]
+					}
+				],
+				[
+					{
+						"name": "Inspiring Help (2d6)",
+						"entries": [
+							"At 18th level, your Inspiring Help bonus increases to 2d6."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 19th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[
+					{
+						"name": "Stroke of Luck",
+						"entries": [
+							"At 20th level, the sidekick has an uncanny knack for turning failure into success. If the sidekick's attack misses a target within range, it can turn the miss into a hit. Alternatively, if it fails an ability check, it can treat the d20 roll as a 20.",
+							"Once it uses this feature, the sidekick can't use it again until it finishes a short or long rest."
+						]
+					}
+				]
+			],
+			"fluff": [
+				{
+					"entries": [
+						"The expert is a master of certain tasks or knowledge. This sidekick follows a path that favors cunning over brawn or spellcasting. It might be a scout, a musician, a librarian, a clever street kid, a wily merchant, or a burglar."
+					],
+					"source": "UASidekicks",
+					"page": 3
+				}
+			]
+		},
+		{
+			"name": "Spellcaster Sidekick",
+			"source": "UASidekicks",
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"{@filter Cantrips Known|spells|level=0}"
+					],
+					"rows": [
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							5
+						],
+						[
+							5
+						],
+						[
+							5
+						],
+						[
+							5
+						],
+						[
+							5
+						],
+						[
+							5
+						],
+						[
+							5
+						],
+						[
+							5
+						],
+						[
+							5
+						],
+						[
+							5
+						],
+						[
+							5
+						]
+					]
+				},
+				{
+					"colLabels": [
+						"{@filter Spells Known|spells|level=!0}"
+					],
+					"rows": [
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							4
+						],
+						[
+							5
+						],
+						[
+							6
+						],
+						[
+							7
+						],
+						[
+							8
+						],
+						[
+							9
+						],
+						[
+							10
+						],
+						[
+							11
+						],
+						[
+							12
+						],
+						[
+							12
+						],
+						[
+							13
+						],
+						[
+							13
+						],
+						[
+							14
+						],
+						[
+							14
+						],
+						[
+							15
+						],
+						[
+							15
+						],
+						[
+							16
+						],
+						[
+							16
+						]
+					]
+				},
+				{
+					"title": "Spell Slots per Spell Level",
+					"colLabels": [
+						"{@filter 1st|spells|level=1}",
+						"{@filter 2nd|spells|level=2}",
+						"{@filter 3rd|spells|level=3}",
+						"{@filter 4th|spells|level=4}",
+						"{@filter 5th|spells|level=5}",
+						"{@filter 6th|spells|level=6}",
+						"{@filter 7th|spells|level=7}",
+						"{@filter 8th|spells|level=8}",
+						"{@filter 9th|spells|level=9}"
+					],
+					"rows": [
+						[
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							1,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							1,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							2,
+							2,
+							1,
+							1
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				[
+					{
+						"type": "inset",
+						"name": "Sidekick Class",
+						"entries": [
+							"To gain the spellcaster class, a creature must have at least one language in its stat block that it can speak.",
+							"{@note Note: this class is intended for NPC {@variantrule sidekicks|uasidekicks}.}"
+						]
+					},
+					{
+						"name": "Bonus Proficiencies",
+						"entries": [
+							"When the sidekick joins this class, the sidekick gains proficiency in one saving throw of your choice: Wisdom, Intelligence, or Charisma.",
+							"In addition, the sidekick gains proficiency in three skills of your choice from the following list: {@skill Arcana}, {@skill History}, {@skill Insight}, {@skill Investigation}, {@skill Medicine}, {@skill Performance}, {@skill Persuasion}, and {@skill Religion}. If the sidekick is a humanoid, it also gains proficiency with simple weapons and light armor."
+						]
+					},
+					{
+						"name": "Spellcasting",
+						"entries": [
+							"At 1st level, the sidekick gains the ability to cast spells. (If the creature already has the Spellcasting trait, this feature replaces that trait.) Choose a class: bard, cleric, druid, sorceror, warlock, or wizard. This choice determines the spell list, spellcasting ability, and spellcasting focus used by the sidekick, as shown on the Spellcasting table.",
+							{
+								"type": "table",
+								"caption": "Spellcasting",
+								"colLabels": [
+									"Spell List",
+									"Ability",
+									"Focus"
+								],
+								"colStyles": [
+									"col-xs-4",
+									"col-xs-4",
+									"col-xs-4"
+								],
+								"rows": [
+									[
+										"{@filter Bard|spells|class=Bard}",
+										"Charisma",
+										"{@filter Musical instrument|items|type=instrument}"
+									],
+									[
+										"{@filter Cleric|spells|class=Cleric}",
+										"Wisdom",
+										"{@item Holy Symbol|PHB}"
+									],
+									[
+										"{@filter Druid|spells|class=Druid}",
+										"Wisdom",
+										"{@item Druidic Focus|PHB}"
+									],
+									[
+										"{@filter Sorceror|spells|class=Sorceror}",
+										"Charisma",
+										"{@item Arcane Focus|PHB}"
+									],
+									[
+										"{@filter Warlock|spells|class=Warlock}",
+										"Charisma",
+										"{@item Arcane Focus|PHB}"
+									],
+									[
+										"{@filter Wizard|spells|class=Wizard}",
+										"Intelligence",
+										"{@item Arcane Focus|PHB}"
+									]
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Cantrips",
+								"entries": [
+									"At first level, the sidekick knows three cantrips of your choice from its spell list. The sidekick learns additional cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Spellcaster table."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Spell Slots",
+								"entries": [
+									"The Spellcaster table shows how many spell slots the sidekick has to cast its spellcaster spells of 1st level and higher. To cast one of these spells, the sidekick must expend a slot of the spell's level or higher. The spellcaster regains all expended spell slots when it finishes a long rest.",
+									"For example, if the sidekick knows the 1st-level spell {@spell cure wounds} and has a 1st-level and a 2nd-level spell slot available, it can cast the spell using either slot."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Spells Known",
+								"entries": [
+									"The sidekick knows three 1st-level spells of your choice from its spell list.",
+									"The Spells Known column of the Spellcaster table shows when the sidekick learns more spells of your choice. Each of these spells must be of a level for which the sidekick has spell slots, as shown on the table. For instance when the sidekick reaches 3rd level in this class, it can learn one new spell of 1st or 2nd level.",
+									"Additionally, when the sidekick gains a level in this class, you can choose one of the spells it knows from this class and replace it with another spell from its spell list, which also must be of a level for which it has spell slots."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Spellcasting Ability",
+								"entries": [
+									"The sidekick's spellcasting ability for these spells depends on the choice you made on the Spellcasting table.",
+									"The sidekick uses its spellcasting ability whenever a spell refers to that ability. In addition, it uses its spellcasting ability modifier when setting the saving throw DC for a spell it casts and when making an attack roll with one.",
+									{
+										"type": "abilityDc",
+										"name": "Spell",
+										"attributes": [
+											"spellcasting modifier"
+										]
+									},
+									{
+										"type": "abilityAttackMod",
+										"name": "Spell",
+										"attributes": [
+											"spellcasting modifier"
+										]
+									}
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Spellcasting Focus",
+								"entries": [
+									"The sidekick can use a focus for its spells depending on the choice you made on the Spellcasting table."
+								]
+							}
+						]
+					}
+				],
+				[
+					{
+						"name": "Magical Recovery",
+						"entries": [
+							"Beginning at 2nd level, when the sidekick finishes a short rest, it can recover expended spell slots. The spell slots can have a combined level that is equal to or less than half its level in this class (rounded up), and none of the spell slots can be 6th level or higher.",
+							"Once the sidekick uses this feature, it can't use the feature again until it finishes a long rest."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, the sidekick increases one ability score of your choice by 2, or the sidekick increases two ability scores of your choice by 1. The sidekick can't increase an ability score above 20 using this feature."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Potent Cantrips",
+						"entries": [
+							"Starting at 6th level, the sidekick can add its spellcasting ability modifier to the damage it deals with any cantrip."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 8th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Empowered Spells",
+						"entries": [
+							"At 10th level, choose one school of magic. Whenever the sidekick casts a spell of that school by expending a spell slot, the sidekick can add its spellcasting ability modifier to the spell's damage roll or healing roll, if any."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 12th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Focused Casting",
+						"entries": [
+							"Starting at 14th level, the sidekick has advantage on any Constitution saving throw it makes to maintain its concentration on a spell."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 16th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"At 18th level, you gain another Ability Score Improvement."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Signature Spells",
+						"entries": [
+							"At 20th level, choose two spells that the sidekick knows from this class. Eligible spells are of 1st, 2nd, and 3rd level. The sidekick can cast each of the chosen spell once at 3rd level without expending a spell slot. After the sidekick casts a spell in this way, the sidekick regains the ability to cast that spell with this feature when it finishes a short or long rest."
+						]
+					}
+				]
+			],
+			"fluff": [
+				{
+					"entries": [
+						"A sidekick who becomes a spellcaster walks the paths of magic. The sidekick might be a hedge wizard, a priest, a soothsayer, a spell-wielding performer, or a person with magic in their veins."
+					],
+					"source": "UASidekicks",
+					"page": 4
+				}
+			]
+		}
+	]
+}

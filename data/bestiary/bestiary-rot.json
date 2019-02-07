@@ -24,7 +24,7 @@
 			],
 			"hp": {
 				"average": 16,
-				"formula": "3d8+3"
+				"formula": "3d8 + 3"
 			},
 			"speed": {
 				"walk": 30
@@ -75,7 +75,7 @@
 				{
 					"name": "Scimitar",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
 					]
 				}
 			],
@@ -85,6 +85,10 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR"
 			]
 		},
 		{
@@ -111,7 +115,7 @@
 			],
 			"hp": {
 				"average": 78,
-				"formula": "12d8+24"
+				"formula": "12d8 + 24"
 			},
 			"speed": {
 				"walk": 30
@@ -174,19 +178,24 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage plus 7 ({@dice 2d6}) damage of the type to which the dragonfang has resistance."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage plus 7 ({@dice 2d6}) damage of the type to which the dragonfang has resistance."
 					]
 				},
 				{
 					"name": "Orb of Dragon's Breath (2/Day)",
 					"entries": [
-						"{@atk rs} {@hit 5} to hit, range 50 ft., one target. Hit: 22 ({@dice 5d8}) damage of the type to which the dragonfang has damage resistance."
+						"{@atk rs} {@hit 5} to hit, range 50 ft., one target. {@h}22 ({@dice 5d8}) damage of the type to which the dragonfang has damage resistance."
 					]
 				}
 			],
 			"page": 89,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"I"
 			]
 		},
 		{
@@ -213,7 +222,7 @@
 			],
 			"hp": {
 				"average": 110,
-				"formula": "17d8+34"
+				"formula": "17d8 + 34"
 			},
 			"speed": {
 				"walk": 30
@@ -282,13 +291,13 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage plus 10 ({@dice 3d6}) damage of the type to which the dragonsoul has resistance."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage plus 10 ({@dice 3d6}) damage of the type to which the dragonsoul has resistance."
 					]
 				},
 				{
 					"name": "Orb of Dragon's Breath (3/Day)",
 					"entries": [
-						"{@atk rs} {@hit 7} to hit, range 90 ft., one target. Hit: 27 ({@dice 6d8}) damage of the type to which the dragonsoul has damage resistance."
+						"{@atk rs} {@hit 7} to hit, range 90 ft., one target. {@h}27 ({@dice 6d8}) damage of the type to which the dragonsoul has damage resistance."
 					]
 				}
 			],
@@ -298,6 +307,11 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"I"
 			]
 		},
 		{
@@ -324,7 +338,7 @@
 			],
 			"hp": {
 				"average": 33,
-				"formula": "6d8+6"
+				"formula": "6d8 + 6"
 			},
 			"speed": {
 				"walk": 30
@@ -393,7 +407,7 @@
 				{
 					"name": "Scimitar",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage plus 3 ({@dice 1d6}) damage of the type to which the cultist has resistance."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage plus 3 ({@dice 1d6}) damage of the type to which the cultist has resistance."
 					]
 				}
 			],
@@ -403,6 +417,10 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR"
 			]
 		},
 		{
@@ -423,7 +441,7 @@
 			],
 			"hp": {
 				"average": 52,
-				"formula": "7d8+21"
+				"formula": "7d8 + 21"
 			},
 			"speed": {
 				"walk": 30
@@ -454,13 +472,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) bludgeoning damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) bludgeoning damage."
 					]
 				}
 			],
@@ -468,6 +486,13 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/254/guard-drake.mp3",
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"DR",
+				"CS"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -488,7 +513,7 @@
 			],
 			"hp": {
 				"average": 32,
-				"formula": "5d8+10"
+				"formula": "5d8 + 10"
 			},
 			"speed": {
 				"walk": 30,
@@ -520,7 +545,7 @@
 				{
 					"name": "Cold Aura",
 					"entries": [
-						"Any creature that starts its turn within 5 feet of the toad takes 3 ({@dice 1d6}) cold damage."
+						"Any creature that starts its turn within 5 feet of the toad takes 3 ({@damage 1d6}) cold damage."
 					]
 				},
 				{
@@ -534,13 +559,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d8}) cold damage. If the target is a Medium or smaller creature it is {@condition grappled} (escape DC 11). Until this grapple ends, the toad can't bite another target."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d8}) cold damage. If the target is a Medium or smaller creature it is {@condition grappled} (escape DC 11). Until this grapple ends, the toad can't bite another target."
 					]
 				}
 			],
 			"page": 90,
 			"traitTags": [
 				"Amphibious"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -563,7 +594,7 @@
 			],
 			"hp": {
 				"average": 135,
-				"formula": "18d8+54"
+				"formula": "18d8 + 54"
 			},
 			"speed": {
 				"walk": 30
@@ -608,7 +639,7 @@
 				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
-						"While in sunlight, Naergoth has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+						"While in sunlight, Naergoth has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 					]
 				}
 			],
@@ -622,19 +653,19 @@
 				{
 					"name": "Life Drain",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 20 ({@dice 5d6+3}) necrotic damage. The target must succeed on a DC 15 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}20 ({@damage 5d6 + 3}) necrotic damage. The target must succeed on a DC 15 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
 					]
 				},
 				{
 					"name": "Longsword",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d8+5}) slashing damage, or 10 ({@dice 1d10+5}) if used with two hands, plus 10 ({@dice 3d6}) necrotic damage."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d8 + 5}) slashing damage, or 10 ({@dice 1d10 + 5}) if used with two hands, plus 10 ({@damage 3d6}) necrotic damage."
 					]
 				},
 				{
 					"name": "Longbow",
 					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 150/600 ft., one target. Hit: 5 ({@dice 1d8+1}) piercing damage plus 10 ({@dice 3d6}) necrotic damage."
+						"{@atk rw} {@hit 5} to hit, range 150/600 ft., one target. {@h}5 ({@damage 1d8 + 1}) piercing damage plus 10 ({@damage 3d6}) necrotic damage."
 					]
 				}
 			],
@@ -644,6 +675,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -666,7 +704,7 @@
 			],
 			"hp": {
 				"average": 117,
-				"formula": "18d8+36"
+				"formula": "18d8 + 36"
 			},
 			"speed": {
 				"walk": 30
@@ -721,13 +759,13 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage plus 13 ({@dice 3d8}) poison damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage plus 13 ({@damage 3d8}) poison damage."
 					]
 				},
 				{
 					"name": "Eldritch Arrow",
 					"entries": [
-						"{@atk rs} {@hit 7} to hit, range 120 ft., one target. Hit: 11 ({@dice 2d10}) force damage plus 9 ({@dice 2d8}) poison damage."
+						"{@atk rs} {@hit 7} to hit, range 120 ft., one target. {@h}11 ({@damage 2d10}) force damage plus 9 ({@damage 2d8}) poison damage."
 					]
 				},
 				{
@@ -743,6 +781,15 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"E",
+				"I"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -770,7 +817,7 @@
 			],
 			"hp": {
 				"average": 71,
-				"formula": "11d8+22"
+				"formula": "11d8 + 22"
 			},
 			"speed": {
 				"walk": 30
@@ -870,7 +917,7 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d8}) bludgeoning damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d8}) bludgeoning damage."
 					]
 				}
 			],
@@ -882,7 +929,17 @@
 					]
 				}
 			],
-			"page": 91
+			"page": 91,
+			"languageTags": [
+				"C",
+				"DR",
+				"I",
+				"P",
+				"OTH"
+			],
+			"spellcastingTags": [
+				"CW"
+			]
 		},
 		{
 			"name": "Severin",
@@ -903,7 +960,7 @@
 			],
 			"hp": {
 				"average": 150,
-				"formula": "20d8+60"
+				"formula": "20d8 + 60"
 			},
 			"speed": {
 				"walk": 30
@@ -979,7 +1036,7 @@
 				{
 					"name": "Ignite Enemy",
 					"entries": [
-						"If Severin deals fire damage to a creature while wearing the Mask of the Dragon Queen, the target catches fire. At the start of each of its turns, the burning target takes 5 ({@dice 1d10}) fire damage. A creature within reach of the fire can use an action to extinguish it."
+						"If Severin deals fire damage to a creature while wearing the Mask of the Dragon Queen, the target catches fire. At the start of each of its turns, the burning target takes 5 ({@damage 1d10}) fire damage. A creature within reach of the fire can use an action to extinguish it."
 					]
 				},
 				{
@@ -993,19 +1050,19 @@
 				{
 					"name": "Burning Touch",
 					"entries": [
-						"{@atk ms} {@hit 5} to hit, reach 5 ft., one target. Hit: 18 ({@dice 4d8}) fire damage."
+						"{@atk ms} {@hit 5} to hit, reach 5 ft., one target. {@h}18 ({@damage 4d8}) fire damage."
 					]
 				},
 				{
 					"name": "Flaming Orb",
 					"entries": [
-						"{@atk rs} {@hit 5} to hit, range 90 ft., one target. Hit: 40 ({@dice 9d8}) fire damage."
+						"{@atk rs} {@hit 5} to hit, range 90 ft., one target. {@h}40 ({@damage 9d8}) fire damage."
 					]
 				},
 				{
 					"name": "Scorching Burst",
 					"entries": [
-						"Severin chooses a point he can see within 60 feet of him. Each creature within 5 feet of that point must make a DC 17 Dexterity saving throw, taking 18 ({@dice 4d8}) fire damage on a failed save, or half as much damage on a successful one."
+						"Severin chooses a point he can see within 60 feet of him. Each creature within 5 feet of that point must make a DC 17 Dexterity saving throw, taking 18 ({@damage 4d8}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -1024,19 +1081,13 @@
 				{
 					"name": "Fiery Teleport (Costs 2 Actions)",
 					"entries": [
-						"Severin, along with any objects he is wearing or carrying, teleports up to 60 feet to an unoccupied space he can see. Each creature within 5 feet of Severin before he teleports takes 5 ({@dice 1d10}) fire damage."
-					],
-					"attack": [
-						"Fiery Teleport||1d10"
+						"Severin, along with any objects he is wearing or carrying, teleports up to 60 feet to an unoccupied space he can see. Each creature within 5 feet of Severin before he teleports takes 5 ({@damage 1d10}) fire damage."
 					]
 				},
 				{
 					"name": "Hellish Chains (Costs 3 Actions)",
 					"entries": [
-						"Severin targets one creature he can see within 30 feet of him. The target is wrapped in magical chains of fire and {@condition restrained}. The {@condition restrained} target takes 21 ({@dice 6d6}) fire damage at the start of each of its turns. At the end of its turns, the target can make a DC 17 Strength saving throw, ending the effect on itself on a success."
-					],
-					"attack": [
-						"Hellish Chains||6d6"
+						"Severin targets one creature he can see within 30 feet of him. The target is wrapped in magical chains of fire and {@condition restrained}. The {@condition restrained} target takes 21 ({@damage 6d6}) fire damage at the start of each of its turns. At the end of its turns, the target can make a DC 17 Strength saving throw, ending the effect on itself on a success."
 					]
 				}
 			],
@@ -1045,6 +1096,14 @@
 			"isNPC": true,
 			"traitTags": [
 				"Legendary Resistances"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"I"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -1066,7 +1125,7 @@
 			],
 			"hp": {
 				"average": 615,
-				"formula": "30d20+300"
+				"formula": "30d20 + 300"
 			},
 			"speed": {
 				"walk": 60,
@@ -1177,13 +1236,13 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 19} to hit, reach 15 ft., one target. Hit: 24 ({@dice 4d6+10}) slashing damage."
+						"{@atk mw} {@hit 19} to hit, reach 15 ft., one target. {@h}24 ({@damage 4d6 + 10}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"{@atk mw} {@hit 19} to hit, reach 25 ft., one target. Hit: 28 ({@dice 4d8+10}) piercing damage."
+						"{@atk mw} {@hit 19} to hit, reach 25 ft., one target. {@h}28 ({@damage 4d8 + 10}) piercing damage."
 					]
 				},
 				{
@@ -1203,55 +1262,37 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 19} to hit, reach 20 ft., one target. Hit: 32 ({@dice 4d10+10}) slashing damage plus 14 ({@dice 4d6}) acid damage (black dragon head), lightning damage (blue dragon head), poison damage (green dragon head), fire damage (red dragon head), or cold damage (white dragon head)."
-					],
-					"attack": [
-						"Bite|19|4d10+10+4d6"
+						"{@atk mw} {@hit 19} to hit, reach 20 ft., one target. {@h}32 ({@damage 4d10 + 10}) slashing damage plus 14 ({@damage 4d6}) acid damage (black dragon head), lightning damage (blue dragon head), poison damage (green dragon head), fire damage (red dragon head), or cold damage (white dragon head)."
 					]
 				},
 				{
 					"name": "Black Dragon Head: Acid Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes acid in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 27 Dexterity saving throw, taking 67 ({@dice 15d8}) acid damage on a failed save, or half as much damage on a successful one."
-					],
-					"attack": [
-						"Acid Breath||15d8"
+						"Tiamat breathes acid in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 27 Dexterity saving throw, taking 67 ({@damage 15d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Blue Dragon Head: Lightning Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes lightning in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 27 Dexterity saving throw, taking 88 ({@dice 16d10}) lightning damage on a failed save, or half as much damage on a successful one."
-					],
-					"attack": [
-						"Lightning Breath||16d10"
+						"Tiamat breathes lightning in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 27 Dexterity saving throw, taking 88 ({@damage 16d10}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Green Dragon Head: Poison Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes poisonous gas in a 90-foot cone. Each creature in that area must make a DC 27 Constitution saving throw, taking 77 ({@dice 22d6}) poison damage on a failed save, or half as much damage on a successful one."
-					],
-					"attack": [
-						"Poison Breath||22d6"
+						"Tiamat breathes poisonous gas in a 90-foot cone. Each creature in that area must make a DC 27 Constitution saving throw, taking 77 ({@damage 22d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Red Dragon Head: Fire Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes fire in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 91 ({@dice 26d6}) fire damage on a failed save, or half as much damage on a successful one."
-					],
-					"attack": [
-						"Fire Breath||26d6"
+						"Tiamat breathes fire in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 91 ({@damage 26d6}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "White Dragon Head: Cold Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes an icy blast in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 72 ({@dice 16d8}) cold damage on a failed save, or half as much damage on a successful one."
-					],
-					"attack": [
-						"Cold Breath||16d8"
+						"Tiamat breathes an icy blast in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 72 ({@damage 16d8}) cold damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -1265,6 +1306,18 @@
 			"actionTags": [
 				"Multiattack",
 				"Frightful Presence"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"I"
+			],
+			"senseTags": [
+				"SD",
+				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		}
 	]

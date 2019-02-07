@@ -1,12 +1,12 @@
 "use strict";
+
 const JSON_URL = "data/variantrules.json";
 
-window.onload = function load () {
-	ExcludeUtil.initialise();
+window.onload = async function load () {
+	await ExcludeUtil.pInitialise();
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
-
-let tableDefault;
 
 const entryRenderer = EntryRenderer.getDefaultRenderer();
 
@@ -14,15 +14,13 @@ let list;
 const sourceFilter = getSourceFilter();
 let filterBox;
 
-function onJsonLoad (data) {
+async function onJsonLoad (data) {
 	list = ListUtil.search({
 		valueNames: ['name', 'source', 'search'],
 		listClass: "variantRules"
 	});
 
-	tableDefault = $("#pagecontent").html();
-
-	filterBox = initFilterBox(sourceFilter);
+	filterBox = await pInitFilterBox(sourceFilter);
 
 	list.on("updated", () => {
 		filterBox.setCount(list.visibleItems.length, list.items.length);
@@ -34,23 +32,26 @@ function onJsonLoad (data) {
 	);
 
 	const subList = ListUtil.initSublist({
-		valueNames: ["name"],
-		listClass: "subVariantRules"
+		valueNames: ["name", "id"],
+		listClass: "subVariantRules",
+		getSublistRow: getSublistItem
 	});
 	ListUtil.initGenericPinnable();
-
-	addListShowHide();
 
 	addVariantRules(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(() => BrewUtil.bind({list}))
 		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
-		.then(() => {
+		.catch(BrewUtil.pPurgeBrew)
+		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
-			BrewUtil.bind({list, filterBox, sourceFilter});
+			BrewUtil.bind({filterBox, sourceFilter});
+			await ListUtil.pLoadState();
+			ListUtil.addListShowHide();
 
 			History.init(true);
+			ExcludeUtil.checkShowAllExcluded(rulesList, $(`#pagecontent`));
 		});
 }
 
@@ -80,8 +81,8 @@ function addVariantRules (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${rlI}" onclick="ListUtil.toggleSelected(event, this)">
 				<a id="${rlI}" href="#${UrlUtil.autoEncodeHash(curRule)}" title="${curRule.name}">
-					<span class="name col-xs-10">${curRule.name}</span>
-					<span class="source col-xs-2 source${Parser.sourceJsonToAbv(curRule.source)}" title="${Parser.sourceJsonToFull(curRule.source)}">${Parser.sourceJsonToAbv(curRule.source)}</span>
+					<span class="name col-10">${curRule.name}</span>
+					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(curRule.source)}" title="${Parser.sourceJsonToFull(curRule.source)}">${Parser.sourceJsonToAbv(curRule.source)}</span>
 					<span class="search hidden">${searchStack.join(",")}</span>
 				</a>
 			</li>`;
@@ -113,7 +114,7 @@ function getSublistItem (rule, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(rule)}" title="${rule.name}">
-				<span class="name col-xs-12">${rule.name}</span>
+				<span class="name col-12">${rule.name}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
@@ -130,18 +131,27 @@ function handleFilterChange () {
 }
 
 function loadhash (id) {
-	entryRenderer.setFirstSection(true);
-
-	// reset details pane to initial HTML
-	$("#pagecontent").html(tableDefault);
-
 	const curRule = rulesList[id];
 
-	// build text list and display
-	$("tr.text").remove();
+	entryRenderer.setFirstSection(true);
 	const textStack = [];
+	entryRenderer.resetHeaderIndex();
 	entryRenderer.recursiveEntryRender(curRule, textStack);
-	$("tr#text").after("<tr class='text'><td colspan='6'>" + textStack.join("") + "</td></tr>");
+	$("#pagecontent").html(`
+		${EntryRenderer.utils.getBorderTr()}
+		<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>
+		${EntryRenderer.utils.getPageTr(curRule)}
+		${EntryRenderer.utils.getBorderTr()}
+	`);
+
+	loadsub([]);
 
 	ListUtil.updateSelected();
+}
+
+function loadsub (sub) {
+	if (!sub.length) return;
+
+	const $title = $(`.entry-title[data-title-index="${sub[0]}"]`);
+	if ($title.length) $title[0].scrollIntoView();
 }

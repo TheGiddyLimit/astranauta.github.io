@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--5ETOOLS_VERSION-->
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Donate - 5etools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
+</head>
+
+<body>
+<header class="hidden-xs hidden-sm page__header">
+	<div class="container">
+
+		<h1 class="page__title">Donate</h1>
+		<p class="page__subtitle">Please?</p>
+	</div>
+</header>
+<nav class="container page__nav" id="navigation"><ul class="nav nav-pills" id="navbar"></ul></nav>
+<main class="container">
+	<div class="row">
+		<div class="col-12">
+			<h4 class="text-align-center">5etools, LLC. gratefully accepts donations.</h4>
+			<p>
+				Any monies raised are used to help cover the costs associated with running the site. These costs come from renting servers, and the bandwidth they consume every month. We <s style="text-decoration: overline underline line-through;">don't have any advertisements</s> <s>have <i>minimal</i> advertisements</s> don't have any advertisements, and we don't sell anything. If you are financially able, please consider making a donation to help us support those that are providing servers and bandwidth. Any donation, no matter the size, is greatly appreciated.
+			</p>
+			<p>
+				Server upkeep donation addresses (note that the development team <b>does not</b> receive any payments made to these addresses; donations go directly to the host responsible for keeping the site online):
+			</p>
+			<p class="code">
+				BTC: <a href="bitcoin:1Dxu1fCs37dJQH3mGudQdCkWhhUXyhrpPC">1Dxu1fCs37dJQH3mGudQdCkWhhUXyhrpPC</a>
+				<br>
+				BCH: <a href="bitcoincash:1MwxNNTcGsGe3jtttZs5y17xG5xg8x2WDk">1MwxNNTcGsGe3jtttZs5y17xG5xg8x2WDk</a>
+				<br>
+				ETH: <a href="ethereum:0x26873a33EACA07dc2C3173576353b7F9800a3B5e">0x26873a33EACA07dc2C3173576353b7F9800a3B5e</a>
+				<br>
+				LTC: <a href="litecoin:LbZXdmw5HGUQe6KuDD3B5Htd61M7FPP9Gx">LbZXdmw5HGUQe6KuDD3B5Htd61M7FPP9Gx</a>
+			</p>
+		</div>
+	</div>
+	<hr>
+	<div class="row" id="don-wrapper">
+		<div class="col-12">
+			<p>
+				Below is the current amount donated versus the total cost for this quarter:
+			</p>
+			<div class="don__bar">
+				<div class="don__bar_inner"></div>
+			</div>
+			<div class="split">
+				<span>€0.00</span>
+				<span id="don-total">Loading...</span>
+			</div>
+			<p>
+				<br>
+				<i>Please note that all values here are estimations, and, due to the nature of our donation &quot;system,&quot; are not updated automatically.</i>
+			</p>
+		</div>
+	</div>
+	<!--CANCER_ANCHOR-->
+</main>
+<!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
+<script type="text/javascript" src="js/genutils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/lifegen.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+<script>
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+	DataUtil.loadJSON(`https://get.5etools.com/money.php`).then(dosh => {
+		const pct = Number(dosh.donated) / Number(dosh.Goal);
+		$(`#don-total`).text(`€${dosh.Goal}`);
+		if (isNaN(pct)) {
+			throw new Error(`Was not a number! Values were ${dosh.donated} and ${dosh.Goal}`);
+		} else {
+			const $bar = $(`.don__bar_inner`);
+			$bar.css("width", `${Math.min(Math.ceil(100 * pct), 100)}%`).html(pct !== 0 ? `€${dosh.donated}&nbsp;` : "");
+			if (pct >= 1) $bar.css("background-color", "lightgreen");
+		}
+	}).catch(noDosh => {
+		$(`#don-wrapper`).remove();
+		throw noDosh;
+	})
+</script>
+
+</body>
+</html>

@@ -1,6 +1,76 @@
 {
 	"cult": [
 		{
+			"name": "Cult of Borem of the Lake of Boiling Mud",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Borem's Embrace (1/Day)",
+					"entries": [
+						"The cultist touches one creature within 5 feet of it. The target must succeed on a DC 15 Dexterity saving throw or be coated in sticky, steaming mud. While it is coated in this way, the target's speed is halved, it can't use reactions, and it takes 10 ({@dice 3d6}) fire damage at the start of each of its turns. The effect lasts for 1 minute, until the cultist is {@condition incapacitated} or dies, or until the target is immersed in water."
+					]
+				}
+			],
+			"source": "MTF",
+			"page": 237
+		},
+		{
+			"name": "Cult of Atropus the World Born Dead",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Gaze of Corruption (Recharge 6)",
+					"entries": [
+						"The cultist targets one creature it can see within 30 feet of it. The target must succeed on a DC 15 Constitution saving throw or take 16 ({@dice 3d10}) necrotic damage and be {@condition poisoned} for 1 minute. The {@condition poisoned} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+					]
+				}
+			],
+			"source": "MTF",
+			"page": 237
+		},
+		{
+			"name": "Cult of Haask the Voice of Hargut",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Haask's Presence (1/Day)",
+					"entries": [
+						"The cultist transforms into a Tiny, leech-like being and teleports onto the shoulder of a humanoid that it can see within 30 feet of it. The targeted humanoid must succeed on a DC 15 Charisma saving throw or be {@condition charmed} by the cultist. While the target is {@condition charmed}, the cultist has control of it on the target's next turn. At the end of that turn, the cultist teleports to an unoccupied space it can see within 30 feet of it and returns to its normal form. The cultist can't be targeted directly by any attack or other effect while it's in the slug-like form, but it is subject to areas of effect as normal."
+					]
+				}
+			],
+			"source": "MTF",
+			"page": 237
+		},
+		{
+			"name": "Cult of Tyranthraxus the Flamed One",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Radiant Flames (1/Day)",
+					"entries": [
+						"Multihued flame surrounds the cultist for 1 minute, until the cultist is incapacitated or dies, or until the cultist extinguishes the flame (no action required). While inflamed, the cultist has telepathy with a range of 30 feet, and it can teleport as a bonus action up to 30 feet to an unoccupied space it can see. In addition, every creature that starts its turn within 5 feet of the cultist must make a DC 15 Dexterity saving throw, taking 16 ({@dice 3d10}) radiant damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"source": "MTF",
+			"page": 237
+		},
+		{
+			"name": "Cult of Tharizdun the Chained God",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Tharizdun's Spark (Recharge 6)",
+					"entries": [
+						"As a bonus action, the cultist touches a simple or martial weapon or a natural weapon, if it has one. The next creature hit by the touched weapon must succeed on a DC 15 Wisdom saving throw or experience short-term madness for 10 minutes. Consult the Short-Term Madness table (see \"{@book Madness Effects|dmg|8|Madness Effects}\" in chapter 8 of the Dungeon Master's Guide) to determine the form of the madness. The affected creature can repeat the saving throw at the end of each minute, ending the effect on itself on a success."
+					]
+				}
+			],
+			"source": "MTF",
+			"page": 237
+		},
+		{
 			"name": "Cult of Asmodeus",
 			"entries": [
 				"{@deity Asmodeus|faerûnian|scag} demands the loyalty of all cultists who gain power and leadership in the cults of the Nine. His cult overarches all the others.",
@@ -87,7 +157,7 @@
 			},
 			"entries": [
 				"Fierna is a master manipulator. Mortals who desire success in love or who seek to become beloved leaders at the head of a band of fanatics are drawn to striking bargains with her.",
-				"Fierna grants gifts that allow her cultists to manipulate emotions; they gain increases to Charisma, as well as proficiency with skills such as Persuasion and Intimidation. In addition, cultists can gain the Infernal Loyalty trait. Cult leaders can also gain the Loyalty beyond Death trait.",
+				"Fierna grants gifts that allow her cultists to manipulate emotions; they gain increases to Charisma, as well as proficiency with skills such as {@skill Persuasion} and {@skill Intimidation}. In addition, cultists can gain the Infernal Loyalty trait. Cult leaders can also gain the Loyalty beyond Death trait.",
 				{
 					"type": "entries",
 					"name": "Infernal Loyalty",
@@ -130,7 +200,7 @@
 				},
 				{
 					"type": "entries",
-					"name": "Indomitable Strength (Recharge 5\u20136)",
+					"name": "Indomitable Strength {@recharge 5}",
 					"entries": [
 						"As a reaction when this creature takes damage, it can roll a {@dice d10} and subtract the number rolled from the damage."
 					]
@@ -428,7 +498,7 @@
 				},
 				{
 					"type": "entries",
-					"name": "Indomitable Strength (Recharge 5\u20136)",
+					"name": "Indomitable Strength {@recharge 5}",
 					"entries": [
 						"As a reaction when this creature takes damage, it can roll a {@dice d10} and subtract the number rolled from the damage."
 					]
@@ -725,7 +795,7 @@
 					"type": "entries",
 					"name": "Liar's Eye",
 					"entries": [
-						"This creature has advantage on Wisdom (Insight or Perception) checks.",
+						"This creature has advantage on Wisdom ({@skill Insight} or {@skill Perception}) checks.",
 						"As a bonus action, it automatically detects the location of all illusions and hidden creatures within 15 feet of it."
 					]
 				}
@@ -946,7 +1016,7 @@
 					"type": "entries",
 					"name": "Liar's Eye",
 					"entries": [
-						"This creature has advantage on Wisdom (Insight or Perception) checks.",
+						"This creature has advantage on Wisdom ({@skill Insight} or {@skill Perception}) checks.",
 						"As a bonus action, it automatically detects the location of all illusions and hidden creatures within 15 feet of it."
 					]
 				}
@@ -1023,7 +1093,7 @@
 				"entry": "{@spell False life} (1st level), {@spell ray of enfeeblement} (2nd level), {@spell animate dead} (3rd level)"
 			},
 			"entries": [
-				"In most cases, Orcus transforms his followers into undead creatures such as ghouls and wights. Sometimes he needs his followers to retain their mortal forms, to more easily infiltrate a kingdom or city. He grants rankand-file cultists the Undying Soul trait, and his cult leaders gain the Aura of Death trait.",
+				"In most cases, Orcus transforms his followers into undead creatures such as ghouls and wights. Sometimes he needs his followers to retain their mortal forms, to more easily infiltrate a kingdom or city. He grants rank-and-file cultists the Undying Soul trait, and his cult leaders gain the Aura of Death trait.",
 				{
 					"type": "entries",
 					"name": "Undying Soul (Recharges after a Short or Long Rest)",

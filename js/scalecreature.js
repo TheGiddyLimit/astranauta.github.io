@@ -216,9 +216,53 @@
 		return this._crRangeToVal(cr, this._dcRanges);
 	},
 
+	_casterLevelAndClassCantrips: {
+		bard: [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+		cleric: [3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+		druid: [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+		sorcerer: [4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
+		warlock: [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+		wizard: [3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+	},
+
+	_casterLevelAndClassToCantrips (level, clazz) {
+		clazz = (clazz || "cleric").toLowerCase(); // Cleric/Wizard have middle-ground scaling
+		return this._casterLevelAndClassCantrips[clazz][level];
+	},
+
+	// cantrips that should be preserved when lowering the number of cantrips known, to ensure caster effectiveness
+	_protectedCantrips: ["acid splash", "chill touch", "eldritch blast", "fire bolt", "poison spray", "produce flame", "ray of frost", "sacred flame", "shocking grasp", "thorn whip", "vicious mockery"],
+
+	// analysis of official data + some manual smoothing
+	_crToCasterLevelAvg: {
+		"0": 2,
+		"0.125": 2,
+		"0.25": 2,
+		"0.5": 2,
+		"1": 3.5,
+		"2": 4.25,
+		"3": 5.75,
+		"4": 6.75,
+		"5": 8,
+		"6": 9.75,
+		"7": 10.5,
+		"8": 10.75,
+		"9": 11.5,
+		"10": 11.75,
+		"11": 12,
+		"12": 13,
+		"13": 14,
+		"14": 15,
+		"15": 16,
+		"16": 17,
+		"17": 18,
+		"18": 19
+	},
+
 	_crToCasterLevel (cr) {
-		const CR_CASTER_LVL_RATIO = 1.25; // approximation from CRs with significant caster counts
-		return Math.max(1, Math.min(20, cr * CR_CASTER_LVL_RATIO));
+		if (cr === 0) return 2;
+		if (cr >= 19) return 20;
+		return this._crToCasterLevelAvg[cr]
 	},
 
 	_calcNewAbility (mon, prop, modifier) {
@@ -229,49 +273,63 @@
 		);
 	},
 
+	_rng: null,
+	_initRng (mon, toCr) {
+		let h = CryptUtil.hashCode(toCr);
+		h = 31 * h + CryptUtil.hashCode(mon.source);
+		h = 31 * h + CryptUtil.hashCode(mon.name);
+		this._rng = Math.seed(h);
+	},
+
 	/**
+	 * @async
 	 * @param mon Creature data.
 	 * @param toCr target CR, as a number.
+	 * @return {Promise<creature>} the scaled creature.
 	 */
 	scale (mon, toCr) {
-		if (toCr == null || toCr === "Unknown") throw new Error("Attempting to scale unknown CR!");
+		return this._pInitSpellCache().then(() => {
+			if (toCr == null || toCr === "Unknown") throw new Error("Attempting to scale unknown CR!");
 
-		mon = JSON.parse(JSON.stringify(mon));
+			this._initRng(mon, toCr);
+			mon = JSON.parse(JSON.stringify(mon));
 
-		const crIn = mon.cr.cr || mon.cr;
-		const crInNumber = Parser.crToNumber(crIn);
-		if (crInNumber === toCr) throw new Error("Attempting to scale creature to own CR!");
-		if (crInNumber > 30) throw new Error("Attempting to scale a creature beyond 30 CR!");
-		if (crInNumber < 0) throw new Error("Attempting to scale a creature below 0 CR!");
+			const crIn = mon.cr.cr || mon.cr;
+			const crInNumber = Parser.crToNumber(crIn);
+			if (crInNumber === toCr) throw new Error("Attempting to scale creature to own CR!");
+			if (crInNumber > 30) throw new Error("Attempting to scale a creature beyond 30 CR!");
+			if (crInNumber < 0) throw new Error("Attempting to scale a creature below 0 CR!");
 
-		const pbIn = Parser.crToPb(crIn);
-		const pbOut = Parser.crToPb(String(toCr));
+			const pbIn = Parser.crToPb(crIn);
+			const pbOut = Parser.crToPb(String(toCr));
 
-		if (pbIn !== pbOut) {
-			this._applyPb(mon, pbIn, pbOut);
-		}
+			if (pbIn !== pbOut) this._applyPb(mon, pbIn, pbOut);
 
-		this._adjustHp(mon, crInNumber, toCr);
-		this._adjustAtkBonusAndSaveDc(mon, crInNumber, toCr, pbIn, pbOut);
-		this._adjustDpr(mon, crInNumber, toCr);
-		this._adjustSpellcasting(mon, crInNumber, toCr);
+			this._adjustHp(mon, crInNumber, toCr);
+			this._adjustAtkBonusAndSaveDc(mon, crInNumber, toCr, pbIn, pbOut);
+			this._adjustDpr(mon, crInNumber, toCr);
+			this._adjustSpellcasting(mon, crInNumber, toCr);
 
-		// adjust AC after DPR/etc, as DPR takes priority for adjusting DEX
-		const idealAcIn = this._crToAc(crInNumber);
-		const idealAcOut = this._crToAc(toCr);
-		if (idealAcIn !== idealAcOut) {
-			this._adjustAc(mon, idealAcIn, idealAcOut);
-		}
+			// adjust AC after DPR/etc, as DPR takes priority for adjusting DEX
+			this._adjustAc(mon, crInNumber, toCr);
 
-		this._handleUpdateAbilityScoresSkillsSaves(mon, pbOut);
+			// TODO update not-yet-scaled abilities
 
-		const crOutStr = Parser.numberToCr(toCr);
-		if (mon.cr.cr) mon.cr.cr = crOutStr;
-		else mon.cr = crOutStr;
+			this._handleUpdateAbilityScoresSkillsSaves(mon, pbOut);
 
-		mon._displayName = `${mon.name} (CR ${crOutStr})`;
+			// cleanup
+			[`str`, `dex`, `con`, `int`, `wis`, `cha`].forEach(a => delete mon[`${a}Old`]);
 
-		return mon;
+			const crOutStr = Parser.numberToCr(toCr);
+			if (mon.cr.cr) mon.cr.cr = crOutStr;
+			else mon.cr = crOutStr;
+
+			mon._displayName = `${mon.name} (CR ${crOutStr})`;
+			mon._isScaledCr = toCr;
+			mon._originalCr = mon._originalCr || crIn;
+
+			return mon;
+		});
 	},
 
 	_applyPb (mon, pbIn, pbOut) {
@@ -315,7 +373,6 @@
 			return str.replace(/{@hit ([-+]?\d+)}/g, (m0, m1) => {
 				const curToHit = Number(m1);
 				const outToHit = curToHit + pbDelta;
-				// return `{@hit ${outToHit}|${m1}}`;
 				return `{@hit ${outToHit}}`;
 			})
 		};
@@ -324,7 +381,6 @@
 			return str.replace(/DC (\d+)/g, (m0, m1) => {
 				const curDc = Number(m1);
 				const outDc = curDc + pbDelta;
-				// return `DC ${outDc}|${m1}`;
 				return `DC ${outDc}`;
 			});
 		};
@@ -375,12 +431,16 @@
 		"studded leather armor": 12
 	},
 	_acMageArmor: "@spell mage armor",
-	_adjustAc (mon, acIn, acOut) {
+	_adjustAc (mon, crIn, crOut) {
 		const getEnchanted = (item, baseMod) => {
 			const out = [];
 			for (let i = 0; i < 3; ++i) {
 				out.push({
 					tag: `${item} +${i + 1}|dmg`,
+					mod: baseMod + i + 1
+				});
+				out.push({
+					tag: `+${i + 1} ${item}|dmg`,
 					mod: baseMod + i + 1
 				});
 			}
@@ -434,25 +494,121 @@
 		};
 
 		const dropShield = (it) => {
-			const idxShield = it.from.findIndex(f => shields.find(s => f.includes(s.tag)));
+			const idxShield = it.from.findIndex(f => shields.find(s => f._.includes(s.tag)));
 			if (idxShield === -1) throw new Error("Should never occur!");
 			it.from.splice(idxShield, 1);
 		};
 
+		// normalises results as "value above 10"
+		const getAcVal = (name) => {
+			name = name.trim().toLowerCase();
+			const toCheck = [this._acHeavy, this._acMedium, this._acLight, {shield: 2}];
+			for (const tc of toCheck) {
+				const armorKey = Object.keys(tc).find(k => name === k);
+				if (armorKey) {
+					const acBonus = tc[armorKey];
+					if (acBonus > 10) return acBonus - 10;
+				}
+			}
+		};
+
+		const getDexCapVal = name => {
+			name = name.trim().toLowerCase();
+			const ix = [this._acHeavy, this._acMedium, this._acLight].findIndex(tc => !!Object.keys(tc).find(k => name === k));
+			return ix === 0 ? 0 : ix === 1 ? 2 : ix === 3 ? 999 : null;
+		};
+
 		// if the DPR calculations didn't already adjust DEX, we can adjust it here
 		// otherwise, respect the changes made in the DPR calculations, and find a combination of AC factors to meet the desired number
-		// FIXME this process doesn't value enchanted gear -- remove enchantments and add them back at the end?
-		mon.ac = mon.ac.map(it => {
+		mon.ac = mon.ac.map(acItem => {
+			let loop = 0;
+
 			const handleAc = () => {
+				const getEnchTotal = () => acItem._enchTotal || 0;
+				const getBaseGearBonus = () => acItem._gearBonus || 0;
+				const getDexCap = () => acItem._dexCap || 999;
+
+				// strip enchantments and total bonuses
+				if (typeof acItem !== "number") {
+					acItem._enchTotal = acItem._enchTotal || 0; // maintain this between loops, in case we throw away the enchanted gear
+					acItem._gearBonus = 0; // recalculate this each time
+					acItem._dexCap = 999; // recalculate this each time
+				}
+				if (acItem.from) {
+					acItem.from = acItem.from.map(f => {
+						if (f._) f = f._; // if a previous loop modified it
+
+						// normalise to "true name" format
+						// e.g. {@item +1 chain mail} -> {@item chain mail +1|dmg|+1 chain mail}
+						const pre = /@item (\+\d+)([^+\d}]+)/gi.exec(f);
+						if (pre) {
+							const [_, bonus, name, rest] = pre.map(it => it.trim());
+							const restSpl = (rest || "").split("|");
+							const restPart = restSpl.length > 1 ? restSpl.last() : null;
+							f = `{@item ${name} ${bonus}|dmg|${restPart || `${bonus} ${name}`}}`;
+						}
+
+						const m = /@item ([^+\d]+)(\+\d+)\|([^|}]+)/gi.exec(f); // e.g. {@item chain mail +1|dmg|+1 chain mail}
+						if (m) {
+							const [_, name, bonus, source] = m;
+
+							const acVal = getAcVal(name);
+							if (acVal) acItem._gearBonus += acVal;
+
+							const dexCap = getDexCapVal(name);
+							if (dexCap != null) acItem._dexCap = Math.min(acItem._dexCap, dexCap);
+
+							const ench = Number(bonus);
+							acItem._enchTotal += ench;
+							return {
+								_: f,
+								name: name.trim(),
+								ench: ench,
+								source: source
+							}
+						} else {
+							const m = /@item ([^|}]+)(\|[^|}]+)?(\|[^|}]+)?/gi.exec(f);
+							if (m) {
+								const [_, name, source, display] = m;
+								const out = {_: f, name};
+								if (source) out.source = source;
+								if (display) out.display = display;
+
+								const acVal = getAcVal(name);
+								if (acVal) {
+									acItem._gearBonus += acVal;
+									out._gearBonus = acVal;
+								}
+
+								const dexCap = getDexCapVal(name);
+								if (dexCap != null) acItem._dexCap = Math.min(acItem._dexCap, dexCap);
+
+								return out;
+							} else return {_: f, name: f};
+						}
+					});
+				}
+				// for armored creatures, try to calculate the expected AC, and use this as a starting point for scaling
+				const expectedBaseScore = mon.dexOld != null ? (getBaseGearBonus() + Math.min(Parser.getAbilityModNumber(mon.dexOld), getDexCap()) + 10) : null;
+
 				let canAdjustDex = mon.dexOld == null;
 				const dexGain = Parser.getAbilityModNumber(mon.dex) - Parser.getAbilityModNumber((mon.dexOld || mon.dex));
 
-				const cur = it.ac || it;
-				// acIn and acOut are the "idealised" ACs of a monster of X and Y CR
-				// Use the ratio to adjust the real ACs
-				const target = Math.round(cur * (acOut / acIn));
+				const curr = acItem.ac || acItem;
+				// don't include enchantments in AC-CR calculations
+				const currWithoutEnchants = curr - (loop === 0 ? getEnchTotal() : 0); // only take it off on the first loop, as it gets saved
+
+				// ignore any other misc modifications from abilities, enchanted items, etc
+				if (typeof acItem !== "number") {
+					acItem._miscOffset = acItem._miscOffset || (expectedBaseScore != null ? currWithoutEnchants - expectedBaseScore : null); // maintain this between loops, keep the original "pure" version
+				}
+
+				const idealAcIn = this._crToAc(crIn);
+				const idealAcOut = this._crToAc(crOut);
+				const effectiveCurrent = expectedBaseScore == null ? currWithoutEnchants : expectedBaseScore;
+				const target = this._getScaledToRatio(effectiveCurrent, idealAcIn, idealAcOut);
 				let targetNoShield = target;
-				const acGain = target - cur;
+				const acGain = target - effectiveCurrent;
 
 				const dexMismatch = acGain - dexGain;
 
@@ -484,12 +640,12 @@
 
 				const handleMageArmor = () => {
 					// if there's mage armor, try adjusting dex
-					if (it.condition && it.condition.toLowerCase().includes(this._acMageArmor)) {
+					if (acItem.condition && acItem.condition.toLowerCase().includes(this._acMageArmor)) {
 						if (canAdjustDex) {
-							it.ac = target;
+							acItem.ac = target;
 							return adjustDex();
 						} else {
-							it.ac = 13 + Parser.getAbilityModNumber(mon.dex);
+							acItem.ac = 13 + Parser.getAbilityModNumber(mon.dex);
 							return true; // mage armor means there was no other armor, so stop here
 						}
 					}
@@ -500,8 +656,8 @@
 					// if there's a shield, try dropping it
 					const DUAL_SHIELD_AC = 3; // dual-wield shields is 3 AC, according to VGM's Fire Giant Dreadnought
 
-					if (it.from) {
-						const fromShields = it.from.filter(f => shields.find(s => f.includes(`@item ${s.tag}`)));
+					if (acItem.from) {
+						const fromShields = acItem.from.filter(f => shields.find(s => f._.includes(`@item ${s.tag}`)));
 						if (fromShields.length) {
 							if (fromShields.length > 1) throw new Error("AC contained multiple shields!"); // should be impossible
 
@@ -522,27 +678,27 @@
 							})();
 							mon._shieldDropped = false;
 
-							const fromShield = fromShields[0];
-							const idx = it.from.findIndex(it => it === fromShield);
+							const fromShield = fromShields[0]._;
+							const idx = acItem.from.findIndex(it => it === fromShield);
 
 							if (fromShield.endsWith("|shields}")) {
 								targetNoShield -= DUAL_SHIELD_AC;
 
 								if (!shieldRequired && (acGain <= -DUAL_SHIELD_AC)) {
-									it.from.splice(idx, 1);
-									it.ac -= DUAL_SHIELD_AC;
+									acItem.from.splice(idx, 1);
+									acItem.ac -= DUAL_SHIELD_AC;
 									mon._shieldDropped = true;
-									if (it.ac === target) return true;
+									if (acItem.ac === target) return true;
 								}
 							} else {
 								const shieldVal = shields.find(s => fromShield.includes(s.tag));
 								targetNoShield -= shieldVal.mod;
 
 								if (!shieldRequired && (acGain <= -shieldVal.mod)) {
-									it.from.splice(idx, 1);
-									it.ac -= shieldVal.mod;
+									acItem.from.splice(idx, 1);
+									acItem.ac -= shieldVal.mod;
 									mon._shieldDropped = true;
-									if (it.ac === target) return true;
+									if (acItem.ac === target) return true;
 								}
 							}
 						}
@@ -558,7 +714,7 @@
 					const heavyTags = heavyArmor.map(it => it.tag);
 
 					const isHeavy = (ac) => {
-						return ac >= 14 && ac <= PL3_PLATE; // ring mail (14) to +3 Plate
+						return ac >= 14 && ac <= PL3_PLATE; // ring mail (14) to +3 Plate (21)
 					};
 
 					const isBeyondHeavy = (ac) => {
@@ -569,10 +725,8 @@
 						const nonEnch = Object.keys(this._acHeavy).find(armor => this._acHeavy[armor] === ac);
 						if (nonEnch) return `${nonEnch}|phb`;
 						switch (ac) {
-							case 15:
-								return `chain mail +1|dmg`;
 							case 19:
-								return [`plate armor +1|dmg`, `splint armor +2|dmg`][RollerUtil.randomise(1, 0)];
+								return [`plate armor +1|dmg`, `splint armor +2|dmg`][RollerUtil.roll(1, this._rng)];
 							case 20:
 								return `plate armor +2|dmg`;
 							case PL3_PLATE:
@@ -580,30 +734,32 @@
 						}
 					};
 
-					if (it.from) {
-						for (let i = 0; i < it.from.length; ++i) {
-							const armor = it.from[i];
-							const heavyTag = findTag(heavyTags, armor);
+					if (acItem.from) {
+						for (let i = 0; i < acItem.from.length; ++i) {
+							const heavyTag = findTag(heavyTags, acItem.from[i]._);
 							if (heavyTag) {
 								if (isHeavy(targetNoShield)) {
-									it.from[i] = replaceTag(it.from[i], heavyTag, getHeavy(targetNoShield));
-									it.ac = target;
+									const bumpOne = targetNoShield === 15; // there's no heavy armor with 15 AC
+									if (bumpOne) targetNoShield++;
+									acItem.from[i]._ = replaceTag(acItem.from[i]._, heavyTag, getHeavy(targetNoShield));
+									acItem.ac = target + (bumpOne ? 1 : 0);
 									return true;
 								} else if (canDropShield() && isHeavy(target)) {
-									it.from[i] = replaceTag(it.from[i], heavyTag, getHeavy(target));
-									it.ac = target;
-									dropShield(it);
+									const targetWithBump = target + (target === 15 ? 1 : 0); // there's no heavy armor with 15 AC
+									acItem.from[i]._ = replaceTag(acItem.from[i]._, heavyTag, getHeavy(targetWithBump));
+									acItem.ac = targetWithBump;
+									dropShield(acItem);
 									return true;
 								} else if (isBeyondHeavy(targetNoShield)) { // cap it at +3 plate and call it a day
 									const max = PL3_PLATE;
-									it.from[i] = replaceTag(it.from[i], heavyTag, getHeavy(max));
-									it.ac = max;
+									acItem.from[i]._ = replaceTag(acItem.from[i]._, heavyTag, getHeavy(max));
+									acItem.ac = max;
 									return true;
 								} else { // drop to medium
 									const [tagBase, tagMod] = getAcBaseAndMod(this._acLight, heavyTag);
 									const tagAc = tagBase + tagMod;
-									it.from[i] = replaceTag(it.from[i], heavyTag, `half plate armor|phb`);
-									it.ac = (it.ac - tagAc) + 15 + Math.min(2, Parser.getAbilityModNumber(mon.dex));
+									acItem.from[i]._ = replaceTag(acItem.from[i]._, heavyTag, `half plate armor|phb`);
+									acItem.ac = (acItem.ac - tagAc) + 15 + Math.min(2, Parser.getAbilityModNumber(mon.dex));
 									return false;
 								}
 							}
@@ -627,9 +783,9 @@
 						const getByBase = (base) => {
 							switch (base) {
 								case 14:
-									return [`scale mail|phb`, `breastplate|phb`][RollerUtil.randomise(1, 0)];
+									return [`scale mail|phb`, `breastplate|phb`][RollerUtil.roll(1, this._rng)];
 								case 16:
-									return [`half plate armor +1|dmg`, `breastplate +2|dmg`, `scale mail +2|dmg`][RollerUtil.randomise(2, 0)];
+									return [`half plate armor +1|dmg`, `breastplate +2|dmg`, `scale mail +2|dmg`][RollerUtil.roll(2, this._rng)];
 								case 17:
 									return `half plate armor +2|dmg`;
 								case 18:
@@ -683,30 +839,29 @@
 						}
 					};
 
-					if (it.from) {
-						for (let i = 0; i < it.from.length; ++i) {
-							const armor = it.from[i];
-							const mediumTag = findTag(mediumTags, armor);
+					if (acItem.from) {
+						for (let i = 0; i < acItem.from.length; ++i) {
+							const mediumTag = findTag(mediumTags, acItem.from[i]._);
 							if (mediumTag) {
 								const [tagBase, tagMod] = getAcBaseAndMod(this._acMedium, mediumTag);
 								const tagAc = tagBase + tagMod;
 								if (isMedium(targetNoShield)) {
-									it.from[i] = replaceTag(it.from[i], mediumTag, getMedium(targetNoShield, {tag: mediumTag, ac: tagAc}));
-									it.ac = target;
+									acItem.from[i]._ = replaceTag(acItem.from[i]._, mediumTag, getMedium(targetNoShield, {tag: mediumTag, ac: tagAc}));
+									acItem.ac = target;
 									return true;
 								} else if (canDropShield() && isMedium(target)) {
-									it.from[i] = replaceTag(it.from[i], mediumTag, getMedium(target, {tag: mediumTag, ac: tagAc}));
-									it.ac = target;
-									dropShield(it);
+									acItem.from[i]._ = replaceTag(acItem.from[i]._, mediumTag, getMedium(target, {tag: mediumTag, ac: tagAc}));
+									acItem.ac = target;
+									dropShield(acItem);
 									return true;
 								} else if (canAdjustDex && isMedium(targetNoShield, true) === -1) { // drop to light
-									it.from[i] = replaceTag(it.from[i], mediumTag, `studded leather armor|phb`);
-									it.ac = (it.ac - tagAc - Math.min(2, Parser.getAbilityModNumber(mon.dex))) + 12 + Parser.getAbilityModNumber(mon.dex);
+									acItem.from[i]._ = replaceTag(acItem.from[i]._, mediumTag, `studded leather armor|phb`);
+									acItem.ac = (acItem.ac - tagAc - Math.min(2, Parser.getAbilityModNumber(mon.dex))) + 12 + Parser.getAbilityModNumber(mon.dex);
 									return false;
 								} else {
 									// if we need more AC, switch to heavy, and restart the conversion
-									it.from[i] = replaceTag(it.from[i], mediumTag, `ring mail|phb`);
-									it.ac = (it.ac - tagAc - Math.min(2, Parser.getAbilityModNumber(mon.dex))) + 14;
+									acItem.from[i]._ = replaceTag(acItem.from[i]._, mediumTag, `ring mail|phb`);
+									acItem.ac = (acItem.ac - tagAc - Math.min(2, Parser.getAbilityModNumber(mon.dex))) + 14;
 									return -1;
 								}
 							}
@@ -730,11 +885,15 @@
 						const getByBase = (base) => {
 							switch (base) {
 								case 11:
-									return [`padded armor|phb`, `leather armor|phb`][RollerUtil.randomise(1, 0)];
-								default: {
-									const nonEnch = Object.keys(this._acLight).find(it => this._acLight[it] === base);
-									return `${nonEnch}|phb`;
-								}
+									return [`padded armor|phb`, `leather armor|phb`][RollerUtil.roll(1, this._rng)];
+								case 12:
+									return `studded leather armor|phb`;
+								case 13:
+									return [`padded armor +1|dmg`, `leather armor +1|dmg`][RollerUtil.roll(1, this._rng)];
+								case 14:
+									return [`padded armor +2|dmg`, `leather armor +2|dmg`, `studded leather armor +1|dmg`][RollerUtil.roll(2, this._rng)];
+								case 15:
+									return `studded leather armor +2|dmg`;
 							}
 						};
 
@@ -778,35 +937,34 @@
 						}
 					};
 
-					if (it.from) {
-						for (let i = 0; i < it.from.length; ++i) {
-							const armor = it.from[i];
-							const lightTag = findTag(lightTags, armor);
+					if (acItem.from) {
+						for (let i = 0; i < acItem.from.length; ++i) {
+							const lightTag = findTag(lightTags, acItem.from[i]._);
 							if (lightTag) {
 								const [tagBase, tagMod] = getAcBaseAndMod(this._acLight, lightTag);
 								const tagAc = tagBase + tagMod;
 								if (isLight(targetNoShield)) {
-									it.from[i] = replaceTag(it.from[i], lightTag, getLight(targetNoShield, {tag: lightTag, ac: tagAc}));
-									it.ac = target;
+									acItem.from[i]._ = replaceTag(acItem.from[i]._, lightTag, getLight(targetNoShield, {tag: lightTag, ac: tagAc}));
+									acItem.ac = target;
 									return true;
 								} else if (canDropShield() && isLight(target)) {
-									it.from[i] = replaceTag(it.from[i], lightTag, getLight(target, {tag: lightTag, ac: tagAc}));
-									it.ac = target;
-									dropShield(it);
+									acItem.from[i]._ = replaceTag(acItem.from[i]._, lightTag, getLight(target, {tag: lightTag, ac: tagAc}));
+									acItem.ac = target;
+									dropShield(acItem);
 									return true;
 								} else if (!canAdjustDex && isLight(targetNoShield, true) === -1) { // drop armor
-									if (it.from.length === 1) { // revert to pure numerical
-										it._droppedArmor = true;
+									if (acItem.from.length === 1) { // revert to pure numerical
+										acItem._droppedArmor = true;
 										return -1;
 									} else { // revert to base 10
-										it.from.splice(i, 1);
-										it.ac = (it.ac - tagAc) + 10;
+										acItem.from.splice(i, 1);
+										acItem.ac = (acItem.ac - tagAc) + 10;
 										return -1;
 									}
 								} else {
 									// if we need more, switch to medium, and restart the conversion
-									it.from[i] = replaceTag(it.from[i], lightTag, `chain shirt|phb`);
-									it.ac = (it.ac - tagAc - Parser.getAbilityModNumber(mon.dex)) + 13 + Math.min(2, Parser.getAbilityModNumber(mon.dex));
+									acItem.from[i]._ = replaceTag(acItem.from[i]._, lightTag, `chain shirt|phb`);
+									acItem.ac = (acItem.ac - tagAc - Parser.getAbilityModNumber(mon.dex)) + 13 + Math.min(2, Parser.getAbilityModNumber(mon.dex));
 									return -1;
 								}
 							}
@@ -818,19 +976,19 @@
 				const handleNaturalArmor = () => {
 					// if there's natural armor, try adjusting dex, then try adjusting it
 
-					if (it.from && it.from.includes("natural armor")) {
+					if (acItem.from && acItem.from.map(it => it._).includes("natural armor")) {
 						if (canAdjustDex) {
-							it.ac = target;
+							acItem.ac = target;
 							return adjustDex();
 						} else {
-							it.ac = target; // natural armor of all modifiers is still just "natural armor," so this works
+							acItem.ac = target; // natural armor of all modifiers is still just "natural armor," so this works
 							return true;
 						}
 					}
 					return false;
 				};
 
-				if (it.ac && !it._droppedArmor) {
+				if (acItem.ac && !acItem._droppedArmor) {
 					const toRun = [
 						handleMageArmor,
 						handleShield,
@@ -847,20 +1005,60 @@
 					}
 
 					// if there was no reasonable way to adjust the AC, forcibly set it here as a fallback
-					if (!lastVal) it.ac = target;
-					return it;
+					if (!lastVal) acItem.ac = target;
+					return acItem;
 				} else {
 					return handleNoArmor();
 				}
 			};
 
-			let loop = 0;
 			let out = null;
 			while (out == null) {
-				if (loop > 100) throw new Error(`Failed to calculate new AC! Input was:\n${JSON.stringify(it, null, "\t")}`);
+				if (loop > 100) throw new Error(`Failed to calculate new AC! Input was:\n${JSON.stringify(acItem, null, "\t")}`);
 				out = handleAc();
 				loop++;
 			}
+
+			// finalise "from"
+			let handledEnchBonus = !acItem._enchTotal;
+			if (acItem.from) {
+				if (acItem._enchTotal) {
+					acItem.from.forEach(f => {
+						if (handledEnchBonus) return;
+
+						if (f.ench && f.ench < 3) {
+							const enchToGive = Math.min(3 - f.ench, acItem._enchTotal);
+							acItem._enchTotal -= enchToGive;
+							f.ench += enchToGive;
+							acItem.ac += enchToGive;
+							f._ = `{@item ${f.name} +${f.ench}|dmg|+${f.ench} ${f.name}}`;
+							if (acItem._enchTotal <= 0) handledEnchBonus = true;
+						} else if (out._gearBonus) {
+							const enchToGive = Math.min(3, acItem._enchTotal);
+							acItem._enchTotal -= enchToGive;
+							f._ = `{@item ${f.name} +${enchToGive}|dmg|+${enchToGive} ${f.name}}`;
+							if (acItem._enchTotal <= 0) handledEnchBonus = true;
+						}
+					});
+				}
+				acItem.from = acItem.from.map(it => it._);
+			}
+
+			// if there's an unhandled enchantment, give the creature enchanted leather. This implies an extra point of AC, but this is an acceptable workaround
+			if (!handledEnchBonus) {
+				const enchToGive = Math.min(3, acItem._enchTotal);
+				acItem._enchTotal -= enchToGive;
+				acItem.ac += enchToGive + 1;
+				(acItem.from = acItem.from || []).unshift(`{@item leather armor +${enchToGive}|dmg|+${enchToGive} leather armor}`);
+
+				if (acItem._enchTotal > 0) acItem.ac += acItem._enchTotal; // as a fallback, add any remaining enchantment AC to the total
+			}
+
+			if (acItem._miscOffset != null) acItem.ac += acItem._miscOffset;
+
+			// cleanup
+			["_enchTotal", "_gearBonus", "_dexCap", "_miscOffset"].forEach(it => delete acItem[it]);
+
 			return out;
 		});
 	},
@@ -918,7 +1116,7 @@
 		const targetHpDeviation = (hpOutRange[1] - hpOutRange[0]) / 2;
 		const targetHpRange = [Math.floor(targetHpOut - targetHpDeviation), Math.ceil(targetHpOut + targetHpDeviation)];
 
-		const origFormula = mon.hp.formula;
+		const origFormula = mon.hp.formula.replace(/\s*/g, "");
 		mon.hp.average = Math.floor(Math.max(1, targetHpOut));
 
 		const fSplit = origFormula.split(/([-+])/);
@@ -1002,7 +1200,7 @@
 
 		mon.hp.average = Math.floor(getAvg(numHdOut));
 		const outModTotal = numHdOut * hpModOut;
-		mon.hp.formula = `${numHdOut}d${hdFaces}${outModTotal === 0 ? "" : `${outModTotal >= 0 ? "+" : ""}${outModTotal}`}`;
+		mon.hp.formula = `${numHdOut}d${hdFaces}${outModTotal === 0 ? "" : ` ${outModTotal >= 0 ? "+" : ""} ${outModTotal}`}`;
 
 		if (hpModOut !== modPerHd) {
 			const conOut = this._calcNewAbility(mon, "con", hpModOut);
@@ -1069,9 +1267,9 @@
 		const strMod = Parser.getAbilityModNumber(mon.str);
 		const dexMod = Parser.getAbilityModNumber(mon.dex);
 
-		const getAdjustedHit = (toHitIn) => {
-			return this._getScaledToRatio(toHitIn, idealHitIn, idealHitOut);
-		};
+		// prefer scaling to-hits by a flat difference, rather than using a ratio
+		// this keeps ability scores more sane, and better maintains bounded accuracy
+		const getAdjustedHitFlat = (toHitIn) => toHitIn + (idealHitOut - idealHitIn);
 
 		const handleHit = (str, name) => {
 			const offsetEnchant = name != null ? this._getEnchantmentBonus(name) : 0;
@@ -1080,35 +1278,34 @@
 				const curToHit = Number(m1);
 
 				const modFromAbil = curToHit - (offsetEnchant + pbOut);
-				const modBeingScaled = name != null ? this._getModBeingScaled(strMod, dexMod, modFromAbil, name, str) : null;
+				const modBeingScaled = name != null ? this._getModBeingScaled(strMod, dexMod, modFromAbil, name, str) : null; // ignore spell attacks here, as they'll be scaled using DCs later
 
-				const origToHit = curToHit + pbIn - pbOut;
-				const outToHit = getAdjustedHit(origToHit);
-				if (curToHit === outToHit) return m0;
+				const origToHitNoEnch = curToHit + (pbIn - pbOut) - offsetEnchant;
+				const targetToHitNoEnch = getAdjustedHitFlat(origToHitNoEnch);
+
+				if (origToHitNoEnch === targetToHitNoEnch) return m0; // this includes updated PB, so just return it
 
 				if (modBeingScaled != null) {
-					const modDiff = outToHit - curToHit;
+					const modDiff = (targetToHitNoEnch - pbOut) - (origToHitNoEnch - pbIn);
 					const modFromAbilOut = modFromAbil + modDiff;
 					const tempKey = `_${modBeingScaled}TmpMods`;
 					mon[tempKey] = mon[tempKey] || [];
 					mon[tempKey].push(modFromAbilOut);
 				}
-				return `{@hit ${outToHit}}`;
+				return `{@hit ${targetToHitNoEnch + offsetEnchant}}`;
 			})
 		};
 
 		const idealDcIn = this._crToDc(crIn);
 		const idealDcOut = this._crToDc(crOut);
 
-		const getAdjustedDc = (dcIn) => {
-			return this._getScaledToRatio(dcIn, idealDcIn, idealDcOut);
-		};
+		const getAdjustedDcFlat = (dcIn) => dcIn + (idealDcOut - idealDcIn);
 
 		const handleDc = (str, castingAbility) => {
 			return str.replace(/DC (\d+)/g, (m0, m1) => {
 				const curDc = Number(m1);
 				const origDc = curDc + pbIn - pbOut;
-				const outDc = Math.max(13, getAdjustedDc(origDc));
+				const outDc = Math.max(10, getAdjustedDcFlat(origDc));
 				if (curDc === outDc) return m0;
 
 				if (["int", "wis", "cha"].includes(castingAbility)) {
@@ -1171,8 +1368,8 @@
 		checkSetTempMod("dex");
 	},
 
-	_DAMAGE_REGEX_DICE: new RegExp(/(\d+)( \({@dice )([-+0-9d ]*)(}\) [a-z]+( or [a-z]+)? damage)/, "ig"),
-	_DAMAGE_REGEX_FLAT: new RegExp(/(Hit: )([0-9]*)( [a-z]+( or [a-z]+)? damage)/, "ig"),
+	_DAMAGE_REGEX_DICE: new RegExp(/(\d+)( \((?:{@dice |{@damage ))([-+0-9d ]*)(}\) [a-z]+( or [a-z]+)? damage)/, "ig"),
+	_DAMAGE_REGEX_FLAT: new RegExp(/(Hit: |{@h})([0-9]*)( [a-z]+( or [a-z]+)? damage)/, "ig"),
 	_adjustDpr (mon, crIn, crOut) {
 		const idealDprRangeIn = this._crDprRanges[crIn];
 		const idealDprRangeOut = this._crDprRanges[crOut];
@@ -1180,10 +1377,12 @@
 		const dprTotalOut = Math.mean(...idealDprRangeOut);
 
 		const getAdjustedDpr = (dprIn) => {
+			if (crIn === 0) dprIn = Math.min(dprIn, 0.63); // cap CR 0 DPR to prevent average damage in the thousands
 			return this._getScaledToRatio(dprIn, dprTotalIn, dprTotalOut);
 		};
 
 		const getAvgDpr = (diceExp) => {
+			diceExp = diceExp.replace(/\s*/g, "");
 			const asAverages = diceExp.replace(/d(\d+)/gi, (...m) => {
 				return ` * ${(Number(m[1]) + 1) / 2}`;
 			});
@@ -1215,7 +1414,7 @@
 							return `${prefix}${adjDpr}${suffix}`;
 						});
 
-						// track attribute adjustment requirements (unused except for debugging)
+						// track attribute adjustment requirements (unused except for dbgging)
 						const reqAbilAdjust = [];
 
 						// pre-calculate enchanted weapon offsets
@@ -1302,7 +1501,7 @@
 								}
 							};
 
-							const getDiceExp = (a = numDiceOut, b = diceFacesOut, c = modOut) => `${a}d${b}${c !== 0 ? `${c > 0 ? "+" : ""}${c}` : ""}`;
+							const getDiceExp = (a = numDiceOut, b = diceFacesOut, c = modOut) => `${a}d${b}${c !== 0 ? ` ${c > 0 ? "+" : ""} ${c}` : ""}`;
 							let loops = 0;
 							while (1) {
 								if (inRange(getAvgDpr(getDiceExp()))) break;
@@ -1487,6 +1686,28 @@
 		});
 	},
 
+	_spells: null,
+	_pInitSpellCache () {
+		if (this._spells) return Promise.resolve();
+
+		this._spells = {};
+		return DataUtil.loadJSON(`data/spells/spells-phb.json`).then(data => {
+			this.__initSpellCache(data);
+		});
+	},
+
+	__initSpellCache (data) {
+		data.spell.forEach(s => {
+			s.classes.fromClassList.forEach(c => {
+				let it = (this._spells[c.source] = this._spells[c.source] || {});
+				const lowName = c.name.toLowerCase();
+				it = (it[lowName] = it[lowName] || {});
+				it = (it[s.level] = it[s.level] || {});
+				it[s.name] = 1;
+			})
+		});
+	},
+
 	_adjustSpellcasting (mon, crIn, crOut) {
 		const getSlotsAtLevel = (casterLvl, slotLvl) => {
 			// there's probably a nice equation for this somewhere
@@ -1531,37 +1752,102 @@
 						} else return m[0];
 					});
 
-					const mClasses = /(bard|cleric|druid|paladin|ranger|sorcerer|warlock|wizard) spells/i.exec(outStr);
+					const mClasses = /(bard|cleric|druid|paladin|ranger|sorcerer|warlock|wizard) spell(?:s)?/i.exec(outStr);
 					if (mClasses) spellsFromClass = mClasses[1];
+					else {
+						const mClasses2 = /(bard|cleric|druid|paladin|ranger|sorcerer|warlock|wizard)(?:'s)? spell list/i.exec(outStr);
+						if (mClasses2) spellsFromClass = mClasses2[1]
+					}
 
 					if (anyChange) sc.headerEntries = JSON.parse(outStr);
 				}
 
+				// calculate spell level from caster levels
+				let maxSpellLevel = null;
+				if (primaryOutLevel) {
+					maxSpellLevel = Math.min(9, Math.ceil(primaryOutLevel / 2));
+
+					// cap half-caster slots at 5
+					if (/paladin|ranger/i.exec(spellsFromClass)) {
+						maxSpellLevel = Math.min(5, primaryOutLevel);
+					}
+				}
+
 				if (sc.spells && primaryOutLevel != null) {
 					const spells = sc.spells;
-					// FIXME doesn't handle cantrips, which have varied scaling. Use Cleric/Wizard scaling; a middle-ground?
+					// cantrips
+					if (spells[0]) {
+						const curCantrips = spells[0].spells.length;
+						const idealCantripsIn = this._casterLevelAndClassToCantrips(primaryInLevel, spellsFromClass);
+						const idealCantripsOut = this._casterLevelAndClassToCantrips(primaryOutLevel, spellsFromClass);
+						const targetCantripCount = this._getScaledToRatio(curCantrips, idealCantripsIn, idealCantripsOut);
 
+						if (curCantrips < targetCantripCount) {
+							const cantrips = Object.keys((this._spells[SRC_PHB][spellsFromClass.toLowerCase()] || {})[0]).map(it => it.toLowerCase());
+							if (cantrips.length) {
+								const extraCantrips = [];
+								const numNew = Math.min(targetCantripCount - curCantrips, cantrips.length);
+								for (let n = 0; n < numNew; ++n) {
+									const ix = RollerUtil.roll(cantrips.length, this._rng);
+									extraCantrips.push(cantrips[ix]);
+									cantrips.splice(ix, 1);
+								}
+								spells[0].spells = spells[0].spells.concat(extraCantrips.map(it => `{@spell ${it}}`));
+							}
+						} else {
+							const keepThese = this._protectedCantrips.map(it => `@spell ${it}`);
+							while (spells[0].spells.length > targetCantripCount) {
+								const ixs = spells[0].spells.filterIndex(it => !~keepThese.findIndex(x => it.includes(x)));
+								if (ixs.length) {
+									const ix = RollerUtil.roll(ixs.length, this._rng);
+									spells[0].spells.splice(ix, 1);
+								} else spells[0].spells.pop();
+							}
+						}
+					}
+
+					// spells
 					let lastRatio = 1; // adjust for higher/lower than regular spell slot counts
 					for (let i = 1; i < 10; ++i) {
 						const atLevel = spells[i];
 						const idealSlotsIn = getSlotsAtLevel(primaryInLevel, i);
 						const idealSlotsOut = getSlotsAtLevel(primaryOutLevel, i);
 
-						if (atLevel && atLevel.slots) {
-							const adjustedSlotsOut = this._getScaledToRatio(atLevel.slots, idealSlotsIn, idealSlotsOut);
-							lastRatio = adjustedSlotsOut / idealSlotsOut;
+						if (atLevel) {
+							if (atLevel.slots) { // no "slots" signifies at-wills
+								const adjustedSlotsOut = this._getScaledToRatio(atLevel.slots, idealSlotsIn, idealSlotsOut);
+								lastRatio = adjustedSlotsOut / idealSlotsOut;
 
-							atLevel.slots = adjustedSlotsOut;
-							if (adjustedSlotsOut <= 0) {
-								delete spells[i];
+								atLevel.slots = adjustedSlotsOut;
+								if (adjustedSlotsOut <= 0) {
+									delete spells[i];
+								}
 							}
-						} else if (i <= primaryOutLevel) {
-							spells[i] = {
-								slots: Math.max(1, Math.round(idealSlotsOut * lastRatio)),
-								spells: [
-									`{@filter A selection of ${Parser.spLevelToFull(i)}-level ${spellsFromClass ? `${spellsFromClass} ` : ""}spells|spells|level=${i}${spellsFromClass ? `|class=${spellsFromClass}` : ""}}`
-								]
-							};
+						} else if (i <= maxSpellLevel) {
+							const slots = Math.max(1, Math.round(idealSlotsOut * lastRatio));
+							if (spellsFromClass && (this._spells[SRC_PHB][spellsFromClass.toLowerCase()] || {})[i]) {
+								const examples = [];
+								const levelSpells = Object.keys(this._spells[SRC_PHB][spellsFromClass.toLowerCase()][i]).map(it => it.toLowerCase());
+								const numExamples = Math.min(5, levelSpells.length);
+								for (let n = 0; n < numExamples; ++n) {
+									const ix = RollerUtil.roll(levelSpells.length, this._rng);
+									examples.push(levelSpells[ix]);
+									levelSpells.splice(ix, 1);
+								}
+								spells[i] = {
+									slots,
+									spells: [
+										`A selection of {@filter ${Parser.spLevelToFull(i)}-level ${spellsFromClass} spells|spells|level=${i}|class=${spellsFromClass}}. Examples include: ${examples.map(it => `{@spell ${it}}`).joinConjunct(", ", " and ")}`
+									]
+								};
+							} else {
+								spells[i] = {
+									slots,
+									spells: [
+										`A selection of {@filter ${Parser.spLevelToFull(i)}-level spells|spells|level=${i}}`
+									]
+								};
+							}
 						} else {
 							delete spells[i];
 						}

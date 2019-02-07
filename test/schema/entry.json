@@ -5,7 +5,7 @@
 	"id": "/Entry",
 	"description": "A recursively renderable object.",
 	"type": ["string", "integer", "object"],
-	"version": "1.1.1",
+	"version": "1.2.8",
 
 	"definitions" : {
 		"entry": {
@@ -21,6 +21,9 @@
 				},
 				"data": {
 					"type": "object"
+				},
+				"page": {
+					"type": "integer"
 				}
 			},
 			"required": [
@@ -37,6 +40,12 @@
 						"name": {
 							"type": "string"
 						},
+						"alias": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
 						"entries": {
 							"type": "array",
 							"items": {
@@ -44,7 +53,14 @@
 							}
 						},
 						"data": {
+							"description": "A generic object for storing special data for external use-cases.",
 							"type": "object"
+						},
+						"page": {
+							"type": "integer"
+						},
+						"source": {
+							"type": "string"
 						}
 					},
 					"required": ["entries"],
@@ -61,6 +77,12 @@
 						"name": {
 							"type": "string"
 						},
+						"alias": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
 						"entries": {
 							"type": "array",
 							"items": {
@@ -69,6 +91,12 @@
 						},
 						"data": {
 							"type": "object"
+						},
+						"page": {
+							"type": "integer"
+						},
+						"source": {
+							"type": "string"
 						}
 					},
 					"required": ["entries"],
@@ -196,6 +224,21 @@
 					"properties": {
 						"type": {"const": "table"},
 						"caption": {"type" : "string"},
+						"intro": {
+							"description": "Primarily for homebrew use.",
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						},
+						"outro": {
+							"description": "Primarily for homebrew use.",
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						},
+						"style": {"type" : "string"},
 						"colLabels": {
 							"type": "array",
 							"items": {"type" : "string"}
@@ -222,7 +265,9 @@
 											"$ref": "/Entry"
 										}
 									},
-									"#/definitions/entryTableRow"
+									{
+										"$ref": "#/definitions/entryTableRow"
+									}
 								]
 							}
 						},
@@ -231,9 +276,36 @@
 							"items": {
 								"$ref": "/Entry"
 							}
+						},
+						"data": {
+							"type": "object"
 						}
 					},
 					"required": ["rows"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryTableGroup": {
+			"description": "Used to group related tables together; has no effect on rendering.",
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "tableGroup"},
+						"tables": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/entryTable"
+							}
+						},
+						"name": {
+							"type": "string"
+						},
+						"data": {
+							"type": "object"
+						}
+					},
 					"additionalProperties": false
 				}
 			]
@@ -314,6 +386,10 @@
 				{
 					"properties": {
 						"type": {"const": "list"},
+						"columns": {
+							"description": "Number of columns the content should be split into. Note that the full value is only displayed on wide screens, and screens below certain widths will see an appropriately reduced number of columns.",
+							"type": "integer"
+						},
 						"style": {
 							"type": "string"
 						},
@@ -380,9 +456,11 @@
 										"type": "integer"
 									},
 									"modifier": {
+										"description": "(Warning: unused)",
 										"type": "integer"
 									},
 									"hideModifier": {
+										"description": "(Warning: unused)",
 										"type": "boolean"
 									}
 								},
@@ -560,7 +638,8 @@
 				}
 			]
 		},
-		"entryInvocation": {
+		"entryOptFeature": {
+			"description": "For e.g. Eldritch Invocations which require prerequisite text",
 			"allOf" : [
 				{"$ref" : "#/definitions/entry"},
 				{
@@ -568,7 +647,7 @@
 						"name": {
 							"type": "string"
 						},
-						"type": {"const": "invocation"},
+						"type": {"const": "optfeature"},
 						"prerequisite": {
 							"type": "string"
 						}
@@ -608,6 +687,12 @@
 						},
 						"data": {
 							"type": "object"
+						},
+						"page": {
+							"type": "integer"
+						},
+						"source": {
+							"type": "string"
 						}
 					},
 					"required": ["entries"],
@@ -626,6 +711,12 @@
 							"items": {
 								"$ref": "/Entry"
 							}
+						},
+						"page": {
+							"type": "integer"
+						},
+						"source": {
+							"type": "string"
 						}
 					},
 					"required": ["entries"]
@@ -792,9 +883,37 @@
 						},
 						"title": {
 							"type": "string"
+						},
+						"altText": {
+							"description": "For accessibility purposes",
+							"type": "string"
+						},
+						"imageType": {
+							"type": "string",
+							"enum": [
+								"map"
+							]
 						}
 					},
 					"required": ["href"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryGallery": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "gallery"},
+						"images": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/entryImage"
+							}
+						}
+					},
+					"required": ["images"],
 					"additionalProperties": false
 				}
 			]
@@ -863,6 +982,119 @@
 				"type",
 				"dataCreature"
 			]
+		},
+
+		"dataDamImmune": {
+			"oneOf": [
+				{
+					"$ref": "#/definitions/dataDmgType"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"special": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["special"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"preNote": {
+							"type": "string"
+						},
+						"immune": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/damImmune"
+							}
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["immune"]
+				}
+			]
+		},
+		"dataCondImmune": {
+			"oneOf": [
+				{
+					"$ref": "#/definitions/dataConditions"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"special": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["special"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"preNote": {
+							"type": "string"
+						},
+						"conditionImmune": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/dataConditions"
+							}
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["conditionImmune"]
+				}
+			]
+		},
+		"dataConditions": {
+			"type": "string",
+			"enum": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"grappled",
+				"incapacitated",
+				"invisible",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained",
+				"stunned",
+				"unconscious",
+
+				"disease"
+			]
+		},
+		"dataDmgType": {
+			"type": "string",
+			"enum": [
+				"acid",
+				"bludgeoning",
+				"cold",
+				"fire",
+				"force",
+				"lightning",
+				"necrotic",
+				"piercing",
+				"poison",
+				"psychic",
+				"radiant",
+				"slashing",
+				"thunder"
+			]
 		}
 	},
 
@@ -874,6 +1106,7 @@
 		{"$ref": "#/definitions/entryInlineEntries"},
 		{"$ref": "#/definitions/entryEntriesInlineEntries"},
 		{"$ref": "#/definitions/entryOptions"},
+		{"$ref": "#/definitions/entryTableGroup"},
 		{"$ref": "#/definitions/entryTable"},
 		{"$ref": "#/definitions/entryTableRow"},
 		{"$ref": "#/definitions/entryTableCell"},
@@ -885,7 +1118,7 @@
 		{"$ref": "#/definitions/entryAbilityAttackMod"},
 		{"$ref": "#/definitions/abilityGeneric"},
 		{"$ref": "#/definitions/entryLink"},
-		{"$ref": "#/definitions/entryInvocation"},
+		{"$ref": "#/definitions/entryOptFeature"},
 		{"$ref": "#/definitions/entryPatron"},
 		{"$ref": "#/definitions/entryInset"},
 		{"$ref": "#/definitions/entryInsetReadaloud"},
@@ -895,6 +1128,7 @@
 		{"$ref": "#/definitions/entryItemSub"},
 		{"$ref": "#/definitions/entryItemSpell"},
 		{"$ref": "#/definitions/entryImage"},
+		{"$ref": "#/definitions/entryGallery"},
 		{"$ref": "#/definitions/entryActions"},
 		{"$ref": "#/definitions/entryAttack"},
 		{"$ref": "#/definitions/entryAttack"},

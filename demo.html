@@ -11,10 +11,11 @@
 	<title>Renderer Demo - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 	<style>
@@ -23,45 +24,52 @@
 			height: 100%;
 		}
 		#capheight {
-			height: calc(100vh - 150px);
 			overflow-y: scroll;
+			margin-bottom: 28px;
 		}
 	</style>
 </head>
 
 <body>
-<header class="hidden-xs hidden-sm">
-	<div class="container">
+<div class="viewport-wrapper">
+	<header class="hidden-xs hidden-sm page__header">
+		<div class="container">
 
-		<h1>Renderer Demo</h1>
-		<p>Edit the JSON on the left, and see the results on the right</p>
-	</div>
-</header>
-<nav class="container" id="navigation">
-	<ul class="nav nav-pills" id="navbar">
-	</ul>
-</nav>
+			<h1 class="page__title">Renderer Demo</h1>
+			<p class="page__subtitle">Edit the JSON on the left, and see the results on the right</p>
+		</div>
+	</header>
+	<nav class="container page__nav" id="navigation">
+		<ul class="nav nav-pills" id="navbar">
+		</ul>
+	</nav>
 
-<div class="view-col-wrapper">
-	<div class="view-col">
-		<p><button class="btn" id="demoRender">Render</button> <button class="btn" id="demoReset">Reset</button> <span id="message"></span></p>
-		<pre id="jsoninput" class="inputArea"></pre>
-	</div>
-	<div id="capheight" class="view-col">
-		<table id="pagecontent" class="stats">
-			<!-- populate with JS -->
-		</table>
+	<div class="view-col-wrapper">
+		<div class="view-col">
+			<pre id="jsoninput" class="inputArea ace_editor"></pre>
+			<p><button class="btn btn-default" id="demoRender">Render</button> <button class="btn btn-default" id="demoReset">Reset</button> <span id="message"></span></p>
+		</div>
+
+		<div id="capheight" class="view-col">
+			<table id="pagecontent" class="stats">
+				<!-- populate with JS -->
+			</table>
+		</div>
 	</div>
 </div>
 
-<footer class="container"></footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_SCRIPT_ANCHOR__ACE-JS-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/demo.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
-<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 <script type="text/javascript" src="lib/ace.js"></script>
 </body>

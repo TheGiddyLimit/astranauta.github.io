@@ -194,8 +194,8 @@
 														"Devil(s)"
 													],
 													"colStyles": [
-														"col-xs-4",
-														"col-xs-8"
+														"col-4",
+														"col-8"
 													],
 													"rows": [
 														[
@@ -272,11 +272,11 @@
 												"Primary Inhabitants"
 											],
 											"colStyles": [
-												"col-xs-1",
-												"col-xs-2",
-												"col-xs-3",
-												"col-xs-3",
-												"col-xs-3"
+												"col-1",
+												"col-2",
+												"col-3",
+												"col-3",
+												"col-3"
 											],
 											"rows": [
 												[
@@ -491,7 +491,7 @@
 											"name": "Protected Essence",
 											"entries": [
 												"A powerful demon can take steps to safeguard its life essence, using secret methods and abyssal metals to create an amulet into which part of that essence is ceded. If the demon's abyssal form is ever destroyed, the amulet allows the fiend to reform at a time and place of its choosing.",
-												"Obtaining a demonic amulet is a dangerous enterprise, and simply seeking such a device risks drawing the attention of the demon that created it. A creature possessing a demonic amulet can exact favors from the demon whose life essence the amulet holds- or inflict great pain if the fiend resists. If an amulet is destroyed, the demon that created it is trapped in the Abyss for a year and a day."
+												"Obtaining a demonic amulet is a dangerous enterprise, and simply seeking such a device risks drawing the attention of the demon that created it. A creature possessing a demonic amulet can exact favors from the demon whose life essence the amulet holds\u2014or inflict great pain if the fiend resists. If an amulet is destroyed, the demon that created it is trapped in the Abyss for a year and a day."
 											]
 										}
 									]
@@ -636,7 +636,7 @@
 									"name": "Lolth",
 									"entries": [
 										"The Demon Queen of Spiders is the evil matron of the drow. Her every thought is touched by malice, and the depth of her viciousness can surprise even her most faithful priestesses. She directs her faithful while she weaves plots across the worlds of the Material Plane, looking forward to the time when her drow followers bring those worlds under her control.",
-										"Lolth appears as a lithe, imperious drow matriarch when she manifests to her followers in the mortal realm, which she does with unusual frequency. When battle breaks out-or if she has a reason to remind her followers to fear her-Lolth's lower body transforms into that of a huge demonic spider, whose spike-tipped legs and mandibles tear foes apart."
+										"Lolth appears as a lithe, imperious drow matriarch when she manifests to her followers in the mortal realm, which she does with unusual frequency. When battle breaks out-or if she has a reason to remind her followers to fear her\u2014Lolth's lower body transforms into that of a huge demonic spider, whose spike\u2014tipped legs and mandibles tear foes apart."
 									]
 								},
 								{
@@ -671,8 +671,8 @@
 										"Examples"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -752,16 +752,15 @@
 						"Dragon Age Categories",
 						{
 							"type": "table",
-							"caption": "",
 							"colLabels": [
 								"Category",
 								"Size",
 								"Age Range"
 							],
 							"colStyles": [
-								"col-xs-4",
-								"col-xs-4",
-								"col-xs-4"
+								"col-4",
+								"col-4",
+								"col-4"
 							],
 							"rows": [
 								[
@@ -943,30 +942,6 @@
 												"Somewhere in the brimstone wastes of Gehenna, there roams an ultroloth so strong that none contests his power: the General of Gehenna. Many yugoloths search for this great general in the hope of serving with him. They believe that service with the General of Gehenna grants power and prestige among lower planar entities.",
 												"Whatever the case, no fiend finds the General unless the General desires it. His personal name is unknown, and even the Books of Keeping contain no mention of this powerful, thoroughly evil entity."
 											]
-										},
-										{
-											"type": "inset",
-											"name": "Variant: Yugoloth Summoning",
-											"entries": [
-												"Some yugoloths have an action option that allows them to summon other yugoloths.",
-												{
-													"type": "entries",
-													"name": "Summon Yugoloth (1/Day)",
-													"entries": [
-														"The yugoloth chooses what to summon and attempts a magical summoning.",
-														{
-															"type": "list",
-															"items": [
-																"An {@creature arcanaloth} has a 40 percent chance of summoning one {@creature arcanaloth}.",
-																"A {@creature mezzoloth} has a 30 percent chance of summoning one {@creature mezzoloth}.",
-																"A {@creature nycaloth} has a 50 percent chance of summoning 1d4 {@creature mezzoloth|mm|mezzoloths} or one {@creature nycaloth}.",
-																"An {@creature ultroloth} has a 50 percent chance of summoning 1d6 {@creature mezzoloth|mm|mezzoloths}, 1d4 {@creature nycaloth|mm|nycaloths}, or one {@creature ultroloth}."
-															]
-														},
-														"A summoned yugoloth appears in an unoccupied space within 60 feet of its summoner, does as it pleases (unless its summoner is an ultroloth, in which case it acts as an ally of its summoner), and can't summon other yugoloths. The summoned yugoloth remains for 1 minute, until it or its summoner dies, or until its summoner takes a bonus action to dismiss it."
-													]
-												}
-											]
 										}
 									]
 								}
@@ -1085,17 +1060,89 @@
 					"entries": [
 						"A mephit doesn't require food, drink, or sleep."
 					]
+				}
+			]
+		},
+		{
+			"name": "Lycanthropes",
+			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Lycanthropes.jpg"
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "section",
+					"name": "Lycanthropes",
+					"entries": [
+						"One of the most ancient and feared of all curses, lycanthropy can transform the most civilized humanoid into a ravening beast. In its natural humanoid form, a creature cursed by lycanthropy appears as its normal self. Over time, however, many lycanthropes acquire features suggestive of their animal form. In that animal form, a lycanthrope resembles a powerful version of a normal animal. On close inspection, its eyes show a faint spark of unnatural intelligence and might glow red in the dark.",
+						"Evil lycanthropes hide among normal folk, emerging in animal form at night to spread terror and bloodshed, especially under a full moon. Good lycanthropes are reclusive and uncomfortable around other civilized creatures, often living alone in wilderness areas far from villages and towns.",
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Curse of Lycanthropy",
+									"entries": [
+										"A humanoid creature can be afflicted with the curse of lycanthropy after being wounded by a lycanthrope, or if one or both of its parents are lycanthropes. A remove curse spell can rid an afflicted lycanthrope of the curse, but a natural born lycanthrope can be freed of the curse only with a wish.",
+										"A lycanthrope can either resist its curse or embrace it. By resisting the curse, a lycanthrope retains its normal alignment and personality while in humanoid form. It lives its life as it always has, burying deep the bestial urges raging inside it. However, when the full moon rises, the curse becomes too strong to resist, transforming the individual into its beast form-or into a horrible hybrid form that combines animal and humanoid traits. When the moon wanes, the beast within can be controlled once again. Especially if the cursed creature is unaware of its condition, it might not remember the events of its transformation, though those memories often haunt a lycanthrope as bloody dreams.",
+										"Some individuals see little point in fighting the curse and accept what they are. With time and experience, they learn to master their shapechanging ability and can assume beast form or hybrid form at will. Most lycanthropes that embrace their bestial natures succumb to bloodlust, becoming evil, opportunistic creatures that prey on the weak."
+									]
+								}
+							]
+						}
+					]
 				},
 				{
 					"type": "inset",
-					"name": "Variant: Mephit Summoning",
+					"name": "Player Characters as Lycanthropes",
 					"entries": [
-						"Some mephits can have an action option that allows them to summon other mephits.",
+						"A character who becomes a lycanthrope retains his or her statistics except as specified by lycanthrope type. The character gains the lycanthrope's speeds in non-humanoid form, damage immunities, traits, and actions that don't involve equipment. The character is proficient with the lycanthrope's natural attacks, such as its bite or claws, which deal damage as shown in the lycanthrope's statistics. The character can't speak while in animal form.",
+						"A non-lycanthrope humanoid hit by an attack that carries the curse of lycanthropy must succeed on a Constitution saving throw (DC 8 + the lycanthrope's proficiency bonus + the lycanthrope's Constitution modifier) or be cursed. If the character embraces the curse, his or her alignment becomes the one defined for the lycanthrope. The DM is free to decide that a change in alignment places the character under DM control until the curse of lycanthropy is removed.",
+						"The following information applies to specific lycanthropes.",
 						{
-							"name": "Summon Mephits (1/Day)",
 							"type": "entries",
 							"entries": [
-								"The mephit has a 25 percent chance of summoning 1d4 mephits of its kind. A summoned mephit appears in an unoccupied space within 60 feet of its summoner, acts as an ally of its summoner, and can't summon other mephits. It remains for 1 minute, until it or its summoner dies, or until its summoner dismisses it as an action."
+								{
+									"type": "entries",
+									"name": "{@creature Werebear}",
+									"entries": [
+										"The character gains a Strength of 19 if his or her score isn't already higher, and a +1 bonus to AC while in bear or hybrid form (from natural armor). Attack and damage rolls for the natural weapons are based on Strength."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "{@creature Wereboar}",
+									"entries": [
+										"The character gains a Strength of 17 if his or her score isn't already higher, and a +1 bonus to AC while in boar or hybrid form (from natural armor). Attack and damage rolls for the tusks are based on Strength. For the Charge trait, the DC is 8 + the character's proficiency bonus + Strength modifier."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "{@creature Wererat}",
+									"entries": [
+										"The character gains a Dexterity of 15 if his or her score isn't already higher. Attack and damage rolls for the bite are based on whichever is higher of the character's Strength and Dexterity."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "{@creature Weretiger}",
+									"entries": [
+										"The character gains a Strength of 17 if his or her score isn't already higher. Attack and damage rolls for the natural weapons are based on Strength. For the Pounce trait, the DC is 8 + the character's proficiency bonus + Strength modifier."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "{@creature Werewolf}",
+									"entries": [
+										"The character gains a Strength of 15 if his or her score isn't already higher, and a +1 bonus to AC while in wolf or hybrid form (from natural armor). Attack and damage rolls for the natural weapons are based on Strength."
+									]
+								}
 							]
 						}
 					]
@@ -1172,22 +1219,6 @@
 					"entries": [
 						"Aboleths lair in subterranean lakes or the rocky depths of the ocean, often surrounded by the ruins of an ancient, fallen aboleth city. An aboleth spends most of its existence underwater, surfacing occasionally to treat with visitors or deranged worshipers."
 					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing an aboleth's lair is warped by the creature's presence, which creates one or more of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"Underground surfaces within 1 mile of the aboleth's lair are slimy and wet and are difficult terrain.",
-								"Water sources within 1 mile of the lair are supernaturally fouled. Enemies of the aboleth that drink such water vomit it within minutes.",
-								"As an action, the aboleth can create an illusory image of itself within 1 mile of the lair. The copy can appear at any location the aboleth has seen before or in any location a creature charmed by the aboleth can currently see. Once created, the image lasts for as long as the aboleth maintains concentration, as if concentrating on a spell. Although the image is intangible, it looks, sounds, and can move like the aboleth. The aboleth can sense, speak, and use telepathy from the image's position as if present at that position. If the image takes any damage, it disappears."
-							]
-						},
-						"If the aboleth dies, the first two effects fade over the course of 3d10 days."
-					]
 				}
 			]
 		},
@@ -1217,6 +1248,15 @@
 		{
 			"name": "Adult Blue Dracolich",
 			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Dracolich.jpg"
+					}
+				}
+			],
 			"entries": [
 				"Even as long-lived as they are, all dragons must eventually die. This thought doesn't sit well with many dragons, some of which allow themselves to be transformed by necromantic energy and ancient rituals into powerful undead dracoliches. Only the most narcissistic dragons choose this path, knowing that by doing so, they sever all ties to their kin and the dragon gods.",
 				{
@@ -1741,7 +1781,7 @@
 				}
 			],
 			"entries": [
-				"When night falls, unlucky travellers hear the faint cries of the forlorn dead. This woeful spirit is a banshee, a spiteful creature formed from the spirit of a female elf. Banshees appear as luminous, wispy forms that vaguely recall their mortal features. A banshee's face is wreathed in a wild tangle of hair, its body clad in wispy rags that flutter and stream around it.",
+				"When night falls, unlucky travelers hear the faint cries of the forlorn dead. This woeful spirit is a banshee, a spiteful creature formed from the spirit of a female elf. Banshees appear as luminous, wispy forms that vaguely recall their mortal features. A banshee's face is wreathed in a wild tangle of hair, its body clad in wispy rags that flutter and stream around it.",
 				{
 					"name": "Divine Wrath",
 					"type": "entries",
@@ -1760,7 +1800,7 @@
 					"name": "Beauty Hoarders",
 					"type": "entries",
 					"entries": [
-						"The vanity that inspired the banshee's cursed creation persists in undeath. These creatures covet beautiful objects: fine jewellery, paintings, statues, and other objects of art. At the same time, a banshee abhors any mirrored surface, for it can't bear to see the horror of its own existence. A single glimpse of itself is enough to send a banshee into a rage."
+						"The vanity that inspired the banshee's cursed creation persists in undeath. These creatures covet beautiful objects: fine jewelery, paintings, statues, and other objects of art. At the same time, a banshee abhors any mirrored surface, for it can't bear to see the horror of its own existence. A single glimpse of itself is enough to send a banshee into a rage."
 					]
 				},
 				{
@@ -1944,21 +1984,6 @@
 					"entries": [
 						"A beholder's central lair is typically a large, spacious cavern with high ceilings, where it can attack without fear of closing to melee range. A beholder encountered in its lair has a challenge rating of 14 (11,500 XP)."
 					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"A region containing a beholder's lair is warped by the creature's unnatural presence, which creates one or more of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"Creatures within 1 mile of the beholder's lair sometimes feel as if they're being watched when they aren't.",
-								"When the beholder sleeps, minor warps in reality occur within 1 mile of its lair and then vanish 24 hours later. Marks on cave walls might change subtly, an eerie trinket might appear where none existed before, harmless slime might coat a statue, and so on. These effects apply only to natural surfaces and to nonmagical objects that aren't on anyone's person."
-							]
-						},
-						"If the beholder dies, these effects fade over the course of 1d10 days."
-					]
 				}
 			]
 		},
@@ -2069,7 +2094,7 @@
 				}
 			],
 			"entries": [
-				"The bone hooks that protrude from the back of a blue slaad's hands inflict a terrible transformative disease on humanoids wounded by them. This infection, called chaos phage, transforms its victim into a fully grown red slaad-or green slaad if the host was a spellcaster able to cast 3rd level spells or higher.",
+				"The bone hooks that protrude from the back of a blue slaad's hands inflict a terrible transformative disease on humanoids wounded by them. This infection, called chaos phage, transforms its victim into a fully grown red slaad\u2014or green slaad if the host was a spellcaster able to cast 3rd level spells or higher.",
 				{
 					"type": "entries",
 					"name": "Slaadi",
@@ -2078,13 +2103,7 @@
 						"The Spawning Stone. Long ago, Primus, overlord of the modrons, created a gigantic, geometrically complex stone imbued with the power of law. He then cast it adrift in Limbo, believing that the stone would bring order to the chaos of that plane and halt the spread of chaos to other planes. As the stone's power grew, it became possible for creatures with ordered minds, such as modrons and githzerai, to create enclaves in Limbo. However, Primus's creation had an unforeseen side effect: the chaotic energy absorbed by the stone spawned the horrors that came to be known as slaadi. Sages refer to Primus's massive creation as the Spawning Stone for this reason.",
 						"The slaadi wiped out every last modron enclave in Limbo. As creatures of utter chaos, slaadi loathe modrons and attack them on sight. Nonetheless, Primus stands by his creation and either doesn't perceive the slaadi as threats or chooses to ignore them.",
 						"Birth and Transformation. Slaadi have horrific cycles of reproduction. Slaadi reproduce either by implanting humanoid hosts with eggs or by infecting them with a transformative disease called chaos phage. Each color of slaad reproduces or transforms in a different way, with red slaadi spawning blue and green slaadi, and blue slaadi spawning red and green. Each green slaad undergoes a lifelong cycle of transformation into the more powerful gray and death slaadi. With each transformation, the slaad retains its memories.",
-						"Shapechangers. Some slaadi can transform into the humanoid creatures from which they were originally spawned. These slaadi return to the Material Plane to sow discord in the guise of their former selves.",
-						"Variant: Slaad Control Gems",
-						"As a slaad emerges from the Spawning Stone, the stone magically implants a fragment of itself in the slaad's brain. This fragment takes the form of a magic gem roughly the size and shape of a human child's fist. The gem is the same color as the slaad. Another creature can use magic to draw forth a slaad's gem and use it to subjugate the slaad. The slaad must obey whoever possesses its gem. If a slaad's gem is destroyed, the slaad can no longer be controlled in this way.",
-						"A slaad born from something other than the Spawning Stone has no gem in its brain, but it gains one if it ever comes into contact with the Spawning Stone. Slaadi on Limbo are attracted to the Spawning Stone, so most end up with a gem. A slaad with a control gem in its brain has the following additional trait.",
-						"Control Gem. Implanted in the slaad's brain is a magic control gem. The slaad must obey whoever possesses the gem and is immune to being charmed while so controlled. Certain spells can be used to acquire the gem. If the slaad fails its saving throw against imprisonment, the spell can transfer the gem to the spellcaster's open hand, instead of imprisoning the slaad. A wish spell, if cast in the slaad's presence, can be worded to acquire the gem.",
-						"A greater restoration spell cast on the slaad destroys the gem without harming the slaad.",
-						"Someone who is proficient in Wisdom (Medicine) can remove the gem from an incapacitated slaad. Each try requires 1 minute of uninterrupted work and a successful DC 20 Wisdom (Medicine) check. Each failed attempt deals 22 (4d10) psychic damage to the slaad."
+						"Shapechangers. Some slaadi can transform into the humanoid creatures from which they were originally spawned. These slaadi return to the Material Plane to sow discord in the guise of their former selves."
 					]
 				}
 			]
@@ -2103,34 +2122,10 @@
 			],
 			"entries": [
 				"Driven by hate, lust, and envy, bone devils act as the cruel taskmasters of the Nine Hells. They set weaker devils to work, taking special delight in seeing fiends that defy them demoted. At the same time, they long for promotion and are bitterly envious of their superiors, attempting to curry favor though it irks them to do so.",
-				"A bone devil appears as a humanoid husk, with dried skin stretched tight across its skeletal frame. It bears a fearsome skull-like head and the tail of a scorpion, and a foul odor of decay hangs in the air around it. Though they are devastating in combat with their claws, bone devils also wield hooked polearms made of bone, which they use to subdue enemies before striking with their venomous tails.",
-				"Variant: Bone Devil Polearm",
-				"Some bone devils have the following action options.",
-				{
-					"name": "Multiattack",
-					"type": "entries",
-					"entries": [
-						"The devil makes two attacks: one with its hooked polearm and one with its sting."
-					]
-				},
-				{
-					"name": "Hooked Polearm",
-					"type": "entries",
-					"entries": [
-						"Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 17 (2d12 + 4) piercing damage. If the target is a Huge or smaller creature, it is grappled (escape DC 14). Until this grapple ends, the devil can't use its polearm on another target."
-					]
-				}
+				"A bone devil appears as a humanoid husk, with dried skin stretched tight across its skeletal frame. It bears a fearsome skull-like head and the tail of a scorpion, and a foul odor of decay hangs in the air around it. Though they are devastating in combat with their claws, bone devils also wield hooked polearms made of bone, which they use to subdue enemies before striking with their venomous tails."
 			],
 			"_appendCopy": {
 				"name": "Devils",
-				"source": "MM"
-			}
-		},
-		{
-			"name": "Bone Devil Polearm",
-			"source": "MM",
-			"_copy": {
-				"name": "Bone Devil",
 				"source": "MM"
 			}
 		},
@@ -2979,13 +2974,7 @@
 						"The Spawning Stone. Long ago, Primus, overlord of the modrons, created a gigantic, geometrically complex stone imbued with the power of law. He then cast it adrift in Limbo, believing that the stone would bring order to the chaos of that plane and halt the spread of chaos to other planes. As the stone's power grew, it became possible for creatures with ordered minds, such as modrons and githzerai, to create enclaves in Limbo. However, Primus's creation had an unforeseen side effect: the chaotic energy absorbed by the stone spawned the horrors that came to be known as slaadi. Sages refer to Primus's massive creation as the Spawning Stone for this reason.",
 						"The slaadi wiped out every last modron enclave in Limbo. As creatures of utter chaos, slaadi loathe modrons and attack them on sight. Nonetheless, Primus stands by his creation and either doesn't perceive the slaadi as threats or chooses to ignore them.",
 						"Birth and Transformation. Slaadi have horrific cycles of reproduction. Slaadi reproduce either by implanting humanoid hosts with eggs or by infecting them with a transformative disease called chaos phage. Each color of slaad reproduces or transforms in a different way, with red slaadi spawning blue and green slaadi, and blue slaadi spawning red and green. Each green slaad undergoes a lifelong cycle of transformation into the more powerful gray and death slaadi. With each transformation, the slaad retains its memories.",
-						"Shapechangers. Some slaadi can transform into the humanoid creatures from which they were originally spawned. These slaadi return to the Material Plane to sow discord in the guise of their former selves.",
-						"Variant: Slaad Control Gems",
-						"As a slaad emerges from the Spawning Stone, the stone magically implants a fragment of itself in the slaad's brain. This fragment takes the form of a magic gem roughly the size and shape of a human child's fist. The gem is the same color as the slaad. Another creature can use magic to draw forth a slaad's gem and use it to subjugate the slaad. The slaad must obey whoever possesses its gem. If a slaad's gem is destroyed, the slaad can no longer be controlled in this way.",
-						"A slaad born from something other than the Spawning Stone has no gem in its brain, but it gains one if it ever comes into contact with the Spawning Stone. Slaadi on Limbo are attracted to the Spawning Stone, so most end up with a gem. A slaad with a control gem in its brain has the following additional trait.",
-						"Control Gem. Implanted in the slaad's brain is a magic control gem. The slaad must obey whoever possesses the gem and is immune to being charmed while so controlled. Certain spells can be used to acquire the gem. If the slaad fails its saving throw against imprisonment, the spell can transfer the gem to the spellcaster's open hand, instead of imprisoning the slaad. A wish spell, if cast in the slaad's presence, can be worded to acquire the gem.",
-						"A greater restoration spell cast on the slaad destroys the gem without harming the slaad.",
-						"Someone who is proficient in Wisdom (Medicine) can remove the gem from an incapacitated slaad. Each try requires 1 minute of uninterrupted work and a successful DC 20 Wisdom (Medicine) check. Each failed attempt deals 22 (4d10) psychic damage to the slaad."
+						"Shapechangers. Some slaadi can transform into the humanoid creatures from which they were originally spawned. These slaadi return to the Material Plane to sow discord in the guise of their former selves."
 					]
 				}
 			]
@@ -3033,21 +3022,6 @@
 					"entries": [
 						"A death tyrant's lair is usually the same site it held as a beholder, but it contains more trappings of death and decay. A death tyrant encountered in its lair has a challenge rating of 15 (13,000 XP).",
 						"The death tyrant can't repeat an effect until all three have been used, and it can't use the same effect on consecutive rounds."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"A region containing a death tyrant's lair is warped by the creature's unnatural presence, which creates one or more of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"Creatures within 1 mile of the tyrant's lair sometimes feel as if they're being watched even when they aren't.",
-								"When a creature hostile to the tyrant and aware of its existence finishes a long rest within 1 mile of the tyrant's lair, roll a d20 for that creature. On a roll of 10 or lower, the creature is subjected to one random eye ray of the tyrant."
-							]
-						},
-						"If the death tyrant dies, these effects fade over the course of 1d10 days."
 					]
 				}
 			]
@@ -3393,19 +3367,6 @@
 					"entries": [
 						"Drow transformed into driders return to the Material Plane as twisted and debased creatures. Driven by madness, they disappear into the Underdark to become hermits and hunters, either wandering alone or leading packs of giant spiders.",
 						"On rare occasion, a drider returns to the fringes of drow society despite its curse, most often to fulfill some longstanding vow or vendetta from its former life. Drow fear and shun the driders, holding them in lower esteem than slaves. However, they tolerate the presence of these creatures as living representatives of Lolth's will, and a reminder of the fate that awaits all who fail the Spider Queen."
-					]
-				},
-				{
-					"type": "inset",
-					"name": "Variant: Drider Spellcasting",
-					"entries": [
-						"Driders that were once drow spellcasters might retain their ability to cast spells. Such driders typically have a higher spellcasting ability (15 or 16) than other driders. Further, the drider gains the Spellcasting trait. A drider that was a drow divine spellcaster, therefore, could have a Wisdom of 16 (+3) and a Spellcasting trait as follows.",
-						"Spellcasting. The drider is a 7th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, +6 to hit with spell attacks). The drider has the following spells prepared from the cleric spell list:",
-						"Cantrips (at will): poison spray, thaumaturgy",
-						"1st level (4 slots): bane, detect magic, sanctuary",
-						"2nd level (3 slots): hold person, silence",
-						"3rd level (3 slots): clairvoyance, dispel magic",
-						"4th level (2 slots): divination, freedom of movement"
 					]
 				}
 			]
@@ -4219,6 +4180,15 @@
 		{
 			"name": "Fomorian",
 			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Fomorian.jpg"
+					}
+				}
+			],
 			"entries": [
 				"The most hideous and wicked of all giantkind are the godless fomorians, whose deformed bodies reflect their vile demeanors. Some have facial features randomly distributed around their misshapen, warty heads. Others have limbs of grossly different sizes and shapes, or emit terrible howls each time they draw breath through misshapen mouths. Their wretched appearance rarely evokes sympathy, however, for the fomorians brought their doom upon themselves with the evil that rules their hearts and minds.",
 				{
@@ -4605,8 +4575,7 @@
 						"path": "bestiary/MM/Giant Octopus.jpg"
 					}
 				}
-			],
-			"entries": []
+			]
 		},
 		{
 			"name": "Giant Owl",
@@ -5107,6 +5076,15 @@
 		{
 			"name": "Grell",
 			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Grell.jpg"
+					}
+				}
+			],
 			"entries": [
 				"A grell resembles a bulbous floating brain with a wide, sharp beak. Its ten long tentacles are made of hundreds of ring-shaped muscles sheathed in tough fibrous hide. Sharp barbs line the tip each tentacle and inject paralytic venom. The grell can partially retract its barbs into its tentacles to handle or manipulate objects it doesn't want to pierce or tear.",
 				"Grells have no eyes and floats by means of a sort of levitation. They have keen hearing, however, and their skin is sensitive to vibrations and electrical fields, allowing them to detect the presence of creatures and objects in their immediate vicinity. The creature's ability to manipulate electricity to sense and move also allow it to absorb lightning without harm.",
@@ -5361,6 +5339,7 @@
 		{
 			"name": "Half-Red Dragon Veteran",
 			"source": "MM",
+			"type": "section",
 			"images": [
 				{
 					"type": "image",
@@ -5373,11 +5352,21 @@
 			"entries": [
 				"When a dragon in polymorphed form mates with another creature, the union sometimes produces half dragon offspring. A creature might also transform into a half-dragon as a result of a mad wizard's spell or a ritual bath in dragon's blood. In all these cases, the result is a creature that combines the essence of a dragon with the form of its original race. Regardless of their origins, all half-dragons have similar features and appearance, gaining special senses, resistance to destructive energy, and a breath weapon.",
 				{
-					"name": "Draconic Nature",
 					"type": "entries",
 					"entries": [
-						"Half-dragons are incapable of having natural born offspring. Those that wish to propagate must find other ways to do so, almost always involving magic. By way of compensation, half dragons are blessed with long life. Barring unforeseen misfortune, a typical half-dragon's life expectancy is twice that of its no draconic line, so that a half-dragon human might live more than a century and a half.",
-						"Half-dragons inherit personality traits common to their draconic heritage, so that half-gold dragons are often shy and secretive, while half-copper dragons are impish and playful. Half-green dragons are deceitful, while half-white dragons are often dim-witted brutes. These traits are tempered by a half-dragon's other lineage, but greed, arrogance, and paranoia are qualities that even good-aligned half-dragons often possess."
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"name": "Draconic Nature",
+									"type": "entries",
+									"entries": [
+										"Half-dragons are incapable of having natural born offspring. Those that wish to propagate must find other ways to do so, almost always involving magic. By way of compensation, half dragons are blessed with long life. Barring unforeseen misfortune, a typical half-dragon's life expectancy is twice that of its no draconic line, so that a half-dragon human might live more than a century and a half.",
+										"Half-dragons inherit personality traits common to their draconic heritage, so that half-gold dragons are often shy and secretive, while half-copper dragons are impish and playful. Half-green dragons are deceitful, while half-white dragons are often dim-witted brutes. These traits are tempered by a half-dragon's other lineage, but greed, arrogance, and paranoia are qualities that even good-aligned half-dragons often possess."
+									]
+								}
+							]
+						}
 					]
 				},
 				{
@@ -5385,101 +5374,116 @@
 					"name": "Half-Dragon Template",
 					"entries": [
 						"A beast, humanoid, giant, or monstrosity can become a half-dragon. When a creature becomes a half-dragon, it retains all its statistics except as noted below.",
-						"Senses. The half-dragon gains blindsight with a radius of 10 feet and darkvision with a radius of 60 feet.",
-						"Resistances. The half-dragon gains resistance to a type of damage based on its color.",
 						{
-							"type": "table",
-							"colLabels": [
-								"Color",
-								"Damage Resistance"
-							],
-							"colStyles": [
-								"col-xs-6",
-								"col-xs-6"
-							],
-							"rows": [
-								[
-									"Black or copper",
-									"Acid"
-								],
-								[
-									"Blue or bronze",
-									"Lightning"
-								],
-								[
-									"Brass, gold, or red",
-									"Fire"
-								],
-								[
-									"Green",
-									"Poison"
-								],
-								[
-									"Silver or white",
-									"Cold"
-								]
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Challenge",
+									"entries": [
+										"To avoid recalculating the creature's challenge rating, apply the template only to a creature that meets the optional prerequisite in the Breath Weapon table below. Otherwise, use the guidelines in the Dungeon Master's Guide to recalculate the rating after you apply the template."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Senses",
+									"entries": [
+										"The half-dragon gains blindsight with a radius of 10 feet and darkvision with a radius of 60 feet."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Resistances",
+									"entries": [
+										"The half-dragon gains resistance to a type of damage based on its color.",
+										{
+											"type": "table",
+											"colLabels": [
+												"Color",
+												"Damage Resistance"
+											],
+											"colStyles": [
+												"col-6",
+												"col-6"
+											],
+											"rows": [
+												[
+													"Black or copper",
+													"Acid"
+												],
+												[
+													"Blue or bronze",
+													"Lightning"
+												],
+												[
+													"Brass, gold, or red",
+													"Fire"
+												],
+												[
+													"Green",
+													"Poison"
+												],
+												[
+													"Silver or white",
+													"Cold"
+												]
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Languages",
+									"entries": [
+										"The half-dragon speaks Draconic in addition to any other languages it knows."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "New Action: Breath Weapon",
+									"entries": [
+										"The half-dragon has the breath weapon of its dragon half. The half-dragon's size determines how this action functions.",
+										{
+											"type": "table",
+											"colLabels": [
+												"Size",
+												"Breath Weapon",
+												"Optional Prerequisite"
+											],
+											"colStyles": [
+												"col-4",
+												"col-4",
+												"col-4"
+											],
+											"rows": [
+												[
+													"Large or smaller",
+													"As a wyrmling",
+													"Challenge 2 or higher"
+												],
+												[
+													"Huge",
+													"As a young dragon",
+													"Challenge 7 or higher"
+												],
+												[
+													"Gargantuan",
+													"As an adult dragon",
+													"Challenge 8 or higher"
+												]
+											]
+										}
+									]
+								}
 							]
 						},
-						"Languages. The half-dragon speaks Draconic in addition to any other languages it knows.",
-						"New Action: Breath Weapon. The half-dragon has the breath weapon of its dragon half. The half-dragon's size determines how this action functions.",
 						{
-							"type": "table",
-							"colLabels": [
-								"Size",
-								"Breath Weapon"
-							],
-							"colStyles": [
-								"col-xs-6",
-								"col-xs-6"
-							],
-							"rows": [
-								[
-									"Large or smaller",
-									"As a wyrmling"
-								],
-								[
-									"Huge",
-									"As a young dragon"
-								],
-								[
-									"Gargantuan",
-									"As an adult dragon"
-								]
+							"type": "entries",
+							"name": "Sample Half-Dragon",
+							"entries": [
+								"Here the half-dragon template has been applied to a human {@creature veteran} to create a half-red dragon veteran. {@item Splint armor|phb} has been replaced with {@item plate armor|phb|plate}."
 							]
-						},
-						"Challenge Rating. To avoid recalculating the creature's challenge rating, apply the template only to a creature that meets the optional prerequisite in the Breath Weapon table below. Otherwise, use the guidelines in the Dungeon Master's Guide to recalculate the rating after you apply the template.\"",
-						{
-							"type": "table",
-							"colLabels": [
-								"Size",
-								"Breath Weapon",
-								"Optional Prerequisite"
-							],
-							"colStyles": [
-								"col-xs-4",
-								"col-xs-4",
-								"col-xs-4"
-							],
-							"rows": [
-								[
-									"Large or smaller",
-									"As a wyrmling",
-									"Challenge 2 or higher"
-								],
-								[
-									"Huge",
-									"As a young dragon",
-									"Challenge 7 or higher"
-								],
-								[
-									"Gargantuan",
-									"As an adult dragon",
-									"Challenge 8 or higher"
-								]
-							]
-						},
-						"Sample Half-Dragon",
-						"Here the half-dragon template has been applied to a human veteran to create a half-red dragon veteran. Splint armor has been replaced with plate."
+						}
 					]
 				}
 			]
@@ -5540,11 +5544,10 @@
 					"type": "image",
 					"href": {
 						"type": "internal",
-						"path": "bestiary/MM/Giant Hawk.jpg"
+						"path": "bestiary/MM/Hawk.jpg"
 					}
 				}
-			],
-			"entries": []
+			]
 		},
 		{
 			"name": "Hell Hound",
@@ -5627,7 +5630,7 @@
 				}
 			],
 			"entries": [
-				"Hezrous serve as foot soldiers in the demonic hordes of the Abyss. Although physically powerful, they are weak- minded and hezrous can easily be duped into sacrificing themselves by more powerful demons. As they press their attacks into the heart of an enemy's forces, their foul stench can sicken even the toughest foes."
+				"Hezrous serve as foot soldiers in the demonic hordes of the Abyss. Although physically powerful, they are weak-minded and hezrous can easily be duped into sacrificing themselves by more powerful demons. As they press their attacks into the heart of an enemy's forces, their foul stench can sicken even the toughest foes."
 			],
 			"_appendCopy": {
 				"name": "Demons",
@@ -5945,8 +5948,7 @@
 						"path": "bestiary/MM/Hyena.jpg"
 					}
 				}
-			],
-			"entries": []
+			]
 		},
 		{
 			"name": "Ice Devil",
@@ -6290,22 +6292,6 @@
 					"entries": [
 						"A kraken lives in dark depths, usually a sunken rift or a cavern filled with detritus, treasure, and wrecked ships."
 					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a kraken's lair is warped by the creature's blasphemous presence, creating the following magical effects:",
-						{
-							"type": "list",
-							"items": [
-								"The kraken can alter the weather at will in a 6-mile radius centered on its lair. The effect is identical to the control weather spell.",
-								"Water elementals coalesce within 6 miles of the lair. These elementals can't leave the water and have Intelligence and Charisma scores of 1 (-5).",
-								"Aquatic creatures within 6 miles of the lair that have an Intelligence score of 2 or lower are charmed by the kraken and aggressive toward intruders in the area."
-							]
-						},
-						"When the kraken dies, all of these regional effects fade immediately."
-					]
 				}
 			]
 		},
@@ -6365,6 +6351,15 @@
 		{
 			"name": "Kuo-toa Archpriest",
 			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Kuo-toa Archpriest.jpg"
+					}
+				}
+			],
 			"_copy": {
 				"name": "Kuo-toa",
 				"source": "MM"
@@ -6381,6 +6376,15 @@
 		{
 			"name": "Kuo-toa Whip",
 			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Kuo-toa Whip.jpg"
+					}
+				}
+			],
 			"_copy": {
 				"name": "Kuo-toa",
 				"source": "MM"
@@ -6726,12 +6730,12 @@
 				}
 			],
 			"entries": [
-				"Hailing from the Elemental Plane of Water, the marids are the most wondrous of genie-kind. Although all genies wield great power, even the lowliest marid sees itself as clearly superior to the flighty djinn, the ground- hugging dao, and the fuming efreet. Large and piscine, marids are a strange sight to behold, particularly when clad in the finely stitched vests and colorful pantaloons they favor. They speak in voices as soft as the sea breeze or as sonorous as storm waves breaking against a rocky cliff. In flight, their lower bodies transform into columns of foamy water.",
+				"Hailing from the Elemental Plane of Water, the marids are the most wondrous of genie-kind. Although all genies wield great power, even the lowliest marid sees itself as clearly superior to the flighty djinn, the ground-hugging dao, and the fuming efreet. Large and piscine, marids are a strange sight to behold, particularly when clad in the finely stitched vests and colorful pantaloons they favor. They speak in voices as soft as the sea breeze or as sonorous as storm waves breaking against a rocky cliff. In flight, their lower bodies transform into columns of foamy water.",
 				{
 					"name": "Water Lords",
 					"type": "entries",
 					"entries": [
-						"Water is a marid's native element, and the genie can manipulate water in virtually anyway it desires. A marid can walk on water and breathe naturally beneath its surface. It can create water or shape clouds of fog and mist from the vapor in the air. It can even transform itself into mist, or use water as a weapon to bludgeon its foes."
+						"Water is a marid's native element, and the genie can manipulate water in virtually any way it desires. A marid can walk on water and breathe naturally beneath its surface. It can create water or shape clouds of fog and mist from the vapor in the air. It can even transform itself into mist, or use water as a weapon to bludgeon its foes."
 					]
 				},
 				{
@@ -7204,21 +7208,6 @@
 					"name": "A Mummy Lord's Lair",
 					"entries": [
 						"A mummy lord watches over an ancient temple or tomb that is protected by lesser undead and rigged with traps. Hidden in this temple is the sarcophagus where a mummy lord keeps its greatest treasures. A mummy lord encountered in its lair has a challenge rating of 16 (15,000 XP)."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"A mummy lord's temple or tomb is warped in any of the following ways by the creature's dark presence:",
-						{
-							"type": "list",
-							"items": [
-								"Food instantly molders and water instantly evaporates when brought into the lair. Other nonmagical drinks are spoiled-wine turning to vinegar, for instance.",
-								"Divination spells cast within the lair by creatures other than the mummy lord have a 25 percent chance to provide misleading results, as determined by the DM. If a divination spell already has a chance to fail or become unreliable when cast multiple times, that chance increases by 25 percent.",
-								"A creature that takes treasure from the lair is cursed until the treasure is returned. The cursed target has disadvantage on all saving throws. The curse lasts until removed by a remove curse spell or other magic. If the mummy lord is destroyed, these regional effects end immediately."
-							]
-						}
 					]
 				},
 				{
@@ -8142,6 +8131,15 @@
 		{
 			"name": "Poltergeist",
 			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Specter.jpg"
+					}
+				}
+			],
 			"entries": [
 				"A poltergeist is the confused, invisible spirit of an individual with no sense of how he or she died. A poltergeist expresses its rage by hurling creatures and objects using the power of its shattered psyche."
 			]
@@ -8328,18 +8326,7 @@
 					"name": "Poison Immunity",
 					"type": "entries",
 					"entries": [
-						"Generations of hunting venomous subterranean creatures and perpetual exposure to the molds and fungi that grow in the depths have forced quaggoths to adapt immunities to poisons of all kinds.",
-						"Variant: Quaggoth Thonot",
-						"A quaggoth thonot is a normal quaggoth with a challenge rating of 3 (700 XP) and the following additional trait."
-					]
-				},
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"type": "entries",
-					"entries": [
-						"The quaggoth's innate spellcasting ability is Wisdom (spell save DC 11). The quaggoth can innately cast the following spells, requiring no components:",
-						"At will: feather fall, mage hand (the hand is invisible)",
-						"1/day each: cure wounds, enlarge/reduce, heat metal, mirror image"
+						"Generations of hunting venomous subterranean creatures and perpetual exposure to the molds and fungi that grow in the depths have forced quaggoths to adapt immunities to poisons of all kinds."
 					]
 				}
 			]
@@ -8347,6 +8334,15 @@
 		{
 			"name": "Quaggoth Spore Servant",
 			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Myconids.jpg"
+					}
+				}
+			],
 			"entries": [
 				"A spore servant is any Large or smaller creature brought back to life by the animating spores of a myconid sovereign. A creature that was never flesh and blood to begin with (such as a construct, elemental, ooze, plant, or undead) can't be turned into a spore servant.",
 				{
@@ -8443,16 +8439,7 @@
 			],
 			"entries": [
 				"Quasits infest the Lower Planes. Physically weak, they keep to the shadows to plot mischief and wickedness. More powerful demons use quasits as spies and messengers when they aren't devouring them or pulling them apart to pass the time.",
-				"A quasit can assume animal forms, but in its true form it looks like a 2-foot-tall green humanoid with a barbed tail and horns. The quasit has clawed fingers and toes, and these claws can deliver an irritating poison. It prefers to be invisible when it attacks.",
-				"Variant: Quasit Familiar",
-				"Mortal spellcasters interested in extraplanar familiars find quasits easy to summon and eager to serve. The quasit plays the part of the obsequious servant. It serves its master well, but it goads the mortal to greater and greater acts of chaos and evil. Such quasits have the following trait.",
-				{
-					"name": "Familiar",
-					"type": "entries",
-					"entries": [
-						"The quasit can serve another creature as a familiar, forming a telepathic bond with its willing master. While the two are bonded, the master can sense what the quasit senses as long as they are within 1 mile of each other. While the quasit is within 10 feet of its master, the master shares the quasit's Magic Resistance trait. At any time and for any reason, the quasit can end its service as a familiar, ending the telepathic bond."
-					]
-				}
+				"A quasit can assume animal forms, but in its true form it looks like a 2-foot-tall green humanoid with a barbed tail and horns. The quasit has clawed fingers and toes, and these claws can deliver an irritating poison. It prefers to be invisible when it attacks."
 			],
 			"_appendCopy": {
 				"name": "Demons",
@@ -8513,8 +8500,7 @@
 						"path": "bestiary/MM/Rat.jpg"
 					}
 				}
-			],
-			"entries": []
+			]
 		},
 		{
 			"name": "Red Dragon Wyrmling",
@@ -8546,13 +8532,7 @@
 						"The Spawning Stone. Long ago, Primus, overlord of the modrons, created a gigantic, geometrically complex stone imbued with the power of law. He then cast it adrift in Limbo, believing that the stone would bring order to the chaos of that plane and halt the spread of chaos to other planes. As the stone's power grew, it became possible for creatures with ordered minds, such as modrons and githzerai, to create enclaves in Limbo. However, Primus's creation had an unforeseen side effect: the chaotic energy absorbed by the stone spawned the horrors that came to be known as slaadi. Sages refer to Primus's massive creation as the Spawning Stone for this reason.",
 						"The slaadi wiped out every last modron enclave in Limbo. As creatures of utter chaos, slaadi loathe modrons and attack them on sight. Nonetheless, Primus stands by his creation and either doesn't perceive the slaadi as threats or chooses to ignore them.",
 						"Birth and Transformation. Slaadi have horrific cycles of reproduction. Slaadi reproduce either by implanting humanoid hosts with eggs or by infecting them with a transformative disease called chaos phage. Each color of slaad reproduces or transforms in a different way, with red slaadi spawning blue and green slaadi, and blue slaadi spawning red and green. Each green slaad undergoes a lifelong cycle of transformation into the more powerful gray and death slaadi. With each transformation, the slaad retains its memories.",
-						"Shapechangers. Some slaadi can transform into the humanoid creatures from which they were originally spawned. These slaadi return to the Material Plane to sow discord in the guise of their former selves.",
-						"Variant: Slaad Control Gems",
-						"As a slaad emerges from the Spawning Stone, the stone magically implants a fragment of itself in the slaad's brain. This fragment takes the form of a magic gem roughly the size and shape of a human child's fist. The gem is the same color as the slaad. Another creature can use magic to draw forth a slaad's gem and use it to subjugate the slaad. The slaad must obey whoever possesses its gem. If a slaad's gem is destroyed, the slaad can no longer be controlled in this way.",
-						"A slaad born from something other than the Spawning Stone has no gem in its brain, but it gains one if it ever comes into contact with the Spawning Stone. Slaadi on Limbo are attracted to the Spawning Stone, so most end up with a gem. A slaad with a control gem in its brain has the following additional trait.",
-						"Control Gem. Implanted in the slaad's brain is a magic control gem. The slaad must obey whoever possesses the gem and is immune to being charmed while so controlled. Certain spells can be used to acquire the gem. If the slaad fails its saving throw against imprisonment, the spell can transfer the gem to the spellcaster's open hand, instead of imprisoning the slaad. A wish spell, if cast in the slaad's presence, can be worded to acquire the gem.",
-						"A greater restoration spell cast on the slaad destroys the gem without harming the slaad.",
-						"Someone who is proficient in Wisdom (Medicine) can remove the gem from an incapacitated slaad. Each try requires 1 minute of uninterrupted work and a successful DC 20 Wisdom (Medicine) check. Each failed attempt deals 22 (4d10) psychic damage to the slaad."
+						"Shapechangers. Some slaadi can transform into the humanoid creatures from which they were originally spawned. These slaadi return to the Material Plane to sow discord in the guise of their former selves."
 					]
 				}
 			]
@@ -8608,11 +8588,14 @@
 				}
 			],
 			"entries": [
-				"A revenant forms from the soul of a mortal who met a cruel and undeserving fate. It claws its way back into the world to seek revenge against the one who wronged it. The revenant reclaims its mortal body and superficially resembles a zombie. However, instead of lifeless eyes, a revenant's eyes burn with resolve and flare in the presence of its adversary. If the revenant's original body was destroyed or is otherwise unavailable, the",
-				"spirit of the revenant enters another humanoid corpse.",
-				"Regardless of the body the revenant uses as a vessel, its adversary always recognizes the revenant for what",
-				"it truly is.",
-				"Hunger for Revenge. A revenant has only one year to exact revenge. When its adversary dies, or if the revenant fails to kill its adversary before its time runs out, it crumbles to dust and its soul fades into the afterlife. If its foe is too powerful for the revenant to destroy on its own, it seeks worthy allies to help it fulfill its quest.",
+				"A revenant forms from the soul of a mortal who met a cruel and undeserving fate. It claws its way back into the world to seek revenge against the one who wronged it. The revenant reclaims its mortal body and superficially resembles a zombie. However, instead of lifeless eyes, a revenant's eyes burn with resolve and flare in the presence of its adversary. If the revenant's original body was destroyed or is otherwise unavailable, the spirit of the revenant enters another humanoid corpse. Regardless of the body the revenant uses as a vessel, its adversary always recognizes the revenant for what it truly is.",
+				{
+					"type": "entries",
+					"name": "Hunger for Revenge",
+					"entries": [
+						"A revenant has only one year to exact revenge. When its adversary dies, or if the revenant fails to kill its adversary before its time runs out, it crumbles to dust and its soul fades into the afterlife. If its foe is too powerful for the revenant to destroy on its own, it seeks worthy allies to help it fulfill its quest."
+					]
+				},
 				{
 					"name": "Divine Justice",
 					"type": "entries",
@@ -8624,9 +8607,7 @@
 					"name": "Undead Nature",
 					"type": "entries",
 					"entries": [
-						"A revenant doesn't require air, food, drink, or sleep.",
-						"Variant: Revenants with Spells and Weapons",
-						"Revenants that were spellcasters before they died might retain some or all of their spellcasting capabilities. Similarly, revenants that wore armor and wielded weapons in life might continue to do so."
+						"A revenant doesn't require air, food, drink, or sleep."
 					]
 				}
 			]
@@ -8642,8 +8623,7 @@
 						"path": "bestiary/MM/Riding Horse.jpg"
 					}
 				}
-			],
-			"entries": []
+			]
 		},
 		{
 			"name": "Roc",
@@ -8813,6 +8793,15 @@
 		{
 			"name": "Sahuagin Baron",
 			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Sahuagin Baron.jpg"
+					}
+				}
+			],
 			"_copy": {
 				"name": "Sahuagin",
 				"source": "MM"
@@ -8902,37 +8891,7 @@
 					"type": "entries",
 					"entries": [
 						"Satyrs crave the strongest drink, the most fragrant spices, and the most dizzying dances. A satyr feels starved when it can't indulge itself, and it goes to great lengths to sate its desires. It might kidnap a fine minstrel to hear lovely songs, sneak through a well-defended garden to gaze upon a beautiful lad or lass, or infiltrate a palace to taste the finest food in the land. Satyrs allow no festivity to pass them by. They partake in any holiday they've heard of. Civilizations of the world have enough festivals and holy days among them to justify nonstop celebration.",
-						"Inebriated on drink and pleasure, satyrs give no thought to the consequences of the hedonism they incite in others. They leave such creatures mystified at their own behavior. Such revelers might have to scrounge for excuses to explain their disordered state to parents, employers, family, or friends.",
-						"Variant: Satyr Pipes",
-						"A satyr might carry panpipes that it can play to create magical effects. Usually, only one satyr in a group carries such pipes. If a satyr has pipes, it gains the following additional action option."
-					]
-				},
-				{
-					"name": "Panpipes",
-					"type": "entries",
-					"entries": [
-						"The satyr plays its pipes and chooses one of the following magical effects: a charming melody, a frightening strain, or a gentle lullaby. Any creature within 60 feet of the satyr that can hear the pipes must succeed on a DC 13 Wisdom saving throw or be affected as described below. Other satyrs and creatures that can't be charmed are unaffected. An affected creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to these panpipes for the next 24 hours."
-					]
-				},
-				{
-					"name": "Charming Melody",
-					"type": "entries",
-					"entries": [
-						"The creature is charmed by the satyr for 1 minute. If the satyr or any of its companions harms the creature, the effect on it ends immediately."
-					]
-				},
-				{
-					"name": "Frightening Strain",
-					"type": "entries",
-					"entries": [
-						"The creature is frightened for 1 minute."
-					]
-				},
-				{
-					"name": "Gentle Lullaby",
-					"type": "entries",
-					"entries": [
-						"The creature falls asleep and is unconscious for 1 minute. The effect ends if the creature takes damage or if someone takes an action to shake the creature awake."
+						"Inebriated on drink and pleasure, satyrs give no thought to the consequences of the hedonism they incite in others. They leave such creatures mystified at their own behavior. Such revelers might have to scrounge for excuses to explain their disordered state to parents, employers, family, or friends."
 					]
 				}
 			]
@@ -9243,10 +9202,7 @@
 					"name": "Shapechangers",
 					"type": "entries",
 					"entries": [
-						"Some slaadi can transform into the humanoid creatures from which they were originally spawned. These slaadi return to the Material Plane to sow discord in the guise of their former selves.",
-						"Variant: Slaad Control Gems",
-						"As a slaad emerges from the Spawning Stone, the stone magically implants a fragment of itself in the slaad's brain. This fragment takes the form of a magic gem roughly the size and shape of a human child's fist. The gem is the same color as the slaad. Another creature can use magic to draw forth a slaad's gem and use it to subjugate the slaad. The slaad must obey whoever possesses its gem. If a slaad's gem is destroyed, the slaad can no longer be controlled in this way.",
-						"A slaad born from something other than the Spawning Stone has no gem in its brain, but it gains one if it ever comes into contact with the Spawning Stone. Slaadi on Limbo are attracted to the Spawning Stone, so most end up with a gem. A slaad with a control gem in its brain has the following additional trait."
+						"Some slaadi can transform into the humanoid creatures from which they were originally spawned. These slaadi return to the Material Plane to sow discord in the guise of their former selves."
 					]
 				},
 				{
@@ -9969,10 +9925,7 @@
 						"Absolute Law and Order. Under the direction of their leader, Primus, modrons increase order in the multiverse in accordance with laws beyond the comprehension of mortal minds. Their own minds are networked in a hierarchal pyramid, in which each modron receives commands from superiors and delegates orders to underlings. A modron carries out commands with total obedience, utmost efficiency, and an absence of morality or ego. Modrons have no sense of self beyond what is necessary to fulfill their duties. They exist as a unified collective, divided by ranks, yet they always refer to themselves collectively. To a modron, there is no \"I,\" but only \"we\" or \"us.\"",
 						"Absolute Hierarchy. Modrons communicate only with their own rank and the ranks immediately above and below them. Modrons more than one rank away are either too advanced or too simple to understand.",
 						"Cogs of the Great Machine. If a modron is destroyed, its remains disintegrate. A replacement from the next lowest rank then transforms in a flash of light, gaining the physical form of its new rank. The promoted modron is replaced by one of its underlings in the same manner, all the way to the lowest levels of the hierarchy. There, a new modron is created by Primus, with a steady stream of monodrones leaving the Great Modron Cathedral on Mechanus as a result.",
-						"The Great Modron March. When the gears of Mechanus complete seventeen cycles once every 289 years, Primus sends a vast army of modrons across the Outer Planes, ostensibly on a reconnaissance mission. The march is long and dangerous, and only a small number of modrons returns to Mechanus.",
-						"Variant: Rogue Modrons",
-						"A modron unit sometimes becomes defective, either through natural decay or exposure to chaotic forces. Rogue modrons don't act in accordance with Primus's wishes and directives, breaking laws, disobeying orders, and even engaging in violence. Other modrons hunt down such rogues.",
-						"A rogue modron loses the Axiomatic Mind trait and can have any alignment other than lawful neutral. Otherwise, it has the same statistics as a regular modron of its rank."
+						"The Great Modron March. When the gears of Mechanus complete seventeen cycles once every 289 years, Primus sends a vast army of modrons across the Outer Planes, ostensibly on a reconnaissance mission. The march is long and dangerous, and only a small number of modrons returns to Mechanus."
 					]
 				}
 			]
@@ -10034,30 +9987,7 @@
 					"name": "Troll Freaks",
 					"type": "entries",
 					"entries": [
-						"Their regenerative capabilities make trolls especially susceptible to mutation. Although uncommon, such transformations can result from what the troll has done or what has been done to it. A decapitated troll might grow two heads from the stump of its neck, while a troll that eats a fey creature might gain one or more of that creature's traits.",
-						"Variant: Loathsome Limbs",
-						"Some trolls have the following trait."
-					]
-				},
-				{
-					"name": "Loathsome Limbs",
-					"type": "entries",
-					"entries": [
-						"Whenever the troll takes at least 15 slashing damage at one time, roll a d20 to determine what else happens to it:",
-						"If the troll finishes a short or long rest without reattaching a severed limb or head, the part regrows. At that point, the severed part dies. Until then, a severed part acts on the troll's initiative and has its own action and movement. A severed part has AC 13, 10 hit points, and the troll's Regeneration trait.",
-						"A severed leg is unable to attack and has a speed of 5 feet.",
-						"A severed arm has a speed of 5 feet and can make one claw attack on its turn, with disadvantage on the attack roll unless the troll can see the arm and its target. Each time the troll loses an arm, it loses a claw attack.",
-						"If its head is severed, the troll loses its bite attack and its body is blinded unless the head can see it. The severed head has a speed of 0 feet and the troll's Keen Smell trait. It can make a bite attack but only against a target in its space.",
-						"The troll's speed is halved if it's missing a leg. If it loses both legs, it falls prone. If it has both arms, it can crawl.",
-						"With only one arm, it can still crawl, but its speed is halved.",
-						"With no arms or legs, its speed is 0, and it can't benefit from bonuses to speed.",
-						"If the troll finishes a short or long rest without reattaching a severed limb or head, the part regrows. At that point, the severed part dies. Until then, a severed part acts on the troll's initiative and has its own action and movement. A severed part has AC 13, 10 hit points, and the troll's Regeneration trait.",
-						"A severed leg is unable to attack and has a speed of 5 feet.",
-						"A severed arm has a speed of 5 feet and can make one claw attack on its turn, with disadvantage on the attack roll unless the troll can see the arm and its target. Each time the troll loses an arm, it loses a claw attack.",
-						"If its head is severed, the troll loses its bite attack and its body is blinded unless the head can see it. The severed head has a speed of 0 feet and the troll's Keen Smell trait. It can make a bite attack but only against a target in its space.",
-						"The troll's speed is halved if it's missing a leg. If it loses both legs, it falls prone. If it has both arms, it can crawl.",
-						"With only one arm, it can still crawl, but its speed is halved.",
-						"With no arms or legs, its speed is 0, and it can't benefit from bonuses to speed."
+						"Their regenerative capabilities make trolls especially susceptible to mutation. Although uncommon, such transformations can result from what the troll has done or what has been done to it. A decapitated troll might grow two heads from the stump of its neck, while a troll that eats a fey creature might gain one or more of that creature's traits."
 					]
 				}
 			]
@@ -10234,24 +10164,7 @@
 					"type": "entries",
 					"name": "A Unicorn's Lair",
 					"entries": [
-						"A unicorn's lair might be an ancient ruin overgrown with vines, a misty clearing surrounded by mighty oaks, a flower-covered hilltop alive with butterflies, or some other serene woodland location.",
-						{
-							"type": "entries",
-							"name": "Regional Effects",
-							"entries": [
-								"Transformed by the creature's celestial presence, the domain of a unicorn might include any of the following magical effects:",
-								{
-									"type": "list",
-									"items": [
-										"Open flames of a nonmagical nature are extinguished within the unicorn's domain. Torches and campfires refuse to burn, but closed lanterns are unaffected.",
-										"Creatures native to the unicorn's domain have an easier time hiding; they have advantage on all Dexterity (Stealth) checks made to hide.",
-										"When a good-aligned creature casts a spell or uses a magical effect that causes another good-aligned creature to regain hit points, the target regains the maximum number of hit points possible for the spell or effect.",
-										"Curses affecting any good-aligned creature are suppressed."
-									]
-								},
-								"If the unicorn dies, these effects end immediately."
-							]
-						}
+						"A unicorn's lair might be an ancient ruin overgrown with vines, a misty clearing surrounded by mighty oaks, a flower-covered hilltop alive with butterflies, or some other serene woodland location."
 					]
 				}
 			]
@@ -10274,8 +10187,14 @@
 					"name": "Dark Desires",
 					"type": "entries",
 					"entries": [
-						"Whether or not a vampire retains any memories from its former life, its emotional attachments wither as once-pure feelings become twisted by undeath. Love turns into hungry obsession, while friendship becomes bitter jealousy. In place of emotion, vampires pursue physical symbols of what they crave, so that a vampire seeking love might fixate on a young beauty. A child might become an object of fascination for a vampire obsessed with youth and potential. Others surround themselves with art, books, or sinister items such as torture devices or trophies from creatures they have killed.",
-						"Born from Death. Most of a vampire's victims become vampire spawn-ravenous creatures with a vampire's hunger for blood, but under the control of the vampire that created them. If a true vampire allows a spawn to draw blood from its own body, the spawn transforms into a true vampire no longer under its master's control. Few vampires are willing to relinquish their control in this manner. Vampire spawn become free-willed when their creator dies."
+						"Whether or not a vampire retains any memories from its former life, its emotional attachments wither as once-pure feelings become twisted by undeath. Love turns into hungry obsession, while friendship becomes bitter jealousy. In place of emotion, vampires pursue physical symbols of what they crave, so that a vampire seeking love might fixate on a young beauty. A child might become an object of fascination for a vampire obsessed with youth and potential. Others surround themselves with art, books, or sinister items such as torture devices or trophies from creatures they have killed."
+					]
+				},
+				{
+					"name": "Born from Death",
+					"type": "entries",
+					"entries": [
+						"Most of a vampire's victims become vampire spawn-ravenous creatures with a vampire's hunger for blood, but under the control of the vampire that created them. If a true vampire allows a spawn to draw blood from its own body, the spawn transforms into a true vampire no longer under its master's control. Few vampires are willing to relinquish their control in this manner. Vampire spawn become free-willed when their creator dies."
 					]
 				},
 				{
@@ -10300,47 +10219,21 @@
 					]
 				},
 				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region surrounding a vampire's lair is warped by the creature's unnatural presence, creating any of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"There's a noticeable increase in the populations of bats, rats, and wolves in the region.",
-								"Plants within 500 feet of the lair wither, and their stems and branches become twisted and thorny.",
-								"Shadows cast within 500 feet of the lair seem abnormally gaunt and sometimes move as though alive.",
-								"A creeping fog clings to the ground within 500 feet of the vampire's lair. The fog occasionally takes eerie forms, such as grasping claws and writhing serpents."
-							]
-						},
-						"If the vampire is destroyed, these effects end after 2d6 days."
-					]
-				},
-				{
-					"type": "entries",
+					"type": "inset",
 					"name": "Player Characters as Vampires",
 					"entries": [
 						"The game statistics of a player character transformed into a vampire spawn and then a vampire don't change, except that the character's Strength, Dexterity, and Constitution scores become 18 if they aren't higher. In addition, the character gains the vampire's damage resistances, darkvision, traits, and actions. Attack and damage rolls for the vampire's attacks are based on Strength.",
-						"The save DC for Charm is 8 + the vampire's proficiency bonus + the vampire's Charisma modifier. The character's alignment becomes lawful evil, and the DM might take control of the character until the vampirism is reversed with a wish spell or the character is killed and brought back to life.",
-						"Strahd von Zarovich",
-						"A brilliant thinker and capable warrior in life, Strahd von Zarovich fought in countless battles for his people. When war",
-						"and killing finally stripped him of his youth and strength, he",
-						"settled in the remote valley of Barovia and built a castle on a towering pinnacle, from which he could survey his lands. His brother Sergei came to live with him in Castle Ravenloft, becoming Strahd's adviser and constant companion.",
+						"The save DC for Charm is 8 + the vampire's proficiency bonus + the vampire's Charisma modifier. The character's alignment becomes lawful evil, and the DM might take control of the character until the vampirism is reversed with a wish spell or the character is killed and brought back to life."
+					]
+				},
+				{
+					"type": "inset",
+					"name": "Strahd von Zarovich",
+					"entries": [
+						"A brilliant thinker and capable warrior in life, Strahd von Zarovich fought in countless battles for his people. When war and killing finally stripped him of his youth and strength, he settled in the remote valley of Barovia and built a castle on a towering pinnacle, from which he could survey his lands. His brother Sergei came to live with him in Castle Ravenloft, becoming Strahd's adviser and constant companion.",
 						"In his brother, Strahd saw everything he had lost. Sergei was handsome and young, while Strahd had become old and scarred. Resentment colored their relationship, eventually turning into hatred. Strahd's beloved, Tatyana, spurned him for Sergei, whom she pledged to marry.",
 						"In a desperate attempt to win Tatyana's heart, Strahd forged a pact with dark powers that made him immortal. At the wedding of Sergei and Tatyana, he confronted his brother and killed him. Tatyana fled and flung herself from Ravenloft's walls. Strahd's guards, seeing him for a monster, shot him with arrows. But he did not die. He became a vampire-the first vampire, according to many sages.",
-						"In the centuries since his transformation, Strahd's lust for life and youth have only grown. He broods in his dark castle, cursing the living for stealing away what he lost, and never admitting his hand in the tragedy he created.",
-						"Variants: Vampire Warriors and Spellcasters",
-						"Some vampires have martial training and battlefield experience. A warrior vampire wearing plate armor (AC 18) and wielding a greatsword has a challenge rating of 15 (13,000 XP) and the following additional action options:",
-						"Multiattack. The vampire makes two greatsword attacks.",
-						"Greatsword. Melee Weapon Attack: +9 to hit, reach 5 ft., one creature. Hit: 11 (2d6 + 4) slashing damage.",
-						"Some vampires are practitioners of the arcane arts. A spellcaster vampire spellcaster has a challenge rating of 15 (13,000 XP) and the following trait:",
-						"Spellcasting. The vampire is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 15, +7 to hit with spell attacks). The vampire has the following wizard spells prepared:",
-						"Cantrips (at will): mage hand, prestidigitation, ray of frost",
-						"1st level (4 slots): comprehend languages, fog cloud, sleep",
-						"2nd level (3 slots): detect thoughts, gust of wind, mirror image",
-						"3rd level (3 slots): animate dead, bestow curse, nondetection",
-						"4th level (3 slots): blight, greater invisibility",
-						"5th level (1 slot): dominate person"
+						"In the centuries since his transformation, Strahd's lust for life and youth have only grown. He broods in his dark castle, cursing the living for stealing away what he lost, and never admitting his hand in the tragedy he created."
 					]
 				}
 			]
@@ -10472,61 +10365,6 @@
 			}
 		},
 		{
-			"name": "Warhorse",
-			"source": "MM",
-			"entries": [
-				{
-					"type": "inset",
-					"name": "Variant: Warhorse Armor",
-					"entries": [
-						"An armored warhorse has an AC based on the type of barding worn (see the Player's Handbook for more information on barding). The horse's AC includes its Dexterity modifier, where applicable. Barding doesn't alter the horse's challenge rating.",
-						{
-							"type": "table",
-							"caption": "",
-							"colLabels": [
-								"AC",
-								"Barding"
-							],
-							"colStyles": [
-								"col-xs-6",
-								"col-xs-6"
-							],
-							"rows": [
-								[
-									"12",
-									"Leather"
-								],
-								[
-									"13",
-									"Studded leather"
-								],
-								[
-									"14",
-									"Ring mail"
-								],
-								[
-									"15",
-									"Scale mail"
-								],
-								[
-									"16",
-									"Chain mail"
-								],
-								[
-									"17",
-									"Splint"
-								],
-								[
-									"18",
-									"Plate"
-								]
-							]
-						}
-					]
-				}
-			]
-		},
-		{
 			"name": "Warhorse Skeleton",
 			"source": "MM",
 			"_copy": {
@@ -10596,47 +10434,17 @@
 						"type": "internal",
 						"path": "bestiary/MM/Werebear.jpg"
 					}
-				},
-				{
-					"type": "image",
-					"href": {
-						"type": "internal",
-						"path": "bestiary/MM/Lycanthropes.jpg"
-					}
 				}
 			],
 			"entries": [
 				"Werebears are powerful lycanthropes with the ability to temper their monstrous natures and reject their violent impulses. In humanoid form, they are large, muscular, and covered in hair matching the color of their ursine form's fur. A werebear is a loner by nature, fearing what might happen to innocent creatures around it when its bestial nature takes over.",
-				{
-					"type": "entries",
-					"name": "Lycanthropes",
-					"entries": [
-						"One of the most ancient and feared of all curses, lycanthropy can transform the most civilized humanoid into a ravening beast. In its natural humanoid form, a creature cursed by lycanthropy appears as its normal self. Over time, however, many lycanthropes acquire features suggestive of their animal form. In that animal form, a lycanthrope resembles a powerful version of a normal animal. On close inspection, its eyes show a faint spark of unnatural intelligence and might glow red in the dark.",
-						"Evil lycanthropes hide among normal folk, emerging in animal form at night to spread terror and bloodshed, especially under a full moon. Good lycanthropes are reclusive and uncomfortable around other civilized creatures, often living alone in wilderness areas far from villages and towns.",
-						"Curse of Lycanthropy. A humanoid creature can be afflicted with the curse of lycanthropy after being wounded by a lycanthrope, or if one or both of its parents are lycanthropes. A remove curse spell can rid an afflicted lycanthrope of the curse, but a natural born lycanthrope can be freed of the curse only with a wish.",
-						"A lycanthrope can either resist its curse or embrace it. By resisting the curse, a lycanthrope retains its normal alignment and personality while in humanoid form. It lives its life as it always has, burying deep the bestial urges raging inside it. However, when the full moon rises, the curse becomes too strong to resist, transforming the individual into its beast form-or into a horrible hybrid form that combines animal and humanoid traits. When the moon wanes, the beast within can be controlled once again. Especially if the cursed creature is unaware of its condition, it might not remember the events of its transformation, though those memories often haunt a lycanthrope as bloody dreams.",
-						"Some individuals see little point in fighting the curse and accept what they are. With time and experience, they learn to master their shapechanging ability and can assume beast form or hybrid form at will. Most lycanthropes that embrace their bestial natures succumb to bloodlust, becoming evil, opportunistic creatures that prey on the weak.",
-						"Variant: Nonhuman Lycanthropes",
-						"The statistics presented in this section assume a base creature of human. However, you can also use the statistics to represent nonhuman lycanthropes, adding verisimilitude by allowing a nonhuman lycanthrope to retain one or more of its humanoid racial traits. For example, an elf werewolf might have the Fey Ancestry trait.",
-						"When a werebear transforms, it grows to enormous size, lashing out with weapons or claws. It fights with the ferocity of a bear, though even in its bestial forms, it avoids biting so as to not pass on its curse. Typically, a werebear passes on its lycanthropy only to chosen companions or apprentices, spending the time that follows helping the new lycanthrope accept the curse in order to control it.",
-						"Solitary creatures, werebears act as wardens over their territory, protecting flora and fauna alike from humanoid or monstrous intrusion. Though most werebears are of good alignment, some are every bit as evil as other lycanthropes."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Player Characters as Lycanthropes",
-					"entries": [
-						"A character who becomes a lycanthrope retains his or her statistics except as specified by lycanthrope type. The character gains the lycanthrope's speeds in non humanoid form, damage immunities, traits, and actions that don't involve equipment. The character is proficient with the lycanthrope's natural attacks, such as its bite or claws, which deal damage as shown in the lycanthrope's statistics. The character can't speak while in animal form.",
-						"A humanoid hit by an attack that carries the curse of lycanthropy must succeed on a Constitution saving throw (DC 8 + the lycanthrope's proficiency bonus + the lycanthrope's Constitution modifier) or be cursed. If the character embraces the curse, his or her alignment becomes the one defined for the lycanthrope. The DM is free to decide that a change in alignment places the character under DM control until the curse of lycanthropy is removed.",
-						"The following information applies to specific lycanthropes.",
-						"Werebear. The character gains a Strength of 19 if his or her score isn't already higher, and a +1 bonus to AC while in bear or hybrid form (from natural armor). Attack and damage rolls for the natural weapons are based on Strength.",
-						"Wereboar. The character gains a Strength of 17 if his or her score isn't already higher, and a +1 bonus to AC while in boar or hybrid form (from natural armor). Attack and damage rolls for the tusks are based on Strength. For the Charge trait, the DC is 8 + the character's proficiency bonus + Strength modifier.",
-						"Wererat. The character gains a Dexterity of 15 if his or her score isn't already higher. Attack and damage rolls for the bite are based on whichever is higher of the character's Strength and Dexterity.",
-						"Weretiger. The character gains a Strength of 17 if his or her score isn't already higher. Attack and damage rolls for the natural weapons are based on Strength. For the Pounce trait, the DC is 8 + the character's proficiency bonus + Strength modifier.",
-						"Werewolf. The character gains a Strength of 15 if his or her score isn't already higher, and a +1 bonus to AC while in wolf or hybrid form (from natural armor). Attack and damage rolls for the natural weapons are based on Strength."
-					]
-				}
-			]
+				"When a werebear transforms, it grows to enormous size, lashing out with weapons or claws. It fights with the ferocity of a bear, though even in its bestial forms, it avoids biting so as to not pass on its curse. Typically, a werebear passes on its lycanthropy only to chosen companions or apprentices, spending the time that follows helping the new lycanthrope accept the curse in order to control it.",
+				"Solitary creatures, werebears act as wardens over their territory, protecting flora and fauna alike from humanoid or monstrous intrusion. Though most werebears are of good alignment, some are every bit as evil as other lycanthropes."
+			],
+			"_appendCopy": {
+				"name": "Lycanthropes",
+				"source": "MM"
+			}
 		},
 		{
 			"name": "Wereboar",
@@ -10648,48 +10456,16 @@
 						"type": "internal",
 						"path": "bestiary/MM/Wereboar.jpg"
 					}
-				},
-				{
-					"type": "image",
-					"href": {
-						"type": "internal",
-						"path": "bestiary/MM/Lycanthropes.jpg"
-					}
 				}
 			],
 			"entries": [
 				"Wereboars are ill-tempered and vulgar brutes. As humanoids, they are stocky and muscular, with short, stiff hair. In their humanoid and hybrid forms, they use heavy weapons, while in hybrid or animal form, they gain a devastating goring attack through which their curse is spread. A wereboar infects other creatures indiscriminately, relishing the fact that the more its victims resist the curse, the more savage and bestial they become.",
-				"Wereboars live in small family groups in remote forest areas, building ramshackle huts or dwelling in caves. They are suspicious of strangers but sometimes ally themselves with orcs.",
-				{
-					"type": "entries",
-					"name": "Lycanthropes",
-					"entries": [
-						"One of the most ancient and feared of all curses, lycanthropy can transform the most civilized humanoid into a ravening beast. In its natural humanoid form, a creature cursed by lycanthropy appears as its normal self. Over time, however, many lycanthropes acquire features suggestive of their animal form. In that animal form, a lycanthrope resembles a powerful version of a normal animal. On close inspection, its eyes show a faint spark of unnatural intelligence and might glow red in the dark.",
-						"Evil lycanthropes hide among normal folk, emerging in animal form at night to spread terror and bloodshed, especially under a full moon. Good lycanthropes are reclusive and uncomfortable around other civilized creatures, often living alone in wilderness areas far from villages and towns.",
-						"Curse of Lycanthropy. A humanoid creature can be afflicted with the curse of lycanthropy after being wounded by a lycanthrope, or if one or both of its parents are lycanthropes. A remove curse spell can rid an afflicted lycanthrope of the curse, but a natural born lycanthrope can be freed of the curse only with a wish.",
-						"A lycanthrope can either resist its curse or embrace it. By resisting the curse, a lycanthrope retains its normal alignment and personality while in humanoid form. It lives its life as it always has, burying deep the bestial urges raging inside it. However, when the full moon rises, the curse becomes too strong to resist, transforming the individual into its beast form-or into a horrible hybrid form that combines animal and humanoid traits. When the moon wanes, the beast within can be controlled once again. Especially if the cursed creature is unaware of its condition, it might not remember the events of its transformation, though those memories often haunt a lycanthrope as bloody dreams.",
-						"Some individuals see little point in fighting the curse and accept what they are. With time and experience, they learn to master their shapechanging ability and can assume beast form or hybrid form at will. Most lycanthropes that embrace their bestial natures succumb to bloodlust, becoming evil, opportunistic creatures that prey on the weak.",
-						"Variant: Nonhuman Lycanthropes",
-						"The statistics presented in this section assume a base creature of human. However, you can also use the statistics to represent nonhuman lycanthropes, adding verisimilitude by allowing a nonhuman lycanthrope to retain one or more of its humanoid racial traits. For example, an elf werewolf might have the Fey Ancestry trait.",
-						"When a werebear transforms, it grows to enormous size, lashing out with weapons or claws. It fights with the ferocity of a bear, though even in its bestial forms, it avoids biting so as to not pass on its curse. Typically, a werebear passes on its lycanthropy only to chosen companions or apprentices, spending the time that follows helping the new lycanthrope accept the curse in order to control it.",
-						"Solitary creatures, werebears act as wardens over their territory, protecting flora and fauna alike from humanoid or monstrous intrusion. Though most werebears are of good alignment, some are every bit as evil as other lycanthropes."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Player Characters as Lycanthropes",
-					"entries": [
-						"A character who becomes a lycanthrope retains his or her statistics except as specified by lycanthrope type. The character gains the lycanthrope's speeds in non-humanoid form, damage immunities, traits, and actions that don't involve equipment. The character is proficient with the lycanthrope's natural attacks, such as its bite or claws, which deal damage as shown in the lycanthrope's statistics. The character can't speak while in animal form.",
-						"A humanoid hit by an attack that carries the curse of lycanthropy must succeed on a Constitution saving throw (DC 8 + the lycanthrope's proficiency bonus + the lycanthrope's Constitution modifier) or be cursed. If the character embraces the curse, his or her alignment becomes the one defined for the lycanthrope. The DM is free to decide that a change in alignment places the character under DM control until the curse of lycanthropy is removed.",
-						"The following information applies to specific lycanthropes.",
-						"Werebear. The character gains a Strength of 19 if his or her score isn't already higher, and a +1 bonus to AC while in bear or hybrid form (from natural armor). Attack and damage rolls for the natural weapons are based on Strength.",
-						"Wereboar. The character gains a Strength of 17 if his or her score isn't already higher, and a +1 bonus to AC while in boar or hybrid form (from natural armor). Attack and damage rolls for the tusks are based on Strength. For the Charge trait, the DC is 8 + the character's proficiency bonus + Strength modifier.",
-						"Wererat. The character gains a Dexterity of 15 if his or her score isn't already higher. Attack and damage rolls for the bite are based on whichever is higher of the character's Strength and Dexterity.",
-						"Weretiger. The character gains a Strength of 17 if his or her score isn't already higher. Attack and damage rolls for the natural weapons are based on Strength. For the Pounce trait, the DC is 8 + the character's proficiency bonus + Strength modifier.",
-						"Werewolf. The character gains a Strength of 15 if his or her score isn't already higher, and a +1 bonus to AC while in wolf or hybrid form (from natural armor). Attack and damage rolls for the natural weapons are based on Strength."
-					]
-				}
-			]
+				"Wereboars live in small family groups in remote forest areas, building ramshackle huts or dwelling in caves. They are suspicious of strangers but sometimes ally themselves with orcs."
+			],
+			"_appendCopy": {
+				"name": "Lycanthropes",
+				"source": "MM"
+			}
 		},
 		{
 			"name": "Wererat",
@@ -10701,49 +10477,17 @@
 						"type": "internal",
 						"path": "bestiary/MM/Wererat.jpg"
 					}
-				},
-				{
-					"type": "image",
-					"href": {
-						"type": "internal",
-						"path": "bestiary/MM/Lycanthropes.jpg"
-					}
 				}
 			],
 			"entries": [
 				"Wererats are cunning lycanthropes with sly, avaricious personalities. They are wiry and twitchy in humanoid form, with thin hair and darting eyes. In their humanoid and hybrid forms, wererats prefer light weapons and use ambush tactics rather than fighting as a pack. Although a wererat can deliver a nasty bite in its rat form, it favors that form for stealthy infiltration and escape rather than combat.",
 				"A wererat clan operates much like a thieves' guild, with wererats transmitting their curse only to creatures they want to induct into the clan. Wererats that are accidentally cursed or break loose from the clan's control are quickly hunted down and killed.",
-				"Wererat clans are found throughout urban civilization, often dwelling in cellars and catacombs. These creatures are common in the sewers beneath major cities, viewing those subterranean areas as their hunting grounds. Rats and giant rats are commonly found living among wererats.",
-				{
-					"type": "entries",
-					"name": "Lycanthropes",
-					"entries": [
-						"One of the most ancient and feared of all curses, lycanthropy can transform the most civilized humanoid into a ravening beast. In its natural humanoid form, a creature cursed by lycanthropy appears as its normal self. Over time, however, many lycanthropes acquire features suggestive of their animal form. In that animal form, a lycanthrope resembles a powerful version of a normal animal. On close inspection, its eyes show a faint spark of unnatural intelligence and might glow red in the dark.",
-						"Evil lycanthropes hide among normal folk, emerging in animal form at night to spread terror and bloodshed, especially under a full moon. Good lycanthropes are reclusive and uncomfortable around other civilized creatures, often living alone in wilderness areas far from villages and towns.",
-						"Curse of Lycanthropy. A humanoid creature can be afflicted with the curse of lycanthropy after being wounded by a lycanthrope, or if one or both of its parents are lycanthropes. A remove curse spell can rid an afflicted lycanthrope of the curse, but a natural born lycanthrope can be freed of the curse only with a wish.",
-						"A lycanthrope can either resist its curse or embrace it. By resisting the curse, a lycanthrope retains its normal alignment and personality while in humanoid form. It lives its life as it always has, burying deep the bestial urges raging inside it. However, when the full moon rises, the curse becomes too strong to resist, transforming the individual into its beast form-or into a horrible hybrid form that combines animal and humanoid traits. When the moon wanes, the beast within can be controlled once again. Especially if the cursed creature is unaware of its condition, it might not remember the events of its transformation, though those memories often haunt a lycanthrope as bloody dreams.",
-						"Some individuals see little point in fighting the curse and accept what they are. With time and experience, they learn to master their shapechanging ability and can assume beast form or hybrid form at will. Most lycanthropes that embrace their bestial natures succumb to bloodlust, becoming evil, opportunistic creatures that prey on the weak.",
-						"Variant: Nonhuman Lycanthropes",
-						"The statistics presented in this section assume a base creature of human. However, you can also use the statistics to represent nonhuman lycanthropes, adding verisimilitude by allowing a nonhuman lycanthrope to retain one or more of its humanoid racial traits. For example, an elf werewolf might have the Fey Ancestry trait.",
-						"When a werebear transforms, it grows to enormous size, lashing out with weapons or claws. It fights with the ferocity of a bear, though even in its bestial forms, it avoids biting so as to not pass on its curse. Typically, a werebear passes on its lycanthropy only to chosen companions or apprentices, spending the time that follows helping the new lycanthrope accept the curse in order to control it.",
-						"Solitary creatures, werebears act as wardens over their territory, protecting flora and fauna alike from humanoid or monstrous intrusion. Though most werebears are of good alignment, some are every bit as evil as other lycanthropes."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Player Characters as Lycanthropes",
-					"entries": [
-						"A character who becomes a lycanthrope retains his or her statistics except as specified by lycanthrope type. The character gains the lycanthrope's speeds in non-humanoid form, damage immunities, traits, and actions that don't involve equipment. The character is proficient with the lycanthrope's natural attacks, such as its bite or claws, which deal damage as shown in the lycanthrope's statistics. The character can't speak while in animal form.",
-						"A humanoid hit by an attack that carries the curse of lycanthropy must succeed on a Constitution saving throw (DC 8 + the lycanthrope's proficiency bonus + the lycanthrope's Constitution modifier) or be cursed. If the character embraces the curse, his or her alignment becomes the one defined for the lycanthrope. The DM is free to decide that a change in alignment places the character under DM control until the curse of lycanthropy is removed.",
-						"The following information applies to specific lycanthropes.",
-						"Werebear. The character gains a Strength of 19 if his or her score isn't already higher, and a +1 bonus to AC while in bear or hybrid form (from natural armor). Attack and damage rolls for the natural weapons are based on Strength.",
-						"Wereboar. The character gains a Strength of 17 if his or her score isn't already higher, and a +1 bonus to AC while in boar or hybrid form (from natural armor). Attack and damage rolls for the tusks are based on Strength. For the Charge trait, the DC is 8 + the character's proficiency bonus + Strength modifier.",
-						"Wererat. The character gains a Dexterity of 15 if his or her score isn't already higher. Attack and damage rolls for the bite are based on whichever is higher of the character's Strength and Dexterity.",
-						"Weretiger. The character gains a Strength of 17 if his or her score isn't already higher. Attack and damage rolls for the natural weapons are based on Strength. For the Pounce trait, the DC is 8 + the character's proficiency bonus + Strength modifier.",
-						"Werewolf. The character gains a Strength of 15 if his or her score isn't already higher, and a +1 bonus to AC while in wolf or hybrid form (from natural armor). Attack and damage rolls for the natural weapons are based on Strength."
-					]
-				}
-			]
+				"Wererat clans are found throughout urban civilization, often dwelling in cellars and catacombs. These creatures are common in the sewers beneath major cities, viewing those subterranean areas as their hunting grounds. Rats and giant rats are commonly found living among wererats."
+			],
+			"_appendCopy": {
+				"name": "Lycanthropes",
+				"source": "MM"
+			}
 		},
 		{
 			"name": "Weretiger",
@@ -10755,49 +10499,17 @@
 						"type": "internal",
 						"path": "bestiary/MM/Weretiger.jpg"
 					}
-				},
-				{
-					"type": "image",
-					"href": {
-						"type": "internal",
-						"path": "bestiary/MM/Lycanthropes.jpg"
-					}
 				}
 			],
 			"entries": [
 				"Weretigers are ferocious hunters and warriors with a haughty and fastidious nature. Lithe and sleekly muscular in humanoid form, they are taller than average and meticulously groomed. Weretigers grow to enormous size in animal and hybrid form, but they fight in their more refined humanoid form when they can.",
 				"They don't like to pass on their curse, because every new weretiger means competition for territory and prey.",
-				"Weretigers live in jungles on the fringes of humanoid civilization, traveling to isolated settlements to trade or revel. They live and hunt alone or in small family groups.",
-				{
-					"type": "entries",
-					"name": "Lycanthropes",
-					"entries": [
-						"One of the most ancient and feared of all curses, lycanthropy can transform the most civilized humanoid into a ravening beast. In its natural humanoid form, a creature cursed by lycanthropy appears as its normal self. Over time, however, many lycanthropes acquire features suggestive of their animal form. In that animal form, a lycanthrope resembles a powerful version of a normal animal. On close inspection, its eyes show a faint spark of unnatural intelligence and might glow red in the dark.",
-						"Evil lycanthropes hide among normal folk, emerging in animal form at night to spread terror and bloodshed, especially under a full moon. Good lycanthropes are reclusive and uncomfortable around other civilized creatures, often living alone in wilderness areas far from villages and towns.",
-						"Curse of Lycanthropy. A humanoid creature can be afflicted with the curse of lycanthropy after being wounded by a lycanthrope, or if one or both of its parents are lycanthropes. A remove curse spell can rid an afflicted lycanthrope of the curse, but a natural born lycanthrope can be freed of the curse only with a wish.",
-						"A lycanthrope can either resist its curse or embrace it. By resisting the curse, a lycanthrope retains its normal alignment and personality while in humanoid form. It lives its life as it always has, burying deep the bestial urges raging inside it. However, when the full moon rises, the curse becomes too strong to resist, transforming the individual into its beast form-or into a horrible hybrid form that combines animal and humanoid traits. When the moon wanes, the beast within can be controlled once again. Especially if the cursed creature is unaware of its condition, it might not remember the events of its transformation, though those memories often haunt a lycanthrope as bloody dreams.",
-						"Some individuals see little point in fighting the curse and accept what they are. With time and experience, they learn to master their shapechanging ability and can assume beast form or hybrid form at will. Most lycanthropes that embrace their bestial natures succumb to bloodlust, becoming evil, opportunistic creatures that prey on the weak.",
-						"Variant: Nonhuman Lycanthropes",
-						"The statistics presented in this section assume a base creature of human. However, you can also use the statistics to represent nonhuman lycanthropes, adding verisimilitude by allowing a nonhuman lycanthrope to retain one or more of its humanoid racial traits. For example, an elf werewolf might have the Fey Ancestry trait.",
-						"When a werebear transforms, it grows to enormous size, lashing out with weapons or claws. It fights with the ferocity of a bear, though even in its bestial forms, it avoids biting so as to not pass on its curse. Typically, a werebear passes on its lycanthropy only to chosen companions or apprentices, spending the time that follows helping the new lycanthrope accept the curse in order to control it.",
-						"Solitary creatures, werebears act as wardens over their territory, protecting flora and fauna alike from humanoid or monstrous intrusion. Though most werebears are of good alignment, some are every bit as evil as other lycanthropes."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Player Characters as Lycanthropes",
-					"entries": [
-						"A character who becomes a lycanthrope retains his or her statistics except as specified by lycanthrope type. The character gains the lycanthrope's speeds in non-humanoid form, damage immunities, traits, and actions that don't involve equipment. The character is proficient with the lycanthrope's natural attacks, such as its bite or claws, which deal damage as shown in the lycanthrope's statistics. The character can't speak while in animal form.",
-						"A humanoid hit by an attack that carries the curse of lycanthropy must succeed on a Constitution saving throw (DC 8 + the lycanthrope's proficiency bonus + the lycanthrope's Constitution modifier) or be cursed. If the character embraces the curse, his or her alignment becomes the one defined for the lycanthrope. The DM is free to decide that a change in alignment places the character under DM control until the curse of lycanthropy is removed.",
-						"The following information applies to specific lycanthropes.",
-						"Werebear. The character gains a Strength of 19 if his or her score isn't already higher, and a +1 bonus to AC while in bear or hybrid form (from natural armor). Attack and damage rolls for the natural weapons are based on Strength.",
-						"Wereboar. The character gains a Strength of 17 if his or her score isn't already higher, and a +1 bonus to AC while in boar or hybrid form (from natural armor). Attack and damage rolls for the tusks are based on Strength. For the Charge trait, the DC is 8 + the character's proficiency bonus + Strength modifier.",
-						"Wererat. The character gains a Dexterity of 15 if his or her score isn't already higher. Attack and damage rolls for the bite are based on whichever is higher of the character's Strength and Dexterity.",
-						"Weretiger. The character gains a Strength of 17 if his or her score isn't already higher. Attack and damage rolls for the natural weapons are based on Strength. For the Pounce trait, the DC is 8 + the character's proficiency bonus + Strength modifier.",
-						"Werewolf. The character gains a Strength of 15 if his or her score isn't already higher, and a +1 bonus to AC while in wolf or hybrid form (from natural armor). Attack and damage rolls for the natural weapons are based on Strength."
-					]
-				}
-			]
+				"Weretigers live in jungles on the fringes of humanoid civilization, traveling to isolated settlements to trade or revel. They live and hunt alone or in small family groups."
+			],
+			"_appendCopy": {
+				"name": "Lycanthropes",
+				"source": "MM"
+			}
 		},
 		{
 			"name": "Werewolf",
@@ -10809,48 +10521,16 @@
 						"type": "internal",
 						"path": "bestiary/MM/Werewolf.jpg"
 					}
-				},
-				{
-					"type": "image",
-					"href": {
-						"type": "internal",
-						"path": "bestiary/MM/Lycanthropes.jpg"
-					}
 				}
 			],
 			"entries": [
 				"A werewolf is a savage predator. In its humanoid form, a werewolf has heightened senses, a fiery temper, and a tendency to eat rare meat. Its wolf form is a fearsome predator, but its hybrid form is more terrifying by far-a furred and well-muscled humanoid body topped by a ravening wolf's head. A werewolf can wield weapons in hybrid form, though it prefers to tear foes apart with its powerful claws and bite.",
-				"Most werewolves flee civilized lands not long after becoming afflicted. Those that reject the curse fear what will happen if they remain among their friends and family. Those that embrace the curse fear discovery and the consequences of their murderous acts. In the wild, werewolves form packs that also include wolves and dire wolves.",
-				{
-					"type": "entries",
-					"name": "Lycanthropes",
-					"entries": [
-						"One of the most ancient and feared of all curses, lycanthropy can transform the most civilized humanoid into a ravening beast. In its natural humanoid form, a creature cursed by lycanthropy appears as its normal self. Over time, however, many lycanthropes acquire features suggestive of their animal form. In that animal form, a lycanthrope resembles a powerful version of a normal animal. On close inspection, its eyes show a faint spark of unnatural intelligence and might glow red in the dark.",
-						"Evil lycanthropes hide among normal folk, emerging in animal form at night to spread terror and bloodshed, especially under a full moon. Good lycanthropes are reclusive and uncomfortable around other civilized creatures, often living alone in wilderness areas far from villages and towns.",
-						"Curse of Lycanthropy. A humanoid creature can be afflicted with the curse of lycanthropy after being wounded by a lycanthrope, or if one or both of its parents are lycanthropes. A remove curse spell can rid an afflicted lycanthrope of the curse, but a natural born lycanthrope can be freed of the curse only with a wish.",
-						"A lycanthrope can either resist its curse or embrace it. By resisting the curse, a lycanthrope retains its normal alignment and personality while in humanoid form. It lives its life as it always has, burying deep the bestial urges raging inside it. However, when the full moon rises, the curse becomes too strong to resist, transforming the individual into its beast form-or into a horrible hybrid form that combines animal and humanoid traits. When the moon wanes, the beast within can be controlled once again. Especially if the cursed creature is unaware of its condition, it might not remember the events of its transformation, though those memories often haunt a lycanthrope as bloody dreams.",
-						"Some individuals see little point in fighting the curse and accept what they are. With time and experience, they learn to master their shapechanging ability and can assume beast form or hybrid form at will. Most lycanthropes that embrace their bestial natures succumb to bloodlust, becoming evil, opportunistic creatures that prey on the weak.",
-						"Variant: Nonhuman Lycanthropes",
-						"The statistics presented in this section assume a base creature of human. However, you can also use the statistics to represent nonhuman lycanthropes, adding verisimilitude by allowing a nonhuman lycanthrope to retain one or more of its humanoid racial traits. For example, an elf werewolf might have the Fey Ancestry trait.",
-						"When a werebear transforms, it grows to enormous size, lashing out with weapons or claws. It fights with the ferocity of a bear, though even in its bestial forms, it avoids biting so as to not pass on its curse. Typically, a werebear passes on its lycanthropy only to chosen companions or apprentices, spending the time that follows helping the new lycanthrope accept the curse in order to control it.",
-						"Solitary creatures, werebears act as wardens over their territory, protecting flora and fauna alike from humanoid or monstrous intrusion. Though most werebears are of good alignment, some are every bit as evil as other lycanthropes."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Player Characters as Lycanthropes",
-					"entries": [
-						"A character who becomes a lycanthrope retains his or her statistics except as specified by lycanthrope type. The character gains the lycanthrope's speeds in non-humanoid form, damage immunities, traits, and actions that don't involve equipment. The character is proficient with the lycanthrope's natural attacks, such as its bite or claws, which deal damage as shown in the lycanthrope's statistics. The character can't speak while in animal form.",
-						"A humanoid hit by an attack that carries the curse of lycanthropy must succeed on a Constitution saving throw (DC 8 + the lycanthrope's proficiency bonus + the lycanthrope's Constitution modifier) or be cursed. If the character embraces the curse, his or her alignment becomes the one defined for the lycanthrope. The DM is free to decide that a change in alignment places the character under DM control until the curse of lycanthropy is removed.",
-						"The following information applies to specific lycanthropes.",
-						"Werebear. The character gains a Strength of 19 if his or her score isn't already higher, and a +1 bonus to AC while in bear or hybrid form (from natural armor). Attack and damage rolls for the natural weapons are based on Strength.",
-						"Wereboar. The character gains a Strength of 17 if his or her score isn't already higher, and a +1 bonus to AC while in boar or hybrid form (from natural armor). Attack and damage rolls for the tusks are based on Strength. For the Charge trait, the DC is 8 + the character's proficiency bonus + Strength modifier.",
-						"Wererat. The character gains a Dexterity of 15 if his or her score isn't already higher. Attack and damage rolls for the bite are based on whichever is higher of the character's Strength and Dexterity.",
-						"Weretiger. The character gains a Strength of 17 if his or her score isn't already higher. Attack and damage rolls for the natural weapons are based on Strength. For the Pounce trait, the DC is 8 + the character's proficiency bonus + Strength modifier.",
-						"Werewolf. The character gains a Strength of 15 if his or her score isn't already higher, and a +1 bonus to AC while in wolf or hybrid form (from natural armor). Attack and damage rolls for the natural weapons are based on Strength."
-					]
-				}
-			]
+				"Most werewolves flee civilized lands not long after becoming afflicted. Those that reject the curse fear what will happen if they remain among their friends and family. Those that embrace the curse fear discovery and the consequences of their murderous acts. In the wild, werewolves form packs that also include wolves and dire wolves."
+			],
+			"_appendCopy": {
+				"name": "Lycanthropes",
+				"source": "MM"
+			}
 		},
 		{
 			"name": "White Dragon Wyrmling",
@@ -10955,7 +10635,7 @@
 					"type": "image",
 					"href": {
 						"type": "internal",
-						"path": "bestiary/MM/White Wolf.jpg"
+						"path": "bestiary/MM/Winter Wolf.jpg"
 					}
 				}
 			],
@@ -11446,7 +11126,7 @@
 					"name": "Hoarders of Gems",
 					"type": "entries",
 					"entries": [
-						"Though blue dragons collect anything that looks valuable, they are especially fond of gems. Considering blue to be the most noble and beautiful of colors, they covet sapphires, favoring jewellery and magic items adorned with those gems.",
+						"Though blue dragons collect anything that looks valuable, they are especially fond of gems. Considering blue to be the most noble and beautiful of colors, they covet sapphires, favoring jewelery and magic items adorned with those gems.",
 						"A blue dragon buries its most valuable treasures deep in the sand, while scattering a few less valuable trinkets in plainer sight over hidden sinkholes to punish and eliminate would-be thieves."
 					]
 				},
@@ -11457,22 +11137,6 @@
 						"Blue dragons make their lairs in barren places, using their lightning breath and their burrowing ability to carve out crystallized caverns and tunnels beneath the sands.",
 						"Thunderstorms rage around a legendary blue dragon's lair, and narrow tubes lined with glassy sand ventilate the lair, all the while avoiding the deadly sinkholes that are the dragon's first line of defense.",
 						"A blue dragon will collapse the caverns that make up its lair if that lair is invaded. The dragon then burrows out, leaving its attackers to be crushed and suffocated. When it returns later, it collects its possessions-along with the wealth of the dead intruders."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a legendary blue dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"Thunderstorms rage within 6 miles of the lair.",
-								"Dust devils scour the land within 6 miles of the lair. A dust devil has the statistics of an air elemental, but it can't fly, has a speed of 50 feet, and has an Intelligence and Charisma of 1 (-5).",
-								"Hidden sinkholes form in and around the dragon's lair. A sinkhole can be spotted from a safe distance with a successful DC 20 Wisdom (Perception) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall 1d6 + 10 feet into the sinkhole."
-							]
-						},
-						"If the dragon dies, the dust devils disappear immediately, and the thunderstorms abate within 1d10 days. Any sinkholes remain where they are."
 					]
 				}
 			],
@@ -11518,22 +11182,6 @@
 					"entries": [
 						"A brass dragon's desert lair is typically a ruin, canyon, or cave network with ceiling holes to allow for sunlight."
 					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a legendary brass dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"Tracks appear in the sand within 6 miles of the dragon's lair. The tracks lead to safe shelters and hidden water sources, while also leading away from areas that the dragon prefers to remain undisturbed.",
-								"Images of Large or smaller monsters haunt the desert sands within 1 mile of the dragon's lair. These illusions move and appear real, although they can do no harm. A creature that examines an image from a distance can tell it's an illusion with a successful DC 20 Intelligence (Investigation) check. Any physical interaction with an image reveals it to be an illusion, because objects pass through it.",
-								"Whenever a creature with an Intelligence of 3 or higher comes within 30 feet of a water source within 1 mile of the dragon's lair, the dragon becomes aware of the creature's presence and location."
-							]
-						},
-						"If the dragon dies, the tracks fade in 1d10 days, but the other effects fade immediately."
-					]
 				}
 			],
 			"_appendCopy": {
@@ -11576,22 +11224,6 @@
 					"name": "A Bronze Dragon's Lair",
 					"entries": [
 						"A bronze dragon lairs in coastal caves. It might salvage a wrecked ship, reconstruct it within the confines of its lair, and use it as a treasure vault or nest for its eggs."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a legendary bronze dragon's lair is warped by the dragon's magic.",
-						{
-							"type": "list",
-							"items": [
-								"Once per day, the dragon can alter the weather in a 6-mile radius centered on its lair. The dragon doesn't need to be outdoors; otherwise the effect is identical to the control weather spell.",
-								"Underwater plants within 6 miles of the dragon's lair take on dazzlingly brilliant hues.",
-								"Within its lair, the dragon can set illusory sounds, such as soft music and strange echoes, so that they can be heard in various parts of the lair."
-							]
-						},
-						"If the dragon dies, changed weather reverts to normal, as described in the spell, and the other effects fade in 1d10 days."
 					]
 				}
 			],
@@ -11636,22 +11268,6 @@
 					"name": "A Copper Dragon's Lair",
 					"entries": [
 						"Copper dragons dwell in dry uplands and on hilltops, where they make their lairs in narrow caves. False walls in the lair hide secret antechambers where the dragon stores valuable ores, art objects, and other oddities it has collected over its lifetime. Worthless items are put on display in open caves to tantalize treasure seekers and distract them from where the real treasure is hidden."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a legendary copper dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"Magic carvings of the dragon's smiling visage can be seen worked into stone terrain and objects within 6 miles of the dragon's lair.",
-								"Tiny beasts such as rodents and birds that are normally unable to speak gain the magical ability to speak and understand Draconic while within 1 mile of the dragon's lair. These creatures speak well of the dragon, but can't divulge its whereabouts.",
-								"Intelligent creatures within 1 mile of the dragon's lair are prone to fits of giggling. Even serious matters suddenly seem amusing."
-							]
-						},
-						"If the dragon dies, the magic carvings fade over the course of 1d10 days. The other effects end immediately."
 					]
 				}
 			],
@@ -11702,22 +11318,6 @@
 					"name": "A Gold Dragon's Lair",
 					"entries": [
 						"Gold dragons make their homes in out-of-the-way places, where they can do as they please without arousing suspicion or fear. Most dwell near idyllic lakes and rivers, mist-shrouded islands, cave complexes hidden behind sparkling waterfalls, or ancient ruins."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a legendary gold dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"Whenever a creature that can understand a language sleeps or enters a state of trance or reverie within 6 miles of the dragon's lair, the dragon can establish telepathic contact with that creature and converse with it in its dreams. The creature remembers its conversation with the dragon upon waking.",
-								"Banks of beautiful, opalescent mist manifest within 6 miles of the dragon's lair. The mist doesn't obscure anything. It assumes haunting forms when evil creatures are near the dragon or other non-evil creatures in the mist, warning such creatures of the danger.",
-								"Gems and pearls within 1 mile of the dragon's lair sparkle and gleam, shedding dim light in a 5-foot radius."
-							]
-						},
-						"If the dragon dies, these effects end immediately."
 					]
 				}
 			],
@@ -11783,23 +11383,6 @@
 						"The moss-covered trees grow close together except where winding pathways trace their way like a maze into the heart of the forest. The light that reaches the forest floor carries an emerald green cast, and every sound seems muffled.",
 						"At the center of its forest, a green dragon chooses a cave in a sheer cliff or hillside for its lair, preferring an entrance hidden from prying eyes. Some seek out cave mouths concealed behind waterfalls, or partly submerged caverns that can be accessed through lakes or streams. Others conceal the entrances to their lairs with vegetation."
 					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a legendary green dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"Thickets form labyrinthine passages within 1 mile of the dragon's lair. The thickets act as 10-foot-high, 10-foot-thick walls that block line of sight. Creatures can move through the thickets, with every 1 foot a creature moves costing it 4 feet of movement. A creature in the thickets must make a DC 15 Dexterity saving throw once each round it's in contact with the thickets or take 3 (1d6) piercing damage from thorns.",
-								"Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning and piercing damage, vulnerability to fire damage, and immunity to psychic and thunder damage.",
-								"Within 1 mile of its lair, the dragon leaves no physical evidence of its passage unless it wishes to. Tracking it there is impossible except by magical means. In addition, it ignores movement impediments and damage from plants in this area that are neither magical nor creatures, including the thickets described above. The plants remove themselves from the dragon's path.",
-								"Rodents and birds within 1 mile of the dragon's lair serve as the dragon's eyes and ears. Deer and other large game are strangely absent, hinting at the presence of an unnaturally hungry predator."
-							]
-						},
-						"If the dragon dies, the rodents and birds lose their supernatural link to it. The thickets remain, but within 1d10 days, they become mundane plants and normal difficult terrain, losing their thorns."
-					]
 				}
 			],
 			"_appendCopy": {
@@ -11860,22 +11443,6 @@
 						"Red dragons lair in high mountains or hills, dwelling in caverns under snow-capped peaks, or within the deep halls of abandoned mines and dwarven strongholds. Caves with volcanic or geothermal activity are the most highly prized red dragon lairs, creating hazards that hinder intruders and letting searing heat and volcanic gases wash over a dragon as it sleeps. With its hoard well protected deep within the lair, a red dragon spends as much of its time outside the mountain as in it. For a red dragon, the great heights of the world are the throne from which it can look out to survey all it controls-and the wider world it seeks to control.",
 						"Throughout the lair complex, servants erect monuments to the dragon's power, telling the grim story of its life, the enemies it has slain, and the nations it has conquered."
 					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a legendary red dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"Small earthquakes are common within 6 miles of the dragon's lair.",
-								"Water sources within 1 mile of the lair are supernaturally warm and tainted by sulfur.",
-								"Rocky fissures within 1 mile of the dragon's lair form portals to the Elemental Plane of Fire, allowing creatures of elemental fire into the world to dwell nearby."
-							]
-						},
-						"If the dragon dies, these effects fade over the course of 1d10 days."
-					]
 				}
 			],
 			"_appendCopy": {
@@ -11918,7 +11485,7 @@
 					"name": "Hoarding History",
 					"type": "entries",
 					"entries": [
-						"Silver dragons love to possess relics of humanoid history. This includes the great piles of coins they covet, minted by current and fallen humanoid empires, as well as art objects and fine jewellery crafted by numerous races. Other treasures that make up their hoards can include intact ships, the remains of kings and queens, thrones, the crown jewels of ancient empires, inventions and contraptions, and monoliths carried from the ruins of fallen cities."
+						"Silver dragons love to possess relics of humanoid history. This includes the great piles of coins they covet, minted by current and fallen humanoid empires, as well as art objects and fine jewelery crafted by numerous races. Other treasures that make up their hoards can include intact ships, the remains of kings and queens, thrones, the crown jewels of ancient empires, inventions and contraptions, and monoliths carried from the ruins of fallen cities."
 					]
 				},
 				{
@@ -11926,22 +11493,6 @@
 					"name": "A Silver Dragon's Lair",
 					"entries": [
 						"Silver dragons dwell among the clouds, making their lairs on secluded cold mountain peaks. Though many are comfortable in natural cavern complexes or abandoned mines, silver dragons covet the lost outposts of humanoid civilization. An abandoned mountaintop citadel or a remote tower raised by a long-dead wizard is the sort of lair that every silver dragon dreams of."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a legendary silver dragon's lair is warped by the dragon's magic, which creates one or more of the following effects.",
-						{
-							"type": "list",
-							"items": [
-								"Once per day, the dragon can alter the weather in a 6-mile radius centered on its lair. The dragon doesn't need to be outdoors; otherwise the effect is identical to the control weather spell.",
-								"Within 1 mile of the lair, winds buoy non-evil creatures that fall due to no act of the dragon's or its allies. Such creatures descend at a rate of 60 feet per round and take no falling damage.",
-								"Given days or longer to work, the dragon can make clouds and fog within its lair as solid as stone, forming structures and other objects as it wishes. If the dragon dies, changed weather reverts to normal, as described in the spell, and the other effects fade in 1d10 days."
-							]
-						},
-						"If the dragon dies, changed weather reverts to normal, as described in the spell, and the other effects fade in 1d10 days."
 					]
 				}
 			],
@@ -12000,22 +11551,6 @@
 						"A legendary white dragon's innate magic deepens the cold in the area around its lair. Mountain caverns are fast frozen by the white dragon's presence. A white dragon can often detect intruders by the way the keening wind in its lair changes tone.",
 						"A white dragon rests on high ice shelves and cliffs in its lair, the floor around it a treacherous morass of broken ice and stone, hidden pits, and slippery slopes. As foes struggle to move toward it, the dragon flies from perch to perch and destroys them with its freezing breath."
 					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a legendary white dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"Chilly fog lightly obscures the land within 6 miles of the dragon's lair.",
-								"Freezing precipitation falls within 6 miles of the dragon's lair, sometimes forming blizzard conditions when the dragon is at rest.",
-								"Icy walls block off areas in the dragon's lair. Each wall is 6 inches thick, and a 10-foot section has AC 5, 15 hit points, vulnerability to fire damage, and immunity to acid, cold, necrotic, poison, and psychic damage. If the dragon wishes to move through a wall, it can do so without slowing down. The portion of the wall the dragon moves through is destroyed, however."
-							]
-						},
-						"If the dragon dies, the fog and precipitation fade within 1 day. The ice walls melt over the course of 1d10 days."
-					]
 				}
 			],
 			"_appendCopy": {
@@ -12070,22 +11605,6 @@
 					"entries": [
 						"Black dragons dwell in swamps on the frayed edges of civilization. A black dragon's lair is a dismal cave, grotto, or ruin that is at least partially flooded, providing pools where the dragon rests, and where its victims can ferment. The lair is littered with the acid-pitted bones of previous victims and the fly-ridden carcasses of fresh kills, watched over by crumbling statues. Centipedes, scorpions, and snakes infest the lair, which is filled with the stench of death and decay."
 					]
-				},
-				{
-					"type": "entries",
-					"name": "Regional Effects",
-					"entries": [
-						"The region containing a legendary black dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
-						{
-							"type": "list",
-							"items": [
-								"The land within 6 miles of the lair takes twice as long as normal to traverse, since the plants grow thick and twisted, and the swamps are thick with reeking mud.",
-								"Water sources within 1 mile of the lair are supernaturally fouled. Enemies of the dragon that drink such water regurgitate it within minutes.",
-								"Fog lightly obscures the land within 6 miles of the lair."
-							]
-						},
-						"If the dragon dies, vegetation remains as it has grown, but other effects fade over 1d10 days."
-					]
 				}
 			],
 			"_appendCopy": {
@@ -12135,8 +11654,8 @@
 						"Age Range"
 					],
 					"colStyles": [
-						"col-xs-6",
-						"col-xs-6"
+						"col-6",
+						"col-6"
 					],
 					"rows": [
 						[
@@ -12157,7 +11676,7 @@
 						],
 						[
 							"Blue",
-							"31- 40 years"
+							"31\u201340 years"
 						],
 						[
 							"Indigo",
@@ -12248,7 +11767,7 @@
 					"name": "Red Dragon Riders",
 					"type": "entries",
 					"entries": [
-						"In the uprising against the illithids, Gith sought allies. Her adviser Vlaakith appealed to Tiamat, the goddess of evil dragonkind, and Gith ventured into the Nine Hells to meet with her. Only Tiamat now knows what passed between them, but Gith returned to the Astral Plane with the Dragon Queen's red dragon consort Ephelomon, who proclaimed that his kind would forever act as allies to the githyanki. Not all red dragons honor the alliance kindled so long ago, but most at least don't consider the githyanki their enemies.",
+						"In the uprising against the illithids, Gith sought allies. Her adviser Vlaakith appealed to Tiamat, the goddess of evil dragonkind, and Gith ventured into the Nine Hells to meet with her. Only Tiamat now knows what passed between them, but Vlaakith returned to the Astral Plane with the Dragon Queen's red dragon consort Ephelomon, who proclaimed that his kind would forever act as allies to the githyanki. Not all red dragons honor the alliance kindled so long ago, but most at least don't consider the githyanki their enemies.",
 						"Outposts in the Mortal Realm. Since creatures that dwell on the Astral Plane don't age, the githyanki establish creches in remote areas of the Material Plane to raise their young. Doubling as military academies, these creches train young githyanki to harness their psychic and combat abilities. When a githyanki grows to adulthood and slays a mind flayer as part of a sacred rite of passage, it is permitted to rejoin its people on the Astral Plane."
 					]
 				},
@@ -12406,49 +11925,6 @@
 					"entries": [
 						"The swarms presented here aren't ordinary or benign assemblies of little creatures. They form as a result of some sinister or unwholesome influence. A vampire can summon swarms of bats and rats from the darkest corners of the night, while the very presence of a mummy lord can cause scarab beetles to boil up from the sand-filled depths of its tomb. A hag might have the power to turn swarms of ravens against her enemies, while a yuan-ti abomination might have swarms of poisonous snakes slithering in its wake. Even druids can't charm these swarms, and their aggressiveness is borderline unnatural."
 					]
-				},
-				{
-					"type": "inset",
-					"name": "Variant: Insect Swarms",
-					"entries": [
-						"Different kinds of insects can gather in swarms, and each swarm has the special characteristics described below.",
-						{
-							"type": "entries",
-							"name": "Swarm of Beetles",
-							"entries": [
-								"A swarm of beetles gains a burrowing speed of 5 feet."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Swarm of Centipedes",
-							"entries": [
-								"A creature reduced to 0 hit points by a swarm of centipedes is stable but poisoned for 1 hour, even after regaining hit points, and paralyzed while poisoned in this way."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Swarm of Spiders",
-							"entries": [
-								"A swarm of spiders has the following additional traits."
-							]
-						},
-						{
-							"type": "list",
-							"items": [
-								"Spider Climb. The swarm can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check.",
-								"Web Sense. While in contact with a web, the swarm knows the exact location of any other creature in contact with the same web.",
-								"Web Walker. The swarm ignores movement restrictions caused by webbing."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Swarm of Wasps",
-							"entries": [
-								"A swarm of wasps has a walking speed of 5 feet, a flying speed of 30 feet, and no climbing speed."
-							]
-						}
-					]
 				}
 			]
 		},
@@ -12483,6 +11959,7 @@
 		{
 			"name": "Shadow Dragon",
 			"source": "MM",
+			"type": "section",
 			"images": [
 				{
 					"type": "image",
@@ -12493,26 +11970,98 @@
 				}
 			],
 			"entries": [
-				"Shadow dragons are true dragons that were either born in the Shadowfell or transformed by years spent within its dismal confines. Some shadow dragons embrace the Shadowfell for its bleak landscapes and desolation. Others seek to return to the Material Plane, hungry to spread the darkness and evil of the Plane of Shadow.",
 				{
 					"type": "entries",
-					"name": "Dark Portals",
 					"entries": [
-						"Portals to the Shadowfell manifest in forlorn places and the deep gloom of subterranean caverns. The dragons that lair in such places often discover these portals and find themselves transported to a new realm. Ancient dragons that sleep in their lairs for months or years at a time might find themselves spirited away, never knowing that a portal has formed without their knowledge as they dream."
+						{
+							"type": "entries",
+							"entries": [
+								"Shadow dragons are true dragons that were either born in the Shadowfell or transformed by years spent within its dismal confines. Some shadow dragons embrace the Shadowfell for its bleak landscapes and desolation. Others seek to return to the Material Plane, hungry to spread the darkness and evil of the Plane of Shadow.",
+								{
+									"type": "entries",
+									"name": "Dark Portals",
+									"entries": [
+										"Portals to the Shadowfell manifest in forlorn places and the deep gloom of subterranean caverns. The dragons that lair in such places often discover these portals and find themselves transported to a new realm. Ancient dragons that sleep in their lairs for months or years at a time might find themselves spirited away, never knowing that a portal has formed without their knowledge as they dream."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Recast in Shadow",
+									"entries": [
+										"The transformation to a shadow dragon happens over a period of years, during which time a dragon's scales lose their luster and fade to a charcoal hue. Its leathery wings become translucent, its eyes paling to pools of opalescent gray. Shadow dragons find sunlight abhorrent, and they are weaker in bright light than they are in darkness. Darkness makes the dragon fade to a spectral shadow of its former self. The magical nature of dragons holds an attraction for the Shadowfell, which seems somehow to crave the might and majesty of these great reptiles. The Shadowfell also has a dispiriting effect on its denizens, such that the longer a creature remains on the plane, the more it accepts the plane's malaise. As months and years pass for a dragon on the Shadowfell, it becomes aware of the transformation being wrought upon it, and yet can do nothing to prevent it."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Back in the World",
+									"entries": [
+										"A shadow dragon is so suffused with the power of the Shadowfell that even a return to the Material Plane can't undo its transformation. Some shadow dragons attempt to lure other creatures from the mortal realm back to the Shadowfell to keep them company, at least until they tire of their guests and devour them. Others are happy to leave the Shadowfell behind forever, understanding that treasure and power are easier to come by in the Material Plane."
+									]
+								}
+							]
+						}
 					]
 				},
 				{
 					"type": "entries",
-					"name": "Recast in Shadow",
+					"name": "Shadow Dragon Template",
 					"entries": [
-						"The transformation to a shadow dragon happens over a period of years, during which time a dragon's scales lose their luster and fade to a charcoal hue. Its leathery wings become translucent, its eyes paling to pools of opalescent gray. Shadow dragons find sunlight abhorrent, and they are weaker in bright light than they are in darkness. Darkness makes the dragon fade to a spectral shadow of its former self. The magical nature of dragons holds an attraction for the Shadowfell, which seems somehow to crave the might and majesty of these great reptiles. The Shadowfell also has a dispiriting effect on its denizens, such that the longer a creature remains on the plane, the more it accepts the plane's malaise. As months and years pass for a dragon on the Shadowfell, it becomes aware of the transformation being wrought upon it, and yet can do nothing to prevent it."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Back in the World",
-					"entries": [
-						"A shadow dragon is so suffused with the power of the Shadowfell that even a return to the Material Plane can't undo its transformation. Some shadow dragons attempt to lure other creatures from the mortal realm back to the Shadowfell to keep them company, at least until they tire of their guests and devour them. Others are happy to leave the Shadowfell behind forever, understanding that treasure and power are easier to come by in the Material Plane."
+						"Only a true dragon can transform into a shadow dragon, and only if it is born in the Shadowfell or remains there for several years. A dracolich can't be turned into a shadow dragon, since it loses its draconic nature when it becomes undead.",
+						"When a dragon becomes a shadow dragon, it retains its statistics except as described below. The shadow dragon might retain or lose any or all of its lair actions or inherit new ones, as the DM sees fit.",
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Damage Resistances",
+									"entries": [
+										"The dragon has resistance to necrotic damage."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Skill Proficiency: Stealth",
+									"entries": [
+										"The dragon's proficiency bonus is doubled for its Dexterity ({@skill Stealth}) checks."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Living Shadow",
+									"entries": [
+										"While in dim light or darkness, the dragon has resistance to damage that isn't force, psychic, or radiant."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Shadow Stealth",
+									"entries": [
+										"While in dim light or darkness, the dragon can take the {@action Hide} action as a bonus action."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Sunlight Sensitivity",
+									"entries": [
+										"While in sunlight, the dragon has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "New Action: Bite",
+									"entries": [
+										"If the dragon deals acid, cold, fire, lightning, or poison damage with its bite, change that damage type to necrotic."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "New Action: Shadow Breath",
+									"entries": [
+										"Any damage-dealing breath weapon possessed by the dragon deals necrotic damage instead of its original damage type. A humanoid reduced to 0 hit points by this damage dies, and an undead shadow rises from its corpse and acts immediately after the dragon in the initiative count. The shadow is under the dragon's control."
+									]
+								}
+							]
+						}
 					]
 				}
 			]

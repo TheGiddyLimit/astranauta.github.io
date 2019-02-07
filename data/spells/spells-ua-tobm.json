@@ -49,7 +49,8 @@
 				"You summon a {@creature barlgura} that appears in an unoccupied space you can see within range. The {@creature barlgura} disappears when it drops to 0 hit points or when the spell ends.",
 				"The {@creature barlgura} is hostile to all non-demons. Roll initiative for the {@creature barlgura}, which has its own turns. At the start of its turn, it moves toward and attacks the nearest non-demon it can perceive. If two or more creatures are equally near, it picks one at random. If it cannot see any potential enemies, the {@creature barlgura} moves in a random direction in search of foes.",
 				"As part of casting the spell, you can scribe a circle on the ground using the blood of an intelligent humanoid slain within the past 24 hours. The circle is large enough to encompass your space. The summoned {@creature barlgura} cannot cross the circle or target anyone in it while the spell lasts."
-			]
+			],
+			"isSummon": true
 		},
 		{
 			"name": "Conjure Hezrou (UA)",
@@ -109,7 +110,8 @@
 			],
 			"opposedCheck": [
 				"charisma"
-			]
+			],
+			"isSummon": true
 		},
 		{
 			"name": "Conjure Lesser Demon (UA)",
@@ -170,7 +172,8 @@
 						"When you cast this spell using a spell slot of 6th or 7th level, you summon sixteen demons. If you cast it using a spell slot of 8th or 9th level, you summon thirty-two demons."
 					]
 				}
-			]
+			],
+			"isSummon": true
 		},
 		{
 			"name": "Conjure Shadow Demon (UA)",
@@ -225,7 +228,8 @@
 			],
 			"opposedCheck": [
 				"charisma"
-			]
+			],
+			"isSummon": true
 		},
 		{
 			"name": "Conjure Vrock (UA)",
@@ -285,7 +289,8 @@
 			],
 			"opposedCheck": [
 				"charisma"
-			]
+			],
+			"isSummon": true
 		}
 	]
 }

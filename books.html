@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--5ETOOLS_VERSION-->
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Books - 5etools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
+	<style>
+		ul.list li:hover {
+			background: inherit;
+		}
+
+		ul.books > li:last-child,
+		ul.books > li > ul > ul > li:last-child {
+			border-bottom: none;
+		}
+
+		ul.list li:hover span {
+			display: initial;
+		}
+
+		span.name > span {
+			display: inline-block;
+		}
+	</style>
+</head>
+
+<body>
+<header class="hidden-xs hidden-sm page__header">
+	<div class="container">
+		<h1 class="page__title">Books</h1>
+		<p class="page__subtitle">Browse books by name and contents</p>
+	</div>
+</header>
+
+<nav class="container page__nav" id="navigation"><ul class="nav nav-pills" id="navbar"></ul></nav>
+
+<div class="container view-col-wrapper">
+	<div class="view-col" id="listcontainer">
+		<div class="input-group">
+			<input type="search" id="search" class="search form-control" placeholder="Find adventure...">
+			<span class="input-group-btn"><button class="btn btn-default" id="reset">Reset</button></span>
+		</div>
+
+		<div id="filtertools" class="sortlabel btn-group">
+			<button class="col-12 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+		</div>
+
+		<ul class="list books">
+			<!-- populate with JS -->
+		</ul>
+
+		<div class="text-align-center wrp-footer-buttons">
+			<button class="btn btn-default btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+		</div>
+	</div>
+</div>
+
+<!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/bookutils.js"></script>
+<script type="text/javascript" src="js/bookslist.js"></script>
+<script type="text/javascript" src="js/books.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+</body>
+</html>

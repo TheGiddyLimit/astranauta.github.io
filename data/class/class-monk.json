@@ -369,7 +369,19 @@
 					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"10 {@item dart|phb|darts}"
 				],
-				"goldAlternative": "5d4"
+				"goldAlternative": "{@dice 5d4|5d4|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"dex": 13,
+					"wis": 13
+				},
+				"proficienciesGained": {
+					"weapons": [
+						"simple",
+						"shortswords"
+					]
+				}
 			},
 			"classFeatures": [
 				[
@@ -388,8 +400,8 @@
 								"type": "list",
 								"items": [
 									"You can use Dexterity instead of Strength for the attack and damage rolls of your unarmed strikes and monk weapons.",
-									"You can roll a d4 in place of the normal damage of your unarmed strike or monk weapon. This die changes as you gain monk levels, as shown in the Martial Arts column of the Monk table.",
-									"When you use the Attack action with an unarmed strike or a monk weapon on your turn, you can make one unarmed strike as a bonus action. For example, if you take the Attack action and attack with a quarterstaff, you can also make an unarmed strike as a bonus action, assuming you haven't already taken a bonus action this turn."
+									"You can roll a {@dice d4} in place of the normal damage of your unarmed strike or monk weapon. This die changes as you gain monk levels, as shown in the Martial Arts column of the Monk table.",
+									"When you use the {@action Attack} action with an unarmed strike or a monk weapon on your turn, you can make one unarmed strike as a bonus action. For example, if you take the {@action Attack} action and attack with a quarterstaff, you can also make an unarmed strike as a bonus action, assuming you haven't already taken a bonus action this turn."
 								]
 							},
 							"Certain monasteries use specialized forms of the monk weapons. For example, you might use a club that is two lengths of wood connected by a short chain (called a nunchaku) or a sickle with a shorter, straighter blade (called a kama)."
@@ -415,21 +427,21 @@
 								"type": "entries",
 								"name": "Flurry of Blows",
 								"entries": [
-									"Immediately after you take the Attack action on your turn, you can spend 1 ki point to make two unarmed strikes as a bonus action."
+									"Immediately after you take the {@action Attack} action on your turn, you can spend 1 ki point to make two unarmed strikes as a bonus action."
 								]
 							},
 							{
 								"type": "entries",
 								"name": "Patient Defense",
 								"entries": [
-									"You can spend 1 ki point to take the Dodge action as a bonus action on your turn."
+									"You can spend 1 ki point to take the {@action Dodge} action as a bonus action on your turn."
 								]
 							},
 							{
 								"type": "entries",
 								"name": "Step of the Wind",
 								"entries": [
-									"You can spend 1 ki point to take the Disengage or Dash action as a bonus action on your turn, and your jump distance is doubled for the turn."
+									"You can spend 1 ki point to take the {@action Disengage} or {@action Dash} action as a bonus action on your turn, and your jump distance is doubled for the turn."
 								]
 							}
 						]
@@ -446,7 +458,7 @@
 					{
 						"name": "Deflect Missiles",
 						"entries": [
-							"Starting at 3rd level, you can use your reaction to deflect or catch the missile when you are hit by a ranged weapon attack. When you do so, the damage you take from the attack is reduced by 1d10 + your Dexterity modifier + your monk level.",
+							"Starting at 3rd level, you can use your reaction to deflect or catch the missile when you are hit by a ranged weapon attack. When you do so, the damage you take from the attack is reduced by {@dice 1d10} + your Dexterity modifier + your monk level.",
 							"If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in one hand and you have at least one hand free. If you catch a missile in this way, you can spend 1 ki point to make a ranged attack (range 20/60 feet) with the weapon or piece of ammunition you just caught, as part of the same reaction. You make this attack with proficiency, regardless of your weapon proficiencies, and the missile counts as a monk weapon for the attack."
 						]
 					},
@@ -477,7 +489,7 @@
 					{
 						"name": "Extra Attack",
 						"entries": [
-							"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+							"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 						]
 					},
 					{
@@ -753,7 +765,7 @@
 										"type": "entries",
 										"name": "Quivering Palm",
 										"entries": [
-											"You gain the ability to set up lethal vibrations in someone's body. When you hit a creature with an unarmed strike, you can spend 3 ki points to start these imperceptible vibrations, which last for a number of days equal to your monk level. The vibrations are harmless unless you use your action to end them. To do so, you and the target must be on the same plane of existence. When you use this action, the creature must make a Constitution saving throw. If it fails, it is reduced to 0 hit points. If it succeeds, it takes 10d10 necrotic damage.",
+											"You gain the ability to set up lethal vibrations in someone's body. When you hit a creature with an unarmed strike, you can spend 3 ki points to start these imperceptible vibrations, which last for a number of days equal to your monk level. The vibrations are harmless unless you use your action to end them. To do so, you and the target must be on the same plane of existence. When you use this action, the creature must make a Constitution saving throw. If it fails, it is reduced to 0 hit points. If it succeeds, it takes {@dice 10d10} necrotic damage.",
 											"You can have only one creature under the effect of this feature at a time. You can choose to end the vibrations harmlessly without using an action."
 										]
 									}
@@ -780,11 +792,54 @@
 											"You learn magical disciplines that harness the power of the four elements. A discipline requires you to spend ki points each time you use it.",
 											"You know the Elemental Attunement discipline and one other elemental discipline of your choice. You learn one additional elemental discipline of your choice at 6th, 11th, and 17th level.",
 											"Whenever you learn a new elemental discipline, you can also replace one elemental discipline that you already know with a different discipline.",
-											"Casting Elemental Spells. Some elemental disciplines allow you to cast spells. To cast one of these spells, you use its casting time and other rules, but you don't need to provide material components for it.",
-											"Once you reach 5th level in this class, you can spend additional ki points to increase the level of an elemental discipline spell that you cast, provided that the spell has an enhanced effect at a higher level, as {@spell burning hands} does. The spell's level increases by 1 for each additional ki point you spend. For example, if you are a 5th-level monk and use Sweeping Cinder Strike to cast {@spell burning hands}, you can spend 3 ki points to cast it as a 2nd-level spell (the discipline's base cost of 2 ki points plus 1).",
-											"The maximum number of ki points you can spend to cast a spell in this way (including its base ki point cost and any additional ki points you spend to increase its level) is determined by your monk level. At 5th level, you may spend up to 3 ki points; this increases to 4 ki points at 9th level, 5 at 13th level, and 6 at 17th level.",
 											{
 												"type": "entries",
+												"name": "Casting Elemental Spells",
+												"entries": [
+													"Some elemental disciplines allow you to cast spells. See {@book chapter 10|PHB|10} of the Player's Handbook for the general rules of spellcasting. To cast one of these spells, you use its casting time and other rules, but you don't need to provide material components for it.",
+													"Once you reach 5th level in this class, you can spend additional ki points to increase the level of an elemental discipline spell that you cast, provided that the spell has an enhanced effect at a higher level, as {@spell burning hands} does. The spell's level increases by 1 for each additional ki point you spend. For example, if you are a 5th-level monk and use Sweeping Cinder Strike to cast {@spell burning hands}, you can spend 3 ki points to cast it as a 2nd-level spell (the discipline's base cost of 2 ki points plus 1).",
+													"The maximum number of ki points you can spend to cast a spell in this way (including its base ki point cost and any additional ki points you spend to increase its level) is determined by your monk level, as shown in the Spells and Ki Points table. At 5th level, you may spend up to 3 ki points; this increases to 4 ki points at 9th level, 5 at 13th level, and 6 at 17th level.",
+													{
+														"type": "table",
+														"caption": "Spells and Ki Points",
+														"colLabels": [
+															"Monk Levels",
+															"Maximum Ki Points for a Spell"
+														],
+														"colStyles": [
+															"col-5 text-align-center",
+															"col-7 text-align-center"
+														],
+														"rows": [
+															[
+																"5th-8th",
+																3
+															],
+															[
+																"9th-12th",
+																4
+															],
+															[
+																"13th-16th",
+																5
+															],
+															[
+																"17th-20th",
+																6
+															]
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Elemental Disciplines",
+										"entries": [
+											"The elemental disciplines are presented in alphabetical order. If a discipline requires a level, you must be the level in this class to learn the discipline.",
+											{
+												"type": "options",
 												"entries": [
 													{
 														"type": "entries",
@@ -792,201 +847,121 @@
 														"entries": [
 															"You can spend 6 ki points to cast {@spell cone of cold}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Clench of the North Wind (6th Level Required)",
 														"entries": [
 															"You can spend 3 ki points to cast {@spell hold person}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Elemental Attunement",
 														"entries": [
-															"You can use your action to briefly control elemental forces nearby, causing one of the following effects of your choice:",
+															"You can use your action to briefly control elemental forces within 30 feet of you, causing one of the following effects of your choice:",
 															{
 																"type": "list",
 																"items": [
-																	"Create a harmless, instantaneous sensory effect related to air, earth, fire, or water, such as a shower of sparks, a puff of wind, a spray of light mist, or a gentle rumbling of stone.",
+																	"Create a harmless, instantaneous sensory effect related to air, earth, fire, or water, such as a shower of sparks, a puff of wind, a spray of light mist, orc a gentle rumbling of stone.",
 																	"Instantaneously light or snuff out a candle, a torch, or a small campfire.",
 																	"Chill or warm up to 1 pound of nonliving material for up to 1 hour.",
 																	"Cause earth, fire, water, or mist that can fit within a 1-foot cube to shape itself into a crude form you designate for 1 minute."
 																]
 															}
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Eternal Mountain Defense (17th Level Required)",
 														"entries": [
 															"You can spend 5 ki points to cast {@spell stoneskin}, targeting yourself."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Fangs of the Fire Snake",
 														"entries": [
-															"When you use the Attack action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra 1d10 fire damage."
+															"When you use the {@action Attack} action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra {@dice 1d10} fire damage."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Fist of Four Thunders",
 														"entries": [
 															"You can spend 2 ki points to cast {@spell thunderwave}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Unbroken Air",
 														"entries": [
-															"You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it {@condition prone}. On a successful save, the creature takes half as much damage, and you don't push it or knock it {@condition prone}."
+															"You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes {@dice 3d10} bludgeoning damage, plus an extra {@dice 1d10} bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it {@condition prone}. On a successful save, the creature takes half as much damage, and you don't push it or knock it {@condition prone}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Flames of the Phoenix (11th Level Required)",
 														"entries": [
 															"You can spend 4 ki points to cast {@spell fireball}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Gong of the Summit (6th Level Required)",
 														"entries": [
 															"You can spend 3 ki points to cast {@spell shatter}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Mist Stance (11th Level Required)",
 														"entries": [
-															"You can spend 4 ki points to cast gaseous form, targeting yourself."
+															"You can spend 4 ki points to cast {@spell gaseous form}, targeting yourself."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Ride the Wind (11th Level Required)",
 														"entries": [
 															"You can spend 4 ki points to cast {@spell fly}, targeting yourself."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "River of Hungry Flame (17th Level Required)",
 														"entries": [
 															"You can spend 5 ki points to cast {@spell wall of fire}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Rush of the Gale Spirits",
 														"entries": [
 															"You can spend 2 ki points to cast {@spell gust of wind}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Shape the Flowing River",
 														"entries": [
 															"As an action, you can spend 1 ki point to choose an area of ice or water no larger than 30 feet on a side within 120 feet of you. You can change water to ice within the area and vice versa, and you can reshape ice in the area in any manner you choose. You can raise or lower the ice's elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can't exceed half the area's largest dimension. For example, if you affect a 30-foot square, you can create a pillar up to 15 feet high. raise or lower the square's elevation by up to 15 feet, dig a trench up to 15 feet deep, and so on. You can't shape the ice to trap or injure a creature in the area."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Sweeping Cinder Strike",
 														"entries": [
 															"You can spend 2 ki points to cast {@spell burning hands}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Water Whip",
 														"entries": [
-															"You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can either knock it {@condition prone} or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don't pull it or knock it {@condition prone}."
+															"You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes {@dice 3d10} bludgeoning damage, plus an extra {@dice 1d10} bludgeoning damage for each additional ki point you spend, and you can either knock it {@condition prone} or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don't pull it or knock it {@condition prone}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Wave of Rolling Earth (17th Level Required)",
@@ -1098,7 +1073,7 @@
 										"type": "entries",
 										"name": "Touch of the Long Death",
 										"entries": [
-											"Starting at 17th level, your touch can channel the energy of death into a creature. As an action, you touch one creature within 5 feet of you, and you expend 1 to 10 ki points. The target must make a Constitution saving throw, and it takes 2d10 necrotic damage per ki point spent on a failed save, or half as much damage on a successful one."
+											"Starting at 17th level, your touch can channel the energy of death into a creature. As an action, you touch one creature within 5 feet of you, and you expend 1 to 10 ki points. The target must make a Constitution saving throw, and it takes {@dice 2d10} necrotic damage per ki point spent on a failed save, or half as much damage on a successful one."
 										]
 									}
 								]
@@ -1121,8 +1096,8 @@
 										"name": "Radiant Sun Bolt",
 										"entries": [
 											"Starting when you choose this tradition at 3rd level, you can hurl searing bolts of magical radiance.",
-											"You gain a ranged spell attack that you can use with the Attack action. The attack has a range of 30 feet. You are proficient with it, and you add your Dexterity modifier to its attack and damage rolls. Its damage is radiant, and its damage die is a d4. This die changes as you gain monk levels\u2014to a d6 at 5th level, a d8 at 11th level, and a d10 at 17th level.",
-											"When you use the Attack action on your turn to use this special attack, you can spend 1 ki point to make two additional attacks with it as a bonus action."
+											"You gain a ranged spell attack that you can use with the {@action Attack} action. The attack has a range of 30 feet. You are proficient with it, and you add your Dexterity modifier to its attack and damage rolls. Its damage is radiant, and its damage die is a {@dice d4}. This die changes as you gain monk levels\u2014to a {@dice d6} at 5th level, a {@dice d8} at 11th level, and a {@dice d10} at 17th level.",
+											"When you use the {@action Attack} action on your turn to use this special attack, you can spend 1 ki point to make two additional attacks with it as a bonus action."
 										]
 									}
 								]
@@ -1135,7 +1110,7 @@
 										"type": "entries",
 										"name": "Searing Arc Strike",
 										"entries": [
-											"At 6th level, you gain the ability to channel your ki into searing waves of energy. Immediately after you take the Attack action on your turn, you can spend 2 ki points to cast the 1st-level spell {@spell burning hands} as a bonus action.",
+											"At 6th level, you gain the ability to channel your ki into searing waves of energy. Immediately after you take the {@action Attack} action on your turn, you can spend 2 ki points to cast the 1st-level spell {@spell burning hands} as a bonus action.",
 											"You can spend additional ki points to cast {@spell burning hands} as a higher level spell. Each additional ki point you spend increases the spell's level by 1. The maximum number of ki points (2 plus any additional points) that you can spend on the spell equals half your monk level (round down)."
 										]
 									}
@@ -1150,8 +1125,8 @@
 										"name": "Searing Sunburst",
 										"entries": [
 											"At 11th level, you gain the ability to create an orb of light that erupts into a devastating explosion. As an action, you magically create an orb and hurl it at a point you choose within 150 feet, where it erupts into a sphere of radiant light for a brief but deadly instant.",
-											"Each creature in that 20-foot radius sphere must succeed on a Constitution saving throw or take 2d6 radiant damage. A creature doesn't need to make the save if the creature is behind total cover that is opaque.",
-											"You can increase the sphere's damage by spending ki points. Each point you spend, up to a maximum of 3, increases the damage by 2d6."
+											"Each creature in that 20-foot radius sphere must succeed on a Constitution saving throw or take {@dice 2d6} radiant damage. A creature doesn't need to make the save if the creature is behind total cover that is opaque.",
+											"You can increase the sphere's damage by spending ki points. Each point you spend, up to a maximum of 3, increases the damage by {@dice 2d6}."
 										]
 									}
 								]
@@ -1194,8 +1169,8 @@
 												"items": [
 													"You gain proficiency with three martial weapons of your choice. A martial weapon is considered a kensei weapon for you if you're proficient with it.",
 													"Whenever you wield a kensei weapon, you choose whether to use Dexterity or Strength for the attack and damage rolls of the weapon, and you choose whether to use your Martial Arts damage die in place of the weapon's damage die.",
-													"When you take the Attack action on your turn and hit a target with a kensei weapon, you can use a bonus action to pummel the target, dealing an additional 1d4 bludgeoning damage to that target and to any other target you hit with the weapon as part of the Attack.",
-													"If you make an unarmed strike as part of the Attack action on your turn and are holding a kensei weapon, you can use that weapon to defend yourself. You gain a +2 bonus to AC until the start of your next turn while you are not {@condition incapacitated} and the weapon is in your hand."
+													"When you take the {@action Attack} action on your turn and hit a target with a kensei weapon, you can use a bonus action to pummel the target, dealing an additional {@dice 1d4} bludgeoning damage to that target and to any other target you hit with the weapon as part of the Attack.",
+													"If you make an unarmed strike as part of the {@action Attack} action on your turn and are holding a kensei weapon, you can use that weapon to defend yourself. You gain a +2 bonus to AC until the start of your next turn while you are not {@condition incapacitated} and the weapon is in your hand."
 												]
 											}
 										]
@@ -1288,8 +1263,8 @@
 												"type": "list",
 												"items": [
 													"Choose two types of weapons to be your kensei weapons: one melee weapon and one ranged weapon. Each of these weapons can be any simple or martial weapon that lacks the heavy and special properties. The longbow is also a valid choice. You gain proficiency with these weapons if you don't already have it. Weapons of the chosen types are monk weapons for you. Many of this tradition's features work only with your kensei weapons. When you reach 6th, 11th, and 17th level in this class, you can choose another type of weapon\u2014melee or ranged\u2014to be a kensei weapon for you, following the criteria above.",
-													"If you make an unarmed strike as part of the Attack action on your turn and are holding a kensei weapon, you can use it to defend yourself if it is a melee weapon. You gain a +2 bonus to AC until the start of your next turn, while the weapon is in your hand and you aren't {@condition incapacitated}.",
-													"You can use a bonus action on your turn to make your ranged attacks with a kensei weapon more deadly. When you do so, any target you hit with a ranged attack using a kensei weapon takes an extra 1d4 damage of the weapon's type. You retain this benefit until the end of the current turn."
+													"If you make an unarmed strike as part of the {@action Attack} action on your turn and are holding a kensei weapon, you can use it to defend yourself if it is a melee weapon. You gain a +2 bonus to AC until the start of your next turn, while the weapon is in your hand and you aren't {@condition incapacitated}.",
+													"You can use a bonus action on your turn to make your ranged attacks with a kensei weapon more deadly. When you do so, any target you hit with a ranged attack using a kensei weapon takes an extra {@dice 1d4} damage of the weapon's type. You retain this benefit until the end of the current turn."
 												]
 											}
 										]
@@ -1401,8 +1376,8 @@
 										"type": "entries",
 										"name": "Emissary of Peace",
 										"entries": [
-											"At 6th level, you gain the ability to diffuse violent situations. Whenever you make a Charisma check to calm violent emotions or to counsel peace, you have advantage on the roll. You must make this entreaty in good faith; it doesn't apply if proficiency in the Deception or Intimidation skill applies to your check.",
-											"You also gain proficiency in the Performance or Persuasion skill (choose one)."
+											"At 6th level, you gain the ability to diffuse violent situations. Whenever you make a Charisma check to calm violent emotions or to counsel peace, you have advantage on the roll. You must make this entreaty in good faith; it doesn't apply if proficiency in the {@skill Deception} or {@skill Intimidation} skill applies to your check.",
+											"You also gain proficiency in the {@skill Performance} or {@skill Persuasion} skill (choose one)."
 										]
 									}
 								]
@@ -1452,8 +1427,8 @@
 										"type": "entries",
 										"name": "Drunken Technique",
 										"entries": [
-											"When you choose this tradition at 3rd level, you gain proficiency in the Performance skill if you don't already have it; your martial arts technique mixes martial training with the precision of a dancer and the antics of a jester.",
-											"You also learn how to twist and turn quickly as part of your Flurry of Blows. Whenever you use Flurry of Blows, you gain the benefit of the Disengage action, and your walking speed increases by 10 feet until the end of the current turn."
+											"When you choose this tradition at 3rd level, you gain proficiency in the {@skill Performance} skill if you don't already have it; your martial arts technique mixes martial training with the precision of a dancer and the antics of a jester.",
+											"You also learn how to twist and turn quickly as part of your Flurry of Blows. Whenever you use Flurry of Blows, you gain the benefit of the {@action Disengage} action, and your walking speed increases by 10 feet until the end of the current turn."
 										]
 									}
 								]
@@ -1515,14 +1490,14 @@
 										"type": "entries",
 										"name": "Bonus Proficiencies",
 										"entries": [
-											"When you choose this tradition at 3rd level, you gain proficiency in the Performance skill if you don't already have it. Your martial arts technique mixes combat training with the precision of a dancer and the antics of a jester. You also gain proficiency with brewer's supplies if you don't already have it."
+											"When you choose this tradition at 3rd level, you gain proficiency in the {@skill Performance} skill if you don't already have it. Your martial arts technique mixes combat training with the precision of a dancer and the antics of a jester. You also gain proficiency with {@item brewer's supplies|phb} if you don't already have it."
 										]
 									},
 									{
 										"type": "entries",
 										"name": "Drunken Technique",
 										"entries": [
-											"At 3rd level, you learn how to twist and turn quickly as part of your Flurry of Blows. Whenever you use Flurry of Blows, you gain the benefit of the Disengage action, and your walking speed increases by 10 feet until the end of the current turn."
+											"At 3rd level, you learn how to twist and turn quickly as part of your Flurry of Blows. Whenever you use Flurry of Blows, you gain the benefit of the {@action Disengage} action, and your walking speed increases by 10 feet until the end of the current turn."
 										]
 									}
 								]
@@ -1610,21 +1585,21 @@
 												"type": "entries",
 												"name": "Agile Parry",
 												"entries": [
-													"If you make an unarmed strike as part of the Attack action on your turn and are holding a kensei weapon, you can use it to defend yourself if it is a melee weapon. You gain a +2 bonus to AC until the start of your next turn, while the weapon is in your hand and you aren't {@condition incapacitated}."
+													"If you make an unarmed strike as part of the {@action Attack} action on your turn and are holding a kensei weapon, you can use it to defend yourself if it is a melee weapon. You gain a +2 bonus to AC until the start of your next turn, while the weapon is in your hand and you aren't {@condition incapacitated}."
 												]
 											},
 											{
 												"type": "entries",
 												"name": "Kensei's Shot",
 												"entries": [
-													"You can use a bonus action on your turn to make your ranged attacks with a kensei weapon more deadly. When you do so, any target you hit with a ranged attack using a kensei weapon takes an extra 1d4 damage of the weapon's type. You retain this benefit until the end of the current turn."
+													"You can use a bonus action on your turn to make your ranged attacks with a kensei weapon more deadly. When you do so, any target you hit with a ranged attack using a kensei weapon takes an extra {@dice 1d4} damage of the weapon's type. You retain this benefit until the end of the current turn."
 												]
 											},
 											{
 												"type": "entries",
 												"name": "Way of the Brush",
 												"entries": [
-													"You gain proficiency with your choice of calligrapher's supplies or painter's supplies."
+													"You gain proficiency with your choice of calligrapher's supplies or {@item painter's supplies|phb}."
 												]
 											}
 										]
@@ -1702,9 +1677,9 @@
 										"name": "Radiant Sun Bolt",
 										"entries": [
 											"Starting when you choose this tradition at 3rd level, you can hurl searing bolts of magical radiance.",
-											"You gain a new attack option that you can use with the Attack action. This special attack is a ranged spell attack with a range of 30 feet. You are proficient with it, and you add your Dexterity modifier to its attack and damage rolls. Its damage is radiant, and its damage die is a d4. This die changes as you gain monk levels, as shown in the Martial Arts column of the Monk table.",
-											"When you take the Attack action on your turn and use this special attack as part of it, you can spend 1 ki point to make the special attack twice as a bonus action.",
-											"When you gain the Extra Attack feature, this special attack can be used for any of the attacks you make as part of the Attack action."
+											"You gain a new attack option that you can use with the {@action Attack} action. This special attack is a ranged spell attack with a range of 30 feet. You are proficient with it, and you add your Dexterity modifier to its attack and damage rolls. Its damage is radiant, and its damage die is a {@dice d4}. This die changes as you gain monk levels, as shown in the Martial Arts column of the Monk table.",
+											"When you take the {@action Attack} action on your turn and use this special attack as part of it, you can spend 1 ki point to make the special attack twice as a bonus action.",
+											"When you gain the Extra Attack feature, this special attack can be used for any of the attacks you make as part of the {@action Attack} action."
 										]
 									}
 								]
@@ -1717,7 +1692,7 @@
 										"type": "entries",
 										"name": "Searing Arc Strike",
 										"entries": [
-											"At 6th level, you gain the ability to channel your ki into searing waves of energy. Immediately after you take the Attack action on your turn, you can spend 2 ki points to cast the {@spell burning hands} spell as a bonus action.",
+											"At 6th level, you gain the ability to channel your ki into searing waves of energy. Immediately after you take the {@action Attack} action on your turn, you can spend 2 ki points to cast the {@spell burning hands} spell as a bonus action.",
 											"You can spend additional ki points to cast {@spell burning hands} as a higher-level spell. Each additional ki point you spend increases the spell's level by 1. The maximum number of ki points (2 plus any additional points) that you can spend on the spell equals half your monk level."
 										]
 									}
@@ -1732,8 +1707,8 @@
 										"name": "Searing Sunburst",
 										"entries": [
 											"At 11th level, you gain the ability to create an orb of light that erupts into a devastating explosion. As an action, you magically create an orb and hurl it at a point you choose within 150 feet, where it erupts into a sphere of radiant light for a brief but deadly instant.",
-											"Each creature in that 20-foot-radius sphere must succeed on a Constitution saving throw or take 2d6 radiant damage. A creature doesn't need to make the save if the creature is behind total cover that is opaque.",
-											"You can increase the sphere's damage by spending ki points. Each point you spend, to a maximum of 3, increases the damage by 2d6."
+											"Each creature in that 20-foot-radius sphere must succeed on a Constitution saving throw or take {@dice 2d6} radiant damage. A creature doesn't need to make the save if the creature is behind total cover that is opaque.",
+											"You can increase the sphere's damage by spending ki points. Each point you spend, to a maximum of 3, increases the damage by {@dice 2d6}."
 										]
 									}
 								]
@@ -1756,248 +1731,406 @@
 					],
 					"source": "XGE",
 					"shortName": "Sun Soul"
+				},
+				{
+					"name": "Way of the Soul Knife (Livestream)",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Way of the Soul Knife (Livestream)",
+								"entries": [
+									"{@i Transcribed on 2018-10-13. [Square bracketed text] denotes transcriber's annotations.}",
+									"Monks of the Way of the Soul Knife are deadly assassins and bounty hunters. They use their psionic talents to manifest psionic blades that tear through their enemies' bodies and psychic auras. Their talents extend beyond combat, as their ability to perceive auras allows them to track down foes and see through their deceptions.",
+									{
+										"type": "entries",
+										"name": "Soul Knife",
+										"entries": [
+											"Starting when you choose this tradition at 3rd level, you can use your psionic energy to manifest blades that disrupt your foes' minds.",
+											"Your unarmed strikes deal your choice of psychic, piercing, slashing, or bludgeoning damage each time you hit.",
+											"In addition, you can use a bonus action to increase the reach of your unarmed strikes by 30 feet until the end of your turn."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Psychic Slash",
+										"entries": [
+											"At 3rd level, when you channel ki into your attacks you augment your soul knives to inflict devastating psionic attacks.",
+											"Whenever you hit a creature with one of the attacks granted by your Flurry of Blows and that attack inflicts psychic damage, you can impose one of the following effects on the target:",
+											{
+												"type": "entries",
+												"name": "Life Drain",
+												"entries": [
+													"You gain temporary hit points equal to half the damage your attack deals."
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Invoke Terror",
+												"entries": [
+													"The target must succeed on a Wisdom saving throw or become frightened of you until the end of your next turn."
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Invoke Wrath",
+												"entries": [
+													"The target suffers disadvantage on all attack rolls against targets other than you until the end of your next turn."
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Astral Slide",
+												"entries": [
+													"You teleport the target up to 10 feet to a destination you can see."
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Synaptic Overload",
+												"entries": [
+													"The target gains vulnerability to psychic damage until the end of your next turn."
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Aura Sight",
+										"entries": [
+											"At 6th level, you gain the ability to perceive the auras of other creatures.",
+											"As an action, select a creature that you can see. That creature makes a Wisdom saving throw, though it has no knowledge that you forced it to attempt this saving throw. On a failed save, you learn if the creature shares and aspects of its alignment with you, its current hit points, and its current attitude and intentions toward you or one other creature, object, or location of your choice. In addition, for the next 24 hours or until you use this ability again, you can use an action to determine the creature's distance and direction from you.",
+											"If a creature succeeds on its saving throw against this ability, you cannot use this ability against that creature again until you complete a long rest."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Spectral Blades",
+										"entries": [
+											"At 11th level, you can cause your blades to phase through physical objects and defenses.",
+											"Once during your turn, you can choose to forego one unarmed strike in place of forcing a creature within the reach of that attack to make a Dexterity saving throw. On a failed saving throw, it takes your unarmed strike's damage, or half that damage if it succeeds."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Psychic Form",
+										"entries": [
+											"At 17th level, you can transform your physical body into the same psychic energy that comprises your soul knives. As a bonus action, you gain resistance to all types of damage, a fly speed of 30 feet, and the ability to pass through solid objects but not end your movement within them. This benefit lasts for 1 minute. You cannot use it again until you complete a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "Stream",
+					"shortName": "Soul Knife (Stream)"
 				}
 			],
 			"fluff": [
 				{
-					"type": "quote",
 					"entries": [
-						"Do not mistake my silence for acceptance of your villainy. While you blustered and threatened, I've planned four different ways to snap your neck with my bare hands."
+						"Her fists a blur as they deflect an incoming hail of arrows, a half-elf springs over a barricade and throws herself into the massed ranks of hobgoblins on the other side. She whirls among them, knocking their blows aside and sending them reeling, until at last she stands alone.",
+						"Taking a deep breath, a human covered in tattoos settles into a battle stance. As the first charging orcs reach him, he exhales and a blast of fire roars from his mouth, engulfing his foes.",
+						"Moving with the silence of the night, a black-clad halfling steps into a shadow beneath an arch and emerges from another inky shadow on a balcony a stone's throw away. She slides her blade free of its cloth-wrapped scabbard and peers through the open window at the tyrant prince, so vulnerable in the grip of sleep.",
+						"Whatever their discipline, monks are united in their ability to magically harness the energy that flows in their bodies. Whether channeled as a striking display of combat prowess or a subtler focus of defensive ability and speed, this energy infuses all that a monk does.",
+						{
+							"type": "entries",
+							"name": "The Magic of Ki",
+							"entries": [
+								"Monks make careful study of a magical energy that most monastic traditions call ki. This energy is an element of the magic that suffuses the multiverse\u2014specifically, the element that flows through living bodies. Monks harness this power within themselves to create magical effects and exceed their bodies' physical capabilities, and some of their special attacks can hinder the flow of ki in their opponents. Using this energy, monks channel uncanny speed and strength into their unarmed strikes. As they gain experience, their martial training and their mastery of ki gives them more power over their bodies and the bodies of their foes."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Training and Asceticism",
+							"entries": [
+								"Small walled cloisters dot the landscapes of the worlds of D&D, tiny refuges from the flow of ordinary life, where time seems to stand still. The monks who live there seek personal perfection through contemplation and rigorous training. Many entered the monastery as children, sent to live there when their parents died, when food couldn't be found to support them, or in return for some kindness that the monks had performed for their families.",
+								"Some monks live entirely apart from the surrounding population, secluded from anything that might impede their spiritual progress. Others are sworn to isolation, emerging only to serve as spies or assassins at the command of their leader, a noble patron, or some other mortal or divine power.",
+								"The majority of monks don't shun their neighbors, making frequent visits to nearby towns or villages and exchanging their service for food and other goods. As versatile warriors, monks often end up protecting their neighbors from monsters or tyrants.",
+								"For a monk, becoming an adventurer means leaving a structured, communal lifestyle to become a wanderer. This can be a harsh transition, and monks don't undertake it lightly. Those who leave their cloisters take their work seriously, approaching their adventures as personal tests of their physical and spiritual growth. As a rule, monks care little for material wealth and are driven by a desire to accomplish a greater mission than merely slaying monsters and plundering their treasure."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Monk",
+							"entries": [
+								"As you make your monk character, think about your connection to the monastery where you learned your skills and spent your formative years. Were you an orphan or a child left on the monastery's threshold? Did your parents promise you to the monastery in gratitude for a service performed by the monks? Did you enter this secluded life to hide from a crime you committed? Or did you choose the monastic life for yourself?",
+								"Consider why you left. Did the head of your monastery choose you for a particularly important mission beyond the cloister? Perhaps you were cast out because of some violation of the community's rules. Did you dread leaving, or were you happy to go? Is there something you hope to accomplish outside the monastery? Are you eager to return to your home?",
+								"As a result of the structured life of a monastic community and the discipline required to harness ki, monks are almost always lawful in alignment.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"You can make a monk quickly by following these suggestions. First, make Dexterity your highest ability score, followed by Wisdom. Second, choose the {@background hermit} background."
+									]
+								}
+							]
+						}
 					],
-					"by": "Ember, grand master of flowers"
-				},
-				"Monks walk a path of contradiction. They study their art as a wizard does, and like a wizard, they wear no armor and typically eschew weapons. Yet they are deadly combatants, their abilities on a par with those of a raging barbarian or a superbly trained fighter. Monks embrace this seeming contradiction, for it speaks to the core of all monastic study. By coming to know oneself completely, one learns much of the wider world.",
-				"A monk's focus on inner mastery leads many such individuals to become detached from society, more concerned with their personal experience than with happenings elsewhere. Adventuring monks are a rare breed of an already rare type of character, taking their quest for perfection beyond the walls of the monastery into the world at large.",
-				"Playing a monk character offers many intriguing opportunities to try something different. To distinguish your monk character even further, consider the options in the sections that follow.",
-				{
-					"type": "entries",
-					"name": "Monastery",
-					"entries": [
-						"A monk studies in a monastery in preparation for a life of asceticism. Most of those who enter a monastery make it their home for the rest of their lives, with the exception of adventurers and others who have reason to leave. For those individuals, a monastery might serve as a refuge between excursions to the world or as a source of support in times of need.",
-						"What sort of place was your monastery, and where is it located? Did attending it contribute to your experience in an unusual or distinctive way?",
-						{
-							"type": "table",
-							"caption": "Monastery",
-							"colLabels": [
-								"{@dice d6}",
-								"Monastery"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"Your monastery is carved out of a mountainside, where it looms over a treacherous pass."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Your monastery is high in the branches of an immense tree in the Feywild."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"Your monastery was founded long ago by a cloud giant and is inside a cloud castle that can be reached only by flying."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"Your monastery is built beside a volcanic system of hot springs, geysers, and sulfur pools. You regularly received visits from azer traders."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Your monastery was founded by gnomes and is an underground labyrinth of tunnels and rooms."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"Your monastery was carved from an iceberg in the frozen reaches of the world."
-								]
-							]
-						}
-					]
+					"source": "PHB",
+					"page": 76
 				},
 				{
-					"type": "entries",
-					"name": "Icon",
 					"entries": [
-						"Even in the monastic lifestyle, which eschews materialism and personal possessions, symbolism plays an important part in defining the identity of an order. Some monastic orders treat certain creatures with special regard, either because the creature is tied to the order's history or because it serves as an example of a quality the monks seek to emulate.",
-						"If your character's monastery had a special icon, you might wear a crude image of the creature somewhere inconspicuous on your clothing to serve as an identifying mark. Or perhaps your order's icon does not have a physical form but is expressed through a gesture or a posture that you adopt, and which other monks might know how to interpret.",
 						{
-							"type": "table",
-							"caption": "Icon",
-							"colLabels": [
-								"{@dice d6}",
-								"Icon"
+							"type": "quote",
+							"entries": [
+								"Do not mistake my silence for acceptance of your villainy. While you blustered and threatened, I've planned four different ways to snap your neck with my bare hands."
 							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"Monkey. Quick reflexes and the ability to travel through the treetops are two of the reasons why your order admires the monkey."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Dragon Turtle. The monks of your seaside monastery venerate the dragon turtle, reciting ancient prayers and offering garlands of flowers to honor this living spirit of the sea."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"Ki-rin. Your monastery sees its main purpose as watching over and protecting the land in the manner of the ki-rin."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"Owlbear. The monks of your monastery revere a family of owlbears and have coexisted with them for generations."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Hydra. Your order singles out the hydra for its ability to unleash several attacks simultaneously."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"Dragon. A dragon once laired within your monastery. Its influence remains long after its departure."
-								]
+							"by": "Ember, grand master of flowers"
+						},
+						"Monks walk a path of contradiction. They study their art as a wizard does, and like a wizard, they wear no armor and typically eschew weapons. Yet they are deadly combatants, their abilities on a par with those of a raging barbarian or a superbly trained fighter. Monks embrace this seeming contradiction, for it speaks to the core of all monastic study. By coming to know oneself completely, one learns much of the wider world.",
+						"A monk's focus on inner mastery leads many such individuals to become detached from society, more concerned with their personal experience than with happenings elsewhere. Adventuring monks are a rare breed of an already rare type of character, taking their quest for perfection beyond the walls of the monastery into the world at large.",
+						"Playing a monk character offers many intriguing opportunities to try something different. To distinguish your monk character even further, consider the options in the sections that follow.",
+						{
+							"type": "entries",
+							"name": "Monastery",
+							"entries": [
+								"A monk studies in a monastery in preparation for a life of asceticism. Most of those who enter a monastery make it their home for the rest of their lives, with the exception of adventurers and others who have reason to leave. For those individuals, a monastery might serve as a refuge between excursions to the world or as a source of support in times of need.",
+								"What sort of place was your monastery, and where is it located? Did attending it contribute to your experience in an unusual or distinctive way?",
+								{
+									"type": "table",
+									"caption": "Monastery",
+									"colLabels": [
+										"{@dice d6}",
+										"Monastery"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Your monastery is carved out of a mountainside, where it looms over a treacherous pass."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Your monastery is high in the branches of an immense tree in the Feywild."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Your monastery was founded long ago by a cloud giant and is inside a cloud castle that can be reached only by flying."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Your monastery is built beside a volcanic system of hot springs, geysers, and sulfur pools. You regularly received visits from azer traders."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Your monastery was founded by gnomes and is an underground labyrinth of tunnels and rooms."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Your monastery was carved from an iceberg in the frozen reaches of the world."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Icon",
+							"entries": [
+								"Even in the monastic lifestyle, which eschews materialism and personal possessions, symbolism plays an important part in defining the identity of an order. Some monastic orders treat certain creatures with special regard, either because the creature is tied to the order's history or because it serves as an example of a quality the monks seek to emulate.",
+								"If your character's monastery had a special icon, you might wear a crude image of the creature somewhere inconspicuous on your clothing to serve as an identifying mark. Or perhaps your order's icon does not have a physical form but is expressed through a gesture or a posture that you adopt, and which other monks might know how to interpret.",
+								{
+									"type": "table",
+									"caption": "Icon",
+									"colLabels": [
+										"{@dice d6}",
+										"Icon"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Monkey. Quick reflexes and the ability to travel through the treetops are two of the reasons why your order admires the monkey."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Dragon Turtle. The monks of your seaside monastery venerate the dragon turtle, reciting ancient prayers and offering garlands of flowers to honor this living spirit of the sea."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Ki-rin. Your monastery sees its main purpose as watching over and protecting the land in the manner of the ki-rin."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Owlbear. The monks of your monastery revere a family of owlbears and have coexisted with them for generations."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Hydra. Your order singles out the hydra for its ability to unleash several attacks simultaneously."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Dragon. A dragon once laired within your monastery. Its influence remains long after its departure."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Master",
+							"entries": [
+								"During your studies, you were likely under the tutelage of a master who imparted to you the precepts of the order. Your master was the one most responsible for shaping your understanding of the martial arts and your attitude toward the world. What sort of person was your master, and how did your relationship with your master affect you?",
+								{
+									"type": "table",
+									"caption": "Master",
+									"colLabels": [
+										"{@dice d6}",
+										"Master"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Your master was a tyrant whom you had to defeat in single combat to complete your instruction."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Your master was kindly and taught you to pursue the cause of peace."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Your master was merciless in pushing you to your limits. You nearly lost an eye during one especially brutal practice session."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Your master seemed goodhearted while tutoring you, but betrayed your monastery in the end."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Your master was cold and distant. You suspect that the two of you might be related."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Your master was kind and generous, never critical of your progress. Nevertheless, you feel you never fully lived up to the expectations placed on you."
+										]
+									]
+								}
 							]
 						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Master",
-					"entries": [
-						"During your studies, you were likely under the tutelage of a master who imparted to you the precepts of the order. Your master was the one most responsible for shaping your understanding of the martial arts and your attitude toward the world. What sort of person was your master, and how did your relationship with your master affect you?",
-						{
-							"type": "table",
-							"caption": "Master",
-							"colLabels": [
-								"{@dice d6}",
-								"Master"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"Your master was a tyrant whom you had to defeat in single combat to complete your instruction."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Your master was kindly and taught you to pursue the cause of peace."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"Your master was merciless in pushing you to your limits. You nearly lost an eye during one especially brutal practice session."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"Your master seemed goodhearted while tutoring you, but betrayed your monastery in the end."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Your master was cold and distant. You suspect that the two of you might be related."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"Your master was kind and generous, never critical of your progress. Nevertheless, you feel you never fully lived up to the expectations placed on you."
-								]
-							]
-						}
-					]
+					],
+					"source": "XGE",
+					"page": 32
 				}
-			],
-			"fluffPage": 32
+			]
 		}
 	]
 }

@@ -79,7 +79,7 @@
 					"entries": [
 						"The following tortle NPCs can be added to the list of guides available for hire in Chult. One of the tortle guides, Kwilgok, works for the merchant prince Jobal in Port Nyanzaru. The others, Eeyal and Mudgraw, are freelancers operating out of Fort Beluarian and Ahoyhoy, respectively.",
 						{
-							"type": "invocation",
+							"type": "optfeature",
 							"name": "Eeyal",
 							"prerequisite": "tortle guide (fort beluarian)",
 							"entries": [
@@ -94,7 +94,7 @@
 							]
 						},
 						{
-							"type": "invocation",
+							"type": "optfeature",
 							"name": "Kwilgok",
 							"prerequisite": "tortle guide (port nyanzaru)",
 							"entries": [
@@ -106,7 +106,7 @@
 							]
 						},
 						{
-							"type": "invocation",
+							"type": "optfeature",
 							"name": "Mudgraw",
 							"prerequisite": "tortle druid guide (ahoyhoy)",
 							"entries": [
@@ -139,9 +139,9 @@
 								"Water"
 							],
 							"colStyles": [
-								"col-xs-6",
-								"col-xs-3 text-align-center",
-								"col-xs-3 text-align-center"
+								"col-6",
+								"col-3 text-align-center",
+								"col-3 text-align-center"
 							],
 							"rows": [
 								[
@@ -440,7 +440,7 @@
 							"title": "Ahoyhoy - Player"
 						},
 						"The tortle fort of Ahoyhoy (see map 2) is situated on the northwest coast of the island. Tortles come here to socialize, lay eggs, and meet with traders. The place has no government. Tortles and guests are expected to be on their best behavior, and those who become a nuisance are asked to leave-or forced out, if necessary.",
-						"At any given time, Ahoyhoy is home to {@dice 4d6} adult {@creature tortle|ttp|tortles} (see \"Tortles,\"), {@dice 2d6} young tortles (noncombatants with AC 14 and 2 hit points each), and an old {@creature tortle druid|ttp} named Mudgraw (for roleplaying notes, see \"Tortle Guides,\"; for statistics, see \"Tortles,\"). Four of the adult tortles stand watch on the ramparts (two in area 3 and two in area 9). The remainder sleep on woven mats or busy themselves with crafts and projects (making crossbow bolts, gutting fish, repairing weather damage to the fort, and so forth). The tortles prefer to sleep without roofs over their heads. They lay their eggs in special areas covered with rope nets to protect the eggs from large flying predators.",
+						"At any given time, Ahoyhoy is home to {@dice 4d6} adult {@creature tortle|ttp|tortles} (see \"Tortles,\"), {@dice 2d6} young tortles (noncombatants with AC 14 and 2 hit points each), and an old {@creature tortle druid|ttp} named Mudgraw (for roleplaying notes, see \"Tortle Guides,\"; for statistics, see \"Tortles,\"). Four of the adult tortles stand watch on the ramparts (two in {@area 3>3>0} and two in {@area 3>9>0}). The remainder sleep on woven mats or busy themselves with crafts and projects (making crossbow bolts, gutting fish, repairing weather damage to the fort, and so forth). The tortles prefer to sleep without roofs over their heads. They lay their eggs in special areas covered with rope nets to protect the eggs from large flying predators.",
 						"If the characters prod the tortles of Ahoyhoy for lore about the island and its inhabitants, each tortle they talk to shares one piece of useful information. Roll a d8 and consult the Ahoyhoy Lore table to determine what information is shared.",
 						{
 							"type": "table",
@@ -450,8 +450,8 @@
 								"Lore"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -488,7 +488,7 @@
 								]
 							]
 						},
-						"The fort is built atop a rocky shelf that overlooks a sandy beach. Visitors are free to set up tents on the beach and conduct trade at the fort. Once every few months, a ship will drop anchor a few hundred yards offshore and send crew members in rowboats to trade with the tortles. For more information on trading with the tortles, see area 9.",
+						"The fort is built atop a rocky shelf that overlooks a sandy beach. Visitors are free to set up tents on the beach and conduct trade at the fort. Once every few months, a ship will drop anchor a few hundred yards offshore and send crew members in rowboats to trade with the tortles. For more information on trading with the tortles, see {@area 3>9>0}.",
 						"Two trails lead away from Ahoyhoy. The north trail cuts into the jungle and ends at the Mud Pits of Florrb. The south trail leads up the mountainside to Dangwaru.",
 						{
 							"type": "entries",
@@ -496,7 +496,7 @@
 							"entries": [
 								"If the characters approach the fort from the south, read:",
 								"A multi-tiered fort stands at the water's edge, its sturdy stone walls adorned with large tortoise shells. The trail leading to the fort ends at a wooden double door. Two guards stand watch atop the wall east of the gate. They look like overgrown, bipedal turtles armed with crossbows. Outside the gate is a beach where a couple of wide-bottomed fishing boats are tethered to piers.",
-								"See area 9 for more information on the tortle guards. They are friendly toward visitors who show no outward signs of hostility.",
+								"See {@area 3>9>0} for more information on the tortle guards. They are friendly toward visitors who show no outward signs of hostility.",
 								"The double door at the south gate is unlocked but can be barred shut if the need arises. Forcing open the barred door requires a successful DC 27 Strength (Athletics) check. The barred door can also be smashed open; it has AC 15, a damage threshold of 10, 120 hit points, and immunity to poison and psychic damage. The door is 10 feet tall and 12 feet wide, set into a 15-foot-high stone wall. The surrounding walls are also 15 feet high.",
 								"Wooden stairs lead down to the beach. The tortle fishing boats are functionally identical to rowboats (see chapter 5 of the Dungeon Master's Guide for more information on rowboats)."
 							]
@@ -507,7 +507,7 @@
 							"entries": [
 								"If the characters approach the fort from the north, read:",
 								"A multi-tiered fort stands at the water's edge, its sturdy stone walls adorned with large tortoise shells. The trail leading to the fort ends at a wooden double door. Two guards are posted, one on each of the ramparts to each side of the gate. They look like overgrown, bipedal turtles armed with crossbows.",
-								"The gate doors are identical to those found in area 1. Two {@creature tortle|ttp|tortles} (see \"Tortles,\") stand guard on 10-foot-high wooden ramparts that hug the inside of the wall. Ladders in the courtyard provide easy access to the ramparts.",
+								"The gate doors are identical to those found in {@area 3>1>0}. Two {@creature tortle|ttp|tortles} (see \"Tortles,\") stand guard on 10-foot-high wooden ramparts that hug the inside of the wall. Ladders in the courtyard provide easy access to the ramparts.",
 								"Tortles often repair fishing nets in the courtyard, which is covered with a thin layer of sand. Short flights of stone steps ascend to adjoining areas. A roofed stable contains 1d4 {@creature boar|MM|boars} and 1d4 {@creature mule|MM|mules} in pens, plus 2d8 chickens in coops. Food for the animals is stored in a loft. These animals are not indigenous to the Snout of Omgar; the tortles procured them from visiting traders."
 							]
 						},
@@ -579,8 +579,8 @@
 										"Goods"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-right",
-										"col-xs-10"
+										"col-2 text-align-right",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -682,7 +682,7 @@
 								"If the characters follow the trail south from Ahoyhoy to Dangwaru, read or paraphrase the following:",
 								"The trail clings to the mountainside and winds along the island's rocky coast for miles before ending at a stone palace built thirty feet above sea level. Waves crash against the rocks just below the palace walls.",
 								"The palace's grand entrance features a colonnade of vine-wrapped pillars that leads to a stone double door carved with foamy waves that part in the middle. Sections of the portico's roof have fallen in, and palm trees and ferns sprout from between the cracked flagstones. Scores of harmless lizards use the shaded areas of the portico as a den. East of the portico is a ten-foot-tall statue choked with vines. It has the head and torso of a woman and a twisting wave of water where her legs should be. Beyond the west side of the portico, an overgrown garden terrace overlooks the thundering sea.",
-								"Slanting beams of sunlight or moonlight shine through the holes in the portico roof, depending on the time of day or night. Although the tiny lizards are harmless, a hostile {@creature giant lizard} lurks amid the plants in the southeast corner of the portico. Characters who enter the portico can spot the giant lizard with a successful DC 15 Wisdom (Perception) check. Anyone who comes within 20 feet of it or the portcullis (see area 4) is attacked. The giant lizard is hungry and fights until slain.",
+								"Slanting beams of sunlight or moonlight shine through the holes in the portico roof, depending on the time of day or night. Although the tiny lizards are harmless, a hostile {@creature giant lizard} lurks amid the plants in the southeast corner of the portico. Characters who enter the portico can spot the giant lizard with a successful DC 15 Wisdom (Perception) check. Anyone who comes within 20 feet of it or the portcullis (see {@area 3>4>1}) is attacked. The giant lizard is hungry and fights until slain.",
 								"The double door is unlocked and pushes open on rusty, squealing iron hinges. If the characters have found a holy symbol of Umberlee amid the wrecks of High Horn (see \"High Horn,\") or elsewhere, they realize that the splitting waves carved on the double door closely match the symbol."
 							]
 						},
@@ -690,8 +690,8 @@
 							"type": "entries",
 							"name": "2. Statue of Umberlee",
 							"entries": [
-								"A 10-foot-tall statue of the sea goddess Umberlee stands to the east of the palace's portico. The statue, described in the read-aloud text for area 1, is harmless.",
-								"The ground slopes up to the south, rising 5 feet until it meets a 5-foot-wide, 8-foot-high crack in the palace wall that provides access to area 7. The crack is clearly visible to anyone who enters this area."
+								"A 10-foot-tall statue of the sea goddess Umberlee stands to the east of the palace's portico. The statue, described in the read-aloud text for {@area 3>1>1}, is harmless.",
+								"The ground slopes up to the south, rising 5 feet until it meets a 5-foot-wide, 8-foot-high crack in the palace wall that provides access to {@area 3>7>1}. The crack is clearly visible to anyone who enters this area."
 							]
 						},
 						{
@@ -706,7 +706,7 @@
 							"type": "entries",
 							"name": "4. Antechamber and Portcullis",
 							"entries": [
-								"The palace doors open into an antechamber with a torch bracket mounted on the west wall. Set into the south wall is a heavy iron portcullis that can be raised and lowered using the winch in area 5. Although the portcullis is too sturdy to be damaged by weapons, casting a knock spell on the portcullis raises it. A character can also lift the portcullis with a successful DC 25 Strength (Athletics) check, and a Small character can squeeze between the portcullis bars with a successful DC 20 Dexterity (Acrobatics) check."
+								"The palace doors open into an antechamber with a torch bracket mounted on the west wall. Set into the south wall is a heavy iron portcullis that can be raised and lowered using the winch in {@area 3>5>1}. Although the portcullis is too sturdy to be damaged by weapons, casting a knock spell on the portcullis raises it. A character can also lift the portcullis with a successful DC 25 Strength (Athletics) check, and a Small character can squeeze between the portcullis bars with a successful DC 20 Dexterity (Acrobatics) check."
 							]
 						},
 						{
@@ -714,9 +714,9 @@
 							"name": "5. Feast Hall",
 							"entries": [
 								"A rusty iron chandelier hangs by a chain above a once grand dining table situated in the middle of a large room. Light dapples the table through holes in the roof, and a few harmless tropical birds flap about. The tiled floor is littered with broken dishes, bird droppings, and other detritus. A wide staircase to the south climbs five feet to a raised gallery that surrounds the room. Old, framed pictures of sailing ships hang on the gallery walls. Three closed sets of doors lead from the upper area to other parts of the palace. A fourth doorway in the southeast corner is almost completely blocked by rubble.",
-								"This ruined feast hall contains nothing of value. Characters who search the walls, however, find a small iron key hidden behind one of the framed pictures. The key, which has a head shaped like an anchor, unlocks the painted chest in area 18.",
-								"The winch mechanism to raise and lower the portcullis (area 4) is on the east wall in the northwest section of the gallery.",
-								"The debris in the southeast corner is the result of a partial collapse of the roof. It can be cleared by a single character in 4 hours, or in proportionately less time by two or more characters working together. Once the debris is cleared, the doorway leads to area 9."
+								"This ruined feast hall contains nothing of value. Characters who search the walls, however, find a small iron key hidden behind one of the framed pictures. The key, which has a head shaped like an anchor, unlocks the painted chest in {@area 3>18}.",
+								"The winch mechanism to raise and lower the portcullis ({@area 3>4>1}) is on the east wall in the northwest section of the gallery.",
+								"The debris in the southeast corner is the result of a partial collapse of the roof. It can be cleared by a single character in 4 hours, or in proportionately less time by two or more characters working together. Once the debris is cleared, the doorway leads to {@area 3>9>0}."
 							]
 						},
 						{
@@ -763,7 +763,7 @@
 							"type": "entries",
 							"name": "9. Crab Pool",
 							"entries": [
-								"A partial collapse of the roof has filled the western doorway with rubble. Characters can't use the doorway until the rubble is cleared away (see area 5 for details).",
+								"A partial collapse of the roof has filled the western doorway with rubble. Characters can't use the doorway until the rubble is cleared away (see {@area 3>5>1} for details).",
 								"The plastered walls of this dark room are slick with moisture and set with colorful stones, starfish, shells, and coral branches. Extruding from the east wall is a stone sculpture of a giant crab, its pincered arms hugging a ten-foot-wide stone basin. A trickle of water flows from the crab's mouth into the basin. Holes in the basin's rim serve as drains to keep the pool from overflowing. Through a narrow window in the south wall comes the crash of tidal sea water flowing in and out of a cave.",
 								"The tortles built a cistern on the roof that catches rainwater and channels it through the crab sculpture into the pool. If a creature bathes in the pool, a dozen {@creature crab|MM|crabs} scuttle out of holes in the giant stone crab sculpture to clean the bather. The process takes 10 minutes. The crabs are harmless and can be killed normally.",
 								"A {@spell detect magic} spell reveals an aura of transmutation magic emanating from the pool. The pool has the following powers, which an {@spell identify} spell can ascertain:",
@@ -778,7 +778,7 @@
 									"type": "entries",
 									"name": "Window",
 									"entries": [
-										"The window in the south wall is wide enough for a Small or Medium character to crawl through. It looks out into a flooded sea cave (area 12) and is 25 feet above the water level."
+										"The window in the south wall is wide enough for a Small or Medium character to crawl through. It looks out into a flooded sea cave ({@area 3>12}) and is 25 feet above the water level."
 									]
 								}
 							]
@@ -787,12 +787,12 @@
 							"type": "entries",
 							"name": "10. Crumbling Walkway",
 							"entries": [
-								"A stone walkway above the water's edge has partially collapsed into the churning sea, leaving wide gaps. What remains of the walkway is structurally sound. To cross the damaged area safely on foot, a creature must succeed on a DC 15 Strength (Athletics) check. If the check fails, the creature falls 30 feet down a rocky slope, taking 10 (3d6) bludgeoning damage from the fall and landing in 10-foot-deep water. Characters who ascend the walkway from the north can circumvent the damaged section by crawling through the window into area 6, moving through the palace, and exiting through the window in the west wall of area 8, from where they can continue to the south.",
+								"A stone walkway above the water's edge has partially collapsed into the churning sea, leaving wide gaps. What remains of the walkway is structurally sound. To cross the damaged area safely on foot, a creature must succeed on a DC 15 Strength (Athletics) check. If the check fails, the creature falls 30 feet down a rocky slope, taking 10 (3d6) bludgeoning damage from the fall and landing in 10-foot-deep water. Characters who ascend the walkway from the north can circumvent the damaged section by crawling through the window into {@area 3>6>1}, moving through the palace, and exiting through the window in the west wall of {@area 3>8>1}, from where they can continue to the south.",
 								{
 									"type": "entries",
 									"name": "Seaside Entrance",
 									"entries": [
-										"At the south end of the walkway is a stone double door. The doors are carved with foaming waves that part in the middle, and they swing into area 11 on rusty iron hinges."
+										"At the south end of the walkway is a stone double door. The doors are carved with foaming waves that part in the middle, and they swing into {@area 3>11} on rusty iron hinges."
 									]
 								}
 							]
@@ -838,7 +838,7 @@
 									"type": "entries",
 									"name": "Balcony",
 									"entries": [
-										"The stone balcony is 30 feet above the water and connected to the throne room (area 11) by a stone double door."
+										"The stone balcony is 30 feet above the water and connected to the throne room ({@area 3>11}) by a stone double door."
 									]
 								},
 								{
@@ -903,7 +903,7 @@
 									"name": "Vestibule",
 									"entries": [
 										"The western door off the cleric's bedchamber opens into a vestibule where the cleric of Umberlee kept her personal belongings. Stone shelves stand against the bare stone walls, and two wooden chests rest in the middle of the floor.",
-										"The shelves contain worthless wooden statuettes of sea creatures given to the cleric of Umberlee by tortle admirers, as well as four moldy books that are the logs from her days as captain of the bitch queen . These old logbooks chronicle the ship's voyages and are worth 25 gp each to an interested buyer in any port city. The chests are locked, and their keys can be found in area 24. Picking a lock requires thieves' tools and a successful DC 15 Dexterity check. One chest contains five outfits of traveler's clothes sized for a large human female. The other chest holds priestly vestments befitting a cleric of Umberlee and eight iron keys of different shapes and sizes. The keys open eight of the nine chests in area 18. (The ninth key was taken and hidden in area 5.)"
+										"The shelves contain worthless wooden statuettes of sea creatures given to the cleric of Umberlee by tortle admirers, as well as four moldy books that are the logs from her days as captain of the bitch queen . These old logbooks chronicle the ship's voyages and are worth 25 gp each to an interested buyer in any port city. The chests are locked, and their keys can be found in {@area 3>24}. Picking a lock requires thieves' tools and a successful DC 15 Dexterity check. One chest contains five outfits of traveler's clothes sized for a large human female. The other chest holds priestly vestments befitting a cleric of Umberlee and eight iron keys of different shapes and sizes. The keys open eight of the nine chests in {@area 3>18}. (The ninth key was taken and hidden in {@area 3>5>1}.)"
 									]
 								}
 							]
@@ -921,7 +921,7 @@
 							"name": "17. Hallway",
 							"entries": [
 								"This arched hallway is reinforced with stone buttresses, between which are painted murals depicting gloomy underwater scenes. A large double door stands to the west, and a flickering orb is embedded in the wall at the east end of the hall. Along the hall's length are two more sets of double doors, a single door, and two clay urns covered with dust and cobwebs.",
-								"The orb at the east end of the hall is made of crystal and radiates an aura of conjuration magic under the scrutiny of a {@spell detect magic} spell or similar effect. The orb, which is 1 foot in diameter, sheds bright light in a 30-foot radius and dim light for an additional 30 feet. Whenever a creature touches the orb, roll a d6. On a roll of 2 or higher, the orb teleports the creature to area 24. On a roll of 1, the orb malfunctions and emits lightning in a 100-foot-long line as wide as the hall. Each creature in the area of effect must make a DC 15 Dexterity saving throw, taking 14 (4d6) lightning damage on a failed save, or half as much damage on a successful one. The orb can't be removed from its wall fixture. It has AC 10, 1 hit point, and immunity to poison and psychic damage. Destroying the orb extinguishes its light and renders the pieces nonmagical.",
+								"The orb at the east end of the hall is made of crystal and radiates an aura of conjuration magic under the scrutiny of a {@spell detect magic} spell or similar effect. The orb, which is 1 foot in diameter, sheds bright light in a 30-foot radius and dim light for an additional 30 feet. Whenever a creature touches the orb, roll a d6. On a roll of 2 or higher, the orb teleports the creature to {@area 3>24}. On a roll of 1, the orb malfunctions and emits lightning in a 100-foot-long line as wide as the hall. Each creature in the area of effect must make a DC 15 Dexterity saving throw, taking 14 (4d6) lightning damage on a failed save, or half as much damage on a successful one. The orb can't be removed from its wall fixture. It has AC 10, 1 hit point, and immunity to poison and psychic damage. Destroying the orb extinguishes its light and renders the pieces nonmagical.",
 								"The doors along the north wall open into the rooms beyond. The doors to the west and south have hinges on this side and open into the hallway.",
 								"The clay urns are purely decorative and contain nothing of value."
 							]
@@ -930,7 +930,7 @@
 							"type": "entries",
 							"name": "18. Treasury",
 							"entries": [
-								"When characters peer into this area from area 17, read:",
+								"When characters peer into this area from {@area 3>17}, read:",
 								"Beyond the double door is a twenty-foot-wide, twenty foot long hallway leading to a dark, pillared chamber strewn with chests, crates, and other containers. Everything is covered with dust, but not enough to conceal the broken bones and weapons lying on the hallway floor.",
 								"The remains on the floor belong to a pair of long-dead thieves. Characters who brush away the dust also find bloodstains and deep scratches on the floor. These clues suggest the presence of a trap.",
 								{
@@ -946,14 +946,14 @@
 									"entries": [
 										"A wide alcove in the east wall is not visible from the northern entrance. When characters see the alcove for the first time, read:",
 										"At the back of a recess in the east wall is a giant stone visage rendered in bas-relief. The face is that of a divinely beautiful woman with kelp for hair, eyelids like seashells, and a vaguely menacing half-smile.",
-										"The face, which is 12 feet tall and 10 feet wide, represents the sea goddess Umberlee. It radiates an aura of transmutation magic under the scrutiny of a {@spell detect magic} spell or similar effect. When a creature openly wearing or brandishing a holy symbol of Umberlee comes within 10 feet of the face, its mouth opens wide, creating a 5-foot-diameter opening that allows access to the caves beyond (area 22). The opening is lined with rows of triangular teeth similar to those of a giant shark, but they are easily avoided. The mouth closes after 1 minute but can be reopened from either side."
+										"The face, which is 12 feet tall and 10 feet wide, represents the sea goddess Umberlee. It radiates an aura of transmutation magic under the scrutiny of a {@spell detect magic} spell or similar effect. When a creature openly wearing or brandishing a holy symbol of Umberlee comes within 10 feet of the face, its mouth opens wide, creating a 5-foot-diameter opening that allows access to the caves beyond ({@area 3>22}). The opening is lined with rows of triangular teeth similar to those of a giant shark, but they are easily avoided. The mouth closes after 1 minute but can be reopened from either side."
 									]
 								},
 								{
 									"type": "entries",
 									"name": "Treasure",
 									"entries": [
-										"This room contains booty ransacked from shipwrecks, held in two sealed barrels, nine locked wooden chests, four clay urns, and four sealed crates. The Treasury Containers table describes each container and its contents. Keys that unlock chests 1 through 8 can be found in area 15; the key that unlocks chest 9 is hidden in area 5. A character using thieves' tools can unlock a chest with a successful DC 15 Dexterity check."
+										"This room contains booty ransacked from shipwrecks, held in two sealed barrels, nine locked wooden chests, four clay urns, and four sealed crates. The Treasury Containers table describes each container and its contents. Keys that unlock chests 1 through 8 can be found in {@area 3>15}; the key that unlocks chest 9 is hidden in {@area 3>5>1}. A character using thieves' tools can unlock a chest with a successful DC 15 Dexterity check."
 									]
 								},
 								{
@@ -964,8 +964,8 @@
 										"Contents"
 									],
 									"colStyles": [
-										"col-xs-4",
-										"col-xs-8"
+										"col-4",
+										"col-8"
 									],
 									"rows": [
 										[
@@ -986,11 +986,11 @@
 										],
 										[
 											"Chest 3 (covered with claw marks)",
-											"A neatly folded wedding gown and veil (25gp)"
+											"A neatly folded wedding gown and veil (25 gp)"
 										],
 										[
 											"Chest 4",
-											"A set of alchemist's supplies and four flasks of alchemist's fire"
+											"A set of {@item alchemist's supplies|phb} and four flasks of alchemist's fire"
 										],
 										[
 											"Chest 5 (rotted)",
@@ -1014,7 +1014,7 @@
 										],
 										[
 											"Crate 1",
-											"A griffon saddle (60gp)"
+											"A griffon saddle (60 gp)"
 										],
 										[
 											"Crate 2 (stamped with the crest of Waterdeep)",
@@ -1022,7 +1022,7 @@
 										],
 										[
 											"Crate 3",
-											"A lute (35gp), a lyre (35gp), and a viol (30gp) packed in straw."
+											"A lute (35 gp), a lyre (35 gp), and a viol (30 gp) packed in straw."
 										],
 										[
 											"Crate 4",
@@ -1063,7 +1063,7 @@
 								"Hanging by a chain from the ceiling of this dark, rectangular room is an old diver's cage with barnacles clinging to it. The cage is eight feet tall, five feet in diameter, and dangles two feet off the floor. Tattered rugs are splayed out before it. Other furnishings include bare shelves and painted clay urns, all covered in dust and cobwebs.",
 								"The largest rug is a {@creature rug of smothering} . It attacks the first creature that disturbs it. The urns contain the skulls and bones of six dead Umberlee worshipers.",
 								"The cage was salvaged from the bitch queen (see \"High Horn,\" ), where it was used for deep sea salvaging in shark-infested waters. It was also used by the captain to torture and drown prisoners. If a living creature touches the cage, a neutral merfolk {@creature ghost} materializes inside it. The ghost is all that remains of Siburrath, a male merfolk who was captured and tortured by the bitch queen 's captain over a century ago. Siburrath's ghost can't leave the cage unless it possesses someone, and it can't rest until its torturer is slain.",
-								"The ghost tries to possess the first character to come within 5 feet of it, with the intent of using the host to find and kill its torturer. If the ghost fails to possess someone, it tries to persuade the characters (in Aquan or Common) to help it find peace. The ghost can sense that its torturer is nearby, but can't discern the exact location. If the characters kill the slug creature in area 24, the ghost is laid to rest, and the characters receive XP as though they had defeated the ghost in combat.",
+								"The ghost tries to possess the first character to come within 5 feet of it, with the intent of using the host to find and kill its torturer. If the ghost fails to possess someone, it tries to persuade the characters (in Aquan or Common) to help it find peace. The ghost can sense that its torturer is nearby, but can't discern the exact location. If the characters kill the slug creature in {@area 3>24}, the ghost is laid to rest, and the characters receive XP as though they had defeated the ghost in combat.",
 								{
 									"type": "entries",
 									"name": "Treasure",
@@ -1093,7 +1093,7 @@
 							"type": "entries",
 							"name": "23. Blow Holes",
 							"entries": [
-								"At unpredictable intervals, seawater erupts through four holes in the floor of this 80-foot-long tunnel and then rushes back into area 12, dragging creatures in the tunnel along with it. Roll a d6 at the end of any turn in which one or more creatures are in the tunnel. On a roll of 1 or 2, water erupts from the blow holes and quickly recedes, forcing all Medium or smaller creatures in the tunnel to make a DC 10 Strength saving throw. Any creature that fails the save is flushed into area 12, taking 5 (2d4) bludgeoning damage as it plunges down the nearest blow hole. If the creature is secured by a rope, it is swept away only as far as the rope allows but still takes damage. A character flushed into area 12 can make a DC 15 Dexterity check to ride a wave back up through one of the blow holes. On a successful check, the character takes 5 (2d4) bludgeoning damage and lands prone in the tunnel."
+								"At unpredictable intervals, seawater erupts through four holes in the floor of this 80-foot-long tunnel and then rushes back into {@area 3>12}, dragging creatures in the tunnel along with it. Roll a d6 at the end of any turn in which one or more creatures are in the tunnel. On a roll of 1 or 2, water erupts from the blow holes and quickly recedes, forcing all Medium or smaller creatures in the tunnel to make a DC 10 Strength saving throw. Any creature that fails the save is flushed into {@area 3>12}, taking 5 (2d4) bludgeoning damage as it plunges down the nearest blow hole. If the creature is secured by a rope, it is swept away only as far as the rope allows but still takes damage. A character flushed into {@area 3>12} can make a DC 15 Dexterity check to ride a wave back up through one of the blow holes. On a successful check, the character takes 5 (2d4) bludgeoning damage and lands prone in the tunnel."
 							]
 						},
 						{
@@ -1116,7 +1116,7 @@
 										"It has a challenge rating of 3 (700 XP)."
 									]
 								},
-								"Also present are two {@creature shadow|mm|shadows} similar to those found in area 11. They emerge from behind the kraken statue and attack if the giant slug is harmed. If the slug is reduced to 11 hit points or fewer, it casts sanctuary on itself and cowers behind the kraken statue.",
+								"Also present are two {@creature shadow|mm|shadows} similar to those found in {@area 3>11}. They emerge from behind the kraken statue and attack if the giant slug is harmed. If the slug is reduced to 11 hit points or fewer, it casts sanctuary on itself and cowers behind the kraken statue.",
 								{
 									"type": "entries",
 									"name": "Statue and Holy Symbol",
@@ -1128,7 +1128,7 @@
 									"type": "entries",
 									"name": "Stone Basin",
 									"entries": [
-										"The cleric of Umberlee used this basin as a scrying pool. Pipes built into its base fill the basin with seawater until it overflows. At the bottom of the basin, under 10 gallons of seawater, are two rusty iron keys. The keys unlock the chests in area 15."
+										"The cleric of Umberlee used this basin as a scrying pool. Pipes built into its base fill the basin with seawater until it overflows. At the bottom of the basin, under 10 gallons of seawater, are two rusty iron keys. The keys unlock the chests in {@area 3>15}."
 									]
 								},
 								{
@@ -1142,7 +1142,7 @@
 									"type": "entries",
 									"name": "Development",
 									"entries": [
-										"Killing the giant slug lays the spirit of Siburrath (see area 20) to rest."
+										"Killing the giant slug lays the spirit of Siburrath (see {@area 3>20}) to rest."
 									]
 								}
 							]
@@ -1170,7 +1170,7 @@
 					"entries": [
 						"Standing atop a rocky crag at the northernmost tip of the island, facing northwest, is a thirty-foot-tall stone statue of a turtle-like humanoid with a large stone horn held up to its mouth. Below the monument is a stretch of sandy beach covered with shells. Black, moss-covered rocks jut from the water like teeth worn down by time. Just beyond these \"teeth\" are several barnacle-covered shipwrecks.",
 						"The statue depicts a long-dead tortle named Gumdarr, who heard a ship crash on the rocks and stood atop the crag to get a better look. He blew a horn to lure other tortles to the beach, and together they fished out the survivors of the shipwreck.",
-						"Six ships have crashed here in the past one hundred years, including the ship that brought the cleric of Umberlee and her crew to the island. At high tide, three of the wrecks (the bitch queen , the carcerius , and the sea mare ) are submerged, while the others (the dawn avenger , the dirty dastard , and the virago ) are at least partially visible above the waterline. At low tide, all six wrecks are visible to some extent. Each shipwreck is described below.",
+						"Six ships have crashed here in the past one hundred years, including the ship that brought the cleric of Umberlee and her crew to the island. At high tide, three of the wrecks (the bitch queen, the carcerius , and the sea mare ) are submerged, while the others (the dawn avenger , the dirty dastard , and the virago ) are at least partially visible above the waterline. At low tide, all six wrecks are visible to some extent. Each shipwreck is described below.",
 						"A two-headed plesiosaurus prowls the water around the wrecks at high tide. The creature withdraws to the northern strait when the tide goes out. It has the statistics of a {@creature plesiosaurus}, with these changes:",
 						{
 							"type": "list",
@@ -1186,7 +1186,7 @@
 							"name": "Bitch Queen",
 							"entries": [
 								"The bitch queen was a floating temple to the goddess Umberlee. When the ship capsized and was thrown onto the rocks during a storm almost a century ago, many of the crew were trapped in flooded cabins. The tortles who rescued them and pulled them ashore were smitten by the bitch queen 's human captain, who painted Umberlee in a more flattering light than she deserves. Eager to please the captain and her deity, the tortles looked after the survivors and built a palace for them on the mountainside overlooking the sea.",
-								"Of the bitch queen , little remains except its bowsprit and wooden figurehead, which is carved in the likeness of a screaming woman with long strands of kelp for hair and waves breaking around her. Part of the ship's aft castle lies nearby, on its side and lodged amid the rocks. The wreck is completely submerged at high tide; at low tide, the bowsprit and half of the figurehead are visible, as is a small, sun-bleached corner of the aft castle.",
+								"Of the bitch queen, little remains except its bowsprit and wooden figurehead, which is carved in the likeness of a screaming woman with long strands of kelp for hair and waves breaking around her. Part of the ship's aft castle lies nearby, on its side and lodged amid the rocks. The wreck is completely submerged at high tide; at low tide, the bowsprit and half of the figurehead are visible, as is a small, sun-bleached corner of the aft castle.",
 								{
 									"type": "entries",
 									"name": "Treasure",
@@ -1259,7 +1259,7 @@
 					"name": "Mud Pits of Florrb",
 					"entries": [
 						"In the heart of the island's jungle are three pools of mud heated by geothermal vents. Each pool is within sight of the other two and is 5 feet deep, 50 feet wide, and roughly circular. (The pools shown on map 1 are not to scale.) A {@spell detect magic} spell reveals a faint aura of abjuration magic around each pool. The tortles of the island like to bathe and relax in the mud pools for hours at a time, singing and bellowing to pass the time. A winding foot trail connects the mud pits to the tortle fort of Ahoyhoy.",
-						"The \"lord\" of the mud pits is Florrb, a {@Creature mud mephit} with 1d10 temporary hit points (which he gained by swimming in the mud pits). The mephit and the tortles share a common language (Aquan). Through words and gestures, Florrb urges visitors to bathe in the mud and enjoy themselves. It demands no payment but insists on joining those who bathe. Florrb likes being in its natural element, but the longer the mephit remains in the mud, the more dour it becomes. A successful DC 10 Wisdom (Insight) check reveals that the mud mephit seems to be waiting for something to happen. Florrb doesn't want others to know what's really going on and reveals the cause of its anxiety only if magically compelled to do so.",
+						"The \"lord\" of the mud pits is Florrb, a {@creature mud mephit} with 1d10 temporary hit points (which he gained by swimming in the mud pits). The mephit and the tortles share a common language (Aquan). Through words and gestures, Florrb urges visitors to bathe in the mud and enjoy themselves. It demands no payment but insists on joining those who bathe. Florrb likes being in its natural element, but the longer the mephit remains in the mud, the more dour it becomes. A successful DC 10 Wisdom (Insight) check reveals that the mud mephit seems to be waiting for something to happen. Florrb doesn't want others to know what's really going on and reveals the cause of its anxiety only if magically compelled to do so.",
 						{
 							"type": "entries",
 							"name": "Florrb's Problem",

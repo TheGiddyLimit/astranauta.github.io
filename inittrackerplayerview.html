@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--5ETOOLS_VERSION-->
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Initiative Tracker Player View - 5etools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
+
+	<style>
+		#initp__wrp_active {
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+<header class="hidden-xs hidden-sm page__header">
+	<div class="container">
+		<h1 class="page__title">Initiative Tracker Player View</h1>
+		<p class="page__subtitle">Press F to toggle fullscreen. Good luck.</p>
+	</div>
+</header>
+<nav class="container page__nav" id="navigation"><ul class="nav nav-pills" id="navbar"></ul></nav>
+<main class="container view-col-wrapper">
+	<div class="initp__content">
+
+		<div class="initp__initial row">
+			<div class="col-12">
+				<p>
+					The Player View is part of a peer-to-peer (i.e., serverless) system to allow players to connect to a DM's DM Screen initiative tracker. As a player, the usage is as follows:
+				<ol>
+					<li>Paste a "server token," provided by a DM, into the "Server Token" field, and click "Generate Client Token."</li>
+					<li>Wait for a token to be appear in the "Client Token" field, copy it, and send it to the DM.</li>
+				</ol>
+				<p>Once the DM accepts your token, this page will change to display the encounter in the DM's tracker. <i>Please note that this system is highly experimental. Your experience may vary.</i></p>
+			</div>
+		</div>
+
+		<hr class="initp__initial">
+
+		<div class="initp__initial row full-width">
+			<div class="col-5 bold">Server Token</div>
+			<div class="col-2 text-align-center"></div>
+			<div class="col-5 bold">Client Token</div>
+		</div>
+		<div class="initp__initial row full-width flex mb-4">
+			<div class="col-5 bold"><input class="form-control code" id="initp__ipt_server_token"></div>
+			<div class="col-2 flex-vh-center"><button class="btn btn-xs btn-primary" id="initp__btn_gen_client_token">Generate Client Token</button></div>
+			<div class="col-5 bold"><input class="form-control code copyable" id="initp__ipt_client_token" readonly disabled></div>
+		</div>
+
+		<div class="initp__initial row full-width">
+			<div class="col-12">
+				<label class="flex-label">
+					<span class="mr-2 help" title="Turning this off will produce a client token which is roughly twice as long, but contains only standard characters.">Short client token</span>
+					<input id="initp__cb_short" type="checkbox" checked>
+				</label>
+			</div>
+		</div>
+
+		<div class="initp__wrp_active" id="initp__wrp_active">
+			<div class="initp__meta"></div>
+			<div class="initp__header"></div>
+			<div class="initp__rows"></div>
+		</div>
+	</div>
+
+</main>
+<!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="lib/lzma.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/p2putils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/initiativetrackerutils.js"></script>
+<script type="text/javascript" src="js/inittrackerplayerview.js"></script>
+<script type="text/javascript" src="lib/bootstrap-tooltip.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+</body>
+</html>

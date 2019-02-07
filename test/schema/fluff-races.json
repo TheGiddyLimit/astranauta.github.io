@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.1",
+	"version": "1.0.3",
 	"type": "object",
 	"properties": {
 		"race": {
@@ -13,6 +13,15 @@
 					},
 					"source": {
 						"type": "string"
+					},
+					"images": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry#/definitions/entryImage"
+						}
+					},
+					"_excludeBaseImages": {
+						"type": "boolean"
 					},
 					"entries": {
 						"entries": {

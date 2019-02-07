@@ -1,135 +1,59 @@
 "use strict";
 
-const MONTH_NAMES = [
-	"January", "February", "March", "April", "May", "June",
-	"July", "August", "September", "October", "November", "December"
-];
-const CONTENTS_URL = "data/adventures.json";
+class Adventures {
+	static sortAdventures (dataList, a, b, o) {
+		a = dataList[a.elm.getAttribute(FLTR_ID)];
+		b = dataList[b.elm.getAttribute(FLTR_ID)];
 
-window.onload = function load () {
-	DataUtil.loadJSON(CONTENTS_URL).then(onJsonLoad);
-};
+		if (o.valueName === "name") return byName();
+		if (o.valueName === "storyline") return orFallback(SortUtil.ascSort, "storyline");
+		if (o.valueName === "level") return orFallback(SortUtil.ascSort, "_startLevel");
+		if (o.valueName === "published") return orFallback(ascSortDate, "_pubDate");
 
-let list;
-function onJsonLoad (data) {
-	list = new List("listcontainer", {
-		valueNames: ['name', 'source'],
-		listClass: "books"
-	});
+		function byName () {
+			return SortUtil.ascSort(a.name, b.name);
+		}
 
-	$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
-		const $this = $(this);
-		if ($this.attr("sortby") === "asc") {
-			$this.attr("sortby", "desc");
-		} else $this.attr("sortby", "asc");
-		list.sort($this.data("sort"), {order: $this.attr("sortby"), sortFunction: sortAdventures});
-	});
+		function ascSortDate (a, b) {
+			return b.getTime() - a.getTime();
+		}
 
-	list.sort("name");
-	$("#reset").click(function () {
-		$("#search").val("");
-		list.search();
-		list.sort("name");
-		list.filter();
-		$(`.showhide`).each((i, ele) => {
-			const $ele = $(ele);
-			if (!$ele.data("hidden")) {
-				BookUtil.indexListToggle(null, ele);
-			}
-		});
-	});
-
-	handleBrew(data);
-	BrewUtil.pAddBrewData()
-		.then(handleBrew)
-		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
-		.then(() => BrewUtil.makeBrewButton("manage-brew"));
-}
-
-function handleBrew (homebrew) {
-	addAdventures(homebrew);
-	return Promise.resolve();
-}
-
-let adventureList = [];
-let adI = 0;
-function addAdventures (data) {
-	if (!data.adventure || !data.adventure.length) return;
-
-	adventureList = adventureList.concat(data.adventure);
-
-	const adventuresList = $("ul.books");
-	let tempString = "";
-	for (; adI < adventureList.length; adI++) {
-		const adv = adventureList[adI];
-		// used for sorting
-		adv._startLevel = adv.level.start || 20;
-		adv._pubDate = new Date(adv.published);
-
-		tempString +=
-			`<li ${FLTR_ID}="${adI}">
-				<a href="adventure.html#${adv.id}" title="${adv.name}" class="adv-name">
-					<span class='name'>
-						<span class="col-xs-6 col-xs-6-2">${adv.name}</span>
-						<span class="col-xs-2 col-xs-2-5 adv-detail">${adv.storyline}</span>
-						<span class="col-xs-1 col-xs-1-3 adv-detail">${getLevelsStr(adv)}</span>
-						<span class="col-xs-2 adv-detail">${getDateStr(adv)}</span>
-					</span>
-					<span class="showhide" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>
-					<span class="source" style="display: none">${adv.id}</span>
-				</a>
-				${BookUtil.makeContentsBlock({book: adv, addPrefix: "adventure.html", defaultHidden: true})}
-			</li>`;
+		function orFallback (func, prop) {
+			const initial = func(a[prop] || "", b[prop] || "");
+			return initial || byName();
+		}
 	}
-	const lastSearch = ListUtil.getSearchTermAndReset(list);
-	adventuresList.append(tempString);
 
-	list.reIndex();
-	if (lastSearch) list.search(lastSearch);
-	list.sort("name");
-
-	function getLevelsStr (adv) {
+	static getLevelsStr (adv) {
 		if (adv.level.custom) return adv.level.custom;
 		return `Level ${adv.level.start}\u2013${adv.level.end}`
 	}
 
-	function getDateStr (adv) {
+	static getDateStr (adv) {
 		const date = new Date(adv.published);
-		return `${MONTH_NAMES[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+		return MiscUtil.dateToStr(date);
 	}
 }
-
-function sortAdventures (a, b, o) {
-	a = adventureList[a.elm.getAttribute(FLTR_ID)];
-	b = adventureList[b.elm.getAttribute(FLTR_ID)];
-
-	if (o.valueName === "name") {
-		return byName();
+const adventuresList = new BooksList({
+	contentsUrl: "data/adventures.json",
+	sortFn: Adventures.sortAdventures,
+	dataProp: "adventure",
+	enhanceRowDataFn: (adv) => {
+		adv._startLevel = adv.level.start || 20;
+		adv._pubDate = new Date(adv.published);
+	},
+	rootPage: "adventure.html",
+	rowBuilderFn: (adv) => {
+		return `<span class="col-6-2 name">${adv.name}</span>
+		<span class="col-2-5 adv-detail">${adv.storyline || "\u2014"}</span>
+		<span class="col-1-3 adv-detail">${Adventures.getLevelsStr(adv)}</span>
+		<span class="col-2 adv-detail">${Adventures.getDateStr(adv)}</span>`;
 	}
+});
 
-	if (o.valueName === "storyline") {
-		return orFallback(SortUtil.ascSort, "storyline");
-	}
+window.onload = adventuresList.onPageLoad.bind(adventuresList);
 
-	if (o.valueName === "level") {
-		return orFallback(SortUtil.ascSort, "_startLevel");
-	}
-
-	if (o.valueName === "published") {
-		return orFallback(ascSortDate, "_pubDate");
-	}
-
-	function byName () {
-		return SortUtil.ascSort(a.name, b.name);
-	}
-
-	function ascSortDate (a, b) {
-		return b.getTime() - a.getTime();
-	}
-
-	function orFallback (func, prop) {
-		const initial = func(a[prop], b[prop]);
-		return initial !== 0 ? initial : byName();
-	}
+function handleBrew (homebrew) {
+	adventuresList.addData(homebrew);
+	return Promise.resolve();
 }

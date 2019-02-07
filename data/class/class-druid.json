@@ -335,7 +335,7 @@
 					"spears"
 				],
 				"tools": [
-					"herbalism kit"
+					"Herbalism kit"
 				],
 				"skills": {
 					"choose": 2,
@@ -355,10 +355,22 @@
 				"additionalFromBackground": true,
 				"default": [
 					"(a) a wooden {@item shield|phb} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
-					"(a) a {@item scimitar|phb} or (b) any {@filter simple melee weapon|items|source=phb|category=basic|type=simple weapon;melee weapon}",
+					"(a) a {@item scimitar|phb} or (b) any {@filter simple melee weapon|items|source=phb|category=basic|type=simple weapon;melee weapon=&}",
 					"{@item Leather armor|phb}, an {@item explorer's pack|phb}, and a {@item druidic focus|phb}"
 				],
-				"goldAlternative": "2d4 × 10"
+				"goldAlternative": "{@dice 2d4×10|2d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"wis": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light",
+						"medium",
+						"shields (druids will not wear armor or use shields made of metal)"
+					]
+				}
 			},
 			"classFeatures": [
 				[
@@ -371,7 +383,7 @@
 					{
 						"name": "Spellcasting",
 						"entries": [
-							"Drawing on the divine essence of nature itself, you can cast spells to shape that essence to your will. See chapter 10 for the general rules of spellcasting and chapter 11 for the druid spell list.",
+							"Drawing on the divine essence of nature itself, you can cast spells to shape that essence to your will. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for the {@filter druid spell list|spells|class=druid}.",
 							{
 								"type": "entries",
 								"name": "Cantrips",
@@ -383,7 +395,7 @@
 								"type": "entries",
 								"name": "Preparing and Casting Spells",
 								"entries": [
-									"The Druid table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these druid spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+									"The Druid table shows how many spell slots you have to cast your {@filter druid spells|spells|class=druid} of 1st level and higher. To cast one of these druid spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
 									"You prepare the list of druid spells that are available for you to cast, choosing from the druid spell list. When you do so, choose a number of druid spells equal to your Wisdom modifier + your druid level (minimum of one spell). The spells must be of a level for which you have spell slots.",
 									"For example, if you are a 3rd-level druid, you have four 1st-level and two 2nd-level spell slots. With a Wisdom of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell {@spell cure wounds}, you can cast it using a 1st-level or 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.",
 									"You can also change your list of prepared spells when you finish a long rest. Preparing a new list of druid spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list."
@@ -443,26 +455,26 @@
 									"Example"
 								],
 								"colStyles": [
-									"col-xs-2 text-align-center",
-									"col-xs-2 text-align-center",
-									"col-xs-5",
-									"col-xs-3"
+									"col-2 text-align-center",
+									"col-2 text-align-center",
+									"col-5",
+									"col-3"
 								],
 								"rows": [
 									[
-										"{@filter 2nd|bestiary|cr=0;1/8;1/4|type=beast|speed=!fly;!swim|miscellaneous=!swarm}",
+										"{@filter 2nd|bestiary|challenge rating=0;1/8;1/4|type=beast|speed type=!fly;!swim|miscellaneous=!swarm}",
 										"1/4",
 										"No flying or swimming speed",
 										"Wolf"
 									],
 									[
-										"{@filter 4th|bestiary|cr=0;1/8;1/4;1/2|type=beast|speed=!fly|miscellaneous=!swarm}",
+										"{@filter 4th|bestiary|challenge rating=0;1/8;1/4;1/2|type=beast|speed type=!fly|miscellaneous=!swarm}",
 										"1/2",
 										"No flying speed",
 										"Crocodile"
 									],
 									[
-										"{@filter 8th|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|miscellaneous=!swarm}",
+										"{@filter 8th|bestiary|challenge rating=0;1/8;1/4;1/2;1|type=beast|miscellaneous=!swarm}",
 										"1",
 										"\u2014",
 										"Giant eagle"
@@ -646,8 +658,8 @@
 													"Circle Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -676,8 +688,8 @@
 													"Circle Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -706,8 +718,8 @@
 													"Circle Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -736,8 +748,8 @@
 													"Circle Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -766,8 +778,8 @@
 													"Circle Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -796,8 +808,8 @@
 													"Circle Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -826,8 +838,8 @@
 													"Circle Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -856,8 +868,8 @@
 													"Circle Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -942,14 +954,14 @@
 										"name": "Combat Wild Shape",
 										"entries": [
 											"You gain the ability to use Wild Shape on your turn as a bonus action, rather than as an action.",
-											"Additionally, while you are transformed by Wild Shape, you can use a bonus action to expend one spell slot to regain 1d8 hit points per level of the spell slot expended."
+											"Additionally, while you are transformed by Wild Shape, you can use a bonus action to expend one spell slot to regain {@dice 1d8} hit points per level of the spell slot expended."
 										]
 									},
 									{
 										"type": "entries",
 										"name": "Circle Forms",
 										"entries": [
-											"The rites of your circle grant you the ability to transform into more dangerous animal forms. Starting at 2nd level, you can use your Wild Shape to transform into a {@filter beast with a challenge rating as high as 1|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim|miscellaneous=!swarm} (you ignore the Max. CR column of the Beast Shapes table, but must abide by the other limitations there).",
+											"The rites of your circle grant you the ability to transform into more dangerous animal forms. Starting at 2nd level, you can use your Wild Shape to transform into a {@filter beast with a challenge rating as high as 1|bestiary|challenge rating=0;1/8;1/4;1/2;1|type=beast|speed type=!fly;!swim|miscellaneous=!swarm} (you ignore the Max. CR column of the Beast Shapes table, but must abide by the other limitations there).",
 											"Starting at 6th level, you can transform into a beast with a challenge rating as high as your druid level divided by 3, rounded down.",
 											{
 												"type": "table",
@@ -960,39 +972,49 @@
 													"Limitations"
 												],
 												"colStyles": [
-													"col-xs-2 text-align-center",
-													"col-xs-2 text-align-center",
-													"col-xs-8"
+													"col-2 text-align-center",
+													"col-2 text-align-center",
+													"col-8"
 												],
 												"rows": [
 													[
-														"{@filter 2nd|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim|miscellaneous=!swarm}",
-														"1",
+														"2nd",
+														"{@filter 1|bestiary|challenge rating=0;1/8;1/4;1/2;1|type=beast|speed type=!fly;!swim|miscellaneous=!swarm}",
 														"No flying or swimming speed"
 													],
 													[
-														"{@filter 6th|bestiary|cr=0;1/8;1/4;1/2;1;2|type=beast|speed=!fly|miscellaneous=!swarm}",
-														"2",
+														"4th",
+														"{@filter 1|bestiary|challenge rating=0;1/8;1/4;1/2;1|type=beast|speed type=!fly|miscellaneous=!swarm}",
 														"No flying speed"
 													],
 													[
-														"{@filter 9th|bestiary|cr=0;1/8;1/4;1/2;1;2;3|type=beast|miscellaneous=!swarm}",
-														"3",
+														"6th",
+														"{@filter 2|bestiary|challenge rating=0;1/8;1/4;1/2;1;2|type=beast|speed type=!fly|miscellaneous=!swarm}",
+														"No flying speed"
+													],
+													[
+														"8th",
+														"{@filter 2|bestiary|challenge rating=0;1/8;1/4;1/2;1;2|type=beast|miscellaneous=!swarm}",
 														"\u2014"
 													],
 													[
-														"{@filter 12th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4|type=beast|miscellaneous=!swarm}",
-														"4",
+														"9th",
+														"{@filter 3|bestiary|challenge rating=0;1/8;1/4;1/2;1;2;3|type=beast|miscellaneous=!swarm}",
 														"\u2014"
 													],
 													[
-														"{@filter 15th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5|type=beast|miscellaneous=!swarm}",
-														"5",
+														"12th",
+														"{@filter 4|bestiary|challenge rating=0;1/8;1/4;1/2;1;2;3;4|type=beast|miscellaneous=!swarm}",
 														"\u2014"
 													],
 													[
-														"{@filter 18th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5;6|type=beast|miscellaneous=!swarm}",
-														"6",
+														"15th",
+														"{@filter 5|bestiary|challenge rating=0;1/8;1/4;1/2;1;2;3;4;5|type=beast|miscellaneous=!swarm}",
+														"\u2014"
+													],
+													[
+														"18th",
+														"{@filter 6|bestiary|challenge rating=0;1/8;1/4;1/2;1;2;3;4;5;6|type=beast|miscellaneous=!swarm}",
 														"\u2014"
 													]
 												]
@@ -1057,7 +1079,7 @@
 										"type": "entries",
 										"name": "Balm of the Summer Court",
 										"entries": [
-											"At 2nd level, you become imbued with the blessings of the Summer Court. You are a font of energy that lends relief to weary feet and respite from injuries. You have a pool of fey energy represented by a number of d6s equal to your druid level.",
+											"At 2nd level, you become imbued with the blessings of the Summer Court. You are a font of energy that lends relief to weary feet and respite from injuries. You have a pool of fey energy represented by a number of {@dice d6}s equal to your druid level.",
 											"As a bonus action, you can choose an ally you can see within 120 feet of you and spend a number of those dice equal to half your druid level or less. Roll the spent dice and add them together. The target regains a number of hit points equal to the total. The target also gains 1 temporary hit point per die spent, and its speed increases by 5 feet per die spent. The speed increase lasts for 1 minute.",
 											"You regain the expended dice when you finish a long rest."
 										]
@@ -1087,7 +1109,7 @@
 										"entries": [
 											"At 10th level, you can use the hidden, unpredictable magical pathways that some fey use to traverse space in a blink of an eye. On your turn, you can teleport up to 30 feet to a spot you can see. Each foot of this teleportation costs 1 foot of your movement.",
 											"You can also use this feature to teleport someone else. As an action, you can teleport a willing ally you touch up to 30 feet to a point you can see.",
-											"Once you use either option\u2014teleporting yourself or an ally\u2014you can't use that option again until 1d4 rounds have passed."
+											"Once you use either option\u2014teleporting yourself or an ally\u2014you can't use that option again until {@dice 1d4} rounds have passed."
 										]
 									}
 								]
@@ -1349,7 +1371,7 @@
 										"type": "entries",
 										"name": "Harvest's Scythe",
 										"entries": [
-											"Starting at 2nd level, you learn to unravel and harvest the life energy of other creatures. You can augment your spells to drain the life force from creatures. You have a pool of energy represented by a number of d10s equal to your druid level.",
+											"Starting at 2nd level, you learn to unravel and harvest the life energy of other creatures. You can augment your spells to drain the life force from creatures. You have a pool of energy represented by a number of {@dice d10}s equal to your druid level.",
 											"When you roll damage for a spell, you can increase that damage by spending dice from the pool. You can spend a number of dice equal to half your druid level or less. Roll the spent dice and add them to the damage as necrotic damage. If you kill one or more hostile creatures with a spell augmented in this way, you or an ally of your choice that you can see within 30 feet of you regains 2 hit points per die spent to increase the spell's damage, or 5 hit points per die if at least one of the slain creatures was undead.",
 											"You regain the expended dice when you finish a long rest."
 										]
@@ -1413,7 +1435,7 @@
 										"type": "entries",
 										"name": "Balm of the Summer Court",
 										"entries": [
-											"At 2nd level, you become imbued with the blessings of the Summer Court. You are a font of energy that offers respite from injuries. You have a pool of fey energy represented by a number of d6s equal to your druid level.",
+											"At 2nd level, you become imbued with the blessings of the Summer Court. You are a font of energy that offers respite from injuries. You have a pool of fey energy represented by a number of {@dice d6}s equal to your druid level.",
 											"As a bonus action, you can choose one creature you can see within 120 feet of you and spend a number of those dice equal to half your druid level or less. Roll the spent dice and add them together. The target regains a number of hit points equal to the total. The target also gains 1 temporary hit point per die spent.",
 											"You regain all expended dice when you finish a long rest."
 										]
@@ -1429,7 +1451,7 @@
 										"name": "Hearth of Moonlight and Shadow",
 										"entries": [
 											"At 6th level, home can be wherever you are. During a short or long rest, you can invoke the shadowy power of the Gloaming Court to help guard your respite. At the start of the rest, you touch a point in space, and an invisible, 30-foot-radius sphere of magic appears, centered on that point. Total cover blocks the sphere.",
-											"While within the sphere, you and your allies gain a +5 bonus to Dexterity (Stealth) and Wisdom (Perception) checks, and any light from open flames in the sphere (a campfire, torches, or the like) isn't visible outside it.",
+											"While within the sphere, you and your allies gain a +5 bonus to Dexterity ({@skill Stealth}) and Wisdom ({@skill Perception}) checks, and any light from open flames in the sphere (a campfire, torches, or the like) isn't visible outside it.",
 											"The sphere vanishes at the end of the rest or when you leave the sphere."
 										]
 									}
@@ -1509,7 +1531,7 @@
 														"type": "entries",
 														"name": "Hawk Spirit",
 														"entries": [
-															"The hawk spirit is a consummate hunter, aiding you and your allies with its keen sight. When a creature makes an attack roll against a target in the spirit's aura, you can use your reaction to grant advantage to that attack roll. In addition, you and your allies have advantage on Wisdom (Perception) checks while in the aura."
+															"The hawk spirit is a consummate hunter, aiding you and your allies with its keen sight. When a creature makes an attack roll against a target in the spirit's aura, you can use your reaction to grant advantage to that attack roll. In addition, you and your allies have advantage on Wisdom ({@skill Perception}) checks while in the aura."
 														]
 													},
 													{
@@ -1582,7 +1604,7 @@
 					"subclassFeatures": [
 						[
 							{
-								"name": "Circle of Spores",
+								"name": "Circle of Spores (UA)",
 								"entries": [
 									"Druids of the Circle of Spores find beauty in decay. They see within mold and other fungi the ability to transform lifeless material into abundant, albeit somewhat strange, life. These druids believe that life and death are portions of a grand cycle, with one leading to the other and then back again. Death is not the end of life, but instead a change of state that sees life shift into a new form. Druids of this circle have a complex relationship with the undead. Unlike most other druids, they see nothing inherently wrong with undeath, which they consider to be a companion to life and death. However, these druids believe that the natural cycle is healthiest when each segment of it is vibrant and changing. Undead that seek to replace all life with undeath, or avoid passing to a final rest, violate the cycle and must be thwarted.",
 									{
@@ -1599,8 +1621,8 @@
 													"Circle Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1635,7 +1657,7 @@
 										"name": "Symbiotic Entity",
 										"entries": [
 											"At 2nd level, you gain the ability to channel magic into the spores that infuse you.",
-											"When you use your Wild Shape feature, you can awaken those spores, rather than transforming. When you do so, you gain 3 temporary hit points per level you have in this class, the damage of your Halo of Spores feature doubles, and your melee weapon attacks deal an extra 1d6 poison damage to any target they hit. These benefits last for 10 minutes or until you use your Wild Shape again."
+											"When you use your Wild Shape feature, you can awaken those spores, rather than transforming. When you do so, you gain 3 temporary hit points per level you have in this class, the damage of your Halo of Spores feature doubles, and your melee weapon attacks deal an extra {@dice 1d6} poison damage to any target they hit. These benefits last for 10 minutes or until you use your Wild Shape again."
 										]
 									}
 								]
@@ -1649,7 +1671,7 @@
 										"type": "entries",
 										"entries": [
 											"At 6th level, your spores gain the ability to infest a humanoid corpse and animate it.",
-											"If you slay a humanoid with your Halo of Spores damage, the creature rises as a zombie at the end of your turn. It has 1 hit point. In combat, its turn is immediately after yours. It obeys your mental commands, and the only action it can take is the Attack action, making one melee attack. It remains animate for 1 hour, after which time it collapses and dies."
+											"If you slay a humanoid with your Halo of Spores damage, the creature rises as a {@creature zombie} at the end of your turn. It has 1 hit point. In combat, its turn is immediately after yours. It obeys your mental commands, and the only action it can take is the {@action Attack} action, making one melee attack. It remains animate for 1 hour, after which time it collapses and dies."
 										]
 									}
 								]
@@ -1684,1337 +1706,1512 @@
 					],
 					"source": "UAThreeSubclasses",
 					"shortName": "Spores (UA)"
+				},
+				{
+					"name": "Circle of Spores",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Circle of Spores",
+								"entries": [
+									"Druids of the Circle of Spores find beauty in decay. They see within mold and other fungi the ability to transform lifeless material into abundant, albeit somewhat strange, life.",
+									"These druids believe that life and death are parts of a grand cycle, with one leading to the other and then back again. Death isn't the end of life, but instead a change of state that sees life shift into a new form.",
+									"Druids of this circle have a complex relationship with the undead. Unlike most other druids, they see nothing inherently wrong with undeath, which they consider to be a companion to life and death. But these druids believe that the natural cycle is healthiest when each segment of it is vibrant and changing. Undead that seek to replace all life with undeath, or that try to avoid passing to a final rest, violate the cycle and must be thwarted.",
+									{
+										"type": "entries",
+										"name": "Circle Spells",
+										"entries": [
+											"Your symbiotic link to fungus and your ability to tap into the cycle of life and death grants you access to certain spells. At 2nd level, you learn the {@spell chill touch} cantrip. At 3rd, 5th, 7th, and 9th level you gain access to the spells listed for that level in the Circle of Spores Spells table.",
+											"Once you gain access to one of these spells, you always have it prepared, and it doesn't count against the number of spells you can prepare each day. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.",
+											{
+												"type": "table",
+												"caption": "Circle of Spores Spells",
+												"colLabels": [
+													"Druid Level",
+													"Circle Spells"
+												],
+												"colStyles": [
+													"col-3 text-align-center",
+													"col-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell blindness/deafness}, {@spell gentle repose}"
+													],
+													[
+														"5th",
+														"{@spell animate dead}, {@spell gaseous form}"
+													],
+													[
+														"7th",
+														"{@spell blight}, {@spell confusion}"
+													],
+													[
+														"9th",
+														"{@spell cloudkill}, {@spell contagion}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Halo of Spores",
+										"entries": [
+											"Starting at 2nd level, you are surrounded by invisible, necrotic spores that are harmless until you unleash them on a creature nearby. When a creature you can see moves into a space within 10 feet of you or starts its turn there, you can use your reaction to deal {@dice 1d4} necrotic damage to that creature unless it succeeds on a Constitution saving throw against your spell save DC. The necrotic damage increases to {@dice 1d6} at 6th level, {@dice 1d8} at 10th level, and {@dice 1d10} at 14th level."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Symbiotic Entity",
+										"entries": [
+											"At 2nd level, you gain the ability to channel magic into your spores. As an action, you can expend a use of your Wild Shape feature to awaken those spores, rather than transforming into a beast form, and you gain 4 temporary hit points for each level you have in this class. While this feature is active, you gain the following benefits:",
+											{
+												"type": "list",
+												"items": [
+													"When you deal your Halo of Spores damage, roll the damage die a second time and add it to the total.",
+													"Your melee weapon attacks deal an extra {@dice 1d6} poison damage to any target they hit."
+												]
+											},
+											"These benefits last for 10 minutes, until you lose all these temporary hit points, or until you use your Wild Shape again.",
+											{
+												"type": "inset",
+												"name": "Rule Tip: Temporary Hit Points Don't Stack",
+												"entries": [
+													"If you have temporary hit points and receive more of them, you don't add them together, unless a rule says you can. Instead, you decide which temporary hit points to keep. For more information on temporary hit points, see {@book chapter 9|PHB|9|Temporary Hit Points} of the {@book Player's Handbook|PHB}."
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"name": "Fungal Infestation",
+										"type": "entries",
+										"entries": [
+											"At 6th level, your spores gain the ability to infest a corpse and animate it. If a beast or a humanoid that is Small or Medium dies within 10 feet of you, you can use your reaction to animate it, causing it to stand up immediately with 1 hit point. The creature uses the {@creature zombie} stat block in the {@book Monster Manual|MM}. It remains animate for 1 hour, after which time it collapses and dies.",
+											"In combat, the zombie's turn comes immediately after yours. It obeys your mental commands, and the only action it can take is the {@action Attack} action, making one melee attack.",
+											"You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses of it when you finish a long rest."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"name": "Spreading Spores",
+										"type": "entries",
+										"entries": [
+											"At 10th level, you gain the ability to seed an area with deadly spores. As a bonus action while your Symbiotic Entity feature is active, you can hurl spores up to 30 feet away, where they swirl in a 10-foot cube for 1 minute. The spores disappear early if you use this feature again, if you dismiss them as a bonus action, or if your Symbiotic Entity feature is no longer active.",
+											"Whenever a creature moves into the cube or starts its turn there, that creature takes your Halo of Spores damage, unless the creature succeeds on a Constitution saving throw against your spell save DC. A creature can take this damage no more than once per turn.",
+											"While the cube of spores persists, you can't use your Halo of Spores reaction."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"name": "Fungal Body",
+										"type": "entries",
+										"entries": [
+											"At 14th level, the fungal spores in your body alter you: you can't be {@condition blinded}, {@condition deafened}, {@condition frightened}, or {@condition poisoned}, and any critical hit against you counts as a normal hit instead, unless you're {@condition incapacitated}."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "GGR",
+					"shortName": "Spores",
+					"page": 26
 				}
 			],
 			"fluff": [
 				{
-					"type": "quote",
 					"entries": [
-						"Even in death, each creature plays its part in maintaining the Great Balance. But now an imbalance grows, a force that seeks to hold sway over nature. This is the destructive behavior of the mortal races. The farther away from nature their actions take them, the more corrupting their influence becomes. As druids, we seek mainly to protect and educate, to preserve the Great Balance, but there are times when we must rise up against danger and eradicate it."
+						"Holding high a gnarled staff wreathed with holly, an elf summons the fury of the storm and calls down explosive bolts of lightning to smite the torch-carrying orcs who threaten her forest.",
+						"Crouching out of sight on a high tree branch in the form of a leopard, a human peers out of the jungle at the strange construction of a temple of Evil Elemental Air, keeping a close eye on the cultists' activities.",
+						"Swinging a blade formed of pure fire, a half-elf charges into a mass of skeletal soldiers, sundering the unnatural magic that gives the foul creatures the mocking semblance of life.",
+						"Whether calling on the elemental forces of nature or emulating the creatures of the animal world, druids are an embodiment of nature's resilience, cunning, and fury. They claim no mastery over nature. Instead, they see themselves as extensions of nature's indomitable will.",
+						{
+							"type": "entries",
+							"name": "Power of Nature",
+							"entries": [
+								"Druids revere nature above all, gaining their spells and other magical powers either from the force of nature itself or from a nature deity. Many druids pursue a mystic spirituality of transcendent union with nature rather than devotion to a divine entity, while others serve gods of wild nature, animals, or elemental forces. The ancient druidic traditions are sometimes called the Old Faith, in contrast to the worship of gods in temples and shrines.",
+								"Druid spells are oriented toward nature and animals\u2014the power of tooth and claw, of sun and moon, of fire and storm. Druids also gain the ability to take on animal forms, and some druids make a particular study of this practice, even to the point where they prefer animal form to their natural form."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Preserve the Balance",
+							"entries": [
+								"For druids, nature exists in a precarious balance. The four elements that make up a world\u2014air, earth, fire, and water\u2014must remain in equilibrium. If one element were to gain power over the others, the world could be destroyed, drawn into one of the elemental planes and broken apart into its component elements. Thus, druids oppose cults of Elemental Evil and others who promote one element to the exclusion of others.",
+								"Druids are also concerned with the delicate ecological balance that sustains plant and animal life, and the need for civilized folk to live in harmony with nature, not in opposition to it. Druids accept that which is cruel in nature, and they hate that which is unnatural, including aberrations (such as beholders and mind flayers) and undead (such as zombies and vampires). Druids sometimes lead raids against such creatures, especially when the monsters encroach on the druids' territory.",
+								"Druids are often found guarding sacred sites or watching over regions of unspoiled nature. But when a significant danger arises, threatening nature's balance or the lands they protect, druids take on a more active role in combating the threat, as adventurers."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Druid",
+							"entries": [
+								"When making a druid, consider why your character has such a close bond with nature. Perhaps your character lives in a society where the Old Faith still thrives, or was raised by a druid after being abandoned in the depths of a forest. Perhaps your character had a dramatic encounter with the spirits of nature, coming face to face with a giant eagle or dire wolf and surviving the experience. Maybe your character was born during an epic storm or a volcanic eruption, which was interpreted as a sign that becoming a druid was part of your character's destiny.",
+								"Have you always been an adventurer as part of your druidic calling, or did you first spend time as a caretaker of a sacred grove or spring? Perhaps your homeland was befouled by evil, and you took up an adventuring life in hopes of finding a new home or purpose.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"You can make a druid quickly by following these suggestions. First, Wisdom should be your highest ability score, followed by Constitution. Second, choose the {@background hermit} background."
+									]
+								}
+							]
+						}
 					],
-					"by": "Safhran, archdruid"
-				},
-				"Druids are the caretakers of the natural world, and it is said that in time a druid becomes the voice of nature, speaking the truth that is too subtle for the general populace to hear. Many who become druids find that they naturally gravitate toward nature; its forces, cycles, and movements fill their minds and spirits with wonder and insight. Many sages and wise folk have studied nature, writing volumes about its mystery and power, but druids are a special kind of being: at some point, they begin to embody these natural forces, producing magical phenomena that link them to the spirit of nature and the flow of life. Because of their strange and mysterious power, druids are often revered, shunned, or considered dangerous by the people around them.",
-				"Your druid character might be a true worshiper of nature, one who has always scorned civilization and found solace in the wild. Or your character could be a child of the city who now strives to bring the civilized world into harmony with the wilderness. You can use the sections that follow to flesh out your druid, regardless of how your character came to the profession.",
-				{
-					"type": "entries",
-					"name": "Treasured Item",
-					"entries": [
-						"Some druids carry one or more items that are sacred to them or have deep personal significance. Such items are not necessarily magical, but every one is an object whose meaning connects the druid's mind and heart to a profound concept or spiritual outlook.",
-						"When you decide what your character's treasured item is, think about giving it an origin story: how did you come by the item, and why is it important to you?",
-						{
-							"type": "table",
-							"caption": "Treasured Item",
-							"colLabels": [
-								"{@dice d6}",
-								"Treasured Item"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"A twig from the meeting tree that stands in the center of your village"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"A vial of water from the source of a sacred river"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"Special herbs tied together in a bundle"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"A small bronze bowl engraved with animal images"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"A rattle made from a dried gourd and holly berries"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"A miniature golden sickle handed down to you by your mentor"
-								]
-							]
-						}
-					]
+					"source": "PHB",
+					"page": 64
 				},
 				{
-					"type": "entries",
-					"name": "Guiding Aspects",
 					"entries": [
-						"Many druids feel a strong link to a specific aspect of the natural world, such as a body of water, an animal, a type of tree, or some other sort of plant. You identify with your chosen aspect; by its behavior or its very nature, it sets an example that you seek to emulate.",
 						{
-							"type": "table",
-							"caption": "Guiding Aspects",
-							"colLabels": [
-								"{@dice d6}",
-								"Guiding Aspects"
+							"type": "quote",
+							"entries": [
+								"Even in death, each creature plays its part in maintaining the Great Balance. But now an imbalance grows, a force that seeks to hold sway over nature. This is the destructive behavior of the mortal races. The farther away from nature their actions take them, the more corrupting their influence becomes. As druids, we seek mainly to protect and educate, to preserve the Great Balance, but there are times when we must rise up against danger and eradicate it."
 							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"Yew trees remind you of renewing your mind and spirit, letting the old die and the new spring forth."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Oak trees represent strength and vitality. Meditating under an oak fills your body and mind with resolve and fortitude."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"The river's endless flow reminds you of the great span of the world. You seek to act with the long-term interests of nature in mind."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"The sea is a constant, churning cauldron of power and chaos. It reminds you that accepting change is necessary to sustain yourself in the world."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"The birds in the sky are evidence that even the smallest creatures can survive if they remain above the fray."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"As demonstrated by the actions of the wolf, an individual's strength is nothing compared to the power of the pack."
-								]
+							"by": "Safhran, archdruid"
+						},
+						"Druids are the caretakers of the natural world, and it is said that in time a druid becomes the voice of nature, speaking the truth that is too subtle for the general populace to hear. Many who become druids find that they naturally gravitate toward nature; its forces, cycles, and movements fill their minds and spirits with wonder and insight. Many sages and wise folk have studied nature, writing volumes about its mystery and power, but druids are a special kind of being: at some point, they begin to embody these natural forces, producing magical phenomena that link them to the spirit of nature and the flow of life. Because of their strange and mysterious power, druids are often revered, shunned, or considered dangerous by the people around them.",
+						"Your druid character might be a true worshiper of nature, one who has always scorned civilization and found solace in the wild. Or your character could be a child of the city who now strives to bring the civilized world into harmony with the wilderness. You can use the sections that follow to flesh out your druid, regardless of how your character came to the profession.",
+						{
+							"type": "entries",
+							"name": "Treasured Item",
+							"entries": [
+								"Some druids carry one or more items that are sacred to them or have deep personal significance. Such items are not necessarily magical, but every one is an object whose meaning connects the druid's mind and heart to a profound concept or spiritual outlook.",
+								"When you decide what your character's treasured item is, think about giving it an origin story: how did you come by the item, and why is it important to you?",
+								{
+									"type": "table",
+									"caption": "Treasured Item",
+									"colLabels": [
+										"{@dice d6}",
+										"Treasured Item"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"A twig from the meeting tree that stands in the center of your village"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"A vial of water from the source of a sacred river"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Special herbs tied together in a bundle"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"A small bronze bowl engraved with animal images"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"A rattle made from a dried gourd and holly berries"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"A miniature golden sickle handed down to you by your mentor"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Guiding Aspects",
+							"entries": [
+								"Many druids feel a strong link to a specific aspect of the natural world, such as a body of water, an animal, a type of tree, or some other sort of plant. You identify with your chosen aspect; by its behavior or its very nature, it sets an example that you seek to emulate.",
+								{
+									"type": "table",
+									"caption": "Guiding Aspects",
+									"colLabels": [
+										"{@dice d6}",
+										"Guiding Aspects"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Yew trees remind you of renewing your mind and spirit, letting the old die and the new spring forth."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Oak trees represent strength and vitality. Meditating under an oak fills your body and mind with resolve and fortitude."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"The river's endless flow reminds you of the great span of the world. You seek to act with the long-term interests of nature in mind."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"The sea is a constant, churning cauldron of power and chaos. It reminds you that accepting change is necessary to sustain yourself in the world."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"The birds in the sky are evidence that even the smallest creatures can survive if they remain above the fray."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"As demonstrated by the actions of the wolf, an individual's strength is nothing compared to the power of the pack."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Mentors",
+							"entries": [
+								"It's not unusual for would-be druids to seek out (or be sought out by) instructors or elders who teach them the basics of their magical arts. Most druids who learn from a mentor begin their training at a young age, and the mentor has a vital role in shaping a student's attitudes and beliefs.",
+								"If your character received training from someone else, who or what was that individual, and what was the nature of your relationship? Did your mentor imbue you with a particular outlook or otherwise influence your approach to achieving the goals of your chosen path?",
+								{
+									"type": "table",
+									"caption": "Mentors",
+									"colLabels": [
+										"{@dice d6}",
+										"Mentors"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Your mentor was a wise treant who taught you to think in terms of years and decades rather than days or months."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"You were tutored by a dryad who watched over a slumbering portal to the Abyss. During your training, you were tasked with watching for hidden threats to the world."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Your tutor always interacted with you in the form of a falcon. You never saw the tutor's humanoid form."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"You were one of several youngsters who were mentored by an old druid, until one of your fellow pupils betrayed your group and killed your master."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Your mentor has appeared to you only in visions. You have yet to meet this person, and you are not sure such a person exists in mortal form."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Your mentor was a werebear who taught you to treat all living things with equal regard."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "section",
+							"name": "Learning Beast Shapes",
+							"entries": [
+								"The Wild Shape feature in the player's handbook lets you transform into a beast that you've seen. That rule gives you a tremendous amount of flexibility, making it easy to amass an array of beast form options for yourself, but you must abide by the limitations in the Beast Shapes table in that book.",
+								"When you gain Wild Shape as a 2nd-level druid, you might wonder which beasts you've already seen. The following tables organize beasts from the monster manual according to the beasts' most likely environments. Consider the environment your druid grew up in, then consult the appropriate table for a list of animals that your druid has probably seen by 2nd level.",
+								"These tables can also help you and your DM determine which animals you might see on your travels. In addition, the tables include each beast's challenge rating and note whether a beast has a flying or swimming speed. This information will help you determine whether you qualify to assume that beast's form.",
+								"The tables include all the individual beasts that are eligible for Wild Shape (up to a challenge rating of 1) or the Circle Forms feature of the Circle of the Moon (up to a challenge rating of 6).",
+								{
+									"type": "table",
+									"caption": "Arctic",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-align-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Owl}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant owl}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Brown bear}",
+											"\u2014"
+										],
+										[
+											"2",
+											"{@creature Polar bear}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Saber-toothed tiger}",
+											"\u2014"
+										],
+										[
+											"6",
+											"{@creature Mammoth}",
+											"\u2014"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Coast",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-align-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Crab}",
+											"Swim"
+										],
+										[
+											"0",
+											"{@creature Eagle}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant crab}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Pteranodon}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant eagle}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Plesiosaurus}",
+											"Swim"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Desert",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-align-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Cat}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Hyena}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Jackal}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Scorpion}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Vulture}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Camel}",
+											"\u2014"
+										],
+										[
+											"1/8",
+											"{@creature Flying snake}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Mule}",
+											"\u2014"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Constrictor snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Giant hyena}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Giant spider}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Giant vulture}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Lion}",
+											"\u2014"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"3",
+											"{@creature Giant scorpion}",
+											"\u2014"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Forest",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-align-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Baboon}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Badger}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Cat}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Deer}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Hyena}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Owl}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Flying snake}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant rat}",
+											"\u2014"
+										],
+										[
+											"1/8",
+											"{@creature Giant weasel}",
+											"\u2014"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Mastiff}",
+											"\u2014"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Boar}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Constrictor snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Elk}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Giant badger}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Giant bat}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant frog}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Giant owl}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Panther}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Wolf}",
+											"\u2014"
+										],
+										[
+											"1/2",
+											"{@creature Ape}",
+											"\u2014"
+										],
+										[
+											"1/2",
+											"{@creature Black bear}",
+											"\u2014"
+										],
+										[
+											"1/2",
+											"{@creature Giant wasp}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Brown bear}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Dire wolf}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Giant hyena}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Giant spider}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Tiger}",
+											"\u2014"
+										],
+										[
+											"2",
+											"{@creature Giant boar}",
+											"\u2014"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Giant elk}",
+											"\u2014"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Grassland",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-align-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Cat}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Deer}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Eagle}",
+											"Fly"
+										],
+										[
+											"0",
+											"{@creature Goat}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Hyena}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Jackal}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Vulture}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Flying snake}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant weasel}",
+											"\u2014"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Axe beak}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Boar}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Elk}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Panther} (leopard)",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Pteranodon}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Riding horse}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Wolf}",
+											"\u2014"
+										],
+										[
+											"1/2",
+											"{@creature Giant goat}",
+											"\u2014"
+										],
+										[
+											"1/2",
+											"{@creature Giant wasp}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant eagle}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant hyena}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Giant vulture}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Lion}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Tiger}",
+											"\u2014"
+										],
+										[
+											"2",
+											"{@creature Allosaurus}",
+											"\u2014"
+										],
+										[
+											"2",
+											"{@creature Giant boar}",
+											"\u2014"
+										],
+										[
+											"2",
+											"{@creature Giant elk}",
+											"\u2014"
+										],
+										[
+											"2",
+											"{@creature Rhinoceros}",
+											"\u2014"
+										],
+										[
+											"3",
+											"{@creature Ankylosaurus}",
+											"\u2014"
+										],
+										[
+											"4",
+											"{@creature Elephant}",
+											"\u2014"
+										],
+										[
+											"5",
+											"{@creature Triceratops}",
+											"\u2014"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Hill",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-align-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Baboon}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Eagle}",
+											"Fly"
+										],
+										[
+											"0",
+											"{@creature Goat}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Hyena}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Raven}",
+											"Fly"
+										],
+										[
+											"0",
+											"{@creature Vulture}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant weasel}",
+											"\u2014"
+										],
+										[
+											"1/8",
+											"{@creature Mastiff}",
+											"\u2014"
+										],
+										[
+											"1/8",
+											"{@creature Mule}",
+											"\u2014"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Axe beak}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Boar}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Elk}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Giant owl}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Panther} (cougar)",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Wolf}",
+											"\u2014"
+										],
+										[
+											"1/2",
+											"{@creature Giant goat}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Brown bear}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Dire wolf}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Giant eagle}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant hyena}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Lion}",
+											"\u2014"
+										],
+										[
+											"2",
+											"{@creature Giant boar}",
+											"\u2014"
+										],
+										[
+											"2",
+											"{@creature Giant elk}",
+											"\u2014"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Mountain",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-align-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Eagle}",
+											"Fly"
+										],
+										[
+											"0",
+											"{@creature Goat}",
+											"\u2014"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Pteranodon}",
+											"Fly"
+										],
+										[
+											"1/2",
+											"{@creature Giant goat}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Giant eagle}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Lion}",
+											"\u2014"
+										],
+										[
+											"2",
+											"{@creature Giant elk}",
+											"\u2014"
+										],
+										[
+											"2",
+											"{@creature Saber-toothed tiger}",
+											"\u2014"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Swamp",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-align-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Rat}",
+											"\u2014"
+										],
+										[
+											"0",
+											"{@creature Raven}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant rat}",
+											"\u2014"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Constrictor snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant frog}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/2",
+											"{@creature Crocodile}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Giant spider}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"5",
+											"{@creature Giant crocodile}",
+											"Swim"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Underdark",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-align-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Giant fire beetle}",
+											"\u2014"
+										],
+										[
+											"1/8",
+											"{@creature Giant rat}",
+											"\u2014"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant bat}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant centipede}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"\u2014"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Giant spider}",
+											"\u2014"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Polar bear} (cave bear)",
+											"Swim"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Underwater",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-align-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Quipper}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Constrictor snake}",
+											"Swim"
+										],
+										[
+											"1/2",
+											"{@creature Giant sea horse}",
+											"Swim"
+										],
+										[
+											"1/2",
+											"{@creature Reef shark}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Giant octopus}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Hunter shark}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Plesiosaurus}",
+											"Swim"
+										],
+										[
+											"3",
+											"{@creature Killer whale}",
+											"Swim"
+										],
+										[
+											"5",
+											"{@creature Giant shark}",
+											"Swim"
+										]
+									]
+								}
 							]
 						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Mentors",
-					"entries": [
-						"It's not unusual for would-be druids to seek out (or be sought out by) instructors or elders who teach them the basics of their magical arts. Most druids who learn from a mentor begin their training at a young age, and the mentor has a vital role in shaping a student's attitudes and beliefs.",
-						"If your character received training from someone else, who or what was that individual, and what was the nature of your relationship? Did your mentor imbue you with a particular outlook or otherwise influence your approach to achieving the goals of your chosen path?",
-						{
-							"type": "table",
-							"caption": "Mentors",
-							"colLabels": [
-								"{@dice d6}",
-								"Mentors"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"Your mentor was a wise treant who taught you to think in terms of years and decades rather than days or months."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"You were tutored by a dryad who watched over a slumbering portal to the Abyss. During your training, you were tasked with watching for hidden threats to the world."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"Your tutor always interacted with you in the form of a falcon. You never saw the tutor's humanoid form."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"You were one of several youngsters who were mentored by an old druid, until one of your fellow pupils betrayed your group and killed your master."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Your mentor has appeared to you only in visions. You have yet to meet this person, and you are not sure such a person exists in mortal form."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"Your mentor was a werebear who taught you to treat all living things with equal regard."
-								]
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Learning Beast Shapes",
-					"entries": [
-						"The Wild Shape feature in the player's handbook lets you transform into a beast that you've seen. That rule gives you a tremendous amount of flexibility, making it easy to amass an array of beast form options for yourself, but you must abide by the limitations in the Beast Shapes table in that book.",
-						"When you gain Wild Shape as a 2nd-level druid, you might wonder which beasts you've already seen. The following tables organize beasts from the monster manual according to the beasts' most likely environments. Consider the environment your druid grew up in, then consult the appropriate table for a list of animals that your druid has probably seen by 2nd level.",
-						"These tables can also help you and your DM determine which animals you might see on your travels. In addition, the tables include each beast's challenge rating and note whether a beast has a flying or swimming speed. This information will help you determine whether you qualify to assume that beast's form.",
-						"The tables include all the individual beasts that are eligible for Wild Shape (up to a challenge rating of 1) or the Circle Forms feature of the Circle of the Moon (up to a challenge rating of 6).",
-						{
-							"type": "table",
-							"caption": "Arctic",
-							"colLabels": [
-								"CR",
-								"Beast",
-								"Fly/Swim"
-							],
-							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-8",
-								"col-xs-2"
-							],
-							"rows": [
-								[
-									"0",
-									"{@creature Owl}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Blood hawk}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Giant owl}",
-									"Fly"
-								],
-								[
-									"1",
-									"{@creature Brown bear}",
-									"\u2014"
-								],
-								[
-									"2",
-									"{@creature Polar bear}",
-									"Swim"
-								],
-								[
-									"2",
-									"{@creature Saber-toothed tiger}",
-									"\u2014"
-								],
-								[
-									"6",
-									"{@creature Mammoth}",
-									"\u2014"
-								]
-							]
-						},
-						{
-							"type": "table",
-							"caption": "Coast",
-							"colLabels": [
-								"CR",
-								"Beast",
-								"Fly/Swim"
-							],
-							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-8",
-								"col-xs-2"
-							],
-							"rows": [
-								[
-									"0",
-									"{@creature Crab}",
-									"Swim"
-								],
-								[
-									"0",
-									"{@creature Eagle}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Blood hawk}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Giant crab}",
-									"Swim"
-								],
-								[
-									"1/8",
-									"{@creature Poisonous snake}",
-									"Swim"
-								],
-								[
-									"1/8",
-									"{@creature Stirge}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Giant lizard}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Giant wolf spider}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Pteranodon}",
-									"Fly"
-								],
-								[
-									"1",
-									"{@creature Giant eagle}",
-									"Fly"
-								],
-								[
-									"1",
-									"{@creature Giant toad}",
-									"Swim"
-								],
-								[
-									"2",
-									"{@creature Plesiosaurus}",
-									"Swim"
-								]
-							]
-						},
-						{
-							"type": "table",
-							"caption": "Desert",
-							"colLabels": [
-								"CR",
-								"Beast",
-								"Fly/Swim"
-							],
-							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-8",
-								"col-xs-2"
-							],
-							"rows": [
-								[
-									"0",
-									"{@creature Cat}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Hyena}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Jackal}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Scorpion}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Vulture}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Camel}",
-									"\u2014"
-								],
-								[
-									"1/8",
-									"{@creature Flying snake}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Mule}",
-									"\u2014"
-								],
-								[
-									"1/8",
-									"{@creature Poisonous snake}",
-									"Swim"
-								],
-								[
-									"1/8",
-									"{@creature Stirge}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Constrictor snake}",
-									"Swim"
-								],
-								[
-									"1/4",
-									"{@creature Giant lizard}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Giant poisonous snake}",
-									"Swim"
-								],
-								[
-									"1/4",
-									"{@creature Giant wolf spider}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Giant hyena}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Giant spider}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Giant toad}",
-									"Swim"
-								],
-								[
-									"1",
-									"{@creature Giant vulture}",
-									"Fly"
-								],
-								[
-									"1",
-									"{@creature Lion}",
-									"\u2014"
-								],
-								[
-									"2",
-									"{@creature Giant constrictor snake}",
-									"Swim"
-								],
-								[
-									"3",
-									"{@creature Giant scorpion}",
-									"\u2014"
-								]
-							]
-						},
-						{
-							"type": "table",
-							"caption": "Forest",
-							"colLabels": [
-								"CR",
-								"Beast",
-								"Fly/Swim"
-							],
-							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-8",
-								"col-xs-2"
-							],
-							"rows": [
-								[
-									"0",
-									"{@creature Baboon}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Badger}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Cat}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Deer}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Hyena}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Owl}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Blood hawk}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Flying snake}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Giant rat}",
-									"\u2014"
-								],
-								[
-									"1/8",
-									"{@creature Giant weasel}",
-									"\u2014"
-								],
-								[
-									"1/8",
-									"{@creature Poisonous snake}",
-									"Swim"
-								],
-								[
-									"1/8",
-									"{@creature Mastiff}",
-									"\u2014"
-								],
-								[
-									"1/8",
-									"{@creature Stirge}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Boar}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Constrictor snake}",
-									"Swim"
-								],
-								[
-									"1/4",
-									"{@creature Elk}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Giant badger}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Giant bat}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Giant frog}",
-									"Swim"
-								],
-								[
-									"1/4",
-									"{@creature Giant lizard}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Giant owl}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Giant poisonous snake}",
-									"Swim"
-								],
-								[
-									"1/4",
-									"{@creature Giant wolf spider}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Panther}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Wolf}",
-									"\u2014"
-								],
-								[
-									"1/2",
-									"{@creature Ape}",
-									"\u2014"
-								],
-								[
-									"1/2",
-									"{@creature Black bear}",
-									"\u2014"
-								],
-								[
-									"1/2",
-									"{@creature Giant wasp}",
-									"Fly"
-								],
-								[
-									"1",
-									"{@creature Brown bear}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Dire wolf}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Giant hyena}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Giant spider}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Giant toad}",
-									"Swim"
-								],
-								[
-									"1",
-									"{@creature Tiger}",
-									"\u2014"
-								],
-								[
-									"2",
-									"{@creature Giant boar}",
-									"\u2014"
-								],
-								[
-									"2",
-									"{@creature Giant constrictor snake}",
-									"Swim"
-								],
-								[
-									"2",
-									"{@creature Giant elk}",
-									"\u2014"
-								]
-							]
-						},
-						{
-							"type": "table",
-							"caption": "Grassland",
-							"colLabels": [
-								"CR",
-								"Beast",
-								"Fly/Swim"
-							],
-							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-8",
-								"col-xs-2"
-							],
-							"rows": [
-								[
-									"0",
-									"{@creature Cat}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Deer}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Eagle}",
-									"Fly"
-								],
-								[
-									"0",
-									"{@creature Goat}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Hyena}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Jackal}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Vulture}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Blood hawk}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Flying snake}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Giant weasel}",
-									"\u2014"
-								],
-								[
-									"1/8",
-									"{@creature Poisonous snake}",
-									"Swim"
-								],
-								[
-									"1/8",
-									"{@creature Stirge}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Axe beak}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Boar}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Elk}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Giant poisonous snake}",
-									"Swim"
-								],
-								[
-									"1/4",
-									"{@creature Giant wolf spider}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Panther} (leopard)",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Pteranodon}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Riding horse}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Wolf}",
-									"\u2014"
-								],
-								[
-									"1/2",
-									"{@creature Giant goat}",
-									"\u2014"
-								],
-								[
-									"1/2",
-									"{@creature Giant wasp}",
-									"Fly"
-								],
-								[
-									"1",
-									"{@creature Giant eagle}",
-									"Fly"
-								],
-								[
-									"1",
-									"{@creature Giant hyena}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Giant vulture}",
-									"Fly"
-								],
-								[
-									"1",
-									"{@creature Lion}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Tiger}",
-									"\u2014"
-								],
-								[
-									"2",
-									"{@creature Allosaurus}",
-									"\u2014"
-								],
-								[
-									"2",
-									"{@creature Giant boar}",
-									"\u2014"
-								],
-								[
-									"2",
-									"{@creature Giant elk}",
-									"\u2014"
-								],
-								[
-									"2",
-									"{@creature Rhinoceros}",
-									"\u2014"
-								],
-								[
-									"3",
-									"{@creature Ankylosaurus}",
-									"\u2014"
-								],
-								[
-									"4",
-									"{@creature Elephant}",
-									"\u2014"
-								],
-								[
-									"5",
-									"{@creature Triceratops}",
-									"\u2014"
-								]
-							]
-						},
-						{
-							"type": "table",
-							"caption": "Hill",
-							"colLabels": [
-								"CR",
-								"Beast",
-								"Fly/Swim"
-							],
-							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-8",
-								"col-xs-2"
-							],
-							"rows": [
-								[
-									"0",
-									"{@creature Baboon}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Eagle}",
-									"Fly"
-								],
-								[
-									"0",
-									"{@creature Goat}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Hyena}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Raven}",
-									"Fly"
-								],
-								[
-									"0",
-									"{@creature Vulture}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Blood hawk}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Giant weasel}",
-									"\u2014"
-								],
-								[
-									"1/8",
-									"{@creature Mastiff}",
-									"\u2014"
-								],
-								[
-									"1/8",
-									"{@creature Mule}",
-									"\u2014"
-								],
-								[
-									"1/8",
-									"{@creature Poisonous snake}",
-									"Swim"
-								],
-								[
-									"1/8",
-									"{@creature Stirge}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Axe beak}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Boar}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Elk}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Giant owl}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Giant wolf spider}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Panther} (cougar)",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Wolf}",
-									"\u2014"
-								],
-								[
-									"1/2",
-									"{@creature Giant goat}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Brown bear}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Dire wolf}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Giant eagle}",
-									"Fly"
-								],
-								[
-									"1",
-									"{@creature Giant hyena}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Lion}",
-									"\u2014"
-								],
-								[
-									"2",
-									"{@creature Giant boar}",
-									"\u2014"
-								],
-								[
-									"2",
-									"{@creature Giant elk}",
-									"\u2014"
-								]
-							]
-						},
-						{
-							"type": "table",
-							"caption": "Mountain",
-							"colLabels": [
-								"CR",
-								"Beast",
-								"Fly/Swim"
-							],
-							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-8",
-								"col-xs-2"
-							],
-							"rows": [
-								[
-									"0",
-									"{@creature Eagle}",
-									"Fly"
-								],
-								[
-									"0",
-									"{@creature Goat}",
-									"\u2014"
-								],
-								[
-									"1/8",
-									"{@creature Blood hawk}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Stirge}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Pteranodon}",
-									"Fly"
-								],
-								[
-									"1/2",
-									"{@creature Giant goat}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Giant eagle}",
-									"Fly"
-								],
-								[
-									"1",
-									"{@creature Lion}",
-									"\u2014"
-								],
-								[
-									"2",
-									"{@creature Giant elk}",
-									"\u2014"
-								],
-								[
-									"2",
-									"{@creature Saber-toothed tiger}",
-									"\u2014"
-								]
-							]
-						},
-						{
-							"type": "table",
-							"caption": "Swamp",
-							"colLabels": [
-								"CR",
-								"Beast",
-								"Fly/Swim"
-							],
-							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-8",
-								"col-xs-2"
-							],
-							"rows": [
-								[
-									"0",
-									"{@creature Rat}",
-									"\u2014"
-								],
-								[
-									"0",
-									"{@creature Raven}",
-									"Fly"
-								],
-								[
-									"1/8",
-									"{@creature Giant rat}",
-									"\u2014"
-								],
-								[
-									"1/8",
-									"{@creature Poisonous snake}",
-									"Swim"
-								],
-								[
-									"1/8",
-									"{@creature Stirge}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Constrictor snake}",
-									"Swim"
-								],
-								[
-									"1/4",
-									"{@creature Giant frog}",
-									"Swim"
-								],
-								[
-									"1/4",
-									"{@creature Giant lizard}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Giant poisonous snake}",
-									"Swim"
-								],
-								[
-									"1/2",
-									"{@creature Crocodile}",
-									"Swim"
-								],
-								[
-									"1",
-									"{@creature Giant spider}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Giant toad}",
-									"Swim"
-								],
-								[
-									"2",
-									"{@creature Giant constrictor snake}",
-									"Swim"
-								],
-								[
-									"5",
-									"{@creature Giant crocodile}",
-									"Swim"
-								]
-							]
-						},
-						{
-							"type": "table",
-							"caption": "Underdark",
-							"colLabels": [
-								"CR",
-								"Beast",
-								"Fly/Swim"
-							],
-							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-8",
-								"col-xs-2"
-							],
-							"rows": [
-								[
-									"0",
-									"{@creature Giant fire beetle}",
-									"\u2014"
-								],
-								[
-									"1/8",
-									"{@creature Giant rat}",
-									"\u2014"
-								],
-								[
-									"1/8",
-									"{@creature Stirge}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Giant bat}",
-									"Fly"
-								],
-								[
-									"1/4",
-									"{@creature Giant centipede}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Giant lizard}",
-									"\u2014"
-								],
-								[
-									"1/4",
-									"{@creature Giant poisonous snake}",
-									"Swim"
-								],
-								[
-									"1",
-									"{@creature Giant spider}",
-									"\u2014"
-								],
-								[
-									"1",
-									"{@creature Giant toad}",
-									"Swim"
-								],
-								[
-									"2",
-									"{@creature Giant constrictor snake}",
-									"Swim"
-								],
-								[
-									"2",
-									"{@creature Polar bear} (cave bear)",
-									"Swim"
-								]
-							]
-						},
-						{
-							"type": "table",
-							"caption": "Underwater",
-							"colLabels": [
-								"CR",
-								"Beast",
-								"Fly/Swim"
-							],
-							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-8",
-								"col-xs-2"
-							],
-							"rows": [
-								[
-									"0",
-									"{@creature Quipper}",
-									"Swim"
-								],
-								[
-									"1/4",
-									"{@creature Constrictor snake}",
-									"Swim"
-								],
-								[
-									"1/2",
-									"{@creature Giant sea horse}",
-									"Swim"
-								],
-								[
-									"1/2",
-									"{@creature Reef shark}",
-									"Swim"
-								],
-								[
-									"1",
-									"{@creature Giant octopus}",
-									"Swim"
-								],
-								[
-									"2",
-									"{@creature Giant constrictor snake}",
-									"Swim"
-								],
-								[
-									"2",
-									"{@creature Hunter shark}",
-									"Swim"
-								],
-								[
-									"2",
-									"{@creature Plesiosaurus}",
-									"Swim"
-								],
-								[
-									"3",
-									"{@creature Killer whale}",
-									"Swim"
-								],
-								[
-									"5",
-									"{@creature Giant shark}",
-									"Swim"
-								]
-							]
-						}
-					]
+					],
+					"source": "XGE",
+					"page": 21
 				}
-			],
-			"fluffPage": 21
+			]
 		}
 	]
 }

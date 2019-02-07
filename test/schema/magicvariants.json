@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.4",
+	"version": "1.1.0",
 	"type": "object",
 	"properties": {
 		"variant": {
@@ -22,37 +22,40 @@
 						}
 					},
 					"requires": {
-						"type": "object",
-						"properties": {
-							"ammunition": {
-								"type": "boolean"
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"ammunition": {
+									"type": "boolean"
+								},
+								"armor": {
+									"type": "boolean"
+								},
+								"axe": {
+									"type": "boolean"
+								},
+								"sword": {
+									"type": "boolean"
+								},
+								"weapon": {
+									"type": "boolean"
+								},
+								"dmgType": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								},
+								"type": {
+									"type": "string"
+								},
+								"scfType": {
+									"type": "string"
+								}
 							},
-							"armor": {
-								"type": "boolean"
-							},
-							"axe": {
-								"type": "boolean"
-							},
-							"sword": {
-								"type": "boolean"
-							},
-							"weapon": {
-								"type": "boolean"
-							},
-							"dmgType": {
-								"type": "string"
-							},
-							"name": {
-								"type": "string"
-							},
-							"type": {
-								"type": "string"
-							},
-							"scfType": {
-								"type": "string"
-							}
-						},
-						"additionalProperties": false
+							"additionalProperties": false
+						}
 					},
 					"inherits": {
 						"type": "object",
@@ -128,6 +131,15 @@
 									],
 									"additionalProperties": false
 								}
+							},
+							"charges": {
+								"type": ["string", "integer"]
+							},
+							"attachedSpells": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
 							}
 						},
 						"required": [
@@ -164,6 +176,15 @@
 					},
 					"noDisplay": {
 						"type": "boolean"
+					},
+					"charges": {
+						"type": ["string", "integer"]
+					},
+					"attachedSpells": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
 					}
 				},
 				"required": [

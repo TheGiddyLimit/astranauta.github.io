@@ -14,7 +14,7 @@
 			"classTableGroups": [
 				{
 					"colLabels": [
-						"Spells Known"
+						"{@filter Spells Known|spells|class=ranger}"
 					],
 					"rows": [
 						[
@@ -260,11 +260,37 @@
 				"additionalFromBackground": true,
 				"default": [
 					"(a) {@item scale mail|phb} or (b) {@item leather armor|phb}",
-					"(a) two {@item shortsword|phb|shortswords} or (b) two {@filter simple melee weapons|items|source=phb|category=basic|type=simple weapon;melee weapon}",
+					"(a) two {@item shortsword|phb|shortswords} or (b) two {@filter simple melee weapons|items|source=phb|category=basic|type=simple weapon;melee weapon=&}",
 					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"A {@item longbow|phb} and a {@item quiver|phb} of {@item arrows (20)|phb|20 arrows}"
 				],
-				"goldAlternative": "5d4 × 10"
+				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"dex": 13,
+					"wis": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light",
+						"medium",
+						"shields"
+					],
+					"skills": {
+						"choose": 1,
+						"from": [
+							"Animal Handling",
+							"Athletics",
+							"Insight",
+							"Investigation",
+							"Nature",
+							"Perception",
+							"Stealth",
+							"Survival"
+						]
+					}
+				}
 			},
 			"classFeatures": [
 				[
@@ -272,7 +298,7 @@
 						"name": "Favored Enemy",
 						"entries": [
 							"Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy.",
-							"Choose a type of favored enemy: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead. Alternatively, you can select two races of humanoid (such as gnolls and orcs) as favored enemies.",
+							"Choose a type of favored enemy: {@filter aberrations|bestiary|type=aberration}, {@filter beasts|bestiary|type=beast}, {@filter celestials|bestiary|type=celestial}, {@filter constructs|bestiary|type=construct}, {@filter dragons|bestiary|type=dragon}, {@filter elementals|bestiary|type=elemental}, {@filter fey|bestiary|type=fey}, {@filter fiends|bestiary|type=fiend}, {@filter giants|bestiary|type=giant}, {@filter monstrosities|bestiary|type=monstrosity}, {@filter oozes|bestiary|type=ooze}, {@filter plants|bestiary|type=plant}, or {@filter undead|bestiary|type=undead}. Alternatively, you can select two races of {@filter humanoid|bestiary|type=humanoid} (such as {@creature gnoll|mm|gnolls} and {@creature orc|mm|orcs}) as favored enemies.",
 							"You have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
 							"When you gain this feature, you also learn one language of your choice that is spoken by your favored enemies, if they speak one at all.",
 							"You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures."
@@ -365,12 +391,12 @@
 					{
 						"name": "Spellcasting",
 						"entries": [
-							"By the time you reach 2nd level, you have learned to use the magical essence of nature to cast spells, much as a druid does. See chapter 10 for the general rules of spellcasting and chapter 11 for the ranger spell list.",
+							"By the time you reach 2nd level, you have learned to use the magical essence of nature to cast spells, much as a druid does. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for the {@filter ranger spell list|spells|class=ranger}.",
 							{
 								"type": "entries",
 								"name": "Spell Slots",
 								"entries": [
-									"The Ranger table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+									"The Ranger table shows how many spell slots you have to cast your {@filter ranger spells|spells|class=ranger} of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
 									"For example, if you know the 1st-level spell {@spell animal friendship} and have a 1st-level and a 2nd-level spell slot available, you can cast {@spell animal friendship} using either slot."
 								]
 							},
@@ -435,7 +461,7 @@
 					{
 						"name": "Extra Attack",
 						"entries": [
-							"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+							"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 						]
 					}
 				],
@@ -479,7 +505,7 @@
 						"name": "Hide in Plain Sight",
 						"entries": [
 							"Starting at 10th level, you can spend 1 minute creating camouflage for yourself. You must have access to fresh mud, dirt, plants, soot, and other naturally occurring materials with which to create your camouflage.",
-							"Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity (Stealth) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit."
+							"Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity ({@skill Stealth}) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit."
 						]
 					},
 					{
@@ -512,7 +538,7 @@
 					{
 						"name": "Vanish",
 						"entries": [
-							"Starting at 14th level, you can use the Hide action as a bonus action on your turn. Also, you can't be tracked by nonmagical means, unless you choose to leave a trail."
+							"Starting at 14th level, you can use the {@action Hide} action as a bonus action on your turn. Also, you can't be tracked by nonmagical means, unless you choose to leave a trail."
 						]
 					},
 					{
@@ -589,7 +615,7 @@
 														"type": "entries",
 														"name": "Colossus Slayer",
 														"entries": [
-															"Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra 1d8 damage if it's below its hit point maximum. You can deal this extra damage only once per turn."
+															"Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra {@dice 1d8} damage if it's below its hit point maximum. You can deal this extra damage only once per turn."
 														]
 													}
 												]
@@ -774,8 +800,8 @@
 										"type": "entries",
 										"name": "Ranger's Companion",
 										"entries": [
-											"You gain a beast companion that accompanies you on your adventures and is trained to fight alongside you. Choose a {@filter beast that is no larger than Medium and that has a challenge rating of 1/4 or lower|bestiary|cr=0;1/8;1/4|type=beast|size=f;d;t;s;m|miscellaneous=!swarm}. Add your proficiency bonus to the beast's AC, attack rolls, and damage rolls, as well as to any saving throws and skills it is proficient in. Its hit point maximum equals its normal maximum or four times your ranger level, whichever is higher.",
-											"The beast obeys your commands as best as it can. It takes its turn on your initiative, though it doesn't take an action unless you command it to. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the Attack, Dash, Disengage, Dodge, or Help action. Once you have the Extra Attack feature, you can make one weapon attack yourself when you command the beast to take the Attack action.",
+											"You gain a beast companion that accompanies you on your adventures and is trained to fight alongside you. Choose a {@filter beast that is no larger than Medium and that has a challenge rating of 1/4 or lower|bestiary|challenge rating=0;1/8;1/4|type=beast|size=f;d;t;s;m|miscellaneous=!swarm}. Add your proficiency bonus to the beast's AC, attack rolls, and damage rolls, as well as to any saving throws and skills it is proficient in. Its hit point maximum equals its normal maximum or four times your ranger level, whichever is higher.",
+											"The beast obeys your commands as best as it can. It takes its turn on your initiative, though it doesn't take an action unless you command it to. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the {@action Attack}, {@action Dash}, {@action Disengage}, {@action Dodge}, or {@action Help} action. Once you have the Extra Attack feature, you can make one weapon attack yourself when you command the beast to take the {@action Attack} action.",
 											"If you are {@condition incapacitated} or absent, your beast companion acts on its own, focusing on protecting you and itself. It never requires your command to use its reaction, such as when making an opportunity attack.",
 											"Like any creature, the beast can spend hit dice during a short rest.",
 											"While traveling through your favored terrain with only the beast, you can move stealthily at a normal pace.",
@@ -792,7 +818,7 @@
 										"type": "entries",
 										"name": "Exceptional Training",
 										"entries": [
-											"Beginning at 7th level, on any of your turns when your beast companion doesn't attack, you can use a bonus action to command the beast to take the Dash, Disengage, Dodge, or Help action on its turn."
+											"Beginning at 7th level, on any of your turns when your beast companion doesn't attack, you can use a bonus action to command the beast to take the {@action Dash}, {@action Disengage}, or {@action Help} action on its turn. In addition, the beast's attacks now count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage."
 										]
 									}
 								]
@@ -805,7 +831,7 @@
 										"type": "entries",
 										"name": "Bestial Fury",
 										"entries": [
-											"When you command the beast to take the Attack action, the beast can attack twice or take the Multiattack action if it has that action."
+											"Starting at 11th level, when you command your beast companion to take the {@action Attack} action, the beast can make two attacks, or it can take the Multiattack action if it has that action."
 										]
 									}
 								]
@@ -849,8 +875,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -951,8 +977,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -984,7 +1010,7 @@
 										"name": "Planar Warrior",
 										"entries": [
 											"At 3rd level, you learn to draw on the energy of the planes to augment your attacks.",
-											"As a bonus action, choose one creature you can see within 30 feet of you. Until the end of this turn, your attacks against that creature ignore its damage resistances, and the next time you hit it on this turn, it takes an additional 1d6 force damage."
+											"As a bonus action, choose one creature you can see within 30 feet of you. Until the end of this turn, your attacks against that creature ignore its damage resistances, and the next time you hit it on this turn, it takes an additional {@dice 1d6} force damage."
 										]
 									},
 									{
@@ -1019,7 +1045,7 @@
 										"type": "entries",
 										"name": "Distant Strike",
 										"entries": [
-											"At 11th level, you gain the ability to step between the planes in a blink of an eye. When you use the Attack action, you can teleport up to 10 feet before each attack. You must be able to see the destination of the teleportation.",
+											"At 11th level, you gain the ability to step between the planes in a blink of an eye. When you use the {@action Attack} action, you can teleport up to 10 feet before each attack. You must be able to see the destination of the teleportation.",
 											"If you attack at least two different creatures with the action, you can make one additional attack with it against a third creature."
 										]
 									}
@@ -1065,8 +1091,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1114,7 +1140,7 @@
 										"type": "entries",
 										"name": "Piercing Thorns",
 										"entries": [
-											"At 3rd level, your command of primal magic allows you to enhance your attacks with thorns. Once during each of your turns, you can deal an additional 1d6 piercing damage to one creature you hit with a weapon attack."
+											"At 3rd level, your command of primal magic allows you to enhance your attacks with thorns. Once during each of your turns, you can deal an additional {@dice 1d6} piercing damage to one creature you hit with a weapon attack."
 										]
 									}
 								]
@@ -1185,8 +1211,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1218,7 +1244,7 @@
 										"name": "Slayer's Eye",
 										"entries": [
 											"Starting at 3rd level, you gain the ability to study and unravel a creature's defenses. As a bonus action, choose one creature you can see within 120 feet of you. You immediately learn the target's vulnerabilities, immunities, and resistances. You also learn any special effects triggered when the target takes damage, such as fire damage halting its regeneration.",
-											"In addition, the first time each turn you hit the target with a weapon attack, the target takes an extra 1d6 damage from the weapon.",
+											"In addition, the first time each turn you hit the target with a weapon attack, the target takes an extra {@dice 1d6} damage from the weapon.",
 											"This benefit lasts until you target a different creature with this feature or until you finish a short or long rest."
 										]
 									}
@@ -1232,7 +1258,7 @@
 										"type": "entries",
 										"name": "Supernatural Defense",
 										"entries": [
-											"At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Eye forces you to make a saving throw, add 1d6 to your roll."
+											"At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Eye forces you to make a saving throw, add {@dice 1d6} to your roll."
 										]
 									}
 								]
@@ -1289,8 +1315,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1322,7 +1348,7 @@
 										"name": "Dread Ambusher",
 										"entries": [
 											"At 3rd level, you master the art of the ambush. You can give yourself a bonus to your initiative rolls equal to your Wisdom modifier.",
-											"At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the Attack action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra 1d8 damage of the weapon's damage type."
+											"At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the {@action Attack} action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra {@dice 1d8} damage of the weapon's damage type."
 										]
 									},
 									{
@@ -1400,8 +1426,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1442,7 +1468,7 @@
 										"name": "Planar Warrior",
 										"entries": [
 											"At 3rd level, you learn to draw on the energy of the multiverse to augment your attacks.",
-											"As a bonus action, choose one creature you can see within 30 feet of you. The next time you hit that creature on this turn with a weapon attack, all damage dealt by the attack becomes force damage, and the creature takes an extra 1d8 force damage from the attack. When you reach 11th level in this class, the extra damage increases to 2d8."
+											"As a bonus action, choose one creature you can see within 30 feet of you. The next time you hit that creature on this turn with a weapon attack, all damage dealt by the attack becomes force damage, and the creature takes an extra {@dice 1d8} force damage from the attack. When you reach 11th level in this class, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -1469,7 +1495,7 @@
 										"type": "entries",
 										"name": "Distant Strike",
 										"entries": [
-											"At 11th level, you gain the ability to pass between the planes in the blink of an eye. When you take the Attack action, you can teleport up to 10 feet before each attack to an unoccupied space you can see.",
+											"At 11th level, you gain the ability to pass between the planes in the blink of an eye. When you take the {@action Attack} action, you can teleport up to 10 feet before each attack to an unoccupied space you can see.",
 											"If you attack at least two different creatures with the action, you can make one additional attack with it against a third creature."
 										]
 									}
@@ -1514,8 +1540,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -1554,7 +1580,7 @@
 										"type": "entries",
 										"name": "Slayer's Prey",
 										"entries": [
-											"Starting at 3rd level, you can focus your ire on one foe, increasing the harm you inflict on it. As a bonus action, you designate one creature you can see within 60 feet of you as the target of this feature. The first time each turn that you hit that target with a weapon attack, it takes an extra 1d6 damage from the weapon.",
+											"Starting at 3rd level, you can focus your ire on one foe, increasing the harm you inflict on it. As a bonus action, you designate one creature you can see within 60 feet of you as the target of this feature. The first time each turn that you hit that target with a weapon attack, it takes an extra {@dice 1d6} damage from the weapon.",
 											"This benefit lasts until you finish a short or long rest. It ends early if you designate a different creature."
 										]
 									}
@@ -1568,7 +1594,7 @@
 										"type": "entries",
 										"name": "Supernatural Defense",
 										"entries": [
-											"At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Prey forces you to make a saving throw and whenever you make an ability check to escape that target's grapple, add 1d6 to your roll."
+											"At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Prey forces you to make a saving throw and whenever you make an ability check to escape that target's grapple, add {@dice 1d6} to your roll."
 										]
 									}
 								]
@@ -1608,245 +1634,291 @@
 			],
 			"fluff": [
 				{
-					"type": "quote",
 					"entries": [
-						"I spend a lot of my life away from civilization, keeping to its fringes to protect it. Don't assume that because I don't bend the knee to your king that I haven't done more to protect him than all his knights put together."
+						"Rough and wild looking, a human stalks alone through the shadows of trees, hunting the orcs he knows are planning a raid on a nearby farm. Clutching a shortsword in each hand, he becomes a whirlwind of steel, cutting down one enemy after another.",
+						"After tumbling away from a cone of freezing air, an elf finds her feet and draws back her bow to loose an arrow at the white dragon. Shrugging off the wave of fear that emanates from the dragon like the cold of its breath, she sends one arrow after another to find the gaps between the dragon's thick scales.",
+						"Holding his hand high, a half-elf whistles to the hawk that circles high above him, calling the bird back to his side. Whispering instructions in Elvish, he points to the owlbear he's been tracking and sends the hawk to distract the creature while he readies his bow.",
+						"Far from the bustle of cities and towns, past the hedges that shelter the most distant farms from the terrors of the wild, amid the dense-packed trees of trackless forests and across wide and empty plains, rangers keep their unending watch.",
+						{
+							"type": "entries",
+							"name": "Deadly Hunters",
+							"entries": [
+								"Warriors of the wilderness, rangers specialize in hunting the monsters that threaten the edges of civilization\u2014humanoid raiders, rampaging beasts and monstrosities, terrible giants, and deadly dragons. They learn to track their quarry as a predator does, moving stealthily through the wilds and hiding themselves in brush and rubble. Rangers focus their combat training on techniques that are particularly useful against their specific favored foes.",
+								"Thanks to their familiarity with the wilds, rangers acquire the ability to cast spells that harness nature's power, much as a druid does. Their spells, like their combat abilities, emphasize speed, stealth, and the hunt. A ranger's talents and abilities are honed with deadly focus on the grim task of protecting the borderlands."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Independent Adventurers",
+							"entries": [
+								"Though a ranger might make a living as a hunter, a guide, or a tracker, a ranger's true calling is to defend the outskirts of civilization from the ravages of monsters and humanoid hordes that press in from the wild. In some places, rangers gather in secretive orders or join forces with druidic circles. Many rangers, though, are independent almost to a fault, knowing that, when a dragon or a band of orcs attacks, a ranger might be the first\u2014and possibly the last\u2014line of defense.",
+								"This fierce independence makes rangers well suited to adventuring, since they are accustomed to life far from the comforts of a dry bed and a hot bath. Faced with city-bred adventurers who grouse and whine about the hardships of the wild, rangers respond with some mixture of amusement, frustration, and compassion. But they quickly learn that other adventurers who can carry their own weight in a fight against civilization's foes are worth any extra burden. Coddled city folk might not know how to feed themselves or find fresh water in the wild, but they make up for it in other ways."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Ranger",
+							"entries": [
+								"As you create your ranger character, consider the nature of the training that gave you your particular capabilities. Did you train with a single mentor, wandering the wilds together until you mastered the ranger's ways? Did you leave your apprenticeship, or was your mentor slain\u2014perhaps by the same kind of monster that became your favored enemy? Or perhaps you learned your skills as part of a band of rangers affiliated with a druidic circle, trained in mystic paths as well as wilderness lore. You might be self-taught, a recluse who learned combat skills, tracking, and even a magical connection to nature through the necessity of surviving in the wilds.",
+								"What's the source of your particular hatred of a certain kind of enemy? Did a monster kill someone you loved or destroy your home village? Or did you see too much of the destruction these monsters cause and commit yourself to reining in their depredations? Is your adventuring career a continuation of your work in protecting the borderlands, or a significant change? What made you join up with a band of adventurers? Do you find it challenging to teach new allies the ways of the wild, or do you welcome the relief from solitude that they offer?",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"You can make a ranger quickly by following these suggestions. First, make Dexterity your highest ability score, followed by Wisdom. (Some rangers who focus on two-weapon fighting make Strength higher than Dexterity.) Second, choose the {@background outlander} background."
+									]
+								}
+							]
+						}
 					],
-					"by": "Soveliss"
-				},
-				"Rangers are free-minded wanderers and seekers who patrol the edges of civilized territory, turning back the denizens of the wild lands beyond. It is a thankless job, since their efforts are rarely understood and almost never rewarded. Yet rangers persist in their duties, never doubting that their work makes the world a safer place.",
-				"A relationship with civilization informs every ranger's personality and history. Some rangers see themselves as enforcers of the law and bringers of justice on civilization's frontier, answering to no sovereign power. Others are survivalists who eschew civilization altogether. They vanquish monsters to keep themselves safe while they live in and travel through the perilous wild areas of the world. If their efforts also benefit the kingdoms and other civilized realms that they avoid, so be it.",
-				"If you're creating or playing a ranger character, the following sections offer ideas for embellishing the character and enhancing your roleplaying experience.",
-				{
-					"type": "entries",
-					"name": "View of the World",
-					"entries": [
-						"A ranger's view of the world begins (and sometimes ends) with that character's outlook toward civilized folk and the places they occupy. Some rangers have an attitude toward civilization that's deeply rooted in disdain, while others pity the people they have sworn to protect\u2014though on the battlefield, it's impossible to tell the difference between one ranger and another. Indeed, to those who have seen them operate and been the beneficiaries of their prowess, it scarcely matters why rangers do what they do. That said, no two rangers are likely to express their opinions on any matter in the same way.",
-						"If you haven't yet thought about the details of your character's worldview, consider putting a finer point on things by summarizing that viewpoint in a short statement (such as the entries on the following table). How might that feeling affect the way you conduct yourself?",
-						{
-							"type": "table",
-							"caption": "View of the World",
-							"colLabels": [
-								"{@dice d6}",
-								"View"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"Towns and cities are the best places for those who can't survive on their own."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"The advancement of civilization is the best way to thwart chaos, but its reach must be monitored."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"Towns and cities are a necessary evil, but once the wilderness is purged of supernatural threats, we will need them no more."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"Walls are for cowards, who huddle behind them while others do the work of making the world safe."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Visiting a town is not unpleasant, but after a few days I feel the irresistible call to return to the wild."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"Cities breed weakness by isolating folk from the harsh lessons of the wild."
-								]
-							]
-						}
-					]
+					"source": "PHB",
+					"page": 89
 				},
 				{
-					"type": "entries",
-					"name": "Homelands",
 					"entries": [
-						"All rangers, regardless of how they came to take up the profession, have a strong connection to the natural world and its various terrains. For some rangers, the wilderness is where they grew up, either as a result of being born there or moving there at a young age. For other rangers, civilization was originally home, but the wilderness became a second homeland.",
-						"Think of your character's backstory and decide what terrain feels most like home, whether or not you were born there. What does that terrain say about your personality? Does it influence which spells you choose to learn? Have your experiences there shaped who your favored enemies are?",
 						{
-							"type": "table",
-							"caption": "Homelands",
-							"colLabels": [
-								"{@dice d6}",
-								"Homeland"
+							"type": "quote",
+							"entries": [
+								"I spend a lot of my life away from civilization, keeping to its fringes to protect it. Don't assume that because I don't bend the knee to your king that I haven't done more to protect him than all his knights put together."
 							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"You patrolled an ancient forest, darkened and corrupted by several crossings to the Shadowfell."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"As part of a group of nomads, you acquired the skills for surviving in the desert."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"Your early life in the Underdark prepared you for the challenges of combating its denizens."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"You dwelled on the edge of a swamp, in an area imperiled by land creatures as well as aquatic ones."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Because you grew up among the peaks, finding the best path through the mountains is second nature to you."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"You wandered the far north, learning how to protect yourself and prosper in a realm overrun by ice."
-								]
+							"by": "Soveliss"
+						},
+						"Rangers are free-minded wanderers and seekers who patrol the edges of civilized territory, turning back the denizens of the wild lands beyond. It is a thankless job, since their efforts are rarely understood and almost never rewarded. Yet rangers persist in their duties, never doubting that their work makes the world a safer place.",
+						"A relationship with civilization informs every ranger's personality and history. Some rangers see themselves as enforcers of the law and bringers of justice on civilization's frontier, answering to no sovereign power. Others are survivalists who eschew civilization altogether. They vanquish monsters to keep themselves safe while they live in and travel through the perilous wild areas of the world. If their efforts also benefit the kingdoms and other civilized realms that they avoid, so be it.",
+						"If you're creating or playing a ranger character, the following sections offer ideas for embellishing the character and enhancing your roleplaying experience.",
+						{
+							"type": "entries",
+							"name": "View of the World",
+							"entries": [
+								"A ranger's view of the world begins (and sometimes ends) with that character's outlook toward civilized folk and the places they occupy. Some rangers have an attitude toward civilization that's deeply rooted in disdain, while others pity the people they have sworn to protect\u2014though on the battlefield, it's impossible to tell the difference between one ranger and another. Indeed, to those who have seen them operate and been the beneficiaries of their prowess, it scarcely matters why rangers do what they do. That said, no two rangers are likely to express their opinions on any matter in the same way.",
+								"If you haven't yet thought about the details of your character's worldview, consider putting a finer point on things by summarizing that viewpoint in a short statement (such as the entries on the following table). How might that feeling affect the way you conduct yourself?",
+								{
+									"type": "table",
+									"caption": "View of the World",
+									"colLabels": [
+										"{@dice d6}",
+										"View"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Towns and cities are the best places for those who can't survive on their own."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"The advancement of civilization is the best way to thwart chaos, but its reach must be monitored."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Towns and cities are a necessary evil, but once the wilderness is purged of supernatural threats, we will need them no more."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Walls are for cowards, who huddle behind them while others do the work of making the world safe."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Visiting a town is not unpleasant, but after a few days I feel the irresistible call to return to the wild."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Cities breed weakness by isolating folk from the harsh lessons of the wild."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Homelands",
+							"entries": [
+								"All rangers, regardless of how they came to take up the profession, have a strong connection to the natural world and its various terrains. For some rangers, the wilderness is where they grew up, either as a result of being born there or moving there at a young age. For other rangers, civilization was originally home, but the wilderness became a second homeland.",
+								"Think of your character's backstory and decide what terrain feels most like home, whether or not you were born there. What does that terrain say about your personality? Does it influence which spells you choose to learn? Have your experiences there shaped who your favored enemies are?",
+								{
+									"type": "table",
+									"caption": "Homelands",
+									"colLabels": [
+										"{@dice d6}",
+										"Homeland"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"You patrolled an ancient forest, darkened and corrupted by several crossings to the Shadowfell."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"As part of a group of nomads, you acquired the skills for surviving in the desert."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Your early life in the Underdark prepared you for the challenges of combating its denizens."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"You dwelled on the edge of a swamp, in an area imperiled by land creatures as well as aquatic ones."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Because you grew up among the peaks, finding the best path through the mountains is second nature to you."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"You wandered the far north, learning how to protect yourself and prosper in a realm overrun by ice."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Sworn Enemy",
+							"entries": [
+								"Every ranger begins with a favored enemy (or two). The determination of a favored enemy might be tied to a specific event in the character's early life, or it might be entirely a matter of choice.",
+								"What spurred your character to select a particular enemy? Was the choice made because of tradition or curiosity, or do you have a grudge to settle?",
+								{
+									"type": "table",
+									"caption": "Sworn Enemies",
+									"colLabels": [
+										"{@dice d6}",
+										"Enemy"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"You seek revenge on nature's behalf for the great transgressions your foe has committed."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Your forebears or predecessors fought these creatures, and so shall you."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"You bear no enmity toward your foe. You stalk such creatures as a hunter tracks down a wild animal."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"You find your foe fascinating, and you collect books of tales and history concerning it."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"You collect tokens of your fallen enemies to remind you of each kill."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"You respect your chosen enemy, and you see your battles as a test of respective skills."
+										]
+									]
+								}
 							]
 						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Sworn Enemy",
-					"entries": [
-						"Every ranger begins with a favored enemy (or two). The determination of a favored enemy might be tied to a specific event in the character's early life, or it might be entirely a matter of choice.",
-						"What spurred your character to select a particular enemy? Was the choice made because of tradition or curiosity, or do you have a grudge to settle?",
-						{
-							"type": "table",
-							"caption": "Sworn Enemies",
-							"colLabels": [
-								"{@dice d6}",
-								"Enemy"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"You seek revenge on nature's behalf for the great transgressions your foe has committed."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Your forebears or predecessors fought these creatures, and so shall you."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"You bear no enmity toward your foe. You stalk such creatures as a hunter tracks down a wild animal."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"You find your foe fascinating, and you collect books of tales and history concerning it."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"You collect tokens of your fallen enemies to remind you of each kill."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"You respect your chosen enemy, and you see your battles as a test of respective skills."
-								]
-							]
-						}
-					]
+					],
+					"page": 40,
+					"source": "XGE"
 				}
-			],
-			"fluffPage": 40
+			]
 		},
 		{
 			"name": "Ranger (Revised)",
@@ -1862,7 +1934,7 @@
 			"classTableGroups": [
 				{
 					"colLabels": [
-						"Spells Known"
+						"{@filter Spells Known|spells|class=ranger}"
 					],
 					"rows": [
 						[
@@ -2108,11 +2180,11 @@
 				"additionalFromBackground": true,
 				"default": [
 					"(a) {@item scale mail|phb} or (b) {@item leather armor|phb}",
-					"(a) two {@item shortsword|phb|shortswords} or (b) two {@filter simple melee weapons|items|source=phb|category=basic|type=simple weapon;melee weapon}",
+					"(a) two {@item shortsword|phb|shortswords} or (b) two {@filter simple melee weapons|items|source=phb|category=basic|type=simple weapon;melee weapon=&}",
 					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"A {@item longbow|phb} and a {@item quiver|phb} of {@item arrows (20)|phb|20 arrows}"
 				],
-				"goldAlternative": "5d4 × 10"
+				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
 			},
 			"classFeatures": [
 				[
@@ -2120,7 +2192,7 @@
 						"name": "Favored Enemy",
 						"entries": [
 							"Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy commonly encountered in the wilds.",
-							"Choose a type of favored enemy: beasts, fey, humanoids, monstrosities, or undead. You gain a +2 bonus to damage rolls with weapon attacks against creatures of the chosen type. Additionally, you have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
+							"Choose a type of favored enemy: {@filter beasts|bestiary|type=beast}, {@filter fey|bestiary|type=fey}, {@filter humanoids|bestiary|type=humanoid}, {@filter monstrosities|bestiary|type=monstrosity}, or {@filter undead|bestiary|type=undead}. You gain a +2 bonus to damage rolls with weapon attacks against creatures of the chosen type. Additionally, you have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
 							"When you gain this feature, you also learn one language of your choice, typically one spoken by your favored enemy or creatures associated with it. However, you are free to pick any language you wish to learn."
 						]
 					},
@@ -2155,12 +2227,12 @@
 					{
 						"name": "Spellcasting",
 						"entries": [
-							"By the time you reach 2nd level, you have learned to use the magical essence of nature to cast spells, much as a druid does. See chapter 10 for the general rules of spellcasting and chapter 11 for the ranger spell list.",
+							"By the time you reach 2nd level, you have learned to use the magical essence of nature to cast spells, much as a druid does. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for the {@filter ranger spell list|spells|class=ranger}.",
 							{
 								"type": "entries",
 								"name": "Spell Slots",
 								"entries": [
-									"The Ranger table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+									"The Ranger table shows how many spell slots you have to cast your {@filter ranger spells|spells|class=ranger} of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
 									"For example, if you know the 1st-level spell {@spell animal friendship} and have a 1st-level and a 2nd-level spell slot available, you can cast {@spell animal friendship} using either slot."
 								]
 							},
@@ -2301,7 +2373,7 @@
 					{
 						"name": "Greater Favored Enemy",
 						"entries": [
-							"At 6th level, you are ready to hunt even deadlier game. Choose a type of greater favored enemy: aberrations, celestials, constructs, dragons, elementals, fiends, or giants. You gain all the benefits against this chosen enemy that you normally gain against your favored enemy, including an additional language. Your bonus to damage rolls against all your favored enemies increases to +4.",
+							"At 6th level, you are ready to hunt even deadlier game. Choose a type of greater favored enemy: {@filter aberrations|bestiary|type=aberration}, {@filter celestials|bestiary|type=celestial}, {@filter constructs|bestiary|type=construct}, {@filter dragons|bestiary|type=dragon}, {@filter elementals|bestiary|type=elemental}, {@filter fiends|bestiary|type=fiend}, or {@filter giants|bestiary|type=giant}. You gain all the benefits against this chosen enemy that you normally gain against your favored enemy, including an additional language. Your bonus to damage rolls against all your favored enemies increases to +4.",
 							"Additionally, you have advantage on saving throws against the spells and abilities used by a greater favored enemy."
 						]
 					}
@@ -2326,7 +2398,7 @@
 					{
 						"name": "Fleet of Foot",
 						"entries": [
-							"Beginning at 8th level, you can use the Dash action as a bonus action on your turn."
+							"Beginning at 8th level, you can use the {@action Dash} action as a bonus action on your turn."
 						]
 					}
 				],
@@ -2336,7 +2408,7 @@
 						"name": "Hide in Plain Sight",
 						"entries": [
 							"Starting at 10th level, you can remain perfectly still for long periods of time to set up ambushes.",
-							"When you attempt to hide on your turn, you can opt to not move on that turn. If you avoid moving, creatures that attempt to detect you take a -10 penalty to their Wisdom (Perception) checks until the start of your next turn. You lose this benefit if you move or fall {@condition prone}, either voluntarily or because of some external effect. You are still automatically detected if any effect or action causes you to no longer be hidden.",
+							"When you attempt to hide on your turn, you can opt to not move on that turn. If you avoid moving, creatures that attempt to detect you take a -10 penalty to their Wisdom ({@skill Perception}) checks until the start of your next turn. You lose this benefit if you move or fall {@condition prone}, either voluntarily or because of some external effect. You are still automatically detected if any effect or action causes you to no longer be hidden.",
 							"If you are still hidden on your next turn, you can continue to remain motionless and gain this benefit until you are detected."
 						]
 					}
@@ -2364,7 +2436,7 @@
 					{
 						"name": "Vanish",
 						"entries": [
-							"Starting at 14th level, you can use the Hide action as a bonus action on your turn. Also, you can't be tracked by nonmagical means, unless you choose to leave a trail."
+							"Starting at 14th level, you can use the {@action Hide} action as a bonus action on your turn. Also, you can't be tracked by nonmagical means, unless you choose to leave a trail."
 						]
 					}
 				],
@@ -2444,7 +2516,7 @@
 											"When using your Natural Explorer feature, you and your animal companion can both move stealthily at a normal pace.",
 											"Your animal companion has abilities and game statistics determined in part by your level. Your companion uses your proficiency bonus rather than its own. In addition to the areas where it normally uses its proficiency bonus, an animal companion also adds its proficiency bonus to its AC and to its damage rolls.",
 											"Your animal companion gains proficiency in two skills of your choice. It also becomes proficient with all saving throws.",
-											"For each level you gain after 3rd, your animal companion gains an additional hit die and increases its hit points accordingly",
+											"For each level you gain after 3rd, your animal companion gains an additional hit die and increases its hit points accordingly.",
 											"Whenever you gain the Ability Score Improvement class feature, your companion's abilities also improve. Your companion can increase one ability score of your choice by 2, or it can increase two ability scores of your choice by 1. As normal, your companion can't increase an ability score above 20 using this feature unless its description specifies otherwise.",
 											"Your companion shares your alignment, and has a personality trait and a flaw that you can roll for or select from the tables below. Your companion shares your ideal, and its bond is always, \"The ranger who travels with me is a beloved companion for whom I would gladly give my life.\"",
 											"Your animal companion gains the benefits of your Favored Enemy feature, and of your Greater Favored Enemy feature when you gain that feature at 6th level. It uses the favored enemies you selected for those features.",
@@ -2456,8 +2528,8 @@
 													"Trait"
 												],
 												"colStyles": [
-													"col-xs-1 text-align-center",
-													"col-xs-11"
+													"col-1 text-align-center",
+													"col-11"
 												],
 												"rows": [
 													[
@@ -2494,8 +2566,8 @@
 													"Flaw"
 												],
 												"colStyles": [
-													"col-xs-1 text-align-center",
-													"col-xs-11"
+													"col-1 text-align-center",
+													"col-11"
 												],
 												"rows": [
 													[
@@ -2536,7 +2608,7 @@
 										"type": "entries",
 										"name": "Coordinated Attack",
 										"entries": [
-											"Beginning at 5th level, you and your animal companion form a more potent fighting force. When you use the Attack action on your turn, if your companion can see you, it can use its reaction to make a melee attack."
+											"Beginning at 5th level, you and your animal companion form a more potent fighting force. When you use the {@action Attack} action on your turn, if your companion can see you, it can use its reaction to make a melee attack."
 										]
 									}
 								]
@@ -2646,7 +2718,7 @@
 										"type": "entries",
 										"name": "Extra Attack",
 										"entries": [
-											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 										]
 									}
 								]
@@ -2745,7 +2817,7 @@
 										"type": "entries",
 										"name": "Superior Hunter's Defense",
 										"entries": [
-											"At 15th level, you gain one of the following features of your choice: Evasion, Stand Against the Tide, or Uncanny Dodge.",
+											"At 15th level, you gain one of the following features of your choice: Evasion, Stand Against the Tide, or Uncanny {@action Dodge}.",
 											{
 												"type": "entries",
 												"entries": [
@@ -2812,8 +2884,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -2857,7 +2929,7 @@
 										"type": "entries",
 										"name": "Extra Attack",
 										"entries": [
-											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 										]
 									}
 								]
@@ -2927,8 +2999,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -2982,7 +3054,7 @@
 										"type": "entries",
 										"name": "Extra Attack",
 										"entries": [
-											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 										]
 									}
 								]
@@ -3008,7 +3080,7 @@
 										"type": "entries",
 										"name": "Distant Strike",
 										"entries": [
-											"At 11th level, you gain the ability to step between the planes in a blink of an eye. When you use the Attack action, you can teleport up to 10 feet before each attack. You must be able to see the destination of the teleportation.",
+											"At 11th level, you gain the ability to step between the planes in a blink of an eye. When you use the {@action Attack} action, you can teleport up to 10 feet before each attack. You must be able to see the destination of the teleportation.",
 											"If you attack at least two different creatures with the action, you can make one additional attack with it against a third creature."
 										]
 									}
@@ -3054,8 +3126,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -3116,7 +3188,7 @@
 										"type": "entries",
 										"name": "Extra Attack",
 										"entries": [
-											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 										]
 									}
 								]
@@ -3187,8 +3259,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -3234,7 +3306,7 @@
 										"type": "entries",
 										"name": "Extra Attack",
 										"entries": [
-											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 										]
 									}
 								]
@@ -3304,8 +3376,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -3337,7 +3409,7 @@
 										"name": "Dread Ambusher",
 										"entries": [
 											"At 3rd level, you master the art of the ambush. You can give yourself a bonus to your initiative rolls equal to your Wisdom modifier.",
-											"At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the Attack action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra 1d8 damage of the weapon's damage type."
+											"At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the {@action Attack} action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra 1d8 damage of the weapon's damage type."
 										]
 									},
 									{
@@ -3358,7 +3430,7 @@
 										"type": "entries",
 										"name": "Extra Attack",
 										"entries": [
-											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 										]
 									}
 								]
@@ -3428,8 +3500,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -3483,7 +3555,7 @@
 										"type": "entries",
 										"name": "Extra Attack",
 										"entries": [
-											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 										]
 									}
 								]
@@ -3510,7 +3582,7 @@
 										"type": "entries",
 										"name": "Distant Strike",
 										"entries": [
-											"At 11th level, you gain the ability to pass between the planes in the blink of an eye. When you take the Attack action, you can teleport up to 10 feet before each attack to an unoccupied space you can see.",
+											"At 11th level, you gain the ability to pass between the planes in the blink of an eye. When you take the {@action Attack} action, you can teleport up to 10 feet before each attack to an unoccupied space you can see.",
 											"If you attack at least two different creatures with the action, you can make one additional attack with it against a third creature."
 										]
 									}
@@ -3555,8 +3627,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -3585,7 +3657,7 @@
 									},
 									{
 										"type": "entries",
-										"name": "",
+										"name": "Hunter's Sense",
 										"entries": [
 											"At 3rd level, you gain the ability to peer at a creature and magically discern how best to hurt it. As an action, choose one creature you can see within 60 feet of you. You immediately learn whether the creature has any damage immunities, resistances, or vulnerabilities and what they are. If the creature is hidden from divination magic, you sense that it has no damage immunities, resistances, or vulnerabilities.",
 											"You can use this feature a number of times equal to your Wisdom modifier (minimum of once). You regain all expended uses of it when you finish a long rest."
@@ -3609,7 +3681,7 @@
 										"type": "entries",
 										"name": "Extra Attack",
 										"entries": [
-											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 										]
 									}
 								]
@@ -3662,245 +3734,291 @@
 			],
 			"fluff": [
 				{
-					"type": "quote",
 					"entries": [
-						"I spend a lot of my life away from civilization, keeping to its fringes to protect it. Don't assume that because I don't bend the knee to your king that I haven't done more to protect him than all his knights put together."
+						"Rough and wild looking, a human stalks alone through the shadows of trees, hunting the orcs he knows are planning a raid on a nearby farm. Clutching a shortsword in each hand, he becomes a whirlwind of steel, cutting down one enemy after another.",
+						"After tumbling away from a cone of freezing air, an elf finds her feet and draws back her bow to loose an arrow at the white dragon. Shrugging off the wave of fear that emanates from the dragon like the cold of its breath, she sends one arrow after another to find the gaps between the dragon's thick scales.",
+						"Holding his hand high, a half-elf whistles to the hawk that circles high above him, calling the bird back to his side. Whispering instructions in Elvish, he points to the owlbear he's been tracking and sends the hawk to distract the creature while he readies his bow.",
+						"Far from the bustle of cities and towns, past the hedges that shelter the most distant farms from the terrors of the wild, amid the dense-packed trees of trackless forests and across wide and empty plains, rangers keep their unending watch.",
+						{
+							"type": "entries",
+							"name": "Deadly Hunters",
+							"entries": [
+								"Warriors of the wilderness, rangers specialize in hunting the monsters that threaten the edges of civilization\u2014humanoid raiders, rampaging beasts and monstrosities, terrible giants, and deadly dragons. They learn to track their quarry as a predator does, moving stealthily through the wilds and hiding themselves in brush and rubble. Rangers focus their combat training on techniques that are particularly useful against their specific favored foes.",
+								"Thanks to their familiarity with the wilds, rangers acquire the ability to cast spells that harness nature's power, much as a druid does. Their spells, like their combat abilities, emphasize speed, stealth, and the hunt. A ranger's talents and abilities are honed with deadly focus on the grim task of protecting the borderlands."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Independent Adventurers",
+							"entries": [
+								"Though a ranger might make a living as a hunter, a guide, or a tracker, a ranger's true calling is to defend the outskirts of civilization from the ravages of monsters and humanoid hordes that press in from the wild. In some places, rangers gather in secretive orders or join forces with druidic circles. Many rangers, though, are independent almost to a fault, knowing that, when a dragon or a band of orcs attacks, a ranger might be the first\u2014and possibly the last\u2014line of defense.",
+								"This fierce independence makes rangers well suited to adventuring, since they are accustomed to life far from the comforts of a dry bed and a hot bath. Faced with city-bred adventurers who grouse and whine about the hardships of the wild, rangers respond with some mixture of amusement, frustration, and compassion. But they quickly learn that other adventurers who can carry their own weight in a fight against civilization's foes are worth any extra burden. Coddled city folk might not know how to feed themselves or find fresh water in the wild, but they make up for it in other ways."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Ranger",
+							"entries": [
+								"As you create your ranger character, consider the nature of the training that gave you your particular capabilities. Did you train with a single mentor, wandering the wilds together until you mastered the ranger's ways? Did you leave your apprenticeship, or was your mentor slain\u2014perhaps by the same kind of monster that became your favored enemy? Or perhaps you learned your skills as part of a band of rangers affiliated with a druidic circle, trained in mystic paths as well as wilderness lore. You might be self-taught, a recluse who learned combat skills, tracking, and even a magical connection to nature through the necessity of surviving in the wilds.",
+								"What's the source of your particular hatred of a certain kind of enemy? Did a monster kill someone you loved or destroy your home village? Or did you see too much of the destruction these monsters cause and commit yourself to reining in their depredations? Is your adventuring career a continuation of your work in protecting the borderlands, or a significant change? What made you join up with a band of adventurers? Do you find it challenging to teach new allies the ways of the wild, or do you welcome the relief from solitude that they offer?",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"You can make a ranger quickly by following these suggestions. First, make Dexterity your highest ability score, followed by Wisdom. (Some rangers who focus on two-weapon fighting make Strength higher than Dexterity.) Second, choose the {@background outlander} background."
+									]
+								}
+							]
+						}
 					],
-					"by": "Soveliss"
-				},
-				"Rangers are free-minded wanderers and seekers who patrol the edges of civilized territory, turning back the denizens of the wild lands beyond. It is a thankless job, since their efforts are rarely understood and almost never rewarded. Yet rangers persist in their duties, never doubting that their work makes the world a safer place.",
-				"A relationship with civilization informs every ranger's personality and history. Some rangers see themselves as enforcers of the law and bringers of justice on civilization's frontier, answering to no sovereign power. Others are survivalists who eschew civilization altogether. They vanquish monsters to keep themselves safe while they live in and travel through the perilous wild areas of the world. If their efforts also benefit the kingdoms and other civilized realms that they avoid, so be it.",
-				"If you're creating or playing a ranger character, the following sections offer ideas for embellishing the character and enhancing your roleplaying experience.",
-				{
-					"type": "entries",
-					"name": "View of the World",
-					"entries": [
-						"A ranger's view of the world begins (and sometimes ends) with that character's outlook toward civilized folk and the places they occupy. Some rangers have an attitude toward civilization that's deeply rooted in disdain, while others pity the people they have sworn to protect\u2014though on the battlefield, it's impossible to tell the difference between one ranger and another. Indeed, to those who have seen them operate and been the beneficiaries of their prowess, it scarcely matters why rangers do what they do. That said, no two rangers are likely to express their opinions on any matter in the same way.",
-						"If you haven't yet thought about the details of your character's worldview, consider putting a finer point on things by summarizing that viewpoint in a short statement (such as the entries on the following table). How might that feeling affect the way you conduct yourself?",
-						{
-							"type": "table",
-							"caption": "View of the World",
-							"colLabels": [
-								"{@dice d6}",
-								"View"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"Towns and cities are the best places for those who can't survive on their own."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"The advancement of civilization is the best way to thwart chaos, but its reach must be monitored."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"Towns and cities are a necessary evil, but once the wilderness is purged of supernatural threats, we will need them no more."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"Walls are for cowards, who huddle behind them while others do the work of making the world safe."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Visiting a town is not unpleasant, but after a few days I feel the irresistible call to return to the wild."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"Cities breed weakness by isolating folk from the harsh lessons of the wild."
-								]
-							]
-						}
-					]
+					"source": "PHB",
+					"page": 89
 				},
 				{
-					"type": "entries",
-					"name": "Homelands",
 					"entries": [
-						"All rangers, regardless of how they came to take up the profession, have a strong connection to the natural world and its various terrains. For some rangers, the wilderness is where they grew up, either as a result of being born there or moving there at a young age. For other rangers, civilization was originally home, but the wilderness became a second homeland.",
-						"Think of your character's backstory and decide what terrain feels most like home, whether or not you were born there. What does that terrain say about your personality? Does it influence which spells you choose to learn? Have your experiences there shaped who your favored enemies are?",
 						{
-							"type": "table",
-							"caption": "Homelands",
-							"colLabels": [
-								"{@dice d6}",
-								"Homeland"
+							"type": "quote",
+							"entries": [
+								"I spend a lot of my life away from civilization, keeping to its fringes to protect it. Don't assume that because I don't bend the knee to your king that I haven't done more to protect him than all his knights put together."
 							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"You patrolled an ancient forest, darkened and corrupted by several crossings to the Shadowfell."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"As part of a group of nomads, you acquired the skills for surviving in the desert."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"Your early life in the Underdark prepared you for the challenges of combating its denizens."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"You dwelled on the edge of a swamp, in an area imperiled by land creatures as well as aquatic ones."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Because you grew up among the peaks, finding the best path through the mountains is second nature to you."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"You wandered the far north, learning how to protect yourself and prosper in a realm overrun by ice."
-								]
+							"by": "Soveliss"
+						},
+						"Rangers are free-minded wanderers and seekers who patrol the edges of civilized territory, turning back the denizens of the wild lands beyond. It is a thankless job, since their efforts are rarely understood and almost never rewarded. Yet rangers persist in their duties, never doubting that their work makes the world a safer place.",
+						"A relationship with civilization informs every ranger's personality and history. Some rangers see themselves as enforcers of the law and bringers of justice on civilization's frontier, answering to no sovereign power. Others are survivalists who eschew civilization altogether. They vanquish monsters to keep themselves safe while they live in and travel through the perilous wild areas of the world. If their efforts also benefit the kingdoms and other civilized realms that they avoid, so be it.",
+						"If you're creating or playing a ranger character, the following sections offer ideas for embellishing the character and enhancing your roleplaying experience.",
+						{
+							"type": "entries",
+							"name": "View of the World",
+							"entries": [
+								"A ranger's view of the world begins (and sometimes ends) with that character's outlook toward civilized folk and the places they occupy. Some rangers have an attitude toward civilization that's deeply rooted in disdain, while others pity the people they have sworn to protect\u2014though on the battlefield, it's impossible to tell the difference between one ranger and another. Indeed, to those who have seen them operate and been the beneficiaries of their prowess, it scarcely matters why rangers do what they do. That said, no two rangers are likely to express their opinions on any matter in the same way.",
+								"If you haven't yet thought about the details of your character's worldview, consider putting a finer point on things by summarizing that viewpoint in a short statement (such as the entries on the following table). How might that feeling affect the way you conduct yourself?",
+								{
+									"type": "table",
+									"caption": "View of the World",
+									"colLabels": [
+										"{@dice d6}",
+										"View"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Towns and cities are the best places for those who can't survive on their own."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"The advancement of civilization is the best way to thwart chaos, but its reach must be monitored."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Towns and cities are a necessary evil, but once the wilderness is purged of supernatural threats, we will need them no more."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Walls are for cowards, who huddle behind them while others do the work of making the world safe."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Visiting a town is not unpleasant, but after a few days I feel the irresistible call to return to the wild."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Cities breed weakness by isolating folk from the harsh lessons of the wild."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Homelands",
+							"entries": [
+								"All rangers, regardless of how they came to take up the profession, have a strong connection to the natural world and its various terrains. For some rangers, the wilderness is where they grew up, either as a result of being born there or moving there at a young age. For other rangers, civilization was originally home, but the wilderness became a second homeland.",
+								"Think of your character's backstory and decide what terrain feels most like home, whether or not you were born there. What does that terrain say about your personality? Does it influence which spells you choose to learn? Have your experiences there shaped who your favored enemies are?",
+								{
+									"type": "table",
+									"caption": "Homelands",
+									"colLabels": [
+										"{@dice d6}",
+										"Homeland"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"You patrolled an ancient forest, darkened and corrupted by several crossings to the Shadowfell."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"As part of a group of nomads, you acquired the skills for surviving in the desert."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Your early life in the Underdark prepared you for the challenges of combating its denizens."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"You dwelled on the edge of a swamp, in an area imperiled by land creatures as well as aquatic ones."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Because you grew up among the peaks, finding the best path through the mountains is second nature to you."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"You wandered the far north, learning how to protect yourself and prosper in a realm overrun by ice."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Sworn Enemy",
+							"entries": [
+								"Every ranger begins with a favored enemy (or two). The determination of a favored enemy might be tied to a specific event in the character's early life, or it might be entirely a matter of choice.",
+								"What spurred your character to select a particular enemy? Was the choice made because of tradition or curiosity, or do you have a grudge to settle?",
+								{
+									"type": "table",
+									"caption": "Sworn Enemies",
+									"colLabels": [
+										"{@dice d6}",
+										"Enemy"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"You seek revenge on nature's behalf for the great transgressions your foe has committed."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Your forebears or predecessors fought these creatures, and so shall you."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"You bear no enmity toward your foe. You stalk such creatures as a hunter tracks down a wild animal."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"You find your foe fascinating, and you collect books of tales and history concerning it."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"You collect tokens of your fallen enemies to remind you of each kill."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"You respect your chosen enemy, and you see your battles as a test of respective skills."
+										]
+									]
+								}
 							]
 						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Sworn Enemy",
-					"entries": [
-						"Every ranger begins with a favored enemy (or two). The determination of a favored enemy might be tied to a specific event in the character's early life, or it might be entirely a matter of choice.",
-						"What spurred your character to select a particular enemy? Was the choice made because of tradition or curiosity, or do you have a grudge to settle?",
-						{
-							"type": "table",
-							"caption": "Sworn Enemies",
-							"colLabels": [
-								"{@dice d6}",
-								"Enemy"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"You seek revenge on nature's behalf for the great transgressions your foe has committed."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Your forebears or predecessors fought these creatures, and so shall you."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"You bear no enmity toward your foe. You stalk such creatures as a hunter tracks down a wild animal."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"You find your foe fascinating, and you collect books of tales and history concerning it."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"You collect tokens of your fallen enemies to remind you of each kill."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"You respect your chosen enemy, and you see your battles as a test of respective skills."
-								]
-							]
-						}
-					]
+					],
+					"page": 40,
+					"source": "XGE"
 				}
-			],
-			"fluffPage": 40
+			]
 		},
 		{
 			"name": "Ranger (Spell-less)",
@@ -4010,11 +4128,11 @@
 				"additionalFromBackground": true,
 				"default": [
 					"(a) {@item scale mail|phb} or (b) {@item leather armor|phb}",
-					"(a) two {@item shortsword|phb|shortswords} or (b) two {@filter simple melee weapons|items|source=phb|category=basic|type=simple weapon;melee weapon}",
+					"(a) two {@item shortsword|phb|shortswords} or (b) two {@filter simple melee weapons|items|source=phb|category=basic|type=simple weapon;melee weapon=&}",
 					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"A {@item longbow|phb} and a {@item quiver|phb} of {@item arrows (20)|phb|20 arrows}"
 				],
-				"goldAlternative": "5d4 × 10"
+				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
 			},
 			"classFeatures": [
 				[
@@ -4022,7 +4140,7 @@
 						"name": "Favored Enemy",
 						"entries": [
 							"Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy.",
-							"Choose a type of favored enemy: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead. Alternatively, you can select two races of humanoid (such as gnolls and orcs) as favored enemies.",
+							"Choose a type of favored enemy: {@filter aberrations|bestiary|type=aberration}, {@filter beasts|bestiary|type=beast}, {@filter celestials|bestiary|type=celestial}, {@filter constructs|bestiary|type=construct}, {@filter dragons|bestiary|type=dragon}, {@filter elementals|bestiary|type=elemental}, {@filter fey|bestiary|type=fey}, {@filter fiends|bestiary|type=fiend}, {@filter giants|bestiary|type=giant}, {@filter monstrosities|bestiary|type=monstrosity}, {@filter oozes|bestiary|type=ooze}, {@filter plants|bestiary|type=plant}, or {@filter undead|bestiary|type=undead}. Alternatively, you can select two races of {@filter humanoid|bestiary|type=humanoid} (such as {@creature gnoll|mm|gnolls} and {@creature orc|mm|orcs}) as favored enemies.",
 							"You have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
 							"When you gain this feature, you also learn one language of your choice that is spoken by your favored enemies, if they speak one at all.",
 							"You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures."
@@ -4187,7 +4305,7 @@
 					{
 						"name": "Extra Attack",
 						"entries": [
-							"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+							"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 						]
 					},
 					{
@@ -4253,7 +4371,7 @@
 						"name": "Hide in Plain Sight",
 						"entries": [
 							"Starting at 10th level, you can spend 1 minute creating camouflage for yourself. You must have access to fresh mud, dirt, plants, soot, and other naturally occurring materials with which to create your camouflage.",
-							"Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity (Stealth) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit."
+							"Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity ({@skill Stealth}) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit."
 						]
 					},
 					{
@@ -4312,7 +4430,7 @@
 					{
 						"name": "Vanish",
 						"entries": [
-							"Starting at 14th level, you can use the Hide action as a bonus action on your turn. Also, you can't be tracked by nonmagical means, unless you choose to leave a trail."
+							"Starting at 14th level, you can use the {@action Hide} action as a bonus action on your turn. Also, you can't be tracked by nonmagical means, unless you choose to leave a trail."
 						]
 					},
 					{
@@ -4531,7 +4649,7 @@
 										"type": "entries",
 										"name": "Superior Hunter's Defense",
 										"entries": [
-											"At 15th level, you gain one of the following features of your choice: Evasion, Stand Against the Tide, or Uncanny Dodge.",
+											"At 15th level, you gain one of the following features of your choice: Evasion, Stand Against the Tide, or Uncanny {@action Dodge}.",
 											{
 												"type": "entries",
 												"entries": [
@@ -4589,8 +4707,9 @@
 										"type": "entries",
 										"name": "Ranger's Companion",
 										"entries": [
-											"You gain a beast companion that accompanies you on your adventures and is trained to fight alongside you. Choose a {@filter beast that is no larger than Medium and that has a challenge rating of 1/4 or lower|bestiary|cr=0;1/8;1/4|type=beast|size=f;d;t;s;m|miscellaneous=!swarm}. Add your proficiency bonus to the beast's AC, attack rolls, and damage rolls, as well as to any saving throws and skills it is proficient in. Its hit point maximum equals its normal maximum or four times your ranger level, whichever is higher.",
-											"The beast obeys your commands as best as it can. It takes its turn on your initiative, though it doesn't take an action unless you command it to. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the Attack, Dash, Disengage, Dodge, or Help action. Once you have the Extra Attack feature, you can make one weapon attack yourself when you command the beast to take the Attack action.",
+											"You gain a beast companion that accompanies you on your adventures and is trained to fight alongside you. Choose a {@filter beast that is no larger than Medium and that has a challenge rating of 1/4 or lower|bestiary|challenge rating=0;1/8;1/4|type=beast|size=f;d;t;s;m|miscellaneous=!swarm}. Add your proficiency bonus to the beast's AC, attack rolls, and damage rolls, as well as to any saving throws and skills it is proficient in. Its hit point maximum equals its normal maximum or four times your ranger level, whichever is higher. Like any creature, the beast can spend Hit Dice during a short rest.",
+											"The beast obeys your commands as best as it can. It takes its turn on your initiative. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the {@action Attack}, {@action Dash}, {@action Disengage}, or {@action Help} action. If you don't issue a command, the beast takes the {@action Dodge} action. Once you have the Extra Attack feature, you can make one weapon attack yourself when you command the beast to take the {@action Attack} action.",
+											"If you are {@condition incapacitated} or absent, the beast acts on its own, focusing on protecting you and itself. The beast never requires your command to use its reaction, such as when making an opportunity attack.",
 											"If you are {@condition incapacitated} or absent, your beast companion acts on its own, focusing on protecting you and itself. It never requires your command to use its reaction, such as when making an opportunity attack.",
 											"Like any creature, the beast can spend hit dice during a short rest.",
 											"While traveling through your favored terrain with only the beast, you can move stealthily at a normal pace.",
@@ -4607,7 +4726,7 @@
 										"type": "entries",
 										"name": "Exceptional Training",
 										"entries": [
-											"Beginning at 7th level, on any of your turns when your beast companion doesn't attack, you can use a bonus action to command the beast to take the Dash, Disengage, Dodge, or Help action on its turn."
+											"Beginning at 7th level, on any of your turns when your beast companion doesn't attack, you can use a bonus action to command the beast to take the {@action Dash}, {@action Disengage}, or {@action Help} action on its turn. In addition, the beast's attacks now count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage."
 										]
 									}
 								]
@@ -4620,7 +4739,7 @@
 										"type": "entries",
 										"name": "Bestial Fury",
 										"entries": [
-											"When you command the beast to take the Attack action, the beast can attack twice or take the Multiattack action if it has that action."
+											"Starting at 11th level, when you command your beast companion to take the {@action Attack} action, the beast can make two attacks, or it can take the Multiattack action if it has that action."
 										]
 									}
 								]
@@ -4664,8 +4783,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -4766,8 +4885,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -4834,7 +4953,7 @@
 										"type": "entries",
 										"name": "Distant Strike",
 										"entries": [
-											"At 11th level, you gain the ability to step between the planes in a blink of an eye. When you use the Attack action, you can teleport up to 10 feet before each attack. You must be able to see the destination of the teleportation.",
+											"At 11th level, you gain the ability to step between the planes in a blink of an eye. When you use the {@action Attack} action, you can teleport up to 10 feet before each attack. You must be able to see the destination of the teleportation.",
 											"If you attack at least two different creatures with the action, you can make one additional attack with it against a third creature."
 										]
 									}
@@ -4880,8 +4999,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -5000,8 +5119,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -5104,8 +5223,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -5137,7 +5256,7 @@
 										"name": "Dread Ambusher",
 										"entries": [
 											"At 3rd level, you master the art of the ambush. You can give yourself a bonus to your initiative rolls equal to your Wisdom modifier.",
-											"At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the Attack action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra 1d8 damage of the weapon's damage type."
+											"At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the {@action Attack} action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra 1d8 damage of the weapon's damage type."
 										]
 									},
 									{
@@ -5215,8 +5334,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -5284,7 +5403,7 @@
 										"type": "entries",
 										"name": "Distant Strike",
 										"entries": [
-											"At 11th level, you gain the ability to pass between the planes in the blink of an eye. When you take the Attack action, you can teleport up to 10 feet before each attack to an unoccupied space you can see.",
+											"At 11th level, you gain the ability to pass between the planes in the blink of an eye. When you take the {@action Attack} action, you can teleport up to 10 feet before each attack to an unoccupied space you can see.",
 											"If you attack at least two different creatures with the action, you can make one additional attack with it against a third creature."
 										]
 									}
@@ -5329,8 +5448,8 @@
 													"Spells"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -5359,7 +5478,7 @@
 									},
 									{
 										"type": "entries",
-										"name": "",
+										"name": "Hunter's Sense",
 										"entries": [
 											"At 3rd level, you gain the ability to peer at a creature and magically discern how best to hurt it. As an action, choose one creature you can see within 60 feet of you. You immediately learn whether the creature has any damage immunities, resistances, or vulnerabilities and what they are. If the creature is hidden from divination magic, you sense that it has no damage immunities, resistances, or vulnerabilities.",
 											"You can use this feature a number of times equal to your Wisdom modifier (minimum of once). You regain all expended uses of it when you finish a long rest."
@@ -5424,245 +5543,291 @@
 			"page": 5,
 			"fluff": [
 				{
-					"type": "quote",
 					"entries": [
-						"I spend a lot of my life away from civilization, keeping to its fringes to protect it. Don't assume that because I don't bend the knee to your king that I haven't done more to protect him than all his knights put together."
+						"Rough and wild looking, a human stalks alone through the shadows of trees, hunting the orcs he knows are planning a raid on a nearby farm. Clutching a shortsword in each hand, he becomes a whirlwind of steel, cutting down one enemy after another.",
+						"After tumbling away from a cone of freezing air, an elf finds her feet and draws back her bow to loose an arrow at the white dragon. Shrugging off the wave of fear that emanates from the dragon like the cold of its breath, she sends one arrow after another to find the gaps between the dragon's thick scales.",
+						"Holding his hand high, a half-elf whistles to the hawk that circles high above him, calling the bird back to his side. Whispering instructions in Elvish, he points to the owlbear he's been tracking and sends the hawk to distract the creature while he readies his bow.",
+						"Far from the bustle of cities and towns, past the hedges that shelter the most distant farms from the terrors of the wild, amid the dense-packed trees of trackless forests and across wide and empty plains, rangers keep their unending watch.",
+						{
+							"type": "entries",
+							"name": "Deadly Hunters",
+							"entries": [
+								"Warriors of the wilderness, rangers specialize in hunting the monsters that threaten the edges of civilization\u2014humanoid raiders, rampaging beasts and monstrosities, terrible giants, and deadly dragons. They learn to track their quarry as a predator does, moving stealthily through the wilds and hiding themselves in brush and rubble. Rangers focus their combat training on techniques that are particularly useful against their specific favored foes.",
+								"Thanks to their familiarity with the wilds, rangers acquire the ability to cast spells that harness nature's power, much as a druid does. Their spells, like their combat abilities, emphasize speed, stealth, and the hunt. A ranger's talents and abilities are honed with deadly focus on the grim task of protecting the borderlands."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Independent Adventurers",
+							"entries": [
+								"Though a ranger might make a living as a hunter, a guide, or a tracker, a ranger's true calling is to defend the outskirts of civilization from the ravages of monsters and humanoid hordes that press in from the wild. In some places, rangers gather in secretive orders or join forces with druidic circles. Many rangers, though, are independent almost to a fault, knowing that, when a dragon or a band of orcs attacks, a ranger might be the first\u2014and possibly the last\u2014line of defense.",
+								"This fierce independence makes rangers well suited to adventuring, since they are accustomed to life far from the comforts of a dry bed and a hot bath. Faced with city-bred adventurers who grouse and whine about the hardships of the wild, rangers respond with some mixture of amusement, frustration, and compassion. But they quickly learn that other adventurers who can carry their own weight in a fight against civilization's foes are worth any extra burden. Coddled city folk might not know how to feed themselves or find fresh water in the wild, but they make up for it in other ways."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Ranger",
+							"entries": [
+								"As you create your ranger character, consider the nature of the training that gave you your particular capabilities. Did you train with a single mentor, wandering the wilds together until you mastered the ranger's ways? Did you leave your apprenticeship, or was your mentor slain\u2014perhaps by the same kind of monster that became your favored enemy? Or perhaps you learned your skills as part of a band of rangers affiliated with a druidic circle, trained in mystic paths as well as wilderness lore. You might be self-taught, a recluse who learned combat skills, tracking, and even a magical connection to nature through the necessity of surviving in the wilds.",
+								"What's the source of your particular hatred of a certain kind of enemy? Did a monster kill someone you loved or destroy your home village? Or did you see too much of the destruction these monsters cause and commit yourself to reining in their depredations? Is your adventuring career a continuation of your work in protecting the borderlands, or a significant change? What made you join up with a band of adventurers? Do you find it challenging to teach new allies the ways of the wild, or do you welcome the relief from solitude that they offer?",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"You can make a ranger quickly by following these suggestions. First, make Dexterity your highest ability score, followed by Wisdom. (Some rangers who focus on two-weapon fighting make Strength higher than Dexterity.) Second, choose the {@background outlander} background."
+									]
+								}
+							]
+						}
 					],
-					"by": "Soveliss"
-				},
-				"Rangers are free-minded wanderers and seekers who patrol the edges of civilized territory, turning back the denizens of the wild lands beyond. It is a thankless job, since their efforts are rarely understood and almost never rewarded. Yet rangers persist in their duties, never doubting that their work makes the world a safer place.",
-				"A relationship with civilization informs every ranger's personality and history. Some rangers see themselves as enforcers of the law and bringers of justice on civilization's frontier, answering to no sovereign power. Others are survivalists who eschew civilization altogether. They vanquish monsters to keep themselves safe while they live in and travel through the perilous wild areas of the world. If their efforts also benefit the kingdoms and other civilized realms that they avoid, so be it.",
-				"If you're creating or playing a ranger character, the following sections offer ideas for embellishing the character and enhancing your roleplaying experience.",
-				{
-					"type": "entries",
-					"name": "View of the World",
-					"entries": [
-						"A ranger's view of the world begins (and sometimes ends) with that character's outlook toward civilized folk and the places they occupy. Some rangers have an attitude toward civilization that's deeply rooted in disdain, while others pity the people they have sworn to protect\u2014though on the battlefield, it's impossible to tell the difference between one ranger and another. Indeed, to those who have seen them operate and been the beneficiaries of their prowess, it scarcely matters why rangers do what they do. That said, no two rangers are likely to express their opinions on any matter in the same way.",
-						"If you haven't yet thought about the details of your character's worldview, consider putting a finer point on things by summarizing that viewpoint in a short statement (such as the entries on the following table). How might that feeling affect the way you conduct yourself?",
-						{
-							"type": "table",
-							"caption": "View of the World",
-							"colLabels": [
-								"{@dice d6}",
-								"View"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"Towns and cities are the best places for those who can't survive on their own."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"The advancement of civilization is the best way to thwart chaos, but its reach must be monitored."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"Towns and cities are a necessary evil, but once the wilderness is purged of supernatural threats, we will need them no more."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"Walls are for cowards, who huddle behind them while others do the work of making the world safe."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Visiting a town is not unpleasant, but after a few days I feel the irresistible call to return to the wild."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"Cities breed weakness by isolating folk from the harsh lessons of the wild."
-								]
-							]
-						}
-					]
+					"source": "PHB",
+					"page": 89
 				},
 				{
-					"type": "entries",
-					"name": "Homelands",
 					"entries": [
-						"All rangers, regardless of how they came to take up the profession, have a strong connection to the natural world and its various terrains. For some rangers, the wilderness is where they grew up, either as a result of being born there or moving there at a young age. For other rangers, civilization was originally home, but the wilderness became a second homeland.",
-						"Think of your character's backstory and decide what terrain feels most like home, whether or not you were born there. What does that terrain say about your personality? Does it influence which spells you choose to learn? Have your experiences there shaped who your favored enemies are?",
 						{
-							"type": "table",
-							"caption": "Homelands",
-							"colLabels": [
-								"{@dice d6}",
-								"Homeland"
+							"type": "quote",
+							"entries": [
+								"I spend a lot of my life away from civilization, keeping to its fringes to protect it. Don't assume that because I don't bend the knee to your king that I haven't done more to protect him than all his knights put together."
 							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"You patrolled an ancient forest, darkened and corrupted by several crossings to the Shadowfell."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"As part of a group of nomads, you acquired the skills for surviving in the desert."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"Your early life in the Underdark prepared you for the challenges of combating its denizens."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"You dwelled on the edge of a swamp, in an area imperiled by land creatures as well as aquatic ones."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Because you grew up among the peaks, finding the best path through the mountains is second nature to you."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"You wandered the far north, learning how to protect yourself and prosper in a realm overrun by ice."
-								]
+							"by": "Soveliss"
+						},
+						"Rangers are free-minded wanderers and seekers who patrol the edges of civilized territory, turning back the denizens of the wild lands beyond. It is a thankless job, since their efforts are rarely understood and almost never rewarded. Yet rangers persist in their duties, never doubting that their work makes the world a safer place.",
+						"A relationship with civilization informs every ranger's personality and history. Some rangers see themselves as enforcers of the law and bringers of justice on civilization's frontier, answering to no sovereign power. Others are survivalists who eschew civilization altogether. They vanquish monsters to keep themselves safe while they live in and travel through the perilous wild areas of the world. If their efforts also benefit the kingdoms and other civilized realms that they avoid, so be it.",
+						"If you're creating or playing a ranger character, the following sections offer ideas for embellishing the character and enhancing your roleplaying experience.",
+						{
+							"type": "entries",
+							"name": "View of the World",
+							"entries": [
+								"A ranger's view of the world begins (and sometimes ends) with that character's outlook toward civilized folk and the places they occupy. Some rangers have an attitude toward civilization that's deeply rooted in disdain, while others pity the people they have sworn to protect\u2014though on the battlefield, it's impossible to tell the difference between one ranger and another. Indeed, to those who have seen them operate and been the beneficiaries of their prowess, it scarcely matters why rangers do what they do. That said, no two rangers are likely to express their opinions on any matter in the same way.",
+								"If you haven't yet thought about the details of your character's worldview, consider putting a finer point on things by summarizing that viewpoint in a short statement (such as the entries on the following table). How might that feeling affect the way you conduct yourself?",
+								{
+									"type": "table",
+									"caption": "View of the World",
+									"colLabels": [
+										"{@dice d6}",
+										"View"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Towns and cities are the best places for those who can't survive on their own."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"The advancement of civilization is the best way to thwart chaos, but its reach must be monitored."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Towns and cities are a necessary evil, but once the wilderness is purged of supernatural threats, we will need them no more."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Walls are for cowards, who huddle behind them while others do the work of making the world safe."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Visiting a town is not unpleasant, but after a few days I feel the irresistible call to return to the wild."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Cities breed weakness by isolating folk from the harsh lessons of the wild."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Homelands",
+							"entries": [
+								"All rangers, regardless of how they came to take up the profession, have a strong connection to the natural world and its various terrains. For some rangers, the wilderness is where they grew up, either as a result of being born there or moving there at a young age. For other rangers, civilization was originally home, but the wilderness became a second homeland.",
+								"Think of your character's backstory and decide what terrain feels most like home, whether or not you were born there. What does that terrain say about your personality? Does it influence which spells you choose to learn? Have your experiences there shaped who your favored enemies are?",
+								{
+									"type": "table",
+									"caption": "Homelands",
+									"colLabels": [
+										"{@dice d6}",
+										"Homeland"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"You patrolled an ancient forest, darkened and corrupted by several crossings to the Shadowfell."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"As part of a group of nomads, you acquired the skills for surviving in the desert."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Your early life in the Underdark prepared you for the challenges of combating its denizens."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"You dwelled on the edge of a swamp, in an area imperiled by land creatures as well as aquatic ones."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Because you grew up among the peaks, finding the best path through the mountains is second nature to you."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"You wandered the far north, learning how to protect yourself and prosper in a realm overrun by ice."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Sworn Enemy",
+							"entries": [
+								"Every ranger begins with a favored enemy (or two). The determination of a favored enemy might be tied to a specific event in the character's early life, or it might be entirely a matter of choice.",
+								"What spurred your character to select a particular enemy? Was the choice made because of tradition or curiosity, or do you have a grudge to settle?",
+								{
+									"type": "table",
+									"caption": "Sworn Enemies",
+									"colLabels": [
+										"{@dice d6}",
+										"Enemy"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"You seek revenge on nature's behalf for the great transgressions your foe has committed."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Your forebears or predecessors fought these creatures, and so shall you."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"You bear no enmity toward your foe. You stalk such creatures as a hunter tracks down a wild animal."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"You find your foe fascinating, and you collect books of tales and history concerning it."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"You collect tokens of your fallen enemies to remind you of each kill."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"You respect your chosen enemy, and you see your battles as a test of respective skills."
+										]
+									]
+								}
 							]
 						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Sworn Enemy",
-					"entries": [
-						"Every ranger begins with a favored enemy (or two). The determination of a favored enemy might be tied to a specific event in the character's early life, or it might be entirely a matter of choice.",
-						"What spurred your character to select a particular enemy? Was the choice made because of tradition or curiosity, or do you have a grudge to settle?",
-						{
-							"type": "table",
-							"caption": "Sworn Enemies",
-							"colLabels": [
-								"{@dice d6}",
-								"Enemy"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"You seek revenge on nature's behalf for the great transgressions your foe has committed."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Your forebears or predecessors fought these creatures, and so shall you."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"You bear no enmity toward your foe. You stalk such creatures as a hunter tracks down a wild animal."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"You find your foe fascinating, and you collect books of tales and history concerning it."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"You collect tokens of your fallen enemies to remind you of each kill."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"You respect your chosen enemy, and you see your battles as a test of respective skills."
-								]
-							]
-						}
-					]
+					],
+					"page": 40,
+					"source": "XGE"
 				}
-			],
-			"fluffPage": 40
+			]
 		}
 	]
 }

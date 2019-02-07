@@ -159,7 +159,7 @@
 								"Item"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -269,7 +269,7 @@
 								"Objective"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -315,7 +315,7 @@
 								"Secret"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -411,7 +411,7 @@
 										"Denizen"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -631,7 +631,7 @@
 							"type": "entries",
 							"name": "Entry Points",
 							"entries": [
-								"Choose a starting location for the party from among the seven entry points in the Doomvault. Black gates in the following areas have entry points labeled on the map: area 1 (Abyssal Prisons), area 23 (Blood Pens), area 33 (Masters' Domain), area 38 (Far Realm Cysts), area 49 (Forests of Slaughter), area 61 (Ooze Grottos), and area 77 (Predator Pools)."
+								"Choose a starting location for the party from among the seven entry points in the Doomvault. Black gates in the following areas have entry points labeled on the map: {@area 2>1} (Abyssal Prisons), {@area 3>23} (Blood Pens), {@area 4>33} (Masters' Domain), {@area 5>38} (Far Realm Cysts), {@area 6>49} (Forests of Slaughter), {@area 7>61} (Ooze Grottos), and {@area 8>77} (Predator Pools)."
 							]
 						},
 						{
@@ -642,7 +642,7 @@
 									"type": "entries",
 									"name": "Glyph Keys",
 									"entries": [
-										"A magic crystal pendant on a bronze chain, a glyph key allows creatures to manipulate a handful of specific magic gates within the Doomvault. A glyph key is attuned to a zone or zones, allowing manipulation of gates within the attuned areas. For example, a glyph key attuned to the Temple of Chaos (areas 4 through 7) allows its user to use a functional black gate to open a portal to the black gate in area 7, as well as to pass through the white gates between area 4 and area 2, between area 6 and area 8 or area 16, and between area 7 and area 12."
+										"A magic crystal pendant on a bronze chain, a glyph key allows creatures to manipulate a handful of specific magic gates within the Doomvault. A glyph key is attuned to a zone or zones, allowing manipulation of gates within the attuned areas. For example, a glyph key attuned to the Temple of Chaos (areas 4 through 7) allows its user to use a functional black gate to open a portal to the black gate in {@area 2>7}, as well as to pass through the white gates between {@area 2>4} and {@area 2>2}, between {@area 2>6} and {@area 2>8} or {@area 3>16}, and between {@area 2>7} and {@area 2>12}."
 									]
 								},
 								"Touching a glyph key provides a telepathic sense of the name of its attuned zone or zones. Thus, when the characters find glyph keys, they know which zones the keys are for.",
@@ -651,7 +651,7 @@
 									"type": "entries",
 									"name": "Temples of Extraction Glyph Keys",
 									"entries": [
-										"The Temples of Extraction are the site of Szass Tam's dark experiments with the Chosen of the gods, and security there is tighter than anywhere else in the Doomvault. Only four glyph keys to this sector, one for each zone, are outside the Temples of Extraction sector. They are in area 10, area 25, area 31, and area 63. The characters need to find these glyph keys to gain access to the temples."
+										"The Temples of Extraction are the site of Szass Tam's dark experiments with the Chosen of the gods, and security there is tighter than anywhere else in the Doomvault. Only four glyph keys to this sector, one for each zone, are outside the Temples of Extraction sector. They are in {@area 2>10}, {@area 3>25}, {@area 4>31}, and {@area 7>63}. The characters need to find these glyph keys to gain access to the temples."
 									]
 								}
 							]
@@ -788,7 +788,7 @@
 							"name": "Dread Warriors",
 							"entries": [
 								"Szass Tam devised the ritual that enables the creation of dread warriors. The lich has since altered the process to make it possible for a Red Wizard to take control of a dread warrior. The effect creates a psychic link between the dread warrior and a Red Wizard, who can, for a time, experience the world through the dread warrior's senses, speak with its mouth, and cast spells through it. A powerful wizard can control more than one dread warrior at a time.",
-								"When a party in the Doomvault encounters a dread warrior that isn't in the company of a Red Wizard or Tarul Var, a special interaction may occur. If the dread warrior survives until end of the third round (or for more than 20 seconds), Tarul Var (see area 10) becomes aware of the group's presence. Var's attention raises the overall alert level by 1. In addition, Tarul Var takes control of the dread warrior by the start of its next turn. Instead of allowing the warrior to attack, Var uses the warrior's actions to cast his spells through it.",
+								"When a party in the Doomvault encounters a dread warrior that isn't in the company of a Red Wizard or Tarul Var, a special interaction may occur. If the dread warrior survives until end of the third round (or for more than 20 seconds), Tarul Var (see {@area 2>10}) becomes aware of the group's presence. Var's attention raises the overall alert level by 1. In addition, Tarul Var takes control of the dread warrior by the start of its next turn. Instead of allowing the warrior to attack, Var uses the warrior's actions to cast his spells through it.",
 								"When Var becomes aware of the group through a dread warrior, the warrior's eyes glow with pale light. If someone casts counterspell or dispel magic on the dread warrior during this time, and successfully dispels a 5th-level spell, Var's connection is suppressed for 1 minute. Preemptively casting dispel magic on a dread warrior can have the same effect."
 							]
 						}
@@ -822,7 +822,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -851,6 +851,92 @@
 											"Special Encounter"
 										]
 									]
+								},
+								{
+									"type": "table",
+									"caption": "Minor Encounter",
+									"colLabels": [
+										"d4",
+										"Encounter"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"1",
+											"1 {@creature Thayan apprentice|tftyp} (B), 4 {@creature Thayan warrior|tftyp|Thayan warriors} (B), and {@dice 2d4} prisoners ({@creature commoner|mm|commoners})"
+										],
+										[
+											"2\u20133",
+											"1 {@creature wight}"
+										],
+										[
+											"4",
+											"1 {@creature wight} and {@dice 2d4} {@creature skeleton|mm|skeletons} or {@creature zombie|mm|zombies}"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Dread Legion Patrol",
+									"colLabels": [
+										"d4",
+										"Encounter"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"1",
+											"{@dice 2d4} {@creature gnoll|MM|gnolls}"
+										],
+										[
+											"2",
+											"1 {@creature dread warrior|tftyp} (B) and {@dice 2d6} {@creature zombie|MM|zombies}"
+										],
+										[
+											"3",
+											"{@dice 2d4} {@creature orc|MM|orcs}"
+										],
+										[
+											"4",
+											"1 {@creature troll}"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Thayan Patrol",
+									"colLabels": [
+										"2d4",
+										"Encounter"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"2",
+											"1 {@creature deathlock wight|tftyp} (B), {@dice 2d4} {@creature Thayan warrior|tftyp|Thayan warriors} (B), and {@dice 2d4} prisoners ({@creature commoner|MM|commoners})"
+										],
+										[
+											"3\u20134",
+											"1 {@creature deathlock wight|tftyp} (B), {@dice 1d3} {@creature Thayan apprentice|tftyp|Thayan apprentices} (B), and {@dice 2d4} {@creature Thayan warrior|tftyp|Thayan warriors} (B)"
+										],
+										[
+											"5\u20136",
+											"1 Red Wizard {@creature evoker|vgm} (B), 1 {@creature Thayan apprentice|tftyp} (B), and {@dice 1d4} {@creature dread warrior|tftyp|dread warriors} (B)"
+										],
+										[
+											"7\u20138",
+											"1 {@creature wight} and {@dice 1d4} {@creature dread warrior|tftyp|dread warriors} (B)"
+										]
+									]
 								}
 							]
 						},
@@ -868,8 +954,8 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
-										""
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -898,7 +984,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -928,7 +1014,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -950,7 +1036,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -980,7 +1066,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -1010,7 +1096,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -1036,7 +1122,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -1066,7 +1152,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -1123,7 +1209,7 @@
 										"Potion"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -1167,7 +1253,7 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -1200,7 +1286,7 @@
 							"entries": [
 								"The rebel Red Wizards can use the mighty magic of the Doomvault, which traps souls, to raise fallen adventurers as soul-bound dead. If a player chooses this option, the dead character returns to play with no changes.",
 								"Syranna warns such characters that a soul-bound creature created in this way will die permanently upon leaving the Doomvault. Furthermore, over the course of many weeks, a character who remains in this state loses any identity and becomes a wight under the control of the Red Wizards. To have any hope of exiting the dungeon, the character must end the soul-bound condition.",
-								"Syranna conveys that the undying laboratory (area 31) allows soul-bound characters to transform back to normal, but she lacks the knowledge of how this feat is accomplished."
+								"Syranna conveys that the undying laboratory ({@area 4>31}) allows soul-bound characters to transform back to normal, but she lacks the knowledge of how this feat is accomplished."
 							]
 						},
 						{
@@ -1225,7 +1311,7 @@
 								{
 									"type": "inset",
 									"entries": [
-										"In the Abyssal Prisons, the maze of undoing (area 15) has no easy exit, but fiends that can climb are said to have somehow escaped the magic there.",
+										"In the Abyssal Prisons, the maze of undoing ({@area 2>15}) has no easy exit, but fiends that can climb are said to have somehow escaped the magic there.",
 										"In the Far Realm Cysts, the creatures of chaos keep intruders away from a powerful shrine.",
 										"In the Forests of Slaughter, the most cunning hunters seek to steal glyph keys.",
 										"In the Forests of Slaughter, magic pools can heal creatures that drink from them.",
@@ -1427,7 +1513,7 @@
 			"type": "section",
 			"name": "Fiendish Arena",
 			"entries": [
-				"In this zone, a vampire named Issem culls the weakest demons using arena combat. When the demons fight, the battle can be heard in every chamber in this zone (see \"Pit Battle\" in area 2 to aid in narrating the noise).",
+				"In this zone, a vampire named Issem culls the weakest demons using arena combat. When the demons fight, the battle can be heard in every chamber in this zone (see \"Pit Battle\" in {@area 2>2} to aid in narrating the noise).",
 				{
 					"type": "entries",
 					"name": "1. Chandelier Chamber",
@@ -1478,7 +1564,7 @@
 								"An old curse binds Issem to the Doomvault and to the service of the Thayans, but he hates the Red Wizards, so he is willing to talk. He can offer two pieces of lore, and he allows prisoners and the characters to leave the area. He is willing to lie to any Thayans who seek the characters and help them cover their tracks."
 							]
 						},
-						"Issem warns anyone who tries to enter area 3 against doing so. If someone does anyway, the vampire attacks.",
+						"Issem warns anyone who tries to enter {@area 2>3} against doing so. If someone does anyway, the vampire attacks.",
 						{
 							"type": "entries",
 							"name": "Fighting Pit",
@@ -1600,7 +1686,7 @@
 							"type": "entries",
 							"name": "Locked Doors",
 							"entries": [
-								"These steel double doors are locked. Tarul Var (area 10) has a key in his possession."
+								"These steel double doors are locked. Tarul Var ({@area 2>10}) has a key in his possession."
 							]
 						},
 						{
@@ -1617,7 +1703,7 @@
 								"The circles are magical but misleadingly so. A successful DC 15 Intelligence (Arcana) check reveals that hidden among gibberish runes are warding glyphs that discharge lightning. If the check fails, the character discerns the false runes but doesn't notice the glyphs."
 							]
 						},
-						"The trap activates 3 rounds after a creature enters the room. (Tarul Var's steel key disables the trap for 1 minute when it is used to open the door to area 5.) At the start of the fourth round, and every 2 rounds thereafter, one circle (chosen randomly) glows white. At the end of the same round, lightning discharges through the room from the steel orb in the ceiling. When the lightning discharges, any creature in the room must make a DC 10 Dexterity saving throw. On a failed save, a creature takes 7 (2d6) lightning damage.",
+						"The trap activates 3 rounds after a creature enters the room. (Tarul Var's steel key disables the trap for 1 minute when it is used to open the door to {@area 2>5}.) At the start of the fourth round, and every 2 rounds thereafter, one circle (chosen randomly) glows white. At the end of the same round, lightning discharges through the room from the steel orb in the ceiling. When the lightning discharges, any creature in the room must make a DC 10 Dexterity saving throw. On a failed save, a creature takes 7 (2d6) lightning damage.",
 						"A character who touches the steel orb and succeeds on a DC 15 Intelligence (Arcana) check can suppress the orb's magic, disabling the trap for 1d4 rounds. A dispel magic spell cast on the orb suppresses the magic for 1 hour. In both cases, the character doesn't know how long the suppression might last. The circles continue to glow at random.",
 						{
 							"type": "entries",
@@ -1665,7 +1751,7 @@
 							"type": "entries",
 							"name": "Heat",
 							"entries": [
-								"This chamber is uncomfortably hot due to the fire elemental in area 6. The heat grows more intense to the east and in the eastern secret passage."
+								"This chamber is uncomfortably hot due to the fire elemental in {@area 2>6}. The heat grows more intense to the east and in the eastern secret passage."
 							]
 						},
 						{
@@ -1704,7 +1790,7 @@
 							]
 						},
 						"The runes on the wall are a set of arcane bonds that keep the elemental confined here. A character who makes a successful DC 15 Intelligence (Arcana) check discerns the connection. If a character who can cast spells then succeeds on three consecutive DC 15 Intelligence (Arcana) checks while continually touching the wall, the bonds are suppressed long enough for the elemental to leave the room. A dispel magic spell cast on the runes suppresses the bonds for 1 minute.",
-						"The elemental follows its rescuer, fighting alongside that person. If the elemental sees the rift in area 7, it uses the rift to leave the Doomvault and return to the Elemental Plane of Fire.",
+						"The elemental follows its rescuer, fighting alongside that person. If the elemental sees the rift in {@area 2>7}, it uses the rift to leave the Doomvault and return to the Elemental Plane of Fire.",
 						{
 							"type": "entries",
 							"name": "White Gate",
@@ -1735,7 +1821,7 @@
 								"Dmage"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -1872,7 +1958,7 @@
 							]
 						},
 						"The lich attacks immediately. His guards emerge from various positions to screen him from direct attack. Tarul Var can cast any of his spells from one of the dread warriors.",
-						"The dread warriors attempt to drag any helpless characters to the pit in the intersection near this room or to area 9, where they throw open the doors.",
+						"The dread warriors attempt to drag any helpless characters to the pit in the intersection near this room or to {@area 2>9}, where they throw open the doors.",
 						"Devious and arrogant, Tarul Var thinks all other creatures are beneath him. He berates the characters at every opportunity, and he drives his underlings to cruelty.",
 						"If reduced to 30 hit points or fewer, Var offers the party access to his glyph key's attunements and his steel key (see \"Treasure\" below), as well as two pieces of lore, in exchange for his freedom and his silence. If the characters let Var go, he flees the Doomvault, reasoning that the characters' disruptions will draw Szass Tam's attention away from him. If the lich is destroyed here, he might later be destroyed permanently if the party succeeds in collapsing the Phylactery Vault.",
 						{
@@ -1904,7 +1990,7 @@
 							"type": "entries",
 							"name": "Keys",
 							"entries": [
-								"Tarul Var carries a glyph key attuned to this zone and to the Temples of Anguish (in the Temples of Extraction sector). He also has an ornate steel key (worth 5 gp) that opens the locked doors on the east wall of area 4."
+								"Tarul Var carries a glyph key attuned to this zone and to the Temples of Anguish (in the Temples of Extraction sector). He also has an ornate steel key (worth 5 gp) that opens the locked doors on the east wall of {@area 2>4}."
 							]
 						}
 					]
@@ -1946,7 +2032,7 @@
 							"type": "entries",
 							"name": "Dungeon State",
 							"entries": [
-								"If the glabrezu is left free in this area, it eventually frees the demons in area 8 from their circles. That fact should be noted as part of the dungeon state."
+								"If the glabrezu is left free in this area, it eventually frees the demons in {@area 2>8} from their circles. That fact should be noted as part of the dungeon state."
 							]
 						},
 						{
@@ -2017,7 +2103,7 @@
 								"Sorlan, a former adventurer who was imprisoned by the Red Wizards and subjected to horrible experiments, lives on as a {@creature ghost|MM} that is bound to this room. He hates the Red Wizards, and he immediately tries to attack all who enter his chamber, screaming that allies of the Red Wizards must die. If the characters convince Sorlan that they are opposed to the Red Wizards by making a successful DC 15 Charisma (Persuasion) check, the ghost stops attacking and can provide two pieces of lore, which he has overheard from passing Red Wizards."
 							]
 						},
-						"Sorlan also tells the characters to avoid the maze of undoing (area 15), which is where he was captured while trying to escape the dungeon. He doesn't know the trick to overcoming the teleportation trap. If he is slain, Sorlan reappears in this area 24 hours later.",
+						"Sorlan also tells the characters to avoid the maze of undoing ({@area 2>15}), which is where he was captured while trying to escape the dungeon. He doesn't know the trick to overcoming the teleportation trap. If he is slain, Sorlan reappears in this {@area 3>24} hours later.",
 						{
 							"type": "entries",
 							"name": "White Gate",
@@ -2041,7 +2127,7 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"One Red Wizard {@creature conjurer|VGM} oversees one {@creature deathlock wight|TftYP} and one {@creature Thayan apprentice|TftYP}. The conjurer knows the pass phrase for the maze of undoing (area 15) and might provide it to the characters in exchange for mercy, knowing that freed demons will attack their \"rescuers.\""
+								"One Red Wizard {@creature conjurer|VGM} oversees one {@creature deathlock wight|TftYP} and one {@creature Thayan apprentice|TftYP}. The conjurer knows the pass phrase for the maze of undoing ({@area 2>15}) and might provide it to the characters in exchange for mercy, knowing that freed demons will attack their \"rescuers.\""
 							]
 						},
 						{
@@ -2089,7 +2175,7 @@
 							]
 						},
 						"Any creature that enters a trigger point on the floor teleports immediately to the ceiling above another trigger point (determined by a d20 roll). The creature must then succeed on a DC 15 Wisdom saving throw or take 5 (2d4) psychic damage and fall to the floor, taking 10 (3d6) falling damage and triggering another teleportation point. On a successful save, the creature takes no damage and can utilize the weird gravity until the end of its next turn, walking along the ceiling and walls as though they were the floor, and bypassing the teleportation triggers. If the creature is still above the floor at the end of its next turn, it falls the appropriate distance to the floor and triggers another teleportation point.",
-						"In addition to conjuration magic, the entry/exit points also radiate abjuration magic. Until someone utters the proper pass phrase (see area 14), a demon caught in the maze can't pass through either of the entry/exit points. For non-demons, leaving the maze can be accomplished by moving along the walls or ceiling and out of the area through either entry/exit point.",
+						"In addition to conjuration magic, the entry/exit points also radiate abjuration magic. Until someone utters the proper pass phrase (see {@area 2>14}), a demon caught in the maze can't pass through either of the entry/exit points. For non-demons, leaving the maze can be accomplished by moving along the walls or ceiling and out of the area through either entry/exit point.",
 						{
 							"type": "entries",
 							"name": "Creature",
@@ -2327,7 +2413,7 @@
 							"type": "entries",
 							"name": "Floating Disk",
 							"entries": [
-								"An opaque, slightly concave, circular plane of magical force, 5 feet in diameter, floats on the northern side of the northern bridge to area 20. The disk can hold up to 1,000 pounds. It is stationary and level with the bridge, but it can be mentally directed by anyone who can see it (DC 10 Intelligence) to float to the blocked stairway that leads up to the Vermin Halls (areas 16-18)."
+								"An opaque, slightly concave, circular plane of magical force, 5 feet in diameter, floats on the northern side of the northern bridge to {@area 3>20}. The disk can hold up to 1,000 pounds. It is stationary and level with the bridge, but it can be mentally directed by anyone who can see it (DC 10 Intelligence) to float to the blocked stairway that leads up to the Vermin Halls (areas 16-18)."
 							]
 						},
 						{
@@ -2365,7 +2451,7 @@
 								"In the southeast corner is a black gate. North of the gate is a contact stone."
 							]
 						},
-						"If the pigs from area 19 rush into this room, they move unwittingly toward the skeletons, knocking half of them prone before retreating back into the pigpen.",
+						"If the pigs from {@area 3>19} rush into this room, they move unwittingly toward the skeletons, knocking half of them prone before retreating back into the pigpen.",
 						{
 							"type": "entries",
 							"name": "Aura",
@@ -2377,11 +2463,11 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"Twelve {@creature skeleton|MM|skeletons} are here, with a {@creature wight|MM} and a {@creature deathlock wight|TftYP} overseeing them. Eight work to the east, stacking butchered pigs along the wall. To the west, four more work at a sluice that carries offal to the black gate, where it disappears (transported to area 41). Occasionally they toss some of the foul slop toward an {@creature otyugh|MM} chained to the floor."
+								"Twelve {@creature skeleton|MM|skeletons} are here, with a {@creature wight|MM} and a {@creature deathlock wight|TftYP} overseeing them. Eight work to the east, stacking butchered pigs along the wall. To the west, four more work at a sluice that carries offal to the black gate, where it disappears (transported to {@area 5>41}). Occasionally they toss some of the foul slop toward an {@creature otyugh|MM} chained to the floor."
 							]
 						},
 						"The otyugh can move 40 feet from the northeast corner, anywhere within the area described by the dashed line on the map. It attacks any creature it can reach. If it can't attack, the otyugh uses its turn to attempt a DC 20 Strength check to break its chain while its captors are distracted.",
-						"With its childlike intellect and telepathy, the otyugh broadcasts its desire for more food. The characters are able to communicate with the creature, and if they offer to feed it, the otyugh ceases attacking for 1 round. Then the characters must periodically placate it with successful DC 10 Charisma (Persuasion) checks. A character who frees the otyugh learns that more of its kind are in the dungeon and receives a general impression of area 42, where more otyughs live. All these otyughs hate the Thayans.",
+						"With its childlike intellect and telepathy, the otyugh broadcasts its desire for more food. The characters are able to communicate with the creature, and if they offer to feed it, the otyugh ceases attacking for 1 round. Then the characters must periodically placate it with successful DC 10 Charisma (Persuasion) checks. A character who frees the otyugh learns that more of its kind are in the dungeon and receives a general impression of {@area 5>42}, where more otyughs live. All these otyughs hate the Thayans.",
 						{
 							"type": "entries",
 							"name": "Niches",
@@ -2393,7 +2479,7 @@
 							"type": "entries",
 							"name": "Dungeon State",
 							"entries": [
-								"If the otyugh is given a glyph key to the Prison of Filth and told how to use a black gate, it teleports to area 41 and reaches area 42. Its presence there will change the characters' encounter with the other otyughs (see area 42)."
+								"If the otyugh is given a glyph key to the Prison of Filth and told how to use a black gate, it teleports to {@area 5>41} and reaches {@area 5>42}. Its presence there will change the characters' encounter with the other otyughs (see {@area 5>42})."
 							]
 						},
 						{
@@ -2407,7 +2493,7 @@
 							"type": "entries",
 							"name": "White Gates",
 							"entries": [
-								"The corridor that leads east to area 22 in the Hatchery contains a white gate. Another white gate is situated in the southern passage that connects with area 21 in the Hatchery."
+								"The corridor that leads east to {@area 3>22} in the Hatchery contains a white gate. Another white gate is situated in the southern passage that connects with {@area 3>21} in the Hatchery."
 							]
 						}
 					]
@@ -2469,7 +2555,7 @@
 							"type": "entries",
 							"name": "White Gate",
 							"entries": [
-								"In the corridor beyond the western exit is a white gate that separates area 21 from the Swine Run."
+								"In the corridor beyond the western exit is a white gate that separates {@area 3>21} from the Swine Run."
 							]
 						}
 					]
@@ -2500,7 +2586,7 @@
 								"A Red Wizard {@creature transmuter|VGM} oversees two {@creature thayan apprentice|TftYP|Thayan apprentices} in caring for the imprisoned hatchlings, while four {@creature thayan warrior|TftYP|Thayan warriors} stand guard. They attack intruders. In a desperate battle, the Red Wizard might take the time to release hatchlings to add to the characters' opposition."
 							]
 						},
-						"If the battle goes badly for the Thayans, the Red Wizard surrenders. Her name is Myrja, and her allegiance to Szass Tam is less than resolute. If the characters spare her, she offers the pass phrase to get by the trap and creatures in area 23 (\"That which is dead, stay so\") and one piece of lore.",
+						"If the battle goes badly for the Thayans, the Red Wizard surrenders. Her name is Myrja, and her allegiance to Szass Tam is less than resolute. If the characters spare her, she offers the pass phrase to get by the trap and creatures in {@area 3>23} (\"That which is dead, stay so\") and one piece of lore.",
 						{
 							"type": "entries",
 							"name": "Cages",
@@ -2529,7 +2615,7 @@
 							"type": "entries",
 							"name": "White Gates",
 							"entries": [
-								"Area 22 is bordered by three white gates. One connects to the Swine Run, another to the Dark Gardens, and a third to the Temples of Despair."
+								"{@area 3>22|u} is bordered by three white gates. One connects to the Swine Run, another to the Dark Gardens, and a third to the Temples of Despair."
 							]
 						}
 					]
@@ -2559,7 +2645,7 @@
 								"Seven {@creature zombie|MM|zombies} and two {@creature wight|MM|wights} are focused on the doors to areas 22 and 24. Those who appear by way of the black gate can gain surprise if they attack immediately."
 							]
 						},
-						"Unless the creatures are attacked, they grant free passage to anyone who appears to be a Thayan and knows the room's pass phrase (see area 22). The wights challenge those who know the phrase but look like intruders. It takes a successful DC 15 Charisma (Deception, Intimidation, or Persuasion) check to convince the wights to stand down.",
+						"Unless the creatures are attacked, they grant free passage to anyone who appears to be a Thayan and knows the room's pass phrase (see {@area 3>22}). The wights challenge those who know the phrase but look like intruders. It takes a successful DC 15 Charisma (Deception, Intimidation, or Persuasion) check to convince the wights to stand down.",
 						{
 							"type": "entries",
 							"name": "Aura",
@@ -2889,7 +2975,7 @@
 							"type": "entries",
 							"name": "White Gates",
 							"entries": [
-								"Two white gates adjoin area 28. One is in the south passage that leads to the Hall of Obedience, and the other is in the eastern corridor that connects with the Hall of Necromancy."
+								"Two white gates adjoin {@area 4>28}. One is in the south passage that leads to the Hall of Obedience, and the other is in the eastern corridor that connects with the Hall of Necromancy."
 							]
 						}
 					]
@@ -2981,7 +3067,7 @@
 						},
 						"Lahnis initially stays back in combat, using lower-level spells and trying to assess the characters' motivations. His allegiance to Szass Tam has been flagging. He leans toward supporting the Thayan rebels, but he has not formally joined their ranks. He worries that some of his peers who are loyal to Szass Tam might suspect him.",
 						"Aware of Szass Tam's cunning, Lahnis first assumes the characters are testing his allegiance. Around the second round of combat, or if reduced to half his hit points or fewer, Lahnis directly asks the characters their purpose and admits a willingness to join the rebels. The characters can sway him with convincing talk and proof that they have overcome other parts of the dungeon. If the characters earn his trust, Lahnis turns against Szass Tam, having become convinced that the regent's plots will be the undoing of Thay.",
-						"He then turns on the Thayans here, whom he knows won't stand down, and helps the characters fight. Afterward, Lahnis provides two pieces of lore and the attunements on his glyph key, as well as his physical keys. He goes to the gatehouse through the black gate in area 29.",
+						"He then turns on the Thayans here, whom he knows won't stand down, and helps the characters fight. Afterward, Lahnis provides two pieces of lore and the attunements on his glyph key, as well as his physical keys. He goes to the gatehouse through the black gate in {@area 4>29}.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -2993,7 +3079,7 @@
 							"type": "entries",
 							"name": "Keys",
 							"entries": [
-								"Lahnis carries a glyph key attuned to this zone, the Hall of Necromancy, and the Temples of Despair. He also carries a key that safely opens all the doors in the Temples of Despair, as well as a key to open the C cells in area 29."
+								"Lahnis carries a glyph key attuned to this zone, the Hall of Necromancy, and the Temples of Despair. He also carries a key that safely opens all the doors in the Temples of Despair, as well as a key to open the C cells in {@area 4>29}."
 							]
 						},
 						{
@@ -3047,7 +3133,7 @@
 							},
 							"title": "Kelson"
 						},
-						"A {@creature deathlock wight|TftYP} on a nearby table is a Red Wizard in the process of being raised as undead. Also nearby, two reduced-threat {@creature wight|MM|wights} are being raised as warrior undead. These wights are only partially animated, so they respond only to Phaia when she orders an attack. One of them tries to throw an urn at a character each round (+4 to hit, range 10 feet/20 feet; one creature). A hit deals 3 (1d6) bludgeoning damage, and the target must make saving throws as noted in the \"Urns\" section. Phaia stays for a round or two to assess the party's capabilities and then moves to area 32 or uses the black gate in the room.",
+						"A {@creature deathlock wight|TftYP} on a nearby table is a Red Wizard in the process of being raised as undead. Also nearby, two reduced-threat {@creature wight|MM|wights} are being raised as warrior undead. These wights are only partially animated, so they respond only to Phaia when she orders an attack. One of them tries to throw an urn at a character each round (+4 to hit, range 10 feet/20 feet; one creature). A hit deals 3 (1d6) bludgeoning damage, and the target must make saving throws as noted in the \"Urns\" section. Phaia stays for a round or two to assess the party's capabilities and then moves to {@area 4>32} or uses the black gate in the room.",
 						"As a faithful servant of Szass Tam, Phaia follows the lich lord's philosophy that no magic is too dangerous and no experiment too dark if it promises power. Lawful evil, Phaia is as opportunistic as she is wicked.",
 						"She does anything she can to save herself from death, including using Szass Tam's secrets. She can reveal two pieces of lore and is willing to share her glyph key's attunements. Further, she can teach the characters the ritual that uses this area's magic to return soul-bound undead characters to life.",
 						"If she is allowed to do so, Phaia flees the Doomvault.",
@@ -3065,7 +3151,7 @@
 								"These 3-foot-high carved slabs channel the energy of life and undeath. They aid in rituals and spells to create undead."
 							]
 						},
-						"With the proper knowledge, a creature can use the stone tables to transform a soul-bound character back into a normal creature. Doing so requires the aid of a Red Wizard or explicit written instruction, such as the scroll in Lahnis's room in area 32. The ritual takes 20 minutes and requires a spellcaster to make a DC 15 Intelligence (Arcana) check. The spellcaster must also expend a 3rd-level spell slot. On a successful check, the soul-bound creature returns to normal with all of its Hit Dice expended. On a failed check, the spell slot is expended but the creature remains soul bound.",
+						"With the proper knowledge, a creature can use the stone tables to transform a soul-bound character back into a normal creature. Doing so requires the aid of a Red Wizard or explicit written instruction, such as the scroll in Lahnis's room in {@area 4>32}. The ritual takes 20 minutes and requires a spellcaster to make a DC 15 Intelligence (Arcana) check. The spellcaster must also expend a 3rd-level spell slot. On a successful check, the soul-bound creature returns to normal with all of its Hit Dice expended. On a failed check, the spell slot is expended but the creature remains soul bound.",
 						{
 							"type": "entries",
 							"name": "Urns",
@@ -3136,7 +3222,7 @@
 							]
 						},
 						"Combat in the courtyard alerts the inhabitants of the cells. They take 1d4+1 rounds to respond (roll for each one):",
-						"{@b Cell A.} Lahnis (see area 30) uses these quarters, which contain a fine bed, a footlocker, and a desk. Searching the area uncovers one written piece of lore, as well as a {@item tome of the stilled tongue|DMG} and six spell scrolls (two each of {@spell detect magic|PHB}, {@spell identify|PHB}, and {@spell remove curse|PHB}). Lahnis also has a scroll describing the ritual used to turn soul-bound undead back into non-undead creatures in area 31.",
+						"{@b Cell A.} Lahnis (see {@area 4>30}) uses these quarters, which contain a fine bed, a footlocker, and a desk. Searching the area uncovers one written piece of lore, as well as a {@item tome of the stilled tongue|DMG} and six spell scrolls (two each of {@spell detect magic|PHB}, {@spell identify|PHB}, and {@spell remove curse|PHB}). Lahnis also has a scroll describing the ritual used to turn soul-bound undead back into non-undead creatures in {@area 4>31}.",
 						"{@b Cell B.} One Red Wizard evoker sleeps here.",
 						"{@b Cell C.} One Thayan apprentice sleeps here.",
 						"{@b Cell D.} Each of these two rooms is a library. An hour spent examining a library's contents turns up two pieces of lore.",
@@ -3158,7 +3244,7 @@
 							"type": "entries",
 							"name": "White Gates",
 							"entries": [
-								"Two white gates separate area 32 from other zones. The gate in the corridor to the west leads to the Hall of Obedience. Beyond the doors to the south is a gate that connects with the Dread Legion Outpost."
+								"Two white gates separate {@area 4>32} from other zones. The gate in the corridor to the west leads to the Hall of Obedience. Beyond the doors to the south is a gate that connects with the Dread Legion Outpost."
 							]
 						}
 					]
@@ -3233,7 +3319,7 @@
 							"type": "entries",
 							"name": "Stone Wall",
 							"entries": [
-								"A rough stone wall separates the lower cavern of area 34 from the higher finished chamber of area 35. The wall is 15 feet high."
+								"A rough stone wall separates the lower cavern of {@area 4>34} from the higher finished chamber of {@area 4>35}. The wall is 15 feet high."
 							]
 						}
 					]
@@ -3242,7 +3328,7 @@
 					"type": "entries",
 					"name": "35. Dread Legion Barracks",
 					"entries": [
-						"The light in this room can be seen from area 34. Unless the creatures here have a reason to be quiet, they are talking loudly.",
+						"The light in this room can be seen from {@area 4>34}. Unless the creatures here have a reason to be quiet, they are talking loudly.",
 						{
 							"type": "inset",
 							"entries": [
@@ -3268,7 +3354,7 @@
 							"type": "entries",
 							"name": "Stone Wall",
 							"entries": [
-								"See area 34."
+								"See {@area 4>34}."
 							]
 						},
 						{
@@ -3436,7 +3522,7 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"Eight {@creature zombie|MM|zombies} and two {@creature ogre zombie|MM|ogre zombies} attack any intruders. Any combat warns Thaxalia (area 39) of the approach of intruders."
+								"Eight {@creature zombie|MM|zombies} and two {@creature ogre zombie|MM|ogre zombies} attack any intruders. Any combat warns Thaxalia ({@area 5>39}) of the approach of intruders."
 							]
 						},
 						{
@@ -3469,11 +3555,11 @@
 							"type": "entries",
 							"name": "Beholder",
 							"entries": [
-								"Thaxalia, a reduced-threat {@creature beholder|MM} crippled by Thayan magic, floats near the ceiling, trying to remain unnoticed while intruders enter. Thaxalia's central eye and two of its eyestalks have been maimed by the Red Wizards, rendering those eye rays (death ray and disintegration) powerless. If it has warning or is reduced to 50 hit points or fewer, it withdraws to area 40, leaving its spawn to deal with the threat."
+								"Thaxalia, a reduced-threat {@creature beholder|MM} crippled by Thayan magic, floats near the ceiling, trying to remain unnoticed while intruders enter. Thaxalia's central eye and two of its eyestalks have been maimed by the Red Wizards, rendering those eye rays (death ray and disintegration) powerless. If it has warning or is reduced to 50 hit points or fewer, it withdraws to {@area 5>40}, leaving its spawn to deal with the threat."
 							]
 						},
 						"After only 2 rounds, Thaxalia's hatred for the Red Wizards inspires the beholder to question the characters' purpose in the dungeon. If they reveal their goals, the beholder suggests an alliance, extolling its plans for revenge.",
-						"Fearing Thaxalia's ability to wreak havoc if it escapes this zone, the Red Wizards cursed the beholder with the inability to use glyph keys. Thaxalia doesn't know the solution, but a remove curse spell can eliminate the prohibition. The beholder then takes a glyph key from the wight in area 40 and asks the characters to provide it with more attunements. If refused, it becomes hostile and uses its powers to compel the characters to give it more attunements.",
+						"Fearing Thaxalia's ability to wreak havoc if it escapes this zone, the Red Wizards cursed the beholder with the inability to use glyph keys. Thaxalia doesn't know the solution, but a remove curse spell can eliminate the prohibition. The beholder then takes a glyph key from the wight in {@area 5>40} and asks the characters to provide it with more attunements. If refused, it becomes hostile and uses its powers to compel the characters to give it more attunements.",
 						{
 							"type": "entries",
 							"name": "Beholder Spawn",
@@ -3489,7 +3575,7 @@
 								"Effect"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -3552,7 +3638,7 @@
 								"Viscous slime covers this chamber. Rough stone steps lead up and out."
 							]
 						},
-						"If Thaxalia left area 39, the beholder is in this location. It has been picking off Thayan patrols here. Amid the slime are five bodies: two of wights and three of Thayan warriors.",
+						"If Thaxalia left {@area 5>39}, the beholder is in this location. It has been picking off Thayan patrols here. Amid the slime are five bodies: two of wights and three of Thayan warriors.",
 						{
 							"type": "entries",
 							"name": "Slime",
@@ -3615,7 +3701,7 @@
 								"Twenty unarmed {@creature skeleton|MM|skeletons} stand here, waiting to cart refuse that arrives from other areas through the black gate. They attack only if attacked."
 							]
 						},
-						"If a character drops any moderate-sized object in front of the skeletons, as many of them as needed quickly seize the object and carry it into area 42. The otyughs are distracted while the skeletons move through area 42.",
+						"If a character drops any moderate-sized object in front of the skeletons, as many of them as needed quickly seize the object and carry it into {@area 5>42}. The otyughs are distracted while the skeletons move through {@area 5>42}.",
 						{
 							"type": "entries",
 							"name": "Doors",
@@ -3646,7 +3732,7 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"Two {@creature otyugh|MM|otyughs} and two reduced-threat {@creature otyugh|MM} young hide in the trash here. The reduced-threat monsters can't restrain with tentacles or use Tentacle Slam. The otyughs attack right away unless the otyugh from area 20 is here, in which case it may convince them to delay or even negotiate with the characters (depending on how the previous encounter went)."
+								"Two {@creature otyugh|MM|otyughs} and two reduced-threat {@creature otyugh|MM} young hide in the trash here. The reduced-threat monsters can't restrain with tentacles or use Tentacle Slam. The otyughs attack right away unless the otyugh from {@area 3>20} is here, in which case it may convince them to delay or even negotiate with the characters (depending on how the previous encounter went)."
 							]
 						},
 						"The otyughs use their telepathy to demand food like peevish children. If the characters offer to feed them, the otyughs stop fighting to see if the party is telling the truth (unless the party has slain one of the young). If the characters have killed one of the young, it takes a successful DC 20 Charisma (Intimidation or Persuasion) check to get the otyughs to stand down.",
@@ -3682,7 +3768,7 @@
 							"type": "entries",
 							"name": "White Gates",
 							"entries": [
-								"The open passages that lead away from area 42 both contain white gates. The northern route leads to the Warren of Eyes, and the southern path goes to the Caverns of Chaos."
+								"The open passages that lead away from {@area 5>42} both contain white gates. The northern route leads to the Warren of Eyes, and the southern path goes to the Caverns of Chaos."
 							]
 						}
 					]
@@ -3738,7 +3824,7 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"Four {@creature grick|MM|gricks} climb and wander on the top two steps, while two {@creature gibbering mouther|MM|gibbering mouthers} lurk on the third. One {@creature grell|MM} starts out flying above area 45. Six prisoners hide among the ledges, trying to avoid the aberrant monsters."
+								"Four {@creature grick|MM|gricks} climb and wander on the top two steps, while two {@creature gibbering mouther|MM|gibbering mouthers} lurk on the third. One {@creature grell|MM} starts out flying above {@area 5>45}. Six prisoners hide among the ledges, trying to avoid the aberrant monsters."
 							]
 						},
 						{
@@ -3793,7 +3879,7 @@
 							"type": "entries",
 							"name": "Altar",
 							"entries": [
-								"This ancient altar to chaos is imbued with transmutation magic that reshapes its sides to show the faces of the most recent sentient humanoids to enter area 44."
+								"This ancient altar to chaos is imbued with transmutation magic that reshapes its sides to show the faces of the most recent sentient humanoids to enter {@area 5>44}."
 							]
 						},
 						"The top of the altar slab shows the shadowy outlines of a dozen weapons, pendants, and other objects. An {@spell identify|PHB} spell reveals that the altar imparts additional power into magic items placed on its surface. The caster must succeed on a DC 20 Intelligence (Arcana) check to further discern that when an item is empowered, the altar also draws in the life force of creatures near it.",
@@ -3912,7 +3998,7 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"Two adult {@creature gorgon|MM|gorgons} attack intruders on sight, pursuing those who flee into area 46. Any hook horrors there attack only if the intruders slay or drive off the gorgons."
+								"Two adult {@creature gorgon|MM|gorgons} attack intruders on sight, pursuing those who flee into {@area 6>46}. Any hook horrors there attack only if the intruders slay or drive off the gorgons."
 							]
 						},
 						{
@@ -4357,7 +4443,7 @@
 							]
 						},
 						"Sarkalla, a Red Wizard {@creature transmuter|VGM}, is working behind the black curtain, but she peeks out in response to the wights' challenge. She whispers to order the lead wight to attack. A character who succeeds on a DC 20 Wisdom (Perception) check notices Sarkalla while she does so.",
-						"Quite mad, Sarkalla cares only for her experiments and her \"precious children\"-the oozes that she is working to imbue with intelligence in order to create \"the perfect assassins.\" If she and her wights have the upper hand in combat, or if all the wights are destroyed, she calls for a break in hostilities. She proudly talks of the sentient oozes that will wreak havoc for Thay. She promises the characters positions as assistants and bodyguards to the Ooze Master (see area 65). If the characters accept, they are allowed to leave and go to area 64. Sarkalla otherwise attacks again and fights until killed.",
+						"Quite mad, Sarkalla cares only for her experiments and her \"precious children\"-the oozes that she is working to imbue with intelligence in order to create \"the perfect assassins.\" If she and her wights have the upper hand in combat, or if all the wights are destroyed, she calls for a break in hostilities. She proudly talks of the sentient oozes that will wreak havoc for Thay. She promises the characters positions as assistants and bodyguards to the Ooze Master (see {@area 7>65}). If the characters accept, they are allowed to leave and go to {@area 7>64}. Sarkalla otherwise attacks again and fights until killed.",
 						{
 							"type": "entries",
 							"name": "Vat System",
@@ -4375,7 +4461,7 @@
 								"Check"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -4397,7 +4483,7 @@
 								"Escaping Ooze"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -4586,7 +4672,7 @@
 							"type": "entries",
 							"name": "Noise",
 							"entries": [
-								"Anyone near area 68 can hear the loud sound of steel grinding flesh and bone, rising and falling at intervals. The noise means that Thayans here fail to perceive sounds of combat from nearby areas."
+								"Anyone near {@area 7>68} can hear the loud sound of steel grinding flesh and bone, rising and falling at intervals. The noise means that Thayans here fail to perceive sounds of combat from nearby areas."
 							]
 						},
 						{
@@ -4903,8 +4989,8 @@
 								"One reduced-threat {@creature dragon turtle|MM} -it has no tail attack-recently taken from Lake Thaylambar, has been chained here while the insidious mind control magic of the pools takes effect. Not yet under the sway of Thay, it grows agitated when any creature enters this chamber, and it's likely to attack."
 							]
 						},
-						"The dragon turtle wants freedom, and it is small enough to use a black gate. Any offer of freedom, including the use of a glyph key, causes a break in hostilities while the creature listens. If it is freed, unless the characters know of the circle in area 82, the dragon turtle goes to area 76 and escapes through the gatehouse.",
-						"The turtle knows that Ihanvas, the naga overseer of this zone, dwells in area 76. It can be persuaded with a successful DC 17 Charisma (Persuasion) check to fight the naga if it is lured into this chamber.",
+						"The dragon turtle wants freedom, and it is small enough to use a black gate. Any offer of freedom, including the use of a glyph key, causes a break in hostilities while the creature listens. If it is freed, unless the characters know of the circle in {@area 8>82}, the dragon turtle goes to {@area 8>76} and escapes through the gatehouse.",
+						"The turtle knows that Ihanvas, the naga overseer of this zone, dwells in {@area 8>76}. It can be persuaded with a successful DC 17 Charisma (Persuasion) check to fight the naga if it is lured into this chamber.",
 						{
 							"type": "entries",
 							"name": "Chains",
@@ -4944,14 +5030,14 @@
 							"type": "entries",
 							"name": "Southern Interior Door",
 							"entries": [
-								"The southern door to area 77 is locked."
+								"The southern door to {@area 8>77} is locked."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Curse Glyph",
 							"entries": [
-								"Ihanvas wants to block direct access to her lair from area 77, so a magic glyph has been placed in the area marked on the map. Any creature that enters the marked area must succeed on a DC 15 Wisdom saving throw or have disadvantage on attack rolls against the naga, while the naga has advantage on saving throws against the creature's capabilities. The effect is a curse that lasts until Ihanvas dies."
+								"Ihanvas wants to block direct access to her lair from {@area 8>77}, so a magic glyph has been placed in the area marked on the map. Any creature that enters the marked area must succeed on a DC 15 Wisdom saving throw or have disadvantage on attack rolls against the naga, while the naga has advantage on saving throws against the creature's capabilities. The effect is a curse that lasts until Ihanvas dies."
 							]
 						},
 						{
@@ -5061,7 +5147,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"Any combat that lasts more than 3 rounds attracts the scrags in area 77. They enter the fray here at the start of the fifth round."
+								"Any combat that lasts more than 3 rounds attracts the scrags in {@area 8>77}. They enter the fray here at the start of the fifth round."
 							]
 						},
 						{
@@ -5177,7 +5263,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If combat lasts longer than 3 rounds, the activity draws the attention of the creatures in area 81. They open the southern doors during the fourth round of combat and retreat to draw characters into the spawn pits in area 81."
+								"If combat lasts longer than 3 rounds, the activity draws the attention of the creatures in {@area 8>81}. They open the southern doors during the fourth round of combat and retreat to draw characters into the spawn pits in {@area 8>81}."
 							]
 						},
 						{
@@ -5229,7 +5315,7 @@
 							"type": "entries",
 							"name": "Creatures",
 							"entries": [
-								"Two male {@creature merrow|MM} dwell in the south pool. A {@creature sea hag|MM} named Tanjus luxuriates under the surface of the north pool with her pets, six {@creature giant crab|MM|giant crabs}. She oversees the spawning pools in this zone and yearns to overthrow Ihanvas (area 76) for control of the Predator Pools and their monsters."
+								"Two male {@creature merrow|MM} dwell in the south pool. A {@creature sea hag|MM} named Tanjus luxuriates under the surface of the north pool with her pets, six {@creature giant crab|MM|giant crabs}. She oversees the spawning pools in this zone and yearns to overthrow Ihanvas ({@area 8>76}) for control of the Predator Pools and their monsters."
 							]
 						},
 						"During combat, Tanjus offers the characters a temporary truce. She asks them to find and kill Ihanvas, because Tanjus wants to be the dominant force in this portion of the dungeon. The hag offers two pieces of lore and promises that none of her creatures will leave this sector. She also says that the characters can move freely through this zone once the naga is disposed of.",
@@ -5237,7 +5323,7 @@
 							"type": "entries",
 							"name": "Development",
 							"entries": [
-								"If combat lasts longer than 3 rounds, the activity draws the attention of the creatures in area 81. They open the southern doors during the fourth round of combat and attack unless Tanjus orders them not to."
+								"If combat lasts longer than 3 rounds, the activity draws the attention of the creatures in {@area 8>81}. They open the southern doors during the fourth round of combat and attack unless Tanjus orders them not to."
 							]
 						},
 						{
@@ -5280,7 +5366,7 @@
 							"type": "entries",
 							"name": "Dungeon State",
 							"entries": [
-								"If the characters leave Tanjus alive and Ihanvas is killed, the hag and her merrow allies relocate to area 76. No matter what else happens, Tanjus and her monsters attack any characters who return to this zone."
+								"If the characters leave Tanjus alive and Ihanvas is killed, the hag and her merrow allies relocate to {@area 8>76}. No matter what else happens, Tanjus and her monsters attack any characters who return to this zone."
 							]
 						},
 						{
@@ -5323,7 +5409,7 @@
 								"Six {@creature sahuagin|MM} swim along the surface around the edge of the pool, while a {@creature sahuagin baron|MM} and two {@creature hunter shark|MM|hunter sharks} swim deeper down."
 							]
 						},
-						"Enmity between the baron and the priestess (area 84) means that these sahuagin make no attempt to call for aid.",
+						"Enmity between the baron and the priestess ({@area 8>84}) means that these sahuagin make no attempt to call for aid.",
 						"The sahuagin know the hazards of the pillars. They aren't aware of the secret door.",
 						{
 							"type": "entries",
@@ -5375,7 +5461,7 @@
 							]
 						},
 						"The chanting that precedes the sacrifice takes 3 rounds to complete. If the characters deal at least 20 damage to the priestess in that time, she breaks off the ritual to lead a counterattack. Otherwise, the prisoner is slain and thrown to the sharks. Any sahuagin on the altar then gains the effects of the aid and bless spells.",
-						"Enmity between the priestess and the baron (area 83) means that these sahuagin make no attempt to call for aid.",
+						"Enmity between the priestess and the baron ({@area 8>83}) means that these sahuagin make no attempt to call for aid.",
 						{
 							"type": "entries",
 							"name": "Altar Pillar",
@@ -5387,21 +5473,21 @@
 							"type": "entries",
 							"name": "Paralysis Pillars",
 							"entries": [
-								"See area 83."
+								"See {@area 8>83}."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Prisoner",
 							"entries": [
-								"If the prisoner is saved, he is in the same mental state as the prisoners in area 85. He can't aid the characters or answer questions."
+								"If the prisoner is saved, he is in the same mental state as the prisoners in {@area 8>85}. He can't aid the characters or answer questions."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Ledge",
 							"entries": [
-								"A 10-foot-high rough ledge separates this area from area 85."
+								"A 10-foot-high rough ledge separates this area from {@area 8>85}."
 							]
 						},
 						{
@@ -5456,7 +5542,7 @@
 							"type": "entries",
 							"name": "Ledge",
 							"entries": [
-								"A 10-foot-high rough ledge separates this area from area 84."
+								"A 10-foot-high rough ledge separates this area from {@area 8>84}."
 							]
 						},
 						{
@@ -5712,7 +5798,7 @@
 								"Ahead is a broad archway of dimly glowing green stone. Inside it is a field of dead gray mist."
 							]
 						},
-						"Any creature that moves within 5 feet of the mist must succeed on a DC 20 Strength saving throw or be pulled into it and shunted violently into area 91, falling prone and taking 3 (1d6) bludgeoning damage.",
+						"Any creature that moves within 5 feet of the mist must succeed on a DC 20 Strength saving throw or be pulled into it and shunted violently into {@area 9>91}, falling prone and taking 3 (1d6) bludgeoning damage.",
 						"Inside the room is the following scene.",
 						{
 							"type": "inset",
@@ -5781,7 +5867,7 @@
 								"In the northwest corner, 20 feet above the floor, a secret door is hidden. The door is nearly impossible to find from the floor, requiring a successful DC 30 Wisdom (Perception) check. The smooth wall is hard to climb without aid, but the vaulted ceiling provides places where a grappling hook might catch."
 							]
 						},
-						"Beyond the secret door, a teleportation circle set into the floor of a small chamber glows with a deep red light. A creature that steps into the circle is teleported into one of the two circles in area 89 (determine randomly).",
+						"Beyond the secret door, a teleportation circle set into the floor of a small chamber glows with a deep red light. A creature that steps into the circle is teleported into one of the two circles in {@area 9>89} (determine randomly).",
 						{
 							"type": "entries",
 							"name": "Black Gate",
@@ -5860,7 +5946,7 @@
 							"type": "entries",
 							"name": "White Gates",
 							"entries": [
-								"The corridor leading west has a white gate that connects with area 83 in the Blood Pools. In the corridor to the south and west, a white gate leads to area 84 in the Blood Pools."
+								"The corridor leading west has a white gate that connects with {@area 8>83} in the Blood Pools. In the corridor to the south and west, a white gate leads to {@area 8>84} in the Blood Pools."
 							]
 						}
 					]
@@ -5986,7 +6072,7 @@
 							"type": "entries",
 							"name": "Gout of Flame",
 							"entries": [
-								"A gout of flame blocks the passage that leads to area 97. A creature can jump over the flame easily but takes 2 (1d4) fire damage when doing so. A creature that enters the flame during its turn, or starts its turn there, takes 21 (6d6) fire damage."
+								"A gout of flame blocks the passage that leads to {@area 9>97}. A creature can jump over the flame easily but takes 2 (1d4) fire damage when doing so. A creature that enters the flame during its turn, or starts its turn there, takes 21 (6d6) fire damage."
 							]
 						},
 						{
@@ -6085,12 +6171,12 @@
 								"A Red Wizard {@creature conjurer|VGM} and two {@creature thayan apprentice|TftYP|Thayan apprentices} work on an inactive iron golem in this area."
 							]
 						},
-						"A charmed {@creature efreeti|MM} (see area 95) is at work boiling metal in the crucible. The efreeti fights for its Thayan friends. If freed of the charmed condition, it snatches up a falchion intended for the golem and attacks the Thayans. If the efreeti is alive when the other foes in the area are slain, it rampages like its kin in area 95.",
+						"A charmed {@creature efreeti|MM} (see {@area 9>95}) is at work boiling metal in the crucible. The efreeti fights for its Thayan friends. If freed of the charmed condition, it snatches up a falchion intended for the golem and attacks the Thayans. If the efreeti is alive when the other foes in the area are slain, it rampages like its kin in {@area 9>95}.",
 						{
 							"type": "entries",
 							"name": "Crucible",
 							"entries": [
-								"The 5-foot-high crucible contains molten metal. As an action, a creature can attempt to spill the contents by tipping the crucible over, taking 21 (6d6) fire damage in the process. On a successful DC 15 Strength check, the crucible tips, and on a successful DC 20 Strength check, a creature can also push the crucible 5 feet before it tips. Molten metal quickly spreads from the mouth of the crucible over an area 30 feet by 30 feet in size, including the crucible and the space within 5 feet of it."
+								"The 5-foot-high crucible contains molten metal. As an action, a creature can attempt to spill the contents by tipping the crucible over, taking 21 (6d6) fire damage in the process. On a successful DC 15 Strength check, the crucible tips, and on a successful DC 20 Strength check, a creature can also push the crucible 5 feet before it tips. Molten metal quickly spreads from the mouth of the crucible over an {@area 4>30} feet by 30 feet in size, including the crucible and the space within 5 feet of it."
 							]
 						},
 						"Anyone caught in the molten metal takes 21 (6d6) fire damage and must succeed on a DC 15 Constitution saving throw or fall prone. The floor of the area is covered in molten metal. For the next 5 rounds, a creature that enters the area for the first time on a turn, or starts its turn there, takes 10 (3d6) fire damage. For 5 rounds after that, the damage is 3 (1d6), and then it drops to none.",
@@ -6098,7 +6184,7 @@
 							"type": "entries",
 							"name": "Fire Vent",
 							"entries": [
-								"See area 95."
+								"See {@area 9>95}."
 							]
 						},
 						{
@@ -6165,7 +6251,7 @@
 					"type": "entries",
 					"name": "Reaching the Phylactery Vault",
 					"entries": [
-						"Once a Shrine of Binding has been disabled, a character who closely examines the shrine and succeeds on a DC 15 Intelligence (Arcana) check discerns how these shrines and the black gates in this sector work together to shield the Phylactery Vault. The character understands that if the black gates in the Temples of Extraction can be overloaded, those gates will attune themselves to the location where the power of the Chosen is being directed- the vault itself."
+						"Once a Shrine of Binding has been disabled, a character who closely examines the shrine and succeeds on a DC 15 Intelligence (Arcana) check discerns how these shrines and the black gates in this sector work together to shield the Phylactery Vault. The character understands that if the black gates in the Temples of Extraction can be overloaded, those gates will attune themselves to the location where the power of the Chosen is being directed\u2014the vault itself."
 					]
 				},
 				"In order to create that overload, six black gates in other sectors must be disrupted simultaneously (as described at the beginning of this adventure). Once that is accomplished, any glyph key can be used on any of the black gates in the Temples of Extraction, and the user will be taken to the Phylactery Vault.",

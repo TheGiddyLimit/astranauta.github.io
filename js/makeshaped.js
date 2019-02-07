@@ -28,6 +28,8 @@ class ShapedConverter {
 			];
 
 			this._inputPromise = DataUtil.multiLoadJSON(sources, null, data => {
+				ShapedConverter.bestiaryIndex = data[0];
+
 				SOURCE_INFO.bestiary.fileIndex = data[0];
 				SOURCE_INFO.spells.fileIndex = data[1];
 				const inputs = {};
@@ -38,7 +40,10 @@ class ShapedConverter {
 
 				data[4].spell.forEach(spell => inputs._additionalSpellData[spell.name] = Object.assign(spell.data, spell.shapedData));
 				inputs._legendaryGroup = {};
-				data[5].legendaryGroup.forEach(monsterDetails => inputs._legendaryGroup[monsterDetails.name] = monsterDetails);
+				data[5].legendaryGroup.forEach(monsterDetails => {
+					inputs._legendaryGroup[monsterDetails.source] = inputs._legendaryGroup[monsterDetails.source] || {};
+					inputs._legendaryGroup[monsterDetails.source][monsterDetails.name] = monsterDetails
+				});
 				Object.defineProperties(inputs, {
 					_srdMonsters: { writable: false, enumerable: false },
 					_srdSpells: { writable: false, enumerable: false },
@@ -81,8 +86,9 @@ class ShapedConverter {
 		}
 		if (data.legendaryGroup && data.legendaryGroup.length) {
 			data.legendaryGroup.forEach(legendary => {
-				if (!inputs._legendaryGroup[legendary.name]) {
-					inputs._legendaryGroup[legendary.name] = legendary;
+				inputs._legendaryGroup[legendary.source] = inputs._legendaryGroup[legendary.source] || {};
+				if (!inputs._legendaryGroup[legendary.source][legendary.name]) {
+					inputs._legendaryGroup[legendary.source][legendary.name] = legendary;
 				}
 			})
 		}
@@ -120,17 +126,19 @@ class ShapedConverter {
 
 			let jsonPromise;
 			if (sources.length) {
-				jsonPromise = DataUtil.multiLoadJSON(sources, null, (data) => {
-					data.forEach((dataItem, index) => {
-						const key = sources[index].key;
-						if (dataItem.spell) {
-							inputs[key].spellInput = dataItem.spell;
-						}
-						if (dataItem.monster) {
-							inputs[key].monsterInput = dataItem.monster;
-						}
-					});
-				});
+				const originalSources = MiscUtil.copy(sources);
+				jsonPromise = DataUtil.multiLoadJSON(
+					originalSources,
+					null,
+					(data) => {
+						data.forEach((dataItem, index) => {
+							const key = sources[index].key;
+							if (dataItem.spell) inputs[key].spellInput = dataItem.spell;
+							if (dataItem.monster) inputs[key].monsterInput = dataItem.monster;
+							if (sources[index].doNotConvert) inputs[key].doNotConvert = true;
+						});
+					}
+				);
 			} else {
 				jsonPromise = Promise.resolve();
 			}
@@ -165,7 +173,8 @@ class ShapedConverter {
 				'headerWill',
 				'name',
 				'footerEntries',
-				'ability'
+				'ability',
+				'hidden'
 			].includes(k))
 			.map(useInfo => {
 				const spellDetails = spellcasting[useInfo];
@@ -236,6 +245,7 @@ class ShapedConverter {
 			.replace(/{@chance (\d+)[^}]+}/g, '$1 percent')
 			.replace(/{@recharge(?: (\d))?}/g, (m, lower) => `(Recharge ${lower ? `${Number(lower)}\u2013` : ""}6)`)
 			.replace(/{(@atk [A-Za-z,]+})/g, (m, p1) => EntryRenderer.attackTagToFull(p1))
+			.replace(/{@h}/g, "Hit: ")
 			.replace(/{@\w+ ((?:[^|}]+\|?){0,3})}/g, (m, p1) => {
 				const parts = p1.split('|');
 				return parts.length === 3 ? parts[2] : parts[0];
@@ -300,7 +310,11 @@ class ShapedConverter {
 
 	static processSpecialList (action, entries) {
 		action.text = this.fixLinks(entries[0]);
-		return entries.slice(1).reduce((result, entry) => {
+		let slice = entries.slice(1);
+		if (slice.length === 1 && slice[0].type === "list") {
+			slice = slice[0].items.map(it => it.type === "item" ? `${it.name}. ${it.entries ? it.entries.join("\n") : it.entry}` : it);
+		}
+		return slice.reduce((result, entry) => {
 			const match = entry.match(/^(?:\d+\. )?([A-Z][a-z]+(?: [A-Z][a-z]+)*). (.*)$/);
 			if (match) {
 				result.push({
@@ -380,6 +394,8 @@ class ShapedConverter {
 			return this.innateSpellProc.bind(this);
 		} else if (spellcasting.spells) {
 			return this.normalSpellProc.bind(this);
+		} else if (spellcasting.hidden) {
+			return null;
 		}
 
 		throw new Error(`Unrecognised type of spellcasting object: ${spellcasting.name}`);
@@ -432,6 +448,8 @@ class ShapedConverter {
 		if (monster.spellcasting) {
 			monster.spellcasting.forEach(spellcasting => {
 				const spellProc = this.getSpellcastingProcessor(spellcasting);
+				if (spellProc == null) return;
+
 				const spellLines = spellProc(spellcasting);
 				spellLines.unshift(this.fixLinks(spellcasting.headerEntries[0]));
 				if (spellcasting.footerEntries) {
@@ -476,10 +494,9 @@ class ShapedConverter {
 				const baseName = variant.name;
 				if (variant.entries.every(entry => isString(entry) || entry.type !== 'entries')) {
 					const text = variant.entries.map(entry => {
-						if (isString(entry)) {
-							return entry;
-						}
-						return entry.items.map(item => `${item.name} ${item.entry}`).join('\n');
+						if (isString(entry)) return entry;
+						else if (entry.type === "table") return this.processTable(entry);
+						else return entry.items.map(item => `${item.name} ${item.entry}`).join('\n');
 					}).join('\n');
 					addVariant(baseName, text, output);
 				} else if (variant.entries.find(entry => entry.type === 'entries')) {
@@ -530,8 +547,9 @@ class ShapedConverter {
 			}).filter(l => !!l);
 		}
 
-		if (legendaryGroup[monster.legendaryGroup]) {
-			const lairs = legendaryGroup[monster.legendaryGroup].lairActions;
+		if (monster.legendaryGroup && (legendaryGroup[monster.legendaryGroup.source] || {})[monster.legendaryGroup.name]) {
+			const lg = legendaryGroup[monster.legendaryGroup.source][monster.legendaryGroup.name];
+			const lairs = lg.lairActions;
 			if (lairs) {
 				if (lairs.every(isString)) {
 					output.lairActions = lairs.map(this.fixLinks);
@@ -539,9 +557,9 @@ class ShapedConverter {
 					output.lairActions = lairs.filter(isObject)[0].items.map(this.itemRenderer);
 				}
 			}
-			if (legendaryGroup[monster.legendaryGroup].regionalEffects) {
-				output.regionalEffects = legendaryGroup[monster.legendaryGroup].regionalEffects.filter(isObject)[0].items.map(this.itemRenderer);
-				output.regionalEffectsFade = this.fixLinks(legendaryGroup[monster.legendaryGroup].regionalEffects.filter(isString).last());
+			if (lg.regionalEffects) {
+				output.regionalEffects = lg.regionalEffects.filter(isObject)[0].items.map(this.itemRenderer);
+				output.regionalEffectsFade = this.fixLinks(lg.regionalEffects.filter(isString).last());
 			}
 		}
 
@@ -564,6 +582,7 @@ class ShapedConverter {
 	}
 
 	static processSpellComponents (components, newSpell) {
+		components = components || {};
 		const shapedComponents = {};
 		if (components.v) shapedComponents.verbal = true;
 		if (components.s) shapedComponents.somatic = true;
@@ -605,36 +624,11 @@ class ShapedConverter {
 	}
 
 	static processSpellEntries (entries, newSpell) {
-		const cellProc = cell => {
-			if (isString(cell)) {
-				return cell;
-			} else if (cell.roll) {
-				return cell.roll.exact || `${this.padInteger(cell.roll.min)}\\u2013${this.padInteger(cell.roll.max)}`;
-			}
-		};
-
 		const entryMapper = entry => {
 			if (isString(entry)) {
 				return entry;
 			} else if (entry.type === 'table') {
-				const rows = [entry.colLabels];
-				rows.push.apply(rows, entry.rows);
-
-				const formattedRows = rows.map(row => `| ${row.map(cellProc).join(' | ')} |`);
-				const styleToColDefinition = style => {
-					if (style.includes('text-align-center')) {
-						return ':----:';
-					} else if (style.includes('text-align-right')) {
-						return '----:';
-					}
-					return ':----';
-				};
-				const colDefinitions = entry.colStyles ? entry.colStyles.map(styleToColDefinition) : entry.colLabels.map(() => ':----');
-				const divider = `|${colDefinitions.join('|')}|`;
-				formattedRows.splice(1, 0, divider);
-
-				const title = entry.caption ? `##### ${entry.caption}\n` : '';
-				return `${title}${formattedRows.join('\n')}`;
+				return this.processTable(entry);
 			} else if (entry.type === 'list') {
 				return entry.items.map(item => `- ${item}`).join('\n');
 			} else if (entry.type === 'homebrew') {
@@ -653,6 +647,35 @@ class ShapedConverter {
 		}
 
 		newSpell.description = this.fixLinks(entriesToProc.map(entryMapper).join('\n'));
+	}
+
+	static processTable (entry) {
+		const cellProc = cell => {
+			if (isString(cell)) {
+				return cell;
+			} else if (cell.roll) {
+				return cell.roll.exact || `${this.padInteger(cell.roll.min)}\\u2013${this.padInteger(cell.roll.max)}`;
+			}
+		};
+
+		const rows = [entry.colLabels];
+		rows.push.apply(rows, entry.rows);
+
+		const formattedRows = rows.map(row => `| ${row.map(cellProc).join(' | ')} |`);
+		const styleToColDefinition = style => {
+			if (style.includes('text-align-center')) {
+				return ':----:';
+			} else if (style.includes('text-align-right')) {
+				return '----:';
+			}
+			return ':----';
+		};
+		const colDefinitions = entry.colStyles ? entry.colStyles.map(styleToColDefinition) : entry.colLabels.map(() => ':----');
+		const divider = `|${colDefinitions.join('|')}|`;
+		formattedRows.splice(1, 0, divider);
+
+		const title = entry.caption ? `##### ${entry.caption}\n` : '';
+		return `${title}${formattedRows.join('\n')}`;
 	}
 
 	static addExtraSpellData (newSpell, data) {
@@ -810,8 +833,8 @@ class ShapedConverter {
 	}
 
 	static processHigherLevel (entriesHigherLevel, newSpell) {
-		if (entriesHigherLevel) {
-			newSpell.higherLevel = this.fixLinks(entriesHigherLevel[0].entries.join('\n'));
+		if (entriesHigherLevel && entriesHigherLevel.length) {
+			newSpell.higherLevel = this.fixLinks((entriesHigherLevel[0].entries || entriesHigherLevel).join('\n'));
 		}
 	}
 
@@ -819,7 +842,7 @@ class ShapedConverter {
 		const newSpell = {
 			name: spell.name,
 			level: spell.level,
-			school: Parser.spSchoolAbvToFull(spell.school)
+			school: Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)
 		};
 
 		if (spell.meta && spell.meta.ritual) {
@@ -881,10 +904,16 @@ class ShapedConverter {
 		const legendaryGroup = inputs._legendaryGroup;
 
 		const toProcess = Object.values(inputs)
-			.filter(input => !input.converted && (isObject(input.monsterInput) || isObject(input.spellInput)));
+			.filter(input => !input.converted && (isObject(input.monsterInput) || isObject(input.spellInput)) && !input.doNotConvert);
+
+		let monsterList = [];
+		Object.values(inputs).forEach(data => {
+			if (data.monsterInput) monsterList = monsterList.concat(data.monsterInput);
+		});
 
 		toProcess.forEach(data => {
 			if (data.monsterInput) {
+				// FIXME does this ever do anything?
 				if (data.monsterInput.legendaryGroup) {
 					data.monsterInput.legendaryGroup.forEach(monsterDetails => legendaryGroup[monsterDetails.name] = monsterDetails);
 				}
@@ -1069,10 +1098,13 @@ function rebuildShapedSources () {
 		});
 	}).catch(e => {
 		alert(`${e}\n${e.stack}`);
+		setTimeout(() => { throw e; });
 	});
 }
 
 window.onload = function load () {
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+
 	window.handleBrew = data => {
 		shapedConverter.getInputs()
 			.then(inputs => {
@@ -1081,6 +1113,9 @@ window.onload = function load () {
 			})
 			.catch(e => {
 				alert(`${e}\n${e.stack}`);
+				setTimeout(() => {
+					throw e;
+				}, 0);
 			});
 	};
 
@@ -1096,7 +1131,7 @@ window.onload = function load () {
 
 	BrewUtil.makeBrewButton("manage-brew");
 
-	const $btnSaveFile = $(`<div class="btn btn-primary">Prepare JS</div>`);
+	const $btnSaveFile = $(`<button class="btn btn-primary">Prepare JS</button>`);
 	$(`#buttons`).append($btnSaveFile);
 	$btnSaveFile.on('click', () => {
 		const keys = $('.shaped-source:checked').map((i, e) => {
@@ -1107,13 +1142,18 @@ window.onload = function load () {
 				$('#shapedJS').val(js);
 				$('#copyJS').removeAttr('disabled');
 			})
-			.catch(e => alert(`${e}\n${e.stack}`));
+			.catch(e => {
+				alert(`${e}\n${e.stack}`);
+				setTimeout(() => {
+					throw e;
+				}, 0);
+			});
 	});
 	$('#copyJS').on('click', () => {
 		const shapedJS = $('#shapedJS');
 		shapedJS.select();
 		document.execCommand('Copy');
-		showCopiedEffect($('#copyJS'));
+		JqueryUtil.showCopiedEffect($('#copyJS'));
 	});
 	$(`#selectAll`).change(function () {
 		$(`.shaped-source:not([disabled])`).prop("checked", $(this).prop("checked"));

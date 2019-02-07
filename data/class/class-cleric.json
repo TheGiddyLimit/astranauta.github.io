@@ -345,14 +345,26 @@
 					"(a) a {@item priest's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"A {@item shield|phb} and a {@item holy symbol|phb}"
 				],
-				"goldAlternative": "5d4 × 10"
+				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"wis": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light",
+						"medium",
+						"shields"
+					]
+				}
 			},
 			"classFeatures": [
 				[
 					{
 						"name": "Spellcasting",
 						"entries": [
-							"As a conduit for divine power, you can cast cleric spells. See chapter 10 for the general rules of spellcasting and chapter 11 for a selection of cleric spells.",
+							"As a conduit for divine power, you can cast cleric spells. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for a selection of {@filter cleric spells|spells|class=cleric}.",
 							{
 								"type": "entries",
 								"name": "Cantrips",
@@ -364,7 +376,7 @@
 								"type": "entries",
 								"name": "Preparing and Casting Spells",
 								"entries": [
-									"The Cleric table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+									"The Cleric table shows how many spell slots you have to cast your {@filter cleric spells|spells|class=cleric} of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
 									"You prepare the list of cleric spells that are available for you to cast, choosing from the cleric spell list. When you do so, choose a number of cleric spells equal to your Wisdom modifier + your cleric level (minimum of one spell). The spells must be of a level for which you have spell slots.",
 									"For example, if you are a 3rd-level cleric, you have four 1st-level and two 2nd-level spell slots. With a Wisdom of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell {@spell cure wounds}, you can cast it using a 1st-level or 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.",
 									"You can change your list of prepared spells when you finish a long rest. Preparing a new list of cleric spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list."
@@ -436,7 +448,7 @@
 								"name": "Turn Undead",
 								"entries": [
 									"As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.",
-									"A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action."
+									"A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the {@action Dash} action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the {@action Dodge} action."
 								]
 							}
 						]
@@ -463,7 +475,7 @@
 					{
 						"name": "Destroy Undead (CR 1/2)",
 						"entries": [
-							"Starting at 5th level, when an {@filter undead of CR 1 or lower|bestiary|cr=0;1/8;1/4;1/2|type=undead|miscellaneous=!swarm} fails its saving throw against your Turn Undead feature, the creature is instantly destroyed."
+							"Starting at 5th level, when an {@filter undead of CR 1/2 or lower|bestiary|challenge rating=0;1/8;1/4;1/2|type=undead|miscellaneous=!swarm} fails its saving throw against your Turn Undead feature, the creature is instantly destroyed."
 						]
 					}
 				],
@@ -494,7 +506,7 @@
 					{
 						"name": "Destroy Undead (CR 1)",
 						"entries": [
-							"Starting at 8th level, when an {@filter undead of CR 1 or lower|bestiary|cr=0;1/8;1/4;1/2;1|type=undead|miscellaneous=!swarm} fails its saving throw against your Turn Undead feature, the creature is instantly destroyed."
+							"Starting at 8th level, when an {@filter undead of CR 1 or lower|bestiary|challenge rating=0;1/8;1/4;1/2;1|type=undead|miscellaneous=!swarm} fails its saving throw against your Turn Undead feature, the creature is instantly destroyed."
 						]
 					},
 					{
@@ -520,7 +532,7 @@
 					{
 						"name": "Destroy Undead (CR 2)",
 						"entries": [
-							"Starting at 11th level, when an {@filter undead of CR 2 or lower|bestiary|cr=0;1/8;1/4;1/2;1;2|type=undead|miscellaneous=!swarm} or lower fails its saving throw against your Turn Undead feature, the creature is instantly destroyed."
+							"Starting at 11th level, when an {@filter undead of CR 2 or lower|bestiary|challenge rating=0;1/8;1/4;1/2;1;2|type=undead|miscellaneous=!swarm} or lower fails its saving throw against your Turn Undead feature, the creature is instantly destroyed."
 						]
 					}
 				],
@@ -538,7 +550,7 @@
 					{
 						"name": "Destroy Undead (CR 3)",
 						"entries": [
-							"Starting at 14th level, when an {@filter undead of CR 3 or lower|bestiary|cr=0;1/8;1/4;1/2;1;2;3|type=undead|miscellaneous=!swarm} fails its saving throw against your Turn Undead feature, the creature is instantly destroyed."
+							"Starting at 14th level, when an {@filter undead of CR 3 or lower|bestiary|challenge rating=0;1/8;1/4;1/2;1;2;3|type=undead|miscellaneous=!swarm} fails its saving throw against your Turn Undead feature, the creature is instantly destroyed."
 						]
 					}
 				],
@@ -556,7 +568,7 @@
 					{
 						"name": "Destroy Undead (CR 4)",
 						"entries": [
-							"Starting at 17th level, when an {@filter undead of CR 4 or lower|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4|type=undead|miscellaneous=!swarm} fails its saving throw against your Turn Undead feature, the creature is instantly destroyed."
+							"Starting at 17th level, when an {@filter undead of CR 4 or lower|bestiary|challenge rating=0;1/8;1/4;1/2;1;2;3;4|type=undead|miscellaneous=!swarm} fails its saving throw against your Turn Undead feature, the creature is instantly destroyed."
 						]
 					},
 					{
@@ -613,8 +625,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -643,7 +655,7 @@
 										"type": "entries",
 										"name": "Arcane Initiate",
 										"entries": [
-											"When you choose this domain at 1st level, you gain proficiency in the Arcana skill, and you gain two cantrips of your choice from the wizard spell list. For you, these cantrips count as cleric cantrips."
+											"When you choose this domain at 1st level, you gain proficiency in the {@skill Arcana} skill, and you gain two cantrips of your choice from the wizard spell list. For you, these cantrips count as cleric cantrips."
 										]
 									}
 								]
@@ -658,7 +670,7 @@
 										"entries": [
 											"Starting at 2nd level, you can use your Channel Divinity to abjure otherworldly creatures",
 											"As an action, you present your holy symbol, and one celestial, elemental, fey, or fiend of your choice that is within 30 feet of you must make a Wisdom saving throw, provided that the creature can see or hear you. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.",
-											"A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly end its move in a space within 30 feet of you. It also can't take reactions. For its action, it can use use the Dash action or try to escape from an effect that prevents it form moving. If there's nowhere to move, then the creature can use the Dodge action.",
+											"A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly end its move in a space within 30 feet of you. It also can't take reactions. For its action, it can use only the {@action Dash} action or try to escape from an effect that prevents it from moving. If there's nowhere to move, then the creature can use the {@action Dodge} action.",
 											"After you reach 5th level, when a creature fails its saving throw against you Arcane Abjuration feature, the creature is banished for 1 minute (as in the {@spell banishment} spell, no concentration required) if it isn't on its plane of origin, and its challenge rating is at or below a certain threshold, as shown below.",
 											{
 												"type": "table",
@@ -668,8 +680,8 @@
 													"Banishes Creatures of CR..."
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -760,8 +772,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -845,7 +857,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with psychic energy borrowed from the citizens of your city. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 psychic damage to the target. When you reach 14th level, the extra psychic damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with psychic energy borrowed from the citizens of your city. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} psychic damage to the target. When you reach 14th level, the extra psychic damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -885,8 +897,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -962,7 +974,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, the cleric gains the ability to infuse his or her weapon strikes with necrotic energy. Once on each of the cleric's turns when he or she hits a creature with a weapon attack, the cleric can cause the attack to deal an extra 1d8 necrotic damage to the target. When the cleric reaches 14th level, the extra damage increases to 2d8."
+											"At 8th level, the cleric gains the ability to infuse his or her weapon strikes with necrotic energy. Once on each of the cleric's turns when he or she hits a creature with a weapon attack, the cleric can cause the attack to deal an extra {@dice 1d8} necrotic damage to the target. When the cleric reaches 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -1002,8 +1014,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -1032,7 +1044,7 @@
 										"type": "entries",
 										"name": "Blessings of Knowledge",
 										"entries": [
-											"At 1st level, you learn two languages of your choice. You also become proficient in your choice of two of the following skills: Arcana, History, Nature, or Religion.",
+											"At 1st level, you learn two languages of your choice. You also become proficient in your choice of two of the following skills: {@skill Arcana}, {@skill History}, {@skill Nature}, or {@skill Religion}.",
 											"Your proficiency bonus is doubled for any ability check you make that uses either of those skills."
 										]
 									}
@@ -1209,8 +1221,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -1286,7 +1298,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 radiant damage to the target. When you reach 14th level, the extra damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} radiant damage to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -1299,7 +1311,7 @@
 										"type": "entries",
 										"name": "Supreme Healing",
 										"entries": [
-											"Starting at 17th level, when you would normally roll one or more dice to restore hit points with a spell, you instead use the highest number possible for each die. For example, instead of restoring 2d6 hit points to a creature, you restore 12."
+											"Starting at 17th level, when you would normally roll one or more dice to restore hit points with a spell, you instead use the highest number possible for each die. For example, instead of restoring {@dice 2d6} hit points to a creature, you restore 12."
 										]
 									}
 								]
@@ -1326,8 +1338,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -1356,7 +1368,7 @@
 										"type": "entries",
 										"name": "Bonus Cantrip",
 										"entries": [
-											"When you choose this domain at 1st level, you gain the light cantrip if you don't already know it."
+											"When you choose this domain at 1st level, you gain the {@spell light} cantrip if you don't already know it."
 										]
 									},
 									{
@@ -1378,7 +1390,7 @@
 										"name": "Channel Divinity: Radiance of the Dawn",
 										"entries": [
 											"Starting at 2nd level, you can use your Channel Divinity to harness sunlight, banishing darkness and dealing radiant damage to your foes.",
-											"As an action, you present your holy symbol, and any magical darkness within 30 feet of you is dispelled. Additionally, each hostile creature within 30 feet of you must make a Constitution saving throw. A creature takes radiant damage equal to 2d10 + your cleric level on a failed saving throw, and half as much damage on a successful one. A creature that has total cover from you is not affected."
+											"As an action, you present your holy symbol, and any magical darkness within 30 feet of you is dispelled. Additionally, each hostile creature within 30 feet of you must make a Constitution saving throw. A creature takes radiant damage equal to {@dice 2d10} + your cleric level on a failed saving throw, and half as much damage on a successful one. A creature that has total cover from you is not affected."
 										]
 									}
 								]
@@ -1444,8 +1456,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -1474,7 +1486,7 @@
 										"type": "entries",
 										"name": "Acolyte of Nature",
 										"entries": [
-											"At 1st level, you learn one druid cantrip of your choice. You also gain proficiency in one of the following skills of your choice: Animal Handling, Nature, or Survival."
+											"At 1st level, you learn one druid cantrip of your choice. You also gain proficiency in one of the following skills of your choice: {@skill Animal Handling}, {@skill Nature}, or {@skill Survival}."
 										]
 									},
 									{
@@ -1521,7 +1533,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 cold, fire, or lightning damage (your choice) to the target. When you reach 14th level, the extra damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} cold, fire, or lightning damage (your choice) to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -1561,8 +1573,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -1598,7 +1610,7 @@
 										"type": "entries",
 										"name": "Wrath of the Storm",
 										"entries": [
-											"Also at 1st level, you can thunderously rebuke attackers. When a creature within 5 feet of you that you can see hits you with an attack, you can use your reaction to cause the creature to make a Dexterity saving throw. The creature takes 2d8 lightning or thunder damage (your choice) on a failed saving throw, and half as much damage on a successful one.",
+											"Also at 1st level, you can thunderously rebuke attackers. When a creature within 5 feet of you that you can see hits you with an attack, you can use your reaction to cause the creature to make a Dexterity saving throw. The creature takes {@dice 2d8} lightning or thunder damage (your choice) on a failed saving throw, and half as much damage on a successful one.",
 											"You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest."
 										]
 									}
@@ -1639,7 +1651,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 thunder damage to the target. When you reach 14th level, the extra damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} thunder damage to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -1679,8 +1691,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -1709,7 +1721,7 @@
 										"type": "entries",
 										"name": "Blessing of the Trickster",
 										"entries": [
-											"Starting when you choose this domain at 1st level, you can use your action to touch a willing creature other than yourself to give it advantage on Dexterity (Stealth) checks. This blessing lasts for 1 hour or until you use this feature again."
+											"Starting when you choose this domain at 1st level, you can use your action to touch a willing creature other than yourself to give it advantage on Dexterity ({@skill Stealth}) checks. This blessing lasts for 1 hour or until you use this feature again."
 										]
 									}
 								]
@@ -1751,7 +1763,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with poison\u2014a gift from your deity. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 poison damage to the target. When you reach 14th level, the extra damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with poison\u2014a gift from your deity. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} poison damage to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -1791,8 +1803,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -1828,7 +1840,7 @@
 										"type": "entries",
 										"name": "War Priest",
 										"entries": [
-											"From 1st level, your god delivers bolts of inspiration to you while you are engaged in battle. When you use the Attack action, you can make one weapon attack as a bonus action. You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest."
+											"From 1st level, your god delivers bolts of inspiration to you while you are engaged in battle. When you use the {@action Attack} action, you can make one weapon attack as a bonus action. You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest."
 										]
 									}
 								]
@@ -1867,7 +1879,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 damage of the same type dealt by the weapon to the target. When you reach 14th level, the extra damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} damage of the same type dealt by the weapon to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -1907,8 +1919,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -1994,7 +2006,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with the fiery power of the forge. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 fire damage to the target. When you reach 14th level, the extra damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with the fiery power of the forge. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} fire damage to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -2034,8 +2046,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -2064,7 +2076,7 @@
 										"type": "entries",
 										"name": "Bonus Proficiency",
 										"entries": [
-											"When you choose this domain at 1st level, you gain proficiency with heavy armor and smith's tools."
+											"When you choose this domain at 1st level, you gain proficiency with heavy armor and {@item smith's tools|phb}."
 										]
 									},
 									{
@@ -2120,7 +2132,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with the fiery power of the forge. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 fire damage to the target. When you reach 14th level, the extra damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with the fiery power of the forge. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} fire damage to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -2167,8 +2179,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -2254,7 +2266,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 necrotic damage. When you reach 14th level, the extra damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} necrotic damage. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -2294,8 +2306,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -2345,7 +2357,7 @@
 										"name": "Channel Divinity: Radiant Defense",
 										"entries": [
 											"Starting at 2nd level, you can use your Channel Divinity to cloak your allies in radiant armor.",
-											"As an action, you channel blessed energy into an ally that you can see within 30 feet of you. The first time that ally is hit by an attack within the next minute, the attacker takes radiant damage equal to 2d10 + your cleric level."
+											"As an action, you channel blessed energy into an ally that you can see within 30 feet of you. The first time that ally is hit by an attack within the next minute, the attacker takes radiant damage equal to {@dice 2d10} + your cleric level."
 										]
 									}
 								]
@@ -2371,7 +2383,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 radiant damage to the target. When you reach 14th level, the extra damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} radiant damage to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -2413,8 +2425,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -2450,7 +2462,7 @@
 										"type": "entries",
 										"name": "Solidarity's Action",
 										"entries": [
-											"Also at 1st level, when you take the Help action to aid an ally's attack, you can make one weapon attack as a bonus action. You can use this feature a number of times equal to your Wisdom modifier (minimum of once). You regain expended uses when you finish a long rest."
+											"Also at 1st level, when you take the {@action Help} action to aid an ally's attack, you can make one weapon attack as a bonus action. You can use this feature a number of times equal to your Wisdom modifier (minimum of once). You regain expended uses when you finish a long rest."
 										]
 									}
 								]
@@ -2490,7 +2502,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 damage of the same type dealt by the weapon to the target. When you reach 14th level, the extra damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} damage of the same type dealt by the weapon to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -2503,7 +2515,7 @@
 										"type": "entries",
 										"name": "Supreme Healing",
 										"entries": [
-											"Starting at 17th level, when you would normally roll one or more dice to restore hit points with a spell, you instead use the highest number possible for each die. For example, instead of restoring 2d6 hit points to a creature, you restore 12."
+											"Starting at 17th level, when you would normally roll one or more dice to restore hit points with a spell, you instead use the highest number possible for each die. For example, instead of restoring {@dice 2d6} hit points to a creature, you restore 12."
 										]
 									}
 								]
@@ -2531,8 +2543,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -2561,7 +2573,7 @@
 										"type": "entries",
 										"name": "Acolyte of Strength",
 										"entries": [
-											"At 1st level, you learn one druid cantrip of your choice. You also gain proficiency in one of the following skills of your choice: Animal Handling, Athletics, Nature, or Survival."
+											"At 1st level, you learn one druid cantrip of your choice. You also gain proficiency in one of the following skills of your choice: {@skill Animal Handling}, {@skill Athletics}, {@skill Nature}, or {@skill Survival}."
 										]
 									},
 									{
@@ -2607,7 +2619,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 damage of the same type dealt by the weapon to the target. When you reach 14th level, the extra damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} damage of the same type dealt by the weapon to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -2648,8 +2660,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -2761,8 +2773,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -2798,7 +2810,7 @@
 										"type": "entries",
 										"name": "Priest of Zeal",
 										"entries": [
-											"From 1st level, Hazoret delivers bolts of inspiration to you while you are engaged in battle. When you use the Attack action, you can make one weapon attack as a bonus action.",
+											"From 1st level, Hazoret delivers bolts of inspiration to you while you are engaged in battle. When you use the {@action Attack} action, you can make one weapon attack as a bonus action.",
 											"You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest."
 										]
 									}
@@ -2839,7 +2851,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 damage of the same type dealt by the weapon to the target. When you reach 14th level, the extra damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} damage of the same type dealt by the weapon to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -2853,7 +2865,7 @@
 										"name": "Blaze of Glory",
 										"entries": [
 											"Starting at 17th level, you can delay death for an instant to perform a final heroic act.",
-											"When you are reduced to 0 hit points by an attacker you can see, even if you would be killed outright, you can use your reaction to move up to your speed toward the attacker and make one melee weapon attack against it, as long as the movement brings it within your reach. You make this attack with advantage. If the attack hits, the creature takes an extra 5d10 fire damage and an extra 5d10 damage of the weapon's type. You then fall {@condition unconscious} and begin making death saving throws as normal, or you die if the damage you took would have killed you outright.",
+											"When you are reduced to 0 hit points by an attacker you can see, even if you would be killed outright, you can use your reaction to move up to your speed toward the attacker and make one melee weapon attack against it, as long as the movement brings it within your reach. You make this attack with advantage. If the attack hits, the creature takes an extra {@dice 5d10} fire damage and an extra {@dice 5d10} damage of the weapon's type. You then fall {@condition unconscious} and begin making death saving throws as normal, or you die if the damage you took would have killed you outright.",
 											"Once you use this feature, you can't use it again until you finish a long rest."
 										]
 									}
@@ -2880,8 +2892,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -3002,8 +3014,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -3080,7 +3092,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 force damage to the target. When you reach 14th level, the extra damage increases to 2d8."
+											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} force damage to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -3093,7 +3105,7 @@
 										"type": "entries",
 										"name": "Order's Wrath",
 										"entries": [
-											"Starting at 17th level, enemies you designate for destruction wilt under the combined efforts of you and your allies. If you deal your Divine Strike damage to a creature, that creature takes an extra 2d8 force damage the first time each turn that any ally of yours hits it with a weapon attack. This benefit lasts until the start of your next turn."
+											"Starting at 17th level, enemies you designate for destruction wilt under the combined efforts of you and your allies. If you deal your Divine Strike damage to a creature, that creature takes an extra {@dice 2d8} force damage the first time each turn that any ally of yours hits it with a weapon attack. This benefit lasts until the start of your next turn."
 										]
 									}
 								]
@@ -3110,7 +3122,7 @@
 							{
 								"name": "Darkness Domain (Twitter)",
 								"entries": [
-									"{@i [{@b Note: this subclass is likely not intended as official content:} \"For the curious, when building stuff for my own campaign I kind of don't care about balance. Anything I can break in design I can counterbreak five times as bad during a session, as needed. Plus, IMO stuff going sideways and weird is why I play the game.\" \u2014 {@link Mike Mearls|https://twitter.com/mikemearls/status/1015752965213204480}]}",
+									"{@i [{@b Note: this subclass is likely not intended as official content:} \"For the curious, when building stuff for my own campaign I kind of don't care about balance. Anything I can break in design I can counterbreak five times as bad during a session, as needed. Plus, IMO stuff going sideways and weird is why I play the game.\"\u2014{@link Mike Mearls|https://twitter.com/mikemearls/status/1015752965213204480}]}",
 									"Custom built for clerics of Zehir, and perhaps Lolth.",
 									"At each indicated cleric level, you add the listed spells to your spells prepared.",
 									{
@@ -3121,8 +3133,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -3173,7 +3185,7 @@
 										"name": "Channel Divinity: Shadow Spawn",
 										"entries": [
 											"Starting at 2nd level, you can use your Channel Divinity to fade into the darkness.",
-											"As a bonus action, you become a creature of darkness that can blend into the shadows. You gain advantage on all Dexterity (Stealth) checks. If a creature cannot see you, your spells and attacks deal maximum damage to them. The shadows seem to draw around, as if they seek to protect you. This benefit lasts for one minute."
+											"As a bonus action, you become a creature of darkness that can blend into the shadows. You gain advantage on all Dexterity ({@skill Stealth}) checks. If a creature cannot see you, your spells and attacks deal maximum damage to them. The shadows seem to draw around, as if they seek to protect you. This benefit lasts for one minute."
 										]
 									}
 								]
@@ -3229,7 +3241,7 @@
 							{
 								"name": "Destruction Domain (Twitter)",
 								"entries": [
-									"{@i [{@b Note: this subclass is likely not intended as official content:} \"For the curious, when building stuff for my own campaign I kind of don't care about balance. Anything I can break in design I can counterbreak five times as bad during a session, as needed. Plus, IMO stuff going sideways and weird is why I play the game.\" \u2014 {@link Mike Mearls|https://twitter.com/mikemearls/status/1015752965213204480}]}",
+									"{@i [{@b Note: this subclass is likely not intended as official content:} \"For the curious, when building stuff for my own campaign I kind of don't care about balance. Anything I can break in design I can counterbreak five times as bad during a session, as needed. Plus, IMO stuff going sideways and weird is why I play the game.\"\u2014{@link Mike Mearls|https://twitter.com/mikemearls/status/1015752965213204480}]}",
 									"Custom built for clerics of Gruumsh, and perhaps Tiamat.",
 									"At each indicated cleric level, you add the listed spells to your spells prepared.",
 									{
@@ -3240,8 +3252,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -3319,7 +3331,7 @@
 										"type": "entries",
 										"name": "Divine Strike",
 										"entries": [
-											"Starting at 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 thunder damage to the target. When you reach 14th level, the extra damage increases to 2d8."
+											"Starting at 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} thunder damage to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
 										]
 									}
 								]
@@ -3349,7 +3361,7 @@
 							{
 								"name": "Beauty Domain (Twitter)",
 								"entries": [
-									"{@i [{@b Note: this subclass is likely not intended as official content:} \"For the curious, when building stuff for my own campaign I kind of don't care about balance. Anything I can break in design I can counterbreak five times as bad during a session, as needed. Plus, IMO stuff going sideways and weird is why I play the game.\" \u2014 {@link Mike Mearls|https://twitter.com/mikemearls/status/1015752965213204480}]}",
+									"{@i [{@b Note: this subclass is likely not intended as official content:} \"For the curious, when building stuff for my own campaign I kind of don't care about balance. Anything I can break in design I can counterbreak five times as bad during a session, as needed. Plus, IMO stuff going sideways and weird is why I play the game.\"\u2014{@link Mike Mearls|https://twitter.com/mikemearls/status/1015752965213204480}]}",
 									"Beauty can both bend minds and inspire hearts. It is the force that compels others to lose control and give in to their impulses, but it can also awaken strength and determination to steel a forlorn heart.",
 									"Clerics of Beauty bring joy and hope to the world. They are the beacon of light that reminds us that some things are worth fighting for. They seek to bring peace and amity among the world's folk. They fight only when they must, and prefer to use their magic to end fights with as little bloodshed as possible.",
 									"At each indicated cleric level, you add the listed spells to your spells prepared.",
@@ -3361,8 +3373,8 @@
 											"Spells"
 										],
 										"colStyles": [
-											"col-xs-3 text-align-center",
-											"col-xs-9"
+											"col-3 text-align-center",
+											"col-9"
 										],
 										"rows": [
 											[
@@ -3465,258 +3477,429 @@
 					],
 					"source": "Twitter",
 					"shortName": "Beauty (Twitter)"
+				},
+				{
+					"name": "Order Domain",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Order Domain",
+								"entries": [
+									"The Order Domain represents discipline, as well as devotion to a society or an institution and strict obedience to the laws governing it. On Ravnica, the domain is favored by clerics of the Azorius Senate, who use it to maintain and enforce the law, and of the Orzhov Syndicate, who exploit law and order for their personal gain. On other worlds, gods who grant access to this domain include Bane, Tyr, Majere, Erathis, Pholtus, Wee Jas, Aureon, Maglubiyet, Nuada, Athena, Anubis, Forseti, and Asmodeus.",
+									"The ideal of order is obedience to the law above all else, rather than to a specific individual or the passing influence of emotion or popular rule. Clerics of order are typically concerned with how things are done, rather than whether an action's results are just. Following the law and obeying its edicts is critical, especially when it benefits these clerics and their guilds or deities.",
+									"Law establishes hierarchies. Those selected by the law to lead must be obeyed. Those who obey must do so to the best of their ability. In this manner, law creates an intricate web of obligations that allows society to forge order and security in a chaotic multiverse.",
+									"At each indicated cleric level, you add the listed spells to your spells prepared.",
+									{
+										"type": "table",
+										"caption": "Order Domain Spells",
+										"colLabels": [
+											"Cleric Level",
+											"Spells"
+										],
+										"colStyles": [
+											"col-3 text-align-center",
+											"col-9"
+										],
+										"rows": [
+											[
+												"1st",
+												"{@spell command}, {@spell heroism}"
+											],
+											[
+												"3rd",
+												"{@spell hold person}, {@spell zone of truth}"
+											],
+											[
+												"5th",
+												"{@spell mass healing word}, {@spell slow}"
+											],
+											[
+												"7th",
+												"{@spell compulsion}, {@spell locate creature}"
+											],
+											[
+												"9th",
+												"{@spell commune}, {@spell dominate person}"
+											]
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Bonus Proficiencies",
+										"entries": [
+											"When you choose this domain at 1st level, you gain proficiency with heavy armor. You also gain proficiency in the {@skill Intimidation} or {@skill Persuasion} skill (your choice)."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Voice of Authority",
+										"entries": [
+											"Starting at 1st level, you can invoke the power of law to drive an ally to attack. If you cast a spell with a spell slot of 1st level or higher and target an ally with the spell, that ally can use their reaction immediately after the spell to make one weapon attack against a creature of your choice that you can see.",
+											"If the spell targets more than one ally, you choose the ally who can make the attack."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Channel Divinity: Order's Demand",
+										"entries": [
+											"Starting at 2nd level, you can use your Channel Divinity to exert an intimidating presence over others.",
+											"As an action, you present your holy symbol, and each creature of your choice that can see or hear you within 30 feet of you must succeed on a Wisdom saving throw or be {@condition charmed} by you until the end of your next turn or until the {@condition charmed} creature takes any damage. You can also cause any of the {@condition charmed} creatures to drop what they are holding when they fail the saving throw."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Embodiment of the Law",
+										"entries": [
+											"At 6th level, you become remarkably adept at channeling magical energy to compel others.",
+											"If you cast a spell of the enchantment school using a spell slot of 1st level or higher, you can change the spell's casting time to 1 bonus action for this casting, provided the spell's casting time is normally 1 action.",
+											"You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses of it when you finish a long rest."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Divine Strike",
+										"entries": [
+											"At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra {@dice 1d8} psychic damage to the target. When you reach 14th level, the extra damage increases to {@dice 2d8}."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Order's Wrath",
+										"entries": [
+											"Starting at 17th level, enemies you designate for destruction wilt under the combined efforts of you and your allies. If you deal your Divine Strike damage to a creature on your turn, you can curse that creature until the start of your next turn. The next time one of your allies hits the cursed creature with an attack, the target also takes {@dice 2d8} psychic damage, and the curse ends. You can curse a creature in this way only once per turn."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "GGR",
+					"shortName": "Order",
+					"page": 25
 				}
 			],
 			"fluff": [
 				{
-					"type": "quote",
 					"entries": [
-						"To become a cleric is to become a messenger of the gods. The power the divine offers is great, but it always comes with tremendous responsibility."
-					],
-					"by": "Riggby the patriarch"
-				},
-				"Almost all the folk in the world who revere a deity live their lives without ever being directly touched by a divine being. As such, they can never know what it feels like to be a cleric\u2014someone who is not only a devout worshiper, but who has also been invested with a measure of a deity's power.",
-				"The question has long been debated: Does a mortal become a cleric as a consequence of deep devotion to one's deity, thereby attracting the god's favor? Or is it the deity who sees the potential in a person and calls that individual into service? Ultimately, perhaps, the answer doesn't matter. However clerics come into being, the world needs clerics as much as clerics and deities need each other.",
-				"If you're playing a cleric character, the following sections offer ways to add some detail to that character's history and personality.",
-				{
-					"type": "entries",
-					"name": "Temple",
-					"entries": [
-						"Most clerics start their lives of service as priests in an order, then later realize that they have been blessed by their god with the qualities needed to become a cleric. To prepare for this new duty, candidates typically receive instruction from a cleric of a temple or another place of study devoted to their deity.",
-						"Some temples are cut off from the world so that their occupants can focus on devotions, while other temples open their doors to minister to and heal the masses. What is noteworthy about the temple you studied at?",
+						"Arms and eyes upraised toward the sun and a prayer on his lips, an elf begins to glow with an inner light that spills out to heal his battle-worn companions.",
+						"Chanting a song of glory, a dwarf swings his axe in wide swaths to cut through the ranks of orcs arrayed against him, shouting praise to the gods with every foe's fall.",
+						"Calling down a curse upon the forces of undeath, a human lifts her holy symbol as light pours from it to drive back the zombies crowding in on her companions.",
+						"Clerics are intermediaries between the mortal world and the distant planes of the gods. As varied as the gods they serve, clerics strive to embody the handiwork of their deities. No ordinary priest, a cleric is imbued with divine magic.",
 						{
-							"type": "table",
-							"caption": "Temple",
-							"colLabels": [
-								"{@dice d6}",
-								"Temple"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"Your temple is said to be the oldest surviving structure built to honor your god."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Acolytes of several like-minded deities all received instruction together in your temple."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"You come from a temple famed for the brewery it operates. Some say you smell like one of its ales."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"Your temple is a fortress and a proving ground that trains warrior-priests."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Your temple is a peaceful, humble place, filled with vegetable gardens and simple priests."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"You served in a temple in the Outer Planes."
-								]
+							"type": "entries",
+							"name": "Healers and Warriors",
+							"entries": [
+								"Divine magic, as the name suggests, is the power of the gods, flowing from them into the world. Clerics are conduits for that power, manifesting it as miraculous effects. The gods don't grant this power to everyone who seeks it, but only to those chosen to fulfill a high calling.",
+								"Harnessing divine magic doesn't rely on study or training. A cleric might learn formulaic prayers and ancient rites, but the ability to cast cleric spells relies on devotion and an intuitive sense of a deity's wishes.",
+								"Clerics combine the helpful magic of healing and inspiring their allies with spells that harm and hinder foes. They can provoke awe and dread, lay curses of plague or poison, and even call down flames from heaven to consume their enemies. For those evildoers who will benefit most from a mace to the head, clerics depend on their combat training to let them wade into melee with the power of the gods on their side."
 							]
 						},
 						{
 							"type": "entries",
-							"name": "Keepsake",
+							"name": "Divine Agents",
 							"entries": [
-								"Many clerics have items among their personal gear that symbolize their faith, remind them of their vows, or otherwise help to keep them on their chosen paths. Even though such an item is not imbued with divine power, it is vitally important to its owner because of what it represents.",
-								{
-									"type": "table",
-									"caption": "Keepsake",
-									"colLabels": [
-										"{@dice d6}",
-										"Keepsake"
-									],
-									"colStyles": [
-										"col-xs-1 text-align-center",
-										"col-xs-11"
-									],
-									"rows": [
-										[
-											{
-												"type": "cell",
-												"roll": {
-													"exact": 1
-												}
-											},
-											"The finger bone of a saint"
-										],
-										[
-											{
-												"type": "cell",
-												"roll": {
-													"exact": 2
-												}
-											},
-											"A metal-bound book that tells how to hunt and destroy infernal creatures"
-										],
-										[
-											{
-												"type": "cell",
-												"roll": {
-													"exact": 3
-												}
-											},
-											"A pig's whistle that reminds you of your humble and beloved mentor"
-										],
-										[
-											{
-												"type": "cell",
-												"roll": {
-													"exact": 4
-												}
-											},
-											"A braid of hair woven from the tail of a unicorn"
-										],
-										[
-											{
-												"type": "cell",
-												"roll": {
-													"exact": 5
-												}
-											},
-											"A scroll that describes how best to rid the world of necromancers"
-										],
-										[
-											{
-												"type": "cell",
-												"roll": {
-													"exact": 6
-												}
-											},
-											"A runestone said to be blessed by your god"
-										]
-									]
-								}
+								"Not every acolyte or officiant at a temple or shrine is a cleric. Some priests are called to a simple life of temple service, carrying out their gods' will through prayer and sacrifice, not by magic and strength of arms. In some cities, priesthood amounts to a political office, viewed as a stepping stone to higher positions of authority and involving no communion with a god at all. True clerics are rare in most hierarchies.",
+								"When a cleric takes up an adventuring life, it is usually because his or her god demands it. Pursuing the goals of the gods often involves braving dangers beyond the walls of civilization, smiting evil or seeking holy relics in ancient tombs. Many clerics are also expected to protect their deities' worshipers, which can mean fighting rampaging orcs, negotiating peace between warring nations, or sealing a portal that would allow a demon prince to enter the world.",
+								"Most adventuring clerics maintain some connection to established temples and orders of their faiths. A temple might ask for a cleric's aid, or a high priest might be in a position to demand it."
 							]
 						},
 						{
 							"type": "entries",
-							"name": "Secret",
+							"name": "Creating a Cleric",
 							"entries": [
-								"No mortal soul is entirely free of second thoughts or doubt. Even a cleric must grapple with dark desires or the forbidden attraction of turning against the teachings of one's deity.",
-								"If you haven't considered this aspect of your character yet, see the table entries for some possibilities, or use them for inspiration. Your deep, dark secret might involve something you did (or are doing), or it could be rooted in the way you feel about the world and your role in it.",
+								"As you create a cleric, the most important question to consider is which deity to serve and what principles you want your character to embody. Appendix B includes lists of many of the gods of the multiverse. Check with your DM to learn which deities are in your campaign.",
+								"Once you've chosen a deity, consider your cleric's relationship to that god. Did you enter this service willingly? Or did the god choose you, impelling you into service with no regard for your wishes? How do the temple priests of your faith regard you: as a champion or a troublemaker? What are your ultimate goals? Does your deity have a special task in mind for you? Or are you striving to prove yourself worthy of a great quest?",
 								{
-									"type": "table",
-									"caption": "Secret",
-									"colLabels": [
-										"{@dice d6}",
-										"Secret"
-									],
-									"colStyles": [
-										"col-xs-1 text-align-center",
-										"col-xs-11"
-									],
-									"rows": [
-										[
-											{
-												"type": "cell",
-												"roll": {
-													"exact": 1
-												}
-											},
-											"An imp offers you counsel. You try to ignore the creature, but sometimes its advice is helpful."
-										],
-										[
-											{
-												"type": "cell",
-												"roll": {
-													"exact": 2
-												}
-											},
-											"You believe that, in the final analysis, the gods are nothing more than ultrapowerful mortal creatures."
-										],
-										[
-											{
-												"type": "cell",
-												"roll": {
-													"exact": 3
-												}
-											},
-											"You acknowledge the power of the gods, but you think that most events are dictated by pure chance."
-										],
-										[
-											{
-												"type": "cell",
-												"roll": {
-													"exact": 4
-												}
-											},
-											"Even though you can work divine magic, you have never truly felt the presence of a divine essence within yourself."
-										],
-										[
-											{
-												"type": "cell",
-												"roll": {
-													"exact": 5
-												}
-											},
-											"You are plagued by nightmares that you believe are sent by your god as punishment for some unknown transgression."
-										],
-										[
-											{
-												"type": "cell",
-												"roll": {
-													"exact": 6
-												}
-											},
-											"In times of despair, you feel that you are but a plaything of the gods, and you resent their remoteness."
-										]
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"You can make a cleric quickly by following these suggestions. First, Wisdom should be your highest ability score, followed by Strength or Constitution. Second, choose the {@background acolyte} background."
 									]
 								}
-							]
-						},
-						{
-							"type": "inset",
-							"name": "Serving a Pantheon, Philosophy, or Force",
-							"entries": [
-								"The typical cleric is an ordained servant of a particular god and chooses a Divine Domain associated with that deity. The cleric's magic flows from the god or the god's sacred realm, and often the cleric bears a holy symbol that represents that divinity.",
-								"Some clerics, especially in a world like Eberron, serve a whole pantheon, rather than a single deity. In certain campaigns, a cleric might instead serve a cosmic force, such as life or death, or a philosophy or concept, such as love, peace, or one of the nine alignments. Chapter 1 of the Dungeon Master's Guide explores options like these, in the section \"Gods of Your World.\"",
-								"Talk with your DM about the divine options available in your campaign, whether they're gods, pantheons, philosophies, or cosmic forces. Whatever being or thing your cleric ends up serving, choose a Divine Domain that is appropriate for it, and if it doesn't have a holy symbol, work with your DM to design one.",
-								"The cleric's class features often refer to your deity. If you are devoted to a pantheon, cosmic force, or philosophy, your cleric features still work for you as written. Think of the references to a god as references to the divine thing you serve that gives you your magic."
 							]
 						}
-					]
+					],
+					"source": "PHB",
+					"page": 56
+				},
+				{
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"To become a cleric is to become a messenger of the gods. The power the divine offers is great, but it always comes with tremendous responsibility."
+							],
+							"by": "Riggby the patriarch"
+						},
+						"Almost all the folk in the world who revere a deity live their lives without ever being directly touched by a divine being. As such, they can never know what it feels like to be a cleric\u2014someone who is not only a devout worshiper, but who has also been invested with a measure of a deity's power.",
+						"The question has long been debated: Does a mortal become a cleric as a consequence of deep devotion to one's deity, thereby attracting the god's favor? Or is it the deity who sees the potential in a person and calls that individual into service? Ultimately, perhaps, the answer doesn't matter. However clerics come into being, the world needs clerics as much as clerics and deities need each other.",
+						"If you're playing a cleric character, the following sections offer ways to add some detail to that character's history and personality.",
+						{
+							"type": "entries",
+							"name": "Temple",
+							"entries": [
+								"Most clerics start their lives of service as priests in an order, then later realize that they have been blessed by their god with the qualities needed to become a cleric. To prepare for this new duty, candidates typically receive instruction from a cleric of a temple or another place of study devoted to their deity.",
+								"Some temples are cut off from the world so that their occupants can focus on devotions, while other temples open their doors to minister to and heal the masses. What is noteworthy about the temple you studied at?",
+								{
+									"type": "table",
+									"caption": "Temple",
+									"colLabels": [
+										"{@dice d6}",
+										"Temple"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Your temple is said to be the oldest surviving structure built to honor your god."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Acolytes of several like-minded deities all received instruction together in your temple."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"You come from a temple famed for the brewery it operates. Some say you smell like one of its ales."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Your temple is a fortress and a proving ground that trains warrior-priests."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Your temple is a peaceful, humble place, filled with vegetable gardens and simple priests."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"You served in a temple in the Outer Planes."
+										]
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Keepsake",
+									"entries": [
+										"Many clerics have items among their personal gear that symbolize their faith, remind them of their vows, or otherwise help to keep them on their chosen paths. Even though such an item is not imbued with divine power, it is vitally important to its owner because of what it represents.",
+										{
+											"type": "table",
+											"caption": "Keepsake",
+											"colLabels": [
+												"{@dice d6}",
+												"Keepsake"
+											],
+											"colStyles": [
+												"col-1 text-align-center",
+												"col-11"
+											],
+											"rows": [
+												[
+													{
+														"type": "cell",
+														"roll": {
+															"exact": 1
+														}
+													},
+													"The finger bone of a saint"
+												],
+												[
+													{
+														"type": "cell",
+														"roll": {
+															"exact": 2
+														}
+													},
+													"A metal-bound book that tells how to hunt and destroy infernal creatures"
+												],
+												[
+													{
+														"type": "cell",
+														"roll": {
+															"exact": 3
+														}
+													},
+													"A pig's whistle that reminds you of your humble and beloved mentor"
+												],
+												[
+													{
+														"type": "cell",
+														"roll": {
+															"exact": 4
+														}
+													},
+													"A braid of hair woven from the tail of a unicorn"
+												],
+												[
+													{
+														"type": "cell",
+														"roll": {
+															"exact": 5
+														}
+													},
+													"A scroll that describes how best to rid the world of necromancers"
+												],
+												[
+													{
+														"type": "cell",
+														"roll": {
+															"exact": 6
+														}
+													},
+													"A runestone said to be blessed by your god"
+												]
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Secret",
+									"entries": [
+										"No mortal soul is entirely free of second thoughts or doubt. Even a cleric must grapple with dark desires or the forbidden attraction of turning against the teachings of one's deity.",
+										"If you haven't considered this aspect of your character yet, see the table entries for some possibilities, or use them for inspiration. Your deep, dark secret might involve something you did (or are doing), or it could be rooted in the way you feel about the world and your role in it.",
+										{
+											"type": "table",
+											"caption": "Secret",
+											"colLabels": [
+												"{@dice d6}",
+												"Secret"
+											],
+											"colStyles": [
+												"col-1 text-align-center",
+												"col-11"
+											],
+											"rows": [
+												[
+													{
+														"type": "cell",
+														"roll": {
+															"exact": 1
+														}
+													},
+													"An imp offers you counsel. You try to ignore the creature, but sometimes its advice is helpful."
+												],
+												[
+													{
+														"type": "cell",
+														"roll": {
+															"exact": 2
+														}
+													},
+													"You believe that, in the final analysis, the gods are nothing more than ultrapowerful mortal creatures."
+												],
+												[
+													{
+														"type": "cell",
+														"roll": {
+															"exact": 3
+														}
+													},
+													"You acknowledge the power of the gods, but you think that most events are dictated by pure chance."
+												],
+												[
+													{
+														"type": "cell",
+														"roll": {
+															"exact": 4
+														}
+													},
+													"Even though you can work divine magic, you have never truly felt the presence of a divine essence within yourself."
+												],
+												[
+													{
+														"type": "cell",
+														"roll": {
+															"exact": 5
+														}
+													},
+													"You are plagued by nightmares that you believe are sent by your god as punishment for some unknown transgression."
+												],
+												[
+													{
+														"type": "cell",
+														"roll": {
+															"exact": 6
+														}
+													},
+													"In times of despair, you feel that you are but a plaything of the gods, and you resent their remoteness."
+												]
+											]
+										}
+									]
+								},
+								{
+									"type": "inset",
+									"name": "Serving a Pantheon, Philosophy, or Force",
+									"entries": [
+										"The typical cleric is an ordained servant of a particular god and chooses a Divine Domain associated with that deity. The cleric's magic flows from the god or the god's sacred realm, and often the cleric bears a holy symbol that represents that divinity.",
+										"Some clerics, especially in a world like Eberron, serve a whole pantheon, rather than a single deity. In certain campaigns, a cleric might instead serve a cosmic force, such as life or death, or a philosophy or concept, such as love, peace, or one of the nine alignments. Chapter 1 of the Dungeon Master's Guide explores options like these, in the section \"Gods of Your World.\"",
+										"Talk with your DM about the divine options available in your campaign, whether they're gods, pantheons, philosophies, or cosmic forces. Whatever being or thing your cleric ends up serving, choose a Divine Domain that is appropriate for it, and if it doesn't have a holy symbol, work with your DM to design one.",
+										"The cleric's class features often refer to your deity. If you are devoted to a pantheon, cosmic force, or philosophy, your cleric features still work for you as written. Think of the references to a god as references to the divine thing you serve that gives you your magic."
+									]
+								}
+							]
+						}
+					],
+					"source": "XGE",
+					"page": 17
 				}
-			],
-			"fluffPage": 17
+			]
 		}
 	]
 }

@@ -1,7 +1,7 @@
 "use strict";
 
 // NOTE: This file is generated with the Node script `generate-quick-reference.js`
-const JSON_URL = "data/bookref-quick.json";
+const JSON_URL = "data/generated/bookref-quick.json";
 
 let reference;
 
@@ -13,24 +13,21 @@ window.onload = function load () {
 	else BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message">Select a section to begin</td></tr>`);
 	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+	Omnisearch.addScrollTopFloat();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
 function onJsonLoad (data) {
 	reference = [data.reference["bookref-quick"]];
+	BookUtil.contentType = "document";
 
 	const allContents = $("ul.contents");
 	let tempString = "";
 	for (let i = 0; i < reference.length; i++) {
 		const book = reference[i];
 
-		tempString +=
-			`<li class="contents-item" data-bookid="${UrlUtil.encodeForHash(book.id)}">
-				<a id="${i}" href="#${book.id},0" title="${book.name}">
-					<span class='name'>${book.name}</span>
-				</a>
-				${BookUtil.makeContentsBlock({book: book, addOnclick: true})}
-			</li>`;
+		tempString += BookUtil.getContentsItem(i, book, {book, addOnclick: true});
 	}
 	allContents.append(tempString);
 
@@ -41,7 +38,7 @@ function onJsonLoad (data) {
 		listClass: "contents"
 	});
 
-	BookUtil.baseDataUrl = "data/";
+	BookUtil.baseDataUrl = "data/generated/";
 	BookUtil.bookIndex = reference;
 	BookUtil.referenceId = "bookref-quick";
 	BookUtil.initLinkGrabbers();
@@ -50,6 +47,6 @@ function onJsonLoad (data) {
 	if (window.location.hash.length) {
 		BookUtil.booksHashChange();
 	} else {
-		window.location.hash = "#bookref-quick,0";
+		window.location.hash = "#bookref-quick";
 	}
 }

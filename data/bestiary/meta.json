@@ -24,14 +24,16 @@
 					]
 				},
 				"If the aboleth dies, the first two effects fade over the course of {@dice 3d10} days."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Aerisi Kalinoth",
 			"lairActions": [
 				"If Aerisi is in the air node while {@creature Yan-C-Bin|PotA} isn't, Aerisi can take lair actions. On initiative count 20 (losing initiative ties), Aerisi uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Aerisi can take no other lair actions while concentrating on a spell cast as a lair action.",
 				"If Aerisi casts {@spell invisibility} using this lair action, she also draws the power of the air node into herself. By doing so, she regains 15 ({@dice 3d8+2}) hit points."
-			]
+			],
+			"source": "PotA"
 		},
 		{
 			"name": "Baphomet",
@@ -61,7 +63,7 @@
 					"type": "entries",
 					"name": "Madness of Baphomet",
 					"entries": [
-						"If a creature goes mad in Baphomet's lair or within line of sight of the demon lord, roll on the Madness of Baphomet table to determine the nature of the madness, which is a character flaw that lasts until cured. See the Dungeon Master's Guide for more on madness.",
+						"If a creature goes mad in Baphomet's lair or within line of sight of the demon lord, roll on the Madness of Baphomet table to determine the nature of the madness, which is a character flaw that lasts until cured. See the {@book Dungeon Master's Guide|dmg|8|madness} for more on madness.",
 						{
 							"type": "table",
 							"caption": "Madness of Baphomet",
@@ -70,8 +72,8 @@
 								"Flaw (lasts until cured)"
 							],
 							"colStyles": [
-								"col-xs-1",
-								"col-xs-11"
+								"col-1",
+								"col-11"
 							],
 							"rows": [
 								[
@@ -98,7 +100,8 @@
 						}
 					]
 				}
-			]
+			],
+			"source": "MTF"
 		},
 		{
 			"name": "Beholder",
@@ -124,7 +127,8 @@
 					]
 				},
 				"If the beholder dies, these effects fade over the course of {@dice 1d10} days."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Black Dragon",
@@ -150,7 +154,8 @@
 					]
 				},
 				"If the dragon dies, vegetation remains as it has grown, but other effects fade over {@dice 1d10} days."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Blue Dragon",
@@ -172,11 +177,12 @@
 					"items": [
 						"Thunderstorms rage within 6 miles of the lair.",
 						"Dust devils scour the land within 6 miles of the lair. A dust devil has the statistics of an air elemental, but it can't fly, has a speed of 50 feet, and has an Intelligence and Charisma of 1 (-5).",
-						"Hidden sinkholes form in and around the dragon's lair. A sinkhole can be spotted from a safe distance with a successful DC 20 Wisdom (Perception) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall {@dice 1d6} x 10 feet into the sinkhole."
+						"Hidden sinkholes form in and around the dragon's lair. A sinkhole can be spotted from a safe distance with a successful DC 20 Wisdom (Perception) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall {@dice 1d6 × 10} feet into the sinkhole."
 					]
 				},
 				"If the dragon dies, the dust devils disappear immediately, and the thunderstorms abate within {@dice 1d10} days. Any sinkholes remain where they are."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Brass Dragon",
@@ -201,7 +207,8 @@
 					]
 				},
 				"If the dragon dies, the tracks fade in {@dice 1d10} days, but the other effects fade immediately."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Bronze Dragon",
@@ -226,7 +233,8 @@
 					]
 				},
 				"If the dragon dies, changed weather reverts to normal, as described in the spell, and the other effects fade in {@dice 1d10} days."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Copper Dragon",
@@ -251,7 +259,8 @@
 					]
 				},
 				"If the dragon dies, the magic carvings fade over the course of {@dice 1d10} days. The other effects end immediately."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Death Tyrant",
@@ -277,7 +286,8 @@
 					]
 				},
 				"If the death tyrant dies, these effects fade over the course of {@dice 1d10} days."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Demilich",
@@ -303,7 +313,8 @@
 					]
 				},
 				"If the demilich is destroyed, these effects fade over the course of 10 days."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Demogorgon",
@@ -332,7 +343,7 @@
 					"type": "entries",
 					"name": "Madness of Demogorgon",
 					"entries": [
-						"If a creature goes mad in Demogorgon's lair or within line of sight of the demon lord, roll on the Madness of Demogorgon table to determine the nature of the madness, which is a character flaw that lasts until cured. See the Dungeon Master's Guide for more on madness.",
+						"If a creature goes mad in Demogorgon's lair or within line of sight of the demon lord, roll on the Madness of Demogorgon table to determine the nature of the madness, which is a character flaw that lasts until cured. See the {@book Dungeon Master's Guide|dmg|8|madness} for more on madness.",
 						{
 							"type": "table",
 							"caption": "Madness of Demogorgon",
@@ -341,8 +352,8 @@
 								"Flaw (lasts until cured)"
 							],
 							"colStyles": [
-								"col-xs-1",
-								"col-xs-11"
+								"col-1",
+								"col-11"
 							],
 							"rows": [
 								[
@@ -369,7 +380,8 @@
 						}
 					]
 				}
-			]
+			],
+			"source": "MTF"
 		},
 		{
 			"name": "Elder Brain",
@@ -395,7 +407,8 @@
 					]
 				},
 				"If the elder brain dies, these effects immediately end."
-			]
+			],
+			"source": "VGM"
 		},
 		{
 			"name": "Fraz-Urb'luu",
@@ -425,7 +438,7 @@
 					"type": "entries",
 					"name": "Madness of Fraz-Urb'luu",
 					"entries": [
-						"If a creature goes mad in Fraz-Urb'luu's lair or within line of sight of the demon lord, roll on the Madness of Fraz-Urb'luu table to determine the nature of the madness, which is a character flaw that lasts until cured. See the Dungeon Master's Guide for more on madness.",
+						"If a creature goes mad in Fraz-Urb'luu's lair or within line of sight of the demon lord, roll on the Madness of Fraz-Urb'luu table to determine the nature of the madness, which is a character flaw that lasts until cured. See the {@book Dungeon Master's Guide|dmg|8|madness} for more on madness.",
 						{
 							"type": "table",
 							"caption": "Madness of Fraz-Urb'luu",
@@ -434,8 +447,8 @@
 								"Flaw (lasts until cured)"
 							],
 							"colStyles": [
-								"col-xs-1",
-								"col-xs-11"
+								"col-1",
+								"col-11"
 							],
 							"rows": [
 								[
@@ -462,14 +475,16 @@
 						}
 					]
 				}
-			]
+			],
+			"source": "MTF"
 		},
 		{
 			"name": "Gar Shatterkeel",
 			"lairActions": [
 				"If Gar is in the water node while {@creature Olhydra|PotA} isn't, he can take lair actions. On initiative count 20 (losing initiative ties), Gar uses a lair action to use his Multiattack or cast one of his spells, up to 3rd level, without using components or a spell slot. He can't cast the same spell two rounds in a row, but he can continue to concentrate on a spell he previously cast using a lair action. He can take no other lair actions while concentrating on a spell cast as a lair action. His favorite use of this capability is casting {@spell inflict wounds} or {@spell call lightning}.",
 				"If Gar casts {@spell cure wounds} using this lair action, he regains the maximum number of hit points from the spell (28)."
-			]
+			],
+			"source": "PotA"
 		},
 		{
 			"name": "Gold Dragon",
@@ -494,7 +509,8 @@
 					]
 				},
 				"If the dragon dies, these effects end immediately."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Graz'zt",
@@ -523,7 +539,7 @@
 					"type": "entries",
 					"name": "Madness of Graz'zt",
 					"entries": [
-						"If a creature goes mad in Graz'zt's lair or within line of sight of the demon lord, roll on the Madness of Graz'zt table to determine the nature of the madness, which is a character flaw that lasts until cured. See the Dungeon Master's Guide for more on madness.",
+						"If a creature goes mad in Graz'zt's lair or within line of sight of the demon lord, roll on the Madness of Graz'zt table to determine the nature of the madness, which is a character flaw that lasts until cured. See the {@book Dungeon Master's Guide|dmg|8|madness} for more on madness.",
 						{
 							"type": "table",
 							"caption": "Madness of Graz'zt",
@@ -532,8 +548,8 @@
 								"Flaw (lasts until cured)"
 							],
 							"colStyles": [
-								"col-xs-1",
-								"col-xs-11"
+								"col-1",
+								"col-11"
 							],
 							"rows": [
 								[
@@ -564,7 +580,8 @@
 						}
 					]
 				}
-			]
+			],
+			"source": "MTF"
 		},
 		{
 			"name": "Green Dragon",
@@ -591,7 +608,8 @@
 					]
 				},
 				"If the dragon dies, the rodents and birds lose their supernatural link to it. The thickets remain, but within {@dice 1d10} days, they become mundane plants and normal difficult terrain, losing their thorns."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Imix",
@@ -618,7 +636,8 @@
 					]
 				},
 				"If Imix is destroyed or banished back to his home plane, the regional effects fade over the next {@dice 1d10} days."
-			]
+			],
+			"source": "PotA"
 		},
 		{
 			"name": "Juiblex",
@@ -647,7 +666,7 @@
 					"type": "entries",
 					"name": "Madness of Juiblex",
 					"entries": [
-						"If a creature goes mad in Juiblex's lair or within line of sight of the demon lord, roll on the Madness of Juiblex table to determine the nature of the madness, which is a character flaw that lasts until cured. See the Dungeon Master's Guide for more on madness.",
+						"If a creature goes mad in Juiblex's lair or within line of sight of the demon lord, roll on the Madness of Juiblex table to determine the nature of the madness, which is a character flaw that lasts until cured. See the {@book Dungeon Master's Guide|dmg|8|madness} for more on madness.",
 						{
 							"type": "table",
 							"caption": "Madness of Juiblex",
@@ -656,8 +675,8 @@
 								"Flaw (lasts until cured)"
 							],
 							"colStyles": [
-								"col-xs-1",
-								"col-xs-11"
+								"col-1",
+								"col-11"
 							],
 							"rows": [
 								[
@@ -684,7 +703,8 @@
 						}
 					]
 				}
-			]
+			],
+			"source": "MTF"
 		},
 		{
 			"name": "Ki-rin",
@@ -704,7 +724,8 @@
 					]
 				},
 				"When the ki-rin dies, all these effects disappear immediately, although the invigorating effect on flora and fauna remains for 3 years."
-			]
+			],
+			"source": "VGM"
 		},
 		{
 			"name": "Kraken",
@@ -730,7 +751,8 @@
 					]
 				},
 				"When the kraken dies, all of these regional effects fade immediately."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Larva Mage",
@@ -770,14 +792,31 @@
 						"The lich calls forth the spirits of creatures that died in its lair. These apparitions materialize and attack one creature that the lich can see within 60 feet of it. The target must succeed on a DC 18 Constitution saving throw, taking 52 ({@dice 15d6}) necrotic damage on a failed save, or half as much damage on a success. The apparitions then disappear."
 					]
 				}
-			]
+			],
+			"source": "MM"
+		},
+		{
+			"name": "Illithilich",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), the illithilich can take a lair action to cause one of the following magical effects; the illithilich can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"The illithilich rolls a {@dice d8} and regains a spell slot of that level or lower. If it has no spent spell slots of that level or lower, nothing happens.",
+						"The illithilich targets one creature it can see within 30 feet of it. A crackling cord of negative energy tethers the illithilich to the target. Whenever the illithilich takes damage, the target must make a DC 18 Constitution saving throw. On a failed save, the illithilich takes half the damage (rounded down), and the target takes the remaining damage. This tether lasts until initiative count 20 on the next round or until the illithilich or the target is no longer in the illithilich's lair.",
+						"The illithilich calls forth the spirits of creatures that died in its lair. These apparitions materialize and attack one creature that the illithilich can see within 60 feet of it. The target must succeed on a DC 18 Constitution saving throw, taking 52 ({@dice 15d6}) necrotic damage on a failed save, or half as much damage on a success. The apparitions then disappear."
+					]
+				}
+			],
+			"source": "VGM"
 		},
 		{
 			"name": "Marlos Urnrayle",
 			"lairActions": [
 				"If Marlos is in the earth node while {@creature Ogrémoch|PotA} isn't, the medusa can take lair actions. On initiative count 20 (losing initiative ties), Marlos uses a lair action to cast {@spell earthquake} without using components. As long as he maintains concentration on {@spell earthquake}, initiative count 20 is the start of Marlos's turn for the purpose of the spell. He can take no other lair actions while concentrating on {@spell earthquake}.",
 				"Marlos's second option for a lair action is to draw power from the earth node to heal. When he does so, he regains 30 ({@dice 6d8+3}) hit points."
-			]
+			],
+			"source": "PotA"
 		},
 		{
 			"name": "Mummy Lord",
@@ -803,7 +842,8 @@
 					]
 				},
 				"If the mummy lord is destroyed, these regional effects end immediately."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Ogrémoch",
@@ -825,12 +865,13 @@
 					"items": [
 						"Earth tremors strike the region within 10 miles of Ogrémoch's location every {@dice 2d12} hours, each lasting {@dice 1d10} rounds. At first, damage is minor\u2014broken windows, cracked plaster, items toppled off shelves. The longer Ogrémoch remains, the stronger the tremors become. After 5 days, the tremors are strong enough to destroy flimsy structures. After 10 days, they are strong enough to destroy ordinary wooden buildings. After 20 days, they can seriously damage or destroy reinforced or fortified structures.",
 						"Magnetic disturbances within 10 miles of Ogrémoch prevent compasses from functioning there.",
-						"Hidden sinkholes and fissures form within 1 mile of Ogrémoch's location. A hidden sinkhole can be spotted from a safe distance by any creature with a passive Wisdom (Perception) score of 15 or higher or spotted with a successful DC 15 Wisdom (Survival) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall {@dice 1d6} x 10 feet into the sinkhole or fissure.",
+						"Hidden sinkholes and fissures form within 1 mile of Ogrémoch's location. A hidden sinkhole can be spotted from a safe distance by any creature with a passive Wisdom (Perception) score of 15 or higher or spotted with a successful DC 15 Wisdom (Survival) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall {@dice 1d6 × 10} feet into the sinkhole or fissure.",
 						"Natural caves and tunnels within 1 mile of Ogrémoch's lair form intermittent portals to the Elemental Plane of Earth, allowing elemental creatures into the mortal world to dwell near those points."
 					]
 				},
 				"If Ogrémoch is destroyed or banished back to his home plane, the regional effects fade over the next {@dice 1d10} days."
-			]
+			],
+			"source": "PotA"
 		},
 		{
 			"name": "Olhydra",
@@ -857,7 +898,8 @@
 					]
 				},
 				"If Olhydra is destroyed or banished back to her home plane, the regional effects fade over the next {@dice 1d10} days."
-			]
+			],
+			"source": "PotA"
 		},
 		{
 			"name": "Orcus",
@@ -887,7 +929,7 @@
 					"type": "entries",
 					"name": "Madness of Orcus",
 					"entries": [
-						"If a creature goes mad in Orcus's lair or within line of sight of the demon lord, roll on the Madness of Orcus table to determine the nature of the madness, which is a character flaw that lasts until cured. See the Dungeon Master's Guide for more on madness.",
+						"If a creature goes mad in Orcus's lair or within line of sight of the demon lord, roll on the Madness of Orcus table to determine the nature of the madness, which is a character flaw that lasts until cured. See the {@book Dungeon Master's Guide|dmg|8|madness} for more on madness.",
 						{
 							"type": "table",
 							"caption": "Madness of Orcus",
@@ -896,8 +938,8 @@
 								"Flaw (lasts until cured)"
 							],
 							"colStyles": [
-								"col-xs-1",
-								"col-xs-11"
+								"col-1",
+								"col-11"
 							],
 							"rows": [
 								[
@@ -924,7 +966,8 @@
 						}
 					]
 				}
-			]
+			],
+			"source": "MTF"
 		},
 		{
 			"name": "Red Dragon",
@@ -950,7 +993,8 @@
 					]
 				},
 				"If the dragon dies, these effects fade over the course of {@dice 1d10} days."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Silver Dragon",
@@ -975,7 +1019,8 @@
 					]
 				},
 				"If the dragon dies, changed weather reverts to normal, as described in the spell, and the other effects fade in {@dice 1d10} days."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Sphinx",
@@ -990,7 +1035,8 @@
 						"The sphinx shifts itself and up to seven other creatures it can see within in its lair to another plane of existence. Once outside its lair, the sphinx can't use lair actions, but it can return to its lair as a bonus action on its turn, taking up to seven creatures with it."
 					]
 				}
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Storm Giant Quintessent",
@@ -1016,7 +1062,8 @@
 					]
 				},
 				"If the giant dies, the lightning, thunder, and high wind regional effects end immediately. Rain, snow, and blowing dust abate gradually within {@dice 1d8} days."
-			]
+			],
+			"source": "VGM"
 		},
 		{
 			"name": "Strahd von Zarovich",
@@ -1032,7 +1079,8 @@
 						"Strahd targets one Medium or smaller creature that casts a shadow. The target's shadow must be visible to Strahd and within 30 feet of him. If the target fails a DC 17 Charisma saving throw, its shadow detaches from it and becomes a {@creature shadow} that obeys Strahd's commands, acting on initiative count 20. A {@spell greater restoration} spell or a {@spell remove curse} spell cast on the target restores its natural shadow, but only if its undead shadow has been destroyed."
 					]
 				}
-			]
+			],
+			"source": "CoS"
 		},
 		{
 			"name": "Unicorn",
@@ -1048,14 +1096,16 @@
 					]
 				},
 				"If the unicorn dies, these effects end immediately."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Vanifer",
 			"lairActions": [
 				"If Vanifer is in the fire node while {@creature Imix|PotA} isn't, the tiefling can take lair actions. On initiative count 20 (losing initiative ties), Vanifer uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Vanifer can take no other lair actions while concentrating on a spell cast as a lair action. Her favorite use of this capability is casting {@spell fireball} or {@spell hypnotic pattern}.",
 				"If Vanifer casts {@spell misty step} using this lair action, she also draws the power of the fire node into herself. By doing so, she regains 15 ({@dice 3d8+2}) hit points."
-			]
+			],
+			"source": "PotA"
 		},
 		{
 			"name": "Vampire",
@@ -1071,7 +1121,8 @@
 					]
 				},
 				"If the vampire is destroyed, these effects end after {@dice 2d6} days."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "White Dragon",
@@ -1081,7 +1132,7 @@
 					"type": "list",
 					"items": [
 						"Freezing fog fills a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The fog spreads around corners, and its area is heavily obscured. Each creature in the fog when it appears must make a DC 10 Constitution saving throw, taking 10 ({@dice 3d6}) cold damage on a failed save, or half as much damage on a successful one. A creature that ends its turn in the fog takes 10 ({@dice 3d6}) cold damage. A wind of at least 20 miles per hour disperses the fog. The fog otherwise lasts until the dragon uses this lair action again or until the dragon dies.",
-						"Jagged ice shards fall from the ceiling, striking up to three creatures underneath that the dragon can see within 120 feet of it. The dragon makes one ranged attack roll (+7 to hit) against each target. On a hit, the target takes 10 ({@dice 3d6}) piercing damage.",
+						"Jagged ice shards fall from the ceiling, striking up to three creatures underneath that the dragon can see within 120 feet of it. The dragon makes one ranged attack roll ({@hit 7} to hit) against each target. On a hit, the target takes 10 ({@dice 3d6}) piercing damage.",
 						"The dragon creates an opaque wall of ice on a solid surface it can see within 120 feet of it. The wall can be up to 30 feet long, 30 feet high, and 1 foot thick. When the wall appears, each creature within its area is pushed 5 feet out of the wall's space; appearing on whichever side of the wall it wants. Each 10-foot section of the wall has AC 5, 30 hit points, vulnerability to fire damage, and immunity to acid, cold, necrotic, poison, and psychic damage. The wall disappears when the dragon uses this lair action again or when the dragon dies."
 					]
 				}
@@ -1098,7 +1149,8 @@
 					]
 				},
 				"If the dragon dies, the fog and precipitation fade within 1 day. The ice walls melt over the course of {@dice 1d10} days."
-			]
+			],
+			"source": "MM"
 		},
 		{
 			"name": "Yan-C-Bin",
@@ -1108,7 +1160,7 @@
 					"type": "list",
 					"items": [
 						"Yan-C-Bin drops the temperature of the air, covering all surfaces with ice. This effect is identical to the {@spell sleet storm} spell.",
-						"Yan-C-Bin controls the surrounding air as an extension of himself. Each creature Yan-C-Bin designates must succeed at a DC 24 Constitution saving throw or be hoisted or flung {@dice 3d6} x 10 feet through the air. A creature smashed into a solid object or released in mid-air takes {@dice 1d6} bludgeoning damage for every 10 feet moved or fallen.",
+						"Yan-C-Bin controls the surrounding air as an extension of himself. Each creature Yan-C-Bin designates must succeed at a DC 24 Constitution saving throw or be hoisted or flung {@dice 3d6 × 10} feet through the air. A creature smashed into a solid object or released in mid-air takes {@dice 1d6} bludgeoning damage for every 10 feet moved or fallen.",
 						"Yan-C-Bin creates a torrent of debris within 120 feet of him that lasts until initiative count 20 on the next round. The debris lightly obscures every creature and object in the area for the duration. All creatures in the area must succeed at a DC 24 Wisdom saving throw or be blinded until initiative count 20 on the next round."
 					]
 				}
@@ -1125,7 +1177,8 @@
 					]
 				},
 				"If Yan-C-Bin is destroyed or banished back to his home plane, the regional effects fade over the next {@dice 1d10} days."
-			]
+			],
+			"source": "PotA"
 		},
 		{
 			"name": "Yeenoghu",
@@ -1155,7 +1208,7 @@
 					"type": "entries",
 					"name": "Madness of Yeenoghu",
 					"entries": [
-						"If a creature goes mad in Yeenoghu's lair or within line of sight of the demon lord, roll on the Madness of Yeenoghu table to determine the nature of the madness, which is a character flaw that lasts until cured. See the Dungeon Master's Guide for more on madness.",
+						"If a creature goes mad in Yeenoghu's lair or within line of sight of the demon lord, roll on the Madness of Yeenoghu table to determine the nature of the madness, which is a character flaw that lasts until cured. See the {@book Dungeon Master's Guide|dmg|8|madness} for more on madness.",
 						{
 							"type": "table",
 							"caption": "Madness of Yeenoghu",
@@ -1164,8 +1217,8 @@
 								"Flaw (lasts until cured)"
 							],
 							"colStyles": [
-								"col-xs-1",
-								"col-xs-11"
+								"col-1",
+								"col-11"
 							],
 							"rows": [
 								[
@@ -1192,7 +1245,8 @@
 						}
 					]
 				}
-			]
+			],
+			"source": "MTF"
 		},
 		{
 			"name": "Zuggtmoy",
@@ -1222,7 +1276,7 @@
 					"type": "entries",
 					"name": "Madness of Zuggtmoy",
 					"entries": [
-						"If a creature goes mad in Zuggtmoy's lair or within line of sight of the demon lord, roll on the Madness of Zuggtmoy table to determine the nature of the madness, which is a character flaw that lasts until cured. See the Dungeon Master's Guide for more on madness.",
+						"If a creature goes mad in Zuggtmoy's lair or within line of sight of the demon lord, roll on the Madness of Zuggtmoy table to determine the nature of the madness, which is a character flaw that lasts until cured. See the {@book Dungeon Master's Guide|dmg|8|madness} for more on madness.",
 						{
 							"type": "table",
 							"caption": "Madness of Zuggtmoy",
@@ -1231,8 +1285,8 @@
 								"Flaw (lasts until cured)"
 							],
 							"colStyles": [
-								"col-xs-1",
-								"col-xs-11"
+								"col-1",
+								"col-11"
 							],
 							"rows": [
 								[
@@ -1259,7 +1313,8 @@
 						}
 					]
 				}
-			]
+			],
+			"source": "MTF"
 		},
 		{
 			"name": "Morkoth",
@@ -1285,7 +1340,8 @@
 					]
 				},
 				"If the morkoth dies, these regional effects end immediately."
-			]
+			],
+			"source": "VGM"
 		},
 		{
 			"name": "Balhannoth",
@@ -1310,7 +1366,8 @@
 					]
 				},
 				"If the balhannoth dies, these effects end immediately."
-			]
+			],
+			"source": "MTF"
 		},
 		{
 			"name": "Geryon",
@@ -1336,7 +1393,8 @@
 					]
 				},
 				"If Geryon dies, these effects fade over the course of {@dice 1d10} days."
-			]
+			],
+			"source": "MTF"
 		},
 		{
 			"name": "Zariel",
@@ -1361,7 +1419,8 @@
 					]
 				},
 				"If Zariel dies, these effects fade over the course of {@dice 1d10} days."
-			]
+			],
+			"source": "MTF"
 		},
 		{
 			"name": "Githzerai Anarch",
@@ -1386,7 +1445,8 @@
 					]
 				},
 				"If the anarch dies, these effects end after {@dice 1d6} rounds. All formed substance becomes a chaotic churn of energy and matter, unraveling into unformed substance that dissipates {@dice 1d6} rounds later."
-			]
+			],
+			"source": "MTF"
 		},
 		{
 			"name": "Merrenoloth",
@@ -1412,7 +1472,64 @@
 					]
 				},
 				"If the merrenoloth dies, these effects fade over the course of {@dice 1d6} hours."
-			]
+			],
+			"source": "MTF"
+		},
+		{
+			"name": "Halaster Blackcloak",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), Halaster takes a lair action to cause one of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Halaster targets a volume of unoccupied space or solid stone no larger than four 10-foot cubes within 30 feet of him, turning the open space to solid, worked stone or vice versa.",
+						"Halaster causes one door or archway within 30 feet of him to disappear and be replaced by a blank wall, or he restores a door or an archway previously removed in this way.",
+						"Halaster deactivates or reactivates one of Undermountain's magic gates. The gate must be within 120 feet of him."
+					]
+				}
+			],
+			"regionalEffects": [
+				"When Halaster is in Undermountain, the following effects can occur in any location within the dungeon or in any extraplanar extension of the dungeon:",
+				{
+					"type": "list",
+					"items": [
+						"A magical scrying sensor appears, taking the form of a ghostly, 1-foot-diameter humanoid eye surrounded by motes of light. The sensor is stationary, though Halaster can reorient the eye to face in any direction. Halaster can see through the eye as though he was in its space. The eye can't be harmed or dispelled, but it winks out within an antimagic field. A scrying eye lasts until Halaster ends the effect (no action required).",
+						"A minor illusory effect is triggered, as though Halaster had cast {@spell minor illusion} in an area. Common illusions include the echo of rattling chains, the distant sound of explosive spells being cast, a dusty cloak or a rusty helm floating as though worn by an invisible figure, and illusory footprints appearing on a dusty floor.",
+						"Silent apparitions of dead adventurers drift through halls and rooms as though they are lost. An apparition can't be harmed, and it doesn't acknowledge creatures or objects in any way. It can't be dispelled but is suppressed within an antimagic field."
+					]
+				}
+			],
+			"source": "WDMM"
 		}
-	]
+	],
+	"language": {
+		"AB": "Abyssal",
+		"AQ": "Aquan",
+		"AU": "Auran",
+		"C": "Common",
+		"CE": "Celestial",
+		"CS": "Can't Speak Known Languages",
+		"D": "Dwarvish",
+		"DR": "Draconic",
+		"DS": "Deep Speech",
+		"DU": "Druidic",
+		"E": "Elvish",
+		"G": "Gnomish",
+		"GI": "Giant",
+		"GO": "Goblin",
+		"GTH": "Gith",
+		"H": "Halfling",
+		"I": "Infernal",
+		"IG": "Ignan",
+		"O": "Orc",
+		"OTH": "Other",
+		"P": "Primordial",
+		"S": "Sylvan",
+		"T": "Terran",
+		"TC": "Thieves' cant",
+		"TP": "Telepathy",
+		"U": "Undercommon",
+		"X": "Any (Choose)",
+		"XX": "All"
+	}
 }

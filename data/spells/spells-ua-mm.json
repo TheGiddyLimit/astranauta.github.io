@@ -221,6 +221,7 @@
 				"You have a limited telepathic bond with the knowbot, out to a range of 500 feet from the device or system where the knowbot was conjured. If you move beyond this range, the knowbot disappears in {@dice 2d4} rounds, as if the duration of the spell had expired. Moving within range again immediately reestablishes the bond.",
 				"The knowbot is bound to the system in which it was created, and it stays there until it is dismissed or the spell's duration expires."
 			],
+			"isSummon": true,
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
@@ -449,8 +450,8 @@
 						"Effect"
 					],
 					"colStyles": [
-						"col-xs-1 text-align-center no-wrap",
-						"col-xs-11"
+						"col-1 text-align-center no-wrap",
+						"col-11"
 					],
 					"rows": [
 						[
@@ -508,6 +509,9 @@
 			"savingThrow": [
 				"wisdom",
 				"dexterity"
+			],
+			"areaTags": [
+				"S"
 			]
 		},
 		{
@@ -649,6 +653,9 @@
 			},
 			"entries": [
 				"Four creatures of your choice within range become undetectable to electronic sensors and cameras for the duration of the spell. Anything a target is wearing or carrying is likewise undetectable as long as it is on the target's person. The targets remain visible to vision."
+			],
+			"areaTags": [
+				"MT"
 			]
 		},
 		{
@@ -997,8 +1004,11 @@
 			},
 			"entries": [
 				"The creature you touch feels reality subtly shifted to its favor while this spell is in effect. The target isn't inconvenienced by mundane delays of any sort. Traffic lights are always green, there's always a waiting elevator, and a taxi is always around the corner. The target can run at full speed through dense crowds, and attacks of opportunity provoked by the target's movement are made with disadvantage.",
-				"Synchronicity grants advantage to Dexterity (Stealth) checks, since the target always finds a handy piece of cover available. Additionally, the target has advantage on all ability checks made to drive a vehicle.",
+				"Synchronicity grants advantage to Dexterity ({@skill Stealth}) checks, since the target always finds a handy piece of cover available. Additionally, the target has advantage on all ability checks made to drive a vehicle.",
 				"In the event that two or more creatures under the effect of synchronicity are attempting to avoid being inconvenienced by each other, the creatures engage in a contest of Charisma each time the effects of the spells would oppose each other."
+			],
+			"areaTags": [
+				"ST"
 			]
 		},
 		{

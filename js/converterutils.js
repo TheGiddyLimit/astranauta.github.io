@@ -1,6 +1,17 @@
 "use strict";
 
-class ConverterUtils {
+/*
+ * Various utilities to assist in statblock parse/conversion. Formatted as a Node module, to allow external use.
+ *
+ * In all cases, the first argument, `m`, is a monster statblock.
+ * Additionally, `cbMan` is a callback which should accept up to two arguments representing part of the statblock which
+ * require manual consideration/tagging, and an error message, respectively.
+ * Where available, `cbErr` accepts the same arguments, and may be called when an error occurs (the parser encounters
+ * something too far from acceptable to be solved with manual conversion; for instance, in the case of completely junk
+ * data, or common errors which should be corrected prior to running the parser).
+ */
+
+class AcConvert {
 	static tryPostProcessAc (m, cbMan, cbErr) {
 		let nuAc = [];
 		const basic = /^(\d+)( \((.*?)\))?$/.exec(m.ac.trim());
@@ -15,7 +26,7 @@ class ConverterUtils {
 
 				const from = [];
 
-				const splitter = new RegExp(/,\s?(?![^(]*\))/, "g"); // split on commas not within parentheses
+				const splitter = StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX;
 
 				const parts = brak.split(splitter).map(it => it.trim());
 
@@ -24,6 +35,7 @@ class ConverterUtils {
 					switch (pLow) {
 						// unhandled/other
 						case "unarmored defense":
+						case "suave defense":
 						case "armor scraps":
 						case "barding scraps":
 						case "patchwork armor":
@@ -137,11 +149,28 @@ class ConverterUtils {
 
 						// magic items
 						case "dwarven plate":
-							from.push("{@item dwarven plate|dmg}");
+							from.push("{@item dwarven plate}");
 							break;
-
+						case "elven chain":
+							from.push("{@item elven chain}");
+							break;
+						case "glamoured studded leather":
+							from.push("{@item glamoured studded leather}");
+							break;
 						case "bracers of defense":
 							from.push("{@item bracers of defense}");
+							break;
+						case "badge of the watch":
+							from.push("{@item Badge of the Watch|wdh}");
+							break;
+						case "ring of protection":
+							from.push("{@item ring of protection}");
+							break;
+						case "robe of the archmagi":
+							from.push("{@item robe of the archmagi}");
+							break;
+						case "staff of power":
+							from.push("{@item staff of power}");
 							break;
 
 						// TODO general auto-detect for enchanted versions of items
@@ -162,6 +191,12 @@ class ConverterUtils {
 							break;
 						case "studded leather armor +1":
 							from.push("{@item studded leather armor +1|dmg|+1 studded leather armor}");
+							break;
+						case "+2 leather armor":
+							from.push("{@item leather armor +2|dmg|+2 leather armor}");
+							break;
+						case "+3 leather armor":
+							from.push("{@item leather armor +3|dmg|+3 leather armor}");
 							break;
 
 						default: {
@@ -208,6 +243,503 @@ class ConverterUtils {
 	}
 }
 
+class TagAttack {
+	static tryTagAttacks (m, cbMan) {
+		const handleProp = (prop) => {
+			if (m[prop]) {
+				m[prop].forEach(it => {
+					if (it.entries) {
+						const str = JSON.stringify(it.entries, null, "\t");
+						const out = str.replace(/([\t ]")((?:(?:[A-Z][a-z]*|or) )*Attack:) /g, (...m) => {
+							if (TagAttack.MAP[m[2]]) {
+								return `${m[1]}${TagAttack.MAP[m[2]]} `;
+							} else {
+								cbMan(m[2]);
+								return m[0];
+							}
+						});
+						it.entries = JSON.parse(out);
+					}
+				})
+			}
+		};
+
+		handleProp("action");
+		handleProp("reaction");
+		handleProp("trait");
+		handleProp("legendary");
+		handleProp("variant");
+	}
+}
+TagAttack.MAP = {
+	"Melee Weapon Attack:": "{@atk mw}",
+	"Ranged Weapon Attack:": "{@atk rw}",
+	"Melee Attack:": "{@atk m}",
+	"Ranged Attack:": "{@atk r}",
+	"Area Attack:": "{@atk a}",
+	"Area Weapon Attack:": "{@atk aw}",
+	"Melee Spell Attack:": "{@atk ms}",
+	"Melee or Ranged Weapon Attack:": "{@atk mw,rw}",
+	"Ranged Spell Attack:": "{@atk rs}",
+	"Melee or Ranged Spell Attack:": "{@atk ms,rs}",
+	"Melee or Ranged Attack:": "{@atk m,r}"
+};
+
+class TagHit {
+	static tryTagHits (m) {
+		const handleProp = (prop) => {
+			if (m[prop]) {
+				m[prop].forEach(it => {
+					if (it.entries) {
+						const str = JSON.stringify(it.entries, null, "\t");
+						const out = str.replace(/Hit: /g, "{@h}");
+						it.entries = JSON.parse(out);
+					}
+				})
+			}
+		};
+
+		handleProp("action");
+		handleProp("reaction");
+		handleProp("trait");
+		handleProp("legendary");
+		handleProp("variant");
+	}
+}
+
+class AlignmentConvert {
+	static tryConvertAlignment (m, cbMan) {
+		const a = m.alignment;
+		if (!AlignmentConvert.ALIGNMENTS[a]) {
+			if (cbMan) cbMan(a);
+		} else {
+			m.alignment = AlignmentConvert.ALIGNMENTS[a];
+		}
+	}
+}
+AlignmentConvert.ALIGNMENTS = {
+	"lawful good": ["L", "G"],
+	"neutral good": ["N", "G"],
+	"chaotic good": ["C", "G"],
+	"chaotic neutral": ["C", "N"],
+	"lawful evil": ["L", "E"],
+	"lawful neutral": ["L", "N"],
+	"neutral evil": ["L", "E"],
+	"chaotic evil": ["C", "E"],
+
+	"good": ["G"],
+	"lawful": ["L"],
+	"neutral": ["N"],
+	"chaotic": ["C"],
+	"evil": ["E"],
+
+	"unaligned": ["U"],
+
+	"any alignment": ["A"],
+
+	"any non-good alignment": ["L", "NX", "C", "NY", "E"],
+	"any non-lawful alignment": ["NX", "C", "G", "NY", "E"],
+
+	"any chaotic alignment": ["C", "G", "NY", "E"],
+	"any evil alignment": ["L", "NX", "C", "E"],
+	"any lawful alignment": ["L", "G", "NY", "E"],
+	"any good alignment": ["L", "NX", "C", "G"],
+
+	// TODO general auto-detect for percentage-weighted alignments
+	"neutral good (50%) or neutral evil (50%)": [{alignment: ["N", "G"], chance: 50}, {
+		alignment: ["N", "E"],
+		chance: 50
+	}],
+	"chaotic good (75%) or neutral evil (25%)": [{alignment: ["C", "G"], chance: 75}, {
+		alignment: ["N", "E"],
+		chance: 25
+	}],
+	"chaotic good or chaotic neutral": [{alignment: ["C", "G"]}, {alignment: ["C", "N"]}],
+	"lawful neutral or lawful evil": [{alignment: ["L", "N"]}, {alignment: ["L", "E"]}],
+	"neutral evil (50%) or lawful evil (50%)": [{alignment: ["N", "E"], chance: 50}, {
+		alignment: ["L", "E"],
+		chance: 50
+	}]
+};
+
+class TagUtil {
+	static isNoneOrEmpty (str) {
+		if (!str || !str.trim()) return false;
+		return !!TagUtil.NONE_EMPTY_REGEX.exec(str);
+	}
+}
+TagUtil.NONE_EMPTY_REGEX = /^(([-\u2014\u2013\u2221])+|none)$/gi;
+
+class TraitActionTag {
+	static tryRun (m, cbMan) {
+		function doTag (prop, outProp) {
+			function isTraits () {
+				return prop === "trait";
+			}
+
+			if (m[prop]) {
+				m[prop].forEach(t => {
+					if (!t.name) return;
+					t.name = t.name.trim();
+
+					const cleanName = t.name.toLowerCase();
+					const mapped = TraitActionTag.tags[prop][cleanName];
+					if (mapped) {
+						m[outProp] = m[outProp] || [];
+						if (mapped === true) {
+							m[outProp].push(t.name);
+						} else {
+							m[outProp].push(mapped)
+						}
+					} else if (isTraits() && cleanName.startsWith("keen ")) {
+						m[outProp] = m[outProp] || [];
+						m[outProp].push("Keen Senses");
+					} else if (isTraits() && cleanName.startsWith("legendary resistance")) {
+						m[outProp] = m[outProp] || [];
+						m[outProp].push("Legendary Resistances");
+					} else if (isTraits() && cleanName.endsWith(" absorption")) {
+						m[outProp] = m[outProp] || [];
+						m[outProp].push("Damage Absorption");
+					} else {
+						if (cbMan) {
+							cbMan(prop, outProp, cleanName);
+						}
+					}
+				})
+			}
+		}
+		if (m.traitTags) m.traitTags = [];
+		if (m.actionTags) m.actionTags = [];
+
+		doTag("trait", "traitTags");
+		doTag("action", "actionTags");
+		doTag("reaction", "actionTags");
+
+		if (m.traitTags && !m.traitTags.length) delete m.traitTags;
+		if (m.actionTags && !m.actionTags.length) delete m.actionTags;
+	}
+}
+TraitActionTag.tags = { // true = map directly; string = map to this string
+	trait: {
+		"turn immunity": true,
+		"brute": true,
+		"antimagic susceptibility": true,
+		"sneak attack": true,
+		"sneak attack (1/turn)": "Sneak Attack",
+		"reckless": true,
+		"web sense": true,
+		"flyby": true,
+		"pounce": true,
+		"water breathing": true,
+
+		"turn resistance": true,
+		"turn defiance": "Turn Resistance",
+		"turning defiance": "Turn Resistance",
+		"turn resistance aura": "Turn Resistance",
+		"undead fortitude": true,
+
+		"aggressive": true,
+		"illumination": true,
+		"rampage": true,
+		"rejuvenation": true,
+		"web walker": true,
+		"incorporeal movement": true,
+
+		"keen hearing and smell": "Keen Senses",
+		"keen sight and smell": "Keen Senses",
+		"keen hearing and sight": "Keen Senses",
+		"keen hearing": "Keen Senses",
+		"keen smell": "Keen Senses",
+		"keen senses": true,
+
+		"hold breath": true,
+
+		"charge": true,
+
+		"fey ancestry": true,
+
+		"siege monster": true,
+
+		"pack tactics": true,
+
+		"regeneration": true,
+
+		"shapechanger": true,
+
+		"false appearance": true,
+
+		"spider climb": true,
+
+		"sunlight sensitivity": true,
+		"sunlight hypersensitivity": "Sunlight Sensitivity",
+		"light sensitivity": true,
+
+		"amphibious": true,
+
+		"legendary resistance (1/day)": "Legendary Resistances",
+		"legendary resistance (2/day)": "Legendary Resistances",
+		"legendary resistance (3/day)": "Legendary Resistances",
+		"legendary resistance (5/day)": "Legendary Resistances",
+
+		"magic weapon": "Magic Weapons",
+		"magic weapons": true,
+
+		"magic resistance": true,
+		"spell immunity": "Magic Resistance",
+
+		"ambush": "Ambusher",
+		"ambusher": true,
+
+		"amorphous": true,
+		"amorphous form": "Amorphous",
+
+		"death burst": true,
+		"death throes": "Death Burst",
+
+		"devil's sight": true,
+		"devil sight": "Devil's Sight",
+
+		"immutable form": true
+	},
+	action: {
+		"multiattack": true,
+		"frightful presence": true,
+		"teleport": true,
+		"swallow": true,
+		"tentacle": "Tentacles",
+		"tentacles": true
+	},
+	reaction: {
+		"parry": true
+	},
+	legendary: {
+		// unused
+	}
+};
+
+class LanguageTag {
+	static tryRun (m, cbAll, cbTracked) {
+		if (m.languages) {
+			m.languages = m.languages.trim();
+			if (TagUtil.isNoneOrEmpty(m.languages)) {
+				delete m.languages;
+				return;
+			} else {
+				m.languages = m.languages.replace(/but can(not|'t) speak/ig, "but can't speak")
+			}
+
+			m.languages.split(", ").map(it => it.trim()).filter(it => it).forEach(l => {
+				if (cbAll) cbAll(l);
+
+				Object.keys(LanguageTag.LANGUAGE_MAP).forEach(k => {
+					const v = LanguageTag.LANGUAGE_MAP[k];
+
+					const re = new RegExp(`(^|[^-a-zA-Z])${k}([^-a-zA-Z]|$)`, "g");
+
+					if (re.exec(l)) {
+						if ((v === "XX" || v === "X") && (l.includes("knew in life") || l.includes("spoke in life"))) return;
+						if (/(one|the) languages? of its creator/i.exec(l)) return;
+
+						if (cbTracked) cbTracked(v);
+
+						m.languageTags = m.languageTags || [];
+						if (!m.languageTags.includes(v)) {
+							m.languageTags.push(v);
+						}
+					}
+				})
+			});
+		}
+	}
+}
+LanguageTag.LANGUAGE_MAP = {
+	"Abyssal": "AB",
+	"Aquan": "AQ",
+	"Auran": "AU",
+	"Celestial": "CE",
+	"Common": "C",
+	"can't speak": "CS",
+	"Draconic": "DR",
+	"Dwarvish": "D",
+	"Elvish": "E",
+	"Giant": "GI",
+	"Gnomish": "G",
+	"Goblin": "GO",
+	"Halfling": "H",
+	"Infernal": "I",
+	"Orc": "O",
+	"Primordial": "P",
+	"Sylvan": "S",
+	"Terran": "T",
+	"Undercommon": "U",
+	"Aarakocra": "OTH",
+	"one additional": "X",
+	"Blink Dog": "OTH",
+	"Bothii": "OTH",
+	"Bullywug": "OTH",
+	"one other language": "X",
+	"plus six more": "X",
+	"plus two more languages": "X",
+	"up to five other languages": "X",
+	"Druidic": "DU",
+	"Giant Eagle": "OTH",
+	"Giant Elk": "OTH",
+	"Giant Owl": "OTH",
+	"Gith": "GTH",
+	"Grell": "OTH",
+	"Grung": "OTH",
+	"Homarid": "OTH",
+	"Hook Horror": "OTH",
+	"Ice Toad": "OTH",
+	"Ixitxachitl": "OTH",
+	"Kruthik": "OTH",
+	"Netherese": "OTH",
+	"Olman": "OTH",
+	"Otyugh": "OTH",
+	"Primal": "OTH",
+	"Sahuagin": "OTH",
+	"Sphinx": "OTH",
+	"Thayan": "OTH",
+	"Thri-kreen": "OTH",
+	"Tlincalli": "OTH",
+	"Troglodyte": "OTH",
+	"Umber Hulk": "OTH",
+	"Vegepygmy": "OTH",
+	"Winter Wolf": "OTH",
+	"Worg": "OTH",
+	"Yeti": "OTH",
+	"Yikaria": "OTH",
+	"all": "XX",
+	"all but rarely speaks": "XX",
+	"any one language": "X",
+	"any two languages": "X",
+	"any three languages": "X",
+	"any four languages": "X",
+	"any five languages": "X",
+	"any six languages": "X",
+	"one language of its creator's choice": "X",
+	"two other languages": "X",
+	"telepathy": "TP",
+	"thieves' cant": "TC",
+	"Thieves' cant": "TC",
+	"Deep Speech": "DS",
+	"Gnoll": "OTH",
+	"Ignan": "IG",
+	"Modron": "OTH",
+	"Slaad": "OTH",
+	"all languages": "XX",
+	"any language": "X"
+};
+
+class SenseTag {
+	static tryRun (m, cbAll) {
+		if (m.senses) {
+			if (TagUtil.isNoneOrEmpty(m.senses)) {
+				delete m.senses;
+			} else {
+				const senseTags = new Set();
+				m.senses.toLowerCase().split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX).map(it => it.trim())
+					.forEach(s => {
+						Object.entries(SenseTag.TAGS).forEach(([k, v]) => {
+							if (s.includes(k)) {
+								if (v === "D" && /\d\d\d ft/.exec(s)) senseTags.add("SD");
+								else senseTags.add(v);
+							}
+						});
+
+						if (cbAll) cbAll(s);
+					});
+
+				if (senseTags.size === 0) delete m.senseTags;
+				else m.senseTags = [...senseTags];
+			}
+		}
+	}
+}
+SenseTag.TAGS = {
+	"blindsight": "B",
+	"darkvision": "D",
+	"tremorsense": "T",
+	"truesight": "U"
+};
+
+class SpellcastingTypeTag {
+	static tryRun (m, cbAll) {
+		if (!m.spellcasting) {
+			delete m.spellcastingTags;
+		} else {
+			const tags = new Set();
+			m.spellcasting.forEach(sc => {
+				if (!sc.name) return;
+				if (/(^|[^a-zA-Z])psionics([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("P");
+				if (/(^|[^a-zA-Z])innate([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("I");
+				if (/(^|[^a-zA-Z])form([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("F");
+				if (/(^|[^a-zA-Z])shared([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("S");
+
+				if (sc.headerEntries) {
+					const strHeader = JSON.stringify(sc.headerEntries);
+					Object.entries(SpellcastingTypeTag.CLASSES).forEach(([tag, regex]) => {
+						regex.lastIndex = 0;
+						const match = regex.exec(strHeader);
+						if (match) {
+							tags.add(tag);
+							cbAll(match[0]);
+						}
+					});
+				}
+
+				cbAll(sc.name);
+			});
+			if (tags.size) m.spellcastingTags = [...tags];
+			else delete m.spellcastingTags;
+		}
+	}
+}
+SpellcastingTypeTag.CLASSES = {
+	"CB": /(^|[^a-zA-Z])bard([^a-zA-Z]|$)/gi,
+	"CC": /(^|[^a-zA-Z])cleric([^a-zA-Z]|$)/gi,
+	"CD": /(^|[^a-zA-Z])druid([^a-zA-Z]|$)/gi,
+	"CP": /(^|[^a-zA-Z])paladin([^a-zA-Z]|$)/gi,
+	"CR": /(^|[^a-zA-Z])ranger([^a-zA-Z]|$)/gi,
+	"CS": /(^|[^a-zA-Z])sorcerer([^a-zA-Z]|$)/gi,
+	"CL": /(^|[^a-zA-Z])warlock([^a-zA-Z]|$)/gi,
+	"CW": /(^|[^a-zA-Z])wizard([^a-zA-Z]|$)/gi
+};
+
+class TextClean {
+	static getCleanedJson (str) {
+		str = str.replace(TextClean.REPLACEMENT_REGEX, (match) => TextClean.REPLACEMENTS[match]);
+		return str.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1");
+	}
+
+	static getReplacedQuotesText (str) {
+		return str
+			.replace(/’/g, "'")
+			.replace(/[“”]/g, `"`)
+			.replace(/…/g, `...`)
+	}
+}
+TextClean.REPLACEMENTS = {
+	"—": "\\u2014",
+	"–": "\\u2013",
+	"−": "\\u2212",
+	"’": "'",
+	"“": '\\"',
+	"”": '\\"',
+	"…": "..."
+};
+TextClean.REPLACEMENT_REGEX = new RegExp(Object.keys(TextClean.REPLACEMENTS).join("|"), 'g');
+
 if (typeof module !== "undefined") {
-	module.exports = ConverterUtils;
+	module.exports = {
+		AcConvert,
+		TagAttack,
+		TagHit,
+		AlignmentConvert,
+		TraitActionTag,
+		LanguageTag,
+		SenseTag,
+		SpellcastingTypeTag,
+		TextClean
+	};
 }

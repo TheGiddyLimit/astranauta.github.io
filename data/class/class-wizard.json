@@ -344,7 +344,12 @@
 					"(a) a {@item scholar's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"A {@item spellbook|phb}"
 				],
-				"goldAlternative": "4d4 × 10"
+				"goldAlternative": "{@dice 4d4×10|4d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"int": 13
+				}
 			},
 			"classFeatures": [
 				[
@@ -359,7 +364,7 @@
 					{
 						"name": "Spellcasting",
 						"entries": [
-							"As a student of arcane magic, you have a spellbook containing spells that show the first glimmerings of your true power. See chapter 10 for the general rules of spellcasting and chapter 11 for the wizard spell list.",
+							"As a student of arcane magic, you have a spellbook containing spells that show the first glimmerings of your true power. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for the {@filter wizard spell list|spells|class=wizard}.",
 							{
 								"type": "entries",
 								"name": "Cantrips",
@@ -371,7 +376,7 @@
 								"type": "entries",
 								"name": "Spellbook",
 								"entries": [
-									"At 1st level, you have a spellbook containing six 1st-level wizard spells of your choice. Your spellbook is the repository of the wizard spells you know, except your cantrips, which are fixed in your mind."
+									"At 1st level, you have a spellbook containing six 1st-level {@filter wizard spells|spells|class=wizard} of your choice. Your spellbook is the repository of the wizard spells you know, except your cantrips, which are fixed in your mind."
 								]
 							},
 							{
@@ -388,7 +393,7 @@
 								"type": "entries",
 								"name": "Spellcasting Ability",
 								"entries": [
-									"Intelligence is your spellcasting ability for your wizard spells, since you learn your spells through dedicated study and memorization. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one.",
+									"Intelligence is your spellcasting ability for your wizard spells, since you learn your wizard spells through dedicated study and memorization. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one.",
 									{
 										"type": "abilityDc",
 										"name": "Spell",
@@ -610,8 +615,8 @@
 													"Potion Created"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -662,8 +667,8 @@
 													"Item Created"
 												],
 												"colStyles": [
-													"col-xs-3 text-align-center",
-													"col-xs-9"
+													"col-3 text-align-center",
+													"col-9"
 												],
 												"rows": [
 													[
@@ -723,8 +728,8 @@
 													"Magic Item"
 												],
 												"colStyles": [
-													"col-xs-1 text-align-center",
-													"col-xs-11"
+													"col-1 text-align-center",
+													"col-11"
 												],
 												"rows": [
 													[
@@ -769,8 +774,8 @@
 													"Magic Item"
 												],
 												"colStyles": [
-													"col-xs-1 text-align-center",
-													"col-xs-11"
+													"col-1 text-align-center",
+													"col-11"
 												],
 												"rows": [
 													[
@@ -945,7 +950,7 @@
 										"name": "Arcane Ward",
 										"entries": [
 											"Starting at 2nd level, you can weave magic around yourself for protection. When you cast an {@filter abjuration spell of 1st level or higher|spells|school=A|level=!0}, you can simultaneously use a strand of the spell's magic to create a magical ward on yourself that lasts until you finish a long rest. The ward has hit points equal to twice your wizard level + your Intelligence modifier. Whenever you take damage, the ward takes the damage instead. If this damage reduces the ward to 0 hit points, you take any remaining damage.",
-											"While the ward has 0 hit points, it can't absorb damage, but its magic remains. Whenever you cast an {@filter abjuration spell of 1st level or higher|spells|school=A|level=!0} , the ward regains a number of hit points equal to twice the level of the spell.",
+											"While the ward has 0 hit points, it can't absorb damage, but its magic remains. Whenever you cast an {@filter abjuration spell of 1st level or higher|spells|school=A|level=!0}, the ward regains a number of hit points equal to twice the level of the spell.",
 											"Once you create the ward, you can't create it again until you finish a long rest."
 										]
 									}
@@ -1017,7 +1022,7 @@
 										"name": "Training in War and Song (Bladesinging)",
 										"entries": [
 											"When you adopt this tradition at 2nd level, you gain proficiency with light armor, and you gain proficiency with one type of one-handed melee weapon of your choice.",
-											"You also gain proficiency in the Performance skill if you don't already have it."
+											"You also gain proficiency in the {@skill Performance} skill if you don't already have it."
 										]
 									},
 									{
@@ -1032,7 +1037,7 @@
 												"items": [
 													"You gain a bonus to your AC equal to your Intelligence modifier (minimum of +1).",
 													"Your walking speed increases by 10 feet.",
-													"You have advantage on Dexterity (Acrobatics) checks.",
+													"You have advantage on Dexterity ({@skill Acrobatics}) checks.",
 													"You gain a bonus to any Constitution saving throws you make to maintain concentration on a spell. The bonus equals your Intelligence modifier (minimum of +1)."
 												]
 											},
@@ -1078,7 +1083,7 @@
 										"type": "entries",
 										"name": "Extra Attack",
 										"entries": [
-											"Starting at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+											"Starting at 6th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 										]
 									}
 								]
@@ -1203,7 +1208,7 @@
 										"type": "entries",
 										"name": "Portent",
 										"entries": [
-											"Starting at 2nd level when you choose this school, glimpses of the future begin to press in on your awareness. When you finish a long rest, roll two d20s and record the numbers rolled. You can replace any attack roll, saving throw, or ability check made by you or a creature that you can see with one of these foretelling rolls. You must choose to do so before the roll, and you can replace a roll in this way only once per turn.",
+											"Starting at 2nd level when you choose this school, glimpses of the future begin to press in on your awareness. When you finish a long rest, roll two {@dice d20}s and record the numbers rolled. You can replace any attack roll, saving throw, or ability check made by you or a creature that you can see with one of these foretelling rolls. You must choose to do so before the roll, and you can replace a roll in this way only once per turn.",
 											"Each foretelling roll can be used only once. When you finish a long rest, you lose any unused foretelling rolls."
 										]
 									}
@@ -1291,7 +1296,7 @@
 										"type": "entries",
 										"name": "Greater Portent",
 										"entries": [
-											"Starting at 14th level, the visions in your dreams intensify and paint a more accurate picture in your mind of what is to come. You roll three d20s for your Portent feature, rather than two."
+											"Starting at 14th level, the visions in your dreams intensify and paint a more accurate picture in your mind of what is to come. You roll three {@dice d20}s for your Portent feature, rather than two."
 										]
 									}
 								]
@@ -1432,7 +1437,7 @@
 										"name": "Overchannel",
 										"entries": [
 											"Starting at 14th level, you can increase the power of your simpler spells. When you cast a wizard spell of 1st through 5th-level that deals damage, you can deal maximum damage with that spell.",
-											"The first time you do so, you suffer no adverse effect. If you use this feature again before you finish a long rest, you take 2d12 necrotic damage for each level of the spell, immediately after you cast it. Each time you use this feature again before finishing a long rest, the necrotic damage per spell level increases by 1d12. This damage ignores resistance and immunity."
+											"The first time you do so, you suffer no adverse effect. If you use this feature again before you finish a long rest, you take {@dice 2d12} necrotic damage for each level of the spell, immediately after you cast it. Each time you use this feature again before finishing a long rest, the necrotic damage per spell level increases by {@dice 1d12}. This damage ignores resistance and immunity."
 										]
 									}
 								]
@@ -1672,7 +1677,7 @@
 							}
 						]
 					],
-					"source": "UATheFaithful",
+					"source": "UAWizardRevisited",
 					"shortName": "Theurgy (UA)"
 				},
 				{
@@ -1803,7 +1808,7 @@
 										"type": "entries",
 										"name": "Shapechanger",
 										"entries": [
-											"At 10th level, you add the {@spell polymorph} spell to your spellbook, if it is not there already. You can cast {@spell polymorph} without expending a spell slot. When you do so, you can target only yourself and transform into a {@filter beast whose challenge rating is 1 or lower|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|miscellaneous=!swarm}.",
+											"At 10th level, you add the {@spell polymorph} spell to your spellbook, if it is not there already. You can cast {@spell polymorph} without expending a spell slot. When you do so, you can target only yourself and transform into a {@filter beast whose challenge rating is 1 or lower|bestiary|challenge rating=0;1/8;1/4;1/2;1|type=beast|miscellaneous=!swarm}.",
 											"Once you cast {@spell polymorph} in this way, you can't do so again until you finish a short or long rest, though you can still cast it normally using an available spell slot."
 										]
 									}
@@ -1861,7 +1866,7 @@
 														"type": "entries",
 														"name": "Restore Youth",
 														"entries": [
-															"You touch the transmuter's stone to a willing creature, and that creature's apparent age is reduced by 3d10 years, to a minimum of 13 years. This effect doesn't extend the creature's lifespan."
+															"You touch the transmuter's stone to a willing creature, and that creature's apparent age is reduced by {@dice 3d10} years, to a minimum of 13 years. This effect doesn't extend the creature's lifespan."
 														]
 													}
 												]
@@ -1966,7 +1971,7 @@
 										"type": "entries",
 										"name": "Lore Master",
 										"entries": [
-											"Starting at 2nd level, you become a compendium of knowledge on a vast array of topics. Your proficiency bonus is doubled for any ability check you make that uses the Arcana, History, Nature, or Religion skill if you are proficient in that skill.",
+											"Starting at 2nd level, you become a compendium of knowledge on a vast array of topics. Your proficiency bonus is doubled for any ability check you make that uses the {@skill Arcana}, {@skill History}, {@skill Nature}, or {@skill Religion} skill if you are proficient in that skill.",
 											"In addition, your analytical abilities are so well-honed that your initiative in combat can be driven by mental agility, rather than physical agility. When you roll initiative, it is either an Intelligence check or a Dexterity check for you (your choice)."
 										]
 									},
@@ -1997,7 +2002,7 @@
 										"name": "Alchemical Casting",
 										"entries": [
 											"At 6th level, you learn to augment spells in a variety of ways. When you cast a spell with a spell slot, you can expend one additional spell slot to augment its effects for this casting, mixing the raw stuff of magic into your spell to amplify it. The effect depends on the spell slot you expend.",
-											"An additional 1st-level spell slot can increase the spell's raw force. If you roll damage for the spell when you cast it, increase the damage against every target by 2d10 force damage. If the spell can deal damage on more than one turn, it deals this extra force damage only on the turn you cast the spell.",
+											"An additional 1st-level spell slot can increase the spell's raw force. If you roll damage for the spell when you cast it, increase the damage against every target by {@dice 2d10} force damage. If the spell can deal damage on more than one turn, it deals this extra force damage only on the turn you cast the spell.",
 											"An additional 2nd-level spell slot can increase the spell's range. If the spell's range is at least 30 feet, it becomes 1 mile.",
 											"An additional 3rd-level spell slot can increase the spell's potency. Increase the spell's save DC by 2."
 										]
@@ -2158,8 +2163,8 @@
 													"Cantrip"
 												],
 												"colStyles": [
-													"col-xs-2",
-													"col-xs-10"
+													"col-2",
+													"col-10"
 												],
 												"rows": [
 													[
@@ -2211,8 +2216,8 @@
 													"1st-Level Spell"
 												],
 												"colStyles": [
-													"col-xs-2",
-													"col-xs-10"
+													"col-2",
+													"col-10"
 												],
 												"rows": [
 													[
@@ -2264,8 +2269,8 @@
 													"2nd-Level Spell"
 												],
 												"colStyles": [
-													"col-xs-2",
-													"col-xs-10"
+													"col-2",
+													"col-10"
 												],
 												"rows": [
 													[
@@ -2317,8 +2322,8 @@
 													"3rd-Level Spell"
 												],
 												"colStyles": [
-													"col-xs-2",
-													"col-xs-10"
+													"col-2",
+													"col-10"
 												],
 												"rows": [
 													[
@@ -2370,8 +2375,8 @@
 													"4th-Level Spell"
 												],
 												"colStyles": [
-													"col-xs-2",
-													"col-xs-10"
+													"col-2",
+													"col-10"
 												],
 												"rows": [
 													[
@@ -2423,8 +2428,8 @@
 													"5th-Level Spell"
 												],
 												"colStyles": [
-													"col-xs-2",
-													"col-xs-10"
+													"col-2",
+													"col-10"
 												],
 												"rows": [
 													[
@@ -2483,7 +2488,7 @@
 										"entries": [
 											"At 6th level, you learn to channel magic through your arcanomechanical armor to augment spells in a variety of ways. When you cast a spell while wearing that armor and attuned to it, you can expend one additional spell slot of 1st or 2nd level to alter the spell. The effect depends on the spell slot you expend.",
 											"A 1st-level slot allows you to manipulate the spell's energy. When you cast a spell that deals acid, cold, fire, lightning, or thunder damage, you can substitute that damage type for another one from that list.",
-											"A 2nd-level slot increases the spell's raw force. If you roll damage for the spell when you cast it, increase that damage by 2d10 force damage against one of the spell's targets (your choice) this turn."
+											"A 2nd-level slot increases the spell's raw force. If you roll damage for the spell when you cast it, increase that damage by {@dice 2d10} force damage against one of the spell's targets (your choice) this turn."
 										]
 									}
 								]
@@ -2518,248 +2523,389 @@
 					],
 					"source": "UAThreeSubclasses",
 					"shortName": "Invention (UA)"
+				},
+				{
+					"name": "School of Psionics (Livestream)",
+					"subclassFeatures": [
+						[
+							{
+								"name": "School of Psionics (Livestream)",
+								"entries": [
+									"The School of Psionics emphasizes the power of the mind, granting its practitioners the ability to read minds and transform the energy of their thoughts into tangible, physical force.",
+									"Known as psions, members of this school are rare and usually meet in secretive enclaves that delve into the mysteries of aberrations and other bizarre creatures.",
+									{
+										"type": "entries",
+										"name": "ESP",
+										"entries": [
+											"At 2nd level, you gain the ability to contact other creatures' minds. You can cast {@spell detect thoughts} using this ability. When you cast that spell, whether with thisa bility or from some other ability, it has the following modifications:",
+											{
+												"type": "list",
+												"items": [
+													"The spell does not require concentration.",
+													"The benefits that require you to use an action instead require the use of a bonus action.",
+													"If you use the option to probe deeper and the target fails its Wisdom saving throw, it is vulnerable to psychic damage you inflict until the end of your next turn."
+												]
+											},
+											"Once you cast {@spell detect thoughts} using this ability, you can't use it again until you complete a short or long rest."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Telepath",
+										"entries": [
+											"Starting at 2nd level, you gain telepathy with a range of 30 feet.",
+											"When you select spells, you can choose spells from the psionic spell list, even if they do not appear on your class list."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Telekinetic Mind",
+										"entries": [
+											"Starting at 6th level, you gain the ability to transform your thoughts into tangible force. You can cast {@spell telekinesis} using this ability. When you cast that spell, whether with this ability or from some other ability, it has the following modifications:",
+											{
+												"type": "list",
+												"items": [
+													"The spell does not require concentration.",
+													"The benefits that require you to use an action instead require the use of a bonus action.",
+													"The spell's duration is 1 minute, and you cannot choose a new target after selecting your initial one. This restriction no longer applies once you reach 9th level."
+												]
+											},
+											"Once you cast {@spell telekinesis} using this ability, you can't use it again until you complete a short or long rest."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Superior ESP",
+										"entries": [
+											"At 10th level, your proficiency with the detect thoughts spell grows. You gain the following additional benefits when you cast the spell:",
+											{
+												"type": "list",
+												"items": [
+													"The spell now targets a number of creatures equal to your Intelligence modifier (minimum 1).",
+													"If you use the option to probe deeper and the target fails its Wisdom saving throw, you can choose to charm it instead of making it vulnerable to psychic damage. It makes another Wisdom saving throw at the end of its turn, ending this effect with a successful save or if it takes damage from you or your allies."
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Improved Telekinesis",
+										"entries": [
+											"At 14th level, you master the full potential of your mind to project physical force into the world. When you cast {@spell telekinesis} and each time you select a new target for the spell, you can instead choose a number of targets up to your Intelligence bonus (minimum 1)."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "Stream",
+					"shortName": "Psionics (Stream)"
 				}
 			],
 			"fluff": [
 				{
-					"type": "quote",
 					"entries": [
-						"Wizardry requires understanding. The knowledge of how and why magic works, and our efforts to broaden that understanding, have brought about the key advances in civilization over the centuries."
+						"Clad in the silver robes that denote her station, an elf closes her eyes to shut out the distractions of the battlefield and begins her quiet chant. Fingers weaving in front of her, she completes her spell and launches a tiny bead of fire toward the enemy ranks, where it erupts into a conflagration that engulfs the soldiers.",
+						"Checking and rechecking his work, a human scribes an intricate magic circle in chalk on the bare stone floor, then sprinkles powdered iron along every line and graceful curve. When the circle is complete, he drones a long incantation. A hole opens in space inside the circle, bringing a whiff of brimstone from the otherworldly plane beyond.",
+						"Crouching on the floor in a dungeon intersection, a gnome tosses a handful of small bones inscribed with mystic symbols, muttering a few words of power over them. Closing his eyes to see the visions more clearly, he nods slowly, then opens his eyes and points down the passage to his left.",
+						"Wizards are supreme magic-users, defined and united as a class by the spells they cast. Drawing on the subtle weave of magic that permeates the cosmos, wizards cast spells of explosive fire, arcing lightning, subtle deception, and brute-force mind control. Their magic conjures monsters from other planes of existence, glimpses the future, or turns slain foes into zombies. Their mightiest spells change one substance into another, call meteors down from the sky, or open portals to other worlds.",
+						{
+							"type": "entries",
+							"name": "Scholars of the Arcane",
+							"entries": [
+								"Wild and enigmatic, varied in form and function, the power of magic draws students who seek to master its mysteries. Some aspire to become like the gods, shaping reality itself. Though the casting of a typical spell requires merely the utterance of a few strange words, fleeting gestures, and sometimes a pinch or clump of exotic materials, these surface components barely hint at the expertise attained after years of apprenticeship and countless hours of study.",
+								"Wizards live and die by their spells. Everything else is secondary. They learn new spells as they experiment and grow in experience. They can also learn them from other wizards, from ancient tomes or inscriptions, and from ancient creatures (such as the fey) that are steeped in magic."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "The Lure of Knowledge",
+							"entries": [
+								"Wizards' lives are seldom mundane. The closest a wizard is likely to come to an ordinary life is working as a sage or lecturer in a library or university, teaching others the secrets of the multiverse. Other wizards sell their services as diviners, serve in military forces, or pursue lives of crime or domination.",
+								"But the lure of knowledge and power calls even the most unadventurous wizards out of the safety of their libraries and laboratories and into crumbling ruins and lost cities. Most wizards believe that their counterparts in ancient civilizations knew secrets of magic that have been lost to the ages, and discovering those secrets could unlock the path to a power greater than any magic available in the present age."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Wizard",
+							"entries": [
+								"Creating a wizard character demands a backstory dominated by at least one extraordinary event. How did your character first come into contact with magic? How did you discover you had an aptitude for it? Do you have a natural talent, or did you simply study hard and practice incessantly? Did you encounter a magical creature or an ancient tome that taught you the basics of magic?",
+								"What drew you forth from your life of study? Did your first taste of magical knowledge leave you hungry for more? Have you received word of a secret repository of knowledge not yet plundered by any other wizard? Perhaps you're simply eager to put your newfound magical skills to the test in the face of danger.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"You can make a wizard quickly by following these suggestions. First, Intelligence should be your highest ability score, followed by Constitution or Dexterity. If you plan to join the School of Enchantment, make Charisma your next-best score. Second, choose the {@background sage} background. Third, choose the {@spell mage hand}, {@spell light}, and {@spell ray of frost} cantrips, along with the following 1st-level spells for your spellbook: {@spell burning hands}, {@spell charm person}, {@spell feather fall}, {@spell mage armor}, {@spell magic missile}, and {@spell sleep}."
+									]
+								}
+							]
+						}
 					],
-					"by": "Gimble the illusionist"
-				},
-				"Only a select few people in the world are wielders of magic. Of all those, wizards stand at the pinnacle of the craft. Even the least of them can manipulate forces that flout the laws of nature, and the most accomplished among them can cast spells with world-shaking effects.",
-				"The price that wizards pay for their mastery is that most valuable of commodities: time. It takes years of study, instruction, and experimentation to learn how to harness magical energy and carry spells around in one's own mind. For adventuring wizards and other spellcasters who aspire to the highest echelons of the profession, the studying never ends, nor does the quest for knowledge and power.",
-				"If you're playing a wizard, take advantage of the opportunity to make your character more than just a stereotypical spell-slinger. Use the advice that follows to add some intriguing details to how your wizard interacts with the world.",
-				{
-					"type": "entries",
-					"name": "Spellbook",
-					"entries": [
-						"Your wizard character's most prized possession\u2014your spellbook\u2014might be an innocuous-looking volume whose covers show no hint of what's inside. Or you might display some flair, as many wizards do, by carrying a spellbook of an unusual sort. If you don't own such an item already, one of your goals might be to find a spellbook that sets you apart by its appearance or its means of manufacture.",
-						{
-							"type": "table",
-							"caption": "Spellbooks",
-							"colLabels": [
-								"{@dice d6}",
-								"Spellbook"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"A tome with pages that are thin sheets of metal, spells etched into them with acid"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Long straps of leather on which spells are written, wrapped around a staff for ease of transport"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"A battered tome filled with pictographs that only you can understand"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"Small stones inscribed with spells and kept in a cloth bag"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"A scorched book, ravaged by dragon fire, with the script of your spells barely visible on its pages"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"A tome full of black pages whose writing is visible only in dim light or darkness"
-								]
-							]
-						}
-					]
+					"page": 112,
+					"source": "PHB"
 				},
 				{
-					"type": "entries",
-					"name": "Ambition",
 					"entries": [
-						"Few aspiring wizards undertake the study of magic without some personal goal in mind. Many wizards use their spells as a tool to produce a tangible benefit, in material goods or in status, for themselves or their companions. For others, the theoretical aspect of magic might have a strong appeal, pushing those wizards to seek out knowledge that supports new theories of the arcane or confirms old ones.",
-						"Beyond the obvious, why does your wizard character study magic, and what do you want to achieve? If you haven't given these questions much thought, you can do so now, and the answers you come up with will likely affect how your future unfolds.",
 						{
-							"type": "table",
-							"caption": "Ambitions",
-							"colLabels": [
-								"{@dice d6}",
-								"Ambition"
+							"type": "quote",
+							"entries": [
+								"Wizardry requires understanding. The knowledge of how and why magic works, and our efforts to broaden that understanding, have brought about the key advances in civilization over the centuries."
 							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"You will prove that the gods aren't as powerful as folk believe."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Immortality is the end goal of your studies."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"If you can fully understand magic, you can unlock its use for all and usher in an era of equality."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"Magic is a dangerous tool. You use it to protect what you treasure."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"Arcane power must be taken away from those who would abuse it."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"You will become the greatest wizard the world has seen in generations."
-								]
+							"by": "Gimble the illusionist"
+						},
+						"Only a select few people in the world are wielders of magic. Of all those, wizards stand at the pinnacle of the craft. Even the least of them can manipulate forces that flout the laws of nature, and the most accomplished among them can cast spells with world-shaking effects.",
+						"The price that wizards pay for their mastery is that most valuable of commodities: time. It takes years of study, instruction, and experimentation to learn how to harness magical energy and carry spells around in one's own mind. For adventuring wizards and other spellcasters who aspire to the highest echelons of the profession, the studying never ends, nor does the quest for knowledge and power.",
+						"If you're playing a wizard, take advantage of the opportunity to make your character more than just a stereotypical spell-slinger. Use the advice that follows to add some intriguing details to how your wizard interacts with the world.",
+						{
+							"type": "entries",
+							"name": "Spellbook",
+							"entries": [
+								"Your wizard character's most prized possession\u2014your spellbook\u2014might be an innocuous-looking volume whose covers show no hint of what's inside. Or you might display some flair, as many wizards do, by carrying a spellbook of an unusual sort. If you don't own such an item already, one of your goals might be to find a spellbook that sets you apart by its appearance or its means of manufacture.",
+								{
+									"type": "table",
+									"caption": "Spellbooks",
+									"colLabels": [
+										"{@dice d6}",
+										"Spellbook"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"A tome with pages that are thin sheets of metal, spells etched into them with acid"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Long straps of leather on which spells are written, wrapped around a staff for ease of transport"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"A battered tome filled with pictographs that only you can understand"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Small stones inscribed with spells and kept in a cloth bag"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"A scorched book, ravaged by dragon fire, with the script of your spells barely visible on its pages"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"A tome full of black pages whose writing is visible only in dim light or darkness"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Ambition",
+							"entries": [
+								"Few aspiring wizards undertake the study of magic without some personal goal in mind. Many wizards use their spells as a tool to produce a tangible benefit, in material goods or in status, for themselves or their companions. For others, the theoretical aspect of magic might have a strong appeal, pushing those wizards to seek out knowledge that supports new theories of the arcane or confirms old ones.",
+								"Beyond the obvious, why does your wizard character study magic, and what do you want to achieve? If you haven't given these questions much thought, you can do so now, and the answers you come up with will likely affect how your future unfolds.",
+								{
+									"type": "table",
+									"caption": "Ambitions",
+									"colLabels": [
+										"{@dice d6}",
+										"Ambition"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"You will prove that the gods aren't as powerful as folk believe."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Immortality is the end goal of your studies."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"If you can fully understand magic, you can unlock its use for all and usher in an era of equality."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Magic is a dangerous tool. You use it to protect what you treasure."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Arcane power must be taken away from those who would abuse it."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"You will become the greatest wizard the world has seen in generations."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Eccentricity",
+							"entries": [
+								"Endless hours of solitary study and research can have a negative effect on anyone's social skills. Wizards, who are a breed apart to begin with, are no exception. An odd mannerism or two is not necessarily a drawback, though; an eccentricity of this sort is usually harmless and could provide a source of amusement or serve as a calling card of sorts.",
+								"If your character has an eccentricity, is it a physical tic or a mental one? Are you well known in some circles because of it? Do you fight to overcome it, or do you embrace this minor claim to fame of yours?",
+								{
+									"type": "table",
+									"caption": "Eccentricities",
+									"colLabels": [
+										"{@dice d6}",
+										"Eccentricity"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"You have the habit of tapping your foot incessantly, which often annoys those around you."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Your memory is quite good, but you have no trouble pretending to be absentminded when it suits your purposes."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"You never enter a room without looking to see what's hanging from the ceiling."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Your most prized possession is a dead worm that you keep inside a potion vial."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"When you want people to leave you alone, you start talking to yourself. That usually does the trick."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Your fashion sense and grooming, or more accurately lack thereof, sometimes cause others to assume you are a beggar."
+										]
+									]
+								}
 							]
 						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Eccentricity",
-					"entries": [
-						"Endless hours of solitary study and research can have a negative effect on anyone's social skills. Wizards, who are a breed apart to begin with, are no exception. An odd mannerism or two is not necessarily a drawback, though; an eccentricity of this sort is usually harmless and could provide a source of amusement or serve as a calling card of sorts.",
-						"If your character has an eccentricity, is it a physical tic or a mental one? Are you well known in some circles because of it? Do you fight to overcome it, or do you embrace this minor claim to fame of yours?",
-						{
-							"type": "table",
-							"caption": "Eccentricities",
-							"colLabels": [
-								"{@dice d6}",
-								"Eccentricity"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"You have the habit of tapping your foot incessantly, which often annoys those around you."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"Your memory is quite good, but you have no trouble pretending to be absentminded when it suits your purposes."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"You never enter a room without looking to see what's hanging from the ceiling."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"Your most prized possession is a dead worm that you keep inside a potion vial."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"When you want people to leave you alone, you start talking to yourself. That usually does the trick."
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"Your fashion sense and grooming, or more accurately lack thereof, sometimes cause others to assume you are a beggar."
-								]
-							]
-						}
-					]
+					],
+					"page": 58,
+					"source": "XGE"
 				}
-			],
-			"fluffPage": 58
+			]
 		}
 	]
 }

@@ -159,7 +159,7 @@
 								"Item"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -269,7 +269,7 @@
 								"Objective"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -315,7 +315,7 @@
 								"Secret"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -411,7 +411,7 @@
 										"Denizen"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -560,7 +560,7 @@
 						"A thorough inspection and search of the entire area reveals only that the north side of the hill has a crumbling cliff of sand and gravel about 20 feet high in the middle of the whole. (This cliff face is represented by the northern edge of the map) A low stone ledge overhangs this eroded area, and shrubs and bushes obscure it from observation at a distance.",
 						"It takes 10 minutes for characters to search each 10-foot-wide space along the cliff face. This examination must be done from a distance, using a long spear or a 10-foot pole to poke into the sand and gravel, looking for an opening. Any prodding into the cliff face must be sufficiently high off the ground in order to collapse enough material to expose a portion of a tunnel entrance. Once an entrance is exposed, it takes about 1 hour for characters to thoroughly clear the passage that lies beyond, but a crawl space can be opened in 10 minutes.",
 						"Probing of the gravel and sand face can begin wherever the characters choose-east side, west side, middle, several locations at once or merely a single one at a time. Leave this strictly to the players to decide. The best manner to handle it is to ask where they will search, once they have determined that they will investigate the area and they have stated how it will be done and with what. Remember that probing low to the ground, or probing with short implements (daggers, swords, and the like) will not reveal anything.",
-						"As soon as any entrance is cleared and entered, go to the appropriate location on the map either area 1, area 2, or area 3.",
+						"As soon as any entrance is cleared and entered, go to the appropriate location on the map either {@area 1>1}, {@area 1>2}, or {@area 1>3}.",
 						{
 							"type": "entries",
 							"name": "Demonic Attention",
@@ -574,30 +574,57 @@
 		},
 		{
 			"type": "section",
-			"name": "1. False Entrance Tunnel",
+			"name": "Locations in the Tomb",
 			"entries": [
-				"If the characters clear the passage on the west side of the cliff face, read:",
 				{
-					"type": "inset",
-					"entries": [
-						"The corridor before you is made of plain stone, roughly worked, and it is dark and full of cobwebs. The ceiling overhead is obscured by hanging strands of webbing."
+					"type": "gallery",
+					"images": [
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/TftYP/ToH-DM.png"
+							},
+							"title": "DM Map"
+						},
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/TftYP/ToH-Player.png"
+							},
+							"title": "Player Map"
+						}
 					]
 				},
 				{
-					"type": "image",
-					"href": {
-						"type": "internal",
-						"path": "adventure/TftYP/ToHMap-One-Players.jpg"
-					},
-					"title": "Map One Players"
-				},
-				"Casual observation will not reveal that the ceiling, 20 feet overhead, is composed of badly fitting stones. The cobwebs must be burned away for someone to be able to inspect the tunnel ceiling. Anyone who does so and succeeds on a DC 10 Intelligence (Investigation) check realizes that the ceiling is unstable and in danger of collapse.",
-				"Daylight is sufficient to reveal a pair of oaken doors at the end of the passageway. The doors open outward by means of great iron ring pulls. When either door is opened, it is revealed to be a false door, and the trap is triggered.",
-				{
 					"type": "entries",
-					"name": "Ceiling Trap",
+					"name": "1. False Entrance Tunnel",
 					"entries": [
-						"If the ceiling is prodded with any force, or if the doors are opened, the ceiling of the tunnel collapses. Creatures under the collapse must make a DC 15 Dexterity saving throw, taking 27 (5d10) bludgeoning damage on a failed save, or half as much damage on a successful one. The trap mechanism is beyond the doors and inside the ceiling, so it can't be disabled from outside."
+						"If the characters clear the passage on the west side of the cliff face, read:",
+						{
+							"type": "inset",
+							"entries": [
+								"The corridor before you is made of plain stone, roughly worked, and it is dark and full of cobwebs. The ceiling overhead is obscured by hanging strands of webbing."
+							]
+						},
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/TftYP/ToHMap-One-Players.jpg"
+							},
+							"title": "Map One Players"
+						},
+						"Casual observation will not reveal that the ceiling, 20 feet overhead, is composed of badly fitting stones. The cobwebs must be burned away for someone to be able to inspect the tunnel ceiling. Anyone who does so and succeeds on a DC 10 Intelligence (Investigation) check realizes that the ceiling is unstable and in danger of collapse.",
+						"Daylight is sufficient to reveal a pair of oaken doors at the end of the passageway. The doors open outward by means of great iron ring pulls. When either door is opened, it is revealed to be a false door, and the trap is triggered.",
+						{
+							"type": "entries",
+							"name": "Ceiling Trap",
+							"entries": [
+								"If the ceiling is prodded with any force, or if the doors are opened, the ceiling of the tunnel collapses. Creatures under the collapse must make a DC 15 Dexterity saving throw, taking 27 (5d10) bludgeoning damage on a failed save, or half as much damage on a successful one. The trap mechanism is beyond the doors and inside the ceiling, so it can't be disabled from outside."
+							]
+						}
 					]
 				},
 				{
@@ -669,15 +696,20 @@
 							]
 						},
 						"{@b The message reads:}",
-						"{@i Acererak congratulates you on your powers of observation, so make of this whatever you wish, for you will be mine in the end no matter what!",
-						"Go back to the tormentor or through the arch, and the second great hall you'll discover.",
-						"Shun green if you can, but night's good color is for those of great valor.",
-						"If shades of red stand for blood, the wise will not need sacrifice aught but a loop of magical metal-you're well along your march.",
-						"Two pits along the way will be found to lead to a fortuitous fall, so check the wall.",
-						"These keys and those are most important of all, and beware of trembling hands and what will maul.",
-						"If you find the false you find the true, and into the columned hall you'll come,and there the throne that's key and keyed.",
-						"The iron men of visage grim do more than meets the viewer's eye.",
-						"You've left and left and found my tomb, and now your souls will die.}",
+						{
+							"type": "quote",
+							"entries": [
+								"Acererak congratulates you on your powers of observation, so make of this whatever you wish, for you will be mine in the end no matter what!",
+								"Go back to the tormentor or through the arch, and the second great hall you'll discover.",
+								"Shun green if you can, but night's good color is for those of great valor.",
+								"If shades of red stand for blood, the wise will not need sacrifice aught but a loop of magical metal-you're well along your march.",
+								"Two pits along the way will be found to lead to a fortuitous fall, so check the wall.",
+								"These keys and those are most important of all, and beware of trembling hands and what will maul.",
+								"If you find the false you find the true, and into the columned hall you'll come,and there the throne that's key and keyed.",
+								"The iron men of visage grim do more than meets the viewer's eye.",
+								"You've left and left and found my tomb, and now your souls will die."
+							]
+						},
 						{
 							"type": "entries",
 							"name": "Covered Pits",
@@ -729,7 +761,7 @@
 							]
 						},
 						"Nothing will cause the vapors to clear, nor will any sort of magic allow sight into the area, until the glowing stones are pressed in the proper sequence: yellow, blue, orange. If this is done, the vapors disappear, and the path appears to go eastward.",
-						"If the archway is entered when it is clouded, those characters doing so will be instantly teleported to area 7. If it is passed through after pressing the glowing stones in proper sequence, those who step through while following the path will be teleported to area 11, and those who pass through off the path will be sent back to area 3."
+						"If the archway is entered when it is clouded, those characters doing so will be instantly teleported to {@area 1>7}. If it is passed through after pressing the glowing stones in proper sequence, those who step through while following the path will be teleported to {@area 1>11}, and those who pass through off the path will be sent back to {@area 1>3}."
 					]
 				},
 				{
@@ -834,7 +866,7 @@
 					"type": "entries",
 					"name": "9. Complex of Secret Doors",
 					"entries": [
-						"If someone opens the door on the east wall of area 8, read:",
+						"If someone opens the door on the east wall of {@area 1>8}, read:",
 						{
 							"type": "inset",
 							"entries": [
@@ -862,7 +894,7 @@
 					"type": "entries",
 					"name": "10. Great Hall of Spheres",
 					"entries": [
-						"This area is similar to area 3, for the floor is of inlaid tiles and the walls and ceiling are painted with figures of animals, strange signs and glyphs (which mean absolutely nothing), and humans and human-like creatures posing with spheres of different colors. These globes are two-dimensional, of course, and their significance and pattern are described below. From north to south, with the west wall being the left-hand column, and the east the right-hand, the spheres are colored and positioned as follows:",
+						"This area is similar to {@area 1>3}, for the floor is of inlaid tiles and the walls and ceiling are painted with figures of animals, strange signs and glyphs (which mean absolutely nothing), and humans and human-like creatures posing with spheres of different colors. These globes are two-dimensional, of course, and their significance and pattern are described below. From north to south, with the west wall being the left-hand column, and the east the right-hand, the spheres are colored and positioned as follows:",
 						{
 							"type": "table",
 							"colLabels": [
@@ -928,16 +960,16 @@
 								]
 							]
 						},
-						"1 An illusion covering a crawlway to area 11",
+						"1 An illusion covering a crawlway to {@area 1>11}",
 						"2 This door can be opened by a knock spell or destroyed with disintegrate",
-						"3 An illusion covering a crawlway to area 14",
-						"4 An illusion covering a crawlway to area 13",
+						"3 An illusion covering a crawlway to {@area 1>14}",
+						"4 An illusion covering a crawlway to {@area 1>13}",
 						"The false doors and secret doors can be found with successful DC 20 Wisdom (Perception) checks. If anyone makes physical contact with an illusion in this area, its nature becomes apparent. Also, a character who examines an illusory image without touching it can make a DC 20 Intelligence (Investigation) check. On a successful check, the illusion becomes faint to the character, who can then easily see the crawlway beyond the illusion.",
 						{
 							"type": "entries",
 							"name": "Magic Archway",
 							"entries": [
-								"On the south wall is a stone archway similar in appearance to area 5, also filled with cloudy vapors that block vision or detection of what lies beyond. When a character moves to within 3 feet of the arch, read:"
+								"On the south wall is a stone archway similar in appearance to {@area 1>5}, also filled with cloudy vapors that block vision or detection of what lies beyond. When a character moves to within 3 feet of the arch, read:"
 							]
 						},
 						{
@@ -946,7 +978,7 @@
 								"As you come close, three stones in the archway in front of you begin to glow. The left-hand base stone shines with an olive hue; the one on the right glows citron, and the keystone seven feet overhead gives off russet light."
 							]
 						},
-						"No matter how the stones are manipulated, the archway remains clouded and veiled with a haze which nothing can enable the onlookers to see through. All living matter which goes through the arch will be teleported to area 3, while non living matter is teleported simultaneously to area 33-meaning that characters stepping through will appear at the start totally nude, while everything else with them will go to the crypt of the demilich. (Cruel, but most entertaining for the DM.)"
+						"No matter how the stones are manipulated, the archway remains clouded and veiled with a haze which nothing can enable the onlookers to see through. All living matter which goes through the arch will be teleported to {@area 1>3}, while non living matter is teleported simultaneously to {@area 1>33}-meaning that characters stepping through will appear at the start totally nude, while everything else with them will go to the crypt of the demilich. (Cruel, but most entertaining for the DM.)"
 					]
 				},
 				{
@@ -1097,14 +1129,14 @@
 							"type": "entries",
 							"name": "Archway",
 							"entries": [
-								"Just as in other locations around the tomb, the mists that obscure the archway can't be penetrated with any sort of vision or magic. (If a character moves close to the archway and asks about it, explain that none of the stones of the arch glow.) The skeleton, of course, misleads the party, for any character passing through the portal will enter a 10-foot-by-10-foot room where their sex and alignment are reversed by a powerful magic. Exiting the room and re-entering the archway will restore original alignment, but also deals 3 (1d6) psychic damage. Going back a third time will reverse sex again, but the individual will be teleported in the manner of the archway in area 10. Only a wish spell will restore both alignment and sex. If alignment is restored by entering the orange portal, a {@spell remove curse|PHB} or {@spell greater restoration|PHB} spell will then restore original sex."
+								"Just as in other locations around the tomb, the mists that obscure the archway can't be penetrated with any sort of vision or magic. (If a character moves close to the archway and asks about it, explain that none of the stones of the arch glow.) The skeleton, of course, misleads the party, for any character passing through the portal will enter a 10-foot-by-10-foot room where their sex and alignment are reversed by a powerful magic. Exiting the room and re-entering the archway will restore original alignment, but also deals 3 (1d6) psychic damage. Going back a third time will reverse sex again, but the individual will be teleported in the manner of the archway in {@area 1>10}. Only a wish spell will restore both alignment and sex. If alignment is restored by entering the orange portal, a {@spell remove curse|PHB} or {@spell greater restoration|PHB} spell will then restore original sex."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Wall Slot",
 							"entries": [
-								"A character who inspects the eastern wall directly opposite the archway and succeeds on a DC 10 Wisdom (Perception) check finds a small slot with the letter O faintly traced above it. This is the location of a moving stone block described below. The block can't be magically detected, nor will it open by physical or magical means other than the method given in area 15."
+								"A character who inspects the eastern wall directly opposite the archway and succeeds on a DC 10 Wisdom (Perception) check finds a small slot with the letter O faintly traced above it. This is the location of a moving stone block described below. The block can't be magically detected, nor will it open by physical or magical means other than the method given in {@area 1>15}."
 							]
 						}
 					]
@@ -1213,7 +1245,7 @@
 						},
 						"The corridor is filled with fear gas. Unless characters announce they are holding their breath before entering its 40-foot length, they will breathe in the gas. A creature exposed to the gas must succeed on a DC 15 Constitution saving throw or become frightened for 1 minute.",
 						"A creature frightened in this way must take the Dash action on each of its turns to retrace its steps, moving away from this area of the tomb by the safest route possible. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a successful save. Once the effect ends, the creature is immune to the gas for 1 hour.",
-						"Beyond the first 10 feet, the gas becomes thicker, and it irritates the eyes. The area is lightly obscured, so it requires a successful DC 10 Wisdom (Perception) check to notice the south door that leads into area 18A. Once that door is opened, the gas dissipates."
+						"Beyond the first 10 feet, the gas becomes thicker, and it irritates the eyes. The area is lightly obscured, so it requires a successful DC 10 Wisdom (Perception) check to notice the south door that leads into {@area 1>18A}. Once that door is opened, the gas dissipates."
 					]
 				},
 				{
@@ -1402,7 +1434,7 @@
 								"Contents"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -1459,7 +1491,7 @@
 								"On the other side of the secret door is a secret trapdoor in the floor of the corridor, requiring a successful DC 20 Wisdom (Perception) check to find."
 							]
 						},
-						"The trapdoor opens onto a steep flight of narrow stairs that spiral down to a 5-foot-wide tunnel which emerges at area 24."
+						"The trapdoor opens onto a steep flight of narrow stairs that spiral down to a 5-foot-wide tunnel which emerges at {@area 1>24}."
 					]
 				},
 				{
@@ -1516,19 +1548,19 @@
 								"Any character who touches a pillar with or without intent will uncontrollably float upward (as if affected by a levitate spell), then bounce gently around on the ceiling, 30 feet above, just as a helium balloon. To stop this effect, a dispel magic or remove curse spell must be placed upon each such individual."
 							]
 						},
-						"There seems to be a gentle breeze in the room, for any character floating among the many-hued columns will begin drifting toward the northwest or northeast corner of the room. From the entry an observant character with a suitable light source will be able to observe part of the dais on the south wall and the door at area 27.",
+						"There seems to be a gentle breeze in the room, for any character floating among the many-hued columns will begin drifting toward the northwest or northeast corner of the room. From the entry an observant character with a suitable light source will be able to observe part of the dais on the south wall and the door at {@area 1>27}.",
 						{
 							"type": "entries",
 							"name": "Northwest Devil Face",
 							"entries": [
-								"About 24 feet above the floor in the northwest corner, on the north wall, is a mosaic relief sculpture of a green devil's face which appears to be exactly the same as that first encountered in the entrance hall to the tomb (area 3). Any creature that comes within 3 feet of its gaping mouth will be sucked in and instantly teleported, to be \"spat out\" nude at area 6, while all non-living matter in the character's possession goes to area 33."
+								"About 24 feet above the floor in the northwest corner, on the north wall, is a mosaic relief sculpture of a green devil's face which appears to be exactly the same as that first encountered in the entrance hall to the tomb ({@area 1>3}). Any creature that comes within 3 feet of its gaping mouth will be sucked in and instantly teleported, to be \"spat out\" nude at {@area 1>6}, while all non-living matter in the character's possession goes to {@area 1>33}."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Northeast Devil Face",
 							"entries": [
-								"The sculpture in the northeast corner is identical in size and placement to the one in the other corner, but it is tinged with a bluish color over the green. Any character that enters the mouth opening of this devil face is teleported to area 27A."
+								"The sculpture in the northeast corner is identical in size and placement to the one in the other corner, but it is tinged with a bluish color over the green. Any character that enters the mouth opening of this devil face is teleported to {@area 1>27A}."
 							]
 						},
 						{
@@ -1579,7 +1611,7 @@
 							"type": "entries",
 							"name": "Crown and Scepter",
 							"entries": [
-								"The crown negates the pillars' levitation effect for anyone who dons it and enables the wearer to see within the hall as if in normal daylight- but outside this place the wearer is blind. As soon as a creature puts on the crown, the wearer knows that the crown can be removed only by touching the scepter to it, but doesn't find out the exact procedure."
+								"The crown negates the pillars' levitation effect for anyone who dons it and enables the wearer to see within the hall as if in normal daylight\u2014but outside this place the wearer is blind. As soon as a creature puts on the crown, the wearer knows that the crown can be removed only by touching the scepter to it, but doesn't find out the exact procedure."
 							]
 						},
 						"If the golden knob is touched to the crown, the wearer can remove the headgear. If the silver end of the scepter is touched to the crown, the wearer is instantly snuffed out, turning to a fetid powder that can't be brought back to life no matter what (wish spells notwithstanding).",
@@ -1648,7 +1680,7 @@
 					"type": "entries",
 					"name": "27A. Chamber of Hopelessness",
 					"entries": [
-						"Any creature unfortunate enough to be teleported here from area 25 is doomed, for its fate is clearly stated in glowing letters magically written on the north wall of the place. If someone arrives here, read:",
+						"Any creature unfortunate enough to be teleported here from {@area 1>25} is doomed, for its fate is clearly stated in glowing letters magically written on the north wall of the place. If someone arrives here, read:",
 						{
 							"type": "inset",
 							"entries": [
@@ -1674,7 +1706,7 @@
 							"type": "entries",
 							"name": "Swords and Shields",
 							"entries": [
-								"If the door to the south is opened from this side, all the swords and shields in area 27 swoop from the walls to attack, but they cease as soon as the door opener retreats into the chamber to the north."
+								"If the door to the south is opened from this side, all the swords and shields in {@area 1>27} swoop from the walls to attack, but they cease as soon as the door opener retreats into the chamber to the north."
 							]
 						}
 					]
@@ -1710,14 +1742,14 @@
 							"type": "entries",
 							"name": "Keyhole",
 							"entries": [
-								"Where these valves meet, at about waist height, is a cup-like depression, a hemispherical concavity with a central hole. The hole appears to fit the Second Key, but if it is inserted, the character so doing will take 5 (1d10) lightning damage. Anyone so foolish as to insert the First Key (from area 19) will take double that amount of damage."
+								"Where these valves meet, at about waist height, is a cup-like depression, a hemispherical concavity with a central hole. The hole appears to fit the Second Key, but if it is inserted, the character so doing will take 5 (1d10) lightning damage. Anyone so foolish as to insert the First Key (from {@area 1>19}) will take double that amount of damage."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "True Key",
 							"entries": [
-								"The real key to these great gates is the scepter from area 25. If the gold knob is inserted into the depression, the mithral doors will swing silently open. If the silver end of the scepter is touched to the hemispherical cup the holder of the instrument will be teleported instantly to be spat out of the devil's mouth at area 6, nude, while all non-living materials with the individual go to area 33, and the crown and the scepter reappear on the throne."
+								"The real key to these great gates is the scepter from {@area 1>25}. If the gold knob is inserted into the depression, the mithral doors will swing silently open. If the silver end of the scepter is touched to the hemispherical cup the holder of the instrument will be teleported instantly to be spat out of the devil's mouth at {@area 1>6}, nude, while all non-living materials with the individual go to {@area 1>33}, and the crown and the scepter reappear on the throne."
 							]
 						},
 						{
@@ -1816,7 +1848,7 @@
 					"name": "32. Secret Door",
 					"entries": [
 						"The portal to the south can't be detected by any magical means, but a successful DC 15 Wisdom (Perception) check enables a character to notice that the wall at this location has a small opening that is metal-lined-obviously a keyhole!",
-						"Following this discovery, any attempt to force the door open by physical or magical means will be useless. But if the {@i First Key} (from area 19) is inserted in the hole and then removed, the door will sink into the floor, revealing itself to be a stone-sheathed adamantine slab of tremendous thickness. There can be no real doubt that the end of the adventure-one way or another-is near."
+						"Following this discovery, any attempt to force the door open by physical or magical means will be useless. But if the {@i First Key} (from {@area 1>19}) is inserted in the hole and then removed, the door will sink into the floor, revealing itself to be a stone-sheathed adamantine slab of tremendous thickness. There can be no real doubt that the end of the adventure-one way or another-is near."
 					]
 				},
 				{
@@ -1831,7 +1863,7 @@
 						},
 						"A successful DC 15 Wisdom (Perception) check enables a character to discover a small hole in the middle of this depression-another keyhole!",
 						"If the {@i First Key} is inserted herein, the key explodes, and the individual doing so takes 17 (5d6) bludgeoning damage.",
-						"The {@i Second Key} (from area 28) will fit within the hole, and nothing untoward will occur. In fact, nothing whatsoever will happen until it is turned three times to the right in succession. If this is done, read:",
+						"The {@i Second Key} (from {@area 1>28}) will fit within the hole, and nothing untoward will occur. In fact, nothing whatsoever will happen until it is turned three times to the right in succession. If this is done, read:",
 						{
 							"type": "inset",
 							"entries": [

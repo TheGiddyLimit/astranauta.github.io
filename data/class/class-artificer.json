@@ -14,7 +14,7 @@
 			"classTableGroups": [
 				{
 					"colLabels": [
-						"Spells Known"
+						"{@filter Spells Known|spells|class=artificer (uaa)}"
 					],
 					"rows": [
 						[
@@ -546,7 +546,7 @@
 														"type": "entries",
 														"name": "Alchemical Fire",
 														"entries": [
-															"As an action, you can reach into your Alchemist's Satchel, pull out a vial of volatile liquid, and hurl the vial at a creature, object, or surface within 30 feet of you (the vial and its contents disappear if you don't hurl the vial by the end of the current turn). On impact, the vial detonates in a 5-foot radius. Any creature in that area must succeed on a Dexterity saving throw or take 1d6 fire damage. This formula's damage increases by 1d6 when you reach certain levels in this class: 4th level (2d6), 7th level (3d6), 10th level (4d6), 13th level (5d6), 16th level (6d6), and 19th level (7d6)."
+															"As an action, you can reach into your Alchemist's Satchel, pull out a vial of volatile liquid, and hurl the vial at a creature, object, or surface within 30 feet of you (the vial and its contents disappear if you don't hurl the vial by the end of the current turn). On impact, the vial detonates in a 5-foot radius. Any creature in that area must succeed on a Dexterity saving throw or take {@dice 1d6} fire damage. This formula's damage increases by {@dice 1d6} when you reach certain levels in this class: 4th level ({@dice 2d6}), 7th level ({@dice 3d6}), 10th level ({@dice 4d6}), 13th level ({@dice 5d6}), 16th level ({@dice 6d6}), and 19th level ({@dice 7d6})."
 														]
 													}
 												]
@@ -558,7 +558,7 @@
 														"type": "entries",
 														"name": "Alchemical Acid",
 														"entries": [
-															"As an action, you can reach into your Alchemist's Satchel, pull out a vial of acid, and hurl the vial at a creature or object within 30 feet of you (the vial and its contents disappear if you don't hurl the vial by the end of the current turn). The vial shatters on impact. A creature must succeed on a Dexterity saving throw or take 1d6 acid damage. An object automatically takes that damage, and the damage is maximized. This formula's damage increases by 1d6 when you reach certain levels in this class: 3rd level (2d6), 5th level (3d6), 7th level (4d6), 9th level (5d6), 11th level (6d6), 13th level (7d6), 15th level (8d6), 17th level (9d6), and 19th level (10d6)."
+															"As an action, you can reach into your Alchemist's Satchel, pull out a vial of acid, and hurl the vial at a creature or object within 30 feet of you (the vial and its contents disappear if you don't hurl the vial by the end of the current turn). The vial shatters on impact. A creature must succeed on a Dexterity saving throw or take {@dice 1d6} acid damage. An object automatically takes that damage, and the damage is maximized. This formula's damage increases by {@dice 1d6} when you reach certain levels in this class: 3rd level ({@dice 2d6}), 5th level ({@dice 3d6}), 7th level ({@dice 4d6}), 9th level ({@dice 5d6}), 11th level ({@dice 6d6}), 13th level ({@dice 7d6}), 15th level ({@dice 8d6}), 17th level ({@dice 9d6}), and 19th level ({@dice 10d6})."
 														]
 													}
 												]
@@ -570,7 +570,7 @@
 														"type": "entries",
 														"name": "Healing Draught",
 														"entries": [
-															"As an action, you can reach into your Alchemist's Satchel and pull out a vial of healing liquid. A creature can drink it as an action to regain 1d8 hit points. The vial then disappears. Once a creature regains hit points from this alchemical formula, the creature can't do so again until it finishes a long rest. If not used, the vial and its contents disappear after 1 hour. While the vial exists, you can't use this formula. This formula's healing increases by 1d8 when you reach certain levels in this class: 3rd level (2d8), 5th level (3d8), 7th level (4d8), 9th level (5d8), 11th level (6d8), 13th level (7d8), 15th level (8d8), 17th level (9d8), and 19th level (10d8)."
+															"As an action, you can reach into your Alchemist's Satchel and pull out a vial of healing liquid. A creature can drink it as an action to regain {@dice 1d8} hit points. The vial then disappears. Once a creature regains hit points from this alchemical formula, the creature can't do so again until it finishes a long rest. If not used, the vial and its contents disappear after 1 hour. While the vial exists, you can't use this formula. This formula's healing increases by {@dice 1d8} when you reach certain levels in this class: 3rd level ({@dice 2d8}), 5th level ({@dice 3d8}), 7th level ({@dice 4d8}), 9th level ({@dice 5d8}), 11th level ({@dice 6d8}), 13th level ({@dice 7d8}), 15th level ({@dice 8d8}), 17th level ({@dice 9d8}), and 19th level ({@dice 10d8})."
 														]
 													}
 												]
@@ -696,7 +696,7 @@
 										"type": "entries",
 										"name": "Master Smith",
 										"entries": [
-											"When you choose this specialization at 1st level, you gain proficiency with smith's tools, and you learn the mending cantrip."
+											"When you choose this specialization at 1st level, you gain proficiency with {@item smith's tools|phb}, and you learn the mending cantrip."
 										]
 									},
 									{
@@ -704,7 +704,7 @@
 										"name": "Thunder Cannon",
 										"entries": [
 											"At 1st level, you forge a deadly firearm using a combination of arcane magic and your knowledge of engineering and metallurgy. This firearm is called a Thunder Cannon. It is a ferocious weapon that fires leaden bullets that can punch through armor with ease.",
-											"You are proficient with the Thunder Cannon. The firearm is a two-handed ranged weapon that deals 2d6 piercing damage. Its normal range is 150 feet, and its maximum range if 500 feet. Once fired, it must be reloaded as a bonus action.",
+											"You are proficient with the Thunder Cannon. The firearm is a two-handed ranged weapon that deals {@dice 2d6} piercing damage. Its normal range is 150 feet, and its maximum range if 500 feet. Once fired, it must be reloaded as a bonus action.",
 											"If you lose your Thunder Cannon, you can create a new one over the course of three days of work (eight hours each day) by expending 100 gp worth of metal and other raw materials."
 										]
 									},
@@ -727,8 +727,8 @@
 										"type": "entries",
 										"name": "Thunder Monger",
 										"entries": [
-											"At 3rd level, you learn to channel thunder energy into your Thunder Cannon. As an action, you can make a special attack with your Thunder Cannon that deals an extra 1d6 thunder damage on a hit.",
-											"This extra damage increases by 1d6 when you reach certain levels in this class: 5th level (2d6), 7th level (3d6), 9th level (4d6), 11th level (5d6), 13th level (6d6), 15th level (7d6), 17th level (8d6), and 19th level (9d6)."
+											"At 3rd level, you learn to channel thunder energy into your Thunder Cannon. As an action, you can make a special attack with your Thunder Cannon that deals an extra {@dice 1d6} thunder damage on a hit.",
+											"This extra damage increases by {@dice 1d6} when you reach certain levels in this class: 5th level ({@dice 2d6}), 7th level ({@dice 3d6}), 9th level ({@dice 4d6}), 11th level ({@dice 5d6}), 13th level ({@dice 6d6}), 15th level ({@dice 7d6}), 17th level ({@dice 8d6}), and 19th level ({@dice 9d6})."
 										]
 									}
 								]
@@ -741,8 +741,8 @@
 										"type": "entries",
 										"name": "Blast Wave",
 										"entries": [
-											"Starting at 9th level, you can channel force energy into your Thunder Cannon. As an action, you can make a special attack with it. Rather than making an attack roll, you unleash force energy in a 15-foot cone from the gun. Each creature in that area must make a Strength saving throw with a DC of 8 + your proficiency bonus + your Intelligence modifier. On a failed saving throw, a target takes 2d6 force damage and is pushed 10 feet away from you.",
-											"This damage increases by 1d6 when you reach certain levels in this class: 13th level (3d6) and 17th level (4d6)."
+											"Starting at 9th level, you can channel force energy into your Thunder Cannon. As an action, you can make a special attack with it. Rather than making an attack roll, you unleash force energy in a 15-foot cone from the gun. Each creature in that area must make a Strength saving throw with a DC of 8 + your proficiency bonus + your Intelligence modifier. On a failed saving throw, a target takes {@dice 2d6} force damage and is pushed 10 feet away from you.",
+											"This damage increases by {@dice 1d6} when you reach certain levels in this class: 13th level ({@dice 3d6}) and 17th level ({@dice 4d6})."
 										]
 									}
 								]
@@ -755,7 +755,7 @@
 										"type": "entries",
 										"name": "Piercing Round",
 										"entries": [
-											"Starting at 14th level, you can shoot lightning energy through your Thunder Cannon. As an action, you can make a special attack with it. Rather than making an attack roll, you cause the gun to unleash a bolt of lightning, 5-feet wide and 30-feet long. Each creature in that area must make Dexterity saving throws with a DC of 8 + your proficiency bonus + your Intelligence modifier. On a failed saving throw, a target takes 4d6 lightning damage. This damage increases to 6d6 when you reach 19th level in this class."
+											"Starting at 14th level, you can shoot lightning energy through your Thunder Cannon. As an action, you can make a special attack with it. Rather than making an attack roll, you cause the gun to unleash a bolt of lightning, 5-feet wide and 30-feet long. Each creature in that area must make Dexterity saving throws with a DC of 8 + your proficiency bonus + your Intelligence modifier. On a failed saving throw, a target takes {@dice 4d6} lightning damage. This damage increases to {@dice 6d6} when you reach 19th level in this class."
 										]
 									}
 								]
@@ -768,7 +768,7 @@
 										"type": "entries",
 										"name": "Explosive Round",
 										"entries": [
-											"Starting at 17th level, you can channel fiery energy into your Thunder Cannon. As an action, you can make a special attack with it. Rather than making an attack roll, you launch an explosive round from the gun. The round detonates in a 30-foot radius sphere at a point within range. Each creature in that area must make a Dexterity saving throw with a DC of 8 + your proficiency bonus + your Intelligence modifier. On a failed saving throw, a target takes 4d8 fire damage."
+											"Starting at 17th level, you can channel fiery energy into your Thunder Cannon. As an action, you can make a special attack with it. Rather than making an attack roll, you launch an explosive round from the gun. The round detonates in a 30-foot radius sphere at a point within range. Each creature in that area must make a Dexterity saving throw with a DC of 8 + your proficiency bonus + your Intelligence modifier. On a failed saving throw, a target takes {@dice 4d8} fire damage."
 										]
 									}
 								]

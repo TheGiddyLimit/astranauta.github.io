@@ -1,5 +1,8 @@
 ## 5e.tools
-Visit the [main site](5etools.html) or go to the unofficial GitHub [mirror](5etools.html).
+
+[![Build Status](https://ci.develop.5etools.com/api/badges/5eTools/5etoolsR20/status.svg)](https://ci.develop.5etools.com/5eTools/5etoolsR20)
+
+Visit the [main site](https://5e.tools/5etools.html) or go to the unofficial GitHub [mirror](5etools.html).
 
 [Join the 5etools Discord here!](https://discord.gg/AzyBjtQ)
 
@@ -32,9 +35,22 @@ Be sure to close any running Chrome instances (and kill any remaining Chrome pro
 You can convert stat blocks to JSON for importing via [this converter](converter.html).
 
 ## Dev Notes
+### Target JavaScript Version
+Targeting ES6 was the original intent, but more modern features have long since crept into the code. Therefore, if something is available as standard in both Chrome and Firefox (preferably in versions dating back at least a couple of months), and isn't bleeding-edge, one can reasonable justify using it. As with all things, use common sense.
 
 ### Style Guidelines
+#### Code
 - Use tabs over spaces.
+
+#### CSS
+- The [BEM](http://getbem.com/) ("Block Element Modifier") naming strategy should be used where possible.
+
+#### Data/Text
+- When "tagging" references in data (e.g. `{@creature goblin}`), the following rules apply:
+	- Only tag references which are _intended as references_. For example, the Wizard class in `You gain one cantrip of your choice from the wizard spell list` should be tagged, whereas the Wizard class in `Together, a group of seven powerful wizards sought to contain the demon` should not be tagged. One is a reference to the mechanical class, one is merely the casual usage of the word "wizard." 
+	- In a similar vein, never tag anything within a `quote`-type block. Even if the quote directly refers to a specific creature, we can assume the quote is from a universe/perspective in which (for example) statblocks don't exist, and therefore the tag should be omitted to maintain the flavour of the quote.
+	- Within data from a source, avoid referencing content from a source printed after the publication of that source. For example, MTF content might reference SCAG deities, but SCAG deities should refrain from referencing MTF content.
+	- Use `@skill` tags sparingly. Only tag "loose" skill references, those without specific use or reference in the surrounding text. For example, `You have proficiency in the Perception skill` should be tagged, as the generalised text provided in the tooltip is a useful addition. `You have advantage on Dexterity (Stealth) checks made to hide in rocky environments`, however, should not be tagged, as the text already specifies exactly what the skill means in this case: your ability to hide in rocky environments. Likewise, `You have advantage on any Strength (Athletics) or Dexterity (Acrobatics) check you make to escape from being grappled` should not be tagged, as a specific use of the skill is already well defined in the text.
 
 ### JSON Cleaning
 #### Trailing commas
@@ -65,9 +81,12 @@ Replace: `$1$3`
 - Nouns: a space and the short name of the unit of measure (including the trailing period) should be used, e.g. `blindsight 60 ft.`, `darkvision 120 ft.`
 - Time: a slash, `/`, with no spaces on either side followed by the capitalised unit of time, e.g. `2/Turn`, `3/Day`
 
+##### Convention for Dice
+Dice should be written as `[X]dY[ <+|-|×> Z]`, i.e. with a space between dice and operator, and a space between operator and modifier. Some examples of acceptable formatting are: `d6`, `2d6`, or `2d6 + 1`.
+
 ##### Misc
 
-- A handy dice regex: `([1-9]\d*)?d([1-9]\d*)(\s?([+-])\s?(\d+))?` (and to output as tagged dice in the basic case: `{@dice $1d$2$4$5}`). Warning: doesn't detect already-tagged dice expressions; be wary of double-tagging.
+- A handy dice regex: `([1-9]\d*)?d([1-9]\d*)(\s?([+-])\s?(\d+))?` (and to output as tagged dice in the basic case: `{@dice $0}`). Warning: does not detect already-tagged dice expressions; be wary of double-tagging.
 
 ### Dev Server
 

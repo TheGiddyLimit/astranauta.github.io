@@ -1,0 +1,71 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.1.0",
+	"type": "object",
+
+	"properties": {
+		"reference": {
+			"type": "object",
+			"properties": {
+				"bookref-quick": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"id": {
+							"type": "string"
+						},
+						"contents": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"headers": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"name"
+								]
+							}
+						}
+					},
+					"additionalProperties": false,
+					"required": [
+						"name",
+						"id",
+						"contents"
+					]
+				}
+			},
+			"required": [
+				"bookref-quick"
+			],
+			"additionalProperties": false
+		},
+		"data": {
+			"type": "object",
+			"properties": {
+				"bookref-quick": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				}
+			},
+			"required": [
+				"bookref-quick"
+			],
+			"additionalProperties": false
+		}
+	},
+	"additionalProperties": false
+}

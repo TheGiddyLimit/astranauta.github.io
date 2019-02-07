@@ -159,7 +159,7 @@
 								"Item"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -269,7 +269,7 @@
 								"Objective"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -315,7 +315,7 @@
 								"Secret"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -411,7 +411,7 @@
 										"Denizen"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -581,7 +581,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -685,10 +685,10 @@
 						{
 							"type": "inset",
 							"entries": [
-								"The staircase is badly rusted but appears to be sturdy. The air inside the passageway is warm, humid, and rather foul. You reach the bottom of the stairs with a splash- the floor is submerged beneath a foot of water!"
+								"The staircase is badly rusted but appears to be sturdy. The air inside the passageway is warm, humid, and rather foul. You reach the bottom of the stairs with a splash\u2014the floor is submerged beneath a foot of water!"
 							]
 						},
-						"The spiral staircase descends about 100 feet before ending in area 1. Sensitive characters will feel it thrumming to a continuous low vibration (this vibration from the Plume geyser will be noticeable everywhere in the dungeon). In the humidity, lamps and torches will burn fitfully and give off a lot of smoke.",
+						"The spiral staircase descends about 100 feet before ending in {@area 1>1}. Sensitive characters will feel it thrumming to a continuous low vibration (this vibration from the Plume geyser will be noticeable everywhere in the dungeon). In the humidity, lamps and torches will burn fitfully and give off a lot of smoke.",
 						"Floating on the water are splotches of green and white subterranean algae. This algae or algae-like fungus also clings in patches to walls and ceilings. It is harmless, and can be found almost everywhere in the dungeon where there is water."
 					]
 				},
@@ -805,7 +805,7 @@
 							]
 						},
 						"The correct choice is 9, because it is not a prime number. Give the players an actual 60 seconds to figure it out.",
-						"If the characters give the wrong answer, roll initiative. The golems lumber forward to confront the intruders, trying to prevent anyone from moving through the door to the north. The monsters will pursue enemies that flee to the south, but they won't climb the stairs that led to area 6.",
+						"If the characters give the wrong answer, roll initiative. The golems lumber forward to confront the intruders, trying to prevent anyone from moving through the door to the north. The monsters will pursue enemies that flee to the south, but they won't climb the stairs that led to {@area 1>6}.",
 						"If the characters answer the riddle correctly, events unfold as promised: the golem numbered 9 becomes an ally of the party, accompanying the characters if they so desire, and the other four golems become inert again."
 					]
 				},
@@ -949,7 +949,7 @@
 							]
 						},
 						"Most of the area is actually a 15-foot-deep pool. The only shallow spaces are those that run mostly around the perimeter of the room, where the water is only 1 foot deep.",
-						"The deep area that makes up most of the room is inhabited by two {@b kelpies}. As the characters move into the room, the kelpies will rise to the surface, and each will attempt to charm a character.",
+						"The deep area that makes up most of the room is inhabited by two {@creature kelpie|tftyp|kelpies}. As the characters move into the room, the kelpies will rise to the surface, and each will attempt to charm a character.",
 						"In the eastern wing of the pool are two partly enclosed areas with entrances that are accessible only from beneath the surface of the water. These areas are partially covered by a roof along the east edge, where the water is only 1 foot deep. The southern chamber is the kelpies' lair, which contains their treasure. The northern chamber is empty.",
 						{
 							"type": "entries",
@@ -999,7 +999,7 @@
 						"{@b 2nd level (3 slots):} {@spell mirror image|PHB}, {@spell web|PHB}",
 						"{@b 3rd level (3 slots):} {@spell dispel magic|PHB}, {@spell fear|PHB}, {@spell haste|PHB}, {@spell stinking cloud|PHB}",
 						"If Burket is killed or if Snarla finds herself in a bad situation, she changes into werewolf form and attacks with desperate savagery, giving her advantage on all her attack rolls.",
-						"If she is captured alive and made to talk, she will tell the party only that she is charged with keeping the kelpies and other denizens of the dungeon fed. There are strange gaps in her memory concerning her employer or any section of the dungeon other than her own. She has never been past the doors at area 14. Burket knows even less than she does.",
+						"If she is captured alive and made to talk, she will tell the party only that she is charged with keeping the kelpies and other denizens of the dungeon fed. There are strange gaps in her memory concerning her employer or any section of the dungeon other than her own. She has never been past the doors at {@area 1>14}. Burket knows even less than she does.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -1035,14 +1035,14 @@
 					"name": "14. Flood Doors",
 					"entries": [
 						"The three doors along the corridor are made of thick metal, their edges flanged so that they overlap the door jamb on the north side and thus can be opened only by pivoting them to the north. The north side of each door has a handle so that it can be pulled open from that direction.",
-						"These barriers are emergency doors, whose purpose is to prevent the dungeon from being flooded by the boiling lake at area 15, in case of an \"accident.\""
+						"These barriers are emergency doors, whose purpose is to prevent the dungeon from being flooded by the boiling lake at {@area 1>15}, in case of an \"accident.\""
 					]
 				},
 				{
 					"type": "entries",
 					"name": "15. Boiling Lake",
 					"entries": [
-						"This boiling lake is several hundred feet deep, extending down to the red-hot rock below, and reaching nearly to the ceiling of the cavern it occupies, 50 feet above the level of the sunken ledge described in area 17. It is fed by an underground stream that enters from the northwest at a depth 100 feet below that of the ledge. Its runoff flows through a channel to the east, above the ledge, near the ceiling of the cavern.",
+						"This boiling lake is several hundred feet deep, extending down to the red-hot rock below, and reaching nearly to the ceiling of the cavern it occupies, 50 feet above the level of the sunken ledge described in {@area 1>17}. It is fed by an underground stream that enters from the northwest at a depth 100 feet below that of the ledge. Its runoff flows through a channel to the east, above the ledge, near the ceiling of the cavern.",
 						"Any creature that enters the boiling lake takes 44 (8d10) fire damage immediately and again at the start of each of its turns for as long as it remains in the lake.",
 						{
 							"type": "image",
@@ -1058,7 +1058,7 @@
 					"type": "entries",
 					"name": "16. Blow Hole",
 					"entries": [
-						"The run-off from the boiling lake cascades down through a series of near-vertical lava-tubes to the base of the blow hole, 800 feet below the level of the dungeon. There the water strikes molten rock and is instantly converted to steam. It is ejected up the blow hole and out the top of the volcanic cone, forming the continuous geyser of White Plume Mountain. The boiling water here is just as dangerous as the water in area 15."
+						"The run-off from the boiling lake cascades down through a series of near-vertical lava-tubes to the base of the blow hole, 800 feet below the level of the dungeon. There the water strikes molten rock and is instantly converted to steam. It is ejected up the blow hole and out the top of the volcanic cone, forming the continuous geyser of White Plume Mountain. The boiling water here is just as dangerous as the water in {@area 1>15}."
 					]
 				},
 				{
@@ -1160,7 +1160,7 @@
 					"type": "entries",
 					"name": "22. Frictionless Trap",
 					"entries": [
-						"When the characters pass through the door from area 21, describe the features of the room beyond depending on how much of the chamber they can see.",
+						"When the characters pass through the door from {@area 1>21}, describe the features of the room beyond depending on how much of the chamber they can see.",
 						{
 							"type": "inset",
 							"entries": [
@@ -1194,23 +1194,23 @@
 								"On either side of the door are a total of six kayaks, each able to carry two riders, but there are no paddles to be found."
 							]
 						},
-						"The stream is hemispherical in cross-section where it flows through the room. The entrance and exit holes are 6 feet in diameter; they are the ends of a tunnel that connects this room with area 24.",
+						"The stream is hemispherical in cross-section where it flows through the room. The entrance and exit holes are 6 feet in diameter; they are the ends of a tunnel that connects this room with {@area 1>24}.",
 						"The water is lukewarm. Objects can be thrust through the sides of the stream, but no water other than a few drops will escape. It would even be possible to walk right through the stream, but only a very strong creature could do so without being swept off its feet (requiring a DC 15 Strength saving throw). The stream flows quite quickly from west to east.",
-						"If characters choose to go boating into the unknown tunnel, they will have to figure out how to get in the kayaks once the kayaks are placed in the stream, the surface of which is 5 feet off the floor. These vessels tip over easily. If they successfully board the kayaks, the characters will bump along through a twisting tunnel 6 feet across. They can regulate their speed by pushing against the walls. Eventually they will emerge into area 24."
+						"If characters choose to go boating into the unknown tunnel, they will have to figure out how to get in the kayaks once the kayaks are placed in the stream, the surface of which is 5 feet off the floor. These vessels tip over easily. If they successfully board the kayaks, the characters will bump along through a twisting tunnel 6 feet across. They can regulate their speed by pushing against the walls. Eventually they will emerge into {@area 1>24}."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "24. Sir Bluto's Guardpost",
 					"entries": [
-						"A fallen knight named Sir Bluto Sans Pite (a NE {@creature champion|VGM}; and his eight minions (NE human {@creature knight|MM|knights}) wait here to ambush any who come through the tunnel. They will be alerted by disturbances in the flow of water as the party tampers with it upstream. The stream that flows through this room is suspended in the same manner as in area 23. It continues from north to south out of area 24 and back to area 23, completing the circuit.",
+						"A fallen knight named Sir Bluto Sans Pite (a NE {@creature champion|VGM}; and his eight minions (NE human {@creature knight|MM|knights}) wait here to ambush any who come through the tunnel. They will be alerted by disturbances in the flow of water as the party tampers with it upstream. The stream that flows through this room is suspended in the same manner as in {@area 1>23}. It continues from north to south out of {@area 1>24} and back to {@area 1>23}, completing the circuit.",
 						"Sir Bluto's knights work in two teams of four, with two team members on each side of the stream. When a kayak comes out, a team will throw a large net over it and attempt to drag it and its occupants out of the stream and down onto the floor. When it falls, they move in to finish off the occupants with swords. To escape from a net, a creature can use its action to make a DC 10 Strength check, freeing itself or another creature within its reach on a successful check. Dealing 5 slashing damage to the net (AC 10) also frees a creature without harming it; any other creature in the same net can then use its action to free itself through that opening.",
 						"Sir Bluto was a respected Knight of the Realm before his indictment in the River of Blood mass-murder case. His mysterious disappearance from prison left even the Royal Magician-Detectives baffled, and a reward of 10,000 gp was posted for his capture. Someone in the party is sure to recognize his one-of-a-kind face.",
 						{
 							"type": "entries",
 							"name": "Treasure",
 							"entries": [
-								"In addition to his weapons and armor, Sir Bluto wears {@item boots of striding and springing|DMG}. In addition, he carries the key that opens the secret doors at area 25."
+								"In addition to his weapons and armor, Sir Bluto wears {@item boots of striding and springing|DMG}. In addition, he carries the key that opens the secret doors at {@area 1>25}."
 							]
 						}
 					]
@@ -1259,7 +1259,7 @@
 								"If any of the glass walls are broken, a weak wall of force will activate immediately in front of the door on the bottom tier (preventing water from forcing the door open and escaping into the corridor beyond). If the glass is broken on both of the aquariums, the volume of water is sufficient to fill the two lower tiers and cover the floor of the middle tier to a depth of about 2 feet. The water will slowly drain out of four small drains in the corners of the bottom tier, but it will take a good three hours to do so. Of course, characters who choose to wait will be subject to the possibility of random encounters. Once the water is finally gone, the wall of force will disappear."
 							]
 						},
-						"If the characters destroy the wall of force, the pressure of the water will push open the door and the water will rush into the corridor beyond, pulling along any swimming characters and miscellaneous debris nearby. The water will collide with another wall of force that covers the door to area 27, and then begin draining out through a grating in the floor in the last 10 feet of the passage. The water will take only 20 minutes to drain out through this grating. (The water drains straight down through an old lava tube to a large cave with no other exits.) When the water is gone, the wall of force barring entry to area 27 dissipates.",
+						"If the characters destroy the wall of force, the pressure of the water will push open the door and the water will rush into the corridor beyond, pulling along any swimming characters and miscellaneous debris nearby. The water will collide with another wall of force that covers the door to {@area 1>27}, and then begin draining out through a grating in the floor in the last 10 feet of the passage. The water will take only 20 minutes to drain out through this grating. (The water drains straight down through an old lava tube to a large cave with no other exits.) When the water is gone, the wall of force barring entry to {@area 1>27} dissipates.",
 						{
 							"type": "entries",
 							"name": "Creatures",
@@ -1311,7 +1311,7 @@
 					"type": "entries",
 					"name": "Escaping the Dungeon",
 					"entries": [
-						"If the characters obtain two or even all three of the magic weapons and are finally leaving for good, they might be stopped at area 2 by the return of the wall of force. A voice will speak to them out of the air:",
+						"If the characters obtain two or even all three of the magic weapons and are finally leaving for good, they might be stopped at {@area 1>2} by the return of the wall of force. A voice will speak to them out of the air:",
 						{
 							"type": "inset",
 							"entries": [

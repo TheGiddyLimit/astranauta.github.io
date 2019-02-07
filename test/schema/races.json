@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"type": "object",
 
 	"definitions": {
@@ -44,6 +44,7 @@
 				"Damage Resistance",
 				"Dragonmark",
 				"Improved Resting",
+				"Monstrous Race",
 				"Natural Armor",
 				"NPC Race",
 				"Powerful Build",
@@ -79,6 +80,95 @@
 				"Terran",
 				"Undercommon"
 			]
+		},
+
+		"abilityScores": {
+			"type": "object",
+			"properties": {
+				"str": {
+					"type": "integer"
+				},
+				"dex": {
+					"type": "integer"
+				},
+				"con": {
+					"type": "integer"
+				},
+				"int": {
+					"type": "integer"
+				},
+				"wis": {
+					"type": "integer"
+				},
+				"cha": {
+					"type": "integer"
+				},
+				"choose": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"from": {
+								"type": "array",
+								"items": {
+									"enum": ["str", "dex", "con", "int", "wis", "cha"]
+								},
+								"uniqueItems": true
+							},
+							"count": {
+								"type": "integer"
+							},
+							"amount": {
+								"type": "integer"
+							},
+							"predefined": {
+								"type": "object",
+								"items": {
+									"type": "object",
+									"properties": {
+										"str": {
+											"type": "integer"
+										},
+										"dex": {
+											"type": "integer"
+										},
+										"con": {
+											"type": "integer"
+										},
+										"int": {
+											"type": "integer"
+										},
+										"wis": {
+											"type": "integer"
+										},
+										"cha": {
+											"type": "integer"
+										}
+									}
+								}
+							},
+							"weighted": {
+								"type": "object",
+								"properties": {
+									"from": {
+										"type": "array",
+										"items": {
+											"enum": ["str", "dex", "con", "int", "wis", "cha"]
+										},
+										"uniqueItems": true
+									},
+									"weights": {
+										"type": "array",
+										"items": {
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	},
 
@@ -117,7 +207,7 @@
 						}
 					},
 					"ability": {
-						"type": "object"
+						"$ref": "#/definitions/abilityScores"
 					},
 					"speed": {
 						"$ref": "#/definitions/speed"
@@ -169,7 +259,7 @@
 									}
 								},
 								"ability": {
-									"type": "object"
+									"$ref": "#/definitions/abilityScores"
 								},
 								"speed": {
 									"$ref": "#/definitions/speed"

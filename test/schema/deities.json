@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"type": "object",
 	"properties": {
 		"deity": {
@@ -56,7 +56,7 @@
 						"items": {
 							"type": "string",
 							"enum": [
-								"Arcana", "Death", "Knowledge", "Life", "Light", "Nature", "Tempest", "Trickery", "War", "Forge", "Grave"
+								"Arcana", "Death", "Knowledge", "Life", "Light", "Nature", "Tempest", "Trickery", "War", "Forge", "Grave", "Order"
 							]
 						}
 					},
@@ -66,6 +66,10 @@
 					},
 					"symbol": {
 						"type": "string"
+					},
+					"customProperties": {
+						"description": "For homebrew use only; a key-value dict of the form: `\"Typical Worshipers\": \"Half-elf Bards\"`",
+						"type": "object"
 					},
 					"source": {
 						"type": "string"
@@ -93,8 +97,7 @@
 								}
 							},
 							"required": [
-								"source",
-								"page"
+								"source"
 							],
 							"additionalProperties": false
 						}

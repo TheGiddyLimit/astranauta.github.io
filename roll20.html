@@ -11,10 +11,11 @@
 	<title>Roll20 Script Help - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 
@@ -26,30 +27,33 @@
 	</style>
 </head>
 <body>
-<header class="hidden-xs hidden-sm">
+<header class="hidden-xs hidden-sm page__header">
 	<div class="container">
 
-		<h1>Roll20 Script Help</h1>
-		<p>Basic betteR20-5etools Usage</p>
+		<h1 class="page__title">Roll20 Script Help</h1>
+		<p class="page__subtitle">Basic betteR20-5etools Usage</p>
 	</div>
 </header>
-<nav class="container" id="navigation">
+<nav class="container page__nav" id="navigation">
 	<ul class="nav nav-pills" id="navbar">
 	</ul>
 </nav>
-<main class="container bodyContent">
+<main class="container">
+	<!--CANCER_ANCHOR-->
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-12">
+			 <!-- TODO delete this page and redirect the nav link to the wiki instead -->
+			<h3>Note: the content on this page is largely superseded by the <a href="https://5etools.wikia.com/wiki/BetteRoll20">Community Wiki</a>.</h3>
 			<i>Disclaimer: the Roll20 script is held together with dreams and prayers. If something doesn't appear to work, common resolution options are:</i>
 			<ul>
 				<li><i>Try again</i></li>
 				<li><i>Refresh the page</i></li>
-				<li><i>Ask for a fix on our <a href="https://discord.gg/AzyBjtQ">Discord</a></i></li>
+				<li><i>Ask for a fix in our <a href="https://discord.gg/AzyBjtQ" target="_blank" rel="noopener">Discord</a></i></li>
 			</ul>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-12">
 			<h4>Usage GIFs (Click to Open in a New Tab):</h4>
 			<a href="img/roll20/tools1.gif" target="_blank"><img class="big-help-gif" src="img/roll20/tools1.gif"></a>
 			<hr>
@@ -66,13 +70,19 @@
 	</div>
 </main>
 
-<footer class="container"></footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
-<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
+<script>
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+</script>
 </body>
 </html>

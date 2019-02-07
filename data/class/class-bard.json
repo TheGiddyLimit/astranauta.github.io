@@ -15,7 +15,7 @@
 				{
 					"colLabels": [
 						"{@filter Cantrips Known|spells|level=0|class=bard}",
-						"Spells Known"
+						"{@filter Spells Known|spells|class=bard}"
 					],
 					"rows": [
 						[
@@ -383,23 +383,59 @@
 					"(a) a {@item lute|phb} or (b) any other {@filter musical instrument|items|source=phb|miscellaneous=mundane|type=instrument}",
 					"{@item Leather armor|phb}, and a {@item dagger|phb}"
 				],
-				"goldAlternative": "5d4 × 10"
+				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"cha": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light"
+					],
+					"skills": {
+						"choose": 1,
+						"from": [
+							"Athletics",
+							"Acrobatics",
+							"Sleight of Hand",
+							"Stealth",
+							"Arcana",
+							"History",
+							"Investigation",
+							"Nature",
+							"Religion",
+							"Animal Handling",
+							"Insight",
+							"Medicine",
+							"Perception",
+							"Survival",
+							"Deception",
+							"Intimidation",
+							"Performance",
+							"Persuasion"
+						]
+					},
+					"tools": [
+						"one musical instrument of your choice"
+					]
+				}
 			},
 			"classFeatures": [
 				[
 					{
 						"name": "Bardic Inspiration",
 						"entries": [
-							"You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6.",
-							"Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. The creature can wait until after it rolls the d20 before deciding to use the Bardic Inspiration die, but must decide before the DM says whether the roll succeeds or fails. Once the Bardic Inspiration die is rolled, it is lost. A creature can have only one Bardic Inspiration die at a time.",
+							"You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a {@dice d6}.",
+							"Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. The creature can wait until after it rolls the {@dice d20} before deciding to use the Bardic Inspiration die, but must decide before the DM says whether the roll succeeds or fails. Once the Bardic Inspiration die is rolled, it is lost. A creature can have only one Bardic Inspiration die at a time.",
 							"You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain any expended uses when you finish a long rest.",
-							"Your Bardic Inspiration die changes when you reach certain levels in this class. The die becomes a d8 at 5th level, a d10 at 10th level, and a d12 at 15th level."
+							"Your Bardic Inspiration die changes when you reach certain levels in this class. The die becomes a {@dice d8} at 5th level, a {@dice d10} at 10th level, and a {@dice d12} at 15th level."
 						]
 					},
 					{
 						"name": "Spellcasting",
 						"entries": [
-							"You have learned to untangle and reshape the fabric of reality in harmony with your wishes and music. Your spells are part of your vast repertoire, magic that you can tune to different situations. See chapter 10 for the general rules of spellcasting and chapter 11 for the bard spell list.",
+							"You have learned to untangle and reshape the fabric of reality in harmony with your wishes and music. Your spells are part of your vast repertoire, magic that you can tune to different situations. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for the {@filter bard spell list|spells|class=bard}.",
 							{
 								"type": "entries",
 								"name": "Cantrips",
@@ -411,7 +447,7 @@
 								"type": "entries",
 								"name": "Spell Slots",
 								"entries": [
-									"The Bard table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+									"The Bard table shows how many spell slots you have to cast your {@filter bard spells|spells|class=bard} of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
 									"For example, if you know the 1st-level spell {@spell cure wounds} and have a 1st-level and a 2nd-level spell slot available, you can cast {@spell cure wounds} using either slot."
 								]
 							},
@@ -472,8 +508,8 @@
 					{
 						"name": "Song of Rest (d6)",
 						"entries": [
-							"Beginning at 2nd level, you can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance regain hit points by spending Hit Dice at the end of the short rest, each of those creatures regains an extra 1d6 hit points.",
-							"The extra hit points increase when you reach certain levels in this class: to 1d8 at 9th level, to 1d10 at 13th level, and to 1d12 at 17th level."
+							"Beginning at 2nd level, you can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance regain hit points by spending Hit Dice at the end of the short rest, each of those creatures regains an extra {@dice 1d6} hit points.",
+							"The extra hit points increase when you reach certain levels in this class: to {@dice 1d8} at 9th level, to {@dice 1d10} at 13th level, and to {@dice 1d12} at 17th level."
 						]
 					}
 				],
@@ -506,7 +542,7 @@
 					{
 						"name": "Bardic Inspiration (d8)",
 						"entries": [
-							"At 5th level, your Bardic Inspiration die changes to a d8."
+							"At 5th level, your Bardic Inspiration die changes to a {@dice d8}."
 						]
 					},
 					{
@@ -545,7 +581,7 @@
 					{
 						"name": "Song of Rest (d8)",
 						"entries": [
-							"At 9th level, the extra hit points gained from Song of Rest increases to 1d8."
+							"At 9th level, the extra hit points gained from Song of Rest increases to {@dice 1d8}."
 						]
 					}
 				],
@@ -553,7 +589,7 @@
 					{
 						"name": "Bardic Inspiration (d10)",
 						"entries": [
-							"At 10th level, your Bardic Inspiration die changes to a d10."
+							"At 10th level, your Bardic Inspiration die changes to a {@dice d10}."
 						]
 					},
 					{
@@ -565,9 +601,9 @@
 					{
 						"name": "Magical Secrets",
 						"entries": [
-							"By 10th level, you have plundered magical knowledge from a wide spectrum of disciplines. Choose two spells from any class, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.",
+							"By 10th level, you have plundered magical knowledge from a wide spectrum of disciplines. Choose two spells from any classes, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.",
 							"The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table.",
-							"You learn two additional spells from any class at 14th level and again at 18th level."
+							"You learn two additional spells from any classes at 14th level and again at 18th level."
 						]
 					}
 				],
@@ -585,7 +621,7 @@
 					{
 						"name": "Song of Rest (d10)",
 						"entries": [
-							"At 13th level, the extra hit points gained from Song of Rest increases to 1d10."
+							"At 13th level, the extra hit points gained from Song of Rest increases to {@dice 1d10}."
 						]
 					}
 				],
@@ -593,7 +629,7 @@
 					{
 						"name": "Magical Secrets",
 						"entries": [
-							"At 14th level, choose two additional spells from any class, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.",
+							"At 14th level, choose two additional spells from any classes, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.",
 							"The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table."
 						]
 					},
@@ -609,7 +645,7 @@
 					{
 						"name": "Bardic Inspiration (d12)",
 						"entries": [
-							"At 15th level, your Bardic Inspiration die changes to a d12."
+							"At 15th level, your Bardic Inspiration die changes to a {@dice d12}."
 						]
 					}
 				],
@@ -626,7 +662,7 @@
 					{
 						"name": "Song of Rest (d12)",
 						"entries": [
-							"At 17th level, the extra hit points gained from Song of Rest increases to 1d12."
+							"At 17th level, the extra hit points gained from Song of Rest increases to {@dice 1d12}."
 						]
 					}
 				],
@@ -748,7 +784,7 @@
 										"type": "entries",
 										"name": "Extra Attack",
 										"entries": [
-											"Starting at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+											"Starting at 6th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 										]
 									}
 								]
@@ -785,9 +821,9 @@
 										"name": "Mantle of Inspiration",
 										"entries": [
 											"When you join the College of Glamour at 3rd level, you gain the ability to weave a song of fey magic that enthralls your allies with vigor and speed.",
-											"As a bonus action, you can expend a use of Bardic Inspiration to grant yourself a wondrous, otherworldly appearance. When you do so, choose a number of allies you can see and who can see you within 60 feet of you, up to a number of them equal to your Charisma modifier (minimum of one). Each target gains 2d6 temporary hit points.",
+											"As a bonus action, you can expend a use of Bardic Inspiration to grant yourself a wondrous, otherworldly appearance. When you do so, choose a number of allies you can see and who can see you within 60 feet of you, up to a number of them equal to your Charisma modifier (minimum of one). Each target gains {@dice 2d6} temporary hit points.",
 											"When a target gains these temporary hit points, it can also use its reaction to move up to its speed toward you, without provoking opportunity attacks. It must take the shortest, safest path to you.",
-											"The number of temporary hit points increases when you reach certain levels in this class, increasing to 2d8 at 5th level, 2d10 at 10th level, and 2d12 at 15th level."
+											"The number of temporary hit points increases when you reach certain levels in this class, increasing to {@dice 2d8} at 5th level, {@dice 2d10} at 10th level, and {@dice 2d12} at 15th level."
 										]
 									},
 									{
@@ -850,8 +886,8 @@
 										"name": "Venomous Blades",
 										"entries": [
 											"When you join the College of Whispers at 3rd level, you gain the ability to magically make your weapon attacks toxic for a moment.",
-											"When you hit a creature with a weapon attack, you can expend one use of your Bardic Inspiration to deal an additional 2d6 poison damage to that target. You can do so only once per round on your turn.",
-											"The additional damage increases when you reach certain levels in this class, increasing to 2d8 at 5th level, 2d10 at 10th level, and 2d12 at 15th level."
+											"When you hit a creature with a weapon attack, you can expend one use of your Bardic Inspiration to deal an additional {@dice 2d6} poison damage to that target. You can do so only once per round on your turn.",
+											"The additional damage increases when you reach certain levels in this class, increasing to {@dice 2d8} at 5th level, {@dice 2d10} at 10th level, and {@dice 2d12} at 15th level."
 										]
 									},
 									{
@@ -945,7 +981,7 @@
 										"type": "entries",
 										"name": "Blade Flourish",
 										"entries": [
-											"At 3rd level, you learn to conduct impressive displays of skill with your weapons. When you use the Attack action on your turn and attack with a dagger, longsword, rapier, scimitar, or shortsword, you can attempt one of the following flourishes.",
+											"At 3rd level, you learn to conduct impressive displays of skill with your weapons. When you use the {@action Attack} action on your turn and attack with a dagger, longsword, rapier, scimitar, or shortsword, you can attempt one of the following flourishes.",
 											{
 												"type": "entries",
 												"entries": [
@@ -995,7 +1031,7 @@
 										"type": "entries",
 										"name": "Extra Attack",
 										"entries": [
-											"Beginning at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+											"Beginning at 6th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 										]
 									}
 								]
@@ -1132,7 +1168,7 @@
 										"type": "entries",
 										"name": "Master's Flourish",
 										"entries": [
-											"Starting at 14th level, whenever you use a Blade Flourish option, you can roll a d6 and use it instead of expending a Bardic Inspiration die."
+											"Starting at 14th level, whenever you use a Blade Flourish option, you can roll a {@dice d6} and use it instead of expending a Bardic Inspiration die."
 										]
 									}
 								]
@@ -1158,7 +1194,7 @@
 										"type": "entries",
 										"name": "Bonus Proficiencies",
 										"entries": [
-											"When you join the College of Satire at 3rd level, you gain proficiency with thieves' tools. You also gain proficiency in Sleight of Hand and one additional skill of your choice. If you are already proficient with thieves' tools or in Sleight of Hand, choose another skill proficiency for each proficiency you already have."
+											"When you join the College of Satire at 3rd level, you gain proficiency with {@item thieves' tools|phb}. You also gain proficiency in {@skill Sleight of Hand} and one additional skill of your choice. If you are already proficient with {@item thieves' tools|phb} or in {@skill Sleight of Hand}, choose another skill proficiency for each proficiency you already have."
 										]
 									},
 									{
@@ -1169,7 +1205,7 @@
 											{
 												"type": "list",
 												"items": [
-													"You gain the benefits of taking the Dash and Disengage actions.",
+													"You gain the benefits of taking the {@action Dash} and {@action Disengage} actions.",
 													"You gain a climbing speed equal to your current speed.",
 													"You take half damage from falling."
 												]
@@ -1326,7 +1362,7 @@
 										"name": "Blade Flourish",
 										"entries": [
 											"At 3rd level, you learn to perform impressive displays of martial prowess and speed.",
-											"Whenever you take the Attack action on your turn, your walking speed increases by 10 feet until the end of the turn, and if a weapon attack that you make as part of this action hits a creature, you can use one of the following Blade Flourish options of your choice. You can use only one Blade Flourish option per turn.",
+											"Whenever you take the {@action Attack} action on your turn, your walking speed increases by 10 feet until the end of the turn, and if a weapon attack that you make as part of this action hits a creature, you can use one of the following Blade Flourish options of your choice. You can use only one Blade Flourish option per turn.",
 											{
 												"type": "options",
 												"entries": [
@@ -1365,7 +1401,7 @@
 										"type": "entries",
 										"name": "Extra Attack",
 										"entries": [
-											"Starting at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+											"Starting at 6th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
 										]
 									}
 								]
@@ -1378,7 +1414,7 @@
 										"type": "entries",
 										"name": "Master's Flourish",
 										"entries": [
-											"Starting at 14th level, whenever you use a Blade Flourish option, you can roll a d6 and use it instead of expending a Bardic Inspiration die."
+											"Starting at 14th level, whenever you use a Blade Flourish option, you can roll a {@dice d6} and use it instead of expending a Bardic Inspiration die."
 										]
 									}
 								]
@@ -1402,8 +1438,8 @@
 										"name": "Psychic Blades",
 										"entries": [
 											"When you join the College of Whispers at 3rd level, you gain the ability to make your weapon attacks magically toxic to a creature's mind.",
-											"When you hit a creature with a weapon attack, you can expend one use of your Bardic Inspiration to deal an extra 2d6 psychic damage to that target. You can do so only once per round on your turn.",
-											"The psychic damage increases when you reach certain levels in this class, increasing to 3d6 at 5th level, 5d6 at 10th level, and 8d6 at 15th level."
+											"When you hit a creature with a weapon attack, you can expend one use of your Bardic Inspiration to deal an extra {@dice 2d6} psychic damage to that target. You can do so only once per round on your turn.",
+											"The psychic damage increases when you reach certain levels in this class, increasing to {@dice 3d6} at 5th level, {@dice 5d6} at 10th level, and {@dice 8d6} at 15th level."
 										]
 									},
 									{
@@ -1461,282 +1497,328 @@
 			],
 			"fluff": [
 				{
-					"type": "quote",
 					"entries": [
-						"Music is the fruit of the divine tree that vibrates with the Words of Creation. But the question I ask you is, can a bard go to the root of this tree? Can one tap into the source of that power? Ah, then what manner of music they would bring to this world!"
-					],
-					"by": "Fletcher Danairia, master bard"
-				},
-				"Bards bring levity during grave times; they impart wisdom to offset ignorance; and they make the ridiculous seem sublime. Bards are preservers of ancient history, their songs and tales perpetuating the memory of great events down through time\u2014knowledge so important that it is memorized and passed along as oral history, to survive even when no written record remains.",
-				"It is also the bard's role to chronicle smaller and more contemporary events\u2014the stories of today's heroes, including their feats of valor as well as their less than impressive failures.",
-				"Of course, the world has many people who can carry a tune or tell a good story, and there's much more to any adventuring bard than a glib tongue and a melodious voice. Yet what truly sets bards apart from others\u2014and from one another\u2014are the style and substance of their performances.",
-				"To grab and hold the attention of an audience, bards are typically flamboyant and outgoing when they perform. The most famous of them are essentially the D&D world's equivalent of pop stars. If you're playing a bard, consider using one of your favorite musicians as a role model for your character.",
-				"You can add some unique aspects to your bard character by considering the suggestions that follow.",
-				{
-					"type": "entries",
-					"name": "Defining Work",
-					"entries": [
-						"Every successful bard is renowned for at least one piece of performance art, typically a song or a poem that is popular with everyone who hears it. These performances are spoken about for years by those who view them, and some spectators have had their lives forever changed because of the experience.",
-						"If your character is just starting out, your ultimate defining work is likely in the future. But in order to make any sort of living at your profession, chances are you already have a piece or two in your repertoire that have proven to be audience pleasers.",
-						{
-							"type": "table",
-							"caption": "Defining Work",
-							"colLabels": [
-								"{@dice d6}",
-								"Defining Work"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"\"The Three Flambinis,\" a ribald song concerning mistaken identities and unfettered desire"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"\"Waltz of the Myconids,\" an upbeat tune that children in particular enjoy"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"\"Asmodeus's Golden Arse,\" a dramatic poem you claim was inspired by your personal visit to Avernus"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"\"The Pirates of Luskan,\" your firsthand account of being kidnapped by sea reavers as a child"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"\"A Hoop, Two Pigeons, and a Hell Hound,\" a subtle parody of an incompetent noble"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"\"A Fool in the Abyss,\" a comedic poem about a jester's travels among demons"
-								]
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Instrument",
-					"entries": [
-						"In a bard's quest for the ultimate performance and the highest acclaim, one's instrument is at least as important as one's vocal ability. The instrument's quality of manufacture is a critical factor, of course; the best ones make the best music, and some bards are continually on the lookout for an improvement. Perhaps just as important, though, is the instrument's own entertainment value; those that are bizarrely constructed or made of exotic materials are likely to leave a lasting impression on an audience.",
-						"You might have an \"off the rack\" instrument, perhaps because it's all you can afford right now. Or, if your first instrument was gifted to you, it might be of a more elaborate sort. Are you satisfied with the instrument you have, or do you aspire to replace it with something truly distinctive?",
-						{
-							"type": "table",
-							"caption": "Instrument",
-							"colLabels": [
-								"{@dice d6}",
-								"Instrument"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"A masterfully crafted halfling fiddle"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"A mithral horn made by elves"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"A zither made with drow spider silk"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"An orcish drum"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"A wooden bullywug croak box"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"A tinker's harp of gnomish design"
-								]
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Embarrassment",
-					"entries": [
-						"Almost every bard has suffered at least one bad experience in front of an audience, and chances are you're no exception. No one becomes famous right away, after all; perhaps you had a few small difficulties early in your career, or maybe it took you a while to restore your reputation after one agonizing night when the fates conspired to bring about your theatrical ruin.",
-						"The ways that a performance can go wrong are as varied as the fish in the sea. No matter what sort of disaster might occur, however, a bard has the courage and the confidence to rebound from it\u2014either pressing on with the show (if possible) or promising to come back tomorrow with a new performance that's guaranteed to please.",
-						{
-							"type": "table",
-							"caption": "Embarrassment",
-							"colLabels": [
-								"{@dice d6}",
-								"Embarrassment"
-							],
-							"colStyles": [
-								"col-xs-1 text-align-center",
-								"col-xs-11"
-							],
-							"rows": [
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 1
-										}
-									},
-									"The time when your comedic song, \"Big Tom's Hijinks\"\u2014which, by the way, you thought was brilliant\u2014did not go over well with Big Tom"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 2
-										}
-									},
-									"The matinee performance when a circus's owlbear got loose and terrorized the crowd"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 3
-										}
-									},
-									"When your opening song was your enthusiastic but universally hated rendition of \"Song of the Froghemoth\""
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 4
-										}
-									},
-									"The first and last public performance of \"Mirt, Man about Town\""
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 5
-										}
-									},
-									"The time on stage when your wig caught fire and you threw it down\u2014which set fire to the stage"
-								],
-								[
-									{
-										"type": "cell",
-										"roll": {
-											"exact": 6
-										}
-									},
-									"When you sat on your lute by mistake during the final stanza of \"Starlight Serenade\""
-								]
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "A Bard's Muse",
-					"entries": [
-						"Naturally, every bard has a repertoire of songs and stories. Some bards are generalists who can draw from a wide range of topics for each performance, and who take pride in their versatility. Others adopt a more personal approach to their art, driven by their attachment to a muse\u2014a particular concept that inspires much of what those bards do in front of an audience.",
-						"A bard who follows a muse generally does so to gain a deeper understanding of what that muse represents and how to best convey that understanding to others through performance.",
-						"If your bard character has a muse, it could be one of the three described here, or one of your own devising.",
+						"Humming as she traces her fingers over an ancient monument in a long-forgotten ruin, a half-elf in rugged leathers finds knowledge springing into her mind, conjured forth by the magic of her song\u2014knowledge of the people who constructed the monument and the mythic saga it depicts.",
+						"A stern human warrior bangs his sword rhythmically against his scale mail, setting the tempo for his war chant and exhorting his companions to bravery and heroism. The magic of his song fortifies and emboldens them.",
+						"Laughing as she tunes her cittern, a gnome weaves her subtle magic over the assembled nobles, ensuring that her companions' words will be well received.",
+						"Whether scholar, skald, or scoundrel, a bard weaves magic through words and music to inspire allies, demoralize foes, manipulate minds, create illusions, and even heal wounds.",
 						{
 							"type": "entries",
+							"name": "Music and Magic",
 							"entries": [
+								"In the worlds of D&D, words and music are not just vibrations of air, but vocalizations with power all their own. The bard is a master of song, speech, and the magic they contain. Bards say that the multiverse was spoken into existence, that the words of the gods gave it shape, and that echoes of these primordial Words of Creation still resound throughout the cosmos. The music of bards is an attempt to snatch and harness those echoes, subtly woven into their spells and powers.",
+								"The greatest strength of bards is their sheer versatility. Many bards prefer to stick to the sidelines in combat, using their magic to inspire their allies and hinder their foes from a distance. But bards are capable of defending themselves in melee if necessary, using their magic to bolster their swords and armor. Their spells lean toward charms and illusions rather than blatantly destructive spells. They have a wide-ranging knowledge of many subjects and a natural aptitude that lets them do almost anything well. Bards become masters of the talents they set their minds to perfecting, from musical performance to esoteric knowledge."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Learning from Experience",
+							"entries": [
+								"True bards are not common in the world. Not every minstrel singing in a tavern or jester cavorting in a royal court is a bard. Discovering the magic hidden in music requires hard study and some measure of natural talent that most troubadours and jongleurs lack. It can be hard to spot the difference between these performers and true bards, though. A bard's life is spent wandering across the land gathering lore, telling stories, and living on the gratitude of audiences, much like any other entertainer. But a depth of knowledge, a level of musical skill, and a touch of magic set bards apart from their fellows.",
+								"Only rarely do bards settle in one place for long, and their natural desire to travel\u2014to find new tales to tell, new skills to learn, and new discoveries beyond the horizon\u2014makes an adventuring career a natural calling. Every adventure is an opportunity to learn, practice a variety of skills, enter long-forgotten tombs, discover lost works of magic, decipher old tomes, travel to strange places, or encounter exotic creatures. Bards love to accompany heroes to witness their deeds firsthand. A bard who can tell an awe-inspiring story from personal experience earns renown among other bards. Indeed, after telling so many stories about heroes accomplishing mighty deeds, many bards take these themes to heart and assume heroic roles themselves."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Bard",
+							"entries": [
+								"Bards thrive on stories, whether those stories are true or not. Your character's background and motivations are not as important as the stories that he or she tells about them. Perhaps you had a secure and mundane childhood. There's no good story to be told about that, so you might paint yourself as an orphan raised by a hag in a dismal swamp. Or your childhood might be worthy of a story. Some bards acquire their magical music through extraordinary means, including the inspiration of fey or other supernatural creatures.",
+								"Did you serve an apprenticeship, studying under a master, following the more experienced bard until you were ready to strike out on your own? Or did you attend a college where you studied bardic lore and practiced your musical magic? Perhaps you were a young runaway or orphan, befriended by a wandering bard who became your mentor. Or you might have been a spoiled noble child tutored by a master. Perhaps you stumbled into the clutches of a hag, making a bargain for a musical gift in addition to your life and freedom, but at what cost?",
 								{
 									"type": "entries",
-									"name": "Nature",
+									"name": "Quick Build",
 									"entries": [
-										"You feel a kinship with the natural world, and its beauty and mystery inspire you. For you, a tree is deeply symbolic, its roots delving into the dark unknown to draw forth the power of the earth, while its branches reach toward the sun to nourish their flowers and fruit. Nature is the ancient witness who has seen every kingdom rise and fall, even those whose names have been forgotten and wait to be rediscovered. The gods of nature share their secrets with druids and sages, opening their hearts and minds to new ways of seeing, and as with those individuals, you find that your creativity blossoms while you wander in an open field of waving grass or walk in silent reverence through a grove of ancient oaks."
-									]
-								},
-								{
-									"type": "entries",
-									"name": "Love",
-									"entries": [
-										"You are on a quest to identify the essence of true love. Though you do not disdain the superficial love of flesh and form, the deeper form of love that can inspire thousands or bring joy to one's every moment is what you are interested in. Love of this sort takes on many forms, and you can see its presence everywhere\u2014from the sparkling of a beautiful gem to the song of a simple fisher thanking the sea for its bounty. You are on the trail of love, that most precious and mysterious of emotions, and your search fills your stories and your songs with vitality and passion."
-									]
-								},
-								{
-									"type": "entries",
-									"name": "Conflict",
-									"entries": [
-										"Drama embodies conflict, and the best stories have conflict as a key element. From the morning-after tale of a tavern brawl to the saga of an epic battle, from a lover's spat to a rift between powerful dynasties, conflict is what inspires tale-tellers like you to create your best work. Conflict can bring out the best in some people, causing their heroic nature to shine forth and transform the world, but it can cause others to gravitate toward darkness and fall under the sway of evil. You strive to experience or witness all forms of conflict, great and small, so as to study this eternal aspect of life and immortalize it in your words and music."
+										"You can make a bard quickly by following these suggestions. First, Charisma should be your highest ability score, followed by Dexterity. Second, choose the {@background entertainer} background. Third, choose the {@spell dancing lights} and {@spell vicious mockery} cantrips, along with the following 1st-level spells: {@spell charm person}, {@spell detect magic}, {@spell healing word}, and {@spell thunderwave}."
 									]
 								}
 							]
 						}
-					]
+					],
+					"source": "PHB",
+					"page": 51
+				},
+				{
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"Music is the fruit of the divine tree that vibrates with the Words of Creation. But the question I ask you is, can a bard go to the root of this tree? Can one tap into the source of that power? Ah, then what manner of music they would bring to this world!"
+							],
+							"by": "Fletcher Danairia, master bard"
+						},
+						"Bards bring levity during grave times; they impart wisdom to offset ignorance; and they make the ridiculous seem sublime. Bards are preservers of ancient history, their songs and tales perpetuating the memory of great events down through time\u2014knowledge so important that it is memorized and passed along as oral history, to survive even when no written record remains.",
+						"It is also the bard's role to chronicle smaller and more contemporary events\u2014the stories of today's heroes, including their feats of valor as well as their less than impressive failures.",
+						"Of course, the world has many people who can carry a tune or tell a good story, and there's much more to any adventuring bard than a glib tongue and a melodious voice. Yet what truly sets bards apart from others\u2014and from one another\u2014are the style and substance of their performances.",
+						"To grab and hold the attention of an audience, bards are typically flamboyant and outgoing when they perform. The most famous of them are essentially the D&D world's equivalent of pop stars. If you're playing a bard, consider using one of your favorite musicians as a role model for your character.",
+						"You can add some unique aspects to your bard character by considering the suggestions that follow.",
+						{
+							"type": "entries",
+							"name": "Defining Work",
+							"entries": [
+								"Every successful bard is renowned for at least one piece of performance art, typically a song or a poem that is popular with everyone who hears it. These performances are spoken about for years by those who view them, and some spectators have had their lives forever changed because of the experience.",
+								"If your character is just starting out, your ultimate defining work is likely in the future. But in order to make any sort of living at your profession, chances are you already have a piece or two in your repertoire that have proven to be audience pleasers.",
+								{
+									"type": "table",
+									"caption": "Defining Work",
+									"colLabels": [
+										"{@dice d6}",
+										"Defining Work"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"\"The Three Flambinis,\" a ribald song concerning mistaken identities and unfettered desire"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"\"Waltz of the Myconids,\" an upbeat tune that children in particular enjoy"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"\"Asmodeus's Golden Arse,\" a dramatic poem you claim was inspired by your personal visit to Avernus"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"\"The Pirates of Luskan,\" your firsthand account of being kidnapped by sea reavers as a child"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"\"A Hoop, Two Pigeons, and a Hell Hound,\" a subtle parody of an incompetent noble"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"\"A Fool in the Abyss,\" a comedic poem about a jester's travels among demons"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Instrument",
+							"entries": [
+								"In a bard's quest for the ultimate performance and the highest acclaim, one's instrument is at least as important as one's vocal ability. The instrument's quality of manufacture is a critical factor, of course; the best ones make the best music, and some bards are continually on the lookout for an improvement. Perhaps just as important, though, is the instrument's own entertainment value; those that are bizarrely constructed or made of exotic materials are likely to leave a lasting impression on an audience.",
+								"You might have an \"off the rack\" instrument, perhaps because it's all you can afford right now. Or, if your first instrument was gifted to you, it might be of a more elaborate sort. Are you satisfied with the instrument you have, or do you aspire to replace it with something truly distinctive?",
+								{
+									"type": "table",
+									"caption": "Instrument",
+									"colLabels": [
+										"{@dice d6}",
+										"Instrument"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"A masterfully crafted halfling fiddle"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"A mithral horn made by elves"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"A zither made with drow spider silk"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"An orcish drum"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"A wooden bullywug croak box"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"A tinker's harp of gnomish design"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Embarrassment",
+							"entries": [
+								"Almost every bard has suffered at least one bad experience in front of an audience, and chances are you're no exception. No one becomes famous right away, after all; perhaps you had a few small difficulties early in your career, or maybe it took you a while to restore your reputation after one agonizing night when the fates conspired to bring about your theatrical ruin.",
+								"The ways that a performance can go wrong are as varied as the fish in the sea. No matter what sort of disaster might occur, however, a bard has the courage and the confidence to rebound from it\u2014either pressing on with the show (if possible) or promising to come back tomorrow with a new performance that's guaranteed to please.",
+								{
+									"type": "table",
+									"caption": "Embarrassment",
+									"colLabels": [
+										"{@dice d6}",
+										"Embarrassment"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"The time when your comedic song, \"Big Tom's Hijinks\"\u2014which, by the way, you thought was brilliant\u2014did not go over well with Big Tom"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"The matinee performance when a circus's owlbear got loose and terrorized the crowd"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"When your opening song was your enthusiastic but universally hated rendition of \"Song of the Froghemoth\""
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"The first and last public performance of \"Mirt, Man about Town\""
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"The time on stage when your wig caught fire and you threw it down\u2014which set fire to the stage"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"When you sat on your lute by mistake during the final stanza of \"Starlight Serenade\""
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "A Bard's Muse",
+							"entries": [
+								"Naturally, every bard has a repertoire of songs and stories. Some bards are generalists who can draw from a wide range of topics for each performance, and who take pride in their versatility. Others adopt a more personal approach to their art, driven by their attachment to a muse\u2014a particular concept that inspires much of what those bards do in front of an audience.",
+								"A bard who follows a muse generally does so to gain a deeper understanding of what that muse represents and how to best convey that understanding to others through performance.",
+								"If your bard character has a muse, it could be one of the three described here, or one of your own devising.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Nature",
+											"entries": [
+												"You feel a kinship with the natural world, and its beauty and mystery inspire you. For you, a tree is deeply symbolic, its roots delving into the dark unknown to draw forth the power of the earth, while its branches reach toward the sun to nourish their flowers and fruit. Nature is the ancient witness who has seen every kingdom rise and fall, even those whose names have been forgotten and wait to be rediscovered. The gods of nature share their secrets with druids and sages, opening their hearts and minds to new ways of seeing, and as with those individuals, you find that your creativity blossoms while you wander in an open field of waving grass or walk in silent reverence through a grove of ancient oaks."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Love",
+											"entries": [
+												"You are on a quest to identify the essence of true love. Though you do not disdain the superficial love of flesh and form, the deeper form of love that can inspire thousands or bring joy to one's every moment is what you are interested in. Love of this sort takes on many forms, and you can see its presence everywhere\u2014from the sparkling of a beautiful gem to the song of a simple fisher thanking the sea for its bounty. You are on the trail of love, that most precious and mysterious of emotions, and your search fills your stories and your songs with vitality and passion."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Conflict",
+											"entries": [
+												"Drama embodies conflict, and the best stories have conflict as a key element. From the morning-after tale of a tavern brawl to the saga of an epic battle, from a lover's spat to a rift between powerful dynasties, conflict is what inspires tale-tellers like you to create your best work. Conflict can bring out the best in some people, causing their heroic nature to shine forth and transform the world, but it can cause others to gravitate toward darkness and fall under the sway of evil. You strive to experience or witness all forms of conflict, great and small, so as to study this eternal aspect of life and immortalize it in your words and music."
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"source": "XGE",
+					"page": 12
 				}
-			],
-			"fluffPage": 12
+			]
 		}
 	]
 }

@@ -295,7 +295,7 @@
 										"name": "Concentration",
 										"entries": [
 											"Some options require concentration to maintain their effects. This requirement is noted with \"conc.\" after the option's psi point cost. The \"conc.\" notation is followed by the maximum duration of the concentration. For example, if an option says \"conc., 1 min.,\" you can concentrate on its effect for up to 1 minute.",
-											"Concentrating on a discipline follows the same rules as concentrating on a spell. This rule means you can't concentrate on a spell and a discipline at the same time, nor can you concentrate on two disciplines at the same time. See chapter 10, \"Spellcasting,\" in the Player's Handbook for how concentration works."
+											"Concentrating on a discipline follows the same rules as concentrating on a spell. This rule means you can't concentrate on a spell and a discipline at the same time, nor can you concentrate on two disciplines at the same time. See {@book chapter 10|PHB|10}, \"Spellcasting,\" in the Player's Handbook for how concentration works."
 										]
 									}
 								]
@@ -304,7 +304,7 @@
 								"type": "entries",
 								"name": "Targets and Areas of Effect",
 								"entries": [
-									"Psionic disciplines use the same rules as spells for determining targets and areas of effect, as presented in chapter 10, \"Spellcasting,\" of the Player's Handbook."
+									"Psionic disciplines use the same rules as spells for determining targets and areas of effect, as presented in {@book chapter 10|PHB|10}, \"Spellcasting,\" of the Player's Handbook."
 								]
 							},
 							{
@@ -319,7 +319,7 @@
 								"type": "entries",
 								"name": "Combining Psionic Effects",
 								"entries": [
-									"The effects of different psionic disciplines add together while the durations of the disciplines overlap. Likewise, different options from a psionic discipline combine if they are active at the same time. However, a specific option from a psionic discipline doesn't combine with itself if the option is used multiple times. Instead, the most potent effect\u2014usually dependent on how many psi points were used to create the effect\u2014 applies while the durations of the effects overlap.",
+									"The effects of different psionic disciplines add together while the durations of the disciplines overlap. Likewise, different options from a psionic discipline combine if they are active at the same time. However, a specific option from a psionic discipline doesn't combine with itself if the option is used multiple times. Instead, the most potent effect\u2014usually dependent on how many psi points were used to create the effect\u2014applies while the durations of the effects overlap.",
 									"Psionics and spells are separate effects, and therefore their benefits and drawbacks overlap. A psionic effect that reproduces a spell is an exception to this rule."
 								]
 							}
@@ -394,7 +394,7 @@
 					{
 						"name": "Potent Psionics (1d8)",
 						"entries": [
-							"At 8th level, you gain the ability to infuse your weapon attacks with psychic energy. Once on each of your turns when you hit a creature with a weapon, you can deal an extra 1d8 psychic damage to that target. When you reach 14th level, this extra damage increases to 2d8.",
+							"At 8th level, you gain the ability to infuse your weapon attacks with psychic energy. Once on each of your turns when you hit a creature with a weapon, you can deal an extra {@dice 1d8} psychic damage to that target. When you reach 14th level, this extra damage increases to {@dice 2d8}.",
 							"In addition, you add your Intelligence modifier to any damage roll you make for a psionic talent."
 						]
 					}
@@ -447,7 +447,7 @@
 					{
 						"name": "Potent Psionics (2d8)",
 						"entries": [
-							"At 14th level, your potent psionics damage increased to 2d8."
+							"At 14th level, your potent psionics damage increased to {@dice 2d8}."
 						]
 					}
 				],
@@ -495,7 +495,7 @@
 									"You gain resistance to bludgeoning, piercing, and slashing damage.",
 									"You no longer age.",
 									"You are immune to disease, poison damage, and the poisoned condition.",
-									"If you die, roll a d20. On a 10 or higher, you discorporate with 0 hit points, instead of dying, and you fall {@condition unconscious}. You and your gear disappear. You appear at a spot of your choice 1d3 days later on the plane of existence where you died, having gained the benefits of one long rest."
+									"If you die, roll a {@dice d20}. On a 10 or higher, you discorporate with 0 hit points, instead of dying, and you fall {@condition unconscious}. You and your gear disappear. You appear at a spot of your choice {@dice 1d3} days later on the plane of existence where you died, having gained the benefits of one long rest."
 								]
 							}
 						]
@@ -563,7 +563,7 @@
 										"type": "entries",
 										"name": "Avatar of Speed",
 										"entries": [
-											"Starting at 14th level, you project an aura of speed. While you aren't {@condition incapacitated}, any ally within 30 feet of you who can see you can take the Dash action as a bonus action."
+											"Starting at 14th level, you project an aura of speed. While you aren't {@condition incapacitated}, any ally within 30 feet of you who can see you can take the {@action Dash} action as a bonus action."
 										]
 									}
 								]
@@ -593,7 +593,7 @@
 										"type": "entries",
 										"name": "Awakened Talent",
 										"entries": [
-											"At 1st level, you gain proficiency with two of the following skills of your choice: Animal Handling, Deception, Insight, Intimidation, Investigation, Perception, and Persuasion."
+											"At 1st level, you gain proficiency with two of the following skills of your choice: {@skill Animal Handling}, {@skill Deception}, {@skill Insight}, {@skill Intimidation}, {@skill Investigation}, {@skill Perception}, and {@skill Persuasion}."
 										]
 									}
 								]
@@ -808,7 +808,7 @@
 										"name": "Soul Knife",
 										"entries": [
 											"Starting at 1st level, you gain the ability to manifest a blade of psychic energy. As a bonus action, you create scintillating knives of energy that project from both of your fists. You can't hold anything in your hands while manifesting these blades. You can dismiss them as a bonus action.",
-											"For you, a soul knife is a martial melee weapon with the light and finesse properties. It deals 1d8 psychic damage on a hit.",
+											"For you, a soul knife is a martial melee weapon with the light and finesse properties. It deals {@dice 1d8} psychic damage on a hit.",
 											"As a bonus action, you can prepare to use the blades to parry; you gain a +2 bonus to AC until the start of your next turn or until you are {@condition incapacitated}."
 										]
 									}
@@ -830,8 +830,8 @@
 													"Attack and Damage Bonus"
 												],
 												"colStyles": [
-													"col-xs-6 text-align-center",
-													"col-xs-6 text-align-center"
+													"col-6 text-align-center",
+													"col-6 text-align-center"
 												],
 												"rows": [
 													[
@@ -903,7 +903,7 @@
 										"type": "entries",
 										"name": "Hermit's Study",
 										"entries": [
-											"At 1st level, you gain proficiency with two of the following skills of your choice: Animal Handling, Arcana, History, Insight, Medicine, Nature, Perception, Religion, or Survival."
+											"At 1st level, you gain proficiency with two of the following skills of your choice: {@skill Animal Handling}, {@skill Arcana}, {@skill History}, {@skill Insight}, {@skill Medicine}, {@skill Nature}, {@skill Perception}, {@skill Religion}, or {@skill Survival}."
 										]
 									}
 								]
@@ -938,8 +938,8 @@
 													"Psi Cost"
 												],
 												"colStyles": [
-													"col-xs-6 text-align-center",
-													"col-xs-6 text-align-center"
+													"col-6 text-align-center",
+													"col-6 text-align-center"
 												],
 												"rows": [
 													[
@@ -963,7 +963,9 @@
 														"7"
 													]
 												]
-											}
+											},
+											"The spell slot remains until you use it or finish a long rest. You must observe your psi limit when spending psi points to create a spell slot.",
+											"Whenever you gain a level in this class, you cna replace on of the chosen wizard spells with a different wizard spell of 1st through 3rh level."
 										]
 									}
 								]

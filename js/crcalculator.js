@@ -1,223 +1,239 @@
 "use strict";
-const MSBCR_JSON_URL = "data/msbcr.json";
-const MONSTERFEATURES_JSON_URL = "data/monsterfeatures.json";
+
+const MONSTER_STATS_BY_CR_JSON_URL = "data/msbcr.json";
+const MONSTER_FEATURES_JSON_URL = "data/monsterfeatures.json";
 let msbcr;
-let monsterfeatures;
+let monsterFeatures;
 
 window.onload = function load () {
-	DataUtil.loadJSON(MSBCR_JSON_URL).then(addMSBCR);
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+	DataUtil.loadJSON(MONSTER_STATS_BY_CR_JSON_URL).then(addMSBCR);
 };
 
 function addMSBCR (crData) {
 	msbcr = crData;
-	DataUtil.loadJSON(MONSTERFEATURES_JSON_URL).then(addMonsterFeatures);
+	DataUtil.loadJSON(MONSTER_FEATURES_JSON_URL).then(addMonsterFeatures);
 }
 
 function addMonsterFeatures (mfData) {
-	monsterfeatures = mfData.monsterfeatures;
+	monsterFeatures = mfData.monsterfeatures;
 	for (let i = 0; i < msbcr.cr.length; i++) {
-		const curcr = msbcr.cr[i];
-		$("#msbcr").append(`<tr><td>${curcr._cr}</td><td>${Parser.crToXp(curcr._cr)}</td><td>${curcr.pb}</td><td>${curcr.ac}</td><td>${curcr.hpmin}-${curcr.hpmax}</td><td>${curcr.attackbonus}</td><td>${curcr.dprmin}-${curcr.dprmax}</td><td>${curcr.savedc}</td></tr>`)
+		const curCr = msbcr.cr[i];
+		$("#msbcr").append(`<tr><td>${curCr._cr}</td><td>${Parser.crToXp(curCr._cr)}</td><td>${curCr.pb}</td><td>${curCr.ac}</td><td>${curCr.hpmin}-${curCr.hpmax}</td><td>${curCr.attackbonus}</td><td>${curCr.dprmin}-${curCr.dprmax}</td><td>${curCr.savedc}</td></tr>`)
 	}
 
-	$("input#calculate").click(function () {
-		calculatecr();
-	});
-
-	$("#crcalc input").change(function () {
-		calculatecr();
-	});
-
-	$("#saveprofs, #resistances").change(function () {
-		calculatecr();
-	});
+	$("#crcalc input").change(calculateCr);
+	$("#saveprofs, #resistances").change(calculateCr);
 
 	$("#saveinstead").change(function () {
-		const curval = parseInt($("#attackbonus").val());
-		if (!$(this).is(":checked")) $("#attackbonus").val(curval - 10);
-		if ($(this).is(":checked")) $("#attackbonus").val(curval + 10);
-		calculatecr();
+		const curVal = parseInt($("#attackbonus").val());
+		if (!$(this).is(":checked")) $("#attackbonus").val(curVal - 10);
+		if ($(this).is(":checked")) $("#attackbonus").val(curVal + 10);
+		calculateCr();
 	});
 
+	function changeSize ($selSize) {
+		const newSize = $selSize.val();
+		if (newSize === "Tiny") $("#hdval").html("d4");
+		if (newSize === "Small") $("#hdval").html("d6");
+		if (newSize === "Medium") $("#hdval").html("d8");
+		if (newSize === "Large") $("#hdval").html("d10");
+		if (newSize === "Huge") $("#hdval").html("d12");
+		if (newSize === "Gargantuan") $("#hdval").html("d20");
+		$("#hp").val(calculateHp());
+	}
+
 	$("select#size").change(function () {
-		const newsize = $(this).val();
-		if (newsize === "Tiny") $("#hdval").html("d4");
-		if (newsize === "Small") $("#hdval").html("d6");
-		if (newsize === "Medium") $("#hdval").html("d8");
-		if (newsize === "Large") $("#hdval").html("d10");
-		if (newsize === "Huge") $("#hdval").html("d12");
-		if (newsize === "Gargantuan") $("#hdval").html("d20");
-		$("#hp").val(calculatehp());
-		calculatecr();
+		changeSize($(this));
+		calculateCr();
 	});
 
 	$("#hd, #con").change(function () {
-		$("#hp").val(calculatehp());
-		calculatecr();
+		$("#hp").val(calculateHp());
+		calculateCr();
 	});
 
+	// when clicking a row in the "Monster Statistics by Challenge Rating" table
 	$("#msbcr tr").not(":has(th)").click(function () {
 		$("#expectedcr").val($(this).children("td:eq(0)").html());
-		const minhp = parseInt($(this).children("td:eq(4)").html().split("-")[0]);
-		const maxhp = parseInt($(this).children("td:eq(4)").html().split("-")[1]);
-		$("#hp").val(minhp + (maxhp - minhp) / 2);
-		$("#hd").val(calculatehd());
+		const [minHp, maxHp] = $(this).children("td:eq(4)").html().split("-").map(it => parseInt(it));
+		$("#hp").val(minHp + (maxHp - minHp) / 2);
+		$("#hd").val(calculateHd());
 		$("#ac").val($(this).children("td:eq(3)").html());
 		$("#dpr").val($(this).children("td:eq(6)").html().split("-")[0]);
 		$("#attackbonus").val($(this).children("td:eq(5)").html());
 		if ($("#saveinstead").is(":checked")) $("#attackbonus").val($(this).children("td:eq(7)").html());
-		calculatecr();
+		calculateCr();
 	});
 
 	$("#hp").change(function () {
-		$("#hd").val(calculatehd());
-		calculatecr();
+		$("#hd").val(calculateHd());
+		calculateCr();
 	});
 
 	// parse monsterfeatures
-	for (let i = 0; i < monsterfeatures.length; i++) {
-		let effectoncr = [];
-		if (monsterfeatures[i].hp) effectoncr.push("HP: " + monsterfeatures[i].hp);
-		if (monsterfeatures[i].ac) effectoncr.push("AC: " + monsterfeatures[i].ac);
-		if (monsterfeatures[i].dpr) effectoncr.push("DPR: " + monsterfeatures[i].dpr);
-		if (monsterfeatures[i].attackbonus) effectoncr.push("AB: " + monsterfeatures[i].attackbonus);
-		effectoncr = effectoncr.join(", ");
-		let numbox = "";
-		if (monsterfeatures[i].numbox === true) numbox = "<input type='number' value='0'>";
-		$("#monsterfeatures table").append(`<tr><td style="white-space: nowrap"><input type='checkbox' id='MF${encodeURI(monsterfeatures[i].name).toLowerCase()}' title="${monsterfeatures[i].name}" data-hp='${monsterfeatures[i].hp}' data-ac='${monsterfeatures[i].ac}' data-dpr='${monsterfeatures[i].dpr}' data-attackbonus='${monsterfeatures[i].attackbonus}'>${numbox}</td><td>${monsterfeatures[i].name}</td><td>${monsterfeatures[i].example.replace(/, /g, ",<br />")}</td><td><span title="${effectoncr}" class="explanation">${monsterfeatures[i].effect}</span></td></tr>`);
+	const $wrpMonFeatures = $(`#monsterfeatures .crc__wrp_mon_features`);
+	monsterFeatures.forEach(f => {
+		const effectOnCr = [];
+		if (f.hp) effectOnCr.push(`HP: ${f.hp}`);
+		if (f.ac) effectOnCr.push(`AC: ${f.ac}`);
+		if (f.dpr) effectOnCr.push(`DPR: ${f.dpr}`);
+		if (f.attackbonus) effectOnCr.push(`AB: ${f.attackbonus}`);
+
+		const numBox = f.numbox ? `<input type="number" value="0" min="0" class="crc__mon_feature_num">` : "";
+
+		$wrpMonFeatures.append(`
+			<label class="row crc__mon_feature">
+				<div class="col-xs-1 crc__mon_feature_wrp_cb">
+					<input type="checkbox" id="mf-${Parser.stringToSlug(f.name)}" title="${f.name}" data-hp="${f.hp}" data-ac="${f.ac}" data-dpr="${f.dpr}" data-attackbonus="${f.attackbonus}" class="crc__mon_feature_cb">${numBox}
+				</div>
+				<div class="col-xs-2">${f.name}</div>
+				<div class="col-xs-2">${EntryRenderer.getDefaultRenderer().renderEntry(`{@creature ${f.example}}`)}</div>
+				<div class="col-xs-7"><span title="${effectOnCr.join(", ")}" class="explanation">${f.effect}</span></div>
+			</label>
+		`);
+	});
+
+	function parseUrl () {
+		if (window.location.hash) {
+			let curData = window.location.hash.split("#")[1].split(",");
+			$("#expectedcr").val(curData[0]);
+			$("#ac").val(curData[1]);
+			$("#dpr").val(curData[2]);
+			$("#attackbonus").val(curData[3]);
+			if (curData[4] === "true") $("#saveinstead").attr("checked", true);
+			changeSize($("#size").val(curData[5]));
+			$("#hd").val(curData[6]);
+			$("#con").val(curData[7]);
+			$("#hp").val(calculateHp());
+			if (curData[8] === "true") $("#vulnerabilities").attr("checked", true);
+			$("#resistances").val(curData[9]);
+			if (curData[10] === "true") $("#flying").attr("checked", true);
+			$("#saveprofs").val(curData[11]);
+
+			$(`.crc__mon_feature_cb`).each((i, e) => {
+				const $cb = $(e);
+				const idCb = $cb.attr("id");
+				const val = History.getSubHash(idCb);
+				if (val) {
+					$cb.prop("checked", true);
+					if (val !== "true") {
+						$cb.siblings("input[type=number]").val(val);
+					}
+				}
+			});
+		}
+
+		calculateCr();
 	}
 
-	// parse url
-	function parseurl () {
-		if (window.location.hash) {
-			let curdata = window.location.hash.split("#")[1].split(",");
-			$("#expectedcr").val(curdata[0]);
-			$("#hp").val(curdata[1]);
-			$("#hp").val(calculatehp());
-			$("#ac").val(curdata[2]);
-			$("#dpr").val(curdata[3]);
-			$("#attackbonus").val(curdata[4]);
-			if (curdata[5] === "true") $("#saveinstead").attr("checked", true);
-			$("#size").val(curdata[6]);
-			$("select#size").change();
-			$("#hd").val(curdata[7]);
-			$("#con").val(curdata[8]);
-			$("#hp").val(calculatehp());
-			if (curdata[9] === "true") $("#vulnerabilities").attr("checked", true);
-			$("#resistances").val(curdata[10]);
-			if (curdata[11] === "true") $("#flying").attr("checked", true);
-			$("#saveprofs").val(curdata[12]);
+	function handleMonsterFeaturesChange ($cbFeature, $iptNum) {
+		const curFeature = $cbFeature.attr("id");
 
-			if (window.location.hash.indexOf("traits:") !== -1) {
-				curdata = window.location.hash.split("traits:")[1].split(",");
-				for (let i = 1; i < curdata.length; i++) {
-					$("input[id='" + curdata[i].split(":")[0] + "']").click();
-					if (curdata[i].split(":")[1]) $("input[id='" + curdata[i].split(":")[0] + "']").siblings("input[type=number]").val(curdata[i].split(":")[1])
-				}
-			}
-			calculatecr();
+		if ($cbFeature.prop("checked")) {
+			History.setSubhash(curFeature, $iptNum.length ? $iptNum.val() : true);
+		} else {
+			History.setSubhash(curFeature, null)
 		}
 	}
 
 	// Monster Features table
-	$("#monsterfeatures tr td").not(":has(input)").click(function () {
-		$(this).siblings().children("input").click();
-
-		const curfeature = $(this).siblings("td").children("input").attr("id");
-		let curnumber = "";
-		if ($(this).siblings("td").children("input[type=number]").length) curnumber = ":" + $(this).siblings("td").children("input[type=number]").val();
-		window.location = window.location.hash + "," + curfeature + curnumber;
-
-		if ($(this).siblings("td").children("input").prop("checked")) return;
-
-		window.location = window.location.hash.split("," + curfeature + curnumber).join("");
-		window.location = window.location.hash.split("," + curfeature + ":0").join("");
-		window.location = window.location.hash.split("," + curfeature).join("");
+	$(".crc__mon_feature_cb").change(function () {
+		const $cbFeature = $(this);
+		const $iptNum = $(this).siblings("input[type=number]");
+		handleMonsterFeaturesChange($cbFeature, $iptNum);
 	});
 
-	$("#monsterfeatures tr td input").change(function () {
-		calculatecr();
+	$(`.crc__mon_feature_num`).change(function () {
+		const $iptNum = $(this);
+		const $cbFeature = $(this).siblings("input[type=checkbox]");
+		handleMonsterFeaturesChange($cbFeature, $iptNum);
 	});
 
-	$("#reset").click(function () {
-		window.location = "";
-		parseurl();
+	$("#monsterfeatures .crc__wrp_mon_features input").change(calculateCr);
+
+	$("#crcalc_reset").click(() => {
+		confirm("Are you sure?") && (() => {
+			window.location = "";
+			parseUrl();
+		})();
 	});
 
-	parseurl();
-	calculatecr();
+	parseUrl();
 }
 
-function calculatecr () {
-	const expectedcr = parseInt($("#expectedcr").val());
+function calculateCr () {
+	const expectedCr = parseInt($("#expectedcr").val());
 
 	let hp = parseInt($("#crcalc #hp").val());
 
 	if ($("#vulnerabilities").prop("checked")) hp *= 0.5;
 	if ($("#resistances").val() === "res") {
-		if (expectedcr >= 0 && expectedcr <= 4) hp *= 2;
-		if (expectedcr >= 5 && expectedcr <= 10) hp *= 1.5;
-		if (expectedcr >= 11 && expectedcr <= 16) hp *= 1.25;
+		if (expectedCr >= 0 && expectedCr <= 4) hp *= 2;
+		if (expectedCr >= 5 && expectedCr <= 10) hp *= 1.5;
+		if (expectedCr >= 11 && expectedCr <= 16) hp *= 1.25;
 	}
 	if ($("#resistances").val() === "imm") {
-		if (expectedcr >= 0 && expectedcr <= 4) hp *= 2;
-		if (expectedcr >= 5 && expectedcr <= 10) hp *= 2;
-		if (expectedcr >= 11 && expectedcr <= 16) hp *= 1.5;
-		if (expectedcr >= 17) hp *= 1.25;
+		if (expectedCr >= 0 && expectedCr <= 4) hp *= 2;
+		if (expectedCr >= 5 && expectedCr <= 10) hp *= 2;
+		if (expectedCr >= 11 && expectedCr <= 16) hp *= 1.5;
+		if (expectedCr >= 17) hp *= 1.25;
 	}
 
 	let ac = parseInt($("#crcalc #ac").val()) + parseInt($("#saveprofs").val()) + parseInt($("#flying").prop("checked") * 2);
 	let dpr = parseInt($("#crcalc #dpr").val());
 
-	let attackbonus = parseInt($("#crcalc #attackbonus").val());
-	const usesavedc = $("#saveinstead").prop("checked");
+	let attackBonus = parseInt($("#crcalc #attackbonus").val());
+	const useSaveDc = $("#saveinstead").prop("checked");
 
 	let offensiveCR = -1;
 	let defensiveCR = -1;
 
 	// go through monster features
 	$("#monsterfeatures input:checked").each(function () {
+		// `trait` is used within the "eval"s below
 		let trait = 0;
 		if ($(this).siblings("input[type=number]").length) trait = $(this).siblings("input[type=number]").val();
+
 		/* eslint-disable */
 		if ($(this).attr("data-hp") !== "") hp += Number(eval($(this).attr("data-hp")));
 		if ($(this).attr("data-ac") !== "") ac += Number(eval($(this).attr("data-ac")));
 		if ($(this).attr("data-dpr") !== "") dpr += Number(eval($(this).attr("data-dpr")));
 		/* eslint-enable */
-		if (!usesavedc && $(this).attr("data-attackbonus") !== "") attackbonus += Number($(this).attr("data-attackbonus"));
+		if (!useSaveDc && $(this).attr("data-attackbonus") !== "") attackBonus += Number($(this).attr("data-attackbonus"));
 	});
 
 	hp = Math.floor(hp);
 	dpr = Math.floor(dpr);
 
-	const effectivehp = hp;
-	const effectivedpr = dpr;
+	const effectiveHp = hp;
+	const effectiveDpr = dpr;
 
-	// make sure you don't break the CR
+	// make sure we don't break the CR
 	if (hp > 850) hp = 850;
 	if (dpr > 320) dpr = 320;
 
 	for (let i = 0; i < msbcr.cr.length; i++) {
-		const curcr = msbcr.cr[i];
-		if (hp >= parseInt(curcr.hpmin) && hp <= parseInt(curcr.hpmax)) {
-			let defensedifference = parseInt(curcr.ac) - ac;
-			if (defensedifference > 0) defensedifference = Math.floor(defensedifference / 2);
-			if (defensedifference < 0) defensedifference = Math.ceil(defensedifference / 2);
-			defensedifference = i - defensedifference;
-			if (defensedifference < 0) defensedifference = 0;
-			if (defensedifference >= msbcr.cr.length) defensedifference = msbcr.cr.length - 1;
-			defensiveCR = msbcr.cr[defensedifference]._cr;
+		const curCr = msbcr.cr[i];
+		if (hp >= parseInt(curCr.hpmin) && hp <= parseInt(curCr.hpmax)) {
+			let defenseDifference = parseInt(curCr.ac) - ac;
+			if (defenseDifference > 0) defenseDifference = Math.floor(defenseDifference / 2);
+			if (defenseDifference < 0) defenseDifference = Math.ceil(defenseDifference / 2);
+			defenseDifference = i - defenseDifference;
+			if (defenseDifference < 0) defenseDifference = 0;
+			if (defenseDifference >= msbcr.cr.length) defenseDifference = msbcr.cr.length - 1;
+			defensiveCR = msbcr.cr[defenseDifference]._cr;
 		}
-		if (dpr >= curcr.dprmin && dpr <= curcr.dprmax) {
-			let adjuster = parseInt(curcr.attackbonus);
-			if (usesavedc) adjuster = parseInt(curcr.savedc);
-			let attackdifference = adjuster - attackbonus;
-			if (attackdifference > 0) attackdifference = Math.floor(attackdifference / 2);
-			if (attackdifference < 0) attackdifference = Math.ceil(attackdifference / 2);
-			attackdifference = i - attackdifference;
-			if (attackdifference < 0) attackdifference = 0;
-			if (attackdifference >= msbcr.cr.length) attackdifference = msbcr.cr.length - 1;
-			offensiveCR = msbcr.cr[attackdifference]._cr;
+		if (dpr >= curCr.dprmin && dpr <= curCr.dprmax) {
+			let adjuster = parseInt(curCr.attackbonus);
+			if (useSaveDc) adjuster = parseInt(curCr.savedc);
+			let attackDifference = adjuster - attackBonus;
+			if (attackDifference > 0) attackDifference = Math.floor(attackDifference / 2);
+			if (attackDifference < 0) attackDifference = Math.ceil(attackDifference / 2);
+			attackDifference = i - attackDifference;
+			if (attackDifference < 0) attackDifference = 0;
+			if (attackDifference >= msbcr.cr.length) attackDifference = msbcr.cr.length - 1;
+			offensiveCR = msbcr.cr[attackDifference]._cr;
 		}
 	}
 
@@ -235,60 +251,65 @@ function calculatecr () {
 	if (cr === "0.0625") cr = "1/8";
 	if (cr.indexOf(".") !== -1) cr = Math.round(cr).toString();
 
-	let finalcr = 0;
+	let finalCr = 0;
 	for (let i = 0; i < msbcr.cr.length; i++) {
 		if (msbcr.cr[i]._cr === cr) {
-			finalcr = i;
+			finalCr = i;
 			break;
 		}
 	}
 
-	const hitdice = calculatehd();
-	const hitdicesize = $("#hdval").html();
-	const conmod = Math.floor(($("#con").val() - 10) / 2);
-	let hash = "#";
-	hash += $("#expectedcr").val() + ","; // 0
-	hash += $("#hp").val() + ","; // 1
-	hash += $("#ac").val() + ","; // 2
-	hash += $("#dpr").val() + ","; // 3
-	hash += $("#attackbonus").val() + ","; // 4
-	hash += usesavedc + ","; // 5
-	hash += $("#size").val() + ","; // 6
-	hash += $("#hd").val() + ","; // 7
-	hash += $("#con").val() + ","; // 8
-	hash += $("#vulnerabilities").prop("checked") + ","; // 9
-	hash += $("#resistances").val() + ","; // 10
-	hash += $("#flying").prop("checked") + ","; // 11
-	hash += $("#saveprofs").val() + ","; // 12
-	hash += "traits:";
-	const hastraits = window.location.hash.split("traits:")[1];
-	if (hastraits !== "undefined") hash += hastraits;
+	const hitDice = calculateHd();
+	const hitDiceSize = $("#hdval").html();
+	const conMod = Math.floor(($("#con").val() - 10) / 2);
+	const hashParts = [
+		$("#expectedcr").val(), // 0
+		$("#ac").val(), // 1
+		$("#dpr").val(), // 2
+		$("#attackbonus").val(), // 3
+		useSaveDc, // 4
+		$("#size").val(), // 5
+		$("#hd").val(), // 6
+		$("#con").val(), // 7
+		$("#vulnerabilities").prop("checked"), // 8
+		$("#resistances").val(), // 9
+		$("#flying").prop("checked"), // 10
+		$("#saveprofs").val(), // 11
+		$(`.crc__mon_feature_cb`).map((i, e) => {
+			const $cb = $(e);
+			if ($cb.prop("checked")) {
+				const $iptNum = $cb.siblings("input[type=number]");
+				return `${$cb.attr("id")}:${$iptNum.length ? $iptNum.val() : true}`
+			} else return false;
+		}).get().filter(Boolean).join(",")
+	];
+	window.location = `#${hashParts.join(",")}`;
 
-	window.location = hash;
-
-	$("#croutput").html("<h4>Challenge Rating: " + cr + "</h4>");
-	$("#croutput").append("<p>Offensive CR: " + offensiveCR + "</p>");
-	$("#croutput").append("<p>Defensive CR: " + defensiveCR + "</p>");
-	$("#croutput").append("<p>Proficiency Bonus: +" + msbcr.cr[finalcr].pb + "</p>");
-	$("#croutput").append("<p>Effective HP: " + effectivehp + " (" + hitdice + hitdicesize + (conmod < 0 ? "" : "+") + conmod * hitdice + ")</p>");
-	$("#croutput").append("<p>Effective AC: " + ac + "</p>");
-	$("#croutput").append("<p>Average Damage Per Round: " + effectivedpr + "</p>");
-	$("#croutput").append("<p>" + (usesavedc ? "Save DC: " : "Effective Attack Bonus: +") + attackbonus + "</p>");
-	$("#croutput").append("<p>Experience Points: " + Parser.crToXp(msbcr.cr[finalcr]._cr) + "</p>");
+	$("#croutput").html(`
+		<h4>Challenge Rating: ${cr}</h4>
+		<p>Offensive CR: ${offensiveCR}</p>
+		<p>Defensive CR: ${defensiveCR}</p>
+		<p>Proficiency Bonus: +${msbcr.cr[finalCr].pb}</p>
+		<p>Effective HP: ${effectiveHp} (${hitDice}${hitDiceSize}${conMod < 0 ? "" : "+"}${conMod * hitDice})</p>
+		<p>Effective AC: ${ac}</p>
+		<p>Average Damage Per Round: ${effectiveDpr}</p>
+		<p>${useSaveDc ? "Save DC: " : "Effective Attack Bonus: +"}${attackBonus}</p>
+		<p>Experience Points: ${Parser.crToXp(msbcr.cr[finalCr]._cr)}</p>
+	`);
 }
 
-function calculatehd () {
-	const avghp = $("#hdval").html().split("d")[1] / 2 + 0.5;
-	const conmod = Math.floor(($("#con").val() - 10) / 2);
-	let curhd = Math.floor(parseInt($("#hp").val()) / (avghp + conmod));
-	if (!curhd) curhd = 1;
-	return curhd;
+function calculateHd () {
+	const avgHp = $("#hdval").html().split("d")[1] / 2 + 0.5;
+	const conMod = Math.floor(($("#con").val() - 10) / 2);
+	let curHd = Math.floor(parseInt($("#hp").val()) / (avgHp + conMod));
+	if (!curHd) curHd = 1;
+	return curHd;
 }
 
-function calculatehp () {
-	const avghp = $("#hdval").html().split("d")[1] / 2 + 0.5;
-	const conmod = Math.floor(($("#con").val() - 10) / 2);
-	return Math.round((avghp + conmod) * $("#hd").val());
+function calculateHp () {
+	const avgHp = $("#hdval").html().split("d")[1] / 2 + 0.5;
+	const conMod = Math.floor(($("#con").val() - 10) / 2);
+	return Math.round((avgHp + conMod) * $("#hd").val());
 }
 
 function fractionStrToDecimal (str) {

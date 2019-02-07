@@ -1,0 +1,105 @@
+{
+	"trait": [
+		{
+			"name": "Awakened",
+			"source": "PHB",
+			"page": 216,
+			"ref": "{@spell Awaken|phb}",
+			"apply": {
+				"_root": {
+					"int": 10
+				},
+				"_mod": {
+					"languages": {
+						"mode": "appendStr",
+						"str": "one language known by its creator"
+					}
+				}
+			},
+			"prerequisite": {
+				"int": {
+					"max": 3
+				},
+				"size": {
+					"max": "H"
+				},
+				"type": {
+					"oneOf": [
+						"beast",
+						"plant"
+					]
+				}
+			}
+		},
+		{
+			"name": "Shadow Dragon",
+			"source": "MM",
+			"page": "84",
+			"apply": {
+				"_root": {
+					"int": 10
+				},
+				"_mod": {
+					"resist": {
+						"mode": "appendArr",
+						"items": "necrotic"
+					},
+					"skill": {
+						"mode": "calculateProp",
+						"prop": "stealth",
+						"formula": "let v = (<$prof_bonus$> * 2) + <$dex_mod$>; v >= 0 ? `+${v}` : `-${v}`"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Living Shadow",
+								"entries": [
+									"While in dim light or darkness, the dragon has resistance to damage that isn't force, psychic, or radiant."
+								]
+							},
+							{
+								"name": "Shadow Stealth",
+								"entries": [
+									"While in dim light or darkness, the dragon can take the {@action Hide} action as a bonus action."
+								]
+							},
+							{
+								"name": "Sunlight Sensitivity",
+								"entries": [
+									"While in sunlight, the dragon has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+								]
+							}
+						]
+					},
+					"action": [
+						{
+							"mode": "replaceTxt",
+							"replace": "(acid|cold|fire|lightning|poison)",
+							"with": "necrotic"
+						},
+						{
+							"mode": "replaceTxt",
+							"replace": "(Acid|Cold|Fire|Lightning|Poison)",
+							"with": "Necrotic"
+						}
+					]
+				}
+			},
+			"prerequisite": {
+				"int": {
+					"max": 3
+				},
+				"size": {
+					"max": "H"
+				},
+				"type": {
+					"oneOf": [
+						"beast",
+						"plant"
+					]
+				}
+			}
+		}
+	]
+}
