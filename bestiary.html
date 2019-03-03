@@ -133,15 +133,40 @@
 			</div>
 
 			<div id="filtertools" class="sortlabel btn-group">
-				<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-				<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type <span class="caret_wrp"></span></button>
-				<button class="col-1-7 sort btn btn-default btn-xs" data-sort="cr">CR  <span class="caret_wrp"></span></button>
-				<button class="col-2 sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
+				<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name<span class="caret_wrp"></span></button>
+				<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type<span class="caret_wrp"></span></button>
+				<button class="col-1-7 sort btn btn-default btn-xs" data-sort="cr">CR<span class="caret_wrp"></span></button>
+				<button class="col-2 sort btn btn-default btn-xs" data-sort="source">Source<span class="caret_wrp"></span></button>
 			</div>
 
 			<ul class="list monsters">
 				<!-- populate with JS -->
 			</ul>
+		</div>
+
+		<div id="loadsaves" style="display: none;" class="view-col">
+			<div class="mb-4">
+				<div class="row">
+					<ul class="list" id="listofsaves">
+					</ul>
+				</div>
+				<hr>
+				<div class="row">
+					<input class="ecgen__sv_newSaveName" placeholder="Encounter Name"></input>
+					<button class="btn btn-primary mr-2 btn-xs" style="float: right" onclick="encounterBuilder.handleSaveClick(true)">New Save</button>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-12 flex" style="justify-content: center">
+						<button class="btn btn-primary mr-2 ecgen__sv_load" onclick="encounterBuilder.handleLoadClick()" disabled>Load</button>
+						<button class="btn btn-primary mr-2 ecgen__sv_save"  onclick="encounterBuilder.handleSaveClick()" disabled>Save</button>
+						<button class="btn btn-primary mr-2 ecgen__sv_delete" onclick="encounterBuilder.handleDeleteClick()" disabled>Delete</button>
+						<button class="btn btn-primary mr-2 ecgen__sv_cancel">Cancel</button>
+						<button class="btn btn-primary mr-2 ecgen__sv_cancel" onclick="encounterBuilder.handleResetEncounterSaves()">Reset</button>
+					</div>
+				</div>
+				<hr>
+			</div>
 		</div>
 
 		<div id="contentwrapper" class="view-col">
@@ -296,6 +321,9 @@
 						<div style="width: 10px; height: 1px;"></div>
 						<button class="btn btn-primary btn-xs mr-2 ecgen__sv_file">Save to File</button>
 						<button class="btn btn-primary btn-xs mr-2 ecgen__ld_file">Load from File</button>
+						<div style="width: 10px; height: 1px;"></div>
+						<button class="btn btn-primary btn-xs mr-2 ecgen__sv_browser">Save</button>
+						<button class="btn btn-primary btn-xs mr-2 ecgen__ld_browser">Load</button>
 						<div style="width: 10px; height: 1px;"></div>
 						<button class="btn btn-danger btn-xs ecgen__reset">Reset</button>
 					</div>

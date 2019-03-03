@@ -6,7 +6,9 @@ class EncounterBuilder {
 		this._cache = null;
 		this._lastPlayerCount = null;
 		this._advanced = false;
-
+		this._SAVEDENCOUNTERSAVELOCATION = "ENCOUNTER_SAVED_STORAGE";
+		this._savedEncounters = this.getSavedEncounters();
+		this._savedName = null;
 		this.doSaveStateDebounced = MiscUtil.debounce(this.doSaveState, 50);
 	}
 
@@ -66,6 +68,25 @@ class EncounterBuilder {
 			});
 		});
 		$(`.ecgen__reset`).click(() => confirm("Are you sure?") && encounterBuilder.pReset());
+
+		$('.ecgen__sv_browser').click(() => {
+			let verdict = prompt("Please name your encounter. Duplicate will overwrite stored encounters.");
+		})
+
+		$('.ecgen__ld_browser').click(() => {
+			encounterBuilder.uiLoadMenuGenerator();
+			encounterBuilder.uiLoadMenuToggle(true);
+
+			let hasAName = this._savedName === null;
+			$('.ecgen__sv_save').prop('disabled', hasAName);
+
+			$('.ecgen__sv_load').prop('disabled', true);
+			$('.ecgen__sv_delete').prop('disabled', true);
+		});
+
+		$('.ecgen__sv_cancel').click(() => {
+			encounterBuilder.uiLoadMenuToggle(false);
+		})
 	}
 
 	_initRandomHandlers () {
@@ -933,6 +954,108 @@ class EncounterBuilder {
 			</span>
 		`;
 	}
+
+	async getSavedEncounters () {
+		let savedEncounters = await StorageUtil.pGet(this._SAVEDENCOUNTERSAVELOCATION);
+		if (savedEncounters === null || savedEncounters === undefined) {
+			this._savedEncounters = {};
+			this.setSavedEncounters();
+		} else {
+			this._savedEncounters = savedEncounters;
+		}
+		return this._savedEncounters;
+	}
+
+	setSavedEncounters () {
+		StorageUtil.pSet(this._SAVEDENCOUNTERSAVELOCATION, this._savedEncounters);
+	}
+
+	uiLoadMenuToggle (state) {
+		if (state === true) {
+			$('#loadsaves').show();
+			$('#contentwrapper').hide();
+		} else if (state === false) {
+			$('#loadsaves').hide();
+			$('#contentwrapper').show();
+		} else {
+			$('#loadsaves').toggle();
+			$('#contentwrapper').toggle();
+		}
+	}
+
+	uiLoadMenuGenerator () {
+		let namesHtml;
+		let names = Object.keys(this._savedEncounters);
+		if (names.length === 0) {
+			namesHtml = '<li>No Saved Encounters</li>';
+		} else {
+			namesHtml = names.map((name, index) => `<li class="${name === this._savedName ? 'list-multi-selected' : ''}" onclick="encounterBuilder.selectSaveName(this, '${names[index]}')"><span class="name">${name}</span></li>`);
+		}
+		$('#listofsaves').html(namesHtml);
+	}
+
+	selectSaveName (node, key) {
+		this._selectedSavedEncounter = this._savedEncounters[key];
+		encounterBuilder._selectedSave = key;
+		$('#listofsaves').children('li').each(function () {
+			$(this).toggleClass('list-multi-selected', node === this)
+		})
+		if (encounterBuilder._savedName === encounterBuilder._selectedSave) {
+			$('.ecgen__sv_save').prop('disabled', false).text('Update Save');
+			$('.ecgen__sv_load').prop('disabled', false).text('Reload');
+		} else {
+			$('.ecgen__sv_save').prop('disabled', false).text('Save');
+			$('.ecgen__sv_load').prop('disabled', false).text('Load');
+		}
+		$('.ecgen__sv_delete').prop('disabled', false);
+	}
+
+	handleSaveClick (isNew = false) {
+		let name;
+		if (isNew === "true" || !!isNew) {
+			name = $('.ecgen__sv_newSaveName').val();
+			if (this._savedEncounters[name] !== undefined && !confirm(`This will overwrite the save '${name}'\nIs this ok?`)) {
+				return;
+			} else {
+				$('.ecgen__sv_newSaveName').val("");
+			}
+		} else if (encounterBuilder._savedName === encounterBuilder._selectedSave) {
+			name = this._savedName;
+		} else if (confirm("are you sure? You will overwrite this save file")) {
+			name = this._savedName;
+		} else {
+			return;
+		}
+
+		let saveableState = this.getSaveableState();
+		this._savedEncounters[name] = saveableState;
+		this._savedName = name;
+		this.setSavedEncounters();
+		this.uiLoadMenuToggle(false);
+	}
+
+	async handleLoadClick () {
+		if (window.confirm("Are you sure?\\n You will overwrite the current encounter!")) {
+			this.pDoLoadState(this._selectedSavedEncounter);
+			this.uiLoadMenuToggle(false);
+		} else {
+			console.log ('nope')
+		}
+	}
+
+	handleDeleteClick () {
+		if (confirm(`Delete ${this._selectedSave}?`)) {
+			delete this._savedEncounters[this._selectedSave];
+			this.setSavedEncounters();
+			this.uiLoadMenuGenerator();
+		}
+	}
+
+	handleResetEncounterSaves () {
+		this._savedEncounters = {};
+		this.setSavedEncounters();
+	}
 }
+
 EncounterBuilder.HASH_KEY = "encounterbuilder";
 EncounterBuilder.TIERS = ["easy", "medium", "hard", "deadly", "yikes"];
