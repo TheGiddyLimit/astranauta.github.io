@@ -983,15 +983,34 @@ class EncounterBuilder {
 		}
 	}
 
+	uiButtonsStatus (isReload) {
+		if (isReload) {
+			$('.ecgen__sv_save').prop('disabled', false).text('Update Save');
+			$('.ecgen__sv_load').prop('disabled', false).text('Reload');
+		} else {
+			$('.ecgen__sv_save').prop('disabled', false).text('Save');
+			$('.ecgen__sv_load').prop('disabled', false).text('Load');
+		}
+	}
+
 	uiLoadMenuGenerator () {
 		let namesHtml;
 		let names = Object.keys(this._savedEncounters);
+		let hasClassName = false;
 		if (names.length === 0) {
 			namesHtml = '<li>No Saved Encounters</li>';
 		} else {
-			namesHtml = names.map((name, index) => `<li class="${name === this._savedName ? 'list-multi-selected' : ''}" onclick="encounterBuilder.selectSaveName(this, '${names[index]}')"><span class="name">${name}</span></li>`);
+			namesHtml = names.map((name, index) => {
+				let className = "";
+				if (name === this._savedName) {
+					className = "list-multi-selected";
+					hasClassName = true;
+				}
+				return `<li class="${className}" onclick="encounterBuilder.selectSaveName(this, '${names[index]}')"><span class="name">${name}</span></li>`;
+			});
 		}
 		$('#listofsaves').html(namesHtml);
+		this.uiButtonsStatus(hasClassName);
 	}
 
 	selectSaveName (node, key) {
@@ -1001,11 +1020,9 @@ class EncounterBuilder {
 			$(this).toggleClass('list-multi-selected', node === this)
 		})
 		if (encounterBuilder._savedName === encounterBuilder._selectedSave) {
-			$('.ecgen__sv_save').prop('disabled', false).text('Update Save');
-			$('.ecgen__sv_load').prop('disabled', false).text('Reload');
+			this.uiButtonsStatus(true);
 		} else {
-			$('.ecgen__sv_save').prop('disabled', false).text('Save');
-			$('.ecgen__sv_load').prop('disabled', false).text('Load');
+			this.uiButtonsStatus(false);
 		}
 		$('.ecgen__sv_delete').prop('disabled', false);
 	}
@@ -1035,11 +1052,9 @@ class EncounterBuilder {
 	}
 
 	async handleLoadClick () {
-		if (window.confirm("Are you sure?\\n You will overwrite the current encounter!")) {
+		if (window.confirm("Are you sure?\n You will overwrite the current encounter!")) {
 			this.pDoLoadState(this._selectedSavedEncounter);
 			this.uiLoadMenuToggle(false);
-		} else {
-			console.log ('nope')
 		}
 	}
 
