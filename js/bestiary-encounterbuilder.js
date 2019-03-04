@@ -1006,7 +1006,14 @@ class EncounterBuilder {
 					className = "list-multi-selected";
 					hasClassName = true;
 				}
-				return `<li class="${className}" onclick="encounterBuilder.selectSaveName(this, '${names[index]}')"><span class="name">${name}</span></li>`;
+				return `<li class="${className}" onclick="encounterBuilder.selectSaveName(this, '${names[index]}')">
+					<span class="name">${name}</span>
+					<span style="float: right" class="no-wrap" onclick="event.preventDefault()">
+						<button onclick="encounterBuilder.handleDeleteClick(this)" class="btn btn-danger btn-xs ecgen__btn_list" >
+							<span class="glyphicon glyphicon-minus"></span>
+						</button>
+					</span>
+				</li>`;
 			});
 		}
 		$('#listofsaves').html(namesHtml);
@@ -1058,9 +1065,10 @@ class EncounterBuilder {
 		}
 	}
 
-	handleDeleteClick () {
+	handleDeleteClick (node) {
 		if (confirm(`Delete ${this._selectedSave}?`)) {
-			delete this._savedEncounters[this._selectedSave];
+			let name = $(node).parents("li").children('.name').text();
+			delete this._savedEncounters[name];
 			this.setSavedEncounters();
 			this.uiLoadMenuGenerator();
 		}
