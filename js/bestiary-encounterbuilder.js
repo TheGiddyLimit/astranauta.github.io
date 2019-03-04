@@ -87,7 +87,9 @@ class EncounterBuilder {
 
 		$('.ecgen__sv_cancel').click(() => {
 			encounterBuilder.uiLoadMenuToggle(false);
-		})
+		});
+
+		window.addEventListener("popstate", () => this.uiLoadMenuToggle(false));
 	}
 
 	_initRandomHandlers () {
