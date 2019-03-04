@@ -9,6 +9,7 @@ class EncounterBuilder {
 		this._SAVEDENCOUNTERSAVELOCATION = "ENCOUNTER_SAVED_STORAGE";
 		this._savedEncounters = this.getSavedEncounters();
 		this._savedName = null;
+		this._selectedSave = null;
 		this.doSaveStateDebounced = MiscUtil.debounce(this.doSaveState, 50);
 	}
 
@@ -210,6 +211,9 @@ class EncounterBuilder {
 				ListUtil.doJsonLoad(savedState.l, false, sublistFuncPreload);
 			}
 			this.updateDifficulty();
+			if (savedState.name) {
+				this._savedName = savedState.name;
+			}
 		} catch (e) {
 			JqueryUtil.doToast({content: `Could not load encounter! Was the file valid?`, type: "danger"});
 			this.pReset();
@@ -222,6 +226,7 @@ class EncounterBuilder {
 			l: ListUtil._getExportableSublist(),
 			a: this._advanced
 		};
+		if (this._savedName !== null) out.name = this._savedName;
 		if (this._advanced) {
 			out.c = $(`.ecgen__players_head_advanced`).find(`.ecgen__player_advanced_extra_head`).map((i, e) => $(e).val()).get();
 			out.d = $(`.ecgen__player_advanced`).map((i, e) => {
@@ -1034,7 +1039,7 @@ class EncounterBuilder {
 		$('.ecgen__sv_delete').prop('disabled', false);
 	}
 
-	handleSaveClick (isNew = false) {
+	async handleSaveClick (isNew = false) {
 		let name;
 		if (isNew === "true" || !!isNew) {
 			name = $('.ecgen__sv_newSaveName').val();
@@ -1056,6 +1061,7 @@ class EncounterBuilder {
 		this._savedName = name;
 		this.setSavedEncounters();
 		this.uiLoadMenuToggle(false);
+		this.doSaveState();
 	}
 
 	async handleLoadClick () {
