@@ -212,6 +212,7 @@ class EncounterBuilder {
 			}
 			this.updateDifficulty();
 			if (savedState.name) {
+				console.log (savedState.name)
 				this._savedName = savedState.name;
 			}
 		} catch (e) {
@@ -982,6 +983,7 @@ class EncounterBuilder {
 		} else if (state === false) {
 			$('#loadsaves').hide();
 			$('#contentwrapper').show();
+			this._selectedSave = null;
 		} else {
 			$('#loadsaves').toggle();
 			$('#contentwrapper').toggle();
@@ -1056,9 +1058,9 @@ class EncounterBuilder {
 			return;
 		}
 
+		this._savedName = name;
 		let saveableState = this.getSaveableState();
 		this._savedEncounters[name] = saveableState;
-		this._savedName = name;
 		this.setSavedEncounters();
 		this.uiLoadMenuToggle(false);
 		this.doSaveState();
@@ -1081,8 +1083,12 @@ class EncounterBuilder {
 	}
 
 	handleResetEncounterSaves () {
-		this._savedEncounters = {};
-		this.setSavedEncounters();
+		if (confirm("The will clear ALL saved encounter! Are you sure?") && confirm("Are you very sure you want to delete all saved encounters?")) {
+			this._savedEncounters = {};
+			this.setSavedEncounters();
+			this._selectedSave = null;
+			this.uiLoadMenuGenerator();
+		}
 	}
 }
 
