@@ -212,7 +212,6 @@ class EncounterBuilder {
 			}
 			this.updateDifficulty();
 			if (savedState.name) {
-				console.log (savedState.name)
 				this._savedName = savedState.name;
 			}
 		} catch (e) {
