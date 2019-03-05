@@ -75,14 +75,13 @@ class EncounterBuilder {
 		})
 
 		$('.ecgen__ld_browser').click(() => {
-			encounterBuilder.uiLoadMenuGenerator();
 			encounterBuilder.uiLoadMenuToggle(true);
 
-			let hasAName = this._savedName === null;
-			$('.ecgen__sv_save').prop('disabled', hasAName);
+			// let hasAName = this._savedName === null;
+			// $('.ecgen__sv_save').prop('disabled', hasAName);
 
-			$('.ecgen__sv_load').prop('disabled', true);
-			$('.ecgen__sv_delete').prop('disabled', true);
+			// $('.ecgen__sv_load').prop('disabled', true);
+			// $('.ecgen__sv_delete').prop('disabled', true);
 		});
 
 		$('.ecgen__sv_cancel').click(() => {
@@ -981,30 +980,28 @@ class EncounterBuilder {
 		if (state === true) {
 			$('#loadsaves').show();
 			$('#contentwrapper').hide();
+			this.uiLoadMenuGenerator();
 		} else if (state === false) {
 			$('#loadsaves').hide();
 			$('#contentwrapper').show();
 			this._selectedSave = null;
-		} else {
-			$('#loadsaves').toggle();
-			$('#contentwrapper').toggle();
 		}
 	}
 
-	uiButtonsStatus (isReload) {
+	uiButtonsStatus (isReload = false, isDisabled = true) {
 		if (isReload) {
-			$('.ecgen__sv_save').prop('disabled', false).text('Update Save');
-			$('.ecgen__sv_load').prop('disabled', false).text('Reload');
+			$('.ecgen__sv_save').prop('disabled', isDisabled).text('Update Save');
+			$('.ecgen__sv_load').prop('disabled', isDisabled).text('Reload');
 		} else {
-			$('.ecgen__sv_save').prop('disabled', false).text('Save');
-			$('.ecgen__sv_load').prop('disabled', false).text('Load');
+			$('.ecgen__sv_save').prop('disabled', isDisabled).text('Save');
+			$('.ecgen__sv_load').prop('disabled', isDisabled).text('Load');
 		}
 	}
 
 	uiLoadMenuGenerator () {
 		let namesHtml;
 		let names = Object.keys(this._savedEncounters);
-		let hasClassName = false;
+		let hasAName = false;
 		if (names.length === 0) {
 			namesHtml = '<li>No Saved Encounters</li>';
 		} else {
@@ -1012,7 +1009,7 @@ class EncounterBuilder {
 				let className = "";
 				if (name === this._savedName) {
 					className = "list-multi-selected";
-					hasClassName = true;
+					hasAName = true;
 				}
 				return `<li class="${className}" onclick="encounterBuilder.selectSaveName(this, '${names[index]}')">
 					<span class="name">${name}</span>
@@ -1025,7 +1022,7 @@ class EncounterBuilder {
 			});
 		}
 		$('#listofsaves').html(namesHtml);
-		this.uiButtonsStatus(hasClassName);
+		this.uiButtonsStatus(hasAName, !hasAName);
 	}
 
 	selectSaveName (node, key) {
@@ -1035,9 +1032,9 @@ class EncounterBuilder {
 			$(this).toggleClass('list-multi-selected', node === this)
 		})
 		if (encounterBuilder._savedName === encounterBuilder._selectedSave) {
-			this.uiButtonsStatus(true);
+			this.uiButtonsStatus(true, false);
 		} else {
-			this.uiButtonsStatus(false);
+			this.uiButtonsStatus(false, true);
 		}
 		$('.ecgen__sv_delete').prop('disabled', false);
 	}
@@ -1078,6 +1075,7 @@ class EncounterBuilder {
 		if (confirm(`Delete ${this._selectedSave}?`)) {
 			let name = $(node).parents("li").children('.name').text();
 			delete this._savedEncounters[name];
+			if (name === this._savedName) this._savedName = null;
 			this.setSavedEncounters();
 			this.uiLoadMenuGenerator();
 		}
