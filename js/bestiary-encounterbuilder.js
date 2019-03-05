@@ -70,25 +70,15 @@ class EncounterBuilder {
 		});
 		$(`.ecgen__reset`).click(() => confirm("Are you sure?") && encounterBuilder.pReset());
 
-		$('.ecgen__sv_browser').click(() => {
-			let verdict = prompt("Please name your encounter. Duplicate will overwrite stored encounters.");
-		})
-
 		$('.ecgen__ld_browser').click(() => {
 			encounterBuilder.uiLoadMenuToggle(true);
-
-			// let hasAName = this._savedName === null;
-			// $('.ecgen__sv_save').prop('disabled', hasAName);
-
-			// $('.ecgen__sv_load').prop('disabled', true);
-			// $('.ecgen__sv_delete').prop('disabled', true);
 		});
 
 		$('.ecgen__sv_cancel').click(() => {
 			encounterBuilder.uiLoadMenuToggle(false);
 		});
 
-		window.addEventListener("popstate", () => this.uiLoadMenuToggle(false));
+		window.addEventListener("popstate", () => this.uiLoadMenuToggle(false)); //exits load/save menu upon browser history change
 	}
 
 	_initRandomHandlers () {
@@ -988,7 +978,7 @@ class EncounterBuilder {
 		}
 	}
 
-	uiButtonsStatus (isReload = false, isDisabled = true) {
+	uiLoadButtonsState (isReload = false, isDisabled = true) {
 		if (isReload) {
 			$('.ecgen__sv_save').prop('disabled', isDisabled).text('Update Save');
 			$('.ecgen__sv_load').prop('disabled', isDisabled).text('Reload');
@@ -1022,7 +1012,7 @@ class EncounterBuilder {
 			});
 		}
 		$('#listofsaves').html(namesHtml);
-		this.uiButtonsStatus(hasAName, !hasAName);
+		this.uiLoadButtonsState(hasAName, !hasAName);
 	}
 
 	selectSaveName (node, key) {
@@ -1032,9 +1022,9 @@ class EncounterBuilder {
 			$(this).toggleClass('list-multi-selected', node === this)
 		})
 		if (encounterBuilder._savedName === encounterBuilder._selectedSave) {
-			this.uiButtonsStatus(true, false);
+			this.uiLoadButtonsState(true, false);
 		} else {
-			this.uiButtonsStatus(false, true);
+			this.uiLoadButtonsState(false, true);
 		}
 		$('.ecgen__sv_delete').prop('disabled', false);
 	}
@@ -1081,7 +1071,7 @@ class EncounterBuilder {
 		}
 	}
 
-	handleResetEncounterSaves () {
+	handleResetEncounterSavesClick () {
 		if (confirm("The will clear ALL saved encounter! Are you sure?") && confirm("Are you very sure you want to delete all saved encounters?")) {
 			this._savedEncounters = {};
 			this.setSavedEncounters();
