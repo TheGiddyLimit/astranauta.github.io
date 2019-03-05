@@ -145,6 +145,7 @@
 		</div>
 
 		<div id="loadsaves" style="display: none;" class="view-col">
+			<h3>Saved Encounters</h3>
 			<div class="mb-4">
 				<div class="row">
 					<ul class="list" id="listofsaves">
@@ -153,8 +154,10 @@
 				</div>
 				<hr>
 				<div class="row">
-					<input class="ecgen__sv_newSaveName" placeholder="Encounter Name"></input>
-					<button class="btn btn-primary mr-2 btn-xs" style="float: right" onclick="encounterBuilder.handleSaveClick(true)">New Save</button>
+					<input class="ecgen__sv_newSaveName form-control col-8-4 input-xs" placeholder="New Encounter Name"></input>
+					<span>
+						<button class="btn btn-primary mr-2 btn-xs" style="float: right" onclick="encounterBuilder.handleSaveClick(true)">New Save</button>
+					</span>
 				</div>
 				<hr>
 				<div class="row">
