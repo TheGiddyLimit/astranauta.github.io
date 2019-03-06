@@ -952,7 +952,7 @@ class EncounterBuilder {
 	}
 
 	async getSavedEncounters () {
-		let savedEncounters = await StorageUtil.pGet(this._SAVEDENCOUNTERSAVELOCATION);
+		const savedEncounters = await StorageUtil.pGet(this._SAVEDENCOUNTERSAVELOCATION);
 		if (savedEncounters === null || savedEncounters === undefined) {
 			this._savedEncounters = {};
 			this.setSavedEncounters();
@@ -990,8 +990,9 @@ class EncounterBuilder {
 
 	uiLoadMenuGenerator () {
 		let namesHtml;
-		let names = Object.keys(this._savedEncounters);
 		let hasAName = false;
+		const names = Object.keys(this._savedEncounters);
+
 		if (names.length === 0) {
 			namesHtml = '<li>No Saved Encounters</li>';
 		} else {
@@ -1047,7 +1048,7 @@ class EncounterBuilder {
 		}
 
 		this._savedName = name;
-		let saveableState = this.getSaveableState();
+		const saveableState = this.getSaveableState();
 		this._savedEncounters[name] = saveableState;
 		this.setSavedEncounters();
 		this.uiLoadMenuToggle(false);
@@ -1063,7 +1064,7 @@ class EncounterBuilder {
 
 	handleDeleteClick (node) {
 		if (confirm(`Delete ${this._selectedSave}?`)) {
-			let name = $(node).parents("li").children('.name').text();
+			const name = $(node).parents("li").children('.name').text();
 			delete this._savedEncounters[name];
 			if (name === this._savedName) this._savedName = null;
 			this.setSavedEncounters();
