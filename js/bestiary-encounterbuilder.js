@@ -953,7 +953,7 @@ class EncounterBuilder {
 
 	async getSavedEncounters () {
 		const savedEncounters = await StorageUtil.pGet(this._SAVEDENCOUNTERSAVELOCATION);
-		if (savedEncounters === null || savedEncounters === undefined) {
+		if (savedEncounters == null || savedEncounters === undefined) {
 			this._savedEncounters = {};
 			this.setSavedEncounters();
 		} else {
