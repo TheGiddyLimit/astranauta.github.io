@@ -6,7 +6,7 @@ class EncounterBuilder {
 		this._cache = null;
 		this._lastPlayerCount = null;
 		this._advanced = false;
-		this._SAVEDENCOUNTERSAVELOCATION = "ENCOUNTER_SAVED_STORAGE";
+		this._SAVED_ENCOUNTER_SAVE_LOCATION = "ENCOUNTER_SAVED_STORAGE";
 		this._savedEncounters = this.getSavedEncounters();
 		this._savedName = null;
 		this._selectedSave = null;
@@ -952,7 +952,7 @@ class EncounterBuilder {
 	}
 
 	async getSavedEncounters () {
-		const savedEncounters = await StorageUtil.pGet(this._SAVEDENCOUNTERSAVELOCATION);
+		const savedEncounters = await StorageUtil.pGet(this._SAVED_ENCOUNTER_SAVE_LOCATION);
 		if (savedEncounters == null || savedEncounters === undefined) {
 			this._savedEncounters = {};
 			this.setSavedEncounters();
@@ -963,7 +963,7 @@ class EncounterBuilder {
 	}
 
 	setSavedEncounters () {
-		StorageUtil.pSet(this._SAVEDENCOUNTERSAVELOCATION, this._savedEncounters);
+		StorageUtil.pSet(this._SAVED_ENCOUNTER_SAVE_LOCATION, this._savedEncounters);
 	}
 
 	uiLoadMenuToggle (state) {
