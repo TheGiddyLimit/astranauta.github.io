@@ -980,11 +980,11 @@ class EncounterBuilder {
 
 	uiLoadButtonsState (isReload = false, isDisabled = true) {
 		if (isReload) {
-			$('.ecgen__sv_save').prop('disabled', isDisabled).text('Update Save');
-			$('.ecgen__sv_load').prop('disabled', isDisabled).text('Reload');
+			$('.ecgen__sv-save').prop('disabled', isDisabled).text('Update Save');
+			$('.ecgen__sv-load').prop('disabled', isDisabled).text('Reload');
 		} else {
-			$('.ecgen__sv_save').prop('disabled', isDisabled).text('Save');
-			$('.ecgen__sv_load').prop('disabled', isDisabled).text('Load');
+			$('.ecgen__sv-save').prop('disabled', isDisabled).text('Save');
+			$('.ecgen__sv-load').prop('disabled', isDisabled).text('Load');
 		}
 	}
 
@@ -1032,11 +1032,11 @@ class EncounterBuilder {
 	async handleSaveClick (isNew = false) {
 		let name;
 		if (isNew === "true" || !!isNew) {
-			name = $('.ecgen__sv_newSaveName').val();
+			name = $('.ecgen__sv-new-save-name').val();
 			if (this._savedEncounters[name] !== undefined && !confirm(`This will overwrite the save '${name}'\nIs this ok?`)) {
 				return;
 			} else {
-				$('.ecgen__sv_newSaveName').val("");
+				$('.ecgen__sv-new-save-name').val("");
 			}
 		} else if (encounterBuilder._savedName === encounterBuilder._selectedSave) {
 			name = this._savedName;
