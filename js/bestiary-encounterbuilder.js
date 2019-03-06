@@ -1001,12 +1001,15 @@ class EncounterBuilder {
 					hasAName = true;
 				}
 				return `<li class="${className}" onclick="encounterBuilder.selectSaveName(this, '${names[index]}')">
-					<span class="name">${name}</span>
-					<span style="float: right" class="no-wrap" onclick="event.preventDefault()">
-						<button onclick="encounterBuilder.handleDeleteClick(this)" class="btn btn-danger btn-xs ecgen__btn_list" >
-							<span class="glyphicon glyphicon-minus"></span>
-						</button>
-					</span>
+					<div class="row">
+						<span class="col-4 name">${name}</span>
+						<span class="col-7-4"></span>
+						<span class="no-wrap col-0-6" onclick="event.preventDefault()">
+							<button onclick="encounterBuilder.handleDeleteClick(this)" class="btn btn-danger btn-xs ecgen__btn_list" >
+								<span class="glyphicon glyphicon-minus"></span>
+							</button>
+						</span>
+					</div>
 				</li>`;
 			});
 		}
