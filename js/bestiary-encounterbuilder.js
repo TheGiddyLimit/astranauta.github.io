@@ -56,6 +56,7 @@ class EncounterBuilder {
 			await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
 			JqueryUtil.showCopiedEffect($btnSvUrl);
 		});
+
 		$(`.ecgen__sv_file`).click(() => DataUtil.userDownload(`encounter`, this.getSaveableState()));
 		$(`.ecgen__ld_file`).click(() => {
 			DataUtil.userUpload((json) => {
@@ -68,15 +69,12 @@ class EncounterBuilder {
 				this.pDoLoadState(json);
 			});
 		});
+
 		$(`.ecgen__reset`).click(() => confirm("Are you sure?") && encounterBuilder.pReset());
 
-		$('.ecgen__ld-browser').click(() => {
-			encounterBuilder.uiLoadMenuToggle(true);
-		});
+		$('.ecgen__ld-browser').click(() => encounterBuilder.uiLoadMenuToggle(true));
 
-		$('.ecgen__sv-cancel').click(() => {
-			encounterBuilder.uiLoadMenuToggle(false);
-		});
+		$('.ecgen__sv-cancel').click(() => encounterBuilder.uiLoadMenuToggle(false));
 
 		window.addEventListener("popstate", () => this.uiLoadMenuToggle(false)); //exits load/save menu upon browser history change
 	}
