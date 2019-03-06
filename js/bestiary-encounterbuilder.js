@@ -70,11 +70,11 @@ class EncounterBuilder {
 		});
 		$(`.ecgen__reset`).click(() => confirm("Are you sure?") && encounterBuilder.pReset());
 
-		$('.ecgen__ld_browser').click(() => {
+		$('.ecgen__ld-browser').click(() => {
 			encounterBuilder.uiLoadMenuToggle(true);
 		});
 
-		$('.ecgen__sv_cancel').click(() => {
+		$('.ecgen__sv-cancel').click(() => {
 			encounterBuilder.uiLoadMenuToggle(false);
 		});
 
