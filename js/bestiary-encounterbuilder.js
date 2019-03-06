@@ -1073,7 +1073,7 @@ class EncounterBuilder {
 	}
 
 	handleResetEncounterSavesClick () {
-		if (confirm("The will clear ALL saved encounter! Are you sure?")) {
+		if (confirm("The will clear ALL saved encounters.\nAre you sure?")) {
 			this._savedEncounters = {};
 			this.setSavedEncounters();
 			this._selectedSave = null;
