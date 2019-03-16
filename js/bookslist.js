@@ -60,7 +60,7 @@ class BooksList {
 		this.addData(data);
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
-			.then(BrewUtil.pAddLocalBrewData)
+			.then(() => BrewUtil.pAddLocalBrewData())
 			.catch(BrewUtil.pPurgeBrew)
 			.then(() => BrewUtil.makeBrewButton("manage-brew"));
 	}
@@ -78,7 +78,7 @@ class BooksList {
 
 			tempString +=
 				`<li ${FLTR_ID}="${this.dataIx}">
-				<a href="${this.rootPage}#${it.id}" title="${it.name}" class="book-name">
+				<a href="${this.rootPage}#${UrlUtil.encodeForHash(it.id)}" title="${it.name}" class="book-name">
 					<span class="full-width">
 						${this.rowBuilderFn(it)}
 					</span>

@@ -55,6 +55,7 @@ function addMonsterFeatures (mfData) {
 
 	// when clicking a row in the "Monster Statistics by Challenge Rating" table
 	$("#msbcr tr").not(":has(th)").click(function () {
+		if (!confirm("This will reset the calculator. Are you sure?")) return;
 		$("#expectedcr").val($(this).children("td:eq(0)").html());
 		const [minHp, maxHp] = $(this).children("td:eq(4)").html().split("-").map(it => parseInt(it));
 		$("#hp").val(minHp + (maxHp - minHp) / 2);

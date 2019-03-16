@@ -2585,6 +2585,408 @@
 			],
 			"page": 81,
 			"source": "PHB"
+		},
+		{
+			"name": "Boots of the Winding Path",
+			"prerequisite": [
+				{
+					"type": "prereqLevel",
+					"level": 4,
+					"class": {
+						"name": "Artificer (Revisited)"
+					}
+				},
+				{
+					"type": "prereqItem",
+					"entries": [
+						"A pair of boots (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"While wearing these boots, a creature can teleport up to 15 feet as a bonus action to an unoccupied space the creature can see. The creature must have occupied that space at some point during the current turn."
+			],
+			"source": "UAArtificerRevisited",
+			"page": 9,
+			"featureType": "AI"
+		},
+		{
+			"name": "Enhanced Defense",
+			"prerequisite": [
+				{
+					"type": "prereqItem",
+					"entries": [
+						"A suit of armor or a shield"
+					]
+				}
+			],
+			"entries": [
+				"A creature gains a +1 bonus to Armor Class while wearing (armor) or wielding (shield) the infused item.",
+				"The bonus increases to +2 when you reach 12th level in this class."
+			],
+			"source": "UAArtificerRevisited",
+			"page": 9,
+			"featureType": "AI"
+		},
+		{
+			"name": "Enhanced Weapon",
+			"prerequisite": [
+				{
+					"type": "prereqItem",
+					"entries": [
+						"A simple or martial weapon"
+					]
+				}
+			],
+			"entries": [
+				"This magic weapon grants a +1 bonus to attack and damage rolls made with it.",
+				"The bonus increases to +2 when you reach 12th level in this class."
+			],
+			"source": "UAArtificerRevisited",
+			"page": 9,
+			"featureType": "AI"
+		},
+		{
+			"name": "Many-Handed Pouch",
+			"prerequisite": [
+				{
+					"type": "prereqLevel",
+					"level": 4,
+					"class": {
+						"name": "Artificer (Revisited)"
+					}
+				},
+				{
+					"type": "prereqItem",
+					"entries": [
+						"2\u20135 pouches"
+					]
+				}
+			],
+			"entries": [
+				"The infused pouches all share one interdimensional space of the same capacity as a single pouch. Thus, reaching into any of the pouches allows access to the same storage space. A pouch operates as long as it is within 100 miles of another one of the pouches; the pouch is otherwise empty and won't accept any contents.",
+				"If this infusion ends, the items stored in the shared space move into one of the pouches, determined at random. The rest of the pouches become empty."
+			],
+			"source": "UAArtificerRevisited",
+			"page": 9,
+			"featureType": "AI"
+		},
+		{
+			"name": "Radiant Weapon",
+			"prerequisite": [
+				{
+					"type": "prereqLevel",
+					"level": 8,
+					"class": {
+						"name": "Artificer (Revisited)"
+					}
+				},
+				{
+					"type": "prereqItem",
+					"entries": [
+						"A simple or martial weapon (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"This magic weapon grants a +1 bonus to attack and damage rolls made with it. While holding it, the wielder can take a bonus action to cause it to shed bright light in a 30-foot radius and dim light for an additional 30 feet. The wielder can extinguish the light as a bonus action.",
+				"As a reaction immediately after being hit by a melee attack, the wielder can cause the attacker to be blinded until the end of the attacker's next turn, unless the attacker succeeds on a Constitution saving throw against your spell save DC. Once used, this reaction can't be used again until the wielder finishes a short or long rest."
+			],
+			"source": "UAArtificerRevisited",
+			"page": 9,
+			"featureType": "AI"
+		},
+		{
+			"name": "Replicate Magic Item",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "See below",
+					"entrySummary": "See text"
+				}
+			],
+			"entries": [
+				"Using this infusion, you replicate a particular magic item. You can learn this infusion multiple times; each time you do so, choose a different magic item that you can make with it, picking from the Replicable Magic Items tables below. If a table has a level in its title, you must be of at least that level in this class to choose an item from the table.",
+				"In the tables, an item's entry tells you whether the item requires attunement. See the item's description in the Dungeon Master's Guide for more information about it, including the type of object required for its making.",
+				{
+					"type": "table",
+					"caption": "Replicable Magic Items",
+					"colLabels": [
+						"Magic Item",
+						"Attunement"
+					],
+					"colStyles": [
+						"col-xs-10",
+						"col-xs-2 text-align-center"
+					],
+					"rows": [
+						[
+							"{@item Alchemy jug}",
+							"No"
+						],
+						[
+							"{@item Bag of holding}",
+							"No"
+						],
+						[
+							"{@item Cap of water breathing}",
+							"No"
+						],
+						[
+							"{@item Cloak of the manta ray}",
+							"No"
+						],
+						[
+							"{@item Goggles of night}",
+							"No"
+						],
+						[
+							"{@item Lantern of revealing}",
+							"No"
+						],
+						[
+							"{@item Rope of climbing}",
+							"No"
+						],
+						[
+							"{@item Sending stones}",
+							"No"
+						],
+						[
+							"{@item Wand of magic detection}",
+							"No"
+						],
+						[
+							"{@item Wand of secrets}",
+							"No"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Replicable Magic Items (12th-Level Artificer)",
+					"colLabels": [
+						"Magic Item",
+						"Attunement"
+					],
+					"colStyles": [
+						"col-xs-10",
+						"col-xs-2 text-align-center"
+					],
+					"rows": [
+						[
+							"{@item Boots of elvenkind}",
+							"No"
+						],
+						[
+							"{@item Boots of striding and springing}",
+							"Yes"
+						],
+						[
+							"{@item Boots of the winterlands}",
+							"Yes"
+						],
+						[
+							"{@item Bracers of archery}",
+							"Yes"
+						],
+						[
+							"{@item Brooch of shielding}",
+							"Yes"
+						],
+						[
+							"{@item Cloak of elvenkind}",
+							"Yes"
+						],
+						[
+							"{@item Cloak of protection}",
+							"Yes"
+						],
+						[
+							"{@item Eyes of charming}",
+							"Yes"
+						],
+						[
+							"{@item Eyes of the eagle}",
+							"Yes"
+						],
+						[
+							"{@item Gauntlets of ogre power}",
+							"Yes"
+						],
+						[
+							"{@item Gloves of missile snaring}",
+							"Yes"
+						],
+						[
+							"{@item Gloves of swimming and climbing}",
+							"Yes"
+						],
+						[
+							"{@item Gloves of thievery}",
+							"No"
+						],
+						[
+							"{@item Hat of disguise}",
+							"Yes"
+						],
+						[
+							"{@item Headband of intellect}",
+							"Yes"
+						],
+						[
+							"{@item Helm of telepathy}",
+							"Yes"
+						],
+						[
+							"{@item Medallion of thoughts}",
+							"Yes"
+						],
+						[
+							"{@item Periapt of wound closure}",
+							"Yes"
+						],
+						[
+							"{@item Pipes of haunting}",
+							"No"
+						],
+						[
+							"{@item Pipes of the sewers}",
+							"Yes"
+						],
+						[
+							"{@item Quiver of Ehlonna}",
+							"No"
+						],
+						[
+							"{@item Ring of jumping}",
+							"Yes"
+						],
+						[
+							"{@item Ring of mind shielding}",
+							"Yes"
+						],
+						[
+							"{@item Ring of water walking}",
+							"No"
+						],
+						[
+							"{@item Slippers of spider climbing}",
+							"Yes"
+						],
+						[
+							"{@item Winged boots}",
+							"Yes"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Replicable Magic Items (16th-Level Artificer)",
+					"colLabels": [
+						"Magic Item",
+						"Attunement"
+					],
+					"colStyles": [
+						"col-xs-10",
+						"col-xs-2 text-align-center"
+					],
+					"rows": [
+						[
+							"{@item Amulet of health}",
+							"Yes"
+						],
+						[
+							"{@item Belt of hill giant strength}",
+							"Yes"
+						],
+						[
+							"{@item Boots of levitation}",
+							"Yes"
+						],
+						[
+							"{@item Boots of speed}",
+							"Yes"
+						],
+						[
+							"{@item Bracers of defense}",
+							"Yes"
+						],
+						[
+							"{@item Cloak of the bat}",
+							"Yes"
+						],
+						[
+							"{@item Dimensional shackles}",
+							"No"
+						],
+						[
+							"{@item Gem of seeing}",
+							"Yes"
+						],
+						[
+							"{@item Horn of blasting}",
+							"No"
+						],
+						[
+							"{@item Ring of free action}",
+							"Yes"
+						],
+						[
+							"{@item Ring of protection}",
+							"Yes"
+						],
+						[
+							"{@item Ring of the ram}",
+							"Yes"
+						]
+					]
+				}
+			],
+			"source": "UAArtificerRevisited",
+			"page": 9,
+			"featureType": "AI"
+		},
+		{
+			"name": "Resistant Armor",
+			"prerequisite": [
+				{
+					"type": "prereqLevel",
+					"level": 8,
+					"class": {
+						"name": "Artificer (Revisited)"
+					}
+				},
+				{
+					"type": "prereqItem",
+					"entries": [
+						"A suit of armor (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"While wearing this armor, a creature has resistance to one of the following damage types, which you choose when you infuse the item: acid, cold, fire, force, lightning, necrotic, poison, psychic, radiant, or thunder."
+			],
+			"source": "UAArtificerRevisited",
+			"page": 10,
+			"featureType": "AI"
+		},
+		{
+			"name": "Returning Weapon",
+			"prerequisite": [
+				{
+					"type": "prereqItem",
+					"entries": [
+						"A simple or martial weapon with the thrown property"
+					]
+				}
+			],
+			"entries": [
+				"This magic weapon grants a +1 bonus to attack and damage rolls made with it, and it returns to the wielder's hand immediately after it is used to make a ranged attack."
+			],
+			"source": "UAArtificerRevisited",
+			"page": 10,
+			"featureType": "AI"
 		}
 	]
 }

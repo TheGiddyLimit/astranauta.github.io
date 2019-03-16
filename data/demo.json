@@ -23,7 +23,7 @@
 					"items": [
 						"Style tags; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand}), {@strike some text to strike-through}, (alternative {@s shorthand})",
 						"Additionally, {@note note tags}, used for adding errata or Twitter \"designer footnotes.\"",
-						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls, with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7} (and rolls advantage on shift-click). There's also {@damage 1d12+3} which will roll critical hits on shift-click, and {@d20 -4} which will roll advantage on shift-click, although @hit tags are preferred where appropriate. Spells can have scaling-dice tags, (damage of 2d6 or 3d6 at level 1, add an extra {@scaledice 2d6;3d6|2-9|1d6} for each level beyond 2nd), for when a spell effect scales at higher levels.",
+						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls ({@dice 1d6;2d6} for multiple options; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} for input prompts), with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7} (and rolls advantage on shift-click). There's also {@damage 1d12+3} which will roll critical hits on shift-click, and {@d20 -4} which will roll advantage on shift-click, although @hit tags are preferred where appropriate. Spells can have scaling-dice tags, (damage of 2d6 or 3d6 at level 1, add an extra {@scaledice 2d6;3d6|2-9|1d6} for each level beyond 2nd), for when a spell effect scales at higher levels.",
 						"Chance tags; similar to dice roller tags, but output success/failure. Similar syntax as dice tags: {@chance 50}, {@chance 50|display text}, and {@chance 50|display text|rolled by name}.",
 						"Recharge tags; output success/failure for ability recharge. {@recharge} in an ability title for '(Recharge 6)', {@recharge 4} for '(Recharge 4-6)'.",
 						"Skill, action, and sense tags; {@skill Athletics}/{@skill Perception} (case sensitive), {@action Dash}/{@action Hide} (case sensitive), and {@sense Truesight}/{@sense darkvision} (case insensitive) which provide tooltips on hover.",
@@ -67,7 +67,7 @@
 								"Some examples of the tag in action:",
 								"{@filter Races that have a bonus to Intelligence|races|Ability Bonus (Including Subrace)=Intelligence +2;Intelligence +1}",
 								"{@filter Bard cantrips and first-level spells|spells|level=0;1|class=bard}",
-								"{@filter Beast with challenge rating 1 or lower|bestiary|cr=0;1/8;1/4;1/2;1|type=beast}",
+								"{@filter Beast with challenge rating 1 or lower|bestiary|challenge rating=0;1/8;1/4;1/2;1|type=beast}",
 								"{@filter Creatures with a Strength score of 18 or more|bestiary|strength=min18}",
 								"{@filter Divination and Evocation spells|spells|school=D;V}",
 								"{@filter All uncommon magic items|items|source=null|type=null|rarity=uncommon|miscellaneous=Magic}",

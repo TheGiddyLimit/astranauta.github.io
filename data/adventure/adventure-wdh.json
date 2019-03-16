@@ -3050,7 +3050,7 @@
 															"type": "table",
 															"caption": "Running Trollskull Manor",
 															"colLabels": [
-																"d100+10",
+																"d100 + #$prompt_number:title=Enter a Modifier,default=10$#",
 																"Result"
 															],
 															"colStyles": [
@@ -5654,7 +5654,7 @@
 											"caption": "Old Tower Treasure Table",
 											"colLabels": [
 												"d4",
-												"result"
+												"Result"
 											],
 											"colStyles": [
 												"col-2 text-align-center",
@@ -5663,19 +5663,19 @@
 											"rows": [
 												[
 													"1",
-													"Charred Wand"
+													"A charred {@item wand of magic missiles} (each time a charge is expended, there's a 50 percent chance that nothing happens and the charge is wasted)"
 												],
 												[
 													"2",
-													"Mixed potion"
+													"A {@item potion of healing} mixed with a {@item potion of flying} (if this mixture is imbibed, roll on the Potion Miscibility table in chapter 7 of the Dungeon Master's Guide to determine the effect)"
 												],
 												[
 													"3",
-													"Cracked Driftglobe"
+													"A cracked {@item driftglobe} that emits a flickering light but otherwise functions normally"
 												],
 												[
 													"4",
-													"[2x]Burned scroll tube"
+													"A burned scroll tube containing two blank sheets of paper that are actually {@item paper bird|wdh|paper birds} (see appendix A)"
 												]
 											]
 										}
@@ -7219,7 +7219,7 @@
 									"name": "V1. Vault Door",
 									"entries": [
 										"A 20-foot-high, 20-foot-wide stone corridor ends before an adamantine double door bearing Dwarvish runes. The doors have neither handles nor hinges. The writing on them reads, \"THE THREE KEYS. BRING THEM FORTH.\"",
-										"The doors part, sliding back into the walls, when the three correct keys are brought with 5 feet of them. They remain open until Aurinax or someone else speaks the command word to close them (\"Azaam\"). The keys can open the doors from either side. The doors can't be forced open or damaged in any way, and attempts to circumvent them with magic fail automatically."
+										"The doors part, sliding back into the walls, when the three correct keys are brought within 5 feet of them. They remain open until Aurinax or someone else speaks the command word to close them (\"Azaam\"). The keys can open the doors from either side. The doors can't be forced open or damaged in any way, and attempts to circumvent them with magic fail automatically."
 									]
 								},
 								{
@@ -7266,7 +7266,7 @@
 											"type": "entries",
 											"name": "Enthralling Fresco",
 											"entries": [
-												"A {@spell detect magic} spell reveals an aura of enchantment magic on the fresco. Any creature within 30 feet of the fresco that can see it must succeed on a DC 12 Wisdom saving throw or be {@condition charmed} by it for 24 hours. While {@condition charmed} in this way, the creature can't willingly move out of sight of the fresco and defends it to the death. If forcibly moved away from the fresco, the creature tries to find its way back. The creature can't rest while under this effect. After 24 hours, the creature gains one level of {@condition exhaustion} and can repeat the saving throw if it can still see the fresco, ending the effect on a success. A creature that succeeds on the saving throw is immune to the effect of the fresco for 24 hours. Destroying at least one 10-foot-square section of the fresco ends the effect for all creatures. Each 10-foots-quare section has AC 17, 25 hit points, and immunity to poison and psychic damage."
+												"A {@spell detect magic} spell reveals an aura of enchantment magic on the fresco. Any creature within 30 feet of the fresco that can see it must succeed on a DC 12 Wisdom saving throw or be {@condition charmed} by it for 24 hours. While {@condition charmed} in this way, the creature can't willingly move out of sight of the fresco and defends it to the death. If forcibly moved away from the fresco, the creature tries to find its way back. The creature can't rest while under this effect. After 24 hours, the creature gains one level of {@condition exhaustion} and can repeat the saving throw if it can still see the fresco, ending the effect on a success. A creature that succeeds on the saving throw is immune to the effect of the fresco for 24 hours. Destroying at least one 10-foot-square section of the fresco ends the effect for all creatures. Each 10-foot-square section has AC 17, 25 hit points, and immunity to poison and psychic damage."
 											]
 										}
 									]
@@ -7411,7 +7411,7 @@
 										"The dwarf, who calls himself Barok Clanghammer, is really the {@creature adult gold dragon} Aurinax (see {@adventure appendix B|WDH|12}) in disguise. He guards the gold for Lord Dagult Neverember and holds the {@item dragonstaff of Ahghairon|WDH} (see {@adventure appendix A|WDH|11}) in exchange for his services. Dealing with the gold dragon presents an unusual challenge for the characters, and a peaceful resolution is more likely to benefit them than a violent one.",
 										"Aurinax is patient, wise, merciful, and vigilant. He remains in humanoid form until combat breaks out, since he can't easily carry the {@item dragonstaff of Ahghairon|WDH} in dragon form. The dragon attacks only in defense of itself, the staff, or the gold. The only individuals authorized to remove the gold under Aurinax's watch are Dagult Neverember and his appointed vassals, none of whom are currently in Waterdeep.",
 										"The characters can try to convince Aurinax that they have come on Neverember's behalf. Since he has never met them before or heard Neverember mention them by name, Aurinax is doubtful of their story. Fooling the dragon requires each character within his line of sight to succeed on a Charisma (Deception) check contested by the dragon's Wisdom (Insight) check. If even one character loses the contest, Aurinax senses that the group is lying to him. These checks are made with advantage if {@creature Renaer Neverember|wdh} is with the party, since the dragon remembers meeting Renaer when he was but a child and can easily imagine a scenario in which Dagult Neverember might use his son as his vassal. (The dragon knows nothing of the animosity between Renaer and his father.)",
-										"The characters can try to convince the noble dragon that Lord Neverember embezzled the gold from the people of Waterdeep, and that it would be fair and just to see the coin safely returned to its rightful owners. Deep down, Aurinax knows where the gold came from, but the dragon has allowed his greed and his agreement with Lord Neverember to cloud his moral judgment. With a successful DC 18 Charisma (Persuasion) check, a character can talk the dragon into allowing the gold to be returned to the people to whom it rightfully belongs. The check is made with advantage if the characters brought a prominent city official with them, such as Mirt or {@creature Vajra Safahr|WDH}, or if one of the characters professes to be a worshiper of Bahamut.",
+										"The characters can try to convince the noble dragon that Lord Neverember embezzled the gold from the people of Waterdeep, and that it would be fair and just to see the coin safely returned to its rightful owners. Deep down, Aurinax knows where the gold came from, but the dragon has allowed his greed and his agreement with Lord Neverember to cloud his moral judgment. With a successful DC 18 Charisma (Persuasion) check, a character can talk the dragon into allowing the gold to be returned to the people to whom it rightfully belongs. The check is made with advantage if the characters brought a prominent city official with them, such as {@creature Mirt|WDH} or {@creature Vajra Safahr|WDH}, or if one of the characters professes to be a worshiper of Bahamut.",
 										"Any Charisma (Intimidation) check made to influence Aurinax automatically fails. After the first such attempt, all future Charisma checks made by the party to influence Aurinax have disadvantage.",
 										"Aurinax uses Legendary Resistance to avoid being {@condition charmed}. If a character tries to charm him with a spell and fails, all future Charisma checks made by the party to influence Aurinax have disadvantage.",
 										{

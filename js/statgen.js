@@ -192,7 +192,12 @@ class StatGen {
 		const $table = $(`#costs`);
 		$table.empty().append(`
 			<thead>
-				<tr><th>Score</th><th>Modifier</th><th>Point Cost</th><th class="pbuy__adv--visible"></th></tr>
+				<tr>
+					<th class="col-4 pbuy__adv-col-3">Score</th>
+					<th class="col-4 pbuy__adv-col-3">Modifier</th>
+					<th class="col-4 pbuy__adv-col-3">Point Cost</th>
+					<th class="col-3 pbuy__adv--visible"></th>
+				</tr>
 			</thead>
 		`);
 		const $tbody = $(`<tbody/>`).appendTo($table);
@@ -228,7 +233,8 @@ class StatGen {
 
 						this.renderCostsTable();
 						this.handleCostChanges();
-					}).appendTo($row.find(`td`).last());
+					});
+					$(`<div class="pbuy__wrp-btn-rem">`).append($btnRm).appendTo($row.find(`td`).last());
 				}
 			}
 		};
@@ -238,7 +244,7 @@ class StatGen {
 
 			const $wrpBtnsTop = $(`<div class="pbuy__add_row_btn_wrap"/>`).insertBefore($table);
 
-			const $btnAddLow = $(`<button class="btn btn-xs btn-primary" style="margin-right: 7px;">Add Lower</button>`)
+			const $btnAddLow = $(`<button class="btn btn-xs btn-primary" style="margin-right: 7px;">Add Lower Score</button>`)
 				.click(() => {
 					const lowest = Object.keys(this.savedState).map(Number).sort(SortUtil.ascSort)[0];
 					if (lowest === 0) {
@@ -254,7 +260,7 @@ class StatGen {
 					this.renderCostsTable();
 				}).appendTo($wrpBtnsTop);
 
-			const $btnAddHigh = $(`<button class="btn btn-xs btn-primary" style="margin-right: 14px;">Add Higher</button>`)
+			const $btnAddHigh = $(`<button class="btn btn-xs btn-primary" style="margin-right: 14px;">Add Higher Score</button>`)
 				.click(() => {
 					const highest = Object.keys(this.savedState).map(Number).sort(SortUtil.ascSort).reverse()[0];
 
@@ -416,9 +422,10 @@ class StatGen {
 
 	changeTotal () {
 		$("#pointbuy tr[id]").each((i, el) => {
-			const [base, racial, user, total, mod] = $(`input[type="number"]`, el).get();
+			const [base, racial, user, total, mod] = $(`input[data-select="number"]`, el).get();
 			const raw = total.value = Number(base.value) + Number(racial.value) + Number(user.value);
-			mod.value = Math.floor((raw - 10) / 2)
+			const modValue = Math.floor((raw - 10) / 2);
+			mod.value = modValue >= 0 ? `+${modValue}` : modValue;
 		});
 
 		this.doSaveDebounced();

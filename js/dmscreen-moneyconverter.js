@@ -73,7 +73,7 @@ class MoneyConverter {
 						else {
 							const ix = Number($e.find(`select`).val());
 							totals[ix] = (totals[ix] || 0) + asNum;
-							allowedCategories.add(CURRENCY[ix].cat);
+							allowedCategories.add(CURRENCY[ix]._cat);
 						}
 					}
 				});
@@ -171,12 +171,12 @@ class MoneyConverter {
 		const $btnSettings = $(`<button class="btn btn-default btn-sm" title="Settings"><span class="glyphicon glyphicon-cog"/></button>`)
 			.appendTo($wrpBtnAddSettings)
 			.click(() => {
-				const $modalInner = DmScreenUtil.getShow$Modal(
+				const $modalInner = UiUtil.getShow$Modal(
 					"Settings",
 					() => doUpdate()
 				);
 				[...CURRENCY_INDEXED].reverse().forEach(cx => {
-					DmScreenUtil.getAddModal$RowCb($modalInner, `Disable ${cx.n}`, disabledCurrency, cx.ix);
+					UiUtil.getAddModal$RowCb($modalInner, `Disable ${cx.n}`, disabledCurrency, cx.ix);
 				});
 			});
 		const $iptOut = $(`<input class="form-control input-sm dm_money__out" disabled/>`)

@@ -521,7 +521,6 @@
 					]
 				}
 			],
-			"description": "Acolytes are junior members of the clergy, usually answerable to a priest. They perform a variety of functions in a temple and are granted minor spellcasting power by their deities.",
 			"page": 342,
 			"spellcasting": [
 				{
@@ -553,6 +552,9 @@
 			"languageTags": [
 				"C",
 				"X"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -4233,6 +4235,9 @@
 			],
 			"senseTags": [
 				"U"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -4716,6 +4721,10 @@
 			],
 			"senseTags": [
 				"U"
+			],
+			"spellcastingTags": [
+				"I",
+				"CW"
 			]
 		},
 		{
@@ -4888,6 +4897,9 @@
 			],
 			"languageTags": [
 				"X"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -6035,6 +6047,9 @@
 			"senseTags": [
 				"B",
 				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -7508,6 +7523,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -7610,6 +7628,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -8379,6 +8400,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -9534,6 +9558,9 @@
 			"languageTags": [
 				"C",
 				"GI"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -9916,6 +9943,9 @@
 			],
 			"senseTags": [
 				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -10217,6 +10247,9 @@
 			"languageTags": [
 				"C",
 				"X"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -10503,6 +10536,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -10802,6 +10838,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"CP"
 			]
 		},
 		{
@@ -10964,6 +11003,9 @@
 			"senseTags": [
 				"B",
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -11193,6 +11235,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -11530,6 +11575,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -11801,6 +11849,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -12284,6 +12335,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -12405,6 +12459,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -12551,6 +12608,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -12714,6 +12774,10 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"I",
+				"CW"
 			]
 		},
 		{
@@ -12908,6 +12972,10 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"I",
+				"CC"
 			]
 		},
 		{
@@ -12999,6 +13067,9 @@
 			"languageTags": [
 				"DU",
 				"X"
+			],
+			"spellcastingTags": [
+				"CD"
 			]
 		},
 		{
@@ -13111,6 +13182,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -13375,8 +13449,11 @@
 					"headerEntries": [
 						"The mephit can innately cast {@spell sleep}, requiring no material components. Its innate spellcasting ability is Charisma."
 					],
-					"headerWill": [
+					"will": [
 						"{@spell sleep}"
+					],
+					"hidden": [
+						"will"
 					],
 					"ability": "cha"
 				}
@@ -13403,6 +13480,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -13689,6 +13769,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -13972,6 +14055,9 @@
 			],
 			"senseTags": [
 				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -14425,6 +14511,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -14545,6 +14634,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -14667,6 +14759,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -14785,6 +14880,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -14902,6 +15000,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -15025,6 +15126,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -15144,6 +15248,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -15592,6 +15699,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -18914,6 +19024,10 @@
 			],
 			"languageTags": [
 				"GTH"
+			],
+			"spellcastingTags": [
+				"P",
+				"I"
 			]
 		},
 		{
@@ -18999,6 +19113,10 @@
 			],
 			"languageTags": [
 				"GTH"
+			],
+			"spellcastingTags": [
+				"P",
+				"I"
 			]
 		},
 		{
@@ -19093,6 +19211,10 @@
 			],
 			"languageTags": [
 				"GTH"
+			],
+			"spellcastingTags": [
+				"P",
+				"I"
 			]
 		},
 		{
@@ -19188,6 +19310,10 @@
 			],
 			"languageTags": [
 				"GTH"
+			],
+			"spellcastingTags": [
+				"P",
+				"I"
 			]
 		},
 		{
@@ -19328,6 +19454,9 @@
 			],
 			"senseTags": [
 				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -20605,6 +20734,9 @@
 			"senseTags": [
 				"B",
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -20870,6 +21002,11 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I",
+				"S",
+				"CW"
 			]
 		},
 		{
@@ -21026,6 +21163,9 @@
 			"senseTags": [
 				"B",
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -21650,6 +21790,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -21834,6 +21977,9 @@
 			],
 			"senseTags": [
 				"U"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -23338,9 +23484,6 @@
 			"skill": {
 				"perception": "+3"
 			},
-			"immune": [
-				"cold"
-			],
 			"passive": 13,
 			"cr": "0",
 			"trait": [
@@ -23714,8 +23857,11 @@
 					"headerEntries": [
 						"The mephit can innately cast {@spell fog cloud}, requiring no material components. Its innate spellcasting ability is Charisma."
 					],
-					"headerWill": [
+					"will": [
 						"{@spell fog cloud}"
+					],
+					"hidden": [
+						"will"
 					],
 					"ability": "cha"
 				}
@@ -23743,6 +23889,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -24067,7 +24216,7 @@
 					"name": "Body Thief",
 					"entries": [
 						"The intellect devourer initiates an Intelligence contest with an {@condition incapacitated} humanoid within 5 feet of it that isn't protected by {@spell protection from evil and good}. If it wins the contest, the intellect devourer magically consumes the target's brain, teleports into the target's skull, and takes control of the target's body. While inside a creature, the intellect devourer has total cover against attacks and other effects originating outside its host. The intellect devourer retains its Intelligence, Wisdom, and Charisma scores, as well as its understanding of Deep Speech, its telepathy, and its traits. It otherwise adopts the target's statistics. It knows everything the creature knew, including spells and languages.",
-						"If the host body dies, the intellect devourer must leave it. A {@spell protection from evil and good} spell cast on the body drives the intellect devourer out. The intellect devourer is also forced out if the target regains its devoured brain by means of a wish. By spending 5 feet of its movement, the intellect devourer can voluntarily leave the body, teleporting to the nearest unoccupied space within 5 feet of it. The body then dies, unless its brain is restored within 1 round."
+						"If the host body dies, the intellect devourer must leave it. A {@spell protection from evil and good} spell cast on the body drives the intellect devourer out. The intellect devourer is also forced out if the target regains its devoured brain by means of a {@spell wish}. By spending 5 feet of its movement, the intellect devourer can voluntarily leave the body, teleporting to the nearest unoccupied space within 5 feet of it. The body then dies, unless its brain is restored within 1 round."
 					]
 				}
 			],
@@ -25254,6 +25403,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -25500,6 +25652,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -25605,6 +25760,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -25918,6 +26076,9 @@
 			],
 			"senseTags": [
 				"U"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -26498,6 +26659,10 @@
 			],
 			"languageTags": [
 				"DR"
+			],
+			"spellcastingTags": [
+				"F",
+				"CD"
 			]
 		},
 		{
@@ -26613,6 +26778,9 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/316/mage.mp3",
 			"languageTags": [
 				"X"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -26693,8 +26861,11 @@
 					"headerEntries": [
 						"The mephit can innately cast {@spell heat metal} (spell save DC 10), requiring no material components. Its innate spellcasting ability is Charisma."
 					],
-					"headerWill": [
+					"will": [
 						"{@spell heat metal}"
+					],
+					"hidden": [
+						"will"
 					],
 					"ability": "cha"
 				}
@@ -26722,6 +26893,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -27162,6 +27336,9 @@
 			"senseTags": [
 				"B",
 				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -27770,6 +27947,9 @@
 			"senseTags": [
 				"B",
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -27986,6 +28166,10 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"P",
+				"I"
 			]
 		},
 		{
@@ -28156,6 +28340,11 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"P",
+				"I",
+				"CW"
 			]
 		},
 		{
@@ -28866,6 +29055,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -29572,6 +29764,11 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"I",
+				"S",
+				"CW"
 			]
 		},
 		{
@@ -29967,6 +30164,9 @@
 			"senseTags": [
 				"B",
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -30398,6 +30598,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -30604,6 +30807,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -31680,6 +31886,9 @@
 			],
 			"senseTags": [
 				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -31767,6 +31976,9 @@
 			],
 			"languageTags": [
 				"S"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -31909,6 +32121,9 @@
 			],
 			"senseTags": [
 				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -32360,6 +32575,9 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/392/priest.mp3",
 			"languageTags": [
 				"X"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -32969,6 +33187,10 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"P",
+				"I"
 			]
 		},
 		{
@@ -33276,6 +33498,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -34699,6 +34924,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"CC"
 			]
 		},
 		{
@@ -35306,6 +35534,10 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"S",
+				"CW"
 			]
 		},
 		{
@@ -35810,7 +36042,7 @@
 				{
 					"name": "Shriek",
 					"entries": [
-						"When bright light or a creature is within 30 feet of the shrieker, it emits a shriek audible within 300 feet of it. The shrieker continues to shriek until the disturbance moves out of range and for {@dice 1d4} of the shrieker's turns afterward"
+						"When bright light or a creature is within 30 feet of the shrieker, it emits a shriek audible within 300 feet of it. The shrieker continues to shriek until the disturbance moves out of range and for {@dice 1d4} of the shrieker's turns afterward."
 					]
 				}
 			],
@@ -36121,8 +36353,11 @@
 					"headerEntries": [
 						"The mephit can innately cast {@spell dancing lights}, requiring no material components. Its innate spellcasting ability is Charisma."
 					],
-					"headerWill": [
+					"will": [
 						"{@spell dancing lights}"
+					],
+					"hidden": [
+						"will"
 					],
 					"ability": "cha"
 				}
@@ -36149,6 +36384,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -36326,6 +36564,9 @@
 			],
 			"senseTags": [
 				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -36852,6 +37093,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -37083,8 +37327,11 @@
 					"headerEntries": [
 						"The mephit can innately cast {@spell blur}, requiring no material components. Its innate spellcasting ability is Charisma."
 					],
-					"headerWill": [
+					"will": [
 						"{@spell blur}"
+					],
+					"hidden": [
+						"will"
 					],
 					"ability": "cha"
 				}
@@ -37111,6 +37358,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -37543,6 +37793,9 @@
 			"languageTags": [
 				"C",
 				"GI"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -38930,6 +39183,10 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"P",
+				"I"
 			]
 		},
 		{
@@ -39949,6 +40206,9 @@
 			],
 			"senseTags": [
 				"U"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -40193,6 +40453,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -40714,6 +40977,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -43521,6 +43787,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -44916,6 +45185,10 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I",
+				"F"
 			]
 		},
 		{
@@ -45047,6 +45320,10 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I",
+				"F"
 			]
 		},
 		{
@@ -45166,6 +45443,10 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I",
+				"F"
 			]
 		},
 		{
@@ -45303,6 +45584,10 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I",
+				"F"
 			]
 		},
 		{
@@ -45417,6 +45702,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{

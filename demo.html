@@ -32,14 +32,14 @@
 
 <body>
 <div class="viewport-wrapper">
-	<header class="hidden-xs hidden-sm">
+	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
 
-			<h1>Renderer Demo</h1>
-			<p>Edit the JSON on the left, and see the results on the right</p>
+			<h1 class="page__title">Renderer Demo</h1>
+			<p class="page__subtitle">Edit the JSON on the left, and see the results on the right</p>
 		</div>
 	</header>
-	<nav class="container" id="navigation">
+	<nav class="container page__nav" id="navigation">
 		<ul class="nav nav-pills" id="navbar">
 		</ul>
 	</nav>
@@ -47,7 +47,7 @@
 	<div class="view-col-wrapper">
 		<div class="view-col">
 			<pre id="jsoninput" class="inputArea ace_editor"></pre>
-			<p><button class="btn btn-default" id="demoRender">Render</button> <button class="btn btn-default" id="demoReset">Reset</button> <span id="message"></span></p>
+			<div class="text-align-right"><button class="btn btn-default btn-sm" id="demoRender">Render</button> <button class="btn btn-default btn-sm" id="demoReset">Reset</button> <span id="message"></span></div>
 		</div>
 
 		<div id="capheight" class="view-col">
@@ -61,6 +61,7 @@
 <!--5ETOOLS_SCRIPT_ANCHOR-->
 <!--5ETOOLS_SCRIPT_ANCHOR__ACE-JS-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>

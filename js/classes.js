@@ -377,7 +377,28 @@ class HashLoad {
 
 		const groupHeaders = $("#groupHeaders");
 		const colHeaders = $("#colHeaders");
-		const levelTrs = [...new Array(20)].map((_, i) => $(`#level${i + 1}`));
+		const $levelTrs = [];
+
+		// support for more than (or less than) 20 levels
+		(() => {
+			let i = 0;
+			let $ele;
+			while (($ele = $(`#level${i++ + 1}`)).length) $levelTrs.push($ele);
+			const lenDiff = ClassDisplay.curClass.classFeatures.length - $levelTrs.length;
+			if (lenDiff > 0) {
+				let addCount = 1;
+				[...new Array(lenDiff)].forEach(() => {
+					const level = $levelTrs.length + addCount++;
+					$levelTrs.push($(`<tr id="level${level}">
+						<td class="level">${Parser.getOrdinalForm(level)}</td>
+						<td class="pb">+6</td>
+						<td class="features"></td>
+					</tr>`).insertAfter($levelTrs.last()));
+				});
+			} else if (lenDiff < 0) {
+				[...new Array(-lenDiff)].forEach(() => $levelTrs.pop().remove());
+			}
+		})();
 
 		if (tData) {
 			for (let i = 0; i < tData.length; i++) {
@@ -402,7 +423,7 @@ class HashLoad {
 						if (entry === 0) entry = "\u2014";
 						const stack = [];
 						renderer.recursiveEntryRender(entry, stack);
-						levelTrs[j].append(`<td class="centred-col" ${subclassData}>${stack.join("")}</td>`)
+						$levelTrs[j].append(`<td class="centred-col" ${subclassData}>${stack.join("")}</td>`)
 					}
 				}
 			}
@@ -431,9 +452,9 @@ class HashLoad {
 
 		// FEATURE DESCRIPTIONS
 		let subclassIndex = 0; // the subclass array is not 20 elements
-		for (let i = 0; i < levelTrs.length; i++) {
+		for (let i = 0; i < $levelTrs.length; i++) {
 			// track class table feature names
-			const tblLvlFeatures = levelTrs[i].find(".features");
+			const tblLvlFeatures = $levelTrs[i].find(".features");
 			// used to build class table
 			const featureLinks = [];
 
@@ -1061,7 +1082,7 @@ class SubClassLoader {
 			}
 		}
 
-		if (!CollectionUtil.arrayEq(SubClassLoader.prevSub, sub)) { // checking array equality is faster than hitting the DOM
+		if (!(SubClassLoader.prevSub === sub && SubClassLoader.prevSub.equals(sub))) { // checking array equality is faster than hitting the DOM
 			setTimeout(() => {
 				const $nav = $(`#sticky-nav`);
 				const $hr = $nav.find(`hr`);
@@ -1366,7 +1387,7 @@ async function doPageInit () {
 
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
-			.then(BrewUtil.pAddLocalBrewData)
+			.then(() => BrewUtil.pAddLocalBrewData())
 			.catch(BrewUtil.pPurgeBrew)
 			.then(() => {
 				RollerUtil.addListRollButton();

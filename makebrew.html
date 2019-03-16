@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--5ETOOLS_VERSION-->
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Homebrew Builder - 5etools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
+
+	<style>
+		/* GENERAL/PAGE STYLES */
+		#content_input {
+			width: 100%;
+			height: 100%;
+			overflow-y: auto;
+			overflow-x: hidden;
+			padding-right: 3px;
+		}
+
+		#content_input::-webkit-scrollbar {
+			width: 4px;
+	 	}
+
+		#content_input_controls {
+			padding: 3px 15px 0;
+			border-top: 1px solid #ccc;
+		}
+
+		#content_output {
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		#content_input input[type=number] {
+			text-align: right;
+		}
+
+		label {
+			font-weight: initial;
+			max-width: initial;
+			margin-bottom: initial;
+		}
+
+		textarea.form-control {
+			height: 100px;
+		}
+
+		.hr--sm {
+			margin-top: 10px;
+			margin-bottom: 10px;
+			width: 100%;
+			flex-shrink: 0;
+		}
+
+		.btn-xxs {
+			padding: 0 2px;
+			font-size: 12px;
+			line-height: 1.5;
+			border-radius: 3px;
+		}
+
+		/* Loading overlay */
+		.initial-message {
+			font-size: 5vmin;
+			color: initial;
+		}
+
+		/* Source overlay */
+		.mkbru_source__row {
+			margin-left: calc(-96px - 0.5rem);
+		}
+
+		.mkbru_source__name {
+			min-width: 96px;
+			white-space: nowrap;
+			text-align: right;
+		}
+
+		.mkbru_source__divider {
+			height: 1px;
+			width: 30px;
+			background: #ccc;
+			display: inline-block;
+			margin: 0 3px;
+		}
+
+		/* Control bar */
+		.mkbru__cnt-save {
+			min-width: 48px;
+		}
+
+		/* Maker UI */
+		.mkbru__row {
+			padding: 2px;
+			border-radius: 5px;
+		}
+
+		.mkbru__row:nth-child(odd) {
+			background: #88888818;
+		}
+
+		.mkbru__wrp-row {
+			margin-bottom: 0;
+			max-width: initial;
+			font-weight: initial;
+		}
+
+		.mkbru__row-name {
+			min-width: 120px;
+			text-align: right;
+			font-weight: bold;
+		}
+
+		.mkbru_mon__row-indent {
+			width: 1px;
+			align-self: stretch;
+			flex-shrink: 0;
+			background: #cccccc80;
+			margin: 4px 0.5rem;
+		}
+
+		.mkbru__row-name--marked {
+			min-width: 114px;
+		}
+
+		.mkbru__row-mark {
+			width: 1px;
+			background: #ccc;
+			flex-shrink: 0;
+			align-self: stretch;
+			margin-top: 4px;
+			margin-bottom: 4px;
+		}
+
+		.mkbru__multi-cb-row:nth-child(odd) {
+			background: #bbbbbb18;
+		}
+
+		.mkbru__ipt-cb[type=checkbox] {
+			margin-top: 0;
+			margin-left: 2px;
+		}
+
+		.mkbru__ipt-cb--small-offset {
+			position: relative;
+			top: 2px;
+		}
+
+		.mkbru__ipt-cb--plain[type=checkbox] {
+			margin-top: 0;
+		}
+
+		.mkbru__ipt-textarea {
+			resize: vertical;
+		}
+
+		.mkbru__sub-name--50 {
+			min-width: calc(50% - 0.25rem);
+			text-align: right;
+			font-weight: bold;
+		}
+
+		.mkbru__sub-name--33 {
+			min-width: calc(33.33333% - 0.25rem);
+			text-align: right;
+			font-weight: bold;
+		}
+
+		.mkbru__wrp-btn-xxs {
+			padding-right: 3px;
+		}
+		/* *** */
+
+		/* CREATURE STYLES */
+		.mkbru_mon__wrp-rows {
+			border-bottom: 1px solid #cccccc80;
+			margin-bottom: 5px;
+		}
+
+		.mkbru_mon__wrp-rows--removable:only-child .mkbru_mon__btn-rm-row,
+		.mkbru_mon__wrp-rows--removable:only-child .mkbru_mon__btn-up-row,
+		.mkbru_mon__wrp-rows--removable:only-child .mkbru_mon__btn-down-row,
+			/* CSS hacks to support nesting */
+		.mkbru_mon__wrp-rows--removable-nested-1:only-child .mkbru_mon__btn-rm-row--nested-1 {
+			display: none;
+		}
+
+		.mkbru_mon__wrp-rows--removable:first-child .mkbru_mon__btn-up-row,
+		.mkbru_mon__wrp-rows--removable:last-child .mkbru_mon__btn-down-row {
+			display: none;
+		}
+
+		.mkbru_mon__ac-split {
+			max-width: calc(50% - 0.25rem);
+		}
+
+		.mkbru_mon__btn-add-sense-language {
+			min-width: 91px;
+		}
+
+		.mkbru_mon__spell-wrp-edit {
+			min-height: 22px;
+		}
+
+		.mkbru_mon__spell-divider {
+			height: 1px;
+			margin: 0 3rem;
+			background: #cccccc60;
+		}
+
+		.mkbru_mon__spell-header-wrp {
+			justify-content: space-between;
+			width: 100%;
+			align-items: center;
+		}
+
+		.mkbru_mon__spell-header-ipt {
+			max-width: 4rem;
+		}
+
+		.mkbru_mon__spell-header-divider {
+			width: 1px;
+			flex-shrink: 0;
+			height: 16px;
+			background: #ccc;
+		}
+
+		tr th.mon__name--token {
+			padding: 1px 0.3em;
+		}
+
+		.mon__wrp_hp {
+			max-width: none;
+		}
+		/* *** */
+	</style>
+</head>
+
+<body>
+<div class="viewport-wrapper">
+	<div class="sidemenu__toggle" style="display: none;">
+		<div class="sidemenu__hotzone"></div>
+		<div class="sidemenu__burger"></div>
+		<div class="sidemenu__burger"></div>
+		<div class="sidemenu__burger"></div>
+		<div class="sidemenu"></div>
+	</div>
+
+	<header class="hidden-xs hidden-sm page__header">
+		<div class="container">
+
+			<h1 class="page__title">Homebrew Builder</h1>
+			<p class="page__subtitle">Input values on left, view the results on the right.</p>
+		</div>
+	</header>
+
+	<nav class="container page__nav" id="navigation"><ul class="nav nav-pills" id="navbar"></ul></nav>
+
+	<div id="page_loading" class="container view-col-wrapper">
+		<div class="full-height full-width flex-vh-center"><span class="initial-message">Loading...</span></div>
+	</div>
+
+	<div id="page_source" class="container view-col-wrapper" style="display: none"></div>
+
+	<div id="page_main" class="container view-col-wrapper" style="display: none">
+		<div class="view-col">
+			<div id="content_input"></div>
+			<div id="content_input_controls" class="text-align-center"></div>
+		</div>
+
+		<div class="view-col" id="content_output"></div>
+	</div>
+</div>
+
+<!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/entryrender-bestiary.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/converterutils.js"></script>
+<script type="text/javascript" src="js/makebrew.js"></script>
+<script type="text/javascript" src="js/makebrew-creature.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+<script type="text/javascript" src="lib/bootstrap-typeahead.js"></script>
+</body>
+</html>

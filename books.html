@@ -39,14 +39,14 @@
 </head>
 
 <body>
-<header class="hidden-xs hidden-sm">
+<header class="hidden-xs hidden-sm page__header">
 	<div class="container">
-		<h1>Books</h1>
-		<p>Browse books by name and contents</p>
+		<h1 class="page__title">Books</h1>
+		<p class="page__subtitle">Browse books by name and contents</p>
 	</div>
 </header>
 
-<nav class="container" id="navigation"><ul class="nav nav-pills" id="navbar"></ul></nav>
+<nav class="container page__nav" id="navigation"><ul class="nav nav-pills" id="navbar"></ul></nav>
 
 <div class="container view-col-wrapper">
 	<div class="view-col" id="listcontainer">
@@ -71,6 +71,7 @@
 
 <!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>

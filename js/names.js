@@ -114,7 +114,7 @@ function rollAgainstTable (iLoad, jLoad) {
 	const table = race.tables[jLoad];
 	const rollTable = table.table;
 
-	rollTable._rMax = rollTable.rMax == null ? Math.max(...rollTable.filter(it => it.min != null).map(it => it.min), ...rollTable.filter(it => it.max != null).map(it => it.max)) : rollTable.rMax;
+	rollTable._rMax = rollTable._rMax == null ? Math.max(...rollTable.filter(it => it.min != null).map(it => it.min), ...rollTable.filter(it => it.max != null).map(it => it.max)) : rollTable._rMax;
 	rollTable._rMin = rollTable._rMin == null ? Math.min(...rollTable.filter(it => it.min != null).map(it => it.min), ...rollTable.filter(it => it.max != null).map(it => it.max)) : rollTable._rMin;
 
 	const roll = RollerUtil.randomise(rollTable._rMax, rollTable._rMin);

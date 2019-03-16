@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.3.0",
+	"version": "1.3.2",
 	"title": "Spells",
 	"type": "object",
 
@@ -65,7 +65,8 @@
 								"cone",
 								"radius",
 								"sphere",
-								"hemisphere"
+								"hemisphere",
+								"cylinder"
 							]
 						},
 						"distance": {
@@ -85,6 +86,24 @@
 									]
 								},
 								"amount": {
+									"type": "integer"
+								},
+								"typeSecondary": {
+									"description": "Homebrew only",
+									"type": "string",
+									"enum": [
+										"feet",
+										"miles",
+										"self",
+										"touch",
+										"special",
+										"unlimited",
+										"plane",
+										"sight"
+									]
+								},
+								"amountSecondary": {
+									"description": "Homebrew only",
 									"type": "integer"
 								}
 							},
@@ -328,6 +347,9 @@
 					"type": "boolean"
 				},
 				"isHeal": {
+					"type": "boolean"
+				},
+				"isSummon": {
 					"type": "boolean"
 				},
 				"areaTags": {

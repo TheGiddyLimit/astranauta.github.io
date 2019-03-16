@@ -15,7 +15,8 @@ const MSG = {
 	ScaleDiceCheck: "",
 	StripTagTest: "",
 	AreaCheck: "",
-	LootCheck: ""
+	LootCheck: "",
+	TableDiceTest: ""
 };
 
 const TAG_TO_PAGE = {
@@ -97,9 +98,6 @@ const VALID_ACTIONS = new Set([
 ]);
 
 const ALL_URLS = new Set();
-utS.UtilSearchIndex.getIndex(false, true).forEach(it => {
-	ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${it.u.toLowerCase().trim()}`);
-});
 
 function isIgnored (directory) {
 	return directory === "./data/roll20-module";
@@ -118,7 +116,8 @@ const PRIMITIVE_HANDLERS = {
 	undefined: [],
 	boolean: [],
 	number: [],
-	string: []
+	string: [],
+	object: []
 };
 function dataRecurse (file, obj, primitiveHandlers, lastType, lastKey) {
 	const to = typeof obj;
@@ -157,6 +156,11 @@ function dataRecurse (file, obj, primitiveHandlers, lastType, lastKey) {
 			if (obj instanceof Array) {
 				obj.forEach(it => dataRecurse(file, it, primitiveHandlers, lastType, lastKey));
 			} else {
+				if (primitiveHandlers.object) {
+					primitiveHandlers.object instanceof Array
+						? primitiveHandlers.object.forEach(ph => ph(file, obj, lastType, lastKey))
+						: primitiveHandlers.object(file, obj, lastType, lastKey);
+				}
 				Object.keys(obj).forEach(k => {
 					const v = obj[k];
 					obj[k] = dataRecurse(file, v, primitiveHandlers, lastType, k)
@@ -187,7 +191,7 @@ class LinkCheck {
 	static checkString (file, str) {
 		let match;
 		// eslint-disable-next-line no-cond-assign
-		while (match = LinkCheck.re.exec(str)) {
+		while ((match = LinkCheck.re.exec(str))) {
 			const tag = match[1];
 			const toEncode = [match[2]];
 
@@ -206,16 +210,14 @@ class LinkCheck {
 			}
 		}
 
-		// eslint-disable-next-line no-cond-assign
-		while (match = LinkCheck.skillRe.exec(str)) {
+		while ((match = LinkCheck.skillRe.exec(str))) {
 			const skill = match[1];
 			if (!VALID_SKILLS.has(skill)) {
 				MSG.LinkCheck += `Unknown skill: ${match[0]} in file ${file} (evaluates to "${skill}")\n`
 			}
 		}
 
-		// eslint-disable-next-line no-cond-assign
-		while (match = LinkCheck.actionRe.exec(str)) {
+		while ((match = LinkCheck.actionRe.exec(str))) {
 			const action = match[1];
 			if (!VALID_ACTIONS.has(action)) {
 				MSG.LinkCheck += `Unknown action: ${match[0]} in file ${file} (evaluates to "${action}")\n`
@@ -374,6 +376,82 @@ class StripTagTest {
 }
 StripTagTest._seenErrors = new Set();
 
+class TableDiceTest {
+	static addHandlers () {
+		PRIMITIVE_HANDLERS.object.push(TableDiceTest.checkTable);
+	}
+
+	static checkTable (file, obj) {
+		if (obj.type === "table" && EntryRenderer.isRollableTable(obj)) {
+			const possibleResults = new Set();
+			const errors = [];
+			const cbErr = (cell, e) => MSG.TableDiceTest += `Row parse failed! Cell was: "${cell}"; error was: "${e.message}"\n`;
+			obj.rows.forEach(r => {
+				const row = EntryRenderer.getRollableRow(r, cbErr);
+				const cell = row[0].roll;
+				if (!cell) return;
+				if (cell.exact != null) {
+					if (cell.exact === 0 && cell.pad) cell.exact = 100;
+					if (possibleResults.has(cell.exact)) errors.push(`"exact" value "${cell.exact}" was repeated!`);
+					possibleResults.add(cell.exact);
+				} else {
+					if (cell.max === 0) cell.max = 100;
+					// convert +inf to a reasonable range (no official table goes to 250+ as of 2019-03-01)
+					if (cell.max === EntryRenderer.dice.POS_INFINITE) cell.max = 250;
+					for (let i = cell.min; i <= cell.max; ++i) {
+						if (possibleResults.has(i)) errors.push(`"min-max" value "${i}" was repeated!`);
+						possibleResults.add(i);
+					}
+				}
+			});
+
+			const cleanHeader = obj.colLabels[0].trim().replace(/^{@dice (.*?)(\|.*?)?}$/i, "$1");
+			const possibleRolls = new Set();
+			let hasPrompt = false;
+
+			cleanHeader.split(";").forEach(rollable => {
+				if (rollable.includes("#$prompt_")) hasPrompt = true;
+
+				const rollTree = EntryRenderer.dice.parseToTree(rollable);
+				if (rollTree) {
+					const genRolls = rollTree.nxt();
+					let gen;
+					while (!(gen = genRolls.next()).done) possibleRolls.add(gen.value);
+				} else {
+					if (!hasPrompt) errors.push(`"${obj.colLabels[0]}" was not a valid rollable header?!`);
+				}
+			});
+
+			if (!CollectionUtil.setEq(possibleResults, possibleRolls) && !hasPrompt) {
+				errors.push(`Possible results did not match possible rolls!\nPossible results: (${TableDiceTest._flattenSequence([...possibleResults])})\nPossible rolls: (${TableDiceTest._flattenSequence([...possibleRolls])})`);
+			}
+
+			if (errors.length) MSG.TableDiceTest += `Errors in ${obj.caption ? `table "${obj.caption}"` : `${JSON.stringify(obj.rows[0]).substring(0, 30)}...`} in ${file}:\n${errors.map(it => `\t${it}`).join("\n")}\n`;
+		}
+	}
+
+	static _flattenSequence (nums) {
+		const out = [];
+		let l = null; let r = null;
+		nums.sort(SortUtil.ascSort).forEach(n => {
+			if (l == null) {
+				l = n;
+				r = n;
+			} else if (n === (r + 1)) {
+				r = n;
+			} else {
+				if (l === r) out.push(`${l}`);
+				else out.push(`${l}-${r}`);
+				l = n;
+				r = n;
+			}
+		});
+		if (l === r) out.push(`${l}`);
+		else out.push(`${l}-${r}`);
+		return out.join(", ");
+	}
+}
+
 class AreaCheck {
 	static _buildMap (file, data) {
 		AreaCheck.headerMap = bu.BookUtil._buildHeaderMap(data, file);
@@ -441,26 +519,37 @@ class LootCheck {
 }
 LootCheck.file = `data/loot.json`;
 
-LinkCheck.addHandlers();
-BraceCheck.addHandlers();
-FilterCheck.addHandlers();
-ScaleDiceCheck.addHandlers();
-StripTagTest.addHandlers();
+async function main () {
+	const primaryIndex = await utS.UtilSearchIndex.pGetIndex(false, true);
+	primaryIndex.forEach(it => ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${it.u.toLowerCase().trim()}`));
+	const highestId = primaryIndex.last().id;
+	const secondaryIndexItem = await utS.UtilSearchIndex.pGetIndexAdditionalItem(highestId + 1, false);
+	secondaryIndexItem.forEach(it => ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${it.u.toLowerCase().trim()}`));
 
-fileRecurse("./data", (file) => {
-	const contents = JSON.parse(fs.readFileSync(file, 'utf8'));
-	dataRecurse(file, contents, PRIMITIVE_HANDLERS);
-});
+	LinkCheck.addHandlers();
+	BraceCheck.addHandlers();
+	FilterCheck.addHandlers();
+	ScaleDiceCheck.addHandlers();
+	StripTagTest.addHandlers();
+	TableDiceTest.addHandlers();
 
-AttachedSpellAndGroupItemsCheck.run();
-AreaCheck.run();
-LootCheck.run();
+	fileRecurse("./data", (file) => {
+		const contents = JSON.parse(fs.readFileSync(file, 'utf8'));
+		dataRecurse(file, contents, PRIMITIVE_HANDLERS);
+	});
 
-let outMessage = "";
-Object.entries(MSG).forEach(([k, v]) => {
-	if (v) outMessage += `Error messages for ${k}:\n\n${v}`;
-	else console.log(`##### ${k} passed! #####`)
-});
-if (outMessage) throw new Error(outMessage);
+	AttachedSpellAndGroupItemsCheck.run();
+	AreaCheck.run();
+	LootCheck.run();
 
-console.timeEnd(TIME_TAG);
+	let outMessage = "";
+	Object.entries(MSG).forEach(([k, v]) => {
+		if (v) outMessage += `Error messages for ${k}:\n\n${v}`;
+		else console.log(`##### ${k} passed! #####`)
+	});
+	if (outMessage) throw new Error(outMessage);
+
+	console.timeEnd(TIME_TAG);
+}
+
+return main();

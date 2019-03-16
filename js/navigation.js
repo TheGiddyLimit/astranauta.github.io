@@ -43,6 +43,9 @@ class NavBar {
 		addLi(ulPlayers, "backgrounds.html", "Backgrounds");
 		addLi(ulPlayers, "feats.html", "Feats");
 		addLi(ulPlayers, "races.html", "Races");
+		addDivider(ulPlayers);
+		addLi(ulPlayers, "statgen.html", "Statgen");
+		addDivider(ulPlayers);
 		addLi(ulPlayers, "lifegen.html", "This Is Your Life");
 		addLi(ulPlayers, "names.html", "Names");
 
@@ -50,8 +53,6 @@ class NavBar {
 		addLi(ulDms, "dmscreen.html", "DM Screen");
 		addDivider(ulDms);
 		const ulAdventures = addDropdown(ulDms, "Adventures", true);
-		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
-		addDivider(ulAdventures);
 		addLi(ulAdventures, "adventure.html", "Lost Mines of Phandelver", true, "LMoP");
 		addLi(ulAdventures, "adventure.html", "Hoard of the Dragon Queen", true, "HotDQ");
 		addLi(ulAdventures, "adventure.html", "Rise of Tiamat", true, "RoT");
@@ -72,13 +73,16 @@ class NavBar {
 		addLi(ulAdventures, "adventure.html", "Lost Laboratory of Kwalish", true, "LLK");
 		addLi(ulAdventures, "adventure.html", "Waterdeep: Dungeon of the Mad Mage", true, "WDMM");
 		addLi(ulAdventures, "adventure.html", "Krenko's Way", true, "KKW");
-		addLi(ulDms, "crcalculator.html", "CR Calculator");
+		addDivider(ulAdventures);
+		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
 		addLi(ulDms, "cultsboons.html", "Cults & Demonic Boons");
-		addLi(ulDms, "encountergen.html", "Encounter Generator");
-		addLi(ulDms, "lootgen.html", "Loot Generator");
 		addLi(ulDms, "objects.html", "Objects");
 		addLi(ulDms, "ships.html", "Ships");
 		addLi(ulDms, "trapshazards.html", "Traps & Hazards");
+		addDivider(ulDms);
+		addLi(ulDms, "crcalculator.html", "CR Calculator");
+		addLi(ulDms, "encountergen.html", "Encounter Generator");
+		addLi(ulDms, "lootgen.html", "Loot Generator");
 
 		const ulReferences = addDropdown(navBar, "References");
 		addLi(ulReferences, "bestiary.html", "Bestiary");
@@ -89,20 +93,19 @@ class NavBar {
 		addLi(ulReferences, "psionics.html", "Psionics");
 		addLi(ulReferences, "spells.html", "Spells");
 
-		addLi(navBar, "statgen.html", "Statgen");
-
 		const ulUtils = addDropdown(navBar, "Utilities");
 		addLi(ulUtils, "blacklist.html", "Content Blacklist");
 		addLi(ulUtils, "inittrackerplayerview.html", "Initiative Tracker Player View");
 		addLi(ulUtils, "managebrew.html", "Manage All Homebrew");
 		addDivider(ulUtils);
+		addLi(ulUtils, "makebrew.html", "Homebrew Builder");
 		addLi(ulUtils, "demo.html", "Renderer Demo");
 		addLi(ulUtils, "converter.html", "Text Converter");
 		addDivider(ulUtils);
 		addLi(ulUtils, "roll20.html", "Roll20 Script Help");
 		addLi(ulUtils, "makeshaped.html", "Roll20 Shaped Sheet JS Builder");
-		addDivider(ulUtils);
-		addLi(ulUtils, "donate.html", "Donate");
+
+		addLi(navBar, "donate.html", "Donate");
 
 		addNightModeToggle(navBar);
 
@@ -124,7 +127,8 @@ class NavBar {
 			if (isSide) {
 				li.onmouseenter = function () { NavBar.handleSideItemMouseEnter(this) }
 			} else {
-				li.onmouseenter = function () { NavBar.handleItemMouseEnter(this) }
+				li.onmouseenter = function () { NavBar.handleItemMouseEnter(this) };
+				li.onclick = function () { NavBar._dropdowns.forEach(ele => ele.classList.remove("open")) }
 			}
 
 			const a = document.createElement("a");
@@ -207,16 +211,14 @@ class NavBar {
 		let isSecondLevel = false;
 		if (currentPage.toLowerCase() === "book.html" || currentPage.toLowerCase() === "adventure.html") {
 			const hashPart = window.location.hash.split(",")[0];
-			if (hashPart) {
-				if (currentPage.toLowerCase() === "adventure.html") isSecondLevel = true;
-				currentPage += hashPart.toLowerCase();
-			}
+			if (currentPage.toLowerCase() === "adventure.html") isSecondLevel = true;
+			currentPage += hashPart.toLowerCase();
 		}
 		if (currentPage.toLowerCase() === "adventures.html") isSecondLevel = true;
 
 		try {
 			let current = document.querySelector(`li[data-page="${currentPage}"]`);
-			if (current == null && currentPage.includes("#")) {
+			if (current == null) {
 				currentPage = currentPage.split("#")[0];
 				if (NavBar.ALT_CHILD_PAGES[currentPage]) currentPage = NavBar.ALT_CHILD_PAGES[currentPage];
 				current = document.querySelector(`li[data-page="${currentPage}"]`);

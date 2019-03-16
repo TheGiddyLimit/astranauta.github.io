@@ -462,19 +462,19 @@
 								],
 								"rows": [
 									[
-										"{@filter 2nd|bestiary|cr=0;1/8;1/4|type=beast|speed=!fly;!swim|miscellaneous=!swarm}",
+										"{@filter 2nd|bestiary|challenge rating=0;1/8;1/4|type=beast|speed type=!fly;!swim|miscellaneous=!swarm}",
 										"1/4",
 										"No flying or swimming speed",
 										"Wolf"
 									],
 									[
-										"{@filter 4th|bestiary|cr=0;1/8;1/4;1/2|type=beast|speed=!fly|miscellaneous=!swarm}",
+										"{@filter 4th|bestiary|challenge rating=0;1/8;1/4;1/2|type=beast|speed type=!fly|miscellaneous=!swarm}",
 										"1/2",
 										"No flying speed",
 										"Crocodile"
 									],
 									[
-										"{@filter 8th|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|miscellaneous=!swarm}",
+										"{@filter 8th|bestiary|challenge rating=0;1/8;1/4;1/2;1|type=beast|miscellaneous=!swarm}",
 										"1",
 										"\u2014",
 										"Giant eagle"
@@ -524,7 +524,7 @@
 					{
 						"name": "Druid Circle feature",
 						"entries": [
-							"At 6th level, you gain a feature granted by your Druid Circle feature."
+							"At 6th level, you gain a feature granted by your Druid Circle."
 						],
 						"gainSubclassFeature": true
 					}
@@ -640,7 +640,7 @@
 										"type": "entries",
 										"name": "Natural Recovery",
 										"entries": [
-											"Starling at 2nd level, you can regain some of your magical energy by sitting in meditation and communing with nature. During a short rest, you choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your druid level (rounded up), and none of the slots can be 6th level or higher. You can't use this feature again until you finish a long rest",
+											"Starting at 2nd level, you can regain some of your magical energy by sitting in meditation and communing with nature. During a short rest, you choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your druid level (rounded up), and none of the slots can be 6th level or higher. You can't use this feature again until you finish a long rest",
 											"For example, when you are a 4th-level druid, you can recover up to two levels worth of spell slots. You can recover either a 2nd-level slot or two 1st-level slots."
 										]
 									},
@@ -961,7 +961,7 @@
 										"type": "entries",
 										"name": "Circle Forms",
 										"entries": [
-											"The rites of your circle grant you the ability to transform into more dangerous animal forms. Starting at 2nd level, you can use your Wild Shape to transform into a {@filter beast with a challenge rating as high as 1|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim|miscellaneous=!swarm} (you ignore the Max. CR column of the Beast Shapes table, but must abide by the other limitations there).",
+											"The rites of your circle grant you the ability to transform into more dangerous animal forms. Starting at 2nd level, you can use your Wild Shape to transform into a {@filter beast with a challenge rating as high as 1|bestiary|challenge rating=0;1/8;1/4;1/2;1|type=beast|speed type=!fly;!swim|miscellaneous=!swarm} (you ignore the Max. CR column of the Beast Shapes table, but must abide by the other limitations there).",
 											"Starting at 6th level, you can transform into a beast with a challenge rating as high as your druid level divided by 3, rounded down.",
 											{
 												"type": "table",
@@ -979,42 +979,42 @@
 												"rows": [
 													[
 														"2nd",
-														"{@filter 1|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim|miscellaneous=!swarm}",
+														"{@filter 1|bestiary|challenge rating=0;1/8;1/4;1/2;1|type=beast|speed type=!fly;!swim|miscellaneous=!swarm}",
 														"No flying or swimming speed"
 													],
 													[
 														"4th",
-														"{@filter 1|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly|miscellaneous=!swarm}",
+														"{@filter 1|bestiary|challenge rating=0;1/8;1/4;1/2;1|type=beast|speed type=!fly|miscellaneous=!swarm}",
 														"No flying speed"
 													],
 													[
 														"6th",
-														"{@filter 2|bestiary|cr=0;1/8;1/4;1/2;1;2|type=beast|speed=!fly|miscellaneous=!swarm}",
+														"{@filter 2|bestiary|challenge rating=0;1/8;1/4;1/2;1;2|type=beast|speed type=!fly|miscellaneous=!swarm}",
 														"No flying speed"
 													],
 													[
 														"8th",
-														"{@filter 2|bestiary|cr=0;1/8;1/4;1/2;1;2|type=beast|miscellaneous=!swarm}",
+														"{@filter 2|bestiary|challenge rating=0;1/8;1/4;1/2;1;2|type=beast|miscellaneous=!swarm}",
 														"\u2014"
 													],
 													[
 														"9th",
-														"{@filter 3|bestiary|cr=0;1/8;1/4;1/2;1;2;3|type=beast|miscellaneous=!swarm}",
+														"{@filter 3|bestiary|challenge rating=0;1/8;1/4;1/2;1;2;3|type=beast|miscellaneous=!swarm}",
 														"\u2014"
 													],
 													[
 														"12th",
-														"{@filter 4|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4|type=beast|miscellaneous=!swarm}",
+														"{@filter 4|bestiary|challenge rating=0;1/8;1/4;1/2;1;2;3;4|type=beast|miscellaneous=!swarm}",
 														"\u2014"
 													],
 													[
 														"15th",
-														"{@filter 5|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5|type=beast|miscellaneous=!swarm}",
+														"{@filter 5|bestiary|challenge rating=0;1/8;1/4;1/2;1;2;3;4;5|type=beast|miscellaneous=!swarm}",
 														"\u2014"
 													],
 													[
 														"18th",
-														"{@filter 6|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5;6|type=beast|miscellaneous=!swarm}",
+														"{@filter 6|bestiary|challenge rating=0;1/8;1/4;1/2;1;2;3;4;5;6|type=beast|miscellaneous=!swarm}",
 														"\u2014"
 													]
 												]

@@ -9092,9 +9092,9 @@
 										"Notes"
 									],
 									"colStyles": [
-										"",
-										"",
-										""
+										"col-1 text-align-center",
+										"col-3",
+										"col-8"
 									],
 									"rows": [
 										[
@@ -9177,6 +9177,10 @@
 								{
 									"type": "table",
 									"caption": "Deadstone Cleft Reinforcements",
+									"colLabels": [
+										"d100",
+										"Creature(s)"
+									],
 									"colStyles": [
 										"col-2 text-align-center",
 										"col-10"
@@ -9756,18 +9760,18 @@
 				},
 				"The good news is that things could be worse. The bad news is that they soon will be. When the adventurers first arrive at Svardborg, Jarl Storvald isn't there. He's aboard the {@i Krigvind}, his flagship, hunting whales in the Sea of Moving Ice. As the characters search for his conch, the {@i Krigvind} and its giants are on their way back.",
 				{
-					"type": "entries",
+					"type": "section",
 					"name": "Frost Giants",
 					"entries": [
-						"Review the information on frost giants in the {@i Monster Manual}. It'll help you roleplay the giants in this chapter."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Reclaiming Svardborg",
-					"entries": [
-						"When Annam the All-Father shattered the ordning, Jarl Storvald and his frost giants set sail in an enormous ship called the {@i Krigvind} to reclaim Svardborg, a circle of immense lodges built atop an iceberg in the Sea of Moving Ice. In Svardborg's temple of Thrym, the giants found seven white dragon eggs. Shortly after the giants seized the eggs, a mated pair of adult white dragons, Cryovain and Isendraug, returned from a hunt and demanded that the giants relinquish their offspring. Storvald threatened to destroy the unhatched wyrmlings unless Cryovain and Isendraug submitted to his will. The dimwitted white dragons conceded and were subdued. The giants confined Isendraug to her lair in the temple, and Cryovain was chained to the deck of the {@i Krigvind}.",
-						"After enslaving the dragons, the giants stumbled upon a tribe of Northlander barbarians living on ice floes in the Sea of Moving Ice and conquered them as well. The Northfolk were transported to Svardborg and tasked with repairing the frost giants' lodges and freeing several greatships (giant-sized longships) entombed in the ice. These barbarians respect the might of the frost giants and, being evil themselves, serve the giants without protest. The barbarians speak Yeti as well as Giant, and have several enslaved yetis working among them. The frost giants and the yetis don't share a language, so the giants rely on the barbarians to command the yetis."
+						"Review the information on {@creature frost giant|MM|frost giants} in the {@i Monster Manual}. It'll help you roleplay the giants in this chapter.",
+						{
+							"type": "entries",
+							"name": "Reclaiming Svardborg",
+							"entries": [
+								"When Annam the All-Father shattered the ordning, Jarl Storvald and his frost giants set sail in an enormous ship called the {@i Krigvind} to reclaim Svardborg, a circle of immense lodges built atop an iceberg in the Sea of Moving Ice. In Svardborg's temple of Thrym, the giants found seven white dragon eggs. Shortly after the giants seized the eggs, a mated pair of adult white dragons, Cryovain and Isendraug, returned from a hunt and demanded that the giants relinquish their offspring. Storvald threatened to destroy the unhatched wyrmlings unless Cryovain and Isendraug submitted to his will. The dimwitted white dragons conceded and were subdued. The giants confined Isendraug to her lair in the temple, and Cryovain was chained to the deck of the {@i Krigvind}.",
+								"After enslaving the dragons, the giants stumbled upon a tribe of Northlander barbarians living on ice floes in the Sea of Moving Ice and conquered them as well. The Northfolk were transported to Svardborg and tasked with repairing the frost giants' lodges and freeing several greatships (giant-sized longships) entombed in the ice. These barbarians respect the might of the frost giants and, being evil themselves, serve the giants without protest. The barbarians speak Yeti as well as Giant, and have several enslaved yetis working among them. The frost giants and the yetis don't share a language, so the giants rely on the barbarians to command the yetis."
+							]
+						}
 					]
 				},
 				{
@@ -9780,245 +9784,265 @@
 					]
 				},
 				{
-					"type": "entries",
+					"type": "section",
 					"name": "Svardborg",
 					"entries": [
 						"In the age when giants ruled the North, Svardborg was a remote village where frost giants came to hunt whales and giant walruses. It was abandoned after the empire of Ostoria fell and, over time, drifted northward and became entombed in ice. Today, Svardborg floats amid hundreds of other icebergs in the Sea of Moving Ice. Three of the lodges are still entombed in ice, while the others have been chipped out of the ice and rendered habitable. The expansion and contraction of the ice over the centuries damaged the lodges, and repairs to them are under way. Jarl Storvald has sent ships to the mainland to gather the wood needed to make repairs.",
 						"The lodges are perched on sheer cliffs of ice that plunge 50 feet into the sea. The cliffs are only 10 feet high near the Drydock Lodge ({@area 8>3}), where the giants have built a wooden pier for docking their punts.",
-						"A wide cleft in the iceberg offers access to Svardborg's hollow heart-a water-filled chamber open to the sky where the giants moor their greatships. Stretched across the passage is a gate in the form of a net of thick iron chains. The giants lower the chains into the water to let their ships pass through. A small vessel, such as a rowboat sized for humans, can slip through the net even while the gate is raised. Ships bigger than a rowboat are too large to pass through the gate when it is raised."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Reaching Svardborg",
-					"entries": [
-						"Unless they have the means to get there by air, the characters must secure passage on a ship and travel across the Sea of Moving Ice to reach Svardborg (shown on maps 7.1 and 7.2).",
+						"A wide cleft in the iceberg offers access to Svardborg's hollow heart-a water-filled chamber open to the sky where the giants moor their greatships. Stretched across the passage is a gate in the form of a net of thick iron chains. The giants lower the chains into the water to let their ships pass through. A small vessel, such as a rowboat sized for humans, can slip through the net even while the gate is raised. Ships bigger than a rowboat are too large to pass through the gate when it is raised.",
 						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/SKT/Sword-Coast.jpg"
-							},
-							"title": "Sword Coast"
-						},
-						{
-							"type": "entries",
-							"name": "Airship",
+							"type": "inset",
+							"name": "Svardborg: General Features",
 							"entries": [
-								"If the characters have an airship (see the \"Airship of a Cult\" section in chapter 4), they can use it to reach Svardborg and avoid a long, icy sea voyage."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Flying Mounts",
-							"entries": [
-								"The coastal village of Fireshear is home to a griffon rider and trainer, Dasharra Keldabar. Characters seeking flying mounts in Waterdeep, Neverwinter, or Luskan are directed to Dasharra. They can pay her for griffon-riding lessons and then use the griffons to fly to Svardborg. When the characters are ready to leave, Dasharra leads the way on Screecher, her personal griffon mount. Dasharra's griffons fly at a speed of 8 miles per hour and can travel roughly 64 miles per day when flying against the wind. The flight to Svardborg takes five days, with strong, cold headwinds the entire way. Thanks to a stiff tailwind, the return trip is shorter, with the griffons able to cover roughly 80 miles a day. Dasharra expects characters to provide their own cold weather survival gear, supplies, and rations.",
-								"When the group reaches Svardborg, Dasharra recommends that the characters land their griffons on the docks south of {@area 8>3} (see the \"Approaching Svardborg\" section for other possible places to land). Dasharra remains with the griffons while the characters explore the frost giant fortress, and the characters can count on her to stick around for the return trip.",
-								"Characters can secure flying mounts of a different sort at Hawk's Nest, where knights of the Order of the Gauntlet breed hippogriffs. The journey from Hawk's Nest to Svardborg is long. Flying west against headwinds, the hippogriffs can travel 45 miles per day (three 3-hour flights with 1-hour rests in between). An eastward journey benefits from tailwinds, allowing the hippogriffs to travel 60 miles per day."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Seafaring Vessel",
-							"entries": [
-								"Characters who need to make the trip by ship can find a seafaring vessel in Luskan, Neverwinter, or Waterdeep.",
+								"Svardborg is an iceberg with several giant-sized lodges situated in a ring on it. Three of the lodges are entombed in ice, while the remainder are partially exposed. All the lodges have a thick layer of ice on them, indicated by the pale blue ring on the map. The hollow heart of Svardborg is a flooded ice cavern that is open to the sky and where the frost giants moor their enormous ships.",
 								{
 									"type": "entries",
-									"name": "Luskan",
+									"name": "Ceilings",
 									"entries": [
-										"The characters can approach one of the city's High Captains. For a bribe of no less than 1,500 gp (half up front, half upon safe return), a High Captain provides a longship with a crew of forty pirates (CN male and female Illuskan human {@creature bandit|MM|bandits}) and an arrogant but green captain, Vaalrik Redreef (CN male Illuskan human {@creature bandit captain|MM}). Once Svardborg is sighted, the ship drops anchor behind a nearby iceberg. The characters can lower rowboats into the sea and use them to reach Svardborg in 30 minutes. Captain Redreef agrees to wait up to 24 hours before raising anchor and setting sail for Luskan. If Svardborg's warning horn ({@area 8>2C}) is sounded, the inexperienced captain panics and abandons the party, ordering the crew to return home."
+										"Unless otherwise noted, ceilings inside the lodges are 40 feet high with 30-foot-high rafters."
 									]
 								},
-								"Characters who want to buy a ship can pay 10,000 gp for a leaky old longship that belongs to one of the High Captains. The characters must hire a crew of at least forty. A common sailor (use the {@creature commoner|MM} statistics) costs 2 sp per day, while a skilled sailor (use the {@creature bandit|MM} statistics) demands 2 gp per day. The characters can also try to hire a captain (use the {@creature bandit captain|MM} statistics) who normally charges 10 gp per day. One of the characters can serve as captain to avoid this expense, but that leaves no one with command experience aboard the ship after the characters disembark.",
 								{
 									"type": "entries",
-									"name": "Neverwinter",
+									"name": "Climbing",
 									"entries": [
-										"If one or more characters are members of the Lords' Alliance, they can arrange a brief meeting with Lord Dagult Neverember and try to convince him to sponsor a voyage to Svardborg. Neverember knows that the Sea of Moving Ice is patrolled by white dragons and seafaring barbarians, so a character must make a successful DC 17 Charisma (Persuasion) check to convince him of the mission's importance. If he decides to help, Neverember arranges for a galley called the {@i Seabreaker} to transport the characters."
+										"A creature can scale the icy cliffs of Svardborg and the ice-glazed walls of the lodges with a successful DC 20 Strength (Athletics) check. The cliffs that form the outer edge of the iceberg are 50 feet high, except for the wall that adjoins the docks (near {@area 8>3}), which is 10 feet high."
 									]
 								},
-								"The {@i Seabreaker} 's captain is an uptight albino wizard, Draevyn Thornbolt (N male Illuskan human {@creature mage|MM}). He dresses impeccably and looks thin and stern. He commands a crew of twenty trained sailors (male and female human {@creature bandit|MM|bandits} of various alignments and ethnicities) and sixty raw recruits ({@creature commoner|MM|commoners}). Draevyn's first mate is an affable brute, Kodd (NG male half-orc {@creature bandit captain|MM}), whose main tasks are to supervise the crew and keep everyone in good spirits.",
-								"Upon sighting Svardborg, the {@i Seabreaker} goes behind a smaller iceberg and drops anchor. Captain Thornbolt promises to wait up to 24 hours for the adventurers to return. The characters are given rowboats and can use them to reach Svardborg in 30 minutes.",
-								"There are no other crews in Neverwinter that are daring or foolhardy enough to venture into the Sea of Moving Ice, for any price, and there are no ships to buy.",
 								{
 									"type": "entries",
-									"name": "Waterdeep",
+									"name": "Cold Weather",
 									"entries": [
-										"If one or more characters are members of the Harpers, they can arrange to meet with the Open Lord of Waterdeep, Lady Laeral Silverhand. During the meeting, Laeral explains that ships are hard to come by in Waterdeep these days; the City of Splendors is in the midst of building a new navy after its fleet was scuttled by Dagult Neverember. Saying it's the best she can do, Laeral offers to give the characters a damaged longship that was recently captured by privateers. What the adventurers choose to do with it is up to them. The ship has 150 hit points and is worth 5,000 gp in its present condition. (For rules on ship repair, see the \"Owning a Ship\" section in chapter 5 of the {@i Dungeon Master's Guide}.) The longship's bow is carved and painted to look like the head and neck of a red dragon. The crew costs in Waterdeep are the same as those in Luskan."
+										"The temperature throughout Svardborg is well below 0 degrees Fahrenheit. The rules for extreme cold and frigid water apply (see the \"Wilderness Survival\" section in chapter 5 of the Dungeon Master's Guide)."
 									]
 								},
-								"If the characters are unable to meet with Laeral Silverhand, they can find a Tethyrian captain willing to take them north into the Sea of Moving Ice for 5,000 gp. The captain, Lady Taska Sonadora (CG female Tethyrian human {@creature noble|MM}), is, by all accounts, insane. She likes to spend her inherited wealth on bold (some would say foolish) ventures, and dreams of killing a white dragon and draping its hide over the wooden throne she keeps in her spacious cabin. She can be talked down to 2,500 gp if the characters promise to help her slay a dragon and let her keep its hide as a trophy.",
-								"Captain Sonadora's sailing ship is called the {@i Bobbin' Flagon}, and she stocks its hold with the finest Waterdhavian food and brandy for her crew of twenty sailors (CG male and female Tethyrian human {@creature bandit|MM|bandits}). Her manservant is the overworked, underpaid, mean Finn (CN male lightfoot halfling {@creature commoner|MM}).",
-								"The {@i Bobbin' Flagon} has four rowboats. Sonadora won't risk her ship in an assault of Svardborg, but she can easily be persuaded to accompany the adventurers as they explore the frost giant fortress if she thinks there's a white dragon to be had. In that case, she orders Finn and six armed sailors to join her. Two rowboats are needed to transport Captain Sonadora and her away team, leaving two rowboats for the adventurers."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Denizens",
-					"entries": [
-						"When the characters first arrive, most of Svardborg's frost giants are out hunting whales aboard Storvald's flagship (see \"The {@i Krigvind\"} section at the end of this chapter). A few giants stayed behind to guard the white dragon eggs and watch over the Northlander barbarians and yetis. Also present in Svardborg are Isendraug, a female adult white dragon who desperately wants her eggs back, and Nilraun Dhaerlost, the evil Zhentarim mage who is plotting with Jarl Storvald to find the {@item Ring of Winter|ToA}. Characters who interrogate Nilraun can learn where Storvald is and what the frost giant jarl is up to.",
-						"The giants' lodge has a warning horn on the upper floor (in {@area 8>2C}). If it is blown, the sound puts all of Svardborg on alert. Some giants remain at their posts and can't be surprised. Others gather the Northlanders and the yetis and search Svardborg for intruders to kill.",
-						"The Svardborg Roster table specifies the locations of the occupants and indicates how those creatures behave when the horn sounds or when intruders are detected.",
-						{
-							"type": "table",
-							"caption": "Svardborg Roster",
-							"colLabels": [
-								"Area",
-								"Creature(s)",
-								"Behavior"
-							],
-							"colStyles": [
-								"",
-								"",
-								""
-							],
-							"rows": [
-								[
-									"1A",
-									"8 ice mephits",
-									"The mephits remain in this area."
-								],
-								[
-									"1E",
-									"Nilraun Dhaerlost",
-									"Nilraun retreats to {@area 8>1G}."
-								],
-								[
-									"1G",
-									"2 frost giants, 2 winter wolves",
-									"These creatures fight to the death to guard the dragon eggs."
-								],
-								[
-									"1H",
-									"1 giant owl",
-									"The owl is caged until released. If released, it flies off to find the Krigvind."
-								],
-								[
-									"2A",
-									"3 frost giants",
-									"One giant climbs the stairs and tries to blow the warning horn ({@area 8>2C})."
-								],
-								[
-									"4D",
-									"2 frost giants",
-									"The giants watch over the dragon ({@area 8>4E}) at all times."
-								],
-								[
-									"4E",
-									"Isendraug (adult white dragon)",
-									"The dragon can be persuaded not to attack the characters in exchange for the safe return of its eggs. If the characters return her eggs, the dragon attacks them anyway."
-								],
-								[
-									"5",
-									"8 yetis",
-									"The yetis pursue intruders but otherwise remain in this area."
-								],
-								[
-									"7",
-									"1 frost giant, 18 tribal warriors, 3 yetis",
-									"If the horn in {@area 8>2C} sounds, the creatures use the nearby punts to reach the far side of the lagoon. The giant and half of the warriors go to the jarl's lodge ({@area 8>1}). The other creatures go to the drydock lodge ({@area 8>3})."
-								],
-								[
-									"9",
-									"2 frost giants (one per ship)",
-									"The giants head to {@area 8>2A} if the warning horn in {@area 8>2C} sounds."
-								]
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Svardborg: General Features",
-					"entries": [
-						"Svardborg is an iceberg with several giant-sized lodges situated in a ring on it. Three of the lodges are entombed in ice, while the remainder are partially exposed. All the lodges have a thick layer of ice on them, indicated by the pale blue ring on the map. The hollow heart of Svardborg is a flooded ice cavern that is open to the sky and where the frost giants moor their enormous ships.",
-						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/SKT/Svardborg-DM.jpg"
-							},
-							"title": "Svardborg DM"
-						},
-						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/SKT/Svardborg-DM2.jpg"
-							},
-							"title": "Svardborg DM2"
-						},
-						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/SKT/Svardborg-Players.jpg"
-							},
-							"title": "Svardborg Players"
-						},
-						{
-							"type": "entries",
-							"name": "Ceilings",
-							"entries": [
-								"Unless otherwise noted, ceilings inside the lodges are 40 feet high with 30-foot-high rafters."
+								{
+									"type": "entries",
+									"name": "Doors",
+									"entries": [
+										"Svardborg's doors are 25 feet tall and made of thick wood, with handles positioned 11 feet above the floor. A Huge giant has no trouble opening one. A smaller creature can attempt to open a door, provided that creature or some other helpful creature can reach the door's handle and unlatch it. While the handle is unlatched, a creature must use an action to push or pull on the heavy door, opening it with a successful DC 13 Strength (Athletics) check."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Illumination",
+									"entries": [
+										"Continual flame spells cast on torch sconces cast a pale bluish light that illuminates some areas."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Oversized Furnishings and Objects",
+									"entries": [
+										"Most of the furnishings and other items in Svardborg are sized for frost giants. Exceptions are noted in the text. Tables, benches, and other room fixtures are typically twice as high, long, and wide as their human-sized equivalents and roughly eight times the weight. Small and Medium creatures can scuttle under and clamber over giant-sized furniture, treating the spaces the furniture occupies as difficult terrain."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Stairs",
+									"entries": [
+										"Staircases within Svardborg are sized for frost giants. Each step is 3 feet tall by 3 feet deep. Medium and smaller creatures treat the staircases as difficult terrain."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Vessels",
+									"entries": [
+										"The frost giants use two types of ships: greatships and punts. These vehicles are made of frost-covered wood and have sails made from dragon wings. When not in use, the ships are anchored and their sails are lowered."
+									]
+								},
+								{
+									"type": "list",
+									"items": [
+										"Greatships are longships sized for frost giants. A typical greatship measures 240 feet from bow to stern and requires a crew of at least ten creatures that are Large or bigger. A greatship has a speed of 6 mph, AC 15, a damage threshold of 20, and 3,000 hit points. It can hold up to twenty giants plus 200 tons of cargo.",
+										"Punts are keelboats sized for frost giants. Each is roughly the same size as a human-scale longship. A single giant can steer a punt, and a crew of eight Small or Medium humanoids can operate one as well. A punt typically holds two giants and up to 10 tons of cargo. It has a speed of 2 mph, AC 15, a damage threshold of 15, and 300 hit points."
+									]
+								}
 							]
 						},
 						{
 							"type": "entries",
-							"name": "Climbing",
+							"name": "Reaching Svardborg",
 							"entries": [
-								"A creature can scale the icy cliffs of Svardborg and the ice-glazed walls of the lodges with a successful DC 20 Strength (Athletics) check. The cliffs that form the outer edge of the iceberg are 50 feet high, except for the wall that adjoins the docks (near {@area 8>3}), which is 10 feet high."
+								"Unless they have the means to get there by air, the characters must secure passage on a ship and travel across the Sea of Moving Ice to reach Svardborg (shown on maps 7.1 and 7.2).",
+								{
+									"type": "entries",
+									"name": "Airship",
+									"entries": [
+										"If the characters have an airship (see the \"Airship of a Cult\" section in chapter 4), they can use it to reach Svardborg and avoid a long, icy sea voyage."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Flying Mounts",
+									"entries": [
+										"The coastal village of Fireshear is home to a griffon rider and trainer, Dasharra Keldabar. Characters seeking flying mounts in Waterdeep, Neverwinter, or Luskan are directed to Dasharra. They can pay her for griffon-riding lessons and then use the griffons to fly to Svardborg. When the characters are ready to leave, Dasharra leads the way on Screecher, her personal griffon mount. Dasharra's griffons fly at a speed of 8 miles per hour and can travel roughly 64 miles per day when flying against the wind. The flight to Svardborg takes five days, with strong, cold headwinds the entire way. Thanks to a stiff tailwind, the return trip is shorter, with the griffons able to cover roughly 80 miles a day. Dasharra expects characters to provide their own cold weather survival gear, supplies, and rations.",
+										"When the group reaches Svardborg, Dasharra recommends that the characters land their griffons on the docks south of {@area 8>3} (see the \"Approaching Svardborg\" section for other possible places to land). Dasharra remains with the griffons while the characters explore the frost giant fortress, and the characters can count on her to stick around for the return trip.",
+										"Characters can secure flying mounts of a different sort at Hawk's Nest, where knights of the Order of the Gauntlet breed hippogriffs. The journey from Hawk's Nest to Svardborg is long. Flying west against headwinds, the hippogriffs can travel 45 miles per day (three 3-hour flights with 1-hour rests in between). An eastward journey benefits from tailwinds, allowing the hippogriffs to travel 60 miles per day."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Seafaring Vessel",
+									"entries": [
+										"Characters who need to make the trip by ship can find a seafaring vessel in Luskan, Neverwinter, or Waterdeep.",
+										{
+											"type": "entries",
+											"name": "Luskan",
+											"entries": [
+												"The characters can approach one of the city's High Captains. For a bribe of no less than 1,500 gp (half up front, half upon safe return), a High Captain provides a longship with a crew of forty pirates (CN male and female Illuskan human {@creature bandit|MM|bandits}) and an arrogant but green captain, Vaalrik Redreef (CN male Illuskan human {@creature bandit captain|MM}). Once Svardborg is sighted, the ship drops anchor behind a nearby iceberg. The characters can lower rowboats into the sea and use them to reach Svardborg in 30 minutes. Captain Redreef agrees to wait up to 24 hours before raising anchor and setting sail for Luskan. If Svardborg's warning horn ({@area 8>2C}) is sounded, the inexperienced captain panics and abandons the party, ordering the crew to return home."
+											]
+										},
+										"Characters who want to buy a ship can pay 10,000 gp for a leaky old longship that belongs to one of the High Captains. The characters must hire a crew of at least forty. A common sailor (use the {@creature commoner|MM} statistics) costs 2 sp per day, while a skilled sailor (use the {@creature bandit|MM} statistics) demands 2 gp per day. The characters can also try to hire a captain (use the {@creature bandit captain|MM} statistics) who normally charges 10 gp per day. One of the characters can serve as captain to avoid this expense, but that leaves no one with command experience aboard the ship after the characters disembark.",
+										{
+											"type": "entries",
+											"name": "Neverwinter",
+											"entries": [
+												"If one or more characters are members of the Lords' Alliance, they can arrange a brief meeting with Lord Dagult Neverember and try to convince him to sponsor a voyage to Svardborg. Neverember knows that the Sea of Moving Ice is patrolled by white dragons and seafaring barbarians, so a character must make a successful DC 17 Charisma (Persuasion) check to convince him of the mission's importance. If he decides to help, Neverember arranges for a galley called the {@i Seabreaker} to transport the characters."
+											]
+										},
+										"The {@i Seabreaker} 's captain is an uptight albino wizard, Draevyn Thornbolt (N male Illuskan human {@creature mage|MM}). He dresses impeccably and looks thin and stern. He commands a crew of twenty trained sailors (male and female human {@creature bandit|MM|bandits} of various alignments and ethnicities) and sixty raw recruits ({@creature commoner|MM|commoners}). Draevyn's first mate is an affable brute, Kodd (NG male half-orc {@creature bandit captain|MM}), whose main tasks are to supervise the crew and keep everyone in good spirits.",
+										"Upon sighting Svardborg, the {@i Seabreaker} goes behind a smaller iceberg and drops anchor. Captain Thornbolt promises to wait up to 24 hours for the adventurers to return. The characters are given rowboats and can use them to reach Svardborg in 30 minutes.",
+										"There are no other crews in Neverwinter that are daring or foolhardy enough to venture into the Sea of Moving Ice, for any price, and there are no ships to buy.",
+										{
+											"type": "entries",
+											"name": "Waterdeep",
+											"entries": [
+												"If one or more characters are members of the Harpers, they can arrange to meet with the Open Lord of Waterdeep, Lady Laeral Silverhand. During the meeting, Laeral explains that ships are hard to come by in Waterdeep these days; the City of Splendors is in the midst of building a new navy after its fleet was scuttled by Dagult Neverember. Saying it's the best she can do, Laeral offers to give the characters a damaged longship that was recently captured by privateers. What the adventurers choose to do with it is up to them. The ship has 150 hit points and is worth 5,000 gp in its present condition. (For rules on ship repair, see the \"Owning a Ship\" section in chapter 5 of the {@i Dungeon Master's Guide}.) The longship's bow is carved and painted to look like the head and neck of a red dragon. The crew costs in Waterdeep are the same as those in Luskan."
+											]
+										},
+										"If the characters are unable to meet with Laeral Silverhand, they can find a Tethyrian captain willing to take them north into the Sea of Moving Ice for 5,000 gp. The captain, Lady Taska Sonadora (CG female Tethyrian human {@creature noble|MM}), is, by all accounts, insane. She likes to spend her inherited wealth on bold (some would say foolish) ventures, and dreams of killing a white dragon and draping its hide over the wooden throne she keeps in her spacious cabin. She can be talked down to 2,500 gp if the characters promise to help her slay a dragon and let her keep its hide as a trophy.",
+										"Captain Sonadora's sailing ship is called the {@i Bobbin' Flagon}, and she stocks its hold with the finest Waterdhavian food and brandy for her crew of twenty sailors (CG male and female Tethyrian human {@creature bandit|MM|bandits}). Her manservant is the overworked, underpaid, mean Finn (CN male lightfoot halfling {@creature commoner|MM}).",
+										"The {@i Bobbin' Flagon} has four rowboats. Sonadora won't risk her ship in an assault of Svardborg, but she can easily be persuaded to accompany the adventurers as they explore the frost giant fortress if she thinks there's a white dragon to be had. In that case, she orders Finn and six armed sailors to join her. Two rowboats are needed to transport Captain Sonadora and her away team, leaving two rowboats for the adventurers."
+									]
+								}
 							]
 						},
 						{
 							"type": "entries",
-							"name": "Cold Weather",
+							"name": "Approaching Svardborg",
 							"entries": [
-								"The temperature throughout Svardborg is well below 0 degrees Fahrenheit. The rules for extreme cold and frigid water apply (see the \"Wilderness Survival\" section in chapter 5 of the Dungeon Master's Guide)."
+								"Svardborg is so isolated that the frost giants don't bother posting lookouts. Their lack of vigilance makes it easy to approach the iceberg unseen.",
+								{
+									"type": "entries",
+									"name": "By Water",
+									"entries": [
+										"Characters who approach Svardborg by water can tether their vessels to the 10-foot-high wooden docks south of the Drydock Lodge (area 3). Or they can avoid the docks and scale one of Svardborg's 50-foot-tall icy cliffs, tying their boats to a spike hammered into the cliff face. Neither of these methods of approach attracts attention.",
+										"If the characters enter the hollow interior of the iceberg, they risk being spotted by the creatures on the greatships (areas 7 and 9). The gate is up, but the characters can maneuver their rowboats through the gaps between its thick chains."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "By Air",
+									"entries": [
+										"Characters who approach Svardborg on flying mounts can land on the outer docks (near area 3) without attracting attention. Although the iceberg's central grotto is open to the sky and it's possible to land griffons on the decks of the greatships within, doing so without being noticed by the creatures on the greatships is impossible.",
+										"Characters arriving by airship can land the vessel in the water by the docks. There are also a few landing zones on the iceberg itself, each marked with stars on the map. These areas include two flat patches of ice and snow between areas 1 and 2, as well as a pillar of ice west of area 2 that's connected to the main iceberg by a natural ice bridge. Other places on the iceberg are ill equipped for landings, because the terrain is sloped. Characters can also land their vessel on the water inside the central grotto, but the creatures on the greatships (areas 7 and 9) automatically spot them."
+									]
+								}
 							]
 						},
 						{
 							"type": "entries",
-							"name": "Doors",
+							"name": "Denizens",
 							"entries": [
-								"Svardborg's doors are 25 feet tall and made of thick wood, with handles positioned 11 feet above the floor. A Huge giant has no trouble opening one. A smaller creature can attempt to open a door, provided that creature or some other helpful creature can reach the door's handle and unlatch it. While the handle is unlatched, a creature must use an action to push or pull on the heavy door, opening it with a successful DC 13 Strength (Athletics) check."
+								"When the characters first arrive, most of Svardborg's frost giants are out hunting whales aboard Storvald's flagship (see \"The {@i Krigvind\"} section at the end of this chapter). A few giants stayed behind to guard the white dragon eggs and watch over the Northlander barbarians and yetis. Also present in Svardborg are Isendraug, a female adult white dragon who desperately wants her eggs back, and Nilraun Dhaerlost, the evil Zhentarim mage who is plotting with Jarl Storvald to find the {@item Ring of Winter|ToA}. Characters who interrogate Nilraun can learn where Storvald is and what the frost giant jarl is up to.",
+								"The giants' lodge has a warning horn on the upper floor (in {@area 8>2C}). If it is blown, the sound puts all of Svardborg on alert. Some giants remain at their posts and can't be surprised. Others gather the Northlanders and the yetis and search Svardborg for intruders to kill.",
+								"The Svardborg Roster table specifies the locations of the occupants and indicates how those creatures behave when the horn sounds or when intruders are detected.",
+								{
+									"type": "table",
+									"caption": "Svardborg Roster",
+									"colLabels": [
+										"Area",
+										"Creature(s)",
+										"Behavior"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-3",
+										"col-8"
+									],
+									"rows": [
+										[
+											"1A",
+											"8 {@creature ice mephit|MM|ice mephits}",
+											"The mephits remain in this area."
+										],
+										[
+											"1E",
+											"Nilraun Dhaerlost",
+											"Nilraun retreats to {@area 8>1G}."
+										],
+										[
+											"1G",
+											"2 {@creature frost giant|MM|frost giants}, 2 {@creature winter wolf|MM|winter wolves}",
+											"These creatures fight to the death to guard the dragon eggs."
+										],
+										[
+											"1H",
+											"1 {@creature giant owl}",
+											"The owl is caged until released. If released, it flies off to find the Krigvind."
+										],
+										[
+											"2A",
+											"3 {@creature frost giant|MM|frost giants}",
+											"One giant climbs the stairs and tries to blow the warning horn ({@area 8>2C})."
+										],
+										[
+											"4D",
+											"2 {@creature frost giant|MM|frost giants}",
+											"The giants watch over the dragon ({@area 8>4E}) at all times."
+										],
+										[
+											"4E",
+											"Isendraug ({@creature adult white dragon})",
+											"The dragon can be persuaded not to attack the characters in exchange for the safe return of its eggs. If the characters return her eggs, the dragon attacks them anyway."
+										],
+										[
+											"5",
+											"8 {@creature yeti|MM|yetis}",
+											"The yetis pursue intruders but otherwise remain in this area."
+										],
+										[
+											"7",
+											"1 {@creature frost giant}, 18 {@creature tribal warrior|MM|tribal warriors}, 3 {@creature yeti|MM|yetis}",
+											"If the horn in {@area 8>2C} sounds, the creatures use the nearby punts to reach the far side of the lagoon. The giant and half of the warriors go to the jarl's lodge ({@area 8>1}). The other creatures go to the drydock lodge ({@area 8>3})."
+										],
+										[
+											"9",
+											"2 {@creature frost giant|MM|frost giants} (one per ship)",
+											"The giants head to {@area 8>2A} if the warning horn in {@area 8>2C} sounds."
+										]
+									]
+								}
 							]
 						},
 						{
-							"type": "entries",
-							"name": "Illumination",
-							"entries": [
-								"Continual flame spells cast on torch sconces cast a pale bluish light that illuminates some areas."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Oversized Furnishings and Objects",
-							"entries": [
-								"Most of the furnishings and other items in Svardborg are sized for frost giants. Exceptions are noted in the text. Tables, benches, and other room fixtures are typically twice as high, long, and wide as their human-sized equivalents and roughly eight times the weight. Small and Medium creatures can scuttle under and clamber over giant-sized furniture, treating the spaces the furniture occupies as difficult terrain."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Stairs",
-							"entries": [
-								"Staircases within Svardborg are sized for frost giants. Each step is 3 feet tall by 3 feet deep. Medium and smaller creatures treat the staircases as difficult terrain."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Vessels",
-							"entries": [
-								"The frost giants use two types of ships: greatships and punts. These vehicles are made of frost-covered wood and have sails made from dragon wings. When not in use, the ships are anchored and their sails are lowered."
-							]
-						},
-						{
-							"type": "list",
-							"items": [
-								"Greatships are longships sized for frost giants. A typical greatship measures 240 feet from bow to stern and requires a crew of at least ten creatures that are Large or bigger. A greatship has a speed of 6 mph, AC 15, a damage threshold of 20, and 3,000 hit points. It can hold up to twenty giants plus 200 tons of cargo.",
-								"Punts are keelboats sized for frost giants. Each is roughly the same size as a human-scale longship. A single giant can steer a punt, and a crew of eight Small or Medium humanoids can operate one as well. A punt typically holds two giants and up to 10 tons of cargo. It has a speed of 2 mph, AC 15, a damage threshold of 15, and 300 hit points."
+							"type": "gallery",
+							"images": [
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/SKT/Svardborg-DM.jpg"
+									},
+									"title": "Svardborg DM"
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/SKT/Svardborg-DM2.jpg"
+									},
+									"title": "Svardborg DM2"
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/SKT/Svardborg-Players.jpg"
+									},
+									"title": "Svardborg Players"
+								}
 							]
 						}
 					]
@@ -10029,151 +10053,156 @@
 					"entries": [
 						"This three-story lodge is partially buried under ice but has numerous entrances. Steps ascend to the main doors (leading to {@area 8>1A}), and a tunnel cuts through the ice to a door set into the north wall of the lodge (leading to {@area 8>1D}). Flying or climbing characters can reach a balcony on the second floor (leading to {@area 8>1G}) or a gaping window on the third floor (leading to {@area 8>1H}).",
 						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/SKT/Jarls-Lodge-L1.jpg"
-							},
-							"title": "Jarls Lodge L1"
+							"type": "gallery",
+							"images": [
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/SKT/Jarls-Lodge-L1.jpg"
+									},
+									"title": "Jarls Lodge L1"
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/SKT/Jarls-Lodge-L2.jpg"
+									},
+									"title": "Jarls Lodge L2"
+								}
+							]
 						},
 						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/SKT/Jarls-Lodge-L2.jpg"
-							},
-							"title": "Jarls Lodge L2"
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "1A. Feast Hall",
-					"entries": [
-						"The frost giants have tracked snow into this great hall, which is illuminated by continual flame spells cast on torches that are mounted to the walls and wooden pillars. These cold fires bathe the hall in a bluish light.",
-						"Six massive wooden tables, each one 5 feet tall, are arranged about the room. The frost giants sit around them to eat. Wooden goblets and scraps of frozen meat lie strewn upon the tables as well as underneath them. In the center of the hall is the thawing carcass of a mammoth suspended on a giant wooden spit. Three large, empty ale barrels also stand about the room.",
-						"Perched on the frozen rafters 30 feet overhead are eight {@creature ice mephit|MM|ice mephits}. They watch intruders closely but don't attack unless one or more of them are harmed."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "1B. Hunting Racks and Stores",
-					"entries": [
-						"Wooden racks and hooks on the western wall hold fishing equipment: dozens of harpoons, nets, and coils of rope. Curtains made of stitched walrus hide hang over doorways at the north and south ends of the east wall.",
+							"type": "entries",
+							"name": "1A. Feast Hall",
+							"entries": [
+								"The frost giants have tracked snow into this great hall, which is illuminated by continual flame spells cast on torches that are mounted to the walls and wooden pillars. These cold fires bathe the hall in a bluish light.",
+								"Six massive wooden tables, each one 5 feet tall, are arranged about the room. The frost giants sit around them to eat. Wooden goblets and scraps of frozen meat lie strewn upon the tables as well as underneath them. In the center of the hall is the thawing carcass of a mammoth suspended on a giant wooden spit. Three large, empty ale barrels also stand about the room.",
+								"Perched on the frozen rafters 30 feet overhead are eight {@creature ice mephit|MM|ice mephits}. They watch intruders closely but don't attack unless one or more of them are harmed."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "1B. Hunting Racks and Stores",
+							"entries": [
+								"Wooden racks and hooks on the western wall hold fishing equipment: dozens of harpoons, nets, and coils of rope. Curtains made of stitched walrus hide hang over doorways at the north and south ends of the east wall."
+							]
+						},
 						{
 							"type": "entries",
 							"name": "1C. Stores",
 							"entries": [
 								"These rooms contain supplies that the frost giants have plundered from ships along the Sword Coast, including crates of foodstuffs and barrels of salt, wine, and ale."
 							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "1D. Oar Storage",
-					"entries": [
-						"Giant oars hang from the walls of this room, which has snowy giant tracks on the floor. A door in the north wall opens to a tunnel through the ice. It leads to a ledge overlooking a greatship ({@area 8>9}). A wooden staircase leads up along the western wall. The stairs creak if anyone climbs them, alerting the villain in {@area 8>1E}."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "1E. Steward's Office",
-					"entries": [
-						"This room contains a wooden table, two large empty barrels, and a crate filled with packing straw. Standing against the north wall is a cabinet without doors, in which hang three cloaks made of walrus hide.",
-						"Also present is a fur-clad Zhentarim wizard, Nilraun Dhaerlost (NE male Illuskan human {@creature mage|MM} with a {@item wand of fireballs|DMG}), who believes that the frost giants are his best shot at obtaining the {@item Ring of Winter|ToA}. He tries to remain close to Storvald, but the frost giant jarl won't allow Nilraun to accompany him on his whale-hunting expeditions. Nilraun spends his idle hours contemplating how to steal the ring while reminding the giants that the Zhentarim can be a powerful ally. Nilraun knows the command word to free Cryovain (\"uvenfetter\"), and he trades this information for his life if he is subdued or cornered. For more information about the captured white dragon, see \"The {@i Krigvind\"} later in this chapter.",
-						"Nilraun has blond hair, piercing blue eyes, and a perpetual scowl. He's pacing the room, trying to stay warm. If he hears trouble below or the sound of someone climbing the stairs, he retreats to Storvald's throne room ({@area 8>1G}). Two closed doors stand between him and that room. Since he isn't a giant, Nilraun must use an action to try to open each door. If he succeeds in opening the doors, he leaves them open behind him.",
+						},
 						{
 							"type": "entries",
-							"name": "Treasure",
+							"name": "1D. Oar Storage",
 							"entries": [
-								"Nilraun wears a wolf fur cloak (worth 25 gp), wields a {@item wand of fireballs|DMG}, and has a spell scroll of {@spell sending|PHB} in a wooden scroll tube fastened to his belt. He also carries a spellbook in which are written the spells he has prepared (see the mage in the {@i Monster Manual})."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "1F. Winter Wolves' Den",
-					"entries": [
-						"The floor of this room is strewn with gnawed mammoth bones. A frost-covered barrel in the southwest corner contains dead fish. The winter wolves that normally sleep here are encountered in {@area 8>1G}."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "1G. Throne Room",
-					"entries": [
-						"Icicles hang from the rafters of this ice-glazed hall, which is illuminated by bluish {@spell continual flame|PHB} spells. An ivory drinking horn rests atop a frozen table in the middle of the room. South of the table are a rug made from the hide of a white saber-toothed tiger and a throne carved from ice. Lying on the seat of the throne is a large conch (see \"Treasure\"). Against the walls stand three shelving units heaped with furs and packed with bottles of wine, stoppered jugs, and casks of mead.",
-						"Snowy wind blows in through a pillared opening in the south wall that leads to a balcony with no railing.",
-						"Jarl Storvald retires here when he's not plying the northern waters. He isn't here when the characters first arrive at Svardborg. Instead, two {@creature frost giant|MM|frost giants} and two {@creature winter wolf|MM|winter wolves} stand guard here, watching over seven frost-covered white dragon eggs in the northeast corner of the room. Each egg is 4 feet tall, weighs 300 pounds, and is covered with an icy glaze. An egg has AC 14 and 20 hit points. When an egg is broken, there is a 50 percent chance that the {@creature white dragon wyrmling|MM} inside hatches and is able to attack; otherwise, it is dead.",
-						"A wooden ladder ascends 40 feet to {@area 8>1H}; the rungs of the ladder are 5 feet apart.",
-						"The giants and the wolves fight to the death. If Nilraun is here, he casts spells from behind the throne until his life is at risk, then he flees (see \"Development\").",
-						{
-							"type": "entries",
-							"name": "Treasure",
-							"entries": [
-								"Storvald's {@item conch of teleportation|SKT} rests on the ice throne. The ivory drinking horn on the table is made from the tusk of a mammoth; it's worth 750 gp and weighs 75 pounds. A crate in the southeast corner of the room holds one hundred pieces of scrimshaw (worth 10 gp each) packed in sawdust."
+								"Giant oars hang from the walls of this room, which has snowy giant tracks on the floor. A door in the north wall opens to a tunnel through the ice. It leads to a ledge overlooking a greatship ({@area 8>9}). A wooden staircase leads up along the western wall. The stairs creak if anyone climbs them, alerting the villain in {@area 8>1E}."
 							]
 						},
 						{
 							"type": "entries",
-							"name": "Development.",
+							"name": "1E. Steward's Office",
 							"entries": [
-								"Nilraun hasn't placed his fate entirely in the hands of the frost giants. Hiding on a nearby iceberg are two Zhentarim {@creature scout|MM|scouts} (NE female Illuskan humans) and three {@creature manticore|MM|manticores}. If Nilraun ever thinks his life is in jeopardy, he uses his spell {@item Spell Scroll (3rd level)|DMG|scroll of} {@spell sending|PHB} to contact the scouts and waits for them on the balcony. Each scout rides a manticore and provides aerial support while Nilraun mounts the third manticore and uses it to escape. Nilraun and his escorts return to the mainland and report what they've seen to their superiors.",
-								"Nothing about Nilraun's appearance suggests that he's a member of the Zhentarim. If Nilraun learns that one or more characters work for the Black Network, he reveals his allegiance to the faction but advises the characters to leave Svardborg before the {@i Krigvind} returns. Nilraun isn't looking out for anyone's interests but his own; he wants the {@item Ring of Winter|ToA} for himself and doesn't trust other Zhents to help him get it.",
-								"Unless you decide otherwise, the {@i Krigvind} returns after the characters obtain the conch but before they have time to attune to it. The bellows of the {@i Krigvind's} crew can be heard in the throne room as the ship approaches (see \"The {@i Krigvind\"} section at the end of this chapter).",
+								"This room contains a wooden table, two large empty barrels, and a crate filled with packing straw. Standing against the north wall is a cabinet without doors, in which hang three cloaks made of walrus hide.",
+								"Also present is a fur-clad Zhentarim wizard, Nilraun Dhaerlost (NE male Illuskan human {@creature mage|MM} with a {@item wand of fireballs|DMG}), who believes that the frost giants are his best shot at obtaining the {@item Ring of Winter|ToA}. He tries to remain close to Storvald, but the frost giant jarl won't allow Nilraun to accompany him on his whale-hunting expeditions. Nilraun spends his idle hours contemplating how to steal the ring while reminding the giants that the Zhentarim can be a powerful ally. Nilraun knows the command word to free Cryovain (\"uvenfetter\"), and he trades this information for his life if he is subdued or cornered. For more information about the captured white dragon, see \"The {@i Krigvind\"} later in this chapter.",
+								"Nilraun has blond hair, piercing blue eyes, and a perpetual scowl. He's pacing the room, trying to stay warm. If he hears trouble below or the sound of someone climbing the stairs, he retreats to Storvald's throne room ({@area 8>1G}). Two closed doors stand between him and that room. Since he isn't a giant, Nilraun must use an action to try to open each door. If he succeeds in opening the doors, he leaves them open behind him.",
 								{
-									"type": "image",
-									"href": {
-										"type": "internal",
-										"path": "adventure/SKT/Storvald.jpg"
-									},
-									"title": "Storvald"
+									"type": "entries",
+									"name": "Treasure",
+									"entries": [
+										"Nilraun wears a wolf fur cloak (worth 25 gp), wields a {@item wand of fireballs|DMG}, and has a spell scroll of {@spell sending|PHB} in a wooden scroll tube fastened to his belt. He also carries a spellbook in which are written the spells he has prepared (see the mage in the {@i Monster Manual})."
+									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "1H. Treasury",
-					"entries": [
-						"This room on the top floor of the lodge has a pitched roof. A wide triangular opening in the west wall allows wind and snow to enter. Near this opening, hanging from a chain bolted to a rafter, is a 20-foot-tall wooden cage that holds a {@creature giant owl|MM}. Jarl Storvald uses the owl to deliver messages to his fleet. A wooden latch keeps the cage shut. If the owl is released, it flies off, locates the Krigvind, and reports to Storvald what it has seen.",
+						},
 						{
 							"type": "entries",
-							"name": "Treasure",
+							"name": "1F. Winter Wolves' Den",
 							"entries": [
-								"Characters who search the room find several wooden barrels, crates, and chests. Crates measure 10 feet on a side. Barrels stand 8 feet tall and weigh 500 pounds each. Chests are 10 feet long, 6 feet wide, and 7 feet tall with frozen lids. A lid must be thawed to remove it, or one can be pried open with a successful DC 12 Strength (Athletics) check. (Using a crowbar or a similar tool grants advantage on the check.) Applying an open flame to a lid for 1 minute thaws the ice that binds it."
-							]
-						},
-						"The containers and their contents are as follows:",
-						{
-							"type": "list",
-							"items": [
-								"A barrel of pitch and two barrels of oil",
-								"A crate packed with sixty flasks of alchemist's fire",
-								"A crate containing a dismantled clockwork mule, along with a scroll of instructional diagrams labeled in Dethek, the Dwarvish script (see \"Development\")",
-								"A crate packed with a gold-inlaid wooden harp (worth 250 gp, weighs 100 pounds), two drums (worth 6 gp each), and six flutes (worth 2 gp each)",
-								"A chest containing four 50-foot lengths of chain",
-								"Four chests, each one holding {@dice 3d6 × 100} cp, {@dice 3d6 × 100} sp, and {@dice 3d6 × 100} gp",
-								"A chest containing a dead, frozen shield dwarf (female) clad in {@item adamantine plate armor|DMG}, clutching a warhammer and carrying {@dice 1d3} magic items, each determined by rolling on Magic Item Table C in chapter 7 of the {@i Dungeon Master's Guide}."
+								"The floor of this room is strewn with gnawed mammoth bones. A frost-covered barrel in the southwest corner contains dead fish. The winter wolves that normally sleep here are encountered in {@area 8>1G}."
 							]
 						},
 						{
 							"type": "entries",
-							"name": "Development",
+							"name": "1G. Throne Room",
 							"entries": [
-								"Characters who cast a speak with dead spell on the frozen shield dwarf can learn that she was named Mordana Ur'gray and stowed away aboard a frost giant greatship by hiding in a chest. Unfortunately for her, the chest lid froze shut, and she couldn't get it open."
+								"Icicles hang from the rafters of this ice-glazed hall, which is illuminated by bluish {@spell continual flame|PHB} spells. An ivory drinking horn rests atop a frozen table in the middle of the room. South of the table are a rug made from the hide of a white saber-toothed tiger and a throne carved from ice. Lying on the seat of the throne is a large conch (see \"Treasure\"). Against the walls stand three shelving units heaped with furs and packed with bottles of wine, stoppered jugs, and casks of mead.",
+								"Snowy wind blows in through a pillared opening in the south wall that leads to a balcony with no railing.",
+								"Jarl Storvald retires here when he's not plying the northern waters. He isn't here when the characters first arrive at Svardborg. Instead, two {@creature frost giant|MM|frost giants} and two {@creature winter wolf|MM|winter wolves} stand guard here, watching over seven frost-covered white dragon eggs in the northeast corner of the room. Each egg is 4 feet tall, weighs 300 pounds, and is covered with an icy glaze. An egg has AC 14 and 20 hit points. When an egg is broken, there is a 50 percent chance that the {@creature white dragon wyrmling|MM} inside hatches and is able to attack; otherwise, it is dead.",
+								"A wooden ladder ascends 40 feet to {@area 8>1H}; the rungs of the ladder are 5 feet apart.",
+								"The giants and the wolves fight to the death. If Nilraun is here, he casts spells from behind the throne until his life is at risk, then he flees (see \"Development\").",
+								{
+									"type": "entries",
+									"name": "Treasure",
+									"entries": [
+										"Storvald's {@item conch of teleportation|SKT} rests on the ice throne. The ivory drinking horn on the table is made from the tusk of a mammoth; it's worth 750 gp and weighs 75 pounds. A crate in the southeast corner of the room holds one hundred pieces of scrimshaw (worth 10 gp each) packed in sawdust."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Development.",
+									"entries": [
+										"Nilraun hasn't placed his fate entirely in the hands of the frost giants. Hiding on a nearby iceberg are two Zhentarim {@creature scout|MM|scouts} (NE female Illuskan humans) and three {@creature manticore|MM|manticores}. If Nilraun ever thinks his life is in jeopardy, he uses his spell {@item Spell Scroll (3rd level)|DMG|scroll of} {@spell sending|PHB} to contact the scouts and waits for them on the balcony. Each scout rides a manticore and provides aerial support while Nilraun mounts the third manticore and uses it to escape. Nilraun and his escorts return to the mainland and report what they've seen to their superiors.",
+										"Nothing about Nilraun's appearance suggests that he's a member of the Zhentarim. If Nilraun learns that one or more characters work for the Black Network, he reveals his allegiance to the faction but advises the characters to leave Svardborg before the {@i Krigvind} returns. Nilraun isn't looking out for anyone's interests but his own; he wants the {@item Ring of Winter|ToA} for himself and doesn't trust other Zhents to help him get it.",
+										"Unless you decide otherwise, the {@i Krigvind} returns after the characters obtain the conch but before they have time to attune to it. The bellows of the {@i Krigvind's} crew can be heard in the throne room as the ship approaches (see \"The {@i Krigvind\"} section at the end of this chapter).",
+										{
+											"type": "image",
+											"href": {
+												"type": "internal",
+												"path": "adventure/SKT/Storvald.jpg"
+											},
+											"title": "Storvald"
+										}
+									]
+								}
 							]
 						},
-						"It takes 8 hours for one character to assemble the clockwork mule. At the end of that time, the character can make a DC 20 Intelligence check. The check is made with advantage if the character has the assembly instructions and can read Dethek (or has someone who can translate). If the check succeeds, the clockwork mule is assembled correctly. If the check fails, the character ends up with one or more leftover parts that the mule needs to function; the character must spend another {@dice 1d4} hours working on the mule, and can then make a new Intelligence check to get it working.",
-						"The clockwork mule has the statistics of a {@creature mule|MM}, with the following changes.",
 						{
-							"type": "list",
-							"items": [
-								"It is a construct. It follows the orders of its assembler.",
-								"It is immune to poison and psychic damage; the charmed, frightened, paralyzed, petrified, and poisoned conditions; and {@condition exhaustion}.",
-								"Repairing 1 hit point of damage to the clockwork mule takes 1 hour and requires replacement parts, which can be bought in a large city for 20 gp. If the mule drops to 0 hit points, it is destroyed and unrepairable."
+							"type": "entries",
+							"name": "1H. Treasury",
+							"entries": [
+								"This room on the top floor of the lodge has a pitched roof. A wide triangular opening in the west wall allows wind and snow to enter. Near this opening, hanging from a chain bolted to a rafter, is a 20-foot-tall wooden cage that holds a {@creature giant owl|MM}. Jarl Storvald uses the owl to deliver messages to his fleet. A wooden latch keeps the cage shut. If the owl is released, it flies off, locates the Krigvind, and reports to Storvald what it has seen.",
+								{
+									"type": "entries",
+									"name": "Treasure",
+									"entries": [
+										"Characters who search the room find several wooden barrels, crates, and chests. Crates measure 10 feet on a side. Barrels stand 8 feet tall and weigh 500 pounds each. Chests are 10 feet long, 6 feet wide, and 7 feet tall with frozen lids. A lid must be thawed to remove it, or one can be pried open with a successful DC 12 Strength (Athletics) check. (Using a crowbar or a similar tool grants advantage on the check.) Applying an open flame to a lid for 1 minute thaws the ice that binds it."
+									]
+								},
+								"The containers and their contents are as follows:",
+								{
+									"type": "list",
+									"items": [
+										"A barrel of pitch and two barrels of oil",
+										"A crate packed with sixty flasks of alchemist's fire",
+										"A crate containing a dismantled clockwork mule, along with a scroll of instructional diagrams labeled in Dethek, the Dwarvish script (see \"Development\")",
+										"A crate packed with a gold-inlaid wooden harp (worth 250 gp, weighs 100 pounds), two drums (worth 6 gp each), and six flutes (worth 2 gp each)",
+										"A chest containing four 50-foot lengths of chain",
+										"Four chests, each one holding {@dice 3d6 × 100} cp, {@dice 3d6 × 100} sp, and {@dice 3d6 × 100} gp",
+										"A chest containing a dead, frozen shield dwarf (female) clad in {@item adamantine plate armor|DMG}, clutching a warhammer and carrying {@dice 1d3} magic items, each determined by rolling on Magic Item Table C in chapter 7 of the {@i Dungeon Master's Guide}."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Development",
+									"entries": [
+										"Characters who cast a speak with dead spell on the frozen shield dwarf can learn that she was named Mordana Ur'gray and stowed away aboard a frost giant greatship by hiding in a chest. Unfortunately for her, the chest lid froze shut, and she couldn't get it open."
+									]
+								},
+								"It takes 8 hours for one character to assemble the clockwork mule. At the end of that time, the character can make a DC 20 Intelligence check. The check is made with advantage if the character has the assembly instructions and can read Dethek (or has someone who can translate). If the check succeeds, the clockwork mule is assembled correctly. If the check fails, the character ends up with one or more leftover parts that the mule needs to function; the character must spend another {@dice 1d4} hours working on the mule, and can then make a new Intelligence check to get it working.",
+								"The clockwork mule has the statistics of a {@creature mule|MM}, with the following changes.",
+								{
+									"type": "list",
+									"items": [
+										"It is a construct. It follows the orders of its assembler.",
+										"It is immune to poison and psychic damage; the charmed, frightened, paralyzed, petrified, and poisoned conditions; and {@condition exhaustion}.",
+										"Repairing 1 hit point of damage to the clockwork mule takes 1 hour and requires replacement parts, which can be bought in a large city for 20 gp. If the mule drops to 0 hit points, it is destroyed and unrepairable."
+									]
+								}
 							]
 						}
 					]
@@ -10184,72 +10213,77 @@
 					"entries": [
 						"This two-story lodge is partially buried in the ice. It has three possible entrances: the main entrance on the ground floor (leading to {@area 8>2A}), an ice tunnel that leads to a door in the back wall of the lodge, and a large window on the second floor that has a great horn sticking out of it ({@area 8>2C}).",
 						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/SKT/Giants-Lodge-L1.jpg"
-							},
-							"title": "Giants Lodge L1"
+							"type": "gallery",
+							"images": [
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/SKT/Giants-Lodge-L1.jpg"
+									},
+									"title": "Giants Lodge L1"
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/SKT/Giants-Lodge-L2.jpg"
+									},
+									"title": "Giants Lodge L2"
+								}
+							]
 						},
 						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/SKT/Giants-Lodge-L2.jpg"
-							},
-							"title": "Giants Lodge L2"
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "2A. Gathering Hall",
-					"entries": [
-						"Three {@creature frost giant|MM|frost giants} (one male and two females) are engaged in a drinking contest in this area and are so inebriated that they are considered poisoned (see appendix A in the {@i Player's Handbook}). Despite their present condition, they are spoiling for a fight and hoist their greataxes when intruders appear. After the first round of combat, it occurs to one of the giants that she should sound the warning horn. She staggers up a flight of wooden stairs to blow the horn ({@area 8>2C}) while the other giants keep fighting. If the characters react quickly enough, they can prevent her from reaching the horn. If they keep the giant from sounding the horn, the other inhabitants of Svardborg aren't placed on alert.",
-						"The frost giants have tracked a lot of snow through the main doors. Torch sconces mounted to wooden pillars have {@spell continual flame|PHB} spells cast on them, shedding cold blue light. Mounted on the walls of the lodge are the severed heads of polar bears, giant walruses, young white dragons, and remorhazes. A long wooden table and four smaller round tables take up much of the floor space, their tops strewn with wooden mugs and scraps of leftover food. A few empty barrels and crates sit near a wall.",
+							"type": "entries",
+							"name": "2A. Gathering Hall",
+							"entries": [
+								"Three {@creature frost giant|MM|frost giants} (one male and two females) are engaged in a drinking contest in this area and are so inebriated that they are considered poisoned (see appendix A in the {@i Player's Handbook}). Despite their present condition, they are spoiling for a fight and hoist their greataxes when intruders appear. After the first round of combat, it occurs to one of the giants that she should sound the warning horn. She staggers up a flight of wooden stairs to blow the horn ({@area 8>2C}) while the other giants keep fighting. If the characters react quickly enough, they can prevent her from reaching the horn. If they keep the giant from sounding the horn, the other inhabitants of Svardborg aren't placed on alert.",
+								"The frost giants have tracked a lot of snow through the main doors. Torch sconces mounted to wooden pillars have {@spell continual flame|PHB} spells cast on them, shedding cold blue light. Mounted on the walls of the lodge are the severed heads of polar bears, giant walruses, young white dragons, and remorhazes. A long wooden table and four smaller round tables take up much of the floor space, their tops strewn with wooden mugs and scraps of leftover food. A few empty barrels and crates sit near a wall.",
+								{
+									"type": "entries",
+									"name": "Treasure",
+									"entries": [
+										"Each frost giant carries a sealskin sack containing {@dice 3d6 × 100} cp plus {@dice 1d6} mundane items, determined by rolling on the Items in a Giant's Bag table in the introduction. A careful search of the room accompanied by a successful DC 15 Wisdom (Perception) check reveals a small pouch hanging from the tooth of a white dragon head mounted on the wall above the empty crates. The pouch contains six 100 gp gemstones."
+									]
+								}
+							]
+						},
 						{
 							"type": "entries",
-							"name": "Treasure",
+							"name": "2B. Sleeping Quarters",
 							"entries": [
-								"Each frost giant carries a sealskin sack containing {@dice 3d6 × 100} cp plus {@dice 1d6} mundane items, determined by rolling on the Items in a Giant's Bag table in the introduction. A careful search of the room accompanied by a successful DC 15 Wisdom (Perception) check reveals a small pouch hanging from the tooth of a white dragon head mounted on the wall above the empty crates. The pouch contains six 100 gp gemstones."
+								"Each of these two rooms is lit by a continual flame spell cast on a sconce and contains four hammocks. Each hammock is suspended between a hook on a central pillar and another hook on one of the surrounding walls."
 							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "2B. Sleeping Quarters",
-					"entries": [
-						"Each of these two rooms is lit by a continual flame spell cast on a sconce and contains four hammocks. Each hammock is suspended between a hook on a central pillar and another hook on one of the surrounding walls."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "2C. Warning Horn",
-					"entries": [
-						"A wide, covered balcony without a railing overlooks the gathering hall ({@area 8>2A}) 40 feet below. A few empty crates and barrels are stacked in the corners.",
-						"An alcove with a window looking toward the southeast contains a wooden brace supporting an ancient red dragon's horn that the frost giants have etched with runes and made into a musical instrument. The horn weighs 450 pounds. Only a frost giant or similarly sized creature can wrap its mouth around the narrow end of the horn and muster the breath needed to blow it. Sounding the horn requires an action.",
+						},
 						{
 							"type": "entries",
-							"name": "Development",
+							"name": "2C. Warning Horn",
 							"entries": [
-								"If the horn is sounded, the creatures in areas 7 and 9 act as described in the Svardborg Roster table."
+								"A wide, covered balcony without a railing overlooks the gathering hall ({@area 8>2A}) 40 feet below. A few empty crates and barrels are stacked in the corners.",
+								"An alcove with a window looking toward the southeast contains a wooden brace supporting an ancient red dragon's horn that the frost giants have etched with runes and made into a musical instrument. The horn weighs 450 pounds. Only a frost giant or similarly sized creature can wrap its mouth around the narrow end of the horn and muster the breath needed to blow it. Sounding the horn requires an action.",
+								{
+									"type": "entries",
+									"name": "Development",
+									"entries": [
+										"If the horn is sounded, the creatures in areas 7 and 9 act as described in the Svardborg Roster table."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "2D. Jarl's Mess",
+							"entries": [
+								"This room contains a 10-foot-tall wooden table. Resting atop it is a golden platter nearly 8 feet across, a wooden fork as big as a pitchfork, and a mug of bronze as large as a barrel, with handles shaped like a dragon's wings. The platter is worth 750 gp and weighs 75 pounds. The mug is worth 250 gp and weighs 50 pounds."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "2E. Armory",
+							"entries": [
+								"This room is in shambles. Weapon racks lie broken on the floor, while others cling precariously to the walls, still clutching old spears and javelins. The giants of Ostoria crafted these weapons, which fall apart if handled."
 							]
 						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "2D. Jarl's Mess",
-					"entries": [
-						"This room contains a 10-foot-tall wooden table. Resting atop it is a golden platter nearly 8 feet across, a wooden fork as big as a pitchfork, and a mug of bronze as large as a barrel, with handles shaped like a dragon's wings. The platter is worth 750 gp and weighs 75 pounds. The mug is worth 250 gp and weighs 50 pounds."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "2E. Armory",
-					"entries": [
-						"This room is in shambles. Weapon racks lie broken on the floor, while others cling precariously to the walls, still clutching old spears and javelins. The giants of Ostoria crafted these weapons, which fall apart if handled."
 					]
 				},
 				{
@@ -10265,35 +10299,35 @@
 							},
 							"title": "Drydock Lodge"
 						},
-						"Stacked in the corners of the ground floor nearest the grotto are dozens of ale barrels that the frost giants have plundered from merchant vessels."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "3A. Old Ship Construction",
-					"entries": [
-						"The hull of a greatship takes up most of the interior space. Giant wooden braces hold the ship upright. The giants of Ostoria built the ship, which isn't seaworthy. Any character who inspects the ship and succeeds on a DC 13 Intelligence (Investigation) check can tell that the wood is too brittle to withstand rough seas or collisions."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "3B. Barbarian Tents",
-					"entries": [
-						"Three camps are set up inside the lodge, each one consisting of three sealskin tents around a smoldering campfire. Each tent contains two crude bedrolls and a few scattered fish bones. The Northfolk barbarians sleep here when they're not working in {@area 8>7}. The camps are unoccupied when the characters first arrive."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "3C. Barrel Chute",
-					"entries": [
-						"A barrel chute made of walrus skin pulled over a wooden frame is mounted so that barrels can be rolled down it into the icy lagoon. The barrels are then floated across the lagoon to other locations, as needed. A wooden dock with human-sized steps leads to the water."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "3D. Crane",
-					"entries": [
-						"A giant wooden crane stands atop the balcony. Used by ancient giants to hoist heavy timbers, its wooden winch, swing-arm, and pulleys still work, though its ropes have rotted and can't support more than 500 pounds."
+						"Stacked in the corners of the ground floor nearest the grotto are dozens of ale barrels that the frost giants have plundered from merchant vessels.",
+						{
+							"type": "entries",
+							"name": "3A. Old Ship Construction",
+							"entries": [
+								"The hull of a greatship takes up most of the interior space. Giant wooden braces hold the ship upright. The giants of Ostoria built the ship, which isn't seaworthy. Any character who inspects the ship and succeeds on a DC 13 Intelligence (Investigation) check can tell that the wood is too brittle to withstand rough seas or collisions."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "3B. Barbarian Tents",
+							"entries": [
+								"Three camps are set up inside the lodge, each one consisting of three sealskin tents around a smoldering campfire. Each tent contains two crude bedrolls and a few scattered fish bones. The Northfolk barbarians sleep here when they're not working in {@area 8>7}. The camps are unoccupied when the characters first arrive."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "3C. Barrel Chute",
+							"entries": [
+								"A barrel chute made of walrus skin pulled over a wooden frame is mounted so that barrels can be rolled down it into the icy lagoon. The barrels are then floated across the lagoon to other locations, as needed. A wooden dock with human-sized steps leads to the water."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "3D. Crane",
+							"entries": [
+								"A giant wooden crane stands atop the balcony. Used by ancient giants to hoist heavy timbers, its wooden winch, swing-arm, and pulleys still work, though its ropes have rotted and can't support more than 500 pounds."
+							]
+						}
 					]
 				},
 				{
@@ -10308,110 +10342,102 @@
 								"path": "adventure/SKT/Temple-of-Thrym.jpg"
 							},
 							"title": "Temple of Thrym"
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "4A. Statue of Thrym",
-					"entries": [
-						"The wind has carried a great deal of snow into this open room, set into the back of which is an alcove that holds a 25-foot-tall statue of Thrym carved from glacial ice. The image looks like a powerfully built male frost giant with clenched fists. Timber from broken rafters and smashed doors lies strewn across the floor.",
-						"The ice statue is harmless. Nevertheless, anyone who damages the statue is cursed. Until the curse is lifted with a remove curse spell or similar magic, the afflicted creature has vulnerability to cold damage. This curse negates any resistance or immunity to cold damage the creature might otherwise possess."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "4B. Hall of Jarls",
-					"entries": [
-						"Ice has broken through the walls and ceiling of this hall, and a 12-foot-wide, 15-foot high gash in the outer wall leads outside. Set into alcoves along the corridor are four stone statues that once depicted frost giant jarls-Storvald's ancestors. When the white dragons took over the temple, they broke off the statues' heads and dropped them in the sea. Patches of ice (see the \"Wilderness Hazards\" section in chapter 5 of the {@i Dungeon Master's Guide}) have formed around two of the statues."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "4C. Hall of Heroes",
-					"entries": [
-						"The dragons investigated this area but otherwise left it untouched. The door has been torn from its frame and is nowhere to be seen, though twisted iron hinges offer evidence that the door put up a fight.",
-						"Standing in alcoves along the outer wall are seven granite tablets measuring 16 feet tall, 10 feet wide, and 2 feet thick, each one etched (in Dethek, the Dwarvish script) with the name of a frost giant jarl and a florid summary of that chief's legendary deeds. Storvald isn't among the giants honored here."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "4D. Narthex",
-					"entries": [
-						"The roof of this chamber sports numerous holes above which ice can be seen. The outer double doors have tons of ice pressed against them, and they can't be opened.",
-						"Two female {@creature frost giant|MM|frost giants} stand guard here and watch over the dragon in {@area 8>4E}. They are eager to spill blood and attack intruders on sight. They have instructions not to harm the dragon unless it harms them first.",
-						{
-							"type": "entries",
-							"name": "Treasure",
-							"entries": [
-								"Each frost giant carries a sealskin sack containing {@dice 3d6 × 100} sp, {@dice 1d6 × 100} gp, and {@dice 1d3} mundane items, determined by rolling on the Items in a Giant's Bag table in the introduction."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "4E. Bell Tower",
-					"entries": [
-						"Wooden pillars rise to meet the rafters 30 feet overhead, with the pitched roof rising higher, forming an 80-foot tall bell tower with rafters of its own. Dangling from these rafters is an enormous iron bell weighing 50 tons, with a rim 20 feet in diameter. The bell is missing its clapper and rope; there appears to be no way to ring it.",
-						"Curled up inside the bell is Isendraug, a female {@creature adult white dragon|MM}. She is tormented by the theft of her eggs (which the giants keep in {@area 8>1G}) and is wracking her brain for a plan to get them back and make the giants pay. If she spots any party members, she crawls out of the bell's cold confines and rushes forth to destroy them, thinking they have come to plunder her hoard ({@area 8>4H}). She prefers to lurk among the rafters and remain out of melee weapon range while attacking with her breath weapon or waiting for it to recharge, but she isn't reluctant to drop down on ranged attackers. If the characters attempt to parley with the dragon, she agrees to let them live in exchange for returning her eggs to her.",
-						"Isendraug doesn't gain lair actions and can't cause regional effects in the vicinity of her lair.",
-						{
-							"type": "entries",
-							"name": "Development",
-							"entries": [
-								"Isendraug wants her mate, Cryovain, and all seven of her eggs returned to her. She is unwilling to negotiate for anything less. She doesn't know where the frost giants are keeping her eggs, but she knows that they keep Cryovain chained aboard their biggest ship (she doesn't know its name or whereabouts). Like most white dragons, Isendraug is not to be trusted. She has no intention of sparing the characters once they have done what she asks. Clever characters can hold her at bay by threatening one or more of her eggs (or wyrmlings). Isendraug flies into a murderous rage if she witnesses one of her eggs or wyrmlings being harmed."
-							]
 						},
-						"If Isendraug is reduced to fewer than half her hit points, she tries to escape through the submerged passage ({@area 8>4G}), smashing through the thin ice that covers it. Once she swims to the surface of the lagoon, she takes flight and looks for a place to roost, such as a greatship or the top of the iceberg. Even if her eggs are destroyed, she won't leave Svardborg until her mate is freed (see \"The {@i Krigvind\"} section later in this chapter)."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "4F. Altar",
-					"entries": [
-						"This 9-foot-tall block of ice has dwarf skulls and bones within it, and its top is covered with frozen blood.",
-						"A character who studies the altar and succeeds on a DC 13 Intelligence (Religion) check can deduce the significance of the bones and the blood. Before a dangerous hunt or voyage, frost giants come here and spill their own blood on the altar to gain Thrym's favor. The bones are meant to consecrate the altar, which is nonmagical."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "4G. Submerged Passage",
-					"entries": [
-						"The dragons clawed their way through the floor of the lodge to reach the ice underneath, creating a 50-foot-diameter, water-filled tunnel. Thin ice covers the hole. For more information on thin ice and swimming in frigid water, see the \"Wilderness Hazards\" section in chapter 5 of the {@i Dungeon Master's Guide}.",
-						"The submerged tunnel descends toward the southwest, eventually emerging 300 feet later at the bottom of the lagoon, 80 feet below the water's surface."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "4H. Frozen Hoard",
-					"entries": [
-						"A great mound of ice covers the hoard of Cryovain and Isendraug. The ice is transparent enough to see that the bulk of the hoard consists of copper and silver coins, with gold coins strewn among them. Among the coins is a sealed wooden chest buried under 3 feet of ice. A character using a pick or the like can dig out the chest in 1 hour. Each hour a character spends digging for coins yields 100 coins of each type (copper, silver, and gold). It takes 60 hours to retrieve all the gold coins in this way.",
 						{
 							"type": "entries",
-							"name": "Treasure",
+							"name": "4A. Statue of Thrym",
 							"entries": [
-								"The dragons' hoard consists of 90,000 cp, 41,000 sp, 6,000 gp, and the aforementioned chest, which is unlocked. It contains five hundred wooden coins (worthless), thirty pieces of costume jewelry (worth 5 gp each), a pouch holding twenty silvered sling stones, a silver tinderbox (worth 25 gp), and wooden scroll tube containing a crude treasure map drawn on a piece of walrus hide (see \"Development\"). Resting atop these items is a wooden pipe with a strip of parchment stuffed inside it that reads (in Common), \"Here lies the treasure of Captain Silbarr Snake-Eyes, legendary pirate of the Sword Coast. A hex upon any who plunder this trove.\" Any character who succeeds on a DC 20 Intelligence (History) check dimly recalls a halfling pirate of no great repute who went by that name."
+								"The wind has carried a great deal of snow into this open room, set into the back of which is an alcove that holds a 25-foot-tall statue of Thrym carved from glacial ice. The image looks like a powerfully built male frost giant with clenched fists. Timber from broken rafters and smashed doors lies strewn across the floor.",
+								"The ice statue is harmless. Nevertheless, anyone who damages the statue is cursed. Until the curse is lifted with a remove curse spell or similar magic, the afflicted creature has vulnerability to cold damage. This curse negates any resistance or immunity to cold damage the creature might otherwise possess."
 							]
 						},
 						{
 							"type": "entries",
-							"name": "Development.",
+							"name": "4B. Hall of Jarls",
 							"entries": [
-								"A character who studies the treasure map and succeeds on a DC 10 Intelligence (History) check realizes that it depicts a stretch of the Sword Coast encompassing the islands of Red Rocks, midway between Leilon and Waterdeep. An \"X\" marks a cove on one island, and a riddle scrawled in Common on the back of the map reads as follows:",
-								"{@i High tide it hides,}",
-								"{@i The moon doth make it rise;}",
-								"{@i The mast points to the prize,}",
-								"{@i Watched by feathered brides.}",
+								"Ice has broken through the walls and ceiling of this hall, and a 12-foot-wide, 15-foot high gash in the outer wall leads outside. Set into alcoves along the corridor are four stone statues that once depicted frost giant jarls-Storvald's ancestors. When the white dragons took over the temple, they broke off the statues' heads and dropped them in the sea. Patches of ice (see the \"Wilderness Hazards\" section in chapter 5 of the {@i Dungeon Master's Guide}) have formed around two of the statues."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "4C. Hall of Heroes",
+							"entries": [
+								"The dragons investigated this area but otherwise left it untouched. The door has been torn from its frame and is nowhere to be seen, though twisted iron hinges offer evidence that the door put up a fight.",
+								"Standing in alcoves along the outer wall are seven granite tablets measuring 16 feet tall, 10 feet wide, and 2 feet thick, each one etched (in Dethek, the Dwarvish script) with the name of a frost giant jarl and a florid summary of that chief's legendary deeds. Storvald isn't among the giants honored here."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "4D. Narthex",
+							"entries": [
+								"The roof of this chamber sports numerous holes above which ice can be seen. The outer double doors have tons of ice pressed against them, and they can't be opened.",
+								"Two female {@creature frost giant|MM|frost giants} stand guard here and watch over the dragon in {@area 8>4E}. They are eager to spill blood and attack intruders on sight. They have instructions not to harm the dragon unless it harms them first.",
 								{
-									"type": "image",
-									"href": {
-										"type": "internal",
-										"path": "adventure/SKT/Sword-Coast.jpg"
-									},
-									"title": "Sword Coast"
+									"type": "entries",
+									"name": "Treasure",
+									"entries": [
+										"Each frost giant carries a sealskin sack containing {@dice 3d6 × 100} sp, {@dice 1d6 × 100} gp, and {@dice 1d3} mundane items, determined by rolling on the Items in a Giant's Bag table in the introduction."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "4E. Bell Tower",
+							"entries": [
+								"Wooden pillars rise to meet the rafters 30 feet overhead, with the pitched roof rising higher, forming an 80-foot tall bell tower with rafters of its own. Dangling from these rafters is an enormous iron bell weighing 50 tons, with a rim 20 feet in diameter. The bell is missing its clapper and rope; there appears to be no way to ring it.",
+								"Curled up inside the bell is Isendraug, a female {@creature adult white dragon|MM}. She is tormented by the theft of her eggs (which the giants keep in {@area 8>1G}) and is wracking her brain for a plan to get them back and make the giants pay. If she spots any party members, she crawls out of the bell's cold confines and rushes forth to destroy them, thinking they have come to plunder her hoard ({@area 8>4H}). She prefers to lurk among the rafters and remain out of melee weapon range while attacking with her breath weapon or waiting for it to recharge, but she isn't reluctant to drop down on ranged attackers. If the characters attempt to parley with the dragon, she agrees to let them live in exchange for returning her eggs to her.",
+								"Isendraug doesn't gain lair actions and can't cause regional effects in the vicinity of her lair.",
+								{
+									"type": "entries",
+									"name": "Development",
+									"entries": [
+										"Isendraug wants her mate, Cryovain, and all seven of her eggs returned to her. She is unwilling to negotiate for anything less. She doesn't know where the frost giants are keeping her eggs, but she knows that they keep Cryovain chained aboard their biggest ship (she doesn't know its name or whereabouts). Like most white dragons, Isendraug is not to be trusted. She has no intention of sparing the characters once they have done what she asks. Clever characters can hold her at bay by threatening one or more of her eggs (or wyrmlings). Isendraug flies into a murderous rage if she witnesses one of her eggs or wyrmlings being harmed."
+									]
 								},
-								"If the characters arrive at low tide at the location marked on the map, they see the barnacle-covered, broken mast of a shipwreck poking out of the murky water, pointing toward one of several caves in the cliffs. (The mast is submerged at high tide.) The cave is roughly 30 feet in diameter with a 20-foot-high ceiling. In the cave is the wreckage of a rowboat that two {@creature harpy|MM|harpies} have made into a nest. The nest is littered with humanoid bones and also contains a rotted wooden chest with a black serpent formed in the shape of an \"S\" burned into its lid. It contains {@dice 1d4} magic items. Roll on Magic Item Table G in chapter 7 of the {@i Dungeon Master's Guide} for the first item and on Table C for any other items."
+								"If Isendraug is reduced to fewer than half her hit points, she tries to escape through the submerged passage ({@area 8>4G}), smashing through the thin ice that covers it. Once she swims to the surface of the lagoon, she takes flight and looks for a place to roost, such as a greatship or the top of the iceberg. Even if her eggs are destroyed, she won't leave Svardborg until her mate is freed (see \"The {@i Krigvind\"} section later in this chapter)."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "4F. Altar",
+							"entries": [
+								"This 9-foot-tall block of ice has dwarf skulls and bones within it, and its top is covered with frozen blood.",
+								"A character who studies the altar and succeeds on a DC 13 Intelligence (Religion) check can deduce the significance of the bones and the blood. Before a dangerous hunt or voyage, frost giants come here and spill their own blood on the altar to gain Thrym's favor. The bones are meant to consecrate the altar, which is nonmagical."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "4G. Submerged Passage",
+							"entries": [
+								"The dragons clawed their way through the floor of the lodge to reach the ice underneath, creating a 50-foot-diameter, water-filled tunnel. Thin ice covers the hole. For more information on thin ice and swimming in frigid water, see the \"Wilderness Hazards\" section in chapter 5 of the {@i Dungeon Master's Guide}.",
+								"The submerged tunnel descends toward the southwest, eventually emerging 300 feet later at the bottom of the lagoon, 80 feet below the water's surface."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "4H. Frozen Hoard",
+							"entries": [
+								"A great mound of ice covers the hoard of Cryovain and Isendraug. The ice is transparent enough to see that the bulk of the hoard consists of copper and silver coins, with gold coins strewn among them. Among the coins is a sealed wooden chest buried under 3 feet of ice. A character using a pick or the like can dig out the chest in 1 hour. Each hour a character spends digging for coins yields 100 coins of each type (copper, silver, and gold). It takes 60 hours to retrieve all the gold coins in this way.",
+								{
+									"type": "entries",
+									"name": "Treasure",
+									"entries": [
+										"The dragons' hoard consists of 90,000 cp, 41,000 sp, 6,000 gp, and the aforementioned chest, which is unlocked. It contains five hundred wooden coins (worthless), thirty pieces of costume jewelry (worth 5 gp each), a pouch holding twenty silvered sling stones, a silver tinderbox (worth 25 gp), and wooden scroll tube containing a crude treasure map drawn on a piece of walrus hide (see \"Development\"). Resting atop these items is a wooden pipe with a strip of parchment stuffed inside it that reads (in Common), \"Here lies the treasure of Captain Silbarr Snake-Eyes, legendary pirate of the Sword Coast. A hex upon any who plunder this trove.\" Any character who succeeds on a DC 20 Intelligence (History) check dimly recalls a halfling pirate of no great repute who went by that name."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Development.",
+									"entries": [
+										"A character who studies the treasure map and succeeds on a DC 10 Intelligence (History) check realizes that it depicts a stretch of the Sword Coast encompassing the islands of Red Rocks, midway between Leilon and Waterdeep. An \"X\" marks a cove on one island, and a riddle scrawled in Common on the back of the map reads as follows:",
+										"{@i High tide it hides,}",
+										"{@i The moon doth make it rise;}",
+										"{@i The mast points to the prize,}",
+										"{@i Watched by feathered brides.}",
+										"If the characters arrive at low tide at the location marked on the map, they see the barnacle-covered, broken mast of a shipwreck poking out of the murky water, pointing toward one of several caves in the cliffs. (The mast is submerged at high tide.) The cave is roughly 30 feet in diameter with a 20-foot-high ceiling. In the cave is the wreckage of a rowboat that two {@creature harpy|MM|harpies} have made into a nest. The nest is littered with humanoid bones and also contains a rotted wooden chest with a black serpent formed in the shape of an \"S\" burned into its lid. It contains {@dice 1d4} magic items. Roll on Magic Item Table G in chapter 7 of the {@i Dungeon Master's Guide} for the first item and on Table C for any other items."
+									]
+								}
 							]
 						}
 					]
@@ -10495,25 +10521,30 @@
 					]
 				},
 				{
-					"type": "entries",
+					"type": "section",
 					"name": "The Krigvind",
 					"entries": [
 						"The {@i Krigvind} returns when the characters obtain the {@item conch of teleportation|SKT} in Storvald's throne room ({@area 8>1G}), but before a character has time to attune to it, or at another time of your choosing. Too big to fit in Svardborg's lagoon, the ship drops anchor next to the iceberg, south of the Jarl's Lodge ({@area 8>1}) and within view of the docks south of the Drydock Lodge ({@area 8>3}).",
 						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/SKT/Krigvind-DM.jpg"
-							},
-							"title": "Krigvind DM"
-						},
-						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/SKT/Krigvind-Players.jpg"
-							},
-							"title": "Krigvind Players"
+							"type": "gallery",
+							"images": [
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/SKT/Krigvind-DM.jpg"
+									},
+									"title": "Krigvind DM"
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/SKT/Krigvind-Players.jpg"
+									},
+									"title": "Krigvind Players"
+								}
+							]
 						},
 						"The {@i Krigvind} requires a crew of at least twenty giants and can hold up to forty giants, plus a thousand tons of cargo. The {@i Krigvind} has Jarl Storvald plus a crew of twenty frost giants (eight males and twelve females). Four operate the ballistae, one trims the sails, one controls the rudder, and fourteen pull the oars. Chained to the deck is Cryovain, a male {@creature adult white dragon|MM}. Behind the dragon are two empty holds where prisoners, slain whales, and stolen goods are kept.",
 						"Storvald is returning angry from not having caught a single whale, and that anger intensifies when he realizes that Svardborg has been invaded. If the giant owl in {@area 8>1H} escaped, it accompanies Storvald and has warned him of intruders in Svardborg. Otherwise, the jarl and his crew become aware of intruders only after finding evidence of such or hearing the sound of the horn in {@area 8>2C}. If there are obvious targets in sight, such as an airship parked on the iceberg or characters standing in the open, the frost giants use the ship's ballistae to attack them (see the \"Features of the {@i Krigvind\"} section).",
@@ -10542,7 +10573,7 @@
 									]
 								},
 								{
-									"type": "entries",
+									"type": "inset",
 									"name": "Spellcasting",
 									"entries": [
 										"Storvald is a 9th-level spellcaster. His spellcasting ability is Wisdom. He knows the following ranger spells:",
@@ -10556,14 +10587,14 @@
 											]
 										}
 									]
+								},
+								{
+									"type": "entries",
+									"name": "Treasure",
+									"entries": [
+										"Storvald wears the Helm of Svardborg, a copper helm fitted with red dragon horns. The helm weighs 250 pounds, has no magical properties, and is worth 2,500 gp as an art object."
+									]
 								}
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Treasure",
-							"entries": [
-								"Storvald wears the Helm of Svardborg, a copper helm fitted with red dragon horns. The helm weighs 250 pounds, has no magical properties, and is worth 2,500 gp as an art object."
 							]
 						}
 					]
@@ -10861,9 +10892,9 @@
 								"Notes"
 							],
 							"colStyles": [
-								"",
-								"",
-								""
+								"col-1 text-align-center",
+								"col-3",
+								"col-8"
 							],
 							"rows": [
 								[
@@ -10977,7 +11008,7 @@
 								],
 								[
 									"86-00",
-									"1 {@creature fire giant} carrying a {@item rod of the Vonindod|SKT} and accompanied by 1 {@creature hobgoblin captain} amd {@dice 3d6} {@creature hobgoblin|mm|hobgoblins} dragging a Huge fragment of the Vonindod that weighs 2,500 pounds"
+									"1 {@creature fire giant} carrying a {@item rod of the Vonindod|SKT} and accompanied by 1 {@creature hobgoblin captain} and {@dice 3d6} {@creature hobgoblin|mm|hobgoblins} dragging a Huge fragment of the Vonindod that weighs 2,500 pounds"
 								]
 							]
 						}
@@ -12161,9 +12192,9 @@
 										"Notes"
 									],
 									"colStyles": [
-										"",
-										"",
-										""
+										"col-1 text-align-center",
+										"col-3",
+										"col-8"
 									],
 									"rows": [
 										[
@@ -13026,9 +13057,9 @@
 										"Notes"
 									],
 									"colStyles": [
-										"",
-										"",
-										""
+										"col-1 text-align-center",
+										"col-3",
+										"col-8"
 									],
 									"rows": [
 										[

@@ -45,7 +45,7 @@ function onJsonLoad (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(() => BrewUtil.bind({list}))
-		.then(BrewUtil.pAddLocalBrewData)
+		.then(() => BrewUtil.pAddLocalBrewData())
 		.catch(BrewUtil.pPurgeBrew)
 		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");

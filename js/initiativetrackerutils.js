@@ -71,7 +71,7 @@ class InitiativeTrackerUtil {
 
 			$cond.attr("title", ttpText);
 
-			$cond.tooltip({trigger: "hover"});
+			$cond.tooltip({trigger: "hover", placement: "left"});
 			if (ttpText) {
 				// update tooltips
 				$cond.tooltip("enable").tooltip("fixTitle");
@@ -213,3 +213,177 @@ InitiativeTrackerUtil.CONDITIONS = [
 		color: "#1c2383"
 	}
 ];
+
+class InitiativeTrackerPlayerUi {
+	constructor (view, $iptServerToken, $btnGenClientToken, $iptClientToken, $cbShortToken) {
+		this._view = view;
+		this._$iptServerToken = $iptServerToken;
+		this._$btnGenClientToken = $btnGenClientToken;
+		this._$iptClientToken = $iptClientToken;
+		this._$cbShortToken = $cbShortToken;
+	}
+
+	init () {
+		this._$iptServerToken.keydown(evt => {
+			this._$iptServerToken.removeClass("error-background");
+			if (evt.which === 13) this._$btnGenClientToken.click();
+		});
+
+		this._$btnGenClientToken.click(async () => {
+			this._$iptServerToken.removeClass("error-background");
+			const serverToken = this._$iptServerToken.val();
+
+			if (PeerUtil.isValidToken(serverToken)) {
+				try {
+					this._$iptServerToken.attr("disabled", true);
+					this._$btnGenClientToken.attr("disabled", true);
+					const clientData = await PeerUtil.pInitialiseClient(
+						serverToken,
+						msg => this._view.handleMessage(msg),
+						function (err) {
+							if (!this.isClosed) {
+								JqueryUtil.doToast({
+									content: `Server error:\n${err ? err.message || err : "(Unknown error)"}`,
+									type: "danger"
+								});
+							}
+						},
+						{
+							shortTokens: this._$cbShortToken.prop("checked")
+						}
+					);
+
+					if (!clientData) {
+						this._$iptServerToken.attr("disabled", false);
+						this._$btnGenClientToken.attr("disabled", false);
+						JqueryUtil.doToast({
+							content: `Failed to create client. Are you sure the token was valid?`,
+							type: "warning"
+						});
+					} else {
+						this._view.clientData = clientData;
+
+						// -- This has no effect; the client doesn't error on sending when there's no connection --
+						// const livenessCheck = setInterval(async () => {
+						// 	try {
+						// 		await clientData.client.sendMessage({})
+						// 	} catch (e) {
+						// 		JqueryUtil.doToast({
+						// 			content: `Could not reach server! You might need to reconnect.`,
+						// 			type: "danger"
+						// 		});
+						// 		clearInterval(livenessCheck);
+						// 	}
+						// }, 5000);
+
+						this._$iptClientToken.val(clientData.textifiedSdp).attr("disabled", false);
+					}
+				} catch (e) {
+					JqueryUtil.doToast({
+						content: `Failed to create client! Are you sure the token was valid? (See the log for more details.)`,
+						type: "danger"
+					});
+					setTimeout(() => { throw e; });
+				}
+			} else this._$iptServerToken.addClass("error-background");
+		});
+
+		this._$iptClientToken.click(async () => {
+			await MiscUtil.pCopyTextToClipboard(this._$iptClientToken.val());
+			JqueryUtil.showCopiedEffect(this._$iptClientToken);
+		});
+	}
+}
+
+class InitiativeTrackerPlayerMessageHandler {
+	constructor (isCompact) {
+		this._isCompact = isCompact;
+		this._isUiInit = false;
+
+		this._clientData = null;
+		this._$meta = null;
+		this._$head = null;
+		this._$rows = null;
+	}
+
+	get isActive () { return this._isUiInit; }
+
+	set clientData (clientData) { this._clientData = clientData; }
+
+	setElements ($meta, $head, $rows) {
+		this._$meta = $meta;
+		this._$head = $head;
+		this._$rows = $rows;
+	}
+
+	initUi () {} // to be overridden as required
+
+	handleMessage (msg) {
+		this.initUi();
+		const data = msg.data || {};
+
+		this._$meta.empty();
+		this._$head.empty();
+		this._$rows.empty();
+
+		if (data.n) {
+			this._$meta.append(`
+				<div class="${this._isCompact ? "flex-vh-center" : "flex-v-center"}${this._isCompact ? " mb-3" : ""}">
+					<div class="mr-2">Round: </div>
+					<div class="bold">${data.n}</div>
+				</div>		
+			`);
+		}
+
+		this._$head.append(`
+			<div class="initp__h_name${this._isCompact ? " initp__h_name--compact" : ""}">Creature/Status</div>
+			<div class="initp__h_hp${this._isCompact ? " initp__h_hp--compact" : ""}">Health</div>
+			${(data.c || []).map(statCol => `<div class="initp__h_stat">${statCol.a || ""}</div>`).join("")}
+			<div class="initp__h_score${this._isCompact ? " initp__h_score--compact" : ""}">${this._isCompact ? "#" : "Init."}</div>
+		`);
+
+		(data.r || []).forEach(rowData => {
+			this._$rows.append(this._get$row(rowData));
+		});
+	}
+
+	_get$row (rowData) {
+		const $conds = $(`<div class="init__wrp_conds"/>`);
+		(rowData.c || []).forEach(cond => {
+			const opts = {
+				...cond,
+				readonly: true
+			};
+			if (!this._isCompact) {
+				opts.width = 24;
+				opts.height = 24;
+			}
+			InitiativeTrackerUtil.get$condition(opts).appendTo($conds);
+		});
+
+		const getHpContent = () => {
+			if (rowData.hh != null) {
+				const {text, color} = InitiativeTrackerUtil.getWoundMeta(rowData.hh);
+				return {hpText: text, hpColor: color}
+			} else {
+				const woundLevel = InitiativeTrackerUtil.getWoundLevel(100 * Number(rowData.h) / Number(rowData.g));
+				return {hpText: `${rowData.h == null ? "?" : rowData.h}/${rowData.g == null ? "?" : rowData.g}`, hpColor: InitiativeTrackerUtil.getWoundMeta(woundLevel).color};
+			}
+		};
+		const {hpText, hpColor} = getHpContent();
+
+		return $(`
+			<div class="initp__r${rowData.a ? ` initp__r--active` : ""}">
+				<div class="initp__r_name">
+					<div>${(rowData.n || "").escapeQuotes()}${rowData.o != null ? ` (${rowData.o})` : ""}</div>
+					<div data-r="$conds"/>
+				</div>
+				<div class="initp__r_hp">
+					<div class="initp__r_hp_pill" style="background: ${hpColor};">${hpText}</div>
+				</div>
+				${(rowData.k || []).map(statVal => `<div class="initp__r_stat">${statVal.v}</div>`).join("")}
+				<div class="initp__r_score${this._isCompact ? " initp__r_score--compact" : ""}">${rowData.i}</div>
+			</div>
+		`).swap({$conds});
+	}
+}

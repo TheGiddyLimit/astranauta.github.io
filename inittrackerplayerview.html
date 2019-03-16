@@ -20,98 +20,6 @@
 	<script type="text/javascript" src="js/navigation.js"></script>
 
 	<style>
-		.initp__content {
-			overflow-y: auto;
-			overflow-x: hidden;
-			height: 100%;
-			width: 100%;
-		}
-
-		.initp__wrp_active {
-			display: flex;
-			flex-direction: column;
-			width: 100%;
-			height: 100%;
-		}
-
-		.initp__meta {
-			font-size: 1.6rem;
-		}
-
-		.initp__header {
-			width: 100%;
-			display: flex;
-			justify-content: space-between;
-			font-variant: small-caps;
-			border-bottom: 1px solid #ccc;
-		}
-
-		.initp__h_name,
-		.initp__r_name {
-			min-width: 115px;
-			width: 100%;
-		}
-
-		.initp__r_name {
-			display: flex;
-			justify-content: space-between;
-		}
-
-		.initp__h_hp,
-		.initp__r_hp {
-			min-width: 100px;
-			width: 100%;
-		}
-
-		.initp_h_stat,
-		.initp_r_stat {
-			width: 40px;
-			text-align: center;
-			flex-shrink: 0;
-			flex-grow: 0;
-		}
-
-		.initp__r_hp_pill {
-			padding: 2px 4px;
-			border-radius: 3px;
-			color: white;
-			text-align: center;
-		}
-
-		.initp__h_score,
-		.initp__r_score {
-			flex: none;
-			width: 80px;
-			text-align: center;
-		}
-
-		.initp__r_score {
-			line-height: 24px;
-		}
-
-		.initp__r {
-			width: 100%;
-			display: flex;
-			justify-content: space-between;
-			padding: 2px 3px;
-		}
-
-		.initp__r:hover {
-			background: #00000010;
-		}
-
-		.initp__r--active {
-			background: #cfe5ff78;
-		}
-
-		.initp__r--active:hover {
-			background: #bfd5ef78;
-		}
-
-		.night-mode .initp__r--active {
-			background: #8dc1ff20;
-		}
-
 		#initp__wrp_active {
 			display: none;
 		}
@@ -119,13 +27,13 @@
 </head>
 
 <body>
-<header class="hidden-xs hidden-sm">
+<header class="hidden-xs hidden-sm page__header">
 	<div class="container">
-		<h1>Initiative Tracker Player View</h1>
-		<p>Press F to toggle fullscreen. Good luck.</p>
+		<h1 class="page__title">Initiative Tracker Player View</h1>
+		<p class="page__subtitle">Press F to toggle fullscreen. Good luck.</p>
 	</div>
 </header>
-<nav class="container" id="navigation"><ul class="nav nav-pills" id="navbar"></ul></nav>
+<nav class="container page__nav" id="navigation"><ul class="nav nav-pills" id="navbar"></ul></nav>
 <main class="container view-col-wrapper">
 	<div class="initp__content">
 
@@ -149,15 +57,15 @@
 			<div class="col-5 bold">Client Token</div>
 		</div>
 		<div class="initp__initial row full-width flex mb-4">
-			<div class="col-5 bold"><input class="form-control input-small code" id="initp__ipt_server_token"></div>
+			<div class="col-5 bold"><input class="form-control code" id="initp__ipt_server_token"></div>
 			<div class="col-2 flex-vh-center"><button class="btn btn-xs btn-primary" id="initp__btn_gen_client_token">Generate Client Token</button></div>
-			<div class="col-5 bold"><input class="form-control input-small code copyable" id="initp__ipt_client_token" readonly disabled></div>
+			<div class="col-5 bold"><input class="form-control code copyable" id="initp__ipt_client_token" readonly disabled></div>
 		</div>
 
 		<div class="initp__initial row full-width">
 			<div class="col-12">
 				<label class="flex-label">
-					<span class="mr-2 help" title="Turning this off will produce a client token which is roughly twice as long, but does not contain any non-standard characters.">Short client token</span>
+					<span class="mr-2 help" title="Turning this off will produce a client token which is roughly twice as long, but contains only standard characters.">Short client token</span>
 					<input id="initp__cb_short" type="checkbox" checked>
 				</label>
 			</div>
@@ -171,22 +79,21 @@
 	</div>
 
 </main>
-<footer class="container">
-
-</footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery-ui.js"></script>
 <script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="lib/lzma.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
-<script type="text/javascript" src="js/p2putils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
+<script type="text/javascript" src="js/utils-p2p.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
-<script type="text/javascript" src="js/inittrackerplayerview.js"></script>
 <script type="text/javascript" src="js/initiativetrackerutils.js"></script>
+<script type="text/javascript" src="js/inittrackerplayerview.js"></script>
 <script type="text/javascript" src="lib/bootstrap-tooltip.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>

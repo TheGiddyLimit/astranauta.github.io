@@ -251,10 +251,11 @@ class TagAttack {
 					if (it.entries) {
 						const str = JSON.stringify(it.entries, null, "\t");
 						const out = str.replace(/([\t ]")((?:(?:[A-Z][a-z]*|or) )*Attack:) /g, (...m) => {
-							if (TagAttack.MAP[m[2]]) {
-								return `${m[1]}${TagAttack.MAP[m[2]]} `;
+							const lower = m[2].toLowerCase();
+							if (TagAttack.MAP[lower]) {
+								return `${m[1]}${TagAttack.MAP[lower]} `;
 							} else {
-								cbMan(m[2]);
+								if (cbMan) cbMan(m[2]);
 								return m[0];
 							}
 						});
@@ -272,17 +273,17 @@ class TagAttack {
 	}
 }
 TagAttack.MAP = {
-	"Melee Weapon Attack:": "{@atk mw}",
-	"Ranged Weapon Attack:": "{@atk rw}",
-	"Melee Attack:": "{@atk m}",
-	"Ranged Attack:": "{@atk r}",
-	"Area Attack:": "{@atk a}",
-	"Area Weapon Attack:": "{@atk aw}",
-	"Melee Spell Attack:": "{@atk ms}",
-	"Melee or Ranged Weapon Attack:": "{@atk mw,rw}",
-	"Ranged Spell Attack:": "{@atk rs}",
-	"Melee or Ranged Spell Attack:": "{@atk ms,rs}",
-	"Melee or Ranged Attack:": "{@atk m,r}"
+	"melee weapon attack:": "{@atk mw}",
+	"ranged weapon attack:": "{@atk rw}",
+	"melee attack:": "{@atk m}",
+	"ranged attack:": "{@atk r}",
+	"area attack:": "{@atk a}",
+	"area weapon attack:": "{@atk aw}",
+	"melee spell attack:": "{@atk ms}",
+	"melee or ranged weapon attack:": "{@atk mw,rw}",
+	"ranged spell attack:": "{@atk rs}",
+	"melee or ranged spell attack:": "{@atk ms,rs}",
+	"melee or ranged attack:": "{@atk m,r}"
 };
 
 class TagHit {
@@ -324,7 +325,7 @@ AlignmentConvert.ALIGNMENTS = {
 	"chaotic neutral": ["C", "N"],
 	"lawful evil": ["L", "E"],
 	"lawful neutral": ["L", "N"],
-	"neutral evil": ["L", "E"],
+	"neutral evil": ["N", "E"], // TODO this was mistakenly marked as "L" "E" before; do a validation pass for all LE creatures -> check if NE
 	"chaotic evil": ["C", "E"],
 
 	"good": ["G"],
@@ -339,27 +340,23 @@ AlignmentConvert.ALIGNMENTS = {
 
 	"any non-good alignment": ["L", "NX", "C", "NY", "E"],
 	"any non-lawful alignment": ["NX", "C", "G", "NY", "E"],
+	"any non-evil alignment": ["L", "NX", "C", "NY", "G"],
+	"any non-chaotic alignment": ["NX", "L", "G", "NY", "E"],
 
 	"any chaotic alignment": ["C", "G", "NY", "E"],
 	"any evil alignment": ["L", "NX", "C", "E"],
 	"any lawful alignment": ["L", "G", "NY", "E"],
 	"any good alignment": ["L", "NX", "C", "G"],
 
+	"any neutral alignment": ["NX", "NY", "N"],
+
 	// TODO general auto-detect for percentage-weighted alignments
-	"neutral good (50%) or neutral evil (50%)": [{alignment: ["N", "G"], chance: 50}, {
-		alignment: ["N", "E"],
-		chance: 50
-	}],
-	"chaotic good (75%) or neutral evil (25%)": [{alignment: ["C", "G"], chance: 75}, {
-		alignment: ["N", "E"],
-		chance: 25
-	}],
+	"neutral good (50%) or neutral evil (50%)": [{alignment: ["N", "G"], chance: 50}, {alignment: ["N", "E"], chance: 50}],
+	"chaotic good (75%) or neutral evil (25%)": [{alignment: ["C", "G"], chance: 75}, {alignment: ["N", "E"], chance: 25}],
+	"chaotic good (75%) or chaotic evil (25%)": [{alignment: ["C", "G"], chance: 75}, {alignment: ["C", "E"], chance: 25}],
 	"chaotic good or chaotic neutral": [{alignment: ["C", "G"]}, {alignment: ["C", "N"]}],
 	"lawful neutral or lawful evil": [{alignment: ["L", "N"]}, {alignment: ["L", "E"]}],
-	"neutral evil (50%) or lawful evil (50%)": [{alignment: ["N", "E"], chance: 50}, {
-		alignment: ["L", "E"],
-		chance: 50
-	}]
+	"neutral evil (50%) or lawful evil (50%)": [{alignment: ["N", "E"], chance: 50}, {alignment: ["L", "E"], chance: 50}]
 };
 
 class TagUtil {
@@ -370,7 +367,7 @@ class TagUtil {
 }
 TagUtil.NONE_EMPTY_REGEX = /^(([-\u2014\u2013\u2221])+|none)$/gi;
 
-class TraitsActionsTag {
+class TraitActionTag {
 	static tryRun (m, cbMan) {
 		function doTag (prop, outProp) {
 			function isTraits () {
@@ -383,7 +380,7 @@ class TraitsActionsTag {
 					t.name = t.name.trim();
 
 					const cleanName = t.name.toLowerCase();
-					const mapped = TraitsActionsTag.tags[prop][cleanName];
+					const mapped = TraitActionTag.tags[prop][cleanName];
 					if (mapped) {
 						m[outProp] = m[outProp] || [];
 						if (mapped === true) {
@@ -401,9 +398,7 @@ class TraitsActionsTag {
 						m[outProp] = m[outProp] || [];
 						m[outProp].push("Damage Absorption");
 					} else {
-						if (cbMan) {
-							cbMan(prop, outProp, cleanName);
-						}
+						if (cbMan) cbMan(prop, outProp, cleanName);
 					}
 				})
 			}
@@ -419,7 +414,7 @@ class TraitsActionsTag {
 		if (m.actionTags && !m.actionTags.length) delete m.actionTags;
 	}
 }
-TraitsActionsTag.tags = { // true = map directly; string = map to this string
+TraitActionTag.tags = { // true = map directly; string = map to this string
 	trait: {
 		"turn immunity": true,
 		"brute": true,
@@ -631,7 +626,7 @@ LanguageTag.LANGUAGE_MAP = {
 	"any language": "X"
 };
 
-class SensesTag {
+class SenseTag {
 	static tryRun (m, cbAll) {
 		if (m.senses) {
 			if (TagUtil.isNoneOrEmpty(m.senses)) {
@@ -640,7 +635,7 @@ class SensesTag {
 				const senseTags = new Set();
 				m.senses.toLowerCase().split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX).map(it => it.trim())
 					.forEach(s => {
-						Object.entries(SensesTag.TAGS).forEach(([k, v]) => {
+						Object.entries(SenseTag.TAGS).forEach(([k, v]) => {
 							if (s.includes(k)) {
 								if (v === "D" && /\d\d\d ft/.exec(s)) senseTags.add("SD");
 								else senseTags.add(v);
@@ -656,12 +651,257 @@ class SensesTag {
 		}
 	}
 }
-SensesTag.TAGS = {
+SenseTag.TAGS = {
 	"blindsight": "B",
 	"darkvision": "D",
 	"tremorsense": "T",
 	"truesight": "U"
 };
+
+class SpellcastingTypeTag {
+	static tryRun (m, cbAll) {
+		if (!m.spellcasting) {
+			delete m.spellcastingTags;
+		} else {
+			const tags = new Set();
+			m.spellcasting.forEach(sc => {
+				if (!sc.name) return;
+				if (/(^|[^a-zA-Z])psionics([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("P");
+				if (/(^|[^a-zA-Z])innate([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("I");
+				if (/(^|[^a-zA-Z])form([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("F");
+				if (/(^|[^a-zA-Z])shared([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("S");
+
+				if (sc.headerEntries) {
+					const strHeader = JSON.stringify(sc.headerEntries);
+					Object.entries(SpellcastingTypeTag.CLASSES).forEach(([tag, regex]) => {
+						regex.lastIndex = 0;
+						const match = regex.exec(strHeader);
+						if (match) {
+							tags.add(tag);
+							if (cbAll) cbAll(match[0]);
+						}
+					});
+				}
+
+				if (cbAll) cbAll(sc.name);
+			});
+			if (tags.size) m.spellcastingTags = [...tags];
+			else delete m.spellcastingTags;
+		}
+	}
+}
+SpellcastingTypeTag.CLASSES = {
+	"CB": /(^|[^a-zA-Z])bard([^a-zA-Z]|$)/gi,
+	"CC": /(^|[^a-zA-Z])cleric([^a-zA-Z]|$)/gi,
+	"CD": /(^|[^a-zA-Z])druid([^a-zA-Z]|$)/gi,
+	"CP": /(^|[^a-zA-Z])paladin([^a-zA-Z]|$)/gi,
+	"CR": /(^|[^a-zA-Z])ranger([^a-zA-Z]|$)/gi,
+	"CS": /(^|[^a-zA-Z])sorcerer([^a-zA-Z]|$)/gi,
+	"CL": /(^|[^a-zA-Z])warlock([^a-zA-Z]|$)/gi,
+	"CW": /(^|[^a-zA-Z])wizard([^a-zA-Z]|$)/gi
+};
+
+class SpellcastingTraitConvert {
+	static async pGetSpellData () {
+		const spellIndex = await DataUtil.loadJSON(`data/spells/index.json`);
+		return Promise.all(Object.values(spellIndex).map(f => DataUtil.loadJSON(`data/spells/${f}`)));
+	}
+
+	static init (spellData) {
+		// reversed so official sources take precedence over 3pp
+		spellData.reverse().forEach(d => d.spell.forEach(s => SpellcastingTraitConvert.SPELL_SRC_MAP[s.name.toLowerCase()] = s.source));
+	}
+
+	static tryParseSpellcasting (trait, isMarkdown, cbErr) {
+		let spellcasting = [];
+
+		function parseSpellcasting (trait) {
+			const splitter = StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX;
+
+			function getParsedSpells (thisLine) {
+				let spellPart = thisLine.substring(thisLine.indexOf(": ") + 2).trim();
+				if (isMarkdown) {
+					const cleanPart = (part) => {
+						part = part.trim();
+						while (part.startsWith("*") && part.endsWith("*")) {
+							part = part.replace(/^\*(.*)\*$/, "$1");
+						}
+						return part;
+					};
+
+					const cleanedInner = spellPart.split(splitter).map(it => cleanPart(it)).filter(it => it);
+					spellPart = cleanedInner.join(", ");
+
+					while (spellPart.startsWith("*") && spellPart.endsWith("*")) {
+						spellPart = spellPart.replace(/^\*(.*)\*$/, "$1");
+					}
+				}
+				return spellPart.split(splitter).map(i => parseSpell(i));
+			}
+
+			let name = trait.name;
+			let spellcastingEntry = {"name": name, "headerEntries": [parseToHit(trait.entries[0])]};
+			let doneHeader = false;
+			trait.entries.forEach((thisLine, i) => {
+				if (i === 0) return;
+				if (thisLine.includes("/rest")) {
+					doneHeader = true;
+					let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
+					const value = getParsedSpells(thisLine);
+					if (!spellcastingEntry.rest) spellcastingEntry.rest = {};
+					spellcastingEntry.rest[property] = value;
+				} else if (thisLine.includes("/day")) {
+					doneHeader = true;
+					let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
+					const value = getParsedSpells(thisLine);
+					if (!spellcastingEntry.daily) spellcastingEntry.daily = {};
+					spellcastingEntry.daily[property] = value;
+				} else if (thisLine.includes("/week")) {
+					doneHeader = true;
+					let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
+					const value = getParsedSpells(thisLine);
+					if (!spellcastingEntry.weekly) spellcastingEntry.weekly = {};
+					spellcastingEntry.weekly[property] = value;
+				} else if (thisLine.startsWith("Constant: ")) {
+					doneHeader = true;
+					spellcastingEntry.constant = getParsedSpells(thisLine);
+				} else if (thisLine.startsWith("At will: ")) {
+					doneHeader = true;
+					spellcastingEntry.will = getParsedSpells(thisLine);
+				} else if (thisLine.includes("Cantrip")) {
+					doneHeader = true;
+					const value = getParsedSpells(thisLine);
+					if (!spellcastingEntry.spells) spellcastingEntry.spells = {"0": {"spells": []}};
+					spellcastingEntry.spells["0"].spells = value;
+				} else if (thisLine.includes(" level") && thisLine.includes(": ")) {
+					doneHeader = true;
+					let property = thisLine.substr(0, 1);
+					const value = getParsedSpells(thisLine);
+					if (!spellcastingEntry.spells) spellcastingEntry.spells = {};
+					let slots = thisLine.includes(" slot") ? parseInt(thisLine.substr(11, 1)) : 0;
+					spellcastingEntry.spells[property] = {"slots": slots, "spells": value};
+					if (!spellcastingEntry.spells[property]) delete spellcastingEntry.spells[property];
+				} else {
+					if (doneHeader) {
+						if (!spellcastingEntry.footerEntries) spellcastingEntry.footerEntries = [];
+						spellcastingEntry.footerEntries.push(parseToHit(thisLine));
+					} else {
+						spellcastingEntry.headerEntries.push(parseToHit(thisLine));
+					}
+				}
+			});
+
+			SpellcastingTraitConvert.mutSpellcastingAbility(spellcastingEntry);
+
+			spellcasting.push(spellcastingEntry);
+		}
+
+		function parseSpell (name) {
+			function getSourcePart (spellName) {
+				const source = SpellcastingTraitConvert._getSpellSource(spellName);
+				return `${source && source !== SRC_PHB ? `|${source}` : ""}`;
+			}
+
+			name = name.trim();
+			let asterix = name.indexOf("*");
+			let brackets = name.indexOf(" (");
+			if (asterix !== -1) {
+				const trueName = name.substr(0, asterix);
+				return `{@spell ${trueName}${getSourcePart(trueName)}}*`;
+			} else if (brackets !== -1) {
+				const trueName = name.substr(0, brackets);
+				return `{@spell ${trueName}${getSourcePart(trueName)}}${name.substring(brackets)}`;
+			}
+			return `{@spell ${name}${getSourcePart(name)}}`;
+		}
+
+		function parseToHit (line) {
+			return line.replace(/( \+)(\d+)( to hit with spell)/g, (m0, m1, m2, m3) => ` {@hit ${m2}}${m3}`);
+		}
+
+		try {
+			parseSpellcasting(trait);
+			return {out: spellcasting, success: true};
+		} catch (e) {
+			cbErr && cbErr(`Failed to parse spellcasting: ${e.message}`);
+			return {out: trait, success: false};
+		}
+	}
+
+	static mutSpellcastingAbility (spellcastingEntry) {
+		if (spellcastingEntry.headerEntries) {
+			const m = /strength|dexterity|constitution|charisma|intelligence|wisdom/gi.exec(JSON.stringify(spellcastingEntry.headerEntries));
+			if (m) spellcastingEntry.ability = m[0].substring(0, 3).toLowerCase();
+		}
+	}
+
+	static _getSpellSource (spellName) {
+		if (spellName && SpellcastingTraitConvert.SPELL_SRC_MAP[spellName.toLowerCase()]) return SpellcastingTraitConvert.SPELL_SRC_MAP[spellName.toLowerCase()];
+		return null;
+	}
+}
+SpellcastingTraitConvert.SPELL_SRC_MAP = {};
+
+class DiceConvert {
+	static convertTraitActionDice (traitOrAction) {
+		if (traitOrAction.entries) {
+			traitOrAction.entries = traitOrAction.entries.filter(it => it.trim ? it.trim() : true).map(e => {
+				e = JSON.stringify(e);
+
+				// replace e.g. "+X to hit"
+				e = e.replace(/([-+])?\d+(?= to hit)/g, function (match) {
+					const cleanMatch = match.startsWith("+") ? match.replace("+", "") : match;
+					return `{@hit ${cleanMatch}}`
+				});
+
+				return JSON.parse(DiceConvert._getTaggedString(e));
+			});
+		}
+	}
+
+	static _getTaggedString (str) {
+		// un-tag dice
+		str = str.replace(/{@(?:dice|damage) ([^}]*)}/gi, "$1");
+
+		// re-tag + format dice
+		str = str.replace(/((\s*[-+]\s*)?(([1-9]\d*)?d([1-9]\d*)(\s*?[-+×x]\s*?\d+)?))+/gi, (...m) => {
+			const expanded = m[0].replace(/([^0-9d])/gi, " $1 ").replace(/\s+/g, " ");
+			return `{@dice ${expanded}}`;
+		});
+
+		// tag damage
+		str = str.replace(/(\d+)( \({@dice )([-+0-9d ]*)(}\) [a-z]+( or [a-z]+)? damage)/ig, (...m) => {
+			return m[0].replace(/{@dice /gi, "{@damage ");
+		});
+
+		return str;
+	}
+
+	static cleanHpDice (m) {
+		if (m.hp && m.hp.formula) {
+			m.hp.formula = m.hp.formula
+				.replace(/\s+/g, "") // crush spaces
+				.replace(/([^0-9d])/gi, " $1 "); // add spaces
+		}
+	}
+}
+
+class RechargeConvert {
+	static tryConvertRecharge (traitOrAction, cbAll, cbMan) {
+		if (traitOrAction.name) {
+			traitOrAction.name = traitOrAction.name.replace(/\((Recharge )(\d.*?)\)$/gi, (...m) => {
+				if (cbAll) cbAll(m[2]);
+				const num = m[2][0];
+				if (num === "6") return `{@recharge}`;
+				if (isNaN(Number(num))) {
+					if (cbMan) cbMan(traitOrAction.name);
+					return m[0];
+				}
+				return `{@recharge ${num}}`;
+			});
+		}
+	}
+}
 
 class TextClean {
 	static getCleanedJson (str) {
@@ -693,9 +933,13 @@ if (typeof module !== "undefined") {
 		TagAttack,
 		TagHit,
 		AlignmentConvert,
-		TraitsActionsTag,
+		TraitActionTag,
 		LanguageTag,
-		SensesTag,
-		TextClean
+		SenseTag,
+		SpellcastingTypeTag,
+		TextClean,
+		SpellcastingTraitConvert,
+		DiceConvert,
+		RechargeConvert
 	};
 }

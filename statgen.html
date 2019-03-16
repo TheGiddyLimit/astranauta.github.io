@@ -64,6 +64,7 @@
 
 		.pbuy__split {
 			display: flex;
+			justify-content: space-between;
 		}
 
 		.pbuy__split_item:not(:last-of-type) {
@@ -91,7 +92,8 @@
 			text-align: center;
 		}
 
-		.pbuy__adv--visible {
+		.pbuy__adv--visible,
+		table th.pbuy__adv--visible{
 			display: none;
 		}
 
@@ -103,32 +105,86 @@
 			display: none;
 		}
 
+		#pointbuy.pbuy__advanced_active .pbuy__adv-col-3 {
+			width: 25%;
+		}
+
 		.pbuy__add_row_btn_wrap {
-			text-align: center;
 			width: 100%;
-			margin: 2rem 7px 0;
+			margin: 0 7px 1rem;
 		}
 
 		.pbuy__save_wrp {
-			text-align: center;
 			width: 100%;
-			margin: 2rem 7px 0;
+			margin: 1rem 7px 0;
 		}
 
 		.choose {
 			text-align: center;
 		}
+
+		#pointbuy input {
+			border: 1px solid #ccc;
+		}
+
+		#pointbuy input:not(.form-control)[readonly] {
+			background-color: #eee;
+			cursor: default;
+			text-align: center;
+		}
+
+		.night-mode #pointbuy input[readonly] {
+			background-color: #eee2;
+		}
+
+		.choose_head {
+			padding: 0 3px;
+		}
+
+		.pbuy__divider {
+			width: 1px;
+			background: #ccc;
+			flex-shrink: 0;
+			flex-grow: 0;
+			margin: 30px 0;
+		}
+
+		.pbuy__wrp-btn-rem {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			height: 28px;
+			justify-content: center;
+		}
+
+		.pbuy__table {
+			margin-left: -35px;
+		}
+
+		@media (max-width: 991px) {
+			.pbuy__divider {
+				display: none;
+			}
+
+			.pbuy__split {
+				flex-direction: column;
+			}
+
+			.pbuy__table {
+				margin-left: 0;
+			}
+		}
 	</style>
 </head>
 
 <body>
-<header class="hidden-xs hidden-sm">
+<header class="hidden-xs hidden-sm page__header">
 	<div class="container">
-		<h1>Statgen</h1>
-		<p>Change method on the left, refer to method that appears on the right.</p>
+		<h1 class="page__title">Statgen</h1>
+		<p class="page__subtitle">Change method on the left, refer to method that appears on the right.</p>
 	</div>
 </header>
-<nav class="container" id="navigation">
+<nav class="container page__nav" id="navigation">
 	<ul class="nav nav-pills" id="navbar">
 	</ul>
 </nav>
@@ -177,7 +233,7 @@
 						<button id="reset" class="btn btn-default" style="margin: auto auto 7px 2px;">Reset</button>
 					</div>
 
-					<table>
+					<table class="pbuy__table">
 						<tr>
 							<td></td>
 							<td class="text-align-center">Base</td>
@@ -185,74 +241,88 @@
 							<td class="choose choose_head"></td>
 							<td title="Input any additional/custom bonuses here" class="text-align-center help">User</td>
 
+							<td style="width: 18px;"></td>
+
 							<td class="text-align-center">Total</td>
 							<td class="text-align-center">Mod</td>
 						</tr>
 						<tr id="str">
 							<td><b>STR</b></td>
-							<td><input type="number" value="8" class="base"></td>
-							<td><input type="number" class="racial" readonly></td>
+							<td><input type="number" value="8" class="base" data-select="number"></td>
+							<td><input class="racial" readonly data-select="number"></td>
 							<td class="choose"><input type="checkbox" class="choose pbuy__cb_choose"></td>
 							<td class="pbuy__choose_dummy"></td>
-							<td><input type="number" class="pbuy__user_add" value="0"></td>
+							<td><input type="number" class="pbuy__user_add" value="0" data-select="number"></td>
 
-							<td><input type="number" readonly class="bold"></td>
-							<td><input type="number" readonly class="bold"></td>
+							<td class="text-align-center">=</td>
+
+							<td><input readonly class="bold" data-select="number"></td>
+							<td><input readonly class="bold" data-select="number"></td>
 						</tr>
 						<tr id="dex">
 							<td><b>DEX</b></td>
-							<td><input type="number" value="8" class="base"></td>
-							<td><input type="number" class="racial" readonly></td>
+							<td><input type="number" value="8" class="base" data-select="number"></td>
+							<td><input class="racial" readonly data-select="number"></td>
 							<td class="choose"><input type="checkbox" class="choose pbuy__cb_choose"></td>
 							<td class="pbuy__choose_dummy"></td>
-							<td><input type="number" class="pbuy__user_add" value="0"></td>
+							<td><input type="number" class="pbuy__user_add" value="0" data-select="number"></td>
 
-							<td><input type="number" readonly class="bold"></td>
-							<td><input type="number" readonly class="bold"></td>
+							<td class="text-align-center">=</td>
+
+							<td><input readonly class="bold" data-select="number"></td>
+							<td><input readonly class="bold" data-select="number"></td>
 						</tr>
 						<tr id="con">
 							<td><b>CON</b></td>
-							<td><input type="number" value="8" class="base"></td>
-							<td><input type="number" class="racial" readonly></td>
+							<td><input type="number" value="8" class="base" data-select="number"></td>
+							<td><input class="racial" readonly data-select="number"></td>
 							<td class="choose"><input type="checkbox" class="choose pbuy__cb_choose"></td>
 							<td class="pbuy__choose_dummy"></td>
-							<td><input type="number" class="pbuy__user_add" value="0"></td>
+							<td><input type="number" class="pbuy__user_add" value="0" data-select="number"></td>
 
-							<td><input type="number" readonly class="bold"></td>
-							<td><input type="number" readonly class="bold"></td>
+							<td class="text-align-center">=</td>
+
+							<td><input readonly class="bold" data-select="number"></td>
+							<td><input readonly class="bold" data-select="number"></td>
 						</tr>
 						<tr id="int">
 							<td><b>INT</b></td>
-							<td><input type="number" value="8" class="base"></td>
-							<td><input type="number" class="racial" readonly></td>
+							<td><input type="number" value="8" class="base" data-select="number"></td>
+							<td><input class="racial" readonly data-select="number"></td>
 							<td class="choose"><input type="checkbox" class="choose pbuy__cb_choose"></td>
 							<td class="pbuy__choose_dummy"></td>
-							<td><input type="number" class="pbuy__user_add" value="0"></td>
+							<td><input type="number" class="pbuy__user_add" value="0" data-select="number"></td>
 
-							<td><input type="number" readonly class="bold"></td>
-							<td><input type="number" readonly class="bold"></td>
+							<td class="text-align-center">=</td>
+
+							<td><input readonly class="bold" data-select="number"></td>
+							<td><input readonly class="bold" data-select="number"></td>
 						</tr>
 						<tr id="wis">
 							<td><b>WIS</b></td>
-							<td><input type="number" value="8" class="base"></td>
-							<td><input type="number" class="racial" readonly></td>
+							<td><input type="number" value="8" class="base" data-select="number"></td>
+							<td><input class="racial" readonly data-select="number"></td>
 							<td class="choose"><input type="checkbox" class="choose pbuy__cb_choose"></td>
 							<td class="pbuy__choose_dummy"></td>
-							<td><input type="number" class="pbuy__user_add" value="0"></td>
+							<td><input type="number" class="pbuy__user_add" value="0" data-select="number"></td>
 
-							<td><input type="number" readonly class="bold"></td>
-							<td><input type="number" readonly class="bold"></td>
+							<td class="text-align-center">=</td>
+
+							<td><input readonly class="bold" data-select="number"></td>
+							<td><input readonly class="bold" data-select="number"></td>
 						</tr>
 						<tr id="cha">
 							<td><b>CHA</b></td>
-							<td><input type="number" value="8" class="base"></td>
-							<td><input type="number" class="racial" readonly></td>
+							<td><input type="number" value="8" class="base" data-select="number"></td>
+							<td><input class="racial" readonly data-select="number"></td>
 							<td class="choose"><input type="checkbox" class="choose pbuy__cb_choose"></td>
 							<td class="pbuy__choose_dummy"></td>
-							<td><input type="number" class="pbuy__user_add" value="0"></td>
+							<td><input type="number" class="pbuy__user_add" value="0" data-select="number"></td>
 
-							<td><input type="number" readonly class="bold"></td>
-							<td><input type="number" readonly class="bold"></td>
+							<td class="text-align-center">=</td>
+
+							<td><input readonly class="bold" data-select="number"></td>
+							<td><input readonly class="bold" data-select="number"></td>
 						</tr>
 					</table>
 
@@ -269,21 +339,29 @@
 					</table>
 				</div>
 
-				<div class="pbuy__split_item">
-					<label><input id="advanced" type="checkbox">Custom Rules</label>
-					<table id="costs" class="pbuy__tbl_cost"></table>
+				<div class="pbuy__divider"></div>
 
-					<div class="pbuy__save_wrp">
-						<button id="pbuy__save_file" class="btn btn-xs btn-primary" style="margin-right: 7px;">Save to File</button>
-						<button id="pbuy__load_file" class="btn btn-xs btn-primary" style="margin-right: 14px;">Load from File</button>
-						<button id="pbuy__save_url" class="btn btn-xs btn-primary">Save to URL</button>
+				<div class="pbuy__split_item">
+					<div class="flex-col">
+						<h4>Ability Score Point Cost</h4>
+						<label><input id="advanced" type="checkbox">Custom Rules</label>
+						<table id="costs" class="pbuy__tbl_cost"></table>
 					</div>
 				</div>
+			</div>
+
+			<hr>
+
+			<div class="pbuy__save_wrp">
+				<button id="pbuy__save_file" class="btn btn-xs btn-primary" style="margin-right: 7px;">Save to File</button>
+				<button id="pbuy__load_file" class="btn btn-xs btn-primary" style="margin-right: 14px;">Load from File</button>
+				<button id="pbuy__save_url" class="btn btn-xs btn-primary">Save to URL</button>
 			</div>
 		</div>
 	</div>
 </main>    <!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>

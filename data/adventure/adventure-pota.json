@@ -10931,107 +10931,7 @@
 									],
 									"rows": [
 										[
-											"1",
-											"1 fire elemental"
-										],
-										[
-											"3",
-											"{@dice 1d8} magmin"
-										],
-										[
-											"4",
-											"{@dice 1d3} salamanders (see {@area W7})"
-										],
-										[
-											"5",
-											"Crust Break. A random character steps on a particularly thin spot on the floor. The character must succeed at a DC 10 Dexterity saving throw or fall into a hole (seventy-five percent chance) or lava beneath the thin spot (twenty-five percent chance). If the case of a hole, the character falls {@dice 1d4} ? 10 feet into an empty magma pocket. The lava deals damage as described earlier."
-										],
-										[
-											"6",
-											"Flame Gout. A bubble of gas spontaneously ignites, creating a burst of flame identical to a burning hands spell. The cone starts in the space of a random character and shoots in a random direction."
-										],
-										[
-											"7",
-											"Lava Rain. At the start of a round, lava droplets form on the ceiling and fall in a 20-foot-diameter area, dealing 9 ({@dice 2d8}) fire damage to any creature that enters the area for the first time on a turn or starts its turn there. The drops ignite exposed flammable objects. The rain ends at the end of a round {@dice 2d4} rounds later."
-										],
-										[
-											"8",
-											"Smoke Cloud. A cloud of smoke kicks up, filling an area 40 feet in diameter and causing that area to become lightly obscured. The smoke dissipates in {@dice 1d4} minutes unless a wind disperses it."
-										],
-										[
-											"9",
-											"Sulfur Cloud. A discharge of noxious fumes erupts from a nearby vent. The effects are identical to a stinking cloud spell."
-										],
-										[
-											"10-20",
-											"None"
-										]
-									]
-								},
-								{
-									"type": "table",
-									"caption": "The Weeping Colossus Random Encounters - Medium Intensity",
-									"colLabels": [
-										"d20",
-										"Encounter"
-									],
-									"colStyles": [
-										"col-2 text-align-center",
-										"col-10"
-									],
-									"rows": [
-										[
-											"1",
-											"1 fire elemental"
-										],
-										[
-											"3",
-											"{@dice 1d8} magmin"
-										],
-										[
-											"4",
-											"{@dice 1d3} salamanders (see {@area W7})"
-										],
-										[
-											"5",
-											"Crust Break. A random character steps on a particularly thin spot on the floor. The character must succeed at a DC 10 Dexterity saving throw or fall into a hole (seventy-five percent chance) or lava beneath the thin spot (twenty-five percent chance). If the case of a hole, the character falls {@dice 1d4} ? 10 feet into an empty magma pocket. The lava deals damage as described earlier."
-										],
-										[
-											"6",
-											"Flame Gout. A bubble of gas spontaneously ignites, creating a burst of flame identical to a burning hands spell. The cone starts in the space of a random character and shoots in a random direction."
-										],
-										[
-											"7",
-											"Lava Rain. At the start of a round, lava droplets form on the ceiling and fall in a 20-foot-diameter area, dealing 9 ({@dice 2d8}) fire damage to any creature that enters the area for the first time on a turn or starts its turn there. The drops ignite exposed flammable objects. The rain ends at the end of a round {@dice 2d4} rounds later."
-										],
-										[
-											"8",
-											"Smoke Cloud. A cloud of smoke kicks up, filling an area 40 feet in diameter and causing that area to become lightly obscured. The smoke dissipates in {@dice 1d4} minutes unless a wind disperses it."
-										],
-										[
-											"9",
-											"Sulfur Cloud. A discharge of noxious fumes erupts from a nearby vent. The effects are identical to a stinking cloud spell."
-										],
-										[
-											"10-20",
-											"None"
-										]
-									]
-								},
-								{
-									"type": "table",
-									"caption": "The Weeping Colossus Random Encounters - High Intensity",
-									"colLabels": [
-										"d20",
-										"Encounter"
-									],
-									"colStyles": [
-										"col-2 text-align-center",
-										"col-10"
-									],
-									"rows": [
-										[
-											"1",
+											"1-2",
 											"1 fire elemental"
 										],
 										[
@@ -13287,7 +13187,13 @@
 						"If the Kraken Society agents see the party coming, Unferth calls out a warning, saying, \"No closer, friends! This is a private matter, and we don't wish to be disturbed.\" Unferth presents himself with a false joviality, making light of the fact that two groups of upstanding citizens should find themselves engaged in an ugly bit of skulduggery involving opening a tomb. Underneath the self-deprecating manner is a stern resolve. The Kraken Society paid good money for the orb, and they intend to keep it.",
 						"Ghald waits and watches to see if the adventurers can be scared away. When he decides conflict is likely, he attacks without warning. This act forces the others to join the battle. Unferth hangs back and uses his spells to support his allies.",
 						"If the characters accepted Nareens offer to guide them here, and she is uninjured from Haliyras attack, she and one of her veterans are here. They fight as the partys allies.",
-						"The Orb. The crypt is a small stone building with a locked iron door. Nareen has the key; the Kraken Society agents don't have a key, so they must break in. The crypt holds the remains of a minor lord and lady, buried here centuries ago. The orb sits in a wooden containment cask in plain sight on the floor. See chapter 7 for more information on devastation orbs.",
+						{
+							"type": "entries",
+							"name": "The Orb",
+							"entries": [
+								"The crypt is a small stone building with a locked iron door. Nareen has the key; the Kraken Society agents don't have a key, so they must break in. The crypt holds the remains of a minor lord and lady, buried here centuries ago. The orb sits in a wooden containment cask in plain sight on the floor. See chapter 7 for more information on devastation orbs."
+							]
+						},
 						{
 							"type": "entries",
 							"name": "Conclusion",

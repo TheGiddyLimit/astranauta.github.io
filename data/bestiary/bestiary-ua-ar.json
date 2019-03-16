@@ -1,0 +1,97 @@
+{
+	"monster": [
+		{
+			"source": "UAArtificerRevisited",
+			"name": "Alchemical Homunculus",
+			"size": "T",
+			"type": "construct",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "equal to five times your level in this class + your Intelligence modifier"
+			},
+			"speed": {
+				"walk": 20,
+				"fly": 30
+			},
+			"str": 4,
+			"dex": 15,
+			"con": 11,
+			"int": 10,
+			"wis": 10,
+			"cha": 7,
+			"skill": {
+				"perception": "+4",
+				"stealth": "+4"
+			},
+			"immune": [
+				"acid",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"poisoned"
+			],
+			"passive": 10,
+			"senses": "darkvision 60 ft.",
+			"languages": "understands the languages you speak",
+			"cr": "Unknown",
+			"trait": [
+				{
+					"name": "Might of the Master",
+					"entries": [
+						"The following numbers increase by 1 when your proficiency bonus increases by 1: the homunculus's skill bonuses and the bonuses to hit and damage of its Acidic Spittle."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Acidic Spittle",
+					"entries": [
+						"{@atk rw} {@hit 4} to hit, range 30 ft., one target you can see. {@h}{@dice 1d6 + 2} acid damage."
+					]
+				},
+				{
+					"name": "Alchemical Salve (3/Day)",
+					"entries": [
+						"The homunculus produces a salve and touches one creature you designate. The target receives one of the following magical benefits of your choice:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Buoyancy",
+									"entry": "The target gains a flying speed of 10 feet for 10 minutes."
+								},
+								{
+									"type": "item",
+									"name": "Inspiration",
+									"entry": "The target feels giddy and effective, gaining advantage on certain ability checks in the next hour. The target chooses the checks before or after rolling. The magic runs out after the target has used it on a number of checks equal to your Intelligence modifier (minimum of 1)."
+								},
+								{
+									"type": "item",
+									"name": "Resilience",
+									"entry": "The target gains a number of temporary hit points equal to {@dice 2d6} + your Intelligence modifier."
+								}
+							]
+						}
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			]
+		}
+	]
+}

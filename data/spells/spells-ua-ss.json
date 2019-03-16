@@ -118,7 +118,7 @@
 					"type": "entries",
 					"name": "Bless Water",
 					"entries": [
-						"You touch one vial of water and cause it to become holy water."
+						"You touch one {@item vial|phb} of water and cause it to become {@item Holy Water (flask)|phb|holy water}."
 					]
 				},
 				{
@@ -139,7 +139,7 @@
 					"type": "entries",
 					"name": "Funeral Rite",
 					"entries": [
-						"You bless one corpse within 5 feet of you. For the next 24 hours, the target can't become undead by any means short of a wish spell."
+						"You bless one corpse within 5 feet of you. For the next 24 hours, the target can't become undead by any means short of a {@spell wish} spell."
 					]
 				},
 				{
@@ -413,7 +413,7 @@
 			},
 			"entries": [
 				"You raise your hand, and burning radiance erupts from it. Each creature of your choice that you can see within 5 feet of you must succeed on a Constitution saving throw or take {@dice 1d6} radiant damage.",
-				"The spell's damage increases by {@dice 1d6} when you reach 5th level ({@dice 2d6}), 11th level ({@dice 3d6}), and 17th level ({@dice 4d8})."
+				"The spell's damage increases by {@dice 1d6} when you reach 5th level ({@dice 2d6}), 11th level ({@dice 3d6}), and 17th level ({@dice 4d6})."
 			],
 			"damageInflict": [
 				"radiant"

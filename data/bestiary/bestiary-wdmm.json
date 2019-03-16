@@ -421,7 +421,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Halaster's spellcasting ability is Intelligence. He can innately cast the following spells, requiring no material components:"
+						"Halaster's spellcasting ability is Intelligence (spell save DC 22). He can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell disguise self}",
@@ -543,6 +543,10 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"I",
+				"CW"
 			]
 		},
 		{
@@ -817,6 +821,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -1037,6 +1044,9 @@
 			"senseTags": [
 				"B",
 				"T"
+			],
+			"traitTags": [
+				"Regeneration"
 			]
 		},
 		{
@@ -1232,6 +1242,9 @@
 			"languageTags": [
 				"C",
 				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			]
 		},
 		{
@@ -1272,7 +1285,7 @@
 		},
 		{
 			"name": "Captain N'ghathrod",
-			"isNPC": true,
+			"isNpc": true,
 			"source": "WDMM",
 			"page": 250,
 			"hp": {
@@ -1470,7 +1483,17 @@
 						}
 					}
 				}
-			}
+			},
+			"traitTags": [
+				"Immutable Form",
+				"Magic Resistance",
+				"Magic Weapons",
+				"Spider Climb"
+			],
+			"languageTags": [
+				"AB",
+				"CS"
+			]
 		},
 		{
 			"name": "Crystal Golem",
@@ -1499,7 +1522,13 @@
 						]
 					}
 				}
-			}
+			},
+			"traitTags": [
+				"Immutable Form",
+				"Magic Resistance",
+				"Magic Weapons",
+				"Illumination"
+			]
 		},
 		{
 			"name": "Halaster Horror",
@@ -1630,11 +1659,22 @@
 						}
 					}
 				}
-			}
+			},
+			"languageTags": [
+				"AB",
+				"CE",
+				"C",
+				"DR",
+				"D",
+				"E",
+				"I",
+				"CS",
+				"U"
+			]
 		},
 		{
 			"name": "Maddgoth's Homunculus",
-			"isNPC": true,
+			"isNpc": true,
 			"source": "WDMM",
 			"page": 96,
 			"cr": "2",
@@ -1660,11 +1700,18 @@
 						}
 					}
 				}
-			}
+			},
+			"languageTags": [
+				"AB",
+				"C",
+				"DR",
+				"CS",
+				"G"
+			]
 		},
 		{
 			"name": "Otto",
-			"isNPC": true,
+			"isNpc": true,
 			"source": "WDMM",
 			"page": 96,
 			"cr": "3",
@@ -1718,7 +1765,10 @@
 			"_copy": {
 				"name": "Giant Wasp",
 				"source": "MM"
-			}
+			},
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"name": "Shockerstomper",
@@ -1910,11 +1960,17 @@
 						}
 					}
 				}
-			}
+			},
+			"languageTags": [
+				"C",
+				"DR",
+				"D",
+				"T"
+			]
 		},
 		{
 			"name": "Umbraxakar",
-			"isNPC": true,
+			"isNpc": true,
 			"source": "WDMM",
 			"page": 241,
 			"alignment": [
@@ -1928,7 +1984,12 @@
 					"name": "Shadow Dragon",
 					"source": "MM"
 				}
-			}
+			},
+			"traitTags": [
+				"Amphibious",
+				"Legendary Resistances",
+				"Sunlight Sensitivity"
+			]
 		},
 		{
 			"name": "Poison Weird",
@@ -2007,11 +2068,15 @@
 						}
 					}
 				}
-			}
+			},
+			"actionTags": [
+				"Multiattack",
+				"Tentacles"
+			]
 		},
 		{
 			"name": "Emberosa",
-			"isNPC": true,
+			"isNpc": true,
 			"source": "WDMM",
 			"page": 185,
 			"hp": {
@@ -2036,14 +2101,14 @@
 		},
 		{
 			"name": "Berlain",
-			"isNPC": true,
+			"isNpc": true,
 			"source": "WDMM",
 			"page": 283,
 			"alignment": [
 				"C",
 				"E"
 			],
-			"type": "abberation",
+			"type": "aberration",
 			"languages": "Common, Deep Speech, Grell, Undercommon",
 			"_copy": {
 				"name": "Archmage",
@@ -2153,18 +2218,25 @@
 					],
 					"ability": "int"
 				}
+			],
+			"languageTags": [
+				"X",
+				"C",
+				"DS",
+				"OTH",
+				"U"
 			]
 		},
 		{
 			"name": "Cassiok Shadowdusk",
-			"isNPC": true,
+			"isNpc": true,
 			"source": "WDMM",
 			"page": 287,
 			"alignment": [
 				"C",
 				"E"
 			],
-			"type": "abberation",
+			"type": "aberration",
 			"languages": "Common, Deep Speech, Infernal, Undercommon",
 			"ac": [
 				14,
@@ -2291,11 +2363,18 @@
 					],
 					"ability": "int"
 				}
+			],
+			"languageTags": [
+				"X",
+				"C",
+				"DS",
+				"I",
+				"U"
 			]
 		},
 		{
 			"name": "Valtagar Steelshadow",
-			"isNPC": true,
+			"isNpc": true,
 			"source": "WDMM",
 			"page": 271,
 			"alignment": [
@@ -2432,6 +2511,18 @@
 					],
 					"ability": "int"
 				}
+			],
+			"languageTags": [
+				"X",
+				"C",
+				"D",
+				"I",
+				"T",
+				"OTH",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -2468,7 +2559,7 @@
 		},
 		{
 			"name": "Sundeth",
-			"isNPC": true,
+			"isNpc": true,
 			"source": "WDMM",
 			"page": 304,
 			"alignment": [
@@ -2489,11 +2580,19 @@
 						"flags": "i"
 					}
 				}
-			}
+			},
+			"languageTags": [
+				"C",
+				"X",
+				"GI"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"name": "Kavil",
-			"isNPC": true,
+			"isNpc": true,
 			"source": "WDMM",
 			"page": 205,
 			"alignment": [
@@ -2512,7 +2611,14 @@
 						"flags": "i"
 					}
 				}
-			}
+			},
+			"languageTags": [
+				"X",
+				"D",
+				"C",
+				"GI",
+				"U"
+			]
 		},
 		{
 			"name": "Huge Gray Ooze",
@@ -2553,7 +2659,10 @@
 			"_copy": {
 				"name": "Gray Ooze",
 				"source": "MM"
-			}
+			},
+			"actionTags": [
+				"Multiattack"
+			]
 		},
 		{
 			"name": "Intelligent Black Pudding",
@@ -2565,7 +2674,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The pudding's spellcasting ability is Intelligence (spell save DC 12, +4 to hit with spell attacks). It can cast the following spells, requiring no components:"
+						"The pudding's spellcasting ability is Intelligence (spell save DC 12, {@hit 4} to hit with spell attacks). It can cast the following spells, requiring no components:"
 					],
 					"will": [
 						"{@spell dancing lights}",
@@ -2587,11 +2696,19 @@
 			"_copy": {
 				"name": "Black Pudding",
 				"source": "MM"
-			}
+			},
+			"languageTags": [
+				"E",
+				"U",
+				"CS"
+			],
+			"spellcastingTags": [
+				"I"
+			]
 		},
 		{
 			"name": "Gorka Tharn",
-			"isNPC": true,
+			"isNpc": true,
 			"source": "WDMM",
 			"page": 257,
 			"languages": "Dwarvish, Undercommon",
@@ -2679,11 +2796,15 @@
 						]
 					}
 				}
-			}
+			},
+			"languageTags": [
+				"D",
+				"U"
+			]
 		},
 		{
 			"name": "Nester",
-			"isNPC": true,
+			"isNpc": true,
 			"source": "WDMM",
 			"page": 131,
 			"type": "undead",
@@ -2792,11 +2913,24 @@
 						"flags": "i"
 					}
 				}
-			}
+			},
+			"languageTags": [
+				"X",
+				"AU",
+				"C",
+				"DR",
+				"D",
+				"GI",
+				"T",
+				"CS"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"name": "Trenzia",
-			"isNPC": true,
+			"isNpc": true,
 			"source": "WDMM",
 			"page": 32,
 			"resist": [
@@ -2876,6 +3010,7 @@
 			"name": "Undead Bulette",
 			"source": "WDMM",
 			"page": 0,
+			"type": "undead",
 			"hp": {
 				"average": 125,
 				"formula": "9d10 + 45"

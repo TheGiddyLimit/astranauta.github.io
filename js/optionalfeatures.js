@@ -29,7 +29,7 @@ let list;
 const sourceFilter = getSourceFilter();
 const typeFilter = new Filter({
 	header: "Feature Type",
-	items: ["ED", "EI", "MM", "MV:B", "OTH", "FS:F", "FS:B", "FS:P", "FS:R", "PB"],
+	items: ["AI", "ED", "EI", "MM", "MV:B", "OTH", "FS:F", "FS:B", "FS:P", "FS:R", "PB"],
 	displayFn: Parser.optFeatureTypeToFull
 });
 const pactFilter = new Filter({
@@ -86,7 +86,7 @@ async function onJsonLoad (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(() => BrewUtil.bind({list}))
-		.then(BrewUtil.pAddLocalBrewData)
+		.then(() => BrewUtil.pAddLocalBrewData())
 		.catch(BrewUtil.pPurgeBrew)
 		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");

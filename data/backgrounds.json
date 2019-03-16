@@ -11237,7 +11237,7 @@
 						{
 							"type": "item",
 							"name": "Tool Proficiencies",
-							"entry": "{@item Cartographer's tools|phb} or {@item navigator's tools|phb}"
+							"entry": "One type of gaming set"
 						},
 						{
 							"type": "item",
@@ -11609,6 +11609,11 @@
 							"other"
 						]
 					}
+				}
+			],
+			"toolProficiencies": [
+				{
+					"gaming set": true
 				}
 			]
 		},
@@ -13511,107 +13516,112 @@
 								]
 							]
 						},
-						"Contacts",
-						"The Orzhov Syndicate operates according to a strict hierarchy built on a network of connections among old, wealthy families. Your family might provide important contacts, while your family's activities in crime, banking, or debt collection could tie you to members of other guilds.",
-						"Roll twice on the Orzhov Contacts table (for an ally and a rival) and once on the Non-Orzhov Contacts table.",
 						{
-							"type": "table",
-							"caption": "Orzhov Contacts",
-							"colLabels": [
-								"d8",
-								"Contact"
-							],
-							"colStyles": [
-								"text-align-center col-2",
-								"col-10"
-							],
-							"rows": [
-								[
-									"1",
-									"The spirit of an ancestor has taken an interest in me."
-								],
-								[
-									"2",
-									"An older cousin has the ear of a powerful oligarch."
-								],
-								[
-									"3",
-									"I know a knight who is responsible for collecting debts from powerful people."
-								],
-								[
-									"4",
-									"A vampire pontiff tried to use me as a pawn in past schemes."
-								],
-								[
-									"5",
-									"A silent spirit follows me around."
-								],
-								[
-									"6",
-									"A sibling has keys to parts of Vizkopa Bank."
-								],
-								[
-									"7",
-									"A giant thinks I'm adorable."
-								],
-								[
-									"8",
-									"I regularly offer tribute to an angel, and the angel has been kind to me in turn."
-								]
-							]
-						},
-						{
-							"type": "table",
-							"caption": "Non-Orzhov Contacts",
-							"colLabels": [
-								"d10",
-								"Contact"
-							],
-							"colStyles": [
-								"text-align-center col-2",
-								"col-10"
-							],
-							"rows": [
-								[
-									"1",
-									"An Azorius arrester is always snooping into my family's business transactions."
-								],
-								[
-									"2",
-									"A Boros paladin saved my life, to my everlasting shame."
-								],
-								[
-									"3",
-									"I know a shopkeeper who is secretly a Dimir agent and tries to make sure that I keep that secret hidden."
-								],
-								[
-									"4",
-									"I'm fascinated by the culture of the Golgari kraul, and I have formed a friendship with one of their death priests."
-								],
-								[
-									"5",
-									"A Gruul druid hates me but would never dare to touch me."
-								],
-								[
-									"6",
-									"I know an Izzet engineer who is desperate to pay off a debt accrued by a deceased relative."
-								],
-								[
-									"7",
-									"Roll an additional Orzhov contact; you can decide if the contact is an ally or a rival."
-								],
-								[
-									"8",
-									"My childhood friend is now a Rakdos torturer. We still meet for drinks occasionally."
-								],
-								[
-									"9",
-									"I have the key to a vault where a Selesnya druid is hiding an item of secret shame."
-								],
-								[
-									"10",
-									"I was married to a Simic bioengineer."
-								]
+							"type": "entries",
+							"name": "Contacts",
+							"entries": [
+								"The Orzhov Syndicate operates according to a strict hierarchy built on a network of connections among old, wealthy families. Your family might provide important contacts, while your family's activities in crime, banking, or debt collection could tie you to members of other guilds.",
+								"Roll twice on the Orzhov Contacts table (for an ally and a rival) and once on the Non-Orzhov Contacts table.",
+								{
+									"type": "table",
+									"caption": "Orzhov Contacts",
+									"colLabels": [
+										"d8",
+										"Contact"
+									],
+									"colStyles": [
+										"text-align-center col-2",
+										"col-10"
+									],
+									"rows": [
+										[
+											"1",
+											"The spirit of an ancestor has taken an interest in me."
+										],
+										[
+											"2",
+											"An older cousin has the ear of a powerful oligarch."
+										],
+										[
+											"3",
+											"I know a knight who is responsible for collecting debts from powerful people."
+										],
+										[
+											"4",
+											"A vampire pontiff tried to use me as a pawn in past schemes."
+										],
+										[
+											"5",
+											"A silent spirit follows me around."
+										],
+										[
+											"6",
+											"A sibling has keys to parts of Vizkopa Bank."
+										],
+										[
+											"7",
+											"A giant thinks I'm adorable."
+										],
+										[
+											"8",
+											"I regularly offer tribute to an angel, and the angel has been kind to me in turn."
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Non-Orzhov Contacts",
+									"colLabels": [
+										"d10",
+										"Contact"
+									],
+									"colStyles": [
+										"text-align-center col-2",
+										"col-10"
+									],
+									"rows": [
+										[
+											"1",
+											"An Azorius arrester is always snooping into my family's business transactions."
+										],
+										[
+											"2",
+											"A Boros paladin saved my life, to my everlasting shame."
+										],
+										[
+											"3",
+											"I know a shopkeeper who is secretly a Dimir agent and tries to make sure that I keep that secret hidden."
+										],
+										[
+											"4",
+											"I'm fascinated by the culture of the Golgari kraul, and I have formed a friendship with one of their death priests."
+										],
+										[
+											"5",
+											"A Gruul druid hates me but would never dare to touch me."
+										],
+										[
+											"6",
+											"I know an Izzet engineer who is desperate to pay off a debt accrued by a deceased relative."
+										],
+										[
+											"7",
+											"Roll an additional Orzhov contact; you can decide if the contact is an ally or a rival."
+										],
+										[
+											"8",
+											"My childhood friend is now a Rakdos torturer. We still meet for drinks occasionally."
+										],
+										[
+											"9",
+											"I have the key to a vault where a Selesnya druid is hiding an item of secret shame."
+										],
+										[
+											"10",
+											"I was married to a Simic bioengineer."
+										]
+									]
+								}
 							]
 						}
 					]
@@ -14084,8 +14094,8 @@
 			"page": 86,
 			"skillProficiencies": [
 				{
-					"athletics": true,
-					"intimidation": true
+					"nature": true,
+					"persuasion": true
 				}
 			],
 			"entries": [

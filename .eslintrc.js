@@ -27,7 +27,7 @@ module.exports = {
 		"dot-location": ["error", "property"],
 		"eqeqeq": ["error", "always", {"null": "ignore"}],
 		"func-call-spacing": ["error", "never"],
-		"generator-star-spacing": ["error", {"before": true, "after": true}],
+		"generator-star-spacing": ["error", {"before": false, "after": true}],
 		"handle-callback-err": ["error", "^(err|error)$"],
 		"indent": [
 			"error",

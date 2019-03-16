@@ -36,7 +36,8 @@ const replacements = {
 	"’": "'",
 	"“": '\\"',
 	"”": '\\"',
-	"…": "..."
+	"…": "...",
+	" ": " " // non-breaking space
 };
 
 const replacementRegex = new RegExp(Object.keys(replacements).join("|"), 'g');

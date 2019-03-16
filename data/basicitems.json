@@ -496,6 +496,24 @@
 			]
 		},
 		{
+			"name": "Hooked Shortspear",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Martial",
+			"rarity": "Unknown",
+			"weight": "2",
+			"dmg1": "{@dice 1d4}",
+			"dmgType": "P",
+			"property": [
+				"L"
+			],
+			"source": "OotA",
+			"page": 224,
+			"entries": [
+				"On a hit with this weapon, the wielder can forgo dealing damage and attempt to trip the target, in which case the target must succeed on a Strength saving throw or fall {@condition prone}. The DC is 8 + the wielder’s Strength modifier + the wielder’s proficiency bonus."
+			]
+		},
+		{
 			"name": "Hunting Rifle",
 			"type": "R",
 			"technology": "Firearm",
@@ -632,6 +650,26 @@
 			"range": "80/320",
 			"source": "PHB",
 			"page": 149
+		},
+		{
+			"name": "Light Repeating Crossbow",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "Unknown",
+			"weight": "5",
+			"dmg1": "{@dice 1d8}",
+			"dmgType": "P",
+			"property": [
+				"A",
+				"2H"
+			],
+			"range": "40/160",
+			"source": "OotA",
+			"page": 224,
+			"entries": [
+				"This crossbow is fitted with a cartridge that can hold up to six crossbow bolts. It automatically reloads after firing until the cartridge runs out of ammunition. Reloading the cartridge takes an action."
+			]
 		},
 		{
 			"name": "Light Hammer",
@@ -1142,7 +1180,7 @@
 			"weight": "45",
 			"ac": 14,
 			"stealth": true,
-			"rarity": "Rare",
+			"rarity": "Unknown",
 			"source": "SCAG",
 			"page": 121,
 			"entries": [

@@ -111,14 +111,14 @@
 
 <body>
 <div class="viewport-wrapper">
-	<header class="hidden-xs hidden-sm">
+	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
 
-			<h1>Bestiary</h1>
-			<p>Search by name on the left, click monster name to display on the right.</p>
+			<h1 class="page__title">Bestiary</h1>
+			<p class="page__subtitle">Search by name on the left, click monster name to display on the right.</p>
 		</div>
 	</header>
-	<nav class="container" id="navigation">
+	<nav class="container page__nav" id="navigation">
 		<ul class="nav nav-pills" id="navbar">
 		</ul>
 	</nav>
@@ -148,16 +148,29 @@
 			<div class="ecgen__visible mb-4">
 				<div class="row">
 					<div class="col-12 text-align-right">
-						<div class="btn-group">
-							<button class="btn btn-primary ecgen_rng" data-mode="medium">Random Medium</button>
-							<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown">
+						<div class="btn-group mr-3">
+							<button class="btn btn-primary ecgen_rng" data-mode="medium" style="min-width: 135px;" title="Randomly generate a Medium encounter">Random Medium</button>
+							<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown_rng">
 								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li class="ecgen_rng_easy"><a href="#">Random Easy</a></li>
-								<li class="ecgen_rng_medium"><a href="#">Random Medium</a></li>
-								<li class="ecgen_rng_hard"><a href="#">Random Hard</a></li>
-								<li class="ecgen_rng_deadly"><a href="#">Random Deadly</a></li>
+								<li class="ecgen_rng_easy" title="Randomly generate an Easy encounter"><a href="#">Random Easy</a></li>
+								<li class="ecgen_rng_medium" title="Randomly generate a Medium encounter"><a href="#">Random Medium</a></li>
+								<li class="ecgen_rng_hard" title="Randomly generate a Hard encounter"><a href="#">Random Hard</a></li>
+								<li class="ecgen_rng_deadly" title="Randomly generate a Deadly encounter"><a href="#">Random Deadly</a></li>
+							</ul>
+						</div>
+
+						<div class="btn-group">
+							<button class="btn btn-primary ecgen_adj" data-mode="medium" style="min-width: 135px;" title="Adjust the current encounter difficulty to Medium">Adjust to Medium</button>
+							<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown_adj">
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li class="ecgen_adj_easy" title="Adjust the current encounter difficulty to Easy"><a href="#">Adjust to Easy</a></li>
+								<li class="ecgen_adj_medium" title="Adjust the current encounter difficulty to Medium"><a href="#">Adjust to Medium</a></li>
+								<li class="ecgen_adj_hard" title="Adjust the current encounter difficulty to Hard"><a href="#">Adjust to Hard</a></li>
+								<li class="ecgen_adj_deadly" title="Adjust the current encounter difficulty to Deadly"><a href="#">Adjust to Deadly</a></li>
 							</ul>
 						</div>
 					</div>
@@ -196,7 +209,7 @@
 			</div>
 
 			<div class="text-align-center wrp-footer-buttons ecgen__hidden">
-				<button class="btn btn-success btn-xs" id="btn-encounterbuild">Encounter Builder</button>
+				<button class="btn btn-default btn-success btn-xs" id="btn-encounterbuild">Encounter Builder</button>
 				<div id="wrp-profbonusdice" class=>
 					<button class="btn btn-default btn-xs" id="profbonusdice"
 							title="WARNING: Very experimental &mdash; use with caution">Use Proficiency Dice
@@ -302,6 +315,7 @@
 <script type="text/javascript" src="lib/jquery-ui.js"></script>
 <script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
@@ -309,6 +323,7 @@
 <script type="text/javascript" src="js/multisource.js"></script>
 <script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/entryrender-bestiary.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/bestiary.js"></script>
 <script type="text/javascript" src="js/bestiary-encounterbuilder.js"></script>

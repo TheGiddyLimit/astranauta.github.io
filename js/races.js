@@ -175,7 +175,7 @@ async function onJsonLoad (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(() => BrewUtil.bind({list}))
-		.then(BrewUtil.pAddLocalBrewData)
+		.then(() => BrewUtil.pAddLocalBrewData())
 		.catch(BrewUtil.pPurgeBrew)
 		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -442,13 +442,23 @@ function loadhash (id) {
 		if (baseFluff) addFluff(baseFluff, true);
 
 		if ((subFluff && subFluff.uncommon) || (baseFluff && baseFluff.uncommon)) {
-			fluff.entries = fluff.entries || [];
-			fluff.entries.push({type: "section", entries: [MiscUtil.copy(fluffJson.meta.uncommon)]});
+			const entryUncommon = {type: "section", entries: [MiscUtil.copy(fluffJson.meta.uncommon)]};
+			if (fluff.entries) {
+				fluff.entries.push(entryUncommon);
+			} else {
+				fluff.entries = [HTML_NO_INFO];
+				fluff.entries.push(...entryUncommon.entries)
+			}
 		}
 
 		if ((subFluff && subFluff.monstrous) || (baseFluff && baseFluff.monstrous)) {
-			fluff.entries = fluff.entries || [];
-			fluff.entries.push({type: "section", entries: [MiscUtil.copy(fluffJson.meta.monstrous)]});
+			const entryMonstrous = {type: "section", entries: [MiscUtil.copy(fluffJson.meta.monstrous)]};
+			if (fluff.entries) {
+				fluff.entries.push(entryMonstrous);
+			} else {
+				fluff.entries = [HTML_NO_INFO];
+				fluff.entries.push(...entryMonstrous.entries)
+			}
 		}
 
 		if (fluff.entries.length && fluff.entries[0].type === "section") {

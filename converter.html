@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Stat Block Converter - 5etools</title>
+	<title>Text Converter - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/jquery-ui.css">
@@ -58,12 +58,8 @@
 			margin-bottom: 2px;
 		}
 
-		.conv__col {
-			margin-top: 0;
-		}
-
 		.conv__out_control__wrp {
-			padding: 0 2rem;
+			padding: 0 2rem 0 0;
 			flex-shrink: 0;
 		}
 	</style>
@@ -79,31 +75,29 @@
 		<div class="sidemenu"></div>
 	</div>
 
-	<header class="hidden-xs hidden-sm">
+	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
 
-			<h1>Text Converter</h1>
-			<p>Input text on left, hit parse, copy JSON from right.</p>
+			<h1 class="page__title">Text Converter</h1>
+			<p class="page__subtitle">Input text on left, hit parse, copy JSON from right.</p>
 		</div>
 	</header>
-	<nav class="container" id="navigation">
+	<nav class="container page__nav" id="navigation">
 		<ul class="nav nav-pills" id="navbar">
 		</ul>
 	</nav>
-	<main class="view-col-wrapper">
+	<div class="view-col-wrapper">
 
-		<div class="view-col conv__col">
+		<div class="view-col">
 			<h3 class="conv__head">Input</h3>
 			<pre id="converter_input" class="inputArea ace_editor"></pre>
-			<div>
-				<div class="text-align-right" style="padding: 0 2rem;">
-					<button id="parsestatblock" class="btn btn-sm btn-default">Parse</button>
-					<button id="parsestatblockadd" class="btn btn-sm btn-default">Parse and Add</button>
-				</div>
+			<div class="text-align-right">
+				<button id="parsestatblock" class="btn btn-sm btn-default">Parse</button>
+				<button id="parsestatblockadd" class="btn btn-sm btn-default">Parse and Add</button>
 			</div>
 		</div>
 
-		<div class="view-col conv__col">
+		<div class="view-col">
 			<h3 class="conv__head">Output</h3>
 
 			<pre id="converter_output" class="outputArea ace_editor"></pre>
@@ -116,12 +110,13 @@
 			<div id="lastWarnings" class="code"></div>
 			<div id="lastError" class="code"></div>
 		</div>
-	</main>
+	</div>
 </div>
 
 <!--5ETOOLS_SCRIPT_ANCHOR-->
 <!--5ETOOLS_SCRIPT_ANCHOR__ACE-JS-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>

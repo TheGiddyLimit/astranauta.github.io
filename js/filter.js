@@ -188,6 +188,7 @@ class FilterBox {
 		$inputGroup.prepend($filterButton);
 		this.$rendered.push($filterButton);
 		this.$disabledOverlay.append(this._$outer);
+		this.$list.parent().append(this.$disabledOverlay.hide());
 		this.$rendered.push(this._$outer);
 		$inputGroup.after(this.$miniView);
 		this.$rendered.push(this.$miniView);
@@ -1004,16 +1005,26 @@ class FilterBox {
 			$wrp.data(
 				"setValues",
 				function (toVal) {
-					// labelled values are encoded as min/max; no need for specific implementation
-					const min = toVal.filter(it => it.startsWith("min")).map(it => it.slice(3));
-					const max = toVal.filter(it => it.startsWith("max")).map(it => it.slice(3));
-					$sld.slider(
-						"values",
-						[
-							min.length ? Math.max(min[0], filter.min) : filter.min,
-							max.length ? Math.min(max[0], filter.max) : filter.max
-						]
-					);
+					// labelled values generally come from @filter tags
+					if (filter.labels && !(toVal.some(it => it.startsWith(`min@`) || it.startsWith(`max@`)))) {
+						const idxs = toVal.map(it => {
+							const idx = filter.items.indexOf(it);
+							return ~idx ? idx : 0;
+						});
+						const min = Math.min(...idxs);
+						const max = Math.max(...idxs);
+						$sld.slider("values", [min, max]);
+					} else {
+						const min = toVal.filter(it => it.startsWith("min@")).map(it => it.slice(4));
+						const max = toVal.filter(it => it.startsWith("max@")).map(it => it.slice(4));
+						$sld.slider(
+							"values",
+							[
+								min.length ? Math.max(min[0], filter.min) : filter.min,
+								max.length ? Math.min(max[0], filter.max) : filter.max
+							]
+						);
+					}
 					checkUpdateMiniPills();
 				}
 			);
@@ -1044,14 +1055,14 @@ class FilterBox {
 
 	_doOpen () {
 		$(`body`).css("overflow", "hidden");
-		this.$list.parent().append(this.$disabledOverlay);
+		this.$disabledOverlay.show();
 		this._$outer.show();
 		this.dropdownVisible = true;
 	}
 
 	_doClose () {
 		$(`body`).css("overflow", "");
-		this.$disabledOverlay.detach();
+		this.$disabledOverlay.hide();
 		this.dropdownVisible = false;
 		this._$outer.hide();
 		// fire an event when the form is closed
@@ -1270,8 +1281,8 @@ class FilterBox {
 			if (vals.min != null && vals.max != null) {
 				if (isDefaultVals) return;
 				out[outName] = [
-					`min${vals.min}`,
-					`max${vals.max}`
+					`min@${vals.min}`,
+					`max@${vals.max}`
 				];
 			} else if (vals._totals.yes || vals._totals.no) {
 				out[outName] = [];

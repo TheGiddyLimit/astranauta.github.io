@@ -365,10 +365,7 @@ function EntryRenderer () {
 						$(ele).find('.dataCreature__name').toggle(); 
 						$(ele).find('.dataCreature__showHide').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
 						$(ele).closest('table').find('tbody').toggle()
-					})(this)">
-						<span style="display: none;" class="dataCreature__name">${entry.dataCreature.name}</span>
-						<span class="dataCreature__showHide">[\u2013]</span>
-					</th></tr></thead><tbody>`;
+					})(this)"><span style="display: none;" class="dataCreature__name">${entry.dataCreature.name}</span><span class="dataCreature__showHide">[\u2013]</span></th></tr></thead><tbody>`;
 					textStack[0] += EntryRenderer.monster.getCompactRenderedString(entry.dataCreature, this);
 					textStack[0] += `</tbody></table>`;
 					renderSuffix();
@@ -407,9 +404,7 @@ function EntryRenderer () {
 						} else {
 							markerText = "(See removed content)";
 						}
-						textStack[0] += `<span class="homebrew-old-content" href="#${window.location.hash}" ${mouseOver}>
-								${markerText}
-							</span>`;
+						textStack[0] += `<span class="homebrew-old-content" href="#${window.location.hash}" ${mouseOver}>${markerText}</span>`;
 					}
 
 					textStack[0] += `<span class="homebrew-notice"></span>`;
@@ -469,13 +464,7 @@ function EntryRenderer () {
 			} else if (entry.href.type === "external") {
 				href = entry.href.url;
 			}
-			textStack[0] += `
-					<div class="img__wrapper">
-						<a href="${href}" target="_blank" rel="noopener" ${entry.title ? `title="${entry.title}"` : ""}>
-							<img src="${href}" onload="EntryRenderer._onImgLoad()" ${entry.altText ? `alt="${entry.altText}"` : ""}>
-						</a>
-					</div>
-			`;
+			textStack[0] += `<div class="img__wrapper"><a href="${href}" target="_blank" rel="noopener" ${entry.title ? `title="${entry.title}"` : ""}><img src="${href}" onload="EntryRenderer._onImgLoad()" ${entry.altText ? `alt="${entry.altText}"` : ""}></a></div>`;
 			if (entry.title) textStack[0] += `<div class="img-title"><span class="img-title__inner">${entry.title}</span></div>`;
 			textStack[0] += `</div>`;
 			renderSuffix();
@@ -505,24 +494,12 @@ function EntryRenderer () {
 			textStack[0] += "<thead>";
 			textStack[0] += "<tr>";
 
-			let autoMkRoller = false;
+			const autoMkRoller = EntryRenderer.isRollableTable(entry);
 			if (entry.colLabels) {
-				autoMkRoller = entry.colLabels.length >= 2 && RollerUtil.isRollCol(entry.colLabels[0]);
-				if (autoMkRoller) {
-					// scan the first column to ensure all rollable
-					const notRollable = entry.rows.find(it => {
-						try {
-							return !/\d+([-\u2013]\d+)?/.exec(it[0]);
-						} catch (e) {
-							return true;
-						}
-					});
-					if (notRollable) autoMkRoller = false;
-				}
-
 				for (let i = 0; i < entry.colLabels.length; ++i) {
+					const lbl = entry.colLabels[i];
 					textStack[0] += `<th ${getTableThClassText(i)}>`;
-					self._recursiveEntryRender(autoMkRoller && i === 0 && !entry.colLabels[i].includes("@dice") ? `{@dice ${entry.colLabels[i]}}` : entry.colLabels[i], textStack, depth);
+					self._recursiveEntryRender(autoMkRoller && i === 0 && !lbl.includes("@dice") ? `{@dice ${lbl}}` : lbl, textStack, depth);
 					textStack[0] += `</th>`;
 				}
 			}
@@ -537,28 +514,7 @@ function EntryRenderer () {
 				let roRender = r.type === "row" ? r.row : r;
 				for (let j = 0; j < roRender.length; ++j) {
 					// preconvert rollables
-					if (autoMkRoller && j === 0) {
-						roRender = JSON.parse(JSON.stringify(roRender));
-						const m = /(\d+)([-\u2013](\d+))?/.exec(roRender[j]); // should always match; validated earlier
-						if (m[1] && !m[2]) {
-							roRender[j] = {
-								type: "cell",
-								roll: {
-									exact: Number(m[1])
-								}
-							};
-							if (m[1][0] === "0") roRender[j].roll.pad = true;
-						} else {
-							roRender[j] = {
-								type: "cell",
-								roll: {
-									min: Number(m[1]),
-									max: Number(m[3])
-								}
-							};
-							if (m[1][0] === "0" || m[3][0] === "0") roRender[j].roll.pad = true;
-						}
-					}
+					if (autoMkRoller && j === 0) roRender = EntryRenderer.getRollableRow(roRender);
 
 					let toRenderCell;
 					if (roRender[j].type === "cell") {
@@ -570,7 +526,11 @@ function EntryRenderer () {
 							} else if (roRender[j].roll.exact !== undefined) {
 								toRenderCell = roRender[j].roll.pad ? StrUtil.padNumber(roRender[j].roll.exact, 2, "0") : roRender[j].roll.exact;
 							} else {
-								toRenderCell = roRender[j].roll.pad ? `${StrUtil.padNumber(roRender[j].roll.min, 2, "0")}-${StrUtil.padNumber(roRender[j].roll.max, 2, "0")}` : `${roRender[j].roll.min}-${roRender[j].roll.max}`
+								if (roRender[j].roll.max === EntryRenderer.dice.POS_INFINITE) {
+									toRenderCell = roRender[j].roll.pad ? `${StrUtil.padNumber(roRender[j].roll.min, 2, "0")}+` : `${roRender[j].roll.min}+`;
+								} else {
+									toRenderCell = roRender[j].roll.pad ? `${StrUtil.padNumber(roRender[j].roll.min, 2, "0")}-${StrUtil.padNumber(roRender[j].roll.max, 2, "0")}` : `${roRender[j].roll.min}-${roRender[j].roll.max}`;
+								}
 							}
 						}
 					} else {
@@ -647,11 +607,7 @@ function EntryRenderer () {
 			const dataString = getDataString();
 			const preReqText = getPreReqText(self);
 			if (entry.name != null) self._handleTrackTitles(entry.name);
-			const headerSpan = entry.name ? `
-				<span class="entry-title" data-title-index="${self._headerIndex++}" ${self._getEnumeratedTitleRel(entry.name)}>
-				<span class="entry-title-inner">
-					${self.renderEntry({type: "inline", entries: [entry.name]})}${inlineTitle ? "." : ""}
-				</span>${pagePart}</span> ` : "";
+			const headerSpan = entry.name ? `<span class="entry-title" data-title-index="${self._headerIndex++}" ${self._getEnumeratedTitleRel(entry.name)}> <span class="entry-title-inner">${self.renderEntry({type: "inline", entries: [entry.name]})}${inlineTitle ? "." : ""}</span>${pagePart}</span> ` : "";
 
 			if (depth === -1) {
 				if (!self._firstSection) {
@@ -758,7 +714,7 @@ function EntryRenderer () {
 							type: "dice",
 							rollable: true
 						};
-						const [rollText, displayText, name] = text.split("|");
+						const [rollText, displayText, name, ...others] = text.split("|");
 						if (displayText) fauxEntry.displayText = displayText;
 						if (name) fauxEntry.name = name;
 
@@ -766,6 +722,8 @@ function EntryRenderer () {
 							case "@dice": {
 								// format: {@dice 1d2 + 3 + 4d5 - 6}
 								fauxEntry.toRoll = rollText;
+								if (!displayText && rollText.includes(";")) fauxEntry.displayText = rollText.replace(/;/g, "/");
+								if ((!fauxEntry.displayText && rollText.includes("#$")) || (fauxEntry.displayText && fauxEntry.displayText.includes("#$"))) fauxEntry.displayText = (fauxEntry.displayText || rollText).replace(/#\$prompt_number[^$]*\$#/g, "(n)");
 								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							}
@@ -808,7 +766,7 @@ function EntryRenderer () {
 							}
 						}
 					} else if (tag === "@scaledice") {
-						// format: {@scaledice 2d6|2-8,9|1d6}
+						// format: {@scaledice 2d6;3d6|2-8,9|1d6}
 						const [baseRoll, progression, addPerProgress] = text.split("|");
 						const progressionParse = MiscUtil.parseNumberRange(progression, 1, 9);
 						const baseLevel = Math.min(...progressionParse);
@@ -872,7 +830,7 @@ function EntryRenderer () {
 										}];
 									}
 									return out;
-								}).reduce((acc, val) => acc.concat(val), []) // Node.js doesn't like .flat()
+								}).flat()
 							}
 						};
 						self._recursiveEntryRender(fauxEntry, textStack, depth);
@@ -963,7 +921,7 @@ function EntryRenderer () {
 						} else {
 							const area = BookUtil.curRender.headerMap[areaCode] || {entry: {name: ""}}; // default to prevent rendering crash on bad tag
 							const onMouseOver = EntryRenderer.hover.createOnMouseHoverEntry(area.entry, true);
-							textStack[0] += `<a href="#${BookUtil.curRender.curAdvId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}" ${onMouseOver} onclick="BookUtil.handleReNav(this)">${renderText}</a>`;
+							textStack[0] += `<a href="#${BookUtil.curRender.curBookId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}" ${onMouseOver} onclick="BookUtil.handleReNav(this)">${renderText}</a>`;
 						}
 					} else if (tag === "@deity") {
 						const [name, pantheon, source, displayText, ...others] = text.split("|");
@@ -1198,7 +1156,7 @@ function EntryRenderer () {
 					hash: procHash
 				};
 			}
-			return `onmouseover="EntryRenderer.hover.mouseOver(event, this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${procHash}', false, ${entry.href.hover.prelodId ? `'${entry.href.hover.prelodId}'` : "null"})"`
+			return `onmouseover="EntryRenderer.hover.mouseOver(event, this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${procHash}', false, ${entry.href.hover.prelodId ? `'${entry.href.hover.prelodId}'` : "null"})" ${EntryRenderer.hover._getPreventTouchString()}`;
 		}
 
 		let href;
@@ -1887,21 +1845,13 @@ EntryRenderer.condition = {
 };
 
 EntryRenderer.background = {
-	getCompactRenderedString: (bg) => {
-		const renderer = EntryRenderer.getDefaultRenderer();
-		const renderStack = [];
-
-		renderStack.push(`
-			${EntryRenderer.utils.getNameTr(bg, true)}
-			<tr class="text"><td colspan="6">
-		`);
-		if (bg.skillProficiencies) {
-			renderer.recursiveEntryRender({name: "Skill Proficiencies", entries: [EntryRenderer.background.getSkillSummary(bg.skillProficiencies)]}, renderStack, 2);
-		}
-		renderer.recursiveEntryRender({entries: bg.entries.filter(it => it.data && it.data.isFeature)}, renderStack, 1);
-		renderStack.push(`</td></tr>`);
-
-		return renderStack.join("");
+	getCompactRenderedString (bg) {
+		return `
+		${EntryRenderer.utils.getNameTr(bg, true)}
+		<tr class="text"><td colspan="6">
+		${EntryRenderer.getDefaultRenderer().renderEntry({type: "entries", entries: bg.entries})}
+		</td></tr>
+		`;
 	},
 
 	getSkillSummary (skillProfsArr, short, collectIn) {
@@ -1958,7 +1908,9 @@ EntryRenderer.optionalfeature = {
 		prereqPatron: 2,
 		prereqSpell: 3,
 		prereqFeature: 4,
-		[undefined]: 5
+		prereqItem: 5,
+		prereqSpecial: 6,
+		[undefined]: 7
 	},
 	getPrerequisiteText: (prerequisites, listMode) => {
 		if (!prerequisites) return listMode ? "\u2014" : STR_NONE;
@@ -1980,6 +1932,10 @@ EntryRenderer.optionalfeature = {
 					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.map(sp => Parser.prereqSpellToFull(sp)).joinConjunct(", ", " or ");
 				case "prereqFeature":
 					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.joinConjunct(", ", " or ");
+				case "prereqItem":
+					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.joinConjunct(", ", " or ");
+				case "prereqSpecial":
+					return listMode ? (it.entrySummary || it.entry) : it.entry;
 				default: // string
 					return it;
 			}
@@ -2170,7 +2126,7 @@ EntryRenderer.deity = {
 		return `
 			${EntryRenderer.utils.getNameTr(deity, true, "", deity.title ? `, ${deity.title.toTitleCase()}` : "")}
 			<tr><td colspan="6">
-				<div class="summary-flexer">${EntryRenderer.deity.getOrderedParts(deity, `<p>`, `</p>`)}</div>
+				<div class="rend__compact-stat">${EntryRenderer.deity.getOrderedParts(deity, `<p>`, `</p>`)}</div>
 			</td>
 			${deity.entries ? `<tr><td colspan="6"><div class="border"></div></td></tr><tr><td colspan="6">${renderer.renderEntry({entries: deity.entries}, 1)}</td></tr>` : ""}
 		`;
@@ -2388,7 +2344,7 @@ EntryRenderer.monster = {
 		page: true
 	},
 	_mergeCache: null,
-	async pMergeCopy (monList, mon) {
+	async pMergeCopy (monList, mon, options) {
 		function search () {
 			return monList.find(it => {
 				EntryRenderer.monster._mergeCache[UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](it)] = it;
@@ -2400,15 +2356,17 @@ EntryRenderer.monster = {
 			const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](mon._copy);
 			if (!EntryRenderer.monster._mergeCache) {
 				EntryRenderer.monster._mergeCache = {};
-				return EntryRenderer.monster._pApplyCopy(search(), mon);
+				return EntryRenderer.monster._pApplyCopy(search(), mon, options);
 			} else {
-				if (EntryRenderer.monster._mergeCache[hash]) return EntryRenderer.monster._pApplyCopy(MiscUtil.copy(EntryRenderer.monster._mergeCache[hash]), mon);
-				else return EntryRenderer.monster._pApplyCopy(search(), mon);
+				if (EntryRenderer.monster._mergeCache[hash]) return EntryRenderer.monster._pApplyCopy(MiscUtil.copy(EntryRenderer.monster._mergeCache[hash]), mon, options);
+				else return EntryRenderer.monster._pApplyCopy(search(), mon, options);
 			}
 		}
 	},
 
-	async _pApplyCopy (copyFrom, copyTo) {
+	async _pApplyCopy (copyFrom, copyTo, options = {}) {
+		if (options.doKeepCopy) copyTo.__copy = MiscUtil.copy(copyFrom);
+
 		// convert everything to arrays
 		function normaliseMods (obj) {
 			Object.entries(obj._mod).forEach(([k, v]) => {
@@ -2560,7 +2518,7 @@ EntryRenderer.monster = {
 		}
 
 		if (mon.legendaryHeader) {
-			return mon.legendaryHeader.map(line => renderer.renderEntry(line)).join("</p><p>");
+			return mon.legendaryHeader.map(line => EntryRenderer.getDefaultRenderer().renderEntry(line)).join("</p><p>");
 		} else {
 			const legendaryActions = mon.legendaryActions || 3;
 			const legendaryName = getCleanName();
@@ -2690,7 +2648,7 @@ EntryRenderer.monster = {
 
 	getCompactRenderedStringSection (mon, renderer, title, key, depth) {
 		return mon[key] ? `
-		<tr class="mon-sect-header"><td colspan="6"><span>${title}</span></td></tr>
+		<tr class="mon__stat-header-underline"><td colspan="6"><span class="mon__sect-header-inner">${title}</span></td></tr>
 		<tr class="text compact"><td colspan="6">
 		${key === "legendary" && mon.legendary ? `<p>${EntryRenderer.monster.getLegendaryActionIntro(mon)}</p>` : ""}
 		${mon[key].map(it => it.rendered || renderer.renderEntry(it, depth)).join("")}
@@ -2758,10 +2716,10 @@ EntryRenderer.monster = {
 			</td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
-				<div class="summary-flexer">
+				<div class="rend__compact-stat">
 					${mon.save ? `<p><b>Saving Throws:</b> ${Object.keys(mon.save).map(s => EntryRenderer.monster.getSave(renderer, s, mon.save[s])).join(", ")}</p>` : ""}
 					${mon.skill ? `<p><b>Skills:</b> ${EntryRenderer.monster.getSkillsString(renderer, mon)}</p>` : ""}
-					<p><b>Senses:</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
+					<p><b>Senses:</b> ${mon.senses ? `${EntryRenderer.monster.getRenderedSenses(mon.senses)}, ` : ""}passive Perception ${mon.passive}</p>
 					<p><b>Languages:</b> ${mon.languages ? mon.languages : `\u2014`}</p>
 					${mon.vulnerable ? `<p><b>Damage Vuln.:</b> ${Parser.monImmResToFull(mon.vulnerable)}</p>` : ""}
 					${mon.resist ? `<p><b>Damage Res.:</b> ${Parser.monImmResToFull(mon.resist)}</p>` : ""}
@@ -2797,7 +2755,7 @@ EntryRenderer.monster = {
 				return `Maximum: ${(num * faces) + mod}`;
 			} else return "";
 		}
-		if (hp.special) return hp.special;
+		if (hp.special != null) return hp.special;
 		if (/^\d+d1$/.exec(hp.formula)) {
 			return hp.average;
 		} else {
@@ -3142,8 +3100,8 @@ EntryRenderer.item = {
 		const magicVariantUrl = urls.magicvariants || `${EntryRenderer.getDefaultRenderer().baseUrl}data/magicvariants.json`;
 
 		const itemList = await pLoadItems();
-		const basicItems = await pAddBasicItemsAndTypes();
-		const genericVariants = await pAddGenericVariants();
+		const basicItems = await EntryRenderer.item._pGetAndProcBasicItems(await DataUtil.loadJSON(basicItemUrl));
+		const genericVariants = await EntryRenderer.item._pGetAndProcGenericVariants(await DataUtil.loadJSON(magicVariantUrl));
 		const genericAndSpecificVariants = EntryRenderer.item._createSpecificVariants(basicItems, genericVariants);
 		const allItems = itemList.concat(basicItems).concat(genericAndSpecificVariants);
 		EntryRenderer.item._enhanceItems(allItems);
@@ -3157,20 +3115,18 @@ EntryRenderer.item = {
 			itemData.itemGroup.forEach(it => it._isItemGroup = true);
 			return [...items, ...itemData.itemGroup];
 		}
+	},
 
-		async function pAddBasicItemsAndTypes () {
-			const basicItemData = await DataUtil.loadJSON(basicItemUrl);
-			EntryRenderer.item._addBasicPropertiesAndTypes(basicItemData);
-			await EntryRenderer.item._pAddBrewPropertiesAndTypes();
-			return basicItemData.basicitem;
-		}
+	async _pGetAndProcBasicItems (basicItemData) {
+		EntryRenderer.item._addBasicPropertiesAndTypes(basicItemData);
+		await EntryRenderer.item._pAddBrewPropertiesAndTypes();
+		return basicItemData.basicitem;
+	},
 
-		async function pAddGenericVariants () {
-			const variantData = await DataUtil.loadJSON(magicVariantUrl);
-			const genericVariants = variantData.variant;
-			genericVariants.forEach(EntryRenderer.item._genericVariants_addInheritedPropertiesToSelf);
-			return genericVariants;
-		}
+	async _pGetAndProcGenericVariants (variantData) {
+		const genericVariants = variantData.variant;
+		genericVariants.forEach(EntryRenderer.item._genericVariants_addInheritedPropertiesToSelf);
+		return genericVariants;
 	},
 
 	_createSpecificVariants (basicItems, genericVariants) {
@@ -3452,6 +3408,7 @@ EntryRenderer.item = {
 
 	_isRefPopulated: false,
 	populatePropertyAndTypeReference: () => {
+		if (EntryRenderer.item._isRefPopulated) return Promise.resolve();
 		return new Promise((resolve, reject) => {
 			DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/basicitems.json`)
 				.then(data => {
@@ -3633,7 +3590,7 @@ EntryRenderer.ship = {
 		const renderer = EntryRenderer.getDefaultRenderer();
 
 		function getSectionTitle (title) {
-			return `<tr class="stat__header_underline"><td colspan="6"><span>${title}</span></td></tr>`
+			return `<tr class="mon__stat-header-underline"><td colspan="6"><span>${title}</span></td></tr>`
 		}
 
 		function getSectionHpPart (sect, each) {
@@ -3647,7 +3604,7 @@ EntryRenderer.ship = {
 		function getControlSection (control) {
 			if (!control) return "";
 			return `
-				<tr class="stat__header_underline"><td colspan="6"><span>Control: ${control.name}</span></td></tr>
+				<tr class="mon__stat-header-underline"><td colspan="6"><span>Control: ${control.name}</span></td></tr>
 				<tr><td colspan="6">
 				${getSectionHpPart(control)}
 				<div>${renderer.renderEntry({entries: control.entries})}</div>
@@ -3673,7 +3630,7 @@ EntryRenderer.ship = {
 			}
 
 			return `
-				<tr class="stat__header_underline"><td colspan="6"><span>${move.isControl ? `Control and ` : ""}Movement: ${move.name}</span></td></tr>
+				<tr class="mon__stat-header-underline"><td colspan="6"><span>${move.isControl ? `Control and ` : ""}Movement: ${move.name}</span></td></tr>
 				<tr><td colspan="6">
 				${getSectionHpPart(move)}
 				${move.locomotion.map(getLocomotionSection)}
@@ -3683,7 +3640,7 @@ EntryRenderer.ship = {
 
 		function getWeaponSection (weap) {
 			return `
-				<tr class="stat__header_underline"><td colspan="6"><span>Weapons: ${weap.name}${weap.count ? ` (${weap.count})` : ""}</span></td></tr>
+				<tr class="mon__stat-header-underline"><td colspan="6"><span>Weapons: ${weap.name}${weap.count ? ` (${weap.count})` : ""}</span></td></tr>
 				<tr><td colspan="6">
 				${getSectionHpPart(weap, !!weap.count)}
 				${renderer.renderEntry({entries: weap.entries})}
@@ -3693,7 +3650,7 @@ EntryRenderer.ship = {
 
 		function getOtherSection (oth) {
 			return `
-				<tr class="stat__header_underline"><td colspan="6"><span>${oth.name}</span></td></tr>
+				<tr class="mon__stat-header-underline"><td colspan="6"><span>${oth.name}</span></td></tr>
 				<tr><td colspan="6">
 				${getSectionHpPart(oth)}
 				${renderer.renderEntry({entries: oth.entries})}
@@ -3763,12 +3720,34 @@ EntryRenderer.hover = {
 	createOnMouseHover (entries, title = "Homebrew") {
 		const id = EntryRenderer.hover._lastMouseHoverId++;
 		EntryRenderer.hover._mouseHovers[id] = {data: {hoverTitle: title}, entries: MiscUtil.copy(entries)};
-		return `onmouseover="EntryRenderer.hover.mouseOverHoverTooltip(event, this, ${id})"`;
+		return `onmouseover="EntryRenderer.hover.mouseOverHoverTooltip(event, this, ${id})" ${EntryRenderer.hover._getPreventTouchString()}`;
 	},
 
 	createOnMouseHoverEntry (entry, isBookContent) {
 		const id = EntryRenderer.hover.__initOnMouseHoverEntry(entry);
-		return `onmouseover="EntryRenderer.hover.mouseOverHoverTooltip(event, this, ${id}, ${!!isBookContent})"`;
+		return `onmouseover="EntryRenderer.hover.mouseOverHoverTooltip(event, this, ${id}, ${!!isBookContent})" ${EntryRenderer.hover._getPreventTouchString()}`;
+	},
+
+	_getPreventTouchString () {
+		return `ontouchstart="EntryRenderer.hover.handleTouchStart(event, this)"`
+	},
+
+	handleTouchStart (evt, ele) {
+		// on large touchscreen devices only (e.g. iPads)
+		if (!EntryRenderer.hover._isSmallScreen()) {
+			// cache the link location and redirect it to void
+			$(ele).data("href", $(ele).data("href") || $(ele).attr("href"));
+			$(ele).attr("href", STR_VOID_LINK);
+			// restore the location after 100ms; if the user long-presses the link will be restored by the time they
+			//   e.g. attempt to open a new tab
+			setTimeout(() => {
+				const data = $(ele).data("href");
+				if (data) {
+					$(ele).attr("href", data);
+					$(ele).data("href", null);
+				}
+			}, 100);
+		}
 	},
 
 	__initOnMouseHoverEntry (entry) {
@@ -4083,8 +4062,8 @@ EntryRenderer.hover = {
 		const fromBottom = vpOffsetT > $(window).height() / 2;
 		const fromRight = vpOffsetL > $(window).width() / 2;
 
-		const $hov = $(`<div class="hoverbox" style="right: -600px"/>`);
-		const $wrpStats = $(`<div class="hoverbox__table_wrp"/>`);
+		const $hov = $(`<div class="hwin" style="right: -600px"/>`);
+		const $wrpStats = $(`<div class="hwin__wrp-table"/>`);
 
 		const $body = $(`body`);
 		const $ele = $(ele);
@@ -4134,14 +4113,14 @@ EntryRenderer.hover = {
 
 		let drag = {};
 		function handleDragMousedown (evt, type) {
-			if (evt.which === 1) evt.preventDefault();
+			if (evt.which === 0 || evt.which === 1) evt.preventDefault();
 			$hov.css({
 				"z-index": 201, // temporarily display it on top
 				"animation": "initial"
 			});
 			drag.type = type;
-			drag.startX = evt.clientX;
-			drag.startY = evt.clientY;
+			drag.startX = EntryRenderer.hover._getClientX(evt);
+			drag.startY = EntryRenderer.hover._getClientY(evt);
 			drag.baseTop = parseFloat($hov.css("top"));
 			drag.baseLeft = parseFloat($hov.css("left"));
 			drag.baseHeight = $wrpStats.height();
@@ -4156,81 +4135,84 @@ EntryRenderer.hover = {
 			$hov.parent().append($hov); // ...and properly bring it to the front
 		}
 
-		const $brdrTopRightResize = $(`<div class="hoverborder__resize_ne"/>`)
-			.on("mousedown", (evt) => handleDragMousedown(evt, 1))
+		const $brdrTopRightResize = $(`<div class="hoverborder__resize-ne"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 1))
 			.on("click", handleDragClick);
 
-		const $brdrRightResize = $(`<div class="hoverborder__resize_e"/>`)
-			.on("mousedown", (evt) => handleDragMousedown(evt, 2))
+		const $brdrRightResize = $(`<div class="hoverborder__resize-e"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 2))
 			.on("click", handleDragClick);
 
-		const $brdrBottomRightResize = $(`<div class="hoverborder__resize_se"/>`)
-			.on("mousedown", (evt) => handleDragMousedown(evt, 3))
+		const $brdrBottomRightResize = $(`<div class="hoverborder__resize-se"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 3))
 			.on("click", handleDragClick);
 
-		const $brdrBtm = $(`<div class="hoverborder hoverborder--btm ${isBookContent ? "hoverborder-book" : ""}"><div class="hoverborder__resize_s"/></div>`)
-			.on("mousedown", (evt) => handleDragMousedown(evt, 4))
+		const $brdrBtm = $(`<div class="hoverborder hoverborder--btm ${isBookContent ? "hoverborder-book" : ""}"><div class="hoverborder__resize-s"/></div>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 4))
 			.on("click", handleDragClick);
 
-		const $brdrBtmLeftResize = $(`<div class="hoverborder__resize_sw"/>`)
-			.on("mousedown", (evt) => handleDragMousedown(evt, 5))
+		const $brdrBtmLeftResize = $(`<div class="hoverborder__resize-sw"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 5))
 			.on("click", handleDragClick);
 
-		const $brdrLeftResize = $(`<div class="hoverborder__resize_w"/>`)
-			.on("mousedown", (evt) => handleDragMousedown(evt, 6))
+		const $brdrLeftResize = $(`<div class="hoverborder__resize-w"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 6))
 			.on("click", handleDragClick);
 
-		const $brdrTopLeftResize = $(`<div class="hoverborder__resize_nw"/>`)
-			.on("mousedown", (evt) => handleDragMousedown(evt, 7))
+		const $brdrTopLeftResize = $(`<div class="hoverborder__resize-nw"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 7))
 			.on("click", handleDragClick);
 
-		const $brdrTopResize = $(`<div class="hoverborder__resize_n"/>`)
-			.on("mousedown", (evt) => handleDragMousedown(evt, 8))
+		const $brdrTopResize = $(`<div class="hoverborder__resize-n"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 8))
 			.on("click", handleDragClick);
 
-		const $brdrTop = $(`<div class="hoverborder top ${isBookContent ? "hoverborder-book" : ""}" ${permanent ? `data-perm="true"` : ""} data-hover-id="${hoverId}"/>`)
-			.on("mousedown", (evt) => handleDragMousedown(evt, 9))
+		const $brdrTop = $(`<div class="hoverborder hoverborder--top ${isBookContent ? "hoverborder-book" : ""}" ${permanent ? `data-perm="true"` : ""} data-hover-id="${hoverId}"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 9))
 			.on("click", handleDragClick)
 			.on("contextmenu", (evt) => {
 				if (!evt.ctrlKey) ContextUtil.handleOpenContextMenu(evt, ele, "hoverBorder");
 			});
 
-		const mouseUpId = `mouseup.${hoverId}`;
-		const mouseMoveId = `mousemove.${hoverId}`;
+		const mouseUpId = `mouseup.${hoverId} touchend.${hoverId}`;
+		const mouseMoveId = `mousemove.${hoverId} touchmove.${hoverId}`;
 		const resizeId = `resize.${hoverId}`;
 
 		function isOverHoverTarget (evt, target) {
-			return evt.clientX >= target.left && evt.clientX <= target.left + target.width && evt.clientY >= target.top && evt.clientY <= target.top + target.height;
+			return EntryRenderer.hover._getClientX(evt) >= target.left &&
+				EntryRenderer.hover._getClientX(evt) <= target.left + target.width &&
+				EntryRenderer.hover._getClientY(evt) >= target.top &&
+				EntryRenderer.hover._getClientY(evt) <= target.top + target.height;
 		}
 
 		function handleNorthDrag (evt) {
-			const diffY = Math.max(drag.startY - evt.clientY, 80 - drag.baseHeight); // prevent <80 height, as this will cause the box to move downwards
+			const diffY = Math.max(drag.startY - EntryRenderer.hover._getClientY(evt), 80 - drag.baseHeight); // prevent <80 height, as this will cause the box to move downwards
 			$wrpStats.css("height", drag.baseHeight + diffY);
 			$hov.css("top", drag.baseTop - diffY);
-			drag.startY = evt.clientY;
+			drag.startY = EntryRenderer.hover._getClientY(evt);
 			drag.baseHeight = $wrpStats.height();
 			drag.baseTop = parseFloat($hov.css("top"));
 		}
 
 		function handleEastDrag (evt) {
-			const diffX = drag.startX - evt.clientX;
+			const diffX = drag.startX - EntryRenderer.hover._getClientX(evt);
 			$hov.css("width", drag.baseWidth - diffX);
-			drag.startX = evt.clientX;
+			drag.startX = EntryRenderer.hover._getClientX(evt);
 			drag.baseWidth = $hov.width();
 		}
 
 		function handleSouthDrag (evt) {
-			const diffY = drag.startY - evt.clientY;
+			const diffY = drag.startY - EntryRenderer.hover._getClientY(evt);
 			$wrpStats.css("height", drag.baseHeight - diffY);
-			drag.startY = evt.clientY;
+			drag.startY = EntryRenderer.hover._getClientY(evt);
 			drag.baseHeight = $wrpStats.height();
 		}
 
 		function handleWestDrag (evt) {
-			const diffX = Math.max(drag.startX - evt.clientX, 150 - drag.baseWidth);
+			const diffX = Math.max(drag.startX - EntryRenderer.hover._getClientX(evt), 150 - drag.baseWidth);
 			$hov.css("width", drag.baseWidth + diffX);
 			$hov.css("left", drag.baseLeft - diffX);
-			drag.startX = evt.clientX;
+			drag.startX = EntryRenderer.hover._getClientX(evt);
 			drag.baseWidth = $hov.width();
 			drag.baseLeft = parseFloat($hov.css("left"));
 		}
@@ -4245,9 +4227,17 @@ EntryRenderer.hover = {
 					adjustPosition();
 
 					if (drag.type === 9) {
+						// handle mobile button touches
+						if (evt.target.classList.contains("hvr__close") || evt.target.classList.contains("hvr__popout")) {
+							evt.preventDefault();
+							drag.type = 0;
+							$(evt.target).click();
+							return;
+						}
+
 						// handle DM screen integration
 						if (this._dmScreen) {
-							const panel = this._dmScreen.getPanelPx(evt.clientX, evt.clientY);
+							const panel = this._dmScreen.getPanelPx(EntryRenderer.hover._getClientX(evt), EntryRenderer.hover._getClientY(evt));
 							if (!panel) return;
 							this._dmScreen.setHoveringPanel(panel);
 							const target = panel.getAddButtonPos();
@@ -4274,18 +4264,18 @@ EntryRenderer.hover = {
 					case 7: handleNorthDrag(evt); handleWestDrag(evt); break;
 					case 8: handleNorthDrag(evt); break;
 					case 9: {
-						const diffX = drag.startX - evt.clientX;
-						const diffY = drag.startY - evt.clientY;
+						const diffX = drag.startX - EntryRenderer.hover._getClientX(evt);
+						const diffY = drag.startY - EntryRenderer.hover._getClientY(evt);
 						$hov.css("left", drag.baseLeft - diffX);
 						$hov.css("top", drag.baseTop - diffY);
-						drag.startX = evt.clientX;
-						drag.startY = evt.clientY;
+						drag.startX = EntryRenderer.hover._getClientX(evt);
+						drag.startY = EntryRenderer.hover._getClientY(evt);
 						drag.baseTop = parseFloat($hov.css("top"));
 						drag.baseLeft = parseFloat($hov.css("left"));
 
 						// handle DM screen integration
 						if (this._dmScreen) {
-							const panel = this._dmScreen.getPanelPx(evt.clientX, evt.clientY);
+							const panel = this._dmScreen.getPanelPx(EntryRenderer.hover._getClientX(evt), EntryRenderer.hover._getClientY(evt));
 							if (!panel) return;
 							this._dmScreen.setHoveringPanel(panel);
 							const target = panel.getAddButtonPos();
@@ -4306,14 +4296,14 @@ EntryRenderer.hover = {
 			const curState = $brdrTop.attr("data-display-title");
 			$brdrTop.attr("data-display-title", curState === "false");
 			$brdrTop.attr("data-perm", true);
-			$hov.toggleClass("hoverbox--minified", curState === "false");
+			$hov.toggleClass("hwin--minified", curState === "false");
 			delete EntryRenderer.hover._active[hoverId];
 		});
 		$brdrTop.append($hovTitle);
 		const $brdTopRhs = $(`<div class="flex" style="margin-left: auto;"/>`).appendTo($brdrTop);
 		// TODO fix dice rollers?
 		// TODO fix hover links?
-		const $btnPopout = $(`<span class="top-border-icon glyphicon glyphicon-new-window" style="margin-right: 3px;" title="Open as Popup Window"></span>`)
+		const $btnPopout = $(`<span class="top-border-icon glyphicon glyphicon-new-window hvr__popout" style="margin-right: 3px;" title="Open as Popup Window"></span>`)
 			.on("click", (evt) => {
 				evt.stopPropagation();
 				const h = $stats.height();
@@ -4337,7 +4327,7 @@ EntryRenderer.hover = {
 							body { overflow-y: scroll; }
 						</style>
 					</head><body>
-					<div class="hoverbox hoverbox--popout" style="max-width: initial; max-height: initial; box-shadow: initial;">
+					<div class="hwin hoverbox--popout" style="max-width: initial; max-height: initial; box-shadow: initial;">
 					${$stats[0].outerHTML}
 					</div>
 					</body></html>
@@ -4370,11 +4360,11 @@ EntryRenderer.hover = {
 			};
 		}
 
-		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
-		else $hov.css("top", vpOffsetT + $(ele).height() + 6);
+		if (fromBottom) $hov.css("top", vpOffsetT - ($hov.height() + 10));
+		else $hov.css("top", vpOffsetT + $(ele).height() + 10);
 
-		if (fromRight) $hov.css("left", (clientX || vpOffsetL) - ($hov.width() + 6));
-		else $hov.css("left", (clientX || (vpOffsetL + $(ele).width())) + 6);
+		if (fromRight) $hov.css("left", (clientX || vpOffsetL) - ($hov.width() + 10));
+		else $hov.css("left", (clientX || (vpOffsetL + $(ele).width())) + 10);
 
 		adjustPosition(true);
 
@@ -4473,6 +4463,7 @@ EntryRenderer.hover = {
 	// used in hover strings
 	mouseOverHoverTooltip (evt, ele, id, isBookContent) {
 		const data = EntryRenderer.hover._mouseHovers[id];
+		if (data == null) return setTimeout(() => { throw new Error(`No "data" found for hover ID ${id}`) }); // this should never occur, but does on other platforms
 		EntryRenderer.hover.show({evt, ele, page: "hover", source: data, hash: "", isBookContent});
 	},
 
@@ -4519,6 +4510,20 @@ EntryRenderer.hover = {
 		}
 	},
 
+	_isSmallScreen () {
+		const outerWindow = (() => {
+			let loops = 100;
+			let curr = window.top;
+			while (window.parent !== curr) {
+				curr = window.parent;
+				if (loops-- < 0) return window; // safety precaution
+			}
+			return curr;
+		})();
+
+		return $(outerWindow).width() <= 768;
+	},
+
 	_BAR_HEIGHT: 16,
 	_showInProgress: false,
 	_hoverId: 1,
@@ -4536,18 +4541,8 @@ EntryRenderer.hover = {
 
 		EntryRenderer.hover._doInit();
 
-		const outerWindow = (() => {
-			let loops = 100;
-			let curr = window.top;
-			while (window.parent !== curr) {
-				curr = window.parent;
-				if (loops-- < 0) return window; // safety precaution
-			}
-			return curr;
-		})();
-
 		// don't show on narrow screens
-		if ($(outerWindow).width() <= 768 && !evt.shiftKey) return;
+		if (EntryRenderer.hover._isSmallScreen() && !evt.shiftKey) return;
 
 		let hoverId;
 		if (isPopout) {
@@ -4579,7 +4574,7 @@ EntryRenderer.hover = {
 			cSource: source,
 			cHash: hash,
 			permanent: evt.shiftKey,
-			clientX: evt.clientX,
+			clientX: EntryRenderer.hover._getClientX(evt),
 			isBookContent
 		};
 
@@ -4649,13 +4644,18 @@ EntryRenderer.hover = {
 	doPopoutPreloaded ($btnPop, it, clientX) {
 		$btnPop.attr("data-hover-active", false);
 		EntryRenderer.hover.mouseOverPreloaded({shiftKey: true, clientX: clientX}, $btnPop.get(0), it, UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it), true);
-	}
+	},
+
+	// helpers to get clientX/Y on mobile
+	_getClientX (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientX : evt.clientX; },
+	_getClientY (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientY : evt.clientY; }
 };
 
 EntryRenderer.dice = {
 	SYSTEM_USER: {
 		name: "Avandra" // goddess of luck
 	},
+	POS_INFINITE: 100000000000000000000, // larger than this, and we start to see "e" numbers appear
 
 	_$wrpRoll: null,
 	_$minRoll: null,
@@ -4668,13 +4668,13 @@ EntryRenderer.dice = {
 	_storage: null,
 
 	_panel: null,
-	bindDmScreenPanel (panel) {
+	bindDmScreenPanel (panel, title) {
 		if (EntryRenderer.dice._panel) { // there can only be one roller box
 			EntryRenderer.dice.unbindDmScreenPanel();
 		}
 		EntryRenderer.dice._showBox();
 		EntryRenderer.dice._panel = panel;
-		panel.doPopulate_Rollbox();
+		panel.doPopulate_Rollbox(title);
 	},
 
 	unbindDmScreenPanel () {
@@ -4697,6 +4697,19 @@ EntryRenderer.dice = {
 		if (tree) {
 			return tree.evl({});
 		} else return null;
+	},
+
+	parseAverage (str) {
+		if (!str || !str.trim()) return null;
+		const tree = EntryRenderer.dice._parse2(str);
+		if (tree) {
+			return tree.avg({});
+		} else return null;
+	},
+
+	parseToTree (str) {
+		if (!str || !str.trim()) return null;
+		return EntryRenderer.dice._parse2(str);
 	},
 
 	_showBox: () => {
@@ -4830,36 +4843,68 @@ EntryRenderer.dice = {
 			ContextUtil.handleOpenContextMenu(evt, ele, EntryRenderer.dice._contextRollLabel, (choseOption) => {
 				if (!choseOption) resolve();
 			});
-		}) : Promise.resolve(rollData)).then(chosenRollData => {
+		}) : Promise.resolve(rollData)).then(async chosenRollData => {
 			if (!chosenRollData) return;
 
+			const rePrompt = /#\$prompt_number:?([^$]*)\$#/g;
+			const results = [];
+			let m;
+			while ((m = rePrompt.exec(chosenRollData.toRoll))) {
+				const optionsRaw = m[1];
+				const opts = {};
+				if (optionsRaw) {
+					const spl = optionsRaw.split(",");
+					spl.map(it => it.trim()).forEach(part => {
+						const [k, v] = part.split("=").map(it => it.trim());
+						switch (k) {
+							case "min":
+							case "max":
+								opts[k] = Number(v); break;
+							default:
+								opts[k] = v; break;
+						}
+					});
+				}
+
+				if (opts.min == null) opts.min = 0;
+				if (opts.max == null) opts.max = EntryRenderer.dice.POS_INFINITE;
+				if (opts.default == null) opts.default = 0;
+
+				const input = await InputUiUtil.pGetUserNumber(opts);
+				if (input == null) return;
+				results.push(input);
+			}
+
+			const rollDataCpy = MiscUtil.copy(chosenRollData);
+			rePrompt.lastIndex = 0;
+			rollDataCpy.toRoll = rollDataCpy.toRoll.replace(rePrompt, () => results.shift());
+
 			(rollData.prompt ? new Promise(resolve => {
-				const sortedKeys = Object.keys(chosenRollData.prompt.options).sort(SortUtil.ascSortLower);
+				const sortedKeys = Object.keys(rollDataCpy.prompt.options).sort(SortUtil.ascSortLower);
 
 				ContextUtil.doInitContextMenu(EntryRenderer.dice._contextPromptLabel, (mostRecentEvt, _1, _2, _3, invokedOnId) => {
 					if (invokedOnId == null) resolve();
 
 					shiftKey = mostRecentEvt.shiftKey;
 					const k = sortedKeys[invokedOnId];
-					const fromScaling = chosenRollData.prompt.options[k];
-					const cpy = MiscUtil.copy(chosenRollData);
+					const fromScaling = rollDataCpy.prompt.options[k];
 					if (!fromScaling) {
 						name = "";
-						resolve(cpy);
+						resolve(rollDataCpy);
 					} else {
 						name = `${Parser.spLevelToFull(k)}-level cast`;
-						cpy.toRoll += `+${fromScaling}`;
-						resolve(cpy);
+						rollDataCpy.toRoll += `+${fromScaling}`;
+						resolve(rollDataCpy);
 					}
-				}, [{text: chosenRollData.prompt.entry, disabled: true}, null, ...sortedKeys.map(it => `${Parser.spLevelToFull(it)} level`)]);
+				}, [{text: rollDataCpy.prompt.entry, disabled: true}, null, ...sortedKeys.map(it => `${Parser.spLevelToFull(it)} level`)]);
 
 				ContextUtil.handleOpenContextMenu(evt, ele, EntryRenderer.dice._contextPromptLabel, (choseOption) => {
 					if (!choseOption) resolve();
 				});
-			}) : Promise.resolve(chosenRollData)).then((chosenRollData) => {
-				if (!chosenRollData) return;
+			}) : Promise.resolve(rollDataCpy)).then((rollDataCpy) => {
+				if (!rollDataCpy) return;
 
-				EntryRenderer.dice.rollerClick({shiftKey}, ele, JSON.stringify(chosenRollData), name);
+				EntryRenderer.dice.rollerClick({shiftKey}, ele, JSON.stringify(rollDataCpy), name);
 			});
 		});
 	},
@@ -4896,7 +4941,7 @@ EntryRenderer.dice = {
 		}
 
 		function attemptToGetName () {
-			const $hov = $ele.closest(`.hoverbox`);
+			const $hov = $ele.closest(`.hwin`);
 			if ($hov.length) {
 				return $hov.find(`.stats-name`).first().text();
 			}
@@ -5449,7 +5494,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 				this.n = n;
 				this.pr = false;
 
-				this.evl = (meta) => {
+				this.evl = meta => {
 					prep(meta);
 
 					handlePrO(meta, this);
@@ -5457,7 +5502,12 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 					meta.rawText.push(n);
 					handlePrC(meta, this);
 					return Number(n);
-				}
+				};
+
+				this.avg = meta => this.evl(meta);
+
+				this._nxt = function* () { yield Number(n); };
+				this.nxt = this._nxt.bind(this);
 			}
 
 			function Dice (num, faces, drop, dropType) {
@@ -5468,19 +5518,41 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 				this.dropType = dropType;
 				this.pr = false;
 
-				this.evl = (meta) => {
+				this.evl = meta => this._get(meta, "evl");
+
+				this.avg = meta => this._get(meta, "avg");
+
+				// this ignore drops, and outputs each possible result only once
+				this._nxt = function* () {
+					const genNum = num.nxt();
+
+					let n, f;
+					while (!(n = genNum.next()).done) {
+						const genFaces = faces.nxt();
+						while (!(f = genFaces.next()).done) {
+							const maxRoll = n.value * f.value;
+							// minimum is "N," i.e. every roll was a 1
+							for (let roll = n.value; roll <= maxRoll; ++roll) {
+								yield roll;
+							}
+						}
+					}
+				};
+				this.nxt = this._nxt.bind(this);
+
+				this._get = (meta, nextFn) => {
 					prep(meta);
 
 					// N.B. this discards nested rolls, e.g. `3d20dl(1d2)` will never have the 1d2 result shown.
-					const numN = num.evl({});
-					const facesN = faces.evl({});
+					const numN = num[nextFn]({});
+					const facesN = faces[nextFn]({});
 
-					const rolls = [...new Array(numN)].map(it => RollerUtil.randomise(facesN));
+					const rolls = [...new Array(numN)].map(_ => nextFn === "avg" ? (facesN + 1) / 2 : RollerUtil.randomise(facesN));
 
 					const prOpen = rolls.length > 1 ? "(" : "";
 					const prClose = rolls.length > 1 ? ")" : "";
 					if (drop != null) {
-						const dropNum = Math.min(drop.evl({}), numN);
+						const dropNum = Math.min(drop[nextFn]({}), numN);
 						rolls.sort(SortUtil.ascSort).reverse();
 						if (dropType === "h") rolls.reverse();
 
@@ -5523,18 +5595,35 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 				this.b = b;
 				this.pr = false;
 
-				this.evl = (meta) => {
+				this.evl = meta => this._get(meta, "evl");
+
+				this.avg = meta => this._get(meta, "avg");
+
+				this._nxt = function* () {
+					const genL = a.nxt();
+
+					let l, r;
+					while (!(l = genL.next()).done) {
+						const genR = b.nxt();
+						while (!(r = genR.next()).done) {
+							yield l.value + r.value;
+						}
+					}
+				};
+				this.nxt = this._nxt.bind(this);
+
+				this._get = (meta, nextFn) => {
 					prep(meta);
 
 					handlePrO(meta, this);
-					const l = a.evl(meta);
+					const l = a[nextFn](meta);
 					meta.text.push("+");
 					meta.rawText.push("+");
-					const r = b.evl(meta);
+					const r = b[nextFn](meta);
 					handlePrC(meta, this);
 
 					return l + r;
-				}
+				};
 			}
 
 			function Sub (a, b) {
@@ -5543,18 +5632,35 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 				this.b = b;
 				this.pr = false;
 
-				this.evl = (meta) => {
+				this.evl = meta => this._get(meta, "evl");
+
+				this.avg = meta => this._get(meta, "avg");
+
+				this._nxt = function* () {
+					const genL = a.nxt();
+
+					let l, r;
+					while (!(l = genL.next()).done) {
+						const genR = b.nxt();
+						while (!(r = genR.next()).done) {
+							yield l.value - r.value;
+						}
+					}
+				};
+				this.nxt = this._nxt.bind(this);
+
+				this._get = (meta, nextFn) => {
 					prep(meta);
 
 					handlePrO(meta, this);
-					const l = a.evl(meta);
+					const l = a[nextFn](meta);
 					meta.text.push("-");
 					meta.rawText.push("-");
-					const r = b.evl(meta);
+					const r = b[nextFn](meta);
 					handlePrC(meta, this);
 
 					return l - r;
-				}
+				};
 			}
 
 			function Mult (a, b) {
@@ -5563,14 +5669,31 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 				this.b = b;
 				this.pr = false;
 
-				this.evl = (meta) => {
+				this.evl = meta => this._get(meta, "evl");
+
+				this.avg = meta => this._get(meta, "avg");
+
+				this._nxt = function* () {
+					const genL = a.nxt();
+
+					let l, r;
+					while (!(l = genL.next()).done) {
+						const genR = b.nxt();
+						while (!(r = genR.next()).done) {
+							yield l.value * r.value;
+						}
+					}
+				};
+				this.nxt = this._nxt.bind(this);
+
+				this._get = (meta, nextFn) => {
 					prep(meta);
 
 					handlePrO(meta, this);
-					const l = a.evl(meta);
+					const l = a[nextFn](meta);
 					meta.text.push("×");
 					meta.rawText.push("×");
-					const r = b.evl(meta);
+					const r = b[nextFn](meta);
 					handlePrC(meta, this);
 
 					return l * r;
@@ -5583,14 +5706,32 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 				this.b = b;
 				this.pr = false;
 
-				this.evl = (meta) => {
+				this.evl = meta => this._get(meta, "evl");
+
+				this.avg = meta => this._get(meta, "avg");
+
+				this._hasNext = true;
+				this._nxt = function* () {
+					const genL = a.nxt();
+
+					let l, r;
+					while (!(l = genL.next()).done) {
+						const genR = b.nxt();
+						while (!(r = genR.next()).done) {
+							yield l.value / r.value;
+						}
+					}
+				};
+				this.nxt = this._nxt.bind(this);
+
+				this._get = (meta, nextFn) => {
 					prep(meta);
 
 					handlePrO(meta, this);
-					const l = a.evl(meta);
+					const l = a[nextFn](meta);
 					meta.text.push("÷");
 					meta.rawText.push("÷");
-					const r = b.evl(meta);
+					const r = b[nextFn](meta);
 					handlePrC(meta, this);
 
 					return l / r;
@@ -5603,14 +5744,32 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 				this.e = e;
 				this.pr = false;
 
-				this.evl = (meta) => {
+				this.evl = (meta) => this._get(meta, "evl");
+
+				this.avg = meta => this._get(meta, "avg");
+
+				this._hasNext = true;
+				this._nxt = function* () {
+					const genL = a.nxt();
+
+					let l, r;
+					while (!(l = genL.next()).done) {
+						const genR = b.nxt();
+						while (!(r = genR.next()).done) {
+							yield Math.pow(l.value, r.value);
+						}
+					}
+				};
+				this.nxt = this._nxt.bind(this);
+
+				this._get = (meta, nextFn) => {
 					prep(meta);
 
 					handlePrO(meta, this);
-					const nNum = n.evl(meta);
+					const nNum = n[nextFn](meta);
 					meta.text.push("<sup>");
 					meta.rawText.push("^");
-					const eNum = e.evl(meta);
+					const eNum = e[nextFn](meta);
 					meta.text.push("</sup>");
 					handlePrC(meta, this);
 
@@ -5782,7 +5941,7 @@ EntryRenderer.stripTags = function (str) {
 						switch (tag) {
 							case "@damage":
 							case "@dice": {
-								return displayText || rollText;
+								return displayText || rollText.replace(/;/g, "/");
 							}
 							case "@d20":
 							case "@hit": {
@@ -5872,6 +6031,65 @@ EntryRenderer.stripTags = function (str) {
 			} else return it;
 		}).join("");
 	} return str;
+};
+
+EntryRenderer.isRollableTable = function (table) {
+	let autoMkRoller = false;
+	if (table.colLabels) {
+		autoMkRoller = table.colLabels.length >= 2 && RollerUtil.isRollCol(table.colLabels[0]);
+		if (autoMkRoller) {
+			// scan the first column to ensure all rollable
+			const notRollable = table.rows.find(it => {
+				try {
+					return !/\d+([-\u2013]\d+)?/.exec(it[0]);
+				} catch (e) {
+					return true;
+				}
+			});
+			if (notRollable) autoMkRoller = false;
+		}
+	}
+	return autoMkRoller;
+};
+
+// assumes validation has been done in advance
+EntryRenderer.getRollableRow = function (row, cbErr) {
+	row = MiscUtil.copy(row);
+	try {
+		// format: "95-00" or "12"
+		const m = /^(\d+)([-\u2013](\d+))?$/.exec(String(row[0]).trim());
+		if (m) {
+			if (m[1] && !m[2]) {
+				row[0] = {
+					type: "cell",
+					roll: {
+						exact: Number(m[1])
+					}
+				};
+				if (m[1][0] === "0") row[0].roll.pad = true;
+			} else {
+				row[0] = {
+					type: "cell",
+					roll: {
+						min: Number(m[1]),
+						max: Number(m[3])
+					}
+				};
+				if (m[1][0] === "0" || m[3][0] === "0") row[0].roll.pad = true;
+			}
+		} else {
+			// format: "12+"
+			const m = /^(\d+)\+$/.exec(row[0]);
+			row[0] = {
+				type: "cell",
+				roll: {
+					min: Number(m[1]),
+					max: EntryRenderer.dice.POS_INFINITE
+				}
+			};
+		}
+	} catch (e) { if (cbErr) cbErr(row[0], e); }
+	return row;
 };
 
 EntryRenderer._onImgLoad = function () {

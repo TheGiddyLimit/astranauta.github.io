@@ -153,7 +153,7 @@ class ConverterUi {
 
 		const prevParser = this._storedSettings.parser;
 
-		const $wrpParser = $(`<div class="sidemenu__row"><div class="sidemenu__row__label">Mode</div></div>`).appendTo($mnu);
+		const $wrpParser = $(`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Mode</div></div>`).appendTo($mnu);
 		const $selParser = $(`
 			<select class="form-control input-sm">
 				<option>Statblock</option>
@@ -175,13 +175,13 @@ class ConverterUi {
 			this._menuAccess = {};
 
 			$wrpCustom.empty();
-			$(`<div class="sidemenu__row">
+			$(`<div class="sidemenu__row split-v-center">
 				<small>This parser is <span class="help" title="Notably poor at handling text split across multiple lines, as Carriage Return is used to separate blocks of text.">very particular</span> about its input. Use at your own risk.</small>
 			</div>`).appendTo($wrpCustom);
 
 			renderDivider($wrpCustom);
 
-			const $wrpMode = $(`<div class="sidemenu__row--alt"/>`).appendTo($wrpCustom);
+			const $wrpMode = $(`<div class="sidemenu__row flex-vh-center-around"/>`).appendTo($wrpCustom);
 			const $selMode = $(`
 					<select class="form-control input-sm select-inline">
 							<option value="txt">Parse as Text</option>
@@ -196,24 +196,24 @@ class ConverterUi {
 			const prevMode = this._storedSettings.statblockMode;
 			if (prevMode) $selMode.val(prevMode);
 
-			const $wrpTitle = $(`<div class="sidemenu__row"><label class="sidemenu__row__label sidemenu__row__label--cb-label" title="Should the creature's name be converted to title-case? Useful when pasting a name which is all-caps."><span>Title-Case Name</span></label></div>`).appendTo($wrpCustom);
+			const $wrpTitle = $(`<div class="sidemenu__row split-v-center"><label class="sidemenu__row__label sidemenu__row__label--cb-label" title="Should the creature's name be converted to title-case? Useful when pasting a name which is all-caps."><span>Title-Case Name</span></label></div>`).appendTo($wrpCustom);
 			const $cbTitleCase = $(`<input type="checkbox" class="sidemenu__row__label__cb">`).appendTo($wrpTitle.find(`label`));
 			this._menuAccess.isTitleCase = () => !!$cbTitleCase.prop("checked");
 
 			renderDivider($wrpCustom);
 
-			const $wrpPage = $(`<div class="sidemenu__row"><div class="sidemenu__row__label">Page</div></div>`).appendTo($wrpCustom);
+			const $wrpPage = $(`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Page</div></div>`).appendTo($wrpCustom);
 			const $iptPage = $(`<input class="form-control input-sm" type="number" value="0" style="max-width: 9rem;">`).appendTo($wrpPage);
 			this._menuAccess.getPage = () => Number($iptPage.val());
 
 			renderDivider($wrpCustom);
 
-			const $wrpSource = $(`<div class="sidemenu__row"><div class="sidemenu__row__label">Source</div></div>`).appendTo($wrpCustom);
+			const $wrpSource = $(`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Source</div></div>`).appendTo($wrpCustom);
 			const $selSource = $(`<select id="source" class="form-control select-inline input-sm"/>`).appendTo($wrpSource);
 			this._menuAccess.getSource = () => $selSource.val();
 
-			const $wrpSourceAdd = $(`<div class="sidemenu__row--alt"/>`).appendTo($wrpCustom);
-			const $iptSourceAdd = $(`<input class="form-control input-sm" placeholder="Custom source" style="margin-right: 7px;">`).appendTo($wrpSourceAdd);
+			const $wrpSourceAdd = $(`<div class="sidemenu__row flex-vh-center-around"/>`).appendTo($wrpCustom);
+			const $iptSourceAdd = $(`<input class="form-control input-sm" placeholder="Custom source" style="margin-right: 7px;">`).appendTo($wrpSourceAdd).change(() => $iptSourceAdd.removeClass("error-background"));
 			const $btnSourceAdd = $(`<button class="btn btn-sm btn-default">Add</button>`).appendTo($wrpSourceAdd);
 			this._menuAccess.getPage = () => Number($iptPage.val());
 
@@ -233,20 +233,22 @@ class ConverterUi {
 
 				$btnSourceAdd.on("click", () => {
 					const toAdd = $iptSourceAdd.val().trim();
-					if (!sourceMeta.sources.find(src => toAdd.toLowerCase() === src.toLowerCase())) {
+					if (toAdd && !sourceMeta.sources.find(src => toAdd.toLowerCase() === src.toLowerCase())) {
 						sourceMeta.selected = toAdd;
 						sourceMeta.sources.push(toAdd);
 						appendSource(toAdd);
 						SortUtil.ascSort$Options($selSource);
 						$selSource.val(toAdd);
 						$iptSourceAdd.val("");
+					} else {
+						$iptSourceAdd.addClass("error-background");
 					}
 				});
 			})();
 
 			renderDivider($wrpCustom);
 
-			const $wrpSample = $(`<div class="sidemenu__row--alt"/>`).appendTo($wrpCustom);
+			const $wrpSample = $(`<div class="sidemenu__row flex-vh-center-around"/>`).appendTo($wrpCustom);
 			$(`<button class="btn btn-sm btn-default">Sample Text</button>`)
 				.appendTo($wrpSample).click(() => {
 					statblockConverter.showSample("txt");
@@ -274,7 +276,7 @@ class ConverterUi {
 
 			$wrpCustom.empty();
 
-			const $wrpMode = $(`<div class="sidemenu__row--alt"/>`).appendTo($wrpCustom);
+			const $wrpMode = $(`<div class="sidemenu__row flex-vh-center-around"/>`).appendTo($wrpCustom);
 			const $selMode = $(`
 					<select class="form-control input-sm select-inline">
 							<option value="html" selected>Parse as HTML</option>
@@ -291,7 +293,7 @@ class ConverterUi {
 
 			renderDivider($wrpCustom);
 
-			const $wrpSample = $(`<div class="sidemenu__row"/>`).appendTo($wrpCustom);
+			const $wrpSample = $(`<div class="sidemenu__row split-v-center"/>`).appendTo($wrpCustom);
 
 			$(`<button class="btn btn-sm btn-default">Sample HTML</button>`)
 				.appendTo($wrpSample).click(() => {
@@ -564,7 +566,7 @@ class StatblockConverter {
 
 					if (curtrait.name || curtrait.entries) {
 						// convert dice tags
-						StatblockConverter._doConvertDiceTags(curtrait);
+						DiceConvert.convertTraitActionDice(curtrait);
 
 						// convert spellcasting
 						if (ontraits) {
@@ -691,7 +693,7 @@ class StatblockConverter {
 			if (StatblockConverter._hasEntryContent(trait)) {
 				stats.trait = stats.trait || [];
 
-				StatblockConverter._doConvertDiceTags(trait);
+				DiceConvert.convertTraitActionDice(trait);
 
 				// convert spellcasting
 				if (trait.name.toLowerCase().includes("spellcasting")) {
@@ -712,7 +714,7 @@ class StatblockConverter {
 			if (StatblockConverter._hasEntryContent(trait)) {
 				stats.action = stats.action || [];
 
-				StatblockConverter._doConvertDiceTags(trait);
+				DiceConvert.convertTraitActionDice(trait);
 				stats.action.push(trait);
 			}
 			trait = null;
@@ -722,7 +724,7 @@ class StatblockConverter {
 			if (StatblockConverter._hasEntryContent(trait)) {
 				stats.reaction = stats.reaction || [];
 
-				StatblockConverter._doConvertDiceTags(trait);
+				DiceConvert.convertTraitActionDice(trait);
 				stats.reaction.push(trait);
 			}
 			trait = null;
@@ -732,7 +734,7 @@ class StatblockConverter {
 			if (StatblockConverter._hasEntryContent(trait)) {
 				stats.legendary = stats.legendary || [];
 
-				StatblockConverter._doConvertDiceTags(trait);
+				DiceConvert.convertTraitActionDice(trait);
 				stats.legendary.push(trait);
 			}
 			trait = null;
@@ -976,9 +978,10 @@ class StatblockConverter {
 		);
 		TagAttack.tryTagAttacks(stats, (atk) => this._ui.showWarning(`Manual attack tagging required for "${atk}"`));
 		TagHit.tryTagHits(stats);
-		TraitsActionsTag.tryRun(stats);
+		TraitActionTag.tryRun(stats);
 		LanguageTag.tryRun(stats);
-		SensesTag.tryRun(stats);
+		SenseTag.tryRun(stats);
+		SpellcastingTypeTag.tryRun(stats);
 		doCleanup();
 	}
 
@@ -1044,127 +1047,7 @@ class StatblockConverter {
 	}
 
 	_tryParseSpellcasting (trait, isMarkdown) {
-		let spellcasting = [];
-
-		function parseSpellcasting (trait) {
-			const splitter = StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX;
-
-			function getParsedSpells (thisLine) {
-				let spellPart = thisLine.substring(thisLine.indexOf(": ") + 2).trim();
-				if (isMarkdown) {
-					const cleanPart = (part) => {
-						part = part.trim();
-						while (part.startsWith("*") && part.endsWith("*")) {
-							part = part.replace(/^\*(.*)\*$/, "$1");
-						}
-						return part;
-					};
-
-					const cleanedInner = spellPart.split(splitter).map(it => cleanPart(it)).filter(it => it);
-					spellPart = cleanedInner.join(", ");
-
-					while (spellPart.startsWith("*") && spellPart.endsWith("*")) {
-						spellPart = spellPart.replace(/^\*(.*)\*$/, "$1");
-					}
-				}
-				return spellPart.split(splitter).map(i => parseSpell(i));
-			}
-
-			let name = trait.name;
-			let spellcastingEntry = {"name": name, "headerEntries": [parseToHit(trait.entries[0])]};
-			let doneHeader = false;
-			trait.entries.forEach((thisLine, i) => {
-				if (i === 0) return;
-				if (thisLine.includes("/rest")) {
-					doneHeader = true;
-					let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
-					const value = getParsedSpells(thisLine);
-					if (!spellcastingEntry.rest) spellcastingEntry.rest = {};
-					spellcastingEntry.rest[property] = value;
-				} else if (thisLine.includes("/day")) {
-					doneHeader = true;
-					let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
-					const value = getParsedSpells(thisLine);
-					if (!spellcastingEntry.daily) spellcastingEntry.daily = {};
-					spellcastingEntry.daily[property] = value;
-				} else if (thisLine.includes("/week")) {
-					doneHeader = true;
-					let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
-					const value = getParsedSpells(thisLine);
-					if (!spellcastingEntry.weekly) spellcastingEntry.weekly = {};
-					spellcastingEntry.weekly[property] = value;
-				} else if (thisLine.startsWith("Constant: ")) {
-					doneHeader = true;
-					spellcastingEntry.constant = getParsedSpells(thisLine);
-				} else if (thisLine.startsWith("At will: ")) {
-					doneHeader = true;
-					spellcastingEntry.will = getParsedSpells(thisLine);
-				} else if (thisLine.includes("Cantrip")) {
-					doneHeader = true;
-					const value = getParsedSpells(thisLine);
-					if (!spellcastingEntry.spells) spellcastingEntry.spells = {"0": {"spells": []}};
-					spellcastingEntry.spells["0"].spells = value;
-				} else if (thisLine.includes(" level") && thisLine.includes(": ")) {
-					doneHeader = true;
-					let property = thisLine.substr(0, 1);
-					const value = getParsedSpells(thisLine);
-					if (!spellcastingEntry.spells) spellcastingEntry.spells = {};
-					let slots = thisLine.includes(" slot") ? parseInt(thisLine.substr(11, 1)) : 0;
-					spellcastingEntry.spells[property] = {"slots": slots, "spells": value};
-					if (!spellcastingEntry.spells[property]) delete spellcastingEntry.spells[property];
-				} else {
-					if (doneHeader) {
-						if (!spellcastingEntry.footerEntries) spellcastingEntry.footerEntries = [];
-						spellcastingEntry.footerEntries.push(parseToHit(thisLine));
-					} else {
-						spellcastingEntry.headerEntries.push(parseToHit(thisLine));
-					}
-				}
-			});
-
-			if (spellcastingEntry.headerEntries) {
-				const m = /charisma|intelligence|wisdom|constitution/gi.exec(JSON.stringify(spellcastingEntry.headerEntries));
-				if (m) spellcastingEntry.ability = m[0].substring(0, 3).toLowerCase();
-			}
-
-			spellcasting.push(spellcastingEntry);
-		}
-
-		function parseSpell (name) {
-			function getSourcePart (spellName) {
-				const source = StatblockConverter._getSpellSource(spellName);
-				return `${source && source !== SRC_PHB ? `|${source}` : ""}`;
-			}
-
-			name = name.trim();
-			let asterix = name.indexOf("*");
-			let brackets = name.indexOf(" (");
-			if (asterix !== -1) {
-				const trueName = name.substr(0, asterix);
-				return `{@spell ${trueName}${getSourcePart(trueName)}}*`;
-			} else if (brackets !== -1) {
-				const trueName = name.substr(0, brackets);
-				return `{@spell ${trueName}${getSourcePart(trueName)}}${name.substring(brackets)}`;
-			}
-			return `{@spell ${name}${getSourcePart(name)}}`;
-		}
-
-		function parseToHit (line) {
-			return line.replace(/( \+)(\d+)( to hit with spell)/g, (m0, m1, m2, m3) => ` {@hit ${m2}}${m3}`);
-		}
-
-		try {
-			parseSpellcasting(trait);
-			return {out: spellcasting, success: true};
-		} catch (e) {
-			this._ui.showWarning(`Failed to parse spellcasting: ${e.message}`);
-			return {out: trait, success: false};
-		}
-	}
-
-	static _getSpellSource (spellName) {
-		if (spellName && StatblockConverter.SPELL_SRC_MAP[spellName.toLowerCase()]) return StatblockConverter.SPELL_SRC_MAP[spellName.toLowerCase()];
-		return null;
+		return SpellcastingTraitConvert.tryParseSpellcasting(trait, isMarkdown, (err) => this._ui.showWarning(err));
 	}
 
 	// SHARED PARSING FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
@@ -1195,8 +1078,9 @@ class StatblockConverter {
 		else {
 			stats.hp = {
 				average: Number(m[1]),
-				formula: m[2].replace(/\s+/g, "").replace(/([^0-9d])/gi, " $1 ")
+				formula: m[2]
 			};
+			DiceConvert.cleanHpDice(stats);
 		}
 	}
 
@@ -1340,42 +1224,7 @@ class StatblockConverter {
 	static _hasEntryContent (trait) {
 		return trait && (trait.name || (trait.entries.length === 1 && trait.entries[0]) || trait.entries.length > 1);
 	}
-
-	static _doConvertDiceTags (trait) {
-		function doTagDice (str) {
-			// un-tag dice
-			str = str.replace(/{@(?:dice|damage) ([^}]*)}/gi, "$1");
-
-			// re-tag + format dice
-			str = str.replace(/((\s*[-+]\s*)?(([1-9]\d*)?d([1-9]\d*)(\s*?[-+×x]\s*?\d+)?))+/gi, (...m) => {
-				const expanded = m[0].replace(/([^0-9d])/gi, " $1 ").replace(/\s+/g, " ");
-				return `{@dice ${expanded}}`;
-			});
-
-			// tag damage
-			str = str.replace(/(\d+)( \({@dice )([-+0-9d ]*)(}\) [a-z]+( or [a-z]+)? damage)/ig, (...m) => {
-				return m[0].replace(/{@dice /gi, "{@damage ");
-			});
-
-			return str;
-		}
-
-		if (trait.entries) {
-			trait.entries = trait.entries.filter(it => it.trim()).map(e => {
-				if (typeof e !== "string") return e;
-
-				// replace e.g. "+X to hit"
-				e = e.replace(/([-+])?\d+(?= to hit)/g, function (match) {
-					const cleanMatch = match.startsWith("+") ? match.replace("+", "") : match;
-					return `{@hit ${cleanMatch}}`
-				});
-
-				return doTagDice(e);
-			});
-		}
-	}
 }
-StatblockConverter.SPELL_SRC_MAP = {};
 StatblockConverter.SKILL_SPACE_MAP = {
 	"sleightofhand": "sleight of hand",
 	"animalhandling": "animal handling"
@@ -1582,7 +1431,7 @@ class TableConverter {
 	doParseMarkdown (append) {
 		if (!this._ui.inText || !this._ui.inText.trim()) return this._ui.showWarning("No input!");
 
-		const handleTable = (lines, caption) => {
+		const getConvertedTable = (lines, caption) => {
 			// trim leading/trailing pipes if they're uniformly present
 			const contentLines = lines.filter(l => l && l.trim());
 			if (contentLines.every(l => l.trim().startsWith("|"))) {
@@ -1629,11 +1478,31 @@ class TableConverter {
 			tbl.colStyles = alignment;
 
 			this._postProcessTable(tbl);
-			this._ui.doCleanAndOutput(tbl, append);
+			return tbl;
 		};
 
-		// TODO feed in caption
-		handleTable(this._ui.inText.split("\n"));
+		const lines = this._ui.inText.replace(/\r\n/g, "\n").replace(/\r/g, "\n").split(/\n/g);
+		const stack = [];
+		let cur = null;
+		lines.forEach(l => {
+			if (l.trim().startsWith("##### ")) {
+				if (cur && cur.lines.length) stack.push(cur);
+				cur = {caption: l.trim().replace(/^##### /, ""), lines: []};
+			} else {
+				cur = cur || {lines: []};
+				cur.lines.push(l);
+			}
+		});
+		if (cur && cur.lines.length) stack.push(cur);
+
+		const toOutput = stack.map(tbl => getConvertedTable(tbl.lines, tbl.caption)).reverse();
+		toOutput.forEach((out, i) => {
+			if (append) this._ui.doCleanAndOutput(out, true);
+			else {
+				if (i === 0) this._ui.doCleanAndOutput(out, false);
+				else this._ui.doCleanAndOutput(out, true);
+			}
+		});
 	}
 
 	_postProcessTable (tbl) {
@@ -1767,10 +1636,8 @@ tableConverter.ui = ui;
 
 async function doPageInit () {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-	const spellIndex = await DataUtil.loadJSON(`data/spells/index.json`);
-	const spellData = await Promise.all(Object.values(spellIndex).map(f => DataUtil.loadJSON(`data/spells/${f}`)));
-	// reversed so official sources take precedence over 3pp
-	spellData.reverse().forEach(d => d.spell.forEach(s => StatblockConverter.SPELL_SRC_MAP[s.name.toLowerCase()] = s.source));
+	const spellData = await SpellcastingTraitConvert.pGetSpellData();
+	SpellcastingTraitConvert.init(spellData);
 	const bestiarySources = await DataUtil.loadJSON("data/bestiary/index.json");
 	ui.init(bestiarySources);
 }

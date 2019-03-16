@@ -648,9 +648,9 @@
 						{
 							"type": "list",
 							"items": [
-								"2 minor beneficial properties",
-								"1 major beneficial property",
-								"2 minor detrimental properties"
+								"2 {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial properties}",
+								"1 {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial property}",
+								"2 {@table Artifact Properties; Minor Detrimental Properties|dmg|minor detrimental properties}"
 							]
 						}
 					]
@@ -1892,8 +1892,8 @@
 				{
 					"type": "list",
 					"items": [
-						"2 minor beneficial properties",
-						"2 major beneficial properties"
+						"2 {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial properties}",
+						"2 {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial properties}"
 					]
 				},
 				{
@@ -1968,10 +1968,10 @@
 				{
 					"type": "list",
 					"items": [
-						"3 minor beneficial properties",
-						"1 major beneficial property",
-						"3 minor detrimental properties",
-						"2 major detrimental properties"
+						"3 {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial properties}",
+						"1 {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial property}",
+						"3 {@table Artifact Properties; Minor Detrimental Properties|dmg|minor detrimental properties}",
+						"2 {@table Artifact Properties; Major Detrimental Properties|dmg|major detrimental properties}"
 					]
 				},
 				{
@@ -5702,9 +5702,9 @@
 				{
 					"type": "list",
 					"items": [
-						"1 minor beneficial property",
-						"1 major beneficial property",
-						"1 minor detrimental property"
+						"1 {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial property}",
+						"1 {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial property}",
+						"1 {@table Artifact Properties; Minor Detrimental Properties|dmg|minor detrimental property}"
 					]
 				},
 				{
@@ -5736,7 +5736,7 @@
 						"Using the eye's X-ray vision never causes you to suffer {@condition exhaustion}.",
 						"You experience premonitions of danger and, unless you are {@condition incapacitated}, can't be surprised.",
 						"If you start your turn with at least 1 hit point, you regain {@dice 1d10} hit points.",
-						"If a creature has a skeleton, you can attempt to turn its bones to jelly with a touch of the {@item Hand of Vecna}. You can do so by using an action to make a melee attack against a creature you can reach, using your choice your melee attack bonus for weapons or spells. On a hit, the target must succeed on a DC 18 Constitution saving throw or drop to 0 hit points.",
+						"If a creature has a skeleton, you can attempt to turn its bones to jelly with a touch of the {@item Hand of Vecna}. You can do so by using an action to make a melee attack against a creature you can reach, using your choice of your melee attack bonus for weapons or spells. On a hit, the target must succeed on a DC 18 Constitution saving throw or drop to 0 hit points.",
 						"You can use an action to cast {@spell wish}. This property can't be used again until 30 days have passed."
 					]
 				},
@@ -6906,9 +6906,9 @@
 				{
 					"type": "list",
 					"items": [
-						"1 minor beneficial property",
-						"1 major beneficial property",
-						"1 minor detrimental property"
+						"1 {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial property}",
+						"1 {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial property}",
+						"1 {@table Artifact Properties; Minor Detrimental Properties|dmg|minor detrimental property}"
 					]
 				},
 				{
@@ -6940,7 +6940,7 @@
 						"Using the eye's X-ray vision never causes you to suffer {@condition exhaustion}.",
 						"You experience premonitions of danger and, unless you are {@condition incapacitated}, can't be surprised.",
 						"If you start your turn with at least 1 hit point, you regain {@dice 1d10} hit points.",
-						"If a creature has a skeleton, you can attempt to turn its bones to jelly with a touch of the Hand of Vecna. You can do so by using an action to make a melee attack against a creature you can reach, using your choice your melee attack bonus for weapons or spells. On a hit, the target must succeed on a DC 18 Constitution saving throw or drop to 0 hit points.",
+						"If a creature has a skeleton, you can attempt to turn its bones to jelly with a touch of the Hand of Vecna. You can do so by using an action to make a melee attack against a creature you can reach, using your choice of your melee attack bonus for weapons or spells. On a hit, the target must succeed on a DC 18 Constitution saving throw or drop to 0 hit points.",
 						"You can use an action to cast {@spell wish}. This property can't be used again until 30 days have passed."
 					]
 				},
@@ -10094,9 +10094,9 @@
 						{
 							"type": "list",
 							"items": [
-								"2 minor beneficial properties",
-								"1 minor detrimental property",
-								"1 major detrimental property"
+								"2 {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial properties}",
+								"1 {@table Artifact Properties; Minor Detrimental Properties|dmg|minor detrimental property}",
+								"1 {@table Artifact Properties; Major Detrimental Properties|dmg|major detrimental property}"
 							]
 						}
 					]
@@ -10524,7 +10524,7 @@
 			"source": "DMG",
 			"page": 184,
 			"entries": [
-				"You are immune to contracting any disease while you wear this pendant. If you are already infected with a disease, the effects of the disease are suppressed you while you wear the pendant."
+				"You are immune to contracting any disease while you wear this pendant. If you are already infected with a disease, the effects of the disease are suppressed while you wear the pendant."
 			]
 		},
 		{
@@ -13070,7 +13070,7 @@
 			"page": 138,
 			"reqAttune": "by a Spellcaster",
 			"entries": [
-				"Etched with eldritch runes, this 1\u2014inch-diameter ruby allows you to use a simple or martial weapon as a spellcasting focus for your spells. For this property to work, you must attach the ruby to the weapon by pressing the ruby against it for at least 10 minutes. Thereafter, the ruby can't be removed unless you detach it as an action or the weapon is destroyed. Not even an {@spell antimagic field} causes it to fall off. The ruby does fall off the weapon if your attunement to the ruby ends."
+				"Etched with eldritch runes, this 1-inch-diameter ruby allows you to use a simple or martial weapon as a spellcasting focus for your spells. For this property to work, you must attach the ruby to the weapon by pressing the ruby against it for at least 10 minutes. Thereafter, the ruby can't be removed unless you detach it as an action or the weapon is destroyed. Not even an {@spell antimagic field} causes it to fall off. The ruby does fall off the weapon if your attunement to the ruby ends."
 			],
 			"focus": true
 		},
@@ -15468,10 +15468,10 @@
 				{
 					"type": "list",
 					"items": [
-						"1 minor beneficial property",
-						"1 major beneficial property",
-						"1 minor detrimental property",
-						"1 major detrimental property"
+						"1 {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial property}",
+						"1 {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial property}",
+						"1 {@table Artifact Properties; Minor Detrimental Properties|dmg|minor detrimental property}",
+						"1 {@table Artifact Properties; Major Detrimental Properties|dmg|major detrimental property}"
 					]
 				},
 				{
@@ -17418,10 +17418,10 @@
 				{
 					"type": "list",
 					"items": [
-						"2 minor beneficial properties",
-						"1 major beneficial property",
-						"2 minor detrimental properties",
-						"1 major detrimental property"
+						"2 {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial properties}",
+						"1 {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial property}",
+						"2 {@table Artifact Properties; Minor Detrimental Properties|dmg|minor detrimental properties}",
+						"1 {@table Artifact Properties; Major Detrimental Properties|dmg|major detrimental property}"
 					]
 				},
 				"The detrimental properties of the Wand of Orcus are suppressed while the wand is attuned to {@creature Orcus|OotA} himself.",
@@ -18939,8 +18939,8 @@
 						{
 							"type": "list",
 							"items": [
-								"1 minor beneficial property",
-								"1 minor detrimental property"
+								"1 {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial property}",
+								"1 {@table Artifact Properties; Minor Detrimental Properties|dmg|minor detrimental property}"
 							]
 						}
 					]
@@ -19514,27 +19514,27 @@
 					"rows": [
 						[
 							"1\u20132",
-							"The dodecahedron explodes and is destroyed. Each creature within 20 feet of the exploding die must make a DC 13 Dexterity saving throw, taking 40 ({@dice 9d8}) force damage on a failed save, or half as much damage on a successful one."
+							"The dodecahedron explodes and is destroyed. Each creature within 20 feet of the exploding die must make a DC 13 Dexterity saving throw, taking 40 ({@dice 9d8}) force damage on a failed save, or half as much damage on a successful one."
 						],
 						[
 							"3\u20134",
-							"The dodecahedron casts {@spell light} on itself. The effect lasts until a creature touches the die."
+							"The dodecahedron casts {@spell light} on itself. The effect lasts until a creature touches the die."
 						],
 						[
 							"5\u20136",
-							"The dodecahedron casts {@spell ray of frost} (+5 to hit), targeting a random creature within 60 feet of it that doesn't have total cover against the attack."
+							"The dodecahedron casts {@spell ray of frost} (+5 to hit), targeting a random creature within 60 feet of it that doesn't have total cover against the attack."
 						],
 						[
 							"7\u20138",
-							"The dodecahedron casts {@spell shocking grasp} (+5 to hit) on the next creature that touches it."
+							"The dodecahedron casts {@spell shocking grasp} (+5 to hit) on the next creature that touches it."
 						],
 						[
 							"9\u201310",
-							"The dodecahedron casts {@spell darkness} on itself. The effect has a duration of 10 minutes."
+							"The dodecahedron casts {@spell darkness} on itself. The effect has a duration of 10 minutes."
 						],
 						[
 							"11\u201312",
-							"The next creature to touch the dodecahedron gains {@dice 1d10} temporary hit points that last for 1 hour."
+							"The next creature to touch the dodecahedron gains {@dice 1d10} temporary hit points that last for 1 hour."
 						]
 					]
 				}
@@ -19815,8 +19815,8 @@
 			"reqAttune": "by a member of the Simic guild",
 			"rarity": "Uncommon",
 			"entries": [
-				"This keyrune is assembled from coral, mother-of-pearl, and chrome and adorned with the spirals and curves characteristic of Simic ornamentation. The head resembles the shell of a sea creature. On command, the keyrune turns into a {@creature category 2 krasis|GGR} that has the Grabber and Stabilizing Legs adaptations. The transformation lasts for up to 5 hours.",
-				"When you use an action to speak the item's command word and place the keyrune on the ground in an unoccupied space within 5 feet of you, the keyrune transforms into a {@creature category 2 krasis|GGR} that has the Grabber and Stabilizing Legs adaptations. If there isn't enough space for the creature, the keyrune doesn't transform.",
+				"This keyrune is assembled from coral, mother-of-pearl, and chrome and adorned with the spirals and curves characteristic of Simic ornamentation. The head resembles the shell of a sea creature. On command, the keyrune turns into a {@creature category 1 krasis|GGR} that has the Grabber and Stabilizing Legs adaptations. The transformation lasts for up to 5 hours.",
+				"When you use an action to speak the item's command word and place the keyrune on the ground in an unoccupied space within 5 feet of you, the keyrune transforms into a {@creature category 1 krasis|GGR} that has the Grabber and Stabilizing Legs adaptations. If there isn't enough space for the creature, the keyrune doesn't transform.",
 				"The creature is friendly to you, your companions, and other members of your guild (unless those guild members are hostile to you). It understands your languages and obeys your spoken commands. If you issue no commands, the creature takes the {@action Dodge} action and moves to avoid danger.",
 				"At the end of the duration, the creature reverts to its keyrune form. It reverts early if it drops to 0 hit points or if you use an action to speak the command word again while touching it. When the creature reverts to its keyrune form, it can't transform again until 36 hours have passed."
 			]
@@ -20398,7 +20398,6 @@
 			"weight": "25",
 			"rarity": "Common",
 			"source": "WDMM",
-			"reqAttune": true,
 			"entries": [
 				"Food and other perishable items do not age or decay while inside a Chest of Preserving. The chest is 2½ feet long, 1½ feet wide, and 1 foot tall with a half-barrel lid. The chest has a lock, which can be picked with thieves' tools and a successful DC 15 Dexterity check. Smashing the lock or any other part of the chest renders it nonmagical."
 			]

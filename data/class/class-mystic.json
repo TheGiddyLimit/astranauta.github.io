@@ -14,8 +14,8 @@
 			"classTableGroups": [
 				{
 					"colLabels": [
-						"Talents Known",
-						"Disciplines Known",
+						"{@filter Talents Known|psionics|type=T}",
+						"{@filter Disciplines Known|psionics|type=D}",
 						"Psi Points",
 						"Psi Limit"
 					],
@@ -173,7 +173,8 @@
 					"(a) {@item leather armor|phb} or (b) {@item studded leather armor|phb}",
 					"(a) a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
 					"(a) a {@item scholar's pack|phb} or (b) an {@item explorer's pack|phb}"
-				]
+				],
+				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
 			},
 			"classFeatures": [
 				[

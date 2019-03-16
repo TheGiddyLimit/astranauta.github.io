@@ -31,8 +31,18 @@ class Omnidexer {
 		return withDots.split(".").reduce((o, i) => o[i], obj);
 	}
 
-	addToIndex (arbiter, json, idOffset, isTestMode) {
-		if (idOffset) this.id += idOffset;
+	/**
+	 * Compute and add an index item.
+	 * @param arbiter The indexer arbiter.
+	 * @param json A raw JSON object of a file, typically containing an array to be indexed.
+	 * @param options Options object.
+	 * @param options.idOffset An offset for the ID.
+	 * @param options.isNoFilter If filtering rules are to be ignored (e.g. for tests).
+	 * @param options.alt Sub-options for alternate indices.
+	 */
+	addToIndex (arbiter, json, options) {
+		options = options || {};
+		if (options.idOffset) this.id += options.idOffset;
 		const index = this.index;
 		let id = this.id;
 
@@ -51,6 +61,9 @@ class Omnidexer {
 			if (arbiter.hover) {
 				toAdd.h = 1;
 			}
+			if (options.alt) {
+				if (options.alt.additionalProperties) Object.entries(options.alt.additionalProperties).forEach(([k, getV]) => toAdd[k] = getV(it));
+			}
 			Object.assign(toAdd, toMerge);
 			return toAdd;
 		};
@@ -58,7 +71,7 @@ class Omnidexer {
 		function handleItem (it, i, name) {
 			if (!it.noDisplay) {
 				const toAdd = getToAdd(it, {n: name}, i);
-				if ((isTestMode || (!arbiter.include && !(arbiter.filter && arbiter.filter(it))) || (!arbiter.filter && (!arbiter.include || arbiter.include(it)))) && !arbiter.onlyDeep) index.push(toAdd);
+				if ((options.isNoFilter || (!arbiter.include && !(arbiter.filter && arbiter.filter(it))) || (!arbiter.filter && (!arbiter.include || arbiter.include(it)))) && !arbiter.onlyDeep) index.push(toAdd);
 				if (arbiter.deepIndex) {
 					const primary = {it: it, i: i, parentName: name};
 					const deepItems = arbiter.deepIndex(primary, it);
@@ -78,6 +91,15 @@ class Omnidexer {
 		});
 
 		this.id = id;
+	}
+
+	/**
+	 * Directly add a pre-computed index item.
+	 * @param item
+	 */
+	pushToIndex (item) {
+		item.id = this.id++;
+		this.index.push(item);
 	}
 
 	static arrIncludesOrEquals (checkAgainst, item) {
@@ -105,7 +127,14 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 		source: "source",
 		listProp: "spell",
 		baseUrl: "spells.html",
-		hover: true
+		hover: true,
+		alternateIndexes: {
+			spell: {
+				additionalProperties: {
+					lvl: spell => spell.level
+				}
+			}
+		}
 	},
 	{
 		category: Parser.CAT_ID_CLASS,
@@ -304,6 +333,14 @@ Omnidexer.TO_INDEX = [
 		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "ED")
 	},
 	{
+		category: Parser.CAT_ID_ARTIFICER_INFUSION,
+		file: "optionalfeatures.json",
+		listProp: "optionalfeature",
+		baseUrl: "optionalfeatures.html",
+		hover: true,
+		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "AI")
+	},
+	{
 		category: Parser.CAT_ID_ITEM,
 		file: "items.json",
 		listProp: "item",
@@ -401,10 +438,18 @@ Omnidexer.TO_INDEX = [
 			}
 			return [];
 		},
-		test_extraIndex: () => {
-			const specVars = UtilSearchIndex._test_getBasicVariantItems();
-
-			return specVars.map(sv => ({c: 4, u: UrlUtil.encodeForHash([sv.name, sv.source])}));
+		additionalIndexes: {
+			item: async (rawVariants) => {
+				const specVars = await UtilSearchIndex._node_pGetBasicVariantItems(rawVariants);
+				return specVars.map(sv => ({
+					c: 4,
+					u: UrlUtil.encodeForHash([sv.name, sv.source]),
+					s: sv.source,
+					n: sv.name,
+					h: 1,
+					p: sv.page
+				}));
+			}
 		},
 		hover: true
 	},

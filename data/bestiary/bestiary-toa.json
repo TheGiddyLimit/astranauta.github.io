@@ -234,7 +234,7 @@
 			],
 			"page": 209,
 			"isNamedCreature": true,
-			"isNPC": true,
+			"isNpc": true,
 			"traitTags": [
 				"Legendary Resistances",
 				"Rejuvenation",
@@ -253,6 +253,9 @@
 			],
 			"senseTags": [
 				"U"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
@@ -342,6 +345,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -620,7 +626,7 @@
 		{
 			"source": "ToA",
 			"name": "Artus Cimber",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -739,7 +745,7 @@
 		},
 		{
 			"name": "Asharra",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -858,6 +864,9 @@
 			"languageTags": [
 				"AU",
 				"C"
+			],
+			"spellcastingTags": [
+				"CD"
 			]
 		},
 		{
@@ -1084,7 +1093,7 @@
 		},
 		{
 			"name": "Bag of Nails",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1284,6 +1293,9 @@
 			"page": 216,
 			"senseTags": [
 				"B"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -1396,7 +1408,7 @@
 		{
 			"source": "ToA",
 			"name": "Dragonbait",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1556,6 +1568,9 @@
 			"languageTags": [
 				"AU",
 				"C"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -1870,7 +1885,7 @@
 		},
 		{
 			"name": "Hew Hackinstone",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2114,7 +2129,7 @@
 		},
 		{
 			"name": "King of Feathers",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "H",
 			"type": "monstrosity",
 			"source": "ToA",
@@ -2205,12 +2220,15 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
 			"source": "ToA",
 			"name": "Liara Portyr",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2371,7 +2389,7 @@
 		{
 			"source": "ToA",
 			"name": "Mwaxanare",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2446,6 +2464,9 @@
 				"AU",
 				"C",
 				"TP"
+			],
+			"spellcastingTags": [
+				"CL"
 			]
 		},
 		{
@@ -2531,7 +2552,7 @@
 		{
 			"source": "ToA",
 			"name": "Ras Nsi",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "M",
 			"type": {
 				"type": "monstrosity",
@@ -2726,6 +2747,10 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"I",
+				"CW"
 			]
 		},
 		{
@@ -2817,7 +2842,8 @@
 				{
 					"name": "Chained",
 					"entries": [
-						"As long as the Guardian remains chained to another any damage done to one is divided evenly between them. If the chain is broken the Guardian immediately goes berserk."
+						"{@note This trait applies when two guardians are chained together.}",
+						"A magical spiked chain that binds a pair of guardians together prevents them from moving more than 15 feet apart. Additionally, as long as the chain is intact, damage dealt to either guardian is divided evenly between them. The spiked chain can be attacked separately and has AC 18, a damage threshold of 10, 5 hit points, and immunity to poison and psychic damage. If the chain breaks, both tomb guardians instantly go berserk."
 					]
 				}
 			],
@@ -3558,7 +3584,7 @@
 		},
 		{
 			"name": "Valindra Shadowmantle",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "M",
 			"type": "undead",
 			"source": "ToA",
@@ -3794,12 +3820,15 @@
 			],
 			"senseTags": [
 				"U"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
 			"source": "ToA",
 			"name": "Volothamp \"Volo\" Geddarm",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3891,11 +3920,14 @@
 				"C",
 				"D",
 				"E"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
 			"name": "Withers",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "M",
 			"type": "undead",
 			"source": "ToA",
@@ -4050,12 +4082,15 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
 			"source": "ToA",
 			"name": "Xandala",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -4180,6 +4215,9 @@
 				"D",
 				"E",
 				"H"
+			],
+			"spellcastingTags": [
+				"CS"
 			]
 		},
 		{
@@ -4311,7 +4349,7 @@
 		{
 			"source": "ToA",
 			"name": "Zindar",
-			"isNPC": true,
+			"isNpc": true,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -4474,6 +4512,9 @@
 			"senseTags": [
 				"B",
 				"D"
+			],
+			"spellcastingTags": [
+				"CS"
 			]
 		},
 		{

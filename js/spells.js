@@ -12,6 +12,7 @@ const META_ADD_M_COST = "Material with Cost";
 const META_ADD_M_CONSUMED = "Material is Consumed";
 const META_ADD_MB_PERMANENT = "Permanent Effects";
 const META_ADD_MB_SCALING = "Scaling Effects";
+const META_ADD_MB_SUMMONS = "Summons Creature";
 const META_ADD_MB_HEAL = "Healing";
 // real meta tags
 const META_RITUAL = "Ritual";
@@ -114,8 +115,12 @@ function getNormalisedRange (range) {
 			offset = 5;
 			adjustForDistance();
 			break;
-		case RNG_CUBE:
+		case RNG_CYLINDER:
 			offset = 6;
+			adjustForDistance();
+			break;
+		case RNG_CUBE:
+			offset = 7;
 			adjustForDistance();
 			break;
 	}
@@ -186,6 +191,7 @@ function getRangeType (range) {
 		case RNG_RADIUS:
 		case RNG_HEMISPHERE:
 		case RNG_SPHERE:
+		case RNG_CYLINDER:
 		case RNG_CUBE:
 			return F_RNG_SELF_AREA
 	}
@@ -222,6 +228,7 @@ function getMetaFilterObj (s) {
 	if (s.permanentEffects || s.duration.filter(it => it.type === "permanent").length) out.push(META_ADD_MB_PERMANENT);
 	if (s.scalingEffects || s.entriesHigherLevel) out.push(META_ADD_MB_SCALING);
 	if (s.isHeal) out.push(META_ADD_MB_HEAL);
+	if (s.isSummon) out.push(META_ADD_MB_SUMMONS);
 	return out;
 }
 
@@ -243,7 +250,7 @@ function pPostLoad () {
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
 			.then(() => BrewUtil.bind({list}))
-			.then(BrewUtil.pAddLocalBrewData)
+			.then(() => BrewUtil.pAddLocalBrewData())
 			.catch(BrewUtil.pPurgeBrew)
 			.then(async () => {
 				BrewUtil.makeBrewButton("manage-brew");
@@ -324,7 +331,7 @@ const classAndSubclassFilter = new MultiFilter({name: "Classes"}, classFilter, s
 const raceFilter = new Filter({header: "Race"});
 const metaFilter = new Filter({
 	header: "Components & Miscellaneous",
-	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_M_CONSUMED, META_ADD_MB_HEAL, META_ADD_MB_PERMANENT, META_ADD_MB_SCALING, META_RITUAL, META_TECHNOMAGIC]
+	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_M_CONSUMED, META_ADD_MB_HEAL, META_ADD_MB_PERMANENT, META_ADD_MB_SCALING, META_ADD_MB_SUMMONS, META_RITUAL, META_TECHNOMAGIC]
 });
 const schoolFilter = new Filter({
 	header: "School",
@@ -695,6 +702,7 @@ function addSpells (data) {
 			</li>`;
 
 		// populate filters
+		if (spell.level > 9) levelFilter.addIfAbsent(spell.level);
 		sourceFilter.addIfAbsent(spell._fSources);
 		raceFilter.addIfAbsent(spell._fRaces);
 		spell._fClasses.forEach(c => classFilter.addIfAbsent(c));

@@ -3,7 +3,7 @@
 class ManageBrew {
 	static initialise () {
 		BrewUtil.pAddBrewData()
-			.then(BrewUtil.pAddLocalBrewData)
+			.then(() => BrewUtil.pAddLocalBrewData())
 			.catch(BrewUtil.pPurgeBrew)
 			.then(() => {
 				ManageBrew.pRender();

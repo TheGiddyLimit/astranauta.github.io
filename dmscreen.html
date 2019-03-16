@@ -67,8 +67,9 @@
 
 		.panel-control-bar {
 			position: absolute;
-			right: 0;
+			right: 11px;
 			border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
 			padding-left: 3px;
 			opacity: 0.2;
 			z-index: 56;
@@ -157,7 +158,6 @@
 			position: relative;
 			width: 100%;
 			height: 100%;
-			overflow-y: auto;
 			padding-right: -9px;
 			box-sizing: content-box;
 			box-shadow: inset 0 0 10px 0 #909090b0;
@@ -227,6 +227,16 @@
 		.panel-content-wrapper-inner {
 			height: 100%;
 			width: 100%;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		.panel-content-wrapper-inner::-webkit-scrollbar-track {
+			background: #f0f0f0;
+		}
+
+		.night-mode .panel-content-wrapper-inner::-webkit-scrollbar-track {
+			background: #222222;
 		}
 
 		.panel-control {
@@ -301,46 +311,6 @@
 			border-radius: 50%;
 		}
 
-		.panel-addmenu {
-			position: fixed;
-			z-index: 1000;
-			width: 100vw;
-			height: 100vh;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
-		.panel-addmenu-inner {
-			position: relative;
-			z-index: 10001;
-			top: initial;
-			left: initial;
-			margin: 60px auto;
-			padding: 5px 10px;
-			height: 400px;
-			float: none;
-			display: flex;
-			flex-direction: column;
-			min-width: 600px;
-		}
-
-		.panel-addmenu-inner--modal {
-			height: initial;
-			max-height: 400px;
-		}
-
-		.panel-addmenu-inner--large-modal {
-			width: 100%;
-			max-height: 90vh;
-		}
-
-		.panel-addmenu-modal-scroller {
-			max-height: 100%;
-			width: 100%;
-			overflow-y: auto;
-		}
-
 		.panel-addmenu-bar {
 			display: flex;
 			flex-shrink: 0;
@@ -361,102 +331,12 @@
 			height: 100%;
 		}
 
-		.panel-tab-list-wrapper {
-			position: relative;
-			height: 100%;
-			display: flex;
-			flex-direction: column;
-		}
-
 		.underline-tabs {
 			margin-top: -1px;
 		}
 
 		.list {
 			padding: 3px;
-		}
-
-		.panel-tab-results {
-			padding: 3px;
-			transform: translateZ(0);
-			position: relative;
-			height: 100%;
-			overflow-y: auto;
-			overflow-x: hidden;
-			font-size: 0.8em;
-		}
-
-		.panel-tab-results-row {
-			cursor: pointer;
-			font-weight: bold;
-			padding: 1px 2px;
-			display: flex;
-			justify-content: space-between;
-		}
-
-		.panel-tab-message {
-			font-size: 1.4rem;
-			width: 100%;
-			height: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-family: 'Andada', serif;
-			font-variant: small-caps;
-			font-weight: 500;
-		}
-
-		.panel-tab-controls {
-			width: 100%;
-			display: flex;
-			margin-top: -1px;
-			z-index: 10002;
-		}
-
-		.panel-tab-cat {
-			border-radius: 0;
-			max-width: 180px;
-			flex-shrink: 0;
-			border-right: 0;
-		}
-
-		input.panel-tab-search {
-			border-radius: 0;
-			width: 100%;
-		}
-
-		.panel-tab-search-sub-wrp {
-			flex-shrink: 0;
-			padding: 5px;
-			margin-bottom: 0;
-			font-weight: normal;
-			border: 1px solid #ccc;
-			height: 34px;
-			border-left: 0;
-			display: flex;
-		}
-
-		.panel-tab-search-sub-lbl {
-			display: flex;
-			align-items: center;
-			height: 100%;
-		}
-
-		.panel-tab-search-sub-lbl:not(:last-child) {
-			margin-right: 7px;
-		}
-
-		input.panel-tab-search-sub-ipt[type=radio] {
-			display: inline-block;
-			margin: 0 3px 0 0;
-		}
-
-		.panel-tab-search-sub-ipt-custom {
-			max-width: 50px;
-			border-radius: 0;
-			margin-right: -1px;
-			border-right-color: #e0e0e0;
-			border-left-color: #e0e0e0;
 		}
 
 		.panel-tab-list-item {
@@ -558,62 +438,8 @@
 			border-radius: 0;
 		}
 
-		.tab-body-row {
-			margin-bottom: 5px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			font-weight: initial;
-			min-height: 30px;
-		}
-
-		.tab-body-row--cb {
-			padding: 0 3px;
-		}
-
-		.tab-body-row--cb:hover {
-			background: #f5f5f5;
-		}
-
-		.night-mode .tab-body-row--cb:hover {
-			background: #383838;
-		}
-
-		.tab-body-row--cb input[type=checkbox] {
-			margin: 0;
-		}
-
-		.tab-body-row--stats-header {
-			min-height: initial;
-			font-weight: bold;
-			font-size: 12px;
-			margin-bottom: 0;
-		}
-
-		.tab-body-row--stats {
-			flex-direction: column;
-		}
-
-		.tab-body-row:first-of-type {
-			margin-top: -1px;
-		}
-
-		.tab-body-row-sep {
-			height: 1px;
-			width: calc(100% - 12px);
-			margin: 2px 2px 7px;
-		}
-
-		.underline-tabs .tab-body-row:first-of-type {
+		.underline-tabs .ui-modal__row:first-of-type {
 			margin-top: 4px;
-		}
-
-		.tab-body-row > * {
-			margin-right: 5px;
-		}
-
-		.tab-body-row > *:last-child {
-			margin-right: 0;
 		}
 
 		.sidemenu__toggle {
@@ -817,7 +643,6 @@
 			width: 40px;
 		}
 
-		input.panel-tab-search-sub-ipt-custom[type=number]::-webkit-inner-spin-button,
 		.dm-init-row-rhs input[type=number]::-webkit-inner-spin-button,
 		.dm-init-row-rhs input[type=number]::-webkit-outer-spin-button {
 			-webkit-appearance: none;
@@ -1039,33 +864,9 @@
 			margin-right: 0;
 		}
 
-		@media (max-width: 767px) {
-			.panel-addmenu-inner {
-				min-width: 0;
-			}
-		}
-
-		@media (min-width: 768px) {
-			.panel-addmenu-inner {
-				max-width: 750px;
-			}
-		}
-
 		@media (max-width: 991px) {
 			.viewport-wrapper {
 				bottom: 0;
-			}
-		}
-
-		@media (min-width: 992px) {
-			.panel-addmenu-inner {
-				max-width: 970px;
-			}
-		}
-
-		@media (min-width: 1200px) {
-			.panel-addmenu-inner {
-				max-width: 1170px;
 			}
 		}
 
@@ -1076,19 +877,27 @@
 			padding: 0 2px;
 			margin: -1px 1px;
 		}
+
+		.dms__tab_hidden {
+			display: none !important;
+		}
+
+		.panel-content-wrapper table.stats.stats-book--hover {
+			box-shadow: none;
+		}
 	</style>
 </head>
 
 <body>
 <div class="viewport-wrapper">
-	<header class="hidden-xs hidden-sm">
+	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
 
-			<h1>DM Screen</h1>
-			<p>Build a personalised DM screen</p>
+			<h1 class="page__title">DM Screen</h1>
+			<p class="page__subtitle">Build a personalised DM screen</p>
 		</div>
 	</header>
-	<nav class="container" id="navigation">
+	<nav class="container page__nav" id="navigation">
 		<ul class="nav nav-pills" id="navbar">
 		</ul>
 	</nav>
@@ -1110,16 +919,18 @@
 <script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="lib/lzma.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
-<script type="text/javascript" src="js/p2putils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
+<script type="text/javascript" src="js/utils-p2p.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/initiativetrackerutils.js"></script>
 <script type="text/javascript" src="js/dmscreen.js"></script>
 <script type="text/javascript" src="js/dmscreen-initiativetracker.js"></script>
+<script type="text/javascript" src="js/dmscreen-playerinitiativetracker.js"></script>
 <script type="text/javascript" src="js/dmscreen-moneyconverter.js"></script>
-<script type="text/javascript" src="js/initiativetrackerutils.js"></script>
 <script type="text/javascript" src="js/history.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/bootstrap-tooltip.js"></script>

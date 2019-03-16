@@ -175,7 +175,7 @@ async function populateTablesAndFilters (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(() => BrewUtil.bind({list}))
-		.then(BrewUtil.pAddLocalBrewData)
+		.then(() => BrewUtil.pAddLocalBrewData())
 		.catch(BrewUtil.pPurgeBrew)
 		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -388,12 +388,7 @@ function loadhash (id) {
 		const $toAppend = $(`
 		${EntryRenderer.utils.getBorderTr()}
 		${EntryRenderer.utils.getNameTr(item)}
-		<tr>
-			<td id="typerarityattunement" class="typerarityattunement" colspan="6">
-				<span id="type">Type</span><span id="rarity">, rarity</span>
-				<span id="attunement">(requires attunement)</span>
-			</td>
-		</tr>
+		<tr><td class="typerarityattunement" colspan="6">${EntryRenderer.item.getTypeRarityAndAttunementText(item)}</td></tr>
 		<tr>
 			<td id="valueweight" colspan="2"><span id="value">10gp</span> <span id="weight">45 lbs.</span></td>
 			<td id="damageproperties" class="damageproperties" colspan="4"><span id="damage">Damage</span> <span id="damagetype">type</span> <span id="properties">(versatile)</span></td>
@@ -424,8 +419,6 @@ function loadhash (id) {
 		$content.find("span#damage").html(damage);
 		$content.find("span#damagetype").html(damageType);
 		$content.find("span#properties").html(propertiesTxt);
-
-		$content.find("#typerarityattunement").html(EntryRenderer.item.getTypeRarityAndAttunementText(item));
 
 		$content.find("tr.text").remove();
 		const renderStack = [];

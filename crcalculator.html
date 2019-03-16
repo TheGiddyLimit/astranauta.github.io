@@ -84,14 +84,14 @@
 </head>
 
 <body>
-<header class="hidden-xs hidden-sm">
+<header class="hidden-xs hidden-sm page__header">
 	<div class="container">
 
-		<h1>CR Calculator</h1>
-		<p>Easily build custom creatures.</p>
+		<h1 class="page__title">CR Calculator</h1>
+		<p class="page__subtitle">Easily build custom creatures.</p>
 	</div>
 </header>
-<nav class="container" id="navigation">
+<nav class="container page__nav" id="navigation">
 	<ul class="nav nav-pills" id="navbar">
 	</ul>
 </nav>
@@ -285,7 +285,7 @@
 
 				<div class="crc__row">
 					<label for="flying" class="help--subtle">
-						Flying at CRs 0-9:
+						Flies and can deal damage at range (CR 0-9 only):
 						<span class="explanation">
 							A monster's effective AC is increased by 2 if it can fly and deal damage at range, though only if its expected challenge rating is 10 or lower.
 						</span>
@@ -332,10 +332,9 @@
 	</div>
 	<hr>
 </main>
-<footer class="container">
-
-</footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>

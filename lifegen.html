@@ -68,18 +68,25 @@
 		.btn-reroll::before {
 			content: "Reroll";
 		}
+
+		.output {
+			margin: 1em 0;
+			padding: 0.2em 0.7em;
+			border-radius: 0.2em;
+			display: none;
+		}
 	</style>
 </head>
 
 <body>
-<header class="hidden-xs hidden-sm">
+<header class="hidden-xs hidden-sm page__header">
 	<div class="container">
 
-		<h1>This Is Your Life</h1>
-		<p>Select options, and hit generate.</p>
+		<h1 class="page__title">This Is Your Life</h1>
+		<p class="page__subtitle">Select options, and hit generate.</p>
 	</div>
 </header>
-<nav class="container" id="navigation">
+<nav class="container page__nav" id="navigation">
 	<ul class="nav nav-pills" id="navbar">
 	</ul>
 </nav>
@@ -160,10 +167,9 @@
 		<p id="events"></p>
 	</div>
 </main>
-<footer class="container">
-
-</footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/genutils.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
