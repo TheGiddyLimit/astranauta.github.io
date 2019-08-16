@@ -479,7 +479,7 @@ class Builder extends ProxyBase {
 
 	handleSidebarDownloadJsonClick () {
 		const out = this._ui._getJsonOutputTemplate();
-		out[this._prop] = (BrewUtil.homebrew[this._prop] || []).filter(entry => entry.source === this._ui.source).map(entry => PropOrder.getOrdered(DataUtil.cleanJson(MiscUtil.copy(entry))));
+		out[this._prop] = (BrewUtil.homebrew[this._prop] || []).filter(entry => entry.source === this._ui.source).map(entry => PropOrder.getOrdered(DataUtil.cleanJson(MiscUtil.copy(entry)), this._prop));
 		DataUtil.userDownload(DataUtil.getCleanFilename(BrewUtil.sourceJsonToFull(this._ui.source)), out);
 	}
 
