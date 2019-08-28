@@ -1027,20 +1027,20 @@ class TimeTrackerRoot_Clock extends TimeTrackerComponent {
 		const $btnAddDay = $(`<button class="btn btn-xxs btn-default dm-time__btn-day" title="Add Day (SHIFT for 5)">+</button>`)
 			.click(evt => doModTime(this._parent.get("hoursPerDay") * this._parent.get("minutesPerHour") * this._parent.get("secondsPerMinute") * (evt.shiftKey ? 5 : 1), {isBase: true}));
 
-		const $btnAddHour = $(`<button class="btn btn-xs btn-default dm-time__btn-time dm-time__btn-time--top" title="Add Hour (SHIFT for 5)">+</button>`)
-			.click(evt => doModTime(this._parent.get("minutesPerHour") * this._parent.get("secondsPerMinute") * (evt.shiftKey ? 5 : 1), {isBase: true}));
-		const $btnSubHour = $(`<button class="btn btn-xs btn-default dm-time__btn-time dm-time__btn-time--bottom" title="Subtract Hour (SHIFT for 5)">-</button>`)
-			.click(evt => doModTime(-1 * this._parent.get("minutesPerHour") * this._parent.get("secondsPerMinute") * (evt.shiftKey ? 5 : 1), {isBase: true}));
+		const $btnAddHour = $(`<button class="btn btn-xs btn-default dm-time__btn-time dm-time__btn-time--top" title="Add Hour (SHIFT for 5, CTRL for 12)">+</button>`)
+			.click(evt => doModTime(this._parent.get("minutesPerHour") * this._parent.get("secondsPerMinute") * (evt.shiftKey ? 5 : (evt.ctrlKey ? 12 : 1)), {isBase: true}));
+		const $btnSubHour = $(`<button class="btn btn-xs btn-default dm-time__btn-time dm-time__btn-time--bottom" title="Subtract Hour (SHIFT for 5, CTRL for 12)">-</button>`)
+			.click(evt => doModTime(-1 * this._parent.get("minutesPerHour") * this._parent.get("secondsPerMinute") * (evt.shiftKey ? 5 : (evt.ctrlKey ? 12 : 1)), {isBase: true}));
 
-		const $btnAddMinute = $(`<button class="btn btn-xs btn-default dm-time__btn-time dm-time__btn-time--top" title="Add Minute (SHIFT for 5)">+</button>`)
-			.click(evt => doModTime(this._parent.get("secondsPerMinute") * (evt.shiftKey ? 5 : 1), {isBase: true}));
-		const $btnSubMinute = $(`<button class="btn btn-xs btn-default dm-time__btn-time dm-time__btn-time--bottom" title="Subtract Minute (SHIFT for 5)">-</button>`)
-			.click(evt => doModTime(-1 * this._parent.get("secondsPerMinute") * (evt.shiftKey ? 5 : 1), {isBase: true}));
+		const $btnAddMinute = $(`<button class="btn btn-xs btn-default dm-time__btn-time dm-time__btn-time--top" title="Add Minute (SHIFT for 5, CTRL for 15, Both for 30)">+</button>`)
+			.click(evt => doModTime(this._parent.get("secondsPerMinute") * (evt.shiftKey && evt.ctrlKey ? 30 : (evt.ctrlKey ? 15 : (evt.shiftKey ? 5 : 1))), {isBase: true}));
+		const $btnSubMinute = $(`<button class="btn btn-xs btn-default dm-time__btn-time dm-time__btn-time--bottom" title="Subtract Minute (SHIFT for 5, CTRL for 15, Both for 30)">-</button>`)
+			.click(evt => doModTime(-1 * this._parent.get("secondsPerMinute") * (evt.shiftKey && evt.ctrlKey ? 30 : (evt.ctrlKey ? 15 : (evt.shiftKey ? 5 : 1))), {isBase: true}));
 
-		const $btnAddSecond = $(`<button class="btn btn-xs btn-default dm-time__btn-time dm-time__btn-time--top" title="Add Second (SHIFT for 5)">+</button>`)
-			.click(evt => doModTime((evt.shiftKey ? 5 : 1), {isBase: true}));
-		const $btnSubSecond = $(`<button class="btn btn-xs btn-default dm-time__btn-time dm-time__btn-time--bottom" title="Subtract Second (SHIFT for 5)">-</button>`)
-			.click(evt => doModTime(-1 * (evt.shiftKey ? 5 : 1), {isBase: true}));
+		const $btnAddSecond = $(`<button class="btn btn-xs btn-default dm-time__btn-time dm-time__btn-time--top" title="Add Second (SHIFT for 5, CTRL for 15, Both for 30)">+</button>`)
+			.click(evt => doModTime((evt.shiftKey && evt.ctrlKey ? 30 : (evt.ctrlKey ? 15 : (evt.shiftKey ? 5 : 1))), {isBase: true}));
+		const $btnSubSecond = $(`<button class="btn btn-xs btn-default dm-time__btn-time dm-time__btn-time--bottom" title="Subtract Second (SHIFT for 5, CTRL for 15, Both for 30)">-</button>`)
+			.click(evt => doModTime(-1 * (evt.shiftKey && evt.ctrlKey ? 30 : (evt.ctrlKey ? 15 : (evt.shiftKey ? 5 : 1))), {isBase: true}));
 
 		const $btnIsPaused = $(`<button class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>`)
 			.click(() => this._parent.set("isPaused", !this._parent.get("isPaused")));
