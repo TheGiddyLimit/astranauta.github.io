@@ -5,7 +5,7 @@ let subList;
 
 class ItemsPage {
 	// region static
-	static rarityValue (rarity) {
+	static rarityValue(rarity) {
 		switch (rarity) {
 			case "None": return 0;
 			case "Common": return 1;
@@ -22,7 +22,7 @@ class ItemsPage {
 		}
 	}
 
-	static sortItems (a, b, o) {
+	static sortItems(a, b, o) {
 		if (o.sortBy === "name") return SortUtil.compareListNames(a, b);
 		else if (o.sortBy === "type") return SortUtil.ascSortLower(a.values.type, b.values.type) || SortUtil.compareListNames(a, b);
 		else if (o.sortBy === "source") return SortUtil.ascSortLower(a.values.source, b.values.source) || SortUtil.compareListNames(a, b);
@@ -35,7 +35,7 @@ class ItemsPage {
 	}
 	// endregion
 
-	constructor () {
+	constructor() {
 		this._pageFilter = new PageFilterItems();
 
 		this._sublistCurrencyConversion = null;
@@ -44,7 +44,7 @@ class ItemsPage {
 		this._$totalValue = null;
 	}
 
-	getListItem (item, itI) {
+	getListItem(item, itI) {
 		if (ExcludeUtil.isExcluded(item.name, "item", item.source)) return null;
 		if (item.noDisplay) return null;
 		Renderer.item.enhanceItem(item);
@@ -82,7 +82,7 @@ class ItemsPage {
 			);
 			eleLi.addEventListener("click", (evt) => mundaneList.doSelect(listItem, evt));
 			eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, mundaneList, listItem));
-			return {mundane: listItem};
+			return { mundane: listItem };
 		} else {
 			eleLi.innerHTML += `<a href="#${hash}" class="lst--border">
 				<span class="col-3-5 pl-0 bold">${item.name}</span>
@@ -109,13 +109,13 @@ class ItemsPage {
 			);
 			eleLi.addEventListener("click", (evt) => magicList.doSelect(listItem, evt));
 			eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, magicList, listItem));
-			return {magic: listItem};
+			return { magic: listItem };
 		}
 	}
 
-	handleFilterChange () {
+	handleFilterChange() {
 		const f = this._pageFilter.filterBox.getValues();
-		function listFilter (li) {
+		function listFilter(li) {
 			const it = itemList[li.ix];
 			return this._pageFilter.toDisplay(f, it);
 		}
@@ -124,7 +124,7 @@ class ItemsPage {
 		FilterBox.selectFirstVisible(itemList);
 	}
 
-	getSublistItem (item, pinId, addCount) {
+	getSublistItem(item, pinId, addCount) {
 		const hash = UrlUtil.autoEncodeHash(item);
 		const count = addCount || 1;
 
@@ -156,16 +156,16 @@ class ItemsPage {
 		return listItem;
 	}
 
-	doLoadHash (id) {
+	doLoadHash(id) {
 		Renderer.get().setFirstSection(true);
 		const $content = $(`#pagecontent`).empty();
 		const item = itemList[id];
 
-		function buildStatsTab () {
+		function buildStatsTab() {
 			$content.append(RenderItems.$getRenderedItem(item));
 		}
 
-		function buildFluffTab (isImageTab) {
+		function buildFluffTab(isImageTab) {
 			return Renderer.utils.pBuildFluffTab(
 				isImageTab,
 				$content,
@@ -178,17 +178,17 @@ class ItemsPage {
 
 		const statTab = Renderer.utils.tabButton(
 			"Item",
-			() => {},
+			() => { },
 			buildStatsTab
 		);
 		const infoTab = Renderer.utils.tabButton(
 			"Info",
-			() => {},
+			() => { },
 			buildFluffTab
 		);
 		const picTab = Renderer.utils.tabButton(
 			"Images",
-			() => {},
+			() => { },
 			buildFluffTab.bind(null, true)
 		);
 
@@ -199,12 +199,12 @@ class ItemsPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	doLoadSubHash(sub) {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
 		ListUtil.setFromSubHashes(sub);
 	}
 
-	onSublistChange () {
+	onSublistChange() {
 		this._$totalwWeight = this._$totalWeight || $(`#totalweight`);
 		this._$totalValue = this._$totalValue || $(`#totalvalue`);
 
@@ -223,7 +223,7 @@ class ItemsPage {
 		this._$totalwWeight.text(`${weight.toLocaleString()} lb${weight !== 1 ? "s" : ""}.`);
 
 		if (availConversions.size) {
-			this._$totalValue.addClass("clickable").text(Parser.itemValueToFull({value, valueConversion: this._sublistCurrencyConversion})).off("click")
+			this._$totalValue.addClass("clickable").text(Parser.itemValueToFull({ value, valueConversion: this._sublistCurrencyConversion })).off("click")
 				.click(async () => {
 					const values = ["(Default)", ...[...availConversions].sort(SortUtil.ascSortLower)];
 					const defaultSel = values.indexOf(this._sublistCurrencyConversion);
@@ -240,11 +240,11 @@ class ItemsPage {
 					this.onSublistChange();
 				});
 		} else {
-			this._$totalValue.removeClass("clickable").text(Parser.itemValueToFull({value})).off("click");
+			this._$totalValue.removeClass("clickable").text(Parser.itemValueToFull({ value })).off("click");
 		}
 	}
 
-	async pOnLoad () {
+	async pOnLoad() {
 		window.loadHash = this.doLoadHash.bind(this);
 		window.loadSubHash = this.doLoadSubHash.bind(this);
 
@@ -255,11 +255,11 @@ class ItemsPage {
 			$btnReset: $(`#reset`)
 		});
 
-		return pPopulateTablesAndFilters({item: await Renderer.item.pBuildList({isAddGroups: true, isBlacklistVariants: true})});
+		return pPopulateTablesAndFilters({ item: await Renderer.item.pBuildList({ isAddGroups: true, isBlacklistVariants: true }) });
 	}
 }
 
-async function pPopulateTablesAndFilters (data) {
+async function pPopulateTablesAndFilters(data) {
 	mundaneList = ListUtil.initList({
 		listClass: "mundane",
 		fnSort: ItemsPage.sortItems
@@ -270,15 +270,15 @@ async function pPopulateTablesAndFilters (data) {
 	});
 	mundaneList.nextList = magicList;
 	magicList.prevList = mundaneList;
-	ListUtil.setOptions({primaryLists: [mundaneList, magicList]});
+	ListUtil.setOptions({ primaryLists: [mundaneList, magicList] });
 
 	const $elesMundaneAndMagic = $(`.ele-mundane-and-magic`);
 	$(`.side-label--mundane`).click(() => {
-		itemsPage._pageFilter.filterBox.setFromValues({Miscellaneous: {Mundane: 1}});
+		itemsPage._pageFilter.filterBox.setFromValues({ Miscellaneous: { Mundane: 1 } });
 		itemsPage.handleFilterChange();
 	});
 	$(`.side-label--magic`).click(() => {
-		itemsPage._pageFilter.filterBox.setFromValues({Miscellaneous: {Magic: 1}});
+		itemsPage._pageFilter.filterBox.setFromValues({ Miscellaneous: { Magic: 1 } });
 		itemsPage.handleFilterChange();
 	});
 	const $outVisibleResults = $(`.lst__wrp-search-visible`);
@@ -330,11 +330,11 @@ async function pPopulateTablesAndFilters (data) {
 	addItems(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
-		.then(() => BrewUtil.bind({lists: [mundaneList, magicList]}))
+		.then(() => BrewUtil.bind({ lists: [mundaneList, magicList] }))
 		.then(() => BrewUtil.pAddLocalBrewData())
 		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
-			BrewUtil.bind({lists: [mundaneList, magicList], filterBox: itemsPage._pageFilter.filterBox, sourceFilter: itemsPage._pageFilter.sourceFilter});
+			BrewUtil.bind({ lists: [mundaneList, magicList], filterBox: itemsPage._pageFilter.filterBox, sourceFilter: itemsPage._pageFilter.sourceFilter });
 			await ListUtil.pLoadState();
 			RollerUtil.addListRollButton();
 			ListUtil.addListShowHide();
@@ -348,14 +348,14 @@ async function pPopulateTablesAndFilters (data) {
 		});
 }
 
-async function handleBrew (homebrew) {
+async function handleBrew(homebrew) {
 	const itemList = await Renderer.item.getItemsFromHomebrew(homebrew);
-	addItems({item: itemList});
+	addItems({ item: itemList });
 }
 
 let itemList = [];
 let itI = 0;
-function addItems (data) {
+function addItems(data) {
 	if (!data.item || !data.item.length) return;
 	itemList = itemList.concat(data.item);
 
@@ -388,6 +388,7 @@ function addItems (data) {
 	UrlUtil.bindLinkExportButton(itemsPage._pageFilter.filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
+	ListUtil.bindImageDownloadButton('items');
 }
 
 const itemsPage = new ItemsPage();

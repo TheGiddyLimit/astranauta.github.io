@@ -46,10 +46,9 @@
 			position: relative;
 		}
 
-		h3.ele-mundane span.side-label {
-		}
-		h3.ele-magic span.side-label {
-		}
+		h3.ele-mundane span.side-label {}
+
+		h3.ele-magic span.side-label {}
 
 		@media (max-width: 991px) {
 			ul.list {
@@ -86,114 +85,148 @@
 </head>
 
 <body>
-<div class="viewport-wrapper">
-	<header class="hidden-xs hidden-sm page__header">
-		<div class="container">
+	<div class="viewport-wrapper">
+		<header class="hidden-xs hidden-sm page__header">
+			<div class="container">
 
-			<h1 class="page__title">Items</h1>
-			<p class="page__subtitle">Search by name on the left, click item name to display on the right.</p>
-		</div>
-	</header>
-	<nav class="container page__nav" id="navigation">
-		<ul class="nav page__nav-inner" id="navbar">
-		</ul>
-	</nav>
+				<h1 class="page__title">Items</h1>
+				<p class="page__subtitle">Search by name on the left, click item name to display on the right.</p>
+			</div>
+		</header>
+		<nav class="container page__nav" id="navigation">
+			<ul class="nav page__nav-inner" id="navbar">
+			</ul>
+		</nav>
 
-	<div class="view-col-group--cancer">
-		<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
-		<div class="cancer__wrp-sidebar-rhs"><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
-
-		<div class="container view-col-wrapper view-col-wrapper--cancer">
-			<div class="view-col" id="listcontainer" style="flex: 7">
-				<div class="lst__form-top" id="filter-search-input-group">
-					<div class="w-100 relative">
-						<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-						<div class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
-						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
-					</div>
-					<button class="btn btn-default" id="reset">Reset</button>
+		<div class="view-col-group--cancer">
+			<div class="cancer__wrp-leaderboard">
+				<!--5ETOOLS_AD_LEADERBOARD-->
+			</div>
+			<div class="cancer__wrp-sidebar-rhs">
+				<!--5ETOOLS_AD_RIGHT_1-->
+				<div class="cancer__sidebar-rhs-inner">
+					<!--5ETOOLS_AD_RIGHT_2-->
 				</div>
-				<div id="filtertools-mundane" class="ele-mundane sortlabel lst__form-bottom">
-					<button class="col-3-5 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
-					<button class="col-4-5 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
-					<button class="col-1-5 sort btn btn-default btn-xs" data-sort="cost" data-sortby="asc">Cost <span class="caret_wrp"></span></button>
-					<button class="col-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight <span class="caret_wrp"></span></button>
-					<button class="sort btn btn-default btn-xs" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
-				</div>
-
-				<ul class="list list--stats mundane ele-mundane"></ul>
-				<h3 class="ele-mundane"><span class="side-label side-label--mundane clickable"></span></h3>
-
-				<div class="no-shrink itm__list-divider ele-mundane-and-magic"></div>
-
-				<div id="filtertools-magic" class="ele-magic sortlabel lst__form-bottom">
-					<button class="fullborder col-3-5 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
-					<button class="fullborder col-4 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
-					<button class="fullborder col-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight <span class="caret_wrp"></span></button>
-					<button class="col-0-6 sort btn btn-default btn-xs" data-sort="attunement" title="Can Be Attunement">A. <span class="caret_wrp"></span></button>
-					<button class="fullborder col-1-4 sort btn btn-default btn-xs" data-sort="rarity" data-sortby="asc">Rarity <span class="caret_wrp"></span></button>
-					<button class="fullborder sort btn btn-default btn-xs" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
-				</div>
-
-				<ul class="list list--stats magic ele-magic"></ul>
-				<h3 class="ele-magic"><span class="side-label side-label--magic clickable"></span></h3>
 			</div>
 
-			<div id="contentwrapper" class="view-col" style="flex: 5">
-				<div id="sublistcontainer" class="sublist sublist--resizable">
-					<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
-						<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-						<button class="col-2 sort btn btn-default btn-xs" data-sort="weight">Weight <span class="caret_wrp"></span></button>
-						<button class="col-2 sort btn btn-default btn-xs" data-sort="cost">Cost <span class="caret_wrp"></span></button>
-						<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number <span class="caret_wrp"></span></button>
+			<div class="container view-col-wrapper view-col-wrapper--cancer">
+				<div class="view-col" id="listcontainer" style="flex: 7">
+					<div class="lst__form-top" id="filter-search-input-group">
+						<div class="w-100 relative">
+							<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false"
+								class="search form-control lst__search lst__search--no-border-h">
+							<div class="lst__wrp-search-glass no-events flex-vh-center"><span
+									class="glyphicon glyphicon-search"></span></div>
+							<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+						</div>
+						<button class="btn btn-default" id="reset">Reset</button>
 					</div>
-					<ul class="list subitems">
-						<!-- populate with JS -->
-					</ul>
-					<div class="row">
-						<span class="col-6 text-right">Total:</span>
-						<span class="col-2 text-center no-wrap" id="totalweight"></span>
-						<span class="col-2 text-center no-wrap" id="totalvalue"></span>
+					<div id="filtertools-mundane" class="ele-mundane sortlabel lst__form-bottom">
+						<button class="col-3-5 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name
+							<span class="caret_wrp"></span></button>
+						<button class="col-4-5 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type
+							<span class="caret_wrp"></span></button>
+						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="cost" data-sortby="asc">Cost
+							<span class="caret_wrp"></span></button>
+						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight
+							<span class="caret_wrp"></span></button>
+						<button class="sort btn btn-default btn-xs" data-sort="source" data-sortby="asc">Source <span
+								class="caret_wrp"></span></button>
 					</div>
+
+					<ul class="list list--stats mundane ele-mundane"></ul>
+					<h3 class="ele-mundane"><span class="side-label side-label--mundane clickable"></span></h3>
+
+					<div class="no-shrink itm__list-divider ele-mundane-and-magic"></div>
+
+					<div id="filtertools-magic" class="ele-magic sortlabel lst__form-bottom">
+						<button class="fullborder col-3-5 sort btn btn-default btn-xs" data-sort="name"
+							data-sortby="asc">Name <span class="caret_wrp"></span></button>
+						<button class="fullborder col-4 sort btn btn-default btn-xs" data-sort="type"
+							data-sortby="asc">Type <span class="caret_wrp"></span></button>
+						<button class="fullborder col-1-5 sort btn btn-default btn-xs" data-sort="weight"
+							data-sortby="asc">Weight <span class="caret_wrp"></span></button>
+						<button class="col-0-6 sort btn btn-default btn-xs" data-sort="attunement"
+							title="Can Be Attunement">A. <span class="caret_wrp"></span></button>
+						<button class="fullborder col-1-4 sort btn btn-default btn-xs" data-sort="rarity"
+							data-sortby="asc">Rarity <span class="caret_wrp"></span></button>
+						<button class="fullborder sort btn btn-default btn-xs" data-sort="source"
+							data-sortby="asc">Source <span class="caret_wrp"></span></button>
+					</div>
+
+					<ul class="list list--stats magic ele-magic"></ul>
+					<h3 class="ele-magic"><span class="side-label side-label--magic clickable"></span></h3>
 				</div>
 
-				<div id="stat-tabs" class="wrp-stat-tab">
-					<div id="tabs-right"></div>
-				</div>
+				<div id="contentwrapper" class="view-col" style="flex: 5">
+					<div id="sublistcontainer" class="sublist sublist--resizable">
+						<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
+							<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name <span
+									class="caret_wrp"></span></button>
+							<button class="col-2 sort btn btn-default btn-xs" data-sort="weight">Weight <span
+									class="caret_wrp"></span></button>
+							<button class="col-2 sort btn btn-default btn-xs" data-sort="cost">Cost <span
+									class="caret_wrp"></span></button>
+							<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number <span
+									class="caret_wrp"></span></button>
+						</div>
+						<ul class="list subitems">
+							<!-- populate with JS -->
+						</ul>
+						<div class="row">
+							<span class="col-6 text-right">Total:</span>
+							<span class="col-2 text-center no-wrap" id="totalweight"></span>
+							<span class="col-2 text-center no-wrap" id="totalvalue"></span>
+						</div>
+					</div>
 
-				<div class="wrp-stats-table">
-					<table id="pagecontent" class="stats">
-						<tr><th class="border" colspan="6"></th></tr>
-						<tr><td colspan="6" class="initial-message">Select an item from the list to view it here</td></tr>
-						<tr><th class="border" colspan="6"></th></tr>
-					</table>
-				</div>
+					<div id="stat-tabs" class="wrp-stat-tab">
+						<div id="tabs-right"></div>
+					</div>
 
-				<div class="text-center wrp-footer-buttons">
-					<button class="btn btn-default btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+					<div class="wrp-stats-table">
+						<table id="pagecontent" class="stats">
+							<tr>
+								<th class="border" colspan="6"></th>
+							</tr>
+							<tr>
+								<td colspan="6" class="initial-message">Select an item from the list to view it here
+								</td>
+							</tr>
+							<tr>
+								<th class="border" colspan="6"></th>
+							</tr>
+						</table>
+					</div>
+
+					<div class="text-center wrp-footer-buttons">
+						<button class="btn btn-default btn-xs btn-file btn-info" id="manage-brew">Manage
+							Homebrew</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>    <!--5ETOOLS_SCRIPT_ANCHOR-->
-<!--5ETOOLS_AD_ADHESION-->
-<script type="text/javascript" src="lib/jquery.js"></script>
-<script type="text/javascript" src="lib/jquery-ui.js"></script>
-<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
-<script type="text/javascript" src="js/utils.js"></script>
-<script type="text/javascript" src="js/utils-ui.js"></script>
-<script type="text/javascript" src="lib/localforage.js"></script>
-<script type="text/javascript" src="js/omnidexer.js"></script>
-<script type="text/javascript" src="js/omnisearch.js"></script>
-<script type="text/javascript" src="js/filter.js"></script>
-<script type="text/javascript" src="js/render.js"></script>
-<script type="text/javascript" src="js/render-items.js"></script>
-<script type="text/javascript" src="js/scalecreature.js"></script>
-<script type="text/javascript" src="js/hist.js"></script>
-<script type="text/javascript" src="js/filter-items.js"></script>
-<script type="text/javascript" src="js/items.js"></script>
-<script type="text/javascript" src="js/list2.js"></script>
-<script type="text/javascript" src="lib/elasticlunr.js"></script>
+	<!--5ETOOLS_SCRIPT_ANCHOR-->
+	<!--5ETOOLS_AD_ADHESION-->
+	<script type="text/javascript" src="lib/jquery.js"></script>
+	<script type="text/javascript" src="lib/jquery-ui.js"></script>
+	<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/utils-ui.js"></script>
+	<script type="text/javascript" src="lib/localforage.js"></script>
+	<script type="text/javascript" src="js/omnidexer.js"></script>
+	<script type="text/javascript" src="js/omnisearch.js"></script>
+	<script type="text/javascript" src="js/filter.js"></script>
+	<script type="text/javascript" src="js/render.js"></script>
+	<script type="text/javascript" src="js/render-items.js"></script>
+	<script type="text/javascript" src="js/scalecreature.js"></script>
+	<script type="text/javascript" src="js/hist.js"></script>
+	<script type="text/javascript" src="js/filter-items.js"></script>
+	<script type="text/javascript" src="js/items.js"></script>
+	<script type="text/javascript" src="js/list2.js"></script>
+	<script type="text/javascript" src="lib/elasticlunr.js"></script>
+	<script type="text/javascript" src="lib/html2canvas.js"></script>
 </body>
 
 </html>

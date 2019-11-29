@@ -214,7 +214,7 @@ StrUtil = {
 		return String(n).padStart(len, padder);
 	},
 
-	elipsisTruncate (str, atLeastPre = 5, atLeastSuff = 0, maxLen = 20) {
+	elipsisTruncate(str, atLeastPre = 5, atLeastSuff = 0, maxLen = 20) {
 		if (maxLen >= str.length) return str;
 
 		maxLen = Math.max(atLeastPre + atLeastSuff + 3, maxLen);
@@ -230,7 +230,7 @@ StrUtil = {
 		return out;
 	},
 
-	toTitleCase (str) {
+	toTitleCase(str) {
 		return str.toTitleCase();
 	}
 };
@@ -269,7 +269,7 @@ Parser.numberToText = function (number) {
 	if (number == null) throw new TypeError(`undefined or null object passed to parser`);
 	if (Math.abs(number) >= 100) return `${number}`;
 
-	function getAsText (num) {
+	function getAsText(num) {
 		const abs = Math.abs(num);
 		switch (abs) {
 			case 0: return "zero";
@@ -358,8 +358,8 @@ Parser.getAbilityModifier = function (abilityScore) {
 };
 
 Parser.getSpeedString = (it) => {
-	function procSpeed (propName) {
-		function addSpeed (s) {
+	function procSpeed(propName) {
+		function addSpeed(s) {
 			stack.push(`${propName === "walk" ? "" : `${propName} `}${getVal(s)} ft.${getCond(s)}`);
 		}
 
@@ -367,11 +367,11 @@ Parser.getSpeedString = (it) => {
 		if (it.speed.alternate && it.speed.alternate[propName]) it.speed.alternate[propName].forEach(addSpeed);
 	}
 
-	function getVal (speedProp) {
+	function getVal(speedProp) {
 		return speedProp.number || speedProp;
 	}
 
-	function getCond (speedProp) {
+	function getCond(speedProp) {
 		return speedProp.condition ? ` ${Renderer.get().render(speedProp.condition)}` : "";
 	}
 
@@ -666,7 +666,7 @@ Parser.itemTypeToFull = function (type) {
 
 Parser.itemValueToFull = function (item, isShortForm) {
 	if (item.value) {
-		const {coin, mult} = Parser.getItemCurrencyAndMultiplier(item.value, item.valueConversion);
+		const { coin, mult } = Parser.getItemCurrencyAndMultiplier(item.value, item.valueConversion);
 		return `${(item.value * mult).toLocaleString()} ${coin}`;
 	} else if (item.valueMult) return isShortForm ? `×${item.valueMult}` : `base value ×${item.valueMult}`;
 	return "";
@@ -990,29 +990,29 @@ Parser.getSingletonUnit = function (unit, isShort) {
 };
 
 Parser.RANGE_TYPES = [
-	{type: RNG_POINT, hasDistance: true, isRequireAmount: false},
+	{ type: RNG_POINT, hasDistance: true, isRequireAmount: false },
 
-	{type: RNG_LINE, hasDistance: true, isRequireAmount: true},
-	{type: RNG_CUBE, hasDistance: true, isRequireAmount: true},
-	{type: RNG_CONE, hasDistance: true, isRequireAmount: true},
-	{type: RNG_RADIUS, hasDistance: true, isRequireAmount: true},
-	{type: RNG_SPHERE, hasDistance: true, isRequireAmount: true},
-	{type: RNG_HEMISPHERE, hasDistance: true, isRequireAmount: true},
-	{type: RNG_CYLINDER, hasDistance: true, isRequireAmount: true},
+	{ type: RNG_LINE, hasDistance: true, isRequireAmount: true },
+	{ type: RNG_CUBE, hasDistance: true, isRequireAmount: true },
+	{ type: RNG_CONE, hasDistance: true, isRequireAmount: true },
+	{ type: RNG_RADIUS, hasDistance: true, isRequireAmount: true },
+	{ type: RNG_SPHERE, hasDistance: true, isRequireAmount: true },
+	{ type: RNG_HEMISPHERE, hasDistance: true, isRequireAmount: true },
+	{ type: RNG_CYLINDER, hasDistance: true, isRequireAmount: true },
 
-	{type: RNG_SPECIAL, hasDistance: false, isRequireAmount: false}
+	{ type: RNG_SPECIAL, hasDistance: false, isRequireAmount: false }
 ];
 
 Parser.DIST_TYPES = [
-	{type: RNG_SELF, hasAmount: false},
-	{type: RNG_TOUCH, hasAmount: false},
+	{ type: RNG_SELF, hasAmount: false },
+	{ type: RNG_TOUCH, hasAmount: false },
 
-	{type: UNT_FEET, hasAmount: true},
-	{type: UNT_MILES, hasAmount: true},
+	{ type: UNT_FEET, hasAmount: true },
+	{ type: UNT_MILES, hasAmount: true },
 
-	{type: RNG_SIGHT, hasAmount: false},
-	{type: RNG_UNLIMITED_SAME_PLANE, hasAmount: false},
-	{type: RNG_UNLIMITED, hasAmount: false}
+	{ type: RNG_SIGHT, hasAmount: false },
+	{ type: RNG_UNLIMITED_SAME_PLANE, hasAmount: false },
+	{ type: RNG_UNLIMITED, hasAmount: false }
 ];
 
 Parser.spComponentsToFull = function (comp, level) {
@@ -1054,10 +1054,10 @@ Parser.spDurationToFull = function (dur) {
 };
 
 Parser.DURATION_TYPES = [
-	{type: "instant", full: "Instantaneous"},
-	{type: "timed", hasAmount: true},
-	{type: "permanent", hasEnds: true},
-	{type: "special"}
+	{ type: "instant", full: "Instantaneous" },
+	{ type: "timed", hasAmount: true },
+	{ type: "permanent", hasEnds: true },
+	{ type: "special" }
 ];
 
 Parser.DURATION_AMOUNT_TYPES = [
@@ -1153,7 +1153,7 @@ Parser.spCasterProgressionToFull = function (type) {
 
 // mon-prefix functions are for parsing monster data, and shared with the roll20 script
 Parser.monTypeToFullObj = function (type) {
-	const out = {type: "", tags: [], asText: ""};
+	const out = { type: "", tags: [], asText: "" };
 
 	if (typeof type === "string") {
 		// handles e.g. "fey"
@@ -1209,7 +1209,7 @@ Parser.monImmResToFull = function (toParse) {
 		return toParse.map(it => toString(it, -1)).join(maxDepth ? "; " : ", ");
 	}
 
-	function toString (it, depth = 0) {
+	function toString(it, depth = 0) {
 		maxDepth = Math.max(maxDepth, depth);
 		if (typeof it === "string") {
 			return it;
@@ -1227,7 +1227,7 @@ Parser.monImmResToFull = function (toParse) {
 		}
 	}
 
-	function serialJoin (arr) {
+	function serialJoin(arr) {
 		if (arr.length <= 1) return arr.join("");
 
 		let out = "";
@@ -1245,7 +1245,7 @@ Parser.monImmResToFull = function (toParse) {
 };
 
 Parser.monCondImmToFull = function (condImm, isPlainText) {
-	function render (condition) {
+	function render(condition) {
 		return isPlainText ? condition : Renderer.get().render(`{@condition ${condition}}`);
 	}
 	return condImm.map(it => {
@@ -1633,7 +1633,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
 				out[1].push(toAdd);
 			} else if (Parser.sourceJsonToFull(src).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(src).startsWith(PS_PREFIX)) {
 				const cleanName = mapClassShortNameToMostRecent(nm.split("(")[0].trim().split(/v\d+/)[0].trim());
-				toCheck.push({"name": cleanName, "ele": toAdd});
+				toCheck.push({ "name": cleanName, "ele": toAdd });
 			} else {
 				out[0].push(toAdd);
 				curNames.add(nm);
@@ -1651,7 +1651,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
 	/**
 	 * Get the most recent iteration of a subclass name
 	 */
-	function mapClassShortNameToMostRecent (shortName) {
+	function mapClassShortNameToMostRecent(shortName) {
 		switch (shortName) {
 			case "Favored Soul":
 				return "Divine Soul";
@@ -2436,7 +2436,7 @@ Parser.NUMBERS_TEENS = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fift
 
 // SOURCES =============================================================================================================
 SourceUtil = {
-	hasBeenReprinted (shortName, source) {
+	hasBeenReprinted(shortName, source) {
 		return (shortName !== undefined && shortName !== null && source !== undefined && source !== null)
 			&& (
 				(shortName === "Sun Soul" && source === SRC_SCAG)
@@ -2447,15 +2447,15 @@ SourceUtil = {
 			);
 	},
 
-	isNonstandardSource (source) {
+	isNonstandardSource(source) {
 		return (source !== undefined && source !== null) && !BrewUtil.hasSourceJson(source) && SourceUtil._isNonstandardSourceWiz(source);
 	},
 
-	_isNonstandardSourceWiz (source) {
+	_isNonstandardSourceWiz(source) {
 		return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.startsWith(SRC_AL_PREFIX) || source === SRC_OGA || source === SRC_Mag || source === SRC_STREAM || source === SRC_TWITTER || source === SRC_LLK || source === SRC_LR || source === SRC_TTP;
 	},
 
-	getFilterGroup (source) {
+	getFilterGroup(source) {
 		if (BrewUtil.hasSourceJson(source.item)) return 2;
 		return Number(SourceUtil.isNonstandardSource(source.item));
 	}
@@ -2482,35 +2482,35 @@ Math.seed = Math.seed || function (s) {
 	};
 };
 
-function xor (a, b) {
+function xor(a, b) {
 	return !a !== !b;
 }
 
 /**
  * > implying
  */
-function implies (a, b) {
+function implies(a, b) {
 	return (!a) || b;
 }
 
-function noModifierKeys (e) {
+function noModifierKeys(e) {
 	return !e.ctrlKey && !e.altKey && !e.metaKey;
 }
 
-function isObject (obj) {
+function isObject(obj) {
 	const type = typeof obj;
 	return (type === 'function' || type === 'object') && !!obj;
 }
 
-function isString (str) {
+function isString(str) {
 	return typeof str === 'string';
 }
 
-function isNumber (obj) {
+function isNumber(obj) {
 	return toString.call(obj) === '[object Number]';
 }
 
-function isEmpty (obj) {
+function isEmpty(obj) {
 	if (obj == null) {
 		return true;
 	}
@@ -2522,7 +2522,7 @@ function isEmpty (obj) {
 
 JqueryUtil = {
 	_isEnhancementsInit: false,
-	initEnhancements () {
+	initEnhancements() {
 		if (JqueryUtil._isEnhancementsInit) return;
 		JqueryUtil._isEnhancementsInit = true;
 
@@ -2585,7 +2585,7 @@ JqueryUtil = {
 		}
 	},
 
-	addSelectors () {
+	addSelectors() {
 		// Add a selector to match exact text (case insensitive) to jQuery's arsenal
 		//   Note that the search text should be `trim().toLowerCase()`'d before being passed in
 		$.expr[':'].textEquals = (el, i, m) => $(el).text().toLowerCase().trim() === m[3];
@@ -2600,7 +2600,7 @@ JqueryUtil = {
 		};
 	},
 
-	showCopiedEffect ($ele, text = "Copied!", bubble) {
+	showCopiedEffect($ele, text = "Copied!", bubble) {
 		const $temp = $(`<div class="copied-tip"><span>${text}</span></div>`).appendTo($(`body`));
 		const offset = $temp.width() / 2;
 		const top = $(window).scrollTop();
@@ -2637,7 +2637,7 @@ JqueryUtil = {
 	},
 
 	_dropdownInit: false,
-	bindDropdownButton ($ele) {
+	bindDropdownButton($ele) {
 		if (!JqueryUtil._dropdownInit) {
 			JqueryUtil._dropdownInit = true;
 			document.addEventListener("click", () => [...document.querySelectorAll(`.open`)].filter(ele => !(ele.className || "").split(" ").includes(`dropdown--navbar`)).forEach(ele => ele.classList.remove("open")));
@@ -2651,7 +2651,7 @@ JqueryUtil = {
 	 * @param {(jQuery|string)} options.content Toast contents. Supports jQuery objects.
 	 * @param {string} options.type Toast type. Can be any Bootstrap alert type ("success", "info", "warning", or "danger").
 	 */
-	doToast (options) {
+	doToast(options) {
 		if (typeof options === "string") {
 			options = {
 				content: options,
@@ -2693,7 +2693,7 @@ JqueryUtil = {
 if (typeof window !== "undefined") window.addEventListener("load", JqueryUtil.initEnhancements);
 
 ObjUtil = {
-	mergeWith (source, target, fnMerge, options = {depth: 1}) {
+	mergeWith(source, target, fnMerge, options = { depth: 1 }) {
 		if (!source || !target || typeof fnMerge !== "function") throw new Error("Must include a source, target and a fnMerge to handle merging");
 
 		const recursive = function (deepSource, deepTarget, depth = 1) {
@@ -2706,7 +2706,7 @@ ObjUtil = {
 		recursive(source, target, 1);
 	},
 
-	async pForEachDeep (source, pCallback, options = {depth: Infinity, callEachLevel: false}) {
+	async pForEachDeep(source, pCallback, options = { depth: Infinity, callEachLevel: false }) {
 		const path = [];
 		const pDiveDeep = async function (val, path, depth = 0) {
 			if (options.callEachLevel || typeof val !== "object" || options.depth === depth) {
@@ -2733,12 +2733,12 @@ MiscUtil = {
 
 	STR_SEE_CONSOLE: "See the console (CTRL+SHIFT+J) for more information.",
 
-	copy (obj) {
+	copy(obj) {
 		return JSON.parse(JSON.stringify(obj));
 	},
 
-	async pCopyTextToClipboard (text) {
-		function doCompatabilityCopy () {
+	async pCopyTextToClipboard(text) {
+		function doCompatabilityCopy() {
 			const $temp = $(`<textarea id="copy-temp" style="position: fixed; top: -1000px; left: -1000px; width: 1px; height: 1px;">${text}</textarea>`);
 			$(`body`).append($temp);
 			$temp.select();
@@ -2748,7 +2748,7 @@ MiscUtil = {
 
 		if (navigator && navigator.permissions) {
 			try {
-				const access = await navigator.permissions.query({name: "clipboard-write"});
+				const access = await navigator.permissions.query({ name: "clipboard-write" });
 				if (access.state === "granted" || access.state === "prompt") {
 					await navigator.clipboard.writeText(text);
 				} else doCompatabilityCopy();
@@ -2756,7 +2756,7 @@ MiscUtil = {
 		} else doCompatabilityCopy();
 	},
 
-	checkProperty (object, ...path) {
+	checkProperty(object, ...path) {
 		for (let i = 0; i < path.length; ++i) {
 			object = object[path[i]];
 			if (object == null) return false;
@@ -2764,7 +2764,7 @@ MiscUtil = {
 		return true;
 	},
 
-	get (object, ...path) {
+	get(object, ...path) {
 		if (object == null) return null;
 		for (let i = 0; i < path.length; ++i) {
 			object = object[path[i]];
@@ -2782,7 +2782,7 @@ MiscUtil = {
 		};
 	},
 
-	clearSelection () {
+	clearSelection() {
 		if (document.getSelection) {
 			document.getSelection().removeAllRanges();
 			document.getSelection().addRange(document.createRange());
@@ -2798,7 +2798,7 @@ MiscUtil = {
 		}
 	},
 
-	randomColor () {
+	randomColor() {
 		let r; let g; let b;
 		const h = RollerUtil.randomise(30, 0) / 30;
 		const i = ~~(h * 6);
@@ -2822,7 +2822,7 @@ MiscUtil = {
 	 * @param [opts.dark] Color to return if a "dark" color would contrast best.
 	 * @param [opts.light] Color to return if a "light" color would contrast best.
 	 */
-	invertColor (hex, opts) {
+	invertColor(hex, opts) {
 		opts = opts || {};
 
 		hex = hex.slice(1); // remove #
@@ -2840,38 +2840,38 @@ MiscUtil = {
 		return `#${[r, g, b].map(it => it.padStart(2, "0")).join("")}`;
 	},
 
-	scrollPageTop () {
+	scrollPageTop() {
 		document.body.scrollTop = document.documentElement.scrollTop = 0;
 	},
 
-	isInInput (event) {
+	isInInput(event) {
 		return event.target.nodeName === "INPUT" || event.target.nodeName === "TEXTAREA"
 			|| event.target.getAttribute("contenteditable") === "true";
 	},
 
-	expEval (str) {
+	expEval(str) {
 		// eslint-disable-next-line no-new-func
 		return new Function(`return ${str.replace(/[^-()\d/*+.]/g, "")}`)();
 	},
 
-	parseNumberRange (input, min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
-		function errInvalid (input) {
+	parseNumberRange(input, min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
+		function errInvalid(input) {
 			throw new Error(`Could not parse range input "${input}"`);
 		}
 
-		function errOutOfRange () {
+		function errOutOfRange() {
 			throw new Error(`Number was out of range! Range was ${min}-${max} (inclusive).`);
 		}
 
-		function isOutOfRange (num) {
+		function isOutOfRange(num) {
 			return num < min || num > max;
 		}
 
-		function addToRangeVal (range, num) {
+		function addToRangeVal(range, num) {
 			range.add(num);
 		}
 
-		function addToRangeLoHi (range, lo, hi) {
+		function addToRangeLoHi(range, lo, hi) {
 			for (let i = lo; i <= hi; ++i) range.add(i);
 		}
 
@@ -2914,12 +2914,12 @@ MiscUtil = {
 		"January", "February", "March", "April", "May", "June",
 		"July", "August", "September", "October", "November", "December"
 	],
-	dateToStr (date, short) {
+	dateToStr(date, short) {
 		const month = MiscUtil.MONTH_NAMES[date.getMonth()];
 		return `${short ? month.substring(0, 3) : month} ${date.getDate()}, ${date.getFullYear()}`;
 	},
 
-	findCommonPrefix (strArr) {
+	findCommonPrefix(strArr) {
 		let prefix = null;
 		strArr.forEach(s => {
 			if (prefix == null) {
@@ -2944,7 +2944,7 @@ MiscUtil = {
 	 * @param fgOpacity Desired foreground transparency (0-1 inclusive)
 	 * @param bgHex Background color
 	 */
-	calculateBlendedColor (fgHexTarget, fgOpacity, bgHex) {
+	calculateBlendedColor(fgHexTarget, fgOpacity, bgHex) {
 		const fgDcTarget = CryptUtil.hex2Dec(fgHexTarget);
 		const bgDc = CryptUtil.hex2Dec(bgHex);
 		return ((fgDcTarget - ((1 - fgOpacity) * bgDc)) / fgOpacity).toString(16);
@@ -2958,7 +2958,7 @@ MiscUtil = {
 	 * @param options Options object.
 	 * @return {Function} The debounced function.
 	 */
-	debounce (func, wait, options) {
+	debounce(func, wait, options) {
 		let lastArgs; let lastThis; let maxWait; let result; let timerId; let lastCallTime; let lastInvokeTime = 0; let leading = false; let maxing = false; let trailing = true;
 
 		wait = Number(wait) || 0;
@@ -2969,7 +2969,7 @@ MiscUtil = {
 			trailing = "trailing" in options ? !!options.trailing : trailing;
 		}
 
-		function invokeFunc (time) {
+		function invokeFunc(time) {
 			let args = lastArgs; let thisArg = lastThis;
 
 			lastArgs = lastThis = undefined;
@@ -2978,24 +2978,24 @@ MiscUtil = {
 			return result;
 		}
 
-		function leadingEdge (time) {
+		function leadingEdge(time) {
 			lastInvokeTime = time;
 			timerId = setTimeout(timerExpired, wait);
 			return leading ? invokeFunc(time) : result;
 		}
 
-		function remainingWait (time) {
+		function remainingWait(time) {
 			let timeSinceLastCall = time - lastCallTime; let timeSinceLastInvoke = time - lastInvokeTime; let result = wait - timeSinceLastCall;
 			return maxing ? Math.min(result, maxWait - timeSinceLastInvoke) : result;
 		}
 
-		function shouldInvoke (time) {
+		function shouldInvoke(time) {
 			let timeSinceLastCall = time - lastCallTime; let timeSinceLastInvoke = time - lastInvokeTime;
 
 			return (lastCallTime === undefined || (timeSinceLastCall >= wait) || (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
 		}
 
-		function timerExpired () {
+		function timerExpired() {
 			const time = Date.now();
 			if (shouldInvoke(time)) {
 				return trailingEdge(time);
@@ -3004,7 +3004,7 @@ MiscUtil = {
 			timerId = setTimeout(timerExpired, remainingWait(time));
 		}
 
-		function trailingEdge (time) {
+		function trailingEdge(time) {
 			timerId = undefined;
 
 			if (trailing && lastArgs) return invokeFunc(time);
@@ -3012,17 +3012,17 @@ MiscUtil = {
 			return result;
 		}
 
-		function cancel () {
+		function cancel() {
 			if (timerId !== undefined) clearTimeout(timerId);
 			lastInvokeTime = 0;
 			lastArgs = lastCallTime = lastThis = timerId = undefined;
 		}
 
-		function flush () {
+		function flush() {
 			return timerId === undefined ? result : trailingEdge(Date.now());
 		}
 
-		function debounced () {
+		function debounced() {
 			let time = Date.now(); let isInvoking = shouldInvoke(time);
 			lastArgs = arguments;
 			lastThis = this;
@@ -3046,7 +3046,7 @@ MiscUtil = {
 	},
 
 	// from lodash
-	throttle (func, wait, options) {
+	throttle(func, wait, options) {
 		let leading = true; let trailing = true;
 
 		if (typeof options === "object") {
@@ -3054,15 +3054,15 @@ MiscUtil = {
 			trailing = "trailing" in options ? !!options.trailing : trailing;
 		}
 
-		return this.debounce(func, wait, {leading, maxWait: wait, trailing});
+		return this.debounce(func, wait, { leading, maxWait: wait, trailing });
 	},
 
-	pDelay (msecs) {
+	pDelay(msecs) {
 		return new Promise(resolve => setTimeout(() => resolve(), msecs));
 	},
 
-	getWalker (keyBlacklist = new Set()) {
-		function applyHandlers (handlers, ident, obj, lastKey) {
+	getWalker(keyBlacklist = new Set()) {
+		function applyHandlers(handlers, ident, obj, lastKey) {
 			if (!(handlers instanceof Array)) handlers = [handlers];
 			handlers.forEach(h => obj = h(ident, obj, lastKey));
 			return obj;
@@ -3105,14 +3105,14 @@ MiscUtil = {
 			}
 		};
 
-		return {walk: fn};
+		return { walk: fn };
 	}
 };
 
 // EVENT HANDLERS ======================================================================================================
 EventUtil = {
-	getClientX (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientX : evt.clientX; },
-	getClientY (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientY : evt.clientY; }
+	getClientX(evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientX : evt.clientX; },
+	getClientY(evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientY : evt.clientY; }
 };
 
 // CONTEXT MENUS =======================================================================================================
@@ -3147,7 +3147,7 @@ ContextUtil = {
 	},
 
 	_lastMenuId: 1,
-	getNextGenericMenuId () { return `contextMenu_${ContextUtil._lastMenuId++}`; },
+	getNextGenericMenuId() { return `contextMenu_${ContextUtil._lastMenuId++}`; },
 
 	doInitContextMenu: (menuId, clickFn, labels) => {
 		ContextUtil._ctxClick[menuId] = clickFn;
@@ -3172,7 +3172,7 @@ ContextUtil = {
 		$("body").append(tempString);
 	},
 
-	doTeardownContextMenu (menuId) {
+	doTeardownContextMenu(menuId) {
 		delete ContextUtil._ctxInit[menuId];
 		delete ContextUtil._ctxClick[menuId];
 		delete ContextUtil._ctxOpenRefs[menuId];
@@ -3184,7 +3184,7 @@ ContextUtil = {
 		evt.preventDefault();
 		evt.stopPropagation();
 		const thisId = ContextUtil._ctxOpenRefsNextId++;
-		(ContextUtil._ctxOpenRefs[menuId] = ContextUtil._ctxOpenRefs[menuId] || {})[thisId] = closeHandler || (() => {});
+		(ContextUtil._ctxOpenRefs[menuId] = ContextUtil._ctxOpenRefs[menuId] || {})[thisId] = closeHandler || (() => { });
 		const $menu = $(`#${menuId}`)
 			.show()
 			.css({
@@ -3207,7 +3207,7 @@ ContextUtil = {
 
 // LIST AND SEARCH =====================================================================================================
 SearchUtil = {
-	removeStemmer (elasticSearch) {
+	removeStemmer(elasticSearch) {
 		const stemmer = elasticlunr.Pipeline.getRegisteredFunction("stemmer");
 		elasticSearch.pipeline.remove(stemmer);
 	}
@@ -3216,7 +3216,7 @@ SearchUtil = {
 ListUtil = {
 	SUB_HASH_PREFIX: "sublistselected",
 
-	bindEscapeKey (list, $iptSearch, forceRebind) {
+	bindEscapeKey(list, $iptSearch, forceRebind) {
 		// Bind "ESC" when in search input to "clear input"
 		if (!list._isBoundEscape || forceRebind) {
 			if (forceRebind) $iptSearch.off("keydown.search5e");
@@ -3233,10 +3233,10 @@ ListUtil = {
 	},
 
 	_firstInit: true,
-	initList (listOpts) {
+	initList(listOpts) {
 		const $iptSearch = $("#search");
 		const $wrpList = $(`ul.list.${listOpts.listClass}`);
-		const list = new List({$iptSearch, $wrpList, ...listOpts});
+		const list = new List({ $iptSearch, $wrpList, ...listOpts });
 
 		$("#reset").click(function () {
 			$iptSearch.val("");
@@ -3255,7 +3255,7 @@ ListUtil = {
 		return list;
 	},
 
-	_initList_scrollToItem () {
+	_initList_scrollToItem() {
 		const toShow = Hist.getSelectedListElementWithLocation();
 
 		if (toShow) {
@@ -3274,7 +3274,7 @@ ListUtil = {
 		}
 	},
 
-	_initList_bindWindowHandlers () {
+	_initList_bindWindowHandlers() {
 		$(window).on("keypress", (e) => {
 			// K up; J down
 			if (noModifierKeys(e)) {
@@ -3339,13 +3339,13 @@ ListUtil = {
 		});
 	},
 
-	updateSelected () {
+	updateSelected() {
 		const curSelectedItem = Hist.getSelectedListItem();
 		ListUtil._primaryLists.forEach(l => l.updateSelected(curSelectedItem));
 	},
 
-	openContextMenu (evt, list, listItem) {
-		const listsWithSelections = ListUtil._primaryLists.map(l => ({l, selected: l.getSelected()}));
+	openContextMenu(evt, list, listItem) {
+		const listsWithSelections = ListUtil._primaryLists.map(l => ({ l, selected: l.getSelected() }));
 
 		let selection;
 		if (listsWithSelections.some(it => it.selected.length)) {
@@ -3366,7 +3366,7 @@ ListUtil = {
 		ContextUtil.handleOpenContextMenu(evt, listItem.ele, "list", null, selection);
 	},
 
-	openSubContextMenu (evt, listItem) {
+	openSubContextMenu(evt, listItem) {
 		ContextUtil.handleOpenContextMenu(evt, listItem.ele, "listSub", null, [listItem]);
 	},
 
@@ -3377,7 +3377,7 @@ ListUtil = {
 	_allItems: null,
 	_primaryLists: [],
 	_pinned: {},
-	initSublist (options) {
+	initSublist(options) {
 		if (options.itemList !== undefined) ListUtil._allItems = options.itemList; delete options.itemList;
 		if (options.getSublistRow !== undefined) ListUtil._getSublistRow = options.getSublistRow; delete options.getSublistRow;
 		if (options.onUpdate !== undefined) ListUtil._sublistChangeFn = options.onUpdate; delete options.onUpdate;
@@ -3387,7 +3387,7 @@ ListUtil = {
 
 		ListUtil.$sublistContainer = $("#sublistcontainer");
 		const $wrpSublist = $(`ul.${options.listClass}`);
-		const sublist = new List({...options, $wrpList: $wrpSublist, isUseJquery: true});
+		const sublist = new List({ ...options, $wrpList: $wrpSublist, isUseJquery: true });
 		ListUtil.sublist = sublist;
 
 		if (ListUtil.$sublistContainer.hasClass(`sublist--resizable`)) ListUtil._pBindSublistResizeHandlers(ListUtil.$sublistContainer);
@@ -3395,7 +3395,7 @@ ListUtil = {
 		return sublist;
 	},
 
-	setOptions (options) {
+	setOptions(options) {
 		if (options.itemList !== undefined) ListUtil._allItems = options.itemList;
 		if (options.getSublistRow !== undefined) ListUtil._getSublistRow = options.getSublistRow;
 		if (options.onUpdate !== undefined) ListUtil._sublistChangeFn = options.onUpdate;
@@ -3404,17 +3404,17 @@ ListUtil = {
 		if (options.uidUnpacker !== undefined) ListUtil._uidUnpackFn = options.uidUnpacker;
 	},
 
-	getPrimaryLists () { return this._primaryLists; },
+	getPrimaryLists() { return this._primaryLists; },
 
 	__mouseMoveId: 1,
-	async _pBindSublistResizeHandlers ($ele) {
+	async _pBindSublistResizeHandlers($ele) {
 		const STORAGE_KEY = "SUBLIST_RESIZE";
 		const BORDER_SIZE = 3;
 		const MOUSE_MOVE_ID = ListUtil.__mouseMoveId++;
 		const $doc = $(document);
 
 		let mousePos;
-		function resize (evt) {
+		function resize(evt) {
 			const dx = evt.clientY - mousePos;
 			mousePos = evt.clientY;
 			$ele.css("height", parseInt($ele.css("height")) + dx);
@@ -3459,7 +3459,7 @@ ListUtil = {
 			.attr("title", "Pin (Toggle)");
 	},
 
-	genericAddButtonHandler (evt, options = {}) {
+	genericAddButtonHandler(evt, options = {}) {
 		if (evt.shiftKey) ListUtil.pDoSublistAdd(Hist.lastLoadedId, true, options.shiftCount || 20);
 		else ListUtil.pDoSublistAdd(Hist.lastLoadedId, true);
 	},
@@ -3470,7 +3470,7 @@ ListUtil = {
 			.on("click", handlerGenerator ? handlerGenerator() : ListUtil.genericAddButtonHandler);
 	},
 
-	genericSubtractButtonHandler (evt, options = {}) {
+	genericSubtractButtonHandler(evt, options = {}) {
 		if (evt.shiftKey) ListUtil.pDoSublistSubtract(Hist.lastLoadedId, options.shiftCount || 20);
 		else ListUtil.pDoSublistSubtract(Hist.lastLoadedId);
 	},
@@ -3487,7 +3487,7 @@ ListUtil = {
 			.on("click", async evt => {
 				if (evt.shiftKey) {
 					const toEncode = JSON.stringify(ListUtil.getExportableSublist());
-					const parts = [window.location.href, (UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], {isEncodeBoth: true}))];
+					const parts = [window.location.href, (UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], { isEncodeBoth: true }))];
 					await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
 					JqueryUtil.showCopiedEffect($btn);
 				} else {
@@ -3496,8 +3496,17 @@ ListUtil = {
 			})
 			.attr("title", "Download List (SHIFT for Link)");
 	},
+	bindImageDownloadButton(listName) {
+		const $btn = ListUtil.getOrTabRightButton('btn-download-image', 'download-alt');
+		$btn.addClass('btn-copy-effect')
+			.off('click')
+			.on('click', async evt => {
+				let name = listName + '---' + decodeURIComponent(window.location.href.split('#')[1]).replace(/\s/g, '');
+				ListUtil._downloadRenderedHTMLImageFromSelector('#pagecontent', name);
+			});
+	},
 
-	doJsonLoad (json, additive, funcPreload) {
+	doJsonLoad(json, additive, funcPreload) {
 		const funcOnload = () => {
 			ListUtil._pLoadSavedSublist(json.items, additive).then(() => {
 				ListUtil._pFinaliseSublist();
@@ -3511,7 +3520,7 @@ ListUtil = {
 		const $btn = ListUtil.getOrTabRightButton(`btn-sublist-upload`, `upload`);
 		$btn.off("click")
 			.on("click", (evt) => {
-				function loadSaved (event, additive) {
+				function loadSaved(event, additive) {
 					const input = event.target;
 
 					const reader = new FileReader();
@@ -3534,7 +3543,7 @@ ListUtil = {
 	},
 
 	setFromSubHashes: (subHashes, funcPreload) => {
-		function funcOnload (json) {
+		function funcOnload(json) {
 			ListUtil._pLoadSavedSublist(json.items, false).then(async () => {
 				await ListUtil._pFinaliseSublist();
 
@@ -3561,21 +3570,21 @@ ListUtil = {
 		}
 	},
 
-	_getPinnedCount (index, data) {
+	_getPinnedCount(index, data) {
 		const base = ListUtil._pinned[index];
 		if (!base) return null;
 		if (data && data.uniqueId) return base[data.uniqueId];
 		return base._;
 	},
 
-	_setPinnedCount (index, count, data) {
+	_setPinnedCount(index, count, data) {
 		const base = ListUtil._pinned[index];
 		const key = data && data.uniqueId ? data.uniqueId : "_";
 		if (base) base[key] = count;
 		else (ListUtil._pinned[index] = {})[key] = count;
 	},
 
-	_deletePinnedCount (index, data) {
+	_deletePinnedCount(index, data) {
 		const base = ListUtil._pinned[index];
 		if (base) {
 			if (data && data.uniqueId) delete base[data.uniqueId];
@@ -3583,7 +3592,7 @@ ListUtil = {
 		}
 	},
 
-	async pDoSublistAdd (index, doFinalise, addCount, data) {
+	async pDoSublistAdd(index, doFinalise, addCount, data) {
 		if (index == null) {
 			return JqueryUtil.doToast({
 				content: "Please first view something from the list.",
@@ -3605,7 +3614,7 @@ ListUtil = {
 		}
 	},
 
-	async pDoSublistSubtract (index, subtractCount, data) {
+	async pDoSublistSubtract(index, subtractCount, data) {
 		const count = ListUtil._getPinnedCount(index, data);
 		subtractCount = subtractCount || 1;
 		if (count > subtractCount) {
@@ -3617,14 +3626,14 @@ ListUtil = {
 		} else if (count) await ListUtil.pDoSublistRemove(index, data);
 	},
 
-	getSublisted () {
+	getSublisted() {
 		const cpy = MiscUtil.copy(ListUtil._pinned);
 		const out = {};
 		Object.keys(cpy).filter(k => Object.keys(cpy[k]).length).forEach(k => out[k] = cpy[k]);
 		return out;
 	},
 
-	getSublistedIds () {
+	getSublistedIds() {
 		return Object.keys(ListUtil._pinned).filter(k => Object.keys(ListUtil._pinned[k]).length).map(it => Number(it));
 	},
 
@@ -3643,7 +3652,7 @@ ListUtil = {
 		})
 	},
 
-	async _pFinaliseSublist (noSave) {
+	async _pFinaliseSublist(noSave) {
 		ListUtil.sublist.update();
 		ListUtil._updateSublistVisibility();
 		if (!noSave) await ListUtil._pSaveSublist();
@@ -3655,12 +3664,12 @@ ListUtil = {
 		const toSave = ListUtil.sublist.items
 			.map(it => {
 				sources.add(ListUtil._allItems[it.ix].source);
-				return {h: it.values.hash.split(HASH_PART_SEP)[0], c: it.values.count || undefined, uniqueId: it.values.uniqueId};
+				return { h: it.values.hash.split(HASH_PART_SEP)[0], c: it.values.count || undefined, uniqueId: it.values.uniqueId };
 			});
-		return {items: toSave, sources: Array.from(sources)};
+		return { items: toSave, sources: Array.from(sources) };
 	},
 
-	async _pSaveSublist () {
+	async _pSaveSublist() {
 		await StorageUtil.pSetForPage("sublist", ListUtil.getExportableSublist());
 	},
 
@@ -3669,7 +3678,7 @@ ListUtil = {
 		else ListUtil.$sublistContainer.removeClass("sublist--visible");
 	},
 
-	async pDoSublistRemove (index, data) {
+	async pDoSublistRemove(index, data) {
 		ListUtil._deletePinnedCount(index, data);
 		if (data && data.uniqueId) ListUtil.sublist.removeItemBy("uniqueId", data.uniqueId);
 		else ListUtil.sublist.removeItem(index);
@@ -3679,7 +3688,7 @@ ListUtil = {
 		ListUtil._handleCallUpdateFn();
 	},
 
-	async pDoSublistRemoveAll (noSave) {
+	async pDoSublistRemoveAll(noSave) {
 		ListUtil._pinned = {};
 		ListUtil.sublist.removeAllItems();
 		ListUtil.sublist.update();
@@ -3692,7 +3701,7 @@ ListUtil = {
 		return ListUtil._getPinnedCount(index, data);
 	},
 
-	mapSelectedWithDeslect (list, mapFunc) {
+	mapSelectedWithDeslect(list, mapFunc) {
 		return list.getSelected()
 			.map(it => {
 				it.isSelected = false;
@@ -3705,7 +3714,7 @@ ListUtil = {
 	},
 
 	_hasLoadedState: false,
-	async pLoadState () {
+	async pLoadState() {
 		if (ListUtil._hasLoadedState) return;
 		ListUtil._hasLoadedState = true;
 		try {
@@ -3719,13 +3728,13 @@ ListUtil = {
 		}
 	},
 
-	async _pLoadSavedSublist (items, additive) {
+	async _pLoadSavedSublist(items, additive) {
 		if (!additive) await ListUtil.pDoSublistRemoveAll(true);
 
 		const toLoad = items.map(it => {
 			const item = Hist._getListItem(it.h);
 			if (item != null) {
-				const out = {index: item.ix, addCount: Number(it.c)};
+				const out = { index: item.ix, addCount: Number(it.c) };
 				if (ListUtil._uidUnpackFn && it.uniqueId) out.data = ListUtil._uidUnpackFn(it.uniqueId);
 				return out;
 			}
@@ -3736,7 +3745,7 @@ ListUtil = {
 		await ListUtil._pFinaliseSublist(true);
 	},
 
-	async pGetSelectedSources () {
+	async pGetSelectedSources() {
 		let store;
 		try {
 			store = await StorageUtil.pGetForPage("sublist");
@@ -3746,7 +3755,7 @@ ListUtil = {
 		if (store && store.sources) return store.sources;
 	},
 
-	initGenericPinnable () {
+	initGenericPinnable() {
 		ContextUtil.doInitContextMenu(
 			"list",
 			ListUtil.handleGenericContextMenuClick,
@@ -3770,7 +3779,7 @@ ListUtil = {
 		);
 	},
 
-	initGenericAddable () {
+	initGenericAddable() {
 		ContextUtil.doInitContextMenu(
 			"list",
 			ListUtil.handleGenericMultiContextMenuClick,
@@ -3838,7 +3847,7 @@ ListUtil = {
 			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
 			case 1: {
 				selection.forEach(item => {
-					if (item.values.uniqueId) ListUtil.pDoSublistRemove(item.ix, {uniqueId: item.values.uniqueId});
+					if (item.values.uniqueId) ListUtil.pDoSublistRemove(item.ix, { uniqueId: item.values.uniqueId });
 					else ListUtil.pDoSublistRemove(item.ix);
 				});
 				break;
@@ -3855,7 +3864,7 @@ ListUtil = {
 		}
 	},
 
-	async _handleGenericContextMenuClick_pDoMassPopout (evt, ele, $invokedOn, selection) {
+	async _handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection) {
 		const page = UrlUtil.getCurrentPage();
 
 		const elePos = ele.getBoundingClientRect();
@@ -3869,7 +3878,7 @@ ListUtil = {
 
 			Renderer.hover.getShowWindow(
 				Renderer.hover.$getHoverContent_stats(UrlUtil.getCurrentPage(), toRender),
-				{mode: "exact", x: elePos.x + posOffset, y: elePos.y + posOffset},
+				{ mode: "exact", x: elePos.x + posOffset, y: elePos.y + posOffset },
 				{
 					title: toRender.name,
 					isPermanent: true,
@@ -3880,13 +3889,13 @@ ListUtil = {
 	},
 
 	_isRolling: false,
-	_rollSubListed () {
+	_rollSubListed() {
 		const timerMult = RollerUtil.randomise(125, 75);
 		const timers = [0, 1, 1, 1, 1, 1, 1.5, 1.5, 1.5, 2, 2, 2, 2.5, 3, 4, -1] // last element is always sliced off
 			.map(it => it * timerMult)
 			.slice(0, -RollerUtil.randomise(4, 1));
 
-		function generateSequence (array, length) {
+		function generateSequence(array, length) {
 			const out = [RollerUtil.rollOnArray(array)];
 			for (let i = 0; i < length; ++i) {
 				let next = RollerUtil.rollOnArray(array);
@@ -3924,11 +3933,35 @@ ListUtil = {
 		}
 	},
 
-	_getDownloadName () {
+	/// Takes in a css selector and an optional name parameter.
+	/// It will generate a canvas, convert it into an image, prompt the user to download and then remove the canvas from the DOM.
+	_downloadRenderedHTMLImageFromSelector(selector, name) {
+		html2canvas(document.querySelector(selector)).then(canvas => {
+			let canvasImage = canvas.toDataURL('image/png');
+
+			// this can be used to download any image from webpage to local disk
+			let xhr = new XMLHttpRequest();
+			xhr.responseType = 'blob';
+			xhr.onload = function () {
+				let a = document.createElement('a');
+				a.href = window.URL.createObjectURL(xhr.response);
+				a.download = name ? name + '.png' : '5e-tools-image' + Date.now() + '.png';
+				a.style.display = 'none';
+				document.body.appendChild(a);
+				a.click();
+				a.remove();
+				canvas.remove();
+			};
+			xhr.open('GET', canvasImage); // This is to download the canvas Image
+			xhr.send();
+		});
+	},
+
+	_getDownloadName() {
 		return `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
 	},
 
-	genericPinKeyMapper (pMapUid = ListUtil._pUidHandler) {
+	genericPinKeyMapper(pMapUid = ListUtil._pUidHandler) {
 		return Object.entries(ListUtil.getSublisted()).map(([id, it]) => {
 			return Object.keys(it).map(k => {
 				const it = ListUtil._allItems[id];
@@ -3937,7 +3970,7 @@ ListUtil = {
 		}).reduce((a, b) => a.concat(b), []);
 	},
 
-	_handleJsonDownload () {
+	_handleJsonDownload() {
 		if (ListUtil._pUidHandler) {
 			const promises = ListUtil.genericPinKeyMapper();
 
@@ -3955,15 +3988,15 @@ ListUtil = {
 		}
 	},
 
-	getCompleteFilterSources (it) {
-		return it.otherSources ? [it.source].concat(it.otherSources.map(src => new FilterItem({item: src.source, isIgnoreRed: true}))) : it.source;
+	getCompleteFilterSources(it) {
+		return it.otherSources ? [it.source].concat(it.otherSources.map(src => new FilterItem({ item: src.source, isIgnoreRed: true }))) : it.source;
 	},
 
-	bindShowTableButton (id, title, dataList, colTransforms, filter, sorter) {
+	bindShowTableButton(id, title, dataList, colTransforms, filter, sorter) {
 		$(`#${id}`).click("click", () => ListUtil.showTable(title, dataList, colTransforms, filter, sorter));
 	},
 
-	basicFilterGenerator () {
+	basicFilterGenerator() {
 		const slIds = ListUtil.getSublistedIds();
 		if (slIds.length) {
 			const slIdSet = new Set(slIds);
@@ -3974,12 +4007,12 @@ ListUtil = {
 		}
 	},
 
-	getVisibleIds () {
+	getVisibleIds() {
 		return ListUtil._primaryLists.map(l => l.visibleItems.map(it => it.ix)).flat();
 	},
 
 	// FIXME move this out
-	showTable (title, dataList, colTransforms, filter, sorter) {
+	showTable(title, dataList, colTransforms, filter, sorter) {
 		const $modal = $(`<div class="modal__outer dropdown-menu"/>`);
 		const $wrpModal = $(`<div class="modal__wrp">`).appendTo($(`body`)).click(() => $wrpModal.remove());
 		$modal.appendTo($wrpModal);
@@ -4001,7 +4034,7 @@ ListUtil = {
 				.appendTo($wrpCb);
 		});
 		const $pnlBtns = $(`<div/>`).appendTo($pnlControl);
-		function getAsCsv () {
+		function getAsCsv() {
 			const headers = $pnlCols.find(`input:checked`).map((i, e) => $(e).data("name")).get();
 			const rows = $modalInner.find(`.data-row`).map((i, e) => $(e)).get().map($e => {
 				return $e.children().filter(`td:visible`).map((j, d) => $(d).text().trim()).get();
@@ -4034,7 +4067,7 @@ ListUtil = {
 		$modalInner.append(temp);
 	},
 
-	addListShowHide () {
+	addListShowHide() {
 		$(`#filter-search-input-group`).find(`#reset`).before(`<button class="btn btn-default" id="hidesearch">Hide</button>`);
 		$(`#contentwrapper`).prepend(`<div class="col-12" id="showsearch"><button class="btn btn-block btn-default btn-xs" type="button">Show Search</button><br></div>`);
 
@@ -4062,7 +4095,7 @@ ListUtil = {
  * @param options overrides for the default filter options
  * @returns {*} a `Filter`
  */
-function getSourceFilter (options = {}) {
+function getSourceFilter(options = {}) {
 	const baseOptions = {
 		header: FilterBox.SOURCE_HEADER,
 		displayFn: (item) => Parser.sourceJsonToFullCompactPrefix(item.item || item),
@@ -4073,11 +4106,11 @@ function getSourceFilter (options = {}) {
 	return new Filter(baseOptions);
 }
 
-function defaultSourceSelFn (val) {
+function defaultSourceSelFn(val) {
 	return !SourceUtil.isNonstandardSource(val);
 }
 
-function getAsiFilter (options) {
+function getAsiFilter(options) {
 	const baseOptions = {
 		header: "Ability Bonus",
 		items: [
@@ -4094,7 +4127,7 @@ function getAsiFilter (options) {
 	return getFilterWithMergedOptions(baseOptions, options);
 }
 
-function getFilterWithMergedOptions (baseOptions, addOptions) {
+function getFilterWithMergedOptions(baseOptions, addOptions) {
 	if (addOptions) Object.assign(baseOptions, addOptions); // merge in anything we get passed
 	return new Filter(baseOptions);
 }
@@ -4104,7 +4137,7 @@ function getFilterWithMergedOptions (baseOptions, addOptions) {
  * @param opts.filters Array of filters to be included in this box.
  * @param [opts.isCompact] True if this box should have a compact/reduced UI.
  */
-async function pInitFilterBox (opts) {
+async function pInitFilterBox(opts) {
 	opts.$wrpFormTop = $(`#filter-search-input-group`).attr("title", "Hotkey: f");
 	opts.$btnReset = $(`#reset`);
 	const filterBox = new FilterBox(opts);
@@ -4114,26 +4147,26 @@ async function pInitFilterBox (opts) {
 
 // ENCODING/DECODING ===================================================================================================
 UrlUtil = {
-	encodeForHash (toEncode) {
+	encodeForHash(toEncode) {
 		if (toEncode instanceof Array) {
 			return toEncode.map(i => encodeForHashHelper(i)).join(HASH_LIST_SEP);
 		} else {
 			return encodeForHashHelper(toEncode);
 		}
 
-		function encodeForHashHelper (part) {
+		function encodeForHashHelper(part) {
 			return encodeURIComponent(part).toLowerCase();
 		}
 	},
 
-	autoEncodeHash (obj) {
+	autoEncodeHash(obj) {
 		const curPage = UrlUtil.getCurrentPage();
 		const encoder = UrlUtil.URL_TO_HASH_BUILDER[curPage];
 		if (!encoder) throw new Error(`No encoder found for page ${curPage}`);
 		return encoder(obj);
 	},
 
-	getCurrentPage () {
+	getCurrentPage() {
 		const pSplit = window.location.pathname.split("/");
 		let out = pSplit[pSplit.length - 1];
 		if (!out.toLowerCase().endsWith(".html")) out += ".html";
@@ -4145,8 +4178,8 @@ UrlUtil = {
 	 *
 	 * @param href the link
 	 */
-	link (href) {
-		function addGetParam (curr) {
+	link(href) {
+		function addGetParam(curr) {
 			if (href.includes("?")) return `${curr}&v=${VERSION_NUMBER}`;
 			else return `${curr}?v=${VERSION_NUMBER}`;
 		}
@@ -4156,7 +4189,7 @@ UrlUtil = {
 		return href;
 	},
 
-	unpackSubHash (subHash, unencode) {
+	unpackSubHash(subHash, unencode) {
 		// format is "key:value~list~sep~with~tilde"
 		if (subHash.includes(HASH_SUB_KV_SEP)) {
 			const keyValArr = subHash.split(HASH_SUB_KV_SEP).map(s => s.trim());
@@ -4182,22 +4215,22 @@ UrlUtil = {
 	 * @param [opts.isEncodeValues] If the values should be URL encoded.
 	 * @returns {string}
 	 */
-	packSubHash (key, values, opts) {
+	packSubHash(key, values, opts) {
 		opts = opts || {};
 		if (opts.isEncodeBoth || opts.isEncodeKey) key = UrlUtil.pack(key);
 		if (opts.isEncodeBoth || opts.isEncodeValues) values = values.map(it => UrlUtil.pack(it));
 		return `${key}${HASH_SUB_KV_SEP}${values.join(HASH_SUB_LIST_SEP)}`;
 	},
 
-	pack (part) {
+	pack(part) {
 		return encodeURIComponent(part.toLowerCase());
 	},
 
-	categoryToPage (category) {
+	categoryToPage(category) {
 		return UrlUtil.CAT_TO_PAGE[category];
 	},
 
-	bindLinkExportButton (filterBox) {
+	bindLinkExportButton(filterBox) {
 		const $btn = ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
 		$btn.addClass("btn-copy-effect")
 			.off("click")
@@ -4209,7 +4242,7 @@ UrlUtil = {
 
 				if (evt.shiftKey) {
 					const toEncode = JSON.stringify(ListUtil.getExportableSublist());
-					const part2 = UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], {isEncodeBoth: true});
+					const part2 = UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], { isEncodeBoth: true });
 					parts.push(part2);
 				}
 
@@ -4220,7 +4253,7 @@ UrlUtil = {
 	},
 
 	class: {
-		getIndexedEntries (cls) {
+		getIndexedEntries(cls) {
 			const out = [];
 			let scFeatureI = 0;
 			(cls.classFeatures || []).forEach((lvlFeatureList, i) => {
@@ -4434,13 +4467,13 @@ SortUtil = {
 	ascSortLowerProp: (prop, a, b) => { return SortUtil.ascSortLower(a[prop], b[prop]); },
 
 	// warning: slow
-	ascSortNumericalSuffix (a, b) {
+	ascSortNumericalSuffix(a, b) {
 		if (typeof FilterItem !== "undefined") {
 			if (a instanceof FilterItem) a = a.item;
 			if (b instanceof FilterItem) b = b.item;
 		}
 
-		function popEndNumber (str) {
+		function popEndNumber(str) {
 			const spl = str.split(" ");
 			return spl.last().isNumeric() ? [spl.slice(0, -1).join(" "), Number(spl.last().replace(Parser._numberCleanRegexp, ""))] : [spl.join(" "), 0];
 		}
@@ -4457,25 +4490,25 @@ SortUtil = {
 		return b < a ? 1 : -1;
 	},
 
-	ascSortDate (a, b) {
+	ascSortDate(a, b) {
 		return b.getTime() - a.getTime();
 	},
 
-	compareListNames (a, b) { return SortUtil._ascSort(a.name.toLowerCase(), b.name.toLowerCase()); },
+	compareListNames(a, b) { return SortUtil._ascSort(a.name.toLowerCase(), b.name.toLowerCase()); },
 
-	listSort (a, b, opts) {
+	listSort(a, b, opts) {
 		if (opts.sortBy === "name") return SortUtil.compareListNames(a, b);
 		else return SortUtil._compareByOrDefault_compareByOrDefault(a, b, opts.sortBy);
 	},
 
-	_listSort_compareBy (a, b, sortBy) {
+	_listSort_compareBy(a, b, sortBy) {
 		const aValue = typeof a.values[sortBy] === "string" ? a.values[sortBy].toLowerCase() : a.values[sortBy];
 		const bValue = typeof b.values[sortBy] === "string" ? b.values[sortBy].toLowerCase() : b.values[sortBy];
 
 		return SortUtil._ascSort(aValue, bValue);
 	},
 
-	_compareByOrDefault_compareByOrDefault (a, b, sortBy) {
+	_compareByOrDefault_compareByOrDefault(a, b, sortBy) {
 		return SortUtil._listSort_compareBy(a, b, sortBy) || SortUtil.compareListNames(a, b);
 	},
 
@@ -4502,7 +4535,7 @@ SortUtil = {
 		return 0;
 	},
 
-	ascSortCr (a, b) {
+	ascSortCr(a, b) {
 		if (typeof FilterItem !== "undefined") {
 			if (a instanceof FilterItem) a = a.item;
 			if (b instanceof FilterItem) b = b.item;
@@ -4513,13 +4546,13 @@ SortUtil = {
 		return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b));
 	},
 
-	ascSortAtts (a, b) {
+	ascSortAtts(a, b) {
 		const aSpecial = a === "special";
 		const bSpecial = b === "special";
 		return aSpecial && bSpecial ? 0 : aSpecial ? 1 : bSpecial ? -1 : Parser.ABIL_ABVS.indexOf(a) - Parser.ABIL_ABVS.indexOf(b);
 	},
-	initBtnSortHandlers ($wrpBtnsSort, list) {
-		function addCaret ($btnSort, direction) {
+	initBtnSortHandlers($wrpBtnsSort, list) {
+		function addCaret($btnSort, direction) {
 			$wrpBtnsSort.find(".caret").removeClass("caret");
 			$btnSort.find(".caret_wrp").addClass("caret").toggleClass("caret--reverse", direction === "asc");
 		}
@@ -4546,7 +4579,7 @@ DataUtil = {
 	_merging: {},
 	_merged: {},
 
-	async _pLoad (url) {
+	async _pLoad(url) {
 		if (DataUtil._loading[url]) {
 			await DataUtil._loading[url];
 			return DataUtil._loaded[url];
@@ -4572,7 +4605,7 @@ DataUtil = {
 		return DataUtil._loaded[url];
 	},
 
-	async loadJSON (url, ...otherData) {
+	async loadJSON(url, ...otherData) {
 		const procUrl = UrlUtil.link(url);
 
 		let ident = procUrl;
@@ -4594,13 +4627,13 @@ DataUtil = {
 		return data;
 	},
 
-	async pDoMetaMerge (ident, data, options) {
+	async pDoMetaMerge(ident, data, options) {
 		DataUtil._merging[ident] = DataUtil._merging[ident] || DataUtil._pDoMetaMerge(ident, data, options);
 		await DataUtil._merging[ident];
 		return DataUtil._merged[ident];
 	},
 
-	async _pDoMetaMerge (ident, data, options) {
+	async _pDoMetaMerge(ident, data, options) {
 		if (data._meta) {
 			if (data._meta.dependencies) {
 				await Promise.all(Object.entries(data._meta.dependencies).map(async ([prop, sources]) => {
@@ -4648,7 +4681,7 @@ DataUtil = {
 					url: await DataUtil.pGetLoadableByMeta(prop, source)
 				})));
 
-				const additionalData = await Promise.all(toLoads.map(async ({findWith, url}) => ({findWith, sourceData: await DataUtil.loadJSON(url)})));
+				const additionalData = await Promise.all(toLoads.map(async ({ findWith, url }) => ({ findWith, sourceData: await DataUtil.loadJSON(url) })));
 
 				additionalData.forEach(dataAndSource => {
 					const findWith = dataAndSource.findWith;
@@ -4665,7 +4698,7 @@ DataUtil = {
 	userDownload: function (filename, data) {
 		if (typeof data !== "string") data = JSON.stringify(data, null, "\t");
 		const a = document.createElement("a");
-		const t = new Blob([data], {type: "text/json"});
+		const t = new Blob([data], { type: "text/json" });
 		a.href = URL.createObjectURL(t);
 		a.download = `${filename}.json`;
 		document.body.appendChild(a);
@@ -4673,30 +4706,30 @@ DataUtil = {
 		document.body.removeChild(a);
 	},
 
-	getCleanFilename (filename) {
+	getCleanFilename(filename) {
 		return filename.replace(/[^-_a-zA-Z0-9]/g, "_");
 	},
 
-	getCsv (headers, rows) {
-		function escapeCsv (str) {
+	getCsv(headers, rows) {
+		function escapeCsv(str) {
 			return `"${str.replace(/"/g, `""`).replace(/ +/g, " ").replace(/\n\n+/gi, "\n\n")}"`;
 		}
 
-		function toCsv (row) {
+		function toCsv(row) {
 			return row.map(str => escapeCsv(str)).join(",");
 		}
 
 		return `${toCsv(headers)}\n${rows.map(r => toCsv(r)).join("\n")}`;
 	},
 
-	userDownloadText (filename, string) {
+	userDownloadText(filename, string) {
 		const $a = $(`<a href="data:text/plain;charset=utf-8,${encodeURIComponent(string)}" download="${filename}" style="display: none;">DL</a>`);
 		$(`body`).append($a);
 		$a[0].click();
 		$a.remove();
 	},
 
-	pUserUpload () {
+	pUserUpload() {
 		return new Promise(resolve => {
 			const $iptAdd = $(`<input type="file" accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`).on("change", (evt) => {
 				const input = evt.target;
@@ -4714,13 +4747,13 @@ DataUtil = {
 		});
 	},
 
-	cleanJson (cpy) {
+	cleanJson(cpy) {
 		cpy.name = cpy._displayName || cpy.name;
 		DataUtil.__cleanJsonObject(cpy);
 		return cpy;
 	},
 
-	__cleanJsonObject (obj) {
+	__cleanJsonObject(obj) {
 		if (obj == null) return obj;
 		if (typeof obj === "object") {
 			if (obj instanceof Array) {
@@ -4734,7 +4767,7 @@ DataUtil = {
 		}
 	},
 
-	async pGetLoadableByMeta (key, value) {
+	async pGetLoadableByMeta(key, value) {
 		// TODO in future, allow value to be e.g. a string (assumed to be an official data's source); an object e.g. `{type: external, url: <>}`,...
 		switch (key) {
 			case "monster": {
@@ -4742,12 +4775,12 @@ DataUtil = {
 				if (!index[value]) throw new Error(`Bestiary index did not contain source "${value}"`);
 				return `${Renderer.get().baseUrl}data/bestiary/${index[value]}`;
 			}
-			default: throw new Error(`Could not get loadable URL for \`${JSON.stringify({key, value})}\``);
+			default: throw new Error(`Could not get loadable URL for \`${JSON.stringify({ key, value })}\``);
 		}
 	},
 
 	generic: {
-		async _pMergeCopy (impl, page, entryList, entry, options) {
+		async _pMergeCopy(impl, page, entryList, entry, options) {
 			if (entry._copy) {
 				const hash = UrlUtil.URL_TO_HASH_BUILDER[page](entry._copy);
 				const it = impl._mergeCache[hash] || DataUtil.generic._pMergeCopy_search(impl, page, entryList, entry);
@@ -4756,18 +4789,18 @@ DataUtil = {
 			}
 		},
 
-		_pMergeCopy_search (impl, page, entryList, entry) {
+		_pMergeCopy_search(impl, page, entryList, entry) {
 			return entryList.find(it => {
 				impl._mergeCache[UrlUtil.URL_TO_HASH_BUILDER[page](it)] = it;
 				return it.name === entry._copy.name && it.source === entry._copy.source;
 			});
 		},
 
-		async _pApplyCopy (impl, copyFrom, copyTo, options = {}) {
+		async _pApplyCopy(impl, copyFrom, copyTo, options = {}) {
 			if (options.doKeepCopy) copyTo.__copy = MiscUtil.copy(copyFrom);
 
 			// convert everything to arrays
-			function normaliseMods (obj) {
+			function normaliseMods(obj) {
 				Object.entries(obj._mod).forEach(([k, v]) => {
 					if (!(v instanceof Array)) obj._mod[k] = [v];
 				});
@@ -4813,16 +4846,16 @@ DataUtil = {
 			if (racials && racials.apply._root) Object.entries(racials.apply._root).forEach(([k, v]) => copyTo[k] = v);
 
 			// mod helpers /////////////////
-			function doEnsureArray (obj, prop) {
+			function doEnsureArray(obj, prop) {
 				if (!(obj[prop] instanceof Array)) obj[prop] = [obj[prop]];
 			}
 
-			function doMod_appendStr (modInfo, prop) {
+			function doMod_appendStr(modInfo, prop) {
 				if (copyTo[prop]) copyTo[prop] = `${copyTo[prop]}${modInfo.joiner || ""}${modInfo.str}`;
 				else copyTo[prop] = modInfo.str;
 			}
 
-			function doMod_replaceTxt (modInfo, prop) {
+			function doMod_replaceTxt(modInfo, prop) {
 				const re = new RegExp(modInfo.replace, `g${modInfo.flags || ""}`);
 				if (copyTo[prop]) {
 					copyTo[prop].forEach(it => {
@@ -4833,17 +4866,17 @@ DataUtil = {
 				}
 			}
 
-			function doMod_prependArr (modInfo, prop) {
+			function doMod_prependArr(modInfo, prop) {
 				doEnsureArray(modInfo, "items");
 				copyTo[prop] = copyTo[prop] ? modInfo.items.concat(copyTo[prop]) : modInfo.items
 			}
 
-			function doMod_appendArr (modInfo, prop) {
+			function doMod_appendArr(modInfo, prop) {
 				doEnsureArray(modInfo, "items");
 				copyTo[prop] = copyTo[prop] ? copyTo[prop].concat(modInfo.items) : modInfo.items
 			}
 
-			function doMod_replaceArr (modInfo, prop, isThrow = true) {
+			function doMod_replaceArr(modInfo, prop, isThrow = true) {
 				doEnsureArray(modInfo, "items");
 
 				if (!copyTo[prop]) {
@@ -4868,18 +4901,18 @@ DataUtil = {
 				return false;
 			}
 
-			function doMod_replaceOrAppendArr (modInfo, prop) {
+			function doMod_replaceOrAppendArr(modInfo, prop) {
 				const didReplace = doMod_replaceArr(modInfo, prop, false);
 				if (!didReplace) doMod_appendArr(modInfo, prop);
 			}
 
-			function doMod_insertArr (modInfo, prop) {
+			function doMod_insertArr(modInfo, prop) {
 				doEnsureArray(modInfo, "items");
 				if (!copyTo[prop]) throw new Error(`Could not find "${prop}" array`);
 				copyTo[prop].splice(modInfo.index, 0, ...modInfo.items);
 			}
 
-			function doMod_removeArr (modInfo, prop) {
+			function doMod_removeArr(modInfo, prop) {
 				if (modInfo.names) {
 					doEnsureArray(modInfo, "names");
 					modInfo.names.forEach(nameToRemove => {
@@ -4897,7 +4930,7 @@ DataUtil = {
 				} else throw new Error(`One of "names" or "items" must be provided!`)
 			}
 
-			function doMod_calculateProp (modInfo, prop) {
+			function doMod_calculateProp(modInfo, prop) {
 				copyTo[prop] = copyTo[prop] || {};
 				const toExec = modInfo.formula.replace(/<\$([^$]+)\$>/g, (...m) => {
 					switch (m[1]) {
@@ -4910,8 +4943,8 @@ DataUtil = {
 				copyTo[prop][modInfo.prop] = eval(toExec);
 			}
 
-			function doMod_scalarAddProp (modInfo, prop) {
-				function applyTo (k) {
+			function doMod_scalarAddProp(modInfo, prop) {
+				function applyTo(k) {
 					const out = Number(copyTo[prop][k]) + modInfo.scalar;
 					const isString = typeof copyTo[prop][k] === "string";
 					copyTo[prop][k] = isString ? `${out >= 0 ? "+" : ""}${out}` : out;
@@ -4922,8 +4955,8 @@ DataUtil = {
 				else applyTo(modInfo.prop);
 			}
 
-			function doMod_scalarMultProp (modInfo, prop) {
-				function applyTo (k) {
+			function doMod_scalarMultProp(modInfo, prop) {
+				function applyTo(k) {
 					let out = Number(copyTo[prop][k]) * modInfo.scalar;
 					if (modInfo.floor) out = Math.floor(out);
 					const isString = typeof copyTo[prop][k] === "string";
@@ -4935,7 +4968,7 @@ DataUtil = {
 				else applyTo(modInfo.prop);
 			}
 
-			function doMod_addSenses (modInfo) {
+			function doMod_addSenses(modInfo) {
 				doEnsureArray(modInfo, "senses");
 				copyTo.senses = copyTo.senses || [];
 				modInfo.senses.forEach(sense => {
@@ -4956,7 +4989,7 @@ DataUtil = {
 				});
 			}
 
-			function doMod_addSkills (modInfo) {
+			function doMod_addSkills(modInfo) {
 				copyTo.skill = copyTo.skill || [];
 				Object.entries(modInfo.skills).forEach(([skill, mode]) => {
 					// mode: 1 = proficient; 2 = expert
@@ -4969,7 +5002,7 @@ DataUtil = {
 				});
 			}
 
-			function doMod_addSpells (modInfo) {
+			function doMod_addSpells(modInfo) {
 				if (!copyTo.spellcasting) throw new Error(`Creature did not have a spellcasting property!`);
 
 				// TODO could accept a "position" or "name" parameter should spells need to be added to other spellcasting traits
@@ -5018,7 +5051,7 @@ DataUtil = {
 				}
 			}
 
-			function doMod_replaceSpells (modInfo) {
+			function doMod_replaceSpells(modInfo) {
 				if (!copyTo.spellcasting) throw new Error(`Creature did not have a spellcasting property!`);
 
 				// TODO could accept a "position" or "name" parameter should spells need to be added to other spellcasting traits
@@ -5061,25 +5094,25 @@ DataUtil = {
 				}
 			}
 
-			function doMod_scalarAddHit (modInfo, prop) {
+			function doMod_scalarAddHit(modInfo, prop) {
 				if (!copyTo[prop]) return;
 				copyTo[prop] = JSON.parse(JSON.stringify(copyTo[prop]).replace(/{@hit ([-+]?\d+)}/g, (m0, m1) => `{@hit ${Number(m1) + modInfo.scalar}}`))
 			}
 
-			function doMod_scalarAddDc (modInfo, prop) {
+			function doMod_scalarAddDc(modInfo, prop) {
 				if (!copyTo[prop]) return;
 				copyTo[prop] = JSON.parse(JSON.stringify(copyTo[prop]).replace(/{@dc (\d+)}/g, (m0, m1) => `{@dc ${Number(m1) + modInfo.scalar}}`));
 			}
 
-			function doMod_maxSize (modInfo) {
+			function doMod_maxSize(modInfo) {
 				const ixCur = Parser.SIZE_ABVS.indexOf(copyTo.size);
 				const ixMax = Parser.SIZE_ABVS.indexOf(modInfo.max);
 				if (ixCur < 0 || ixMax < 0) throw new Error(`Unhandled size!`);
 				copyTo.size = Parser.SIZE_ABVS[Math.min(ixCur, ixMax)]
 			}
 
-			function doMod_scalarMultXp (modInfo) {
-				function getOutput (input) {
+			function doMod_scalarMultXp(modInfo) {
+				function getOutput(input) {
 					let out = input * modInfo.scalar;
 					if (modInfo.floor) out = Math.floor(out);
 					return out;
@@ -5088,13 +5121,13 @@ DataUtil = {
 				if (copyTo.cr.xp) copyTo.cr.xp = getOutput(copyTo.cr.xp);
 				else {
 					const curXp = Parser.crToXpNumber(copyTo.cr);
-					if (!copyTo.cr.cr) copyTo.cr = {cr: copyTo.cr};
+					if (!copyTo.cr.cr) copyTo.cr = { cr: copyTo.cr };
 					copyTo.cr.xp = getOutput(curXp);
 				}
 			}
 
-			function doMod (modInfos, ...properties) {
-				function handleProp (prop) {
+			function doMod(modInfos, ...properties) {
+				function handleProp(prop) {
 					modInfos.forEach(modInfo => {
 						if (typeof modInfo === "string") {
 							switch (modInfo) {
@@ -5202,11 +5235,11 @@ DataUtil = {
 			dragonCastingColor: true
 		},
 		_mergeCache: {},
-		async pMergeCopy (monList, mon, options) {
+		async pMergeCopy(monList, mon, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.monster, UrlUtil.PG_BESTIARY, monList, mon, options);
 		},
 
-		async pLoadAll () {
+		async pLoadAll() {
 			const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`);
 			const allData = await Promise.all(Object.entries(index).map(async ([source, file]) => {
 				const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/${file}`);
@@ -5217,7 +5250,7 @@ DataUtil = {
 	},
 
 	spell: {
-		async pLoadAll () {
+		async pLoadAll() {
 			const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/index.json`);
 			const allData = await Promise.all(Object.entries(index).map(async ([source, file]) => {
 				const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/${file}`);
@@ -5233,7 +5266,7 @@ DataUtil = {
 			tier: true
 		},
 		_mergeCache: {},
-		async pMergeCopy (itemList, item, options) {
+		async pMergeCopy(itemList, item, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.item, UrlUtil.PG_ITEMS, itemList, item, options);
 		}
 	},
@@ -5241,7 +5274,7 @@ DataUtil = {
 	background: {
 		_MERGE_REQUIRES_PRESERVE: {},
 		_mergeCache: {},
-		async pMergeCopy (bgList, bg, options) {
+		async pMergeCopy(bgList, bg, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.background, UrlUtil.PG_BACKGROUNDS, bgList, bg, options);
 		}
 	},
@@ -5251,7 +5284,7 @@ DataUtil = {
 			subraces: true
 		},
 		_mergeCache: {},
-		async pMergeCopy (raceList, race, options) {
+		async pMergeCopy(raceList, race, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.race, UrlUtil.PG_RACES, raceList, race, options);
 		}
 	},
@@ -5265,7 +5298,7 @@ DataUtil = {
 			DataUtil.class._pLoadingJson = (async () => {
 				const index = await DataUtil.loadJSON(`${baseUrl}data/class/index.json`);
 				const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${baseUrl}data/class/${it}`)));
-				const out = allData.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []});
+				const out = allData.reduce((a, b) => ({ class: a.class.concat(b.class) }), { class: [] });
 				out.class.filter(cls => !cls._isEnhanced).forEach(cls => {
 					cls._isEnhanced = true;
 					cls.classFeatures.forEach((featArr, i) => {
@@ -5338,7 +5371,7 @@ DataUtil = {
 	},
 
 	table: {
-		async pLoadAll (baseUrl = "") {
+		async pLoadAll(baseUrl = "") {
 			const datas = await Promise.all([`${baseUrl}data/generated/gendata-tables.json`, `${baseUrl}data/tables.json`].map(url => DataUtil.loadJSON(url)));
 			const combined = {};
 			datas.forEach(data => {
@@ -5353,15 +5386,15 @@ DataUtil = {
 	},
 
 	brew: {
-		async pLoadTimestamps () {
+		async pLoadTimestamps() {
 			return DataUtil.loadJSON(`https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_generated/index-timestamps.json`);
 		},
 
-		async pLoadCollectionIndex () {
+		async pLoadCollectionIndex() {
 			return DataUtil.loadJSON(`https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/collection/index.json`);
 		},
 
-		getDirUrl (dir) {
+		getDirUrl(dir) {
 			return `https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_generated/index-dir-${dir}.json?t=${(new Date()).getTime()}`;
 		}
 	}
@@ -5383,7 +5416,7 @@ RollerUtil = {
 		}
 	},
 
-	rollOnArray (array) {
+	rollOnArray(array) {
 		return array[RollerUtil.randomise(array.length) - 1]
 	},
 
@@ -5441,7 +5474,7 @@ RollerUtil = {
 		$(`#filter-search-input-group`).find(`#reset`).before($btnRoll);
 	},
 
-	isRollCol (colLabel) {
+	isRollCol(colLabel) {
 		if (typeof colLabel !== "string") return false;
 		if (/^{@dice [^}]+}$/.test(colLabel.trim())) return true;
 		return !!Renderer.dice.parseToTree(colLabel);
@@ -5490,7 +5523,7 @@ StorageUtil = {
 		}
 	},
 
-	async getAsyncStorage () {
+	async getAsyncStorage() {
 		if (StorageUtil._initAsync) {
 			if (StorageUtil.__fakeStorageAsync) return StorageUtil._fakeStorageAsync;
 			else return localforage;
@@ -5502,13 +5535,13 @@ StorageUtil = {
 			StorageUtil.__fakeStorageAsync = {};
 			StorageUtil._fakeStorageAsync = {
 				pIsAsyncFake: true,
-				async setItem (k, v) {
+				async setItem(k, v) {
 					StorageUtil.__fakeStorageAsync[k] = v;
 				},
-				async getItem (k) {
+				async getItem(k) {
 					return StorageUtil.__fakeStorageAsync[k];
 				},
-				async removeItem (k) {
+				async removeItem(k) {
 					delete StorageUtil.__fakeStorageAsync[k];
 				}
 			};
@@ -5533,76 +5566,76 @@ StorageUtil = {
 
 	// SYNC METHODS ////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Synchronous localStorage access, which should only be used for small amounts of data (metadata, config, etc)
-	syncGet (key) {
+	syncGet(key) {
 		const rawOut = StorageUtil.getSyncStorage().getItem(key);
 		if (rawOut && rawOut !== "undefined" && rawOut !== "null") return JSON.parse(rawOut);
 		return null;
 	},
 
-	syncSet (key, value) {
+	syncSet(key, value) {
 		StorageUtil.getSyncStorage().setItem(key, JSON.stringify(value));
 		StorageUtil._syncTrackKey(key)
 	},
 
-	syncRemove (key) {
+	syncRemove(key) {
 		StorageUtil.getSyncStorage().removeItem(key);
 		StorageUtil._syncTrackKey(key, true);
 	},
 
-	syncGetForPage (key) { return StorageUtil.syncGet(`${key}_${UrlUtil.getCurrentPage()}`); },
-	syncSetForPage (key, value) { StorageUtil.syncSet(`${key}_${UrlUtil.getCurrentPage()}`, value); },
+	syncGetForPage(key) { return StorageUtil.syncGet(`${key}_${UrlUtil.getCurrentPage()}`); },
+	syncSetForPage(key, value) { StorageUtil.syncSet(`${key}_${UrlUtil.getCurrentPage()}`, value); },
 
-	isSyncFake () {
+	isSyncFake() {
 		return !!StorageUtil.getSyncStorage().isSyncFake
 	},
 
-	_syncTrackKey (key, isRemove) {
+	_syncTrackKey(key, isRemove) {
 		const meta = StorageUtil.syncGet(StorageUtil._META_KEY) || {};
 		if (isRemove) delete meta[key];
 		else meta[key] = 1;
 		StorageUtil.getSyncStorage().setItem(StorageUtil._META_KEY, JSON.stringify(meta));
 	},
 
-	syncGetDump () {
+	syncGetDump() {
 		const out = {};
 		const meta = StorageUtil.syncGet(StorageUtil._META_KEY) || {};
 		Object.entries(meta).filter(([key, isPresent]) => isPresent).forEach(([key]) => out[key] = StorageUtil.syncGet(key));
 		return out;
 	},
 
-	syncSetFromDump (dump) {
+	syncSetFromDump(dump) {
 		Object.entries(dump).forEach(([k, v]) => StorageUtil.syncSet(k, v));
 	},
 	// END SYNC METHODS ////////////////////////////////////////////////////////////////////////////////////////////////
 
-	async pIsAsyncFake () {
+	async pIsAsyncFake() {
 		const storage = await StorageUtil.getAsyncStorage();
 		return !!storage.pIsAsyncFake;
 	},
 
-	async pSet (key, value) {
+	async pSet(key, value) {
 		StorageUtil._pTrackKey(key);
 		const storage = await StorageUtil.getAsyncStorage();
 		return storage.setItem(key, value);
 	},
 
-	async pGet (key) {
+	async pGet(key) {
 		const storage = await StorageUtil.getAsyncStorage();
 		return storage.getItem(key);
 	},
 
-	async pRemove (key) {
+	async pRemove(key) {
 		StorageUtil._pTrackKey(key, true);
 		const storage = await StorageUtil.getAsyncStorage();
 		return storage.removeItem(key);
 	},
 
-	getPageKey (key, page) { return `${key}_${page || UrlUtil.getCurrentPage()}`; },
-	async pGetForPage (key) { return StorageUtil.pGet(StorageUtil.getPageKey(key)); },
-	async pSetForPage (key, value) { return StorageUtil.pSet(StorageUtil.getPageKey(key), value); },
-	async pRemoveForPage (key) { return StorageUtil.pRemove(StorageUtil.getPageKey(key)); },
+	getPageKey(key, page) { return `${key}_${page || UrlUtil.getCurrentPage()}`; },
+	async pGetForPage(key) { return StorageUtil.pGet(StorageUtil.getPageKey(key)); },
+	async pSetForPage(key, value) { return StorageUtil.pSet(StorageUtil.getPageKey(key), value); },
+	async pRemoveForPage(key) { return StorageUtil.pRemove(StorageUtil.getPageKey(key)); },
 
-	async _pTrackKey (key, isRemove) {
+	async _pTrackKey(key, isRemove) {
 		const storage = await StorageUtil.getAsyncStorage();
 		const meta = (await StorageUtil.pGet(StorageUtil._META_KEY)) || {};
 		if (isRemove) delete meta[key];
@@ -5610,14 +5643,14 @@ StorageUtil = {
 		storage.setItem(StorageUtil._META_KEY, meta);
 	},
 
-	async pGetDump () {
+	async pGetDump() {
 		const out = {};
 		const meta = (await StorageUtil.pGet(StorageUtil._META_KEY)) || {};
 		await Promise.all(Object.entries(meta).filter(([key, isPresent]) => isPresent).map(async ([key]) => out[key] = await StorageUtil.pGet(key)));
 		return out;
 	},
 
-	async pSetFromDump (dump) {
+	async pSetFromDump(dump) {
 		return Promise.all(Object.entries(dump).map(([k, v]) => StorageUtil.pSet(k, v)));
 	}
 };
@@ -5650,7 +5683,7 @@ SessionStorageUtil = {
 		}
 	},
 
-	isFake () {
+	isFake() {
 		return SessionStorageUtil.getStorage().isSyncFake
 	},
 
@@ -5658,7 +5691,7 @@ SessionStorageUtil = {
 		SessionStorageUtil.set(`${key}_${UrlUtil.getCurrentPage()}`, value);
 	},
 
-	set (key, value) {
+	set(key, value) {
 		SessionStorageUtil.getStorage().setItem(key, JSON.stringify(value));
 	},
 
@@ -5666,7 +5699,7 @@ SessionStorageUtil = {
 		return SessionStorageUtil.get(`${key}_${UrlUtil.getCurrentPage()}`);
 	},
 
-	get (key) {
+	get(key) {
 		const rawOut = SessionStorageUtil.getStorage().getItem(key);
 		if (rawOut && rawOut !== "undefined" && rawOut !== "null") return JSON.parse(rawOut);
 		return null;
@@ -5676,7 +5709,7 @@ SessionStorageUtil = {
 		SessionStorageUtil.remove(`${key}_${UrlUtil.getCurrentPage()}`)
 	},
 
-	remove (key) {
+	remove(key) {
 		SessionStorageUtil.getStorage().removeItem(key);
 	}
 };
@@ -5699,7 +5732,7 @@ BrewUtil = {
 	 * @param [options.sourceFilter] Source filter.
 	 * @param [options.pHandleBrew] Brew handling function.
 	 */
-	bind (options) {
+	bind(options) {
 		// provide ref to List.js instance
 		if (options.list) BrewUtil._lists = [options.list];
 		else if (options.lists) BrewUtil._lists = options.lists;
@@ -5710,13 +5743,13 @@ BrewUtil = {
 		if (options.pHandleBrew !== undefined) this._pHandleBrew = options.pHandleBrew;
 	},
 
-	async pAddBrewData () {
+	async pAddBrewData() {
 		if (BrewUtil.homebrew) {
 			return BrewUtil.homebrew;
 		} else {
 			try {
 				const homebrew = await StorageUtil.pGet(HOMEBREW_STORAGE) || {};
-				BrewUtil.homebrewMeta = StorageUtil.syncGet(HOMEBREW_META_STORAGE) || {sources: []};
+				BrewUtil.homebrewMeta = StorageUtil.syncGet(HOMEBREW_META_STORAGE) || { sources: [] };
 				BrewUtil.homebrewMeta.sources = BrewUtil.homebrewMeta.sources || [];
 
 				BrewUtil.homebrew = homebrew;
@@ -5730,7 +5763,7 @@ BrewUtil = {
 		}
 	},
 
-	async pPurgeBrew (error) {
+	async pPurgeBrew(error) {
 		JqueryUtil.doToast({
 			content: "Error when loading homebrew! Purged homebrew data. (See the log for more information.)",
 			type: "danger"
@@ -5740,11 +5773,11 @@ BrewUtil = {
 		BrewUtil.homebrew = null;
 		window.location.hash = "";
 		BrewUtil.homebrew = {};
-		BrewUtil.homebrewMeta = {sources: []};
+		BrewUtil.homebrewMeta = { sources: [] };
 		if (error) setTimeout(() => { throw error; });
 	},
 
-	async pAddLocalBrewData (callbackFn = async (d, page) => BrewUtil.pDoHandleBrewJson(d, page, null)) {
+	async pAddLocalBrewData(callbackFn = async (d, page) => BrewUtil.pDoHandleBrewJson(d, page, null)) {
 		if (!IS_VTT && !IS_DEPLOYED) {
 			const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${JSON_HOMEBREW_INDEX}`);
 			// auto-load from `homebrew/`, for custom versions of the site
@@ -5756,7 +5789,7 @@ BrewUtil = {
 		}
 	},
 
-	async _pRenderBrewScreen ($appendTo, $overlay, $window, isModal, getBrewOnClose) {
+	async _pRenderBrewScreen($appendTo, $overlay, $window, isModal, getBrewOnClose) {
 		const page = UrlUtil.getCurrentPage();
 
 		const $topBar = isModal
@@ -5842,7 +5875,7 @@ BrewUtil = {
 				$lst.on("click", (evt) => evt.stopPropagation());
 
 				// populate list
-				function getBrewDirs () {
+				function getBrewDirs() {
 					switch (page) {
 						case UrlUtil.PG_SPELLS: return ["spell"];
 						case UrlUtil.PG_CLASSES: return ["class", "subclass"];
@@ -5872,7 +5905,7 @@ BrewUtil = {
 				}
 
 				let dataList;
-				function fnSort (a, b, o) {
+				function fnSort(a, b, o) {
 					a = dataList[a.ix];
 					b = dataList[b.ix];
 
@@ -5881,8 +5914,8 @@ BrewUtil = {
 					if (o.sortBy === "category") return orFallback(SortUtil.ascSortLower, "_brewCat");
 					if (o.sortBy === "timestamp") return orFallback(SortUtil.ascSort, "_brewAdded");
 
-					function byName () { return SortUtil.ascSortLower(a._brewName, b._brewName); }
-					function orFallback (func, prop) { return func(a[prop], b[prop]) || byName(); }
+					function byName() { return SortUtil.ascSortLower(a._brewName, b._brewName); }
+					function orFallback(func, prop) { return func(a[prop], b[prop]) || byName(); }
 				}
 
 				const timestamps = await DataUtil.brew.pLoadTimestamps();
@@ -5893,8 +5926,8 @@ BrewUtil = {
 				})();
 
 				(async () => {
-					const toLoads = getBrewDirs().map(it => ({url: DataUtil.brew.getDirUrl(it), _cat: BrewUtil._pRenderBrewScreen_dirToCat(it)}));
-					if (collectionFiles.length) toLoads.push({url: DataUtil.brew.getDirUrl("collection"), _collection: true, _cat: "collection"});
+					const toLoads = getBrewDirs().map(it => ({ url: DataUtil.brew.getDirUrl(it), _cat: BrewUtil._pRenderBrewScreen_dirToCat(it) }));
+					if (collectionFiles.length) toLoads.push({ url: DataUtil.brew.getDirUrl("collection"), _collection: true, _cat: "collection" });
 
 					const jsonStack = (await Promise.all(toLoads.map(async toLoad => {
 						const json = await DataUtil.loadJSON(toLoad.url);
@@ -5996,7 +6029,7 @@ BrewUtil = {
 		};
 	},
 
-	_pRenderBrewScreen_makeInnerOverlay ($appendTo, $overlay, cbClose) {
+	_pRenderBrewScreen_makeInnerOverlay($appendTo, $overlay, cbClose) {
 		$overlay.css("background", "transparent");
 		const $overlay2 = $(`<div class="homebrew-overlay"/>`);
 		$overlay2.on("click", () => {
@@ -6008,7 +6041,7 @@ BrewUtil = {
 		return $overlay2;
 	},
 
-	async _pRenderBrewScreen_pDeleteSource ($appendTo, $overlay, $brewList, source, doConfirm, isAllSources) {
+	async _pRenderBrewScreen_pDeleteSource($appendTo, $overlay, $brewList, source, doConfirm, isAllSources) {
 		if (doConfirm && !window.confirm(`Are you sure you want to remove all homebrew${!isAllSources ? ` with${source ? ` source "${Parser.sourceJsonToFull(source)}"` : `out a source`}` : ""}?`)) return;
 
 		const vetoolsSourceSet = new Set(BrewUtil._getActiveVetoolsSources().map(it => it.json));
@@ -6033,8 +6066,8 @@ BrewUtil = {
 		if (BrewUtil._filterBox) BrewUtil._filterBox.fireChangeEvent();
 	},
 
-	async _pRenderBrewScreen_pRefreshBrewList ($appendTo, $overlay, $brewList) {
-		function showSourceManager (source, $overlay2, showAll) {
+	async _pRenderBrewScreen_pRefreshBrewList($appendTo, $overlay, $brewList) {
+		function showSourceManager(source, $overlay2, showAll) {
 			const $wrpBtnDel = $(`<h4 class="split"><span>View/Manage ${source ? `Source Contents: ${Parser.sourceJsonToFull(source)}` : showAll ? "Entries from All Sources" : `Entries with No Source`}</span></h4>`);
 			const $cbAll = $(`<input type="checkbox">`);
 			const $ulRows = $$`<ul class="list"/>`;
@@ -6057,7 +6090,7 @@ BrewUtil = {
 			let list;
 
 			// populate list
-			function populateList () {
+			function populateList() {
 				$ulRows.empty();
 
 				list = new List({
@@ -6066,7 +6099,7 @@ BrewUtil = {
 					fnSort: SortUtil.listSort
 				});
 
-				function mapCategoryEntry (cat, bru) {
+				function mapCategoryEntry(cat, bru) {
 					const out = {};
 					out.name = bru.name;
 					out.uniqueId = bru.uniqueId;
@@ -6167,7 +6200,7 @@ BrewUtil = {
 			const $wrpList = $(`<ul class="list-display-only brew-list brew-list--target"></ul>`);
 			const $ulGroup = $(`<ul class="list-display-only brew-list brew-list--groups no-shrink" style="height: initial;"></ul>`);
 
-			const list = new List({$iptSearch, $wrpList, isUseJquery: true});
+			const list = new List({ $iptSearch, $wrpList, isUseJquery: true });
 
 			const $lst = $$`
 				<div class="listcontainer flex-col h-100">
@@ -6267,7 +6300,7 @@ BrewUtil = {
 				const $row = $(`<li class="row manbrew__row">
 					<span class="col-10 manbrew__col--tall source manbrew__source text-right"><i>${fullText}</i></span>
 				</li>`);
-				createButtons({[modeProp]: true}, $row);
+				createButtons({ [modeProp]: true }, $row);
 				$ulGroup.append($row);
 			};
 			createGroupRow("Entries From All Sources", "_all");
@@ -6278,7 +6311,7 @@ BrewUtil = {
 		}
 	},
 
-	_pRenderBrewScreen_dirToCat (dir) {
+	_pRenderBrewScreen_dirToCat(dir) {
 		if (!dir) return "";
 		else if (BrewUtil._STORABLE.includes(dir)) return dir;
 		else {
@@ -6291,7 +6324,7 @@ BrewUtil = {
 		}
 	},
 
-	_pRenderBrewScreen_getDisplayCat (cat, isManager) {
+	_pRenderBrewScreen_getDisplayCat(cat, isManager) {
 		if (cat === "variantrule") return "Variant Rule";
 		if (cat === "legendaryGroup") return "Legendary Group";
 		if (cat === "optionalfeature") return "Optional Feature";
@@ -6320,8 +6353,8 @@ BrewUtil = {
 		setTimeout(() => $ele.html(cached).addClass("rd__wrp-loadbrew--ready").attr("title", cachedTitle), 500);
 	},
 
-	async _pDoRemove (arrName, uniqueId, isChild) {
-		function getIndex (arrName, uniqueId, isChild) {
+	async _pDoRemove(arrName, uniqueId, isChild) {
+		function getIndex(arrName, uniqueId, isChild) {
 			return BrewUtil.homebrew[arrName].findIndex(it => isChild ? it.parentUniqueId : it.uniqueId === uniqueId);
 		}
 
@@ -6334,7 +6367,7 @@ BrewUtil = {
 		}
 	},
 
-	_getPDeleteFunction (category) {
+	_getPDeleteFunction(category) {
 		switch (category) {
 			case "spell":
 			case "monster":
@@ -6368,16 +6401,16 @@ BrewUtil = {
 			case "adventure":
 			case "book": return BrewUtil._genPDeleteGenericBookBrew(category);
 			case "adventureData":
-			case "bookData": return () => {}; // Do nothing, handled by deleting the associated book/adventure
+			case "bookData": return () => { }; // Do nothing, handled by deleting the associated book/adventure
 			default: throw new Error(`No homebrew delete function defined for category ${category}`);
 		}
 	},
 
-	async _pDeleteClassBrew (uniqueId) {
+	async _pDeleteClassBrew(uniqueId) {
 		await BrewUtil._pDoRemove("class", uniqueId);
 	},
 
-	async _pDeleteSubclassBrew (uniqueId) {
+	async _pDeleteSubclassBrew(uniqueId) {
 		let subClass;
 		let index = 0;
 		for (; index < BrewUtil.homebrew.subclass.length; ++index) {
@@ -6403,13 +6436,13 @@ BrewUtil = {
 		}
 	},
 
-	_genPDeleteGenericBrew (category) {
+	_genPDeleteGenericBrew(category) {
 		return async (uniqueId) => {
 			await BrewUtil._pDoRemove(category, uniqueId);
 		};
 	},
 
-	_genPDeleteGenericBookBrew (category) {
+	_genPDeleteGenericBookBrew(category) {
 		return async (uniqueId) => {
 			await BrewUtil._pDoRemove(category, uniqueId);
 			await BrewUtil._pDoRemove(`${category}Data`, uniqueId, true);
@@ -6431,14 +6464,14 @@ BrewUtil = {
 		BrewUtil._pRenderBrewScreen($body, $overlay, $window, true);
 	},
 
-	async pAddEntry (prop, obj) {
+	async pAddEntry(prop, obj) {
 		BrewUtil._mutUniqueId(obj);
 		(BrewUtil.homebrew[prop] = BrewUtil.homebrew[prop] || []).push(obj);
 		await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
 		return BrewUtil.homebrew[prop].length - 1;
 	},
 
-	async pRemoveEntry (prop, obj) {
+	async pRemoveEntry(prop, obj) {
 		const ix = (BrewUtil.homebrew[prop] = BrewUtil.homebrew[prop] || []).findIndex(it => it.uniqueId === obj.uniqueId);
 		if (~ix) {
 			BrewUtil.homebrew[prop].splice(ix, 1);
@@ -6446,11 +6479,11 @@ BrewUtil = {
 		} else throw new Error(`Could not find object with ID "${obj.uniqueId}" in "${prop}" list`);
 	},
 
-	getEntryIxByName (prop, obj) {
+	getEntryIxByName(prop, obj) {
 		return (BrewUtil.homebrew[prop] = BrewUtil.homebrew[prop] || []).findIndex(it => it.name === obj.name && it.source === obj.source);
 	},
 
-	async pUpdateEntryByIx (prop, ix, obj) {
+	async pUpdateEntryByIx(prop, ix, obj) {
 		if (~ix && ix < BrewUtil.homebrew[prop].length) {
 			BrewUtil._mutUniqueId(obj);
 			BrewUtil.homebrew[prop].splice(ix, 1, obj);
@@ -6458,15 +6491,15 @@ BrewUtil = {
 		} else throw new Error(`Index "${ix}" was not valid!`);
 	},
 
-	_mutUniqueId (obj) {
+	_mutUniqueId(obj) {
 		delete obj.uniqueId; // avoid basing the hash on the previous hash
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
 	_DIRS: ["action", "adventure", "background", "book", "class", "condition", "creature", "deity", "disease", "feat", "hazard", "item", "magicvariant", "object", "optionalfeature", "psionic", "race", "reward", "spell", "subclass", "table", "trap", "variantrule", "vehicle"],
 	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "raceFluff", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle", "action"],
-	async pDoHandleBrewJson (json, page, pFuncRefresh) {
-		function storePrep (arrName) {
+	async pDoHandleBrewJson(json, page, pFuncRefresh) {
+		function storePrep(arrName) {
 			if (json[arrName]) {
 				json[arrName].forEach(it => BrewUtil._mutUniqueId(it));
 			} else json[arrName] = [];
@@ -6492,7 +6525,7 @@ BrewUtil = {
 		});
 
 		// store
-		async function pCheckAndAdd (prop) {
+		async function pCheckAndAdd(prop) {
 			if (!BrewUtil.homebrew[prop]) BrewUtil.homebrew[prop] = [];
 			if (IS_DEPLOYED) {
 				// in production mode, skip any existing brew
@@ -6525,10 +6558,10 @@ BrewUtil = {
 			}
 		}
 
-		function checkAndAddMetaGetNewSources () {
+		function checkAndAddMetaGetNewSources() {
 			const areNew = [];
 			if (json._meta) {
-				if (!BrewUtil.homebrewMeta) BrewUtil.homebrewMeta = {sources: []};
+				if (!BrewUtil.homebrewMeta) BrewUtil.homebrewMeta = { sources: [] };
 
 				Object.keys(json._meta).forEach(k => {
 					switch (k) {
@@ -6611,7 +6644,7 @@ BrewUtil = {
 				if (toSet._totals.yes || toSet._totals.no) {
 					if (page === UrlUtil.PG_CLASSES) toSet["Core"] = 1;
 					else sourcesToAdd.forEach(src => toSet[src.json] = 1);
-					BrewUtil._filterBox.setFromValues({Source: toSet});
+					BrewUtil._filterBox.setFromValues({ Source: toSet });
 				}
 			}
 			if (BrewUtil._filterBox) BrewUtil._filterBox.fireChangeEvent();
@@ -6622,14 +6655,14 @@ BrewUtil = {
 		$(`#${id}`).on("click", () => BrewUtil.manageBrew());
 	},
 
-	_getBrewCategories () {
+	_getBrewCategories() {
 		return Object.keys(BrewUtil.homebrew).filter(it => !it.startsWith("_"));
 	},
 
-	_buildSourceCache () {
-		function doBuild () {
+	_buildSourceCache() {
+		function doBuild() {
 			if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.sources) {
-				BrewUtil.homebrewMeta.sources.forEach(src => BrewUtil._sourceCache[src.json] = ({...src}));
+				BrewUtil.homebrewMeta.sources.forEach(src => BrewUtil._sourceCache[src.json] = ({ ...src }));
 			}
 		}
 
@@ -6647,43 +6680,43 @@ BrewUtil = {
 		}
 	},
 
-	_resetSourceCache () {
+	_resetSourceCache() {
 		BrewUtil._sourceCache = null;
 	},
 
-	removeJsonSource (source) {
+	removeJsonSource(source) {
 		BrewUtil._resetSourceCache();
 		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json === source);
 		if (~ix) BrewUtil.homebrewMeta.sources.splice(ix, 1);
 		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
 	},
 
-	getJsonSources () {
+	getJsonSources() {
 		BrewUtil._buildSourceCache();
 		return BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.sources ? BrewUtil.homebrewMeta.sources : [];
 	},
 
-	hasSourceJson (source) {
+	hasSourceJson(source) {
 		BrewUtil._buildSourceCache();
 		return !!BrewUtil._sourceCache[source];
 	},
 
-	sourceJsonToFull (source) {
+	sourceJsonToFull(source) {
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].full || source : source;
 	},
 
-	sourceJsonToAbv (source) {
+	sourceJsonToAbv(source) {
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].abbreviation || source : source;
 	},
 
-	sourceJsonToSource (source) {
+	sourceJsonToSource(source) {
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source] : null;
 	},
 
-	sourceJsonToStyle (source) {
+	sourceJsonToStyle(source) {
 		BrewUtil._buildSourceCache();
 		if (BrewUtil._sourceCache[source] && BrewUtil._sourceCache[source].color) {
 			const validColor = BrewUtil.getValidColor(BrewUtil._sourceCache[source].color);
@@ -6692,12 +6725,12 @@ BrewUtil = {
 		} else return "";
 	},
 
-	getValidColor (color) {
+	getValidColor(color) {
 		// Prevent any injection shenanigans
 		return color.replace(/[^a-fA-F0-9]/g, "").slice(0, 8);
 	},
 
-	addSource (source) {
+	addSource(source) {
 		BrewUtil._resetSourceCache();
 		const exists = BrewUtil.homebrewMeta.sources.some(it => it.json === source.json);
 		if (exists) throw new Error(`Source "${source.json}" already exists!`);
@@ -6705,7 +6738,7 @@ BrewUtil = {
 		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
 	},
 
-	updateSource (source) {
+	updateSource(source) {
 		BrewUtil._resetSourceCache();
 		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json === source.json);
 		if (!~ix) throw new Error(`Source "${source.json}" does not exist!`);
@@ -6717,7 +6750,7 @@ BrewUtil = {
 		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
 	},
 
-	_getActiveVetoolsSources () {
+	_getActiveVetoolsSources() {
 		if (BrewUtil.homebrew === null) throw new Error(`Homebrew was not initialized!`);
 
 		const allActiveSources = new Set();
@@ -6732,7 +6765,7 @@ BrewUtil = {
 	/**
 	 * Get data in a format similar to the main search index
 	 */
-	async pGetSearchIndex () {
+	async pGetSearchIndex() {
 		BrewUtil._buildSourceCache();
 		const indexer = new Omnidexer(Omnisearch.highestId + 1);
 
@@ -6757,7 +6790,7 @@ BrewUtil = {
 		return Omnidexer.decompressIndex(indexer.getIndex());
 	},
 
-	async pGetAdditionalSearchIndices (highestId, addiProp) {
+	async pGetAdditionalSearchIndices(highestId, addiProp) {
 		BrewUtil._buildSourceCache();
 		const indexer = new Omnidexer(highestId + 1);
 
@@ -6770,7 +6803,7 @@ BrewUtil = {
 					.filter(ti => ti.additionalIndexes && (BrewUtil.homebrew[ti.listProp] || []).length)
 					.map(ti => {
 						return Promise.all(Object.entries(ti.additionalIndexes).filter(([prop]) => prop === addiProp).map(async ([prop, pGetIndex]) => {
-							const toIndex = await pGetIndex(indexer, {[ti.listProp]: BrewUtil.homebrew[ti.listProp]});
+							const toIndex = await pGetIndex(indexer, { [ti.listProp]: BrewUtil.homebrew[ti.listProp] });
 							toIndex.forEach(add => indexer.pushToIndex(add));
 						}));
 					}));
@@ -6779,7 +6812,7 @@ BrewUtil = {
 		return Omnidexer.decompressIndex(indexer.getIndex());
 	},
 
-	async pGetAlternateSearchIndices (highestId, altProp) {
+	async pGetAlternateSearchIndices(highestId, altProp) {
 		BrewUtil._buildSourceCache();
 		const indexer = new Omnidexer(highestId + 1);
 
@@ -6794,7 +6827,7 @@ BrewUtil = {
 						Object.entries(ti.alternateIndexes)
 							.filter(([prop]) => prop === altProp)
 							.map(async ([prop, pGetIndex]) => {
-								indexer.addToIndex(ti, BrewUtil.homebrew, {alt: ti.alternateIndexes[prop]})
+								indexer.addToIndex(ti, BrewUtil.homebrew, { alt: ti.alternateIndexes[prop] })
 							});
 					});
 			});
@@ -6803,7 +6836,7 @@ BrewUtil = {
 	},
 
 	__pPersistHomebrewDebounced: null,
-	_persistHomebrewDebounced () {
+	_persistHomebrewDebounced() {
 		if (BrewUtil.__pPersistHomebrewDebounced == null) {
 			BrewUtil.__pPersistHomebrewDebounced = MiscUtil.debounce(() => StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew), 500);
 		}
@@ -6966,7 +6999,7 @@ CryptUtil = {
 		return x.join('');
 	},
 
-	hex2Dec (hex) {
+	hex2Dec(hex) {
 		return parseInt(`0x${hex}`);
 	},
 
@@ -6979,7 +7012,7 @@ CryptUtil = {
 	 * @param obj An object to hash.
 	 * @return {*} An integer hashcode for the object.
 	 */
-	hashCode (obj) {
+	hashCode(obj) {
 		if (typeof obj === "string") {
 			if (!obj) return 0;
 			let h = 0;
@@ -6989,7 +7022,7 @@ CryptUtil = {
 		else throw new Error(`No hashCode implementation for ${obj}`);
 	},
 
-	uid () { // https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+	uid() { // https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
 		if (RollerUtil.isCrypto()) {
 			return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
 		} else {
@@ -7009,32 +7042,32 @@ CryptUtil = {
 // COLLECTIONS =========================================================================================================
 CollectionUtil = {
 	ObjectSet: class ObjectSet {
-		constructor () {
+		constructor() {
 			this.map = new Map();
 			this[Symbol.iterator] = this.values;
 		}
 		// Each inserted element has to implement _toIdString() method that returns a string ID.
 		// Two objects are considered equal if their string IDs are equal.
-		add (item) {
+		add(item) {
 			this.map.set(item._toIdString(), item);
 		}
 
-		values () {
+		values() {
 			return this.map.values();
 		}
 	},
 
-	setEq (a, b) {
+	setEq(a, b) {
 		if (a.size !== b.size) return false;
 		for (const it of a) if (!b.has(it)) return false;
 		return true;
 	},
 
-	setDiff (set1, set2) {
+	setDiff(set1, set2) {
 		return new Set([...set1].filter(it => !set2.has(it)));
 	},
 
-	deepEquals (a, b) {
+	deepEquals(a, b) {
 		if (CollectionUtil._eq_sameValueZeroEqual(a, b)) return true;
 		if (a && b && typeof a === "object" && typeof b === "object") {
 			if (CollectionUtil._eq_isPlainObject(a) && CollectionUtil._eq_isPlainObject(b)) return CollectionUtil._eq_areObjectsEqual(a, b);
@@ -7053,9 +7086,9 @@ CollectionUtil = {
 	// eslint-disable-next-line no-self-compare
 	_eq_sameValueZeroEqual: (a, b) => a === b || (a !== a && b !== b),
 	_eq_isPlainObject: (value) => value.constructor === Object || value.constructor == null,
-	_eq_areObjectsEqual (a, b) {
+	_eq_areObjectsEqual(a, b) {
 		const keysA = Object.keys(a);
-		const {length} = keysA;
+		const { length } = keysA;
 		if (Object.keys(b).length !== length) return false;
 		for (let i = 0; i < length; i++) {
 			if (!b.hasOwnProperty(keysA[i])) return false;
@@ -7063,8 +7096,8 @@ CollectionUtil = {
 		}
 		return true;
 	},
-	_eq_areArraysEqual (a, b) {
-		const {length} = a;
+	_eq_areArraysEqual(a, b) {
+		const { length } = a;
 		if (b.length !== length) return false;
 		for (let i = 0; i < length; i++) if (!CollectionUtil.deepEquals(a[i], b[i])) return false;
 		return true;
@@ -7134,7 +7167,7 @@ Array.prototype.getNext = Array.prototype.getNext || function (curVal) {
  * @param doShowEmpty whether or not the empty table should be visible (useful if the population function is guaranteed to display something)
  * @constructor
  */
-function BookModeView (hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNumShown, doShowEmpty) {
+function BookModeView(hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNumShown, doShowEmpty) {
 	this.hashKey = hashKey;
 	this.$openBtn = $openBtn;
 	this.noneVisibleMsg = noneVisibleMsg;
@@ -7208,7 +7241,7 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNu
 ExcludeUtil = {
 	_excludes: null,
 
-	async pInitialise () {
+	async pInitialise() {
 		try {
 			ExcludeUtil._excludes = await StorageUtil.pGet(EXCLUDES_STORAGE) || [];
 		} catch (e) {
@@ -7227,25 +7260,25 @@ ExcludeUtil = {
 		}
 	},
 
-	getList () {
+	getList() {
 		return ExcludeUtil._excludes || [];
 	},
 
-	async pSetList (toSet) {
+	async pSetList(toSet) {
 		ExcludeUtil._excludes = toSet;
 		await ExcludeUtil._pSave();
 	},
 
 	_excludeCount: 0,
-	isExcluded (name, category, source) {
+	isExcluded(name, category, source) {
 		if (!ExcludeUtil._excludes || !ExcludeUtil._excludes.length) return false;
 		source = source.source || source;
 		const out = !!ExcludeUtil._excludes.find(row => (row.source === "*" || row.source === source) && (row.category === "*" || row.category === category) && (row.name === "*" || row.name === name));
-		if (out) ++ExcludeUtil._excludeCount;
+		if (out)++ExcludeUtil._excludeCount;
 		return out;
 	},
 
-	checkShowAllExcluded (list, $pagecontent) {
+	checkShowAllExcluded(list, $pagecontent) {
 		if ((!list.length && ExcludeUtil._excludeCount) || (list.length > 0 && list.length === ExcludeUtil._excludeCount)) {
 			$pagecontent.html(`
 				<tr><th class="border" colspan="6"></th></tr>
@@ -7255,16 +7288,16 @@ ExcludeUtil = {
 		}
 	},
 
-	async pAddExclude (name, category, source) {
+	async pAddExclude(name, category, source) {
 		if (!ExcludeUtil._excludes.find(row => row.source === source && row.category === category && row.name === name)) {
-			ExcludeUtil._excludes.push({name, category, source});
+			ExcludeUtil._excludes.push({ name, category, source });
 			await ExcludeUtil._pSave();
 			return true;
 		}
 		return false;
 	},
 
-	async pRemoveExclude (name, category, source) {
+	async pRemoveExclude(name, category, source) {
 		const ix = ExcludeUtil._excludes.findIndex(row => row.source === source && row.category === category && row.name === name);
 		if (~ix) {
 			ExcludeUtil._excludes.splice(ix, 1);
@@ -7272,11 +7305,11 @@ ExcludeUtil = {
 		}
 	},
 
-	async _pSave () {
+	async _pSave() {
 		return StorageUtil.pSet(EXCLUDES_STORAGE, ExcludeUtil._excludes);
 	},
 
-	async pResetExcludes () {
+	async pResetExcludes() {
 		ExcludeUtil._excludes = [];
 		await ExcludeUtil._pSave();
 	}
@@ -7284,7 +7317,7 @@ ExcludeUtil = {
 
 // ENCOUNTERS ==========================================================================================================
 EncounterUtil = {
-	async pGetInitialState () {
+	async pGetInitialState() {
 		if (await EncounterUtil._pHasSavedStateLocal()) {
 			if (await EncounterUtil._hasSavedStateUrl()) {
 				return {
@@ -7300,11 +7333,11 @@ EncounterUtil = {
 		} else return null;
 	},
 
-	_hasSavedStateUrl () {
+	_hasSavedStateUrl() {
 		return window.location.hash.length && Hist.getSubHash(EncounterUtil.SUB_HASH_PREFIX) != null;
 	},
 
-	_getSavedStateUrl () {
+	_getSavedStateUrl() {
 		let out = null;
 		try {
 			out = JSON.parse(decodeURIComponent(Hist.getSubHash(EncounterUtil.SUB_HASH_PREFIX)));
@@ -7317,11 +7350,11 @@ EncounterUtil = {
 		return out;
 	},
 
-	async _pHasSavedStateLocal () {
+	async _pHasSavedStateLocal() {
 		return !!StorageUtil.pGet(ENCOUNTER_STORAGE);
 	},
 
-	async _pGetSavedStateLocal () {
+	async _pGetSavedStateLocal() {
 		try {
 			return await StorageUtil.pGet(ENCOUNTER_STORAGE);
 		} catch (e) {
@@ -7334,16 +7367,16 @@ EncounterUtil = {
 		}
 	},
 
-	async pDoSaveState (toSave) {
+	async pDoSaveState(toSave) {
 		StorageUtil.pSet(ENCOUNTER_STORAGE, toSave);
 	},
 
-	async pGetSavedState () {
+	async pGetSavedState() {
 		const saved = await StorageUtil.pGet(EncounterUtil.SAVED_ENCOUNTER_SAVE_LOCATION);
 		return saved || {};
 	},
 
-	getEncounterName (encounter) {
+	getEncounterName(encounter) {
 		if (encounter.l && encounter.l.items && encounter.l.items.length) {
 			const largestCount = encounter.l.items.sort((a, b) => SortUtil.ascSort(Number(b.c), Number(a.c)))[0];
 			const name = decodeURIComponent(largestCount.h.split(HASH_LIST_SEP)[0]).toTitleCase();
@@ -7356,40 +7389,40 @@ EncounterUtil.SAVED_ENCOUNTER_SAVE_LOCATION = "ENCOUNTER_SAVED_STORAGE";
 
 // REACTOR =============================================================================================================
 class Reactor {
-	constructor () {
+	constructor() {
 		this.rvents = {};
 	}
 
-	_registerEvent (eventName) {
+	_registerEvent(eventName) {
 		this.rvents[eventName] = new ReactorEvent(eventName);
 	}
 
-	fire (eventName, eventArgs) {
+	fire(eventName, eventArgs) {
 		if (this.rvents[eventName]) this.rvents[eventName].callbacks.forEach(callback => callback(eventArgs));
 	}
 
-	on (eventName, callback) {
+	on(eventName, callback) {
 		if (!this.rvents[eventName]) this._registerEvent(eventName);
 		this.rvents[eventName]._registerCallback(callback);
 	}
 
-	off (eventName, callback) {
+	off(eventName, callback) {
 		if (!this.rvents[eventName]) return;
 		this.rvents[eventName]._unregisterCallback(callback);
 	}
 }
 
 class ReactorEvent {
-	constructor (name) {
+	constructor(name) {
 		this.name = name;
 		this.callbacks = [];
 	}
 
-	_registerCallback (callback) {
+	_registerCallback(callback) {
 		this.callbacks.push(callback);
 	}
 
-	_unregisterCallback (callback) {
+	_unregisterCallback(callback) {
 		const ix = this.callbacks.indexOf(callback);
 		this.callbacks.splice(ix, 1);
 	}
@@ -7397,12 +7430,12 @@ class ReactorEvent {
 
 // TOKENS ==============================================================================================================
 class TokenUtil {
-	static imgError (x) {
+	static imgError(x) {
 		if (x) $(x).parent().remove();
 		$(`.rnd-name`).find(`span.stats-source`).css("margin-right", "0");
 	}
 
-	static handleStatblockScroll (event, ele) {
+	static handleStatblockScroll(event, ele) {
 		$(`#token_image`)
 			.toggle(ele.scrollTop < 32)
 			.css({
@@ -7470,17 +7503,17 @@ _Donate = {
 	*/
 
 	// region Test code, please ignore
-	cycleLeader (ele) {
-		const modes = [{width: 970, height: 90}, {width: 970, height: 250}, {width: 320, height: 50}, {width: 728, height: 90}];
+	cycleLeader(ele) {
+		const modes = [{ width: 970, height: 90 }, { width: 970, height: 250 }, { width: 320, height: 50 }, { width: 728, height: 90 }];
 		_Donate._cycleMode(ele, modes);
 	},
 
-	cycleSide (ele) {
-		const modes = [{width: 300, height: 250}, {width: 300, height: 600}];
+	cycleSide(ele) {
+		const modes = [{ width: 300, height: 250 }, { width: 300, height: 600 }];
 		_Donate._cycleMode(ele, modes);
 	},
 
-	_cycleMode (ele, modes) {
+	_cycleMode(ele, modes) {
 		const $e = $(ele);
 		const pos = $e.data("pos") || 0;
 		const mode = modes[pos];
