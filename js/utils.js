@@ -3503,7 +3503,8 @@ ListUtil = {
 			.on('click', async evt => {
 				let name = listName + '---' + decodeURIComponent(window.location.href.split('#')[1]).replace(/\s/g, '');
 				ListUtil._downloadRenderedHTMLImageFromSelector('#pagecontent', name);
-			});
+			})
+			.attr('title', 'Download Item Card Image');
 	},
 
 	doJsonLoad(json, additive, funcPreload) {
