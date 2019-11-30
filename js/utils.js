@@ -3498,8 +3498,7 @@ ListUtil = {
 	},
 	bindImageDownloadButton(listName) {
 		const $btn = ListUtil.getOrTabRightButton('btn-download-image', 'download-alt');
-		$btn.addClass('btn-copy-effect')
-			.off('click')
+		$btn.off('click')
 			.on('click', async evt => {
 				let name = listName + '---' + decodeURIComponent(window.location.href.split('#')[1]).replace(/\s/g, '');
 				ListUtil._downloadRenderedHTMLImageFromSelector('#pagecontent', name);
