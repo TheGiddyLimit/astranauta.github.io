@@ -1,5 +1,7 @@
 "use strict";
 
+import Peer from "peerjs"
+
 /*
 Utilities for creating peer-to-peer connections.
 Depends on lib/lzma.js for compression.
@@ -44,146 +46,146 @@ const STUN_SERVERS = [
 	`stun4.l.google.com:19302`
 ];
 
-class Peer {
-	constructor (role) {
-		this._role = role;
+// class Peer {
+// 	constructor (role) {
+// 		this._role = role;
 
-		this._ctx = null;
-		this._isActive = false;
-		this._isClosed = false;
+// 		this._ctx = null;
+// 		this._isActive = false;
+// 		this._isClosed = false;
 
-		this._pChannel = null;
-	}
+// 		this._pChannel = null;
+// 	}
 
-	get isActive () { return this._isActive; }
-	get isClosed () { return this._isClosed; }
+// 	get isActive () { return this._isActive; }
+// 	get isClosed () { return this._isClosed; }
 
-	_createPeerConnection (msgHandler, errHandler) {
-		errHandler = errHandler || (evt => setTimeout(() => { throw new Error(evt); }));
+// 	_createPeerConnection (msgHandler, errHandler) {
+// 		errHandler = errHandler || (evt => setTimeout(() => { throw new Error(evt); }));
 
-		const thisMsgHandler = msgHandler.bind(this);
-		const thisErrHandler = errHandler.bind(this);
+// 		const thisMsgHandler = msgHandler.bind(this);
+// 		const thisErrHandler = errHandler.bind(this);
 
-		const pc = new RTCPeerConnection({iceServers: STUN_SERVERS.map(url => ({url: `stun:${url}`}))});
+// 		const pc = new RTCPeerConnection({iceServers: STUN_SERVERS.map(url => ({url: `stun:${url}`}))});
 
-		this._pChannel = new Promise(resolve => {
-			pc.addEventListener("datachannel", evt => {
-				evt.channel.addEventListener("message", evt => thisMsgHandler(JSON.parse(evt.data)));
+// 		this._pChannel = new Promise(resolve => {
+// 			pc.addEventListener("datachannel", evt => {
+// 				evt.channel.addEventListener("message", evt => thisMsgHandler(JSON.parse(evt.data)));
 
-				// only closes local side of the connection
-				evt.channel.addEventListener("close", () => {
-					this._ctx = null;
-					this._isActive = false;
-					this._isClosed = true;
-				});
+// 				// only closes local side of the connection
+// 				evt.channel.addEventListener("close", () => {
+// 					this._ctx = null;
+// 					this._isActive = false;
+// 					this._isClosed = true;
+// 				});
 
-				evt.channel.addEventListener("error", evt => thisErrHandler(evt));
+// 				evt.channel.addEventListener("error", evt => thisErrHandler(evt));
 
-				resolve();
-			});
-		});
+// 				resolve();
+// 			});
+// 		});
 
-		const dc = pc.createDataChannel(this._role);
-		return {pc, dc};
-	}
+// 		const dc = pc.createDataChannel(this._role);
+// 		return {pc, dc};
+// 	}
 
-	close () {
-		if (this._ctx) this._ctx.pc.close();
-		else {
-			this._isActive = false;
-			this._isClosed = true;
-		}
-	}
+// 	close () {
+// 		if (this._ctx) this._ctx.pc.close();
+// 		else {
+// 			this._isActive = false;
+// 			this._isClosed = true;
+// 		}
+// 	}
 
-	/**
-	 * STAGE 5: Send messages.
-	 *
-	 * @param toSend Data to be sent.
-	 */
-	async sendMessage (toSend) {
-		if (!this._isActive) throw new Error(`Connection is not active!`);
+// 	/**
+// 	 * STAGE 5: Send messages.
+// 	 *
+// 	 * @param toSend Data to be sent.
+// 	 */
+// 	async sendMessage (toSend) {
+// 		if (!this._isActive) throw new Error(`Connection is not active!`);
 
-		const packet = {
-			head: {
-				type: this._role,
-				version: "0.0.1"
-			},
-			data: toSend
-		};
+// 		const packet = {
+// 			head: {
+// 				type: this._role,
+// 				version: "0.0.1"
+// 			},
+// 			data: toSend
+// 		};
 
-		this._ctx.dc.send(JSON.stringify(packet));
-	}
-}
+// 		this._ctx.dc.send(JSON.stringify(packet));
+// 	}
+// }
 
-class PeerServer extends Peer {
-	constructor () {
-		super("server");
-	}
+// class PeerServer extends Peer {
+// 	constructor () {
+// 		super("server");
+// 	}
 
-	/**
-	 * STAGE 1: Make offer.
-	 *
-	 * @param messageHandler Function which handles received messages.
-	 * @param errorHandler Function which handles errors.
-	 * @return {Promise<String>} session description to be provided (manually, e.g. via Discord) to a client
-	 */
-	async pMakeOffer (messageHandler, errorHandler) {
-		return new Promise((resolve, reject) => {
-			this._ctx = this._createPeerConnection(messageHandler, errorHandler);
+// 	/**
+// 	 * STAGE 1: Make offer.
+// 	 *
+// 	 * @param messageHandler Function which handles received messages.
+// 	 * @param errorHandler Function which handles errors.
+// 	 * @return {Promise<String>} session description to be provided (manually, e.g. via Discord) to a client
+// 	 */
+// 	async pMakeOffer (messageHandler, errorHandler) {
+// 		return new Promise((resolve, reject) => {
+// 			this._ctx = this._createPeerConnection(messageHandler, errorHandler);
 
-			this._ctx.pc.addEventListener("icecandidate", evt => {
-				if (!evt.candidate) resolve(this._ctx.pc.localDescription.sdp);
-			});
+// 			this._ctx.pc.addEventListener("icecandidate", evt => {
+// 				if (!evt.candidate) resolve(this._ctx.pc.localDescription.sdp);
+// 			});
 
-			this._ctx.pc.createOffer()
-				.then(offer => this._ctx.pc.setLocalDescription(offer))
-				.catch(err => reject(err));
-		});
-	}
+// 			this._ctx.pc.createOffer()
+// 				.then(offer => this._ctx.pc.setLocalDescription(offer))
+// 				.catch(err => reject(err));
+// 		});
+// 	}
 
-	/**
-	 * STAGE 4: Accept answer.
-	 *
-	 * @param sdpAnswer
-	 */
-	async pAcceptAnswer (sdpAnswer) {
-		const answer = new RTCSessionDescription({type: "answer", sdp: `${(sdpAnswer || "").trim()}\n`});
-		await this._ctx.pc.setRemoteDescription(answer);
-		await this._pChannel;
-		this._isActive = true;
-	}
-}
+// 	/**
+// 	 * STAGE 4: Accept answer.
+// 	 *
+// 	 * @param sdpAnswer
+// 	 */
+// 	async pAcceptAnswer (sdpAnswer) {
+// 		const answer = new RTCSessionDescription({type: "answer", sdp: `${(sdpAnswer || "").trim()}\n`});
+// 		await this._ctx.pc.setRemoteDescription(answer);
+// 		await this._pChannel;
+// 		this._isActive = true;
+// 	}
+// }
 
-class PeerClient extends Peer {
-	constructor () {
-		super("client");
-	}
+// class PeerClient extends Peer {
+// 	constructor () {
+// 		super("client");
+// 	}
 
-	/**
-	 * STAGE 3: Receive offer, and produce answer.
-	 * @return {Promise<String>} session description to be provided (manually, e.g. via Discord) to a server
-	 */
-	async pReceiveOfferAndGetAnswer (sdpOffer, messageHandler, errorHandler) {
-		return new Promise((resolve, reject) => {
-			this._ctx = this._createPeerConnection(messageHandler, errorHandler);
+// 	/**
+// 	 * STAGE 3: Receive offer, and produce answer.
+// 	 * @return {Promise<String>} session description to be provided (manually, e.g. via Discord) to a server
+// 	 */
+// 	async pReceiveOfferAndGetAnswer (sdpOffer, messageHandler, errorHandler) {
+// 		return new Promise((resolve, reject) => {
+// 			this._ctx = this._createPeerConnection(messageHandler, errorHandler);
 
-			const offer = new RTCSessionDescription({type: "offer", sdp: `${(sdpOffer || "").trim()}\n`});
+// 			const offer = new RTCSessionDescription({type: "offer", sdp: `${(sdpOffer || "").trim()}\n`});
 
-			this._ctx.pc.setRemoteDescription(offer).then(() => {
-				this._ctx.pc.addEventListener("icecandidate", evt => {
-					if (!evt.candidate) {
-						this._isActive = true;
-						resolve(this._ctx.pc.localDescription.sdp);
-					}
-				});
+// 			this._ctx.pc.setRemoteDescription(offer).then(() => {
+// 				this._ctx.pc.addEventListener("icecandidate", evt => {
+// 					if (!evt.candidate) {
+// 						this._isActive = true;
+// 						resolve(this._ctx.pc.localDescription.sdp);
+// 					}
+// 				});
 
-				this._ctx.pc.createAnswer()
-					.then(answer => this._ctx.pc.setLocalDescription(answer))
-					.catch(err => reject(err));
-			});
-		});
-	}
-}
+// 				this._ctx.pc.createAnswer()
+// 					.then(answer => this._ctx.pc.setLocalDescription(answer))
+// 					.catch(err => reject(err));
+// 			});
+// 		});
+// 	}
+// }
 
 // Utilities for easing the process of connecting multiple clients
 class PeerUtil {
@@ -392,6 +394,93 @@ class PeerUtil {
 	static isValidToken (token) {
 		if (!token || typeof token !== "string" || !token.trim()) return false;
 		return !!/{::[^:]+::}/.exec(token);
+	}
+}
+
+
+class NewPeer {
+	constructor (role) {
+		this._role = role;
+		this._id =  null;
+		this._peer = new Peer();
+		this._isActive = false;
+		this._isClosed = false;
+
+		this._pChannel = null;
+		this._peer.on("open", function(id) {
+			this._id = id;
+
+		})
+	}
+
+	get isActive () { return !this._peer.disconnected; }
+	get isDestroyed () { return this._peer.destroyed; }
+
+	close () {
+		if (this._ctx) this._ctx.pc.close();
+		else {
+			this._isActive = false;
+			this._isClosed = true;
+		}
+	}
+
+	/**
+	 * STAGE 5: Send messages.
+	 *
+	 * @param toSend Data to be sent.
+	 */
+	async sendMessage (toSend);
+}
+
+
+class NewServerPeer extends NewPeer {
+	constructor() {
+		super("server");
+		this._server_connections = [];
+		this._peer.on("connection", function(conn) {
+			this._server_connections.push(conn);
+		})
+	}
+
+	async sendMessage(toSend) {
+		if (!this._isActive) throw new Error(`Connection is not active!`);
+
+		const packet = {
+			head: {
+				type: this._role,
+				version: "0.0.2"
+			},
+			data: toSend
+		};
+		this._server_connections.forEach(connection => {
+			connection.send(JSON.stringify(packet));
+		});
+	}
+
+
+}
+
+class NewClientPeer extends NewPeer {
+	constructor() {
+		super("client");
+		this._connection = null;
+	}
+
+	async connectToServer(token) {
+		this._connection = this._peer.connect(token);
+	}
+	
+	async sendMessage(toSend) {
+		if (!this._isActive) throw new Error(`Connection is not active!`);
+
+		const packet = {
+			head: {
+				type: this._role,
+				version: "0.0.2"
+			},
+			data: toSend
+		};
+		this._connection.send(JSON.stringify(packet));
 	}
 }
 PeerUtil.LZMA_HEADER = [93, 0, 0, 1, 0];
