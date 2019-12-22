@@ -188,228 +188,226 @@ const STUN_SERVERS = [
 // }
 
 // Utilities for easing the process of connecting multiple clients
-class PeerUtil {
-	/**
-	 * Convenience wrapper to initialise multiple servers ad produce a textified version of their SDPs, suitable for
-	 *   text transmission.
-	 *
-	 * @param names An array of unique-when-sluggified names to give to each server.
-	 * @param msgHandler One copy used per server.
-	 * @param errHandler One copy used per server.
-	 * @param options An object containing options, which are:
-	 *   `shortTokens` True if tokens should be shortened using b256.
-	 * @return {Promise<Array<Object>>} An array of objects of the form `{name<String>, textifiedSdp<String>, server<PeerServer>}`.
-	 */
-	static async pInitialiseServers (names, msgHandler, errHandler, options) {
-		options = options || {};
-		names = names.map(it => Parser.stringToSlug(it).toUpperCase());
+// class PeerUtil {
+// 	/**
+// 	 * Convenience wrapper to initialise multiple servers ad produce a textified version of their SDPs, suitable for
+// 	 *   text transmission.
+// 	 *
+// 	 * @param names An array of unique-when-sluggified names to give to each server.
+// 	 * @param msgHandler One copy used per server.
+// 	 * @param errHandler One copy used per server.
+// 	 * @param options An object containing options, which are:
+// 	 *   `shortTokens` True if tokens should be shortened using b256.
+// 	 * @return {Promise<Array<Object>>} An array of objects of the form `{name<String>, textifiedSdp<String>, server<PeerServer>}`.
+// 	 */
+// 	static async pInitialiseServers (names, msgHandler, errHandler, options) {
+// 		options = options || {};
+// 		names = names.map(it => Parser.stringToSlug(it).toUpperCase());
 
-		// ensure name uniqueness
-		if (names.length !== (new Set(names)).size) {
-			const nameCounts = {};
-			names.forEach(n => nameCounts[n] = (nameCounts[n] || 0) + 1);
-			names = [];
-			Object.entries(nameCounts).forEach(([name, count]) => {
-				names.push(name);
-				[...new Array(count - 1)].forEach((_, i) => names.push(`${name}-${i + 1}`));
-			});
-		}
+// 		// ensure name uniqueness
+// 		if (names.length !== (new Set(names)).size) {
+// 			const nameCounts = {};
+// 			names.forEach(n => nameCounts[n] = (nameCounts[n] || 0) + 1);
+// 			names = [];
+// 			Object.entries(nameCounts).forEach(([name, count]) => {
+// 				names.push(name);
+// 				[...new Array(count - 1)].forEach((_, i) => names.push(`${name}-${i + 1}`));
+// 			});
+// 		}
 
-		return PeerUtil._pMapNamesToServers(names, msgHandler, errHandler, options);
-	}
+// 		return PeerUtil._pMapNamesToServers(names, msgHandler, errHandler, options);
+// 	}
 
-	static async _pMapNamesToServers (names, msgHandler, errHandler, options) {
-		options = options || {};
-		return Promise.all(names.map(async name => {
-			const server = new PeerServer();
-			const sdpServer = await server.pMakeOffer(msgHandler, errHandler);
+// 	static async _pMapNamesToServers (names, msgHandler, errHandler, options) {
+// 		options = options || {};
+// 		return Promise.all(names.map(async name => {
+// 			const server = new PeerServer();
+// 			const sdpServer = await server.pMakeOffer(msgHandler, errHandler);
 
-			return {
-				name,
-				textifiedSdp: PeerUtil._packToken(name, sdpServer, !!options.shortTokens),
-				server
-			};
-		}));
-	}
+// 			return {
+// 				name,
+// 				textifiedSdp: PeerUtil._packToken(name, sdpServer, !!options.shortTokens),
+// 				server
+// 			};
+// 		}));
+// 	}
 
-	/**
-	 * Convenience method for adding more servers to a list previously created by `pInitialiseServers`, ensuring names
-	 *   are unique across all servers.
-	 *
-	 * @param names The desired names for the new servers.
-	 * @param existing The array of existing server metadata, as created by `pInitialiseServers` -- `isDeleted` flags
-	 *   set on the metadata will be respected when determining this server's final name.
-	 * @param msgHandler Ideally, the same handler as the `existing` metadata used.
-	 * @param errHandler Ideally, the same handler as the `existing` metadata used.
-	 * @param options An object containing options, which are:
-	 *   `shortTokens` True if tokens should be shortened using b256.
-	 * @return {Promise<Array<Object>>} An array of the new server metadata; `{name<String>, textifiedSdp<String>, server<PeerServer>}`.
-	 */
-	static async pInitialiseServersAddToExisting (names, existing, msgHandler, errHandler, options) {
-		options = options || {};
-		const existingNames = existing.filter(it => !it.isDeleted).map(it => it.name);
-		names = names.map(name => {
-			name = PeerUtil.getNextAvailableName(existingNames, name);
-			existingNames.push(name);
-			return name;
-		});
+// 	/**
+// 	 * Convenience method for adding more servers to a list previously created by `pInitialiseServers`, ensuring names
+// 	 *   are unique across all servers.
+// 	 *
+// 	 * @param names The desired names for the new servers.
+// 	 * @param existing The array of existing server metadata, as created by `pInitialiseServers` -- `isDeleted` flags
+// 	 *   set on the metadata will be respected when determining this server's final name.
+// 	 * @param msgHandler Ideally, the same handler as the `existing` metadata used.
+// 	 * @param errHandler Ideally, the same handler as the `existing` metadata used.
+// 	 * @param options An object containing options, which are:
+// 	 *   `shortTokens` True if tokens should be shortened using b256.
+// 	 * @return {Promise<Array<Object>>} An array of the new server metadata; `{name<String>, textifiedSdp<String>, server<PeerServer>}`.
+// 	 */
+// 	static async pInitialiseServersAddToExisting (names, existing, msgHandler, errHandler, options) {
+// 		options = options || {};
+// 		const existingNames = existing.filter(it => !it.isDeleted).map(it => it.name);
+// 		names = names.map(name => {
+// 			name = PeerUtil.getNextAvailableName(existingNames, name);
+// 			existingNames.push(name);
+// 			return name;
+// 		});
 
-		const newServers = await PeerUtil._pMapNamesToServers(names, msgHandler, errHandler, options);
-		existing.push(...newServers);
-		return newServers;
-	}
+// 		const newServers = await PeerUtil._pMapNamesToServers(names, msgHandler, errHandler, options);
+// 		existing.push(...newServers);
+// 		return newServers;
+// 	}
 
-	/**
-	 * @param existingSlugNames An array of existing slugified names.
-	 * @param desiredName The desired (plain text) name.
-	 */
-	static getNextAvailableName (existingSlugNames, desiredName) {
-		existingSlugNames = new Set(existingSlugNames.map(n => n.replace(/-/g, " ").toUpperCase()));
-		const slugName = Parser.stringToSlug(desiredName).toUpperCase();
-		if (!existingSlugNames.has(slugName)) return slugName;
+// 	/**
+// 	 * @param existingSlugNames An array of existing slugified names.
+// 	 * @param desiredName The desired (plain text) name.
+// 	 */
+// 	static getNextAvailableName (existingSlugNames, desiredName) {
+// 		existingSlugNames = new Set(existingSlugNames.map(n => n.replace(/-/g, " ").toUpperCase()));
+// 		const slugName = Parser.stringToSlug(desiredName).toUpperCase();
+// 		if (!existingSlugNames.has(slugName)) return slugName;
 
-		let n = 1;
-		let nextName = `${slugName}-${n}`;
-		while (existingSlugNames.has(nextName)) {
-			n++;
-			nextName = `${slugName}-${n}`;
-		}
-		return nextName;
-	}
+// 		let n = 1;
+// 		let nextName = `${slugName}-${n}`;
+// 		while (existingSlugNames.has(nextName)) {
+// 			n++;
+// 			nextName = `${slugName}-${n}`;
+// 		}
+// 		return nextName;
+// 	}
 
-	static _packToken (name, sdp, b256) {
-		sdp = sdp.trim();
+// 	static _packToken (name, sdp, b256) {
+// 		sdp = sdp.trim();
 
-		function stripEquals () {
-			return sdp.split("\n").map(it => it.trim().replace(/^(.)=/, "$1")).join("\n");
-		}
+// 		function stripEquals () {
+// 			return sdp.split("\n").map(it => it.trim().replace(/^(.)=/, "$1")).join("\n");
+// 		}
 
-		const cleaned = stripEquals(sdp);
+// 		const cleaned = stripEquals(sdp);
 
-		const mapped = (() => {
-			function stripHeader (bytes) {
-				if (bytes.slice(0, 5).equals(PeerUtil.LZMA_HEADER)) return bytes.slice(5);
-				return bytes;
-			}
+// 		const mapped = (() => {
+// 			function stripHeader (bytes) {
+// 				if (bytes.slice(0, 5).equals(PeerUtil.LZMA_HEADER)) return bytes.slice(5);
+// 				return bytes;
+// 			}
 
-			if (b256) {
-				const compressed = LZMA.compress(cleaned, 1);
-				return stripHeader(compressed)
-					.map(num => num + 128)
-					.map(num => PeerUtil.CHAR_MAP[num])
-					.join("");
-			} else return btoa(cleaned);
-		})();
+// 			if (b256) {
+// 				const compressed = LZMA.compress(cleaned, 1);
+// 				return stripHeader(compressed)
+// 					.map(num => num + 128)
+// 					.map(num => PeerUtil.CHAR_MAP[num])
+// 					.join("");
+// 			} else return btoa(cleaned);
+// 		})();
 
-		return `{::${name}|${b256 ? "2" : "1"}|${mapped}::}`;
-	}
+// 		return `{::${name}|${b256 ? "2" : "1"}|${mapped}::}`;
+// 	}
 
-	static _unpackToken (textified) {
-		const parts = textified.replace(/\s+/g, "").replace(/^{::/, "").replace(/::}$/, "").split("|");
-		if (parts.length === 3) {
-			const [name, compression, mappedCompressed] = parts;
-			if (compression === "2") {
-				const cleaned = [...mappedCompressed].map(it => PeerUtil.CHAR_MAP.indexOf(it) - 128);
-				if (!cleaned.slice(0, 3).equals([93, 0, 0])) {
-					cleaned.unshift(...PeerUtil.LZMA_HEADER);
-				}
-				const decompressed = LZMA.decompress(cleaned);
-				const withEquals = decompressed.split("\n").map(it => it.replace(/^(.)/, "$1=")).join("\n");
-				return {name, sdp: withEquals}
-			} else if (compression === "1") {
-				const withEquals = atob(mappedCompressed).split("\n").map(it => it.replace(/^(.)/, "$1=")).join("\n");
-				return {name, sdp: withEquals}
-			} else throw new Error(`Unknown compression type "${compression}"`);
-		} else return null;
-	}
+// 	static _unpackToken (textified) {
+// 		const parts = textified.replace(/\s+/g, "").replace(/^{::/, "").replace(/::}$/, "").split("|");
+// 		if (parts.length === 3) {
+// 			const [name, compression, mappedCompressed] = parts;
+// 			if (compression === "2") {
+// 				const cleaned = [...mappedCompressed].map(it => PeerUtil.CHAR_MAP.indexOf(it) - 128);
+// 				if (!cleaned.slice(0, 3).equals([93, 0, 0])) {
+// 					cleaned.unshift(...PeerUtil.LZMA_HEADER);
+// 				}
+// 				const decompressed = LZMA.decompress(cleaned);
+// 				const withEquals = decompressed.split("\n").map(it => it.replace(/^(.)/, "$1=")).join("\n");
+// 				return {name, sdp: withEquals}
+// 			} else if (compression === "1") {
+// 				const withEquals = atob(mappedCompressed).split("\n").map(it => it.replace(/^(.)/, "$1=")).join("\n");
+// 				return {name, sdp: withEquals}
+// 			} else throw new Error(`Unknown compression type "${compression}"`);
+// 		} else return null;
+// 	}
 
-	static _getTokensFromText (clientsString) {
-		const nameToSdpData = {};
+// 	static _getTokensFromText (clientsString) {
+// 		const nameToSdpData = {};
 
-		clientsString = clientsString.replace(/\s+/g, "");
-		// tolerate single missing characters at start/end, to ease copy-pasting
-		if (clientsString.startsWith("::")) clientsString = `{${clientsString}`;
-		if (clientsString.endsWith("::")) clientsString = `${clientsString}}`;
+// 		clientsString = clientsString.replace(/\s+/g, "");
+// 		// tolerate single missing characters at start/end, to ease copy-pasting
+// 		if (clientsString.startsWith("::")) clientsString = `{${clientsString}`;
+// 		if (clientsString.endsWith("::")) clientsString = `${clientsString}}`;
 
-		clientsString.replace(/{::([^:])+::}/gi, (...m) => {
-			const unpacked = PeerUtil._unpackToken(m[0]);
-			if (unpacked) {
-				nameToSdpData[unpacked.name] = {
-					sdp: unpacked.sdp,
-					token: m[0] // pass back the original token, to be displayed as required
-				};
-			}
-		});
+// 		clientsString.replace(/{::([^:])+::}/gi, (...m) => {
+// 			const unpacked = PeerUtil._unpackToken(m[0]);
+// 			if (unpacked) {
+// 				nameToSdpData[unpacked.name] = {
+// 					sdp: unpacked.sdp,
+// 					token: m[0] // pass back the original token, to be displayed as required
+// 				};
+// 			}
+// 		});
 
-		return nameToSdpData;
-	}
+// 		return nameToSdpData;
+// 	}
 
-	/**
-	 * Test if a string contains any tokens.
-	 * @param string A string.
-	 */
-	static containsAnyTokens (string) {
-		return !!Object.keys(PeerUtil._getTokensFromText(string)).length;
-	}
+// 	/**
+// 	 * Test if a string contains any tokens.
+// 	 * @param string A string.
+// 	 */
+// 	static containsAnyTokens (string) {
+// 		return !!Object.keys(PeerUtil._getTokensFromText(string)).length;
+// 	}
 
-	/**
-	 * @param wrappedServers An array of objects produced by `pInitialiseServers`.
-	 * @param clientsString A string containing one or more textified name/SDP pairs created by `_packToken`. This string can contain other
-	 *   junk characters, e.g. copy-pasted from a chat containing timestamps.
-	 * @return {Promise<Array<Object>>} An array of the server metadata for servers which were connected.
-	 */
-	static async pConnectClientsToServers (wrappedServers, clientsString) {
-		const nameToSdpData = PeerUtil._getTokensFromText(clientsString);
+// 	/**
+// 	 * @param wrappedServers An array of objects produced by `pInitialiseServers`.
+// 	 * @param clientsString A string containing one or more textified name/SDP pairs created by `_packToken`. This string can contain other
+// 	 *   junk characters, e.g. copy-pasted from a chat containing timestamps.
+// 	 * @return {Promise<Array<Object>>} An array of the server metadata for servers which were connected.
+// 	 */
+// 	static async pConnectClientsToServers (wrappedServers, clientsString) {
+// 		const nameToSdpData = PeerUtil._getTokensFromText(clientsString);
 
-		const connectedServers = [];
-		await Promise.all(Object.entries(nameToSdpData).map(async ([name, sdpData]) => {
-			const wrappedServer = wrappedServers.find(server => server.name === name);
-			if (wrappedServer) {
-				await wrappedServer.server.pAcceptAnswer(sdpData.sdp);
-				wrappedServer._tempTokenToDisplay = sdpData.token;
-				connectedServers.push(wrappedServer);
-			}
-		}));
-		return connectedServers;
-	}
+// 		const connectedServers = [];
+// 		await Promise.all(Object.entries(nameToSdpData).map(async ([name, sdpData]) => {
+// 			const wrappedServer = wrappedServers.find(server => server.name === name);
+// 			if (wrappedServer) {
+// 				await wrappedServer.server.pAcceptAnswer(sdpData.sdp);
+// 				wrappedServer._tempTokenToDisplay = sdpData.token;
+// 				connectedServers.push(wrappedServer);
+// 			}
+// 		}));
+// 		return connectedServers;
+// 	}
 
-	static async pInitialiseClient (textifiedSdp, msgHandler, errHandler, options) {
-		options = options || {};
-		const client = new PeerClient();
-		const unpacked = PeerUtil._unpackToken(textifiedSdp);
-		if (unpacked) {
-			const {name, sdp} = unpacked;
-			const sdpClient = await client.pReceiveOfferAndGetAnswer(sdp, msgHandler, errHandler);
-			return {
-				name,
-				textifiedSdp: PeerUtil._packToken(name, sdpClient, !!options.shortTokens),
-				client
-			};
-		} else return null;
-	}
+// 	static async pInitialiseClient (textifiedSdp, msgHandler, errHandler, options) {
+// 		options = options || {};
+// 		const client = new PeerClient();
+// 		const unpacked = PeerUtil._unpackToken(textifiedSdp);
+// 		if (unpacked) {
+// 			const {name, sdp} = unpacked;
+// 			const sdpClient = await client.pReceiveOfferAndGetAnswer(sdp, msgHandler, errHandler);
+// 			return {
+// 				name,
+// 				textifiedSdp: PeerUtil._packToken(name, sdpClient, !!options.shortTokens),
+// 				client
+// 			};
+// 		} else return null;
+// 	}
 
-	/**
-	 * Performs a basic sanity check on a token.
-	 */
-	static isValidToken (token) {
-		if (!token || typeof token !== "string" || !token.trim()) return false;
-		return !!/{::[^:]+::}/.exec(token);
-	}
-}
-
+// 	/**
+// 	 * Performs a basic sanity check on a token.
+// 	 */
+// 	static isValidToken (token) {
+// 		if (!token || typeof token !== "string" || !token.trim()) return false;
+// 		return !!/{::[^:]+::}/.exec(token);
+// 	}
+// }
 
 class NewPeer {
 	constructor (role) {
 		this._role = role;
-		this._id =  null;
+		this._id = null;
 		this._peer = new Peer();
 		this._isActive = false;
 		this._isClosed = false;
 
 		this._pChannel = null;
-		this._peer.on("open", function(id) {
+		this._peer.on("open", function (id) {
 			this._id = id;
-
 		})
 	}
 
@@ -429,20 +427,19 @@ class NewPeer {
 	 *
 	 * @param toSend Data to be sent.
 	 */
-	async sendMessage (toSend);
+	async sendMessage (toSend) {}
 }
 
-
-class NewServerPeer extends NewPeer {
-	constructor() {
+export class NewServerPeer extends NewPeer {
+	constructor () {
 		super("server");
 		this._server_connections = [];
-		this._peer.on("connection", function(conn) {
+		this._peer.on("connection", function (conn) {
 			this._server_connections.push(conn);
 		})
 	}
 
-	async sendMessage(toSend) {
+	async sendMessage (toSend) {
 		if (!this._isActive) throw new Error(`Connection is not active!`);
 
 		const packet = {
@@ -456,21 +453,22 @@ class NewServerPeer extends NewPeer {
 			connection.send(JSON.stringify(packet));
 		});
 	}
-
-
 }
 
-class NewClientPeer extends NewPeer {
-	constructor() {
+export class NewClientPeer extends NewPeer {
+	constructor () {
 		super("client");
 		this._connection = null;
 	}
 
-	async connectToServer(token) {
+	async connectToServer (token) {
 		this._connection = this._peer.connect(token);
+		this._connection.on("data", function (data) {
+
+		})
 	}
-	
-	async sendMessage(toSend) {
+
+	async sendMessage (toSend) {
 		if (!this._isActive) throw new Error(`Connection is not active!`);
 
 		const packet = {

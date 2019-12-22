@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require("fs");
 let contents = [];
 let check = true; // check the content instead of generating the full JSON
 let brief = false; // display the "spellcasting" JSON
@@ -27,7 +27,7 @@ function recursiveCheck (file) {
 
 function checkFile (file) {
 	if (check) console.log(file);
-	contents = JSON.parse(fs.readFileSync(file, 'utf8'));
+	contents = JSON.parse(fs.readFileSync(file, "utf8"));
 	for (let i = 0; i < contents.monster.length; i++) {
 		let monster = contents.monster[i];
 		let name = monster.name;

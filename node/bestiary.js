@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require("fs");
 let contents = [];
 let check = true; // check the content instead of generating the full JSON
 let brief = false; // display the "spellcasting" JSON
@@ -30,7 +30,7 @@ function checkFile (file) {
 	// if (check) console.log(file);
 	usage = [];
 	count = 0;
-	contents = JSON.parse(fs.readFileSync(file, 'utf8'));
+	contents = JSON.parse(fs.readFileSync(file, "utf8"));
 	for (let i = 0; i < contents.monster.length; i++) {
 		let monster = contents.monster[i];
 		let name = monster.name;
@@ -103,7 +103,7 @@ function parseAttack (name, text) {
 				damagetype = (damagesearches[2] != null) ? damagesearches[2].trim() : "";
 				damagesearches = damageregex.exec(actiontext);
 				if (damagesearches) {
-					onhit += " plus " + damagesearches[0];
+					onhit += " plus ".concat(damagesearches[0]);
 					damage2 = damagesearches[1];
 					damagetype2 = (damagesearches[2] != null) ? damagesearches[2].trim() : "";
 				}
@@ -123,7 +123,7 @@ function parseAttack (name, text) {
 				var match_compl_atk = atk_desc_complex_regex.exec(actiontext);
 				if (match_compl_atk != null) action_desc = match_compl_atk[1].trim();
 			}
-			var tohitrange = "+" + tohit + ", " + rangetype + " " + attackrange + ", " + attacktarget + ".";
+			var tohitrange = "+".concat([tohit, ", ", rangetype, " ", attackrange, ", ", attacktarget, "."]);
 			if (usage.indexOf(onhit) === -1) usage.push(onhit);
 		}
 	}

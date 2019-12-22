@@ -215,6 +215,7 @@ InitiativeTrackerUtil.CONDITIONS = [
 class InitiativeTrackerPlayerUi {
 	constructor (view, $iptServerToken, $btnGenClientToken, $iptClientToken, $cbShortToken) {
 		this._view = view;
+		this._clientPeer = new NewClientPeer();
 		this._$iptServerToken = $iptServerToken;
 		this._$btnGenClientToken = $btnGenClientToken;
 		this._$iptClientToken = $iptClientToken;
