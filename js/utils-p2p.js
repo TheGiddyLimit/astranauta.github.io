@@ -397,7 +397,7 @@ const STUN_SERVERS = [
 class NewPeer {
 	constructor (role) {
 		this._role = role;
-		this._peer = new Peer();
+		this._peer = (new Peer());
 		this._isActive = false;
 		this._isClosed = false;
 
@@ -429,12 +429,13 @@ class NewPeer {
 class NewServerPeer extends NewPeer {
 	constructor () {
 		super("server");
-		this._server_connections = [];
-		this._peer.on("connection", function (conn) {
-			this._server_connections.push(conn);
-		})
+		this._peer.on("connection", this.newConnection)
 	}
 
+	newConnection (conn) {
+		conn.send("help")
+	}
+	get connections () { return this._peer.connections; }
 	async sendMessage (toSend) {
 		if (!this._isActive) throw new Error(`Connection is not active!`);
 
@@ -456,10 +457,14 @@ class NewClientPeer extends NewPeer {
 		super("client");
 	}
 
-	async connectToServer (token) {
-		this._connection = this._peer.connect(token);
+	async connectToServer (token, options = null) {
+		if (options) {
+			this._connection = this._peer.connect(token, options)
+		} else {
+			this._connection = this._peer.connect(token);
+		}
 		this._connection.on("data", function (data) {
-
+			data.toUpperCase();
 		})
 	}
 

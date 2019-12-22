@@ -229,9 +229,7 @@ class InitiativeTrackerPlayerUi {
 
 			try {
 				this._$btnConnectToServer.attr("disabled", true);
-				var metadata = {"name": name};
-
-				this._clientPeer.connectToServer(this._$iptServerToken.val());
+				this._clientPeer.connectToServer(this._$iptServerToken.val(), {label: name});
 			} catch (e) {
 				JqueryUtil.doToast({
 					content: `Failed to create client! Are you sure the token was valid? (See the log for more details.)`,
