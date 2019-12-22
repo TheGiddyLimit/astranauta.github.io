@@ -1,7 +1,4 @@
 "use strict";
-
-import Peer from "peerjs"
-
 /*
 Utilities for creating peer-to-peer connections.
 Depends on lib/lzma.js for compression.
@@ -400,17 +397,16 @@ const STUN_SERVERS = [
 class NewPeer {
 	constructor (role) {
 		this._role = role;
-		this._id = null;
 		this._peer = new Peer();
 		this._isActive = false;
 		this._isClosed = false;
 
 		this._pChannel = null;
 		this._peer.on("open", function (id) {
-			this._id = id;
 		})
 	}
 
+	get token () { return this._peer.id; }
 	get isActive () { return !this._peer.disconnected; }
 	get isDestroyed () { return this._peer.destroyed; }
 
@@ -430,7 +426,7 @@ class NewPeer {
 	async sendMessage (toSend) {}
 }
 
-export class NewServerPeer extends NewPeer {
+class NewServerPeer extends NewPeer {
 	constructor () {
 		super("server");
 		this._server_connections = [];
@@ -455,10 +451,9 @@ export class NewServerPeer extends NewPeer {
 	}
 }
 
-export class NewClientPeer extends NewPeer {
+class NewClientPeer extends NewPeer {
 	constructor () {
 		super("client");
-		this._connection = null;
 	}
 
 	async connectToServer (token) {
@@ -481,6 +476,3 @@ export class NewClientPeer extends NewPeer {
 		this._connection.send(JSON.stringify(packet));
 	}
 }
-PeerUtil.LZMA_HEADER = [93, 0, 0, 1, 0];
-// "base256"
-PeerUtil.CHAR_MAP = "აბგ?ევზ_იკ€მნოპჟრსტუფქღყშჩცძწჭხ#ჰÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЮЯабвгдежзийклмнопрстуфхцчшщьюя.,=>'\"!£$%^&()[]-+;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΝνΞξΟοΠπΡρΣσςΤτΥυΦφΧχΨψΩω";

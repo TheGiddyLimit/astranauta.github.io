@@ -213,83 +213,37 @@ InitiativeTrackerUtil.CONDITIONS = [
 ];
 
 class InitiativeTrackerPlayerUi {
-	constructor (view, $iptServerToken, $btnGenClientToken, $iptClientToken, $cbShortToken) {
+	constructor (view, $iptServerToken, $btnConnectToServer, $iptPlayerName, $cbShortToken) {
 		this._view = view;
 		this._clientPeer = new NewClientPeer();
 		this._$iptServerToken = $iptServerToken;
-		this._$btnGenClientToken = $btnGenClientToken;
-		this._$iptClientToken = $iptClientToken;
+		this._$btnConnectToServer = $btnConnectToServer;
+		this._$iptPlayerName = $iptPlayerName;
 		this._$cbShortToken = $cbShortToken;
 	}
 
 	init () {
-		this._$iptServerToken.keydown(evt => {
+		this._$btnConnectToServer.click(async () => {
 			this._$iptServerToken.removeClass("error-background");
-			if (evt.which === 13) this._$btnGenClientToken.click();
+			const name = this._$iptPlayerName.val();
+
+			try {
+				this._$btnConnectToServer.attr("disabled", true);
+				var metadata = {"name": name};
+
+				this._clientPeer.connectToServer(this._$iptServerToken.val());
+			} catch (e) {
+				JqueryUtil.doToast({
+					content: `Failed to create client! Are you sure the token was valid? (See the log for more details.)`,
+					type: "danger"
+				});
+				setTimeout(() => { throw e; });
+			}
 		});
 
-		this._$btnGenClientToken.click(async () => {
-			this._$iptServerToken.removeClass("error-background");
-			const serverToken = this._$iptServerToken.val();
-
-			if (PeerUtil.isValidToken(serverToken)) {
-				try {
-					this._$iptServerToken.attr("disabled", true);
-					this._$btnGenClientToken.attr("disabled", true);
-					const clientData = await PeerUtil.pInitialiseClient(
-						serverToken,
-						msg => this._view.handleMessage(msg),
-						function (err) {
-							if (!this.isClosed) {
-								JqueryUtil.doToast({
-									content: `Server error:\n${err ? err.message || err : "(Unknown error)"}`,
-									type: "danger"
-								});
-							}
-						},
-						{
-							shortTokens: this._$cbShortToken.prop("checked")
-						}
-					);
-
-					if (!clientData) {
-						this._$iptServerToken.attr("disabled", false);
-						this._$btnGenClientToken.attr("disabled", false);
-						JqueryUtil.doToast({
-							content: `Failed to create client. Are you sure the token was valid?`,
-							type: "warning"
-						});
-					} else {
-						this._view.clientData = clientData;
-
-						// -- This has no effect; the client doesn't error on sending when there's no connection --
-						// const livenessCheck = setInterval(async () => {
-						// 	try {
-						// 		await clientData.client.sendMessage({})
-						// 	} catch (e) {
-						// 		JqueryUtil.doToast({
-						// 			content: `Could not reach server! You might need to reconnect.`,
-						// 			type: "danger"
-						// 		});
-						// 		clearInterval(livenessCheck);
-						// 	}
-						// }, 5000);
-
-						this._$iptClientToken.val(clientData.textifiedSdp).attr("disabled", false);
-					}
-				} catch (e) {
-					JqueryUtil.doToast({
-						content: `Failed to create client! Are you sure the token was valid? (See the log for more details.)`,
-						type: "danger"
-					});
-					setTimeout(() => { throw e; });
-				}
-			} else this._$iptServerToken.addClass("error-background");
-		});
-
-		this._$iptClientToken.click(async () => {
-			await MiscUtil.pCopyTextToClipboard(this._$iptClientToken.val());
-			JqueryUtil.showCopiedEffect(this._$iptClientToken);
+		this._$iptPlayerName.click(async () => {
+			await MiscUtil.pCopyTextToClipboard(this._$iptPlayerName.val());
+			JqueryUtil.showCopiedEffect(this._$iptPlayerName);
 		});
 	}
 }

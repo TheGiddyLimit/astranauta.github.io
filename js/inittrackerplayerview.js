@@ -9,13 +9,13 @@ window.addEventListener("load", () => {
 	const storedCbShortVal = StorageUtil.syncGetForPage(STORAGE_SHORT_TOKEN);
 
 	const $iptServerToken = $(`#initp__ipt_server_token`).disableSpellcheck();
-	const $btnGenClientToken = $(`#initp__btn_gen_client_token`);
-	const $iptClientToken = $(`#initp__ipt_client_token`).disableSpellcheck();
+	const $btnConnectToServer = $(`#initp__btn_gen_client_token`);
+	const $iptPlayerName = $(`#initp__ipt_client_token`).disableSpellcheck();
 	const $cbShortToken = $(`#initp__cb_short`)
 		.change(() => StorageUtil.syncSetForPage(STORAGE_SHORT_TOKEN, $cbShortToken.prop("checked")))
 		.prop("checked", storedCbShortVal == null ? true : storedCbShortVal);
 
-	const ui = new InitiativeTrackerPlayerUi(view, $iptServerToken, $btnGenClientToken, $iptClientToken, $cbShortToken);
+	const ui = new InitiativeTrackerPlayerUi(view, $iptServerToken, $btnConnectToServer, $iptPlayerName, $cbShortToken);
 	ui.init();
 
 	const $body = $(`body`);
