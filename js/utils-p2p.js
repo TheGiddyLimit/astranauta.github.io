@@ -1,4 +1,7 @@
 "use strict";
+
+// import Peer from "peerjs"
+
 /*
 Utilities for creating peer-to-peer connections.
 Depends on lib/lzma.js for compression.
@@ -394,50 +397,15 @@ const STUN_SERVERS = [
 // 	}
 // }
 
-class NewPeer {
-	constructor (role) {
-		this._role = role;
-		this._peer = (new Peer());
-		this._isActive = false;
-		this._isClosed = false;
-
-		this._pChannel = null;
-		this._peer.on("open", function (id) {
-		})
-	}
-
-	get token () { return this._peer.id; }
-	get isActive () { return !this._peer.disconnected; }
-	get isDestroyed () { return this._peer.destroyed; }
-
-	close () {
-		if (this._ctx) this._ctx.pc.close();
-		else {
-			this._isActive = false;
-			this._isClosed = true;
-		}
-	}
-
-	/**
-	 * STAGE 5: Send messages.
-	 *
-	 * @param toSend Data to be sent.
-	 */
-	async sendMessage (toSend) {}
-}
-
-class NewServerPeer extends NewPeer {
+class NewPeer extends Peer {
 	constructor () {
-		super("server");
-		this._peer.on("connection", this.newConnection)
+		super();
+		this._role = null;
+		this._connectionsArray = [];
 	}
 
-	newConnection (conn) {
-		conn.send("help")
-	}
-	get connections () { return this._peer.connections; }
 	async sendMessage (toSend) {
-		if (!this._isActive) throw new Error(`Connection is not active!`);
+		if (this.disconnected || this.destroyed) throw new Error(`Connection is not active!`);
 
 		const packet = {
 			head: {
@@ -446,25 +414,54 @@ class NewServerPeer extends NewPeer {
 			},
 			data: toSend
 		};
-		this._server_connections.forEach(connection => {
+		this.connections.forEach(connection => {
 			connection.send(JSON.stringify(packet));
 		});
 	}
 }
 
+class NewServerPeer extends NewPeer {
+	constructor () {
+		super();
+		this._role = "server";
+		this.on("connection", this.newConnection)
+	}
+
+	get token () { return this.id; }
+
+	newConnection (conn) {
+		this._connectionsArray.push(conn);
+		const toSend = "Test packet"
+		const packet = {
+			head: {
+				type: this._role,
+				version: "0.0.2"
+			},
+			data: toSend
+		};
+
+		this.connections.forEach((connection) => {
+			connection.send(JSON.stringify(packet));
+		});
+	}
+	get connections () { return this._connectionsArray; }
+}
+
 class NewClientPeer extends NewPeer {
 	constructor () {
-		super("client");
+		super();
+		this._role = "client";
+		this._data = null;
 	}
 
 	async connectToServer (token, options = null) {
 		if (options) {
-			this._connection = this._peer.connect(token, options)
+			this._connection = this.connect(token, options)
 		} else {
-			this._connection = this._peer.connect(token);
+			this._connection = this.connect(token);
 		}
 		this._connection.on("data", function (data) {
-			data.toUpperCase();
+			this._data = data;
 		})
 	}
 

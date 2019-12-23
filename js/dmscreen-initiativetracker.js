@@ -29,6 +29,9 @@ class InitiativeTracker {
 		};
 
 		const srvPeer = new NewServerPeer();
+		srvPeer.on("connection", function (connection) {
+
+		})
 
 		const $wrpTracker = $(`<div class="dm-init dm__panel-bg dm__data-anchor"/>`);
 
@@ -45,19 +48,11 @@ class InitiativeTracker {
 
 		const p2pMeta = {rows: [], serverInfo: null};
 		const _sendStateToClients = () => {
-			if (p2pMeta.serverInfo === null) return;
-
-			p2pMeta.rows = p2pMeta.rows.filter(r => !r.isDeleted);
-			p2pMeta.serverInfo = p2pMeta.serverInfo.filter(r => {
-				if (r.isDeleted) {
-					r.server.close();
-					return false;
-				} else return true;
-			});
+			if (srvPeer._connectionsArray.length < 1) return;
 
 			const toSend = getPlayerFriendlyState();
 			try {
-				p2pMeta.serverInfo.filter(info => info.server.isActive).forEach(info => info.server.sendMessage(toSend));
+				srvPeer.sendMessage(toSend);
 			} catch (e) { setTimeout(() => { throw e; }) }
 		};
 		const sendStateToClientsDebounced = MiscUtil.debounce(_sendStateToClients, 100); // long delay to avoid network spam
@@ -232,7 +227,7 @@ class InitiativeTracker {
 				() => {} // ignore local errors
 			);
 			clientView.clientData = clientData;
-			await PeerUtil.pConnectClientsToServers([rowMeta.serverInfo], clientData.textifiedSdp);
+			// await PeerUtil.pConnectClientsToServers([rowMeta.serverInfo], clientData.textifiedSdp);
 			sendStateToClientsDebounced();
 		});
 
