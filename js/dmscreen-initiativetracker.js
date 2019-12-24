@@ -30,7 +30,9 @@ class InitiativeTracker {
 
 		const srvPeer = new NewServerPeer();
 		srvPeer.on("connection", function (connection) {
-
+			connection.on("open", function () {
+				doUpdateExternalStates();
+			})
 		})
 
 		const $wrpTracker = $(`<div class="dm-init dm__panel-bg dm__data-anchor"/>`);
@@ -207,28 +209,7 @@ class InitiativeTracker {
 		};
 
 		$wrpTracker.data("doConnectLocal", async (clientView) => {
-			// generate a stub/fake row meta
-			const rowMeta = {
-				id: CryptUtil.uid(),
-				$row: $(),
-				$iptName: $(`<input value="local">`),
-				$iptTokenServer: $(),
-				$btnGenServerToken: $(),
-				$iptTokenClient: $(),
-				$btnAcceptClientToken: $()
-			};
-
-			p2pMeta.rows.push(rowMeta);
-
-			const serverTokens = await pGetServerTokens([rowMeta]);
-			const clientData = await PeerUtil.pInitialiseClient(
-				serverTokens[0],
-				msg => clientView.handleMessage(msg),
-				() => {} // ignore local errors
-			);
-			clientView.clientData = clientData;
-			// await PeerUtil.pConnectClientsToServers([rowMeta.serverInfo], clientData.textifiedSdp);
-			sendStateToClientsDebounced();
+			return srvPeer.token;
 		});
 
 		const $wrpLockSettings = $(`<div class="btn-group flex"/>`).appendTo($wrpUtils);

@@ -15,15 +15,15 @@ class InitiativeTrackerPlayer {
 		const view = new InitiativeTrackerPlayerMessageHandlerScreen();
 		view.setElements($meta, $head, $rows);
 
+		var ui = new InitiativeTrackerPlayerUi(view);
 		const $btnConnectRemote = $(`<button class="btn btn-primary mb-2" style="min-width: 200px;">Connect to Remote Tracker</button>`)
 			.click(() => {
 				$btnConnectRemote.detach();
 				$btnConnectLocal.detach();
 
 				const $iptServerToken = $(`<input class="form-control input-sm code">`).disableSpellcheck();
-				const $btnGenClientToken = $(`<button class="btn btn-primary btn-xs">Generate Client Token</button>`);
-				const $iptClientToken = $(`<input class="form-control input-sm code copyable">`).disableSpellcheck();
-				const $cbShortToken = $(`<input type="checkbox" checked>`);
+				const $btnGenConnect = $(`<button class="btn btn-primary btn-xs">Connect</button>`);
+				const $iptPlayerName = $(`<input class="form-control input-sm code">`).disableSpellcheck();
 
 				const $btnCancel = $(`<button class="btn btn-default btn-xs">Back</button>`)
 					.click(() => {
@@ -39,40 +39,40 @@ class InitiativeTrackerPlayer {
 					</div>
 					
 					<div class="split px-4 mb-2">
-						<label class="flex-label">
-								<span class="mr-2 help" title="Turning this off will produce a client token which is roughly twice as long, but contains only standard characters.">Short client token</span>
-								${$cbShortToken}
-						</label>
-						${$btnGenClientToken}					
+						${$btnGenConnect}					
 					</div>
 					
 					<div class="flex-vh-center px-4 mb-2">
-						<span style="min-width: fit-content;" class="mr-2">Client Token</span>
-						${$iptClientToken}
+						<span style="min-width: fit-content;" class="mr-2">Player Name</span>
+						${$iptPlayerName}
 					</div>
 					
 					<div class="flex-vh-center px-4">
 						${$btnCancel}
 					</div>
 				</div>`.appendTo(view.$wrpInitial);
-				var ui = null;
-				$btnGenClientToken.click(async () => {
-					ui = new InitiativeTrackerPlayerUi(view, $iptServerToken, $btnGenClientToken, $iptClientToken, $cbShortToken);
+				$btnGenConnect.click(async () => {
+					ui.load($iptPlayerName.val(), $iptServerToken.val());
 					ui.init();
 					ui._clientPeer._connection.on("data", function (data) {
 						view.handleMessage(data);
 					})
 				});
 			});
+
 		const $btnConnectLocal = $(`<button class="btn btn-primary" style="min-width: 200px;">Connect to Local Tracker</button>`)
 			.click(() => {
 				const existingTrackers = board.getPanelsByType(PANEL_TYP_INITIATIVE_TRACKER)
 					.map(it => it.tabDatas.filter(td => td.type === PANEL_TYP_INITIATIVE_TRACKER).map(td => td.$content.find(`.dm__data-anchor`)))
 					.flat();
-
 				if (existingTrackers.length) {
 					if (existingTrackers.length === 1) {
-						existingTrackers[0].data("doConnectLocal")(view);
+						const token = existingTrackers[0].data("doConnectLocal")(view);
+						ui.load("Local", token);
+						ui.init();
+						ui._clientPeer._connection.on("data", function (data) {
+							view.handleMessage(data);
+						})
 					} else {
 						$btnConnectRemote.detach();
 						$btnConnectLocal.detach();
@@ -87,8 +87,12 @@ class InitiativeTrackerPlayer {
 							.click(async () => {
 								if ($selTracker.val() === "-1") return $selTracker.addClass("error-background");
 
-								await existingTrackers[Number($selTracker.val())].data("doConnectLocal")(view);
-
+								const token = existingTrackers[Number($selTracker.val())].data("doConnectLocal")(view);
+								ui.load("Local", token);
+								ui.init();
+								ui._clientPeer._connection.on("data", function (data) {
+									view.handleMessage(data);
+								})
 								// restore original state
 								$btnCancel.remove(); $wrpSel.remove();
 								view.$wrpInitial.append($btnConnectRemote).append($btnConnectLocal);

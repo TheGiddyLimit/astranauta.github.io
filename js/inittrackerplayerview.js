@@ -6,18 +6,15 @@ window.addEventListener("load", () => {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 
 	const view = new InitiativeTrackerPlayerMessageHandlerPage();
+	var ui = new InitiativeTrackerPlayerUi(view);
 	const storedCbShortVal = StorageUtil.syncGetForPage(STORAGE_SHORT_TOKEN);
 
 	const $iptServerToken = $(`#initp__ipt_server_token`).disableSpellcheck();
 	const $btnConnectToServer = $(`#initp__btn_gen_client_token`);
-	const $iptPlayerName = $(`#initp__ipt_client_token`).disableSpellcheck();
-	const $cbShortToken = $(`#initp__cb_short`)
-		.change(() => StorageUtil.syncSetForPage(STORAGE_SHORT_TOKEN, $cbShortToken.prop("checked")))
-		.prop("checked", storedCbShortVal == null ? true : storedCbShortVal);
+	const $iptPlayerName = $(`#initp__ipt_player_name`).disableSpellcheck();
 
-	var ui = null;
 	$btnConnectToServer.click(async () => {
-		ui = new InitiativeTrackerPlayerUi(view, $iptServerToken, $btnConnectToServer, $iptPlayerName, $cbShortToken);
+		ui.load($iptPlayerName.val(), $iptServerToken.val());
 		ui.init();
 		ui._clientPeer._connection.on("data", function (data) {
 			view.handleMessage(data);
@@ -52,11 +49,9 @@ class InitiativeTrackerPlayerMessageHandlerPage extends InitiativeTrackerPlayerM
 		this._$rows = $(`.initp__rows`);
 
 		$(window).on("beforeunload", evt => {
-			if (this._clientData.client.isActive) {
-				const message = `The connection will be closed`;
-				(evt || window.event).message = message;
-				return message;
-			}
+			const message = `The connection will be closed`;
+			(evt || window.event).message = message;
+			return message;
 		});
 	}
 }

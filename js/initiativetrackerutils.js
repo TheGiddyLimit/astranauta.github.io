@@ -213,21 +213,19 @@ InitiativeTrackerUtil.CONDITIONS = [
 ];
 
 class InitiativeTrackerPlayerUi {
-	constructor (view, $iptServerToken, $btnConnectToServer, $iptPlayerName, $cbShortToken) {
+	constructor (view) {
 		this._view = view;
 		this._clientPeer = new NewClientPeer();
-		this._$iptServerToken = $iptServerToken;
-		this._$btnConnectToServer = $btnConnectToServer;
-		this._$iptPlayerName = $iptPlayerName;
-		this._$cbShortToken = $cbShortToken;
+	}
+
+	load (playerName, serverToken) {
+		this.playerName = playerName;
+		this.serverToken = serverToken;
 	}
 
 	init () {
-		this._$iptServerToken.removeClass("error-background");
-		const name = this._$iptPlayerName.val();
-
 		try {
-			this._clientPeer.connectToServer(this._$iptServerToken.val(), {label: name});
+			this._clientPeer.connectToServer(this.serverToken, {label: this.playerName});
 		} catch (e) {
 			JqueryUtil.doToast({
 				content: `Failed to create client! Are you sure the token was valid? (See the log for more details.)`,
