@@ -223,26 +223,18 @@ class InitiativeTrackerPlayerUi {
 	}
 
 	init () {
-		this._$btnConnectToServer.click(async () => {
-			this._$iptServerToken.removeClass("error-background");
-			const name = this._$iptPlayerName.val();
+		this._$iptServerToken.removeClass("error-background");
+		const name = this._$iptPlayerName.val();
 
-			try {
-				this._$btnConnectToServer.attr("disabled", true);
-				this._clientPeer.connectToServer(this._$iptServerToken.val(), {label: name});
-			} catch (e) {
-				JqueryUtil.doToast({
-					content: `Failed to create client! Are you sure the token was valid? (See the log for more details.)`,
-					type: "danger"
-				});
-				setTimeout(() => { throw e; });
-			}
-		});
-
-		this._$iptPlayerName.click(async () => {
-			await MiscUtil.pCopyTextToClipboard(this._$iptPlayerName.val());
-			JqueryUtil.showCopiedEffect(this._$iptPlayerName);
-		});
+		try {
+			this._clientPeer.connectToServer(this._$iptServerToken.val(), {label: name});
+		} catch (e) {
+			JqueryUtil.doToast({
+				content: `Failed to create client! Are you sure the token was valid? (See the log for more details.)`,
+				type: "danger"
+			});
+			setTimeout(() => { throw e; });
+		}
 	}
 }
 

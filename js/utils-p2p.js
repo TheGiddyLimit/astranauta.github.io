@@ -415,7 +415,7 @@ class NewPeer extends Peer {
 			data: toSend
 		};
 		this.connections.forEach(connection => {
-			connection.send(JSON.stringify(packet));
+			connection.send(packet);
 		});
 	}
 }
@@ -460,9 +460,6 @@ class NewClientPeer extends NewPeer {
 		} else {
 			this._connection = this.connect(token);
 		}
-		this._connection.on("data", function (data) {
-			this._data = data;
-		})
 	}
 
 	async sendMessage (toSend) {

@@ -15,8 +15,14 @@ window.addEventListener("load", () => {
 		.change(() => StorageUtil.syncSetForPage(STORAGE_SHORT_TOKEN, $cbShortToken.prop("checked")))
 		.prop("checked", storedCbShortVal == null ? true : storedCbShortVal);
 
-	const ui = new InitiativeTrackerPlayerUi(view, $iptServerToken, $btnConnectToServer, $iptPlayerName, $cbShortToken);
-	ui.init();
+	var ui = null;
+	$btnConnectToServer.click(async () => {
+		ui = new InitiativeTrackerPlayerUi(view, $iptServerToken, $btnConnectToServer, $iptPlayerName, $cbShortToken);
+		ui.init();
+		ui._clientPeer._connection.on("data", function (data) {
+			view.handleMessage(data);
+		})
+	});
 
 	const $body = $(`body`);
 	$body.on("keypress", (e) => {

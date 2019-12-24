@@ -55,9 +55,14 @@ class InitiativeTrackerPlayer {
 						${$btnCancel}
 					</div>
 				</div>`.appendTo(view.$wrpInitial);
-
-				const ui = new InitiativeTrackerPlayerUi(view, $iptServerToken, $btnGenClientToken, $iptClientToken, $cbShortToken);
-				ui.init();
+				var ui = null;
+				$btnGenClientToken.click(async () => {
+					ui = new InitiativeTrackerPlayerUi(view, $iptServerToken, $btnGenClientToken, $iptClientToken, $cbShortToken);
+					ui.init();
+					ui._clientPeer._connection.on("data", function (data) {
+						view.handleMessage(data);
+					})
+				});
 			});
 		const $btnConnectLocal = $(`<button class="btn btn-primary" style="min-width: 200px;">Connect to Local Tracker</button>`)
 			.click(() => {
