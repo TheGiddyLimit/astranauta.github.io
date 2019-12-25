@@ -15,7 +15,7 @@ class InitiativeTrackerPlayer {
 		const view = new InitiativeTrackerPlayerMessageHandlerScreen();
 		view.setElements($meta, $head, $rows);
 
-		var ui = new InitiativeTrackerPlayerUi(view);
+		const ui = new InitiativeTrackerPlayerUi(view);
 		const $btnConnectRemote = $(`<button class="btn btn-primary mb-2" style="min-width: 200px;">Connect to Remote Tracker</button>`)
 			.click(() => {
 				$btnConnectRemote.detach();

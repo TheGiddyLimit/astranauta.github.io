@@ -50,7 +50,7 @@ class InitiativeTracker {
 
 		const p2pMeta = {rows: [], serverInfo: null};
 		const _sendStateToClients = () => {
-			if (srvPeer._connectionsArray.length < 1) return;
+			if (!srvPeer._connectionsArray.length) return;
 
 			const toSend = getPlayerFriendlyState();
 			try {

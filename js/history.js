@@ -31,7 +31,7 @@ class History {
 					const id = $el.attr("id");
 					History.lastLoadedId = id;
 					loadHash(id);
-					document.title = decodeURIComponent($el.attr("title")).concat(" - 5etools");
+					document.title = `${decodeURIComponent(el.attr("title"))} - 5etools`;
 				}
 			}
 		}

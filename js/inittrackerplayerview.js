@@ -6,7 +6,7 @@ window.addEventListener("load", () => {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 
 	const view = new InitiativeTrackerPlayerMessageHandlerPage();
-	var ui = new InitiativeTrackerPlayerUi(view);
+	const ui = new InitiativeTrackerPlayerUi(view);
 	const storedCbShortVal = StorageUtil.syncGetForPage(STORAGE_SHORT_TOKEN);
 
 	const $iptServerToken = $(`#initp__ipt_server_token`).disableSpellcheck();

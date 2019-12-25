@@ -7,7 +7,7 @@ function handleFail () {
 
 async function main () {
 	let testsPassed = true;
-	testsPassed = testsPassed && await require("./test-tags");
+	// testsPassed = testsPassed && await require("./test-tags");
 	if (!testsPassed) handleFail();
 	// don't fail on missing tokens
 	await require("./test-images");
