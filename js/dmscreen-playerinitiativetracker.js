@@ -58,6 +58,11 @@ class InitiativeTrackerPlayer {
 						view.handleMessage(data);
 					})
 				});
+
+				$btnGenConnect.attr("disabled", !ui._clientPeer.open);
+				ui._clientPeer.on("open", function () {
+					$btnGenConnect.attr("disabled", false);
+				});
 			});
 
 		const $btnConnectLocal = $(`<button class="btn btn-primary" style="min-width: 200px;">Connect to Local Tracker</button>`)
@@ -67,12 +72,17 @@ class InitiativeTrackerPlayer {
 					.flat();
 				if (existingTrackers.length) {
 					if (existingTrackers.length === 1) {
-						const token = existingTrackers[0].data("doConnectLocal")(view);
-						ui.load("Local", token);
-						ui.init();
-						ui._clientPeer._connection.on("data", function (data) {
-							view.handleMessage(data);
-						})
+						const tokenPromise = existingTrackers[0].data("doConnectLocal")(view);
+						tokenPromise.then(function (token) {
+							ui.load("Local", token);
+							ui.init();
+							ui._clientPeer._connection.on("data", function (data) {
+								view.handleMessage(data);
+							})
+						}, function () {
+							JqueryUtil.doToast({content: "Getting token failed. Please try again.", type: "warning"});
+						});
+
 					} else {
 						$btnConnectRemote.detach();
 						$btnConnectLocal.detach();
@@ -87,12 +97,16 @@ class InitiativeTrackerPlayer {
 							.click(async () => {
 								if ($selTracker.val() === "-1") return $selTracker.addClass("error-background");
 
-								const token = existingTrackers[Number($selTracker.val())].data("doConnectLocal")(view);
-								ui.load("Local", token);
-								ui.init();
-								ui._clientPeer._connection.on("data", function (data) {
-									view.handleMessage(data);
-								})
+								const tokenPromise = existingTrackers[Number($selTracker.val())].data("doConnectLocal")(view);
+								tokenPromise.then(function (token) {
+									ui.load("Local", token);
+									ui.init();
+									ui._clientPeer._connection.on("data", function (data) {
+										view.handleMessage(data);
+									})
+								}, function () {
+									JqueryUtil.doToast({content: "Getting token failed. Please try again.", type: "warning"});
+								});
 								// restore original state
 								$btnCancel.remove(); $wrpSel.remove();
 								view.$wrpInitial.append($btnConnectRemote).append($btnConnectLocal);
@@ -115,6 +129,14 @@ class InitiativeTrackerPlayer {
 					JqueryUtil.doToast({content: "No local trackers detected!", type: "warning"});
 				}
 			});
+
+		$btnConnectLocal.attr("disabled", !ui._clientPeer.open);
+		ui._clientPeer.on("open", function () {
+			$btnConnectLocal.attr("disabled", false);
+			$(window).on("beforeunload", evt => {
+				ui._clientPeer.destroy()
+			});
+		});
 
 		view.$wrpInitial = $$`<div class="flex-vh-center h-100 flex-col dm__panel-bg">
 			${$btnConnectRemote}
@@ -142,11 +164,9 @@ class InitiativeTrackerPlayerMessageHandlerScreen extends InitiativeTrackerPlaye
 		this._$wrpInitial.addClass("hidden");
 
 		$(window).on("beforeunload", evt => {
-			if (this._clientData.client.isActive) {
-				const message = `The connection will be closed`;
-				(evt || window.event).message = message;
-				return message;
-			}
+			const message = `The connection will be closed`;
+			(evt || window.event).message = message;
+			return message;
 		});
 	}
 
