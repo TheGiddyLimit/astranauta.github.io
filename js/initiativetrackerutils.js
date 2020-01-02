@@ -225,7 +225,8 @@ class InitiativeTrackerPlayerUi {
 			await this._clientPeer.pConnectToServer(
 				this._serverToken,
 				data => this._view.handleMessage(data),
-				{label: this._playerName}
+				{label: this._playerName,
+					serialization: "json"}
 			);
 		} catch (e) {
 			JqueryUtil.doToast({
