@@ -1145,27 +1145,40 @@ Parser.DURATION_AMOUNT_TYPES = [
 	"year"
 ];
 
-Parser.spClassesToFull = function (classes, textOnly) {
-	const fromSubclasses = Parser.spSubclassesToFull(classes, textOnly);
+Parser.spClassesToFull = function (classes, textOnly, subclassLookup) {
+	const fromSubclasses = Parser.spSubclassesToFull(classes, textOnly, subclassLookup);
 	return `${Parser.spMainClassesToFull(classes, textOnly)}${fromSubclasses ? `, ${fromSubclasses}` : ""}`
 };
 
 Parser.spMainClassesToFull = function (classes, textOnly = false, prop = "fromClassList") {
 	if (!classes) return "";
 	return (classes[prop] || [])
+		.filter(c => !ExcludeUtil.isExcluded(c.name, "class", c.source))
 		.sort((a, b) => SortUtil.ascSort(a.name, b.name))
 		.map(c => textOnly ? c.name : `<a title="Source: ${Parser.sourceJsonToFull(c.source)}" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}">${c.name}</a>`)
 		.join(", ");
 };
 
-Parser.spSubclassesToFull = function (classes, textOnly) {
+Parser.spSubclassesToFull = function (classes, textOnly, subclassLookup) {
 	if (!classes || !classes.fromSubclass) return "";
 	return classes.fromSubclass
+		.filter(c => {
+			const excludeClass = ExcludeUtil.isExcluded(c.class.name, "class", c.class.source);
+			if (excludeClass) {
+				return false;
+			}
+			const fromLookup = MiscUtil.get(subclassLookup, c.class.source, c.class.name, c.subclass.source, c.subclass.name);
+			const excludeSubclass = ExcludeUtil.isExcluded(fromLookup.name || c.subclass.name, "subclass", c.subclass.source);
+			if (excludeSubclass) {
+				return false;
+			}
+			return true;
+		})
 		.sort((a, b) => {
 			const byName = SortUtil.ascSort(a.class.name, b.class.name);
 			return byName || SortUtil.ascSort(a.subclass.name, b.subclass.name);
 		})
-		.map(c => Parser._spSubclassItem(c, textOnly))
+		.map(c => Parser._spSubclassItem(c, textOnly, subclassLookup))
 		.join(", ");
 };
 
@@ -1697,6 +1710,18 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
 	const curNames = new Set();
 	const toCheck = [];
 	classes.fromSubclass
+		.filter(c => {
+			const excludeClass = ExcludeUtil.isExcluded(c.class.name, "class", c.class.source);
+			if (excludeClass) {
+				return false;
+			}
+			const fromLookup = MiscUtil.get(subclassLookup, c.class.source, c.class.name, c.subclass.source, c.subclass.name);
+			const excludeSubclass = ExcludeUtil.isExcluded(fromLookup.name || c.subclass.name, "subclass", c.subclass.source);
+			if (excludeSubclass) {
+				return false;
+			}
+			return true;
+		})
 		.sort((a, b) => {
 			const byName = SortUtil.ascSort(a.subclass.name, b.subclass.name);
 			return byName || SortUtil.ascSort(a.class.name, b.class.name);

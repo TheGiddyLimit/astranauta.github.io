@@ -54,7 +54,7 @@ class SpellsPage {
 				level: spell.level,
 				time,
 				school: Parser.spSchoolAbvToFull(spell.school),
-				classes: Parser.spClassesToFull(spell.classes, true),
+				classes: Parser.spClassesToFull(spell.classes, true, SUBCLASS_LOOKUP),
 				concentration,
 				normalisedTime: spell._normalisedTime,
 				normalisedRange: spell._normalisedRange,
