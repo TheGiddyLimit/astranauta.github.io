@@ -5988,9 +5988,6 @@
 			"int": 2,
 			"wis": 12,
 			"cha": 5,
-			"save": {
-				"str": "+7"
-			},
 			"senses": [
 				"darkvision 60 ft."
 			],
@@ -6408,7 +6405,13 @@
 				"E"
 			],
 			"ac": [
-				13
+				
+				{
+					"ac": 13,
+					"from": [
+						"{@item hide armor|phb}"
+					]
+				}
 			],
 			"hp": {
 				"average": 38,
