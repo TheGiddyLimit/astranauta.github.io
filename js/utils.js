@@ -8167,6 +8167,7 @@ ExcludeUtil = {
 	_excludeCount: 0,
 	isExcluded (name, category, source) {
 		if (!ExcludeUtil._excludes || !ExcludeUtil._excludes.length) return false;
+		if (!source) return false;  // Can't exclude an item if it has no source defined
 		source = source.source || source;
 		const out = !!ExcludeUtil._excludes.find(row => (row.source === "*" || row.source === source) && (row.category === "*" || row.category === category) && (row.name === "*" || row.name === name));
 		if (out) ++ExcludeUtil._excludeCount;
