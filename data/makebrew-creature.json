@@ -2,9 +2,321 @@
 	"#trait": "Shoutouts to CritterDB: https://github.com/haswellr/CritterDB/blob/master/server/public/data/creatureAbilities.json",
 	"trait": [
 		{
+			"name": "Frightful Presence",
+			"entries": [
+				"Each of creature within {#} foot radius range is subject to being {@condition frightened} for 1 minute, unless they suceed a {@dc {#}} Wisdom save . The <$name$> may choose to exclude whatever creatures they wish from the effect of their frightful presence."
+			]
+		},
+		{
+			"name": "Heated Body",
+			"entries": [
+				"A creature that touches the <$name$> or hits it with a melee attack while within 5 feet of it takes 7 ({@damage 2d6}) fire damage."
+			]
+		},
+		{
+			"name": "Magic Resistance",
+			"entries": [
+				"<$name$> has advantage on saving throws against spells and other magical effects."
+			]
+		},
+		{
+			"name": "Horrifying Visage",
+			"entries": [
+				"Each non-undead creature of the creature's choice within range must make a Wisdom saving throw ({@dc {#}}) or be {@condition frightened} for 1 minute."
+			]
+		},
+		{
+			"name": "Danger Sense",
+			"entries": [
+				"<$name$> has advantage on Wisdom (Perception) checks  and Dexterity saving throws against attacks it can see when it is not {@condition blinded}, {@condition deafened}, or {@condition incapacitated}. and can't be surprised."
+			]
+		},
+		{
+			"name": "Relentless",
+			"entries": [
+				"If the <$name$> takes 10 damage or less that would reduce it to 0 hit points, it is reduced to 1 hit point instead."
+			]
+		},
+		{
+			"name": "Damage Transfer ",
+			"entries": [
+				"While it is grappling a creature, the <$name$> takes only half the damage dealt to it, and the creature {@condition grappled} by the <$name$> takes the other half."
+			]
+		},
+		{
+			"name": "Avoidance",
+			"entries": [
+				"If the <$name$> is subjected to an effect that allows it to make a saving throw to only take half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails."
+			]
+		},
+		{
+			"name": "Angelic Weapons",
+			"entries": [
+				"<$name$>s's weapon attacks are magical. When <$name$> hits with any weapon, the weapon deals an extra > # < ({@damage }) radiant damage (included in the attack)."
+			]
+		},
+		{
+			"name": "Ambusher",
+			"entries": [
+				"The <$name$> has advantage on attack rolls against any creature it has surprised."
+			]
+		},
+		{
+			"name": "Enlarge",
+			"entries": [
+				"<$name$> can magically increases in size, along with anything it is wearing or carrying. Input the extra damage inflicted per round whilst enlarged."
+			]
+		},
+		{
+			"name": "Possession",
+			"entries": [
+				"<$name$> can control another creature, during which time it cannot be targeted by nearly any effect."
+			]
+		},
+		{
+			"name": "Constrict",
+			"entries": [
+				"The creature has the ability to restrain and/or grapple a target as part of an attack. When <$name$> makes an attack it has the ability to restrain and/or grapple a target as part of an attack. (escape {@dc 16}). Until this grapple ends, the target is {@condition restrained}."
+			]
+		},
+		{
+			"name": "Web",
+			"entries": [
+				"<$name$> can generate a web which acts as a ranged Weapon Attack that upon hit {@condition restrained|restrains} the target on a hit. the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
+			]
+		},
+		{
 			"name": "Aberrant Ground",
 			"entries": [
-				"The ground in a 10-foot radius around the <$name$> is doughlike difficult terrain. Each creature that starts its turn in that area must succeed on a DC 10 Strength saving throw or have its speed reduced to 0 until the start of its next turn."
+				"The ground in a 10-foot radius around <$name$> is warped by its presence becomine doughlike and therefore is treated as difficult terrain. Each creature that starts its turn in that area must succeed on a {@dc 10} Strength saving throw or have its speed reduced to 0 until the start of its next turn."
+			]
+		},
+		{
+			"name": "Hexproof",
+			"entries": [
+				"<$name$> is under the effect of a person area of effect {@spell globe of invulnerability} against non-allied spells targeted specifically at him - AoE spells will still effect <$name$>, when you are subjected to an effect that allows you to make a saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail."
+			]
+		},
+		{
+			"name": "Nimble Escape",
+			"entries": [
+				"The <$name$> can take the {@action Disengage} or {@action Hide} action as a bonus action on each of its turns."
+			]
+		},
+		{
+			"name": "Martial Advantage",
+			"entries": [
+				"Once per turn, the <$name$> can deal an extra 7 ({@damage 2d6}) damage to a creature it hits with a weapon attack if that creature is within 5 feet of an ally of the <$name$> that isn't {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Parry",
+			"entries": [
+				"<$name$> adds its proficiency bonus to its AC against one melee attack that would hit it as a reaction."
+			]
+		},
+		{
+			"name": "Superior Invisibility",
+			"entries": [
+				"As a bonus action, the <$name$> can magically turn {@condition invisible} until its concentration ends (as if concentrating on a spell). Any equipment the <$name$> wears or carries is {@condition invisible} with it."
+			]
+		},
+		{
+			"name": "Pack Tactics",
+			"entries": [
+				"The <$name$> has advantage on an attack roll against a creature if at least one of the <$name$>'s allies is within 5 feet of the creature and the ally isn't {@condition incapacitated} ."
+			]
+		},
+		{
+			"name": "Absorb (x)",
+			"entries": [
+				"Damage resistance (DR 2* x)"
+			]
+		},
+		{
+			"name": "Shroud",
+			"entries": [
+				"This creature can’t be the target of a targeted spell; but can be affected by AoE spell or spell like effect (Magic Missle; Friends cannot taget this creature; but Fireball;Sleep can effect it)"
+			]
+		},
+		{
+			"name": "Aggressive",
+			"entries": [
+				"As a bonus action, <$name$> can move up to its speed toward a hostile creature that it can see."
+			]
+		},
+		{
+			"name": "Astral Jaunt",
+			"entries": [
+				"As a bonus action on its turn, the <$name$> can transport itself to the astral plane, or back to the plane it was on last. When it transports itself in this way, it returns to a location within 30 feet of where it was the last time it was in whichever plane it's transporting itself to."
+			]
+		},
+		{
+			"name": "Blood Frenzy",
+			"entries": [
+				"The <$name$> has advantage on melee attack rolls against any creature that doesn't have all its hit points."
+			]
+		},
+		{
+			"name": "Shadow Stealth",
+			"entries": [
+				"While in dim light or darkness, the <$name$> can take the {@action Hide} action as a bonus action."
+			]
+		},
+		{
+			"name": "Crypt Fatigue",
+			"entries": [
+				"A creature infected with crypt fatigue gains one level of {@condition exhaustion} immediately, and gains one more level every time it fails the {@dc 12} Constitution saving throw after taking damage from a <$name$>. An infected creature must make a {@dc 12} Constitution saving throw at the end of every long rest; with a successful save, it recovers from one level of {@condition exhaustion}, but with a failed save, it gains one level of {@condition exhaustion}. The disease is cured when the victim no longer has any levels of {@condition exhaustion}."
+			]
+		},
+		{
+			"name": "Legendary Resistance (3/Day)",
+			"entries": [
+				"If the <$name$> fails a saving throw, it can choose to succeed instead."
+			]
+		},
+		{
+			"name": "Stench",
+			"entries": [
+				"Any creature that starts its turn within 10 feet of the <$name$> must succeed on a {@dc 14} Constitution saving throw or be {@condition poisoned} until the start of its next turn. On a successful saving throw, the creature is immune to the <$name$>'s stench for 24 hours."
+			]
+		},
+		{
+			"name": "Regeneration",
+			"entries": [
+				"<$name$> regains {10} hit points at the start of its turn if it has at least 1 hit point."
+			]
+		},
+		{
+			"name": "Fading",
+			"entries": [
+				"Creatures with fading have 3+d4 rounds of combat before they disappear, increase their HP by 20%. Put a marker for their fade count down. A creature that fades, but doesn’t get defeated… doesn’t award EXP. Its body fades regardless at the end of its fade period. Bit and pieces take from its corpse can be held in preserver/special bag and are valuable (3x the gp reward)"
+			]
+		},
+		{
+			"name": "Undead Fortitude",
+			"entries": [
+				"If damage reduces the <$name$> to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the <$name$> drops to 1 hit point instead."
+			]
+		},
+		{
+			"name": "Deadly Critical",
+			"entries": [
+				"If the <$name$> scores a critical whenever its attack rolls a natural 19 or 20."
+			]
+		},
+		{
+			"name": "Devastating Charge",
+			"entries": [
+				"If the <$name$> moves at least 20 feet straight toward a target and then hits it with a {specific attack} attack on the same turn, the target takes and extra 6 ({@damage 1d10}) piercing damage. If the target is a creature, it must succeed on a {@dc 14} Strength saving throw or be knocked {@condition prone}, in which case the <$name$> can make another attack with its claws against it as a bonus action."
+			]
+		},
+		{
+			"name": "Devour (attack)",
+			"entries": [
+				"If both of a <$name$> claw attacks or is grappled or grappling a creature; if its bite attack hit the same target, the  <$name$> gains temporary hit points equal to the piercing damage done by its bite attacks."
+			]
+		},
+		{
+			"name": "Discorporate",
+			"entries": [
+				"At any point during its turn, the <$name$> can collapse into a pile of individual parts that {verb} away . As long as any of the parts survive, they can collect and breed and create a new body for the <$name$> a few weeks or months later, depending on the amount of damage the larva mage has taken (the exact time is up to DM discretion)."
+			]
+		},
+		{
+			"name": "Displacement",
+			"entries": [
+				"The<$name$> projects a magical illusion that makes it appear to be standing near its actual location, causing attack rolls against it to have disadvantage. If it is hit by an attack, this trait is disrupted until the end of its next turn. This trait is also disrupted while the<$name$> is {@condition incapacitated} or has a speed of 0."
+			]
+		},
+		{
+			"name": "Distracting Hand",
+			"entries": [
+				"As a bonus action, while the <$name$> has the Mage Hand spell active, it can designate a creature within 5 feet of the spectral hand. The <$name$> has advantage on its attack rolls against that creature until the end of the turn."
+			]
+		},
+		{
+			"name": "Split (ooze)",
+			"entries": [
+				"If an attack does 10 or more slashing damage to a <$name$>, slices off a chunk of the <$name$> and it becomes an independent <$name$>. The <$name$> has hit points equal to the slashing damage caused by the attack, and the parent <$name$> hit points are reduced by an equal amount (in addition to the damage caused by the attack). The new <$name$> makes one attack immediately as a reaction against one adjacent foe, then joins the initiative order at the same point as its parent. "
+			]
+		},
+		{
+			"name": "Split (undead)",
+			"entries": [
+				"A <$name$> that has {#}  maximum hit points or more immediately can split into two individual <$name$>, each with a current hit point total equal to half the original current hit points and {3} maximum hit points. Both of these <$name$> continue to use the original initiative."
+			]
+		},
+		{
+			"name": "Aberrant Quickness (Recharges after a Short or Long Rest)",
+			"entries": [
+				"<$name$> can take an extra action on its turn."
+			]
+		},
+		{
+			"name": "Ability Damage/Drain Immunity",
+			"entries": [
+				"<$name$> is immune to any effect that would damage or drain it's ability scores."
+			]
+		},
+		{
+			"name": "Absorb Arcane Energy",
+			"entries": [
+				"Any arcane spell targeted at the <$name$> is automatically absorbed into its body. This cures 1 point of damage per 3 points of damage the spell would otherwise deal; nondamaging spells cure 1 point of damage per spell level. Spells that affect an area are not absorbed, but neither do they affect the <$name$>. The <$name$> can't absorb magic from spells that it cast itself using arcane spell mimicry, and it can't absorb divine magic, which affects it normally."
+			]
+		},
+		{
+			"name": "Absorb Channeled Energy",
+			"entries": [
+				"If a <$name$> is in the area of effect of a turn undead attempt, it gains temporary hit points. For each <$name$> that would have been affected by the turning if it were a zombie, the <$name$> gains 10 temporary hit points, to a maximum of 60."
+			]
+		},
+		{
+			"name": "Absorb Flesh",
+			"entries": [
+				"The body of a creature that dies while {@condition grappled} by a <$name$> is completely absorbed into the <$name$>'s mass. No portion of it remains to be used in raise dead, reincarnate, and comparable spells that require touching the dead person's body."
+			]
+		},
+		{
+			"name": "Absorb Impurities",
+			"entries": [
+				"<$name$> can absorb poisons or diseases from another creature, living or dead, and turn it to <$name$>'s use. It can expose a fresh cut to a source of disease or poison and safely absorb the dormant affliction into its blood stream. It can then inflict the disease or poison on another by spitting a stream of blood at its target creature. On a successful hit as a ranged spell attack, the target creature is exposed to the disease or poison and must proceed with whatever saving throws are required."
+			]
+		},
+		{
+			"name": "Absorb Magic",
+			"entries": [
+				"As a bonus action, <$name$> targets any creature, object, or magical effect within 10 feet of it. The creature chooses a spell already cast on the target. If the spell is of 3rd level or lower, it absorbs the spell and it ends. If the spell is of 4th level or higher, it must make a check with a +9 modifier. The DC equals 10 + the spell's level. On a successful check, <$name$> absorbs the spell and it ends. <$name$>'s body glows when it absorbs a spell, as if under the effect of a light spell."
+			]
+		},
+		{
+			"name": "Absorb Potion",
+			"entries": [
+				"The <$name$> can absorb any potion, oil, tincture, or alchemical draught that touches it, choosing to be affected by the substance or to nullify it."
+			]
+		},
+		{
+			"name": "Absorb the Weave",
+			"entries": [
+				"When <$name$> counters or dispels a spell, it heals damage equal to twice the spell level."
+			]
+		},
+		{
+			"name": "Absorption, <type>",
+			"entries": [
+				"Whenever <$name$> is subjected to {Dmg_Type} damage, it takes no damage and instead regains a number of hitpoints equal to the {Dmg_Type} damage dealt."
+			]
+		},
+		{
+			"name": "Absorption, Necrotic",
+			"entries": [
+				"Whenever <$name$> is subjected to necrotic damage, it takes no damage and instead regains a number of hitpoints equal to the necrotic damage dealt."
+			]
+		},
+		{
+			"name": "Abyssal Essence",
+			"entries": [
+				"When <$name$> is damaged, a thick, stringy, black ichor made from the essence of the deep Abyss flows from the wounds in response. Any creature that deals damage to the <$name$> with a melee attack must succeed on a {@dc 20} Strength saving throw or take 18 ({@damage 4d8}) necrotic damage and be {@condition restrained} until the end of its next turn."
 			]
 		},
 		{
@@ -14,51 +326,111 @@
 			]
 		},
 		{
-			"name": "Adhesive",
+			"name": "Acid Blood",
 			"entries": [
-				"The <$name$> adheres to anything that touches it. A Huge or smaller creature adhered to the mimic is also {@condition grappled} by it (escape DC 13). Ability checks made to escape this grapple have disadvantage."
+				"When <$name$> takes damage of any type but psychic, each creature within 5 feet of the takes ({@damage }) acid damage."
 			]
 		},
 		{
-			"name": "Aggressive",
+			"name": "Action Surge (Recharges After a Short or Long Rest)",
 			"entries": [
-				"As a bonus action, the <$name$> can move up to its speed toward a hostile creature that it can see."
+				"After taking an action on its turn, the <$name$> can take one additional action."
+			]
+		},
+		{
+			"name": "Acute Sight",
+			"entries": [
+				"<$name$> has advantage on Perception checks that rely on sight."
+			]
+		},
+		{
+			"name": "Adapt",
+			"entries": [
+				"If <$name$> Conjured/Summoned, its controller may (as a reaction) use a unused HD to grant advantage to its attack and gain temporary HP equal to the number HD its summoner expended."
+			]
+		},
+		{
+			"name": "Adhesive",
+			"entries": [
+				"The <$name$> adheres to anything that touches it. A Huge or smaller creature adhered to the mimic is also {@condition grappled} by it (escape {@dc 13}). Ability checks made to escape this grapple have disadvantage."
+			]
+		},
+		{
+			"name": "Advanced Telepathy",
+			"entries": [
+				"<$name$> can perceive the content of any telepathic communication used within 60 ft. of it, and it can't be surprised by creatures with any form of telelpathy."
+			]
+		},
+		{
+			"name": "Affinity",
+			"entries": [
+				"<$name$>'s casting level is effectively 1 level higher and spell slots are cast as if 1 level greater while in their affinity is present."
+			]
+		},
+		{
+			"name": "Afterlife (x)",
+			"entries": [
+				"When this creature is dropped to 0HP, its corpse breaks apart making {#} number of CR 1/2 versions of <$name$>"
 			]
 		},
 		{
 			"name": "Air Form",
 			"entries": [
-				"The <$name$> can enter a hostile creature's space and stop there. It can move through a space as narrow as 1 inch wide without squeezing."
+				"<$name$> can enter a hostile creature's space and stop there. It can move through a space as narrow as 1 inch wide without squeezing."
 			]
 		},
 		{
-			"name": "Angelic Weapons (Deva)",
+			"name": "Air Hatred",
 			"entries": [
-				"The <$name$>'s weapon attacks are magical. When the <$name$> hits with any weapon, the weapon deals an extra {@dice 4d8} radiant damage."
+				"<$name$> has advantage on attack rolls against airborne opponents."
 			]
 		},
 		{
-			"name": "Angelic Weapons (Planetar)",
+			"name": "Air Mastery",
 			"entries": [
-				"The <$name$>'s weapon attacks are magical. When the <$name$> hits with any weapon, the weapon deals an extra {@dice 5d8} radiant damage."
+				"Airborne creatures have tactical disadvantage on attack rolls against <$name$>."
 			]
 		},
 		{
-			"name": "Angelic Weapons (Solar)",
+			"name": "Alert",
 			"entries": [
-				"The <$name$>'s weapon attacks are magical. When the <$name$> hits with any weapon, the weapon deals an extra {@dice 6d8} radiant damage."
+				"<$name$> has advantage on Initiative rolls and Wisdom (Perception) checks and can't be surprised while it is conscious."
 			]
 		},
 		{
-			"name": "Antimagic Susceptibility",
+			"name": "Alien Mind",
 			"entries": [
-				"The <$name$> is {@condition incapacitated} while in the area of an {@i antimagic field}. If targeted by {@i dispel magic}, the <$name$> must succeed on a Constitution saving throw against the caster's spell save DC or fall {@condition unconscious} for 1 minute."
+				"<$name$> has advantage on Wisdom saving throws."
 			]
 		},
 		{
-			"name": "Ambusher",
+			"name": "All-Around Vision",
 			"entries": [
-				"The <$name$> has advantage on attack rolls against any creature it has surprised."
+				"Attackers never gain advantage on attacks or bonus damage against <$name$> from the presence of nearby allies. It has advantage on all sight-based perception checks."
+			]
+		},
+		{
+			"name": "Alter Energy Type (1/Turn)",
+			"entries": [
+				"When the <$name$> casts a spell with a spell slot and the spell deals acid, cold, fire, force, lightning, necrotic, radiant, or thunder damage, it can substitute that damage with one other type from that list."
+			]
+		},
+		{
+			"name": "Alter Saving Throw (Recharges after a Short or Long Rest)",
+			"entries": [
+				"When the <$name$> casts a spell with a spell slot and the spell requires a saving throw, it can change the saving throw from one ability score to another of its choice."
+			]
+		},
+		{
+			"name": "Alternate Form",
+			"entries": [
+				"As a bonus action, the <$name$> can assume the form of {form description}, or a hybrid of this and its natural form. {Details of form's abilities}. <$name$> remains in this form until he returns to human form as a bonus action or he falls {@condition unconscious} or dies."
+			]
+		},
+		{
+			"name": "Ambuscade",
+			"entries": [
+				"Gain a first attack round before battle starts; and gains +10 initative."
 			]
 		},
 		{
@@ -74,9 +446,177 @@
 			]
 		},
 		{
+			"name": "Amplify",
+			"entries": [
+				"Gain +1 dmg and regain +1 temporary hp per each creature type within 10ft of the amplify type"
+			]
+		},
+		{
+			"name": "Annihilating Aura",
+			"entries": [
+				"Any creature that starts its turn with in 40 feet of the <$name$> must succeed on a {@dc #} Constitution saving throw or take 10 ({@damage 3d6}) necrotic damage and grant the <$name$> advantage on attack rolls against it until the start of the creature's next turn. Undead are immune to this aura."
+			]
+		},
+		{
+			"name": "Annihilator",
+			"entries": [
+				"Disintegrate (per spell) (Recharge [1 per 2 points of annihilator]); each disentegrate must be a separate target"
+			]
+		},
+		{
+			"name": "Antennae",
+			"entries": [
+				"The <$name$> has advantage on Wisdom (Perception) checks that rely on smell."
+			]
+		},
+		{
+			"name": "Antimagic Cone",
+			"entries": [
+				"The <$name$> creates an area of antimagic, as in the {@spell antimagic field} spell, in a x-foot cone. At the start of each of its turns, the beholder decides which way the cone faces and whether the cone is active. The area works against the beholder's own eye rays."
+			]
+		},
+		{
+			"name": "Antimagic Shell",
+			"entries": [
+				"The <$name$> has advantage on saving throws against spells, and any creature making a spell attack against the <$name$> has disadvantage on the attack roll. If the <$name$> succeeds on its saving throw against a spell or a spell attack misses it, an additional effect might occur, as determined by rolling a {@dice d8}:"
+			]
+		},
+		{
+			"name": "Antimagic Susceptibility",
+			"entries": [
+				"<$name$> is {@condition incapacitated} while in the area of an {@spell antimagic field}. If targeted by {@spell dispel magic}, <$name$> must succeed on a Constitution saving throw against the caster's spell save DC or fall {@condition unconscious} for 1 minute."
+			]
+		},
+		{
+			"name": "Arcane Shot (x/period)",
+			"entries": [
+				"When the <$name$> hits a creature with a ranged weapon attack, it can apply one of the following effects to the target in addition to the damage of the attack:"
+			]
+		},
+		{
+			"name": "Arcane Surge ",
+			"entries": [
+				"If the <$name$> hits a creature with a spell attack, it may choose to double the dice rolled for cold damage. (Recharge after Short or Long Rest)"
+			]
+		},
+		{
+			"name": "Arcane Ward",
+			"entries": [
+				"<$name$> has a magical ward that has {30} temp hit points. Whenever <$name$> takes damage, the ward takes the damage instead. If the ward is reduced to 0 hit points, the creature takes any remaining damage. When the creature casts an abjuration spell of 1st level or higher, the ward regains a number of temporary hit points equal to twice the level of the spell."
+			]
+		},
+		{
+			"name": "Armor-Piercing Bite",
+			"entries": [
+				"The bony ridges that a <$name$> has for teeth can chew through metal or wood. When a <$name$> scores a critical hit with its bite attack, the target's armor or shield (GM's choice), if any, loses one point of armor protection; e.g., a damaged shield provides just one point of AC instead of two, or a chain shirt provides AC 12+Dex mod instead of AC 13+Dex mod. This damage is cumulative, but it can be repaired by an armorer for 20% of the armor or shield's new cost per critical hit inflicted on it. Magical properties continue to function while the armor or shield is damaged."
+			]
+		},
+		{
 			"name": "Assassinate",
 			"entries": [
-				"During its first turn, the <$name$> has advantage on attack rolls against any creature that hasn't taken a turn. Any hit the <$name$> scores against a surprised creature is a critical hit."
+				"During its first turn, the<$name$> has advantage on attack rolls against any creature that hasn't taken a turn. Any hit the <$name$> scores against a surprised creature is a critical hit."
+			]
+		},
+		{
+			"name": "Aura of Darkness",
+			"entries": [
+				"<$name$> is permanently enveloped by a sphere of darkness with a 15-foot radius. Other than the aura's size and duration, it behaves exactly as the darkness spell."
+			]
+		},
+		{
+			"name": "Aura of Fervor",
+			"entries": [
+				"An ally that is within 30 feet of <$name$> and can see and hear <$name$> has advantage to saving throws against being {@condition charmed} and {@condition frightened}, and all attack rolls against enemies within 30 feet of <$name$>, provided that <$name$> isn't {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Aura Of Life",
+			"entries": [
+				"When an undead creature starts its turn within 30 feet of <$name$>, it must succeed on a {@dc } Wisdom saving throw or be turned until the end of its next turn."
+			]
+		},
+		{
+			"name": "Aura of Loss",
+			"entries": [
+				"A creature that starts its turn within 30 feet of <$name$> must succeed on a {@dc #} Wisdom saving throw. On a failed save, the creature has disadvantage on saving throws and grant <$name$> advantage on attack rolls against it until the start of <$name$>'s next turn."
+			]
+		},
+		{
+			"name": "Aura of Malice",
+			"entries": [
+				"All enemies within 10 feet of <$name$> have disadvantage on saving throws."
+			]
+		},
+		{
+			"name": "Aura of Misfortune",
+			"entries": [
+				"Bad luck radiates from the <$name$> in an aura with a 60-foot radius. Hostile creatures in that area have disadvantage on attack rolls, ability checks and saving throws."
+			]
+		},
+		{
+			"name": "Aura Of Necromancy's Bane",
+			"entries": [
+				"Necromancy spells can't be cast within 120 feet of the <$name$>. When an undead creature starts its turn within 30 feet of the <$name$>, it must make a {@dc } Constitution saving throw, taking <number> ({@damage }) radiant damage on a failed save, or half as much damage on a successful one."
+			]
+		},
+		{
+			"name": "Aura of Protection",
+			"entries": [
+				"The <$name$> and friendly creatures within 30 feet of it have advantage on saving throws. The <$name$> must be concious to grant this bonus."
+			]
+		},
+		{
+			"name": "Aura of Submission",
+			"entries": [
+				"While <$name$> is wielding the Ruby Rod, a creature that starts its turn within 20 feet of <$name$> must succeed on a {@dc 27} Wisdom saving throw, unless <$name$> is {@condition incapacitated}. On a failed save, the creature must kneel and bow before <$name$> until the start of its next turn. Until this kneeling and bowing ends, the target can't take actions or reactions, and its speed is 0 and can't be increased. If a creature's saving throw is successful, the creature is immune to <$name$>'s Aura of Submission for the next 24 hours."
+			]
+		},
+		{
+			"name": "Aura Of The Funeral Feast",
+			"entries": [
+				"<$name$> gains <number> ({@dice }) temporary hp whenever a creature dies within 10 feet of it."
+			]
+		},
+		{
+			"name": "Aura of the Sea",
+			"entries": [
+				"Creatures that start their turn within 5 feet of the <$name$> must make a {@dc #} Dexterity saving throw, taking <number> ({@damage }) lightning damage on a failed save, or half as much damage on a successful one."
+			]
+		},
+		{
+			"name": "Aura of the Threshold",
+			"entries": [
+				"While the <$name$> isn't {@condition incapacitated}, allies within 30 feet of it have advantage on death saving throws."
+			]
+		},
+		{
+			"name": "Aura of Tragedy",
+			"entries": [
+				"A creature that fails a death saving throw within 25 feet of the <$name$>, must remove one success from its previous death saving throws if it has any and gains disadvantage on its next death saving throw."
+			]
+		},
+		{
+			"name": "Aura of Treachery",
+			"entries": [
+				"The <$name$> has advantage on melee attack rolls against any creature that has one or more of its allies within 5 feet of it."
+			]
+		},
+		{
+			"name": "Aura of Virulence",
+			"entries": [
+				"Creatures that would normally be resistant or immune to poison damage or the {@condition poisoned} condition lose their resistance or immunity while within 120 feet of <$name$>. All other creatures within 120 feet of <$name$> have disadvantage on saving throws against effects that cause poison damage or the {@condition poisoned} condition."
+			]
+		},
+		{
+			"name": "Aura of Warding",
+			"entries": [
+				"The <$name$> and friendly creatures within 30 feet of it have resistance to damage from spells."
+			]
+		},
+		{
+			"name": "Aura Of Wind",
+			"entries": [
+				"A creature that starts its turn within 15 feet of the <$name$> must succeed on a {@dc #} Strength saving throw or be pushed up to 15 feet away from the <$name$>."
 			]
 		},
 		{
@@ -86,34 +626,123 @@
 			]
 		},
 		{
-			"name": "Avoidance",
+			"name": "Aversion to Daylight",
 			"entries": [
-				"If the <$name$> is subjected to an effect that allows it to make a saving throw to only take half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails."
+				"<$name$> shuns light. While exposed to natural (not magical) sunlight, they have tactical disadvantage on all attack rolls, saving throws, and skill checks."
 			]
 		},
 		{
-			"name": "Barbed Hide (Barbed Devil)",
+			"name": "Aversion To Water",
 			"entries": [
-				"At the start of each of its turns, the <$name$> deals 5 ({@dice 1d10}) piercing damage to any creature grappling it."
+				"If <$name$> takes cold damage or is doused with at least three gallons of water, it has disadvantage on attack rolls and ability checks until the end of its next turn."
+			]
+		},
+		{
+			"name": "Awaken",
+			"entries": [
+				"This creature was a creature with low mental development and was either {@spell Awaken|Awakened} or through other means evolved."
+			]
+		},
+		{
+			"name": "Awaken Plants (1/Month)",
+			"entries": [
+				"This plant can magically awaken one plant it touches. The effect is identical to the awaken spell, but only live plants can be awakened."
+			]
+		},
+		{
+			"name": "Awe Aura",
+			"entries": [
+				"All creatures within 30 feet must make a {@dc 16} Charisma saving throw in order to attack <$name$>. On a failed save, the attacking creature's turn ends immediately. On a success, that creature is immune to the Awe Aura of all <creature_subtype (example Gemstone Dragon)> for 1 week."
+			]
+		},
+		{
+			"name": "Awesome Charge",
+			"entries": [
+				"When <$name$> uses a dash action, creatures that try to use reactions or readied actions against it must succeed on a {@dc 12} Wisdom saving throw or cannot use the action or reaction."
+			]
+		},
+		{
+			"name": "Axiomatic Mind",
+			"entries": [
+				"<$name$> can't be compelled to act in a manner contrary to its nature or its instructions."
+			]
+		},
+		{
+			"name": "Banding",
+			"entries": [
+				"Creatures with banding gain +2 AC when within 10ft of an ally, and may use its reaction to impose disadvantage on attacks against an ally within rage for an attack."
+			]
+		},
+		{
+			"name": "Barbed Hide",
+			"entries": [
+				"At the start of each of its turns, the <$name$> deals 5 ({@damage 1d10}) piercing damage to any creature grappling it."
+			]
+		},
+		{
+			"name": "Battle Command",
+			"entries": [
+				"As a bonus action, <$name$> targets one ally it can see within 30 feet of it. If the target can see or hear <$name$>, the target can use its reaction to make one melee attack or to take the Dodge or Hide action."
+			]
+		},
+		{
+			"name": "Battle Concentration",
+			"entries": [
+				"<$name$> has advantage on Constitution saving throws that it makes to maintain concentration on a spell when it takes damage."
+			]
+		},
+		{
+			"name": "Battle Cry",
+			"entries": [
+				"As an action make a single attack against a target, if successful all allies have advantage on their first attack until your next turn (or you become incapacitated.)"
+			]
+		},
+		{
+			"name": "Battle Frenzy",
+			"entries": [
+				"Once reduced to {#} hp or less, <$name$> makes all attacks with advantage."
+			]
+		},
+		{
+			"name": "Battle Ready",
+			"entries": [
+				"The <$name$> uses its Intelligence modifer, instead of its Strength or Dexterity, for the attack and damage rolls when attacking with a weapon (included in the attacks)."
 			]
 		},
 		{
 			"name": "Beast of Burden",
 			"entries": [
-				"The <$name$> is considered to be a Large animal for the purpose of determining its carrying capacity."
+				"The <$name$> is considered to be a one size category larger for the purpose of determining its carrying capacity."
 			]
 		},
 		{
-			"name": "Berserk (Clay Golem)",
+			"name": "Berserk",
 			"entries": [
-				"Whenever the <$name$> starts its turn with 60 hit points or fewer, roll a {@dice d6}. On a 6, the <$name$> goes berserk. On each of its turns while berserk, the <$name$> attacks the nearest creature it can see. If no creature is near enough to move to and attack, the <$name$> attacks an object, with preference for an object smaller than itself. Once the <$name$> goes berserk, it continues to do so until it is destroyed or regains all its hit points."
+				"Whenever the <$name$> starts its turn with {60} hit points or fewer, roll a {@dice d6}. On a 6, the <$name$> goes berserk. On each of its turns while berserk, the <$name$> attacks the nearest creature it can see. If no creature is near enough to move to and attack, the <$name$> attacks an object, with preference for an object smaller than itself. Once the <$name$> goes berserk, it continues to do so until it is destroyed or regains all its hit points."
 			]
 		},
 		{
-			"name": "Berserk (Flesh Golem)",
+			"name": "Berserk ",
 			"entries": [
-				"Whenever the <$name$> starts its turn with 40 hit points or fewer, roll a {@dice d6}. On a 6, the <$name$> goes berserk. On each of its turns while berserk, the <$name$> attacks the nearest creature it can see. If no creature is near enough to move to and attack, the <$name$> attacks an object, with preference for an object smaller than itself. Once the <$name$> goes berserk, it continues to do so until it is destroyed or regains all its hit points.",
-				"The <$name$>'s creator, if within 60 feet of the berserk <$name$>, can try to calm it by speaking firmly and persuasively. The <$name$> must be able to hear its creator, who must take an action to make a DC 15 Charisma ({@skill Persuasion}) check. If the check succeeds, the <$name$> ceases being berserk. If it takes damage while still at 40 hit points or fewer, the <$name$> might go berserk again."
+				"Whenever the <$name$> starts its turn with 40 hit points or fewer, roll a {@dice d6}. On a 6, the <$name$> goes berserk. On each of its turns while berserk, the <$name$> attacks the nearest creature it can see. If no creature is near enough to move to and attack, the <$name$> attacks an object, with preference for an object smaller than itself. Once the <$name$> goes berserk, it continues to do so until it is destroyed or regains all its hit points.,The <$name$>'s creator, if within 60 feet of the berserk <$name$>, can try to calm it by speaking firmly and persuasively. The <$name$> must be able to hear its creator, who must take an action to make a {@dc 15} Charisma ({@skill Persuasion}) check. If the check succeeds, the <$name$> ceases being berserk. If it takes damage while still at 40 hit points or fewer, the <$name$> might go berserk again."
+			]
+		},
+		{
+			"name": "Bestow",
+			"entries": [
+				"As a bonus action <$name$> can transfer a spell or spelllike effect to an allied in an adjacent space."
+			]
+		},
+		{
+			"name": "Blatant Dismissal",
+			"entries": [
+				"While in the courts or castles of the fey, a <$name$> that scores a successful hit with its longsword can try to force the substitution of the target with a shadow double. The target must succeed at a {@dc 10} Charisma saving throw or become {@condition invisible}, silent, and {@condition paralyzed}, while an illusory version of itself remains visible and audible—and under the monolith footman's control, shouting for a retreat or the like. Outside fey locales, this ability does not function."
+			]
+		},
+		{
+			"name": "Blend with Shadows",
+			"entries": [
+				"The <$name$> has advantage on Dexterity ({@skill Stealth}) checks made to hide in dim light or darkness."
 			]
 		},
 		{
@@ -123,9 +752,51 @@
 			]
 		},
 		{
-			"name": "Blood Frenzy",
+			"name": "Blinding Gaze",
 			"entries": [
-				"The <$name$> has advantage on melee attack rolls against any creature that doesn't have all its hit points."
+				"When a creature that can see the <$name$> eye starts its turn within 30 feet of the <$name$>, the <$name$> can force it to make a {@dc 17} Charisma saving throw if the <$name$> isn't {@condition incapacitated} and can see the creature. If the saving throw fails, the creature is {@condition blinded} until the end of its next turn. Unless surprised, a creature can avert its eyes to avoid the saving throw at the start of its turn. If the creature does so, it has disadvantage on attack rolls against the <$name$> until the start of its next turn. If the creature looks at the <$name$> in the meantime, it must immediately make the saving throw."
+			]
+		},
+		{
+			"name": "Blood Savant",
+			"entries": [
+				"When subjected to a disease or poison effect that allows a Constitution saving throw to take only half damage, the <$name$> instead takes no damage if it succeeds on the saving throw, and only half damage if it fails."
+			]
+		},
+		{
+			"name": "Blood Sense",
+			"entries": [
+				"A <$name$> can pinpoint the location of living creatures within 30 feet of it and can sense the general direction of living creatures within {distance} of it."
+			]
+		},
+		{
+			"name": "Blood Vision",
+			"entries": [
+				"When the <$name$> ingests the blood of another creature, it is {@condition stunned} until the start of its next turn. During that time, the <$name$> experiences a memory of the creature through its own eyes which may or may not be of the incident which caused the creature to bleed. The older the blood, the foggier and more obscure the memory is likely to be. Once the <$name$> has consumed a creature's blood in this way, the same creature's blood will never again produce a memory for that blood mage."
+			]
+		},
+		{
+			"name": "Bloodlust",
+			"entries": [
+				"Each successful attack by <$name$> generates a +1 bonus to its attack rolls (to a maximum of +5) and a +2 to its damage rolls (to a maximum of +10) to its first attack on its next turn. If the <$name$> misses with an attack or fails to attack, it loses these bonuses and starts again."
+			]
+		},
+		{
+			"name": "Bloodthirst",
+			"entries": [
+				"The <$name$> has advantage on attack rolls against creatures that are currently below their maximum hit points."
+			]
+		},
+		{
+			"name": "Blurred Movement",
+			"entries": [
+				"Attack rolls against the <$name$> have disadvantage unless the <$name$> is {@condition incapacitated} or {@condition restrained}."
+			]
+		},
+		{
+			"name": "Bonded Weapon",
+			"entries": [
+				"The <$name$>'s bonded weapon is its {weapon}. The <$name$> cannot be disarmed if it is wielding its bonded weapon. As a bonus action, the <$name$> can magically teleport its bonded weapon into its hand."
 			]
 		},
 		{
@@ -141,15 +812,195 @@
 			]
 		},
 		{
-			"name": "Brute",
+			"name": "Brave Devotion",
 			"entries": [
-				"A melee weapon deals one extra die of its damage when the <$name$> hits with it."
+				"Creature has advantage on saving throws against being charmed or frightened."
 			]
 		},
 		{
-			"name": "Charge (Wereboar)",
+			"name": "Breakaway",
 			"entries": [
-				"If the <$name$> moves at least 15 feet straight toward a target and then hits it with its tusks on the same turn, the target takes an extra 7 ({@dice 2d6}) slashing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked {@condition prone}."
+				"When the <$name$> (shell) reaches 0 hit points it breaks away revealing the <$name$> (true form)."
+			]
+		},
+		{
+			"name": "Breath Weapon",
+			"entries": [
+				"A <$name$> can use its breath weapon as an attack. Its breath characteristics are determined by its draconic background, as summarized on the table. Regardless of the type of breath weapon involved, targets in the area of effect take half damage with a successful {@dc 16} Dexterity saving throw. Lines are 5 feet wide."
+			]
+		},
+		{
+			"name": "Bred to the Saddle",
+			"entries": [
+				"<$name$> do not take any penalties to their movement or speed due to encumbrance or carrying a single rider."
+			]
+		},
+		{
+			"name": "Briarstride",
+			"entries": [
+				"The <$name$> is not slowed by forest terrain, can't be {@condition restrained} or slowed by entangle spells, and never takes damage from thorns, briars, or other hazardous plants in the terrain."
+			]
+		},
+		{
+			"name": "Brimstone",
+			"entries": [
+				"The <$name$> takes <number> ({@damage }) necrotic damage when it activates this infusion. The <$name$> can breathe poison as an action. In addition, any creature that starts its turn within 5 feet of the <$name$> must succeed on a {@dc 16} Constitution saving throw or be {@condition poisoned} until the start of the creature's next turn."
+			]
+		},
+		{
+			"name": "Brutal Critical",
+			"entries": [
+				"The <$name$> rolls one additional weapon damage die when determining extra damage for a critical hit with a melee attack."
+			]
+		},
+		{
+			"name": "Brute",
+			"entries": [
+				"A melee weapon deals one extra die of its damage when the <$name$> hits with it (included in the attack)."
+			]
+		},
+		{
+			"name": "Builder Of Hell",
+			"entries": [
+				"During a long rest, <$name$> can create three flesh golems or three gorgons. The creatures are made from various fleshy and metal parts stored on Prime. The constructs obey his commands until they are slain or disassemble into pieces after 24 hours."
+			]
+		},
+		{
+			"name": "Burdock Allergy",
+			"entries": [
+				"The <$name$> has a strong allergy to the burdock plant. If it comes within 20 feet of burdock flowers, it is {@condition poisoned} until it leaves the area."
+			]
+		},
+		{
+			"name": "Buried",
+			"entries": [
+				"Until it does something to reveal its presence, a buried <$name$> is treated as if it's {@condition invisible}."
+			]
+		},
+		{
+			"name": "Burning Aura",
+			"entries": [
+				"When a creature hits the <$name$> with a melee attack, it takes 7 ({@damage 2d6}) fire damage."
+			]
+		},
+		{
+			"name": "Burning Belly",
+			"entries": [
+				"Creatures inside a <$name$> take 21 ({@damage 6d6}) fire damage at the start of each of the <$name$> turns. Escaping from a <$name$> belly takes 10 feet of movement and a successful {@dc 16} Dexterity (Acrobatics) check."
+			]
+		},
+		{
+			"name": "Burning Blood",
+			"entries": [
+				"A creature that touches the <$name$> or hits it with a melee attack while within 5 feet of it, takes 9 ({@damage 2d8}) fire damage and 4 ({@damage 1d8}) necrotic damage. Any nonmagical weapon made of wood that hits the <$name$> burns. After dealing damage, the weapon takes a permanent cumulative −1 penalty to damage rolls. If its penalty drops to −5, the weapon is destroyed. Nonmagical ammunition of wood that hits the <$name$> is destroyed after dealing damage. The <$name$> can burn through 2-inch-thick, nonmagical wood in 1 round."
+			]
+		},
+		{
+			"name": "Burning Grip",
+			"entries": [
+				"The body of a <$name$> generates intense heat. Any creature that starts its turn with one or more <$name$> onto it takes 2 fire damage for each of those <$name$>. Once a <$name$> has latched onto a character, it moves with that character when the character moves, as if the character was moving a {@condition grappled} character (half-speed). A <$name$> releases its grip when killed or when the character wins a Strength contest against it. Up to four lesser fire crabs can latch onto a Small character, and up to eight can latch onto a Medium character."
+			]
+		},
+		{
+			"name": "Burning Rage",
+			"entries": [
+				"When a <$name$> takes fire damage, it has advantage on its attack rolls until the end of its next turn. If it takes more than 5 fire damage, it has advantage on its attack rolls for 2 rounds."
+			]
+		},
+		{
+			"name": "Burning Tangle",
+			"entries": [
+				"The ground within 10 feet of the <$name$>d is difficult terrain."
+			]
+		},
+		{
+			"name": "Burrow",
+			"entries": [
+				"<$name$> cannot burrow into solid rock, but they can move through softer material like soil or loose rubble, leaving a usable tunnel 5 feet in diameter."
+			]
+		},
+		{
+			"name": "Burrow Awareness",
+			"entries": [
+				"A <$name$> gets advantage on Perception checks if at least one other <$name$> is awake within 10 feet."
+			]
+		},
+		{
+			"name": "Burrowing Devil",
+			"entries": [
+				"If the <$name$> moves at least 10 feet with it burrowing speed toward a target, the <$name$> makes its next weapon attack roll with advantage. If the attack hits, the <$name$> can make another attack with its claws against the same target as a bonus action."
+			]
+		},
+		{
+			"name": "Burrowing Roots",
+			"entries": [
+				"Whenever the <$name$> makes a root attack, it can choose a point on the ground within 120 feet of it. The root bursts from the ground, and that point becomes the attack's point of origin. After attacking, the exposed root protrudes from that point, and the <$name$> gains a reaction each turn that it can only use to make an opportunity attack with that root. A root has AC 15, 45 hp, and resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks."
+			]
+		},
+		{
+			"name": "Bursting Arrow",
+			"entries": [
+				"The target and all other creatures within 10 feet of it take an extra 7 ({@damage 2d6}) force damage each."
+			]
+		},
+		{
+			"name": "Bursting Bolt",
+			"entries": [
+				"The target and all other creatures within 15 feet of it take an extra 10 ({@damage 3d6}) force damage each and must succeed on a {@dc 16} Strength saving throw or be knocked {@condition prone}."
+			]
+		},
+		{
+			"name": "Bushido",
+			"entries": [
+				"As a reaction it prevents a target from taking a the evade or disengage action, within range - it gains one attack against them - and it gains advantage on attacks against that creatures until then end of the target's turn."
+			]
+		},
+		{
+			"name": "Buyback",
+			"entries": [
+				"Creatures with this ability may healed within 3 rounds of being dropped to 0HP and it will raise with at least 1/2 HP"
+			]
+		},
+		{
+			"name": "By Will Alone",
+			"entries": [
+				"As a reaction to missing an attack, <$name$> makes a {@dc 15} Wisdom saving throw. On a successful save, the original attack is successful."
+			]
+		},
+		{
+			"name": "Cadaver Fever",
+			"entries": [
+				"At the end of a battle against <$name$>, anyone who was clawed or bitten by a <$name$> must make a {@dc 13} Constitution saving throw against disease. Failure indicates the character is infected with {@disease Cadaver fever}. An infected character gains one level of {@condition exhaustion} immediately and must repeat the saving throw at the end of every long rest. Each failed saving throw adds one more level of {@condition exhaustion}; a successful saving throw at the end of a long rest means only that the character's condition doesn't worsen. The character recovers fully when he or she makes successful saving throws at the ends of two consecutive long rests or when lesser restoration or comparable magic is used on the character."
+			]
+		},
+		{
+			"name": "Camouflage",
+			"entries": [
+				"<$name$> has advantage on Dexterity (Stealth) checks made to hide in {Type} terrain."
+			]
+		},
+		{
+			"name": "Carpet Bomb",
+			"entries": [
+				"For every 20 feet the <$name$> flies, it dislodges an explosive scale which lands in an unoccupied space directly below it."
+			]
+		},
+		{
+			"name": "Cavern Camouflage",
+			"entries": [
+				"The <$name$> has advantage on Dexterity (Stealth) checks while underground in caves and caverns."
+			]
+		},
+		{
+			"name": "Cavern Stalker",
+			"entries": [
+				"The <$name$> can attempt to hide even when only lightly obscured by dim light."
+			]
+		},
+		{
+			"name": "Chameleon Hide",
+			"entries": [
+				"<$name$> can hide when they are lightly obscured, they gain advantage on Dexterity {@skill Stealth}, and they have tactical advantage on {@skill Stealth} checks and initiative rolls."
 			]
 		},
 		{
@@ -159,41 +1010,231 @@
 			]
 		},
 		{
+			"name": "Champion",
+			"entries": [
+				"While <$name$> isn't {@condition incapacitated} or dead, other creatures of its type that are within 30ft of it have advantage against effects that {@condition charmed|charm} or {@condition frightened|frighten}. When it dies, its allies have disadvantage against effects that {@condition charmed|charm} or {@condition frightened|frighten}."
+			]
+		},
+		{
+			"name": "Change Shape (Recharges after a Short or Long Rest)",
+			"entries": [
+				"As a bonus action, the <$name$> can magically polymorph into a {shape list}, remaining in that form for up to 1 hour. It can revert to its true form as a bonus action. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
+			]
+		},
+		{
+			"name": "Changeling",
+			"entries": [
+				"<$name$> can use its action to polymorph into a {form} or back into its true form. Its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed. It doesn't change form if it dies."
+			]
+		},
+		{
+			"name": "Chant of Dread",
+			"entries": [
+				"Provided the <$name$> isn't {@condition incapacitated}, an enemy that starts its turn within 60 feet of the war chanter and can hear the <$name$> must succeed on a {@dc 13} Wisdom saving throw or become {@condition frightened} until the end the start of its next turn. If a creature's saving throw is successful, the creature is immune to the war chanter's Chant of Dread for the next 24 hours."
+			]
+		},
+		{
+			"name": "Chant of Ferocity",
+			"entries": [
+				"Provided the <$name$> isn't {@condition incapacitated}, an ally that starts its turn within 60 feet of the war chanter and can hear the <$name$> gains advantage on all melee weapon attack rolls during that turn, but attack rolls against it have advantage until the start of its next turn."
+			]
+		},
+		{
+			"name": "Chant of Resolve",
+			"entries": [
+				"Provided the <$name$> isn't {@condition incapacitated}, an ally that starts its turn within 60 feet of the <$name$> and can hear the <$name$> gains advantage on saving throws against being {@condition charmed} and {@condition frightened} until the start of its next turn."
+			]
+		},
+		{
+			"name": "Chaos Vulnerability",
+			"entries": [
+				"The <$name$> have disadvantage on all saving throws against spells."
+			]
+		},
+		{
+			"name": "Charge",
+			"entries": [
+				"If <$name$> moves at least 20 ft. straight toward a target and then hits it with a {specific melee} attack on the same turn, the target takes an extra 9 ({@damage 2d8}) piercing damage. If the target is a creature, it must succeed on a {@dc 15} Strength saving throw or be knocked prone."
+			]
+		},
+		{
+			"name": "Chill of the Void",
+			"entries": [
+				"Cold damage dealt by the <$name$> ignores resistance to cold damage, but not cold immunity."
+			]
+		},
+		{
+			"name": "Circle of Mortality",
+			"entries": [
+				"When the <$name$> would normally roll one or more dice to restore hit points with a spell to a creature at 0 hit points, it instead uses the highest number possible for each die."
+			]
+		},
+		{
+			"name": "Clockworker's Charm",
+			"entries": [
+				"Whenever the <$name$> casts a spell that animates, creates, or modifies an object, the spell's duration is increased by 3 minutes, if it has a duration."
+			]
+		},
+		{
+			"name": "Clumsy Moves",
+			"entries": [
+				"While the <$name$> is neither flying nor swimming, attack rolls against it have advantage."
+			]
+		},
+		{
+			"name": "Cold Aura",
+			"entries": [
+				"A creature that starts its turn within 20 feet of the <$name$>, must make a {@dc 21} Consitution saving throw, taking 54 ({@damage 12d8}) cold damage on a failed save, or half as much damage on a successful one."
+			]
+		},
+		{
+			"name": "Colossal Swing",
+			"entries": [
+				"The <$name$> can hit up to 2 Large targets, or 3 Medium or smaller targets within 5 feet of each other with each maul attack. A separate attack roll is made for each target."
+			]
+		},
+		{
+			"name": "Colossus Slayer (1/Turn)",
+			"entries": [
+				"The <$name$> deals an additional 4 ({@dice 1d8}) damage with its weapons when it hits a creature below its hit point maximum."
+			]
+		},
+		{
+			"name": "Combat Mobility",
+			"entries": [
+				"Opportunity attacks against a moving <$name$> always have tactical disadvantage."
+			]
+		},
+		{
+			"name": "Command Iron Defender",
+			"entries": [
+				"As a bonus action, the <$name$> targets the {@monster iron defender} it summoned and it can see within 60 feet of it. If the target can see or hear the <$name$>, the target can use its reaction to make a melee weapon attack, or take the {@action Dash}, {@action Disengage}, {@action Help}, or {@action Repair} action."
+			]
+		},
+		{
+			"name": "Command Vermin",
+			"entries": [
+				"As a bonus action, the <$name$> targets one allied beast (bat and rat types only) it can see within 30 feet of it. If the target can see or hear the <$name$>, the target can use its reaction to move up to half their speed and make one melee attack."
+			]
+		},
+		{
+			"name": "Companionable",
+			"entries": [
+				"<$name$> can be summoned as a familiar using the find familiar spell."
+			]
+		},
+		{
 			"name": "Confer Fire Resistance",
 			"entries": [
 				"The <$name$> can grant resistance to fire damage to anyone riding it."
 			]
 		},
 		{
-			"name": "Consume Life (Will-o'-Wisp)",
+			"name": "Conspire",
 			"entries": [
-				"As a bonus action, the <$name$> can target one creature it can see within 5 feet of it that has 0 hit points and is still alive. The target must succeed on a DC 10 Constitution saving throw against this magic or die. If the target dies, the <$name$> regains 10 ({@dice 3d6}) hit points."
+				"If there are 4 or more of these creatures are together, they're effective casting for spell slot is increased by one when they cast a spell."
+			]
+		},
+		{
+			"name": "Constructed Nature",
+			"entries": [
+				"<$name$> doesn't require air, food, drink, or sleep. The magic that animates it dispelled when the construct drops to 0 hit points. When 0 hit points it is too damaged to be of much use or value to anyone."
+			]
+		},
+		{
+			"name": "Consume Life ",
+			"entries": [
+				"As a bonus action, the <$name$> can target one creature it can see within 5 feet of it that has 0 hit points and is still alive. The target must succeed on a {@dc 10} Constitution saving throw against this magic or die. If the target dies, the <$name$> regains 10 ({@dice 3d6}) hit points."
+			]
+		},
+		{
+			"name": "Contagious",
+			"entries": [
+				"If a non-<$name$> comes into physical contact with the <$name$>, the creature must succeed on a {@dc 10} Constitution saving throw or contract {@disease gnoll's kiss} (p. 34). The DC increases to 15 if this contact was the <$name$>'s bite or claw attack."
+			]
+		},
+		{
+			"name": "Contagious Lightning",
+			"entries": [
+				"A creature that touches the <$name$> or hits it with a melee attack using a metal weapon receives a discharge of lightning. The creature must succeed on a {@dc 10} Constitution saving throw or attract lightning for 1 minute. For the duration, attacks that cause lightning damage have advantage against <$name$>, the creature has disadvantage on saving throws against lightning damage and lightning effects, and if the creature takes lightning damage, it is {@condition paralyzed} until the end of its next turn. An affected creature repeats the saving throw at the end of each of its turns, ending the effect on itself on a success."
+			]
+		},
+		{
+			"name": "Convoke",
+			"entries": [
+				"If there are 4 or more of these creatures are together, they're effective casting for spell slot is increased by one when they cast a spell."
+			]
+		},
+		{
+			"name": "Coordinated Attack",
+			"entries": [
+				"The <$name$> can add {@dice 1d4} to its attack rolls against a creature for each non{@condition incapacitated} <$name$> ally within 5 feet of the target, up to a maximum of {@dice 3d4}."
 			]
 		},
 		{
 			"name": "Corrode Metal",
 			"entries": [
-				"Any nonmagical weapon made of metal that hits the <$name$> corrodes. After dealing damage, the weapon takes a permanent and cumulative \u22121 penalty to damage rolls. If its penalty drops to \u22125, the weapon is destroyed. Nonmagical ammunition made of metal that hits the <$name$> is destroyed after dealing damage.",
-				"The <$name$> can eat through 2-inch-thick, nonmagical metal in 1 round."
+				"Any nonmagical weapon made of metal that hits the <$name$> corrodes. After dealing damage, the weapon takes a permanent and cumulative −1 penalty to damage rolls. If its penalty drops to −5, the weapon is destroyed. Nonmagical ammunition made of metal that hits the <$name$> is destroyed after dealing damage.,The <$name$> can eat through 2-inch-thick, nonmagical metal in 1 round."
 			]
 		},
 		{
 			"name": "Corrosive Form",
 			"entries": [
-				"A creature that touches the <$name$> or hits it with a melee attack while within 5 feet of it takes 4 ({@dice 1d8}) acid damage. Any nonmagical weapon made of metal or wood that hits the <$name$> corrodes. After dealing damage, the weapon takes a permanent and cumulative \u22121 penalty to damage rolls. If its penalty drops to \u22125, the weapon is destroyed. Nonmagical ammunition made of metal or wood that hits the <$name$> is destroyed after dealing damage.",
-				"The <$name$> can eat through 2-inch-thick, nonmagical wood or metal in 1 round."
+				"A creature that touches the <$name$> or hits it with a melee attack while within 5 feet of it takes 4 ({@dice 1d8}) acid damage. Any nonmagical weapon made of metal or wood that hits the <$name$> corrodes. After dealing damage, the weapon takes a permanent and cumulative −1 penalty to damage rolls. If its penalty drops to −5, the weapon is destroyed. Nonmagical ammunition made of metal or wood that hits the <$name$> is destroyed after dealing damage.,The <$name$> can eat through 2-inch-thick, nonmagical wood or metal in 1 round."
 			]
 		},
 		{
-			"name": "Damage Transfer (Cloaker)",
+			"name": "Corrupting Touch",
 			"entries": [
-				"While attached to a creature, the <$name$> takes only half the damage dealt to it (rounded down), and that creature takes the other half."
+				"A <$name$> can destroy any wooden, leather, copper, iron, or paper object by touching it as a bonus action. A mundane item is destroyed automatically; a magical item survives if its owner makes a successful {@dc 16} Dexterity saving throw."
 			]
 		},
 		{
-			"name": "Damage Transfer (Rug of Smothering)",
+			"name": "Create Spawn",
 			"entries": [
-				"While it is grappling a creature, the <$name$> takes only half the damage dealt to it, and the creature {@condition grappled} by the <$name$> takes the other half."
+				"A Medium or smaller humanoid slain by the <$name$> has tactical disadvantage on its death saving throws and upon its death rises at the start of the next round as a {@monster <Monster_Name> }. Roll initiative for the spawn creature separately."
+			]
+		},
+		{
+			"name": "Creature Sense",
+			"entries": [
+				"<$name$> is aware of the presence of creatures within 2 miles of it that have an Intelligence score of 4 or higher. It knows the distance and direction to each creature, as well as each creature's intelligence score, but can't sense anything else about it. A creature protected by a mind blank spell, a nondetection spell, or similar magic can't be perceived in this manner."
+			]
+		},
+		{
+			"name": "Creeping Death",
+			"entries": [
+				"A creature that starts its turn within 10 feet of the <$name$> must succeed on a {@dc 16} Constitution saving throw or take 13 ({@damage 3d8}) necrotic damage."
+			]
+		},
+		{
+			"name": "Cumulative Upkeep",
+			"entries": [
+				"When <$name$> enters combat make a constitution check each round DC 8 + 2 per round. When the creature fails, it falls {@condition prone} and becomes {@incapicitated} until it can successfully save."
+			]
+		},
+		{
+			"name": "Cunning Action",
+			"entries": [
+				"On each of its turns, the <$name$> can use a bonus action to take the Dash, Disengage, or Hide action."
+			]
+		},
+		{
+			"name": "Cunning Insight {@recharge 5-6}",
+			"entries": [
+				"As a bonus action, the <$name$> chooses a target it can see within 30 feet of it. The <$name$> and up to 3 creatures of its choice have advantage on ability checks, attack rolls, and saving throws made against the target. In addition, the target has disadvantage on ability checks and attack rolls made against the <$name$>. These effects last until the start of the <$name$>'s next turn."
+			]
+		},
+		{
+			"name": "Cunning Presence",
+			"entries": [
+				"An ally that starts is turn within 30 feet of this mastermind and can see and hear <$name$> can take the Dash, Disengage, or Hide action as a bonus action this turn, provided the mastermind isn't {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Cycling",
+			"entries": [
+				"If <$name$> is sacrificed by its summoner, it summoner gains 1/2 the spell slots back from its casting."
 			]
 		},
 		{
@@ -203,39 +1244,87 @@
 			]
 		},
 		{
-			"name": "Death Burst (Dust Mephit)",
+			"name": "Darkness Incarnate",
 			"entries": [
-				"When the <$name$> dies, it explodes in a burst of dust. Each creature within 5 feet of it must then succeed on a DC 10 Constitution saving throw or be {@condition blinded} for 1 minute. A {@condition blinded} creature can repeat the saving throw on each of its turns, ending the effect on itself on a success."
+				"The <$name$> can cast {@spell darkness} at will as a bonus action without expending verbal or material components."
 			]
 		},
 		{
-			"name": "Death Burst (Magma Mephit)",
+			"name": "Dash {@recharge 5}",
 			"entries": [
-				"When the <$name$> dies, it explodes in a burst of lava. Each creature within 5 feet of it must then succeed on a DC 11 Dexterity saving throw, taking 7 ({@dice 2d6}) fire damage on a failed save, or half as much damage on a successful one."
+				"Gain dash as a bonus action, while dashing AoO against you are at disadvantage. If <$name$>'s Dash is at least the move distance and ends at a creature's square, <$name$> can make an additional single attack as part of the dash."
 			]
 		},
 		{
-			"name": "Death Burst (Magmin)",
+			"name": "Death Burst ",
 			"entries": [
-				"When the <$name$> dies, it explodes in a burst of fire and magma. Each creature within 10 feet of it must make a DC 11 Dexterity saving throw, taking 7 ({@dice 2d6}) fire damage on a failed save, or half as much damage on a successful one. Flammable objects that aren't being worn or carried in that area are ignited."
+				"When the <$name$> dies, it explodes in a burst of {material}. Each creature within 5 feet of it must then succeed on a {@dc 10} Dexterity saving throw,  taking 7 ({@damage 2d6}) fire damage on a failed save, or half as much damage on a successful one."
 			]
 		},
 		{
-			"name": "Death Burst (Ice Mephit)",
+			"name": "Death Throes ",
 			"entries": [
-				"When the <$name$> dies, it explodes in a burst of jagged ice. Each creature within 5 feet of it must then succeed on a DC 10 Dexterity saving throw, taking 4 ({@dice 1d8}) slashing damage on a failed save, or half as much damage on a successful one."
+				"When the <$name$> dies, it explodes, and each creature within 30 feet of it must make a {@dc #} Dexterity saving throw, taking 32 ({@damage 6d8}) fire damage on a failed save, or half as much damage on a successful one. The explosion ignites flammable objects in that area that aren't being worn or carried, and it destroys the <$name$>'s weapons."
 			]
 		},
 		{
-			"name": "Death Burst (Steam Mephit)",
+			"name": "Deathtouch",
 			"entries": [
-				"When the <$name$> dies, it explodes in a cloud of steam. Each creature within 5 feet of it must then succeed on a DC 10 Dexterity saving throw, taking 4 ({@dice 1d8}) fire damage on a failed save, or half as much damage on a successful one."
+				"A successful strike automatically triggers a pre-emptive failed death save. If <$name$>'s attack drops its target to 0hp, it dies (no death saves allowed)."
 			]
 		},
 		{
-			"name": "Death Throes (Balor)",
+			"name": "Defender",
 			"entries": [
-				"When the <$name$> dies, it explodes, and each creature within 30 feet of it must make a DC 20 Dexterity saving throw, taking 70 ({@dice 20d6}) fire damage on a failed save, or half as much damage on a successful one. The explosion ignites flammable objects in that area that aren't being worn or carried, and it destroys the <$name$>'s weapons."
+				"Creatures that attack <$name$>, while is not {@condition incapacitated}, attack at disadvantage (ie it cannot be subject to sneak attack damage); If <$name$> takes the {@action evade} action it gains +2 to its AC."
+			]
+		},
+		{
+			"name": "Delve",
+			"entries": [
+				"If you have the body of a <$name$> and cast a summon/conjure spell, you may specifiy <$name$> be the creature(s) summoned (if its within the correct CR value). The bodies of the <$name$> and the summoned disappear when at 0HP. <$name$> summoned in this manner have maximum HP."
+			]
+		},
+		{
+			"name": "Desert Camouflage",
+			"entries": [
+				"The <$name$> has advantage on Dexterity (Stealth) checks made to hide in desert terrain."
+			]
+		},
+		{
+			"name": "Detect Heat",
+			"entries": [
+				"The <$name$> can magically sense the presence of heat sources, including warm-blooded creatures, up to 5 miles away. It knows the general direction they're in but not their exact locations."
+			]
+		},
+		{
+			"name": "Detect Invisibility",
+			"entries": [
+				"Within {50} feet of <$name$>, magical invisibility fails to conceal anything from the it's sight."
+			]
+		},
+		{
+			"name": "Detect Life",
+			"entries": [
+				"The <$name$> can magically sense the presence of living creatures up to 5 miles away that aren't undead or constructs. <$name$> knows the general direction they're in but not their exact locations."
+			]
+		},
+		{
+			"name": "Detect Sentience",
+			"entries": [
+				"The <$name$> can sense the presence and location of any creature within 300 feet of it that has an Intelligence of 3 or higher, regardless of interposing barriers, unless the creature is protected by a mind blank spell."
+			]
+		},
+		{
+			"name": "Detect Spellcasting",
+			"entries": [
+				"<$name$> can sense spellcasting in a 5-mile radius, as long as the effect is not innate."
+			]
+		},
+		{
+			"name": "Dethrone",
+			"entries": [
+				"When <$name$> attacks a player's character, it crits on a 19 or 20."
 			]
 		},
 		{
@@ -245,15 +1334,75 @@
 			]
 		},
 		{
-			"name": "Dive Attack (Aarakocra)",
+			"name": "Devoid",
 			"entries": [
-				"If the <$name$> is flying and dives at least 30 feet. straight toward a target and then hits it with a melee weapon attack, the attack deals an extra 3 ({@dice 1d6}) damage to the target."
+				"<$name$> cannot be detected by locational divination.  (Detect Good or Evil; Locate Person etc)"
+			]
+		},
+		{
+			"name": "Devour (sacrifice)",
+			"entries": [
+				"If a creature is sacrificed to it during its summoning or to it directly, <$name$> gains HP equal to the creature's HD and <x> inspiration (d8) - where x is the HD."
+			]
+		},
+		{
+			"name": "Dimensional Bite",
+			"entries": [
+				"The <$name$> can strike through a rift in space. When using an attack or multiattack action, it may attack any creature it can see within 120 ft. with its bite, independently of the bite's actual reach."
+			]
+		},
+		{
+			"name": "Dimensional Rift",
+			"entries": [
+				"As a bonus action, the <$name$> can create an {@condition invisible} and immobile rift within an opening or frame it can see within 5 feet of it, provided that the space is no bigger than 10 feet on any side. The dimensional rift bridges the distance between that space and any point within 30 feet of it that the <$name$> can see or specify by distance and direction (such as \"30 feet straight up\"). While next to the rift, the <$name$> can see through it and is considered to be next to the destination as well, and anything the <$name$> puts through the rift (including a portion of its body) emerges at the destination. Only the <$name$> can use the rift, and it lasts until the end of the <$name$>'s next turn."
+			]
+		},
+		{
+			"name": "Dimensional Travel",
+			"entries": [
+				"The <$name$> does not need to breathe and is immune to the hazards of outer space. It can fly beyond a planet's atmosphere and travel between planets. Travelling between planets using Dimensional Travel requires {@dice 2d10} days of travel time. Riders it carries while travelling through space are also protected from the void of outer space. It can also shift to other planes at will. This functions as the plane shift spell, but doesn't require material components."
+			]
+		},
+		{
+			"name": "Direction Change",
+			"entries": [
+				"The <$name$> can use the Disengage action as a bonus action."
+			]
+		},
+		{
+			"name": "Dirge",
+			"entries": [
+				"As a bonus action, the <$name$> can perform a dirge that lasts until the start of the <$name$>'s next turn. The <$name$> can select from one of three effects:"
+			]
+		},
+		{
+			"name": "Disintegration",
+			"entries": [
+				"If the <$name$> dies, its body disintegrates into dust, leaving behind its weapons and anything else it was carrying."
+			]
+		},
+		{
+			"name": "Dive Attack ",
+			"entries": [
+				"If the <$name$> is flying and dives at least 30 feet. straight toward a target and then hits it with a melee weapon attack, the attack deals an extra 3 ({@damage 1d6}) damage to the target."
 			]
 		},
 		{
 			"name": "Divine Awareness",
 			"entries": [
 				"The <$name$> knows if it hears a lie."
+			]
+		},
+		{
+			"name": "Double Strike",
+			"entries": [
+				" +10 Initiative and +2 to hit"
+			]
+		},
+		{
+			"name": "Dredge",
+			"entries": [
+				"When <$name$> successfully attacks; it removes the lowest availible level spell slot; sorcerery point; a use of a single use of a limited use class feature (such as Second wind; Divination; Ki) or unused HD."
 			]
 		},
 		{
@@ -269,21 +1418,39 @@
 			]
 		},
 		{
+			"name": "Echo",
+			"entries": [
+				"When Summoning <$name$>, the creature summoning it must maintain concentration until its next turn, when it must us an action - if the summoner is not able to do so the summoned creature disintegrates."
+			]
+		},
+		{
 			"name": "Echolocation",
 			"entries": [
 				"The <$name$> can't use its blindsight while {@condition deafened}."
 			]
 		},
 		{
-			"name": "Elemental Demise (Djinni)",
+			"name": "Elemental Demise ",
 			"entries": [
-				"If the <$name$> dies, its body disintegrates into a warm breeze, leaving behind only equipment the <$name$> was wearing or carrying."
+				"If the <$name$> dies, its body disintegrates into a {elemental effect}, leaving behind only equipment the <$name$> was wearing or carrying."
 			]
 		},
 		{
-			"name": "Elemental Demise (Efreeti)",
+			"name": "Embalm",
 			"entries": [
-				"If the <$name$> dies, its body disintegrates in a flash of fire and puff of smoke, leaving behind only equipment the <$name$> was wearing or carrying."
+				"When <$name$> dies, if an ally spends mana/spell slots it will return it returns as itself with Max Hit Points, but is now a celestial (immune to radiant)."
+			]
+		},
+		{
+			"name": "Emerge",
+			"entries": [
+				"A creature with this trait may be summoned by sacrificing a creature (or creatures) whose total CR meets or exceeds the creature's mana cost. t"
+			]
+		},
+		{
+			"name": "Empowered Attacks",
+			"entries": [
+				"<$name$>'s {Specific} attacks are treated as magical for the purpose of bypassing resistance and immunity to nonmagical attacks."
 			]
 		},
 		{
@@ -293,9 +1460,21 @@
 			]
 		},
 		{
+			"name": "Equip",
+			"entries": [
+				"May not be used unless attuned, CP Cost is the cost to Equip"
+			]
+		},
+		{
 			"name": "Ethereal Jaunt",
 			"entries": [
 				"As a bonus action, the <$name$> can magically shift from the Material Plane to the Ethereal Plane, or vice versa."
+			]
+		},
+		{
+			"name": "Ethereal Sight",
+			"entries": [
+				"The <$name$> can see 60 feet into the Ethereal Plane when it is on the Material Plane, and vice versa."
 			]
 		},
 		{
@@ -305,105 +1484,87 @@
 			]
 		},
 		{
+			"name": "Everchanging Changers",
+			"entries": [
+				"The <$name$> are beings of pure chaos. Because their minds are pure disorder, they cannot be driven mad or {@condition charmed} and any attempts to magically compel their behavior fails."
+			]
+		},
+		{
+			"name": "Eviscerate",
+			"entries": [
+				"If at the start of its turn the <$name$> is grappling a creature, it can use its bonus action to deal 11 ({@damage 2d6 + 4}) slashing damage to that creature."
+			]
+		},
+		{
+			"name": "Evolve",
+			"entries": [
+				"<$name$> gains exp with combat and levels up."
+			]
+		},
+		{
+			"name": "Exalted",
+			"entries": [
+				"Gain a +2 to attack when it attacks with other creatures with exalted."
+			]
+		},
+		{
+			"name": "Exert",
+			"entries": [
+				"A normal gem becomes an Activated Gem with a timer equal to the number beside the Exert keyword. The timer counts down by 1 at the start of your turn. If you match the Gem or the timer reaches zero, the associated effect is triggered, and a new Gem becomes Activated at the start of your next turn."
+			]
+		},
+		{
+			"name": "Exile",
+			"entries": [
+				"Exiling a card moves it to the Exiled zone. Cards cannot usually be accessed after being Exiled. Exiled cards are not considered Destroyed and do not go to the graveyard. Exiling a Token removes it from the game."
+			]
+		},
+		{
+			"name": "Exploit",
+			"entries": [
+				"When <$name$> kills a creature allied with other creatures; all its allies suffer -- losing 2d10 temporary hp (Temp HP only) and their first roll before the end of their next turn is at disadvantage."
+			]
+		},
+		{
+			"name": "Explore",
+			"entries": [
+				"Convert gems equal to twice the number beside the Explore keyword to the colors of the creature targeted by your Explore effect. If a match doesn't happen, also buff the creature's power and toughness by the number beside the Explore keyword."
+			]
+		},
+		{
+			"name": "Fabricate",
+			"entries": [
+				"Bring the specified number of Supporting Servo support Tokens into play. Each of your Supporting Servo Tokens gives the first creature you control +1/+1."
+			]
+		},
+		{
+			"name": "False Appearance",
+			"entries": [
+				"While <$name$> remains motionless, it is indistinguishable from {stated item}."
+			]
+		},
+		{
 			"name": "Faultless Tracker",
 			"entries": [
 				"The <$name$> is given a quarry by its summoner. The <$name$> knows the direction and distance to its quarry as long as the two of them are on the same plane of existence. The <$name$> also knows the location of its summoner."
 			]
 		},
 		{
-			"name": "False Appearance (Animated Armor)",
+			"name": "Fear {@recharge 4}",
 			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from a normal suit of armor."
+				"<$name$> attack if it strikes inflicts the {@condition frightened} condition, as if effected by the fear spell, unless the target makes a wisdom save vs {@dc 14}. A successful save grants immunity to its effect for 1 hour."
 			]
 		},
 		{
-			"name": "False Appearance (Awakened Shrub)",
+			"name": "Fear Aura ",
 			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from a normal shrub."
+				"Any creature hostile to the <$name$> that starts its turn within 20 feet of the <$name$> must make a {@dc #} Wisdom saving throw, unless the <$name$> is {@condition incapacitated}. On a failed save, the creature is {@condition frightened} until the start of its next turn. If a creature's saving throw is successful, the creature is immune to the <$name$>'s Fear Aura for the next 24 hours."
 			]
 		},
 		{
-			"name": "False Appearance (Awakened Tree)",
+			"name": "Ferocious",
 			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from a normal tree."
-			]
-		},
-		{
-			"name": "False Appearance (Cloaker)",
-			"entries": [
-				"While the <$name$> remains motionless without it's underside exposed, it is indistinguishable from a dark leather cloak."
-			]
-		},
-		{
-			"name": "False Appearance (Darkmantle)",
-			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from a cave formation such as a stalactite or stalagmite."
-			]
-		},
-		{
-			"name": "False Appearance (Flying Sword)",
-			"entries": [
-				"While the <$name$> remains motionless and isn't flying, it is indistinguishable from a normal sword."
-			]
-		},
-		{
-			"name": "False Appearance (Gargoyle)",
-			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from a inanimate statue."
-			]
-		},
-		{
-			"name": "False Appearance (Gray Ooze)",
-			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from an oily pool or wet rock."
-			]
-		},
-		{
-			"name": "False Appearance (Ice Mephit)",
-			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from an ordinary shard of ice."
-			]
-		},
-		{
-			"name": "False Appearance (Magma Mephit)",
-			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from an ordinary mound of magma."
-			]
-		},
-		{
-			"name": "False Appearance (Mimic)",
-			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from an ordinary object."
-			]
-		},
-		{
-			"name": "False Appearance (Roper)",
-			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from a normal cave formation, such as a stalagmite."
-			]
-		},
-		{
-			"name": "False Appearance (Rug of Smothering)",
-			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from a normal rug."
-			]
-		},
-		{
-			"name": "False Appearance (Shrieker)",
-			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from an ordinary fungus."
-			]
-		},
-		{
-			"name": "False Appearance (Treant)",
-			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from a normal tree."
-			]
-		},
-		{
-			"name": "False Appearance (Violet Fungus)",
-			"entries": [
-				"While the <$name$> remains motionless, it is indistinguishable from an ordinary fungus."
+				"While you control a creature with a base power of at least 5, all of your creatures in play with Ferocious have their associated Ferocious effect active."
 			]
 		},
 		{
@@ -413,15 +1574,15 @@
 			]
 		},
 		{
-			"name": "Fear Aura (Pit Fiend)",
-			"entries": [
-				"Any creature hostile to the <$name$> that starts its turn within 20 feet of the <$name$> must make a DC 21 Wisdom saving throw, unless the <$name$> is {@condition incapacitated}. On a failed save, the creature is {@condition frightened} until the start of its next turn. If a creature's saving throw is successful, the creature is immune to the <$name$>'s Fear Aura for the next 24 hours."
-			]
-		},
-		{
 			"name": "Fiendish Blessing",
 			"entries": [
 				"The AC of the <$name$> includes its Charisma bonus."
+			]
+		},
+		{
+			"name": "Fight",
+			"entries": [
+				"When two creatures Fight, each creature deals damage equal to its power to the other creature."
 			]
 		},
 		{
@@ -431,21 +1592,99 @@
 			]
 		},
 		{
-			"name": "Fire Aura (Balor)",
+			"name": "Fire Aura ",
 			"entries": [
 				"At the start of each of the <$name$>'s turns, each creature within 5 feet of it takes 10 ({@dice 3d6}) fire damage, and flammable objects in the aura that aren't being worn or carried ignite. A creature that touches the <$name$> or hits it with a melee attack while within 5 feet of it takes 10 ({@dice 3d6}) fire damage."
 			]
 		},
 		{
-			"name": "Fire Form (Fire Elemental)",
+			"name": "Fire Form ",
 			"entries": [
-				"The <$name$> can move through a space as narrow as 1 inch wide without squeezing. A creature that touches the <$name$> or hits it with a melee attack while within 5 feet of it takes 5 ({@dice 1d10}) fire damage. In addition, the <$name$> can enter a hostile creature's space and stop there. The first time it enters a creature's space on a turn, that creature takes 5 ({@dice 1d10}) fire damage and catches fire; until someone takes an action to douse the fire, the creature takes 5 ({@dice 1d10}) fire damage at the start of each of its turns."
+				"The <$name$> can move through a space as narrow as 1 inch wide without squeezing. A creature that touches the <$name$> or hits it with a melee attack while within 5 feet of it takes 5 ({@damage 1d10}) fire damage. In addition, the <$name$> can enter a hostile creature's space and stop there. The first time it enters a creature's space on a turn, that creature takes 5 ({@damage 1d10}) fire damage and catches fire; until someone takes an action to douse the fire, the creature takes 5 ({@damage 1d10}) fire damage at the start of each of its turns."
+			]
+		},
+		{
+			"name": "Fire Incarnate",
+			"entries": [
+				"All fire damage dealt by the dragon ignores fire resistance but not fire immunity."
+			]
+		},
+		{
+			"name": "First Strike",
+			"entries": [
+				"Gain a first attack round before battle starts; and +10 to iniative. "
+			]
+		},
+		{
+			"name": "Flanking",
+			"entries": [
+				"The <$name$> has advantage on an attack roll against a creature if at least one of the <$name$>'s allies with Flanking is within 10 feet of the creature and that ally isn't {@condition incapacitated} "
+			]
+		},
+		{
+			"name": "Flash",
+			"entries": [
+				"Can summon as a reaction; Creature has Proficiency in {@skill Stealth} and can use Hide as a bonus action, and Gains a +10 to initiative."
+			]
+		},
+		{
+			"name": "Flashback",
+			"entries": [
+				"The creature will restore themselves with ½ health {@dice 1d6} rounds after they’ve dropped to 0 hp; doing so removes their highest availible unused spell slot or expendes a limited use ability"
+			]
+		},
+		{
+			"name": "Flutterby",
+			"entries": [
+				"The <$name$> seeker can take the Disengage action as a bonus action."
 			]
 		},
 		{
 			"name": "Flyby",
 			"entries": [
 				"The <$name$> doesn't provoke opportunity attacks when it flies out of an enemy's reach."
+			]
+		},
+		{
+			"name": "Flyby Attack",
+			"entries": [
+				"When <$name$> attacks, it does not provoke an opportunity attack from the target when moving out of its reach."
+			]
+		},
+		{
+			"name": "Fog Vision",
+			"entries": [
+				"The <$name$> sees normally through light or heavy obscurement caused by fog, mist, clouds, or high wind."
+			]
+		},
+		{
+			"name": "Food",
+			"entries": [
+				"<$name$> is edible"
+			]
+		},
+		{
+			"name": "Forecast (3/day)",
+			"entries": [
+				"Creature takes disadvantage to grant Bardic inspiration to an allied creature within 60ft."
+			]
+		},
+		{
+			"name": "Forest Camouflage",
+			"entries": [
+				"The <$name$> has advantage on Dexterity (Stealth) checks made to hide in forest terrain."
+			]
+		},
+		{
+			"name": "Forest Walk",
+			"entries": [
+				"The <$name$> is not slowed by difficult terrain in natural forests."
+			]
+		},
+		{
+			"name": "Fortify",
+			"entries": [
+				"When entrenched inside a object with structural points/HP - the item's threshold increases by 1."
 			]
 		},
 		{
@@ -457,13 +1696,25 @@
 		{
 			"name": "Freeze",
 			"entries": [
-				"If the <$name$> takes cold damage, it partially freezes; its speed is reduced by 20 feet until the end of its next turn."
+				"If <$name$> takes cold damage, it partially freezes; its speed is reduced by 20 feet until the end of its next turn."
 			]
 		},
 		{
-			"name": "Gibbering (Gibbering Mouther)",
+			"name": "Frenetic Dissociatio",
 			"entries": [
-				"The <$name$> babbles incoherently while it can see any creature and isn't {@condition incapacitated}. Each creature that starts its turn within 20 feet of the <$name$> and can hear the gibbering must succeed on a DC 10 Wisdom saving throw. On a failure, the creature can't take reactions until the start of its next turn and rolls a {@dice d8} to determine what it does during its turn. On a 1 to 4, the creature does nothing. On a 5 or 6, the creature takes no action or bonus action and uses all its movement to move in a randomly determined direction. On a 7 or 8, the creature makes a melee attack against a randomly determined creature within its reach or does nothing if it can't make such an attack."
+				"At the beginning of <$name$>'s turn, roll a {@dice d6}. On a roll of between 2 and 6, the sliver enters the Ethereal Plane from the Material Plane. It is visible on the Material Plane while it is in the Border Ethereal, and vice versa, yet it can't affect or be affected by anything on the other plane. At the beginning of the creature's next turn, it re-enters the Material Plane from the Ethereal Plane. On a roll of 1, the creature explodes in a 10-foot radius force blast. Each creature in that area must make a {@dc 12} Dexterity saving throw. On a failed save, it takes 7 ({@damage 2d6}) force damage + 1 force damage for each sliver within 30 feet, or half as much on a successful one."
+			]
+		},
+		{
+			"name": "Frenzy",
+			"entries": [
+				"When <$name$> attacks, and does not, between its turn and the next does not take any damage. <$name$> gains +2 to hit until end of its turn."
+			]
+		},
+		{
+			"name": "Gibbering ",
+			"entries": [
+				"The <$name$> babbles incoherently while it can see any creature and isn't {@condition incapacitated}. Each creature that starts its turn within 20 feet of the <$name$> and can hear the gibbering must succeed on a {@dc 10 Wisdom saving throw. On a failure, the creature can't take reactions until the start of its next turn and rolls a {@dice d8} to determine what it does during its turn. On a 1 to 4, the creature does nothing. On a 5 or 6, the creature takes no action or bonus action and uses all its movement to move in a randomly determined direction. On a 7 or 8, the creature makes a melee attack against a randomly determined creature within its reach or does nothing if it can't make such an attack."
 			]
 		},
 		{
@@ -479,106 +1730,117 @@
 			]
 		},
 		{
-			"name": "Grasping Tendrils (Roper)",
+			"name": "Grasping Tendrils ",
 			"entries": [
-				"The <$name$> can have up to six tendrils at a time. Each tendril can be attacked (AC 20; 10 hit points; immunity to poison and psychic damage). Destroying a tendril deals no damage to the roper, which can extrude a replacement tendril on its next turn. A tendril can also be broken if a creature takes an action and succeeds on a DC 15 Strength check against it."
+				"The <$name$> can have up to six tendrils at a time. Each tendril can be attacked (AC 20; 10 hit points; immunity to poison and psychic damage). Destroying a tendril deals no damage to the roper, which can extrude a replacement tendril on its next turn. A tendril can also be broken if a creature takes an action and succeeds on a {@dc 15} Strength check against it."
 			]
 		},
 		{
-			"name": "Heated Body (Azer)",
+			"name": "Harvest",
 			"entries": [
-				"A creature that touches the <$name$> or hits it with a melee attack while within 5 feet of it takes 5 ({@dice 1d10}) fire damage."
+				"<$name$> has harvestable components used for magical, or advanced crafting projects."
 			]
 		},
 		{
-			"name": "Heated Body (Remorhaz)",
+			"name": "Haste",
 			"entries": [
-				"A creature that touches the <$name$> or hits it with a melee attack while within 5 feet of it takes 10 ({@dice 3d6}) fire damage."
+				"<$name$> has advantage on Dexterity saving throws, and it gains an additional action on each of its turns. That action can be used only to take the Attack (one weapon attack only), Dash, Disengage, Hide, or Use an Object action."
 			]
 		},
 		{
-			"name": "Heated Body (Salamander)",
+			"name": "Haunt",
 			"entries": [
-				"A creature that touches the <$name$> or hits it with a melee attack while within 5 feet of it takes 7 ({@dice 2d6}) fire damage."
+				"The creature that kills <$name$> becomes the target for the following effect {effect}"
 			]
 		},
 		{
-			"name": "Heated Weapons (Azer)",
+			"name": "Healing Rage (1/day)",
 			"entries": [
-				"Any metal melee weapon the <$name$> wields deals an extra 3 ({@dice 1d6}) fire damage on a hit."
+				"The <$name$> can heal {#} hit points as a bonus action."
 			]
 		},
 		{
-			"name": "Heated Weapons (Salamander)",
+			"name": "Heated Weapons",
 			"entries": [
-				"Any metal melee weapon the <$name$> wields deals an extra 3 ({@dice 1d6}) fire damage on a hit."
+				"When the <$name$> hits with a metal melee weapon, it deals an extra 3 ({@damage 1d6}) fire damage (included in the attack)."
 			]
 		},
 		{
-			"name": "Hellish Rejuvenation (Lemure)",
+			"name": "Heavy Weapons",
+			"entries": [
+				"The <$name$> can wield Large weapons without incurring disadvantage."
+			]
+		},
+		{
+			"name": "Hellish Rejuvenation",
 			"entries": [
 				"A <$name$> that dies in the Nine Hells comes back to life with all its hit points in {@dice 1d10} days unless it is killed by a good-aligned creature with a bless spell cast on that creature or its remains are sprinkled with holy water."
 			]
 		},
 		{
-			"name": "Hellish Weapons (Erinyes)",
+			"name": "Hellish Weapons",
 			"entries": [
-				"The <$name$>'s weapon attacks are magical and deal an extra 13 ({@dice 3d8}) poison damage on a hit."
+				"The <$name$>'s weapon attacks are magical and deal an extra 13 ({@damage 3d8}) poison damage on a hit."
 			]
 		},
 		{
-			"name": "Hold Breath (Crocodile)",
+			"name": "Heroic",
 			"entries": [
-				"The <$name$> can hold its breath for 15 minutes."
+				"Whenever you cast a spell targeting your creature with Heroic, its associated Heroic effect is triggered."
 			]
 		},
 		{
-			"name": "Hold Breath (Giant Crocodile)",
+			"name": "Historic",
 			"entries": [
-				"The <$name$> can hold its breath for 30 minutes."
+				"Your cards with the Historic ability have their associated effect triggered by any Legendary card, Artifact, or Saga being played on your side, or being in play on your side."
 			]
 		},
 		{
-			"name": "Hold Breath (Giant Octopus)",
+			"name": "Hive Mind",
 			"entries": [
-				"While out of water, the <$name$> can hold its breath for 1 hour."
+				"The <$name$> gains a +1 bonus to its Intelligence and Wisdom for each <$name$> within 40 ft. of it, up to a maximum of +5."
 			]
 		},
 		{
-			"name": "Hold Breath (Hydra)",
+			"name": "Hive Mind (Royal)",
 			"entries": [
-				"The <$name$> can hold its breath for 1 hour."
+				"<$name$> within {#} miles of their queen are in constant telepathic communication and share experiences and thoughts constantly, when one formian is aware of something, they all are."
 			]
 		},
 		{
-			"name": "Hold Breath (Killer Whale)",
+			"name": "Hold Breath",
 			"entries": [
-				"The <$name$> can hold its breath for 30 minutes."
+				"The <$name$> can hold its breath for <number> minutes/hour."
 			]
 		},
 		{
-			"name": "Hold Breath (Lizardfolk)",
+			"name": "Horrid Clacking",
 			"entries": [
-				"The <$name$> can hold its breath for 15 minutes."
+				"If the <$name$> moves at least 10 feet, each beast or humanoid within 30 feet of the <$name$> that can hear it must succeed on a {@dc 13} Wisdom saving throw or be {@condition frightened} until the end of its next turn."
 			]
 		},
 		{
-			"name": "Hold Breath (Octopus)",
+			"name": "Horrid Link (1/Turn)",
 			"entries": [
-				"While out of water, the <$name$> can hold its breath for 30 minutes."
+				"As a bonus action, the  <$name$> targets a creature it can see within 30 feet of it. Each time the <$name$> takes damage, the target takes 5 ({@damage 1d10}) psychic damage. This effect lasts until the start of the  <$name$>'s next turn."
 			]
 		},
 		{
-			"name": "Hold Breath (Plesiosaurus)",
+			"name": "Horrific Appearance",
 			"entries": [
-				"The <$name$> can hold its breath for 1 hour."
+				"Any humanoid that starts its turn within 30 feet of the <$name$> and can see the <$name$>'s true form must make a {@dc 11} Wisdom saving throw. On a failed save, the creature is {@condition frightened} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, with disadvantage if the <$name$> is within line of sight, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the <$name$>'s Horrific Appearance for the next 24 hours.,Unless the target is surprised or the revelation of the <$name$>'s true form is sudden, the target can avert its eyes and avoid making the initial saving throw. Until the start of its next turn, a creature that averts its eyes has disadvantage on attack rolls against the <$name$>."
 			]
 		},
 		{
-			"name": "Horrific Appearance (Sea Hag)",
+			"name": "Horsemanship",
 			"entries": [
-				"Any humanoid that starts its turn within 30 feet of the <$name$> and can see the <$name$>'s true form must make a DC 11 Wisdom saving throw. On a failed save, the creature is {@condition frightened} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, with disadvantage if the <$name$> is within line of sight, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the <$name$>'s Horrific Appearance for the next 24 hours.",
-				"Unless the target is surprised or the revelation of the <$name$>'s true form is sudden, the target can avert its eyes and avoid making the initial saving throw. Until the start of its next turn, a creature that averts its eyes has disadvantage on attack rolls against the <$name$>."
+				"While mounted, <$name$> has advantage on melee attack rolls against unmounted creatures that are smaller than its mount, and can force an attack targeted at its mount to target itself instead."
+			]
+		},
+		{
+			"name": "Ice Armor (2/day)",
+			"entries": [
+				"The <$name$> can use a bonus action to coat its body in ice, giving it +2 AC for 1 minute, or until it takes 50 points of damage from a single creature on a turn."
 			]
 		},
 		{
@@ -588,45 +1850,173 @@
 			]
 		},
 		{
-			"name": "Ignited Illumination (Magmin)",
+			"name": "Ice Walker",
+			"entries": [
+				"A <$name$> feet have perfect grip on icy surfaces. It ignores and penalties or disadvantage to Strength and Dexterity checks or saving throws for being on a slippery surface when it is on ice. It can climb ice surfaces, such as a glacier wall or even ceiling without needing to make an ability check."
+			]
+		},
+		{
+			"name": "Ignited Illumination",
 			"entries": [
 				"As a bonus action, the <$name$> can set itself ablaze or extinguish its flames. While ablaze, the <$name$> sheds bright light in a 10-foot radius and dim light for an additional 10 feet."
 			]
 		},
 		{
-			"name": "Illumination (Azer)",
+			"name": "Illumination",
 			"entries": [
-				"The <$name$> sheds bright light in a 10-foot radius and dim light for an additional 10 feet."
+				"The <$name$> sheds bright light in a <number>-foot radius and dim light for an additional <number> feet."
 			]
 		},
 		{
-			"name": "Illumination (Fire Elemental)",
+			"name": "Imbue Luck (1/Day)",
 			"entries": [
-				"The <$name$> sheds bright light in a 30-foot radius and dim light for an additional 30 feet."
+				"<$name$> can enchant a small gem or stone to bring good luck. If the nichny gives this lucky stone to another creature, the bearer receives a +1 bonus to all saving throws for 24 hours."
 			]
 		},
 		{
-			"name": "Illumination (Giant Fire Beetle)",
+			"name": "Immortal",
 			"entries": [
-				"The <$name$> sheds bright light in a 10-foot radius and dim light for an additional 10 feet."
+				"<$name$> does not age and does not die when it drops to 0 hit points. If <$name$> drops to 0 hit points, it falls into a quiescent state for 25 weeks before returning to activity with full hit points. Its spawned elementals continue fighting whatever enemies attacked the elemental locus; if no enemies are present, they defend the locus's area."
 			]
 		},
 		{
-			"name": "Illumination (Nightmare)",
+			"name": "Immunity to Energy",
 			"entries": [
-				"The <$name$> sheds bright light in a 10-foot radius and dim light for an additional 10 feet."
+				"<$name$> is immune to the energy type inherent in its <attack>, as summarized on the table."
+			]
+		},
+		{
+			"name": "Immunity to Illusion",
+			"entries": [
+				"<$name$> automatically succeeds on saving throws against illusions and illusion spells."
+			]
+		},
+		{
+			"name": "Immunity to Magic",
+			"entries": [
+				"<$name$> automatically succeeds on all saving throws against spells and spell-like effects. If a successful saving throw reduces damage by half, <$name$> takes no damage instead. In addition, certain spells and effects function differently against the creature, as noted below (these effects override its immunity)."
+			]
+		},
+		{
+			"name": "Immunity to Sleep",
+			"entries": [
+				"The <$name$> automatically passes all saving throws against spells that would put it to sleep."
+			]
+		},
+		{
+			"name": "Immunity to Temporal Effects",
+			"entries": [
+				"The <$name$> is immune to all time-related spells and effects."
 			]
 		},
 		{
 			"name": "Immutable Form",
 			"entries": [
-				"The <$name$> is immune to any spell or effect that would alter its form."
+				"<$name$> is immune to any spell or effect that would alter its form."
+			]
+		},
+		{
+			"name": "Improved Critical",
+			"entries": [
+				"<$name$> attacks score a critical hit on a roll of 19 or 20."
+			]
+		},
+		{
+			"name": "Improved Magic Resistance",
+			"entries": [
+				" The <$name$> has advantage on saving throws against spells and other magical effects, and has resistance to damage from spells."
+			]
+		},
+		{
+			"name": "Incorporeal",
+			"entries": [
+				"<$name$> can pass through solid objects such as a wall, or other creatures, as if they were difficult terrain. If it ends its turn inside another object or creature, it takes 5 ({@damage 1d10}) force damage. This damage is not reduced by the <$name$> resistance."
+			]
+		},
+		{
+			"name": "Incorporeal Jaunt",
+			"entries": [
+				"When the <$name$> moves, it becomes temporarily incorporeal. It can move through creatures and objects as if they were difficult terrain. It takes 5 ({@damage 1d10}) force damage and is pushed to the closest unoccupied space if it ends its turn inside an object."
 			]
 		},
 		{
 			"name": "Incorporeal Movement",
 			"entries": [
-				"The <$name$> can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@dice 1d10}) force damage if it ends its turn inside an object."
+				"<$name$> can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@dice 1d10}) force damage if it ends its turn inside an object."
+			]
+		},
+		{
+			"name": "Incorporeal Swarm",
+			"entries": [
+				"The <$name$> host can occupy another creature's space and vice versa; it can move through other creatures and objects as if they were difficult terrain. Each creature it moves through takes 11 ({@damage 2d10}) necrotic damage; no creature can take this damage more than once per turn. The <$name$> host takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
+			]
+		},
+		{
+			"name": "Incorporeality",
+			"entries": [
+				"Any creature has disadvantage on attack rolls against <$name$>."
+			]
+		},
+		{
+			"name": "Indestructible",
+			"entries": [
+				"<$name$> or gains DR 4 (Threshold 8 if a construct). And is immune to Disintegrate and Shatter."
+			]
+		},
+		{
+			"name": "Indomitable (x/day)",
+			"entries": [
+				"The <$name$> can reroll a saving throw it fails. It must use the new roll."
+			]
+		},
+		{
+			"name": "Inexorable",
+			"entries": [
+				"The <$name$> are immune to any effects that would slow them or deny them actions or movement."
+			]
+		},
+		{
+			"name": "Infantry Slayer",
+			"entries": [
+				"While mounted, <$name$> has advantage on melee weapon attacks against creatures that are Medium or smaller and are not mounted."
+			]
+		},
+		{
+			"name": "Infect",
+			"entries": [
+				"Target attacked takes Max HP/Ability Damage, and must save vs DC for become poisoned (save at the end of their turn"
+			]
+		},
+		{
+			"name": "Ingest",
+			"entries": [
+				"The specified number of normal Gems of your opponent's color become Void Gems. Void Gems may be consumed by a Process ability, or matched on the board. Matching Void Gems only gives mana to cards with Devoid."
+			]
+		},
+		{
+			"name": "Innate Nondetection",
+			"entries": [
+				"The <$name$> is extremely difficult to detect. It is affected as if under the permanent effect of a nondetection spell."
+			]
+		},
+		{
+			"name": "Innate Spellcasting",
+			"entries": [
+				"<$name$> spellcasting ability is (Spell Save {@dc #}). It can innately cast the following spells:",
+				{
+					"type": "list",
+					"items": [
+						"At will: ()",
+						"3/day: ()",
+						"1/day:"
+					]
+				}
+			]
+		},
+		{
+			"name": "Insane",
+			"entries": [
+				"The <$name$> has advantage on saving throws against being {@condition charmed} or {@condition frightened}."
 			]
 		},
 		{
@@ -636,9 +2026,57 @@
 			]
 		},
 		{
+			"name": "Interference Aura",
+			"entries": [
+				"Enemies within 30 feet must make a {@dc 14} Intelligence saving throw every round to maintain spells that require concentration."
+			]
+		},
+		{
+			"name": "Interrogator",
+			"entries": [
+				"The <$name$> has a passive insight {score} against a creature speaking a lie in a language it knows."
+			]
+		},
+		{
+			"name": "Intimidate",
+			"entries": [
+				"When <$name$> attacks, its target (if a different creature type) must save vs cannot disengage,"
+			]
+		},
+		{
+			"name": "Investigate",
+			"entries": [
+				"A normal gem becomes an Activated Gem with a two-turn timer. The timer counts down by 1 at the start of your turn. If any player matches your Investigate Gem or its timer reaches zero, you draw a card."
+			]
+		},
+		{
 			"name": "Invisibility",
 			"entries": [
-				"The <$name$> is {@condition invisible}."
+				"The <$name$> is {@condition invisible}  as per a {@spell greater invisibility} spell."
+			]
+		},
+		{
+			"name": "Invisibility (3/Day)",
+			"entries": [
+				"As a bonus action, the <$name$> can become {@condition invisible} for 1 round."
+			]
+		},
+		{
+			"name": "Invisible Hand",
+			"entries": [
+				"The thief gains additional benefits when it casts {@spell mage hand}. For a creature to notice the hand or the tasks the hand is performing, it must succeed on a Wisdom ({@skill Perception}) check."
+			]
+		},
+		{
+			"name": "Invoke Duplicity",
+			"entries": [
+				"The <$name$> creates a perfect illusion of itself that lasts for 1 minute or until it loses its concentration, as if concentrating on a spell. The illusion appears in an unoccupied space within 30 feet of <$name$>. As a bonus action, <$name$> can move the illusion up to 30 feet to a space within 120 feet of <$name$> that it can see. Additionally, when both <$name$> and its illusion are within 5 feet of a creature that can see the illusion, <$name$> has advantage on attack rolls against that creature."
+			]
+		},
+		{
+			"name": "Iron Boots",
+			"entries": [
+				"While moving, the <$name$> has disadvantage on Dexterity (Stealth) checks."
 			]
 		},
 		{
@@ -648,15 +2086,15 @@
 			]
 		},
 		{
-			"name": "Keen Hearing",
+			"name": "Jungle Camouflage",
 			"entries": [
-				"The <$name$> has advantage on Wisdom ({@skill Perception}) checks that rely on hearing."
+				"The <$name$> has advantage on Dexterity (Stealth) checks made to hide in jungle terrain."
 			]
 		},
 		{
-			"name": "Keen Hearing and Smell",
+			"name": "Keen Hearing",
 			"entries": [
-				"The <$name$> has advantage on Wisdom ({@skill Perception}) checks that rely on hearing or smell."
+				"The <$name$> has advantage on Wisdom ({@skill Perception}) checks that rely on hearing."
 			]
 		},
 		{
@@ -666,9 +2104,15 @@
 			]
 		},
 		{
+			"name": "Keen Hearing and Smell",
+			"entries": [
+				"The <$name$> has advantage on Wisdom ({@skill Perception}) checks that rely on hearing or smell."
+			]
+		},
+		{
 			"name": "Keen Senses",
 			"entries": [
-				"The <$name$> has advantage on Wisdom ({@skill Perception}) checks that rely on sight, hearing or smell."
+				"<$name$> has advantage on Wisdom (Perception) checks that rely on {CHOOSE ONE OR MORE: eyesight, hearing, smell, taste, touch}."
 			]
 		},
 		{
@@ -686,7 +2130,19 @@
 		{
 			"name": "Keen Smell",
 			"entries": [
-				"The <$name$> has advantage on Wisdom (perception) checks that rely on smell."
+				"The <$name$> has advantage on Wisdom  ({@skill Perception}) checks that rely on smell."
+			]
+		},
+		{
+			"name": "Keen Tracker",
+			"entries": [
+				"The <$name$> has advantage on Wisdom ({@skill survival}) checks to track prey."
+			]
+		},
+		{
+			"name": "Kicking Retreat",
+			"entries": [
+				"If the <$name$> attacks with its hooves, it can take the Disengage action as a bonus action."
 			]
 		},
 		{
@@ -696,9 +2152,39 @@
 			]
 		},
 		{
-			"name": "Legendary Resistance (3/Day)",
+			"name": "Landwalk",
 			"entries": [
-				"If the <$name$> fails a saving throw, it can choose to succeed instead."
+				"<$name$> can move across and climb {type of} surfaces without needing to make an ability check. Additionally, difficult terrain composed of {type of terrain} doesn't cost it extra moment, leaves no tracks, creature may also choose to hide in light cover in that sort of terrain."
+			]
+		},
+		{
+			"name": "Leader",
+			"entries": [
+				"Your Leader creature Exiles your Token creatures of the specified subtype and converts each one into a reinforcement of itself. This effect occurs both as the Leader enters play, and as you play any Token creatures of the specified subtype."
+			]
+		},
+		{
+			"name": "Life Eater",
+			"entries": [
+				"A creature reduced to 0 hit points from damage dealt by the <$name$> dies and can't be revived by any means short of a wish spell."
+			]
+		},
+		{
+			"name": "Lifelink",
+			"entries": [
+				"Regain HP equal to ½ of the damage it deals in attacks each round."
+			]
+		},
+		{
+			"name": "Lifesense",
+			"entries": [
+				"A <$name$> notices and locates all living creatures within {60} ft., without effort or error, and it knows how close to death the creature is."
+			]
+		},
+		{
+			"name": "Light Hypersenstitivey",
+			"entries": [
+				"<$name$> takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks."
 			]
 		},
 		{
@@ -708,39 +2194,99 @@
 			]
 		},
 		{
+			"name": "Lightfooted",
+			"entries": [
+				"The <$name$> can take the Dash or Disengage action as a bonus action on each of its turns."
+			]
+		},
+		{
+			"name": "Lightless Depths",
+			"entries": [
+				"A <$name$> is immune to the pressure effects of the deep ocean."
+			]
+		},
+		{
 			"name": "Lightning Absorption",
 			"entries": [
 				"Whenever the <$name$> is subjected to lightning damage, it takes no damage and instead regains a number of hit points equal to the lightning damage dealt."
 			]
 		},
 		{
-			"name": "Limited Telepathy (Otyugh)",
+			"name": "Like Calls To Like",
 			"entries": [
-				"The <$name$> can magically transmit simple messages and images to any creature within 120 feet of it that can understand a language. This form of telepathy doesn't allow the receiving creature to telepathically respond."
+				"The <$name$> knows if a creature within 30 feet of it is similarly-aligned or not."
 			]
 		},
 		{
-			"name": "Limited Telepathy (Pseudodragon)",
-			"entries": [
-				"The <$name$> can magically communicate simple ideas, emotions, and images telepathically with any creature within 100 feet of it that can understand a language."
-			]
-		},
-		{
-			"name": "Limited Amphibiousness (Sahuagin)",
+			"name": "Limited Amphibiousness",
 			"entries": [
 				"The <$name$> can breathe air and water, but it needs to be submerged at least once every 4 hours to avoid suffocating."
 			]
 		},
 		{
-			"name": "Limited Magic Immunity (Rakshasha)",
+			"name": "Limited Magic Immunity",
 			"entries": [
 				"The <$name$> can't be affected or detected by spells of 6th level or lower unless it wishes to be. It has advantage on saving throws against all other spells and magical effects."
 			]
 		},
 		{
-			"name": "Magic Resistance",
+			"name": "Limited Telepathy",
 			"entries": [
-				"The <$name$> has advantage on saving throws against spells and other magical effects."
+				"The <$name$> can magically transmit simple messages and images to any creature within {120} feet of it that can understand a language. This form of telepathy doesn't allow the receiving creature to telepathically respond."
+			]
+		},
+		{
+			"name": "Liquid Form",
+			"entries": [
+				"The <$name$> can enter an enemy's space and stop there. It can also move through a space as narrow as l inch wide without squeezing."
+			]
+		},
+		{
+			"name": "Living Construct",
+			"entries": [
+				"The <$name$> is immune to disease. It does not need to eat or breathe, but can ingest food and drink if it wishes."
+			]
+		},
+		{
+			"name": "Low Cunning",
+			"entries": [
+				"<$name$> can take the Disengage action as a bonus action on each of its turns."
+			]
+		},
+		{
+			"name": "Madness",
+			"entries": [
+				"All of your cards with Madness gain their specified amount of mana whenever a card is Discarded (not Exiled) from your hand. A card with Madness is immune to being Discarded itself."
+			]
+		},
+		{
+			"name": "Magic Arrows",
+			"entries": [
+				"<$name$>'s ranged weapon attacks are magical."
+			]
+		},
+		{
+			"name": "Magic Attacks",
+			"entries": [
+				"<$name$>'s weapon attacks are magical."
+			]
+		},
+		{
+			"name": "Magic Immunity",
+			"entries": [
+				"The <$name$> is immune to damage from spells. It has advantage on saving throws against all other magical effects."
+			]
+		},
+		{
+			"name": "Magic Proof",
+			"entries": [
+				"<$name$> automatically succeeds on saving throws against spells and magic effects unless it chooses not to."
+			]
+		},
+		{
+			"name": "Magic Ranged Weapons",
+			"entries": [
+				"<$name$>'s ranged weapon attacks are magical."
 			]
 		},
 		{
@@ -750,57 +2296,165 @@
 			]
 		},
 		{
-			"name": "Martial Advantage (Hobgoblin)",
+			"name": "Magma Armor",
 			"entries": [
-				"Once per turn, the <$name$> can deal an extra 7 ({@dice 2d6}) damage to a creature it hits with a weapon attack if that creature is within 5 feet of an ally of the <$name$> that isn't {@condition incapacitated}."
+				"When the <$name$> is below half of its maximum hp, its body cools and AC increases by +4."
 			]
 		},
 		{
-			"name": "Mimicry (Green Hag)",
+			"name": "Manifestation",
 			"entries": [
-				"The <$name$> can mimic animal sounds and humanoid voices. A creature that hears the sounds can tell they are imitations with a successful DC 14 Wisdom ({@skill Insight}) check."
+				"As an action, a <$name$> can transport itself from any point on the Material Plane to another point within its defined area or within 300 feet of the artifact to which it is bound. A <$name$> can also lurk on the Negative Plane, prepared to manifest on the Material Plane if certain conditions are met, such as trespassers entering the area the <$name$> is doomed to guard. A <$name$> can't attack or move in the round in which it manifests, it is effectively {@condition stunned} until the start of its next turn. When it manifests, it appears as a shifting cloud of shadows that coalesces into its cloaked and hooded form. Until the start of its next turn (the round after it manifests), its shifting form has the effect of a blur spell."
 			]
 		},
 		{
-			"name": "Mimicry (Raven)",
+			"name": "Mariner",
 			"entries": [
-				"The <$name$> can mimic simple sounds it has heard, such as a person whispering, a baby crying, or an animal chittering. A creature that hears the sounds can tell they are imitations with a successful DC 10 Wisdom ({@skill Insight}) check."
+				"The <$name$> can hold its breath underwater for twice as long and has proficiency with navigator's tools. The <$name$> is also naturally adapted to cold climates, as described in chapter 5 of the Dungeon Master's Guide."
+			]
+		},
+		{
+			"name": "Massive",
+			"entries": [
+				"The <$name$> is not affected by difficult terrain  and can move into spaces already occupied by Large or smaller creatures. When it does so, creatures in those spaces must make a {@dc 19} Dexterity saving throw, taking 11 ({@damage 2d20}) bludgeoning damage on a failed save, or half as much damage on a successful one.  <$name$> can't dash. Attacks that push, trip, or grapple are made with disadvantage against a flab giant."
+			]
+		},
+		{
+			"name": "Massive Swing",
+			"entries": [
+				"The <$name$> can hit up to 2 Medium targets, or 3 Small or smaller targets within 5 feet of each other with each greataxe attack. A separate attack roll is made for each target."
+			]
+		},
+		{
+			"name": "Master of Disguise",
+			"entries": [
+				"A <$name$> in a prepared disguise has advantage on Charisma ({@skill Deception}) checks made to pass as a another similar creature."
+			]
+		},
+		{
+			"name": "Megamorph {@recharge 5}",
+			"entries": [
+				"<$name$> has an alternate form; as a bonus action they can polymorph into {forms (not greater than 1/4th the primary form's CR}."
+			]
+		},
+		{
+			"name": "Meld",
+			"entries": [
+				"<$name$> if adjacent to {@monster name} can take an held action to allow {@monster name} to merge together and on its action to create  {@monster Merged_Creaturename} "
+			]
+		},
+		{
+			"name": "Menace",
+			"entries": [
+				"Unless the attacker has an ally within 10ft of <$name$>, their attack rolls are at disadvantage."
+			]
+		},
+		{
+			"name": "Mimicry",
+			"entries": [
+				"The <$name$> can mimic animal sounds and humanoid voices. A creature that hears the sounds can tell they are imitations with a successful {@dc #} Wisdom (Insight) check."
 			]
 		},
 		{
 			"name": "Misty Escape (Vampire)",
 			"entries": [
-				"When it drops to 0 hit points outside its resting place, the <$name$> transforms into a cloud of mist (as in the Shapechanger trait) instead of falling {@condition unconscious}, provided that it isn't in sunlight or running water. If it can't transform, it is destroyed.",
-				"While it has 0 hit points in mist form, it can't revert to its <$name$> form, and it must reach its resting place within 2 hours or be destroyed. Once in its resting place, it reverts to its <$name$> form. It is then {@condition paralyzed} until it regains at least 1 hit point. After spending 1 hour in its resting place with 0 hit points, it regains 1 hit point."
+				"When it drops to 0 hit points outside its resting place, the <$name$> transforms into a cloud of mist (as in the Shapechanger trait) instead of falling {@condition unconscious}, provided that it isn't in sunlight or running water. If it can't transform, it is destroyed.,While it has 0 hit points in mist form, it can't revert to its <$name$> form, and it must reach its resting place within 2 hours or be destroyed. Once in its resting place, it reverts to its <$name$> form. It is then {@condition paralyzed} until it regains at least 1 hit point. After spending 1 hour in its resting place with 0 hit points, it regains 1 hit point."
+			]
+		},
+		{
+			"name": "Mobility",
+			"entries": [
+				"Opponents has disadvantage on attacks of opportunity attacks against <$name$>."
+			]
+		},
+		{
+			"name": "Mock the Dying",
+			"entries": [
+				"Death saving throws made within 60 feet of the <$name$> have disadvantage."
+			]
+		},
+		{
+			"name": "Monumental Stupidity",
+			"entries": [
+				"The <$name$> has advantage on saving throws against being {@condition charmed}."
+			]
+		},
+		{
+			"name": "Mounted Combatant",
+			"entries": [
+				"While mounted, <$name$> has advantage on melee attack rolls against unmounted creatures that are smaller than its mount, and can force an attack targeted at its mount to target itself instead."
 			]
 		},
 		{
 			"name": "Mucous Cloud (Aboleth)",
 			"entries": [
-				"While underwater, the <$name$> is surrounded by transformative mucus. A creature that touches the <$name$> or that hits it with a melee attack while within 5 feet of it must make a DC 14 Constitution saving throw. On a failure, the creature is diseased for {@dice 1d4} hours. The diseased creature can breathe only underwater."
+				"While underwater, the <$name$> is surrounded by transformative mucus. A creature that touches the <$name$> or that hits it with a melee attack while within 5 feet of it must make a {@dc 14} Constitution saving throw. On a failure, the creature is diseased for {@dice 1d4} hours. The diseased creature can breathe only underwater."
 			]
 		},
 		{
-			"name": "Multiple Heads (Hydra)",
+			"name": "Multi limbed",
 			"entries": [
-				"The <$name$> has five heads. While it has more than one head, the <$name$> has advantage on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, and knocked {@condition unconscious}.",
-				"Whenever the <$name$> takes 25 or more damage in a single turn, one of its heads dies. If all its heads die, the <$name$> dies.",
-				"At the end of its turn, it grows two heads for each of its heads that died since its last turn, unless it has taken fire damage since its last turn. The <$name$> regains 10 hit points for each head regrown in this way."
+				"The <$name$> can draw multiple weapons as a free object interaction action."
 			]
 		},
 		{
-			"name": "Nimble Escape",
+			"name": "Multiple Heads",
 			"entries": [
-				"The <$name$> can take the {@action Disengage} or {@action Hide} action as a bonus action on each of its turns."
+				"<$name$> can take one reaction per turn, rather than only one per round. It also has advantage on saving throws against being  {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, and knocked {@condition unconscious}."
 			]
 		},
 		{
-			"name": "Ooze Cube (Gelatinous Cube)",
+			"name": "Natural Swimmer",
 			"entries": [
-				"The <$name$> takes up its entire space. Other creatures can enter the space, but a creature that does so is subjected to the <$name$>'s Engulf and has disadvantage on the saving throw.",
-				"Creatures inside the <$name$> can be seen but have total cover.",
-				"A creature within 5 feet of the <$name$> can take an action to pull a creature or object out of the <$name$>. Doing so requires a successful DC 12 Strength check, and the creature making the attempt takes 10 ({@dice 3d6}) acid damage.",
-				"The <$name$> can hold only one Large creature or up to four Medium or smaller creatures inside it at a time."
+				"The <$name$> has advantage on Strength (Athletics) checks made to swim."
+			]
+		},
+		{
+			"name": "Nature's Fury",
+			"entries": [
+				"When the <$name$> casts a druid spell, it can make one natural attack as a bonus action."
+			]
+		},
+		{
+			"name": "Necromancer Friendly",
+			"entries": [
+				"<$name$> can be created using a create undead spell. For each creature, an appropriate corpse or corpses is required rather than the type suggested in the spell's description."
+			]
+		},
+		{
+			"name": "Negative Energy Aura",
+			"entries": [
+				"Creatures within 5 feet of the <$name$> can't regain hit points."
+			]
+		},
+		{
+			"name": "Nimble",
+			"entries": [
+				"The <$name$> can take the {@action disengage} action as a bonus action on each of its turns."
+			]
+		},
+		{
+			"name": "Nimble Action",
+			"entries": [
+				"On each of its turns, the <$name$> can use a bonus action to take the {@action Dash} or {@action Disengage} action."
+			]
+		},
+		{
+			"name": "Nimbleness",
+			"entries": [
+				"The <$name$> can move through the space of any creature size Medium or larger."
+			]
+		},
+		{
+			"name": "Noxious Webs",
+			"entries": [
+				"A creature that starts its turn in a space flled with or {@condition restrained} by webbing created by <$name$> (either by her Web attack or spell) takes 3 ({@damage 1d6}) acid damage."
+			]
+		},
+		{
+			"name": "Ooze Cube ",
+			"entries": [
+				"The <$name$> takes up its entire space. Other creatures can enter the space, but a creature that does so is subjected to the <$name$>'s Engulf and has disadvantage on the saving throw.,Creatures inside the <$name$> can be seen but have total cover.,A creature within 5 feet of the <$name$> can take an action to pull a creature or object out of the <$name$>. Doing so requires a successful {@dc 12} Strength check, and the creature making the attempt takes 10 ({@damage 3d6}) acid damage.,The <$name$> can hold only one Large creature or up to four Medium or smaller creatures inside it at a time."
 			]
 		},
 		{
@@ -810,53 +2464,112 @@
 			]
 		},
 		{
-			"name": "Pack Tactics",
+			"name": "Outsize Strength",
 			"entries": [
-				"The <$name$> has advantage on an attack roll against a creature if at least one of the <$name$>'s allies is within 5 feet of the creature and the ally isn't {@condition incapacitated} ."
+				"While grappling, the <$name$> is considered to be Medium. Also, wielding a heavy weapon doesn't impoose disadvantage on its attack rolls."
 			]
 		},
 		{
-			"name": "Petrifying Gaze (Basilisk)",
+			"name": "Overbearing Pack",
 			"entries": [
-				"If a creature starts its turn within 30 feet of the <$name$> and the two of them can see each other, the <$name$> can force the creature to make a DC 12 Constitution saving throw if the <$name$> isn't {@condition incapacitated}. On a failed save, the creature magically begins to turn to stone and is {@condition restrained}. It must repeat the saving throw at the end of its next turn. On a success, the effect ends. On a failure, the creature is {@condition petrified} until freed by the greater restoration spell or other magic.",
-				"A creature that isn't surprised can avert its eyes to avoid the saving throw at the start of its turn. If it does so, it can't see the <$name$> until the start of its next turn, when it can avert its eyes again. If it looks at the <$name$> in the meantime, it must immediately make the save.",
-				"If the <$name$> sees its reflection within 30 feet of it in bright light, it mistakes itself for a rival and targets itself with its gaze."
+				"<$name$> has advantage on Strength (Athletics) checks to shove a creature if at least one of <$name$>'s allies is within 5 feet of the target and the ally isn't incapacitated."
 			]
 		},
 		{
-			"name": "Pounce (Lion)",
+			"name": "Overload",
 			"entries": [
-				"If the <$name$> moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the <$name$> can make one bite attack against it as a bonus action."
+				"<$name$> attacks effect not just the target but also creatures adjacent to the target"
 			]
 		},
 		{
-			"name": "Pounce (Panther)",
+			"name": "Padded Feet",
 			"entries": [
-				"If the <$name$> moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the <$name$> can make one bite attack against it as a bonus action."
+				"The <$name$> has advantage on Dexterity (Stealth) checks to move silently."
 			]
 		},
 		{
-			"name": "Pounce (Saber-Toothed Tiger)",
+			"name": "Perfect Record",
 			"entries": [
-				"If the <$name$> moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the <$name$> can make one bite attack against it as a bonus action."
+				"<$name$> has advantage on saving throws against spells and other magical effects."
 			]
 		},
 		{
-			"name": "Pounce (Tiger)",
+			"name": "Persist",
 			"entries": [
-				"If the <$name$> moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the <$name$> can make one bite attack against it as a bonus action."
+				"If damage reduces the <$name$> to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the <$name$> drops to 1 hit point instead."
 			]
 		},
 		{
-			"name": "Pounce (Weretiger)",
+			"name": "Phasing",
 			"entries": [
-				"If the <$name$> moves at least 15 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the <$name$> can make one bite attack against it as a bonus action."
+				"As a bonus action on its turn, the <$name$> may become etheral as a bonus action until its next round."
+			]
+		},
+
+		{
+			"name": "Planar Travel",
+			"entries": [
+				"<$name$> can cast plane shift after spending one hour in uninterrupted meditation."
 			]
 		},
 		{
-			"name": "Probing Telepathy (Aboleth)",
+			"name": "Plant Camouflage",
+			"entries": [
+				"The <$name$> has advantage on Dexterity (Stealth) checks it makes in any terrain with ample obscuring plant life."
+			]
+		},
+		{
+			"name": "Poisonous",
+			"entries": [
+				"<$name$> attacks additionally inflict the {@condition poisoned|poisoned} condition unless the target saves Constitution {@dc 14}, if they save target instead takes an addition 4 {@damage 1d8} poison damage."
+			]
+		},
+		{
+			"name": "Poor Depth Perception",
+			"entries": [
+				"The <$name$> has disadvantage on any attack roll against a target more than 30 feet away."
+			]
+		},
+		{
+			"name": "Potent Poison",
+			"entries": [
+				"The <$name$> poison affects corporeal undead who are otherwise immune to poison."
+			]
+		},
+		{
+			"name": "Pounce",
+			"entries": [
+				"If the creature moves at least {20} feet straight toward target creature and then hits it with a {specific} attack on the same turn, that target must succeed on a {@dc 14} Strength saving throw or be knocked prone. If the target is {@condition prone}, <$name$> can make one {specific} attack against it as a bonus action."
+			]
+		},
+		{
+			"name": "Powerful Charge",
+			"entries": [
+				"If <$name$> moves at least 20 feet straight toward a creature and then hits it with a {specific} attack on the same turn, that target must succeed on a {@dc 19} Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the <$name$> can make one attack with its {specific} against it as a bonus action."
+			]
+		},
+		{
+			"name": "Premonition",
+			"entries": [
+				"The<$name$> has advantage on initiative checks and is never surprised."
+			]
+		},
+		{
+			"name": "Probing Telepathy",
 			"entries": [
 				"If a creature communicates telepathically with the <$name$>, the <$name$> learns the creature's greatest desires if the <$name$> can see the creature."
+			]
+		},
+		{
+			"name": "Protection from {damage_type}",
+			"entries": [
+				"Immune to {type} damage"
+			]
+		},
+		{
+			"name": "Provoke",
+			"entries": [
+				"When <$name$> attacks, it may bonus action to get all creatures within striking range to spend their reaction to attack it at disadvantage unless they make a Wisdom {@dc 14} saving throw. Any creature that attacks <$name$> may be attacked at advantage until the end of the turn."
 			]
 		},
 		{
@@ -866,9 +2579,45 @@
 			]
 		},
 		{
+			"name": "Quick Draw",
+			"entries": [
+				"The <$name$> can switch between wielding its weapons as a bonus action."
+			]
+		},
+		{
+			"name": "Quickened Spell",
+			"entries": [
+				"(3/Day). When it casts a spell that has a casting time of 1 action, it can changes the casting time to 1 bonus action for that casting."
+			]
+		},
+		{
+			"name": "Raided",
+			"entries": [
+				"If one of your creatures attacked on your last turn, a Raided effect on one of your cards triggers this turn. Only the first Raided effect on a turn triggers; any further Raided effects do nothing."
+			]
+		},
+		{
+			"name": "Rally",
+			"entries": [
+				"Your creatures with Rally have their associated effects triggered whenever you bring a creature with the Ally subtype into play."
+			]
+		},
+		{
 			"name": "Rampage",
 			"entries": [
-				"When the <$name$> reduces a creature to 0 hit points with a melee attack on its turn, the <$name$> can take a bonus action to move up to half its speed and make another attack."
+				"When <$name$> reduces a target to 0 hit points with a melee attack on its turn, <$name$> can take a bonus action to move up to half his speed and make a {specific} attack."
+			]
+		},
+		{
+			"name": "Rampage, mtg",
+			"entries": [
+				"<$name$> gains +1 to hit and damage on melee attacks for each creature that it was attacked by, since its last turn."
+			]
+		},
+		{
+			"name": "Reach",
+			"entries": [
+				"<$name$> threatens all squares within an additional 5ft."
 			]
 		},
 		{
@@ -878,9 +2627,15 @@
 			]
 		},
 		{
-			"name": "Reactive Heads (Hydra)",
+			"name": "Reactive Heads",
 			"entries": [
 				"For each head the <$name$> has beyond one, it gets an extra reaction that can be used only for opportunity attacks."
+			]
+		},
+		{
+			"name": "Reactive Strike",
+			"entries": [
+				"When the <$name$> takes 10 damage or more from a single hit, it immediately uses its {specific attack/trait}"
 			]
 		},
 		{
@@ -896,87 +2651,51 @@
 			]
 		},
 		{
-			"name": "Regeneration (Oni)",
+			"name": "Reinforce",
 			"entries": [
-				"The <$name$> regains 10 hit points at the start of its turn if it has at least 1 hit point."
+				"<$name$> can as an action sacrifice itself to heal target creature {@dice 6d8} hit points, and grant them advantage on their next turn's attacks or abilities checks."
 			]
 		},
 		{
-			"name": "Regeneration (Shield Guardian)",
+			"name": "Rejuvenation",
 			"entries": [
-				"The <$name$> regains 10 hit points at the start of its turn if it has at least 1 hit point."
+				"When <$name$>'s body is destroyed, its soul lingers. After {@dice 1d6} days it returns to life, if its body was destroyed the soul inhabits and animates another corpse on the same plane of existence and regains all its hit points. While the soul is bodiless, a wish spell can be used to force the soul to go to the afterlife and not return."
 			]
 		},
 		{
-			"name": "Regeneration (Troll)",
+			"name": "Resilient",
 			"entries": [
-				"The <$name$> regains 10 hit points at the start of its turn. If the <$name$> takes acid or fire damage, this trait doesn't function at the start of the <$name$>'s next turn. The <$name$> dies only if it starts its turn with 0 hit points and doesn't regenerate."
+				"A <$name$> has tactical advantage on all saving throws."
 			]
 		},
 		{
-			"name": "Regeneration (Vampire)",
+			"name": "Retainer",
 			"entries": [
-				"The <$name$> regains 20 hit points at the start of its turn if it has at least 1 hit point and isn't in sunlight or running water. If the <$name$> takes radiant damage or damage from holy water, this trait doesn't function at the start of the <$name$>'s next turn."
+				"<$name$> is a Retainer, as described in {@book Strongholds and Followers|SaF 3pp|8|Retainers}"
 			]
 		},
 		{
-			"name": "Regeneration (Vampire Spawn)",
+			"name": "Runner",
 			"entries": [
-				"The <$name$> regains 10 hit points at the start of its turn if it has at least 1 hit point and isn't in sunlight or running water. If the <$name$> takes radiant damage or damage from holy water, this trait doesn't function at the start of the <$name$>'s next turn."
+				"When using a dash action, the <$name$> moves three times its speed instead of twice."
 			]
 		},
 		{
-			"name": "Rejuvenation (Guardian Naga)",
+			"name": "Running Leap",
 			"entries": [
-				"If it dies, the <$name$> returns to life in {@dice 1d6} days and regains all its hit points. Only a {@i wish}spell can prevent this trait from functioning."
-			]
-		},
-		{
-			"name": "Rejuvenation (Lich)",
-			"entries": [
-				"If it has a phylactery, a destroyed <$name$> gains a new body in {@dice 1d10} days, regaining all its hit points and becoming active again. The new body appears within 5 feet of the phylactery."
-			]
-		},
-		{
-			"name": "Rejuvenation (Mummy Lord)",
-			"entries": [
-				"A destroyed <$name$> gains a new body in 24 hours if its heart is intact, regaining all its hit points and becoming active again. The new body appears within 5 feet of the <$name$>'s heart."
-			]
-		},
-		{
-			"name": "Rejuvenation (Spirit Naga)",
-			"entries": [
-				"If it dies, the <$name$> returns to life in {@dice 1d6} days and regains all its hit points. Only a {@i wish}spell can prevent this trait from functioning."
-			]
-		},
-		{
-			"name": "Relentless (Boar)",
-			"entries": [
-				"If the <$name$> takes 7 damage or less that would reduce it to 0 hit points, it is reduced to 1 hit point instead."
-			]
-		},
-		{
-			"name": "Relentless (Giant Boar)",
-			"entries": [
-				"If the <$name$> takes 10 damage or less that would reduce it to 0 hit points, it is reduced to 1 hit point instead."
-			]
-		},
-		{
-			"name": "Relentless (Wereboar)",
-			"entries": [
-				"If the <$name$> takes 14 damage or less that would reduce it to 0 hit points, it is reduced to 1 hit point instead."
-			]
-		},
-		{
-			"name": "Running Leap (Lion)",
-			"entries": [
-				"With a 10-foot running start, the <$name$> can long jump up to 25 feet."
+				"With a 10-foot running start, the <$name$> can long jump up to {25} feet."
 			]
 		},
 		{
 			"name": "Rust Metal",
 			"entries": [
-				"Any nonmagical weapon made of metal that hits the <$name$> corrodes. After dealing damage, the weapon takes a permanent and cumulative \u22121 penalty to damage rolls. If its penalty drops to \u22125, the weapon is destroyed. Nonmagical ammunition made of metal that hits the <$name$> is destroyed after dealing damage."
+				"Any nonmagical weapon made of metal that hits the <$name$> corrodes. After dealing damage, the weapon takes a permanent and cumulative −1 penalty to damage rolls. If its penalty drops to −5, the weapon is destroyed. Nonmagical ammunition made of metal that hits the <$name$> is destroyed after dealing damage."
+			]
+		},
+		{
+			"name": "Saga",
+			"entries": [
+				"When you play a Saga, the first chapter's effects are triggered. At the start of each of your turns, the next chapter's effects are triggered. A Saga is Destroyed at the end of a turn in which its final chapter was triggered. Reinforcing a Saga triggers the current chapter but does not advance to the next chapter."
 			]
 		},
 		{
@@ -986,9 +2705,33 @@
 			]
 		},
 		{
+			"name": "Shadow",
+			"entries": [
+				"Immune to non magical weapons, and can pass through solid objects"
+			]
+		},
+		{
+			"name": "Shapechanger",
+			"entries": [
+				"<$name$> can use its action to polymorph into a {form} or back into its true form. Its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed. It doesn't change form if it dies."
+			]
+		},
+		{
+			"name": "Shark Telepathy",
+			"entries": [
+				"The <$name$> can magically command any shark within {120} feet of it, using a limited telepathy."
+			]
+		},
+		{
 			"name": "Shielded Mind",
 			"entries": [
 				"The <$name$> is immune to scrying and to any effect that would sense its emotions, read its thoughts, or detect its location."
+			]
+		},
+		{
+			"name": "Siege",
+			"entries": [
+				"The <$name$> deals double damage to objects and structures made of wood or lighter materials."
 			]
 		},
 		{
@@ -998,105 +2741,33 @@
 			]
 		},
 		{
-			"name": "Shadow Stealth",
+			"name": "Simulacra",
 			"entries": [
-				"While in dim light or darkness, the <$name$> can take the {@action Hide} action as a bonus action."
+				"When a simulacrum drops to O hit points or is subjected to a successful dispel magic spell (DC 17), it reverts to its constructed components."
 			]
 		},
 		{
-			"name": "Shapechanger (Doppelganger)",
+			"name": "Skulk",
 			"entries": [
-				"The <$name$> can use its action to polymorph into a Small or Medium humanoid it has seen, or back into its true form. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
-			]
-		},
-		{
-			"name": "Shapechanger (Imp)",
-			"entries": [
-				"The <$name$> can use its action to polymorph into a beast form that resembles a rat (speed 20 ft.), a raven (20 ft., fly 60 ft.), or a spider (20 ft., climb 20 ft.), or back into its true form. Its statistics are the same in each form, except for the speed changes noted. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
-			]
-		},
-		{
-			"name": "Shapechanger (Mimic)",
-			"entries": [
-				"The <$name$> can use its action to polymorph into an object or back into its true, amorphous form. Its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
-			]
-		},
-		{
-			"name": "Shapechanger (Quasit)",
-			"entries": [
-				"The <$name$> can use its action to polymorph into a beast form that resembles a bat (speed 10 ft. fly 40 ft.), a centipede (40 ft., climb 40 ft.), or a toad (40 ft., swim 40 ft.), or back into its true form. Its statistics are the same in each form, except for the speed changes noted. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
-			]
-		},
-		{
-			"name": "Shapechanger (Succubus/Incubus)",
-			"entries": [
-				"The <$name$> can use its action to polymorph into a Small or Medium humanoid, or back into its true form. Without wings, the <$name$> loses its flying speed. Other than its size and speed, its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
-			]
-		},
-		{
-			"name": "Shapechanger (Vampire)",
-			"entries": [
-				"If the <$name$> isn't in sunlight or running water, it can use its action to polymorph into a Tiny bat or a Medium cloud of mist, or back into its true form. While in bat form, the <$name$> can't speak, its walking speed is 5 feet, and it has a flying speed of 30 feet. Its statistics, other than its size and speed, are unchanged. Anything it is wearing transforms with it, but nothing it is carrying does. It reverts to its true form if it dies. While in mist form, the <$name$> can't take any actions, speak, or manipulate objects. It is weightless, has a flying speed of 20 feet, can hover, and can enter a hostile creature's space and stop there. In addition, if air can pass through a space, the mist can do so without squeezing, and it can't pass through water. It has advantage on Strength, Dexterity, and Constitution saving throws, and it is immune to all nonmagical damage, except the damage it takes from sunlight."
-			]
-		},
-		{
-			"name": "Shapechanger (Werebear)",
-			"entries": [
-				"The <$name$> can use its action to polymorph into a Large bear-humanoid hybrid or into a Large bear, or back into its true form, which is humanoid. Its statistics, other than its size and AC, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
-			]
-		},
-		{
-			"name": "Shapechanger (Wereboar)",
-			"entries": [
-				"The <$name$> can use its action to polymorph into a boar-humanoid hybrid or into a boar, or back into its true form, which is humanoid. Its statistics, other than its AC, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
-			]
-		},
-		{
-			"name": "Shapechanger (Wererat)",
-			"entries": [
-				"The <$name$> can use its action to polymorph into a rat-humanoid hybrid or into a giant rat, or back into its true form, which is humanoid. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
-			]
-		},
-		{
-			"name": "Shapechanger (Weretiger)",
-			"entries": [
-				"The <$name$> can use its action to polymorph into a tiger-humanoid hybrid or into a tiger, or back into its true form, which is humanoid. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
-			]
-		},
-		{
-			"name": "Shapechanger (Werewolf)",
-			"entries": [
-				"The <$name$> can use its action to polymorph into a wolf-humanoid hybrid or into a wolf, or back into its true form, which is humanoid. Its statistics, other than its AC, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
-			]
-		},
-		{
-			"name": "Shark Telepathy",
-			"entries": [
-				"The <$name$> can magically command any shark within 120 feet of it, using a limited telepathy."
+				"Can {@action evade} as a bonus action."
 			]
 		},
 		{
 			"name": "Slippery",
 			"entries": [
-				"The kuo-toa has advantage on ability checks and saving throws made to escape a grapple."
+				"The <$name$> has advantage on ability checks and saving throws made to escape a grapple."
 			]
 		},
 		{
-			"name": "Sneak Attack (Assassin)",
+			"name": "Slow and Purposeful",
 			"entries": [
-				"Once per turn, the <$name$> deals an extra 14 ({@dice 4d6}) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the <$name$> that isn't {@condition incapacitated} and the <$name$> doesn't have disadvantage on the attack roll."
+				"The <$name$> can't use the Dash action."
 			]
 		},
 		{
-			"name": "Sneak Attack (Spy)",
+			"name": "Sneak Attack",
 			"entries": [
-				"The <$name$> deals an extra 7 ({@dice 2d6}) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the <$name$> that isn't {@condition incapacitated} and the <$name$> doesn't have disadvantage on the attack roll."
-			]
-		},
-		{
-			"name": "Spell Storing (Shield Guardian)",
-			"entries": [
-				"A spellcaster who wears the <$name$>'s amulet can cause the <$name$> to store one spell of 4th level or lower. To do so, the wearer must cast the spell on the <$name$>. The spell has no effect but is stored within the <$name$>. When commanded to do so by the wearer or when a situation arises that was predefined by the spellcaster, the <$name$> casts the stored spell with any parameters set by the original caster, requiring no components. When the spell is cast or a new spell is stored, any previously stored spell is lost."
+				"Once per turn, the <$name$> deals an extra 6 ({@damage 2d6}) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the <$name$> that isn't {@condition incapacitated} and the <$name$> doesn't have disadvantage on the attack roll."
 			]
 		},
 		{
@@ -1106,9 +2777,46 @@
 			]
 		},
 		{
+			"name": "Snowy Stealth",
+			"entries": [
+				"While in a snowy environment, the <$name$> has advantage on Dexterity (Stealth) checks made to hide, and it can take the Hide action as a bonus action."
+			]
+		},
+		{
+			"name": "Sorcery Points",
+			"entries": [
+				"The <$name$> has {#} sorcery points. It can spend 1 or more sorcery points to gain one of the following benefts:"
+			]
+		},
+		{
 			"name": "Speak with Beasts and Plants",
 			"entries": [
 				"The <$name$> can communicate with beasts and plants as if they shared a language."
+			]
+		},
+		{
+			"name": "Spell Storing",
+			"entries": [
+				"A spellcaster who wears the <$name$>'s amulet can cause the <$name$> to store one spell of 4th level or lower. To do so, the wearer must cast the spell on the <$name$>. The spell has no effect but is stored within the <$name$>. When commanded to do so by the wearer or when a situation arises that was predefined by the spellcaster, the <$name$> casts the stored spell with any parameters set by the original caster, requiring no components. When the spell is cast or a new spell is stored, any previously stored spell is lost."
+			]
+		},
+		{
+			"name": "Spell-Slayer",
+			"entries": [
+				"When <$name$> hits a spellcaster with a weapon attack, the creature takes an extra <number> ({@damage }) damage of the weapon's type."
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"entries": [
+				"<$name$> is {level} level spellcaster. Its spellcasting ability is {ability} (Spell Save {@dc <#>, +<#> to hit with spell attacks. The Creature knows the following spells:",
+				{
+					"type": "list",
+					"items": [
+						"Cantrips (at will): ()",
+						"1st Level (# Slots):"
+					]
+				}
 			]
 		},
 		{
@@ -1118,27 +2826,27 @@
 			]
 		},
 		{
-			"name": "Standing Leap (Bulette)",
+			"name": "Springing Charge",
 			"entries": [
-				"The <$name$>'s long jump is up to 30 feet and its high jump is up to 15 feet, with or without a running start."
+				"If the <$name$> uses its action to dash and moves in a straight line directly toward a creature, it may make a single slam attack with advantage against <$name$> as a bonus action."
 			]
 		},
 		{
-			"name": "Standing Leap (Frog)",
+			"name": "Standing Leap",
 			"entries": [
-				"The <$name$>'s long jump is up to 10 feet and its high jump is up to 5 feet, with or without a running start."
+				"The <$name$>'s long jump is up to {20} feet and its high jump is up to {10} feet, with or without a running start."
 			]
 		},
 		{
-			"name": "Standing Leap (Giant Frog)",
+			"name": "Starshine",
 			"entries": [
-				"The <$name$>'s long jump is up to 20 feet and its high jump is up to 10 feet, with or without a running start."
+				"The <$name$> can choose to generate an aura of bright light in a 20-foot radius around it and dim light in another 20-foot radius beyond that. It can toggle this aura as a bonus action. Also, it can cast the light cantrip. These light sources count as natural sunlight. A creature that starts its turn within 30 feet of the <$name$> must make a {@dc 19} Intelligence saving throw. On a failed save, the creature is {@condition blinded} for 1 minute. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the <$name$>'s Starshine for the next 24 hours."
 			]
 		},
 		{
-			"name": "Standing Leap (Giant Toad)",
+			"name": "Startling Speed",
 			"entries": [
-				"The <$name$>'s long jump is up to 20 feet and its high jump is up to 10 feet, with or without a running start."
+				"The movements of a <$name$> are so swift that it is almost {@condition invisible} when in motion. If the quickstep moves at least 30 feet on its turn, attack rolls against it have disadvantage until the start of its next turn unless the <$name$> is {@condition incapacitated} or {@condition restrained}."
 			]
 		},
 		{
@@ -1148,27 +2856,27 @@
 			]
 		},
 		{
-			"name": "Stench (Hezrou)",
+			"name": "Steady Aim",
 			"entries": [
-				"Any creature that starts its turn within 10 feet of the <$name$> must succeed on a DC 14 Constitution saving throw or be {@condition poisoned} until the start of its next turn. On a successful saving throw, the creature is immune to the <$name$>'s stench for 24 hours."
+				"The <$name$> attacks ignore half and three quarters cover and deal an additional 4 ({@dice 1d8}) damage (included in the attack)."
 			]
 		},
 		{
-			"name": "Surprise Attack (Bugbear)",
+			"name": "Steady Aim (3/Day)",
 			"entries": [
-				"If the <$name$> surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 7 ({@dice 2d6}) damage from the attack."
+				"As a bonus action, the <$name$> takes careful aim at a creature it can see within range of its ranged weapon. Until the end of its turn, the <$name$> deals an an extra 10 ({@damage 3d6}) damage with each of its ranged weapon attacks against the target."
 			]
 		},
 		{
-			"name": "Surprise Attack (Doppelganger)",
+			"name": "Stealthy",
 			"entries": [
-				"If the <$name$> surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 10 ({@dice 3d6}) damage from the attack."
+				"On each of its turns, the <$name$> can use a bonus action to take the Hide action."
 			]
 		},
 		{
-			"name": "Sure-Footed",
+			"name": "Stealthy Traveler",
 			"entries": [
-				"The <$name$> has advantage on Strength and Dexterity saving throws made against effects that would knock it {@condition prone}."
+				"The <$name$> can use Stealth while traveling at a normal pace."
 			]
 		},
 		{
@@ -1178,15 +2886,99 @@
 			]
 		},
 		{
+			"name": "Storm {@recharge 4}",
+			"entries": [
+				"As twin spell, but with no loss of spell slots."
+			]
+		},
+		{
+			"name": "Storm Shield",
+			"entries": [
+				"Ranged attacks targeting the <$name$> are always made with disadvantage and cannot gain advantage from any source."
+			]
+		},
+		{
+			"name": "Strangling",
+			"entries": [
+				"As a bonus action, a <$name$> can strangle one creature that was already {@condition grappled} at the start of the <$name$> turn. The <$name$> drags the {@condition grappled} creature underwater and wraps {@dice 1d6} additional fronds around the target, which becomes {@condition grappled} and {@condition restrained}. The DC to escape from this grapple equals 10 plus 2 per frond restraining the creature. A {@condition restrained} creature takes 6 ({@damage 1d8 + 2}) bludgeoning damage at the start of each of its turns, and it can also be targeted by frond attacks. <$name$> have AC 10 and can be severed individually by 4 slashing damage each."
+			]
+		},
+		{
+			"name": "Strength in Numbers",
+			"entries": [
+				"The <$name$> has advantage on Strength and Constitution checks and saving throws."
+			]
+		},
+		{
+			"name": "Stunning Pounce",
+			"entries": [
+				"If the <$name$> moves at least 30 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a {@dc 15} Strength saving throw or be knocked {@condition prone} and {@condition stunned} until the end of the <$name$>'s next turn."
+			]
+		},
+		{
+			"name": "Sturdy",
+			"entries": [
+				"The <$name$> has advantage on saving throws against being {@condition paralyzed} or {@condition stunned}."
+			]
+		},
+		{
+			"name": "Summon Sea Creatures (1/Day)",
+			"entries": [
+				"All <$name$> (those with 50 or more hit points) have the ability to summon sea creatures as an action. Roll {@dice 2d6}: one die indicates how many rounds later the creatures arrive, and the other determines what type of creatures respond."
+			]
+		},
+		{
+			"name": "Sun Sickness",
+			"entries": [
+				"While in sunlight, the <$name$> has disadvantage on ability checks, attack rolls, and saving throws. The <$name$> dies if it spends more than 1 hour in direct sunlight."
+			]
+		},
+		{
+			"name": "Sunlight Aversion",
+			"entries": [
+				"While in natural sunlight (a daylight spell does not suffice), the <$name$> has disadvantage on attack rolls, saving throws and ability checks."
+			]
+		},
+		{
+			"name": "Sunlight Banishment",
+			"entries": [
+				"If the <$name$> starts its turn in sunlight, it is transported to the Ethereal Plane. While sunlight shines on the spot from which it vanished, the <$name$> must remain in the Deep Ethereal. After sunset, it returns to the Border Ethereal at the same spot, whereupon it typically sets out to find its pack or its master. The <$name$> is visible on the Material Plane while it is in the Border Ethereal, and vice versa, but it can't affect or be affected by anything on the other plane. Once it is adjacent to its master or a pack mate that is on the Material Plane, a <$name$> in the Border Ethereal can return to the Material Plane as an action."
+			]
+		},
+		{
+			"name": "Sunlight Hypersensitivity",
+			"entries": [
+				"The <$name$> takes 5 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks."
+			]
+		},
+		{
 			"name": "Sunlight Sensitivity",
 			"entries": [
 				"While in sunlight, the <$name$> has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 			]
 		},
 		{
+			"name": "Sunlight Vulnerability",
+			"entries": [
+				"<$name$>, that is exposed to natural sunlight (not just a daylight spell or similar magic) instantly dies, dissolving in a hissing, bubbling puddle of flesh."
+			]
+		},
+		{
 			"name": "Sunlight Weakness",
 			"entries": [
-				"While in sunlight, the <$name$> has disadvantage on attack rolls, ability checks, and saving throws."
+				"While in bright light created by sunlight, the <$name$> has disadvantage on attack rolls, ability checks, and saving throws."
+			]
+		},
+		{
+			"name": "Superior Attunement",
+			"entries": [
+				"<$name$> can attune to four magic items maximum, instead of three."
+			]
+		},
+		{
+			"name": "Suppressed Power",
+			"entries": [
+				"The <$name$> is unable to use its {trait/attack} while it is above half of its maximum hit points ({#})."
 			]
 		},
 		{
@@ -1196,45 +2988,57 @@
 			]
 		},
 		{
+			"name": "Surprise Attack",
+			"entries": [
+				"If the <$name$> surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 7 ({@damage 2d6}) damage from the attack."
+			]
+		},
+		{
+			"name": "Surveil",
+			"entries": [
+				"Look at the top four cards of your library, and choose any number up to the number beside the Surveil keyword. Those cards are discarded, and the rest return to your library."
+			]
+		},
+		{
+			"name": "Survivor",
+			"entries": [
+				"The <$name$> gains 10 temporary hit points at the start of its turn if it has at least 1 hit point but fewer hit points than half its hit point maximum."
+			]
+		},
+		{
+			"name": "Swallow",
+			"entries": [
+				"A swallowed creature is {@condition blinded} and {@condition restrained}. It takes 7 ({@damage 1d8 + 3}) bludgeoning damage automatically at the start of each of the <$name$>'s turns. Only one Medium creature or two Small creatures can be inside the <$name$> at one time. A swallowed creature is unaffected by anything happening outside the <$name$> or by attacks from outside it. A swallowed creature can get out of the <$name$> by winning a Strength {@skill Athletics} contest against it, the swallowed character has tactical disadvantage in this contest or by using 5 feet of movement after the giant clam is dead."
+			]
+		},
+		{
 			"name": "Swamp Camouflage",
 			"entries": [
 				"The <$name$> has advantage on Dexterity ({@skill Stealth}) checks made to hide in swampy terrain."
 			]
 		},
 		{
-			"name": "Swarm (Swarm of Bats)",
+			"name": "Swamp Stride",
 			"entries": [
-				"The <$name$> can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny bat. The swarm can't regain hit points or gain temporary hit points."
+				"<$name$> can move across mud, muck, shallow water, and any other difficult terrain that arises from the presence of water without penalty."
 			]
 		},
 		{
-			"name": "Swarm (Swarm of Bats)",
+			"name": "Swampwalk",
 			"entries": [
-				"The <$name$> can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny insect. The swarm can't regain hit points or gain temporary hit points."
+				"<$name$> suffer no movement penalties in marshy terrain."
 			]
 		},
 		{
-			"name": "Swarm (Swarm of Poisonous Snakes)",
+			"name": "Swarm ",
 			"entries": [
-				"The <$name$> can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny snake. The swarm can't regain hit points or gain temporary hit points."
+				"The <$name$> can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a <$name$>. The swarm can't regain hit points or gain temporary hit points."
 			]
 		},
 		{
-			"name": "Swarm (Swarm of Quippers)",
+			"name": "Swarming",
 			"entries": [
-				"The <$name$> can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny quipper. The swarm can't regain hit points or gain temporary hit points."
-			]
-		},
-		{
-			"name": "Swarm (Swarm of Rats)",
-			"entries": [
-				"The <$name$> can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny rat. The swarm can't regain hit points or gain temporary hit points."
-			]
-		},
-		{
-			"name": "Swarm (Swarm of Ravens)",
-			"entries": [
-				"The <$name$> can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny raven. The swarm can't regain hit points or gain temporary hit points."
+				"Up to {#} <$name$> can share the same space at the same time. The <$name$> has advantage on melee attack rolls if it is sharing its space with another <$name$> that isn't {@condition incapacitated}."
 			]
 		},
 		{
@@ -1250,51 +3054,123 @@
 			]
 		},
 		{
-			"name": "Telepathic Bond (Homunculus)",
+			"name": "Talented Alchemist",
 			"entries": [
-				"While the <$name$> is on the same plane of existence as its master, it can magically convey what it senses to its master, and the two can communcate telepathically."
+				"The <$name$> has proficiency with alchemist's supplies and its proficiency bonus is doubled for ability checks it makes using them."
 			]
 		},
 		{
-			"name": "Telepathic Bond (Succubus/Incubus)",
+			"name": "Tamed",
 			"entries": [
-				"The <$name$> ignores the range restriction on its telepathy when communicating with a creature it has {@condition charmed}. The two don't even need to be on the same plane of existence."
+				"The <$name$> never willingly attacks any reptilian humanoid, and if forced or magically compelled to do so it suffers disadvantage on attack rolls. Up to three Medium or one Large creatures can ride the <$name$>. This trait disappears if the <$name$> spends a month away from any reptilian humanoid."
 			]
 		},
 		{
-			"name": "Trampling Charge (Gorgon)",
+			"name": "Telepathic Bond",
 			"entries": [
-				"If the <$name$> moves at least 20 feet straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 16 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the <$name$> can make one attack with its hooves against it as a bonus action."
+				"While <$name$> is on the same plane of existence as its master/bonded, it can magically convey what it senses to its master, and the two can communicate telepathically with each other."
 			]
 		},
 		{
-			"name": "Trampling Charge (Elephant)",
+			"name": "Telepathic Shroud",
 			"entries": [
-				"If the <$name$> moves at least 20 feet straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the <$name$> can make one stomp attack against it as a bonus action."
+				"The <$name$> is immune to any effect that would sense its emotions or read its thoughts without its consent. If the <$name$> is serving as a familiar, this trait is shared by its companion as long as its companion is wihtin 10 ft."
 			]
 		},
 		{
-			"name": "Trampling Charge (Mammoth)",
+			"name": "Thick Hide",
 			"entries": [
-				"If the <$name$> moves at least 20 feet straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 18 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the <$name$> can make one stomp attack against it as a bonus action."
+				"The <$name$>'s skin is thick and tough, granting it a +1 bonus to Armor Class. This bonus is already factored into the <$name$>'s AC."
 			]
 		},
 		{
-			"name": "Trampling Charge (Triceratops)",
+			"name": "Thorn Lurker",
 			"entries": [
-				"If the <$name$> moves at least 20 feet straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the <$name$> can make one stomp attack against it as a bonus action."
+				"The <$name$> can attempt to hide even when it is only lightly obscured by foliage. Additionally, the nekker can pass through nonmagical plants without being slowed by them and without taking damage from them if they have thorns, spines, or a similar hazard."
 			]
 		},
 		{
-			"name": "Trampling Charge (Warhorse)",
+			"name": "Threatening",
 			"entries": [
-				"If the <$name$> moves at least 20 feet straight toward a creature and then hits it with a hooves attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the <$name$> can make another attack with its hooves against it as a bonus action."
+				"Creatures provoke an opportunity attack from the <$name$> when they move 5 feet or more while within the <$name$>'s reach, and if the <$name$> hits a creature with an opportunity attack, the target's speed is reduced to 0 until the end of the current turn."
 			]
 		},
 		{
-			"name": "Transparent (Gelatinous Cube)",
+			"name": "Three-Headed",
 			"entries": [
-				"Even when the <$name$> is in plain sight, it takes a successful DC 15 Wisdom ({@skill Perception}) check to spot a <$name$> that has neither moved nor attacked. A creature that tries to enter the <$name$>'s space while unaware of the <$name$> is surprised by the <$name$>."
+				"The <$name$> has advantage on Wisdom (Perception) checks and on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, and knocked {@condition unconscious}."
+			]
+		},
+		{
+			"name": "Tomb Bound",
+			"entries": [
+				"The <$name$> is bound to the area it defends. It can't move more than 100 feet from the place it is bound to protect."
+			]
+		},
+		{
+			"name": "Totem of the Bear",
+			"entries": [
+				"Hostile creatures within 5 feet of the <$name$> that can see and hear it have disadvantage on attack rolls against creatures other than the <$name$>."
+			]
+		},
+		{
+			"name": "Totem of the Wolf (1/turn)",
+			"entries": [
+				"When the <$name$> hits a Large or smaller creature with a melee weapon attack, it can choose to force the target to make a {@dc 15} Strength saving throw. The target falls {@condition prone} on a failed save."
+			]
+		},
+		{
+			"name": "Tough",
+			"entries": [
+				"The <$name$> adds its Constitution modifier to its armor class."
+			]
+		},
+		{
+			"name": "Trait Mimicry",
+			"entries": [
+				"As a bonus action, a <$name$> can take on 1 nonmagical physical trait, attack, or reaction of a beast or humanoid with a challenge rating equal to or less than its own that it has seen within the last week (see Trait Mimicry sidebar). It can have up to 5 such traits at a time, no more than two of which can be attacks. Each trait lasts until the <$name$> replaces it with another trait as a bonus action. If the <$name$> goes a week without exposure to a single beast or humanoid, it loses all of its traits and reverts back to its true form."
+			]
+		},
+		{
+			"name": "Trample",
+			"entries": [
+				"If an attack by <$name$> drops an opponent to 0 hp, <$name$>'s may make another attack to one of its allies within 10ft of it."
+			]
+		},
+		{
+			"name": "Trample Over",
+			"entries": [
+				"As the <$name$> moves, it can enter spaces occupied by enemies up to Large size. Creatures in spaces the <$name$> enters can attempt {@dc 16} Dexterity saving throws. On a failed save, the creature takes 11 ({@damage 2d10}) bludgeoning damage and is knocked {@condition prone}; on a successful save, the creature moves 5 feet out of the <$name$>'s path and can make an opportunity attack if it's allowed to react. A <$name$> can attempt to trample any number of creatures during its move, but it can't trample the same creature more than once per round and it can't end its movement in another creature's space."
+			]
+		},
+		{
+			"name": "Trampling Charge ",
+			"entries": [
+				"If the <$name$> moves at least 20 feet straight toward a creature and then hits it with a hooves attack on the same turn, that target must succeed on a {@dc 14 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the <$name$> can make another attack with its hooves against it as a bonus action."
+			]
+		},
+		{
+			"name": "Transparent",
+			"entries": [
+				"Even when the <$name$> is in plain sight, it takes a successful {@dc 15} Wisdom ({@skill Perception}) check to spot a <$name$> that has neither moved nor attacked. A creature that tries to enter the <$name$>'s space while unaware of the <$name$> is surprised by the <$name$>."
+			]
+		},
+		{
+			"name": "Trap",
+			"entries": [
+				"The specified number of normal Gems become Trap Gems associated with this card. When your opponent destroys one of your Trap Gems, its associated ability is triggered. If you match one of your Trap Gems which is caused by an ongoing effect, a new Gem becomes Trapped on your next turn."
+			]
+		},
+		{
+			"name": "Traveler in Darkness",
+			"entries": [
+				"The <$name$> has advantage on Intelligence (Arcana) checks made to know about shadow roads and shadow magic spells or items."
+			]
+		},
+		{
+			"name": "Treasure",
+			"entries": [
+				"Your effects which find Treasures bring the specified number of Treasure Tokens into play on your side. Once you have four Treasure tokens, one of your existing Treasure Tokens is reinforced rather than a new one being created. Matching your Treasure Token adds 3 mana to a random card in your hand. Matching your opponent's Treasure Token adds 2 mana to a random card in your hand, and 2 mana to a random card in your opponent's hand."
 			]
 		},
 		{
@@ -1306,19 +3182,19 @@
 		{
 			"name": "Tree Stride",
 			"entries": [
-				"Once on their turn, the <$name$> can use 10 feet of movement to step magically into one living tree within reach and emerge from a second living tree within 60 feet of the first tree, appearing in an unoccupied space within 5 feet of the second tree. Both trees must be Large or bigger."
+				"Once on their turn, the <$name$> can use 10 feet of movement to step magically into one living tree within reach and emerge from a second living tree within {60} feet of the first tree, appearing in an unoccupied space within 5 feet of the second tree. Both trees must be Large or bigger."
 			]
 		},
 		{
-			"name": "Tunneler (Purple Worm)",
+			"name": "Tunneler",
 			"entries": [
-				"The <$name$> can burrow through solid rock at half its burrow speed and leaves a 10-foot-diameter tunnel in its wake."
+				"The <$name$> can burrow through solid rock at half its burrow speed and leaves a {10}-foot-diameter tunnel in its wake."
 			]
 		},
 		{
-			"name": "Turning Defiance (Ghast)",
+			"name": "Turn Immunity",
 			"entries": [
-				"The <$name$> and any ghouls within 30 feet of it have advantage on saving throws against effects that turn undead."
+				"<$name$> is immune to effects that turn undead."
 			]
 		},
 		{
@@ -1328,9 +3204,15 @@
 			]
 		},
 		{
-			"name": "Turn Immunity",
+			"name": "Turning Defiance",
 			"entries": [
-				"The <$name$> is immune to effects that turn undead."
+				"The <$name$> and any ghouls within 30 feet of it have advantage on saving throws against effects that turn undead."
+			]
+		},
+		{
+			"name": "Twisted",
+			"entries": [
+				"When the <$name$> attacks a creature from hiding, the target must succeed on a {@dc 13} Wisdom saving throw or be {@condition frightened} until the end of its next turn."
 			]
 		},
 		{
@@ -1340,9 +3222,45 @@
 			]
 		},
 		{
-			"name": "Undead Fortitude",
+			"name": "Unarmored Defense",
 			"entries": [
-				"If damage reduces the <$name$> to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the <$name$> drops to 1 hit point instead."
+				"While the <$name$> is wearing no armor and not wielding a shield, its AC equals 10 + its Dexterity modifier + its Wisdom modifier."
+			]
+		},
+		{
+			"name": "Unbroken Spirit",
+			"entries": [
+				"When the <$name$> is reduced to 0 hit points or dies, the nearest ally of the <$name$> gains 10 temporary hit points and advantage on attack rolls and saving throws."
+			]
+		},
+		{
+			"name": "Uncontrollable",
+			"entries": [
+				"The <$name$>'s movement is never impeded by difficult terrain, and its speed can't be reduced by spells or magical effects. It can't be {@condition restrained} (per the condition), and it escapes automatically from any nonmagical restraints (such as chains, entanglement, or grappling) by spending 5 feet of movement. Being underwater imposes no penalty on its movement or attacks."
+			]
+		},
+		{
+			"name": "Undead Nature",
+			"entries": [
+				"A <$name$> does not require air, food, drink, or sleep."
+			]
+		},
+		{
+			"name": "Undead Resistance",
+			"entries": [
+				"The <$name$> has advantage on saving throws against disease."
+			]
+		},
+		{
+			"name": "Underground Charge",
+			"entries": [
+				"If the <$name$> moves at least 20 feet straight toward a creature while underground, it can then make a horn attack as a bonus action."
+			]
+		},
+		{
+			"name": "Undergrowth",
+			"entries": [
+				"An Undergrowth effect on a card occurs when a card with Undergrowth is played. Undergrowth effects are described in terms of a number, X, which is the number of creatures in your graveyard, up to a maximum of the number beside the Undergrowth keyword."
 			]
 		},
 		{
@@ -1352,31 +3270,181 @@
 			]
 		},
 		{
-			"name": "Vampire Weakness (Vampire)",
+			"name": "Undying",
 			"entries": [
-				"The <$name$> has the following flaws:",
-				"{@i Forbiddance}. The <$name$> can't enter a residence without an invitation from one of the occupants.",
-				"{@i Harmed by Running Water}. The <$name$> takes 20 acid damage if it ends its turn in running water.",
-				"{@i Stake to the Heart}. If a piercing weapon made of wood is driven into the <$name$>'s heart while the <$name$> is {@condition incapacitated} in its resting place, the <$name$> is {@condition paralyzed} until the stake is removed.",
-				"{@i Sunlight Hypersensitivity}. The <$name$> takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks."
+				"When you would make a death saving throw, you can instead spring back to your feet with a burst of radiant energy. You immediately stand up (if you so choose), and you regain hit points equal to half your hit point maximum. All hostile creatures within 30 feet of you take 10 + your Charisma modifier radiant damage and are blinded until the end of your turn. [recharge 1]"
 			]
 		},
 		{
-			"name": "Variable Illumination (Will-o'-Wisp)",
+			"name": "Undying Soul ",
+			"entries": [
+				"If the <$name$> is reduced to 0 hit points, it immediately makes a {@dc 10} Constitution saving throw. lf it succeeds, it is instead reduced to 1 hit point. (Recharges after a Short or Long Rest)"
+			]
+		},
+		{
+			"name": "Unearth",
+			"entries": [
+				"A creature with <$name$> revifies whenever its death save is over 15"
+			]
+		},
+		{
+			"name": "Unearthly Grace",
+			"entries": [
+				"A <$name$> applies their Charisma modifier to all of her saving throws in place of the normal ability modifier.  or The <$name$>'s Charisma modifier is added to its armor class (included above)."
+			]
+		},
+		{
+			"name": "Unearthly Recovery ",
+			"entries": [
+				"When the <$name$> has fewer than {#} hit points, it can use a bonus action to regain {#} hit points. (Recharges after a Long Rest)"
+			]
+		},
+		{
+			"name": "Unflinching",
+			"entries": [
+				"The <$name$>  is immune to being {@condition frightened} or {@condition charmed}."
+			]
+		},
+		{
+			"name": "Ungodly Resistance",
+			"entries": [
+				"The <$name$> has advantage on saving throws against spells or other magical effects cast or created by a cleric or paladin."
+			]
+		},
+		{
+			"name": "Unholy Aura",
+			"entries": [
+				"Unless <$name$> is {@condition incapacitated}, it and the undead creatures of its choice within 30 feet have advantage on saving throws against features that turn undead."
+			]
+		},
+		{
+			"name": "Unholy Fortitude",
+			"entries": [
+				"<$name$> has advantage on saving throws against being turned."
+			]
+		},
+		{
+			"name": "Unleash {@recharge 4}",
+			"entries": [
+				"<$name$> can fight with primal ferocity. On their turn, they can enter a babarian like rage as a bonus action. While raging, they gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"<$name$> have advantage on Strength checks and Strength saving throws.",
+						"When it makes a melee weapon attack using Strength, add its proficiency bonus to the damage roll.",
+						"<$name$> get resistance to bludgeoning, piercing, and slashing damage.",
+						"If its are able to cast spells, it can't cast them or concentrate on them while raging."
+					]
+				},
+				"The rage lasts for up to 1 minute. It ends early if <$name$> is knocked unconscious or if its turn ends and it hasn't attacked a hostile creature, or taken damage since its last turn. It can also end rage on as a bonus action."
+			]
+		},
+		{
+			"name": "Unlovely",
+			"entries": [
+				"The skirmisher has disadvantage on Performance and Persuasion checks in interactions with <$name$>."
+			]
+		},
+		{
+			"name": "Unnatural Aura",
+			"entries": [
+				"All animals, whether wild or domesticated, can sense the unnatural presence of <$name$> at a distance of 30 feet. They do not willingly approach nearer than that and panic if forced to do so, and they remain panicked as long as they are within that range unless a master makes a successful {@dc 15} Wisdom (Animal Handling) check."
+			]
+		},
+		{
+			"name": "Unreliable",
+			"entries": [
+				"At the start of each of its turns in combat, the automaton must succeed on a {@dc 8} Intelligence saving throw, or it does not move or take any actions during its turn."
+			]
+		},
+		{
+			"name": "Uplift Aura",
+			"entries": [
+				"All allies within 30 feet gain +{#} on Intelligence checks, skill checks, and saving throws."
+			]
+		},
+		{
+			"name": "Vampire Weakness (Vampire)",
+			"entries": [
+				"The <$name$> has the following flaws:,{@i Forbiddance}. The <$name$> can't enter a residence without an invitation from one of the occupants.,{@i Harmed by Running Water}. The <$name$> takes 20 acid damage if it ends its turn in running water.,{@i Stake to the Heart}. If a piercing weapon made of wood is driven into the <$name$>'s heart while the <$name$> is {@condition incapacitated} in its resting place, the <$name$> is {@condition paralyzed} until the stake is removed.,{@i Sunlight Hypersensitivity}. The <$name$> takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks."
+			]
+		},
+		{
+			"name": "Vanishing",
+			"entries": [
+				"creature only has temporary hit points"
+			]
+		},
+		{
+			"name": "Variable Illumination",
 			"entries": [
 				"The <$name$> sheds bright light in a 5- to 20-foot radius and dim light for an additional number of feet equal to the chosen radius. The <$name$> can alter the radius as a bonus action."
 			]
 		},
 		{
-			"name": "Wakeful (Ettin)",
+			"name": "Vengeful Tracker",
 			"entries": [
-				"When one of the <$name$>'s heads is asleep, another head is awake."
+				"<$name$> knows the distance to and direction of any creature against which it seeks revenge, even if the target creature and this one are on different planes of existence. If the creature being tracked by <$name$> dies, it knows."
 			]
 		},
 		{
-			"name": "Wakeful (Hydra)",
+			"name": "Vigilance",
 			"entries": [
-				"While the <$name$> sleeps, at least one of its heads is awake."
+				"<$name$> can use a reaction action each turn, not just once between its turn."
+			]
+		},
+		{
+			"name": "Vigilant",
+			"entries": [
+				"The <$name$> can't be surprised."
+			]
+		},
+		{
+			"name": "Void Traveler",
+			"entries": [
+				"The <$name$> requires no air, warmth, ambient pressure, food, or water, enabling it to travel safely through interstellar space and similar voids."
+			]
+		},
+		{
+			"name": "Vulnerability to Sunlight",
+			"entries": [
+				"A <$name$> takes 1 point of radiant damage for every minute it is exposed to sunlight."
+			]
+		},
+		{
+			"name": "Vulnerability to Sunlight (Severe)",
+			"entries": [
+				"A <$name$> takes 1 point of Constitution damage for every hour it is exposed to sunlight, and it dies if its Constitution score reaches 0. Lost Constitution points are recovered at the rate of 1/Day spent underground or otherwise sheltered from the sun."
+			]
+		},
+		{
+			"name": "Vulnerability to Water",
+			"entries": [
+				"For every 5 feet the <$name$> moves while touching water or for every gallon of water splashed on it, it takes 2 ({@damage 1d4}) cold damage. An <$name$> completely immersed in water takes 10 ({@damage 4d4}) cold damage at the start of its turn."
+			]
+		},
+		{
+			"name": "Wakeful",
+			"entries": [
+				"<$name$> is never found sleeping naturally. While the creature sleeps, at least one of its heads is awake."
+			]
+		},
+		{
+			"name": "Wasteland Stride",
+			"entries": [
+				"The <$name$> can use it to sink into and appear out of any sandy or rocky ground, and the range is only 30 ft. Using this ability replaces the <$name$>'s usual movement."
+			]
+		},
+		{
+			"name": "Wasteland Walk",
+			"entries": [
+				"The <$name$> ignores difficult terrain caused by sand, gravel, or rocks."
+			]
+		},
+		{
+			"name": "Water Bound",
+			"entries": [
+				"The <$name$> cannot willingly leave the body of water to which it is bound. If forcibly removed, the <$name$> takes 11 ({@damage 2d10}) necrotic damage every minute until it returns."
 			]
 		},
 		{
@@ -1386,27 +3454,153 @@
 			]
 		},
 		{
-			"name": "Water Form (Water Elemental)",
+			"name": "Water Camouflage",
 			"entries": [
-				"The <$name$> can enter a hostile creature's space and stop there. It can move through a space as narrow as 1 inch wide without squeezing."
+				"An <$name$> has tactical advantage on {@skill Stealth} checks when it has any type of standing water to blend into."
 			]
 		},
 		{
-			"name": "Water Susceptibility (Fire Elemental)",
+			"name": "Water Dependency",
+			"entries": [
+				"<$name$> can survive out of water for <amount of time>. After that, they begin suffocating."
+			]
+		},
+		{
+			"name": "Water Form",
+			"entries": [
+				"<$name$> can enter a hostile creature's space and stop there. It can move through a space as narrow as 1 inch wide without squeezing."
+			]
+		},
+		{
+			"name": "Water Mastery",
+			"entries": [
+				"A <$name$> has advantage on attack rolls if both it and its opponent are in water. If the opponent and the <$name$> are both on dry ground, the <$name$> has disadvantage on attack rolls."
+			]
+		},
+		{
+			"name": "Water Susceptibility",
 			"entries": [
 				"For every 5 feet the <$name$> moves in water, or for every gallon of water splashed on it, it takes 1 cold damage."
 			]
 		},
 		{
+			"name": "Weakly Armored",
+			"entries": [
+				"Whenever the <$name$> takes more than {#} damage in a single turn, a piece of its armor chips off, reducing their AC by 1. This reduction is cumulative, but cannot reduce their AC below 10."
+			]
+		},
+		{
+			"name": "Weapon Mastery",
+			"entries": [
+				"When the <$name$> hits with a melee weapon, it deals one extra die of the weapon's damage, plus an additional {#} damage (included in the attack)."
+			]
+		},
+		{
 			"name": "Web Sense",
 			"entries": [
-				"While in contact with a web, the <$name$> knows the exact location of any other creature in contact with the same web."
+				"While in contact with a web, <$name$> knows the exact location of any creature in contact with the same web."
 			]
 		},
 		{
 			"name": "Web Walker",
 			"entries": [
-				"The <$name$> ignores movement restrictions caused by webbing."
+				"<$name$> ignores movement restrictions caused by webbing."
+			]
+		},
+		{
+			"name": "Weight of Wings",
+			"entries": [
+				"A creature in a space occupied by the <$name$> has its speed reduced by half, and must succeed on a {@dc 13} Dexterity saving throw or become {@condition blinded}. Both effects end when the creature doesn't share a space with the swarm at the end of the creature's turn. If a creature succeeds on the saving throw, it is immune to the swarm's blindness (but not the speed reduction) for 24 hours."
+			]
+		},
+		{
+			"name": "Whirling Winds",
+			"entries": [
+				"Gale-force winds rage around the <$name$>, making it immune to ranged weapon attacks except for those from siege weapons."
+			]
+		},
+		{
+			"name": "Whispers of Loss",
+			"entries": [
+				"As a bonus action <$name$> whispers to a creature within {60} feet of losses, past, present or future, real or imagined. If the target creature understands the <$name$>, it must succeed on a {@dc 18} Charisma saving throw or become {@condition stunned} for one minute. At the end of each of its turns a creature may repeat the saving throw, ending the effect on itself on a success."
+			]
+		},
+		{
+			"name": "Wild Magic Surge",
+			"entries": [
+				"When the creature casts a spell of 1st-level or higher, it rolls twice on the Wild Magic Surge Table (PHB pg. 104) and uses either number."
+			]
+		},
+		{
+			"name": "Wind Barrier",
+			"entries": [
+				"A barrier of strong wind surrounds the <$name$> in a 10-foot radius around it. The strong wind keeps fog, smoke, and other gases at bay. Small or smaller flying creatures or Objects can't pass through the wall. Loose, lightweight materials brought into the wall fly upward. Arrows, bolts, and other ordinary projectiles launched at the amatsu are deflected upward and automatically miss. (Magic arrows, boulders hurled by Giants or siege engines, and similar projectiles, are unaffected.) Creatures in Gaseous Form can't pass through the barrier."
+			]
+		},
+		{
+			"name": "Winter Camouflage",
+			"entries": [
+				"The <$name$> has advantage on Dexterity ({@skill Stealth}) checks made to hide while in snowy and icy terrain."
+			]
+		},
+		{
+			"name": "Withdraw",
+			"entries": [
+				"Instead of moving, <$name$> can withdraw into its <armored shell>. When it does so, it falls {@condition prone}. <$name$> has an AC of <number> until the start of its next turn."
+			]
+		},
+		{
+			"name": "Wither",
+			"entries": [
+				"Its successful attacks deals its damage to MAX hit points"
+			]
+		},
+		{
+			"name": "Wither, Superior",
+			"entries": [
+				"Upon a successful attack <$name$> additionally deals d4 Ability damage to either Strength, or Constitution (which ever is largest)"
+			]
+		},
+		{
+			"name": "Withered Tresses",
+			"entries": [
+				"If a <$name$> is kept out of water for 24 consecutive hours, its hair and body dry into desiccated swamp weeds and the creature is utterly destroyed."
+			]
+		},
+		{
+			"name": "Withering Miasma",
+			"entries": [
+				"A creature that starts its turn in <$name$>'s space must make a successful {@dc 15} Constitution saving throw or take 18 ({@damage 4d8}) necrotic damage and its hit point maximum is reduced by an amount equal to the necrotic damage taken. This reduction lasts until the creature finishes a long rest."
+			]
+		},
+		{
+			"name": "Woad War Paint",
+			"entries": [
+				"When <$name$> is reduced to 0 hit points, reduces a hostile creature to 0 hit points or scores a critical hit, it generates 1 shared legendary action for the Garden of Badb (see Garden of Badb sidebar)."
+			]
+		},
+		{
+			"name": "Woodfriend",
+			"entries": [
+				"When in a forest, <$name$> leave no tracks and automatically discern true north."
+			]
+		},
+		{
+			"name": "Woodland Camouflage",
+			"entries": [
+				"<$name$> has advantage on Dexterity (Stealth) checks while in the forest"
+			]
+		},
+		{
+			"name": "Woodland Stalker",
+			"entries": [
+				"<$name$> can attempt to hide even when only lightly obscured by foliage as a bonus action on each of its turns."
+			]
+		},
+		{
+			"name": "Wounded Fury",
+			"entries": [
+				"While it has {#} hit points or fewer, <$name$> has advantage on attack rolls. In addition, it deals an extra {#} ({@damage }) {Damage type} damage to any target it hits with a melee attack."
 			]
 		}
 	]
