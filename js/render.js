@@ -6110,6 +6110,7 @@ Renderer.hover = {
 							<link rel="manifest" href="manifest.webmanifest">
 							${$(`link[rel="stylesheet"][href]`).map((i, e) => e.outerHTML).get().join("\n")}
 							<link rel="icon" href="favicon.png">
+	<link rel="apple-touch-icon" href="icon-320.png">
 
 							<style>
 								html, body { width: 100%; height: 100%; }
