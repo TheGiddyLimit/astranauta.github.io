@@ -18,7 +18,7 @@ class SearchPage {
 				if (evt.key !== "Enter") return;
 				$btnSearch.click();
 			})
-			.val(decodeURIComponent(location.search.slice(1)))
+			.val(decodeURIComponent(location.search.slice(1).replace(/\+/g, ' ')))
 
 		const $btnSearch = $(`<button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>`)
 			.click(() => {
@@ -111,7 +111,7 @@ class SearchPage {
 			return;
 		}
 
-		Omnisearch.pGetResults(decodeURIComponent(location.search.slice(1)))
+		Omnisearch.pGetResults(decodeURIComponent(location.search.slice(1).replace(/\+/g, ' ')))
 			.then(results => {
 				SearchPage._$wrpResults.empty();
 
