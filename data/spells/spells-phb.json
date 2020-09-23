@@ -1097,6 +1097,16 @@
 							"name": "Grave",
 							"source": "XGE"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Undead (UA)",
+							"source": "UA2020SubclassesPt4"
+						}
 					}
 				]
 			},
@@ -2542,6 +2552,16 @@
 							"name": "Onomancy (UA)",
 							"source": "UAClericDruidWizard"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Undead (UA)",
+							"source": "UA2020SubclassesPt4"
+						}
 					}
 				]
 			},
@@ -3316,7 +3336,7 @@
 			],
 			"entries": [
 				"You create a Large hand of shimmering, translucent force in an unoccupied space that you can see within range. The hand lasts for the spell's duration, and it moves at your command, mimicking the movements of your own hand.",
-				"The hand is an object that has AC 20 and hit points equal to your hit point maximum. If it drops to 0 hit points, the spell ends. It has a Strength of 26 (+8) and a Dexterity of 10 (+0). The hand doesn't fill its space.",
+				"The hand is an object that has AC 20 and hit points equal to your hit point maximum. If it drops to 0 hit points, the spell ends. It has a Strength of 26 ({@d20 8}) and a Dexterity of 10 ({@d20 0}). The hand doesn't fill its space.",
 				"When you cast the spell and as a bonus action on your subsequent turns, you can move the hand up to 60 feet and then cause one of the following effects with it.",
 				{
 					"type": "entries",
@@ -3363,7 +3383,7 @@
 			"spellAttack": [
 				"M"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"strength"
 			],
 			"miscTags": [
@@ -5773,6 +5793,16 @@
 							"name": "Alchemist",
 							"source": "ERLW"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Undead (UA)",
+							"source": "UA2020SubclassesPt4"
+						}
 					}
 				]
 			},
@@ -7853,16 +7883,6 @@
 							"name": "Spores (UA)",
 							"source": "UAThreeSubclasses"
 						}
-					},
-					{
-						"class": {
-							"name": "Warlock",
-							"source": "PHB"
-						},
-						"subclass": {
-							"name": "Undead (UA)",
-							"source": "UA2020SubclassesPt4"
-						}
 					}
 				]
 			}
@@ -8071,7 +8091,7 @@
 			"savingThrow": [
 				"strength"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"strength"
 			],
 			"areaTags": [
@@ -10435,7 +10455,7 @@
 			"savingThrow": [
 				"wisdom"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"intelligence"
 			],
 			"miscTags": [
@@ -10669,7 +10689,7 @@
 				"The changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to your outfit, objects pass through the hat, and anyone who touches it would feel nothing or would feel your head and hair. If you use this spell to appear thinner than you are, the hand of someone who reaches out to touch you would bump into you while it was seemingly still in midair.",
 				"To discern that you are disguised, a creature can use its action to inspect your appearance and must succeed on an Intelligence ({@skill Investigation}) check against your spell save DC."
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"intelligence"
 			],
 			"miscTags": [
@@ -12190,7 +12210,7 @@
 				"constitution",
 				"dexterity"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"strength"
 			],
 			"miscTags": [
@@ -12825,7 +12845,7 @@
 			"savingThrow": [
 				"strength"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"strength"
 			],
 			"classes": {
@@ -12904,7 +12924,7 @@
 			"savingThrow": [
 				"strength"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"strength"
 			],
 			"areaTags": [
@@ -13191,7 +13211,7 @@
 			"savingThrow": [
 				"dexterity"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"strength",
 				"dexterity"
 			],
@@ -14225,16 +14245,6 @@
 						"subclass": {
 							"name": "Raven Queen (UA)",
 							"source": "UAWarlockAndWizard"
-						}
-					},
-					{
-						"class": {
-							"name": "Warlock",
-							"source": "PHB"
-						},
-						"subclass": {
-							"name": "Undead (UA)",
-							"source": "UA2020SubclassesPt4"
 						}
 					}
 				]
@@ -16921,7 +16931,7 @@
 			"savingThrow": [
 				"dexterity"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"intelligence"
 			],
 			"areaTags": [
@@ -17364,6 +17374,16 @@
 							"name": "Genie (UA)",
 							"source": "UA2020SubclassesRevisited",
 							"subSubclass": "Djinni"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Undead (UA)",
+							"source": "UA2020SubclassesPt4"
 						}
 					}
 				]
@@ -18339,7 +18359,7 @@
 				"You make natural terrain in a 150-foot cube in range look, sound, and smell like some other sort of natural terrain. Thus, open fields or a road can be made to resemble a swamp, hill, crevasse, or some other difficult or impassable terrain. A pond can be made to seem like a grassy meadow, a precipice like a gentle slope, or a rock-strewn gully like a wide and smooth road. Manufactured structures, equipment, and creatures within the area aren't changed in appearance.",
 				"The tactile characteristics of the terrain are unchanged, so creatures entering the area are likely to see through the illusion. If the difference isn't obvious by touch, a creature carefully examining the illusion can attempt an Intelligence ({@skill Investigation}) check against your spell save DC to disbelieve it. A creature who discerns the illusion for what it is, sees it as a vague image superimposed on the terrain."
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"intelligence"
 			],
 			"areaTags": [
@@ -19836,7 +19856,7 @@
 					]
 				}
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"wisdom"
 			],
 			"miscTags": [
@@ -21023,7 +21043,7 @@
 				}
 			],
 			"entries": [
-				"You touch a creature. The creature's jump distance is tripled until the spell ends."
+				"You touch a creature. The creature's {@book jump distance|phb|8|Jumping} is tripled until the spell ends."
 			],
 			"areaTags": [
 				"ST"
@@ -21285,16 +21305,6 @@
 							"name": "Archivist",
 							"source": "UAArtificerRevisited"
 						}
-					},
-					{
-						"class": {
-							"name": "Warlock",
-							"source": "PHB"
-						},
-						"subclass": {
-							"name": "Undead (UA)",
-							"source": "UA2020SubclassesPt4"
-						}
 					}
 				]
 			},
@@ -21448,6 +21458,18 @@
 					{
 						"name": "Wizard",
 						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Twilight (UA)",
+							"source": "UAClericDruidWizard"
+						}
 					}
 				]
 			},
@@ -23245,7 +23267,7 @@
 					]
 				}
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"intelligence"
 			],
 			"miscTags": [
@@ -24206,7 +24228,7 @@
 				"If you create an image of an object\u2014such as a chair, muddy footprints, or a small chest\u2014it must be no larger than a 5-foot cube. The image can't create sound, light, smell, or any other sensory effect. Physical interaction with the image reveals it to be an illusion, because things can pass through it.",
 				"If a creature uses its action to examine the sound or image, the creature can determine that it is an illusion with a successful Intelligence ({@skill Investigation}) check against your spell save DC. If a creature discerns the illusion for what it is, the illusion becomes faint to the creature."
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"intelligence"
 			],
 			"classes": {
@@ -25503,7 +25525,7 @@
 			"savingThrow": [
 				"constitution"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"strength"
 			],
 			"areaTags": [
@@ -25950,7 +25972,7 @@
 			"savingThrow": [
 				"intelligence"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"intelligence"
 			],
 			"miscTags": [
@@ -26010,6 +26032,16 @@
 						"subclass": {
 							"name": "Genie (UA)",
 							"source": "UA2020SubclassesRevisited"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Undead (UA)",
+							"source": "UA2020SubclassesPt4"
 						}
 					}
 				]
@@ -26191,6 +26223,18 @@
 					{
 						"name": "Wizard",
 						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Undead (UA)",
+							"source": "UA2020SubclassesPt4"
+						}
 					}
 				]
 			},
@@ -27516,7 +27560,7 @@
 				"The triggering condition can be as general or as detailed as you like, though it must be based on visual or audible conditions that occur within 30 feet of the area. For example, you could create an illusion of yourself to appear and warn off others who attempt to open a trapped door, or you could set the illusion to trigger only when a creature says the correct word or phrase.",
 				"Physical interaction with the image reveals it to be an illusion, because things can pass through it. A creature that uses its action to examine the image can determine that it is an illusion with a successful Intelligence ({@skill Investigation}) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image, and any noise it makes sounds hollow to the creature."
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"intelligence"
 			],
 			"classes": {
@@ -27580,7 +27624,7 @@
 				"blinded",
 				"deafened"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"intelligence"
 			],
 			"miscTags": [
@@ -28729,16 +28773,6 @@
 						"subclass": {
 							"name": "Alchemist",
 							"source": "ERLW"
-						}
-					},
-					{
-						"class": {
-							"name": "Warlock",
-							"source": "PHB"
-						},
-						"subclass": {
-							"name": "Undead (UA)",
-							"source": "UA2020SubclassesPt4"
 						}
 					}
 				]
@@ -30294,7 +30328,7 @@
 			"savingThrow": [
 				"charisma"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"intelligence"
 			],
 			"miscTags": [
@@ -31256,16 +31290,6 @@
 							"name": "Raven Queen (UA)",
 							"source": "UAWarlockAndWizard"
 						}
-					},
-					{
-						"class": {
-							"name": "Warlock",
-							"source": "PHB"
-						},
-						"subclass": {
-							"name": "Undead (UA)",
-							"source": "UA2020SubclassesPt4"
-						}
 					}
 				]
 			},
@@ -31318,7 +31342,7 @@
 				"You can use your action to cause the image to move to any spot within range. As the image changes location, you can alter its appearance so that its movements appear natural for the image. For example, if you create an image of a creature and move it, you can alter the image so that it appears to be walking.",
 				"Physical interaction with the image reveals it to be an illusion, because things can pass through it. A creature that uses its action to examine the image can determine that it is an illusion with a successful Intelligence ({@skill Investigation}) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image."
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"intelligence"
 			],
 			"classes": {
@@ -31393,6 +31417,9 @@
 				"The simulacrum is friendly to you and creatures you designate. It obeys your spoken commands, moving and acting in accordance with your wishes and acting on your turn in combat. The simulacrum lacks the ability to learn or become more powerful, so it never increases its level or other abilities, nor can it regain expended spell slots.",
 				"If the simulacrum is damaged, you can repair it in an alchemical laboratory, using rare herbs and minerals worth 100 gp per hit point it regains. The simulacrum lasts until it drops to 0 hit points, at which point it reverts to snow and melts instantly.",
 				"If you cast this spell again, any currently active duplicates you created with this spell are instantly destroyed."
+			],
+			"areaTags": [
+				"ST"
 			],
 			"classes": {
 				"fromClassList": [
@@ -31701,8 +31728,7 @@
 				"A creature affected by this spell makes another Wisdom saving throw at the end of each of its turns. On a successful save, the effect ends for it."
 			],
 			"savingThrow": [
-				"wisdom",
-				"dexterity"
+				"wisdom"
 			],
 			"areaTags": [
 				"MT",
@@ -32309,7 +32335,7 @@
 			"damageInflict": [
 				"piercing"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"wisdom"
 			],
 			"areaTags": [
@@ -33608,7 +33634,7 @@
 				"charisma",
 				"intelligence"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"intelligence"
 			],
 			"areaTags": [
@@ -35253,7 +35279,7 @@
 			"savingThrow": [
 				"strength"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"strength"
 			],
 			"areaTags": [
@@ -36504,7 +36530,7 @@
 			"savingThrow": [
 				"dexterity"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"strength"
 			],
 			"areaTags": [
@@ -37073,7 +37099,7 @@
 			"savingThrow": [
 				"wisdom"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"wisdom"
 			],
 			"classes": {

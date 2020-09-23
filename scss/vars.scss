@@ -79,6 +79,8 @@ $rgb-stripe-grey: #88888818;
 $rgb-stripe-grey--faint: #bbbbbb18;
 $rgb-stripe-grey--night: #aaa4;
 
+$rgb-cb-grey: #666;
+
 $rgb-bg: white;
 $rgb-bg--alt: whitesmoke;
 
@@ -274,8 +276,8 @@ $fltr-2stripe: 22px;
 	}
 
 	&.active {
-		background: $rgb-off-black;
-		border-color: lighten($rgb-off-black, 30%);
+		background: $rgb-cb-grey;
+		border-color: lighten($rgb-cb-grey, 15%);
 	}
 }
 

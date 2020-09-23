@@ -309,9 +309,9 @@ class ItemsPage {
 			const $elesMundane = $(`.ele-mundane`);
 
 			// Force-show the mundane list if there are no items on display
-			if (this._magicList.visibleItems.length) $elesMundane.toggle(!!this._mundaneList.visibleItems.length);
-			else $elesMundane.show();
-			$elesMundaneAndMagic.toggle(!!(this._mundaneList.visibleItems.length && this._magicList.visibleItems.length));
+			if (this._magicList.visibleItems.length) $elesMundane.toggleVe(!!this._mundaneList.visibleItems.length);
+			else $elesMundane.showVe();
+			$elesMundaneAndMagic.toggleVe(!!(this._mundaneList.visibleItems.length && this._magicList.visibleItems.length));
 
 			const current = this._mundaneList.visibleItems.length + this._magicList.visibleItems.length;
 			const total = this._mundaneList.items.length + this._magicList.items.length;
@@ -324,11 +324,11 @@ class ItemsPage {
 			const $elesMundane = $(`.ele-mundane`);
 			const $elesMagic = $(`.ele-magic`);
 
-			$elesMagic.toggle(!!this._magicList.visibleItems.length);
+			$elesMagic.toggleVe(!!this._magicList.visibleItems.length);
 			// Force-show the mundane list if there are no items on display
-			if (!this._magicList.visibleItems.length) $elesMundane.show();
-			else $elesMundane.toggle(!!this._mundaneList.visibleItems.length);
-			$elesMundaneAndMagic.toggle(!!(this._mundaneList.visibleItems.length && this._magicList.visibleItems.length));
+			if (!this._magicList.visibleItems.length) $elesMundane.showVe();
+			else $elesMundane.toggleVe(!!this._mundaneList.visibleItems.length);
+			$elesMundaneAndMagic.toggleVe(!!(this._mundaneList.visibleItems.length && this._magicList.visibleItems.length));
 
 			const current = this._mundaneList.visibleItems.length + this._magicList.visibleItems.length;
 			const total = this._mundaneList.items.length + this._magicList.items.length;

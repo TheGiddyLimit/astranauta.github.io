@@ -1638,31 +1638,49 @@
 					"entries": [
 						"The Inspired are vessels for quori spirits, allowing the quori to manifest a portion of their power while the vessel is possessed. An Inspired can gain benefits depending on the type of quori possessing it. The quori also gains access to the Inspired's knowledge and features.",
 						{
-							"type": "entries",
-							"name": "Suggestion (3/Day)",
+							"type": "variantInner",
+							"name": "Hashalaq",
 							"entries": [
-								"The Inspired can cast the {@spell suggestion} spell (spell save {@dc 13}), requiring no material components."
+								{
+									"type": "entries",
+									"name": "Suggestion (3/Day)",
+									"entries": [
+										"The Inspired can cast the {@spell suggestion} spell (spell save {@dc 13}), requiring no material components."
+									]
+								}
 							]
 						},
 						{
-							"type": "entries",
-							"name": "All Around Vision",
+							"type": "variantInner",
+							"name": "Kalaraq",
 							"entries": [
-								"The Inspired can't be surprised."
+								{
+									"type": "entries",
+									"name": "All Around Vision",
+									"entries": [
+										"The Inspired can't be surprised."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Arcane Eye (3/Day)",
+									"entries": [
+										"The Inspired can cast the {@spell arcane eye} spell, requiring no material components."
+									]
+								}
 							]
 						},
 						{
-							"type": "entries",
-							"name": "Arcane Eye (3/Day)",
+							"type": "variantInner",
+							"name": "Tsucora",
 							"entries": [
-								"The Inspired can cast the {@spell arcane eye} spell, requiring no material components."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Fear (1/Day)",
-							"entries": [
-								"The Inspired can cast the {@spell fear} spell (spell save {@dc 13}), requiring no material components."
+								{
+									"type": "entries",
+									"name": "Fear (1/Day)",
+									"entries": [
+										"The Inspired can cast the {@spell fear} spell (spell save {@dc 13}), requiring no material components."
+									]
+								}
 							]
 						}
 					]
@@ -1720,7 +1738,7 @@
 			"wis": 11,
 			"cha": 7,
 			"skill": {
-				"perception": "+3",
+				"perception": "+4",
 				"stealth": "+4"
 			},
 			"senses": [

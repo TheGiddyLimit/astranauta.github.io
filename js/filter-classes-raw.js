@@ -63,7 +63,7 @@ class PageFilterClassesRaw extends PageFilterClasses {
 				let cls = data.class.find(it => (it.name || "").toLowerCase() === sc.className.toLowerCase() && (it.source || SRC_PHB).toLowerCase() === sc.classSource.toLowerCase());
 
 				if (!cls) {
-					cls = this._pGetParentClass(sc);
+					cls = await this._pGetParentClass(sc);
 					if (cls) {
 						// If a base class exists, make a stripped-down copy and override its subclasses with our own
 						cls = MiscUtil.copy(cls);
@@ -392,6 +392,8 @@ class ModalFilterClasses extends ModalFilter {
 		this._allData = null;
 	}
 
+	get pageFilter () { return this._pageFilter; }
+
 	static fnSort (a, b, opts) {
 		const out = SortUtil.listSort(a, b, opts);
 
@@ -607,7 +609,7 @@ class ModalFilterClasses extends ModalFilter {
 
 		const source = Parser.sourceJsonToAbv(cls.source);
 
-		eleLi.innerHTML = `<label class="lst--border unselectable">
+		eleLi.innerHTML = `<label class="lst--border no-select">
 			<div class="lst__wrp-cells">
 				<div class="col-1 pl-0 flex-vh-center"><div class="fltr-cls__tgl"></div></div>
 				<div class="bold col-9">${cls.name}</div>
@@ -635,7 +637,7 @@ class ModalFilterClasses extends ModalFilter {
 
 		const source = Parser.sourceJsonToAbv(sc.source);
 
-		eleLi.innerHTML = `<label class="lst--border unselectable">
+		eleLi.innerHTML = `<label class="lst--border no-select">
 			<div class="lst__wrp-cells">
 				<div class="col-1 pl-0 flex-vh-center"><div class="fltr-cls__tgl"></div></div>
 				<div class="col-9 pl-1 flex-v-center"><span class="mx-3">\u2014</span> ${sc.name}</div>

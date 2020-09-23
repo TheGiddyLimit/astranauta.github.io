@@ -892,10 +892,6 @@ input[type=checkbox].sidemenu__row__label__cb {
 }
 
 .manbrew {
-	&__hr {
-		margin: 5px 0;
-	}
-
 	&__source {
 		overflow: hidden;
 	}
@@ -939,12 +935,6 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 	&__col--tall {
 		line-height: 30px;
-	}
-
-	&__load_all_wrp {
-		display: flex;
-		justify-content: flex-end;
-		margin-bottom: 5px;
 	}
 
 	&__list {
@@ -1873,7 +1863,7 @@ input[type=checkbox].readonly {
 	display: flex;
 	align-items: center;
 	overflow: hidden;
-	padding: 1px 2px;
+	padding: 0 2px 1px;
 	text-decoration: none;
 
 	&.bk__contents_header_link {
@@ -1881,7 +1871,7 @@ input[type=checkbox].readonly {
 	}
 
 	&.bk__contents_show_all {
-		padding: 0;
+		height: 16px;
 	}
 }
 
@@ -1938,7 +1928,8 @@ input[type=checkbox].readonly {
 
 .ecgen__ {
 	&visible,
-	&visible--flex {
+	&visible--flex,
+	&visible--flex-col {
 		display: none;
 	}
 
@@ -2000,10 +1991,6 @@ input[type=checkbox].readonly {
 }
 
 /* Adventures */
-span.showhide {
-	font-weight: bold;
-	padding: 1px 7px;
-}
 
 /* ENTRY RENDERING CSS */
 // TODO refactor everything
@@ -2415,13 +2402,13 @@ ul.list li:hover {
 
 .stripe-odd:nth-child(odd),
 .stripe-even:nth-child(even),
-table.stripe-odd > tbody > tr:nth-child(odd),
-table.stripe-even > tbody > tr:nth-child(even) {
+.stripe-odd-table > tbody > tr:nth-child(odd),
+.stripe-even-table > tbody > tr:nth-child(even) {
 	background: #c0c0c080; // pre-blend (50% opacity): e0 e0 e0
 }
 
-.stats table.stripe-odd > tbody > tr:nth-child(odd),
-.stats table.stripe-even > tbody > tr:nth-child(even) {
+.stats .stripe-odd-table > tbody > tr:nth-child(odd),
+.stats .stripe-even-table > tbody > tr:nth-child(even) {
 	background: #cbbfaa80; // pre-blend (50% opacity): e4 d8 c3
 }
 
@@ -2447,7 +2434,7 @@ th.border {
 		align-items: center;
 		overflow: hidden;
 		margin-top: -1px;
-		padding: 1px 9px 1px 5px;
+		padding: 1px 0 1px 5px;
 		text-decoration: none;
 		border-bottom: 1px solid $rgb-border-grey;
 		border-top: 1px solid $rgb-border-grey;
@@ -2604,7 +2591,8 @@ li.contents-item > ul > ul.active > li > a:hover {
 
 ul.list.books ul a:hover,
 ul.list.contents > li a:hover,
-ul.list.contents > li > ul.bk-contents > li > a > span:hover {
+ul.list.contents > li > ul.bk-contents > li > a > span:hover,
+.bk__contents-toggle-all:hover {
 	background: lightgrey;
 }
 
@@ -3172,6 +3160,10 @@ ul.list.books > li > a > span.name:hover {
 		background: $rgb-bg--night;
 	}
 
+	.list .row {
+		background: $rgb-bg--night;
+	}
+
 	/* Bootstrap overrides */
 	.table-striped > tbody > tr:nth-of-type(odd) {
 		background-color: #444;
@@ -3422,8 +3414,8 @@ ul.list.books > li > a > span.name:hover {
 
 	.stripe-odd:nth-child(odd),
 	.stripe-even:nth-child(even),
-	table.stripe-odd > tbody > tr:nth-child(odd),
-	table.stripe-even > tbody > tr:nth-child(even) {
+	.stripe-odd-table > tbody > tr:nth-child(odd),
+	.stripe-even-table > tbody > tr:nth-child(even) {
 		background-color: #4e4e4e80; // pre-blend (50% opacity): 38 38 38
 	}
 
@@ -3494,7 +3486,8 @@ ul.list.books > li > a > span.name:hover {
 	ul.list.contents > li a:hover,
 	ul.list.contents > li > ul.bk-contents > li > a > span:hover,
 	ul.list.books > li > a > span.showhide:hover,
-	ul.list.books > li > a > span.name:hover {
+	ul.list.books > li > a > span.name:hover,
+	.bk__contents-toggle-all:hover {
 		background: $rgb-off-black;
 	}
 

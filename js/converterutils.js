@@ -855,6 +855,8 @@ class ConvertUtil {
 
 if (typeof module !== "undefined") {
 	module.exports = {
+		ConvertUtil,
+		ConverterConst,
 		BaseParser,
 		TagCondition,
 		SenseTag,
@@ -863,6 +865,7 @@ if (typeof module !== "undefined") {
 		EntryConvert,
 		SkillTag,
 		ActionTag,
-		TaggerUtils
+		TaggerUtils,
+		TagUtil
 	};
 }

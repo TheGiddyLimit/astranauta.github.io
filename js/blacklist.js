@@ -71,31 +71,37 @@ class Blacklist {
 
 		// classes
 		const classData = await DataUtil.class.loadRawJSON();
-		classData.class.forEach(c => {
+		for (const c of classData.class) {
 			const classHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c);
-			const subBlacklist = (c.classFeatures || []).map(it => {
-				const uid = it.classFeature || it;
-				const unpacked = DataUtil.class.unpackUidClassFeature(uid);
-				const hash = UrlUtil.URL_TO_HASH_BUILDER["classFeature"](unpacked);
-				const displayName = `${Blacklist._getDisplayNamePrefix_classFeature(unpacked)}${unpacked.name}`;
-				return {displayName, hash, category: "classFeature", source: unpacked.source};
-			});
+
+			const subBlacklist = classData.classFeature
+				.filter(it => it.className === c.name && it.classSource === c.source)
+				.map(it => {
+					const hash = UrlUtil.URL_TO_HASH_BUILDER["classFeature"](it);
+					const displayName = `${Blacklist._getDisplayNamePrefix_subclassFeature(it)}${it.name}`;
+					return {displayName, hash, category: "classFeature", source: it.source};
+				});
 			MiscUtil.set(Blacklist._SUB_BLACKLIST_ENTRIES, "class", classHash, subBlacklist);
 
-			(c.subclasses || []).forEach(sc => {
-				sc.className = c.name; // init className
+			for (const sc of (c.subclasses || [])) {
+				// init className and classSource
+				sc.className = sc.className || c.name
+				sc.classSource = sc.classSource || c.source;
+				sc.source = sc.source || c.source;
+				sc.shortName = sc.shortName || sc.name;
 
-				const subclassHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc);
-				const subBlacklist = (sc.subclassFeatures || []).map(it => {
-					const uid = it.subclassFeature || it;
-					const unpacked = DataUtil.class.unpackUidSubclassFeature(uid);
-					const hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](unpacked);
-					const displayName = `${Blacklist._getDisplayNamePrefix_subclassFeature(unpacked)}${unpacked.name}`;
-					return {displayName, hash, category: "subclassFeature", source: unpacked.source};
-				});
+				const subclassHash = UrlUtil.URL_TO_HASH_BUILDER["subclass"](sc);
+
+				const subBlacklist = classData.subclassFeature
+					.filter(it => it.className === c.name && it.classSource === c.source && it.subclassShortName === sc.shortName && it.subclassSource === sc.source)
+					.map(it => {
+						const hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](it);
+						const displayName = `${Blacklist._getDisplayNamePrefix_subclassFeature(it)}${it.name}`;
+						return {displayName, hash, category: "subclassFeature", source: it.source};
+					});
 				MiscUtil.set(Blacklist._SUB_BLACKLIST_ENTRIES, "subclass", subclassHash, subBlacklist);
-			});
-		});
+			}
+		}
 		classData.subclass = classData.subclass || [];
 		classData.class.forEach(c => classData.subclass = classData.subclass.concat(c.subclasses || []));
 		mergeData(classData);
@@ -133,7 +139,7 @@ class Blacklist {
 				switch (cat) {
 					case "subclass": {
 						copy = arr
-							.map(it => ({name: it.name, source: it.source, className: it.className}))
+							.map(it => ({name: it.name, source: it.source, className: it.className, classSource: it.classSource, shortName: it.shortName}))
 							.sort((a, b) => SortUtil.ascSortLower(a.className, b.className) || SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source));
 						break;
 					}
@@ -160,7 +166,7 @@ class Blacklist {
 					let hash;
 					let prefix = "";
 					switch (cat) {
-						case "subclass": prefix = `${it.className}: `; break;
+						case "subclass": hash = UrlUtil.URL_TO_HASH_BUILDER["subclass"](it); prefix = `${it.className}: `; break;
 						case "classFeature": hash = UrlUtil.URL_TO_HASH_BUILDER["classFeature"](it); prefix = Blacklist._getDisplayNamePrefix_classFeature(it); break;
 						case "subclassFeature": hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](it); prefix = Blacklist._getDisplayNamePrefix_subclassFeature(it); break;
 					}

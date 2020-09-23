@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "2.0.4",
+	"version": "2.1.0",
 
 	"type": "object",
 
@@ -351,62 +351,7 @@
 							}
 						},
 						"defaultData": {
-							"description": "Optional well-structured data version of the \"default\" property, for use in applications that require it.",
-							"type": "array",
-							"items": {
-								"type": "object",
-								"patternProperties": {
-									".*": {
-										"type": "array",
-										"items": {
-											"oneOf": [
-												{
-													"description": "An item UID, e.g. \"longsword|phb\"",
-													"type": "string"
-												},
-												{
-													"type": "object",
-													"properties": {
-														"item": {
-															"description": "An item UID, e.g. \"longsword|phb\"",
-															"type": "string"
-														},
-														"count": {
-															"type": "integer"
-														}
-													},
-													"required": ["item", "count"],
-													"additionalProperties": false
-												},
-												{
-													"type": "object",
-													"properties": {
-														"equipmentType": {
-															"type": "string",
-															"enum": [
-																"weaponSimple",
-																"weaponSimpleMelee",
-																"weaponMartial",
-																"weaponMartialMelee",
-																"instrumentMusical",
-																"armorLight",
-																"weaponMelee",
-																"weaponRanged",
-																"focusSpellcasting"
-															]
-														},
-														"count": {
-															"type": "integer"
-														}
-													},
-													"required": ["equipmentType"],
-													"additionalProperties": false
-												}
-											]
-										}
-									}
-								}
-							}
+							"$ref": "util.json#/definitions/startingEquipment"
 						},
 						"goldAlternative": {
 							"type": "string"

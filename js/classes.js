@@ -1309,7 +1309,7 @@ class ClassesPage extends BaseComponent {
 									{
 										object: (obj) => {
 											if (!obj.source) return obj;
-											if (this._pageFilter.filterBox.toDisplay(filterValues, obj)) return obj;
+											if (this._pageFilter.filterBox.toDisplay(filterValues, obj.source, [])) return obj;
 											return undefined; // If it shouldn't be displayed, delete it
 										}
 									}

@@ -1266,5 +1266,50 @@
 		"ver": "1.110.1",
 		"date": "2020-08-09",
 		"txt": "- Fixed This Is Your Life generator failing to generate a valid name in rare cases\n- Fixed Twitch chat support in DM Screen\n- Flipped +X item names to better match official text (i.e. \"Weapon +X\" is now \"+X Weapon\")\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.110.2",
+		"date": "2020-08-29",
+		"txt": "- Filtered-out sub-features are now hidden in the Subclass Comparison Classes page view\n- Added Healing Potions item group\n- Search page now remembers \"expand all\" state between reloads\n- Added Unarmored Defense filter to Bestiary\n- Clicking the Mundane/Magic side-labels in the Items page now toggles the filters (previously would only add them)\n- (Homebrew) Added toggle to show all brews in page-specific homebrew browsers (even if those brews contain no data relevant to the current page) \n- (Homebrew) Added support for rendering custom (i.e. \"not 13\") feat ability score requirements \n- Fixed \"NaN\"s in Encounter Builder TTK calculator\n- Fixed Dynamic Map Viewer failing to maintain zoom level on popout\n- Fixed Dynamic Map Viewer shift-click failing to jump to the area in adventure text\n- Fixed Creature Homebrew Builder failing to load tokens/fluff from predefined creatures\n- Removed \"Make Shaped JS\" page, as it has long been broken, and the sheet itself is no longer supported by its authors\n- (Fixed typos/added tags)/added tags)"
+	},
+	{
+		"ver": "1.110.3",
+		"date": "2020-08-30",
+		"txt": "- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.110.4",
+		"date": "2020-08-31",
+		"txt": "- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.110.5",
+		"date": "2020-09-13",
+		"txt": "- Fixed some cases of Adventure/Book pages failing to scroll to the correct header when clicking a header link in the sidebar in full-book view\n- Fixed subclasses failing to render when hovered in Omnisearch results\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.111.0",
+		"date": "2020-09-15",
+		"txt": "- Added Icewind Dale: Rime of the Frostmaiden\n- Fixed F/G buttons displaying when printing adventures/books\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.111.1",
+		"date": "2020-09-16",
+		"txt": "- Base race entries on the Races page now display base race traits\n- Fixed Classes page Subclass Comparison failing to display referenced features (such as specific Fighting Style entries)\n- (Rivet: Improved handling of inline embedded creature/etc. entities)\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.112.0",
+		"date": "2020-09-20",
+		"txt": "- Added base pages (e.g. Bestiary, Spells) to Omnisearch\n- Added Expand/Collapse All button to Adventure/Book contents\n- Tweaked Bestiary Encounter Builder XP calculation to be more forgiving (and inline with KFC/DDB) at low levels\n- Some previously un-rollable tables of the form \"dXX + <variable>\" are now automatically converted to rollable tables\n- Added monster list appendices to Monster Manual, Volo's Guide to Monsters, and Mordenkainen's Tome of Foes\n- Fixed CR Scaler failing to scale certain skill formats\n- Fixed Creature Homebrew Builder failing to generate predefined traits in rare cases\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.112.1",
+		"date": "2020-09-21",
+		"txt": "- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.112.22",
+		"date": "2020-09-21",
+		"txt": "- Fixed page searches in Search page\n- Fixed Blacklist failing to add all subclass features when blacklisting a subclass\n- Fixed Omnisearch failing to respect subclass blacklist\n- (Fixed typos/added tags)"
 	}
 ]

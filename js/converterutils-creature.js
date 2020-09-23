@@ -1,27 +1,58 @@
 "use strict";
 
+if (typeof module !== "undefined") {
+	const cv = require("./converterutils.js");
+	Object.assign(global, cv);
+}
+
 class AcConvert {
-	static tryPostProcessAc (m, cbMan, cbErr) {
+	static tryPostProcessAc (mon, cbMan, cbErr) {
 		let nuAc = [];
-		const basic = /^(\d+)( \((.*?)\))?$/.exec(m.ac.trim());
-		const basicAlt = /^(\d+)( (.*?))?$/.exec(m.ac.trim());
-		if (basic || basicAlt) {
-			if ((basic && basic[3]) || (basicAlt && basicAlt[3])) {
-				const toUse = basic || basicAlt;
-				const brak = toUse[3];
-				let cur = {ac: Number(toUse[1])};
 
-				let nextPart = null;
+		const parts = mon.ac.trim().split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX).map(it => it.trim()).filter(Boolean);
+		parts.forEach(pt => {
+			// Use two expressions to ensure parentheses are paired
+			const mAc = /^(\d+)(?: \((.*?)\))?$/.exec(pt) || /^(\d+)(?: (.*?))?$/.exec(pt);
 
-				const from = [];
+			if (!mAc) {
+				if (cbErr) cbErr(pt, `${`${mon.name} ${mon.source} p${mon.page}`.padEnd(48)} => ${pt}`);
+				nuAc.push(pt);
+				return;
+			}
 
-				const splitter = StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX;
+			const [_, acRaw, fromRaw] = mAc;
 
-				const parts = brak.split(splitter).map(it => it.trim());
+			const acNum = Number(acRaw);
 
-				parts.forEach(p => {
-					const pLow = p.toLowerCase().replace(/^\(|\)$/g, "");
-					switch (pLow) {
+			// Plain number
+			if (!fromRaw) return nuAc.push(acNum);
+
+			let nxtAc = null; // A distinct AC value included in this text from e.g. mage armor
+			const cur = {ac: acNum};
+			const froms = [];
+
+			// Handle "in ... form" parts
+			let fromClean = fromRaw
+				// FIXME(Future) Find an example of a creature with this AC form to check accuracy of this parse
+				.replace(/ \(in .*? form\)$/i, (...m) => {
+					cur.condition = m[0].trim().toLowerCase();
+					return "";
+				})
+				.trim()
+				.replace(/ in .*? form$/i, (...m) => {
+					cur.condition = m[0].trim().toLowerCase();
+					return "";
+				})
+				.trim();
+
+			fromClean
+				.toLowerCase()
+				.replace(/^\(|\)$/g, "")
+				.split(",")
+				.map(it => it.trim())
+				.filter(Boolean)
+				.forEach(fromLow => {
+					switch (fromLow) {
 						// unhandled/other
 						case "unarmored defense":
 						case "suave defense":
@@ -49,56 +80,56 @@ class AcConvert {
 						case "see below":
 						case "wicker armor":
 						case "bone armor":
-							from.push(p);
+							froms.push(fromLow);
 							break;
 
 						// au naturel
 						case "natural armor":
 						case "natural armour":
 						case "natural":
-							from.push("natural armor");
+							froms.push("natural armor");
 							break;
 
 						// spells
-						case "foresight bonus": from.push(`{@spell foresight} bonus`); break;
-						case "natural barkskin": from.push(`natural {@spell barkskin}`); break;
-						case "mage armor": from.push("{@spell mage armor}"); break;
+						case "foresight bonus": froms.push(`{@spell foresight} bonus`); break;
+						case "natural barkskin": froms.push(`natural {@spell barkskin}`); break;
+						case "mage armor": froms.push("{@spell mage armor}"); break;
 
 						// armour (mostly handled by the item lookup; these are mis-named exceptions (usually for homebrew))
 						case "chainmail":
 						case "chain armor":
-							from.push("{@item chain mail|phb}");
+							froms.push("{@item chain mail|phb}");
 							break;
 
 						case "plate mail":
 						case "platemail":
 						case "full plate":
-							from.push("{@item plate armor|phb}");
+							froms.push("{@item plate armor|phb}");
 							break;
 
-						case "scale armor": from.push("{@item scale mail|phb}"); break;
-						case "chain shirt": from.push("{@item chain shirt|phb}"); break;
-						case "shields": from.push("{@item shield|phb|shields}"); break;
+						case "scale armor": froms.push("{@item scale mail|phb}"); break;
+						case "chain shirt": froms.push("{@item chain shirt|phb}"); break;
+						case "shields": froms.push("{@item shield|phb|shields}"); break;
 
 						// magic items
-						case "dwarven plate": from.push("{@item dwarven plate}"); break;
-						case "elven chain": from.push("{@item elven chain}"); break;
-						case "glamoured studded leather": from.push("{@item glamoured studded leather}"); break;
-						case "bracers of defense": from.push("{@item bracers of defense}"); break;
-						case "badge of the watch": from.push("{@item Badge of the Watch|wdh}"); break;
-						case "ring of protection": from.push("{@item ring of protection}"); break;
-						case "robe of the archmagi": from.push("{@item robe of the archmagi}"); break;
-						case "staff of power": from.push("{@item staff of power}"); break;
+						case "dwarven plate": froms.push("{@item dwarven plate}"); break;
+						case "elven chain": froms.push("{@item elven chain}"); break;
+						case "glamoured studded leather": froms.push("{@item glamoured studded leather}"); break;
+						case "bracers of defense": froms.push("{@item bracers of defense}"); break;
+						case "badge of the watch": froms.push("{@item Badge of the Watch|wdh}"); break;
+						case "ring of protection": froms.push("{@item ring of protection}"); break;
+						case "robe of the archmagi": froms.push("{@item robe of the archmagi}"); break;
+						case "staff of power": froms.push("{@item staff of power}"); break;
 
 						// everything else
 						default: {
-							if (AcConvert._ITEM_LOOKUP[pLow]) {
-								const itemMeta = AcConvert._ITEM_LOOKUP[pLow];
+							if (AcConvert._ITEM_LOOKUP[fromLow]) {
+								const itemMeta = AcConvert._ITEM_LOOKUP[fromLow];
 
-								if (itemMeta.isExact) from.push(`{@item ${pLow}${itemMeta.source === SRC_DMG ? "" : `|${itemMeta.source}`}}`);
-								else from.push(`{@item ${itemMeta.name}${itemMeta.source === SRC_DMG ? "|" : `|${itemMeta.source}`}|${pLow}}`);
-							} else if (pLow.endsWith("with mage armor") || pLow.endsWith("with barkskin")) {
-								const numMatch = /(\d+) with (.*)/.exec(pLow);
+								if (itemMeta.isExact) froms.push(`{@item ${fromLow}${itemMeta.source === SRC_DMG ? "" : `|${itemMeta.source}`}}`);
+								else froms.push(`{@item ${itemMeta.name}${itemMeta.source === SRC_DMG ? "|" : `|${itemMeta.source}`}|${fromLow}}`);
+							} else if (fromLow.endsWith("with mage armor") || fromLow.endsWith("with barkskin")) {
+								const numMatch = /(\d+) with (.*)/.exec(fromLow);
 								if (!numMatch) throw new Error("Spell AC but no leading number?");
 
 								let spell = null;
@@ -106,37 +137,34 @@ class AcConvert {
 								else if (numMatch[2] === "barkskin") spell = `{@spell barkskin}`;
 								else throw new Error(`Unhandled spell! ${numMatch[2]}`);
 
-								nextPart = {
+								nxtAc = {
 									ac: Number(numMatch[1]),
 									condition: `with ${spell}`,
 									braces: true
-								}
+								};
+							} else if (/^in .*? form$/i.test(fromLow)) {
+								// If there's an existing condition, flag a warning
+								if (cur.condition && cbMan) cbMan(fromLow, `AC requires manual checking: ${mon.name} ${mon.source} p${mon.page}`);
+								cur.condition = `${cur.condition ? `${cur.condition} ` : ""}${fromLow}`;
+							} else if (/scraps of .*?armor/i.test(fromLow)) { // e.g. "scraps of hide armor"
+								froms.push(fromLow);
 							} else {
-								if (cbMan) cbMan(p, `AC requires manual checking: ${m.name} ${m.source} p${m.page}`);
-								nuAc.push(p)
+								if (cbMan) cbMan(fromLow, `AC requires manual checking: ${mon.name} ${mon.source} p${mon.page}`);
+								nuAc.push(fromClean)
 							}
 						}
 					}
 				});
 
-				if (from.length) {
-					cur.from = from;
-					nuAc.push(cur);
-				} else {
-					nuAc.push(cur.ac);
-				}
-				if (nextPart) nuAc.push(nextPart)
-			} else if (basic) {
-				nuAc.push(Number(basic[1]));
+			if (froms.length || cur.condition) {
+				if (froms.length) cur.from = froms;
+				nuAc.push(cur);
 			} else {
-				if (cbErr) cbErr(m.ac, `${`${m.name} ${m.source} p${m.page}`.padEnd(48)} => ${m.ac}`);
-				nuAc.push(m.ac);
+				nuAc.push(cur.ac);
 			}
-		} else {
-			if (cbErr) cbErr(m.ac, `${`${m.name} ${m.source} p${m.page}`.padEnd(48)} => ${m.ac}`);
-			nuAc.push(m.ac);
-		}
-		m.ac = nuAc;
+		});
+
+		mon.ac = nuAc;
 	}
 
 	static init (items) {
@@ -330,15 +358,15 @@ class TraitActionTag {
 					if (!t.name) return;
 					t.name = t.name.trim();
 
-					const cleanName = t.name.toLowerCase();
+					const cleanName = t.name.toLowerCase()
+						.replace(/\([^)]+\)/g, "") // Remove parentheses
+						.trim();
 					const mapped = TraitActionTag.tags[prop][cleanName];
 					if (mapped) {
 						if (mapped === true) m[outProp].add(t.name);
 						else m[outProp].add(mapped)
 					} else if (isTraits() && cleanName.startsWith("keen ")) {
 						m[outProp].add("Keen Senses");
-					} else if (isTraits() && cleanName.startsWith("legendary resistance")) {
-						m[outProp].add("Legendary Resistances");
 					} else if (isTraits() && cleanName.endsWith(" absorption")) {
 						m[outProp].add("Damage Absorption");
 					} else {
@@ -374,105 +402,100 @@ class TraitActionTag {
 		doTagDeep("action", "actionTags");
 
 		if (!m.traitTags.size) delete m.traitTags;
-		else m.traitTags = [...m.traitTags];
+		else m.traitTags = [...m.traitTags].sort(SortUtil.ascSortLower);
 
 		if (!m.actionTags.size) delete m.actionTags;
-		else m.actionTags = [...m.actionTags];
+		else m.actionTags = [...m.actionTags].sort(SortUtil.ascSortLower);
 	}
 }
 TraitActionTag.tags = { // true = map directly; string = map to this string
 	trait: {
-		"turn immunity": true,
-		"brute": true,
-		"antimagic susceptibility": true,
-		"sneak attack": true,
-		"sneak attack (1/turn)": "Sneak Attack",
-		"reckless": true,
-		"web sense": true,
-		"flyby": true,
-		"pounce": true,
-		"water breathing": true,
+		"turn immunity": "Turn Immunity",
+		"brute": "Brute",
+		"antimagic susceptibility": "Antimagic Susceptibility",
+		"sneak attack": "Sneak Attack",
+		"reckless": "Reckless",
+		"web sense": "Web Sense",
+		"flyby": "Flyby",
+		"pounce": "Pounce",
+		"water breathing": "Water Breathing",
 
-		"turn resistance": true,
+		"turn resistance": "Turn Resistance",
 		"turn defiance": "Turn Resistance",
 		"turning defiance": "Turn Resistance",
 		"turn resistance aura": "Turn Resistance",
-		"undead fortitude": true,
+		"undead fortitude": "Undead Fortitude",
 
-		"aggressive": true,
-		"illumination": true,
-		"rampage": true,
-		"rejuvenation": true,
-		"web walker": true,
-		"incorporeal movement": true,
+		"aggressive": "Aggressive",
+		"illumination": "Illumination",
+		"rampage": "Rampage",
+		"rejuvenation": "Rejuvenation",
+		"web walker": "Web Walker",
+		"incorporeal movement": "Incorporeal Movement",
 
 		"keen hearing and smell": "Keen Senses",
 		"keen sight and smell": "Keen Senses",
 		"keen hearing and sight": "Keen Senses",
 		"keen hearing": "Keen Senses",
 		"keen smell": "Keen Senses",
-		"keen senses": true,
+		"keen senses": "Keen Senses",
 
-		"hold breath": true,
+		"hold breath": "Hold Breath",
 
-		"charge": true,
+		"charge": "Charge",
 
-		"fey ancestry": true,
+		"fey ancestry": "Fey Ancestry",
 
-		"siege monster": true,
+		"siege monster": "Siege Monster",
 
-		"pack tactics": true,
+		"pack tactics": "Pack Tactics",
 
-		"regeneration": true,
+		"regeneration": "Regeneration",
 
-		"shapechanger": true,
+		"shapechanger": "Shapechanger",
 
-		"false appearance": true,
-		"false appearance (object form only)": "False Appearance",
+		"false appearance": "False Appearance",
 
-		"spider climb": true,
+		"spider climb": "Spider Climb",
 
-		"sunlight sensitivity": true,
+		"sunlight sensitivity": "Sunlight Sensitivity",
 		"sunlight hypersensitivity": "Sunlight Sensitivity",
-		"light sensitivity": true,
+		"light sensitivity": "Light Sensitivity",
 
-		"amphibious": true,
+		"amphibious": "Amphibious",
 
-		"legendary resistance (1/day)": "Legendary Resistances",
-		"legendary resistance (2/day)": "Legendary Resistances",
-		"legendary resistance (3/day)": "Legendary Resistances",
-		"legendary resistance (5/day)": "Legendary Resistances",
+		"legendary resistance": "Legendary Resistances",
 
 		"magic weapon": "Magic Weapons",
-		"magic weapons": true,
+		"magic weapons": "Magic Weapons",
 
-		"magic resistance": true,
+		"magic resistance": "Magic Resistance",
 		"spell immunity": "Magic Resistance",
 
 		"ambush": "Ambusher",
-		"ambusher": true,
+		"ambusher": "Ambusher",
 
-		"amorphous": true,
+		"amorphous": "Amorphous",
 		"amorphous form": "Amorphous",
 
-		"death burst": true,
+		"death burst": "Death Burst",
 		"death throes": "Death Burst",
 
-		"devil's sight": true,
+		"devil's sight": "Devil's Sight",
 		"devil sight": "Devil's Sight",
 
-		"immutable form": true
+		"immutable form": "Immutable Form"
 	},
 	action: {
-		"multiattack": true,
-		"frightful presence": true,
-		"teleport": true,
-		"swallow": true,
+		"multiattack": "Multiattack",
+		"frightful presence": "Frightful Presence",
+		"teleport": "Teleport",
+		"swallow": "Swallow",
 		"tentacle": "Tentacles",
-		"tentacles": true
+		"tentacles": "Tentacles"
 	},
 	reaction: {
-		"parry": true
+		"parry": "Parry"
 	},
 	legendary: {
 		// unused
@@ -758,6 +781,7 @@ class MiscTag {
 
 					// AoE effects
 					str.replace(/\d+-foot[- ](line|cube|cone|radius|sphere|hemisphere|cylinder)/g, () => tagSet.add("AOE"));
+					str.replace(/each creature within \d+ feet/gi, () => tagSet.add("AOE"));
 				}
 
 				if (it.name) {
@@ -1014,25 +1038,41 @@ class SpeedConvert {
 
 			const out = {};
 			let byHand = false;
+			let prevSpeed = null;
 
 			SpeedConvert._splitSpeed(line.toLowerCase()).map(it => it.trim()).forEach(s => {
+				// For e.g. shapechanger speeds, store them behind a "condition" on the previous speed
+				const mParens = /^\((\w+?\s+)?(\d+)\s*ft\.?( .*)?\)$/.exec(s)
+				if (mParens && prevSpeed) {
+					if (typeof out[prevSpeed] === "number") out[prevSpeed] = {number: out[prevSpeed], condition: s}
+					else out[prevSpeed].condition = s;
+					return;
+				}
+
 				const m = /^(\w+?\s+)?(\d+)\s*ft\.?( .*)?$/.exec(s);
 				if (!m) {
 					byHand = true;
 					return;
 				}
 
-				if (m[1]) m[1] = m[1].trim();
-				else m[1] = "walk";
+				let [_, mode, feet, condition] = m;
+				feet = Number(feet);
 
-				if (SpeedConvert._SPEED_TYPES.has(m[1])) {
-					if (m[3]) {
-						out[m[1]] = {
-							number: Number(m[2]),
-							condition: m[3].trim()
+				if (mode) mode = mode.trim().toLowerCase();
+				else mode = "walk";
+
+				if (SpeedConvert._SPEED_TYPES.has(mode)) {
+					if (condition) {
+						out[mode] = {
+							number: Number(feet),
+							condition: condition.trim()
 						};
-					} else out[m[1]] = Number(m[2]);
-				} else byHand = true;
+					} else out[mode] = Number(feet);
+					prevSpeed = mode;
+				} else {
+					byHand = true;
+					prevSpeed = null;
+				}
 			});
 
 			// flag speed as invalid
@@ -1041,7 +1081,7 @@ class SpeedConvert {
 			// flag speed as needing hand-parsing
 			if (byHand) {
 				out.UNPARSED_SPEED = line;
-				if (cbMan) cbMan(`Speed requires manual conversion: "${line}"`);
+				if (cbMan) cbMan(`${m.name ? `(${m.name}) ` : ""}Speed requires manual conversion: "${line}"`);
 			}
 
 			m.speed = out;
@@ -1131,6 +1171,7 @@ if (typeof module !== "undefined") {
 		SpellcastingTraitConvert,
 		RechargeConvert,
 		DetectNamedCreature,
-		TagImmResVulnConditional
+		TagImmResVulnConditional,
+		SpeedConvert
 	};
 }

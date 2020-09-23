@@ -266,7 +266,7 @@ class ModalFilterItems extends ModalFilter {
 		const source = Parser.sourceJsonToAbv(item.source);
 		const type = item._typeListText.join(", ");
 
-		eleLi.innerHTML = `<label class="lst--border unselectable">
+		eleLi.innerHTML = `<label class="lst--border no-select">
 			<div class="lst__wrp-cells">
 				<div class="col-1 pl-0 flex-vh-center"><input type="checkbox" class="no-events"></div>
 				<span class="col-5 bold">${item.name}</span>

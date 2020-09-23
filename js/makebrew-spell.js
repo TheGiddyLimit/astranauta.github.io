@@ -206,7 +206,7 @@ class SpellBuilder extends Builder {
 			"savingThrow"
 		).appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptBooleanArray(
-			"Opposed Check",
+			"Ability Check",
 			cb,
 			this._state,
 			{
@@ -214,7 +214,7 @@ class SpellBuilder extends Builder {
 				nullable: true,
 				fnDisplay: StrUtil.uppercaseFirst
 			},
-			"opposedCheck"
+			"abilityCheck"
 		).appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptBooleanArray(
 			"Area Type",

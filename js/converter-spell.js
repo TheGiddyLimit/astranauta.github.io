@@ -196,7 +196,7 @@ class SpellParser extends BaseParser {
 		DamageResVulnImmuneTagger.tryRun(stats, "damageVulnerable", options);
 		ConditionInflictTagger.tryRun(stats, options);
 		SavingThrowTagger.tryRun(stats, options);
-		OpposedCheckTagger.tryRun(stats, options);
+		AbilityCheckTagger.tryRun(stats, options);
 		SpellAttackTagger.tryRun(stats, options);
 		// TODO areaTags
 		MiscTagsTagger.tryRun(stats, options);

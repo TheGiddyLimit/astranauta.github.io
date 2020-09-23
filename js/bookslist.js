@@ -84,7 +84,7 @@ class BooksList {
 
 			eleLi.innerHTML = `<a href="${this._rootPage}#${UrlUtil.encodeForHash(it.id)}" class="book-name lst--border">
 				<span class="w-100">${this._rowBuilderFn(it)}</span>
-				<span class="showhide" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>
+				<span class="showhide px-2 py-1px bold" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>
 			</a>
 			${BookUtil.makeContentsBlock({book: it, addPrefix: this._rootPage, defaultHidden: true})}`;
 

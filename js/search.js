@@ -136,7 +136,7 @@ class SearchPage {
 						? `<a href="${adventureBookSourceHref}">${ptPageInner}</a>`
 						: ptPageInner;
 
-					const ptSourceInner = `<i>${Parser.sourceJsonToFull(source)}</i> (<span class="${Parser.sourceJsonToColor(source)}" ${BrewUtil.sourceJsonToStyle(source)}>${Parser.sourceJsonToAbv(source)}</span>)`;
+					const ptSourceInner = source ? `<i>${Parser.sourceJsonToFull(source)}</i> (<span class="${Parser.sourceJsonToColor(source)}" ${BrewUtil.sourceJsonToStyle(source)}>${Parser.sourceJsonToAbv(source)}</span>)` : `<span></span>`;
 					const ptSource = ptPage || !adventureBookSourceHref
 						? ptSourceInner
 						: `<a href="${adventureBookSourceHref}">${ptSourceInner}</a>`;

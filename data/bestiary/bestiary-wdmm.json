@@ -1939,26 +1939,9 @@
 			"cr": "23",
 			"spellcasting": [
 				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Halaster's spellcasting ability is Intelligence (spell save {@dc 22}). He can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell disguise self}",
-						"{@spell invisibility}"
-					],
-					"daily": {
-						"1": [
-							"{@spell fly}",
-							"{@spell lightning bolt}"
-						]
-					},
-					"ability": "int"
-				},
-				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Halaster is a 20th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 22}, {@hit 14} to hit with spell attacks). He can cast disguise self and invisibility at will. He can cast fly and lightning bolt once each without expending a spell slot, but can't do so again until he finishes a short or long rest. Halaster has the following wizard spells prepared:"
+						"Halaster is a 20th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 22}, {@hit 14} to hit with spell attacks). He can cast {@spell disguise self} and {@spell invisibility} at will. He can cast {@spell fly} and {@spell lightning bolt} once each without expending a spell slot, but can't do so again until he finishes a short or long rest. Halaster has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -2043,6 +2026,20 @@
 							]
 						}
 					},
+					"will": [
+						"{@spell disguise self}",
+						"{@spell invisibility}"
+					],
+					"daily": {
+						"1": [
+							"{@spell fly}",
+							"{@spell lightning bolt}"
+						]
+					},
+					"hidden": [
+						"will",
+						"daily"
+					],
 					"ability": "int"
 				}
 			],
@@ -2257,7 +2254,7 @@
 			"con": 13,
 			"int": 3,
 			"wis": 10,
-			"cha": 10,
+			"cha": 3,
 			"passive": 10,
 			"cr": "0",
 			"trait": [
@@ -2668,6 +2665,10 @@
 						}
 					]
 				}
+			},
+			"hp": {
+				"average": 20,
+				"formula": "2d8 + 4"
 			},
 			"hasToken": true,
 			"damageTags": [
@@ -5052,6 +5053,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"CS",

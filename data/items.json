@@ -124,6 +124,21 @@
 			"value": 200
 		},
 		{
+			"name": "Abracadabrus",
+			"source": "IDRotF",
+			"page": 314,
+			"rarity": "very rare",
+			"wondrous": true,
+			"weight": 25,
+			"recharge": "dawn",
+			"charges": 20,
+			"entries": [
+				"An abracadabrus is an ornate, gemstone-studded wooden chest that weighs 25 pounds while empty. Its interior compartment is a cube measuring 1½ feet on a side.",
+				"The chest has 20 charges. A creature can use an action to touch the closed lid of the chest and expend 1 of the chest's charges while naming one or more nonmagical objects (including raw materials, foodstuffs, and liquids) worth a total of 1 gp or less. The named objects magically appear in the chest, provided they can all fit inside it and the chest doesn't contain anything else. For example, the chest can conjure a plate of strawberries, a bowl of hot soup, a flagon of water, a stuffed animal, or a bag of twenty caltrops. Food and drink conjured by the chest are delicious, and they spoil if not consumed after 24 hours. Gems and precious metals created by the chest disappear after 1 minute.",
+				"The chest regains {@dice 1d20} expended charges daily at dawn. If the item's last charge is expended, roll a {@dice d20}. On a 1, the chest loses its magic (becoming an ordinary chest), and its gemstones turn to dust."
+			]
+		},
+		{
 			"name": "Absorbing Tattoo",
 			"source": "UA2020SpellsAndMagicTattoos",
 			"page": 8,
@@ -1109,6 +1124,17 @@
 			]
 		},
 		{
+			"name": "Axe Beak",
+			"source": "IDRotF",
+			"page": 0,
+			"type": "MNT",
+			"rarity": "none",
+			"value": 5000,
+			"entries": [
+				"An {@creature axe beak}'s splayed toes allow it to run across snow, and it can carry as much weight as a mule. A domesticated axe beak can be purchased in Ten-Towns for 50 gp."
+			]
+		},
+		{
 			"name": "Axe of the Dwarvish Lords",
 			"source": "DMG",
 			"page": 221,
@@ -1846,19 +1872,6 @@
 			]
 		},
 		{
-			"name": "Barding",
-			"source": "PHB",
-			"page": 157,
-			"srd": true,
-			"type": "TAH",
-			"rarity": "none",
-			"weightMult": 2,
-			"valueMult": 4,
-			"entries": [
-				"Barding is armor designed to protect an animal's head, neck, chest, and body. Any type of armor shown on the Armor table in this chapter can be purchased as barding. The cost is four times the equivalent armor made for humanoids, and it weighs twice as much."
-			]
-		},
-		{
 			"name": "Barking Box",
 			"source": "WDH",
 			"page": 47,
@@ -2205,7 +2218,6 @@
 			"rarity": "rare",
 			"reqAttune": true,
 			"weight": 6,
-			"value": 1000,
 			"ac": 2,
 			"bonusAc": "+1",
 			"recharge": "dawn",
@@ -2702,7 +2714,7 @@
 					"entries": [
 						"Whenever you use it to reduce a creature to 0 hit points, the sword slays the creature devours its soul, unless it is a construct or an undead. A creature whose soul has been devoured by Blackrazor can be restored to life only by a {@spell wish} spell.",
 						"When it devours a soul, Blackrazor grants you temporary hit points equal to the slain creature's hit point maximum. These hit points fade after 24 hours. As long as these temporary hit points last and you keep Blackrazor in hand, you have advantage on attack rolls, saving throws, and ability checks.",
-						"If you hit an undead with this weapon, you take {@dice 1d10} necrotic damage and the target regains {@dice 1d10} hit point. If this necrotic damage reduces you to 0 hit points, Blackrazor devours your soul."
+						"If you hit an undead with this weapon, you take {@dice 1d10} necrotic damage and the target regains {@dice 1d10} hit points. If this necrotic damage reduces you to 0 hit points, Blackrazor devours your soul."
 					]
 				},
 				{
@@ -4896,6 +4908,19 @@
 			"value": 25000
 		},
 		{
+			"name": "Cauldron of Plenty",
+			"source": "IDRotF",
+			"page": 314,
+			"rarity": "rare",
+			"wondrous": true,
+			"weight": 50,
+			"entries": [
+				"This cauldron is made of thick copper that has turned green with age. It is 4 feet wide, has a mouth 3½ feet in diameter, weighs 50 pounds, and can hold up to 30 gallons of liquid. Embossed on its bulging sides are images of satyrs and nymphs in repose, holding ladles. The cauldron comes with a lid and has side handles. It sits on five little clawed feet that keep it from tipping.",
+				"If water is poured into the cauldron and stirred for 1 minute, it transforms into a hearty, hot stew, which can provide one nourishing meal for up to four people per gallon. The stew remains hot while in the cauldron, then cools naturally after it is removed. The outside of the cauldron remains safe to touch despite the heat of the stew.",
+				"The cauldron can create stew three times. It then ceases to function until the next dawn, when it regains all its uses."
+			]
+		},
+		{
 			"name": "Censer of Controlling Air Elementals",
 			"source": "DMG",
 			"page": 158,
@@ -5471,6 +5496,19 @@
 			]
 		},
 		{
+			"name": "Clothing, cold weather",
+			"source": "IDRotF",
+			"page": 0,
+			"type": "G",
+			"rarity": "none",
+			"weight": 5,
+			"value": 1000,
+			"entries": [
+				"This outfit consists of a heavy fur coat or cloak over layers of wool clothing, as well as a fur-lined hat or hood, goggles, and fur-lined leather boots and gloves.",
+				"As long as cold weather clothing remains dry, its wearer automatically succeeds on saving throws against the effects of {@hazard extreme cold}."
+			]
+		},
+		{
 			"name": "Cloves",
 			"source": "PHB",
 			"page": 157,
@@ -5920,6 +5958,18 @@
 			"type": "TG",
 			"rarity": "none",
 			"value": 1000
+		},
+		{
+			"name": "Crampons",
+			"source": "IDRotF",
+			"page": 0,
+			"type": "G",
+			"rarity": "none",
+			"weight": 0.25,
+			"value": 200,
+			"entries": [
+				"A crampon is a metal plate with spikes that is strapped to the sole of a boot. A creature wearing crampons can't fall {@condition prone} while moving across slippery ice."
+			]
 		},
 		{
 			"name": "Crossbow Bolt Case",
@@ -6400,7 +6450,7 @@
 					"type": "entries",
 					"entries": [
 						"Forged by ancient sun worshippers, Dawnbringer is meant to bring light into darkness and to fight creatures of darkness. It is kind and compassionate to those in need, but fierce and destructive to its enemies.",
-						"Long years lost in darkness have made Dawnbringer {@condition frightened} of both the dark and abandonment. It prefers that its blade always be present and shedding light in areas of darkness, and it strongly resists being parted from its wielder for any length of time."
+						"Long years lost in darkness have made Dawnbringer frightened of both the dark and abandonment. It prefers that its blade always be present and shedding light in areas of darkness, and it strongly resists being parted from its wielder for any length of time."
 					]
 				}
 			],
@@ -8113,6 +8163,18 @@
 				"ray of frost",
 				"shocking grasp",
 				"darkness"
+			]
+		},
+		{
+			"name": "Dogsled",
+			"source": "IDRotF",
+			"page": 0,
+			"type": "VEH",
+			"rarity": "none",
+			"weight": 300,
+			"value": 2000,
+			"entries": [
+				"An empty sled costs 20 gp, weighs 300 pounds, and has room at the back for one driver."
 			]
 		},
 		{
@@ -10020,9 +10082,61 @@
 			"type": "G",
 			"rarity": "none",
 			"weight": 1,
-			"value": 1,
+			"value": 2,
 			"entries": [
 				"A flask holds 1 pint of liquid."
+			]
+		},
+		{
+			"name": "Flensing Claws (Huge)",
+			"source": "VGM",
+			"page": 81,
+			"type": "OTH",
+			"rarity": "unknown",
+			"dmg1": "2d8",
+			"dmgType": "S",
+			"entries": [
+				"Flensing claws take the form of articulated digits that extend into long metal blades. The claws are knitted into the flesh and bones of a creature's arms and can't be removed without surgical amputation.",
+				"Each set of flensing claws is designed for a specific creature and can't be used by anyone else. A creature equipped with flensing claws can use its action to make one melee weapon attack with the claws. The creature adds its proficiency bonus and Strength modifier to any attack roll made with the claws, and its Strength modifier to its damage roll when it hits a target with the claws."
+			]
+		},
+		{
+			"name": "Flensing Claws (Large)",
+			"source": "VGM",
+			"page": 81,
+			"type": "OTH",
+			"rarity": "unknown",
+			"dmg1": "1d12",
+			"dmgType": "S",
+			"entries": [
+				"Flensing claws take the form of articulated digits that extend into long metal blades. The claws are knitted into the flesh and bones of a creature's arms and can't be removed without surgical amputation.",
+				"Each set of flensing claws is designed for a specific creature and can't be used by anyone else. A creature equipped with flensing claws can use its action to make one melee weapon attack with the claws. The creature adds its proficiency bonus and Strength modifier to any attack roll made with the claws, and its Strength modifier to its damage roll when it hits a target with the claws."
+			]
+		},
+		{
+			"name": "Flensing Claws (Medium)",
+			"source": "VGM",
+			"page": 81,
+			"type": "OTH",
+			"rarity": "unknown",
+			"dmg1": "1d10",
+			"dmgType": "S",
+			"entries": [
+				"Flensing claws take the form of articulated digits that extend into long metal blades. The claws are knitted into the flesh and bones of a creature's arms and can't be removed without surgical amputation.",
+				"Each set of flensing claws is designed for a specific creature and can't be used by anyone else. A creature equipped with flensing claws can use its action to make one melee weapon attack with the claws. The creature adds its proficiency bonus and Strength modifier to any attack roll made with the claws, and its Strength modifier to its damage roll when it hits a target with the claws."
+			]
+		},
+		{
+			"name": "Flensing Claws (Small)",
+			"source": "VGM",
+			"page": 81,
+			"type": "OTH",
+			"rarity": "unknown",
+			"dmg1": "1d8",
+			"dmgType": "S",
+			"entries": [
+				"Flensing claws take the form of articulated digits that extend into long metal blades. The claws are knitted into the flesh and bones of a creature's arms and can't be removed without surgical amputation.",
+				"Each set of flensing claws is designed for a specific creature and can't be used by anyone else. A creature equipped with flensing claws can use its action to make one melee weapon attack with the claws. The creature adds its proficiency bonus and Strength modifier to any attack roll made with the claws, and its Strength modifier to its damage roll when it hits a target with the claws."
 			]
 		},
 		{
@@ -10892,7 +11006,7 @@
 			"baseItem": "greatsword|phb",
 			"type": "M",
 			"rarity": "legendary",
-			"reqAttune": "by a creature that has psionic ability.",
+			"reqAttune": "by a creature that has psionic ability",
 			"weight": 6,
 			"weaponCategory": "martial",
 			"property": [
@@ -11132,7 +11246,7 @@
 							"type": "list",
 							"items": [
 								"The weapon's bonus to attack and damage rolls increases to +3.",
-								"When you have fewer hit points than half your hit point maximum, the warhammer deals an extra {@damage 2d6} bludgeoning damage on a hit.You can burrow through solid rock at half your burrowing speed and leave a 5-foot-diameter tunnel in your wake.",
+								"When you have fewer hit points than half your hit point maximum, the warhammer deals an extra {@damage 2d6} bludgeoning damage on a hit. You can burrow through solid rock at half your burrowing speed and leave a 5-foot-diameter tunnel in your wake.",
 								"As an action, you can use the warhammer to cast one of the following spells from it (save DC 17): {@spell earthquake}, {@spell meld into stone}, or {@spell stone shape}. Once a spell has been cast using the warhammer, that spell can't be cast from the warhammer again until the next dawn."
 							]
 						}
@@ -11290,7 +11404,7 @@
 			"source": "MM",
 			"page": 177,
 			"type": "OTH",
-			"rarity": "unknown",
+			"rarity": "unknown (magic)",
 			"entries": [
 				"A hag coven can craft a magic item called a hag eye, which is made from a real eye coated in varnish and often fitted to a pendant or other wearable item. The hag eye is usually entrusted to a minion for safekeeping and transport. A hag in the coven can take an action to see what the hag eye sees if the hag eye is on the same plane of existence. A hag eye has AC 10, 1 hit point, and darkvision with a radius of 60 feet. If it is destroyed, each coven member takes {@dice 3d10} psychic damage and is {@condition blinded} for 24 hours.",
 				"A hag coven can have only one hag eye at a time, and creating a new one requires all three members of the coven to perform a ritual. The ritual takes 1 hour, and the hags can't perform it while {@condition blinded}. During the ritual, if the hags take any action other than performing the ritual, they must start over."
@@ -11586,6 +11700,16 @@
 			"value": 500,
 			"entries": [
 				"This kit is a leather pouch containing bandages, salves, and splints. The kit has ten uses. As an action, you can expend one use of the kit to stabilize a creature that has 0 hit points, without needing to make a Wisdom ({@skill Medicine}) check."
+			]
+		},
+		{
+			"name": "Heartstone",
+			"source": "MM",
+			"page": 179,
+			"type": "OTH",
+			"rarity": "very rare",
+			"entries": [
+				"This lustrous black gem allows a {@creature night hag} to become ethereal while it is in her possession. The touch of a heartstone also cures any disease. Crafting a heartstone takes 30 days."
 			]
 		},
 		{
@@ -12203,6 +12327,52 @@
 			]
 		},
 		{
+			"name": "Hook of Fisher's Delight",
+			"source": "IDRotF",
+			"page": 314,
+			"rarity": "rare",
+			"wondrous": true,
+			"entries": [
+				"This tiny silver fishhook has a little gold feather attached to it. For it to function, the feathered hook must be tied to the end of a fishing line and immersed in enough water to fill at least a 10-foot cube. At the end of each uninterrupted hour of immersion, roll a {@dice d6}. On a 6, a floppy, 6-inch-long magical fish appears on the end of the hook. The color and properties of the conjured fish are determined by rolling on the Hook of Fisher's Delight table. Once the hook conjures a fish, it can't do so again until the next dawn.",
+				{
+					"type": "table",
+					"caption": "Hook of Fisher's Delight",
+					"colStyles": [
+						"col-2 text-center",
+						"col-1",
+						"col-9"
+					],
+					"colLabels": [
+						"d20",
+						"Fish Color",
+						"Result"
+					],
+					"rows": [
+						[
+							"1-10",
+							"Green with copper bands",
+							"This tasty fish provides a day's worth of nourishment to one creature that eats it. The fish loses this property and rots if it's not eaten within 24 hours of being caught."
+						],
+						[
+							"11-14",
+							"Yellow with black stripes",
+							"Once removed from the hook, this awful-tasting fish can be thrown up to 120 feet, targeting a creature the thrower can see. The target must succeed on a DC 15 Strength saving throw or be knocked {@condition prone}. The fish then disappears."
+						],
+						[
+							"15-18",
+							"Blue with white bands",
+							"When released from the hook, this fish squirms free, sprouts wings, follows you around, and sings a beautiful tune in Aquan. It disappears after {@dice 2d4} hours or when reduced to 0 hit points. The fish uses the {@creature quipper} stat block, except that it can breathe air and has a flying speed of 30 feet."
+						],
+						[
+							"19-20",
+							"Gold with silver stripes",
+							"This tasty fish provides a day's worth of nourishment to one creature that eats it and grants {@dice 2d10} temporary hit points to that creature. The fish loses these properties and rots if it's not eaten within 24 hours of being caught."
+						]
+					]
+				}
+			]
+		},
+		{
 			"name": "Horn",
 			"source": "PHB",
 			"page": 154,
@@ -12419,6 +12589,128 @@
 			"value": 500,
 			"entries": [
 				"When you use your action to set it, this trap forms a saw-toothed steel ring that snaps shut when a creature steps on a pressure plate in the center. The trap is affixed by a heavy chain to an immobile object, such as a tree or a spike driven into the ground. A creature that steps on the plate must succeed on a DC 13 Dexterity saving throw or take {@dice 1d4} piercing damage and stop moving. Thereafter, until the creature breaks free of the trap, its movement is limited by the length of the chain (typically 3 feet long). A creature can use its action to make a DC 13 Strength check, freeing itself or another creature within its reach on a success. Each failed check deals 1 piercing damage to the trapped creature."
+			]
+		},
+		{
+			"name": "Icewind Dale Trinket",
+			"source": "IDRotF",
+			"type": "G",
+			"rarity": "none",
+			"entries": [
+				{
+					"type": "table",
+					"caption": "Icewind Dale Trinkets",
+					"colLabels": [
+						"d100",
+						"Trinket"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"01\u201304",
+							"A small wooden figurine of a yawning walrus, painted in red and black"
+						],
+						[
+							"05\u201308",
+							"A pair of scrimshaw cufflinks with an image of a fisherman on a boat engraved on them"
+						],
+						[
+							"09\u201312",
+							"A small iron key with a frayed blue and gold cord tied to it"
+						],
+						[
+							"13\u201316",
+							"A small illustrated book of Northlander myths that has pages missing"
+						],
+						[
+							"17\u201320",
+							"A damaged scrimshaw cameo depicting a merfolk"
+						],
+						[
+							"21\u201324",
+							"A stone from a burial cairn with a tiny Dwarvish rune carved into it"
+						],
+						[
+							"25\u201328",
+							"A ripped cloth sail with a symbol you don't recognize"
+						],
+						[
+							"29\u201332",
+							"An Ulu knife with a scrimshaw handle"
+						],
+						[
+							"33\u201336",
+							"A jar containing an unidentifiable, sweet, sticky substance"
+						],
+						[
+							"37\u201340",
+							"A delicate glass ball painted with snowflakes, capped by a metal loop with a tiny hook attached to it"
+						],
+						[
+							"41\u201344",
+							"An expedition log with missing pages and a pressed flower used as a bookmark"
+						],
+						[
+							"45\u201348",
+							"An owl figurine carved from whalebone"
+						],
+						[
+							"49\u201352",
+							"A sewing box that smells of old wood and has three spools of blue thread inside"
+						],
+						[
+							"53\u201356",
+							"A scrimshaw-handled ink pen with black runic designs along its length"
+						],
+						[
+							"57\u201360",
+							"A brooch made from a small insect encased in amber"
+						],
+						[
+							"61\u201364",
+							"A scrimshaw pepper shaker etched with the letter W"
+						],
+						[
+							"65\u201368",
+							"An old, wooden-handled ice pick stained with blood that won't wash off"
+						],
+						[
+							"69\u201372",
+							"A fabric doll bearing an angry expression"
+						],
+						[
+							"73\u201376",
+							"A set of wind chimes made from seashells"
+						],
+						[
+							"77\u201380",
+							"A beautiful silver tin that, when opened, emits the smell of rotting fish"
+						],
+						[
+							"81\u201384",
+							"A bloodstained dreamcatcher made from fishing line, gold wire, and snowy owlbear feathers"
+						],
+						[
+							"85\u201388",
+							"A figurine of a polar bear made of ice that never melts"
+						],
+						[
+							"89\u201392",
+							"A snow globe that doesn't need to be shaken"
+						],
+						[
+							"93\u201396",
+							"A piece of sea glass shaped like a unicorn's horn"
+						],
+						[
+							"97\u201300",
+							"A dark blue scarf that gets lighter in shade the higher the altitude of the wearer"
+						]
+					]
+				}
 			]
 		},
 		{
@@ -13786,7 +14078,7 @@
 				"T"
 			],
 			"range": "60/150",
-			"dmg1": "2d6",
+			"dmg1": "1d6",
 			"dmgType": "P",
 			"bonusWeapon": "+2",
 			"entries": [
@@ -14263,6 +14555,71 @@
 			],
 			"lootTables": [
 				"Magic Item Table B"
+			]
+		},
+		{
+			"name": "Lantern of Tracking",
+			"source": "IDRotF",
+			"page": 314,
+			"rarity": "common",
+			"wondrous": true,
+			"entries": [
+				"This hooded lantern burns for 6 hours on 1 pint of oil, shedding bright light in a 30-foot radius and dim light for an additional 30 feet.",
+				"Each lantern of tracking is designed to track down a certain type of creature, which is determined by rolling on the Lantern of Tracking table. Once determined, this creature type can't be changed. While the lantern is within 300 feet of any creature of that type, its flame turns bright green. The lantern doesn't pinpoint the creature's exact location, however.",
+				{
+					"type": "table",
+					"caption": "Lantern of Tracking",
+					"colLabels": [
+						"1d10",
+						"Creature Type"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Aberrations"
+						],
+						[
+							"2",
+							"Celestials"
+						],
+						[
+							"3",
+							"Constructs"
+						],
+						[
+							"4",
+							"Dragons"
+						],
+						[
+							"5",
+							"Elementals"
+						],
+						[
+							"6",
+							"Fey"
+						],
+						[
+							"7",
+							"Fiends"
+						],
+						[
+							"8",
+							"Giants"
+						],
+						[
+							"9",
+							"Monstrosities"
+						],
+						[
+							"10",
+							"Undead"
+						]
+					]
+				}
 			]
 		},
 		{
@@ -17216,6 +17573,9 @@
 			"wondrous": true,
 			"curse": true,
 			"weight": 3,
+			"ability": {
+				"wis": 2
+			},
 			"entries": [
 				"This onyx sphere bears deep, spiraling grooves and dangles from an iron chain. While the orb is on your person, you gain the following benefits:",
 				{
@@ -17245,6 +17605,19 @@
 			"weight": 3,
 			"entries": [
 				"While holding this orb, you can use an action to determine whether it is morning, afternoon, evening, or nighttime outside. This property functions only on the Material Plane."
+			]
+		},
+		{
+			"name": "Orc Stone",
+			"source": "IDRotF",
+			"page": 264,
+			"rarity": "uncommon",
+			"reqAttune": "by a recipient only",
+			"wondrous": true,
+			"entries": [
+				"I saved the life of an orc, who gave me a stone with the symbol of the Many-Arrows tribe (a humanoid skull pierced by three arrows) carved into it. The stone is an uncommon magic item that requires attunement, and only I can attune to it.",
+				"As an action, I can use the stone to summon the spirit of an orc warrior, which appears within 30 feet of me. The spirit uses the {@creature orc war chief} stat block in the Monster Manual and disappears after 10 minutes or when reduced to 0 hit points. The spirit understands any language I speak and obeys my commands.",
+				"After the stone is used three times, it turns to dust. (See Appendix B of Icewind Dale: Rime of the Frostmaiden)"
 			]
 		},
 		{
@@ -19467,6 +19840,25 @@
 			]
 		},
 		{
+			"name": "Professor Skant",
+			"source": "IDRotF",
+			"page": 315,
+			"rarity": "rare",
+			"wondrous": true,
+			"entries": [
+				"The {@item professor orb|WDMM} owned by Vellynne Harpell and stolen by Nass Lantomir calls itself Professor Skant. It is lawful good, and it has a Wisdom of 11 and a Charisma of 9. It speaks and reads Common, Draconic, Elvish, and Loross (the dead language of the Empire of Netheril). Professor Skant is a chatterbox and assumes all humanoids are dunderheads. When elaborating on its areas of expertise, it adopts an unintentionally patronizing tone. It has the following four areas of expertise:",
+				{
+					"type": "list",
+					"items": [
+						"The history of Netheril (see the \"{@adventure Fate of Netheril|IDRotF|17|Fate of Netheril}\" sidebar)",
+						"Vampirism and the traits of vampires",
+						"Rituals surrounding the making, bottling, and drinking of Elverquisst (a rare, ruby-colored elven liquor distilled from sunshine and rare summer fruits)",
+						"The {@creature tarrasque} (see the Monster Manual)"
+					]
+				}
+			]
+		},
+		{
 			"name": "Propeller Helm",
 			"source": "WDMM",
 			"page": 251,
@@ -19492,6 +19884,55 @@
 			"entries": [
 				"This artificial limb replaces a hand, arm, foot, leg, or similar appendage that was lost or removed. While the prosthetic is attached and attuned to you, it functions identically to the body part it is replacing. You can detach or reattach it as an action, and it can't be removed by anyone else.",
 				"If you have multiple prosthetic limbs, they count as a single magic item with regard to the number of magic items you can attune to."
+			]
+		},
+		{
+			"name": "Psi Crystal",
+			"source": "IDRotF",
+			"page": 315,
+			"rarity": "uncommon",
+			"reqAttune": "by a creature with an intelligence score of 3 or higher",
+			"wondrous": true,
+			"entries": [
+				"This crystal grants you telepathy for as long as you remain attuned to it. See the {@book introduction of the Monster Manual|MM|0|Telepathy} for rules on how this telepathy works.",
+				"The crystal also glows with a purplish inner light while you are attuned to it.",
+				"The higher your intelligence, the greater the light's intensity and the greater the range of the telepathy (see the Psi Crystal Properties table).",
+				{
+					"type": "table",
+					"caption": "Psi Crystal Properties",
+					"colStyles": [
+						"col-2 text-center",
+						"col-2 text-center",
+						"col-8"
+					],
+					"colLabels": [
+						"Intelligence Score",
+						"Range of Telepathy",
+						"Light Intensity"
+					],
+					"rows": [
+						[
+							"3-7",
+							"15 feet",
+							"Dim light out to a range of 5 feet"
+						],
+						[
+							"8-11",
+							"30 feet",
+							"Bright light in a 5-foot radius and dim light for an additional 5 feet"
+						],
+						[
+							"12-15",
+							"60 feet",
+							"Bright light in a 10-foot radius and dim light for an additional 10 feet"
+						],
+						[
+							"16 or higher",
+							"120 feet",
+							"Bright light in a 15-foot radius and dim light for an additional 15 feet"
+						]
+					]
+				}
 			]
 		},
 		{
@@ -21850,6 +22291,27 @@
 			]
 		},
 		{
+			"name": "Scroll of Tarrasque Summoning",
+			"source": "IDRotF",
+			"page": 315,
+			"type": "SC",
+			"rarity": "legendary",
+			"entries": [
+				"Using an action to read the scroll causes the {@creature tarrasque} (see the creature's entry in the Monster Manual) to appear in an unoccupied space you can see within 1 mile of you. The tarrasque disappears when it drops to 0 hit points and is hostile toward all creatures other than itself."
+			]
+		},
+		{
+			"name": "Scroll of the Comet",
+			"source": "IDRotF",
+			"page": 315,
+			"type": "SC",
+			"rarity": "legendary",
+			"entries": [
+				"By using an action to read the scroll, you cause a comet to fall from the sky and crash to the ground at a point you can see up to 1 mile away from you. You must be outdoors when you use the scroll, or nothing happens and the scroll is wasted.",
+				"The comet creates a 50-foot-deep, 500-foot-radius crater on impact. Any creature in that radius must make a DC 20 Dexterity saving throw, taking {@damage 30d10} force damage on a failed saving throw, or half as much damage on a successful one. All structures in the crater are destroyed, as are all nonmagical objects that aren't being worn or held."
+			]
+		},
+		{
 			"name": "Sealing Wax",
 			"source": "PHB",
 			"page": 150,
@@ -22259,6 +22721,21 @@
 			"type": "TG",
 			"rarity": "none",
 			"value": 200
+		},
+		{
+			"name": "Shield Guardian Amulet",
+			"source": "IDRotF",
+			"page": 149,
+			"rarity": "rare",
+			"reqAttune": "by a humanoid",
+			"wondrous": true,
+			"entries": [
+				"The amulet is a 4-inch-wide disk composed of silver-framed wood, with a rune carved into its face. A {@spell detect magic} spell reveals a magical aura of enchantment around the amulet.",
+				"Every {@creature shield guardian} has an amulet magically linked to it. A shield guardian can have only one corresponding amulet, and if that amulet is destroyed, the shield guardian is {@condition incapacitated} until a replacement amulet is created.",
+				"A shield guardian's amulet is subject to direct attack if it isn't being worn or carried. It has AC 10, 10 hit points, and immunity to poison and psychic damage. Crafting an amulet requires 1 week and costs 1,000 gp in components.",
+				"A shield guardian's solitary focus is to protect the amulet's wearer. The amulet's wearer can command the guardian to attack its enemies or to guard the wielder against attack. If an attack threatens to injure the wearer, the construct can magically absorb the blow into its own body, even at a distance.",
+				"A humanoid that attunes to this amulet knows the distance and direction of the shield guardian, provided the amulet and the guardian are on the same plane of existence. As an action, the amulet's attuned wearer can try to reactivate the shield guardian, doing so with a successful DC 20 Intelligence ({@skill Arcana}) check. Reactivation can only be attempted while the amulet and guardian are within 10 feet of each other."
+			]
 		},
 		{
 			"name": "Shield of Expression",
@@ -22705,6 +23182,27 @@
 			"value": 75000
 		},
 		{
+			"name": "Silver Sword",
+			"source": "MTF",
+			"page": 89,
+			"type": "M",
+			"tier": "major",
+			"rarity": "unknown (magic)",
+			"reqAttune": "by a creature that has psionic ability",
+			"weight": 6,
+			"weaponCategory": "martial",
+			"property": [
+				"H",
+				"2H"
+			],
+			"dmg1": "2d6",
+			"dmgType": "S",
+			"bonusWeapon": "+3",
+			"entries": [
+				"You have a +3 bonus to attack and damage rolls made with this magic weapon. On a critical hit against a target in an astral body (as with the {@spell astral projection} spell), you can cut the silvery cord that tethers the target to its material body, instead of dealing damage."
+			]
+		},
+		{
 			"name": "Silver-plated steel longsword with jet set in hilt",
 			"source": "DMG",
 			"page": 135,
@@ -22820,6 +23318,18 @@
 			"rarity": "none",
 			"weight": 300,
 			"value": 2000
+		},
+		{
+			"name": "Sled Dog",
+			"source": "IDRotF",
+			"page": 0,
+			"type": "MNT",
+			"rarity": "none",
+			"value": 5000,
+			"entries": [
+				"A sled dog (use the {@creature wolf} stat block in appendix A of the Monster Manual) costs 50 gp and can pull 360 pounds.",
+				"Sled dogs must take a short rest after pulling a sled for 1 hour; otherwise, they gain one level of {@condition exhaustion}."
+			]
 		},
 		{
 			"name": "Sledgehammer",
@@ -23020,6 +23530,18 @@
 			]
 		},
 		{
+			"name": "Snowshoes",
+			"source": "IDRotF",
+			"page": 0,
+			"type": "G",
+			"rarity": "none",
+			"weight": 4,
+			"value": 200,
+			"entries": [
+				"Snowshoes reduce the likelihood of their wearer getting stuck in the deep snow."
+			]
+		},
+		{
 			"name": "Soap",
 			"source": "PHB",
 			"page": 150,
@@ -23048,6 +23570,16 @@
 			"entries": [
 				"Soothsalts are derived from a naturally occurring crystalline substance discovered throughout the wilds of the Miskath Strand. The crimson crystals have been mined from cavernous veins like those in the mouth of the Miskath Pit and found within smaller geode formations near sites ravaged by the Calamity. Soothsalts are consumed orally in lozenge-sized doses, and frequent users can be identified by the telltale crimson stain around their mouths. A creature subjected to a dose of soothsalts gains advantage on all Intelligence checks for {@dice 1d4} hours.",
 				"For each dose of soothsalts consumed, the creature must succeed on a DC 15 Constitution saving throw or gain one level of {@condition exhaustion}\u2014an effect which is cumulative with multiple doses."
+			]
+		},
+		{
+			"name": "Soul Bag",
+			"source": "MM",
+			"page": 179,
+			"type": "OTH",
+			"rarity": "very rare",
+			"entries": [
+				"When an evil humanoid dies as a result of a {@creature night hag}'s Nightmare Haunting, the hag catches the soul in this black sack made of stitched flesh. A soul bag can hold only one evil soul at a time, and only the night hag who crafted the bag can catch a soul with it. Crafting a soul bag takes 7 days and a humanoid sacrifice (whose flesh is used to make the bag)."
 			]
 		},
 		{
@@ -23153,7 +23685,7 @@
 				"V"
 			],
 			"range": "50/90",
-			"dmg1": "2d6",
+			"dmg1": "1d6",
 			"dmgType": "P",
 			"dmg2": "1d8",
 			"bonusWeapon": "+2",
@@ -24286,7 +24818,7 @@
 			"source": "ToA",
 			"page": 208,
 			"rarity": "artifact",
-			"reqAttune": true,
+			"reqAttune": "by a sorcerer, warlock, or wizard",
 			"weight": 4,
 			"weaponCategory": "simple",
 			"property": [
@@ -25715,7 +26247,8 @@
 			"srd": true,
 			"type": "G",
 			"rarity": "none",
-			"value": 1,
+			"weight": 1,
+			"value": 2,
 			"entries": [
 				"A tankard holds 1 pint of liquid."
 			]
@@ -25820,7 +26353,7 @@
 			"name": "Tej",
 			"source": "ToA",
 			"page": 32,
-			"type": "G",
+			"type": "FD",
 			"rarity": "none",
 			"weight": 5,
 			"entries": [
@@ -25946,6 +26479,45 @@
 				"charm person",
 				"dominate person",
 				"fear"
+			]
+		},
+		{
+			"name": "The Codicil of White",
+			"source": "IDRotF",
+			"page": 317,
+			"rarity": "unknown (magic)",
+			"wondrous": true,
+			"entries": [
+				"The Codicil of White is a tall, thin volume bound in white ermine fur over seasoned boards of white pine and sealed with a clasp and lock of tarnished silver. The book is cold to the touch, and the fur is worn about the edges from use. The twenty-seven pages within are of vellum painted with silver gilt on the outer edges. The whole is sewn to a leather binding with strips of sinews, making it quite durable.",
+				"A creature with the codicil in its possession has resistance to cold damage.",
+				"The codicil was written by followers of Auril as a primer on her worship. The first page is a title page with the snowflake symbol of Auril on it. The remaining pages describe various priestly rituals and ceremonies in chilling detail. Nestled among these descriptions is a spell that wizards can learn ({@spell frost fingers|IDRotF}, and a poem called \"Rime of the Frostmaiden\" (see appendix E)). The poem is an incantation, the power of which can be used to split a glacier (see chapter 6). The poem might have other capabilities, at your discretion"
+			]
+		},
+		{
+			"name": "The Incantations of Iriolarthas",
+			"source": "IDRotF",
+			"page": 317,
+			"type": "G",
+			"rarity": "unknown",
+			"weight": 3,
+			"entries": [
+				"The Incantations of Iriolarthas is a weighty spellbook. Its black leather covers have dead, toothy worms glued to them, sheathed in glossy varnish. Set into this morbid display on the front cover is a gold rune that resembles a stylized eye with a pupil shaped like a candle flame\u2014the sigil of Iriolarthas, a Netherese lich.",
+				"The book contains sixty pages of brittle yellow vellum. Written on these pages are the following wizard spells:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						"1st level: {@spell alarm}, {@spell detect magic}, {@spell identify}, {@spell magic missile}, {@spell shield}, {@spell Tasha's hideous laughter}, {@spell thunderwave}",
+						"2nd level: {@spell arcane lock}, {@spell continual flame}, {@spell invisibility}, {@spell knock}, {@spell levitate}, {@spell Melf's acid arrow}, {@spell mirror image}",
+						"3rd level: {@spell animate dead}, {@spell bestow curse}, {@spell clairvoyance}, {@spell counterspell}, {@spell dispel magic}, {@spell fireball}, {@spell glyph of warding}",
+						"4th level: {@spell arcane eye}, {@spell banishment}, {@spell blight}, {@spell dimension door}, {@spell Evard's black tentacles}, {@spell phantasmal killer}",
+						"5th level: {@spell Bigby's hand}, {@spell cloudkill}, {@spell dominate person}, {@spell planar binding}, {@spell scrying}, {@spell telekinesis}",
+						"6th level: {@spell create undead}, {@spell disintegrate}, {@spell globe of invulnerability}, {@spell move earth}, {@spell Otto's irresistible dance}",
+						"7th level: {@spell create magen|IDRotF}, {@spell finger of death}, {@spell prismatic spray}, {@spell teleport}",
+						"8th level: {@spell demiplane}, {@spell dominate monster}, {@spell mind blank}, {@spell power word stun}",
+						"9th level: {@spell blade of disaster|IDRotF}, {@spell power word kill}"
+					]
+				}
 			]
 		},
 		{
@@ -26582,6 +27154,16 @@
 			"rarity": "none",
 			"entries": [
 				"Also known as a whistlecane, a simple and easy-to-make wind instrument cut from a reed. They are so simple, in fact, that skilled bards frequently make and give them away to children\u2014to the parents' delight or regret."
+			]
+		},
+		{
+			"name": "Thermal Cube",
+			"source": "IDRotF",
+			"page": 316,
+			"rarity": "common",
+			"wondrous": true,
+			"entries": [
+				"This 3-inch cube of solid brimstone generates enough dry heat to keep the temperature within 15 feet of it at 95 degrees Fahrenheit (35 degrees Celsius)."
 			]
 		},
 		{
@@ -30686,6 +31268,37 @@
 			"value": 1000
 		},
 		{
+			"name": "Ythryn Mythallar",
+			"source": "IDRotF",
+			"page": 316,
+			"rarity": "legendary",
+			"reqAttune": "by a spellcaster",
+			"wondrous": true,
+			"entries": [
+				"A mythallar looks like an enormous crystal ball held in an ornate cradle. The globe sheds bright light in a 300-foot radius and dim light for an additional 300 feet. The globe draws magic from the Weave that can be harnessed for various purposes. For example, Netherese mages used mythallars to keep their cities aloft and empower their magic items. The bigger the mythallar, the more magic it can hold. The largest mythallars are 150 feet in diameter.",
+				"The Ythryn mythallar is a relatively small device\u2014a mere 50 feet in diameter. To attune to this mythallar, a creature must finish a short rest within 30 feet of it, meditating on the mythallar. Up to eight creatures can be attuned to it at one time; otherwise, the Ythryn mythallar follows the attunement rules in the Dungeon Master's Guide. If a ninth creature tries to attune to the mythallar, nothing happens.",
+				"All creatures attuned to the Ythryn mythallar can sense when the device is being used. A creature attuned to the device can use any of its properties, but only if all other creatures attuned to the device agree to allow it. The Ythryn mythallar's properties are as follows:",
+				{
+					"type": "list",
+					"items": [
+						"While you're on the same plane of existence as the Ythryn mythallar, you can use an action to cause it to fly in any direction you choose at a speed of 30 feet. All matter within 500 feet of the device moves with it. The Ythryn mythallar and all structures held aloft by it hover in place when not in motion.",
+						"As an action, you can cause one magic item you are holding within 30 feet of the Ythryn mythallar to immediately regain all its expended charges or uses. A magic item recharged in this manner can't be recharged by the Ythryn mythallar again until after the item regains expended charges or uses on its own.",
+						"You can use the Ythryn mythallar to cast the {@spell control weather} spell without requiring any components and without the need for you to be outdoors. This casting of the spell has a 50-mile radius. For the duration of the spell's casting time, you must be within 30 feet of the Ythryn mythallar or the spell fails."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Touching the Mythallar",
+					"entries": [
+						"Any creature that touches the globe of the mythallar must make a DC 22 Constitution saving throw, taking 180 ({@damage 20d10 + 70}) radiant damage on a failed save, or half as much damage on a successful one. Undead have disadvantage on this saving throw. Any object that touches the globe, other than an artifact or the mythallar's cradle, is disintegrated instantly (no save)."
+					]
+				}
+			],
+			"attachedSpells": [
+				"control weather"
+			]
+		},
+		{
 			"name": "Zabou",
 			"source": "ToA",
 			"page": 205,
@@ -30952,6 +31565,24 @@
 				"Figurine of Wondrous Power, Onyx Dog",
 				"Figurine of Wondrous Power, Serpentine Owl",
 				"Figurine of Wondrous Power, Silver Raven"
+			]
+		},
+		{
+			"name": "Flensing Claws",
+			"source": "VGM",
+			"page": 81,
+			"type": "OTH",
+			"rarity": "unknown",
+			"dmgType": "S",
+			"entries": [
+				"{@creature mind flayer||Illithids} don't always provide their thralls with normal weapons, such as swords and axes. Sometimes they improve the natural capabilities of thralls by giving them new anatomy. Flensing claws take the form of articulated digits that extend into long metal blades. The claws are knitted into the flesh and bones of a creature's arms and can't be removed without surgical amputation.",
+				"Each set of flensing claws is designed for a specific creature and can't be used by anyone else. A creature equipped with flensing claws can use its action to make one melee weapon attack with the claws. The claws deal slashing damage based on the creature's size. The creature adds its proficiency bonus and Strength modifier to any attack roll made with the claws, and its Strength modifier to its damage roll when it hits a target with the claws. Tiny and Gargantuan creatures can't be fitted with flensing claws."
+			],
+			"items": [
+				"Flensing Claws (Small)|VGM",
+				"Flensing Claws (Medium)|VGM",
+				"Flensing Claws (Large)|VGM",
+				"Flensing Claws (Huge)|VGM"
 			]
 		},
 		{

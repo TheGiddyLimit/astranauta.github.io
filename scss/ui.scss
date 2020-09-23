@@ -344,13 +344,13 @@ Shared UI components
 		}
 
 		&[data-state='1'] {
-			background: $rgb-off-black;
-			border-color: lighten($rgb-off-black, 30%);
+			background: $rgb-cb-grey;
+			border-color: lighten($rgb-cb-grey, 15%);
 		}
 
 		&[data-state='2'] {
-			background: $rgb-off-black;
-			border-color: lighten($rgb-off-black, 30%);
+			background: $rgb-cb-grey;
+			border-color: lighten($rgb-cb-grey, 15%);
 			display: flex;
 			line-height: 14px;
 			-moz-osx-font-smoothing: grayscale;
@@ -369,8 +369,8 @@ Shared UI components
 		}
 
 		&[data-state='3'] {
-			background: repeating-linear-gradient(135deg, white, white 10px, $rgb-off-black 10px, $rgb-off-black 20px);
-			border-color: lighten($rgb-off-black, 30%);
+			background: repeating-linear-gradient(135deg, white, white 10px, $rgb-cb-grey 10px, $rgb-cb-grey 20px);
+			border-color: lighten($rgb-cb-grey, 15%);
 		}
 	}
 }

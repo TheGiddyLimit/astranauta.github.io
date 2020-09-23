@@ -46,7 +46,7 @@ const TAG_TO_PAGE = {
 	"trap": UrlUtil.PG_TRAPS_HAZARDS,
 	"hazard": UrlUtil.PG_TRAPS_HAZARDS,
 	"deity": UrlUtil.PG_DEITIES,
-	"variantrule": UrlUtil.PG_VARIATNRULES,
+	"variantrule": UrlUtil.PG_VARIANTRULES,
 	"action": UrlUtil.PG_ACTIONS,
 	"language": UrlUtil.PG_LANGUAGES,
 	"classFeature": UrlUtil.PG_CLASSES,
@@ -456,55 +456,70 @@ class TableDiceTest {
 	}
 
 	static checkTable (file, obj) {
-		if (obj.type === "table" && Renderer.isRollableTable(obj)) {
-			const possibleResults = new Set();
-			const errors = [];
-			const cbErr = (cell, e) => MSG.TableDiceTest += `Row parse failed! Cell was: "${cell}"; error was: "${e.message}"\n`;
-			obj.rows.forEach(r => {
-				const row = Renderer.getRollableRow(r, cbErr);
-				const cell = row[0].roll;
-				if (!cell) return;
-				if (cell.exact != null) {
-					if (cell.exact === 0 && cell.pad) cell.exact = 100;
-					if (possibleResults.has(cell.exact)) errors.push(`"exact" value "${cell.exact}" was repeated!`);
-					possibleResults.add(cell.exact);
-				} else {
-					if (cell.max === 0) cell.max = 100;
-					// convert +inf to a reasonable range (no official table goes to 250+ as of 2019-03-01)
-					if (cell.max === Renderer.dice.POS_INFINITE) cell.max = 250;
-					for (let i = cell.min; i <= cell.max; ++i) {
-						if (possibleResults.has(i)) {
-							// if the table is e.g. 0-110, avoid double-counting the 0
-							if (!(i === 100 && cell.max > 100)) errors.push(`"min-max" value "${i}" was repeated!`);
-						}
-						possibleResults.add(i);
+		if (obj.type !== "table") return;
+		const autoRollMode = Renderer.getTableRollMode(obj);
+		if (!autoRollMode) return;
+
+		const toRenderLabel = autoRollMode ? RollerUtil.getFullRollCol(obj.colLabels[0]) : null;
+		const isInfiniteResults = autoRollMode === RollerUtil.ROLL_COL_VARIABLE;
+
+		const possibleResults = new Set();
+		const errors = [];
+		const cbErr = (cell, e) => MSG.TableDiceTest += `Row parse failed! Cell was: "${cell}"; error was: "${e.message}"\n`;
+
+		const len = obj.rows.length;
+		obj.rows.forEach((r, i) => {
+			const row = Renderer.getRollableRow(r, {cbErr, isForceInfiniteResults: isInfiniteResults, isFirstRow: i === 0, isLastRow: i === len - 1});
+			const cell = row[0].roll;
+			if (!cell) return;
+			if (cell.exact != null) {
+				if (cell.exact === 0 && cell.pad) cell.exact = 100;
+				if (possibleResults.has(cell.exact)) errors.push(`"exact" value "${cell.exact}" was repeated!`);
+				possibleResults.add(cell.exact);
+			} else {
+				if (cell.max === 0) cell.max = 100;
+				// convert inf to a reasonable range (no official table goes to 999+ or into negatives as of 2020-09-19)
+				if (cell.min === -Renderer.dice.POS_INFINITE) cell.min = cell.displayMin; // Restore the original minimum
+				if (cell.max === Renderer.dice.POS_INFINITE) cell.max = TableDiceTest._INF_CAP;
+				for (let i = cell.min; i <= cell.max; ++i) {
+					if (possibleResults.has(i)) {
+						// if the table is e.g. 0-110, avoid double-counting the 0
+						if (!(i === 100 && cell.max > 100)) errors.push(`"min-max" value "${i}" was repeated!`);
 					}
+					possibleResults.add(i);
 				}
-			});
-
-			const cleanHeader = Renderer.stripTags(obj.colLabels[0].trim());
-			const possibleRolls = new Set();
-			let hasPrompt = false;
-
-			cleanHeader.split(";").forEach(rollable => {
-				if (rollable.includes("#$prompt_")) hasPrompt = true;
-
-				const rollTree = Renderer.dice.lang.getTree3(rollable);
-				if (rollTree) {
-					const min = rollTree.min();
-					const max = rollTree.max();
-					for (let i = min; i < max + 1; ++i) possibleRolls.add(i);
-				} else {
-					if (!hasPrompt) errors.push(`"${obj.colLabels[0]}" was not a valid rollable header?!`);
-				}
-			});
-
-			if (!CollectionUtil.setEq(possibleResults, possibleRolls) && !hasPrompt) {
-				errors.push(`Possible results did not match possible rolls!\nPossible results: (${TableDiceTest._flattenSequence([...possibleResults])})\nPossible rolls: (${TableDiceTest._flattenSequence([...possibleRolls])})`);
 			}
+		});
 
-			if (errors.length) MSG.TableDiceTest += `Errors in ${obj.caption ? `table "${obj.caption}"` : `${JSON.stringify(obj.rows[0]).substring(0, 30)}...`} in ${file}:\n${errors.map(it => `\t${it}`).join("\n")}\n`;
+		const tmpParts = [];
+		let cleanHeader = toRenderLabel
+			.trim()
+			.replace(/^{@dice ([^}]+)}/g, (...m) => {
+				tmpParts.push(m[1]);
+				return `__TMP_DICE__${tmpParts.length - 1}__`;
+			});
+		cleanHeader = Renderer.stripTags(cleanHeader).replace(/__TMP_DICE__(\d+)__/g, (...m) => tmpParts[Number(m[1])]);
+		const possibleRolls = new Set();
+		let hasPrompt = false;
+
+		cleanHeader.split(";").forEach(rollable => {
+			if (rollable.includes("#$prompt_")) hasPrompt = true;
+
+			const rollTree = Renderer.dice.lang.getTree3(rollable);
+			if (rollTree) {
+				const min = rollTree.min();
+				const max = rollTree.max();
+				for (let i = min; i < max + 1; ++i) possibleRolls.add(i);
+			} else {
+				if (!hasPrompt) errors.push(`"${obj.colLabels[0]}" was not a valid rollable header?!`);
+			}
+		});
+
+		if (!CollectionUtil.setEq(possibleResults, possibleRolls) && !hasPrompt) {
+			errors.push(`Possible results did not match possible rolls!\nPossible results: (${TableDiceTest._flattenSequence([...possibleResults])})\nPossible rolls: (${TableDiceTest._flattenSequence([...possibleRolls])})`);
 		}
+
+		if (errors.length) MSG.TableDiceTest += `Errors in ${obj.caption ? `table "${obj.caption}"` : `${JSON.stringify(obj.rows[0]).substring(0, 30)}...`} in ${file}:\n${errors.map(it => `\t${it}`).join("\n")}\n`;
 	}
 
 	static _flattenSequence (nums) {
@@ -528,6 +543,7 @@ class TableDiceTest {
 		return out.join(", ");
 	}
 }
+TableDiceTest._INF_CAP = 999;
 
 class AreaCheck {
 	static _buildMap (file, data) {
@@ -625,7 +641,7 @@ class SpellDataCheck {
 				if (sp.classes.fromSubclass) {
 					sp.classes.fromSubclass.forEach(sc => {
 						const clazz = SpellDataCheck._CLASS_LIST.find(it => it.name === sc.class.name && it.source === sc.class.source);
-						if (!clazz) return MSG.SpellDataCheck += `Invalid subclass class: ${JSON.stringify(sc)} in spell "${sp.name}" in file "${f}"\n`;
+						if (!clazz) return MSG.SpellDataCheck += `Invalid subclass class: $s{JSON.stringify(sc)} in spell "${sp.name}" in file "${f}"\n`;
 						if (!clazz.subclasses) return MSG.SpellDataCheck += `Subclass class has no known subclasses: ${JSON.stringify(sc)} in spell "${sp.name}" in file "${f}"\n`;
 
 						const isValidSubclass = clazz.subclasses.some(it => it.name === sc.subclass.name && it.source === sc.subclass.source);

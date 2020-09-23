@@ -1717,7 +1717,8 @@
 						}
 					],
 					"overwrite": {
-						"ability": true
+						"ability": true,
+						"traitTags": true
 					}
 				},
 				{
@@ -1828,7 +1829,8 @@
 						}
 					],
 					"overwrite": {
-						"ability": true
+						"ability": true,
+						"traitTags": true
 					}
 				}
 			]
@@ -5441,6 +5443,38 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"name": "Goliath",
+			"source": "IDRotF",
+			"_copy": {
+				"name": "Goliath",
+				"source": "VGM",
+				"_mod": {
+					"entries": [
+						{
+							"mode": "replaceArr",
+							"replace": "Mountain Born",
+							"items": {
+								"name": "Mountain Born",
+								"type": "entries",
+								"entries": [
+									"You have resistance to cold damage. You're also acclimated to high altitude, including elevations above 20,000 feet."
+								]
+							}
+						},
+						{
+							"mode": "removeArr",
+							"names": "Alignment"
+						}
+					]
+				}
+			},
+			"traitTags": [
+				"Skill Proficiency",
+				"Powerful Build",
+				"Damage Resistance"
 			]
 		},
 		{
@@ -13223,7 +13257,119 @@
 					]
 				},
 				{
-					"name": "Variant",
+					"name": "Variant; Devil's Tongue",
+					"source": "SCAG",
+					"page": 118,
+					"ability": [
+						{
+							"int": 1,
+							"choose": {
+								"from": [
+									"dex",
+									"cha"
+								],
+								"count": 1,
+								"amount": 2
+							}
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"vicious mockery"
+								],
+								"3": [
+									"charm person"
+								],
+								"5": [
+									"enthrall"
+								]
+							},
+							"ability": "cha"
+						}
+					],
+					"entries": [
+						{
+							"name": "Appearance",
+							"entries": [
+								"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose {@dice 1d4+1} of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone."
+							],
+							"type": "entries"
+						},
+						{
+							"type": "entries",
+							"name": "Devil's Tongue",
+							"entries": [
+								"You know the {@spell vicious mockery} cantrip. When your reach 3rd level, you can cast the {@spell charm person} spell as a 2nd-level spell once with this trait. When you reach 5th level, you can cast the {@spell enthrall} spell once with this trait. You must finish a long rest to cast these spells once again with this trait. Charisma is your spellcasting ability for them. This trait replaces the Infernal Legacy trait."
+							],
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
+						}
+					],
+					"overwrite": {
+						"ability": true
+					}
+				},
+				{
+					"name": "Variant; Hellfire",
+					"source": "SCAG",
+					"page": 118,
+					"ability": [
+						{
+							"int": 1,
+							"choose": {
+								"from": [
+									"dex",
+									"cha"
+								],
+								"count": 1,
+								"amount": 2
+							}
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": [
+									"burning hands"
+								],
+								"5": [
+									"darkness"
+								]
+							},
+							"ability": "cha"
+						}
+					],
+					"entries": [
+						{
+							"name": "Appearance",
+							"entries": [
+								"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose {@dice 1d4+1} of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone."
+							],
+							"type": "entries"
+						},
+						{
+							"type": "entries",
+							"name": "Hellfire",
+							"entries": [
+								"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell burning hands} spell once per day as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
+							],
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
+						}
+					],
+					"overwrite": {
+						"ability": true
+					}
+				},
+				{
+					"name": "Variant; Infernal Legacy",
 					"source": "SCAG",
 					"page": 118,
 					"ability": [
@@ -13253,76 +13399,60 @@
 								]
 							},
 							"ability": "cha"
-						},
-						{
-							"innate": {
-								"1": [
-									"vicious mockery"
-								],
-								"3": [
-									"charm person"
-								],
-								"5": [
-									"enthrall"
-								]
-							},
-							"ability": "cha"
-						},
-						{
-							"innate": {
-								"1": [
-									"thaumaturgy"
-								],
-								"3": [
-									"burning hands"
-								],
-								"5": [
-									"darkness"
-								]
-							},
-							"ability": "cha"
 						}
 					],
 					"entries": [
 						{
 							"name": "Appearance",
 							"entries": [
-								"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose {@dice 1d4+1} of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone"
+								"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose {@dice 1d4+1} of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone."
+							],
+							"type": "entries"
+						}
+					],
+					"overwrite": {
+						"ability": true
+					}
+				},
+				{
+					"name": "Variant; Winged",
+					"source": "SCAG",
+					"page": 118,
+					"speed": {
+						"walk": 30,
+						"fly": 30
+					},
+					"ability": [
+						{
+							"int": 1,
+							"choose": {
+								"from": [
+									"dex",
+									"cha"
+								],
+								"count": 1,
+								"amount": 2
+							}
+						}
+					],
+					"traitTags": [
+						"Damage Resistance",
+						"Uncommon Race"
+					],
+					"additionalSpells": null,
+					"entries": [
+						{
+							"name": "Appearance",
+							"entries": [
+								"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose {@dice 1d4+1} of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone."
 							],
 							"type": "entries"
 						},
 						{
-							"type": "inset",
-							"name": "Variant Feature (Choose 1)",
+							"type": "entries",
+							"name": "Winged",
 							"entries": [
-								{
-									"name": "Infernal Legacy (PHB)",
-									"entries": [
-										"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell hellish rebuke} spell as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-									],
-									"type": "entries"
-								},
-								{
-									"name": "Devil's Tongue",
-									"entries": [
-										"You know the {@spell vicious mockery} cantrip. When your reach 3rd level, you can cast the {@spell charm person} spell as a 2nd-level spell once with this trait. When you reach 5th level, you can cast the {@spell enthrall} spell once with this trait. You must finish a long rest to cast these spells once again with this trait. Charisma is your spellcasting ability for them. This trait replaces the Infernal Legacy trait."
-									],
-									"type": "entries"
-								},
-								{
-									"name": "Hellfire",
-									"entries": [
-										"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell burning hands} spell once per day as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-									],
-									"type": "entries"
-								},
-								{
-									"name": "Winged",
-									"entries": [
-										"You have bat-like wings sprouting from your shoulder blades. You have a flying speed of 30 feet while you aren't wearing heavy armor."
-									],
-									"type": "entries"
-								}
+								"You have bat-like wings sprouting from your shoulder blades. You have a flying speed of 30 feet while you aren't wearing heavy armor."
 							],
 							"data": {
 								"overwrite": "Infernal Legacy"
@@ -13330,7 +13460,8 @@
 						}
 					],
 					"overwrite": {
-						"ability": true
+						"ability": true,
+						"traitTags": true
 					}
 				},
 				{

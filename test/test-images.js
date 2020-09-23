@@ -87,7 +87,10 @@ if (fs.existsSync("./img")) {
 	});
 	existing.forEach((img) => {
 		delete expectedFromHashToken[img];
-		if (!expected.has(img)) results.push(`[   EXTRA] ${img}`);
+		if (!expected.has(img)) {
+			// fs.unlinkSync(`./img/${img}`);
+			results.push(`[   EXTRA] ${img}`);
+		}
 	});
 
 	Object.keys(expectedDirs).forEach(k => results.push(`Directory ${k} doesn't exist!`));

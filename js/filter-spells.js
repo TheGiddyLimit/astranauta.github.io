@@ -288,7 +288,7 @@ class PageFilterSpells extends PageFilter {
 			itemSortFn: null
 		});
 		const checkFilter = new Filter({
-			header: "Opposed Ability Check",
+			header: "Ability Check",
 			items: ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"],
 			displayFn: PageFilterSpells.getFilterAbilityCheck,
 			itemSortFn: null
@@ -456,7 +456,7 @@ class PageFilterSpells extends PageFilter {
 			s.conditionInflict,
 			s.spellAttack,
 			s.savingThrow,
-			s.opposedCheck,
+			s.abilityCheck,
 			s._fTimeType,
 			s._fDurationType,
 			s._fRangeType,
@@ -530,7 +530,7 @@ class ModalFilterSpells extends ModalFilter {
 		const concentration = spell._isConc ? "×" : "";
 		const range = Parser.spRangeToFull(spell.range);
 
-		eleLi.innerHTML = `<label class="lst--border unselectable">
+		eleLi.innerHTML = `<label class="lst--border no-select">
 			<div class="lst__wrp-cells">
 				<div class="col-1 pl-0 flex-vh-center"><input type="checkbox" class="no-events"></div>
 				<div class="bold col-3">${spell.name}</div>

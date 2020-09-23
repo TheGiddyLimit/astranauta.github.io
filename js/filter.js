@@ -38,7 +38,7 @@ class PageFilter {
 
 class ModalFilter {
 	static _$getFilterColumnHeaders (btnMeta) {
-		return btnMeta.map((it, i) => $(`<button class="col-${it.width} ${i === 0 ? "pl-0" : i === btnMeta.length ? "pr-0" : ""} sort btn btn-default btn-xs" data-sort="${it.sort}" ${it.title ? `title="${it.title}"` : ""}>${it.text} <span class="caret_wrp"></span></button>`));
+		return btnMeta.map((it, i) => $(`<button class="col-${it.width} ${i === 0 ? "pl-0" : i === btnMeta.length ? "pr-0" : ""} ${it.disabled ? "" : "sort"} btn btn-default btn-xs" ${it.disabled ? "" : `data-sort="${it.sort}"`} ${it.title ? `title="${it.title}"` : ""} ${it.disabled ? "disabled" : ""}>${it.text}${it.disabled ? "" : ` <span class="caret_wrp"></span>`}</button>`));
 	}
 
 	/**

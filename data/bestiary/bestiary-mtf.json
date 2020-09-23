@@ -3071,7 +3071,7 @@
 				{
 					"name": "Summon Specters (Recharges after a Short or Long Rest)",
 					"entries": [
-						"As a bonus action, the cadaver collector calls up the enslaved spirits of those it has slain; {@dice 1d6} specters (without Sunlight Sensitivity) arise in unoccupied spaces within 15 feet of the cadaver collector. The specters act right after the cadaver collector on the same initiative count and fight until they're destroyed. They disappear when the cadaver collector is destroyed."
+						"As a bonus action, the cadaver collector calls up the enslaved spirits of those it has slain; {@dice 1d6} {@creature specter||specters} (without Sunlight Sensitivity) arise in unoccupied spaces within 15 feet of the cadaver collector. The specters act right after the cadaver collector on the same initiative count and fight until they're destroyed. They disappear when the cadaver collector is destroyed."
 					]
 				}
 			],
@@ -6321,6 +6321,11 @@
 			"name": "Duergar Hammerer",
 			"source": "MTF",
 			"page": 188,
+			"otherSources": [
+				{
+					"source": "IDRotF"
+				}
+			],
 			"size": "M",
 			"type": "construct",
 			"alignment": [
@@ -6567,6 +6572,11 @@
 			"name": "Duergar Mind Master",
 			"source": "MTF",
 			"page": 189,
+			"otherSources": [
+				{
+					"source": "IDRotF"
+				}
+			],
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -14717,8 +14727,8 @@
 				"wis": "+13"
 			},
 			"skill": {
-				"arcana": "+12",
-				"perception": "+12"
+				"arcana": "+13",
+				"perception": "+13"
 			},
 			"senses": [
 				"truesight 120 ft."
@@ -16775,11 +16785,11 @@
 			"cha": 13,
 			"save": {
 				"dex": "+7",
-				"wis": "+7",
+				"wis": "+6",
 				"cha": "+5"
 			},
 			"skill": {
-				"perception": "+7"
+				"perception": "+6"
 			},
 			"senses": [
 				"darkvision 60 ft."

@@ -796,6 +796,8 @@ class IndexableFileRaces extends IndexableFile {
 		// If there are subraces, add the base race
 		if (it.subraces) {
 			const r = MiscUtil.copy(it);
+			const isAnyNoName = it.subraces.some(it => !it.name);
+			if (isAnyNoName) r.name = `${r.name} (Base)`;
 			out.push({
 				n: r.name,
 				s: indexer.getMetaId("s", r.source),
@@ -1132,6 +1134,25 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileVehicles(),
 	new IndexableFileActions(),
 	new IndexableFileLanguages()
+];
+
+class IndexableSpecial {
+	pGetIndex () { throw new Error(`Unimplemented!`); }
+}
+
+class IndexableSpecialPages extends IndexableSpecial {
+	pGetIndex () {
+		return Object.entries(UrlUtil.PG_TO_NAME)
+			.map(([page, name]) => ({
+				n: name,
+				c: Parser.CAT_ID_PAGE,
+				u: page
+			}))
+	}
+}
+
+Omnidexer.TO_INDEX__SPECIAL = [
+	new IndexableSpecialPages()
 ];
 
 if (typeof module !== "undefined") {

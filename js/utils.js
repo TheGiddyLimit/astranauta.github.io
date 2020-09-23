@@ -6,7 +6,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.110.1"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.112.2"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -42,7 +42,9 @@ VeCt = {
 
 	DUR_INLINE_NOTIFY: 500,
 
-	PG_NONE: "NO_PAGE"
+	PG_NONE: "NO_PAGE",
+
+	SYM_UI_SKIP: Symbol("uiSkip")
 };
 
 // STRING ==============================================================================================================
@@ -61,29 +63,22 @@ String.prototype.lowercaseFirst = String.prototype.lowercaseFirst || function ()
 };
 
 String.prototype.toTitleCase = String.prototype.toTitleCase || function () {
-	let str;
-	str = this.replace(/([^\W_]+[^\s-/]*) */g, function (txt) {
-		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-	});
+	let str = this.replace(/([^\W_]+[^\s-/]*) */g, m0 => m0.charAt(0).toUpperCase() + m0.substr(1).toLowerCase());
 
-	if (!StrUtil._TITLE_LOWER_WORDS_RE) {
-		// Require space surrounded, as title-case requires a full word on either side
-		StrUtil._TITLE_LOWER_WORDS_RE = StrUtil.TITLE_LOWER_WORDS.map(it => new RegExp(`\\s${it}\\s`, "gi"));
-	}
+	// Require space surrounded, as title-case requires a full word on either side
+	StrUtil._TITLE_LOWER_WORDS_RE = StrUtil._TITLE_LOWER_WORDS_RE = StrUtil.TITLE_LOWER_WORDS.map(it => new RegExp(`\\s${it}\\s`, "gi"));
+	StrUtil._TITLE_UPPER_WORDS_RE = StrUtil._TITLE_UPPER_WORDS_RE = StrUtil.TITLE_UPPER_WORDS.map(it => new RegExp(`\\b${it}\\b`, "g"));
 
-	for (let i = 0; i < StrUtil.TITLE_LOWER_WORDS.length; i++) {
+	const len = StrUtil.TITLE_LOWER_WORDS.length;
+	for (let i = 0; i < len; i++) {
 		str = str.replace(
 			StrUtil._TITLE_LOWER_WORDS_RE[i],
-			(txt) => {
-				return txt.toLowerCase();
-			});
+			txt => txt.toLowerCase()
+		);
 	}
 
-	if (!StrUtil._TITLE_UPPER_WORDS_RE) {
-		StrUtil._TITLE_UPPER_WORDS_RE = StrUtil.TITLE_UPPER_WORDS.map(it => new RegExp(`\\b${it}\\b`, "g"));
-	}
-
-	for (let i = 0; i < StrUtil.TITLE_UPPER_WORDS.length; i++) {
+	const len1 = StrUtil.TITLE_UPPER_WORDS.length;
+	for (let i = 0; i < len1; i++) {
 		str = str.replace(
 			StrUtil._TITLE_UPPER_WORDS_RE[i],
 			StrUtil.TITLE_UPPER_WORDS[i].toUpperCase()
@@ -226,7 +221,7 @@ StrUtil = {
 	// Certain minor words should be left lowercase unless they are the first or last words in the string
 	TITLE_LOWER_WORDS: ["a", "an", "the", "and", "but", "or", "for", "nor", "as", "at", "by", "for", "from", "in", "into", "near", "of", "on", "onto", "to", "with"],
 	// Certain words such as initialisms or acronyms should be left uppercase
-	TITLE_UPPER_WORDS: ["Id", "Tv", "Dm"],
+	TITLE_UPPER_WORDS: ["Id", "Tv", "Dm", "Ok"],
 
 	padNumber: (n, len, padder) => {
 		return String(n).padStart(len, padder);
@@ -1578,7 +1573,7 @@ UrlUtil.PG_OPT_FEATURES = "optionalfeatures.html";
 UrlUtil.PG_PSIONICS = "psionics.html";
 UrlUtil.PG_RACES = "races.html";
 UrlUtil.PG_REWARDS = "rewards.html";
-UrlUtil.PG_VARIATNRULES = "variantrules.html";
+UrlUtil.PG_VARIANTRULES = "variantrules.html";
 UrlUtil.PG_ADVENTURE = "adventure.html";
 UrlUtil.PG_ADVENTURES = "adventures.html";
 UrlUtil.PG_BOOK = "book.html";
@@ -1596,6 +1591,15 @@ UrlUtil.PG_VEHICLES = "vehicles.html";
 UrlUtil.PG_CHARACTERS = "characters.html";
 UrlUtil.PG_ACTIONS = "actions.html";
 UrlUtil.PG_LANGUAGES = "languages.html";
+UrlUtil.PG_STATGEN = "statgen.html";
+UrlUtil.PG_LIFEGEN = "lifegen.html";
+UrlUtil.PG_NAMES = "names.html";
+UrlUtil.PG_DM_SCREEN = "dmscreen.html";
+UrlUtil.PG_CR_CALCULATOR = "crcalculator.html";
+UrlUtil.PG_ENCOUNTERGEN = "encountergen.html";
+UrlUtil.PG_LOOTGEN = "encountergen.html";
+UrlUtil.PG_TEXT_CONVERTER = "converter.html";
+UrlUtil.PG_CHANGELOG = "changelog.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -1609,7 +1613,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OPT_FEATURES] = (it) => UrlUtil.encodeFor
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PSIONICS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_REWARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIATNRULES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIANTRULES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE] = (it) => UrlUtil.encodeForHash(it.id);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BOOK] = (it) => UrlUtil.encodeForHash(it.id);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash([it.name, it.pantheon, it.source]);
@@ -1621,9 +1625,54 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 // region Fake pages (props)
+UrlUtil.URL_TO_HASH_BUILDER["subclass"] = it => {
+	const hashParts = [
+		UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: it.className, source: it.classSource}),
+		UrlUtil.packSubHash("state", [`${UrlUtil.getStateKeySubclass(it)}=${UrlUtil.mini.compress(true)}`])
+	].filter(Boolean);
+	return Hist.util.getCleanHash(hashParts.join(HASH_PART_SEP));
+};
 UrlUtil.URL_TO_HASH_BUILDER["classFeature"] = (it) => UrlUtil.encodeForHash([it.name, it.className, it.classSource, it.level, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"] = (it) => UrlUtil.encodeForHash([it.name, it.className, it.classSource, it.subclassShortName, it.subclassSource, it.level, it.source]);
 // endregion
+
+UrlUtil.PG_TO_NAME = {};
+UrlUtil.PG_TO_NAME[UrlUtil.PG_BESTIARY] = "Bestiary";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_SPELLS] = "Spells";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_BACKGROUNDS] = "Backgrounds";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_ITEMS] = "Items";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_CLASSES] = "Classes";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_CONDITIONS_DISEASES] = "Conditions & Diseases";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_FEATS] = "Feats";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_OPT_FEATURES] = "Other Options and Features";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_PSIONICS] = "Psionics";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_RACES] = "Races";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_REWARDS] = "Supernatural Gifts & Rewards";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_VARIANTRULES] = "Optional, Variant, and Expanded Rules";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_ADVENTURES] = "Adventures";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_BOOKS] = "Books";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_DEITIES] = "Deities";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_CULTS_BOONS] = "Cults & Supernatural Boons";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_OBJECTS] = "Objects";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_TRAPS_HAZARDS] = "Traps & Hazards";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_QUICKREF] = "Quick Reference";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_MANAGE_BREW] = "Homebrew Manager";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_MAKE_BREW] = "Homebrew Builder";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_DEMO_RENDER] = "Renderer Demo";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_TABLES] = "Tables";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_VEHICLES] = "Vehicles";
+// UrlUtil.PG_TO_NAME[UrlUtil.PG_CHARACTERS] = "";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_ACTIONS] = "Actions";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_LANGUAGES] = "Languages";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_STATGEN] = "Stat Generator";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_LIFEGEN] = "This Is Your Life";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_NAMES] = "Names";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_DM_SCREEN] = "DM Screen";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_CR_CALCULATOR] = "CR Calculator";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_ENCOUNTERGEN] = "Encounter Generator";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_LOOTGEN] = "Loot Generator";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_TEXT_CONVERTER] = "Text Converter";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_CHANGELOG] = "Changelog";
 
 UrlUtil.CAT_TO_PAGE = {};
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURE] = UrlUtil.PG_BESTIARY;
@@ -1646,7 +1695,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FIGHTING_STYLE] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PSIONIC] = UrlUtil.PG_PSIONICS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RACE] = UrlUtil.PG_RACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OTHER_REWARD] = UrlUtil.PG_REWARDS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = UrlUtil.PG_VARIATNRULES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = UrlUtil.PG_VARIANTRULES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ADVENTURE] = UrlUtil.PG_ADVENTURE;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DEITY] = UrlUtil.PG_DEITIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OBJECT] = UrlUtil.PG_OBJECTS;
@@ -1671,6 +1720,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_MANEUVER] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ACTION] = UrlUtil.PG_ACTIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOOK] = UrlUtil.PG_BOOK;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PAGE] = null;
 
 UrlUtil.CAT_TO_HOVER_PAGE = {};
 UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_CLASS_FEATURE] = "classfeature";
@@ -1975,6 +2025,7 @@ DataUtil = {
 		const t = new Blob([data], {type: "text/json"});
 		a.href = URL.createObjectURL(t);
 		a.download = `${filename}.json`;
+		a.target = "_blank";
 		document.body.appendChild(a);
 		a.click();
 		document.body.removeChild(a);
@@ -2744,7 +2795,7 @@ DataUtil = {
 		_pLoadingRawJson: null,
 		_loadedJson: null,
 		_loadedRawJson: null,
-		loadJSON: async function () {
+		async loadJSON () {
 			if (DataUtil.class._loadedJson) return DataUtil.class._loadedJson;
 
 			DataUtil.class._pLoadingJson = (async () => {
@@ -3120,11 +3171,28 @@ RollerUtil = {
 		$(`#filter-search-group`).find(`#reset`).before($btnRoll);
 	},
 
-	isRollCol (colLabel) {
+	getColRollType (colLabel) {
 		if (typeof colLabel !== "string") return false;
 		if (/^{@dice [^}]+}$/.test(colLabel.trim())) return true;
 		colLabel = Renderer.stripTags(colLabel);
-		return !!Renderer.dice.lang.getTree3(colLabel);
+
+		if (Renderer.dice.lang.getTree3(colLabel)) return RollerUtil.ROLL_COL_STANDARD;
+
+		// Remove trailing variables, if they exist
+		colLabel = colLabel.replace(RollerUtil._REGEX_ROLLABLE_COL_LABEL, "$1");
+		if (Renderer.dice.lang.getTree3(colLabel)) return RollerUtil.ROLL_COL_VARIABLE;
+
+		return 0;
+	},
+
+	getFullRollCol (lbl) {
+		if (lbl.includes("@dice")) return lbl;
+
+		// Try to split off any trailing variables, e.g. `d100 + Level` -> `d100`, `Level`
+		const m = RollerUtil._REGEX_ROLLABLE_COL_LABEL.exec(lbl);
+		if (!m) return lbl;
+
+		return `{@dice ${m[1]}${m[2]}#$prompt_number:title=Enter a ${m[3].trim()}$#|${lbl}}`;
 	},
 
 	_DICE_REGEX_STR: "((([1-9]\\d*)?d([1-9]\\d*)(\\s*?[-+×x*÷/]\\s*?(\\d,\\d|\\d)+(\\.\\d+)?)?))+?"
@@ -3132,6 +3200,10 @@ RollerUtil = {
 RollerUtil.DICE_REGEX = new RegExp(RollerUtil._DICE_REGEX_STR, "g");
 RollerUtil.REGEX_DAMAGE_DICE = /(\d+)( \((?:{@dice |{@damage ))([-+0-9d ]*)(}\) [a-z]+( \([-a-zA-Z0-9 ]+\))?( or [a-z]+( \([-a-zA-Z0-9 ]+\))?)? damage)/gi;
 RollerUtil.REGEX_DAMAGE_FLAT = /(Hit: |{@h})([0-9]+)( [a-z]+( \([-a-zA-Z0-9 ]+\))?( or [a-z]+( \([-a-zA-Z0-9 ]+\))?)? damage)/gi;
+RollerUtil._REGEX_ROLLABLE_COL_LABEL = /^(.*?\d)(\s*[-+/*^×÷]\s*)([a-zA-Z0-9 ]+)$/;
+RollerUtil.ROLL_COL_NONE = 0;
+RollerUtil.ROLL_COL_STANDARD = 1;
+RollerUtil.ROLL_COL_VARIABLE = 2;
 
 // STORAGE =============================================================================================================
 // Dependency: localforage
@@ -3352,6 +3424,8 @@ SessionStorageUtil = {
 
 // HOMEBREW ============================================================================================================
 BrewUtil = {
+	_PAGE: null, // Allow the current page to be forcibly specified externally
+
 	homebrew: null,
 	homebrewMeta: null,
 	_lists: null,
@@ -3419,17 +3493,25 @@ BrewUtil = {
 			const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${VeCt.JSON_HOMEBREW_INDEX}`);
 			// auto-load from `homebrew/`, for custom versions of the site
 			if (data.toImport.length) {
-				const page = UrlUtil.getCurrentPage();
+				const page = BrewUtil._PAGE || UrlUtil.getCurrentPage();
 				const allData = await Promise.all(data.toImport.map(it => DataUtil.loadJSON(`homebrew/${it}`)));
 				await Promise.all(allData.map(d => callbackFn(d, page)));
 			}
 		}
 	},
 
-	async _pRenderBrewScreen ($appendTo, isModal, cbGetBrewOnClose) {
-		const page = UrlUtil.getCurrentPage();
+	/**
+	 * @param $appendTo Parent element
+	 * @param [opts] Options object
+	 * @param [opts.isModal]
+	 * @param [opts.isShowAll]
+	 */
+	async _pRenderBrewScreen ($appendTo, opts) {
+		opts = opts || {};
 
-		const $brewList = $(`<div class="manbrew__current_brew flex-col h-100"></div>`);
+		const page = BrewUtil._PAGE || UrlUtil.getCurrentPage();
+
+		const $brewList = $(`<div class="manbrew__current_brew flex-col h-100 mt-1"></div>`);
 
 		await BrewUtil._pRenderBrewScreen_pRefreshBrewList($brewList);
 
@@ -3477,188 +3559,7 @@ BrewUtil = {
 			});
 
 		const $btnGet = $(`<button class="btn btn-info btn-sm">Get Homebrew</button>`)
-			.click(async () => {
-				const $btnAll = $(`<button class="btn btn-default btn-xs manbrew__load_all" disabled title="(Excluding samples)">Add All</button>`);
-
-				const $ulRows = $$`<ul class="list"><li><div class="lst__wrp-cells"><span style="font-style: italic;">Loading...</span></div></li></ul>`;
-
-				const $iptSearch = $(`<input type="search" class="search manbrew__search form-control w-100" placeholder="Find homebrew...">`)
-					.keydown(evt => {
-						switch (evt.which) {
-							case 13: { // enter
-								return $ulRows.find(`li`).first().find(`.manbrew__load_from_url`).click()
-							}
-							case 40: { // down
-								const firstItem = list.visibleItems[0];
-								if (firstItem) firstItem.ele.focus();
-							}
-						}
-					});
-
-				const {$modalInner} = UiUtil.getShowModal({
-					isHeight100: true,
-					title: `Get Homebrew`,
-					cbClose: () => {
-						if (cbGetBrewOnClose) cbGetBrewOnClose();
-					},
-					isUncappedHeight: true,
-					isWidth100: true,
-					overlayColor: "transparent"
-				});
-
-				$$($modalInner)`
-					<p><i>A list of homebrew available in the public repository. Click a name to load the homebrew, or view the source directly.<br>
-					Contributions are welcome; see the <a href="https://github.com/TheGiddyLimit/homebrew/blob/master/README.md" target="_blank" rel="noopener noreferrer">README</a>, or stop by our <a href="https://discord.gg/nGvRCDs" target="_blank" rel="noopener noreferrer">Discord</a>.</i></p>
-					<hr class="manbrew__hr">
-					<div class="manbrew__load_all_wrp">${$btnAll}</div>
-					${$iptSearch}
-					<div class="filtertools manbrew__filtertools sortlabel btn-group input-group input-group--bottom flex no-shrink">
-						<button class="col-4 sort btn btn-default btn-xs" data-sort="name">Name</button>
-						<button class="col-3 sort btn btn-default btn-xs" data-sort="author">Author</button>
-						<button class="col-1-2 sort btn btn-default btn-xs" data-sort="category">Category</button>
-						<button class="col-1-4 sort btn btn-default btn-xs" data-sort="modified">Modified</button>
-						<button class="col-1-4 sort btn btn-default btn-xs" data-sort="added">Added</button>
-						<button class="sort btn btn-default btn-xs" disabled>Source</button>
-					</div>
-					${$ulRows}`;
-
-				// populate list
-				let dataList;
-				function fnSort (a, b, o) {
-					a = dataList[a.ix];
-					b = dataList[b.ix];
-
-					if (o.sortBy === "name") return byName();
-					if (o.sortBy === "author") return orFallback(SortUtil.ascSortLower, "_brewAuthor");
-					if (o.sortBy === "category") return orFallback(SortUtil.ascSortLower, "_brewCat");
-					if (o.sortBy === "added") return orFallback(SortUtil.ascSort, "_brewAdded");
-					if (o.sortBy === "modified") return orFallback(SortUtil.ascSort, "_brewModified");
-
-					function byName () { return SortUtil.ascSortLower(a._brewName, b._brewName); }
-					function orFallback (func, prop) { return func(a[prop], b[prop]) || byName(); }
-				}
-
-				const urlRoot = await StorageUtil.pGet(`HOMEBREW_CUSTOM_REPO_URL`);
-				const [timestamps, propIndex] = await Promise.all([
-					DataUtil.brew.pLoadTimestamps(urlRoot),
-					DataUtil.brew.pLoadPropIndex(urlRoot)
-				]);
-				const props = BrewUtil.getPageProps();
-
-				const seenPaths = new Set();
-
-				dataList = [];
-				props.forEach(prop => {
-					Object.entries(propIndex[prop] || {})
-						.forEach(([path, dir]) => {
-							if (seenPaths.has(path)) return;
-							seenPaths.add(path);
-							dataList.push({
-								download_url: DataUtil.brew.getFileUrl(path, urlRoot),
-								path,
-								name: path.split("/").slice(1).join("/"),
-								_cat: BrewUtil.dirToProp(dir)
-							})
-						})
-				});
-
-				dataList.forEach(it => {
-					const cleanFilename = it.name.trim().replace(/\.json$/, "");
-					const spl = cleanFilename.split(";").map(it => it.trim());
-					if (spl.length > 1) {
-						it._brewName = spl[1];
-						it._brewAuthor = spl[0];
-					} else {
-						it._brewName = cleanFilename;
-						it._brewAuthor = "";
-					}
-				});
-				dataList.sort((a, b) => SortUtil.ascSortLower(a._brewName, b._brewName));
-
-				const list = new List({
-					$iptSearch,
-					$wrpList: $ulRows,
-					fnSort,
-					isUseJquery: true
-				});
-				SortUtil.initBtnSortHandlers($modalInner.find(".manbrew__filtertools"), list);
-
-				dataList.forEach((it, i) => {
-					it._brewAdded = (timestamps[it.path] || {}).a || 0;
-					it._brewModified = (timestamps[it.path] || {}).m || 0;
-					it._brewCat = BrewUtil._pRenderBrewScreen_getDisplayCat(BrewUtil.dirToProp(it._cat));
-
-					const timestampAdded = it._brewAdded ? MiscUtil.dateToStr(new Date(it._brewAdded * 1000), true) : "";
-					const timestampModified = it._brewModified ? MiscUtil.dateToStr(new Date(it._brewModified * 1000), true) : "";
-
-					const $btnAdd = $(`<span class="col-4 bold manbrew__load_from_url pl-0 clickable"></span>`)
-						.text(it._brewName)
-						.click(() => BrewUtil.addBrewRemote($btnAdd, it.download_url || "", true));
-
-					const $li = $$`<li class="not-clickable lst--border lst__row--focusable" tabindex="1">
-						<div class="lst__wrp-cells">
-							${$btnAdd}
-							<span class="col-3">${it._brewAuthor}</span>
-							<span class="col-1-2 text-center">${it._brewCat}</span>
-							<span class="col-1-4 text-center">${timestampModified}</span>
-							<span class="col-1-4 text-center">${timestampAdded}</span>
-							<span class="col-1 manbrew__source text-center pr-0"><a href="${it.download_url}" target="_blank" rel="noopener noreferrer">View Raw</a></span>
-						</div>
-					</li>`;
-
-					$li.keydown(evt => {
-						switch (evt.which) {
-							case 13: { // enter
-								return $btnAdd.click()
-							}
-							case 38: { // up
-								const ixCur = list.visibleItems.indexOf(listItem);
-								if (~ixCur) {
-									const prevItem = list.visibleItems[ixCur - 1];
-									if (prevItem) prevItem.ele.focus();
-								} else {
-									const firstItem = list.visibleItems[0];
-									if (firstItem) firstItem.ele.focus();
-								}
-								return;
-							}
-							case 40: { // down
-								const ixCur = list.visibleItems.indexOf(listItem);
-								if (~ixCur) {
-									const nxtItem = list.visibleItems[ixCur + 1];
-									if (nxtItem) nxtItem.ele.focus();
-								} else {
-									const lastItem = list.visibleItems.last();
-									if (lastItem) lastItem.ele.focus();
-								}
-							}
-						}
-					});
-
-					const listItem = new ListItem(
-						i,
-						$li,
-						it._brewName,
-						{
-							author: it._brewAuthor,
-							category: it._brewCat,
-							added: timestampAdded,
-							modified: timestampAdded
-						},
-						{
-							$btnAdd,
-							isSample: it._brewAuthor.toLowerCase().startsWith("sample -")
-						}
-					);
-					list.addItem(listItem);
-				});
-
-				list.init();
-
-				$btnAll.prop("disabled", false).click(() => list.visibleItems.filter(it => !it.data.isSample).forEach(it => it.data.$btnAdd.click()));
-
-				$iptSearch.focus();
-			});
+			.click(() => BrewUtil._pHandleClickBtnGet(opts));
 
 		const $btnCustomUrl = $(`<button class="btn btn-info btn-sm px-2" title="Set Custom Repository URL"><span class="glyphicon glyphicon-cog"></span></button>`)
 			.click(async () => {
@@ -3673,7 +3574,7 @@ BrewUtil = {
 				else await StorageUtil.pSet(`HOMEBREW_CUSTOM_REPO_URL`, nxtUrl);
 			});
 
-		const $btnDelAll = isModal ? null : BrewUtil._$getBtnDeleteAll();
+		const $btnDelAll = opts.isModal ? null : BrewUtil._$getBtnDeleteAll();
 
 		const $wrpBtns = $$`<div class="flex-vh-center no-shrink mobile__flex-col">
 			<div class="flex-v-center mobile__mb-2">
@@ -3690,18 +3591,14 @@ BrewUtil = {
 			</div>
 		</div>`;
 
-		if (isModal) {
+		if (opts.isModal) {
 			$$($appendTo)`
-			<hr class="manbrew__hr no-shrink">
 			${$brewList}
-			<div class="mb-3 text-center no-shrink">${$wrpBtns}</div>
-		`
+			${$wrpBtns.addClass("mb-2")}`
 		} else {
 			$$($appendTo)`
-			<div class="mb-3 text-center no-shrink">${$wrpBtns}</div>
-			<hr class="manbrew__hr no-shrink">
-			${$brewList}
-		`
+			${$wrpBtns.addClass("mb-3")}
+			${$brewList}`
 		}
 
 		BrewUtil.addBrewRemote = async ($ele, jsonUrl, doUnescape) => {
@@ -3718,6 +3615,201 @@ BrewUtil = {
 				setTimeout(() => $ele.html(cached), VeCt.DUR_INLINE_NOTIFY);
 			}
 		};
+	},
+
+	async _pHandleClickBtnGet (opts) {
+		const $btnToggleDisplayNonPageBrews = opts.isModal ? $(`<button class="btn btn-default btn-xs mr-2 ${opts.isShowAll ? "" : "active"}" disabled title="Hides homebrews which do not contain content relevant to this page.">Hide Unrelated</button>`) : null;
+
+		const $btnAll = $(`<button class="btn btn-default btn-xs" disabled title="(Excluding samples)">Add All</button>`);
+
+		const $ulRows = $$`<ul class="list"><li><div class="lst__wrp-cells"><span style="font-style: italic;">Loading...</span></div></li></ul>`;
+
+		const $iptSearch = $(`<input type="search" class="search manbrew__search form-control w-100" placeholder="Find homebrew...">`)
+			.keydown(evt => {
+				switch (evt.which) {
+					case 13: { // enter
+						return $ulRows.find(`li`).first().find(`.manbrew__load_from_url`).click()
+					}
+					case 40: { // down
+						const firstItem = list.visibleItems[0];
+						if (firstItem) firstItem.ele.focus();
+					}
+				}
+			});
+
+		const {$modalInner, doClose} = UiUtil.getShowModal({
+			isHeight100: true,
+			title: `Get Homebrew`,
+			isUncappedHeight: true,
+			isWidth100: true,
+			overlayColor: "transparent"
+		});
+
+		$$($modalInner)`
+		<div class="mt-1"><i>A list of homebrew available in the public repository. Click a name to load the homebrew, or view the source directly.<br>
+		Contributions are welcome; see the <a href="https://github.com/TheGiddyLimit/homebrew/blob/master/README.md" target="_blank" rel="noopener noreferrer">README</a>, or stop by our <a href="https://discord.gg/nGvRCDs" target="_blank" rel="noopener noreferrer">Discord</a>.</i></div>
+		<hr class="hr-1">
+		<div class="flex-h-right mb-1">${$btnToggleDisplayNonPageBrews}${$btnAll}</div>
+		${$iptSearch}
+		<div class="filtertools manbrew__filtertools sortlabel btn-group input-group input-group--bottom flex no-shrink">
+			<button class="col-4 sort btn btn-default btn-xs" data-sort="name">Name</button>
+			<button class="col-3 sort btn btn-default btn-xs" data-sort="author">Author</button>
+			<button class="col-1-2 sort btn btn-default btn-xs" data-sort="category">Category</button>
+			<button class="col-1-4 sort btn btn-default btn-xs" data-sort="modified">Modified</button>
+			<button class="col-1-4 sort btn btn-default btn-xs" data-sort="added">Added</button>
+			<button class="sort btn btn-default btn-xs ve-grow" disabled>Source</button>
+		</div>
+		${$ulRows}`;
+
+		// populate list
+		let dataList;
+		function fnSort (a, b, o) {
+			a = dataList[a.ix];
+			b = dataList[b.ix];
+
+			if (o.sortBy === "name") return byName();
+			if (o.sortBy === "author") return orFallback(SortUtil.ascSortLower, "_brewAuthor");
+			if (o.sortBy === "category") return orFallback(SortUtil.ascSortLower, "_brewCat");
+			if (o.sortBy === "added") return orFallback(SortUtil.ascSort, "_brewAdded");
+			if (o.sortBy === "modified") return orFallback(SortUtil.ascSort, "_brewModified");
+
+			function byName () { return SortUtil.ascSortLower(a._brewName, b._brewName); }
+			function orFallback (func, prop) { return func(a[prop], b[prop]) || byName(); }
+		}
+
+		const urlRoot = await StorageUtil.pGet(`HOMEBREW_CUSTOM_REPO_URL`);
+		const [timestamps, propIndex] = await Promise.all([
+			DataUtil.brew.pLoadTimestamps(urlRoot),
+			DataUtil.brew.pLoadPropIndex(urlRoot)
+		]);
+		const props = opts.isShowAll ? BrewUtil.getPageProps(UrlUtil.PG_MANAGE_BREW) : BrewUtil.getPageProps();
+
+		const seenPaths = new Set();
+
+		dataList = [];
+		props.forEach(prop => {
+			Object.entries(propIndex[prop] || {})
+				.forEach(([path, dir]) => {
+					if (seenPaths.has(path)) return;
+					seenPaths.add(path);
+					dataList.push({
+						download_url: DataUtil.brew.getFileUrl(path, urlRoot),
+						path,
+						name: path.split("/").slice(1).join("/"),
+						_cat: BrewUtil.dirToProp(dir)
+					})
+				})
+		});
+
+		dataList.forEach(it => {
+			const cleanFilename = it.name.trim().replace(/\.json$/, "");
+			const spl = cleanFilename.split(";").map(it => it.trim());
+			if (spl.length > 1) {
+				it._brewName = spl[1];
+				it._brewAuthor = spl[0];
+			} else {
+				it._brewName = cleanFilename;
+				it._brewAuthor = "";
+			}
+		});
+		dataList.sort((a, b) => SortUtil.ascSortLower(a._brewName, b._brewName));
+
+		const list = new List({
+			$iptSearch,
+			$wrpList: $ulRows,
+			fnSort,
+			isUseJquery: true
+		});
+		SortUtil.initBtnSortHandlers($modalInner.find(".manbrew__filtertools"), list);
+
+		dataList.forEach((it, i) => {
+			it._brewAdded = (timestamps[it.path] || {}).a || 0;
+			it._brewModified = (timestamps[it.path] || {}).m || 0;
+			it._brewCat = BrewUtil._pRenderBrewScreen_getDisplayCat(BrewUtil.dirToProp(it._cat));
+
+			const timestampAdded = it._brewAdded ? MiscUtil.dateToStr(new Date(it._brewAdded * 1000), true) : "";
+			const timestampModified = it._brewModified ? MiscUtil.dateToStr(new Date(it._brewModified * 1000), true) : "";
+
+			const $btnAdd = $(`<span class="col-4 bold manbrew__load_from_url pl-0 clickable"></span>`)
+				.text(it._brewName)
+				.click(() => BrewUtil.addBrewRemote($btnAdd, it.download_url || "", true));
+
+			const $li = $$`<li class="not-clickable lst--border lst__row--focusable" tabindex="1">
+				<div class="lst__wrp-cells">
+					${$btnAdd}
+					<span class="col-3">${it._brewAuthor}</span>
+					<span class="col-1-2 text-center">${it._brewCat}</span>
+					<span class="col-1-4 text-center">${timestampModified}</span>
+					<span class="col-1-4 text-center">${timestampAdded}</span>
+					<span class="col-1 manbrew__source text-center pr-0"><a href="${it.download_url}" target="_blank" rel="noopener noreferrer">View Raw</a></span>
+				</div>
+			</li>`;
+
+			$li.keydown(evt => {
+				switch (evt.which) {
+					case 13: { // enter
+						return $btnAdd.click()
+					}
+					case 38: { // up
+						const ixCur = list.visibleItems.indexOf(listItem);
+						if (~ixCur) {
+							const prevItem = list.visibleItems[ixCur - 1];
+							if (prevItem) prevItem.ele.focus();
+						} else {
+							const firstItem = list.visibleItems[0];
+							if (firstItem) firstItem.ele.focus();
+						}
+						return;
+					}
+					case 40: { // down
+						const ixCur = list.visibleItems.indexOf(listItem);
+						if (~ixCur) {
+							const nxtItem = list.visibleItems[ixCur + 1];
+							if (nxtItem) nxtItem.ele.focus();
+						} else {
+							const lastItem = list.visibleItems.last();
+							if (lastItem) lastItem.ele.focus();
+						}
+					}
+				}
+			});
+
+			const listItem = new ListItem(
+				i,
+				$li,
+				it._brewName,
+				{
+					author: it._brewAuthor,
+					category: it._brewCat,
+					added: timestampAdded,
+					modified: timestampAdded
+				},
+				{
+					$btnAdd,
+					isSample: it._brewAuthor.toLowerCase().startsWith("sample -")
+				}
+			);
+			list.addItem(listItem);
+		});
+
+		list.init();
+
+		$btnAll.prop("disabled", false).click(() => list.visibleItems.filter(it => !it.data.isSample).forEach(it => it.data.$btnAdd.click()));
+
+		if ($btnToggleDisplayNonPageBrews) {
+			$btnToggleDisplayNonPageBrews
+				.prop("disabled", false)
+				.click(() => {
+					$btnToggleDisplayNonPageBrews.toggleClass("active");
+					doClose();
+					BrewUtil._pHandleClickBtnGet({
+						...opts,
+						isShowAll: !$btnToggleDisplayNonPageBrews.hasClass("active")
+					});
+				});
+		}
+
+		$iptSearch.focus();
 	},
 
 	_$getBtnDeleteAll (isModal) {
@@ -3852,7 +3944,7 @@ BrewUtil = {
 							const eleLi = document.createElement("li");
 							eleLi.className = "row px-0";
 
-							eleLi.innerHTML = `<label class="lst--border unselectable mb-0 flex-v-center">
+							eleLi.innerHTML = `<label class="lst--border no-select mb-0 flex-v-center">
 								<div class="col-6 bold">${it.name}</div>
 								<div class="col-5 flex-vh-center">${dispCat}${it.extraInfo}</div>
 								<div class="pr-0 col-1 flex-vh-center"><input type="checkbox" class="no-events"></div>
@@ -3924,7 +4016,7 @@ BrewUtil = {
 						<button class="col-5 sort btn btn-default btn-xs ve-grow" data-sort="source">Source</button>
 						<button class="col-4 sort btn btn-default btn-xs" data-sort="authors">Authors</button>
 						<button class="col-1 btn btn-default btn-xs" disabled>Origin</button>
-						<button class="btn btn-default btn-xs" disabled>&nbsp;</button>
+						<button class="col-2 ve-grow btn btn-default btn-xs" disabled>&nbsp;</button>
 					</div>
 					<div class="flex w-100 h-100 overflow-y-auto relative">${$wrpList}</div>
 				</div>
@@ -3996,7 +4088,7 @@ BrewUtil = {
 	},
 
 	getPageProps (page) {
-		page = page || UrlUtil.getCurrentPage()
+		page = BrewUtil._PAGE || page || UrlUtil.getCurrentPage();
 
 		const _PG_SPELLS = ["spell"];
 		const _PG_BESTIARY = ["monster", "legendaryGroup", "monsterFluff"];
@@ -4015,7 +4107,7 @@ BrewUtil = {
 			case UrlUtil.PG_ITEMS: return ["item", "baseitem", "variant", "itemProperty", "itemType", "itemFluff"];
 			case UrlUtil.PG_REWARDS: return ["reward"];
 			case UrlUtil.PG_PSIONICS: return ["psionic"];
-			case UrlUtil.PG_VARIATNRULES: return ["variantrule"];
+			case UrlUtil.PG_VARIANTRULES: return ["variantrule"];
 			case UrlUtil.PG_CONDITIONS_DISEASES: return ["condition", "disease"];
 			case UrlUtil.PG_ADVENTURES: return ["adventure", "adventureData"];
 			case UrlUtil.PG_BOOKS: return ["book", "bookData"];
@@ -4075,7 +4167,7 @@ BrewUtil = {
 		$ele.removeClass("rd__wrp-loadbrew--ready").html(`${name}<span class="glyphicon glyphicon-refresh rd__loadbrew-icon rd__loadbrew-icon--active"></span>`);
 		jsonUrl = jsonUrl.unescapeQuotes();
 		const data = await DataUtil.loadJSON(`${jsonUrl}?${(new Date()).getTime()}`);
-		await BrewUtil.pDoHandleBrewJson(data, UrlUtil.getCurrentPage());
+		await BrewUtil.pDoHandleBrewJson(data, BrewUtil._PAGE || UrlUtil.getCurrentPage());
 		$ele.html(`${name}<span class="glyphicon glyphicon-saved rd__loadbrew-icon"></span>`);
 		setTimeout(() => $ele.html(cached).addClass("rd__wrp-loadbrew--ready").title(cachedTitle), 500);
 	},
@@ -4206,7 +4298,7 @@ BrewUtil = {
 			titleSplit: BrewUtil._$getBtnDeleteAll(true)
 		});
 
-		BrewUtil._pRenderBrewScreen($modalInner, true);
+		BrewUtil._pRenderBrewScreen($modalInner, {isModal: true});
 	},
 
 	async pAddEntry (prop, obj) {
@@ -4244,6 +4336,7 @@ BrewUtil = {
 	_DIRS: ["action", "adventure", "background", "book", "boon", "class", "condition", "creature", "cult", "deity", "disease", "feat", "hazard", "item", "language", "magicvariant", "makebrew", "object", "optionalfeature", "psionic", "race", "reward", "spell", "subclass", "subrace", "table", "trap", "variantrule", "vehicle", "classFeature", "subclassFeature"],
 	_STORABLE: ["class", "subclass", "classFeature", "subclassFeature", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "raceFluff", "subrace", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "itemFluff", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle", "action", "cult", "boon", "language", "makebrewCreatureTrait"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
+		page = BrewUtil._PAGE || page;
 		await BrewUtil._lockHandleBrewJson.pLock();
 		try {
 			return BrewUtil._pDoHandleBrewJson(json, page, pFuncRefresh);
@@ -4253,6 +4346,8 @@ BrewUtil = {
 	},
 
 	async _pDoHandleBrewJson (json, page, pFuncRefresh) {
+		page = BrewUtil._PAGE || page;
+
 		function storePrep (arrName) {
 			if (json[arrName] != null && !(json[arrName] instanceof Array)) return;
 			if (json[arrName]) {
@@ -4371,7 +4466,7 @@ BrewUtil = {
 			case UrlUtil.PG_ITEMS:
 			case UrlUtil.PG_REWARDS:
 			case UrlUtil.PG_PSIONICS:
-			case UrlUtil.PG_VARIATNRULES:
+			case UrlUtil.PG_VARIANTRULES:
 			case UrlUtil.PG_CONDITIONS_DISEASES:
 			case UrlUtil.PG_ADVENTURE:
 			case UrlUtil.PG_ADVENTURES:

@@ -117,14 +117,32 @@ const BookUtil = {
 			"justify-content": "space-between",
 			padding: "0"
 		});
+
 		allHeaders.filter((i, ele) => $(ele).children().length).each((i, ele) => {
 			const $ele = $(ele);
 			// add expand/collapse to only those with children
 			const $appendTo = $ele.prev(`li`).find(`a`);
 			if (!$appendTo.children(`.showhide`).length) {
-				$appendTo.append(`<span class="showhide" onclick="BookUtil.sectToggle(event, this)" data-hidden="true">${defHidden ? `[+]` : `[\u2013]`}</span>`)
+				$appendTo.append(`<span class="showhide px-2 py-1px bold" onclick="BookUtil.sectToggle(event, this)" data-hidden="true">${defHidden ? `[+]` : `[\u2013]`}</span>`)
 			}
 		});
+
+		// region Bind toggle all
+		$(`.bk__contents-header`).each((i, e) => {
+			const $e = $(e);
+			const $nxtContents = $e.next();
+			if (!$nxtContents.hasClass(`bk-contents`)) return;
+			const $btnToggle = $e.find(`.bk__contents-toggle-all`);
+			$btnToggle.click(() => {
+				const nxtDisp = $btnToggle.text() === "[+]" ? `[\u2013]` : "[+]";
+				$nxtContents.find(`.showhide`).each((i, e) => {
+					const $e = $(e);
+					if ($e.text() !== nxtDisp) $e.click();
+				});
+				$btnToggle.text(nxtDisp).title(nxtDisp === "[+]" ? "Expand All" : "Collapse All");
+			});
+		});
+		// endregion
 	},
 
 	sectToggle (evt, ele) {
@@ -226,6 +244,8 @@ const BookUtil = {
 					const $showHideBtn = $(e);
 					if ($showHideBtn.data("hidden")) $showHideBtn.click();
 				});
+				// Update the mass expand/collapse button to match
+				$(`.bk__contents-toggle-all`).each((i, e) => $(e).title("Collapse All").text(`[\u2013]`))
 			}
 
 			BookUtil.curRender.curBookId = bookId;
@@ -569,6 +589,19 @@ const BookUtil = {
 		if (BookUtil.curRender.chapter === -1
 			&& hashParts.length && hashParts[0] !== "-1"
 			&& UrlUtil.encodeForHash(BookUtil.curRender.curBookId) === UrlUtil.encodeForHash(bookId)) {
+			// Offset any unspecified header indices (i.e. those likely originating from sidebar header clicks) to match
+			//   their chapter.
+			const [headerName, headerIndex] = hashParts.slice(1);
+			if (headerName && !headerIndex) {
+				const headerNameClean = decodeURIComponent(headerName).trim().toLowerCase();
+				const chapterNum = Number(hashParts[0]);
+				const headerMetas = Object.values(BookUtil.curRender.headerMap)
+					.filter(it => it.chapter === chapterNum && it.nameClean === headerNameClean);
+				// Offset by the lowest relative title index in the chapter
+				const offset = Math.min(...headerMetas.map(it => it.ixTitleRel));
+				if (isFinite(offset)) hashParts[2] = `${offset}`;
+			}
+
 			Hist.replaceHistoryHash([bookIdRaw, -1, ...hashParts.slice(1)].join(HASH_PART_SEP));
 			return BookUtil.booksHashChange();
 		}
@@ -646,13 +679,13 @@ const BookUtil = {
 			});
 
 		// region Mobile only "open find bar" buttons
-		const $btnOpenFind = $(`<button class="btn btn-default btn-sm bk__btn-find" title="Find">F</button>`)
+		const $btnOpenFind = $(`<button class="btn btn-default btn-sm bk__btn-find no-print" title="Find">F</button>`)
 			.click(evt => {
 				evt.stopPropagation();
 				BookUtil._showSearchBox(indexData, bookId, false);
 			});
 
-		const $btnOpenGoto = $(`<button class="btn btn-default btn-sm bk__btn-goto" title="Go to Page">G</button>`)
+		const $btnOpenGoto = $(`<button class="btn btn-default btn-sm bk__btn-goto no-print" title="Go to Page">G</button>`)
 			.click(evt => {
 				evt.stopPropagation();
 				BookUtil._showSearchBox(indexData, bookId, true);
@@ -875,7 +908,7 @@ const BookUtil = {
 						lastItem.matches[1] = slice.match;
 					}
 				}
-			} else if (!(obj.type === "image" || obj.type === "gallery" || obj.type === "link" || obj.type === "abilityGeneric" || obj.type === "cell")) {
+			} else if (!(obj.type === "image" || obj.type === "gallery" || obj.type === "link" || obj.type === "abilityGeneric" || obj.type === "cell" || obj.type === "flowchart")) {
 				throw new Error("Unhandled entity type");
 			}
 
@@ -953,9 +986,12 @@ const BookUtil = {
 				<a id="${ix}" href="#${UrlUtil.encodeForHash(book.id)}" class="bk__contents_header_link" title="${book.name}">
 					<span class="name">${book.name}</span>
 				</a>
-				<a href="#${UrlUtil.encodeForHash(book.id)},-1" class="bk__contents_show_all" title="View Entire ${BookUtil.contentType.uppercaseFirst()} (Warning: Slow)">
-					<span class="glyphicon glyphicon glyphicon-book" style="top: 0;"/>
-				</a>
+				<div class="flex-v-center">
+					<a href="#${UrlUtil.encodeForHash(book.id)},-1" class="bk__contents_show_all px-2 py-1px flex-v-center" title="View Entire ${BookUtil.contentType.uppercaseFirst()} (Warning: Slow)">
+						<span class="glyphicon glyphicon glyphicon-book" style="top: 0;"/>
+					</a>
+					<span title="Expand All" class="bk__contents-toggle-all px-2 bold py-1px no-select">[+]</span>
+				</div>
 			</div>
 			${BookUtil.makeContentsBlock(options)}
 		</li>`;
@@ -964,7 +1000,7 @@ const BookUtil = {
 
 if (typeof window !== "undefined") {
 	window.addEventListener("load", () => $("body").on("click", "a", (evt) => {
-		const lnk = evt.target;
+		const lnk = evt.currentTarget;
 		let $lnk = $(lnk);
 		while ($lnk.length && !$lnk.is("a")) $lnk = $lnk.parent();
 		BookUtil._lastClickedLink = $lnk[0];

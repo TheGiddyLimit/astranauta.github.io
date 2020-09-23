@@ -74,6 +74,7 @@ Parser.numberToText = function (number) {
 
 Parser.textToNumber = function (str) {
 	str = str.trim().toLowerCase();
+	if (!isNaN(str)) return Number(str);
 	switch (str) {
 		case "zero": return 0;
 		case "one": case "a": case "an": return 1;
@@ -341,7 +342,7 @@ Parser.LANGUAGES_EXOTIC = [
 	"Auran",
 	"Celestial",
 	"Draconic",
-	"Deep",
+	"Deep Speech",
 	"Ignan",
 	"Infernal",
 	"Primordial",
@@ -657,6 +658,23 @@ Parser.itemWeightToFull = function (item, isShortForm) {
 Parser._decimalSeparator = (0.1).toLocaleString().substring(1, 2);
 Parser._numberCleanRegexp = Parser._decimalSeparator === "." ? new RegExp(/[\s,]*/g, "g") : new RegExp(/[\s.]*/g, "g");
 Parser._costSplitRegexp = Parser._decimalSeparator === "." ? new RegExp(/(\d+(\.\d+)?)([csegp]p)/) : new RegExp(/(\d+(,\d+)?)([csegp]p)/);
+
+/** input e.g. "25 gp", "1,000pp" */
+Parser.coinValueToNumber = function (value) {
+	if (!value) return 0;
+	// handle oddities
+	if (value === "Varies") return 0;
+
+	value = value
+		.replace(/\s*/, "")
+		.replace(Parser._numberCleanRegexp, "")
+		.toLowerCase();
+	const m = Parser._costSplitRegexp.exec(value);
+	if (!m) throw new Error(`Badly formatted value "${value}"`);
+	const ixCoin = Parser.COIN_ABVS.indexOf(m[3]);
+	if (!~ixCoin) throw new Error(`Unknown coin type "${m[3]}"`);
+	return Number(m[1]) * Parser.COIN_CONVERSIONS[ixCoin];
+};
 
 Parser.weightValueToNumber = function (value) {
 	if (!value) return 0;
@@ -1553,6 +1571,7 @@ Parser.CAT_ID_SUBCLASS_FEATURE = 41;
 Parser.CAT_ID_ACTION = 42;
 Parser.CAT_ID_LANGUAGE = 43;
 Parser.CAT_ID_BOOK = 44;
+Parser.CAT_ID_PAGE = 45;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1600,6 +1619,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS_FEATURE] = "Subclass Feature";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ACTION] = "Action";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LANGUAGE] = "Language";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOOK] = "Book";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PAGE] = "Page";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1651,6 +1671,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS_FEATURE] = "subclassFeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ACTION] = "action";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LANGUAGE] = "language";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOOK] = "book";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PAGE] = null;
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -2122,6 +2143,7 @@ SRC_EGW_DD = "DD";
 SRC_EGW_FS = "FS";
 SRC_EGW_US = "US";
 SRC_MOT = "MOT";
+SRC_IDRotF = "IDRotF";
 SRC_SCREEN = "Screen";
 
 SRC_AL_PREFIX = "AL";
@@ -2281,6 +2303,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_EGW_DD] = "Dangerous Designs";
 Parser.SOURCE_JSON_TO_FULL[SRC_EGW_FS] = "Frozen Sick";
 Parser.SOURCE_JSON_TO_FULL[SRC_EGW_US] = "Unwelcome Spirits";
 Parser.SOURCE_JSON_TO_FULL[SRC_MOT] = "Mythic Odysseys of Theros";
+Parser.SOURCE_JSON_TO_FULL[SRC_IDRotF] = "Icewind Dale: Rime of the Frostmaiden";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = `${AL_PREFIX}Curse of Strahd`;
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = `${AL_PREFIX}Elemental Evil`;
@@ -2421,6 +2444,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_EGW_DD] = "DD";
 Parser.SOURCE_JSON_TO_ABV[SRC_EGW_FS] = "FS";
 Parser.SOURCE_JSON_TO_ABV[SRC_EGW_US] = "US";
 Parser.SOURCE_JSON_TO_ABV[SRC_MOT] = "MOT";
+Parser.SOURCE_JSON_TO_ABV[SRC_IDRotF] = "IDRotF";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
@@ -2559,6 +2583,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_EGW_DD] = "2020-03-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_EGW_FS] = "2020-03-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_EGW_US] = "2020-03-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_MOT] = "2020-06-02";
+Parser.SOURCE_JSON_TO_DATE[SRC_IDRotF] = "2020-09-15";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN] = "2015-01-20";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALCoS] = "2016-03-15";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALEE] = "2015-04-07";
@@ -2673,6 +2698,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_EGW_DD,
 	SRC_EGW_FS,
 	SRC_EGW_US,
+	SRC_IDRotF,
 
 	SRC_AWM
 ]);
@@ -2745,7 +2771,8 @@ Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
 	SRC_EGW_ToR,
 	SRC_EGW_DD,
 	SRC_EGW_FS,
-	SRC_EGW_US
+	SRC_EGW_US,
+	SRC_IDRotF
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;

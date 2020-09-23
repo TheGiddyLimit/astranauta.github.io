@@ -115,6 +115,7 @@ PropOrder._MONSTER = [
 	"srd",
 	"otherSources",
 
+	"_isCopy",
 	new PropOrder._ObjectKey("_copy", {
 		order: [
 			"name",
@@ -236,7 +237,7 @@ PropOrder._SPELL = [
 
 	"spellAttack",
 	"savingThrow",
-	"opposedCheck",
+	"abilityCheck",
 
 	"miscTags",
 	"areaTags",
@@ -311,7 +312,8 @@ PropOrder._BACKGROUND = [
 
 	"skillProficiencies",
 	"languageProficiencies",
-	"toolProficiencies"
+	"toolProficiencies",
+	"startingEquipment"
 ];
 PropOrder._BACKGROUND__COPY_MOD = [
 	"*",
@@ -631,6 +633,7 @@ PropOrder._ITEM = [
 	"name",
 	"namePrefix",
 	"nameSuffix",
+	"nameRemove",
 
 	"source",
 	"page",
@@ -668,6 +671,7 @@ PropOrder._ITEM = [
 	"weight",
 	"weightMult",
 	"weightNote",
+	"weightExpression",
 	"value",
 	"valueMult",
 	"valueExpression",

@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.15.2",
+	"version": "1.15.3",
 	"title": "Bestiary Schema",
 	"$id": "bestiary.json",
 	"type": "object",
@@ -945,6 +945,10 @@
 				},
 				"srd": {
 					"$ref": "util.json#/definitions/srd"
+				},
+				"_isCopy": {
+					"description": "An internal flag indicating this creature is a copy of another, and is a temporary/placeholder entry which will be factored out using the \"_copy\" format at a later date.",
+					"type": "boolean"
 				}
 			},
 			"additionalProperties": false

@@ -141,6 +141,12 @@ class ItemParser extends BaseParser {
 					stats.__prop = "itemGroup";
 					return true;
 				}
+				case "unknown rarity": {
+					// Make a best-guess as to whether or not the item is magical
+					if (stats.wondrous || stats.staff || stats.type === "P" || stats.type === "RG" || stats.type === "RD" || stats.type === "WD" || stats.type === "SC" || stats.type === "MR") stats.rarity = "unknown (magic)";
+					else stats.rarity = "unknown";
+					return true;
+				}
 			}
 			return false;
 		};
@@ -152,7 +158,7 @@ class ItemParser extends BaseParser {
 			let part = parts[i];
 			const partLower = part.toLowerCase();
 
-			// region wondrous/item type/staff
+			// region wondrous/item type/staff/etc.
 			switch (partLower) {
 				case "wondrous item": stats.wondrous = true; continue;
 				case "wondrous item (tattoo)": stats.wondrous = true; stats.tattoo = true; continue;
@@ -163,6 +169,7 @@ class ItemParser extends BaseParser {
 				case "ammunition": stats.type = "A"; continue;
 				case "staff": stats.staff = true; continue;
 				case "master rune": stats.type = "MR"; continue;
+				case "scroll": stats.type = "SC"; continue;
 			}
 			// endregion
 

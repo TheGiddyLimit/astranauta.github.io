@@ -85,7 +85,7 @@ class LootGen {
 		else {
 			const $table = $(`
 				<hr/>
-				<table id="stats" class="w-100 stripe-odd">
+				<table id="stats" class="w-100 stripe-odd-table">
 					<caption>${itemsTable.name}</caption>
 					<tbody>
 					<tr>
@@ -858,7 +858,7 @@ const randomLootTables = {
 
 		const $html = $(`
 			<hr/>
-			<table id="stats" class="w-100 stripe-odd">
+			<table id="stats" class="w-100 stripe-odd-table">
 				<caption>Table for ${tierLower === "other" ? `${dispItemType} items with no defined tier` : `${tierLower}-tier ${dispItemType} items`} ${dispRarity}</caption>
 				<tbody>
 				<tr>

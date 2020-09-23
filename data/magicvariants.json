@@ -752,6 +752,31 @@
 			}
 		},
 		{
+			"name": "Barding",
+			"type": "GV",
+			"requires": [
+				{
+					"armor": true
+				}
+			],
+			"inherits": {
+				"nameSuffix": " Barding",
+				"nameRemove": " Armor",
+				"source": "PHB",
+				"page": 157,
+				"srd": true,
+				"type": "TAH",
+				"rarity": "none",
+				"weightMult": 2,
+				"weightExpression": "[[baseItem.weight]] * 2",
+				"valueMult": 4,
+				"valueExpression": "[[baseItem.value]] * 4",
+				"entries": [
+					"Barding is armor designed to protect an animal's head, neck, chest, and body. Any type of armor shown on the Armor table in this chapter can be purchased as barding. The cost is four times the equivalent armor made for humanoids, and it weighs twice as much."
+				]
+			}
+		},
+		{
 			"name": "Berserker Axe",
 			"type": "GV",
 			"requires": [
@@ -2366,7 +2391,6 @@
 				"rarity": "legendary",
 				"reqAttune": true,
 				"bonusWeapon": "+3",
-				"bonusAc": "+3",
 				"entries": [
 					"You gain a +3 bonus to attack and damage rolls made with this magic weapon. In addition, the weapon ignores resistance to slashing damage.",
 					"When you attack a creature that has at least one head with this weapon and roll a 20 on the attack roll, you cut off one of the creature's heads. The creature dies if it can't survive without the lost head. A creature is immune to this effect if it is immune to slashing damage, doesn't have or need a head, has legendary actions, or the DM decides that the creature is too big for its head to be cut off with this weapon. Such a creature instead takes an extra {@dice 6d8} slashing damage from the hit."
@@ -2407,6 +2431,9 @@
 					"weapon": true
 				}
 			],
+			"excludes": {
+				"net": true
+			},
 			"inherits": {
 				"nameSuffix": " of Certain Death",
 				"source": "EGW",

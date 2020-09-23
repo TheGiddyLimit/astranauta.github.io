@@ -193,14 +193,14 @@ class Omnisearch {
 		}
 
 		if (!this._state.isShowUa) {
-			results = results.filter(r => r.doc.s && !SourceUtil._isNonstandardSourceWiz(r.doc.s));
+			results = results.filter(r => !r.doc.s || !SourceUtil._isNonstandardSourceWiz(r.doc.s));
 		}
 
 		if (!this._state.isShowBlacklisted && ExcludeUtil.getList().length) {
 			results = results.filter(r => {
-				if (r.doc.c === Parser.CAT_ID_QUICKREF) return true;
+				if (r.doc.c === Parser.CAT_ID_QUICKREF || r.doc.c === Parser.CAT_ID_PAGE) return true;
 				const bCat = Parser.pageCategoryToProp(r.doc.c);
-				return !ExcludeUtil.isExcluded(r.doc.u, bCat, r.doc.s);
+				return !ExcludeUtil.isExcluded(r.doc.u, bCat, r.doc.s, {isNoCount: true});
 			});
 		}
 
@@ -224,7 +224,8 @@ class Omnisearch {
 	}
 
 	static $getResultLink (r) {
-		return $(`<a href="${Renderer.get().baseUrl}${UrlUtil.categoryToPage(r.c)}#${r.uh || r.u}" ${r.h ? this._renderLink_getHoverString(r.c, r.u, r.s) : ""} class="omni__lnk-name">${r.cf}: ${r.n}</a>`);
+		const href = r.c === Parser.CAT_ID_PAGE ? r.u : `${Renderer.get().baseUrl}${UrlUtil.categoryToPage(r.c)}#${r.uh || r.u}`;
+		return $(`<a href="${href}" ${r.h ? this._renderLink_getHoverString(r.c, r.u, r.s) : ""} class="omni__lnk-name">${r.cf}: ${r.n}</a>`);
 	}
 
 	static _pDoSearch_renderLinks (results, page = 0) {
@@ -277,7 +278,7 @@ class Omnisearch {
 				? `<a href="${adventureBookSourceHref}">${ptPageInner}</a>`
 				: ptPageInner;
 
-			const ptSourceInner = `<span class="${Parser.sourceJsonToColor(source)}" ${BrewUtil.sourceJsonToStyle(source)} title="${Parser.sourceJsonToFull(source)}">${Parser.sourceJsonToAbv(source)}</span>`;
+			const ptSourceInner = source ? `<span class="${Parser.sourceJsonToColor(source)}" ${BrewUtil.sourceJsonToStyle(source)} title="${Parser.sourceJsonToFull(source)}">${Parser.sourceJsonToAbv(source)}</span>` : `<span></span>`;
 			const ptSource = ptPage || !adventureBookSourceHref
 				? ptSourceInner
 				: `<a href="${adventureBookSourceHref}">${ptSourceInner}</a>`;

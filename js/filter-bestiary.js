@@ -416,7 +416,7 @@ class ModalFilterBestiary extends ModalFilter {
 		const type = mon._pTypes.asText.uppercaseFirst();
 		const cr = mon._pCr;
 
-		eleLi.innerHTML = `<label class="lst--border unselectable">
+		eleLi.innerHTML = `<label class="lst--border no-select">
 			<div class="lst__wrp-cells">
 				<div class="col-1 pl-0 flex-vh-center"><input type="checkbox" class="no-events"></div>
 				<div class="col-4 bold">${mon.name}</div>

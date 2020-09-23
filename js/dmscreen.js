@@ -3235,7 +3235,7 @@ class UnitConverter {
 					/* eslint-disable */
 					const total = eval(val);
 					/* eslint-enable */
-					$iptRight.val(total * mL);
+					$iptRight.val(Number((total * mL).toFixed(5)));
 				} catch (e) {
 					$iptLeft.addClass(`ipt-invalid`);
 					$iptRight.val("")

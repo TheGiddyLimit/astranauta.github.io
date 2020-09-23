@@ -3156,6 +3156,7 @@
 							"slots": 4,
 							"spells": [
 								"{@spell command}",
+								"{@spell detect magic}",
 								"{@spell divine favor}",
 								"{@spell thunderous smite}"
 							]
@@ -3163,6 +3164,7 @@
 						"2": {
 							"slots": 3,
 							"spells": [
+								"{@spell aid}",
 								"{@spell branding smite}",
 								"{@spell magic weapon}"
 							]
@@ -3171,12 +3173,14 @@
 							"slots": 3,
 							"spells": [
 								"{@spell blinding smite}",
-								"{@spell dispel magic}"
+								"{@spell dispel magic}",
+								"{@spell remove curse}"
 							]
 						},
 						"4": {
 							"slots": 2,
 							"spells": [
+								"{@spell aura of purity}",
 								"{@spell staggering smite}"
 							]
 						}
@@ -3575,6 +3579,9 @@
 			],
 			"senseTags": [
 				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"AB",
@@ -4328,7 +4335,7 @@
 				{
 					"name": "Greatsword +2",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}20 ({@damage 4d6 + 4}) slashing damage. Against Strahd, Vladimir deals an extra 14 ({@damage 4d6}) slashing damage with this weapon."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}20 ({@damage 4d6 + 6}) slashing damage. Against Strahd, Vladimir deals an extra 14 ({@damage 4d6}) slashing damage with this weapon."
 					]
 				},
 				{
@@ -4408,7 +4415,7 @@
 			"speed": {
 				"walk": {
 					"number": 30,
-					"condition": " (fly 50 ft. in raven and hybrid forms)"
+					"condition": "(fly 50 ft. in raven and hybrid forms)"
 				}
 			},
 			"str": 10,
@@ -4480,6 +4487,9 @@
 			"hasToken": true,
 			"traitTags": [
 				"Shapechanger"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"C",

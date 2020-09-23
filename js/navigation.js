@@ -66,7 +66,7 @@ class NavBar {
 		addLi(ulPlayers, "feats.html", "Feats");
 		addLi(ulPlayers, "races.html", "Races");
 		addDivider(ulPlayers);
-		addLi(ulPlayers, "statgen.html", "Statgen");
+		addLi(ulPlayers, "statgen.html", "Stat Generator");
 		addDivider(ulPlayers);
 		addLi(ulPlayers, "lifegen.html", "This Is Your Life");
 		addLi(ulPlayers, "names.html", "Names");
@@ -77,7 +77,7 @@ class NavBar {
 		const ulAdventures = addDropdown(ulDms, "Adventures", true);
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
 		addDivider(ulAdventures);
-		addLi(ulAdventures, "adventure.html", "Lost Mines of Phandelver", {isSide: true, aHash: "LMoP", date: "2014"});
+		addLi(ulAdventures, "adventure.html", "Lost Mine of Phandelver", {isSide: true, aHash: "LMoP", date: "2014"});
 		addLi(ulAdventures, "adventure.html", "Hoard of the Dragon Queen", {isSide: true, aHash: "HotDQ", date: null});
 		addLi(ulAdventures, "adventure.html", "Rise of Tiamat", {isSide: true, aHash: "RoT", date: null});
 		addLi(ulAdventures, "adventure.html", "Princes of the Apocalypse", {isSide: true, aHash: "PotA", date: "2015"});
@@ -113,6 +113,7 @@ class NavBar {
 		addLi(ulAdventures, "adventure.html", "Wildemount: Dangerous Designs", {isSide: true, aHash: "DD", date: null});
 		addLi(ulAdventures, "adventure.html", "Wildemount: Frozen Sick", {isSide: true, aHash: "FS", date: null});
 		addLi(ulAdventures, "adventure.html", "Wildemount: Unwelcome Spirits", {isSide: true, aHash: "US", date: null});
+		addLi(ulAdventures, "adventure.html", "Icewind Dale: Rime of the Frostmaiden", {isSide: true, aHash: "IDRotF", date: null});
 		addLi(ulDms, "cultsboons.html", "Cults & Supernatural Boons");
 		addLi(ulDms, "objects.html", "Objects");
 		addLi(ulDms, "trapshazards.html", "Traps & Hazards");
@@ -128,7 +129,7 @@ class NavBar {
 		addLi(ulReferences, "deities.html", "Deities");
 		addLi(ulReferences, "items.html", "Items");
 		addLi(ulReferences, "languages.html", "Languages");
-		addLi(ulReferences, "optionalfeatures.html", "Other Options and Features");
+		addLi(ulReferences, "optionalfeatures.html", "Other Options & Features");
 		addLi(ulReferences, "rewards.html", "Supernatural Gifts & Rewards");
 		addLi(ulReferences, "psionics.html", "Psionics");
 		addLi(ulReferences, "spells.html", "Spells");

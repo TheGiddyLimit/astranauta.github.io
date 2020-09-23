@@ -2355,7 +2355,7 @@ class CreatureBuilder extends Builder {
 									searchWidget.$wrpSearch.detach();
 									if (!isDataEntered) return resolve(null);
 									const trait = MiscUtil.copy(this._jsonCreatureTraits[traitIndex]);
-									let name = this._state.shortName || this._state.name;
+									let name = this._state.shortName && typeof this._state.shortName === "string" ? this._state.shortName : this._state.name;
 									if (!this._state.isNamedCreature) name = (name || "").toLowerCase();
 									trait.entries = JSON.parse(JSON.stringify(trait.entries).replace(/<\$name\$>/gi, name));
 									resolve(trait);

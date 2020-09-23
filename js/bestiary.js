@@ -415,11 +415,11 @@ class EncounterBuilderUtils {
 		}).filter(it => it && it.cr !== 100).sort((a, b) => SortUtil.ascSort(b.cr, a.cr));
 	}
 
-	static calculateListEncounterXp (playerCount) {
-		return EncounterBuilderUtils.calculateEncounterXp(EncounterBuilderUtils.getSublistedEncounter(), playerCount);
+	static calculateListEncounterXp (partyMeta) {
+		return EncounterBuilderUtils.calculateEncounterXp(EncounterBuilderUtils.getSublistedEncounter(), partyMeta);
 	}
 
-	static getCrCutoff (data) {
+	static getCrCutoff (data, partyMeta) {
 		data = data.filter(it => getCr(it) !== 100).sort((a, b) => SortUtil.ascSort(getCr(b), getCr(a)));
 		if (!data.length) return 0;
 
@@ -455,6 +455,11 @@ class EncounterBuilderUtils {
 			}
 		}
 
+		// "unless you think the weak monsters significantly contribute to the difficulty of the encounter"
+		// For player levels <5, always include every monster. We assume that levels 5> will have strong
+		//   AoE/multiattack, allowing trash to be quickly cleared.
+		if (!partyMeta.isPartyLevelFivePlus()) return crValues[0];
+
 		// Sort by descending CR -> ascending deviation
 		crMetas.sort((a, b) => SortUtil.ascSort(b.mean, a.mean) || SortUtil.ascSort(a.deviation, b.deviation));
 
@@ -464,9 +469,12 @@ class EncounterBuilderUtils {
 
 	/**
 	 * @param data an array of {cr: n, count: m} objects
-	 * @param playerCount number of players in the party
+	 * @param partyMeta number of players in the party
 	 */
-	static calculateEncounterXp (data, playerCount = ECGEN_BASE_PLAYERS) {
+	static calculateEncounterXp (data, partyMeta = null) {
+		// Make a default, generic-sized party of level 1 players
+		if (partyMeta == null) partyMeta = new EncounterPartyMeta([{level: 1, count: ECGEN_BASE_PLAYERS}])
+
 		data = data.filter(it => getCr(it) !== 100)
 			.sort((a, b) => SortUtil.ascSort(getCr(b), getCr(a)));
 
@@ -474,23 +482,23 @@ class EncounterBuilderUtils {
 		let relevantCount = 0;
 		if (!data.length) return {baseXp: 0, relevantCount: 0, adjustedXp: 0};
 
-		const crCutoff = EncounterBuilderUtils.getCrCutoff(data);
+		const crCutoff = EncounterBuilderUtils.getCrCutoff(data, partyMeta);
 		data.forEach(it => {
 			if (getCr(it) >= crCutoff) relevantCount += it.count;
 			baseXp += (Parser.crToXpNumber(Parser.numberToCr(getCr(it))) || 0) * it.count;
 		});
 
-		const playerAdjustedXpMult = Parser.numMonstersToXpMult(relevantCount, playerCount);
+		const playerAdjustedXpMult = Parser.numMonstersToXpMult(relevantCount, partyMeta.cntPlayers);
 
 		const adjustedXp = playerAdjustedXpMult * baseXp;
-		return {baseXp, relevantCount, adjustedXp, meta: {crCutoff, playerCount, playerAdjustedXpMult}};
+		return {baseXp, relevantCount, adjustedXp, meta: {crCutoff, playerCount: partyMeta.cntPlayers, playerAdjustedXpMult}};
 	}
 }
 
 let _$totalCr;
 function onSublistChange () {
 	_$totalCr = _$totalCr || $(`#totalcr`);
-	const xp = EncounterBuilderUtils.calculateListEncounterXp(encounterBuilder.lastPlayerCount);
+	const xp = EncounterBuilderUtils.calculateListEncounterXp(encounterBuilder.lastPartyMeta);
 	const monCount = ListUtil.sublist.items.map(it => it.values.count).reduce((a, b) => a + b, 0);
 	_$totalCr.html(`${monCount} creature${monCount === 1 ? "" : "s"}; ${xp.baseXp.toLocaleString()} XP (<span class="help" title="Adjusted Encounter XP">Enc</span>: ${(xp.adjustedXp).toLocaleString()} XP)`);
 	if (encounterBuilder.isActive()) encounterBuilder.updateDifficulty();

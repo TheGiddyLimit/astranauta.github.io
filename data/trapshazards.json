@@ -606,6 +606,38 @@
 	],
 	"hazard": [
 		{
+			"name": "Avalanche",
+			"source": "IDRotF",
+			"trapHazType": "WLD",
+			"entries": [
+				"The following rules can be used for rockslides as well as avalanches.",
+				"An avalanche is a mass of snow and debris falling rapidly down a mountainside. A typical avalanche is 300 feet wide, 150 feet long, and 30 feet thick. Creatures in the path of an avalanche can avoid it or escape it if they're close to its edge, but outrunning one is almost impossible.",
+				"When an avalanche occurs, all nearby creatures must roll initiative. Twice each round, on initiative counts 10 and 0, the avalanche travels 300 feet until it can travel no more. When an avalanche moves, any creature in its space moves along with it and falls {@condition prone}, and the creature must make a DC 15 Strength saving throw, taking {@dice 1d10} bludgeoning damage on a failed save, or half as much damage on a successful one.",
+				"When an avalanche stops, the snow settles and buries creatures in it. A creature buried in this way is {@condition blinded} and {@condition restrained} and has total cover. The creature gains one level of {@condition exhaustion} for every 5 minutes it spends buried in the snow. It can try to dig itself free as an action, breaking the surface and ending the blinded and restrained conditions on itself with a successful DC 15 Strength ({@skill Athletics}) check. A creature that fails this check three times can't attempt to dig itself out again.",
+				"A creature that is not restrained or {@condition incapacitated} can spend 1 minute freeing another creature buried in the snow. Once free, that creature is no longer blinded or restrained by the avalanche."
+			]
+		},
+		{
+			"name": "Blizzard",
+			"source": "IDRotF",
+			"trapHazType": "WTH",
+			"entries": [
+				"The blizzards that ravage Icewind Dale and harry travelers on the mountain pass are reflections of Auril's self-imposed isolation. A blizzard in Icewind Dale typically lasts {@dice 2d4} hours, and whenever the characters are caught in one, the following rules apply until it ends.",
+				"A blizzard's howling wind limits hearing to a range of 100 feet and imposes disadvantage on ranged weapon attack rolls. It also imposes disadvantage on Wisdom ({@skill Perception}) checks that rely on hearing. The wind extinguishes open flames, disperses fog, erases tracks in the snow, and makes flying by nonmagical means nearly impossible. A creature falls at the end of its turn if it is flying by nonmagical means and can't hover.",
+				"Visibility in a blizzard is reduced to 30 feet. Creatures without goggles or other eye protection have disadvantage on Wisdom ({@skill Perception}) checks that rely on sight due to blowing snow.",
+				"Any creature that is concentrating on a spell in a blizzard must succeed on a DC 10 Constitution saving throw at the end of its turn or lose its concentration on the spell unless the creature is sheltered against the elements (for example, in an igloo).",
+				{
+					"type": "entries",
+					"name": "Veering Off Course",
+					"id": "01f",
+					"entries": [
+						"It's easy to veer off course while traveling through a blizzard, and it's also easy for party members to become separated from one another, which is why the wisest course of action is to stay put and wait for the blizzard to pass.",
+						"If the characters travel during a blizzard, have the players designate one party member as the navigator. At the end of each hour of travel through the blizzard, the DM makes a DC 15 Wisdom ({@skill Survival}) check on behalf of the navigator. On a successful check, the party stays on course. On a failed check, the party wanders off course, putting its members no closer to their destination than they were at the start of that hour. If the check fails by 5 or more and the party members aren't tied together, one randomly determined party member becomes lost in the blizzard and separated from the others. If the group tries to reunite with its missing member, have the party members (including the missing one) make a DC 15 Wisdom ({@skill Survival}) group check at the end of each hour. If this group check succeeds, the missing party member is found, but no progress is made toward reaching the group's intended destination that hour. The group check can be repeated after each hour spent searching for the missing party member."
+					]
+				}
+			]
+		},
+		{
 			"name": "Brown Mold",
 			"source": "DMG",
 			"page": 105,

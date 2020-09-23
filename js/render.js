@@ -281,6 +281,7 @@ function Renderer () {
 				case "inset": this._renderInset(entry, textStack, meta, options); break;
 				case "insetReadaloud": this._renderInsetReadaloud(entry, textStack, meta, options); break;
 				case "variant": this._renderVariant(entry, textStack, meta, options); break;
+				case "variantInner": this._renderVariantInner(entry, textStack, meta, options); break;
 				case "variantSub": this._renderVariantSub(entry, textStack, meta, options); break;
 				case "spellcasting": this._renderSpellcasting(entry, textStack, meta, options); break;
 				case "quote": this._renderQuote(entry, textStack, meta, options); break;
@@ -412,7 +413,7 @@ function Renderer () {
 	};
 
 	this._renderImage_getWrapperClasses = function (entry) {
-		const out = ["rd__wrp-image"];
+		const out = ["rd__wrp-image", "relative"];
 		if (entry.style) {
 			switch (entry.style) {
 				case "comic-speaker-left": out.push("rd__comic-img-speaker", "rd__comic-img-speaker--left"); break;
@@ -458,9 +459,11 @@ function Renderer () {
 			}
 		}
 
-		textStack[0] += `<table class="${entry.style || ""} ${entry.isStriped === false ? "" : "stripe-odd"}">`;
+		textStack[0] += `<table class="${entry.style || ""} ${entry.isStriped === false ? "" : "stripe-odd-table"}">`;
 
-		const autoMkRoller = Renderer.isRollableTable(entry);
+		const autoRollMode = Renderer.getTableRollMode(entry);
+		const toRenderLabel = autoRollMode ? RollerUtil.getFullRollCol(entry.colLabels[0]) : null;
+		const isInfiniteResults = autoRollMode === RollerUtil.ROLL_COL_VARIABLE;
 
 		// caption
 		if (entry.caption != null) textStack[0] += `<caption>${entry.caption}</caption>`;
@@ -469,8 +472,8 @@ function Renderer () {
 		const rollCols = [];
 		let bodyStack = [""];
 		bodyStack[0] += "<tbody>";
-		const len = entry.rows.length;
-		for (let ixRow = 0; ixRow < len; ++ixRow) {
+		const lenRows = entry.rows.length;
+		for (let ixRow = 0; ixRow < lenRows; ++ixRow) {
 			bodyStack[0] += "<tr>";
 			const r = entry.rows[ixRow];
 			let roRender = r.type === "row" ? r.row : r;
@@ -480,8 +483,15 @@ function Renderer () {
 				rollCols[ixCell] = rollCols[ixCell] || false;
 
 				// preconvert rollables
-				if (autoMkRoller && ixCell === 0) {
-					roRender = Renderer.getRollableRow(roRender);
+				if (autoRollMode && ixCell === 0) {
+					roRender = Renderer.getRollableRow(
+						roRender,
+						{
+							isForceInfiniteResults: isInfiniteResults,
+							isFirstRow: ixRow === 0,
+							isLastRow: ixRow === lenRows - 1
+						}
+					);
 					rollCols[ixCell] = true;
 				}
 
@@ -489,19 +499,25 @@ function Renderer () {
 				if (roRender[ixCell].type === "cell") {
 					if (roRender[ixCell].roll) {
 						rollCols[ixCell] = true;
-						if (roRender[ixCell].roll.entry) {
-							toRenderCell = roRender[ixCell].roll.entry;
+						if (roRender[ixCell].entry) {
+							toRenderCell = roRender[ixCell].entry;
 						} else if (roRender[ixCell].roll.exact != null) {
 							toRenderCell = roRender[ixCell].roll.pad ? StrUtil.padNumber(roRender[ixCell].roll.exact, 2, "0") : roRender[ixCell].roll.exact;
 						} else {
-							if (roRender[ixCell].roll.max === Renderer.dice.POS_INFINITE) {
+							// TODO(Future) render "negative infinite" minimum nicely (or based on an example from a book, if one ever occurs)
+							//   "Selling a Magic Item" from DMG p129 almost meets this, but it has its own display
+
+							const dispMin = roRender[ixCell].roll.displayMin != null ? roRender[ixCell].roll.displayMin : roRender[ixCell].roll.min;
+							const dispMax = roRender[ixCell].roll.displayMax != null ? roRender[ixCell].roll.displayMax : roRender[ixCell].roll.max;
+
+							if (dispMax === Renderer.dice.POS_INFINITE) {
 								toRenderCell = roRender[ixCell].roll.pad
-									? `${StrUtil.padNumber(roRender[ixCell].roll.min, 2, "0")}+`
-									: `${roRender[ixCell].roll.min}+`;
+									? `${StrUtil.padNumber(dispMin, 2, "0")}+`
+									: `${dispMin}+`;
 							} else {
 								toRenderCell = roRender[ixCell].roll.pad
-									? `${StrUtil.padNumber(roRender[ixCell].roll.min, 2, "0")}-${StrUtil.padNumber(roRender[ixCell].roll.max, 2, "0")}`
-									: `${roRender[ixCell].roll.min}-${roRender[ixCell].roll.max}`;
+									? `${StrUtil.padNumber(dispMin, 2, "0")}-${StrUtil.padNumber(dispMax, 2, "0")}`
+									: `${dispMin}-${dispMax}`;
 							}
 						}
 					} else if (roRender[ixCell].entry) {
@@ -529,7 +545,7 @@ function Renderer () {
 			for (let i = 0; i < len; ++i) {
 				const lbl = entry.colLabels[i];
 				textStack[0] += `<th ${this._renderTable_getTableThClassText(entry, i)} data-rd-isroller="${rollCols[i]}" ${entry.isNameGenerator ? `data-rd-namegeneratorrolls="${(entry.colLabels || []).length - 1}"` : ""}>`;
-				this._recursiveRender(autoMkRoller && i === 0 && !lbl.includes("@dice") ? `{@dice ${lbl}}` : lbl, textStack, meta);
+				this._recursiveRender(autoRollMode && i === 0 ? RollerUtil.getFullRollCol(lbl) : lbl, textStack, meta);
 				textStack[0] += `</th>`;
 			}
 		}
@@ -776,6 +792,28 @@ function Renderer () {
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
+	this._renderVariantInner = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+
+		this._handleTrackTitles(entry.name);
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, 1);
+
+		textStack[0] += `<${this.wrapperTag} class="rd__b-inset-inner" ${dataString}>`;
+		textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
+		const len = entry.entries.length;
+		for (let i = 0; i < len; ++i) {
+			const cacheDepth = meta.depth;
+			meta.depth = 2;
+			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
+			meta.depth = cacheDepth;
+		}
+		if (entry.variantSource) textStack[0] += Renderer.utils._getPageTrText(entry.variantSource);
+		textStack[0] += `</${this.wrapperTag}>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
 	this._renderVariantSub = function (entry, textStack, meta, options) {
 		// pretend this is an inline-header'd entry, but set a flag so we know not to add bold
 		this._subVariant = true;
@@ -837,7 +875,7 @@ function Renderer () {
 						levelCantrip = `${Parser.spLevelToFull(spells.lower)}-${levelCantrip}`;
 						if (slots >= 0) slotsAtWill = slots > 0 ? ` (${slots} ${Parser.spLevelToFull(lvl)}-level slot${slots > 1 ? "s" : ""})` : ``;
 					}
-					tempList.items.push({type: "itemSpell", name: `${levelCantrip}${slotsAtWill}:`, entry: spells.spells.join(", ")})
+					tempList.items.push({type: "itemSpell", name: `${levelCantrip}${slotsAtWill}:`, entry: spells.spells.join(", ") || "\u2014"})
 				}
 			}
 			toRender[0].entries.push(tempList);
@@ -981,7 +1019,7 @@ function Renderer () {
 	this._renderDataCreature = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		this._renderDataHeader(textStack, entry.dataCreature.name);
-		textStack[0] += Renderer.monster.getCompactRenderedString(entry.dataCreature, this);
+		textStack[0] += Renderer.monster.getCompactRenderedString(entry.dataCreature, this, {isEmbeddedEntity: true});
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -989,7 +1027,7 @@ function Renderer () {
 	this._renderDataSpell = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		this._renderDataHeader(textStack, entry.dataSpell.name);
-		textStack[0] += Renderer.spell.getCompactRenderedString(entry.dataSpell);
+		textStack[0] += Renderer.spell.getCompactRenderedString(entry.dataSpell, {isEmbeddedEntity: true});
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -997,7 +1035,7 @@ function Renderer () {
 	this._renderDataTrapHazard = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		this._renderDataHeader(textStack, entry.dataTrapHazard.name);
-		textStack[0] += Renderer.traphazard.getCompactRenderedString(entry.dataTrapHazard);
+		textStack[0] += Renderer.traphazard.getCompactRenderedString(entry.dataTrapHazard, {isEmbeddedEntity: true});
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -1005,7 +1043,7 @@ function Renderer () {
 	this._renderDataObject = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		this._renderDataHeader(textStack, entry.dataObject.name);
-		textStack[0] += Renderer.object.getCompactRenderedString(entry.dataObject);
+		textStack[0] += Renderer.object.getCompactRenderedString(entry.dataObject, {isEmbeddedEntity: true});
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -1015,7 +1053,7 @@ function Renderer () {
 		this._renderDataHeader(textStack, entry.dataItem.name);
 		const id = CryptUtil.uid();
 		const asString = JSON.stringify(entry.dataItem);
-		textStack[0] += `<script id="dataItem-${id}">Renderer.item.populatePropertyAndTypeReference().then(() => {const dataItem = ${asString}; Renderer.item.enhanceItem(dataItem); $("#dataItem-${id}").replaceWith(Renderer.item.getCompactRenderedString(dataItem))})</script>`
+		textStack[0] += `<script id="dataItem-${id}">Renderer.item.populatePropertyAndTypeReference().then(() => {const dataItem = ${asString}; Renderer.item.enhanceItem(dataItem); $("#dataItem-${id}").replaceWith(Renderer.item.getCompactRenderedString(dataItem,  {isEmbeddedEntity: true}))})</script>`
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -1806,7 +1844,7 @@ function Renderer () {
 					case "@variantrule":
 						fauxEntry.href.path = "variantrules.html";
 						fauxEntry.href.hover = {
-							page: UrlUtil.PG_VARIATNRULES,
+							page: UrlUtil.PG_VARIANTRULES,
 							source
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -1952,11 +1990,22 @@ function Renderer () {
 	};
 }
 
+Renderer.ENTRIES_WITH_ENUMERATED_TITLES = [
+	{type: "section", key: "entries", depth: -1},
+	{type: "entries", key: "entries", depthIncrement: 1},
+	{type: "options", key: "entries"},
+	{type: "inset", key: "entries", depth: 2},
+	{type: "insetReadaloud", key: "entries", depth: 2},
+	{type: "variant", key: "entries", depth: 2},
+	{type: "variantInner", key: "entries", depth: 2},
+	{type: "actions", key: "entries", depth: 2},
+	{type: "flowBlock", key: "entries", depth: 2},
+	{type: "optfeature", key: "entries", depthIncrement: 1},
+	{type: "patron", key: "entries"}
+];
+
 Renderer.ENTRIES_WITH_CHILDREN = [
-	{type: "section", key: "entries"},
-	{type: "entries", key: "entries"},
-	{type: "inset", key: "entries"},
-	{type: "insetReadaloud", key: "entries"},
+	...Renderer.ENTRIES_WITH_ENUMERATED_TITLES,
 	{type: "list", key: "items"},
 	{type: "table", key: "rows"}
 ];
@@ -2398,6 +2447,7 @@ Renderer.utils = {
 	 * @param [opts.page] The hover page for this entity.
 	 * @param [opts.asJquery] If the element should be returned as a jQuery object.
 	 * @param [opts.extensionData] Additional data to pass to listening extensions when the send button is clicked.
+	 * @param [opts.isEmbeddedEntity] True if this is an embedded entity, i.e. one from a `"dataX"` entry.
 	 */
 	getNameTr: (it, opts) => {
 		opts = opts || {};
@@ -2408,6 +2458,9 @@ Renderer.utils = {
 			const hash = UrlUtil.URL_TO_HASH_BUILDER[opts.page](it);
 			dataPart = `data-page="${opts.page}" data-source="${it.source.escapeQuotes()}" data-hash="${hash.escapeQuotes()}" ${opts.extensionData != null ? `data-extension="${`${opts.extensionData}`.escapeQuotes()}"` : ""}`;
 			pageLinkPart = SourceUtil.getAdventureBookSourceHref(it.source, it.page);
+
+			// Enable Rivet import for entities embedded in entries
+			if (opts.isEmbeddedEntity) Renderer.hover.addEmbeddedToCache(opts.page, it.source, hash, MiscUtil.copy(it));
 		}
 
 		// Add data-page/source/hash attributes for external script use (e.g. Rivet)
@@ -2421,7 +2474,7 @@ Renderer.utils = {
 					</div>
 					<div class="stats-source flex-v-baseline">
 						<span class="help--subtle ${it.source ? `${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}` : ""}" ${BrewUtil.sourceJsonToStyle(it.source)}">${it.source ? Parser.sourceJsonToAbv(it.source) : ""}</span>
-						${Renderer.utils.isDisplayPage(it.page) ? ` <${pageLinkPart ? `a href="${pageLinkPart}"` : "span"} class="rd__stats-name-page ml-1" title="Page ${it.page}">p${it.page}</${pageLinkPart ? "a" : "span"}>` : ""}
+						${Renderer.utils.isDisplayPage(it.page) ? ` <${pageLinkPart ? `a href="${Renderer.get().baseUrl}${pageLinkPart}"` : "span"} class="rd__stats-name-page ml-1" title="Page ${it.page}">p${it.page}</${pageLinkPart ? "a" : "span"}>` : ""}
 					</div>
 				</div>
 			</th>
@@ -2796,7 +2849,7 @@ Renderer.utils = {
 									hadMultiMultipleInner ? " - " : hadMultipleInner ? "; " : ", ",
 									isComplex ? ` <i>or</i> ` : " or "
 								);
-								return `${joined}${allValuesEqual != null ? ` 13 or higher` : ""}`
+								return `${joined}${allValuesEqual != null ? ` ${allValuesEqual} or higher` : ""}`
 							}
 						}
 						case "proficiency": {
@@ -2913,15 +2966,17 @@ Renderer.get = () => {
 };
 
 Renderer.spell = {
-	getCompactRenderedString (spell) {
+	getCompactRenderedString (spell, opts) {
+		opts = opts || {};
+
 		const renderer = Renderer.get();
 		const renderStack = [];
 
 		renderStack.push(`
 			${Renderer.utils.getExcludedTr(spell, "spell", UrlUtil.PG_SPELLS)}
-			${Renderer.utils.getNameTr(spell, {page: UrlUtil.PG_SPELLS})}
+			${Renderer.utils.getNameTr(spell, {page: UrlUtil.PG_SPELLS, isEmbeddedEntity: opts.isEmbeddedEntity})}
 			<tr><td colspan="6">
-				<table class="summary stripe-even">
+				<table class="summary stripe-even-table">
 					<tr>
 						<th colspan="1">Level</th>
 						<th colspan="1">School</th>
@@ -3246,8 +3301,8 @@ Renderer.background = {
 		return Renderer.background._summariseProfs(toolProfsArray, short, collectIn);
 	},
 
-	getLanguageSummary (toolProfsArray, short, collectIn) {
-		return Renderer.background._summariseProfs(toolProfsArray, short, collectIn);
+	getLanguageSummary (languageProfsArray, short, collectIn) {
+		return Renderer.background._summariseProfs(languageProfsArray, short, collectIn);
 	},
 
 	_summariseProfs (profGroupArr, short, collectIn, hoverTag) {
@@ -3350,7 +3405,7 @@ Renderer.race = {
 			${Renderer.utils.getNameTr(race, {page: UrlUtil.PG_RACES})}
 			${!race._isBaseRace ? `
 			<tr><td colspan="6">
-				<table class="summary stripe-even">
+				<table class="summary stripe-even-table">
 					<tr>
 						<th class="col-4 text-center">Ability Scores</th>
 						<th class="col-4 text-center">Size</th>
@@ -3419,8 +3474,30 @@ Renderer.race = {
 				};
 
 				baseRace._baseRaceEntries = [
-					"This race has multiple subraces, as listed below:",
-					lst
+					{
+						type: "section",
+						entries: [
+							"This race has multiple subraces, as listed below:",
+							lst
+						]
+					},
+					{
+						type: "section",
+						entries: [
+							{
+								type: "entries",
+								entries: [
+									{
+										type: "entries",
+										name: "Traits",
+										entries: [
+											...MiscUtil.copy(baseRace.entries)
+										]
+									}
+								]
+							}
+						]
+					}
 				];
 
 				delete baseRace.subraces;
@@ -3525,6 +3602,13 @@ Renderer.race = {
 					// overwrite everything else
 					Object.assign(cpy, s);
 
+					// For any null'd out fields on the subrace, delete the field
+					Object.entries(cpy)
+						.forEach(([k, v]) => {
+							if (v != null) return;
+							delete cpy[k];
+						});
+
 					out.push(cpy);
 				});
 			return out;
@@ -3542,7 +3626,7 @@ Renderer.race = {
 			const _baseRace = allRaces.find(r => r.name === sr.race.name && r.source === sr.race.source);
 			if (!_baseRace) throw new Error(`Could not find parent race for subrace!`);
 
-			const subraceListEntry = _baseRace._baseRaceEntries.find(it => it.type === "list");
+			const subraceListEntry = ((_baseRace._baseRaceEntries[0] || {}).entries || []).find(it => it.type === "list");
 			subraceListEntry.items.push(`{@race ${_baseRace._rawName || _baseRace.name} (${sr.name})|${sr.source || _baseRace.source}}`);
 
 			// Attempt to graft multiple subraces from the same data set onto the same base race copy
@@ -3652,14 +3736,16 @@ Renderer.deity = {
 };
 
 Renderer.object = {
-	getCompactRenderedString (obj) {
+	getCompactRenderedString (obj, opts) {
+		opts = opts || {};
+
 		const renderer = Renderer.get();
 		const row2Width = 12 / ((!!obj.resist + !!obj.vulnerable + !!obj.conditionImmune) || 1);
 		return `
 			${Renderer.utils.getExcludedTr(obj, "object", UrlUtil.PG_OBJECTS)}
-			${Renderer.utils.getNameTr(obj, {page: UrlUtil.PG_OBJECTS})}
+			${Renderer.utils.getNameTr(obj, {page: UrlUtil.PG_OBJECTS, isEmbeddedEntity: opts.isEmbeddedEntity})}
 			<tr><td colspan="6">
-				<table class="summary stripe-even">
+				<table class="summary stripe-even-table">
 					<tr>
 						<th colspan="2" class="text-center">Type</th>
 						<th colspan="2" class="text-center">AC</th>
@@ -3779,12 +3865,14 @@ Renderer.traphazard = {
 		return "";
 	},
 
-	getCompactRenderedString (it) {
+	getCompactRenderedString (it, opts) {
+		opts = opts || {};
+
 		const renderer = Renderer.get();
 		const subtitle = Renderer.traphazard.getSubtitle(it);
 		return `
 			${Renderer.utils.getExcludedTr(it, it.__prop, UrlUtil.PG_TRAPS_HAZARDS)}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_TRAPS_HAZARDS})}
+			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_TRAPS_HAZARDS, isEmbeddedEntity: opts.isEmbeddedEntity})}
 			${subtitle ? `<tr class="text"><td colspan="6"><i>${subtitle}</i></td></tr>` : ""}
 			<tr class="text"><td colspan="6">
 			${renderer.render({entries: it.entries}, 2)}
@@ -4043,8 +4131,16 @@ Renderer.monster = {
 	getSavesPart (mon) { return `${Object.keys(mon.save).sort(SortUtil.ascSortAtts).map(s => Renderer.monster.getSave(Renderer.get(), s, mon.save[s])).join(", ")}` },
 	getSensesPart (mon) { return `${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses)}, ` : ""}passive Perception ${mon.passive || "\u2014"}`; },
 
-	getCompactRenderedString (mon, renderer, options = {}) {
-		if (options.isCompact === undefined) options.isCompact = true;
+	/**
+	 * @param mon
+	 * @param renderer
+	 * @param [opts]
+	 * @param [opts.isCompact]
+	 * @param [opts.isEmbeddedEntity]
+	 */
+	getCompactRenderedString (mon, renderer, opts) {
+		opts = opts || {};
+		if (opts.isCompact === undefined) opts.isCompact = true;
 
 		renderer = renderer || Renderer.get();
 
@@ -4052,11 +4148,11 @@ Renderer.monster = {
 		const isCrHidden = Parser.crToNumber(mon.cr) === 100;
 		const legGroup = DataUtil.monster.getMetaGroup(mon);
 		const hasToken = mon.tokenUrl || mon.hasToken;
-		const extraThClasses = !options.isCompact && hasToken ? ["mon__name--token"] : null;
+		const extraThClasses = !opts.isCompact && hasToken ? ["mon__name--token"] : null;
 
 		renderStack.push(`
 			${Renderer.utils.getExcludedTr(mon, "monster", UrlUtil.PG_BESTIARY)}
-			${Renderer.utils.getNameTr(mon, {page: UrlUtil.PG_BESTIARY, extensionData: mon._isScaledCr, extraThClasses})}
+			${Renderer.utils.getNameTr(mon, {page: UrlUtil.PG_BESTIARY, extensionData: mon._isScaledCr, extraThClasses, isEmbeddedEntity: opts.isEmbeddedEntity})}
 			<tr><td colspan="6"><i>${Renderer.monster.getTypeAlignmentPart(mon)}</i></td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
@@ -4074,12 +4170,12 @@ Renderer.monster = {
 						${isCrHidden ? "" : `
 						<td>
 							${Parser.monCrToFull(mon.cr, {isMythic: !!mon.mythic})}
-							${options.showScaler && Parser.isValidCr(mon.cr ? (mon.cr.cr || mon.cr) : null) ? `
+							${opts.showScaler && Parser.isValidCr(mon.cr ? (mon.cr.cr || mon.cr) : null) ? `
 							<button title="Scale Creature By CR (Highly Experimental)" class="mon__btn-scale-cr btn btn-xs btn-default">
 								<span class="glyphicon glyphicon-signal"></span>
 							</button>
 							` : ""}
-							${options.isScaled ? `
+							${opts.isScaled ? `
 							<button title="Reset CR Scaling" class="mon__btn-reset-cr btn btn-xs btn-default">
 								<span class="glyphicon glyphicon-refresh"></span>
 							</button>
@@ -4091,7 +4187,7 @@ Renderer.monster = {
 			</td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
-				<table class="summary stripe-even">
+				<table class="summary stripe-even-table">
 					<tr>
 						<th class="col-2 text-center">STR</th>
 						<th class="col-2 text-center">DEX</th>
@@ -4119,8 +4215,8 @@ Renderer.monster = {
 					${mon.resist ? `<p><b>Damage Res.</b> ${Parser.monImmResToFull(mon.resist)}</p>` : ""}
 					${mon.immune ? `<p><b>Damage Imm.</b> ${Parser.monImmResToFull(mon.immune)}</p>` : ""}
 					${mon.conditionImmune ? `<p><b>Condition Imm.</b> ${Parser.monCondImmToFull(mon.conditionImmune)}</p>` : ""}
-					${options.isHideSenses ? "" : `<p><b>Senses</b> ${Renderer.monster.getSensesPart(mon)}</p>`}
-					${options.isHideLanguages ? "" : `<p><b>Languages</b> ${Renderer.monster.getRenderedLanguages(mon.languages)}</p>`}
+					${opts.isHideSenses ? "" : `<p><b>Senses</b> ${Renderer.monster.getSensesPart(mon)}</p>`}
+					${opts.isHideLanguages ? "" : `<p><b>Languages</b> ${Renderer.monster.getRenderedLanguages(mon.languages)}</p>`}
 				</div>
 			</td></tr>
 			${mon.trait || mon.spellcasting ? `<tr><td colspan="6"><div class="border"></div></td></tr>
@@ -4542,13 +4638,15 @@ Renderer.item = {
 		return renderStack.join("").trim();
 	},
 
-	getCompactRenderedString (item) {
+	getCompactRenderedString (item, opts) {
+		opts = opts || {};
+
 		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item);
-		const hasEntries = (item._fullEntries && item._fullEntries.length) || (item.entries && item.entries.length);
+		const hasEntries = (item._fullAdditionalEntries && item._fullAdditionalEntries.length) || (item._fullEntries && item._fullEntries.length) || (item.entries && item.entries.length);
 
 		return `
 		${Renderer.utils.getExcludedTr(item, "item", UrlUtil.PG_ITEMS)}
-		${Renderer.utils.getNameTr(item, {page: UrlUtil.PG_ITEMS})}
+		${Renderer.utils.getNameTr(item, {page: UrlUtil.PG_ITEMS, isEmbeddedEntity: opts.isEmbeddedEntity})}
 		<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item).uppercaseFirst()}</td></tr>
 		<tr>
 			<td colspan="2">${[Parser.itemValueToFullMultiCurrency(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
@@ -4657,8 +4755,9 @@ Renderer.item = {
 		const itemList = await pLoadItems();
 		const baseItems = await Renderer.item._pGetAndProcBaseItems(await DataUtil.loadJSON(baseItemUrl));
 		const [genericVariants, linkedLootTables] = Renderer.item._getAndProcGenericVariants(await DataUtil.loadJSON(magicVariantUrl), true);
-		const genericAndSpecificVariants = Renderer.item._createSpecificVariants(baseItems, genericVariants, linkedLootTables);
-		const allItems = itemList.concat(baseItems).concat(genericAndSpecificVariants);
+		Renderer.item._builtLists["genericVariants"] = genericVariants; // Cache generic variants to use with homebrew later
+		const specificVariants = Renderer.item._createSpecificVariants(baseItems, genericVariants, {linkedLootTables});
+		const allItems = [...itemList, ...baseItems, ...genericVariants, ...specificVariants];
 		Renderer.item._enhanceItems(allItems);
 		Renderer.item._builtLists[kBlacklist] = allItems;
 
@@ -4699,92 +4798,16 @@ Renderer.item = {
 		item._fullAdditionalEntries = item._fullAdditionalEntries || (item.additionalEntries ? MiscUtil.copy(item.additionalEntries) : []);
 	},
 
-	_createSpecificVariants (baseItems, genericVariants, linkedLootTables) {
-		function hasRequiredProperty (baseItem, genericVariant) {
-			return genericVariant.requires.some(req => Object.entries(req).every(([k, v]) => baseItem[k] === v));
-		}
+	/**
+	 * @param baseItems
+	 * @param genericVariants
+	 * @param [opts]
+	 * @param [opts.linkedLootTables]
+	 */
+	_createSpecificVariants (baseItems, genericVariants, opts) {
+		opts = opts || {};
 
-		function hasExcludedProperty (baseItem, genericVariant) {
-			const curExcludes = genericVariant.excludes || {};
-			return !!Object.keys(curExcludes).find(key => {
-				if (curExcludes[key] instanceof Array) {
-					return (baseItem[key] instanceof Array ? baseItem[key].find(it => curExcludes[key].includes(it)) : curExcludes[key].includes(baseItem[key]));
-				}
-				return baseItem[key] instanceof Array ? baseItem[key].find(it => curExcludes[key] === it) : curExcludes[key] === baseItem[key];
-			});
-		}
-
-		function createSpecificVariant (baseItem, genericVariant) {
-			const inherits = genericVariant.inherits;
-			const specificVariant = MiscUtil.copy(baseItem);
-			// Recent enhancements/entry cache
-			specificVariant._isEnhanced = false;
-			delete specificVariant._fullEntries;
-
-			if (baseItem.source !== SRC_PHB && baseItem.source !== SRC_DMG) {
-				Renderer.item._initFullEntries(specificVariant);
-				specificVariant._fullEntries.unshift(`{@note The base item can be found in ${Parser.sourceJsonToFull(baseItem.source)}.}`);
-			}
-
-			specificVariant._baseName = baseItem.name;
-			specificVariant._baseSrd = baseItem.srd;
-			if (baseItem.source !== inherits.source) specificVariant._baseSource = baseItem.source;
-
-			// Magic items do not inherit the value of the non-magical item
-			delete specificVariant.value;
-
-			// Magic variants apply their own SRD info
-			delete specificVariant.srd;
-
-			specificVariant._category = "Specific Variant";
-			Object.keys(inherits).forEach((inheritedProperty) => {
-				switch (inheritedProperty) {
-					case "namePrefix": specificVariant.name = `${inherits.namePrefix}${specificVariant.name}`; break;
-					case "nameSuffix": specificVariant.name = `${specificVariant.name}${inherits.nameSuffix}`; break;
-					case "entries": {
-						Renderer.item._initFullEntries(specificVariant);
-
-						const appliedPropertyEntries = Renderer.applyAllProperties(inherits.entries, Renderer.item._getInjectableProps(baseItem, inherits));
-						appliedPropertyEntries.forEach((ent, i) => specificVariant._fullEntries.splice(i, 0, ent));
-						break;
-					}
-					case "valueExpression": {
-						const exp = inherits.valueExpression.replace(/\[\[([^\]]+)]]/g, (...m) => {
-							const propPath = m[1].split(".");
-							return propPath[0] === "item"
-								? MiscUtil.get(specificVariant, ...propPath.slice(1))
-								: propPath[0] === "baseItem"
-									? MiscUtil.get(baseItem, ...propPath.slice(1))
-									: MiscUtil.get(specificVariant, ...propPath);
-						});
-						const result = Renderer.dice.parseRandomise2(exp);
-						if (result != null) specificVariant.value = result;
-
-						break;
-					}
-					default: specificVariant[inheritedProperty] = inherits[inheritedProperty];
-				}
-			});
-
-			// track the specific variant on the parent generic, to later render as part of the stats
-			// TAG ITEM_VARIANTS
-			if (~Renderer.item.LINK_SPECIFIC_TO_GENERIC_DIRECTION) {
-				genericVariant.variants = genericVariant.variants || [];
-				genericVariant.variants.push({base: baseItem, specificVariant});
-			}
-
-			// add reverse link to get generic from specific--primarily used for indexing
-			if (!~Renderer.item.LINK_SPECIFIC_TO_GENERIC_DIRECTION) specificVariant.genericVariant = genericVariant;
-
-			// add linked loot tables
-			if (linkedLootTables && linkedLootTables[specificVariant.source] && linkedLootTables[specificVariant.source][specificVariant.name]) {
-				(specificVariant.lootTables = specificVariant.lootTables || []).push(...linkedLootTables[specificVariant.source][specificVariant.name])
-			}
-
-			return specificVariant;
-		}
-
-		const genericAndSpecificVariants = [...genericVariants];
+		const genericAndSpecificVariants = [];
 		baseItems.forEach((curBaseItem) => {
 			curBaseItem._category = "Basic";
 			if (curBaseItem.entries == null) curBaseItem.entries = [];
@@ -4792,13 +4815,119 @@ Renderer.item = {
 			if (curBaseItem.packContents) return; // e.g. "Arrows (20)"
 
 			genericVariants.forEach((curGenericVariant) => {
-				if (!hasRequiredProperty(curBaseItem, curGenericVariant)) return;
-				if (hasExcludedProperty(curBaseItem, curGenericVariant)) return;
+				if (!Renderer.item._createSpecificVariants_hasRequiredProperty(curBaseItem, curGenericVariant)) return;
+				if (Renderer.item._createSpecificVariants_hasExcludedProperty(curBaseItem, curGenericVariant)) return;
 
-				genericAndSpecificVariants.push(createSpecificVariant(curBaseItem, curGenericVariant));
+				genericAndSpecificVariants.push(Renderer.item._createSpecificVariants_createSpecificVariant(curBaseItem, curGenericVariant, opts));
 			});
 		});
 		return genericAndSpecificVariants;
+	},
+
+	_createSpecificVariants_hasRequiredProperty (baseItem, genericVariant) {
+		return genericVariant.requires.some(req => Object.entries(req).every(([k, v]) => baseItem[k] === v));
+	},
+
+	_createSpecificVariants_hasExcludedProperty (baseItem, genericVariant) {
+		const curExcludes = genericVariant.excludes || {};
+		return !!Object.keys(curExcludes).find(key => {
+			if (curExcludes[key] instanceof Array) {
+				return (baseItem[key] instanceof Array ? baseItem[key].find(it => curExcludes[key].includes(it)) : curExcludes[key].includes(baseItem[key]));
+			}
+			return baseItem[key] instanceof Array ? baseItem[key].find(it => curExcludes[key] === it) : curExcludes[key] === baseItem[key];
+		});
+	},
+
+	/**
+	 * @param baseItem
+	 * @param genericVariant
+	 * @param [opts]
+	 * @param [opts.linkedLootTables]
+	 */
+	_createSpecificVariants_createSpecificVariant (baseItem, genericVariant, opts) {
+		const inherits = genericVariant.inherits;
+		const specificVariant = MiscUtil.copy(baseItem);
+		// Recent enhancements/entry cache
+		specificVariant._isEnhanced = false;
+		delete specificVariant._fullEntries;
+
+		if (baseItem.source !== SRC_PHB && baseItem.source !== SRC_DMG) {
+			Renderer.item._initFullEntries(specificVariant);
+			specificVariant._fullEntries.unshift(`{@note The base item can be found in ${Parser.sourceJsonToFull(baseItem.source)}.}`);
+		}
+
+		specificVariant._baseName = baseItem.name;
+		specificVariant._baseSrd = baseItem.srd;
+		if (baseItem.source !== inherits.source) specificVariant._baseSource = baseItem.source;
+
+		// Magic items do not inherit the value of the non-magical item
+		delete specificVariant.value;
+
+		// Magic variants apply their own SRD info
+		delete specificVariant.srd;
+
+		specificVariant._category = "Specific Variant";
+		Object.keys(inherits).forEach((inheritedProperty) => {
+			switch (inheritedProperty) {
+				case "namePrefix": specificVariant.name = `${inherits.namePrefix}${specificVariant.name}`; break;
+				case "nameSuffix": specificVariant.name = `${specificVariant.name}${inherits.nameSuffix}`; break;
+				case "entries": {
+					Renderer.item._initFullEntries(specificVariant);
+
+					const appliedPropertyEntries = Renderer.applyAllProperties(inherits.entries, Renderer.item._getInjectableProps(baseItem, inherits));
+					appliedPropertyEntries.forEach((ent, i) => specificVariant._fullEntries.splice(i, 0, ent));
+					break;
+				}
+				case "nameRemove": {
+					specificVariant.name = specificVariant.name.replace(new RegExp(inherits[inheritedProperty], "g"), "")
+
+					break;
+				}
+				case "weightExpression":
+				case "valueExpression": {
+					const exp = Renderer.item._createSpecificVariants_evaluateExpression(baseItem, specificVariant, inherits, inheritedProperty);
+
+					const result = Renderer.dice.parseRandomise2(exp);
+					if (result != null) {
+						switch (inheritedProperty) {
+							case "weightExpression": specificVariant.weight = result; break;
+							case "valueExpression": specificVariant.value = result; break;
+						}
+					}
+
+					break;
+				}
+				default: specificVariant[inheritedProperty] = inherits[inheritedProperty];
+			}
+		});
+
+		// track the specific variant on the parent generic, to later render as part of the stats
+		// TAG ITEM_VARIANTS
+		if (~Renderer.item.LINK_SPECIFIC_TO_GENERIC_DIRECTION) {
+			genericVariant.variants = genericVariant.variants || [];
+			genericVariant.variants.push({base: baseItem, specificVariant});
+		}
+
+		// add reverse link to get generic from specific--primarily used for indexing
+		if (!~Renderer.item.LINK_SPECIFIC_TO_GENERIC_DIRECTION) specificVariant.genericVariant = genericVariant;
+
+		// add linked loot tables
+		if (opts.linkedLootTables && opts.linkedLootTables[specificVariant.source] && opts.linkedLootTables[specificVariant.source][specificVariant.name]) {
+			(specificVariant.lootTables = specificVariant.lootTables || []).push(...opts.linkedLootTables[specificVariant.source][specificVariant.name])
+		}
+
+		return specificVariant;
+	},
+
+	_createSpecificVariants_evaluateExpression (baseItem, specificVariant, inherits, inheritedProperty) {
+		return inherits[inheritedProperty].replace(/\[\[([^\]]+)]]/g, (...m) => {
+			const propPath = m[1].split(".");
+			return propPath[0] === "item"
+				? MiscUtil.get(specificVariant, ...propPath.slice(1))
+				: propPath[0] === "baseItem"
+					? MiscUtil.get(baseItem, ...propPath.slice(1))
+					: MiscUtil.get(specificVariant, ...propPath);
+		});
 	},
 
 	_enhanceItems (allItems) {
@@ -4806,17 +4935,36 @@ Renderer.item = {
 		return allItems;
 	},
 
-	async pGetGenericAndSpecificVariants (variants, opts) {
+	/**
+	 * @param genericVariants
+	 * @param opts
+	 * @param [opts.baseItemsUrl]
+	 * @param [opts.additionalBaseItems]
+	 * @param [opts.baseItems]
+	 * @param [opts.isSpecificVariantsOnly]
+	 */
+	async pGetGenericAndSpecificVariants (genericVariants, opts) {
 		opts = opts || {};
-		opts.baseItemsUrl = opts.baseItemsUrl || `${Renderer.get().baseUrl}data/items-base.json`;
 
-		const baseItemData = await DataUtil.loadJSON(opts.baseItemsUrl);
-		const baseItems = baseItemData.baseitem.concat(opts.additionalBaseItems || []);
-		Renderer.item._addBasePropertiesAndTypes(baseItemData);
+		let baseItems;
+		if (opts.baseItems) {
+			baseItems = opts.baseItems;
+		} else {
+			opts.baseItemsUrl = opts.baseItemsUrl || `${Renderer.get().baseUrl}data/items-base.json`;
+			const baseItemData = await DataUtil.loadJSON(opts.baseItemsUrl);
+			Renderer.item._addBasePropertiesAndTypes(baseItemData);
+			baseItems = [...baseItemData.baseitem, ...(opts.additionalBaseItems || [])];
+		}
+
 		await Renderer.item._pAddBrewPropertiesAndTypes();
-		variants.forEach(Renderer.item._genericVariants_addInheritedPropertiesToSelf);
-		const genericAndSpecificVariants = Renderer.item._createSpecificVariants(baseItems, variants);
-		return Renderer.item._enhanceItems(genericAndSpecificVariants);
+		genericVariants.forEach(Renderer.item._genericVariants_addInheritedPropertiesToSelf);
+		const specificVariants = Renderer.item._createSpecificVariants(baseItems, genericVariants);
+		const outSpecificVariants = Renderer.item._enhanceItems(specificVariants);
+
+		if (opts.isSpecificVariantsOnly) return outSpecificVariants;
+
+		const outGenericVariants = Renderer.item._enhanceItems(genericVariants);
+		return [...outGenericVariants, ...outSpecificVariants];
 	},
 
 	_getInjectableProps (baseItem, inherits) {
@@ -4844,6 +4992,9 @@ Renderer.item = {
 		"nameSuffix"
 	]),
 	_genericVariants_addInheritedPropertiesToSelf (genericVariant) {
+		if (genericVariant._isInherited) return;
+		genericVariant._isInherited = true;
+
 		for (const prop in genericVariant.inherits) {
 			if (Renderer.item._INHERITED_PROPS_BLACKLIST.has(prop)) continue;
 
@@ -4984,44 +5135,74 @@ Renderer.item = {
 			);
 		}
 
-		(function addBaseItemList (item) {
-			// item.variants was added during generic variant creation
-			// TAG ITEM_VARIANTS
-			function createItemLink (item) {
-				return `{@item ${item.name}|${item.source}}`;
-			}
+		// region Add base items list
+		// item.variants was added during generic variant creation
+		// TAG ITEM_VARIANTS
+		if (item.variants && item.variants.length) {
+			Renderer.item._initFullEntries(item);
+			item._fullEntries.push({
+				type: "entries",
+				name: "Base items",
+				entries: [
+					"This item variant can be applied to the following base items:",
+					{
+						type: "list",
+						items: item.variants.map(({base, specificVariant}) => {
+							return `{@item ${base.name}|${base.source}} ({@item ${specificVariant.name}|${specificVariant.source}})`
+						})
+					}
+				]
+			});
+		}
+		// endregion
+	},
 
-			if (item.variants && item.variants.length) {
-				Renderer.item._initFullEntries(item);
-				item._fullEntries.push({
-					type: "entries",
-					name: "Base items",
-					entries: [
-						"This item variant can be applied to the following base items:",
-						{
-							type: "list",
-							items: item.variants.map(({base, specificVariant}) => {
-								return `${createItemLink(base)} (${createItemLink(specificVariant)})`
-							})
-						}
-					]
-				});
-			}
-		})(item);
+	unenhanceItem (item) {
+		if (!item._isEnhanced) return;
+		delete item._isEnhanced;
+		delete item._fullEntries;
 	},
 
 	async getItemsFromHomebrew (homebrew) {
 		(homebrew.itemProperty || []).forEach(p => Renderer.item._addProperty(p));
 		(homebrew.itemType || []).forEach(t => Renderer.item._addType(t));
-		let items = (homebrew.baseitem || []).concat(homebrew.item || []);
+		let items = [...(homebrew.baseitem || []), ...(homebrew.item || [])];
 		Renderer.item._enhanceItems(items);
+
+		let isReEnhanceVariants = false;
+
+		// Get specific variants for brew base items, using official generic variants
+		if (homebrew.baseitem && homebrew.baseitem.length) {
+			isReEnhanceVariants = true;
+
+			const variants = await Renderer.item.pGetGenericAndSpecificVariants(
+				Renderer.item._builtLists["genericVariants"],
+				{baseItems: homebrew.baseitem || [], isSpecificVariantsOnly: true}
+			);
+			items = [...items, ...variants];
+		}
+
+		// Get specific and generic variants for official and brew base items, using brew generic variants
 		if (homebrew.variant && homebrew.variant.length) {
+			isReEnhanceVariants = true;
+
 			const variants = await Renderer.item.pGetGenericAndSpecificVariants(
 				homebrew.variant,
 				{additionalBaseItems: homebrew.baseitem || []}
 			);
-			items = items.concat(variants);
+			items = [...items, ...variants];
 		}
+
+		// Regenerate the full entries for the generic variants, as there may be more specific variants to add to their
+		//   specific variant lists.
+		if (isReEnhanceVariants && Renderer.item._builtLists["genericVariants"]) {
+			Renderer.item._builtLists["genericVariants"].forEach(item => {
+				item.variants.sort((a, b) => SortUtil.ascSortLower(a.base.name, b.base.name) || SortUtil.ascSortLower(a.base.source, b.base.source));
+				Renderer.item.unenhanceItem(item);
+				Renderer.item.enhanceItem(item);
+			});
+		}
+
 		return items;
 	},
 
@@ -5065,18 +5246,18 @@ Renderer.item = {
 
 		const basicItems = await Renderer.item._pGetAndProcBaseItems(rawBaseItems);
 		const [genericVariants, linkedLootTables] = await Renderer.item._getAndProcGenericVariants(rawVariants);
-		const genericAndSpecificVariants = Renderer.item._createSpecificVariants(basicItems, genericVariants, linkedLootTables);
+		const specificVariants = Renderer.item._createSpecificVariants(basicItems, genericVariants, {linkedLootTables});
 
 		const revNames = [];
-		genericAndSpecificVariants.forEach(item => {
+		[...genericVariants, ...specificVariants].forEach(item => {
 			if (item.variants) delete item.variants; // prevent circular references
 			const revName = Renderer.item.modifierPostToPre(MiscUtil.copy(item));
 			if (revName) revNames.push(revName);
 		});
 
-		genericAndSpecificVariants.push(...revNames);
+		specificVariants.push(...revNames);
 
-		return genericAndSpecificVariants;
+		return specificVariants;
 	},
 
 	pGetFluff (item) {
@@ -5214,8 +5395,8 @@ Renderer.variantrule = {
 		const cpy = MiscUtil.copy(rule);
 		delete cpy.name;
 		return `
-			${Renderer.utils.getExcludedTr(rule, "variantrule", UrlUtil.PG_VARIATNRULES)}
-			${Renderer.utils.getNameTr(rule, {page: UrlUtil.PG_VARIATNRULES})}
+			${Renderer.utils.getExcludedTr(rule, "variantrule", UrlUtil.PG_VARIANTRULES)}
+			${Renderer.utils.getNameTr(rule, {page: UrlUtil.PG_VARIANTRULES})}
 			<tr><td colspan="6">
 			${Renderer.get().setFirstSection(true).render(cpy)}
 			</td></tr>
@@ -5365,7 +5546,7 @@ Renderer.vehicle = {
 				<div class="ve-muted ve-small help--subtle ml-2" title="Based on &quot;Special Travel Pace,&quot; DMG p242">[<b>Speed</b> ${veh.pace * 10} ft.]</div>
 			</td></tr>
 			<tr><td colspan="6">
-				<table class="summary stripe-even">
+				<table class="summary stripe-even-table">
 					<tr>
 						<th class="col-2 text-center">STR</th>
 						<th class="col-2 text-center">DEX</th>
@@ -5424,7 +5605,7 @@ Renderer.vehicle = {
 				<div class="ve-muted ve-small help--subtle ml-2" title="Based on &quot;Special Travel Pace,&quot; DMG p242">[<b>Travel Pace</b> ${Math.floor(veh.speed / 10)} miles per hour (${Math.floor(veh.speed * 24 / 10)} miles per day)]</div>
 			</td></tr>
 			<tr><td colspan="6">
-				<table class="summary stripe-even">
+				<table class="summary stripe-even-table">
 					<tr>
 						<th class="col-2 text-center">STR</th>
 						<th class="col-2 text-center">DEX</th>
@@ -5525,19 +5706,22 @@ Renderer.language = {
 Renderer.adventureBook = {
 	getEntryIdLookup (bookData, doThrowError = true) {
 		const out = {};
+		const titlesRel = {};
 
 		let chapIx;
 		const depthStack = [];
 		const handlers = {
 			object: (obj) => {
-				Renderer.ENTRIES_WITH_CHILDREN
-					.filter(meta => meta.key === "entries")
+				Renderer.ENTRIES_WITH_ENUMERATED_TITLES
 					.forEach(meta => {
 						if (obj.type !== meta.type) return;
 
+						const curDepth = depthStack.length ? depthStack.last() : 0;
+						const nxtDepth = meta.depth ? meta.depth : meta.depthIncrement ? curDepth + meta.depthIncrement : curDepth;
+
 						depthStack.push(
 							Math.min(
-								obj.type === "section" ? -1 : depthStack.length ? depthStack.last() + 1 : 0,
+								nxtDepth,
 								2
 							)
 						);
@@ -5551,14 +5735,21 @@ Renderer.adventureBook = {
 									entry: obj,
 									depth: depthStack.last()
 								};
+
+								if (obj.name) {
+									const cleanName = obj.name.toLowerCase();
+									titlesRel[cleanName] = titlesRel[cleanName] || 0;
+									out[obj.id].ixTitleRel = titlesRel[cleanName]++;
+									out[obj.id].nameClean = cleanName;
+								}
 							}
 						}
 					});
+
 				return obj;
 			},
 			postObject: (obj) => {
-				Renderer.ENTRIES_WITH_CHILDREN
-					.filter(meta => meta.key === "entries")
+				Renderer.ENTRIES_WITH_ENUMERATED_TITLES
 					.forEach(meta => {
 						if (obj.type !== meta.type) return;
 
@@ -5608,7 +5799,7 @@ Renderer.hover = {
 		"trap": UrlUtil.PG_TRAPS_HAZARDS,
 		"hazard": UrlUtil.PG_TRAPS_HAZARDS,
 		"deity": UrlUtil.PG_DEITIES,
-		"variantrule": UrlUtil.PG_VARIATNRULES
+		"variantrule": UrlUtil.PG_VARIANTRULES
 	},
 
 	LinkMeta: function () {
@@ -6444,14 +6635,18 @@ Renderer.hover = {
 	},
 
 	// region entry fetching
-	_addToCache: (page, source, hash, item) => {
+	addEmbeddedToCache (page, source, hash, entity) {
+		Renderer.hover._addToCache(page, source, hash, entity);
+	},
+
+	_addToCache: (page, source, hash, entity) => {
 		page = page.toLowerCase();
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
 
 		((Renderer.hover._linkCache[page] =
 			Renderer.hover._linkCache[page] || {})[source] =
-			Renderer.hover._linkCache[page][source] || {})[hash] = item;
+			Renderer.hover._linkCache[page][source] || {})[hash] = entity;
 	},
 
 	_getFromCache: (page, source, hash, opts) => {
@@ -6585,7 +6780,7 @@ Renderer.hover = {
 			case UrlUtil.PG_DEITIES: return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "deities.json", "deity", null, "deity");
 			case UrlUtil.PG_OBJECTS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "objects.json", "object");
 			case UrlUtil.PG_TRAPS_HAZARDS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "trapshazards.json", ["trap", "hazard"]);
-			case UrlUtil.PG_VARIATNRULES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "variantrules.json", "variantrule");
+			case UrlUtil.PG_VARIANTRULES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "variantrules.json", "variantrule");
 			case UrlUtil.PG_CULTS_BOONS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "cultsboons.json", ["cult", "boon"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_CONDITIONS_DISEASES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditionsdiseases.json", ["condition", "disease", "status"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_TABLES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
@@ -6845,6 +7040,8 @@ Renderer.hover = {
 						const scEntries = {type: "section", entries: MiscUtil.copy((sc.subclassFeatures || []).flat())};
 						// Always use the class source where available, as these are all keyed as sub-hashes on the classes page
 						Renderer.hover._addToCache(UrlUtil.PG_CLASSES, cls.source || sc.source || SRC_PHB, scHash, scEntries);
+						// Add a copy using the subclass source, for omnisearch results
+						Renderer.hover._addToCache(UrlUtil.PG_CLASSES, sc.source || SRC_PHB, scHash, scEntries);
 					}));
 
 					// add all class/subclass features
@@ -7089,7 +7286,7 @@ Renderer.hover = {
 			case UrlUtil.PG_DEITIES: return Renderer.deity.getCompactRenderedString;
 			case UrlUtil.PG_OBJECTS: return Renderer.object.getCompactRenderedString;
 			case UrlUtil.PG_TRAPS_HAZARDS: return Renderer.traphazard.getCompactRenderedString;
-			case UrlUtil.PG_VARIATNRULES: return Renderer.variantrule.getCompactRenderedString;
+			case UrlUtil.PG_VARIANTRULES: return Renderer.variantrule.getCompactRenderedString;
 			case UrlUtil.PG_CULTS_BOONS: return Renderer.cultboon.getCompactRenderedString;
 			case UrlUtil.PG_TABLES: return Renderer.table.getCompactRenderedString;
 			case UrlUtil.PG_VEHICLES: return Renderer.vehicle.getCompactRenderedString;
@@ -7459,33 +7656,63 @@ Renderer._stripTagLayer = function (str) {
 	} return str;
 };
 
-Renderer.isRollableTable = function (table) {
-	let autoMkRoller = false;
-	if (table.colLabels) {
-		autoMkRoller = table.colLabels.length >= 2 && RollerUtil.isRollCol(table.colLabels[0]);
-		if (autoMkRoller) {
-			// scan the first column to ensure all rollable
-			const notRollable = table.rows.find(it => {
-				try {
-					// u2012 = figure dash; u2013 = en-dash
-					return !/\d+([-\u2012\u2013]\d+)?/.exec(it[0]);
-				} catch (e) {
-					return true;
-				}
-			});
-			if (notRollable) autoMkRoller = false;
+Renderer.getTableRollMode = function (table) {
+	if (!table.colLabels || table.colLabels.length < 2) return RollerUtil.ROLL_COL_NONE;
+
+	const rollColMode = RollerUtil.getColRollType(table.colLabels[0]);
+	if (!rollColMode) return RollerUtil.ROLL_COL_NONE;
+
+	// scan the first column to ensure all rollable
+	if (table.rows.some(it => {
+		try {
+			// u2012 = figure dash; u2013 = en-dash
+			return !/^\d+([-\u2012\u2013]\d+)?/.exec(it[0]);
+		} catch (e) {
+			return true;
 		}
-	}
-	return autoMkRoller;
+	})) return RollerUtil.ROLL_COL_NONE;
+
+	return rollColMode;
 };
 
-// assumes validation has been done in advance
-Renderer.getRollableRow = function (row, cbErr) {
+/**
+ * This assumes validation has been done in advance.
+ * @param row
+ * @param [opts]
+ * @param [opts.cbErr]
+ * @param [opts.isForceInfiniteResults]
+ * @param [opts.isFirstRow] Used it `isForceInfiniteResults` is specified.
+ * @param [opts.isLastRow] Used it `isForceInfiniteResults` is specified.
+ */
+Renderer.getRollableRow = function (row, opts) {
+	opts = opts || {};
 	row = MiscUtil.copy(row);
 	try {
+		const cleanRow = String(row[0]).trim();
+
+		// format: "20 or lower"; "99 or higher"
+		const mLowHigh = /^(\d+) or (lower|higher)$/i.exec(cleanRow)
+		if (mLowHigh) {
+			row[0] = {type: "cell", entry: cleanRow}; // Preseve the original text
+
+			if (mLowHigh[2].toLowerCase() === "lower") {
+				row[0].roll = {
+					min: -Renderer.dice.POS_INFINITE,
+					max: Number(mLowHigh[1])
+				};
+			} else {
+				row[0].roll = {
+					min: Number(mLowHigh[1]),
+					max: Renderer.dice.POS_INFINITE
+				};
+			}
+
+			return row;
+		}
+
 		// format: "95-00" or "12"
 		// u2012 = figure dash; u2013 = en-dash
-		const m = /^(\d+)([-\u2012\u2013](\d+))?$/.exec(String(row[0]).trim());
+		const m = /^(\d+)([-\u2012\u2013](\d+))?$/.exec(cleanRow);
 		if (m) {
 			if (m[1] && !m[2]) {
 				row[0] = {
@@ -7495,6 +7722,7 @@ Renderer.getRollableRow = function (row, cbErr) {
 					}
 				};
 				if (m[1][0] === "0") row[0].roll.pad = true;
+				Renderer.getRollableRow._handleInfiniteOpts(row, opts);
 			} else {
 				row[0] = {
 					type: "cell",
@@ -7504,6 +7732,7 @@ Renderer.getRollableRow = function (row, cbErr) {
 					}
 				};
 				if (m[1][0] === "0" || m[3][0] === "0") row[0].roll.pad = true;
+				Renderer.getRollableRow._handleInfiniteOpts(row, opts);
 			}
 		} else {
 			// format: "12+"
@@ -7516,8 +7745,23 @@ Renderer.getRollableRow = function (row, cbErr) {
 				}
 			};
 		}
-	} catch (e) { if (cbErr) cbErr(row[0], e); }
+	} catch (e) { if (opts.cbErr) opts.cbErr(row[0], e); }
 	return row;
+};
+Renderer.getRollableRow._handleInfiniteOpts = function (row, opts) {
+	if (!opts.isForceInfiniteResults) return;
+
+	const isExact = row[0].roll.exact != null;
+
+	if (opts.isFirstRow) {
+		if (!isExact) row[0].roll.displayMin = row[0].roll.min;
+		row[0].roll.min = -Renderer.dice.POS_INFINITE;
+	}
+
+	if (opts.isLastRow) {
+		if (!isExact) row[0].roll.displayMax = row[0].roll.max;
+		row[0].roll.max = Renderer.dice.POS_INFINITE;
+	}
 };
 
 Renderer.initLazyImageLoaders = function () {

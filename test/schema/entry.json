@@ -4,7 +4,7 @@
 
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.2.26",
+	"version": "1.2.27",
 
 	"definitions" : {
 		"_arrayOfString": {
@@ -810,6 +810,27 @@
 				}
 			]
 		},
+		"entryVariantInner": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "variantInner"},
+						"name": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "#"
+							}
+						}
+					},
+					"required": ["name", "entries"],
+					"additionalProperties": false
+				}
+			]
+		},
 		"entryVariantSub": {
 			"allOf" : [
 				{"$ref" : "#/definitions/entry"},
@@ -1503,6 +1524,7 @@
 		{"$ref": "#/definitions/entryInset"},
 		{"$ref": "#/definitions/entryInsetReadaloud"},
 		{"$ref": "#/definitions/entryVariant"},
+		{"$ref": "#/definitions/entryVariantInner"},
 		{"$ref": "#/definitions/entryVariantSub"},
 		{"$ref": "#/definitions/entryItem"},
 		{"$ref": "#/definitions/entryItemSub"},

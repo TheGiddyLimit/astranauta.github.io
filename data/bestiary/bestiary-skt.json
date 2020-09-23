@@ -818,7 +818,7 @@
 									]
 								}
 							},
-							"ability": "int"
+							"ability": "wis"
 						}
 					}
 				}
@@ -1000,7 +1000,7 @@
 							]
 						}
 					},
-					"ability": "int"
+					"ability": "wis"
 				}
 			],
 			"trait": [
@@ -1082,6 +1082,11 @@
 			"name": "Crag Cat",
 			"source": "SKT",
 			"page": 240,
+			"otherSources": [
+				{
+					"source": "IDRotF"
+				}
+			],
 			"size": "L",
 			"type": "beast",
 			"alignment": [
@@ -1653,8 +1658,8 @@
 			"cha": 16,
 			"skill": {
 				"deception": "+5",
-				"insight": "+3",
-				"persuasion": "+3"
+				"insight": "+4",
+				"persuasion": "+5"
 			},
 			"passive": 12,
 			"languages": [
@@ -2094,13 +2099,13 @@
 			"wis": 10,
 			"cha": 12,
 			"save": {
-				"con": "+8",
-				"wis": "+3",
-				"cha": "+4"
+				"con": "+9",
+				"wis": "+4",
+				"cha": "+5"
 			},
 			"skill": {
-				"athletics": "+9",
-				"perception": "+3"
+				"athletics": "+10",
+				"perception": "+4"
 			},
 			"passive": 13,
 			"immune": [
@@ -2691,10 +2696,12 @@
 			"cha": 16,
 			"save": {
 				"con": "+8",
-				"cha": "+4"
+				"wis": "+6",
+				"cha": "+6"
 			},
 			"skill": {
-				"athletics": "+9"
+				"athletics": "+9",
+				"perception": "+6"
 			},
 			"passive": 13,
 			"immune": [
@@ -3137,14 +3144,14 @@
 			"wis": 15,
 			"cha": 23,
 			"save": {
-				"dex": "+7",
-				"con": "+16",
-				"wis": "+9",
-				"cha": "+13"
+				"dex": "+8",
+				"con": "+17",
+				"wis": "+10",
+				"cha": "+14"
 			},
 			"skill": {
-				"perception": "+16",
-				"stealth": "+7"
+				"perception": "+17",
+				"stealth": "+8"
 			},
 			"senses": [
 				"blindsight 60 ft.",
@@ -4257,7 +4264,7 @@
 			],
 			"skill": {
 				"athletics": "+14",
-				"insight": "+8",
+				"insight": "+9",
 				"perception": "+9"
 			},
 			"hasToken": true,
@@ -5594,11 +5601,11 @@
 			"wis": 18,
 			"cha": 20,
 			"save": {
-				"str": "+17",
-				"dex": "+7",
-				"con": "+14",
-				"int": "+13",
-				"wis": "+11"
+				"str": "+18",
+				"dex": "+8",
+				"con": "+15",
+				"int": "+14",
+				"wis": "+12"
 			},
 			"senses": [
 				"truesight 120 ft."
@@ -6781,7 +6788,7 @@
 			"skill": {
 				"athletics": "+14",
 				"perception": "+9",
-				"survival": "+8"
+				"survival": "+9"
 			},
 			"hasToken": true,
 			"damageTags": [
@@ -7310,13 +7317,13 @@
 			"wis": 16,
 			"cha": 16,
 			"save": {
-				"con": "+10",
-				"wis": "+7",
-				"cha": "+7"
+				"con": "+11",
+				"wis": "+8",
+				"cha": "+8"
 			},
 			"skill": {
-				"insight": "+7",
-				"perception": "+7"
+				"insight": "+8",
+				"perception": "+8"
 			},
 			"passive": 17,
 			"languages": [
@@ -7350,7 +7357,7 @@
 					"ability": "cha"
 				},
 				{
-					"name": "Innate Spellcasting",
+					"name": "Spellcasting",
 					"headerEntries": [
 						"Zephyros is a 12th-level spellcaster. his spellcasting ability is Intelligence (spell save {@dc 17}; {@hit 11} to hit with spell attacks). He has the following wizard spells prepared:"
 					],

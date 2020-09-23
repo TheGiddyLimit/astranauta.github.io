@@ -34,7 +34,7 @@ class UtilSearchIndex {
 	static async _pGetIndex (opts, doLogging = true, noFilter = false) {
 		const indexer = new od.Omnidexer();
 
-		// Index entities from directories, e.g. creatures and spells
+		// region Index entities from directories, e.g. creatures and spells
 		const toIndexMultiPart = od.Omnidexer.TO_INDEX__FROM_INDEX_JSON
 			.filter(indexMeta => opts.alternate ? indexMeta.alternateIndexes && indexMeta.alternateIndexes[opts.alternate] : true);
 
@@ -54,8 +54,9 @@ class UtilSearchIndex {
 				await indexer.pAddToIndex(indexMeta, contents, optsNxt);
 			}
 		}
+		// endregion
 
-		// Index entities from single files
+		// region Index entities from single files
 		const toIndexSingle = od.Omnidexer.TO_INDEX
 			.filter(indexMeta => opts.alternate ? indexMeta.alternateIndexes && indexMeta.alternateIndexes[opts.alternate] : true);
 
@@ -74,6 +75,16 @@ class UtilSearchIndex {
 			if (opts.alternate) optsNxt.alt = indexMeta.alternateIndexes[opts.alternate];
 			await indexer.pAddToIndex(indexMeta, data, optsNxt);
 		}
+		// endregion
+
+		// region Index special
+		if (!opts.alternate) {
+			for (const indexMeta of od.Omnidexer.TO_INDEX__SPECIAL) {
+				const toIndex = await indexMeta.pGetIndex();
+				toIndex.forEach(it => indexer.pushToIndex(it));
+			}
+		}
+		// endregion
 
 		return indexer.getIndex();
 	}

@@ -4,7 +4,7 @@
 
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.0.17",
+	"version": "1.0.18",
 
 	"definitions" : {
 		"metaBlock": {
@@ -1165,6 +1165,108 @@
 				},
 				"additionalProperties": false,
 				"minProperties": 1
+			}
+		},
+
+		"startingEquipment": {
+			"description": "Optional well-structured data version of the \"default\" property, for use in applications that require it.",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"patternProperties": {
+					".*": {
+						"type": "array",
+						"items": {
+							"oneOf": [
+								{
+									"description": "An item UID, e.g. \"longsword|phb\"",
+									"type": "string"
+								},
+								{
+									"type": "object",
+									"properties": {
+										"item": {
+											"description": "An item UID, e.g. \"longsword|phb\"",
+											"type": "string"
+										},
+										"quantity": {
+											"type": "integer"
+										},
+										"displayName": {
+											"description": "The display name this item should be given",
+											"type": "string"
+										},
+										"containsValue": {
+											"description": "The value (in copper pieces) that this piece of equipment contains in coins.",
+											"type": "integer"
+										}
+									},
+									"required": ["item"],
+									"additionalProperties": false
+								},
+								{
+									"type": "object",
+									"properties": {
+										"equipmentType": {
+											"type": "string",
+											"enum": [
+												"weaponSimple",
+												"weaponSimpleMelee",
+												"weaponMartial",
+												"weaponMartialMelee",
+												"instrumentMusical",
+												"armorLight",
+												"weaponMelee",
+												"weaponRanged",
+												"focusSpellcasting",
+												"setGaming",
+												"toolArtisan"
+											]
+										},
+										"quantity": {
+											"type": "integer"
+										}
+									},
+									"required": ["equipmentType"],
+									"additionalProperties": false
+								},
+								{
+									"type": "object",
+									"properties": {
+										"value": {
+											"description": "A value in copper pieces",
+											"type": "integer"
+										}
+									},
+									"required": ["value"],
+									"additionalProperties": false
+								},
+								{
+									"type": "object",
+									"properties": {
+										"special": {
+											"description": "The name of a non-statted item, such as \"wooden stake\"",
+											"type": "string"
+										},
+										"quantity": {
+											"type": "integer"
+										},
+										"worthValue": {
+											"description": "The worth (in copper pieces) of this piece of equipment.",
+											"type": "integer"
+										},
+										"containsValue": {
+											"description": "The value (in copper pieces) that this piece of equipment contains in coins.",
+											"type": "integer"
+										}
+									},
+									"required": ["special"],
+									"additionalProperties": false
+								}
+							]
+						}
+					}
+				}
 			}
 		}
 	}

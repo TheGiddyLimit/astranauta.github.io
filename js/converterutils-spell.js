@@ -53,19 +53,19 @@ class SavingThrowTagger {
 	}
 }
 
-class OpposedCheckTagger {
+class AbilityCheckTagger {
 	static tryRun (sp, options) {
-		sp.opposedCheck = [];
-		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/a (Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma) check/ig, (...m) => sp.opposedCheck.push(m[1].toLowerCase()));
-		if (!sp.opposedCheck.length) delete sp.opposedCheck;
-		else sp.opposedCheck = [...new Set(sp.opposedCheck)].sort(SortUtil.ascSort);
+		sp.abilityCheck = [];
+		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/a (Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma) check/ig, (...m) => sp.abilityCheck.push(m[1].toLowerCase()));
+		if (!sp.abilityCheck.length) delete sp.abilityCheck;
+		else sp.abilityCheck = [...new Set(sp.abilityCheck)].sort(SortUtil.ascSort);
 	}
 }
 
 class SpellAttackTagger {
 	static tryRun (sp, options) {
 		sp.spellAttack = [];
-		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/make a (ranged|melee) spell attack/ig, (...m) => sp.spellAttack.push(m[1][0].toUpperCase()));
+		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/make (?:a|up to [^ ]+) (ranged|melee) spell attack/ig, (...m) => sp.spellAttack.push(m[1][0].toUpperCase()));
 		if (!sp.spellAttack.length) delete sp.spellAttack;
 		else sp.spellAttack = [...new Set(sp.spellAttack)].sort(SortUtil.ascSort);
 	}
@@ -171,7 +171,7 @@ if (typeof module !== "undefined") {
 		DamageResVulnImmuneTagger,
 		ConditionInflictTagger,
 		SavingThrowTagger,
-		OpposedCheckTagger,
+		AbilityCheckTagger,
 		SpellAttackTagger,
 		MiscTagsTagger,
 		ScalingLevelDiceTagger

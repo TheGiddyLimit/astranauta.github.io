@@ -861,7 +861,8 @@ class SearchUiUtil {
 SearchUiUtil.NO_HOVER_CATEGORIES = new Set([
 	Parser.CAT_ID_ADVENTURE,
 	Parser.CAT_ID_BOOK,
-	Parser.CAT_ID_QUICKREF
+	Parser.CAT_ID_QUICKREF,
+	Parser.CAT_ID_PAGE
 ]);
 
 // based on DM screen's AddMenuSearchTab
@@ -1467,6 +1468,7 @@ class InputUiUtil {
 	 * @param [opts.$elePre] Element to add before the number input.
 	 * @param [opts.$elePost] Element to add after the number input.
 	 * @param [opts.isPermanent] If the prompt can only be closed by entering a number.
+	 * @param [opts.isSkippable] If the prompt is skippable.
 	 * @return {Promise<number>} A promise which resolves to the number if the user entered one, or null otherwise.
 	 */
 	static pGetUserNumber (opts) {
@@ -1483,10 +1485,15 @@ class InputUiUtil {
 				.click(() => doClose(true));
 			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
 				.click(() => doClose(false));
+			const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
+				.click(() => doClose(VeCt.SYM_UI_SKIP));
+
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Enter a Number",
 				isMinHeight0: true,
 				cbClose: (isDataEntered) => {
+					if (typeof isDataEntered === "symbol") return resolve(isDataEntered);
+
 					if (!isDataEntered) return resolve(null);
 					const raw = $iptNumber.val();
 					if (!raw.trim()) return resolve(null);
@@ -1501,7 +1508,7 @@ class InputUiUtil {
 			if (opts.$elePre) opts.$elePre.appendTo($modalInner);
 			$iptNumber.appendTo($modalInner);
 			if (opts.$elePost) opts.$elePost.appendTo($modalInner);
-			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
 			$iptNumber.focus();
 			$iptNumber.select();
 		});
@@ -1517,6 +1524,7 @@ class InputUiUtil {
 	 * @param [opts.storageKey] Storage key to use when "remember" options are passed.
 	 * @param [opts.isGlobal] If the stored setting is global when "remember" options are passed.
 	 * @param [opts.fnRemember] Custom function to run when saving the "yes and remember" option.
+	 * @param [opts.isSkippable] If the prompt is skippable.
 	 * @return {Promise} A promise which resolves to true/false if the user chose, or null otherwise.
 	 */
 	static async pGetUserBoolean (opts) {
@@ -1543,13 +1551,18 @@ class InputUiUtil {
 			const $btnTrue = $(`<button class="btn btn-primary flex-v-center mr-3"><span class="glyphicon glyphicon-ok mr-2"></span><span>${opts.textYes || "OK"}</span></button>`)
 				.click(() => doClose(true, true));
 
-			const $btnFalse = $(`<button class="btn btn-default btn-sm flex-v-center mr-2"><span class="glyphicon glyphicon-remove mr-2"></span><span>${opts.textNo || "Cancel"}</span></button>`)
+			const $btnFalse = $(`<button class="btn btn-default btn-sm flex-v-center"><span class="glyphicon glyphicon-remove mr-2"></span><span>${opts.textNo || "Cancel"}</span></button>`)
 				.click(() => doClose(true, false));
+
+			const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
+				.click(() => doClose(VeCt.SYM_UI_SKIP));
 
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Choose",
 				isMinHeight0: true,
 				cbClose: (isDataEntered, value) => {
+					if (typeof isDataEntered === "symbol") return resolve(isDataEntered);
+
 					if (!isDataEntered) return resolve(null);
 					if (value == null) throw new Error(`Callback must receive a value!`); // sanity check
 					resolve(value);
@@ -1557,7 +1570,7 @@ class InputUiUtil {
 			});
 
 			if (opts.htmlDescription && opts.htmlDescription.trim()) $$`<div class="flex w-100 mb-1">${opts.htmlDescription}</div>`.appendTo($modalInner);
-			$$`<div class="flex-v-center flex-h-right py-1 px-1">${$btnTrueRemember}${$btnTrue}${$btnFalse}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right py-1 px-1">${$btnTrueRemember}${$btnTrue}${$btnFalse}${$btnSkip}</div>`.appendTo($modalInner);
 			$btnTrue.focus();
 			$btnTrue.select();
 		});
@@ -1574,6 +1587,7 @@ class InputUiUtil {
 	 * @param [opts.$elePost] Element to add below the select box.
 	 * @param [opts.fnGetExtraState] Function which returns additional state from, generally, other elements in the modal.
 	 * @param [opts.isAllowNull] If an empty input should be treated as null.
+	 * @param [opts.isSkippable] If the prompt is skippable.
 	 * @return {Promise} A promise which resolves to the index of the item the user selected (or an object if fnGetExtraState is passed), or null otherwise.
 	 */
 	static pGetUserEnum (opts) {
@@ -1591,11 +1605,15 @@ class InputUiUtil {
 				.click(() => doClose(true));
 			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
 				.click(() => doClose(false));
+			const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
+				.click(() => doClose(VeCt.SYM_UI_SKIP));
 
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Select an Option",
 				isMinHeight0: true,
 				cbClose: (isDataEntered) => {
+					if (typeof isDataEntered === "symbol") return resolve(isDataEntered);
+
 					if (!isDataEntered) return resolve(null);
 					const ix = Number($selEnum.val());
 					if (!~ix) return resolve(null);
@@ -1609,7 +1627,7 @@ class InputUiUtil {
 			});
 			$selEnum.appendTo($modalInner);
 			if (opts.$elePost) opts.$elePost.appendTo($modalInner);
-			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
 			$selEnum.focus();
 		});
 	}
@@ -1628,6 +1646,7 @@ class InputUiUtil {
 	 * @param [opts.isResolveItems] True if the promise should resolve to an array of the items instead of the indices.
 	 * @param [opts.fnDisplay] Function which takes a value and returns display text.
 	 * @param [opts.modalOpts] Options to pass through to the underlying modal class.
+	 * @param [opts.isSkippable] If the prompt is skippable.
 	 * @return {Promise} A promise which resolves to the indices of the items the user selected, or null otherwise.
 	 */
 	static pGetUserMultipleChoice (opts) {
@@ -1648,6 +1667,8 @@ class InputUiUtil {
 				.click(() => doClose(true));
 			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
 				.click(() => doClose(false));
+			const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
+				.click(() => doClose(VeCt.SYM_UI_SKIP));
 
 			const rowMetas = [];
 			const $eles = [];
@@ -1740,6 +1761,8 @@ class InputUiUtil {
 				isMinHeight0: true,
 				isUncappedHeight: true,
 				cbClose: (isDataEntered) => {
+					if (typeof isDataEntered === "symbol") return resolve(isDataEntered);
+
 					if (!isDataEntered) return resolve(null);
 
 					const ixs = rowMetas.map((row, ix) => row.comp._state.isActive ? ix : null).filter(it => it != null);
@@ -1754,7 +1777,7 @@ class InputUiUtil {
 			});
 			if (opts.htmlDescription) $modalInner.append(opts.htmlDescription);
 			$wrpList.appendTo($modalInner);
-			$$`<div class="flex-v-center flex-h-right no-shrink pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right no-shrink pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
 			$wrpList.focus();
 		});
 	}
@@ -1766,6 +1789,7 @@ class InputUiUtil {
 	 * @param opts.values Array of icon metadata. Items should be of the form: `{name: "<n>", iconClass: "<c>", buttonClass: "<cs>", buttonClassActive: "<cs>"}`
 	 * @param opts.title Prompt title.
 	 * @param opts.default Default selected index.
+	 * @param [opts.isSkippable] If the prompt is skippable.
 	 * @return {Promise<number>} A promise which resolves to the index of the item the user selected, or null otherwise.
 	 */
 	static pGetUserIcon (opts) {
@@ -1778,6 +1802,7 @@ class InputUiUtil {
 				title: opts.title || "Select an Option",
 				isMinHeight0: true,
 				cbClose: (isDataEntered) => {
+					if (typeof isDataEntered === "symbol") return resolve(isDataEntered);
 					if (!isDataEntered) return resolve(null);
 					return resolve(~lastIx ? lastIx : null);
 				}
@@ -1809,8 +1834,10 @@ class InputUiUtil {
 				.click(() => doClose(true));
 			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
 				.click(() => doClose(false));
+			const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
+				.click(() => doClose(VeCt.SYM_UI_SKIP));
 
-			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
 		});
 	}
 
@@ -1820,6 +1847,7 @@ class InputUiUtil {
 	 * @param [opts.default] Default value.
 	 * @param [opts.autocomplete] Array of autocomplete strings. REQUIRES INCLUSION OF THE TYPEAHEAD LIBRARY.
 	 * @param [opts.isCode] If the text is code.
+	 * @param [opts.isSkippable] If the prompt is skippable.
 	 * @return {Promise<String>} A promise which resolves to the string if the user entered one, or null otherwise.
 	 */
 	static pGetUserString (opts) {
@@ -1845,17 +1873,20 @@ class InputUiUtil {
 				.click(() => doClose(true));
 			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
 				.click(() => doClose(false));
+			const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
+				.click(() => doClose(VeCt.SYM_UI_SKIP));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Enter Text",
 				isMinHeight0: true,
 				cbClose: (isDataEntered) => {
+					if (typeof isDataEntered === "symbol") return resolve(isDataEntered);
 					if (!isDataEntered) return resolve(null);
 					const raw = $iptStr.val();
 					return resolve(raw);
 				}
 			});
 			$iptStr.appendTo($modalInner);
-			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
 			$iptStr.focus();
 			$iptStr.select();
 		});
@@ -1868,6 +1899,7 @@ class InputUiUtil {
 	 * @param [opts.default] Default value.
 	 * @param [opts.disabled] If the text area is disabled.
 	 * @param [opts.isCode] If the text is code.
+	 * @param [opts.isSkippable] If the prompt is skippable.
 	 * @return {Promise<String>} A promise which resolves to the string if the user entered one, or null otherwise.
 	 */
 	static pGetUserText (opts) {
@@ -1880,10 +1912,13 @@ class InputUiUtil {
 				.click(() => doClose(true));
 			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
 				.click(() => doClose(false));
+			const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
+				.click(() => doClose(VeCt.SYM_UI_SKIP));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Enter Text",
 				isMinHeight0: true,
 				cbClose: (isDataEntered) => {
+					if (typeof isDataEntered === "symbol") return resolve(isDataEntered);
 					if (!isDataEntered) return resolve(null);
 					const raw = $iptStr.val();
 					if (!raw.trim()) return resolve(null);
@@ -1891,7 +1926,7 @@ class InputUiUtil {
 				}
 			});
 			$iptStr.appendTo($modalInner);
-			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
 			$iptStr.focus();
 			$iptStr.select();
 		});
@@ -1901,6 +1936,7 @@ class InputUiUtil {
 	 * @param opts Options.
 	 * @param opts.title Prompt title.
 	 * @param opts.default Default value.
+	 * @param [opts.isSkippable] If the prompt is skippable.
 	 * @return {Promise<String>} A promise which resolves to the color if the user entered one, or null otherwise.
 	 */
 	static pGetUserColor (opts) {
@@ -1911,10 +1947,13 @@ class InputUiUtil {
 				.click(() => doClose(true));
 			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
 				.click(() => doClose(false));
+			const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
+				.click(() => doClose(VeCt.SYM_UI_SKIP));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Choose Color",
 				isMinHeight0: true,
 				cbClose: (isDataEntered) => {
+					if (typeof isDataEntered === "symbol") return resolve(isDataEntered);
 					if (!isDataEntered) return resolve(null);
 					const raw = $iptRgb.val();
 					if (!raw.trim()) return resolve(null);
@@ -1922,7 +1961,7 @@ class InputUiUtil {
 				}
 			});
 			$iptRgb.appendTo($modalInner);
-			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
 			$iptRgb.focus();
 			$iptRgb.select();
 		});
@@ -1935,6 +1974,7 @@ class InputUiUtil {
 	 * @param [opts.default] Default angle.
 	 * @param [opts.stepButtons] Array of labels for quick-set buttons, which will be evenly spread around the clock.
 	 * @param [opts.step] Number of steps in the gauge (default 360; would be e.g. 12 for a "clock").
+	 * @param [opts.isSkippable] If the prompt is skippable.
 	 * @returns {Promise<number>} A promise which resolves to the number of degrees if the user pressed "Enter," or null otherwise.
 	 */
 	static pGetUserDirection (opts) {
@@ -2031,10 +2071,13 @@ class InputUiUtil {
 				.click(() => doClose(true));
 			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
 				.click(() => doClose(false));
+			const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
+				.click(() => doClose(VeCt.SYM_UI_SKIP));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Select Direction",
 				isMinHeight0: true,
 				cbClose: (isDataEntered) => {
+					if (typeof isDataEntered === "symbol") return resolve(isDataEntered);
 					$document.off(`mousemove.${evtId} touchmove${evtId} mouseup.${evtId} touchend${evtId} touchcancel${evtId}`);
 					if (!isDataEntered) return resolve(null);
 					if (curAngle < 0) curAngle += 360;
@@ -2044,7 +2087,7 @@ class InputUiUtil {
 			$$`<div class="flex-vh-center mb-3">
 				${$padOuter || $pad}
 			</div>`.appendTo($modalInner);
-			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
 		});
 	}
 
@@ -2052,6 +2095,7 @@ class InputUiUtil {
 	 * @param [opts] Options.
 	 * @param [opts.title] Prompt title.
 	 * @param [opts.default] Default values. Should be an object of the form `{num, faces, bonus}`.
+	 * @param [opts.isSkippable] If the prompt is skippable.
 	 * @return {Promise<String>} A promise which resolves to a dice string if the user entered values, or null otherwise.
 	 */
 	static pGetUserDice (opts) {
@@ -2100,10 +2144,13 @@ class InputUiUtil {
 				.click(() => doClose(true));
 			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
 				.click(() => doClose(false));
+			const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
+				.click(() => doClose(VeCt.SYM_UI_SKIP));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Enter Dice",
 				isMinHeight0: true,
 				cbClose: (isDataEntered) => {
+					if (typeof isDataEntered === "symbol") return resolve(isDataEntered);
 					if (!isDataEntered) return resolve(null);
 					return resolve(comp.getAsString());
 				}
@@ -2111,7 +2158,7 @@ class InputUiUtil {
 
 			comp.render($modalInner);
 
-			$$`<div class="flex-v-center flex-h-center pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-center pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
 		});
 	}
 }
@@ -3197,10 +3244,10 @@ class ComponentUiUtil {
 					$ipt.focus();
 				};
 
-				const $btnUp = $(`<button class="btn btn-default ui-ideco__btn-ticker bold unselectable">+</button>`)
+				const $btnUp = $(`<button class="btn btn-default ui-ideco__btn-ticker bold no-select">+</button>`)
 					.click(() => handleClick(1));
 
-				const $btnDown = $(`<button class="btn btn-default ui-ideco__btn-ticker bold unselectable">\u2012</button>`)
+				const $btnDown = $(`<button class="btn btn-default ui-ideco__btn-ticker bold no-select">\u2012</button>`)
 					.click(() => handleClick(-1));
 
 				return $$`<div class="ui-ideco__wrp ui-ideco__wrp--${side} flex-vh-center flex-col">

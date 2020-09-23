@@ -336,11 +336,6 @@
 	},
 
 	_applyPb (mon, pbIn, pbOut) {
-		const getNewSkillSaveMod = (oldMod, expert) => {
-			const mod = Number(oldMod) - (expert ? 2 * pbIn : pbIn) + (expert ? 2 * pbOut : pbOut);
-			return `${mod >= 0 ? "+" : ""}${mod}`;
-		};
-
 		if (mon.save) {
 			Object.keys(mon.save).forEach(k => {
 				const bonus = mon.save[k];
@@ -351,25 +346,11 @@
 				const actualPb = bonus - fromAbility;
 				const expert = actualPb === pbIn * 2;
 
-				mon.save[k] = getNewSkillSaveMod(bonus, expert);
+				mon.save[k] = this._applyPb_getNewSkillSaveMod(pbIn, pbOut, bonus, expert);
 			})
 		}
 
-		if (mon.skill) {
-			Object.keys(mon.skill).forEach(k => {
-				const bonus = mon.skill[k];
-
-				const fromAbility = Parser.getAbilityModNumber(mon[Parser.skillToAbilityAbv(k)]);
-				if (fromAbility === Number(bonus)) return; // handle the case where no-PB skills are listed
-
-				const actualPb = bonus - fromAbility;
-				const expert = actualPb === pbIn * 2;
-
-				mon.skill[k] = getNewSkillSaveMod(bonus, expert);
-
-				if (k === "perception" && mon.passive != null) mon.passive = 10 + Number(mon.skill[k]);
-			});
-		}
+		this._applyPb_skills(mon, pbIn, pbOut, mon.skill);
 
 		const pbDelta = pbOut - pbIn;
 		const handleHit = (str) => {
@@ -416,6 +397,38 @@
 		handleGenericEntries("legendary");
 		handleGenericEntries("mythic");
 		handleGenericEntries("variant");
+	},
+
+	_applyPb_getNewSkillSaveMod (pbIn, pbOut, oldMod, expert) {
+		const mod = Number(oldMod) - (expert ? 2 * pbIn : pbIn) + (expert ? 2 * pbOut : pbOut);
+		return UiUtil.intToBonus(mod);
+	},
+
+	_applyPb_skills (mon, pbIn, pbOut, monSkill) {
+		if (!monSkill) return;
+
+		Object.keys(monSkill).forEach(skill => {
+			if (skill === "other") {
+				monSkill[skill].forEach(block => {
+					if (block.oneOf) {
+						this._applyPb_skills(mon, pbIn, pbOut, block.oneOf);
+					} else throw new Error(`Unhandled "other" skill keys: ${Object.keys(block)}`);
+				});
+				return;
+			}
+
+			const bonus = monSkill[skill];
+
+			const fromAbility = Parser.getAbilityModNumber(mon[Parser.skillToAbilityAbv(skill)]);
+			if (fromAbility === Number(bonus)) return; // handle the case where no-PB skills are listed
+
+			const actualPb = bonus - fromAbility;
+			const expert = actualPb === pbIn * 2;
+
+			monSkill[skill] = this._applyPb_getNewSkillSaveMod(pbIn, pbOut, bonus, expert);
+
+			if (skill === "perception" && mon.passive != null) mon.passive = 10 + Number(monSkill[skill]);
+		});
 	},
 
 	_armorClass: {
@@ -1714,22 +1727,35 @@
 
 				if (mon.save && mon.save[abil] != null) {
 					const out = Number(mon.save[abil]) + diff;
-					mon.save[abil] = getModString(out);
+					mon.save[abil] = UiUtil.intToBonus(out);
 				}
 
-				if (mon.skill) {
-					Object.keys(mon.skill).forEach(skill => {
-						const skillAbil = Parser.skillToAbilityAbv(skill);
-						if (skillAbil !== abil) return;
-						const out = Number(mon.skill[skill]) + diff;
-						mon.skill[skill] = getModString(out);
-					});
-				}
+				this._handleUpdateAbilityScoresSkillsSaves_handleSkills(mon.skill, abil, diff);
 
 				if (abil === "wis" && mon.passive != null) {
 					mon.passive = mon.passive + diff;
 				}
 			}
+		});
+	},
+
+	_handleUpdateAbilityScoresSkillsSaves_handleSkills (monSkill, abil, diff) {
+		if (!monSkill) return;
+
+		Object.keys(monSkill).forEach(skill => {
+			if (skill === "other") {
+				monSkill[skill].forEach(block => {
+					if (block.oneOf) {
+						this._handleUpdateAbilityScoresSkillsSaves_handleSkills(block.oneOf.oneOf, abil, diff);
+					} else throw new Error(`Unhandled "other" skill keys: ${Object.keys(block)}`);
+				});
+				return;
+			}
+
+			const skillAbil = Parser.skillToAbilityAbv(skill);
+			if (skillAbil !== abil) return;
+			const out = Number(monSkill[skill]) + diff;
+			monSkill[skill] = UiUtil.intToBonus(out);
 		});
 	},
 

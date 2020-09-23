@@ -324,6 +324,10 @@ $rgb-inset-border: #656565;
 				border-right: 2px solid $rgb-inset-border;
 				background-color: #eef0f3;
 			}
+
+			&-inner {
+				margin-top: 10px;
+			}
 		}
 
 		&b-data {
@@ -419,9 +423,11 @@ $rgb-inset-border: #656565;
 			}
 		}
 
-		&img-small {
-			max-width: 25vw;
-			max-height: 25vh;
+		&img {
+			&-small {
+				max-width: 25vw;
+				max-height: 25vh;
+			}
 		}
 
 		&s-v-flow {

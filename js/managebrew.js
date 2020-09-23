@@ -10,7 +10,7 @@ class ManageBrew {
 	static async pRender () {
 		// standard brew manager
 		const $brew = $(`#brewmanager`).empty();
-		await BrewUtil._pRenderBrewScreen($brew, false, async () => ManageBrew.pRender());
+		await BrewUtil._pRenderBrewScreen($brew);
 
 		// brew meta manager
 		if (BrewUtil.homebrewMeta) {
