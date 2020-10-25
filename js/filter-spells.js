@@ -57,13 +57,9 @@ class PageFilterSpells extends PageFilter {
 		if (s.components && s.components.r) out.push(PageFilterSpells._META_ADD_R);
 		if (s.components && s.components.m && s.components.m.cost) out.push(PageFilterSpells._META_ADD_M_COST);
 		if (s.components && s.components.m && s.components.m.consume) out.push(PageFilterSpells._META_ADD_M_CONSUMED);
-		if ((s.miscTags && s.miscTags.includes("PRM")) || s.duration.filter(it => it.type === "permanent").length) out.push(Parser.spMiscTagToFull("PRM"));
-		if ((s.miscTags && s.miscTags.includes("SCL")) || s.entriesHigherLevel) out.push(Parser.spMiscTagToFull("SCL"));
-		if (s.miscTags && s.miscTags.includes("HL")) out.push(Parser.spMiscTagToFull("HL"));
-		if (s.miscTags && s.miscTags.includes("HL")) out.push(Parser.spMiscTagToFull("HL"));
-		if (s.miscTags && s.miscTags.includes("SMN")) out.push(Parser.spMiscTagToFull("SMN"));
-		if (s.miscTags && s.miscTags.includes("SGT")) out.push(Parser.spMiscTagToFull("SGT"));
-		if (s.miscTags && s.miscTags.includes("THP")) out.push(Parser.spMiscTagToFull("THP"));
+		if (s.miscTags) out.push(...s.miscTags);
+		if ((!s.miscTags || (s.miscTags && !s.miscTags.includes("PRM"))) && s.duration.filter(it => it.type === "permanent").length) out.push("PRM");
+		if ((!s.miscTags || (s.miscTags && !s.miscTags.includes("SCL"))) && s.entriesHigherLevel) out.push("SCL");
 		if (s.srd) out.push("SRD");
 		return out;
 	}
@@ -205,7 +201,7 @@ class PageFilterSpells extends PageFilter {
 		const name = `${nm}${addSuffix ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
 		return new FilterItem({
 			item: name,
-			userData: SourceUtil.getFilterGroup(c.source || SRC_PHB)
+			userData: SourceUtil.getFilterGroup(c.source || SRC_PHB),
 		});
 	}
 
@@ -214,7 +210,7 @@ class PageFilterSpells extends PageFilter {
 		const name = `${r.name}${addSuffix ? ` (${Parser.sourceJsonToAbv(r.source)})` : ""}`;
 		const opts = {
 			item: name,
-			userData: SourceUtil.getFilterGroup(r.source || SRC_PHB)
+			userData: SourceUtil.getFilterGroup(r.source || SRC_PHB),
 		};
 		if (r.baseName) opts.nest = r.baseName;
 		else opts.nest = "(No Subraces)"
@@ -228,70 +224,72 @@ class PageFilterSpells extends PageFilter {
 		const levelFilter = new Filter({
 			header: "Level",
 			items: [
-				0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+				0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
 			],
-			displayFn: PageFilterSpells.getFltrSpellLevelStr
+			displayFn: PageFilterSpells.getFltrSpellLevelStr,
 		});
 		const classFilter = new Filter({
 			header: "Class",
-			groupFn: it => it.userData
+			groupFn: it => it.userData,
 		});
 		const subclassFilter = new Filter({
 			header: "Subclass",
 			nests: {},
-			groupFn: (it) => SourceUtil.isSubclassReprinted(it.userData.class.name, it.userData.class.source, it.userData.subClass.name, it.userData.subClass.source) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(PS_PREFIX)
+			groupFn: (it) => SourceUtil.isSubclassReprinted(it.userData.class.name, it.userData.class.source, it.userData.subClass.name, it.userData.subClass.source) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(PS_PREFIX),
 		});
 		const variantClassFilter = new Filter({header: "Variant Class", headerHelp: `Source: ${Parser.sourceJsonToFull(SRC_UACFV)}`});
 		const classAndSubclassFilter = new MultiFilter({header: "Classes", mode: "or", filters: [classFilter, subclassFilter, variantClassFilter]});
 		const raceFilter = new Filter({
 			header: "Race",
 			nests: {},
-			groupFn: it => it.userData
+			groupFn: it => it.userData,
 		});
 		const backgroundFilter = new Filter({header: "Background"});
 		const metaFilter = new Filter({
 			header: "Components & Miscellaneous",
 			items: [...PageFilterSpells._META_FILTER_BASE_ITEMS, "Ritual", "Technomagic", "SRD"],
-			itemSortFn: PageFilterSpells.sortMetaFilter
+			itemSortFn: PageFilterSpells.sortMetaFilter,
+			isSrdFilter: true,
+			displayFn: it => Parser.spMiscTagToFull(it),
 		});
 		const schoolFilter = new Filter({
 			header: "School",
 			items: [...Parser.SKL_ABVS],
 			displayFn: Parser.spSchoolAbvToFull,
-			itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.spSchoolAbvToFull(a.item), Parser.spSchoolAbvToFull(b.item))
+			itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.spSchoolAbvToFull(a.item), Parser.spSchoolAbvToFull(b.item)),
 		});
 		const subSchoolFilter = new Filter({
 			header: "Subschool",
 			items: [],
-			displayFn: Parser.spSchoolAbvToFull
+			displayFn: Parser.spSchoolAbvToFull,
 		});
 		const damageFilter = new Filter({
 			header: "Damage Type",
 			items: MiscUtil.copy(Parser.DMG_TYPES),
-			displayFn: StrUtil.uppercaseFirst
+			displayFn: StrUtil.uppercaseFirst,
 		});
 		const conditionFilter = new Filter({
 			header: "Conditions Inflicted",
 			items: MiscUtil.copy(Parser.CONDITIONS),
-			displayFn: StrUtil.uppercaseFirst
+			displayFn: StrUtil.uppercaseFirst,
 		});
 		const spellAttackFilter = new Filter({
 			header: "Spell Attack",
 			items: ["M", "R", "O"],
 			displayFn: Parser.spAttackTypeToFull,
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		const saveFilter = new Filter({
 			header: "Saving Throw",
 			items: ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"],
 			displayFn: PageFilterSpells.getFilterAbilitySave,
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		const checkFilter = new Filter({
 			header: "Ability Check",
 			items: ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"],
 			displayFn: PageFilterSpells.getFilterAbilityCheck,
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		const timeFilter = new Filter({
 			header: "Cast Time",
@@ -301,16 +299,16 @@ class PageFilterSpells extends PageFilter {
 				Parser.SP_TM_REACTION,
 				Parser.SP_TM_ROUND,
 				Parser.SP_TM_MINS,
-				Parser.SP_TM_HRS
+				Parser.SP_TM_HRS,
 			],
 			displayFn: Parser.spTimeUnitToFull,
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		const durationFilter = new RangeFilter({
 			header: "Duration",
 			isLabelled: true,
 			labelSortFn: null,
-			labels: ["Instant", "1 Round", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "24+ Hours", "Permanent", "Special"]
+			labels: ["Instant", "1 Round", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "24+ Hours", "Permanent", "Special"],
 		});
 		const rangeFilter = new Filter({
 			header: "Range",
@@ -319,15 +317,15 @@ class PageFilterSpells extends PageFilter {
 				PageFilterSpells.F_RNG_TOUCH,
 				PageFilterSpells.F_RNG_POINT,
 				PageFilterSpells.F_RNG_SELF_AREA,
-				PageFilterSpells.F_RNG_SPECIAL
+				PageFilterSpells.F_RNG_SPECIAL,
 			],
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		const areaTypeFilter = new Filter({
 			header: "Area Style",
 			items: ["ST", "MT", "R", "N", "C", "Y", "H", "L", "S", "Q", "W"],
 			displayFn: Parser.spAreaTypeToFull,
-			itemSortFn: null
+			itemSortFn: null,
 		});
 
 		this._classFilter = classFilter;
@@ -365,20 +363,19 @@ class PageFilterSpells extends PageFilter {
 		spell._fClasses = Renderer.spell.getCombinedClasses(spell, "fromClassList").map(PageFilterSpells.getClassFilterItem);
 		spell._fSubclasses = Renderer.spell.getCombinedClasses(spell, "fromSubclass")
 			.map(c => {
-				// if (c.subclass.name === "Land") debugger
 				return new FilterItem({
 					item: `${c.class.name}: ${PageFilterSpells.getClassFilterItem(c.subclass).item}${c.subclass.subSubclass ? `, ${c.subclass.subSubclass}` : ""}`,
 					nest: c.class.name,
 					userData: {
 						subClass: {
 							name: c.subclass.name,
-							source: c.subclass.source
+							source: c.subclass.source,
 						},
 						class: {
 							name: c.class.name,
-							source: c.class.source
-						}
-					}
+							source: c.class.source,
+						},
+					},
 				});
 			});
 		spell._fVariantClasses = spell.classes && spell.classes.fromClassListVariant ? spell.classes.fromClassListVariant.map(PageFilterSpells.getClassFilterItem) : [];
@@ -436,7 +433,7 @@ class PageFilterSpells extends PageFilter {
 			this._timeFilter,
 			this._durationFilter,
 			this._rangeFilter,
-			this._areaTypeFilter
+			this._areaTypeFilter,
 		];
 	}
 
@@ -460,7 +457,7 @@ class PageFilterSpells extends PageFilter {
 			s._fTimeType,
 			s._fDurationType,
 			s._fRangeType,
-			s._fAreaTags
+			s._fAreaTags,
 		)
 	}
 }
@@ -479,18 +476,25 @@ PageFilterSpells.F_RNG_SELF = "Self";
 PageFilterSpells.F_RNG_TOUCH = "Touch";
 PageFilterSpells.F_RNG_SPECIAL = "Special";
 
-PageFilterSpells._META_FILTER_BASE_ITEMS = [PageFilterSpells._META_ADD_CONC, PageFilterSpells._META_ADD_V, PageFilterSpells._META_ADD_S, PageFilterSpells._META_ADD_M, PageFilterSpells._META_ADD_R, PageFilterSpells._META_ADD_M_COST, PageFilterSpells._META_ADD_M_CONSUMED, ...Object.values(Parser.SP_MISC_TAG_TO_FULL)];
+PageFilterSpells._META_FILTER_BASE_ITEMS = [PageFilterSpells._META_ADD_CONC, PageFilterSpells._META_ADD_V, PageFilterSpells._META_ADD_S, PageFilterSpells._META_ADD_M, PageFilterSpells._META_ADD_R, PageFilterSpells._META_ADD_M_COST, PageFilterSpells._META_ADD_M_CONSUMED, ...Object.keys(Parser.SP_MISC_TAG_TO_FULL)];
 
 PageFilterSpells.INCHES_PER_FOOT = 12;
 PageFilterSpells.FEET_PER_MILE = 5280;
 
 class ModalFilterSpells extends ModalFilter {
-	constructor (namespace) {
+	/**
+	 * @param opts
+	 * @param opts.namespace
+	 * @param [opts.isRadio]
+	 * @param [opts.allData]
+	 */
+	constructor (opts) {
+		opts = opts || {};
 		super({
+			...opts,
 			modalTitle: "Spells",
 			pageFilter: new PageFilterSpells(),
 			fnSort: PageFilterSpells.sortSpells,
-			namespace: namespace
 		});
 	}
 
@@ -502,7 +506,7 @@ class ModalFilterSpells extends ModalFilter {
 			{sort: "school", text: "School", width: "1"},
 			{sort: "concentration", text: "C.", title: "Concentration", width: "0-5"},
 			{sort: "range", text: "Range", width: "2"},
-			{sort: "source", text: "Source", width: "1"}
+			{sort: "source", text: "Source", width: "1"},
 		];
 		return ModalFilter._$getFilterColumnHeaders(btnMeta);
 	}
@@ -519,8 +523,8 @@ class ModalFilterSpells extends ModalFilter {
 	}
 
 	_getListItem (pageFilter, spell, spI) {
-		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		const eleLabel = document.createElement("label");
+		eleLabel.className = "row lst--border no-select lst__wrp-cells";
 
 		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS](spell);
 		const source = Parser.sourceJsonToAbv(spell.source);
@@ -530,22 +534,18 @@ class ModalFilterSpells extends ModalFilter {
 		const concentration = spell._isConc ? "×" : "";
 		const range = Parser.spRangeToFull(spell.range);
 
-		eleLi.innerHTML = `<label class="lst--border no-select">
-			<div class="lst__wrp-cells">
-				<div class="col-1 pl-0 flex-vh-center"><input type="checkbox" class="no-events"></div>
-				<div class="bold col-3">${spell.name}</div>
-				<div class="col-1-5 text-center">${levelText}</div>
-				<div class="col-2 text-center">${time}</div>
-				<div class="col-1 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</div>
-				<div class="col-0-5 text-center" title="Concentration">${concentration}</div>
-				<div class="col-2 text-right">${range}</div>
-				<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</div>
-			</div>
-		</label>`;
+		eleLabel.innerHTML = `<div class="col-1 pl-0 flex-vh-center"><input type="checkbox" class="no-events"></div>
+		<div class="bold col-3">${spell.name}</div>
+		<div class="col-1-5 text-center">${levelText}</div>
+		<div class="col-2 text-center">${time}</div>
+		<div class="col-1 sp__school-${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</div>
+		<div class="col-0-5 text-center" title="Concentration">${concentration}</div>
+		<div class="col-2 text-right">${range}</div>
+		<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</div>`;
 
 		return new ListItem(
 			spI,
-			eleLi,
+			eleLabel,
 			spell.name,
 			{
 				hash,
@@ -557,11 +557,11 @@ class ModalFilterSpells extends ModalFilter {
 				classes: Parser.spClassesToFull(spell, true),
 				concentration,
 				normalisedTime: spell._normalisedTime,
-				normalisedRange: spell._normalisedRange
+				normalisedRange: spell._normalisedRange,
 			},
 			{
-				cbSel: eleLi.firstElementChild.firstElementChild.firstElementChild.firstElementChild
-			}
+				cbSel: eleLabel.firstElementChild.firstElementChild,
+			},
 		);
 	}
 }

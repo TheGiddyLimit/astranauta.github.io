@@ -8,9 +8,9 @@ class PageFilterActions extends PageFilter {
 		this._timeFilter = new Filter({
 			header: "Type",
 			displayFn: StrUtil.uppercaseFirst,
-			itemSortFn: SortUtil.ascSortLower
+			itemSortFn: SortUtil.ascSortLower,
 		});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action", "SRD"]});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action", "SRD"], isSrdFilter: true});
 	}
 
 	mutateForFilters (it) {
@@ -30,7 +30,7 @@ class PageFilterActions extends PageFilter {
 		opts.filters = [
 			this._sourceFilter,
 			this._timeFilter,
-			this._miscFilter
+			this._miscFilter,
 		];
 	}
 
@@ -39,7 +39,7 @@ class PageFilterActions extends PageFilter {
 			values,
 			it.source,
 			it._fTime,
-			it._fMisc
+			it._fMisc,
 		)
 	}
 }

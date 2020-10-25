@@ -32,7 +32,7 @@ class Blacklist {
 		Blacklist._list = new List({
 			$iptSearch,
 			$wrpList: $(`.blacklist`),
-			isUseJquery: true
+			isUseJquery: true,
 		});
 		Blacklist._listId = 1;
 
@@ -48,7 +48,7 @@ class Blacklist {
 			"races.json",
 			"rewards.json",
 			"trapshazards.json",
-			"variantrules.json"
+			"variantrules.json",
 		];
 
 		const $selSource = $(`#bl-source`);
@@ -227,8 +227,8 @@ class Blacklist {
 				displayName: displayName,
 				hash: hash,
 				category: category,
-				source: source
-			}
+				source: source,
+			},
 		);
 
 		Blacklist._list.addItem(listItem);
@@ -359,7 +359,7 @@ class Blacklist {
 }
 Blacklist._IGNORED_CATEGORIES = new Set([
 	"_meta",
-	"linkedLootTables"
+	"linkedLootTables",
 ]);
 Blacklist._SUB_BLACKLIST_ENTRIES = {};
 

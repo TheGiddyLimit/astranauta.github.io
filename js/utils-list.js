@@ -229,7 +229,7 @@ const ListUtil = {
 	getOrTabRightButton: (id, icon) => {
 		let $btn = $(`#${id}`);
 		if (!$btn.length) {
-			$btn = $(`<button class="stat-tab btn btn-default" id="${id}"><span class="glyphicon glyphicon-${icon}"></span></button>`).appendTo($(`#tabs-right`));
+			$btn = $(`<button class="ui-tab__btn-tab-head btn btn-default" id="${id}"><span class="glyphicon glyphicon-${icon}"></span></button>`).appendTo($(`#tabs-right`));
 		}
 		return $btn;
 	},
@@ -266,52 +266,89 @@ const ListUtil = {
 			.on("click", handlerGenerator ? handlerGenerator() : ListUtil.genericSubtractButtonHandler);
 	},
 
-	bindDownloadButton: () => {
-		const $btn = ListUtil.getOrTabRightButton(`btn-sublist-download`, `download`);
-		$btn.off("click")
-			.on("click", async evt => {
-				if (evt.shiftKey) {
-					const toEncode = JSON.stringify(ListUtil.getExportableSublist());
-					const parts = [window.location.href, (UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], {isEncodeBoth: true}))];
-					await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
-					JqueryUtil.showCopiedEffect($btn);
-				} else {
-					DataUtil.userDownload(ListUtil._getDownloadName(), JSON.stringify(ListUtil.getExportableSublist(), null, "\t"));
-				}
-			})
-			.title("Download Pinned List (SHIFT for Link)");
+	/**
+	 * @param opts
+	 * @param [opts.download]
+	 * @param [opts.upload]
+	 * @param [opts.upload.pPreloadSublistSources]
+	 * @param [opts.sendToBrew]
+	 * @param [opts.sendToBrew.fnGetMeta]
+	 */
+	bindOtherButtons (opts) {
+		opts = opts || {};
+
+		const $btnOptions = ListUtil.getOrTabRightButton(`btn-sublist-other`, `option-vertical`);
+
+		const contextOptions = [];
+
+		if (opts.download) {
+			const action = new ContextUtil.Action(
+				"Download Pinned List (SHIFT to Copy Link)",
+				async evt => {
+					if (evt.shiftKey) {
+						const toEncode = JSON.stringify(ListUtil.getExportableSublist());
+						const parts = [window.location.href, (UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], {isEncodeBoth: true}))];
+						await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
+						JqueryUtil.showCopiedEffect($btnOptions);
+					} else {
+						DataUtil.userDownload(ListUtil._getDownloadName(), JSON.stringify(ListUtil.getExportableSublist(), null, "\t"));
+					}
+				},
+			);
+			contextOptions.push(action);
+		}
+
+		if (opts.upload) {
+			const action = new ContextUtil.Action(
+				"Upload Pinned List (SHIFT for Add Only)",
+				evt => {
+					function pHandleIptChange (event, additive) {
+						const input = event.target;
+
+						const reader = new FileReader();
+						reader.onload = async () => {
+							const text = reader.result;
+							const json = JSON.parse(text);
+							$iptAdd.remove();
+							if (typeof opts.upload === "object" && opts.upload.pFnPreLoad) await opts.upload.pFnPreLoad(json);
+							await ListUtil.pDoJsonLoad(json, additive);
+						};
+						reader.readAsText(input.files[0]);
+					}
+
+					const additive = evt.shiftKey;
+					const $iptAdd = $(`<input type="file" accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`)
+						.on("change", (evt) => pHandleIptChange(evt, additive))
+						.appendTo($(`body`));
+					$iptAdd.click();
+				},
+			);
+			contextOptions.push(action);
+		}
+
+		if (opts.sendToBrew) {
+			if (contextOptions.length) contextOptions.push(null); // Add a spacer after the previous group
+
+			const action = new ContextUtil.Action(
+				"Edit in Homebrew Builder",
+				() => {
+					const meta = opts.sendToBrew.fnGetMeta();
+					const toLoadData = [meta.page, meta.source, meta.hash];
+					window.location = `${UrlUtil.PG_MAKE_BREW}#${opts.sendToBrew.mode.toUrlified()}${HASH_PART_SEP}${UrlUtil.packSubHash("statemeta", toLoadData)}`;
+				},
+			);
+			contextOptions.push(action);
+		}
+
+		const menu = ContextUtil.getMenu(contextOptions);
+		$btnOptions
+			.off("click")
+			.on("click", evt => ContextUtil.pOpenMenu(evt, menu));
 	},
 
 	async pDoJsonLoad (json, additive) {
 		await ListUtil._pLoadSavedSublist(json.items, additive);
 		await ListUtil._pFinaliseSublist();
-	},
-
-	bindUploadButton: (pFnPreLoad) => {
-		const $btn = ListUtil.getOrTabRightButton(`btn-sublist-upload`, `upload`);
-		$btn.off("click")
-			.on("click", (evt) => {
-				function pHandleIptChange (event, additive) {
-					const input = event.target;
-
-					const reader = new FileReader();
-					reader.onload = async () => {
-						const text = reader.result;
-						const json = JSON.parse(text);
-						$iptAdd.remove();
-						if (pFnPreLoad) await pFnPreLoad(json);
-						await ListUtil.pDoJsonLoad(json, additive);
-					};
-					reader.readAsText(input.files[0]);
-				}
-
-				const additive = evt.shiftKey;
-				const $iptAdd = $(`<input type="file" accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`)
-					.on("change", (evt) => pHandleIptChange(evt, additive))
-					.appendTo($(`body`));
-				$iptAdd.click();
-			})
-			.title("Upload Pinned List (SHIFT for Add Only)");
 	},
 
 	async pSetFromSubHashes (subHashes, pFnPreLoad) {
@@ -366,7 +403,7 @@ const ListUtil = {
 		if (index == null) {
 			return JqueryUtil.doToast({
 				content: "Please first view something from the list.",
-				type: "danger"
+				type: "danger",
 			});
 		}
 
@@ -539,17 +576,17 @@ const ListUtil = {
 				(evt, userData) => {
 					const {ele, selection} = userData;
 					ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, selection);
-				}
+				},
 			),
 			new ContextUtil.Action(
 				"Pin",
 				async () => {
 					await Promise.all(
-						ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelectedWithDeslect(l, (it) => ListUtil.isSublisted(it) ? Promise.resolve() : ListUtil.pDoSublistAdd(it))))
+						ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelectedWithDeslect(l, (it) => ListUtil.isSublisted(it) ? Promise.resolve() : ListUtil.pDoSublistAdd(it)))),
 					);
 					await ListUtil._pFinaliseSublist();
-				}
-			)
+				},
+			),
 		]);
 
 		const subActions = [
@@ -558,40 +595,40 @@ const ListUtil = {
 				(evt, userData) => {
 					const {ele, selection} = userData;
 					ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, selection);
-				}
+				},
 			),
 			new ContextUtil.Action(
 				"Unpin",
 				(evt, userData) => {
 					const {selection} = userData;
 					selection.forEach(item => ListUtil.pDoSublistRemove(item.ix));
-				}
+				},
 			),
 			new ContextUtil.Action(
 				"Clear Pins",
-				() => ListUtil.pDoSublistRemoveAll()
+				() => ListUtil.pDoSublistRemoveAll(),
 			),
 			null,
 			new ContextUtil.Action(
 				"Roll on List",
-				() => ListUtil._rollSubListed()
+				() => ListUtil._rollSubListed(),
 			),
 			null,
 			new ContextUtil.Action(
 				"Send to DM Screen",
-				() => ListUtil._pDoSendSublistToDmScreen()
+				() => ListUtil._pDoSendSublistToDmScreen(),
 			),
 			ExtensionUtil.ACTIVE
 				? new ContextUtil.Action(
 					"Send to Foundry",
-					() => ListUtil._pDoSendSublistToFoundry()
+					() => ListUtil._pDoSendSublistToFoundry(),
 				)
 				: undefined,
 			null,
 			new ContextUtil.Action(
 				"Download JSON Data",
-				() => ListUtil._handleJsonDownload()
-			)
+				() => ListUtil._handleJsonDownload(),
+			),
 		].filter(it => it !== undefined);
 		ListUtil.contextMenuPinnableListSub = ContextUtil.getMenu(subActions);
 	},
@@ -605,18 +642,18 @@ const ListUtil = {
 				(evt, userData) => {
 					const {ele, selection} = userData;
 					ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, selection);
-				}
+				},
 			),
 			new ContextUtil.Action(
 				"Add",
 				async () => {
 					await Promise.all(
-						ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelectedWithDeslect(l, (it) => ListUtil.pDoSublistAdd(it))))
+						ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelectedWithDeslect(l, (it) => ListUtil.pDoSublistAdd(it)))),
 					);
 					await ListUtil._pFinaliseSublist();
 					ListUtil.updateSelected();
-				}
-			)
+				},
+			),
 		]);
 
 		const subActions = [
@@ -625,7 +662,7 @@ const ListUtil = {
 				(evt, userData) => {
 					const {ele, selection} = userData;
 					ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, selection)
-				}
+				},
 			),
 			new ContextUtil.Action(
 				"Remove",
@@ -635,33 +672,33 @@ const ListUtil = {
 						if (item.data.customHashId) ListUtil.pDoSublistRemove(item.ix, {customHashId: item.data.customHashId});
 						else ListUtil.pDoSublistRemove(item.ix);
 					});
-				}
+				},
 			),
 			new ContextUtil.Action(
 				"Clear List",
-				() => ListUtil.pDoSublistRemoveAll()
+				() => ListUtil.pDoSublistRemoveAll(),
 			),
 			null,
 			new ContextUtil.Action(
 				"Roll on List",
-				() => ListUtil._rollSubListed()
+				() => ListUtil._rollSubListed(),
 			),
 			null,
 			new ContextUtil.Action(
 				"Send to DM Screen",
-				() => ListUtil._pDoSendSublistToDmScreen()
+				() => ListUtil._pDoSendSublistToDmScreen(),
 			),
 			ExtensionUtil.ACTIVE
 				? new ContextUtil.Action(
 					"Send to Foundry",
-					() => ListUtil._pDoSendSublistToFoundry()
+					() => ListUtil._pDoSendSublistToFoundry(),
 				)
 				: undefined,
 			null,
 			new ContextUtil.Action(
 				"Download JSON Data",
-				() => ListUtil._handleJsonDownload()
-			)
+				() => ListUtil._handleJsonDownload(),
+			),
 		].filter(it => it !== undefined);
 		ListUtil.contextMenuAddableListSub = ContextUtil.getMenu(subActions);
 	},
@@ -719,13 +756,13 @@ const ListUtil = {
 				Renderer.hover.getWindowPositionExact(
 					elePos.x + posOffset,
 					elePos.y + posOffset,
-					evt
+					evt,
 				),
 				{
 					title: toRender.name,
 					isPermanent: true,
-					pageUrl: `${page}#${hash}`
-				}
+					pageUrl: `${page}#${hash}`,
+				},
 			);
 		}
 	},
@@ -757,7 +794,7 @@ const ListUtil = {
 			if ($eles.length <= 1) {
 				JqueryUtil.doToast({
 					content: "Not enough entries to roll!",
-					type: "danger"
+					type: "danger",
 				});
 				return ListUtil._isRolling = false;
 			}
@@ -832,7 +869,7 @@ const ListUtil = {
 			isHeight100: true,
 			isUncappedWidth: true,
 			isUncappedHeight: true,
-			isEmpty: true
+			isEmpty: true,
 		});
 
 		const $pnlControl = $(`<div class="split my-3"/>`).appendTo($modal);
@@ -903,5 +940,5 @@ const ListUtil = {
 			$wrpBtnShowSearch.hide();
 			$btnHideSearch.show();
 		});
-	}
+	},
 };

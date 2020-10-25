@@ -2945,7 +2945,10 @@
 						}
 					}
 				]
-			}
+			},
+			"miscTags": [
+				"MAC"
+			]
 		},
 		{
 			"name": "Beacon of Hope",
@@ -5096,6 +5099,7 @@
 				"R"
 			],
 			"miscTags": [
+				"HL",
 				"SCL"
 			],
 			"areaTags": [
@@ -10886,6 +10890,7 @@
 				"dexterity"
 			],
 			"miscTags": [
+				"HL",
 				"SGT"
 			],
 			"areaTags": [
@@ -12289,13 +12294,7 @@
 						"source": "PHB"
 					}
 				]
-			},
-			"eldritchInvocations": [
-				{
-					"name": "Repelling Blast",
-					"source": "PHB"
-				}
-			]
+			}
 		},
 		{
 			"name": "Elemental Weapon",
@@ -14121,6 +14120,7 @@
 				"intelligence"
 			],
 			"miscTags": [
+				"HL",
 				"SGT"
 			],
 			"areaTags": [
@@ -14348,6 +14348,7 @@
 				"You can't have more than one steed bonded by this spell at a time. As an action, you can release the steed from its bond at any time, causing it to disappear."
 			],
 			"miscTags": [
+				"HL",
 				"SMN"
 			],
 			"classes": {
@@ -14447,7 +14448,7 @@
 				}
 			],
 			"entries": [
-				"You sense the presence of any trap within range that is within line of sight. A trap, for the purpose of this spell, includes anything that would inflict a sudden or unexpected effect you consider harmful or undesirable, which was specifically intended as such by its creator. Thus, the spell would sense an area affected by the alarm spell, a glyph of warding, or a mechanical pit trap, but it would not reveal a natural weakness in the floor, an unstable ceiling, or a hidden sinkhole.",
+				"You sense the presence of any trap within range that is within line of sight. A trap, for the purpose of this spell, includes anything that would inflict a sudden or unexpected effect you consider harmful or undesirable, which was specifically intended as such by its creator. Thus, the spell would sense an area affected by the {@spell alarm} spell, a {@spell glyph of warding}, or a mechanical pit trap, but it would not reveal a natural weakness in the floor, an unstable ceiling, or a hidden sinkhole.",
 				"This spell merely reveals that a trap is present. You don't learn the location of each trap, but you do learn the general nature of the danger posed by a trap you sense."
 			],
 			"classes": {
@@ -18500,6 +18501,7 @@
 				"When the spell ends, the target can't move or take actions until after its next turn, as a wave of lethargy sweeps over it."
 			],
 			"miscTags": [
+				"MAC",
 				"SGT"
 			],
 			"areaTags": [
@@ -22513,6 +22515,9 @@
 					"name": "Armor of Shadows",
 					"source": "PHB"
 				}
+			],
+			"miscTags": [
+				"MAC"
 			]
 		},
 		{
@@ -30947,6 +30952,9 @@
 					"baseName": "Human",
 					"baseSource": "PHB"
 				}
+			],
+			"miscTags": [
+				"MAC"
 			]
 		},
 		{
@@ -31045,6 +31053,9 @@
 					"baseName": "Human",
 					"baseSource": "PHB"
 				}
+			],
+			"miscTags": [
+				"MAC"
 			]
 		},
 		{
@@ -31428,7 +31439,10 @@
 						"source": "PHB"
 					}
 				]
-			}
+			},
+			"miscTags": [
+				"HL"
+			]
 		},
 		{
 			"name": "Sleep",
@@ -31800,6 +31814,9 @@
 					"name": "Mire the Mind",
 					"source": "PHB"
 				}
+			],
+			"miscTags": [
+				"MAC"
 			]
 		},
 		{
@@ -36259,6 +36276,9 @@
 					"name": "Selesnya Initiate",
 					"source": "GGR"
 				}
+			],
+			"miscTags": [
+				"MAC"
 			]
 		},
 		{
@@ -36372,6 +36392,10 @@
 				{
 					"name": "Sea Twins' Gift",
 					"source": "UAWarlockAndWizard"
+				},
+				{
+					"name": "Gift of the Depths",
+					"source": "XGE"
 				}
 			]
 		},

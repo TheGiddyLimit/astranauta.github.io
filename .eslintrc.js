@@ -15,11 +15,11 @@ module.exports = {
 		"block-spacing": ["error", "always"],
 		"brace-style": ["error", "1tbs", {"allowSingleLine": true}],
 		"comma-dangle": ["error", {
-			"arrays": "never",
-			"objects": "never",
-			"imports": "never",
-			"exports": "never",
-			"functions": "never"
+			"arrays": "always-multiline",
+			"objects": "always-multiline",
+			"imports": "always-multiline",
+			"exports": "always-multiline",
+			"functions": "always-multiline"
 		}],
 		"comma-spacing": ["error", {"before": false, "after": true}],
 		"comma-style": ["error", "last"],

@@ -4,6 +4,16 @@ Shared UI components
 
 @import 'vars';
 
+/* region Misc/Shared */
+.ui__ {
+	&ipt-color {
+		&::-webkit-color-swatch {
+			border: 0;
+		}
+	}
+}
+/* endregion */
+
 /* region Source overlay */
 .night-mode .ui-source__ {
 	&divider {
@@ -15,7 +25,9 @@ Shared UI components
 /* region Modals */
 .night-mode .ui-modal__ {
 	&header {
-		border-color: $rgb-border-grey--trans-night;
+		&--border {
+			border-color: $rgb-border-grey--trans-night;
+		}
 	}
 
 	&footer {
@@ -54,6 +66,18 @@ Shared UI components
 
 /* region Tabs */
 .night-mode .ui-tab__ {
+	&btn-tab-head {
+		&--active {
+			background-color: $rgb-btn-default-active--night;
+		}
+	}
+
+	&wrp-tab-body {
+		&--background {
+			background: $rgb-bg--night;
+		}
+	}
+
 	&wrp-tab-heads--border {
 		border-color: $rgb-border-grey--night;
 		border-width: 2px;
@@ -184,3 +208,30 @@ Shared UI components
 	}
 }
 /* endregion */
+
+/* region Select2 */
+.night-mode .ui-sel2__ {
+	&ipt-search {
+		background: transparent;
+	}
+
+	&wrp-options {
+		background-color: $rgb-bg--night;
+		border-color: $rgb-border-grey--night;
+	}
+
+	&disp-option {
+		&.active,
+		&:focus,
+		&:hover {
+			background: $rgb-bg--alt-night;
+		}
+
+		&:focus.active,
+		&:hover.active {
+			background: lighten($rgb-bg--alt-night, $pct-darken-active);
+		}
+	}
+}
+/* endregion */
+

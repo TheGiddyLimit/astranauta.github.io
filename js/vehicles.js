@@ -13,7 +13,7 @@ class VehiclesPage extends ListPage {
 
 			sublistClass: "subvehicles",
 
-			dataProps: ["vehicle"]
+			dataProps: ["vehicle"],
 		});
 	}
 
@@ -39,12 +39,12 @@ class VehiclesPage extends ListPage {
 			{
 				hash,
 				source,
-				vehicleType: it.vehicleType
+				vehicleType: it.vehicleType,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : vhI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -74,8 +74,8 @@ class VehiclesPage extends ListPage {
 			it.name,
 			{
 				hash,
-				vehicleType: it.vehicleType
-			}
+				vehicleType: it.vehicleType,
+			},
 		);
 		return listItem;
 	}
@@ -101,24 +101,24 @@ class VehiclesPage extends ListPage {
 				isImageTab,
 				$content,
 				entity: veh,
-				pFnGetFluff: Renderer.vehicle.pGetFluff
+				pFnGetFluff: Renderer.vehicle.pGetFluff,
 			});
 		}
 
 		const statTab = Renderer.utils.tabButton(
 			"Item",
 			() => $floatToken.show(),
-			buildStatsTab
+			buildStatsTab,
 		);
 		const infoTab = Renderer.utils.tabButton(
 			"Info",
 			() => $floatToken.hide(),
-			buildFluffTab
+			buildFluffTab,
 		);
 		const picTab = Renderer.utils.tabButton(
 			"Images",
 			() => $floatToken.hide(),
-			() => buildFluffTab(true)
+			() => buildFluffTab(true),
 		);
 
 		Renderer.utils.bindTabButtons(statTab, infoTab, picTab);

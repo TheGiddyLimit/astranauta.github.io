@@ -1,14 +1,11 @@
 "use strict";
 
-window.addEventListener("load", () => {
-	doPageInit().catch(e => { throw e })
-});
-
 class PageUi {
 	constructor () {
 		this._builders = {};
 
 		this._$menuInner = null;
+		this._$selBuilderMode = null;
 		this._$wrpSource = null;
 		this._$wrpMain = null;
 		this._$wrpInput = null;
@@ -28,7 +25,12 @@ class PageUi {
 	}
 
 	set creatureBuilder (creatureBuilder) { this._builders.creatureBuilder = creatureBuilder; }
+	set legendaryGroupBuilder (legendaryGroupBuilder) { this._builders.legendaryGroupBuilder = legendaryGroupBuilder; }
 	set spellBuilder (spellBuilder) { this._builders.spellBuilder = spellBuilder; }
+
+	get creatureBuilder () { return this._builders.creatureBuilder; }
+
+	get activeBuilder () { return this._settings.activeBuilder || PageUi._DEFAULT_ACTIVE_BUILDER; }
 
 	get $wrpInput () { return this._$wrpInput; }
 
@@ -69,7 +71,7 @@ class PageUi {
 		this._$wrpSource = $(`#page_source`);
 		this._$wrpMain = $(`#page_main`);
 
-		this._settings.activeBuilder = this._settings.activeBuilder || "creatureBuilder";
+		this._settings.activeBuilder = this._settings.activeBuilder || PageUi._DEFAULT_ACTIVE_BUILDER;
 
 		this._initLhs();
 		this._initRhs();
@@ -133,7 +135,7 @@ class PageUi {
 			cbCancel: () => {
 				this._sideMenuEnabled = true;
 				this.__setStageMain();
-			}
+			},
 		});
 	}
 
@@ -146,24 +148,45 @@ class PageUi {
 		this._$wrpOutput = $(`#content_output`);
 	}
 
+	getBuilderById (id) {
+		id = id.toLowerCase().trim();
+		const key = Object.keys(this._builders).find(k => k.toLowerCase().trim() === id);
+		if (key) return this._builders[key];
+	}
+
+	setActiveBuilderById (id) {
+		id = id.toLowerCase().trim();
+		const key = Object.keys(this._builders).find(k => k.toLowerCase().trim() === id);
+		this._setActiveBuilder(key);
+	}
+
+	_setActiveBuilder (nxtActiveBuilder) {
+		if (!this._builders[nxtActiveBuilder]) throw new Error(`Builder "${nxtActiveBuilder}" does not exist!`);
+
+		this._$selBuilderMode.val(nxtActiveBuilder);
+		this._settings.activeBuilder = nxtActiveBuilder;
+		if (!Hist.initialLoad) Hist.replaceHistoryHash(UrlUtil.encodeForHash(this._settings.activeBuilder));
+		const builder = this._builders[this._settings.activeBuilder];
+		builder.renderInput();
+		builder.renderOutput();
+		builder.renderSideMenu();
+		this._saveSettingsDebounced();
+	}
+
 	_initSideMenu () {
 		const $mnu = $(`.sidemenu`);
 
 		const prevMode = this._settings.activeBuilder;
 
 		const $wrpMode = $(`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label mr-2">Mode</div></div>`).appendTo($mnu);
-		const $selMode = $(`
+		this._$selBuilderMode = $(`
 			<select class="form-control input-xs">
 				<option value="creatureBuilder">Creature</option>
+				<option value="legendaryGroupBuilder">Legendary Group</option>
 				<option value="spellBuilder">Spell</option>
 			</select>
 		`).appendTo($wrpMode).change(() => {
-			this._settings.activeBuilder = $selMode.val();
-			const builder = this._builders[this._settings.activeBuilder];
-			builder.renderInput();
-			builder.renderOutput();
-			builder.renderSideMenu();
-			this._saveSettingsDebounced();
+			this._setActiveBuilder(this._$selBuilderMode.val());
 		});
 
 		const $btnManageHomebrew = $(`<button class="btn btn-xs btn-info">Manage Homebrew</button>`)
@@ -207,7 +230,7 @@ class PageUi {
 		$mnu.append(PageUi.__$getSideMenuDivider(true));
 		this._$menuInner = $(`<div/>`).appendTo($mnu);
 
-		if (prevMode) $selMode.val(prevMode).change();
+		if (prevMode) this._setActiveBuilder(prevMode);
 	}
 
 	set _sideMenuEnabled (val) { $(`.sidemenu__toggle`).toggle(!!val); }
@@ -254,13 +277,14 @@ class PageUi {
 			_meta: {
 				sources: [MiscUtil.copy(BrewUtil.sourceJsonToSource(this._settings.activeSource))],
 				dateAdded: timestamp,
-				dateLastModified: timestamp
-			}
+				dateLastModified: timestamp,
+			},
 		};
 	}
 }
 PageUi.STORAGE_STATE = "brewbuilderState";
 PageUi.STORAGE_SETTINGS = "brewbuilderSettings";
+PageUi._DEFAULT_ACTIVE_BUILDER = "creatureBuilder";
 
 class Builder extends ProxyBase {
 	static async pInitAll () {
@@ -328,8 +352,8 @@ class Builder extends ProxyBase {
 			m: this.__meta,
 			// parent/other meta-state
 			_m: {
-				isEntrySaved: this.isEntrySaved
-			}
+				isEntrySaved: this.isEntrySaved,
+			},
 		}
 	}
 
@@ -360,9 +384,9 @@ class Builder extends ProxyBase {
 			cb,
 			this._state,
 			{
-				vals: this._sourcesCache, fnDisplay: Parser.sourceJsonToFull, type: "string", nullable: false
+				vals: this._sourcesCache, fnDisplay: Parser.sourceJsonToFull, type: "string", nullable: false,
 			},
-			"source"
+			"source",
 		);
 	}
 
@@ -452,7 +476,7 @@ class Builder extends ProxyBase {
 						else copy.name = `${copy.name} (1)`;
 						await BrewUtil.pAddEntry(this._prop, copy);
 						this.doUpdateSidemenu();
-					}
+					},
 				),
 				new ContextUtil.Action(
 					"View JSON",
@@ -468,10 +492,10 @@ class Builder extends ProxyBase {
 							{
 								title: `${this._state.name} \u2014 Source Data`,
 								isPermanent: true,
-								isBookContent: true
-							}
+								isBookContent: true,
+							},
 						);
-					}
+					},
 				),
 				new ContextUtil.Action(
 					"Download JSON",
@@ -479,12 +503,12 @@ class Builder extends ProxyBase {
 						const out = this._ui._getJsonOutputTemplate();
 						out[this._prop] = [DataUtil.cleanJson(MiscUtil.copy(entry))];
 						DataUtil.userDownload(DataUtil.getCleanFilename(entry.name), out);
-					}
+					},
 				),
 				...(this._sidebarItemOptionsMetas || []).map(it => new ContextUtil.Action(
 					it.name,
-					(evt) => it.pAction(evt, entry)
-				))
+					(evt) => it.pAction(evt, entry),
+				)),
 			]);
 
 			const $btnBurger = $(`<button class="btn btn-xs btn-default mr-2" title="More Options"><span class="glyphicon glyphicon-option-vertical"/></button>`)
@@ -498,10 +522,11 @@ class Builder extends ProxyBase {
 							this.ixBrew = null;
 							this.mutSavedButtonText();
 						} else if (this.ixBrew > ixBrew) {
-							this.ixBrew--; // handle the splice -- our index is not one lower
+							this.ixBrew--; // handle the splice -- our index is now one lower
 						}
 						await BrewUtil.pRemoveEntry(this._prop, entry);
 						this.doUpdateSidemenu();
+						await this.pDoPostDelete();
 					}
 				});
 
@@ -559,6 +584,7 @@ class Builder extends ProxyBase {
 		this.isEntrySaved = true;
 		this.mutSavedButtonText();
 		this.doUiSave();
+		await this.pDoPostSave();
 	}
 
 	mutSavedButtonText () {
@@ -606,8 +632,11 @@ class Builder extends ProxyBase {
 	_renderInputImpl () { throw new TypeError(`Unimplemented method!`); }
 	renderOutput () { throw new TypeError(`Unimplemented method!`); }
 	async pHandleSidebarLoadExistingClick () { throw new TypeError(`Unimplemented method!`); }
+	async pHandleSidebarLoadExistingData () { throw new TypeError(`Unimplemented method!`); }
 	getInitialMetaState () { return {}; }
 	async pInit () {}
+	async pDoPostSave () {}
+	async pDoPostDelete () {}
 }
 Builder._BUILDERS = [];
 
@@ -717,8 +746,8 @@ class BuilderUi {
 					out = [
 						{
 							name: options.withHeader,
-							entries: out
-						}
+							entries: out,
+						},
 					];
 				}
 
@@ -984,21 +1013,58 @@ class BuilderUi {
 	}
 }
 
-async function doPageInit () {
-	// generic init
-	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-	await BrewUtil.pAddBrewData();
-	await BrewUtil.pAddLocalBrewData();
-	await SearchUiUtil.pDoGlobalInit();
-	// Do this asynchronously, to avoid blocking the load
-	SearchWidget.pDoGlobalInit();
+class Makebrew {
+	static async doPageInit () {
+		Makebrew._LOCK = new VeLock();
 
-	// page-specific init
-	await Builder.pInitAll();
-	Renderer.utils.bindPronounceButtons();
-	await ui.init();
+		// generic init
+		ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+		await BrewUtil.pAddBrewData();
+		await BrewUtil.pAddLocalBrewData();
+		await SearchUiUtil.pDoGlobalInit();
+		// Do this asynchronously, to avoid blocking the load
+		SearchWidget.pDoGlobalInit();
 
-	window.dispatchEvent(new Event("toolsLoaded"));
+		// page-specific init
+		await Builder.pInitAll();
+		Renderer.utils.bindPronounceButtons();
+		await ui.init();
+
+		if (window.location.hash.length) await Makebrew.pHashChange();
+		window.addEventListener("hashchange", Makebrew.pHashChange.bind(Makebrew));
+
+		window.dispatchEvent(new Event("toolsLoaded"));
+	}
+
+	static async pHashChange () {
+		try {
+			await Makebrew._LOCK.pLock();
+
+			const [builderMode, ...sub] = Hist.getHashParts();
+			Hist.initialLoad = false; // Once we've extracted the hash's parts, we no longer care about preserving it
+
+			if (!builderMode) return Hist.replaceHistoryHash(UrlUtil.encodeForHash(ui.activeBuilder));
+
+			const builder = ui.getBuilderById(builderMode);
+			if (!builder) return Hist.replaceHistoryHash(UrlUtil.encodeForHash(ui.activeBuilder));
+
+			ui.setActiveBuilderById(builderMode); // (This will update the hash to the active builder)
+
+			if (sub.length) {
+				const initialLoadMeta = UrlUtil.unpackSubHash(sub[0]);
+				if (!initialLoadMeta.statemeta) return;
+
+				const [page, source, hash] = initialLoadMeta.statemeta;
+				const toLoad = await Renderer.hover.pCacheAndGet(page, source, hash, {isCopy: true});
+				return builder.pHandleSidebarLoadExistingData(toLoad, {isForce: true});
+			}
+		} finally { Makebrew._LOCK.unlock(); }
+	}
 }
+Makebrew._LOCK = null;
 
 const ui = new PageUi();
+
+window.addEventListener("load", async () => {
+	await Makebrew.doPageInit();
+});

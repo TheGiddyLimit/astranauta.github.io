@@ -17,7 +17,7 @@
 		"16": [8, 9],
 		"17": [10, 12],
 		"18": [13, 16],
-		"19": [17, 30]
+		"19": [17, 30],
 	},
 
 	_crToAc (cr) {
@@ -58,7 +58,7 @@
 		"27": [671, 715],
 		"28": [716, 760],
 		"29": [761, 805],
-		"30": [806, 850]
+		"30": [806, 850],
 	},
 
 	// calculated as the mean modifier for each CR,
@@ -100,7 +100,7 @@
 		"28": [7, 9],
 		"29": [7, 9],
 		// end
-		"30": [10, 10]
+		"30": [10, 10],
 	},
 
 	_atkCrRanges: {
@@ -115,7 +115,7 @@
 		"11": [21, 23],
 		"12": [24, 26],
 		"13": [27, 29],
-		"14": [30, 30]
+		"14": [30, 30],
 	},
 
 	_crToAtk (cr) {
@@ -156,7 +156,7 @@
 		"27": [249, 266],
 		"28": [267, 284],
 		"29": [285, 302],
-		"30": [303, 320]
+		"30": [303, 320],
 	},
 
 	// Manual smoothing applied to ensure e.g. going down a CR doesn't increase the mod
@@ -196,7 +196,7 @@
 		"28": [8, 11],
 		"29": [8, 11],
 		// end
-		"30": [9, 11]
+		"30": [9, 11],
 	},
 
 	_dcRanges: {
@@ -210,7 +210,7 @@
 		"20": [21, 23],
 		"21": [24, 26],
 		"22": [27, 29],
-		"23": [30, 30]
+		"23": [30, 30],
 	},
 
 	_crToDc (cr) {
@@ -224,7 +224,7 @@
 		druid: [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
 		sorcerer: [4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
 		warlock: [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
-		wizard: [3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+		wizard: [3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
 	},
 
 	_casterLevelAndClassToCantrips (level, clazz) {
@@ -259,7 +259,7 @@
 		"16": 17,
 		"17": 18,
 		"18": 19,
-		"19": 20 // (no samples; manually added)
+		"19": 20, // (no samples; manually added)
 	},
 
 	_crToCasterLevel (cr) {
@@ -272,7 +272,7 @@
 		// at least 1
 		return Math.max(1,
 			((modifier + 5) * 2)
-			+ (mon[prop] % 2) // add trailing odd numbers from the original ability, just for fun
+			+ (mon[prop] % 2), // add trailing odd numbers from the original ability, just for fun
 		);
 	},
 
@@ -437,11 +437,11 @@
 			for (let i = 0; i < 3; ++i) {
 				out.push({
 					tag: `${item} +${i + 1}|dmg`,
-					mod: baseMod + i + 1
+					mod: baseMod + i + 1,
 				});
 				out.push({
 					tag: `+${i + 1} ${item}|dmg`,
-					mod: baseMod + i + 1
+					mod: baseMod + i + 1,
 				});
 			}
 			return out;
@@ -452,7 +452,7 @@
 				const mod = obj[armor];
 				return [{
 					tag: `${armor}|phb`,
-					mod
+					mod,
 				}].concat(this._getEnchanted(armor, mod));
 			}).reduce((a, b) => a.concat(b), []);
 		},
@@ -511,19 +511,19 @@
 			"ring mail": 14,
 			"chain mail": 16,
 			"splint armor": 17,
-			"plate armor": 18
+			"plate armor": 18,
 		},
 		_MEDIUM: {
 			"hide armor": 12,
 			"chain shirt": 13,
 			"scale mail": 14,
 			"breastplate": 14,
-			"half plate armor": 15
+			"half plate armor": 15,
 		},
 		_LIGHT: {
 			"padded armor": 11,
 			"leather armor": 11,
-			"studded leather armor": 12
+			"studded leather armor": 12,
 		},
 		_MAGE_ARMOR: "@spell mage armor",
 
@@ -535,9 +535,9 @@
 			this._ALL_SHIELD_VARIANTS = this._ALL_SHIELD_VARIANTS || [
 				{
 					tag: "shield|phb",
-					mod: 2
+					mod: 2,
 				},
-				...this._getEnchanted("shield", 2)
+				...this._getEnchanted("shield", 2),
 			];
 
 			this._ALL_HEAVY_VARIANTS = this._ALL_HEAVY_VARIANTS || this._getAllVariants(this._HEAVY);
@@ -643,7 +643,7 @@
 							_: f,
 							name: name.trim(),
 							ench: ench,
-							source: source
+							source: source,
 						}
 					} else {
 						const m = /@item ([^|}]+)(\|[^|}]+)?(\|[^|}]+)?/gi.exec(f);
@@ -709,7 +709,7 @@
 					} else {
 						return { // fill the gap with natural armor
 							ac: target,
-							from: ["natural armor"]
+							from: ["natural armor"],
 						}
 					}
 				} else if (dexMismatch < 0 && canAdjustDex) { // increase/reduce DEX to move the AC up/down
@@ -1078,7 +1078,7 @@
 					handleHeavyArmor,
 					handleMediumArmor,
 					handleLightArmor,
-					handleNaturalArmor
+					handleNaturalArmor,
 				];
 				let lastVal = 0;
 				for (let i = 0; i < toRun.length; ++i) {
@@ -1093,7 +1093,7 @@
 			} else {
 				return handleNoArmor();
 			}
-		}
+		},
 	},
 
 	/**
@@ -1142,9 +1142,9 @@
 	_adjustHp (mon, crIn, crOut) {
 		if (mon.hp.special) return; // could be anything; best to just leave it
 
-		const hpInAvg = Math.mean(...this._crHpRanges[crIn]);
+		const hpInAvg = this._crHpRanges[crIn].mean();
 		const hpOutRange = this._crHpRanges[crOut];
-		const hpOutAvg = Math.mean(...hpOutRange);
+		const hpOutAvg = hpOutRange.mean();
 		const targetHpOut = this._getScaledToRatio(mon.hp.average, hpInAvg, hpOutAvg);
 		const targetHpDeviation = (hpOutRange[1] - hpOutRange[0]) / 2;
 		const targetHpRange = [Math.floor(targetHpOut - targetHpDeviation), Math.ceil(targetHpOut + targetHpDeviation)];
@@ -1416,8 +1416,8 @@
 	_adjustDpr (mon, crIn, crOut) {
 		const idealDprRangeIn = this._crDprRanges[crIn];
 		const idealDprRangeOut = this._crDprRanges[crOut];
-		const dprTotalIn = Math.mean(...idealDprRangeIn);
-		const dprTotalOut = Math.mean(...idealDprRangeOut);
+		const dprTotalIn = idealDprRangeIn.mean();
+		const dprTotalOut = idealDprRangeOut.mean();
 
 		const getAdjustedDpr = (dprIn) => {
 			if (crIn === 0) dprIn = Math.min(dprIn, 0.63); // cap CR 0 DPR to prevent average damage in the thousands
@@ -1470,7 +1470,7 @@
 
 							const targetDprRange = [ // cap min damage range at 0-1
 								Math.max(0, Math.floor(adjustedDpr - crOutDprVariance)),
-								Math.ceil(Math.max(1, adjustedDpr + crOutDprVariance))
+								Math.ceil(Math.max(1, adjustedDpr + crOutDprVariance)),
 							];
 
 							const inRange = (num) => {
@@ -1539,7 +1539,7 @@
 									reqAbilAdjust.push({
 										ability: modBeingScaled,
 										mod: modOut,
-										adjustedDpr
+										adjustedDpr,
 									})
 								}
 							};
@@ -1659,7 +1659,7 @@
 								idxProp,
 								entriesStrOriginal: toUpdate, // unused/debug
 								entriesStr: out,
-								reqAbilAdjust // unused/debug
+								reqAbilAdjust, // unused/debug
 							});
 						}
 					});
@@ -1912,8 +1912,8 @@
 							slots,
 							lower: 1,
 							spells: [
-								`A selection of ${maxSpellLevel === 1 ? `{@filter 1st-level warlock spells|spells|level=${1}|class=warlock}.` : `{@filter 1st- to ${Parser.spLevelToFull(maxSpellLevel)}-level warlock spells|spells|level=${[...new Array(maxSpellLevel)].map((_, i) => i + 1).join(";")}|class=warlock}.`}  Examples include: ${spellsKnown.sort(SortUtil.ascSortLower).map(it => `{@spell ${it}}`).joinConjunct(", ", " and ")}`
-							]
+								`A selection of ${maxSpellLevel === 1 ? `{@filter 1st-level warlock spells|spells|level=${1}|class=warlock}.` : `{@filter 1st- to ${Parser.spLevelToFull(maxSpellLevel)}-level warlock spells|spells|level=${[...new Array(maxSpellLevel)].map((_, i) => i + 1).join(";")}|class=warlock}.`}  Examples include: ${spellsKnown.sort(SortUtil.ascSortLower).map(it => `{@spell ${it}}`).joinConjunct(", ", " and ")}`,
+							],
 						}
 					} else {
 						let lastRatio = 1; // adjust for higher/lower than regular spell slot counts
@@ -1947,15 +1947,15 @@
 									spells[i] = {
 										slots,
 										spells: [
-											`A selection of {@filter ${Parser.spLevelToFull(i)}-level ${spellsFromClass} spells|spells|level=${i}|class=${spellsFromClass}}. Examples include: ${examples.sort(SortUtil.ascSortLower).map(it => `{@spell ${it}}`).joinConjunct(", ", " and ")}`
-										]
+											`A selection of {@filter ${Parser.spLevelToFull(i)}-level ${spellsFromClass} spells|spells|level=${i}|class=${spellsFromClass}}. Examples include: ${examples.sort(SortUtil.ascSortLower).map(it => `{@spell ${it}}`).joinConjunct(", ", " and ")}`,
+										],
 									};
 								} else {
 									spells[i] = {
 										slots,
 										spells: [
-											`A selection of {@filter ${Parser.spLevelToFull(i)}-level spells|spells|level=${i}}`
-										]
+											`A selection of {@filter ${Parser.spLevelToFull(i)}-level spells|spells|level=${i}}`,
+										],
 									};
 								}
 							} else {
@@ -2033,5 +2033,5 @@
 
 	_adjustSpellcasting_getWarlockNumArcanum (level) {
 		return level < 11 ? 0 : level < 13 ? 1 : level < 15 ? 2 : level < 17 ? 3 : 4;
-	}
+	},
 };

@@ -25,7 +25,7 @@ class InitiativeTracker {
 			playerInitHideNewMonster: _propDefaultTrue(state.piV),
 			playerInitShowOrdinals: _propDefaultFalse(state.piO),
 			playerInitShortTokens: _propDefaultTrue(state.piS),
-			statsCols: state.c || []
+			statsCols: state.c || [],
 		};
 
 		const $wrpTracker = $(`<div class="dm-init dm__panel-bg dm__data-anchor"/>`);
@@ -79,10 +79,10 @@ class InitiativeTracker {
 					else {
 						JqueryUtil.doToast({
 							content: `No saved encounter! Please first go to the Bestiary and create one.`,
-							type: "warning"
+							type: "warning",
 						});
 					}
-				}
+				},
 			),
 			new ContextUtil.Action(
 				"From Saved Bestiary Encounter",
@@ -92,25 +92,25 @@ class InitiativeTracker {
 					const selected = await InputUiUtil.pGetUserEnum({
 						values: allSaves.map(it => it.name),
 						placeholder: "Select a save",
-						title: "Select Saved Encounter"
+						title: "Select Saved Encounter",
 					});
 					if (selected != null) await pConvertAndLoadBestiaryList(allSaves[selected].data);
-				}
+				},
 			),
 			new ContextUtil.Action(
 				"From Bestiary Encounter File",
 				async () => {
 					const json = await DataUtil.pUserUpload();
 					if (json) await pConvertAndLoadBestiaryList(json);
-				}
+				},
 			),
 			null,
 			new ContextUtil.Action(
 				"Import Settings",
 				() => {
 					makeImportSettingsModal();
-				}
-			)
+				},
+			),
 		])
 
 		const $wrpTop = $(`<div class="dm-init-wrp-header-outer"/>`).appendTo($wrpTracker);
@@ -227,7 +227,7 @@ class InitiativeTracker {
 					cbClose: () => {
 						if (p2pMeta.rows.length) p2pMeta.rows.forEach(row => row.$row.detach());
 						if (srvPeer) srvPeer.offTemp("connection")
-					}
+					},
 				});
 
 				const $wrpHelp = UiUtil.$getAddModalRow($modalInner, "div");
@@ -325,7 +325,7 @@ class InitiativeTracker {
 					cbClose: () => {
 						handleStatColsChange();
 						doUpdateExternalStates();
-					}
+					},
 				});
 				UiUtil.addModalSep($modalInner);
 				UiUtil.$getAddModalRowCb($modalInner, "Roll initiative", cfg, "isRollInit");
@@ -368,7 +368,7 @@ class InitiativeTracker {
 								// input data
 								p: "", // populate with...
 								po: null, // populate with... (previous value)
-								a: "" // abbreviation
+								a: "", // abbreviation
 							};
 							cfg.statsCols.push(thisCfg);
 						}
@@ -497,7 +497,7 @@ class InitiativeTracker {
 			if (cfg.isLocked) return;
 			const flags = {
 				doClickFirst: false,
-				isWait: false
+				isWait: false,
 			};
 
 			const {$modalInner, doClose} = UiUtil.getShowModal();
@@ -551,10 +551,10 @@ class InitiativeTracker {
 				const results = index.search(srch, {
 					fields: {
 						n: {boost: 5, expand: true},
-						s: {expand: true}
+						s: {expand: true},
 					},
 					bool: "AND",
-					expand: true
+					expand: true,
 				});
 				const resultCount = results.length ? results.length : index.documentStore.length;
 				const toProcess = results.length ? results : Object.values(index.documentStore.docs).slice(0, 75).map(it => ({doc: it}));
@@ -571,14 +571,14 @@ class InitiativeTracker {
 						await pMakeRow({
 							nameOrMeta: name,
 							source,
-							isRollHp: $cbRoll.prop("checked")
+							isRollHp: $cbRoll.prop("checked"),
 						});
 						if (count > 1) {
 							for (let i = 1; i < count; ++i) {
 								await pMakeRow({
 									nameOrMeta: name,
 									source,
-									isRollHp: $cbRoll.prop("checked")
+									isRollHp: $cbRoll.prop("checked"),
 								});
 							}
 						}
@@ -625,7 +625,7 @@ class InitiativeTracker {
 				flags,
 				fnSearch: doSearch,
 				fnShowWait: showMsgDots,
-				$ptrRows
+				$ptrRows,
 			});
 
 			$iptSearch.focus();
@@ -638,7 +638,7 @@ class InitiativeTracker {
 				const isCb = $ipt.attr("type") === "checkbox";
 				return {
 					v: isCb ? $ipt.prop("checked") : $ipt.val(),
-					id: $(e).attr("data-id")
+					id: $(e).attr("data-id"),
 				};
 			}).get();
 		}
@@ -652,7 +652,7 @@ class InitiativeTracker {
 				const n = $iptDisplayName.length ? {
 					n: $row.find(`input.name`).val(),
 					d: $iptDisplayName.val(),
-					s: $row.find(`input.scaledCr`).val() || ""
+					s: $row.find(`input.scaledCr`).val() || "",
 				} : $row.find(`input.name`).val();
 				const out = {
 					n,
@@ -663,7 +663,7 @@ class InitiativeTracker {
 					a: 0 + $row.hasClass(`dm-init-row-active`),
 					s: $row.find(`input.source`).val(),
 					c: $conds.length ? $conds.map((i, e) => $(e).data("getState")()).get() : [],
-					v: $row.find(`.dm_init__btn_eye`).hasClass(`btn-primary`)
+					v: $row.find(`.dm_init__btn_eye`).hasClass(`btn-primary`),
 				};
 				if (customName) out.m = customName;
 				return out;
@@ -683,7 +683,7 @@ class InitiativeTracker {
 				piO: cfg.playerInitShowOrdinals,
 				piS: cfg.playerInitShortTokens,
 				c: cfg.statsCols.filter(it => !it.isDeleted),
-				n: $iptRound.val()
+				n: $iptRound.val(),
 			};
 		}
 
@@ -714,7 +714,7 @@ class InitiativeTracker {
 					i: $row.find(`input.score`).val(),
 					a: 0 + $row.hasClass(`dm-init-row-active`),
 					c: $conds.length ? $conds.map((i, e) => $(e).data("getState")()).get() : [],
-					k: statsVals
+					k: statsVals,
 				};
 
 				if ($row.hasClass("dm-init-row-rename")) out.m = $row.find(`.dm-init-row-link-name`).text();
@@ -735,7 +735,7 @@ class InitiativeTracker {
 			return {
 				r: rows,
 				c: visibleStatsCols,
-				n: $iptRound.val()
+				n: $iptRound.val(),
 			};
 		}
 
@@ -808,7 +808,7 @@ class InitiativeTracker {
 				isRollInit,
 				isRollHp,
 				statsCols,
-				isVisible
+				isVisible,
 			} = Object.assign({
 				nameOrMeta: "",
 				customName: "",
@@ -818,7 +818,7 @@ class InitiativeTracker {
 				conditions: [],
 				isRollInit: cfg.isRollInit,
 				isRollHp: false,
-				isVisible: !cfg.playerInitHideNewMonster
+				isVisible: !cfg.playerInitHideNewMonster,
 			}, opts || {});
 
 			const isMon = !!source;
@@ -899,7 +899,7 @@ class InitiativeTracker {
 							source,
 							isRollHp: cfg.isRollHp,
 							statsCols: evt.shiftKey ? null : getStatColsState($wrpRow),
-							isVisible: $wrpRow.find(`.dm_init__btn_eye`).hasClass("btn-primary")
+							isVisible: $wrpRow.find(`.dm_init__btn_eye`).hasClass("btn-primary"),
 						});
 						doSort(cfg.sort);
 					}).appendTo($wrpBtnsRhs);
@@ -917,7 +917,7 @@ class InitiativeTracker {
 					name,
 					color,
 					turns,
-					onStateChange: () => doUpdateExternalStates()
+					onStateChange: () => doUpdateExternalStates(),
 				});
 				$cond.appendTo($conds);
 			}
@@ -981,7 +981,7 @@ class InitiativeTracker {
 			const $wrpRhs = $(`<div class="dm-init-row-rhs"/>`).appendTo($wrpRow);
 			const hpVals = {
 				curHp: hp,
-				maxHp: hpMax
+				maxHp: hpMax,
 			};
 
 			const doUpdateHpColors = () => {
@@ -1035,7 +1035,7 @@ class InitiativeTracker {
 						const roll = await Renderer.dice.pRoll2(m.hp.formula, {
 							isUser: false,
 							name: getRollName(m),
-							label: "HP"
+							label: "HP",
 						}, {isResultUsed: true});
 						hpVals.curHp = hpVals.maxHp = roll;
 						$iptHp.val(roll);
@@ -1118,7 +1118,7 @@ class InitiativeTracker {
 						const isCb = $ipt.attr("type") === "checkbox";
 						existing[id] = {
 							v: isCb ? $ipt.prop("checked") : $ipt.val(),
-							id
+							id,
 						};
 					});
 				}
@@ -1288,7 +1288,7 @@ class InitiativeTracker {
 					conditions: row.c,
 					statsCols: row.k,
 					isVisible: row.v,
-					isRollInit: row.i == null
+					isRollInit: row.i == null,
 				});
 			}
 
@@ -1307,7 +1307,7 @@ class InitiativeTracker {
 			return Renderer.dice.pRoll2(`1d20${Parser.getAbilityModifier(monster.dex)}`, {
 				isUser: false,
 				name: getRollName(monster),
-				label: "Initiative"
+				label: "Initiative",
 			}, {isResultUsed: true});
 		}
 
@@ -1318,7 +1318,7 @@ class InitiativeTracker {
 				return `${await Renderer.dice.pRoll2(monster.hp.formula, {
 					isUser: false,
 					name: getRollName(monster),
-					label: "HP"
+					label: "HP",
 				}, {isResultUsed: true})}`;
 			}
 			return "";
@@ -1330,7 +1330,7 @@ class InitiativeTracker {
 				d: "DESC",
 				m: false,
 				g: true,
-				r: []
+				r: [],
 			};
 
 			if (cfg.importIsAddPlayers) {
@@ -1364,7 +1364,7 @@ class InitiativeTracker {
 								// input data
 								p: populateEntry ? populateEntry[0] : "", // populate with...
 								po: null, // populate with... (previous value)
-								a: colName // abbreviation
+								a: colName, // abbreviation
 							};
 							colIndex[i] = newCol;
 							cfg.statsCols.push(newCol);
@@ -1376,7 +1376,7 @@ class InitiativeTracker {
 								i: "", // score
 								a: 0, // is active?
 								c: [], // conditions
-								v: true
+								v: true,
 							};
 
 							if (playerDetails.x && playerDetails.x.length) { // extra stats
@@ -1404,7 +1404,7 @@ class InitiativeTracker {
 									i: "",
 									a: 0,
 									c: [],
-									v: true
+									v: true,
 								});
 							});
 						});
@@ -1435,13 +1435,13 @@ class InitiativeTracker {
 									ScaleCreature.scale(mon, scaling).then(scaled => {
 										resolve({
 											count,
-											monster: scaled
+											monster: scaled,
 										});
 									});
 								} else {
 									resolve({
 										count,
-										monster: mon
+										monster: mon,
 									});
 								}
 							});
@@ -1457,14 +1457,14 @@ class InitiativeTracker {
 							n: {
 								name: it.monster.name,
 								displayName: it.monster._displayName,
-								scaledTo: it.monster._isScaledCr
+								scaledTo: it.monster._isScaledCr,
 							},
 							i: cfg.isRollInit ? `${cfg.importIsRollGroups ? groupInit : await pRollInitiative(it.monster)}` : null,
 							a: 0,
 							s: it.monster.source,
 							c: [],
 							h: hp,
-							g: hp
+							g: hp,
 						});
 					}));
 				}));
@@ -1516,24 +1516,24 @@ InitiativeTracker.STAT_COLUMNS = {
 	hr0: InitiativeTracker._GET_STAT_COLUMN_HR(),
 	hpFormula: {
 		name: "HP Formula",
-		get: mon => (mon.hp || {}).formula
+		get: mon => (mon.hp || {}).formula,
 	},
 	armorClass: {
 		name: "Armor Class",
 		abv: "AC",
-		get: mon => mon.ac[0] ? (mon.ac[0].ac || mon.ac[0]) : null
+		get: mon => mon.ac[0] ? (mon.ac[0].ac || mon.ac[0]) : null,
 	},
 	passivePerception: {
 		name: "Passive Perception",
 		abv: "PP",
-		get: mon => mon.passive
+		get: mon => mon.passive,
 	},
 	speed: {
 		name: "Speed",
 		abv: "SPD",
 		get: mon => Math.max(0, ...Object.values(mon.speed || {})
 			.map(it => it.number ? it.number : it)
-			.filter(it => typeof it === "number"))
+			.filter(it => typeof it === "number")),
 	},
 	spellDc: {
 		name: "Spell DC",
@@ -1546,12 +1546,12 @@ InitiativeTracker.STAT_COLUMNS = {
 					it.replace(/DC (\d+)/g, (...m) => found.push(Number(m[1])));
 					return Math.max(...found);
 				}).filter(Boolean)
-			}))
+			})),
 	},
 	legendaryActions: {
 		name: "Legendary Actions",
 		abv: "LA",
-		get: mon => mon.legendaryActions || mon.legendary ? 3 : null
+		get: mon => mon.legendaryActions || mon.legendary ? 3 : null,
 	},
 	hr1: InitiativeTracker._GET_STAT_COLUMN_HR(),
 	...(() => {
@@ -1560,7 +1560,7 @@ InitiativeTracker.STAT_COLUMNS = {
 			out[`${it}Save`] = {
 				name: `${Parser.attAbvToFull(it)} Save`,
 				abv: it.toUpperCase(),
-				get: mon => mon.save && mon.save[it] ? mon.save[it] : Parser.getAbilityModifier(mon[it])
+				get: mon => mon.save && mon.save[it] ? mon.save[it] : Parser.getAbilityModifier(mon[it]),
 			};
 		});
 		return out;
@@ -1572,7 +1572,7 @@ InitiativeTracker.STAT_COLUMNS = {
 			out[`${it}Bonus`] = {
 				name: `${Parser.attAbvToFull(it)} Bonus`,
 				abv: it.toUpperCase(),
-				get: mon => Parser.getAbilityModifier(mon[it])
+				get: mon => Parser.getAbilityModifier(mon[it]),
 			};
 		});
 		return out;
@@ -1584,7 +1584,7 @@ InitiativeTracker.STAT_COLUMNS = {
 			out[`${it}Score`] = {
 				name: `${Parser.attAbvToFull(it)} Score`,
 				abv: it.toUpperCase(),
-				get: mon => mon[it]
+				get: mon => mon[it],
 			};
 		});
 		return out;
@@ -1596,7 +1596,7 @@ InitiativeTracker.STAT_COLUMNS = {
 			out[s.toCamelCase()] = {
 				name: s.toTitleCase(),
 				abv: Parser.skillToShort(s).toUpperCase(),
-				get: mon => mon.skill && mon.skill[s] ? mon.skill[s] : Parser.getAbilityModifier(mon[Parser.skillToAbilityAbv(s)])
+				get: mon => mon.skill && mon.skill[s] ? mon.skill[s] : Parser.getAbilityModifier(mon[Parser.skillToAbilityAbv(s)]),
 			};
 		});
 		return out;
@@ -1606,17 +1606,17 @@ InitiativeTracker.STAT_COLUMNS = {
 		name: "Checkbox; clears at start of turn",
 		isCb: true,
 		autoMode: -1,
-		get: () => false
+		get: () => false,
 	},
 	cbNeutral: {
 		name: "Checkbox",
 		isCb: true,
-		get: () => false
+		get: () => false,
 	},
 	cbAutoHigh: {
 		name: "Checkbox; ticks at start of turn",
 		isCb: true,
 		autoMode: 1,
-		get: () => true
-	}
+		get: () => true,
+	},
 };

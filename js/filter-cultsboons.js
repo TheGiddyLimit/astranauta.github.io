@@ -7,7 +7,7 @@ class PageFilterCultsBoons extends PageFilter {
 		this._sourceFilter = new SourceFilter();
 		this._typeFilter = new Filter({
 			header: "Type",
-			items: ["Boon, Demonic", "Cult"]
+			items: ["Boon, Demonic", "Cult"],
 		});
 	}
 
@@ -25,7 +25,7 @@ class PageFilterCultsBoons extends PageFilter {
 	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
-			this._typeFilter
+			this._typeFilter,
 		];
 	}
 
@@ -33,7 +33,7 @@ class PageFilterCultsBoons extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			cb.source,
-			cb._fType
+			cb._fType,
 		)
 	}
 }

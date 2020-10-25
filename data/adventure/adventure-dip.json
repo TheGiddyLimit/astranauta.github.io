@@ -5638,7 +5638,420 @@
 			"name": "Sidekicks",
 			"id": "22a",
 			"entries": [
-				"See the {@variantrule Sidekicks|ESK} rules entry."
+				"On your adventures, the DM might reveal that you've befriended a special character called a sidekick, who joins your party. This appendix presents the game statistics for sidekicks, of which there are three types:",
+				"{@b Expert}, an agile and exceedingly helpful jack of all trades",
+				"{@b Spellcaster}, a magic-user who can cast spells to harm your foes or heal you and your friends",
+				"{@b Warrior}, a martial companion who specializes in striking your foes or defending you and your allies",
+				"The DM will either tell you which type of sidekick to use or let you choose one. It's up to you and the DM to decide who controls the sidekick in play.",
+				{
+					"type": "section",
+					"name": "Sidekick Cards",
+					"entries": [
+						{
+							"type": "inset",
+							"name": "Donnabella Fiasco",
+							"entries": [
+								"{@i Human Spellcaster}",
+								"Donnabella is a young magic-user who wears a papier-mâché unicorn mask because it makes her feel more magical.",
+								"Use the {@creature Spellcaster|esk} sidekick stat block to represent her.",
+								{
+									"type": "entries",
+									"name": "Personality",
+									"entries": [
+										"\"I'd rather talk to a book than most people.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Ideal",
+									"entries": [
+										"\"We all have a little magic in us. The trick is finding it and bringing it forth.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Bond",
+									"entries": [
+										"\"I want to join a prestigious wizards' academy one day. I just hope they accept unicorns!\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Flaw",
+									"entries": [
+										"\"I can't keep a secret to save my life\u2014or anyone else's.\""
+									]
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/DIP/056-ynkgo-donnabella.png"
+									}
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Galandro Luna",
+							"entries": [
+								"{@i Human Expert}",
+								"Galandro's most treasured possession is a fiddle that he tunes and plucks constantly.",
+								"Use the {@creature Expert|esk} sidekick stat block to represent him.",
+								{
+									"type": "entries",
+									"name": "Personality",
+									"entries": [
+										"\"I love a good insult, even one directed at me.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Ideal",
+									"entries": [
+										"\"I like seeing the smiles on people's faces when I perform. That plus their adoration is all that matters.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Bond",
+									"entries": [
+										"\"My fiddle was gifted to me by a good friend. I cherish it above all other things.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Flaw",
+									"entries": [
+										"\"I'll do anything to win fame and renown.\""
+									]
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/DIP/057-leeom-galandro.png"
+									}
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Inverna Nightbreeze",
+							"entries": [
+								"{@i Moon Elf Warrior}",
+								"Inverna has a scar on her cheek where she was grazed by an orc's javelin. She is cautious by nature and suspicious of strangers.",
+								"Use the {@creature Warrior|esk} sidekick stat block to represent her.",
+								{
+									"type": "entries",
+									"name": "Personality",
+									"entries": [
+										"\"I choose my words very carefully. Sarcasm, I'm told, is my sharpest weapon.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Ideal",
+									"entries": [
+										"\"All people deserve to be treated with dignity, regardless of their station. Of course, orcs aren't people.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Bond",
+									"entries": [
+										"\"Orcs are a blight on the land. For the sake of the natural and civilized worlds, I kill them on sight.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Flaw",
+									"entries": [
+										"\"I can't admit when I'm wrong.\""
+									]
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/DIP/058-l3v6r-inverna.png"
+									}
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Nib Addlespur",
+							"entries": [
+								"{@i Lightfoot Halfling Spellcaster}",
+								"Nib is a happy-go-lucky gambler who keeps a deck of Three-Dragon Ante cards in her vest pocket. She also has a goldfinch named Lil.",
+								"Use the {@creature Spellcaster|esk} sidekick stat block to represent her.",
+								{
+									"type": "entries",
+									"name": "Personality",
+									"entries": [
+										"\"I can't resist a sure bet or a friendly wager.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Ideal",
+									"entries": [
+										"\"The more complicated the scheme, the better.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Bond",
+									"entries": [
+										"\"I love birds and will do what I can to look after them.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Flaw",
+									"entries": [
+										"\"Deep water terrifies me. I would rather be swallowed by a dragon than get in a boat or go for a swim.\""
+									]
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/DIP/059-3krsm-nib.png"
+									}
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Pickled Pete",
+							"entries": [
+								"{@i Human Expert}",
+								"Pete likes ale and tends to function better while tipsy. At his best, he's quite the handyman and comes up with all sorts of crazy ways to get things done.",
+								"Use the {@creature Expert|esk} sidekick stat block to represent him.",
+								{
+									"type": "entries",
+									"name": "Personality",
+									"entries": [
+										"\"My friends know they can rely on me, no matter what.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Ideal",
+									"entries": [
+										"\"I like coming up with new ways to do things. What problem can't be solved with a little ingenuity?\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Bond",
+									"entries": [
+										"\"A full flask of wine is worth ten pockets full of gold.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Flaw",
+									"entries": [
+										"\"All this drinking is bad for my memory. Seriously, I can't remember my last name.\""
+									]
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/DIP/060-pu4f2-pete.png"
+									}
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Quinn Hightopple",
+							"entries": [
+								"{@i Lightfoot Halfling Warrior}",
+								"Quinn is a happy little scrapper who likes to punch people in the groin.",
+								"Use the {@creature Warrior|esk} sidekick stat block to represent him.",
+								{
+									"type": "entries",
+									"name": "Personality",
+									"entries": [
+										"\"Nice set of teeth you got there. Be a shame if something bad happened to 'em.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Ideal",
+									"entries": [
+										"\"No challenge is too big to overcome. As Papa Bartho always says, the bigger they are, the harder they fall.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Bond",
+									"entries": [
+										"\"Nothing's more important than friendship. That's why I'll never leave a friend behind.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Flaw",
+									"entries": [
+										"\"I can't resist punching tall folk in the groin. I call it the Halfling Hello.\""
+									]
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/DIP/061-gttxp-quinn.png"
+									}
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Ruby Hammerwhacker",
+							"entries": [
+								"{@i Shield Dwarf Warrior}",
+								"Ruby lacks the customary dwarven stoicism and greets every day with a warm smile and a renewed sense of optimism.",
+								"Use the {@creature Warrior|esk} sidekick stat block to represent her.",
+								{
+									"type": "entries",
+									"name": "Personality",
+									"entries": [
+										"\"Nothing can shake my optimistic attitude.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Ideal",
+									"entries": [
+										"\"We should all seek the betterment of ourselves. There's always room for improvement.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Bond",
+									"entries": [
+										"\"I fight for those who cannot fight for themselves\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Flaw",
+									"entries": [
+										"\"\"Tell me I can't do something, and I must prove you wrong.\""
+									]
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/DIP/062-1qyge-ruby.png"
+									}
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Shanjan Kwan",
+							"entries": [
+								"{@i Human Spellcaster}",
+								"Kwan died and was raised from the dead as an infant, whereupon a tiny black glyph\u2014the symbol of necromancy\u2014appeared on his forehead.",
+								"Use the {@creature Spellcaster|esk} sidekick stat block to represent him.",
+								{
+									"type": "entries",
+									"name": "Personality",
+									"entries": [
+										"\"I've cheated death once. I can do it again.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Ideal",
+									"entries": [
+										"\"Great beauty can hide great ugliness. The reverse is also true.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Bond",
+									"entries": [
+										"\"I've been searching my whole life for the answer to a simple question: Am I a god?\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Flaw",
+									"entries": [
+										"\"I don't like mysteries. Unraveling them keeps me up at night.\""
+									]
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/DIP/063-nemem-shanjan.png"
+									}
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Talon Thornwild",
+							"entries": [
+								"{@i Human Expert}",
+								"Talon loves gold and adventure, and dreams of being a famous gold prospector.",
+								"Use the {@creature Expert|esk} sidekick stat block to represent them.",
+								{
+									"type": "entries",
+									"name": "Personality",
+									"entries": [
+										"\"Yes, I eat like a pig and have bad manners, but those are my only flaws, I swear. I'm darn near perfect otherwise.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Ideal",
+									"entries": [
+										"\"The low are lifted up, and the high and mighty are brought down. Change is the nature of things.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Bond",
+									"entries": [
+										"\"I like gold. I like its color, its texture, its majestic gleam.\""
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Flaw",
+									"entries": [
+										"\"It's not stealing if I need it more than someone else.\""
+									]
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "adventure/DIP/064-nrqv1-talon.png"
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Sidekick Stat Blocks",
+					"entries": [
+						"See the {@variantrule Sidekicks|ESK} rules entry."
+					]
+				}
 			]
 		},
 		{

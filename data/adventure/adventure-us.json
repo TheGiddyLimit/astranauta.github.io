@@ -115,14 +115,29 @@
 								"If the check succeeds, the navigator knows exactly where the party is on the players' map of Brokenveil Marsh throughout the day.",
 								"If the check fails, the party becomes lost. Each hex on the map is surrounded by six other hexes; whenever a lost party moves 1 hex, roll a {@dice d6} to randomly determine which neighboring hex the party enters, and don't divulge the party's location to the players. While the party is lost, players can't pinpoint the group's location on their map of Brokenveil Marsh. The next time a navigator succeeds on a Wisdom ({@skill Survival}) check made to navigate, reveal the party's actual location to the players.",
 								{
-									"type": "image",
-									"href": {
-										"type": "internal",
-										"path": "book/EGW/121-5.11-brokenveil-marsh-player.png"
-									},
-									"title": "Map 5.11: Brokenveil Marsh",
-									"width": 2550,
-									"height": 1650
+									"type": "gallery",
+									"images": [
+										{
+											"type": "image",
+											"href": {
+												"type": "internal",
+												"path": "book/EGW/121-5.11-brokenveil-marsh.png"
+											},
+											"title": "Map 5.11: Brokenveil Marsh",
+											"width": 2550,
+											"height": 1650
+										},
+										{
+											"type": "image",
+											"href": {
+												"type": "internal",
+												"path": "book/EGW/121-5.11-brokenveil-marsh-player.png"
+											},
+											"title": "Map 5.11: Brokenveil Marsh (Player Version)",
+											"width": 2550,
+											"height": 1650
+										}
+									]
 								}
 							]
 						},
@@ -149,7 +164,7 @@
 							"name": "Random Encounters",
 							"id": "902",
 							"entries": [
-								"In addition to the fixed locations the characters pass through, encounters can occur at any point as the characters venture through the unwelcoming environs of Brokenveil Marsh. While the characters are traveling or camping in the swampy wilderness, roll a {@dice d12} three times per day of game time, checking for encounters each morning, afternoon, and evening or night. An encounter occurs on a roll of 16 or higher. Roll a {@dice d20} and check the Brokenveil Marsh Encounters table to determine what the characters encounter, or choose an encounter you like.",
+								"In addition to the fixed locations the characters pass through, encounters can occur at any point as the characters venture through the unwelcoming environs of Brokenveil Marsh. While the characters are traveling or camping in the swampy wilderness, roll a {@dice d20} three times per day of game time, checking for encounters each morning, afternoon, and evening or night. An encounter occurs on a roll of 16 or higher. Roll a {@dice d12} and check the Brokenveil Marsh Encounters table to determine what the characters encounter, or choose an encounter you like.",
 								{
 									"type": "entries",
 									"name": "Brokenveil Marsh Encounters",
@@ -581,14 +596,29 @@
 									"entries": [
 										"Even if they are too late to stop Bol'bara's possession, the characters might want to try to parley with the demon-possessed warlock. Give the players any chance of success that seems appropriate to their efforts, but remember that the shadow demon behind Bol'bara's transformation is a creature of chaos. It savors the taste of discord, and convincing Trush to relinquish its hold over the witch won't be easy.",
 										{
-											"type": "image",
-											"href": {
-												"type": "internal",
-												"path": "book/EGW/123-5.12-fort-venture-player.png"
-											},
-											"title": "Map 5.12: Fort Venture",
-											"width": 2550,
-											"height": 1560
+											"type": "gallery",
+											"images": [
+												{
+													"type": "image",
+													"href": {
+														"type": "internal",
+														"path": "book/EGW/123-5.12-fort-venture.png"
+													},
+													"title": "Map 5.12: Fort Venture",
+													"width": 2550,
+													"height": 1560
+												},
+												{
+													"type": "image",
+													"href": {
+														"type": "internal",
+														"path": "book/EGW/123-5.12-fort-venture-player.png"
+													},
+													"title": "Map 5.12: Fort Venture (Player Version)",
+													"width": 2550,
+													"height": 1560
+												}
+											]
 										}
 									]
 								}

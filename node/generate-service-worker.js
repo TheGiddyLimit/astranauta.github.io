@@ -13,7 +13,7 @@ _addSwFilenames(cssFiles);
 const dataFiles = ut.listFiles({
 	dir: `data`,
 	blacklistFilePrefixes: ["roll20-module-", "srd-spells.json", "roll20.json"],
-	whitelistFileExts: [".json"]
+	whitelistFileExts: [".json"],
 });
 _addSwFilenames(dataFiles);
 
@@ -48,7 +48,7 @@ _addSwFilenames(rootFiles);
 swFiles = swFiles.concat([
 	"/js/header.js",
 	"/js/shared.js",
-	"https://cdn.jsdelivr.net/combine/npm/jquery@3.4.1/dist/jquery.min.js,gh/weixsong/elasticlunr.js@0.9/elasticlunr.min.js"
+	"https://cdn.jsdelivr.net/combine/npm/jquery@3.4.1/dist/jquery.min.js,gh/weixsong/elasticlunr.js@0.9/elasticlunr.min.js",
 ]);
 
 fs.writeFileSync("./js/sw-files.js", `this.filesToCache = ${JSON.stringify(swFiles)};`, "utf-8");

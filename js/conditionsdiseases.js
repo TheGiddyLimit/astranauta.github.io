@@ -13,7 +13,7 @@ class ConditionsDiseasesPage extends ListPage {
 
 			sublistClass: "subconditions",
 
-			dataProps: ["condition", "disease", "status"]
+			dataProps: ["condition", "disease", "status"],
 		});
 	}
 
@@ -39,12 +39,12 @@ class ConditionsDiseasesPage extends ListPage {
 			{
 				hash,
 				source,
-				type: it.__prop
+				type: it.__prop,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : cdI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -76,8 +76,8 @@ class ConditionsDiseasesPage extends ListPage {
 			it.name,
 			{
 				hash,
-				type: it.__prop
-			}
+				type: it.__prop,
+			},
 		);
 		return listItem;
 	}
@@ -95,19 +95,19 @@ class ConditionsDiseasesPage extends ListPage {
 				isImageTab,
 				$content,
 				entity: it,
-				pFnGetFluff: Renderer.condition.pGetFluff
+				pFnGetFluff: Renderer.condition.pGetFluff,
 			});
 		}
 
 		const statTab = Renderer.utils.tabButton(
 			"Traits",
 			() => {},
-			buildStatsTab
+			buildStatsTab,
 		);
 		const picTab = Renderer.utils.tabButton(
 			"Images",
 			() => {},
-			buildFluffTab.bind(null, true)
+			buildFluffTab.bind(null, true),
 		);
 
 		Renderer.utils.bindTabButtons(statTab, picTab);

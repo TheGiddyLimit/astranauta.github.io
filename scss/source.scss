@@ -35,6 +35,7 @@
 	$rgb-source-EGW: #855a6e;
 	$rgb-source-MOT: #556b2e;
 	$rgb-source-IDRotF: #8fb8c0;
+	$rgb-source-TCE: #a24d08;
 	$rgb-source-AL: #e50711;
 
 	&PHB {
@@ -262,9 +263,51 @@
 		text-decoration-color: $rgb-source-IDRotF !important;
 	}
 
+	&TCE {
+		color: $rgb-source-TCE !important;
+		border-color: $rgb-source-TCE !important;
+		text-decoration-color: $rgb-source-TCE !important;
+	}
+
 	&AL {
 		color: $rgb-source-AL !important;
 		border-color: $rgb-source-AL !important;
 		text-decoration-color: $rgb-source-AL !important;
+	}
+}
+
+.sp__ {
+	&school- {
+		&A {
+			color: #00b921;
+		}
+
+		&V {
+			color: #bb0100;
+		}
+
+		&E {
+			color: #b30083;
+		}
+
+		&I {
+			color: #006dbd;
+		}
+
+		&D {
+			color: #00adb3;
+		}
+
+		&N {
+			color: #6c00cc;
+		}
+
+		&T {
+			color: #ccbe00;
+		}
+
+		&C {
+			color: #bd0044;
+		}
 	}
 }

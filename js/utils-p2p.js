@@ -26,9 +26,9 @@ class PeerVe extends Peer {
 		const packet = {
 			head: {
 				type: this._role,
-				version: "0.0.2"
+				version: "0.0.2",
 			},
-			data: toSend
+			data: toSend,
 		};
 
 		this.getActiveConnections().forEach(connection => connection.send(packet));

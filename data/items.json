@@ -264,25 +264,6 @@
 			]
 		},
 		{
-			"name": "Adventurer's Battleaxe",
-			"source": "CoS",
-			"page": 198,
-			"baseItem": "battleaxe|phb",
-			"type": "M",
-			"rarity": "unknown (magic)",
-			"weight": 2,
-			"weaponCategory": "martial",
-			"property": [
-				"V"
-			],
-			"dmg1": "1d8",
-			"dmgType": "S",
-			"dmg2": "1d10",
-			"entries": [
-				"The axe's handle is carved with leaves and vines, and it weighs half as much as a normal battleaxe. When the axe hits a plant, whether an ordinary plant or a plant creature, the target takes an extra {@dice 1d8} slashing damage. When a creature of non-good alignment wields the axe, it sprouts thorns whenever its wielder makes an attack with it. These thorns prick the wielder for 1 piercing damage after the attack is made, and this damage is considered magical."
-			]
-		},
-		{
 			"name": "Airship",
 			"source": "DMG",
 			"page": 119,
@@ -305,7 +286,6 @@
 			"rarity": "artifact",
 			"reqAttune": true,
 			"weight": 2,
-			"value": 1500,
 			"weaponCategory": "martial",
 			"property": [
 				"V"
@@ -1242,7 +1222,7 @@
 			"charges": 3,
 			"entries": [
 				"This ring, adorned with the symbol of Azorius, allows you to cast {@spell ensnaring strike}. A guild signet is sometimes awarded to a guild member whose renown score in that guild is 5 or higher, as a reward for performing special services for the guild. Aside from its magical properties, the ring is also an indicator of Azorius's recognition and favor.",
-				"A signet has 3 charges, and it regains 1d3 expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
+				"A signet has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
 			],
 			"attachedSpells": [
 				"ensnaring strike"
@@ -2957,7 +2937,6 @@
 			"reqAttune": "by a humanoid",
 			"sentient": true,
 			"weight": 1,
-			"value": 200,
 			"weaponCategory": "simple",
 			"property": [
 				"F",
@@ -3742,7 +3721,7 @@
 			"charges": 3,
 			"entries": [
 				"This ring, adorned with the symbol of Boros, allows you to cast {@spell heroism}. A guild signet is sometimes awarded to a guild member whose renown score in that guild is 5 or higher, as a reward for performing special services for the guild. Aside from its magical properties, the ring is also an indicator of Boros' recognition and favor.",
-				"A signet has 3 charges, and it regains 1d3 expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
+				"A signet has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
 			],
 			"attachedSpells": [
 				"heroism"
@@ -3776,7 +3755,6 @@
 			"page": 222,
 			"type": "P",
 			"rarity": "uncommon",
-			"weight": 0.5,
 			"entries": [
 				"This bottle contains a breath of elemental air. When you inhale it, you either exhale it or hold it.",
 				"If you exhale the breath, you gain the effect of the {@spell gust of wind} spell. If you hold the breath, you don't need to breathe for 1 hour, though you can end this benefit early (for example, to speak). Ending it early doesn't give you the benefit of exhaling the breath."
@@ -5596,6 +5574,32 @@
 		},
 		{
 			"name": "Coiling Grasp Tattoo",
+			"source": "TCE",
+			"rarity": "uncommon",
+			"reqAttune": true,
+			"wondrous": true,
+			"tattoo": true,
+			"entries": [
+				"{@note Preview content, subject to change prior to publication.}",
+				"Produced by a special needle, this magic tattoo has long intertwining designs",
+				{
+					"type": "entries",
+					"name": "Tattoo Attunement",
+					"entries": [
+						"To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Grasping Tendrils",
+					"entries": [
+						"While the tattoo is on your skin, you can, as an action, cause the tattoo to extrude into inky tendrils, which reach for a creature you can see within 15 feet of you. The creature must succeed on a DC 14 Strength saving throw or take {@damage 3d6} force damage and be {@condition grappled} by you. As an action, the creature can escape the grapple by succeeding on a DC 14 Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check. The grapple also ends if you halt it (no action required), if the creature is ever more than 15 feet away from you, or if you use this tattoo on a different creature."
+					]
+				}
+			]
+		},
+		{
+			"name": "Coiling Grasp Tattoo",
 			"source": "UA2020SpellsAndMagicTattoos",
 			"page": 9,
 			"rarity": "uncommon",
@@ -5968,7 +5972,7 @@
 			"weight": 0.25,
 			"value": 200,
 			"entries": [
-				"A crampon is a metal plate with spikes that is strapped to the sole of a boot. A creature wearing crampons can't fall {@condition prone} while moving across slippery ice."
+				"A crampon is a metal plate with spikes that is strapped to the sole of a boot. A creature wearing crampons can't fall {@condition prone} while moving across {@hazard slippery ice}."
 			]
 		},
 		{
@@ -7489,7 +7493,7 @@
 					"type": "entries",
 					"name": "Moon",
 					"entries": [
-						"You are granted the ability to cast any spell of 5th level or lower, and can use that ability 1d3 times for the duration of the adventure."
+						"You are granted the ability to cast any spell of 5th level or lower, and can use that ability {@dice 1d3} times for the duration of the adventure."
 					]
 				},
 				{
@@ -7574,7 +7578,6 @@
 			"rarity": "artifact",
 			"reqAttune": true,
 			"weight": 4,
-			"value": 500,
 			"weaponCategory": "martial",
 			"property": [
 				"T",
@@ -7859,7 +7862,7 @@
 			"charges": 3,
 			"entries": [
 				"This ring, adorned with the symbol of Dimir, allows you to cast {@spell disguise self}. A guild signet is sometimes awarded to a guild member whose renown score in that guild is 5 or higher, as a reward for performing special services for the guild. Aside from its magical properties, the ring is also an indicator of Dimir's recognition and favor.",
-				"A signet has 3 charges, and it regains 1d3 expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
+				"A signet has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
 			],
 			"attachedSpells": [
 				"disguise self"
@@ -8295,7 +8298,7 @@
 			"type": "OTH",
 			"rarity": "none",
 			"entries": [
-				"Introduced into Sharn by Daask, dragon's blood is a potent and highly addictive stimulant. In addition to inducing euphoria, it can enhance spellcasting ability or even temporarily imbue a user with the ability to cast sorcerer spells. The drug's effects are potentially dangerous and always unpredictable. This isn't something a player character should want to use; adventurers are more likely to interfere with Daask smugglers or deal with an addict who accidentally casts a {@spell fireball} in a crowded street. The specific effects of dragon's blood are up to you, but you can take inspiration from the {@class sorcerer|phb|Wild Magic Surge table|Wild|phb|0-1} in the {@book Player's Handbook|PHB}."
+				"Introduced into Sharn by Daask, dragon's blood is a potent and highly addictive stimulant. In addition to inducing euphoria, it can enhance spellcasting ability or even temporarily imbue a user with the ability to cast sorcerer spells. The drug's effects are potentially dangerous and always unpredictable. This isn't something a player character should want to use; adventurers are more likely to interfere with Daask smugglers or deal with an addict who accidentally casts a {@spell fireball} in a crowded street. The specific effects of dragon's blood are up to you, but you can take inspiration from the {@table Wild Magic Surge|PHB} table in the {@book Player's Handbook|PHB}."
 			]
 		},
 		{
@@ -9036,7 +9039,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "rare",
-			"weight": 0.5,
 			"entries": [
 				"When you drink this potion, it cures any disease afflicting you, and it removes the {@condition blinded}, {@condition deafened}, {@condition paralyzed}, and {@condition poisoned} conditions. The clear red liquid has tiny bubbles of light in it."
 			],
@@ -9239,7 +9241,6 @@
 			"rarity": "artifact",
 			"reqAttune": true,
 			"weight": 2,
-			"value": 2500,
 			"weaponCategory": "simple",
 			"property": [
 				"A",
@@ -10959,7 +10960,7 @@
 			"charges": 3,
 			"entries": [
 				"This ring, adorned with the symbol of Golgari, allows you to cast {@spell entangle}. A guild signet is sometimes awarded to a guild member whose renown score in that guild is 5 or higher, as a reward for performing special services for the guild. Aside from its magical properties, the ring is also an indicator of Golgari's recognition and favor.",
-				"A signet has 3 charges, and it regains 1d3 expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
+				"A signet has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
 			],
 			"attachedSpells": [
 				"entangle"
@@ -11180,7 +11181,6 @@
 			"reqAttune": true,
 			"sentient": true,
 			"weight": 2,
-			"value": 1500,
 			"weaponCategory": "martial",
 			"property": [
 				"V"
@@ -11277,7 +11277,7 @@
 			"charges": 3,
 			"entries": [
 				"This ring, adorned with the symbol of Gruul, allows you to cast {@spell compelled duel}. A guild signet is sometimes awarded to a guild member whose renown score in that guild is 5 or higher, as a reward for performing special services for the guild. Aside from its magical properties, the ring is also an indicator of Gruul's recognition and favor.",
-				"A signet has 3 charges, and it regains 1d3 expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
+				"A signet has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
 			],
 			"attachedSpells": [
 				"compelled duel"
@@ -12973,7 +12973,6 @@
 			"page": 32,
 			"type": "G",
 			"rarity": "none",
-			"weight": 1,
 			"value": 10,
 			"entries": [
 				"Insect repellent can be purchased in Port Nyanzaru in two forms: blocks of incense or a greasy salve. The merchant prince Kwayothe controls the sale of both. Neither kind of repellent protects against giant insects or the vile swarms of insects described in appendix A of the Monster Manual.",
@@ -12986,7 +12985,6 @@
 			"page": 32,
 			"type": "G",
 			"rarity": "none",
-			"weight": 1,
 			"value": 100,
 			"entries": [
 				"Insect repellent can be purchased in Port Nyanzaru in two forms: blocks of incense or a greasy salve. The merchant prince Kwayothe controls the sale of both. Neither kind of repellent protects against giant insects or the vile swarms of insects described in appendix A of the Monster Manual.",
@@ -13929,7 +13927,7 @@
 			"charges": 3,
 			"entries": [
 				"This ring, adorned with the symbol of Izzet, allows you to cast {@spell chaos bolt|XGE}. A guild signet is sometimes awarded to a guild member whose renown score in that guild is 5 or higher, as a reward for performing special services for the guild. Aside from its magical properties, the ring is also an indicator of Izzet's recognition and favor.",
-				"A signet has 3 charges, and it regains 1d3 expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
+				"A signet has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
 			],
 			"attachedSpells": [
 				"chaos bolt|XGE"
@@ -14326,7 +14324,6 @@
 			"rarity": "artifact",
 			"reqAttune": true,
 			"weight": 3,
-			"value": 100,
 			"weaponCategory": "simple",
 			"property": [
 				"T",
@@ -14683,7 +14680,6 @@
 			"reqAttune": true,
 			"sentient": true,
 			"weight": 3,
-			"value": 200,
 			"weaponCategory": "martial",
 			"property": [
 				"F",
@@ -15389,7 +15385,6 @@
 			"reqAttune": true,
 			"sentient": true,
 			"weight": 4,
-			"value": 500,
 			"weaponCategory": "simple",
 			"dmg1": "1d6",
 			"dmgType": "B",
@@ -15816,6 +15811,43 @@
 		},
 		{
 			"name": "Masquerade Tattoo",
+			"source": "TCE",
+			"rarity": "common",
+			"reqAttune": true,
+			"wondrous": true,
+			"tattoo": true,
+			"entries": [
+				"{@note Preview content, subject to change prior to publication.}",
+				"Produced by a special needle, this magic tattoo appears on your body as whatever you desire.",
+				{
+					"type": "entries",
+					"name": "Tattoo Attunement",
+					"entries": [
+						"To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin.",
+						"If your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in the closest unoccupied space to you."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Fluid Ink",
+					"entries": [
+						"As a bonus action, you can shape the tattoo into any color or pattern and move it to any area of your skin. Whatever form it takes, it is always obviously a tattoo. It can range in size from no smaller than a copper piece to an intricate work of art that covers all your skin"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Disguise Self",
+					"entries": [
+						"As an action, you can use the tattoo to cast the {@spell disguise self} spell (DC 13 to discern the disguise). Once the spell is cast from the tattoo, it can't be cast from the tattoo again until the next dawn."
+					]
+				}
+			],
+			"attachedSpells": [
+				"disguise self"
+			]
+		},
+		{
+			"name": "Masquerade Tattoo",
 			"source": "UA2020SpellsAndMagicTattoos",
 			"page": 11,
 			"rarity": "common",
@@ -15872,7 +15904,6 @@
 			"rarity": "artifact",
 			"reqAttune": true,
 			"weight": 3,
-			"value": 200,
 			"weaponCategory": "martial",
 			"property": [
 				"F",
@@ -15998,7 +16029,7 @@
 			"page": 205,
 			"type": "G",
 			"rarity": "unknown",
-			"weight": 1,
+			"weight": 0.0625,
 			"value": 200,
 			"entries": [
 				"The dried leaves of a menga bush can be ground, dissolved in a liquid, heated, and ingested. A creature that ingests 1 ounce of menga leaves in this fashion regains 1 hit point. A creature that ingests more than 5 ounces of menga leaves in a 24-hour period gains no additional benefit and must succeed on a DC 11 Constitution saving throw or fall {@condition unconscious} for 1 hour. The {@condition unconscious} creature awakens if it takes at least 5 damage on one turn.",
@@ -17149,7 +17180,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "rare",
-			"weight": 0.5,
 			"entries": [
 				"Beads of this cloudy gray oil form on the outside of its container and quickly evaporate. The oil can cover a Medium or smaller creature, along with the equipment it's wearing and carrying (one additional vial is required for each size category above Medium). Applying the oil takes 10 minutes. The affected creature then gains the effect of the {@spell etherealness} spell for 1 hour."
 			],
@@ -17168,7 +17198,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "very rare",
-			"weight": 0.5,
 			"bonusWeapon": "+3",
 			"entries": [
 				"This clear, gelatinous oil sparkles with tiny, ultrathin silver shards. The oil can coat one slashing or piercing weapon or up to 5 pieces of slashing or piercing ammunition. Applying the oil takes 1 minute. For 1 hour, the coated item is magical and has a +3 bonus to attack and damage rolls."
@@ -17185,7 +17214,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "uncommon",
-			"weight": 0.5,
 			"entries": [
 				"This sticky black unguent is thick and heavy in the container, but it flows quickly when poured. The oil can cover a Medium or smaller creature, along with the equipment it's wearing and carrying (one additional vial is required for each size category above Medium). Applying the oil takes 10 minutes. The affected creature then gains the effect of a {@spell freedom of movement} spell for 8 hours.",
 				"Alternatively, the oil can be poured on the ground as an action, where it covers a 10-foot square, duplicating the effect of the {@spell grease} spell in that area for 8 hours."
@@ -17768,7 +17796,7 @@
 			"charges": 3,
 			"entries": [
 				"This ring, adorned with the symbol of Orzhov, allows you to cast {@spell command}. A guild signet is sometimes awarded to a guild member whose renown score in that guild is 5 or higher, as a reward for performing special services for the guild. Aside from its magical properties, the ring is also an indicator of Orzhov's recognition and favor.",
-				"A signet has 3 charges, and it regains 1d3 expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
+				"A signet has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
 			],
 			"attachedSpells": [
 				"command"
@@ -18317,7 +18345,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "uncommon",
-			"weight": 0.5,
 			"entries": [
 				"The next time you see a creature within 10 minutes after drinking this philter, you become {@condition charmed} by that creature for 1 hour. If the creature is of a species and gender you are normally attracted to, you regard it as your true love while you are {@condition charmed}. This potion's rose-hued, effervescent liquid contains one easy-to-miss bubble shaped like a heart."
 			],
@@ -18831,8 +18858,7 @@
 			"type": "P",
 			"resist": "acid",
 			"tier": "minor",
-			"rarity": "uncommon",
-			"weight": 0.5
+			"rarity": "uncommon"
 		},
 		{
 			"name": "Potion of Animal Friendship",
@@ -18842,7 +18868,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "uncommon",
-			"weight": 0.5,
 			"entries": [
 				"When you drink this potion, you can cast the {@spell animal friendship} spell (save DC 13) for 1 hour at will. Agitating this muddy liquid brings little bits into view: a fish scale, a hummingbird tongue, a cat claw, or a squirrel hair."
 			],
@@ -18893,7 +18918,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "rare",
-			"weight": 0.5,
 			"entries": [
 				"When you drink this potion, you gain the effect of the {@spell clairvoyance} spell. An eyeball bobs in this yellowish liquid but vanishes when the potion is opened."
 			],
@@ -18912,7 +18936,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "common",
-			"weight": 0.5,
 			"entries": [
 				"When you drink this potion, you gain a climbing speed equal to your walking speed for 1 hour. During this time, you have advantage on Strength ({@skill Athletics}) checks you make to climb. The potion is separated into brown, silver, and gray layers resembling bands of stone. Shaking the bottle fails to mix the colors."
 			],
@@ -18928,7 +18951,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "very rare",
-			"weight": 0.5,
 			"ability": {
 				"static": {
 					"str": 27
@@ -18950,8 +18972,7 @@
 			"type": "P",
 			"resist": "cold",
 			"tier": "minor",
-			"rarity": "uncommon",
-			"weight": 0.5
+			"rarity": "uncommon"
 		},
 		{
 			"name": "Potion of Comprehension",
@@ -18971,7 +18992,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "rare",
-			"weight": 0.5,
 			"entries": [
 				"When you drink this potion, you gain the \"reduce\" effect of the {@spell enlarge/reduce} spell for {@dice 1d4} hours (no concentration required). The red in the potion's liquid continuously contracts to a tiny bead and then expands to color the clear liquid around it. Shaking the bottle fails to interrupt this process."
 			],
@@ -18989,7 +19009,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "uncommon",
-			"weight": 0.5,
 			"entries": [
 				"After drinking this potion, you can use a bonus action to exhale fire at a target within 30 feet of you. The target must make a DC 13 Dexterity saving throw, taking {@dice 4d6} fire damage on a failed save, or half as much damage on a successful one. The effect ends after you exhale the fire three times or when 1 hour has passed. This potion's orange liquid flickers, and smoke fills the top of the container and wafts out whenever it is opened."
 			],
@@ -19005,7 +19024,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "rare",
-			"weight": 0.5,
 			"ability": {
 				"static": {
 					"str": 25
@@ -19027,8 +19045,7 @@
 			"type": "P",
 			"resist": "fire",
 			"tier": "minor",
-			"rarity": "uncommon",
-			"weight": 0.5
+			"rarity": "uncommon"
 		},
 		{
 			"name": "Potion of Flying",
@@ -19038,7 +19055,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "very rare",
-			"weight": 0.5,
 			"entries": [
 				"When you drink this potion, you gain a flying speed equal to your walking speed for 1 hour and can hover. If you're in the air when the potion wears off, you fall unless you have some other means of staying aloft. This potion's clear liquid floats at the top of its container and has cloudy white impurities drifting in it."
 			],
@@ -19054,8 +19070,7 @@
 			"type": "P",
 			"resist": "force",
 			"tier": "minor",
-			"rarity": "uncommon",
-			"weight": 0.5
+			"rarity": "uncommon"
 		},
 		{
 			"name": "Potion of Frost Giant Strength",
@@ -19065,7 +19080,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "rare",
-			"weight": 0.5,
 			"ability": {
 				"static": {
 					"str": 23
@@ -19087,7 +19101,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "rare",
-			"weight": 0.5,
 			"entries": [
 				"When you drink this potion, you gain the effect of the {@spell gaseous form} spell for 1 hour (no concentration required) or until you end the effect as a bonus action. This potion's container seems to hold fog that moves and pours like water."
 			],
@@ -19118,7 +19131,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "uncommon",
-			"weight": 0.5,
 			"entries": [
 				"You regain {@dice 4d4 + 4} hit points when you drink this potion. The potion's red liquid glimmers when agitated."
 			],
@@ -19135,7 +19147,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "uncommon",
-			"weight": 0.5,
 			"entries": [
 				"When you drink this potion, you gain the \"enlarge\" effect of the {@spell enlarge/reduce} spell for {@dice 1d4} hours (no concentration required). The red in the potion's liquid continuously expands from a tiny bead to color the clear liquid around it and then contracts. Shaking the bottle fails to interrupt this process."
 			],
@@ -19171,7 +19182,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "rare",
-			"weight": 0.5,
 			"entries": [
 				"For 1 hour after drinking it, you gain 10 temporary hit points that last for 1 hour. For the same duration, you are under the effect of the {@spell bless} spell (no concentration required). This blue potion bubbles and steams as if boiling."
 			],
@@ -19190,7 +19200,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "uncommon",
-			"weight": 0.5,
 			"ability": {
 				"static": {
 					"str": 21
@@ -19212,7 +19221,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "very rare",
-			"weight": 0.5,
 			"entries": [
 				"This potion's container looks empty but feels as though it holds liquid. When you drink it, you become {@condition invisible} for 1 hour. Anything you wear or carry is {@condition invisible} with you. The effect ends early if you attack or cast a spell."
 			],
@@ -19227,7 +19235,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "rare",
-			"weight": 0.5,
 			"entries": [
 				"For 1 minute after you drink this potion, you have resistance to all damage. The potion's syrupy liquid looks like liquefied iron."
 			],
@@ -19243,8 +19250,7 @@
 			"type": "P",
 			"resist": "lightning",
 			"tier": "minor",
-			"rarity": "uncommon",
-			"weight": 0.5
+			"rarity": "uncommon"
 		},
 		{
 			"name": "Potion of Longevity",
@@ -19253,7 +19259,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "very rare",
-			"weight": 0.5,
 			"entries": [
 				"When you drink this potion, your physical age is reduced by {@dice 1d6 + 6} years, to a minimum of 13 years. Each time you subsequently drink a potion of longevity, there is 10 percent cumulative chance that you instead age by {@dice 1d6 + 6} years. Suspended in this amber liquid are a scorpion's tail, an adder's fang, a dead spider, and a tiny heart that, against all reason, is still beating. These ingredients vanish when the potion is opened."
 			],
@@ -19278,7 +19283,6 @@
 			"page": 229,
 			"type": "P",
 			"rarity": "rare",
-			"weight": 1,
 			"entries": [
 				"When you drink a potion of mind control, you can cast a dominate spell (save DC 15) on a specific creature if you do so before the end of your next turn. If you don't, the potion is wasted.",
 				"A potion of mind control produces the effect of a {@spell dominate beast} spell. If the target's initial saving throw fails, the effect lasts for 1 hour, with no concentration required on your part. The {@condition charmed} creature has disadvantage on new saving throws to break the effect during this time."
@@ -19293,7 +19297,6 @@
 			"page": 229,
 			"type": "P",
 			"rarity": "rare",
-			"weight": 1,
 			"entries": [
 				"When you drink a potion of mind control, you can cast a dominate spell (save DC 15) on a specific creature if you do so before the end of your next turn. If you don't, the potion is wasted.",
 				"A potion of mind control produces the effect of a {@spell dominate person} spell. If the target's initial saving throw fails, the effect lasts for 1 hour, with no concentration required on your part. The {@condition charmed} creature has disadvantage on new saving throws to break the effect during this time."
@@ -19308,7 +19311,6 @@
 			"page": 229,
 			"type": "P",
 			"rarity": "very rare",
-			"weight": 1,
 			"entries": [
 				"When you drink a potion of mind control, you can cast a dominate spell (save DC 15) on a specific creature if you do so before the end of your next turn. If you don't, the potion is wasted.",
 				"A potion of mind control produces the effect of a {@spell dominate monster} spell. If the target's initial saving throw fails, the effect lasts for 1 hour, with no concentration required on your part. The {@condition charmed} creature has disadvantage on new saving throws to break the effect during this time."
@@ -19325,7 +19327,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "rare",
-			"weight": 0.5,
 			"entries": [
 				"When you drink this potion, you gain the effect of the {@spell detect thoughts} spell (save DC 13). The potion's dense, purple liquid has an ovoid cloud of pink floating in it."
 			],
@@ -19344,8 +19345,7 @@
 			"type": "P",
 			"resist": "necrotic",
 			"tier": "minor",
-			"rarity": "uncommon",
-			"weight": 0.5
+			"rarity": "uncommon"
 		},
 		{
 			"name": "Potion of Poison",
@@ -19355,7 +19355,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "uncommon",
-			"weight": 0.5,
 			"entries": [
 				"This concoction looks, smells, and tastes like a {@item potion of healing} or other beneficial potion. However, it is actually poison masked by illusion magic. An {@spell identify} spell reveals its true nature.",
 				"If you drink it, you take {@dice 3d6} poison damage, and you must succeed on a DC 13 Constitution saving throw or be {@condition poisoned}. At the start of each of your turns while you are {@condition poisoned} in this way, you take {@dice 3d6} poison damage. At the end of each of your turns, you can repeat the saving throw. On a successful save, the poison damage you take on your subsequent turns decreases by {@dice 1d6}. The poison ends when the damage decreases to 0."
@@ -19372,8 +19371,7 @@
 			"type": "P",
 			"resist": "poison",
 			"tier": "minor",
-			"rarity": "uncommon",
-			"weight": 0.5
+			"rarity": "uncommon"
 		},
 		{
 			"name": "Potion of Possibility",
@@ -19396,8 +19394,7 @@
 			"type": "P",
 			"resist": "psychic",
 			"tier": "minor",
-			"rarity": "uncommon",
-			"weight": 0.5
+			"rarity": "uncommon"
 		},
 		{
 			"name": "Potion of Radiant Resistance",
@@ -19407,8 +19404,7 @@
 			"type": "P",
 			"resist": "radiant",
 			"tier": "minor",
-			"rarity": "uncommon",
-			"weight": 0.5
+			"rarity": "uncommon"
 		},
 		{
 			"name": "Potion of Speed",
@@ -19418,7 +19414,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "very rare",
-			"weight": 0.5,
 			"entries": [
 				"When you drink this potion, you gain the effect of the {@spell haste} spell for 1 minute (no concentration required). The potion's yellow fluid is streaked with black and swirl on its own."
 			],
@@ -19437,7 +19432,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "rare",
-			"weight": 0.5,
 			"ability": {
 				"static": {
 					"str": 23
@@ -19459,7 +19453,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "legendary",
-			"weight": 0.5,
 			"ability": {
 				"static": {
 					"str": 29
@@ -19481,7 +19474,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "rare",
-			"weight": 0.5,
 			"entries": [
 				"You regain {@dice 8d4 + 8} hit points when you drink this potion. The potion's red liquid glimmers when agitated."
 			],
@@ -19497,7 +19489,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "very rare",
-			"weight": 0.5,
 			"entries": [
 				"You regain {@dice 10d4 + 20} hit points when you drink this potion. The potion's red liquid glimmers when agitated."
 			],
@@ -19514,8 +19505,7 @@
 			"type": "P",
 			"resist": "thunder",
 			"tier": "minor",
-			"rarity": "uncommon",
-			"weight": 0.5
+			"rarity": "uncommon"
 		},
 		{
 			"name": "Potion of Vitality",
@@ -19524,7 +19514,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "very rare",
-			"weight": 0.5,
 			"entries": [
 				"When you drink this potion, it removes any {@condition exhaustion} you are suffering and cures any disease or poison affecting you. For the next 24 hours, you regain the maximum number of hit points for any Hit Die you spend. The potion's crimson liquid regularly pulses with dull light, calling to mind a heartbeat."
 			],
@@ -19550,7 +19539,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "uncommon",
-			"weight": 0.5,
 			"entries": [
 				"You can breathe underwater for 1 hour after drinking this potion. Its cloudy green fluid smells of the sea and has a jellyfish-like bubble floating in it."
 			],
@@ -20230,7 +20218,7 @@
 			"charges": 3,
 			"entries": [
 				"This ring, adorned with the symbol of Rakdos, allows you to cast {@spell hellish rebuke}. A guild signet is sometimes awarded to a guild member whose renown score in that guild is 5 or higher, as a reward for performing special services for the guild. Aside from its magical properties, the ring is also an indicator of Rakdos' recognition and favor.",
-				"A signet has 3 charges, and it regains 1d3 expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
+				"A signet has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
 			],
 			"attachedSpells": [
 				"hellish rebuke"
@@ -21528,7 +21516,7 @@
 					"type": "entries",
 					"entries": [
 						"You can press one of the rod's six buttons as a bonus action. A button's effect lasts until you push a different button or until you push the same button again, which causes the rod to revert to its normal form.",
-						"If you press button 1, the rod becomes a flame tongue as a fiery blade sprouts from the end opposite the rod's flanged head (you choose the type of sword).",
+						"If you press button 1, the rod becomes a {@item flame tongue} as a fiery blade sprouts from the end opposite the rod's flanged head (you choose the type of sword).",
 						"If you press button 2, the rod's flanged head folds down and two crescent-shaped blades spring out, transforming the rod into a magic battleaxe that grants a +3 bonus to attack and damage rolls made with it.",
 						"If you press button 3, the rod's flanged head folds down, a spear point springs from the rod's tip, and the rod's handle lengthens into a 6-foot haft, transforming the rod into a magic spear that grants a+3 bonus to attack and damage rolls made with it.",
 						"If you press button 4, the rod transforms into a climbing pole up to 50 feet long, as you specify. In surfaces as hard as granite, a spike at the bottom and three hooks at the top anchor the pole. Horizontal bars 3 inches long fold out from the sides, 1 foot apart, forming a ladder. The pole can bear up to 4,000 pounds. More weight or lack of solid anchoring causes the rod to revert to its normal form.",
@@ -21784,7 +21772,6 @@
 			"reqAttune": true,
 			"sentient": true,
 			"weight": 3,
-			"value": 100,
 			"weaponCategory": "simple",
 			"property": [
 				"T",
@@ -21952,7 +21939,6 @@
 			"page": 205,
 			"type": "G",
 			"rarity": "unknown",
-			"weight": 0.1,
 			"value": 5000,
 			"entries": [
 				"Any creature that ingests a ryath root gains {@dice 2d4} temporary hit points. A creature that consumes more than one ryath root in a 24-hour period must succeed on a DC 13 Constitution saving throw or suffer the {@condition poisoned} condition for 1 hour."
@@ -22363,7 +22349,7 @@
 			"charges": 3,
 			"entries": [
 				"This ring, adorned with the symbol of Selesnya, allows you to cast {@spell charm person}. A guild signet is sometimes awarded to a guild member whose renown score in that guild is 5 or higher, as a reward for performing special services for the guild. Aside from its magical properties, the ring is also an indicator of Selesnya's recognition and favor.",
-				"A signet has 3 charges, and it regains 1d3 expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
+				"A signet has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
 			],
 			"attachedSpells": [
 				"charm person"
@@ -22973,7 +22959,6 @@
 			"reqAttune": true,
 			"sentient": true,
 			"weight": 2,
-			"value": 2500,
 			"weaponCategory": "martial",
 			"property": [
 				"F"
@@ -23221,7 +23206,7 @@
 			"charges": 3,
 			"entries": [
 				"This ring, adorned with the symbol of Simic, allows you to cast {@spell expeditious retreat}. A guild signet is sometimes awarded to a guild member whose renown score in that guild is 5 or higher, as a reward for performing special services for the guild. Aside from its magical properties, the ring is also an indicator of Simic's recognition and favor.",
-				"A signet has 3 charges, and it regains 1d3 expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
+				"A signet has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing it, you can expend 1 charge to cast the associated spell (save DC 13)."
 			],
 			"attachedSpells": [
 				"expeditious retreat"
@@ -23247,7 +23232,6 @@
 			"page": 205,
 			"type": "G",
 			"rarity": "unknown",
-			"weight": 1,
 			"value": 500,
 			"entries": [
 				"These berries are dark brown and bitter. A full-grown sinda berry bush has {@dice 4d6} berries growing on it. A bush plucked of all its berries grows new berries in {@dice 1d4} months. Picked berries lose their freshness and efficacy after 24 hours.",
@@ -26396,7 +26380,6 @@
 			"reqAttune": true,
 			"sentient": true,
 			"weight": 4,
-			"value": 1500,
 			"weaponCategory": "martial",
 			"dmg1": "1d8",
 			"dmgType": "P",
@@ -26942,7 +26925,7 @@
 						[
 							"70",
 							"You know one cantrip of the DM's choice, and can cast one 1st-level spell of the DM's choice at will.",
-							"Whenever you cast a spell or use a magic item property that requires an action or a bonus action to activate, roll on the Wild Magic Surge table (see the sorcerer section in chapter 3 of the Player's Handbook) to see what happens."
+							"Whenever you cast a spell or use a magic item property that requires an action or a bonus action to activate, roll on the {@table Wild Magic Surge|PHB} table (see the sorcerer section in chapter 3 of the Player's Handbook) to see what happens."
 						],
 						[
 							"71",
@@ -27665,6 +27648,25 @@
 			"value": 750000
 		},
 		{
+			"name": "Treebane",
+			"source": "CoS",
+			"page": 198,
+			"baseItem": "battleaxe|phb",
+			"type": "M",
+			"rarity": "unknown (magic)",
+			"weight": 2,
+			"weaponCategory": "martial",
+			"property": [
+				"V"
+			],
+			"dmg1": "1d8",
+			"dmgType": "S",
+			"dmg2": "1d10",
+			"entries": [
+				"The axe's handle is carved with leaves and vines, and it weighs half as much as a normal battleaxe. When the axe hits a plant, whether an ordinary plant or a plant creature, the target takes an extra {@dice 1d8} slashing damage. When a creature of non-good alignment wields the axe, it sprouts thorns whenever its wielder makes an attack with it. These thorns prick the wielder for 1 piercing damage after the attack is made, and this damage is considered magical."
+			]
+		},
+		{
 			"name": "Trident of Fish Command",
 			"source": "DMG",
 			"page": 209,
@@ -28274,7 +28276,7 @@
 						],
 						[
 							"67-68",
-							"A walking cane with an iron ferule that strikes sparks on stone"
+							"A walking cane with an iron ferrule that strikes sparks on stone"
 						],
 						[
 							"69-70",
@@ -30706,7 +30708,6 @@
 			"page": 205,
 			"type": "G",
 			"rarity": "unknown",
-			"weight": 1,
 			"value": 2500,
 			"entries": [
 				"Introducing the juice of a wildroot into a {@condition poisoned} creature's bloodstream (for example, by rubbing it on an open wound) rids the creature of the {@condition poisoned} condition. Once used in this way, a wildroot loses this property."
@@ -30722,7 +30723,6 @@
 			"reqAttune": true,
 			"sentient": true,
 			"weight": 2,
-			"value": 500,
 			"weaponCategory": "martial",
 			"dmg1": "1d8",
 			"dmgType": "P",
@@ -31147,7 +31147,6 @@
 			"page": 205,
 			"type": "G",
 			"rarity": "unknown",
-			"weight": 0.1,
 			"value": 100,
 			"entries": [
 				"These fist-sized nuts grow on wukka trees, which are popular haunts for {@creature jaculi|ToA}, {@creature su-monster|ToA|su-monsters}, and {@creature zorbo|ToA|zorbos}. A wukka nut rattles when shaken, causing its shell to shed bright light in a 10-foot radius and dim light for an additional 10 feet. This magical light fades after 1 minute, but shaking the nut again causes the light to reappear. If the shell of the nut is cracked open, it loses its magic."
@@ -31229,7 +31228,6 @@
 			"page": 205,
 			"type": "G",
 			"rarity": "none",
-			"weight": 1,
 			"value": 100,
 			"entries": [
 				"A yahcha (pronounced YAH-chah) is a harmless, meaty beetle about the size of a human hand, which feeds on worms and maggots. It moves slowly (walking speed 10 feet) and is easy to catch. A creature with mad monkey fever that eats a raw or cooked yahcha can immediately make a saving throw with advantage against that disease (see \"Diseases,\" page 40),"
@@ -31304,7 +31302,6 @@
 			"page": 205,
 			"type": "G",
 			"rarity": "none",
-			"weight": 1,
 			"value": 1000,
 			"entries": [
 				"Zabou mushrooms feed on offal and the rotting wood of dead trees. If handled carefully, a zabou can be picked or uprooted without causing it to release its spores. If crushed or struck, a zabou releases its spores in a 10-foot-radius sphere. A zabou can also be hurled up to 30 feet away or dropped like a grenade, releasing its cloud of spores on impact. Any creature in that area must succeed on a DC 10 Constitution saving throw or be {@condition poisoned} for 1 minute. The {@condition poisoned} creature's skin itches for the duration. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
@@ -31483,6 +31480,27 @@
 			],
 			"lootTables": [
 				"Magic Item Table H"
+			]
+		},
+		{
+			"name": "Crystal Ball (Legendary Version)",
+			"source": "DMG",
+			"page": 159,
+			"tier": "major",
+			"rarity": "legendary",
+			"reqAttune": true,
+			"wondrous": true,
+			"weight": 3,
+			"items": [
+				"Crystal Ball of Mind Reading",
+				"Crystal Ball of Telepathy",
+				"Crystal Ball of True Seeing"
+			],
+			"attachedSpells": [
+				"scrying"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -31843,7 +31861,6 @@
 			"page": 187,
 			"type": "P",
 			"rarity": "varies",
-			"weight": 0.5,
 			"items": [
 				"Potion of Cloud Giant Strength",
 				"Potion of Fire Giant Strength",
@@ -31860,7 +31877,6 @@
 			"srd": true,
 			"type": "P",
 			"rarity": "varies",
-			"weight": 0.5,
 			"entries": [
 				"{@note * This item group has the same name and source as the item {@item potion of healing}}."
 			],
@@ -31877,7 +31893,6 @@
 			"page": 229,
 			"type": "P",
 			"rarity": "varies",
-			"weight": 1,
 			"items": [
 				"Potion of Mind Control (beast)|TftYP",
 				"Potion of Mind Control (humanoid)|TftYP",
@@ -31891,7 +31906,6 @@
 			"type": "P",
 			"tier": "minor",
 			"rarity": "uncommon",
-			"weight": 0.5,
 			"items": [
 				"Potion of Acid Resistance",
 				"Potion of Cold Resistance",

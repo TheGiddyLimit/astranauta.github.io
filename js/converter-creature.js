@@ -41,13 +41,13 @@ class CreatureParser extends BaseParser {
 				"CONDITION IMMUNITIES",
 				"SENSES",
 				"LANGUAGES",
-				"CHALLENGE"
+				"CHALLENGE",
 			];
 			const NO_ABSORB_TITLES = [
 				"ACTION",
 				"LEGENDARY ACTION",
 				"MYTHIC ACTION",
-				"REACTION"
+				"REACTION",
 			];
 
 			if (curLine) {
@@ -398,7 +398,7 @@ class CreatureParser extends BaseParser {
 		const getNewStatblock = () => {
 			return {
 				source: options.source,
-				page: options.page
+				page: options.page,
 			}
 		};
 
@@ -426,7 +426,7 @@ class CreatureParser extends BaseParser {
 			const [name, text] = line.replace(/^\*\*\*?/, "").split(/.\s*\*\*\*?/).map(it => it.trim());
 			return [
 				ConvertUtil.getCleanTraitActionName(name),
-				text.replace(/\*Hit(\*:|:\*) /g, "Hit: ") // clean hit tags for later replacement
+				text.replace(/\*Hit(\*:|:\*) /g, "Hit: "), // clean hit tags for later replacement
 			]
 		};
 
@@ -811,7 +811,7 @@ class CreatureParser extends BaseParser {
 		AcConvert.tryPostProcessAc(
 			stats,
 			(ac) => options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}AC "${ac}" requires manual conversion`),
-			(ac) => options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Failed to parse AC "${ac}"`)
+			(ac) => options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Failed to parse AC "${ac}"`),
 		);
 		TagAttack.tryTagAttacks(stats, (atk) => options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Manual attack tagging required for "${atk}"`));
 		TagHit.tryTagHits(stats);
@@ -846,7 +846,7 @@ class CreatureParser extends BaseParser {
 
 				return { // retain any leading junk, as we'll parse it out in a later step
 					type: `${mSwarm[1]}${swarmTypeSingular}`,
-					swarmSize: mSwarm[2][0].toUpperCase()
+					swarmSize: mSwarm[2][0].toUpperCase(),
 				}
 			}
 
@@ -952,7 +952,7 @@ class CreatureParser extends BaseParser {
 		else {
 			stats.hp = {
 				average: Number(m[1]),
-				formula: m[2]
+				formula: m[2],
 			};
 			DiceConvert.cleanHpDice(stats);
 		}
@@ -1060,11 +1060,11 @@ class CreatureParser extends BaseParser {
 }
 CreatureParser.SKILL_SPACE_MAP = {
 	"sleightofhand": "sleight of hand",
-	"animalhandling": "animal handling"
+	"animalhandling": "animal handling",
 };
 
 if (typeof module !== "undefined") {
 	module.exports = {
-		CreatureParser
+		CreatureParser,
 	};
 }

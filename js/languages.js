@@ -12,7 +12,7 @@ class LanguagesPage extends ListPage {
 
 			sublistClass: "sublanguages",
 
-			dataProps: ["language"]
+			dataProps: ["language"],
 		});
 	}
 
@@ -41,12 +41,12 @@ class LanguagesPage extends ListPage {
 				source,
 				dialects: it.dialects || [],
 				type: it.type || "",
-				script: it.script || ""
+				script: it.script || "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -80,8 +80,8 @@ class LanguagesPage extends ListPage {
 			{
 				hash,
 				type: it.type || "",
-				script: it.script || ""
-			}
+				script: it.script || "",
+			},
 		);
 		return listItem;
 	}
@@ -99,19 +99,19 @@ class LanguagesPage extends ListPage {
 				isImageTab,
 				$content,
 				entity: it,
-				pFnGetFluff: Renderer.language.pGetFluff
+				pFnGetFluff: Renderer.language.pGetFluff,
 			});
 		}
 
 		const statTab = Renderer.utils.tabButton(
 			"Traits",
 			() => {},
-			buildStatsTab
+			buildStatsTab,
 		);
 		const picTab = Renderer.utils.tabButton(
 			"Images",
 			() => {},
-			buildFluffTab.bind(null, true)
+			buildFluffTab.bind(null, true),
 		);
 		const fontTab = Renderer.utils.tabButton(
 			"Fonts",
@@ -193,7 +193,7 @@ class LanguagesPage extends ListPage {
 						${it.fonts.map(f => `<li><a href="${f}" target="_blank">${f.split("/").last()}</a></li>`).join("")}
 					</ul>
 				</div>`.appendTo($td);
-			}
+			},
 		);
 
 		Renderer.utils.bindTabButtons(statTab, picTab, fontTab);

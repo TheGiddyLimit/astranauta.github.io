@@ -31,7 +31,7 @@ class TableParser extends BaseParser {
 				caption,
 				colLabels: [],
 				colStyles: [],
-				rows: []
+				rows: [],
 			};
 
 			const getCleanHeaderText = ($ele) => {
@@ -145,6 +145,6 @@ class TableParser extends BaseParser {
 
 if (typeof module !== "undefined") {
 	module.exports = {
-		TableParser
+		TableParser,
 	};
 }

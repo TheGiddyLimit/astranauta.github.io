@@ -128,23 +128,23 @@ LangDemoUi._SAMPLES = [
 
 
 
-`
+`,
 	},
 	{
 		name: "Number",
-		code: `1`
+		code: `1`,
 	},
 	{
 		name: "Sum",
-		code: `1 + 1`
+		code: `1 + 1`,
 	},
 	{
 		name: "Multiplication",
-		code: `2 * 3`
+		code: `2 * 3`,
 	},
 	{
 		name: "Exponent",
-		code: `3^3^2  # Should equal 19683`
+		code: `3^3^2  # Should equal 19683`,
 	},
 	{
 		name: "If-elif-else",
@@ -153,65 +153,65 @@ elif r > 1:
   2
 else:
   3
-4`
+4`,
 	},
 	{
 		name: "If-elif",
 		code: `if r == 20: 1
 elif r > 1:
-  2`
+  2`,
 	},
 	{
 		name: "If-else",
 		code: `if r == 20: 1
 else:
-  2`
+  2`,
 	},
 	{
 		name: "If",
-		code: `if r == 20: 1`
+		code: `if r == 20: 1`,
 	},
 	{
 		name: "If (trailing return)",
 		code: `if r == 20: 1
-2`
+2`,
 	},
 	{
 		name: "Condition Negation",
-		code: `if not r: 2`
+		code: `if not r: 2`,
 	},
 	{
 		name: "Parentheses",
-		code: `(2 + 3) * 4  # Should equal 20`
+		code: `(2 + 3) * 4  # Should equal 20`,
 	},
 	{
 		name: "Dynamic Int",
-		code: `if @user_int > 10: 2`
+		code: `if @user_int > 10: 2`,
 	},
 	{
 		name: "Labelled Dynamic Int",
-		code: `if (@user_int|Enter: a /*+-^,!= (Number)) > 10: 2`
+		code: `if (@user_int|Enter: a /*+-^,!= (Number)) > 10: 2`,
 	},
 	{
 		name: "Selectable Dynamic Int",
-		code: `if (@user_int|| 1 = One Apple| 2 = Two Bananas |3|4|11=11 Oranges) > 10: 2`
+		code: `if (@user_int|| 1 = One Apple| 2 = Two Bananas |3|4|11=11 Oranges) > 10: 2`,
 	},
 	{
 		name: "Dynamic Bool",
-		code: `if not @user_bool: 3`
+		code: `if not @user_bool: 3`,
 	},
 	{
 		name: "Labelled Dynamic Bool",
-		code: `if not (@user_bool|Choose: /*+-^,!= (Yes\\No)): 4`
+		code: `if not (@user_bool|Choose: /*+-^,!= (Yes\\No)): 4`,
 	},
 	{
 		name: "Custom Buttons Dynamic Bool",
-		code: `if (@user_bool||Good | Evil): 2`
+		code: `if (@user_bool||Good | Evil): 2`,
 	},
 	{
 		name: "Selectable Dynamic Bool",
-		code: `if not (@user_bool|Pick| true = Good| false = Evil |true|false|true=Lawful): 2`
-	}
+		code: `if not (@user_bool|Pick| true = Good| false = Evil |true|false|true=Lawful): 2`,
+	},
 ];
 LangDemoUi.RESOLVER = {
 	has: () => true,
@@ -219,7 +219,7 @@ LangDemoUi.RESOLVER = {
 		const out = Math.round(Math.random() * 50);
 		JqueryUtil.doToast(`Randomized ${path} as ${out}`);
 		return out;
-	}
+	},
 };
 
 window.addEventListener("load", () => LangDemoUi.init());

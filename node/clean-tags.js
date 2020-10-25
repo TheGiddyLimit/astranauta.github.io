@@ -8,7 +8,7 @@ const BLACKLIST_FILE_PREFIXES = [
 	...ut.FILE_PREFIX_BLACKLIST,
 
 	// specific files
-	"demo.json"
+	"demo.json",
 ];
 
 const TAGS_TO_CHECK = new Set([
@@ -29,7 +29,7 @@ const TAGS_TO_CHECK = new Set([
 	"trap",
 	"hazard",
 	"variantrule",
-	"vehicle"
+	"vehicle",
 ]);
 
 const files = ut.listFiles({dir: `./data`, blacklistFilePrefixes: BLACKLIST_FILE_PREFIXES});

@@ -281,7 +281,7 @@ function calculateCr () {
 				const $iptNum = $cb.siblings("input[type=number]");
 				return `${$cb.attr("id")}:${$iptNum.length ? $iptNum.val() : true}`
 			} else return false;
-		}).get().filter(Boolean).join(",")
+		}).get().filter(Boolean).join(","),
 	];
 	window.location = `#${hashParts.join(",")}`;
 

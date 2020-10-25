@@ -66,7 +66,7 @@ class PsionicsPage extends ListPage {
 
 					$wrpContent.append(stack.join(""));
 					return toShow.length;
-				}
+				},
 			},
 
 			tableViewOptions: {
@@ -74,11 +74,11 @@ class PsionicsPage extends ListPage {
 				colTransforms: {
 					name: {name: "Name", transform: true},
 					source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>`},
-					_text: {name: "Text", transform: (it) => Renderer.psionic.getBodyText(it, Renderer.get()), flex: 3}
+					_text: {name: "Text", transform: (it) => Renderer.psionic.getBodyText(it, Renderer.get()), flex: 3},
 				},
 				filter: {generator: ListUtil.basicFilterGenerator},
-				sorter: (a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source)
-			}
+				sorter: (a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source),
+			},
 		});
 	}
 
@@ -108,12 +108,12 @@ class PsionicsPage extends ListPage {
 				source,
 				type: typeMeta.full,
 				order: p._fOrder,
-				searchModeList: getHiddenModeList(p)
+				searchModeList: getHiddenModeList(p),
 			},
 			{
 				uniqueId: p.uniqueId ? p.uniqueId : psI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -148,8 +148,8 @@ class PsionicsPage extends ListPage {
 			{
 				hash,
 				type: typeMeta.full,
-				order: p._fOrder
-			}
+				order: p._fOrder,
+			},
 		);
 		return listItem;
 	}

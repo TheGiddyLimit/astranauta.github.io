@@ -92,6 +92,49 @@
 			]
 		},
 		{
+			"name": "Astral Brig",
+			"source": "MTF",
+			"page": 90,
+			"vehicleType": "SHIP",
+			"size": "G",
+			"dimensions": [
+				"90 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"air"
+			],
+			"capCrew": 5,
+			"capPassenger": 60,
+			"pace": 12,
+			"weapon": [
+				{
+					"name": "Ballistas",
+					"count": 2,
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Astral Skiff",
+			"source": "MTF",
+			"page": 90,
+			"vehicleType": "SHIP",
+			"size": "H",
+			"dimensions": [
+				"30 ft.",
+				"10 ft."
+			],
+			"terrain": [
+				"air"
+			],
+			"capCrew": 3,
+			"capPassenger": 12,
+			"pace": 15
+		},
+		{
 			"name": "Battle Balloon",
 			"source": "AI",
 			"page": 218,
@@ -1216,6 +1259,38 @@
 							"name": "Move.",
 							"entry": "The mechanical beholder can use its helm to move using its magical propulsion unit."
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Planar Raider",
+			"source": "MTF",
+			"page": 90,
+			"vehicleType": "SHIP",
+			"size": "H",
+			"dimensions": [
+				"120 ft.",
+				"40 ft."
+			],
+			"terrain": [
+				"air"
+			],
+			"capCrew": 10,
+			"capPassenger": 100,
+			"pace": 12,
+			"weapon": [
+				{
+					"name": "Ballistas",
+					"count": 2,
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+					]
+				},
+				{
+					"name": "Catapult",
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 feet of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
 					]
 				}
 			]

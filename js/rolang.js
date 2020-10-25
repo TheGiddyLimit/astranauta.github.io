@@ -964,7 +964,7 @@ class Ro_Lang {
 			const ixOut = await InputUiUtil.pGetUserEnum({
 				fnDisplay: it => it.label,
 				values: choices,
-				title: titlePart
+				title: titlePart,
 			});
 
 			if (ixOut == null) out.isCancelled = true;
@@ -993,7 +993,7 @@ class Ro_Lang {
 			const nxtOpts = {
 				title: labelParts[0].trim(),
 				textYes: labelParts[1].trim(),
-				textNo: labelParts[2].trim()
+				textNo: labelParts[2].trim(),
 			};
 
 			const val = await InputUiUtil.pGetUserBoolean(nxtOpts);
@@ -1019,7 +1019,7 @@ class Ro_Lang {
 			const ixOut = await InputUiUtil.pGetUserEnum({
 				fnDisplay: it => it.label,
 				values: choices,
-				title: titlePart
+				title: titlePart,
 			});
 
 			if (ixOut == null) out.isCancelled = true;

@@ -16,10 +16,10 @@ class PageFilterTrapsHazards extends PageFilter {
 				"WTH",
 				"ENV",
 				"WLD",
-				"GEN"
+				"GEN",
 			],
 			displayFn: Parser.trapHazTypeToFull,
-			itemSortFn: filterTypeSort
+			itemSortFn: filterTypeSort,
 		});
 	}
 
@@ -37,7 +37,7 @@ class PageFilterTrapsHazards extends PageFilter {
 	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
-			this._typeFilter
+			this._typeFilter,
 		];
 	}
 
@@ -45,7 +45,7 @@ class PageFilterTrapsHazards extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			it.source,
-			it.trapHazType
+			it.trapHazType,
 		)
 	}
 }

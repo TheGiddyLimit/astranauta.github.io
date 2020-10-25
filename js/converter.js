@@ -141,7 +141,7 @@ class BaseConverter extends BaseComponent {
 				},
 				cbCancel: () => {
 					if (modalMeta) modalMeta.doClose();
-				}
+				},
 			});
 		};
 
@@ -186,7 +186,7 @@ class BaseConverter extends BaseComponent {
 				modalMeta = UiUtil.getShowModal({
 					isHeight100: true,
 					isUncappedHeight: true,
-					cbClose: () => $wrpSourceOverlay.detach()
+					cbClose: () => $wrpSourceOverlay.detach(),
 				});
 				$wrpSourceOverlay.appendTo(modalMeta.$modalInner);
 			});
@@ -197,7 +197,7 @@ class BaseConverter extends BaseComponent {
 			modalMeta = UiUtil.getShowModal({
 				isHeight100: true,
 				isUncappedHeight: true,
-				cbClose: () => $wrpSourceOverlay.detach()
+				cbClose: () => $wrpSourceOverlay.detach(),
 			});
 			$wrpSourceOverlay.appendTo(modalMeta.$modalInner);
 		});
@@ -219,8 +219,8 @@ class CreatureConverter extends BaseConverter {
 				hasPageNumbers: true,
 				titleCaseFields: ["name"],
 				hasSource: true,
-				prop: "monster"
-			}
+				prop: "monster",
+			},
 		);
 	}
 
@@ -242,7 +242,7 @@ class CreatureConverter extends BaseConverter {
 			titleCaseFields: this._titleCaseFields,
 			isTitleCase: this._state.isTitleCase,
 			source: this._state.source,
-			page: this._state.page
+			page: this._state.page,
 		};
 
 		switch (this._state.mode) {
@@ -365,8 +365,8 @@ class SpellConverter extends BaseConverter {
 				hasPageNumbers: true,
 				titleCaseFields: ["name"],
 				hasSource: true,
-				prop: "spell"
-			}
+				prop: "spell",
+			},
 		);
 	}
 
@@ -382,7 +382,7 @@ class SpellConverter extends BaseConverter {
 			titleCaseFields: this._titleCaseFields,
 			isTitleCase: this._state.isTitleCase,
 			source: this._state.source,
-			page: this._state.page
+			page: this._state.page,
 		};
 
 		switch (this._state.mode) {
@@ -420,8 +420,8 @@ class ItemConverter extends BaseConverter {
 				hasPageNumbers: true,
 				titleCaseFields: ["name"],
 				hasSource: true,
-				prop: "item"
-			}
+				prop: "item",
+			},
 		);
 	}
 
@@ -437,7 +437,7 @@ class ItemConverter extends BaseConverter {
 			titleCaseFields: this._titleCaseFields,
 			isTitleCase: this._state.isTitleCase,
 			source: this._state.source,
-			page: this._state.page
+			page: this._state.page,
 		};
 
 		switch (this._state.mode) {
@@ -481,8 +481,8 @@ class FeatConverter extends BaseConverter {
 				hasPageNumbers: true,
 				titleCaseFields: ["name"],
 				hasSource: true,
-				prop: "feat"
-			}
+				prop: "feat",
+			},
 		);
 	}
 
@@ -498,7 +498,7 @@ class FeatConverter extends BaseConverter {
 			titleCaseFields: this._titleCaseFields,
 			isTitleCase: this._state.isTitleCase,
 			source: this._state.source,
-			page: this._state.page
+			page: this._state.page,
 		};
 
 		switch (this._state.mode) {
@@ -531,8 +531,8 @@ class TableConverter extends BaseConverter {
 			{
 				converterId: "Table",
 				modes: ["html", "md"],
-				prop: "table"
-			}
+				prop: "table",
+			},
 		);
 	}
 
@@ -548,7 +548,7 @@ class TableConverter extends BaseConverter {
 			titleCaseFields: this._titleCaseFields,
 			isTitleCase: this._state.isTitleCase,
 			source: this._state.source,
-			page: this._state.page
+			page: this._state.page,
 		};
 
 		switch (this._state.mode) {
@@ -634,7 +634,7 @@ class ConverterUi extends BaseComponent {
 	getBaseSaveableState () {
 		return {
 			...super.getBaseSaveableState(),
-			...Object.values(this._converters).mergeMap(it => ({[it.converterId]: it.getBaseSaveableState()}))
+			...Object.values(this._converters).mergeMap(it => ({[it.converterId]: it.getBaseSaveableState()})),
 		}
 	}
 
@@ -659,7 +659,7 @@ class ConverterUi extends BaseComponent {
 		this._editorIn = ace.edit("converter_input");
 		this._editorIn.setOptions({
 			wrap: true,
-			showPrintMargin: false
+			showPrintMargin: false,
 		});
 		try {
 			const prevInput = await StorageUtil.pGetForPage(ConverterUi.STORAGE_INPUT);
@@ -671,7 +671,7 @@ class ConverterUi extends BaseComponent {
 		this._editorOut.setOptions({
 			wrap: true,
 			showPrintMargin: false,
-			readOnly: true
+			readOnly: true,
 		});
 
 		$(`#editable`).click(() => {
@@ -689,7 +689,7 @@ class ConverterUi extends BaseComponent {
 					if (invalidSources.length) {
 						JqueryUtil.doToast({
 							content: `One or more entries have missing or unknown sources: ${invalidSources.join(", ")}`,
-							type: "danger"
+							type: "danger",
 						});
 						return;
 					}
@@ -712,7 +712,7 @@ class ConverterUi extends BaseComponent {
 					if (dupes.length) {
 						JqueryUtil.doToast({
 							type: "warning",
-							content: `Ignored ${dupes.length} duplicate entr${dupes.length === 1 ? "y" : "ies"}`
+							content: `Ignored ${dupes.length} duplicate entr${dupes.length === 1 ? "y" : "ies"}`,
 						})
 					}
 
@@ -723,7 +723,7 @@ class ConverterUi extends BaseComponent {
 							return {
 								isOverwrite: true,
 								ix,
-								entry: it
+								entry: it,
 							}
 						} else return {entry: it, isOverwrite: false};
 					}).filter(Boolean);
@@ -742,21 +742,21 @@ class ConverterUi extends BaseComponent {
 
 					JqueryUtil.doToast({
 						type: "success",
-						content: `Saved!`
+						content: `Saved!`,
 					});
 
 					Omnisearch.pAddToIndex("monster", overwriteMeta.filter(meta => !meta.isOverwrite).map(meta => meta.entry));
 				} catch (e) {
 					JqueryUtil.doToast({
 						content: `Current output was not valid JSON!`,
-						type: "danger"
+						type: "danger",
 					});
 					setTimeout(() => { throw e });
 				}
 			} else {
 				JqueryUtil.doToast({
 					content: "Nothing to save!",
-					type: "danger"
+					type: "danger",
 				});
 			}
 		});
@@ -776,7 +776,7 @@ class ConverterUi extends BaseComponent {
 				} catch (e) {
 					JqueryUtil.doToast({
 						content: `Current output was not valid JSON. Downloading as <span class="code">.txt</span> instead.`,
-						type: "warning"
+						type: "warning",
 					});
 					DataUtil.userDownloadText(`converter-output.txt`, output);
 					setTimeout(() => { throw e; });
@@ -784,7 +784,7 @@ class ConverterUi extends BaseComponent {
 			} else {
 				JqueryUtil.doToast({
 					content: "Nothing to download!",
-					type: "danger"
+					type: "danger",
 				});
 			}
 		});
@@ -825,7 +825,7 @@ class ConverterUi extends BaseComponent {
 							chunk,
 							this.doCleanAndOutput.bind(this),
 							this.showWarning.bind(this),
-							isAppend || i !== 0 // always clear the output for the first non-append chunk, then append
+							isAppend || i !== 0, // always clear the output for the first non-append chunk, then append
 						);
 					});
 			});
@@ -851,10 +851,10 @@ class ConverterUi extends BaseComponent {
 					"Feat",
 					"Item",
 					"Spell",
-					"Table"
+					"Table",
 				],
-				html: `<select class="form-control input-sm"/>`
-			}
+				html: `<select class="form-control input-sm"/>`,
+			},
 		);
 
 		$$`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Mode</div>${$selConverter}</div>`
@@ -909,7 +909,7 @@ ConverterUi._DEFAULT_STATE = {
 	hasAppended: false,
 	converter: "Creature",
 	sourceJson: "",
-	inputSeparator: "==="
+	inputSeparator: "===",
 };
 
 async function doPageInit () {
@@ -919,7 +919,7 @@ async function doPageInit () {
 		Renderer.item.pBuildList(),
 		DataUtil.legendaryGroup.pLoadAll(),
 		DataUtil.class.loadJSON(),
-		BrewUtil.pAddBrewData() // init homebrew
+		BrewUtil.pAddBrewData(), // init homebrew
 	]);
 	SpellcastingTraitConvert.init(spells);
 	ItemParser.init(items, classes);
@@ -939,7 +939,7 @@ async function doPageInit () {
 		[itemConverter.converterId]: itemConverter,
 		[featConverter.converterId]: featConverter,
 		[spellConverter.converterId]: spellConverter,
-		[tableConverter.converterId]: tableConverter
+		[tableConverter.converterId]: tableConverter,
 	};
 
 	return ui.pInit();

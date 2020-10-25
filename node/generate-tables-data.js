@@ -10,7 +10,7 @@ class GenTables {
 				if (GenTables.ADVENTURE_WHITELIST[idx.id]) {
 					return {
 						adventure: idx,
-						adventureData: JSON.parse(fs.readFileSync(`./data/adventure/adventure-${idx.id.toLowerCase()}.json`, "utf-8"))
+						adventureData: JSON.parse(fs.readFileSync(`./data/adventure/adventure-${idx.id.toLowerCase()}.json`, "utf-8")),
 					}
 				}
 			})
@@ -23,7 +23,7 @@ class GenTables {
 				if (!GenTables.BOOK_BLACKLIST[idx.id]) {
 					return {
 						book: idx,
-						bookData: JSON.parse(fs.readFileSync(`./data/book/book-${idx.id.toLowerCase()}.json`, "utf-8"))
+						bookData: JSON.parse(fs.readFileSync(`./data/book/book-${idx.id.toLowerCase()}.json`, "utf-8")),
 					};
 				}
 			})
@@ -48,14 +48,14 @@ class GenTables {
 		advDocs.forEach(doc => {
 			const {
 				table: foundTables,
-				tableGroup: foundTableGroups
+				tableGroup: foundTableGroups,
 			} = UtilGenTables.getAdventureBookTables(
 				doc,
 				{
 					headProp: "adventure",
 					bodyProp: "adventureData",
-					isRequireIncludes: true
-				}
+					isRequireIncludes: true,
+				},
 			);
 
 			output.tables.push(...foundTables);
@@ -65,13 +65,13 @@ class GenTables {
 		bookDocs.forEach(doc => {
 			const {
 				table: foundTables,
-				tableGroup: foundTableGroups
+				tableGroup: foundTableGroups,
 			} = UtilGenTables.getAdventureBookTables(
 				doc,
 				{
 					headProp: "book",
-					bodyProp: "bookData"
-				}
+					bodyProp: "bookData",
+				},
 			);
 
 			output.tables.push(...foundTables);
@@ -92,7 +92,7 @@ class GenTables {
 }
 GenTables.BOOK_BLACKLIST = {};
 GenTables.ADVENTURE_WHITELIST = {
-	[SRC_SKT]: true
+	[SRC_SKT]: true,
 };
 
 const generator = new GenTables();

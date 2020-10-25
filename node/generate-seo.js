@@ -54,7 +54,7 @@ const toGenerate = [
 				.map(([_, filename]) => rd(`data/spells/${filename}`));
 			return fileData.map(it => MiscUtil.copy(it.spell)).reduce((a, b) => a.concat(b))
 		},
-		style: 1
+		style: 1,
 	},
 	{
 		page: "bestiary",
@@ -65,15 +65,15 @@ const toGenerate = [
 			// Filter to prevent duplicates from "otherSources" copies
 			return fileData.map(it => MiscUtil.copy(it.json.monster.filter(mon => mon.source === it.source))).reduce((a, b) => a.concat(b))
 		},
-		style: 2
+		style: 2,
 	},
 	{
 		page: "items",
 		pGetEntries: async () => {
 			return Renderer.item.pBuildList();
 		},
-		style: 1
-	}
+		style: 1,
+	},
 
 	// TODO expand this as required
 ];

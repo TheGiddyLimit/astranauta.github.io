@@ -35,7 +35,7 @@ class BooksList {
 			$iptSearch,
 			fnSort,
 			sortByInitial: this._sortByInitial,
-			sortDirInitial: this._sortDirInitial
+			sortDirInitial: this._sortDirInitial,
 		});
 		SortUtil.initBtnSortHandlers($(`#filtertools`), this._list);
 
@@ -44,7 +44,7 @@ class BooksList {
 			$iptSearch,
 			fnSort,
 			sortByInitial: this._sortByInitial,
-			sortDirInitial: this._sortDirInitial
+			sortDirInitial: this._sortDirInitial,
 		});
 
 		$("#reset").click(() => {
@@ -93,7 +93,7 @@ class BooksList {
 				eleLi,
 				it.name,
 				{source: it.id},
-				{uniqueId: it.uniqueId}
+				{uniqueId: it.uniqueId},
 			);
 
 			this._list.addItem(listItem);
@@ -108,7 +108,7 @@ class BooksList {
 				eleLiAlt,
 				it.name,
 				{source: it.id},
-				{uniqueId: it.uniqueId}
+				{uniqueId: it.uniqueId},
 			);
 			this._listAlt.addItem(listItemAlt);
 			// endregion

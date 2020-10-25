@@ -12,7 +12,7 @@ class RewardsPage extends ListPage {
 
 			sublistClass: "subrewards",
 
-			dataProps: ["reward"]
+			dataProps: ["reward"],
 		});
 	}
 
@@ -38,12 +38,12 @@ class RewardsPage extends ListPage {
 			{
 				hash,
 				source,
-				type: reward.type
+				type: reward.type,
 			},
 			{
 				uniqueId: reward.uniqueId ? reward.uniqueId : rwI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -75,8 +75,8 @@ class RewardsPage extends ListPage {
 			reward.name,
 			{
 				hash,
-				type: reward.type
-			}
+				type: reward.type,
+			},
 		);
 		return listItem;
 	}

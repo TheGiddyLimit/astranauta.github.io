@@ -1,4 +1,14 @@
 {
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		},
+		"internalCopies": [
+			"monster"
+		]
+	},
 	"monster": [
 		{
 			"name": "Abjurer",
@@ -2135,7 +2145,7 @@
 				{
 					"name": "Graystaff Magic",
 					"entries": [
-						"The hag carries a graystaff, a length of gray wood that is a focus for her inner power. She can ride the staff as if it were a broom of flying. While holding the staff, she can cast additional spells with her Innate Spellcasting trait (these spells are marked with an asterisk). If the staff is lost or destroyed, the hag must craft another, which takes a year and a day. Only a bheur hag can use a graystaff."
+						"The hag carries a graystaff, a length of gray wood that is a focus for her inner power. She can ride the staff as if it were a {@item broom of flying}. While holding the staff, she can cast additional spells with her Innate Spellcasting trait (these spells are marked with an asterisk). If the staff is lost or destroyed, the hag must craft another, which takes a year and a day. Only a bheur hag can use a graystaff."
 					]
 				},
 				{
@@ -2829,6 +2839,178 @@
 				"prone",
 				"restrained"
 			]
+		},
+		{
+			"name": "Booyahg Booyahg Booyahg",
+			"shortName": "Goblin",
+			"source": "VGM",
+			"page": 43,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_trait": {
+					"name": "Goblin",
+					"source": "DMG"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "mage",
+						"with": "goblin"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Wild Magic",
+							"entries": [
+								"Each time the goblin casts a spell (including cantrips), there is an accompanying surge of wild magic; roll on the {@table Wild Magic Surge|PHB} table in the {@book Player's Handbook|PHB} to determine the wild magic effect."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Booyahg Caster",
+			"source": "VGM",
+			"page": 42,
+			"_copy": {
+				"name": "Goblin",
+				"source": "MM"
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The goblin can cast a randomly determined {@filter 1st-level wizard spell|spells|level=1|class=wizard} once per day. Intelligence is its spellcasting ability (spell save {@dc 10}, {@hit 2} to hit with spell attacks)."
+					],
+					"ability": "int"
+				}
+			]
+		},
+		{
+			"name": "Booyahg Slave of the Archfey",
+			"shortName": "Goblin",
+			"source": "VGM",
+			"page": 42,
+			"_copy": {
+				"name": "Warlock of the Archfey",
+				"source": "VGM",
+				"_trait": {
+					"name": "Goblin",
+					"source": "DMG"
+				},
+				"_mod": {
+					"*": [
+						{
+							"mode": "replaceTxt",
+							"replace": "The warlock",
+							"with": "The goblin"
+						},
+						{
+							"mode": "replaceTxt",
+							"replace": "the warlock",
+							"with": "the goblin"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Booyahg Slave of the Fiend",
+			"shortName": "Goblin",
+			"source": "VGM",
+			"page": 42,
+			"_copy": {
+				"name": "Warlock of the Fiend",
+				"source": "VGM",
+				"_trait": {
+					"name": "Goblin",
+					"source": "DMG"
+				},
+				"_mod": {
+					"*": [
+						{
+							"mode": "replaceTxt",
+							"replace": "The warlock",
+							"with": "The goblin"
+						},
+						{
+							"mode": "replaceTxt",
+							"replace": "the warlock",
+							"with": "the goblin"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Booyahg Slave of the Great Old One",
+			"shortName": "Goblin",
+			"source": "VGM",
+			"page": 42,
+			"_copy": {
+				"name": "Warlock of the Great Old One",
+				"source": "VGM",
+				"_trait": {
+					"name": "Goblin",
+					"source": "DMG"
+				},
+				"_mod": {
+					"*": [
+						{
+							"mode": "replaceTxt",
+							"replace": "The warlock",
+							"with": "The goblin"
+						},
+						{
+							"mode": "replaceTxt",
+							"replace": "the warlock",
+							"with": "the goblin"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Booyahg Whip",
+			"source": "VGM",
+			"page": 42,
+			"_copy": {
+				"name": "Goblin",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Khurgorbaeyag's Gift",
+							"entries": [
+								"Khurgorbaeyag saw fit to gift this goblin with powers that enable it to dominate others. The goblin has {@dice 1d3} other {@creature goblin||goblins} that slavishly obey its orders."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Booyahg Wielder",
+			"source": "VGM",
+			"page": 42,
+			"_copy": {
+				"name": "Goblin",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Special Equipment",
+							"entries": [
+								"The goblin found a magic item (a {@item necklace of fireballs}, a {@item circlet of blasting}, or the like) and learned how to use it."
+							]
+						}
+					}
+				}
+			}
 		},
 		{
 			"name": "Brontosaurus",
@@ -5285,7 +5467,7 @@
 				{
 					"name": "Creature Sense",
 					"entries": [
-						"The elder brain is aware of the presence of creatures within 5 miles of it that have an Intelligence score of 4 or higher. It knows the distance and direction to each creature, as well as each one's intelligence score, but can't sense anything else about it. A creature protected by a mind blank spell. a nondetection spell, or similar magic can't be perceived in this manner."
+						"The elder brain is aware of the presence of creatures within 5 miles of it that have an Intelligence score of 4 or higher. It knows the distance and direction to each creature, as well as each one's intelligence score, but can't sense anything else about it. A creature protected by a {@spell mind blank} spell, a {@spell nondetection} spell, or similar magic can't be perceived in this manner."
 					]
 				},
 				{

@@ -20,15 +20,15 @@ class OptionalFeaturesPage extends ListPage {
 
 			listClass: "optfeatures",
 			listOptions: {
-				fnSort: optFeatSort
+				fnSort: optFeatSort,
 			},
 
 			sublistClass: "suboptfeatures",
 			sublistOptions: {
-				fnSort: optFeatSort
+				fnSort: optFeatSort,
 			},
 
-			dataProps: ["optionalfeature"]
+			dataProps: ["optionalfeature"],
 		});
 	}
 
@@ -60,12 +60,12 @@ class OptionalFeaturesPage extends ListPage {
 				source,
 				prerequisite,
 				level,
-				type: it._lFeatureType
+				type: it._lFeatureType,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : ivI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -103,8 +103,8 @@ class OptionalFeaturesPage extends ListPage {
 				hash,
 				type: it._lFeatureType,
 				prerequisite,
-				level
-			}
+				level,
+			},
 		);
 		return listItem;
 	}

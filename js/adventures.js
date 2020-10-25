@@ -41,7 +41,7 @@ const adventuresList = new BooksList({
 		<span class="col-2-5">${adv.storyline || "\u2014"}</span>
 		<span class="col-1-3">${Adventures.getLevelsStr(adv)}</span>
 		<span class="col-2">${BooksList.getDateStr(adv)}</span>`;
-	}
+	},
 });
 
 window.addEventListener("load", () => adventuresList.pOnPageLoad());

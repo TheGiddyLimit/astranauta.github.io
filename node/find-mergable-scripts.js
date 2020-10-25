@@ -9,7 +9,7 @@ require("../js/utils");
 const files = ut.listFiles({
 	dir: ".",
 	whitelistDirs: [],
-	whitelistFileExts: [".html"]
+	whitelistFileExts: [".html"],
 });
 
 const ALL_JS_FILES = new Set([]);

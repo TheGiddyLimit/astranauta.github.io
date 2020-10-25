@@ -17,7 +17,7 @@ class MoneyConverter {
 			new MoneyConverterUnit("Taol (WDH)", 200, "taol"),
 			new MoneyConverterUnit("Dragon (WDH)", 100, "dgn"),
 			new MoneyConverterUnit("Sun (WDH)", 1000, "sun"),
-			new MoneyConverterUnit("Harbor Moon (WDH)", 5000, "moon")
+			new MoneyConverterUnit("Harbor Moon (WDH)", 5000, "moon"),
 		];
 		const CURRENCY_INDEXED = [...CURRENCY].map((it, i) => {
 			it.ix = i;
@@ -173,7 +173,7 @@ class MoneyConverter {
 			.click(() => {
 				const {$modalInner} = UiUtil.getShowModal({
 					title: "Settings",
-					cbClose: () => doUpdate()
+					cbClose: () => doUpdate(),
 				});
 				[...CURRENCY_INDEXED].reverse().forEach(cx => {
 					UiUtil.$getAddModalRowCb($modalInner, `Disable ${cx.n} in Output`, disabledCurrency, cx.ix);
@@ -198,10 +198,10 @@ class MoneyConverter {
 					const $e = $(e);
 					return {
 						c: $e.find(`select`).val(),
-						n: $e.find(`input`).val()
+						n: $e.find(`input`).val(),
 					};
 				}).get(),
-				d: disabledCurrency
+				d: disabledCurrency,
 			};
 		});
 

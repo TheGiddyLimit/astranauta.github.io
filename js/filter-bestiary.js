@@ -49,7 +49,7 @@ class PageFilterBestiary extends PageFilter {
 			isLabelled: true,
 			labelSortFn: SortUtil.ascSortCr,
 			labels: [...Parser.CRS, "Unknown", "\u2014"],
-			labelDisplayFn: it => it === "\u2014" ? "None" : it
+			labelDisplayFn: it => it === "\u2014" ? "None" : it,
 		});
 		this._sizeFilter = new Filter({
 			header: "Size",
@@ -60,10 +60,10 @@ class PageFilterBestiary extends PageFilter {
 				SZ_LARGE,
 				SZ_HUGE,
 				SZ_GARGANTUAN,
-				SZ_VARIES
+				SZ_VARIES,
 			],
 			displayFn: Parser.sizeAbvToFull,
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._speedFilter = new RangeFilter({header: "Speed", min: 30, max: 30});
 		this._speedTypeFilter = new Filter({header: "Speed Type", items: ["walk", "burrow", "climb", "fly", "hover", "swim"], displayFn: StrUtil.uppercaseFirst});
@@ -76,7 +76,7 @@ class PageFilterBestiary extends PageFilter {
 		this._abilityScoreFilter = new MultiFilter({
 			header: "Ability Scores",
 			filters: [this._strengthFilter, this._dexterityFilter, this._constitutionFilter, this._intelligenceFilter, this._wisdomFilter, this._charismaFilter],
-			isAddDropdownToggle: true
+			isAddDropdownToggle: true,
 		});
 		this._acFilter = new RangeFilter({header: "Armor Class"});
 		this._averageHpFilter = new RangeFilter({header: "Average Hit Points"});
@@ -84,107 +84,108 @@ class PageFilterBestiary extends PageFilter {
 			header: "Type",
 			items: Parser.MON_TYPES,
 			displayFn: StrUtil.toTitleCase,
-			itemSortFn: SortUtil.ascSortLower
+			itemSortFn: SortUtil.ascSortLower,
 		});
 		this._tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst});
 		this._alignmentFilter = new Filter({
 			header: "Alignment",
 			items: ["L", "NX", "C", "G", "NY", "E", "N", "U", "A"],
 			displayFn: alignment => Parser.alignmentAbvToFull(alignment).toTitleCase(),
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._languageFilter = new Filter({
 			header: "Languages",
 			displayFn: (k) => Parser.monLanguageTagToFull(k).toTitleCase(),
 			umbrellaItems: ["X", "XX"],
-			umbrellaExcludes: ["CS"]
+			umbrellaExcludes: ["CS"],
 		});
 		this._damageTypeFilter = new Filter({
 			header: "Damage Inflicted",
 			displayFn: (it) => Parser.dmgTypeToFull(it).toTitleCase(),
-			items: Object.keys(Parser.DMGTYPE_JSON_TO_FULL)
+			items: Object.keys(Parser.DMGTYPE_JSON_TO_FULL),
 		});
 		this._conditionsInflictedFilterBase = new Filter({
 			header: "By Traits/Actions",
 			displayFn: StrUtil.toTitleCase,
-			items: [...Parser.CONDITIONS]
+			items: [...Parser.CONDITIONS],
 		});
 		this._conditionsInflictedFilterLegendary = new Filter({
 			header: "By Lair Actions/Regional Effects",
 			displayFn: StrUtil.toTitleCase,
-			items: [...Parser.CONDITIONS]
+			items: [...Parser.CONDITIONS],
 		});
 		this._conditionsInflictedFilterSpells = new Filter({
 			header: "By Spells",
 			displayFn: StrUtil.toTitleCase,
-			items: [...Parser.CONDITIONS]
+			items: [...Parser.CONDITIONS],
 		});
 		this._conditionsInflictedFilter = new MultiFilter({header: "Conditions Inflicted", filters: [this._conditionsInflictedFilterBase, this._conditionsInflictedFilterLegendary, this._conditionsInflictedFilterSpells]});
 		this._senseFilter = new Filter({
 			header: "Senses",
 			displayFn: (it) => Parser.monSenseTagToFull(it).toTitleCase(),
-			items: ["B", "D", "SD", "T", "U"]
+			items: ["B", "D", "SD", "T", "U"],
 		});
 		this._skillFilter = new Filter({
 			header: "Skills",
 			displayFn: (it) => it.toTitleCase(),
-			items: ["acrobatics", "animal handling", "arcana", "athletics", "deception", "history", "insight", "intimidation", "investigation", "medicine", "nature", "perception", "performance", "persuasion", "religion", "sleight of hand", "stealth", "survival"]
+			items: Object.keys(Parser.SKILL_TO_ATB_ABV),
 		});
 		this._saveFilter = new Filter({
 			header: "Saves",
 			displayFn: Parser.attAbvToFull,
 			items: [...Parser.ABIL_ABVS],
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._environmentFilter = new Filter({
 			header: "Environment",
 			items: ["arctic", "coastal", "desert", "forest", "grassland", "hill", "mountain", "swamp", "underdark", "underwater", "urban"],
-			displayFn: StrUtil.uppercaseFirst
+			displayFn: StrUtil.uppercaseFirst,
 		});
 		this._vulnerableFilter = new Filter({
 			header: "Vulnerabilities",
 			items: PageFilterBestiary.DMG_TYPES,
-			displayFn: StrUtil.uppercaseFirst
+			displayFn: StrUtil.uppercaseFirst,
 		});
 		this._resistFilter = new Filter({
 			header: "Resistance",
 			items: PageFilterBestiary.DMG_TYPES,
-			displayFn: StrUtil.uppercaseFirst
+			displayFn: StrUtil.uppercaseFirst,
 		});
 		this._immuneFilter = new Filter({
 			header: "Immunity",
 			items: PageFilterBestiary.DMG_TYPES,
-			displayFn: StrUtil.uppercaseFirst
+			displayFn: StrUtil.uppercaseFirst,
 		});
 		this._defenceFilter = new MultiFilter({header: "Damage", filters: [this._vulnerableFilter, this._resistFilter, this._immuneFilter]});
 		this._conditionImmuneFilter = new Filter({
 			header: "Condition Immunity",
 			items: PageFilterBestiary.CONDS,
-			displayFn: StrUtil.uppercaseFirst
+			displayFn: StrUtil.uppercaseFirst,
 		});
 		this._traitFilter = new Filter({
 			header: "Traits",
 			items: [
-				"Aggressive", "Ambusher", "Amorphous", "Amphibious", "Antimagic Susceptibility", "Brute", "Charge", "Damage Absorption", "Death Burst", "Devil's Sight", "False Appearance", "Fey Ancestry", "Flyby", "Hold Breath", "Illumination", "Immutable Form", "Incorporeal Movement", "Keen Senses", "Legendary Resistances", "Light Sensitivity", "Magic Resistance", "Magic Weapons", "Pack Tactics", "Pounce", "Rampage", "Reckless", "Regeneration", "Rejuvenation", "Shapechanger", "Siege Monster", "Sneak Attack", "Spider Climb", "Sunlight Sensitivity", "Turn Immunity", "Turn Resistance", "Undead Fortitude", "Water Breathing", "Web Sense", "Web Walker"
-			]
+				"Aggressive", "Ambusher", "Amorphous", "Amphibious", "Antimagic Susceptibility", "Brute", "Charge", "Damage Absorption", "Death Burst", "Devil's Sight", "False Appearance", "Fey Ancestry", "Flyby", "Hold Breath", "Illumination", "Immutable Form", "Incorporeal Movement", "Keen Senses", "Legendary Resistances", "Light Sensitivity", "Magic Resistance", "Magic Weapons", "Pack Tactics", "Pounce", "Rampage", "Reckless", "Regeneration", "Rejuvenation", "Shapechanger", "Siege Monster", "Sneak Attack", "Spider Climb", "Sunlight Sensitivity", "Turn Immunity", "Turn Resistance", "Undead Fortitude", "Water Breathing", "Web Sense", "Web Walker",
+			],
 		});
 		this._actionReactionFilter = new Filter({
 			header: "Actions & Reactions",
 			items: [
-				"Frightful Presence", "Multiattack", "Parry", "Swallow", "Teleport", "Tentacles"
-			]
+				"Frightful Presence", "Multiattack", "Parry", "Swallow", "Teleport", "Tentacles",
+			],
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
 			items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Lair Actions", "Legendary", "Mythic", "Adventure NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${PageFilterBestiary.MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Swarm", "Has Variants", "Modified Copy", "Has Alternate Token", "Has Token", "SRD", "AC from Item(s)", "AC from Natural Armor", "AC from Unarmored Defense"],
 			displayFn: (it) => Parser.monMiscTagToFull(it).uppercaseFirst(),
 			deselFn: (it) => it === "Adventure NPC",
-			itemSortFn: PageFilterBestiary.ascSortMiscFilter
+			itemSortFn: PageFilterBestiary.ascSortMiscFilter,
+			isSrdFilter: true,
 		});
 		this._spellcastingTypeFilter = new Filter({
 			header: "Spellcasting Type",
 			items: ["F", "I", "P", "S", "CA", "CB", "CC", "CD", "CP", "CR", "CS", "CL", "CW"],
-			displayFn: Parser.monSpellcastingTagToFull
+			displayFn: Parser.monSpellcastingTagToFull,
 		});
 	}
 
@@ -305,7 +306,7 @@ class PageFilterBestiary extends PageFilter {
 			this._conditionsInflictedFilter,
 			this._acFilter,
 			this._averageHpFilter,
-			this._abilityScoreFilter
+			this._abilityScoreFilter,
 		];
 	}
 
@@ -313,14 +314,14 @@ class PageFilterBestiary extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			m._fSources,
-			m._pCr,
+			m._fCr,
 			m._pTypes.type,
 			m._pTypes.tags,
 			m.environment,
 			[
 				m._fVuln,
 				m._fRes,
-				m._fImm
+				m._fImm,
 			],
 			m._fCondImm,
 			m.traitTags,
@@ -339,7 +340,7 @@ class PageFilterBestiary extends PageFilter {
 			[
 				m.conditionInflict,
 				m.conditionInflictLegendary,
-				m.conditionInflictSpell
+				m.conditionInflictSpell,
 			],
 			m._fAc,
 			m._fHp,
@@ -349,8 +350,8 @@ class PageFilterBestiary extends PageFilter {
 				m.con,
 				m.int,
 				m.wis,
-				m.cha
-			]
+				m.cha,
+			],
 		);
 	}
 }
@@ -374,16 +375,23 @@ PageFilterBestiary.CONDS = [
 	"stunned",
 	"unconscious",
 	// not really a condition, but whatever
-	"disease"
+	"disease",
 ];
 
 class ModalFilterBestiary extends ModalFilter {
-	constructor (namespace) {
+	/**
+	 * @param opts
+	 * @param opts.namespace
+	 * @param [opts.isRadio]
+	 * @param [opts.allData]
+	 */
+	constructor (opts) {
+		opts = opts || {};
 		super({
+			...opts,
 			modalTitle: "Creatures",
 			pageFilter: new PageFilterBestiary(),
 			fnSort: PageFilterBestiary.sortMonsters,
-			namespace: namespace
 		})
 	}
 
@@ -392,7 +400,7 @@ class ModalFilterBestiary extends ModalFilter {
 			{sort: "name", text: "Name", width: "4"},
 			{sort: "type", text: "Type", width: "4"},
 			{sort: "cr", text: "CR", width: "2"},
-			{sort: "source", text: "Source", width: "1"}
+			{sort: "source", text: "Source", width: "1"},
 		];
 		return ModalFilter._$getFilterColumnHeaders(btnMeta);
 	}
@@ -408,38 +416,34 @@ class ModalFilterBestiary extends ModalFilter {
 		Renderer.monster.initParsed(mon);
 		pageFilter.mutateAndAddToFilters(mon);
 
-		const eleLi = document.createElement("li");
-		eleLi.className = "row px-0";
+		const eleLabel = document.createElement("label");
+		eleLabel.className = "row lst--border no-select lst__wrp-cells";
 
 		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](mon);
 		const source = Parser.sourceJsonToAbv(mon.source);
 		const type = mon._pTypes.asText.uppercaseFirst();
 		const cr = mon._pCr;
 
-		eleLi.innerHTML = `<label class="lst--border no-select">
-			<div class="lst__wrp-cells">
-				<div class="col-1 pl-0 flex-vh-center"><input type="checkbox" class="no-events"></div>
-				<div class="col-4 bold">${mon.name}</div>
-				<div class="col-4">${type}</div>
-				<div class="col-2 text-center">${cr}</div>
-				<div class="col-1 text-center ${Parser.sourceJsonToColor(mon.source)} pr-0" title="${Parser.sourceJsonToFull(mon.source)}" ${BrewUtil.sourceJsonToStyle(mon.source)}>${source}</div>
-			</div>
-		</label>`;
+		eleLabel.innerHTML = `<div class="col-1 pl-0 flex-vh-center"><input type="checkbox" class="no-events"></div>
+		<div class="col-4 bold">${mon.name}</div>
+		<div class="col-4">${type}</div>
+		<div class="col-2 text-center">${cr}</div>
+		<div class="col-1 text-center ${Parser.sourceJsonToColor(mon.source)} pr-0" title="${Parser.sourceJsonToFull(mon.source)}" ${BrewUtil.sourceJsonToStyle(mon.source)}>${source}</div>`;
 
 		return new ListItem(
 			itI,
-			eleLi,
+			eleLabel,
 			mon.name,
 			{
 				hash,
 				source,
 				sourceJson: mon.source,
 				type,
-				cr
+				cr,
 			},
 			{
-				cbSel: eleLi.firstElementChild.firstElementChild.firstElementChild.firstElementChild
-			}
+				cbSel: eleLabel.firstElementChild.firstElementChild,
+			},
 		);
 	}
 }

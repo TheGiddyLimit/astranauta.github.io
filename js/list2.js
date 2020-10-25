@@ -134,7 +134,7 @@ class List {
 			sortBy: this._sortBy,
 			// The sort function should generally ignore this, as we do the reversing here. We expose it in case there
 			//   is specific functionality that requires it.
-			sortDir: this._sortDir
+			sortDir: this._sortDir,
 		};
 		if (this._fnSort) this._filteredSortedItems.sort((a, b) => this._fnSort(a, b, opts));
 		if (this._sortDir === "desc") this._filteredSortedItems.reverse();
@@ -262,7 +262,7 @@ class List {
 				node,
 				opts.fnGetName(dataItem),
 				opts.fnGetValues ? opts.fnGetValues(dataItem) : {},
-				{}
+				{},
 			);
 			if (opts.fnGetData) listItem.data = opts.fnGetData(listItem, dataItem);
 			if (opts.fnBindListeners) opts.fnBindListeners(listItem, dataItem);
@@ -388,7 +388,7 @@ List._DEFAULTS = {
 	searchTerm: "",
 	sortBy: "name",
 	sortDir: "asc",
-	fnFilter: null
+	fnFilter: null,
 };
 
 if (typeof module !== "undefined") module.exports = {List, ListItem};

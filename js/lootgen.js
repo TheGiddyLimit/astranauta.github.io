@@ -11,7 +11,7 @@ const CHALLENGE_RATING_RANGE = {
 	1: "1\u20144",
 	5: "5\u201410",
 	11: "11\u201416",
-	17: "17\u201420"
+	17: "17\u201420",
 };
 
 const STORAGE_BASIC_CR = "lootgen-basic-cr";
@@ -243,7 +243,7 @@ class LootGen {
 							rolled: rolled,
 							$render: LootGen.p$ParseLink(rolled, {rollSpellScroll: true, rollChoices: true}),
 							roll: itemRoll,
-							table: magicItemsTable
+							table: magicItemsTable,
 						});
 					}
 					const magicItemResults = await Promise.all(magicItems.map(it => it.$render));
@@ -520,7 +520,7 @@ const randomLootTables = {
 	_items: {
 		Major: {},
 		Minor: {},
-		Other: {}
+		Other: {},
 	},
 	_rarityOrder: ["common", "uncommon", "rare", "very rare", "legendary"],
 	_tableItemCountPerLevelTier: {
@@ -529,81 +529,81 @@ const randomLootTables = {
 				"uncommon": 0,
 				"rare": 0,
 				"very rare": 0,
-				"legendary": 0
+				"legendary": 0,
 			},
 			"minor": {
 				"common": 0,
 				"uncommon": 0,
 				"rare": 0,
 				"very rare": 0,
-				"legendary": 0
-			}
+				"legendary": 0,
+			},
 		},
 		4: {
 			"major": {
 				"uncommon": 2,
 				"rare": 0,
 				"very rare": 0,
-				"legendary": 0
+				"legendary": 0,
 			},
 			"minor": {
 				"common": 6,
 				"uncommon": 2,
 				"rare": 1,
 				"very rare": 0,
-				"legendary": 0
-			}
+				"legendary": 0,
+			},
 		},
 		10: {
 			"major": {
 				"uncommon": 5,
 				"rare": 1,
 				"very rare": 0,
-				"legendary": 0
+				"legendary": 0,
 			},
 			"minor": {
 				"common": 10,
 				"uncommon": 12,
 				"rare": 5,
 				"very rare": 1,
-				"legendary": 0
-			}
+				"legendary": 0,
+			},
 		},
 		16: {
 			"major": {
 				"uncommon": 1,
 				"rare": 2,
 				"very rare": 2,
-				"legendary": 1
+				"legendary": 1,
 			},
 			"minor": {
 				"common": 3,
 				"uncommon": 6,
 				"rare": 9,
 				"very rare": 5,
-				"legendary": 1
-			}
+				"legendary": 1,
+			},
 		},
 		20: {
 			"major": {
 				"uncommon": 0,
 				"rare": 1,
 				"very rare": 2,
-				"legendary": 3
+				"legendary": 3,
 			},
 			"minor": {
 				"common": 0,
 				"uncommon": 0,
 				"rare": 4,
 				"very rare": 9,
-				"legendary": 6
-			}
-		}
+				"legendary": 6,
+			},
+		},
 	},
 
 	async init () {
 		const stockItems = await Renderer.item.pBuildList({
-			isBlacklistVariants: true
+			isBlacklistVariants: true,
 		});
 		const homebrew = await BrewUtil.pAddBrewData();
 		const brewItems = await Renderer.item.getItemsFromHomebrew(homebrew);
@@ -672,12 +672,12 @@ const randomLootTables = {
 			if (isBase) {
 				$charLevel.css({
 					borderTopRightRadius: 3,
-					borderBottomRightRadius: 3
+					borderBottomRightRadius: 3,
 				});
 			} else {
 				$charLevel.css({
 					borderTopRightRadius: "",
-					borderBottomRightRadius: ""
+					borderBottomRightRadius: "",
 				});
 			}
 		});
@@ -744,7 +744,7 @@ const randomLootTables = {
 					}));
 					if (itemCount[tier]) $el.append($tier);
 				},
-				{depth: 1}
+				{depth: 1},
 			);
 			if (!Object.values(itemCount).reduce((a, b) => a + b, 0)) $el.append(`<i>No items.</i>`);
 			lootOutput.add($el, title);
@@ -757,15 +757,15 @@ const randomLootTables = {
 				"uncommon": 0,
 				"rare": 0,
 				"very rare": 0,
-				"legendary": 0
+				"legendary": 0,
 			},
 			"minor": {
 				"common": 0,
 				"uncommon": 0,
 				"rare": 0,
 				"very rare": 0,
-				"legendary": 0
-			}
+				"legendary": 0,
+			},
 		};
 
 		if (!estimateBetweenLevels && !accumulateTiers) {
@@ -801,12 +801,12 @@ const randomLootTables = {
 				return {
 					item: `{@item ${item.name}|${item.source}}`,
 					choose: {
-						fromLoaded: item.variants
-					}
+						fromLoaded: item.variants,
+					},
 				}
 			} else {
 				return {
-					item: `{@item ${item.name}|${item.source}}`
+					item: `{@item ${item.name}|${item.source}}`,
 				};
 			}
 		})();
@@ -873,7 +873,7 @@ const randomLootTables = {
 		});
 
 		$tblType.html($html);
-	}
+	},
 };
 
 const lootOutput = (function lootOutput () {
@@ -907,7 +907,7 @@ const lootOutput = (function lootOutput () {
 	};
 	return {
 		add,
-		clear
+		clear,
 	};
 })();
 

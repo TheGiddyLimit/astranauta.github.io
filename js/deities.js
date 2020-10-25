@@ -12,7 +12,7 @@ class DeitiesPage extends ListPage {
 
 			sublistClass: "subdeities",
 
-			dataProps: ["deity"]
+			dataProps: ["deity"],
 		});
 	}
 
@@ -45,12 +45,12 @@ class DeitiesPage extends ListPage {
 				title: g.title || "",
 				pantheon: g.pantheon,
 				alignment,
-				domains
+				domains,
 			},
 			{
 				uniqueId: g.uniqueId ? g.uniqueId : dtI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -89,8 +89,8 @@ class DeitiesPage extends ListPage {
 				hash,
 				pantheon: g.pantheon,
 				alignment,
-				domains
-			}
+				domains,
+			},
 		);
 		return listItem;
 	}

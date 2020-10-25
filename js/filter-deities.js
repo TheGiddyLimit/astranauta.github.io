@@ -35,8 +35,8 @@ class PageFilterDeities extends PageFilter {
 				"Nonhuman",
 				"Norse",
 				"Orc",
-				"Theros"
-			]
+				"Theros",
+			],
 		});
 		this._categoryFilter = new Filter({
 			header: "Category",
@@ -47,25 +47,26 @@ class PageFilterDeities extends PageFilter {
 				"The Gods of Evil",
 				"The Gods of Good",
 				"The Gods of Neutrality",
-				"The Sovereign Host"
+				"The Sovereign Host",
 			],
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._alignmentFilter = new Filter({
 			header: "Alignment",
 			items: ["L", "NX", "C", "G", "NY", "E", "N"],
 			displayFn: Parser.alignmentAbvToFull,
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._domainFilter = new Filter({
 			header: "Domain",
-			items: ["Arcana", "Death", "Forge", "Grave", "Knowledge", "Life", "Light", "Nature", VeCt.STR_NONE, "Order", "Tempest", "Trickery", "War"]
+			items: ["Arcana", "Death", "Forge", "Grave", "Knowledge", "Life", "Light", "Nature", VeCt.STR_NONE, "Order", "Tempest", "Trickery", "War"],
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
 			items: ["Has Info", PageFilterDeities._STR_REPRINTED, "SRD"],
 			displayFn: StrUtil.uppercaseFirst,
-			deselFn: (it) => { return it === PageFilterDeities._STR_REPRINTED }
+			deselFn: (it) => { return it === PageFilterDeities._STR_REPRINTED },
+			isSrdFilter: true,
 		});
 	}
 
@@ -96,7 +97,7 @@ class PageFilterDeities extends PageFilter {
 			this._pantheonFilter,
 			this._categoryFilter,
 			this._domainFilter,
-			this._miscFilter
+			this._miscFilter,
 		];
 	}
 
@@ -108,7 +109,7 @@ class PageFilterDeities extends PageFilter {
 			g.pantheon,
 			g.category,
 			g.domains,
-			g._fMisc
+			g._fMisc,
 		)
 	}
 }

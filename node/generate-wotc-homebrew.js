@@ -4,7 +4,7 @@ require("../js/utils");
 
 const toDump = [
 	{prop: "book", json: JSON.parse(fs.readFileSync("./data/books.json", "utf-8"))},
-	{prop: "adventure", json: JSON.parse(fs.readFileSync("./data/adventures.json", "utf-8"))}
+	{prop: "adventure", json: JSON.parse(fs.readFileSync("./data/adventures.json", "utf-8"))},
 ];
 
 toDump.forEach(it => {

@@ -15,21 +15,21 @@ class PageFilterFeats extends PageFilter {
 				"con",
 				"int",
 				"wis",
-				"cha"
+				"cha",
 			],
 			displayFn: Parser.attAbvToFull,
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._otherPrereqFilter = new Filter({
 			header: "Other",
-			items: ["Ability", "Race", "Psionics", "Proficiency", "Special", "Spellcasting"]
+			items: ["Ability", "Race", "Psionics", "Proficiency", "Special", "Spellcasting"],
 		});
 		this._levelFilter = new Filter({
 			header: "Level",
-			itemSortFn: SortUtil.ascSortNumericalSuffix
+			itemSortFn: SortUtil.ascSortNumericalSuffix,
 		});
 		this._prerequisiteFilter = new MultiFilter({header: "Prerequisite", filters: [this._otherPrereqFilter, this._levelFilter]});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"], isSrdFilter: true});
 	}
 
 	mutateForFilters (feat) {
@@ -60,7 +60,7 @@ class PageFilterFeats extends PageFilter {
 			this._sourceFilter,
 			this._asiFilter,
 			this._prerequisiteFilter,
-			this._miscFilter
+			this._miscFilter,
 		];
 	}
 
@@ -71,9 +71,9 @@ class PageFilterFeats extends PageFilter {
 			ft._fAbility,
 			[
 				ft._fPrereqOther,
-				ft._fPrereqLevel
+				ft._fPrereqLevel,
 			],
-			ft._fMisc
+			ft._fMisc,
 		)
 	}
 }

@@ -28,7 +28,7 @@ class InitiativeTrackerUtil {
 		const state = {
 			name: opts.name,
 			color: opts.color,
-			turns: opts.turns ? Number(opts.turns) : null
+			turns: opts.turns ? Number(opts.turns) : null,
 		};
 
 		const tickDown = (fromClick) => {
@@ -59,7 +59,7 @@ class InitiativeTrackerUtil {
 				const styleStack = [
 					state.turns == null || state.turns > 3
 						? `background-image: linear-gradient(135deg, ${state.color} 41.67%, transparent 41.67%, transparent 50%, ${state.color} 50%, ${state.color} 91.67%, transparent 91.67%, transparent 100%); background-size: 8.49px 8.49px;`
-						: `background: ${state.color};`
+						: `background: ${state.color};`,
 				];
 				if (opts.width) styleStack.push(`width: ${opts.width}px;`);
 				return `<div class="init__cond_bar" style="${styleStack.join(" ")}"/>`
@@ -115,41 +115,41 @@ class InitiativeTrackerUtil {
 InitiativeTrackerUtil._WOUND_META = {
 	[-1]: {
 		text: "Unknown",
-		color: "#a5a5a5"
+		color: "#a5a5a5",
 	},
 	0: {
 		text: "Healthy",
-		color: MiscUtil.COLOR_HEALTHY
+		color: MiscUtil.COLOR_HEALTHY,
 	},
 	1: {
 		text: "Hurt",
-		color: MiscUtil.COLOR_HURT
+		color: MiscUtil.COLOR_HURT,
 	},
 	2: {
 		text: "Bloodied",
-		color: MiscUtil.COLOR_BLOODIED
+		color: MiscUtil.COLOR_BLOODIED,
 	},
 	3: {
 		text: "Defeated",
-		color: MiscUtil.COLOR_DEFEATED
-	}
+		color: MiscUtil.COLOR_DEFEATED,
+	},
 };
 
 InitiativeTrackerUtil.CONDITIONS = [
 	...Object.keys(Parser.CONDITION_TO_COLOR).map(k => ({
 		name: k,
-		color: Parser.CONDITION_TO_COLOR[k]
+		color: Parser.CONDITION_TO_COLOR[k],
 	})),
 	{
 		name: "Drunk",
 		color: "#ffcc00",
-		condName: null
+		condName: null,
 	},
 	{
 		name: "!!On Fire!!",
 		color: "#ff6800",
-		condName: null
-	}
+		condName: null,
+	},
 ].sort((a, b) => SortUtil.ascSortLower(a.name.replace(/\W+/g, ""), b.name.replace(/\W+/g, "")));
 
 class InitiativeTrackerPlayerUi {
@@ -167,13 +167,13 @@ class InitiativeTrackerPlayerUi {
 				data => this._view.handleMessage(data),
 				{
 					label: this._playerName,
-					serialization: "json"
-				}
+					serialization: "json",
+				},
 			);
 		} catch (e) {
 			JqueryUtil.doToast({
 				content: `Failed to create client! Are you sure the token was valid? (See the log for more details.)`,
-				type: "danger"
+				type: "danger",
 			});
 			throw e;
 		}
@@ -234,7 +234,7 @@ class InitiativeTrackerPlayerMessageHandler {
 		(rowData.c || []).forEach(cond => {
 			const opts = {
 				...cond,
-				readonly: true
+				readonly: true,
 			};
 			if (!this._isCompact) {
 				opts.width = 24;

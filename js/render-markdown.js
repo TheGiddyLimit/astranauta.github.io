@@ -487,24 +487,24 @@ class RendererMarkdown {
 
 		const sp = entry.dataSpell;
 
-		subStack[0] += `>## ${sp._displayName || sp.name}
->*${Parser.spLevelSchoolMetaToFull(sp.level, sp.school, sp.meta, sp.subschools)}*
->
->###### **Casting Time** ${Parser.spTimeListToFull(sp.time)}
->###### **Range** ${Parser.spRangeToFull(sp.range)}
->###### **Components** ${Parser.spComponentsToFull(sp.components, sp.level)}
->###### **Duration** ${Parser.spDurationToFull(sp.duration)}
->---\n`;
+		subStack[0] += `#### ${sp._displayName || sp.name}
+*${Parser.spLevelSchoolMetaToFull(sp.level, sp.school, sp.meta, sp.subschools)}*
+___
+- **Casting Time:** ${Parser.spTimeListToFull(sp.time)}
+- **Range:** ${Parser.spRangeToFull(sp.range)}
+- **Components:** ${Parser.spComponentsToFull(sp.components, sp.level)}
+- **Duration:** ${Parser.spDurationToFull(sp.duration)}
+---\n`;
 
 		const cacheDepth = meta.depth;
 		meta.depth = 2;
-		this._recursiveRender({entries: sp.entries}, subStack, meta, {prefix: ">", suffix: "\n"});
+		this._recursiveRender({entries: sp.entries}, subStack, meta, {suffix: "\n"});
 		if (sp.entriesHigherLevel) {
-			this._recursiveRender({entries: sp.entriesHigherLevel}, subStack, meta, {prefix: ">", suffix: "\n"});
+			this._recursiveRender({entries: sp.entriesHigherLevel}, subStack, meta, {suffix: "\n"});
 		}
 		meta.depth = cacheDepth;
 
-		const spellRender = subStack.join("").trim().split("\n").map(it => it.trim() ? it : `>`).join("\n");
+		const spellRender = subStack.join("").trim();
 		textStack[0] += `\n${spellRender}\n\n`;
 	}
 
@@ -731,12 +731,12 @@ class RendererMarkdown {
 
 		const {$modalInner} = UiUtil.getShowModal({
 			title: "Markdown Settings",
-			cbClose: () => RendererMarkdown.__$wrpSettings.detach()
+			cbClose: () => RendererMarkdown.__$wrpSettings.detach(),
 		});
 		if (!RendererMarkdown.__$wrpSettings) {
 			const _compMarkdownSettings = BaseComponent.fromObject({
 				_tagRenderMode: RendererMarkdown._tagRenderMode,
-				_isAddColumnBreaks: RendererMarkdown._isAddColumnBreaks
+				_isAddColumnBreaks: RendererMarkdown._isAddColumnBreaks,
 			});
 			const compMarkdownSettings = _compMarkdownSettings.getPod();
 			const saveMarkdownSettingsDebounced = MiscUtil.debounce(() => StorageUtil.pSet("bookViewSettingsMarkdown", _compMarkdownSettings.toObject()), 100);
@@ -773,12 +773,13 @@ class RendererMarkdown {
 	// endregion
 }
 RendererMarkdown._isInit = false;
+RendererMarkdown._PAGE_CHARS = 5500;
 RendererMarkdown.__$wrpSettings = null;
 RendererMarkdown._TAG_RENDER_MODES = ["Convert to Markdown", "Leave As-Is", "Convert to Text"];
 RendererMarkdown._CONFIG = {
 	_tagRenderMode: {default: 0, name: "Tag Handling (<code>@tag</code>)", fnDisplay: ix => RendererMarkdown._TAG_RENDER_MODES[ix], type: "enum", values: [0, 1, 2]},
 	_isAddColumnBreaks: {default: false, name: "Add GM Binder Column Breaks (<code>\\columnbreak</code>)", type: "boolean"},
-	_isAddPageBreaks: {default: false, name: "Add GM Binder Page Breaks (<code>\\pagebreak</code>)", type: "boolean"}
+	_isAddPageBreaks: {default: false, name: "Add GM Binder Page Breaks (<code>\\pagebreak</code>)", type: "boolean"},
 };
 
 if (typeof window !== "undefined") window.addEventListener("load", () => RendererMarkdown.pInit());
@@ -908,17 +909,15 @@ RendererMarkdown.monster = class {
 
 					out.push(`## ${mon.name}`);
 
-					const PAGE_CHARS = 5500;
-
-					// Split into runs of <6000 characters, and join these with page breaks
+					// Split into runs of <X characters, and join these with page breaks
 					let stack = [];
-					let charLimit = PAGE_CHARS;
+					let charLimit = RendererMarkdown._PAGE_CHARS;
 					fluffText.split("\n").forEach(l => {
 						if ((charLimit -= l.length) < 0) {
 							out.push(stack.join("\n"));
 							if (RendererMarkdown._isAddPageBreaks) out.push("", "\\pagebreak", "");
 							stack = [];
-							charLimit = PAGE_CHARS - l.length;
+							charLimit = RendererMarkdown._PAGE_CHARS - l.length;
 						}
 						stack.push(l);
 					});
@@ -1014,7 +1013,7 @@ class MarkdownConverter {
 				buf[i] = {
 					type: "inset",
 					name: "(To convert creature statblocks, please use the Text Converter utility)",
-					entries: line.lines.slice(1).map(it => it.slice(1).trim())
+					entries: line.lines.slice(1).map(it => it.slice(1).trim()),
 				}
 			}
 		}
@@ -1089,7 +1088,7 @@ class MarkdownConverter {
 					buf.splice(
 						lastCaptionIx,
 						j + (i - lastCaptionIx),
-						{mdType: "table", caption: lines[0].replace("##### ", ""), lines: lines.slice(1)}
+						{mdType: "table", caption: lines[0].replace("##### ", ""), lines: lines.slice(1)},
 					);
 				} else {
 					const lines = buf.slice(i, i + j);
@@ -1296,7 +1295,7 @@ class MarkdownConverter {
 				const out = {
 					type: line.mdType,
 					name: line.name,
-					entries: line.lines
+					entries: line.lines,
 				};
 				if (!out.name || !out.name.trim()) delete out.name;
 				buf[i] = out;
@@ -1408,8 +1407,8 @@ class MarkdownConverter {
 			const nuRoot = {
 				type: "section",
 				entries: [
-					stack[0]
-				]
+					stack[0],
+				],
 			};
 			const ixRoot = buf.indexOf(stack[0]);
 			if (~ixRoot) throw new Error(`Could not find root in buffer!`);
@@ -1477,7 +1476,7 @@ class MarkdownConverter {
 					});
 				}
 				return obj;
-			}
+			},
 		};
 		const nxtBuf = MiscUtil.getWalker().walk(buf, handlers);
 		while (buf.length) buf.pop();
@@ -1486,14 +1485,14 @@ class MarkdownConverter {
 
 	static _cleanEmptyLines (buf) {
 		const handlersDoTrim = {
-			array: (arr) => arr.map(it => typeof it === "string" ? it.trim() : it)
+			array: (arr) => arr.map(it => typeof it === "string" ? it.trim() : it),
 		};
 		const nxtBufTrim = MiscUtil.getWalker().walk(buf, handlersDoTrim);
 		while (buf.length) buf.pop();
 		buf.push(...nxtBufTrim);
 
 		const handlersRmEmpty = {
-			array: (arr) => arr.filter(it => it && (typeof it !== "string" || it.trim()))
+			array: (arr) => arr.filter(it => it && (typeof it !== "string" || it.trim())),
 		};
 		const nxtBufRmEmpty = MiscUtil.getWalker().walk(buf, handlersRmEmpty);
 		while (buf.length) buf.pop();
@@ -1529,7 +1528,7 @@ class MarkdownConverter {
 			caption,
 			colLabels: [],
 			colStyles: [],
-			rows: []
+			rows: [],
 		};
 
 		let seenHeaderBreak = false;
@@ -1617,7 +1616,7 @@ class MarkdownConverter {
 
 				return {
 					avgWidths: outAvgWidths.map(it => it / tbl.rows.length),
-					maxWidths: outMaxWidths
+					maxWidths: outMaxWidths,
 				};
 			})();
 
@@ -1761,6 +1760,6 @@ class MarkdownConverter {
 if (typeof module !== "undefined") {
 	module.exports = {
 		RendererMarkdown,
-		MarkdownConverter
+		MarkdownConverter,
 	}
 }

@@ -20,75 +20,7 @@
 					"$ref": "util.json#/definitions/skillProficiencies"
 				},
 				"toolProficiencies": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"artisan's tools": {
-								"type": "boolean"
-							},
-							"cartographer's tools": {
-								"type": "boolean"
-							},
-							"disguise kit": {
-								"type": "boolean"
-							},
-							"forgery kit": {
-								"type": "boolean"
-							},
-							"gaming set": {
-								"type": "boolean"
-							},
-							"herbalism kit": {
-								"type": "boolean"
-							},
-							"musical instrument": {
-								"type": "boolean"
-							},
-							"navigator's tools": {
-								"type": "boolean"
-							},
-							"thieves' tools": {
-								"type": "boolean"
-							},
-							"vehicles (land)": {
-								"type": "boolean"
-							},
-							"vehicles (water)": {
-								"type": "boolean"
-							},
-							"any": {
-								"type": "integer"
-							},
-							"choose": {
-								"type": "object",
-								"properties": {
-									"from": {
-										"type": "array",
-										"items": {
-											"enum": [
-												"artisan's tools",
-												"cartographer's tools",
-												"disguise kit",
-												"forgery kit",
-												"gaming set",
-												"herbalism kit",
-												"musical instrument",
-												"navigator's tools",
-												"thieves' tools",
-												"vehicles (land)",
-												"vehicles (water)",
-												"alchemist's supplies"
-											]
-										}
-									},
-									"count": {
-										"type": "integer"
-									}
-								}
-							}
-						}
-					}
+					"$ref": "util.json#/definitions/toolProficiencies"
 				},
 				"languageProficiencies": {
 					"$ref": "util.json#/definitions/languageProficiencies"

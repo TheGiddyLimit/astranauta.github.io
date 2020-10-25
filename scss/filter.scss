@@ -2,7 +2,7 @@
 
 @media (max-width: $width-screen-md) {
 	.dropdown-menu-filter {
-		max-height: calc(40em - 35px);
+		max-height: 525px;
 	}
 }
 
@@ -26,7 +26,7 @@ $flt-ignore--hover: #e6e6e6;
 		&h {
 			display: flex;
 			justify-content: space-between;
-			font-size: 1.1em;
+			font-size: 15px;
 			align-items: center;
 
 			@media only screen and (max-width: $width-screen-sm) {
@@ -72,7 +72,7 @@ $flt-ignore--hover: #e6e6e6;
 		}
 
 		&h-btn-logic {
-			min-width: 3.3em;
+			min-width: 46px;
 			font-weight: bold;
 
 			&.btn-xxs {
@@ -157,7 +157,7 @@ $flt-ignore--hover: #e6e6e6;
 			padding: 2px 6px;
 			white-space: nowrap;
 			text-align: center;
-			font-size: 0.75em;
+			font-size: 10.5px;
 			cursor: pointer;
 			user-select: none;
 			background: $flt-ignore;
@@ -254,7 +254,7 @@ $flt-ignore--hover: #e6e6e6;
 			background: $flt-ignore;
 			white-space: nowrap;
 			text-align: center;
-			font-size: 0.75em;
+			font-size: 10.5px;
 			cursor: pointer;
 			user-select: none;
 			border: 1px solid $rgb-border-grey;
@@ -332,7 +332,7 @@ $flt-ignore--hover: #e6e6e6;
 			padding: 1px 2px;
 			white-space: nowrap;
 			text-align: center;
-			font-size: 0.67em;
+			font-size: 9.4px;
 			border-radius: 3px;
 			cursor: pointer;
 			user-select: none;
@@ -368,7 +368,7 @@ $flt-ignore--hover: #e6e6e6;
 			display: inline-block;
 			vertical-align: middle;
 			box-sizing: border-box;
-			font-size: 0.8em;
+			font-size: 11px;
 			line-height: 22px;
 			margin-left: auto;
 		}

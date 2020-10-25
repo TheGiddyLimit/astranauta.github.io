@@ -5,7 +5,7 @@ class PageFilterObjects extends PageFilter {
 		super();
 
 		this._sourceFilter = new SourceFilter();
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"], isSrdFilter: true});
 	}
 
 	mutateForFilters (obj) {
@@ -21,7 +21,7 @@ class PageFilterObjects extends PageFilter {
 	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
-			this._miscFilter
+			this._miscFilter,
 		];
 	}
 
@@ -29,7 +29,7 @@ class PageFilterObjects extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			obj.source,
-			obj._fMisc
+			obj._fMisc,
 		)
 	}
 }

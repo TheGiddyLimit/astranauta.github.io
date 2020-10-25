@@ -10,8 +10,8 @@ class PageFilterRewards extends PageFilter {
 			items: [
 				"Blessing",
 				"Boon",
-				"Charm"
-			]
+				"Charm",
+			],
 		});
 	}
 
@@ -29,7 +29,7 @@ class PageFilterRewards extends PageFilter {
 	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
-			this._typeFilter
+			this._typeFilter,
 		];
 	}
 
@@ -37,7 +37,7 @@ class PageFilterRewards extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			r.source,
-			r.type
+			r.type,
 		)
 	}
 }

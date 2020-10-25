@@ -39,7 +39,7 @@ class AreaTagger {
 					});
 
 				return obj;
-			}
+			},
 		};
 
 		this._data.data.forEach(chap => MiscUtil.getWalker().walk(chap, handlers));

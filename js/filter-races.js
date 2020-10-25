@@ -21,7 +21,7 @@ class PageFilterRaces extends PageFilter {
 				amount: amount,
 				_toIdString: () => {
 					return `${asi}${amount}`
-				}
+				},
 			}
 		}
 
@@ -114,9 +114,9 @@ class PageFilterRaces extends PageFilter {
 				"Wisdom +2",
 				"Wisdom +1",
 				"Charisma +2",
-				"Charisma +1"
+				"Charisma +1",
 			],
-			itemSortFn: PageFilterRaces.filterAscSortAsi
+			itemSortFn: PageFilterRaces.filterAscSortAsi,
 		});
 		const baseRaceFilter = new Filter({header: "Base Race"});
 		const speedFilter = new Filter({header: "Speed", items: ["Climb", "Fly", "Swim", "Walk (Fast)", "Walk", "Walk (Slow)"]});
@@ -126,6 +126,7 @@ class PageFilterRaces extends PageFilter {
 				"Amphibious",
 				"Armor Proficiency",
 				"Blindsight",
+				"Condition Immunity",
 				"Damage Immunity",
 				"Damage Resistance",
 				"Darkvision", "Superior Darkvision",
@@ -140,11 +141,11 @@ class PageFilterRaces extends PageFilter {
 				"Tool Proficiency",
 				"Unarmed Strike",
 				"Uncommon Race",
-				"Weapon Proficiency"
+				"Weapon Proficiency",
 			],
 			deselFn: (it) => {
 				return it === "NPC Race";
-			}
+			},
 		});
 		const languageFilter = new Filter({
 			header: "Languages",
@@ -165,11 +166,11 @@ class PageFilterRaces extends PageFilter {
 				"Other",
 				"Primordial",
 				"Sylvan",
-				"Undercommon"
+				"Undercommon",
 			],
-			umbrellaItems: ["Choose"]
+			umbrellaItems: ["Choose"],
 		});
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["Base Race", "Key Race", "Modified Copy", "SRD"]});
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["Base Race", "Key Race", "Modified Copy", "SRD"], isSrdFilter: true});
 
 		this._sizeFilter = sizeFilter;
 		this._asiFilter = asiFilter;
@@ -192,7 +193,10 @@ class PageFilterRaces extends PageFilter {
 		race._fSpeed = race.speed ? race.speed.walk ? [race.speed.climb ? "Climb" : null, race.speed.fly ? "Fly" : null, race.speed.swim ? "Swim" : null, PageFilterRaces.getSpeedRating(race.speed.walk)].filter(it => it) : [PageFilterRaces.getSpeedRating(race.speed)] : [];
 		race._fTraits = [
 			race.darkvision === 120 ? "Superior Darkvision" : race.darkvision ? "Darkvision" : null,
-			race.hasSpellcasting ? "Spellcasting" : null
+			race.hasSpellcasting ? "Spellcasting" : null,
+			race.resist ? "Damage Resistance" : null,
+			race.immune ? "Damage Immunity" : null,
+			race.conditionImmune ? "Condition Immunity" : null,
 		].filter(it => it);
 		race._fTraits.push(...(race.traitTags || []));
 		race._fSources = SourceFilter.getCompleteFilterSources(race);
@@ -225,7 +229,7 @@ class PageFilterRaces extends PageFilter {
 			this._traitFilter,
 			this._languageFilter,
 			this._baseRaceFilter,
-			this._miscFilter
+			this._miscFilter,
 		];
 	}
 
@@ -239,8 +243,24 @@ class PageFilterRaces extends PageFilter {
 			r._fTraits,
 			r._fLangs,
 			r._baseName,
-			r._fMisc
+			r._fMisc,
 		)
+	}
+
+	static getListAliases (race) {
+		return (race.alias || [])
+			.map(it => {
+				const invertedName = PageFilterRaces.getInvertedName(it);
+				return [`"${it}"`, invertedName ? `"${invertedName}"` : false].filter(Boolean);
+			})
+			.flat()
+			.join(",")
+	}
+
+	static getInvertedName (name) {
+		// convert e.g. "Elf (High)" to "High Elf" for use as a searchable field
+		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(name);
+		return bracketMatch ? `${bracketMatch[2]} ${bracketMatch[1]}` : null;
 	}
 }
 PageFilterRaces.ASI_SORT_POS = {
@@ -249,5 +269,71 @@ PageFilterRaces.ASI_SORT_POS = {
 	Constitution: 2,
 	Intelligence: 3,
 	Wisdom: 4,
-	Charisma: 5
+	Charisma: 5,
 };
+
+class ModalFilterRaces extends ModalFilter {
+	/**
+	 * @param opts
+	 * @param opts.namespace
+	 * @param [opts.isRadio]
+	 * @param [opts.allData]
+	 */
+	constructor (opts) {
+		opts = opts || {};
+		super({
+			...opts,
+			modalTitle: `Race${opts.isRadio ? "" : "s"}`,
+			pageFilter: new PageFilterRaces(),
+		});
+	}
+
+	_$getColumnHeaders () {
+		const btnMeta = [
+			{sort: "name", text: "Name", width: "4"},
+			{sort: "ability", text: "Ability", width: "4"},
+			{sort: "size", text: "Size", width: "2"},
+			{sort: "source", text: "Source", width: "1"},
+		];
+		return ModalFilter._$getFilterColumnHeaders(btnMeta);
+	}
+
+	async _pLoadAllData () {
+		const rawRaceData = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/races.json`);
+		return Renderer.race.mergeSubraces(rawRaceData.race);
+	}
+
+	_getListItem (pageFilter, race, rI) {
+		const eleLabel = document.createElement("label");
+		eleLabel.className = "row lst--border no-select lst__wrp-cells";
+
+		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](race);
+		const ability = race.ability ? Renderer.getAbilityData(race.ability) : {asTextShort: "None"};
+		const size = Parser.sizeAbvToFull(race.size || SZ_VARIES);
+		const source = Parser.sourceJsonToAbv(race.source);
+
+		eleLabel.innerHTML = `<div class="col-1 pl-0 flex-vh-center">${this._isRadio ? `<input type="radio" name="radio" class="no-events">` : `<input type="checkbox" class="no-events">`}</div>
+		<div class="bold col-4">${race.name}</div>
+		<div class="col-4">${ability.asTextShort}</div>
+		<div class="col-2 text-center">${size}</div>
+		<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(race.source)}" title="${Parser.sourceJsonToFull(race.source)}" ${BrewUtil.sourceJsonToStyle(race.source)}>${source}</div>`;
+
+		return new ListItem(
+			rI,
+			eleLabel,
+			race.name,
+			{
+				hash,
+				source,
+				sourceJson: race.source,
+				ability: ability.asTextShort,
+				size,
+				cleanName: PageFilterRaces.getInvertedName(race.name) || "",
+				alias: PageFilterRaces.getListAliases(race),
+			},
+			{
+				cbSel: eleLabel.firstElementChild.firstElementChild,
+			},
+		);
+	}
+}

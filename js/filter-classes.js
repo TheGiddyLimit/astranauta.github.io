@@ -6,8 +6,8 @@ class PageFilterClasses extends PageFilter {
 			sourceFilterOpts: {
 				displayFnMini: it => Parser.sourceJsonToAbv(it),
 				displayFnTitle: it => Parser.sourceJsonToFull(it),
-				itemSortFnMini: (a, b) => SortUtil.ascSort(Parser.sourceJsonToAbv(a.item), Parser.sourceJsonToAbv(b.item))
-			}
+				itemSortFnMini: (a, b) => SortUtil.ascSort(Parser.sourceJsonToAbv(a.item), Parser.sourceJsonToAbv(b.item)),
+			},
 		});
 
 		this._miscFilter = new Filter({
@@ -15,7 +15,8 @@ class PageFilterClasses extends PageFilter {
 			items: ["Reprinted", "SRD"],
 			deselFn: (it) => { return it === "Reprinted" },
 			displayFnMini: it => it === "Reprinted" ? "Repr." : it,
-			displayFnTitle: it => it === "Reprinted" ? it : ""
+			displayFnTitle: it => it === "Reprinted" ? it : "",
+			isSrdFilter: true,
 		});
 
 		// region source
@@ -24,7 +25,7 @@ class PageFilterClasses extends PageFilter {
 			string: (obj, lastKey) => {
 				if (lastKey === "source") this._sourceFilter.addItem(obj);
 				return obj;
-			}
+			},
 		};
 		// endregion
 	}
@@ -77,7 +78,7 @@ class PageFilterClasses extends PageFilter {
 	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
-			this._miscFilter
+			this._miscFilter,
 		];
 		opts.isCompact = true;
 	}
@@ -86,7 +87,7 @@ class PageFilterClasses extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			it.source,
-			it._fMisc
+			it._fMisc,
 		)
 	}
 }

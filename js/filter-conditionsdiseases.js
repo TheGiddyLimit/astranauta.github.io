@@ -15,9 +15,9 @@ class PageFilterConditionsDiseases extends PageFilter {
 			header: "Type",
 			items: ["condition", "disease", "status"],
 			displayFn: PageFilterConditionsDiseases.getDisplayProp,
-			deselFn: (it) => it === "disease" || it === "status"
+			deselFn: (it) => it === "disease" || it === "status",
 		});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"], isSrdFilter: true});
 	}
 
 	mutateForFilters (it) {
@@ -34,7 +34,7 @@ class PageFilterConditionsDiseases extends PageFilter {
 		opts.filters = [
 			this._sourceFilter,
 			this._typeFilter,
-			this._miscFilter
+			this._miscFilter,
 		];
 	}
 
@@ -43,7 +43,7 @@ class PageFilterConditionsDiseases extends PageFilter {
 			values,
 			it.source,
 			it.__prop,
-			it._fMisc
+			it._fMisc,
 		)
 	}
 }

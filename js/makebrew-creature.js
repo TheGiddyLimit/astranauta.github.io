@@ -12,7 +12,7 @@ class CreatureBuilder extends Builder {
 				title: "Download Creatures as Markdown",
 				pFnGetText: (mons) => {
 					return RendererMarkdown.monster.pGetMarkdownDoc(mons);
-				}
+				},
 			},
 			// TODO refactor this if/when more Markdown rendering is supported (e.g. spells)
 			sidebarItemOptionsMetas: [
@@ -29,26 +29,29 @@ class CreatureBuilder extends Builder {
 							{
 								title: name,
 								isPermanent: true,
-								isBookContent: true
-							}
+								isBookContent: true,
+							},
 						);
-					}
+					},
 				},
 				{
 					name: "Download Markdown",
 					pAction: (evt, entry) => {
 						const mdText = CreatureBuilder._getAsMarkdown(entry).trim();
 						DataUtil.userDownloadText(`${DataUtil.getCleanFilename(entry.name)}.md`, mdText);
-					}
-				}
+					},
+				},
 			],
-			prop: "monster"
+			prop: "monster",
 		});
 
 		this._bestiaryFluffIndex = null;
 		this._bestiaryTypeTags = null;
-		// TODO(future) mechanism to update this select/etc if the user creates/edits homebrew legendary groups
+
 		this._legendaryGroups = null;
+		this._$selLegendaryGroup = null;
+		this._legendaryGroupCache = null;
+
 		// Indexed template creature traits
 		this._jsonCreatureTraits = null;
 		this._indexedTraits = null;
@@ -71,13 +74,28 @@ class CreatureBuilder extends Builder {
 				{
 					type: "code",
 					name: `Markdown`,
-					preformatted: mdText
-				}
-			]
+					preformatted: mdText,
+				},
+			],
 		});
 	}
 
 	async pHandleSidebarLoadExistingClick () {
+		const result = await SearchWidget.pGetUserCreatureSearch();
+		if (result) {
+			const creature = MiscUtil.copy(await Renderer.hover.pCacheAndGet(result.page, result.source, result.hash));
+			return this.pHandleSidebarLoadExistingData(creature);
+		}
+	}
+
+	/**
+	 * @param creature
+	 * @param [opts]
+	 * @param [opts.isForce]
+	 */
+	async pHandleSidebarLoadExistingData (creature, opts) {
+		opts = opts || [];
+
 		function pFetchToken (mon) {
 			return new Promise(resolve => {
 				const img = new Image();
@@ -88,72 +106,66 @@ class CreatureBuilder extends Builder {
 			});
 		}
 
-		const result = await SearchWidget.pGetUserCreatureSearch();
-		if (result) {
-			const creature = MiscUtil.copy(await Renderer.hover.pCacheAndGet(result.page, result.source, result.hash));
-			const cleanOrigin = window.location.origin.replace(/\/+$/, "");
+		const cleanOrigin = window.location.origin.replace(/\/+$/, "");
 
-			// Get the token based on the original source
-			if (creature.tokenUrl || creature.hasToken) {
-				const rawTokenUrl = await pFetchToken(creature);
-				if (rawTokenUrl) {
-					creature.tokenUrl = /^[a-zA-Z0-9]+:\/\//.test(rawTokenUrl) ? rawTokenUrl : `${cleanOrigin}/${rawTokenUrl}`;
-				}
+		// Get the token based on the original source
+		if (creature.tokenUrl || creature.hasToken) {
+			const rawTokenUrl = await pFetchToken(creature);
+			if (rawTokenUrl) {
+				creature.tokenUrl = /^[a-zA-Z0-9]+:\/\//.test(rawTokenUrl) ? rawTokenUrl : `${cleanOrigin}/${rawTokenUrl}`;
 			}
-
-			// Get the fluff based on the original source
-			if (this._bestiaryFluffIndex[creature.source] && !creature.fluff) {
-				const fluff = await Renderer.monster.pGetFluff(creature);
-
-				if (fluff) creature.fluff = MiscUtil.copy(fluff);
-			}
-
-			creature.source = this._ui.source;
-
-			if (creature.soundClip && creature.soundClip.type === "internal") {
-				creature.soundClip = {
-					type: "external",
-					url: `${cleanOrigin}/${Renderer.utils.getMediaUrl(creature, "soundClip", "audio")}`
-				};
-			}
-
-			delete creature.otherSources;
-			delete creature.srd;
-			delete creature.hasToken;
-			delete creature.uniqueId;
-
-			if (Parser.crToNumber(creature.cr) !== 100) {
-				const ixDefault = Parser.CRS.indexOf(creature.cr.cr || creature.cr);
-				const scaleTo = await InputUiUtil.pGetUserEnum({values: Parser.CRS, title: "At Challenge Rating...", default: ixDefault});
-
-				if (scaleTo != null && scaleTo !== ixDefault) {
-					const scaled = await ScaleCreature.scale(creature, Parser.crToNumber(Parser.CRS[scaleTo]));
-					delete scaled._displayName;
-					this.setStateFromLoaded({s: scaled, m: this.getInitialMetaState()});
-				} else this.setStateFromLoaded({s: creature, m: this.getInitialMetaState()});
-			} else this.setStateFromLoaded({s: creature, m: this.getInitialMetaState()});
-
-			this.renderInput();
-			this.renderOutput();
 		}
+
+		// Get the fluff based on the original source
+		if (this._bestiaryFluffIndex[creature.source] && !creature.fluff) {
+			const fluff = await Renderer.monster.pGetFluff(creature);
+
+			if (fluff) creature.fluff = MiscUtil.copy(fluff);
+		}
+
+		creature.source = this._ui.source;
+
+		if (creature.soundClip && creature.soundClip.type === "internal") {
+			creature.soundClip = {
+				type: "external",
+				url: `${cleanOrigin}/${Renderer.utils.getMediaUrl(creature, "soundClip", "audio")}`,
+			};
+		}
+
+		delete creature.otherSources;
+		delete creature.srd;
+		delete creature.hasToken;
+		delete creature.uniqueId;
+
+		if (Parser.crToNumber(creature.cr) !== 100 && !opts.isForce) {
+			const ixDefault = Parser.CRS.indexOf(creature.cr.cr || creature.cr);
+			const scaleTo = await InputUiUtil.pGetUserEnum({values: Parser.CRS, title: "At Challenge Rating...", default: ixDefault});
+
+			if (scaleTo != null && scaleTo !== ixDefault) {
+				const scaled = await ScaleCreature.scale(creature, Parser.crToNumber(Parser.CRS[scaleTo]));
+				delete scaled._displayName;
+				this.setStateFromLoaded({s: scaled, m: this.getInitialMetaState()});
+			} else this.setStateFromLoaded({s: creature, m: this.getInitialMetaState()});
+		} else this.setStateFromLoaded({s: creature, m: this.getInitialMetaState()});
+
+		this.renderInput();
+		this.renderOutput();
 	}
 
 	async pInit () {
 		BrewUtil.bind({
-			pHandleBrew: this._pHandleBrew.bind(this)
+			pHandleBrew: this._pHandleBrew.bind(this),
 		})
 
 		const [bestiaryFluffIndex, jsonCreature] = await Promise.all([
 			DataUtil.loadJSON("data/bestiary/fluff-index.json"),
 			DataUtil.loadJSON("data/makebrew-creature.json"),
-			DataUtil.monster.pPreloadMeta()
+			DataUtil.monster.pPreloadMeta(),
 		]);
 
 		this._bestiaryFluffIndex = bestiaryFluffIndex;
 
-		const baseLegendaryGroups = Object.values(DataUtil.monster.metaGroupMap).map(obj => Object.values(obj)).flat();
-
-		this._legendaryGroups = [...baseLegendaryGroups, ...(BrewUtil.homebrew.legendaryGroup || [])];
+		this._buildLegendaryGroupCache();
 
 		this._jsonCreatureTraits = [...jsonCreature.makebrewCreatureTrait, ...(BrewUtil.homebrew.makebrewCreatureTrait || [])];
 		this._indexedTraits = elasticlunr(function () {
@@ -163,7 +175,7 @@ class CreatureBuilder extends Builder {
 		SearchUtil.removeStemmer(this._indexedTraits);
 		this._jsonCreatureTraits.forEach((it, i) => this._indexedTraits.addDoc({
 			n: it.name,
-			id: i
+			id: i,
 		}));
 
 		// Load this asynchronously, to avoid blocking the page load
@@ -195,7 +207,7 @@ class CreatureBuilder extends Builder {
 					this._addedHashesCreatureTraits.add(itHash);
 					this._indexedTraits.addDoc({
 						n: it.name,
-						id: ix
+						id: ix,
 					});
 				}
 			}
@@ -219,7 +231,7 @@ class CreatureBuilder extends Builder {
 			wis: 10,
 			cha: 10,
 			passive: 10,
-			cr: "0"
+			cr: "0",
 		}
 	}
 
@@ -275,7 +287,7 @@ class CreatureBuilder extends Builder {
 			// other fields which don't fall under proficiency
 			if (!state.m.autoCalc) {
 				state.m.autoCalc = {
-					proficiency: true
+					proficiency: true,
 				};
 
 				// hit points
@@ -417,18 +429,18 @@ class CreatureBuilder extends Builder {
 			this._state,
 			{
 				title: "If specified, this will override the default number (3) of legendary actions available for the creature.",
-				placeholder: "If left blank, defaults to 3."
+				placeholder: "If left blank, defaults to 3.",
 			},
-			"legendaryActions"
+			"legendaryActions",
 		).appendTo(abilTab.$wrpTab);
 		BuilderUi.$getStateIptBoolean(
 			"Name is Proper Noun",
 			cb,
 			this._state,
 			{
-				title: "If selected, the legendary action intro text for this creature will be formatted as though the creature's name is a proper noun (e.g. 'Tiamat can take...' vs 'The dragon can take...')."
+				title: "If selected, the legendary action intro text for this creature will be formatted as though the creature's name is a proper noun (e.g. 'Tiamat can take...' vs 'The dragon can take...').",
 			},
-			"isNamedCreature"
+			"isNamedCreature",
 		).appendTo(abilTab.$wrpTab);
 		BuilderUi.$getStateIptEntries(
 			"Legendary Action Intro",
@@ -436,9 +448,9 @@ class CreatureBuilder extends Builder {
 			this._state,
 			{
 				title: "If specified, this custom legendary action intro text will override the default.",
-				placeholder: "If left blank, defaults to a generic intro."
+				placeholder: "If left blank, defaults to a generic intro.",
 			},
-			"legendaryHeader"
+			"legendaryHeader",
 		).appendTo(abilTab.$wrpTab);
 		this.__$getLegendaryActionInput(cb).appendTo(abilTab.$wrpTab);
 		this.__$getLegendaryGroupInput(cb).appendTo(abilTab.$wrpTab);
@@ -459,9 +471,9 @@ class CreatureBuilder extends Builder {
 			{
 				vals: Object.keys(Parser.DRAGON_COLOR_TO_FULL).sort((a, b) => SortUtil.ascSort(Parser.dragonColorToFull(a), Parser.dragonColorToFull(b))),
 				fnDisplay: (abv) => Parser.dragonColorToFull(abv).uppercaseFirst(),
-				type: "string"
+				type: "string",
 			},
-			"dragonCastingColor"
+			"dragonCastingColor",
 		).appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptBoolean("NPC", cb, this._state, {title: "If selected, this creature will be filtered out from the Bestiary list by default."}, "isNpc").appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptBoolean("Familiar", cb, this._state, {title: "If selected, this creature will be included when filtering for 'Familiar' in the Bestiary."}, "familiar").appendTo(miscTab.$wrpTab);
@@ -471,9 +483,9 @@ class CreatureBuilder extends Builder {
 			this._state,
 			{
 				shortName: "Alias",
-				title: "Alternate names for this creature, e.g. 'Illithid' as an alternative for 'Mind Flayer,' which can be searched in the Bestiary."
+				title: "Alternate names for this creature, e.g. 'Illithid' as an alternative for 'Mind Flayer,' which can be searched in the Bestiary.",
 			},
-			"alias"
+			"alias",
 		).appendTo(miscTab.$wrpTab);
 
 		// excluded fields:
@@ -498,7 +510,7 @@ class CreatureBuilder extends Builder {
 				if (validTags.length) {
 					this._state.type = {
 						type: $selType.val(),
-						tags: validTags
+						tags: validTags,
 					};
 				} else this._state.type = $selType.val();
 			} else this._state.type = $selType.val();
@@ -508,7 +520,7 @@ class CreatureBuilder extends Builder {
 		const setStateSwarm = () => {
 			this._state.type = {
 				type: $selType.val(),
-				swarmSize: $selSwarmSize.val()
+				swarmSize: $selSwarmSize.val(),
 			};
 			cb();
 		};
@@ -590,7 +602,7 @@ class CreatureBuilder extends Builder {
 			.click(async () => {
 				const tag = await InputUiUtil.pGetUserString({
 					title: "Enter a Tag",
-					autocomplete: this._bestiaryTypeTags
+					autocomplete: this._bestiaryTypeTags,
 				});
 
 				if (tag != null) {
@@ -840,7 +852,7 @@ class CreatureBuilder extends Builder {
 				if (condition) {
 					const out = {
 						ac: acVal,
-						condition
+						condition,
 					};
 					if (braces) out.braces = true;
 					return out;
@@ -856,7 +868,7 @@ class CreatureBuilder extends Builder {
 					if (froms.length) {
 						const out = {
 							ac: acVal,
-							from: froms
+							from: froms,
 						};
 						if (condition) out.condition = condition;
 						if (braces) out.braces = true;
@@ -966,7 +978,7 @@ class CreatureBuilder extends Builder {
 				() => {
 					$iptFrom.val(CreatureBuilder._AC_COMMON[k]);
 					doUpdateState();
-				}
+				},
 			)
 		}));
 
@@ -982,11 +994,11 @@ class CreatureBuilder extends Builder {
 						doUpdateState();
 						doClose();
 					},
-					{defaultCategory: "Item"}
+					{defaultCategory: "Item"},
 				);
 				const {$modalInner, doClose} = UiUtil.getShowModal({
 					title: "Select Item",
-					cbClose: () => searchWidget.$wrpSearch.detach() // guarantee survival of rendered element
+					cbClose: () => searchWidget.$wrpSearch.detach(), // guarantee survival of rendered element
 				});
 				$modalInner.append(searchWidget.$wrpSearch);
 				searchWidget.doFocus();
@@ -1028,14 +1040,14 @@ class CreatureBuilder extends Builder {
 				case "0": {
 					this._state.hp = {
 						formula: _getSimpleFormula(),
-						average: UiUtil.strToInt($iptSimpleAverage.val())
+						average: UiUtil.strToInt($iptSimpleAverage.val()),
 					};
 					break;
 				}
 				case "1": {
 					this._state.hp = {
 						formula: $iptComplexFormula.val(),
-						average: UiUtil.strToInt($iptComplexAverage.val())
+						average: UiUtil.strToInt($iptComplexAverage.val()),
 					};
 					break;
 				}
@@ -1551,7 +1563,7 @@ class CreatureBuilder extends Builder {
 		const children = [];
 		const getState = () => {
 			const out = {
-				[prop]: children.map(it => it.getState()).filter(Boolean)
+				[prop]: children.map(it => it.getState()).filter(Boolean),
 			};
 			if ($iptNotePre.val().trim()) out.preNote = $iptNotePre.val().trim();
 			if ($iptNotePost.val().trim()) out.note = $iptNotePost.val().trim();
@@ -1599,7 +1611,7 @@ class CreatureBuilder extends Builder {
 					})();
 
 					addChild(child);
-				}
+				},
 			);
 		}));
 
@@ -1662,13 +1674,13 @@ class CreatureBuilder extends Builder {
 							const raw = $iptSpecial.val().trim();
 							if (raw) return {special: raw};
 							return null;
-						}
+						},
 					}
 				}
 				default: {
 					return {
 						$ele: $$`<div class="mb-2 split flex-v-center mkbru__wrp-btn-xxs"><span class="mr-2">&bull; ${type.uppercaseFirst()}</span>${$btnRemove}</div>`,
-						getState: () => type
+						getState: () => type,
 					}
 				}
 			}
@@ -1706,9 +1718,9 @@ class CreatureBuilder extends Builder {
 							$iptSenses.val(curr ? `${curr}, ${toAdd}` : toAdd);
 
 							doUpdateState();
-						}
+						},
 					)
-				})
+				}),
 		);
 
 		const $btnAddGeneric = $(`<button class="btn btn-xs btn-default mr-2 mkbru_mon__btn-add-sense-language">Add Sense</button>`)
@@ -1743,7 +1755,7 @@ class CreatureBuilder extends Builder {
 				const language = await InputUiUtil.pGetUserString({
 					title: "Enter a Language",
 					default: "Common",
-					autocomplete: availLanguages
+					autocomplete: availLanguages,
 				});
 
 				if (language != null) {
@@ -1782,7 +1794,7 @@ class CreatureBuilder extends Builder {
 					$stageBasic.showVe(); $stageLair.showVe(); $stageCoven.hideVe();
 					this._state.cr = {
 						cr: $selCr.val(),
-						lair: $selCrLair.val()
+						lair: $selCrLair.val(),
 					};
 					break;
 				}
@@ -1790,7 +1802,7 @@ class CreatureBuilder extends Builder {
 					$stageBasic.showVe(); $stageLair.hideVe(); $stageCoven.showVe();
 					this._state.cr = {
 						cr: $selCr.val(),
-						coven: $selCrCoven.val()
+						coven: $selCrCoven.val(),
 					};
 					break;
 				}
@@ -1926,7 +1938,7 @@ class CreatureBuilder extends Builder {
 	static __$getSpellcastingInput__getTraitRow (traitRows, doUpdateState, trait) {
 		const getState = () => {
 			const out = {
-				name: $iptName.val().trim()
+				name: $iptName.val().trim(),
 			};
 
 			if ($btnToggleHeader.hasClass("active")) out.headerEntries = UiUtil.getTextAsEntries($iptHeader.val());
@@ -1997,39 +2009,39 @@ class CreatureBuilder extends Builder {
 			{
 				display: "Cantrips",
 				type: "0",
-				mode: "cantrip"
+				mode: "cantrip",
 			},
 			{
 				display: "\uD835\uDC65th level spells",
-				mode: "level"
+				mode: "level",
 			},
 			null,
 			{
 				display: "Constant effects",
 				type: "constant",
-				mode: "basic"
+				mode: "basic",
 			},
 			{
 				display: "At will spells",
 				type: "will",
-				mode: "basic"
+				mode: "basic",
 			},
 			{
 				display: "\uD835\uDC65/day (/each) spells",
 				type: "daily",
-				mode: "frequency"
+				mode: "frequency",
 			},
 			null,
 			{
 				display: "\uD835\uDC65/rest (/each) spells",
 				type: "rest",
-				mode: "frequency"
+				mode: "frequency",
 			},
 			{
 				display: "\uD835\uDC65/week (/each) spells",
 				type: "week",
-				mode: "frequency"
-			}
+				mode: "frequency",
+			},
 		];
 
 		const menu = ContextUtil.getMenu(_CONTEXT_ENTRIES.map(contextMeta => {
@@ -2063,7 +2075,7 @@ class CreatureBuilder extends Builder {
 
 					doAddSpellRow(meta);
 					doUpdateState();
-				}
+				},
 			)
 		}));
 
@@ -2251,12 +2263,12 @@ class CreatureBuilder extends Builder {
 						return [
 							{
 								keyPath: ["spells", `${meta.level}`, "slots"],
-								value: UiUtil.strToInt($iptSlots.val())
+								value: UiUtil.strToInt($iptSlots.val()),
 							},
 							{
 								keyPath: ["spells", `${meta.level}`, "lower"],
-								value: $cbWarlock.prop("checked") ? 1 : null
-							}
+								value: $cbWarlock.prop("checked") ? 1 : null,
+							},
 						]
 					};
 					out.filterIgnoreLevel = () => $cbWarlock.prop("checked");
@@ -2342,12 +2354,12 @@ class CreatureBuilder extends Builder {
 									defaultCategory: "Trait",
 									searchOptions: {
 										fields: {
-											n: {boost: 5, expand: true}
+											n: {boost: 5, expand: true},
 										},
-										expand: true
+										expand: true,
 									},
-									fnTransform: (doc) => doc.id
-								}
+									fnTransform: (doc) => doc.id,
+								},
 							);
 							const {$modalInner, doClose} = UiUtil.getShowModal({
 								title: "Select a Trait",
@@ -2359,14 +2371,14 @@ class CreatureBuilder extends Builder {
 									if (!this._state.isNamedCreature) name = (name || "").toLowerCase();
 									trait.entries = JSON.parse(JSON.stringify(trait.entries).replace(/<\$name\$>/gi, name));
 									resolve(trait);
-								}
+								},
 							});
 							$modalInner.append(searchWidget.$wrpSearch);
 							searchWidget.doFocus();
 						})
-					}
-				}
-			]
+					},
+				},
+			],
 		});
 	}
 
@@ -2390,7 +2402,7 @@ class CreatureBuilder extends Builder {
 										if (!data) return resolve(null);
 										resolve(data);
 									},
-									isUncappedHeight: true
+									isUncappedHeight: true,
 								});
 
 								const $iptName = $(`<input class="form-control form-control--minimal input-xs mr-2" placeholder="Weapon">`);
@@ -2488,7 +2500,7 @@ class CreatureBuilder extends Builder {
 											iptBonusDamDiceCount: "1",
 											iptBonusDamDiceNum: "6",
 											iptBonusDamBonus: "",
-											iptBonusDamType: ""
+											iptBonusDamType: "",
 										});
 									});
 
@@ -2509,7 +2521,7 @@ class CreatureBuilder extends Builder {
 											if (!vShort) return `range ${vLong}/${vLong} ft.`;
 											if (!vLong) return `range ${vShort}/${vShort} ft.`;
 											return `range ${vShort}/${vLong} ft.`;
-										})() : null
+										})() : null,
 									].filter(Boolean).join(" or ");
 
 									const getDamageDicePt = ($iptNum, $iptFaces, $iptBonus) => {
@@ -2523,15 +2535,15 @@ class CreatureBuilder extends Builder {
 									const ptDamage = [
 										$cbMelee.prop("checked") ? `${getDamageDicePt($iptMeleeDamDiceCount, $iptMeleeDamDiceNum, $iptMeleeDamBonus)}${getDamageTypePt($iptMeleeDamType)} damage${$cbRanged.prop("checked") ? ` in melee` : ""}` : null,
 										$cbRanged.prop("checked") ? `${getDamageDicePt($iptRangedDamDiceCount, $iptRangedDamDiceNum, $iptRangedDamBonus)}${getDamageTypePt($iptRangedDamType)} damage${$cbMelee.prop("checked") ? ` at range` : ""}` : null,
-										$cbVersatile.prop("checked") ? `${getDamageDicePt($iptVersatileDamDiceCount, $iptVersatileDamDiceNum, $iptVersatileDamBonus)}${getDamageTypePt($iptVersatileDamType)} damage if used with both hands` : null
+										$cbVersatile.prop("checked") ? `${getDamageDicePt($iptVersatileDamDiceCount, $iptVersatileDamDiceNum, $iptVersatileDamBonus)}${getDamageTypePt($iptVersatileDamType)} damage if used with both hands` : null,
 									].filter(Boolean).join(", or ");
 									const ptDamageFull = $cbBonusDamage.prop("checked") ? `${ptDamage}, plus ${getDamageDicePt($iptBonusDamDiceCount, $iptBonusDamDiceNum, $iptBonusDamBonus)}${getDamageTypePt($iptBonusDamType)} damage` : ptDamage;
 
 									return {
 										name: $iptName.val().trim() || "Unarmed Strike",
 										entries: [
-											`${ptAtk} ${ptHit}, ${ptRange}, one target. {@h}${ptDamageFull}.`
-										]
+											`${ptAtk} ${ptHit}, ${ptRange}, one target. {@h}${ptDamageFull}.`,
+										],
 									};
 								};
 
@@ -2560,7 +2572,7 @@ class CreatureBuilder extends Builder {
 									iptBonusDamDiceCount: $iptBonusDamDiceCount.val(),
 									iptBonusDamDiceNum: $iptBonusDamDiceNum.val(),
 									iptBonusDamBonus: $iptBonusDamBonus.val(),
-									iptBonusDamType: $iptBonusDamType.val()
+									iptBonusDamType: $iptBonusDamType.val(),
 								});
 
 								const setState = (state) => {
@@ -2611,9 +2623,9 @@ class CreatureBuilder extends Builder {
 								<div class="flex-v-center flex-h-right mt-2 pb-1 px-1">${$btnConfirm}${$btnReset}</div>
 								</div>`.appendTo($modalInner)
 							});
-						}
-					}
-				]
+						},
+					},
+				],
 			});
 	}
 
@@ -2686,7 +2698,7 @@ class CreatureBuilder extends Builder {
 		const getState = () => {
 			const out = {
 				name: $iptName.val().trim(),
-				entries: UiUtil.getTextAsEntries($iptEntries.val())
+				entries: UiUtil.getTextAsEntries($iptEntries.val()),
 			};
 
 			// additional state for variant inputs
@@ -2720,7 +2732,7 @@ class CreatureBuilder extends Builder {
 				swapee.$iptEntries.css({height: out.$iptEntries.css("height")});
 				out.$iptEntries.css({height: cacheDim.h});
 			},
-			$wrpRowsOuter: options.$wrpRowsOuter
+			$wrpRowsOuter: options.$wrpRowsOuter,
 		}) : null;
 
 		const $iptEntries = $(`<textarea class="form-control form-control--minimal resize-vertical mb-2"/>`)
@@ -2742,7 +2754,7 @@ class CreatureBuilder extends Builder {
 				const pageRaw = $iptPage.val();
 				const out = {
 					source: $selVariantSource.val().unescapeQuotes(),
-					page: !isNaN(pageRaw) ? UiUtil.strToInt(pageRaw) : pageRaw
+					page: !isNaN(pageRaw) ? UiUtil.strToInt(pageRaw) : pageRaw,
 				};
 				if (!out.source) return null;
 				if (!out.page) delete out.page;
@@ -2791,27 +2803,47 @@ class CreatureBuilder extends Builder {
 	__$getLegendaryGroupInput (cb) {
 		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Legendary Group");
 
-		const _GROUPS = this._legendaryGroups
-			.map(({name, source}) => ({name, source}))
-			.sort((a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source));
+		this._buildLegendaryGroupCache(); // Reload this cache, as the legendary group builder might have modified legendary groups
 
-		const $selGroup = $(`<select class="form-control form-control--minimal input-xs"><option value="-1">None</option></select>`)
+		this._$selLegendaryGroup = $(`<select class="form-control form-control--minimal input-xs"><option value="-1">None</option></select>`)
 			.change(() => {
-				const ix = Number($selGroup.val());
-				if (~ix) this._state.legendaryGroup = _GROUPS[ix];
+				const ix = Number(this._$selLegendaryGroup.val());
+				if (~ix) this._state.legendaryGroup = this._legendaryGroupCache[ix];
 				else delete this._state.legendaryGroup;
 				cb();
 			})
 			.appendTo($rowInner);
 
-		_GROUPS.filter(it => it.source).forEach((g, i) => $selGroup.append(`<option value="${i}">${g.name}${g.source === SRC_MM ? "" : ` [${Parser.sourceJsonToAbv(g.source)}]`}</option>`));
+		this._legendaryGroupCache.filter(it => it.source).forEach((g, i) => this._$selLegendaryGroup.append(`<option value="${i}">${g.name}${g.source === SRC_MM ? "" : ` [${Parser.sourceJsonToAbv(g.source)}]`}</option>`));
 
-		if (this._state.legendaryGroup) {
-			const ix = _GROUPS.findIndex(it => it.name === this._state.legendaryGroup.name && it.source === this._state.legendaryGroup.source);
-			$selGroup.val(`${ix}`);
-		}
+		this._handleLegendaryGroupChange();
 
 		return $row;
+	}
+
+	_buildLegendaryGroupCache () {
+		const baseLegendaryGroups = Object.values(DataUtil.monster.metaGroupMap).map(obj => Object.values(obj)).flat();
+		this._legendaryGroups = [...baseLegendaryGroups, ...(BrewUtil.homebrew.legendaryGroup || [])];
+
+		this._legendaryGroupCache = this._legendaryGroups
+			.map(({name, source}) => ({name, source}))
+			.sort((a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source));
+	}
+
+	_handleLegendaryGroupChange () {
+		if (!this._$selLegendaryGroup) return;
+
+		if (this._state.legendaryGroup) {
+			const ix = this._legendaryGroupCache.findIndex(it => it.name === this._state.legendaryGroup.name && it.source === this._state.legendaryGroup.source);
+			this._$selLegendaryGroup.val(`${ix}`);
+		} else {
+			this._$selLegendaryGroup.val(`-1`);
+		}
+	}
+
+	updateLegendaryGroups () {
+		this._buildLegendaryGroupCache();
+		this._handleLegendaryGroupChange(); // ensure the index is up-to-date
 	}
 
 	__$getVariantInput (cb) {
@@ -2835,10 +2867,10 @@ class CreatureBuilder extends Builder {
 						type: "image",
 						href: {
 							type: "external",
-							url: val
-						}
+							url: val,
+						},
 					},
-					{isBookContent: true}
+					{isBookContent: true},
 				);
 				Renderer.hover.getShowWindow(
 					$content,
@@ -2846,8 +2878,8 @@ class CreatureBuilder extends Builder {
 					{
 						isPermanent: true,
 						title: "Token Preview",
-						isBookContent: true
-					}
+						isBookContent: true,
+					},
 				);
 			});
 
@@ -2950,8 +2982,8 @@ class CreatureBuilder extends Builder {
 					{
 						isPermanent: true,
 						title: "Image Preview",
-						isBookContent: true
-					}
+						isBookContent: true,
+					},
 				);
 			});
 
@@ -2963,7 +2995,7 @@ class CreatureBuilder extends Builder {
 			});
 
 		const $dragOrder = BuilderUi.$getDragPad(doUpdateOrder, imageRows, out, {
-			$wrpRowsOuter: options.$wrpRowsOuter
+			$wrpRowsOuter: options.$wrpRowsOuter,
 		});
 
 		out.$ele = $$`<div class="flex-v-center mb-2 mkbru__wrp-rows--removable">${$iptUrl}${$btnPreview}${$btnRemove}${$dragOrder}</div>`;
@@ -3037,7 +3069,7 @@ class CreatureBuilder extends Builder {
 				const raw = $iptEnv.val().toLowerCase().trim();
 				return raw || false;
 			},
-			$ele: $$`<label class="flex-v-center split stripe-odd--faint mt-2"><span>${$iptEnv}</span>${$cb}${$btnRemove}</label>`
+			$ele: $$`<label class="flex-v-center split stripe-odd--faint mt-2"><span>${$iptEnv}</span>${$cb}${$btnRemove}</label>`,
 		};
 
 		envRows.push(out);
@@ -3056,7 +3088,7 @@ class CreatureBuilder extends Builder {
 			} else {
 				this._state.soundClip = {
 					type: "external",
-					url
+					url,
 				}
 			}
 
@@ -3098,7 +3130,7 @@ class CreatureBuilder extends Builder {
 			isImageTab: false,
 			$content: $tblInfo,
 			entity: this._state,
-			pFnGetFluff: Renderer.monster.pGetFluff
+			pFnGetFluff: Renderer.monster.pGetFluff,
 		});
 
 		// images
@@ -3107,7 +3139,7 @@ class CreatureBuilder extends Builder {
 			isImageTab: true,
 			$content: $tblImages,
 			entity: this._state,
-			pFnGetFluff: Renderer.monster.pGetFluff
+			pFnGetFluff: Renderer.monster.pGetFluff,
 		});
 
 		// data
@@ -3118,9 +3150,9 @@ class CreatureBuilder extends Builder {
 				{
 					type: "code",
 					name: `Data`,
-					preformatted: JSON.stringify(DataUtil.cleanJson(MiscUtil.copy(this._state)), null, "\t")
-				}
-			]
+					preformatted: JSON.stringify(DataUtil.cleanJson(MiscUtil.copy(this._state)), null, "\t"),
+				},
+			],
 		});
 		$tblData.append(Renderer.utils.getBorderTr());
 		$tblData.append(`<tr><td colspan="6">${asJson}</td></tr>`);
@@ -3161,11 +3193,11 @@ CreatureBuilder._ALIGNMENTS = [
 	["NX", "C", "G", "NY", "E"],
 	["L", "NX", "C", "NY", "G"],
 	["L", "NX", "C", "NY", "E"],
-	["NX", "L", "G", "NY", "E"]
+	["NX", "L", "G", "NY", "E"],
 ];
 CreatureBuilder._AC_COMMON = {
 	"Unarmored Defense": "unarmored defense",
-	"Natural Armor": "natural armor"
+	"Natural Armor": "natural armor",
 };
 CreatureBuilder._LANGUAGE_BLACKLIST = new Set(["CS", "X", "XX"]);
 CreatureBuilder._rowSortOrder = 0;

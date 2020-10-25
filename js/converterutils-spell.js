@@ -86,10 +86,23 @@ class MiscTagsTagger {
 		if (/you summon/ig.test(strEntries)) tags.add("SMN");
 		if (/you can see/ig.test(strEntries)) tags.add("SGT");
 
+		MiscTagsTagger._WALKER = MiscTagsTagger._WALKER || MiscUtil.getWalker({isNoModification: true, keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
+		MiscTagsTagger._WALKER.walk(
+			sp.entries,
+			{
+				string: (str) => {
+					if ((str.includes("bonus") || str.includes("penalty")) && str.includes("AC")) tags.add("MAC");
+					if (/target's (?:base )?AC becomes/.exec(str)) tags.add("MAC");
+					if (/target's AC can't be less than/.exec(str)) tags.add("MAC");
+				},
+			},
+		);
+
 		sp.miscTags = [...tags].sort(SortUtil.ascSortLower);
 		if (!sp.miscTags.length) delete sp.miscTags;
 	}
 }
+MiscTagsTagger._WALKER = null;
 
 class ScalingLevelDiceTagger {
 	static tryRun (sp, options) {
@@ -125,13 +138,13 @@ class ScalingLevelDiceTagger {
 						1: rolls[0],
 						5: rolls[1],
 						11: rolls[2],
-						17: rolls[3]
+						17: rolls[3],
 					} : {
 						1: rolls[0],
 						5: rolls[2],
 						11: rolls[3],
-						17: rolls[4]
-					}
+						17: rolls[4],
+					},
 			}
 		} else if (sp.entries.length === 2 && sp.entries.filter(it => typeof it === "string").length === 2) {
 			const rollsFirstLine = [];
@@ -157,8 +170,8 @@ class ScalingLevelDiceTagger {
 						1: rollsFirstLine[0],
 						5: rollsSecondLine[0],
 						11: rollsSecondLine[1],
-						17: rollsSecondLine[2]
-					}
+						17: rollsSecondLine[2],
+					},
 				};
 			}
 		}
@@ -174,6 +187,6 @@ if (typeof module !== "undefined") {
 		AbilityCheckTagger,
 		SpellAttackTagger,
 		MiscTagsTagger,
-		ScalingLevelDiceTagger
+		ScalingLevelDiceTagger,
 	};
 }

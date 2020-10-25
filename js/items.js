@@ -39,7 +39,7 @@ class ItemsPage {
 			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 				<span class="col-3-5 pl-0 bold">${item.name}</span>
 				<span class="col-4-5">${type}</span>
-				<span class="col-1-5 text-center">${item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, true).replace(/ +/g, "\u00A0") : "\u2014"}</span>
+				<span class="col-1-5 text-center">${item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, {isShortForm: true}).replace(/ +/g, "\u00A0") : "\u2014"}</span>
 				<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
 				<span class="col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
@@ -53,12 +53,12 @@ class ItemsPage {
 					source,
 					type,
 					cost: item.value || 0,
-					weight: Parser.weightValueToNumber(item.weight)
+					weight: Parser.weightValueToNumber(item.weight),
 				},
 				{
 					uniqueId: item.uniqueId ? item.uniqueId : itI,
-					isExcluded
-				}
+					isExcluded,
+				},
 			);
 			eleLi.addEventListener("click", (evt) => this._mundaneList.doSelect(listItem, evt));
 			eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._mundaneList, listItem));
@@ -83,9 +83,9 @@ class ItemsPage {
 					type,
 					rarity: item.rarity,
 					attunement: item._attunementCategory !== "No",
-					weight: Parser.weightValueToNumber(item.weight)
+					weight: Parser.weightValueToNumber(item.weight),
 				},
-				{uniqueId: item.uniqueId ? item.uniqueId : itI}
+				{uniqueId: item.uniqueId ? item.uniqueId : itI},
 			);
 			eleLi.addEventListener("click", (evt) => this._magicList.doSelect(listItem, evt));
 			eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._magicList, listItem));
@@ -113,7 +113,7 @@ class ItemsPage {
 			<a href="#${hash}" class="lst--border">
 				<span class="bold col-6 pl-0">${item.name}</span>
 				<span class="text-center col-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
-				<span class="text-center col-2">${item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, true).replace(/ +/g, "\u00A0") : "\u2014"}</span>
+				<span class="text-center col-2">${item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, {isShortForm: true}).replace(/ +/g, "\u00A0") : "\u2014"}</span>
 				${$dispCount}
 			</a>
 		</li>`.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -127,11 +127,11 @@ class ItemsPage {
 				source: Parser.sourceJsonToAbv(item.source),
 				weight: Parser.weightValueToNumber(item.weight),
 				cost: item.value || 0,
-				count
+				count,
 			},
 			{
-				$elesCount: [$dispCount]
-			}
+				$elesCount: [$dispCount],
+			},
 		);
 		return listItem;
 	}
@@ -150,24 +150,24 @@ class ItemsPage {
 				isImageTab,
 				$content,
 				entity: item,
-				pFnGetFluff: Renderer.item.pGetFluff
+				pFnGetFluff: Renderer.item.pGetFluff,
 			});
 		}
 
 		const statTab = Renderer.utils.tabButton(
 			"Item",
 			() => {},
-			buildStatsTab
+			buildStatsTab,
 		);
 		const infoTab = Renderer.utils.tabButton(
 			"Info",
 			() => {},
-			buildFluffTab
+			buildFluffTab,
 		);
 		const picTab = Renderer.utils.tabButton(
 			"Images",
 			() => {},
-			buildFluffTab.bind(null, true)
+			buildFluffTab.bind(null, true),
 		);
 
 		// only display the "Info" tab if there's some fluff info--currently (2018-12-13), no official item has text fluff
@@ -216,7 +216,7 @@ class ItemsPage {
 						isResolveItem: true,
 						default: ~defaultSel ? defaultSel : 0,
 						title: "Select Currency Conversion Table",
-						fnDisplay: it => it === null ? values[0] : it
+						fnDisplay: it => it === null ? values[0] : it,
 					});
 					if (userSel == null) return;
 					this._sublistCurrencyConversion = userSel === values[0] ? null : userSel;
@@ -251,7 +251,7 @@ class ItemsPage {
 						isResolveItem: true,
 						default: ~defaultSel ? defaultSel : 0,
 						title: "Select Display Mode",
-						fnDisplay: it => it === null ? modes[0] : it
+						fnDisplay: it => it === null ? modes[0] : it,
 					});
 					if (userSel == null) return;
 					this._sublistCurrencyDisplayMode = userSel === modes[0] ? null : userSel;
@@ -270,7 +270,7 @@ class ItemsPage {
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
-			$btnReset: $(`#reset`)
+			$btnReset: $(`#reset`),
 		});
 
 		return this._pPopulateTablesAndFilters({item: await Renderer.item.pBuildList({isAddGroups: true, isBlacklistVariants: true})});
@@ -279,11 +279,11 @@ class ItemsPage {
 	async _pPopulateTablesAndFilters (data) {
 		this._mundaneList = ListUtil.initList({
 			listClass: "mundane",
-			fnSort: PageFilterItems.sortItems
+			fnSort: PageFilterItems.sortItems,
 		});
 		this._magicList = ListUtil.initList({
 			listClass: "magic",
-			fnSort: PageFilterItems.sortItems
+			fnSort: PageFilterItems.sortItems,
 		});
 		this._mundaneList.nextList = this._magicList;
 		this._magicList.prevList = this._mundaneList;
@@ -341,7 +341,7 @@ class ItemsPage {
 		// filtering function
 		$(itemsPage._pageFilter.filterBox).on(
 			FilterBox.EVNT_VALCHANGE,
-			itemsPage.handleFilterChange.bind(itemsPage)
+			itemsPage.handleFilterChange.bind(itemsPage),
 		);
 
 		SortUtil.initBtnSortHandlers($("#filtertools-mundane"), this._mundaneList);
@@ -351,7 +351,7 @@ class ItemsPage {
 			listClass: "subitems",
 			fnSort: PageFilterItems.sortItems,
 			getSublistRow: itemsPage.getSublistItem.bind(itemsPage),
-			onUpdate: itemsPage.onSublistChange.bind(itemsPage)
+			onUpdate: itemsPage.onSublistChange.bind(itemsPage),
 		});
 		SortUtil.initBtnSortHandlers($("#sublistsort"), this._subList);
 		ListUtil.initGenericAddable();
@@ -381,10 +381,10 @@ class ItemsPage {
 						_properties: {name: "Properties", transform: it => Renderer.item.getDamageAndPropertiesText(it).filter(Boolean).join(", ")},
 						_weight: {name: "Weight", transform: it => Parser.itemWeightToFull(it)},
 						_value: {name: "Value", transform: it => Parser.itemValueToFullMultiCurrency(it)},
-						_entries: {name: "Text", transform: (it) => Renderer.item.getRenderedEntries(it, true), flex: 3}
+						_entries: {name: "Text", transform: (it) => Renderer.item.getRenderedEntries(it, true), flex: 3},
 					},
 					{generator: ListUtil.basicFilterGenerator},
-					(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source)
+					(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source),
 				);
 
 				this._mundaneList.init();
@@ -429,15 +429,17 @@ class ItemsPage {
 		ListUtil.setOptions({
 			itemList: this._itemList,
 			getSublistRow: itemsPage.getSublistItem.bind(itemsPage),
-			primaryLists: [this._mundaneList, this._magicList]
+			primaryLists: [this._mundaneList, this._magicList],
 		});
 		ListUtil.bindAddButton();
 		ListUtil.bindSubtractButton();
 		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
 		Renderer.hover.bindPopoutButton($btnPop, this._itemList);
 		UrlUtil.bindLinkExportButton(itemsPage._pageFilter.filterBox);
-		ListUtil.bindDownloadButton();
-		ListUtil.bindUploadButton();
+		ListUtil.bindOtherButtons({
+			download: true,
+			upload: true,
+		});
 	}
 }
 

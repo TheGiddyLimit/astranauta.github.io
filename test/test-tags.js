@@ -579,7 +579,7 @@ class AreaCheck {
 	}
 }
 AreaCheck.errorSet = new Set();
-AreaCheck.fileMatcher = /^(adventure-).*\.json/;
+AreaCheck.fileMatcher = /\/(adventure-).*\.json/;
 
 class LootDataCheck {
 	static run () {

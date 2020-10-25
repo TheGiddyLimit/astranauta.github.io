@@ -14,31 +14,31 @@ class PageFilterOptionalFeatures extends PageFilter {
 			header: "Feature Type",
 			items: ["AI", "ED", "EI", "MM", "MV", "MV:B", "OTH", "FS:F", "FS:B", "FS:P", "FS:R", "PB"],
 			displayFn: Parser.optFeatureTypeToFull,
-			itemSortFn: PageFilterOptionalFeatures._filterFeatureTypeSort
+			itemSortFn: PageFilterOptionalFeatures._filterFeatureTypeSort,
 		});
 		this._pactFilter = new Filter({
 			header: "Pact Boon",
 			items: ["Blade", "Chain", "Tome"],
-			displayFn: Parser.prereqPactToFull
+			displayFn: Parser.prereqPactToFull,
 		});
 		this._patronFilter = new Filter({
 			header: "Otherworldly Patron",
 			items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker"],
-			displayFn: Parser.prereqPatronToShort
+			displayFn: Parser.prereqPatronToShort,
 		});
 		this._spellFilter = new Filter({
 			header: "Spell",
 			items: ["eldritch blast", "hex/curse"],
-			displayFn: StrUtil.toTitleCase
+			displayFn: StrUtil.toTitleCase,
 		});
 		this._featureFilter = new Filter({
 			header: "Feature",
-			displayFn: StrUtil.toTitleCase
+			displayFn: StrUtil.toTitleCase,
 		});
 		this._levelFilter = new Filter({
 			header: "Level",
 			itemSortFn: SortUtil.ascSortNumericalSuffix,
-			nests: []
+			nests: [],
 		});
 		this._prerequisiteFilter = new MultiFilter({
 			header: "Prerequisite",
@@ -47,10 +47,10 @@ class PageFilterOptionalFeatures extends PageFilter {
 				this._patronFilter,
 				this._spellFilter,
 				this._levelFilter,
-				this._featureFilter
-			]
+				this._featureFilter,
+			],
 		});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"], isSrdFilter: true});
 	}
 
 	mutateForFilters (it) {
@@ -83,13 +83,13 @@ class PageFilterOptionalFeatures extends PageFilter {
 					className = `(No Class)`;
 					item = new FilterItem({
 						item: `Level ${lvlMeta}`,
-						nest: className
+						nest: className,
 					});
 				} else {
 					className = lvlMeta.class ? lvlMeta.class.name : `(No Class)`;
 					item = new FilterItem({
 						item: `${lvlMeta.class ? className : ""}${lvlMeta.subclass ? ` (${lvlMeta.subclass.name})` : ""} Level ${lvlMeta.level}`,
-						nest: className
+						nest: className,
 					});
 				}
 
@@ -123,7 +123,7 @@ class PageFilterOptionalFeatures extends PageFilter {
 			this._sourceFilter,
 			this._typeFilter,
 			this._prerequisiteFilter,
-			this._miscFilter
+			this._miscFilter,
 		];
 	}
 
@@ -137,9 +137,9 @@ class PageFilterOptionalFeatures extends PageFilter {
 				it._fPrereqPatron,
 				it._fprereqSpell,
 				it._fPrereqLevel,
-				it._fprereqFeature
+				it._fprereqFeature,
 			],
-			it._fMisc
+			it._fMisc,
 		)
 	}
 }

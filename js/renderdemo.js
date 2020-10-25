@@ -53,7 +53,7 @@ async function initDemo (data, rendererType) {
 	editor.setOptions({
 		wrap: true,
 		showPrintMargin: false,
-		tabSize: 2
+		tabSize: 2,
 	});
 
 	function demoRender () {

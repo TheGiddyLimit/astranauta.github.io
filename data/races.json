@@ -153,7 +153,6 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Damage Resistance",
 				"Spellcasting"
 			],
 			"languageProficiencies": [
@@ -161,6 +160,10 @@
 					"common": true,
 					"celestial": true
 				}
+			],
+			"resist": [
+				"necrotic",
+				"radiant"
 			],
 			"soundClip": {
 				"type": "internal",
@@ -253,7 +256,6 @@
 			},
 			"darkvision": 60,
 			"traitTags": [
-				"Damage Resistance",
 				"Spellcasting"
 			],
 			"languageProficiencies": [
@@ -261,6 +263,10 @@
 					"common": true,
 					"celestial": true
 				}
+			],
+			"resist": [
+				"necrotic",
+				"radiant"
 			],
 			"soundClip": {
 				"type": "internal",
@@ -420,7 +426,6 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Damage Resistance",
 				"Skill Proficiency"
 			],
 			"languageProficiencies": [
@@ -433,6 +438,9 @@
 				{
 					"intimidation": true
 				}
+			],
+			"resist": [
+				"necrotic"
 			],
 			"entries": [
 				{
@@ -1475,13 +1483,25 @@
 				"weightMod": "2d6"
 			},
 			"traitTags": [
-				"Damage Resistance",
 				"Uncommon Race"
 			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"draconic": true
+				}
+			],
+			"resist": [
+				{
+					"choose": {
+						"from": [
+							"acid",
+							"cold",
+							"fire",
+							"lightning",
+							"poison"
+						]
+					}
 				}
 			],
 			"soundClip": {
@@ -1621,6 +1641,7 @@
 					],
 					"darkvision": 60,
 					"traitTags": [],
+					"resist": null,
 					"entries": [
 						{
 							"type": "entries",
@@ -1733,6 +1754,7 @@
 					],
 					"darkvision": 60,
 					"traitTags": [],
+					"resist": null,
 					"entries": [
 						{
 							"type": "entries",
@@ -1839,6 +1861,7 @@
 			"name": "Dwarf",
 			"source": "PHB",
 			"page": 18,
+			"srd": true,
 			"size": "M",
 			"speed": 25,
 			"ability": [
@@ -1848,7 +1871,6 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Damage Resistance",
 				"Weapon Proficiency",
 				"Tool Proficiency",
 				"Skill Proficiency"
@@ -1858,6 +1880,9 @@
 					"common": true,
 					"dwarvish": true
 				}
+			],
+			"resist": [
+				"poison"
 			],
 			"soundClip": {
 				"type": "internal",
@@ -1953,7 +1978,6 @@
 					],
 					"darkvision": 120,
 					"traitTags": [
-						"Damage Resistance",
 						"Spellcasting"
 					],
 					"languageProficiencies": [
@@ -2203,7 +2227,6 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Damage Resistance",
 				"Skill Proficiency",
 				"Tool Proficiency"
 			],
@@ -2212,6 +2235,9 @@
 					"common": true,
 					"dwarvish": true
 				}
+			],
+			"resist": [
+				"poison"
 			],
 			"entries": [
 				{
@@ -2283,6 +2309,7 @@
 			"name": "Elf",
 			"source": "PHB",
 			"page": 21,
+			"srd": true,
 			"size": "M",
 			"speed": 30,
 			"ability": [
@@ -2667,7 +2694,7 @@
 						{
 							"name": "Grugach Weapon Training",
 							"entries": [
-								"You have proficiency with the spear, shortbow, longbow, and net."
+								"You have proficiency with the {@item spear|phb}, {@item shortbow|phb}, {@item longbow|phb}, and {@item net|phb}."
 							],
 							"type": "entries"
 						},
@@ -3089,8 +3116,8 @@
 						"baseWeight": 90,
 						"weightMod": "1d4"
 					},
-					"traitTags": [
-						"Damage Resistance"
+					"resist": [
+						"necrotic"
 					],
 					"entries": [
 						{
@@ -3120,8 +3147,7 @@
 						}
 					],
 					"traitTags": [
-						"Spellcasting",
-						"Damage Resistance"
+						"Spellcasting"
 					],
 					"languageProficiencies": [
 						{
@@ -3941,8 +3967,10 @@
 					],
 					"darkvision": 60,
 					"traitTags": [
-						"Damage Resistance",
 						"Spellcasting"
+					],
+					"resist": [
+						"fire"
 					],
 					"additionalSpells": [
 						{
@@ -3994,9 +4022,11 @@
 						}
 					],
 					"traitTags": [
-						"Damage Resistance",
 						"Amphibious",
 						"Spellcasting"
+					],
+					"resist": [
+						"acid"
 					],
 					"additionalSpells": [
 						{
@@ -4475,6 +4505,7 @@
 			"name": "Gnome",
 			"source": "PHB",
 			"page": 35,
+			"srd": true,
 			"size": "S",
 			"speed": 25,
 			"ability": [
@@ -5339,14 +5370,17 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Natural Armor",
-				"Damage Resistance"
+				"Natural Armor"
 			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"goblin": true
 				}
+			],
+			"resist": [
+				"fire",
+				"psychic"
 			],
 			"entries": [
 				{
@@ -5447,38 +5481,6 @@
 		},
 		{
 			"name": "Goliath",
-			"source": "IDRotF",
-			"_copy": {
-				"name": "Goliath",
-				"source": "VGM",
-				"_mod": {
-					"entries": [
-						{
-							"mode": "replaceArr",
-							"replace": "Mountain Born",
-							"items": {
-								"name": "Mountain Born",
-								"type": "entries",
-								"entries": [
-									"You have resistance to cold damage. You're also acclimated to high altitude, including elevations above 20,000 feet."
-								]
-							}
-						},
-						{
-							"mode": "removeArr",
-							"names": "Alignment"
-						}
-					]
-				}
-			},
-			"traitTags": [
-				"Skill Proficiency",
-				"Powerful Build",
-				"Damage Resistance"
-			]
-		},
-		{
-			"name": "Goliath",
 			"source": "VGM",
 			"page": 108,
 			"otherSources": [
@@ -5489,6 +5491,9 @@
 				{
 					"source": "EGW",
 					"page": 175
+				},
+				{
+					"source": "IDRotF"
 				}
 			],
 			"size": "M",
@@ -5519,6 +5524,9 @@
 				{
 					"athletics": true
 				}
+			],
+			"resist": [
+				"cold"
 			],
 			"soundClip": {
 				"type": "internal",
@@ -5570,7 +5578,7 @@
 				{
 					"name": "Mountain Born",
 					"entries": [
-						"You're acclimated to high altitude, including elevations above 20,000 feet. You're also naturally adapted to cold climates, as described in chapter 5 of the Dungeon Master's Guide."
+						"You have resistance to cold damage. You're also acclimated to high altitude, including elevations above 20,000 feet."
 					],
 					"type": "entries"
 				},
@@ -5652,8 +5660,7 @@
 			],
 			"traitTags": [
 				"Skill Proficiency",
-				"Amphibious",
-				"Damage Immunity"
+				"Amphibious"
 			],
 			"languageProficiencies": [
 				{
@@ -5664,6 +5671,12 @@
 				{
 					"perception": true
 				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
 			],
 			"entries": [
 				{
@@ -6290,9 +6303,11 @@
 						}
 					],
 					"traitTags": [
-						"Damage Resistance",
 						"Spellcasting",
 						"Dragonmark"
+					],
+					"resist": [
+						"lightning"
 					],
 					"additionalSpells": [
 						{
@@ -6830,6 +6845,7 @@
 			"name": "Halfling",
 			"source": "PHB",
 			"page": 26,
+			"srd": true,
 			"size": "S",
 			"speed": 25,
 			"ability": [
@@ -7216,8 +7232,8 @@
 							"con": 1
 						}
 					],
-					"traitTags": [
-						"Damage Resistance"
+					"resist": [
+						"poison"
 					],
 					"entries": [
 						{
@@ -7402,6 +7418,7 @@
 			"name": "Human",
 			"source": "PHB",
 			"page": 29,
+			"srd": true,
 			"size": "M",
 			"speed": 30,
 			"heightAndWeight": {
@@ -8675,15 +8692,15 @@
 				"baseWeight": 110,
 				"weightMod": "1d6"
 			},
-			"traitTags": [
-				"Damage Resistance"
-			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"other": true,
 					"anyStandard": 1
 				}
+			],
+			"resist": [
+				"psychic"
 			],
 			"entries": [
 				{
@@ -8768,15 +8785,15 @@
 					}
 				}
 			],
-			"traitTags": [
-				"Damage Resistance"
-			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"other": true,
 					"anyStandard": 1
 				}
+			],
+			"resist": [
+				"psychic"
 			],
 			"entries": [
 				{
@@ -9066,8 +9083,8 @@
 			"speed": 30,
 			"ability": [
 				{
-					"str": -4,
-					"dex": 2
+					"dex": 2,
+					"str": -4
 				}
 			],
 			"darkvision": 60,
@@ -9119,8 +9136,7 @@
 			"speed": 30,
 			"ability": [
 				{
-					"dex": 2,
-					"str": -2
+					"dex": 2
 				}
 			],
 			"heightAndWeight": {
@@ -10704,14 +10720,19 @@
 			],
 			"traitTags": [
 				"Unarmed Strike",
-				"Tool Proficiency",
-				"Damage Immunity"
+				"Tool Proficiency"
 			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"other": true
 				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
 			],
 			"entries": [
 				{
@@ -11006,8 +11027,7 @@
 			"ability": [
 				{
 					"str": 2,
-					"con": 1,
-					"int": -2
+					"con": 1
 				}
 			],
 			"heightAndWeight": {
@@ -11030,7 +11050,18 @@
 			],
 			"skillProficiencies": [
 				{
-					"intimidation": true
+					"choose": {
+						"from": [
+							"animal handling",
+							"insight",
+							"intimidation",
+							"medicine",
+							"nature",
+							"perception",
+							"survival"
+						],
+						"count": 2
+					}
 				}
 			],
 			"entries": [
@@ -11070,9 +11101,9 @@
 					"type": "entries"
 				},
 				{
-					"name": "Menacing",
+					"name": "Primal Intuition",
 					"entries": [
-						"You are trained in the {@skill Intimidation} skill."
+						"You have proficiency in two of the following skills of your choice: {@skill Animal Handling}, {@skill Insight}, {@skill Intimidation}, {@skill Medicine}, {@skill Nature}, {@skill Perception}, and {@skill Survival}."
 					],
 					"type": "entries"
 				},
@@ -11189,8 +11220,8 @@
 					"con": 1
 				}
 			],
-			"traitTags": [
-				"Damage Resistance"
+			"resist": [
+				"necrotic"
 			],
 			"entries": [
 				{
@@ -12321,8 +12352,14 @@
 			"darkvision": 60,
 			"traitTags": [
 				"Improved Resting",
-				"NPC Race",
-				"Damage Immunity"
+				"NPC Race"
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"poisoned"
 			],
 			"entries": [
 				{
@@ -12466,6 +12503,7 @@
 			"name": "Tiefling",
 			"source": "PHB",
 			"page": 42,
+			"srd": true,
 			"size": "M",
 			"speed": 30,
 			"ability": [
@@ -12482,7 +12520,6 @@
 			},
 			"darkvision": 60,
 			"traitTags": [
-				"Damage Resistance",
 				"Uncommon Race",
 				"Spellcasting"
 			],
@@ -12491,6 +12528,9 @@
 					"common": true,
 					"infernal": true
 				}
+			],
+			"resist": [
+				"fire"
 			],
 			"soundClip": {
 				"type": "internal",
@@ -12578,6 +12618,7 @@
 						}
 					],
 					"traitTags": [
+						"Uncommon Race",
 						"Spellcasting"
 					],
 					"languageProficiencies": [
@@ -12586,6 +12627,7 @@
 							"abyssal": true
 						}
 					],
+					"resist": null,
 					"additionalSpells": [
 						{
 							"innate": {
@@ -12706,7 +12748,8 @@
 					],
 					"overwrite": {
 						"languageProficiencies": true,
-						"ability": true
+						"ability": true,
+						"traitTags": true
 					}
 				},
 				{
@@ -13436,7 +13479,6 @@
 						}
 					],
 					"traitTags": [
-						"Damage Resistance",
 						"Uncommon Race"
 					],
 					"additionalSpells": null,
@@ -13675,21 +13717,10 @@
 									"Tritons tend toward neutrality. Their culture encourages them to be mindful of life's currents, knowing when to harness fate's tides and when to flow along with them."
 								]
 							}
-						},
-						{
-							"mode": "appendArr",
-							"items": {
-								"name": "Darkvision",
-								"type": "entries",
-								"entries": [
-									"You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
-								]
-							}
 						}
 					]
 				}
-			},
-			"darkvision": 60
+			}
 		},
 		{
 			"name": "Triton",
@@ -13713,16 +13744,19 @@
 				"baseWeight": 90,
 				"weightMod": "2d4"
 			},
+			"darkvision": 60,
 			"traitTags": [
 				"Amphibious",
-				"Spellcasting",
-				"Damage Resistance"
+				"Spellcasting"
 			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"primordial": true
 				}
+			],
+			"resist": [
+				"cold"
 			],
 			"soundClip": {
 				"type": "internal",
@@ -13788,6 +13822,13 @@
 					"type": "entries"
 				},
 				{
+					"name": "Darkvision",
+					"type": "entries",
+					"entries": [
+						"You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+					]
+				},
+				{
 					"name": "Emissary of the Sea",
 					"entries": [
 						"Aquatic beasts have an extraordinary affinity with your people. You can communicate simple ideas with beasts that can breathe water. They can understand the meaning of your words, though you have no special ability to understand them in return."
@@ -13797,7 +13838,7 @@
 				{
 					"name": "Guardians of the Depths",
 					"entries": [
-						"Adapted to even the most extreme ocean depths, you have resistance to cold damage, and you ignore any of the drawbacks caused by a deep, underwater environment."
+						"Adapted to even the most extreme ocean depths, you have resistance to cold damage."
 					],
 					"type": "entries"
 				},
@@ -13892,14 +13933,14 @@
 				}
 			],
 			"darkvision": 60,
-			"traitTags": [
-				"Damage Resistance"
-			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"other": true
 				}
+			],
+			"resist": [
+				"necrotic"
 			],
 			"entries": [
 				{
@@ -13973,14 +14014,14 @@
 				}
 			],
 			"darkvision": 60,
-			"traitTags": [
-				"Damage Resistance"
-			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"other": true
 				}
+			],
+			"resist": [
+				"necrotic"
 			],
 			"entries": [
 				{
@@ -14459,7 +14500,6 @@
 			"traitTags": [
 				"Natural Armor",
 				"Improved Resting",
-				"Damage Resistance",
 				"Skill Proficiency"
 			],
 			"languageProficiencies": [
@@ -14497,6 +14537,12 @@
 						"count": 2
 					}
 				}
+			],
+			"resist": [
+				"poison"
+			],
+			"conditionImmune": [
+				"disease"
 			],
 			"entries": [
 				{
@@ -14596,6 +14642,9 @@
 					"anyStandard": 1
 				}
 			],
+			"conditionImmune": [
+				"disease"
+			],
 			"entries": [
 				{
 					"type": "entries",
@@ -14642,13 +14691,18 @@
 			"traitTags": [
 				"Natural Armor",
 				"Improved Resting",
-				"Damage Resistance",
 				"Skill Proficiency"
 			],
 			"languageProficiencies": [
 				{
 					"common": true
 				}
+			],
+			"resist": [
+				"poison"
+			],
+			"conditionImmune": [
+				"disease"
 			],
 			"entries": [
 				{
@@ -14898,7 +14952,6 @@
 			"traitTags": [
 				"Spellcasting",
 				"Monstrous Race",
-				"Damage Immunity",
 				"Magic Resistance"
 			],
 			"languageProficiencies": [
@@ -14907,6 +14960,12 @@
 					"abyssal": true,
 					"draconic": true
 				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
 			],
 			"additionalSpells": [
 				{
@@ -14999,8 +15058,14 @@
 			"darkvision": 60,
 			"traitTags": [
 				"Improved Resting",
-				"NPC Race",
-				"Damage Immunity"
+				"NPC Race"
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"poisoned"
 			],
 			"entries": [
 				{

@@ -13,7 +13,7 @@ class BackgroundPage extends ListPage {
 
 			sublistClass: "subbackgrounds",
 
-			dataProps: ["background"]
+			dataProps: ["background"],
 		});
 	}
 
@@ -40,12 +40,12 @@ class BackgroundPage extends ListPage {
 			{
 				hash,
 				source,
-				skills: bg._skillDisplay
+				skills: bg._skillDisplay,
 			},
 			{
 				uniqueId: bg.uniqueId || bgI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -80,8 +80,8 @@ class BackgroundPage extends ListPage {
 			{
 				hash,
 				source: Parser.sourceJsonToAbv(bg.source),
-				skills
-			}
+				skills,
+			},
 		);
 		return listItem;
 	}
@@ -100,25 +100,25 @@ class BackgroundPage extends ListPage {
 				isImageTab,
 				$content: $pgContent,
 				pFnGetFluff: Renderer.background.pGetFluff,
-				entity: bg
+				entity: bg,
 			});
 		};
 
 		const traitTab = Renderer.utils.tabButton(
 			"Traits",
 			() => {},
-			buildStatsTab
+			buildStatsTab,
 		);
 
 		const infoTab = Renderer.utils.tabButton(
 			"Info",
 			() => {},
-			buildFluffTab
+			buildFluffTab,
 		);
 		const picTab = Renderer.utils.tabButton(
 			"Images",
 			() => {},
-			buildFluffTab.bind(null, true)
+			buildFluffTab.bind(null, true),
 		);
 		Renderer.utils.bindTabButtons(traitTab, infoTab, picTab);
 

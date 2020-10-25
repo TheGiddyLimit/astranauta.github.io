@@ -302,14 +302,17 @@
 				"formula": "9d8 + 27"
 			},
 			"con": 16,
+			"languages": [
+				"Common",
+				"Dwarvish"
+			],
 			"hasToken": true,
 			"senseTags": [
 				"D"
 			],
 			"languageTags": [
 				"C",
-				"D",
-				"X"
+				"D"
 			],
 			"miscTags": [
 				"MW",
@@ -1088,7 +1091,7 @@
 				}
 			],
 			"size": "L",
-			"type": "beast",
+			"type": "monstrosity",
 			"alignment": [
 				"U"
 			],
@@ -1100,7 +1103,8 @@
 				"formula": "4d10 + 12"
 			},
 			"speed": {
-				"walk": 40
+				"walk": 40,
+				"climb": 30
 			},
 			"str": 16,
 			"dex": 17,
@@ -2194,7 +2198,7 @@
 				"name": "Stone Golem",
 				"source": "MM"
 			},
-			"size": "L",
+			"size": "H",
 			"hp": {
 				"average": 195,
 				"formula": "17d12 + 85"
@@ -5329,7 +5333,7 @@
 			"source": "SKT",
 			"page": 78,
 			"_copy": {
-				"name": "Guard",
+				"name": "Noble",
 				"source": "MM",
 				"_trait": {
 					"name": "Mountain Dwarf",
@@ -6403,7 +6407,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Turlang is a 9th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc 15}, {@hit 7} to hit with spell attacks). Turlang has the following wizard spells prepared:"
+						"Turlang is a 9th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc 15}, {@hit 7} to hit with spell attacks). Turlang has the following druid spells prepared:"
 					],
 					"spells": {
 						"0": {

@@ -1300,6 +1300,7 @@
 	{
 		"ver": "1.112.0",
 		"date": "2020-09-20",
+		"title": "Bugs, Not Features",
 		"txt": "- Added base pages (e.g. Bestiary, Spells) to Omnisearch\n- Added Expand/Collapse All button to Adventure/Book contents\n- Tweaked Bestiary Encounter Builder XP calculation to be more forgiving (and inline with KFC/DDB) at low levels\n- Some previously un-rollable tables of the form \"dXX + <variable>\" are now automatically converted to rollable tables\n- Added monster list appendices to Monster Manual, Volo's Guide to Monsters, and Mordenkainen's Tome of Foes\n- Fixed CR Scaler failing to scale certain skill formats\n- Fixed Creature Homebrew Builder failing to generate predefined traits in rare cases\n- (Fixed typos/added tags)"
 	},
 	{
@@ -1308,8 +1309,79 @@
 		"txt": "- (Fixed typos/added tags)"
 	},
 	{
-		"ver": "1.112.22",
+		"ver": "1.112.2",
 		"date": "2020-09-21",
 		"txt": "- Fixed page searches in Search page\n- Fixed Blacklist failing to add all subclass features when blacklisting a subclass\n- Fixed Omnisearch failing to respect subclass blacklist\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.112.3",
+		"date": "2020-09-25",
+		"txt": "- Fixed Bestiary Encounter Builder crashing when generating encounters with a high-level party\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.112.4",
+		"date": "2020-09-26",
+		"txt": "- Fixed \"simple\" rollable tables no longer being automatically detected as rollable\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.113.0",
+		"date": "2020-10-02",
+		"title": "Eye to the Future",
+		"txt": "- Updated content according to most recent errata\n- Added Tasha's Cauldron of Everything previews (two spells, two items)\n\n- Dice Roller\n  - Reworked to handle multiple modifiers to one roll, e.g. \"4d6r1kh3\"\n  - Added \"margin of success\" syntax (as per Foundry) to Dice Roller\n  - Text cursor now always moves to end of input box when cycling through history\n  - Fixed dice pool parsing issue where all numerical characters would be turned into a single number\n\n- Added \"Condition Immunity\" filter to Races page\n- Fixed subclass page numbering in Omnisearch results\n- (Homebrew) Spells page Misc filter now correctly accepts and displays user-defined tags\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.113.1",
+		"date": "2020-10-10",
+		"txt": "- Range filters now accept a value anywhere in their range, rather than requiring every value to fall within their range\n- Bestiary CR filter now considers Lair/Coven CRs when filtering\n- Added missing sidekick cards to DIP appendix\n- Added Race support to RPG Cards JSON Builder\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.113.2",
+		"date": "2020-10-10",
+		"txt": "- Added missing SRD tags on base races\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.113.3",
+		"date": "2020-10-12",
+		"txt": "- Fixed Bestiary Encounter Builder using only the last listed player group to calculate encounter XP thresholds\n- (Homebrew) Added \"status\" support\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.113.4",
+		"date": "2020-10-18",
+		"txt": "- Added VGM Booyahg statblocks\n- Fixed junk data appearing in filter \"magnet\" links\n- (Homebrew) Added rudimentary Legendary Group builder to Homebrew Builder\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.113.5",
+		"date": "2020-10-18",
+		"txt": "- (Fixed typo)"
+	},
+	{
+		"ver": "1.113.6",
+		"date": "2020-10-21",
+		"txt": "- Added missing DM maps to EGW adventures\n- Added Markdown viewing options to the Spells page, to match the Bestiary\n- (Homebrew) Fixed crash when searching adventures/books containing more exotic entry types\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.113.7",
+		"date": "2020-10-21",
+		"txt": "- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.113.8",
+		"date": "2020-10-23",
+		"txt": "- (Homebrew) Fixed crash when attempting to add a source in Homebrew Builder\n- (Homebrew) Fixed crash when attempting to load Homebrew Builder with local homebrew present\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.113.9",
+		"date": "2020-10-24",
+		"txt": "- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.113.10",
+		"date": "2020-10-24",
+		"txt": "- Converted \"Download Pinned List\" and \"Upload Pinned List\" buttons above statblocks/info to context menu\n- Added \"Edit in Homebrew Builder\" option to Bestiary and Spells statblock/info context menu\n- Added missing \"(rit.)\" text to spell level for ritual spells pinned in Spells page\n- Added \"Modifies AC\" to Spells page Components & Misc filter\n- Added MTF gith vehicle stubs to Vehicles page\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.113.11",
+		"date": "2020-10-25",
+		"txt": "- Added link from title \"source\" display to appropriate book/adventure, where available (to match the existing functionality for entities with page numbers)   \n- (Fixed typos/added tags)"
 	}
 ]

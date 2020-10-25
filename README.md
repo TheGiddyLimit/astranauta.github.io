@@ -4,7 +4,7 @@ Visit the [main site](https://5e.tools/5etools.html) or go to the unofficial Git
 
 [Join the 5etools Discord here!](https://discord.gg/nGvRCDs)
 
-[Support us Patreon](https://www.patreon.com/bePatron?u=22018559)
+[Support us on Patreon](https://www.patreon.com/bePatron?u=22018559)
 
 ## Help and Support
 

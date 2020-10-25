@@ -12,7 +12,7 @@ class VariantRulesPage extends ListPage {
 
 			sublistClass: "subvariantrules",
 
-			dataProps: ["variantrule"]
+			dataProps: ["variantrule"],
 		});
 	}
 
@@ -44,12 +44,12 @@ class VariantRulesPage extends ListPage {
 				hash,
 				search: searchStack.join(","),
 				source,
-				ruleType: rule.ruleType || ""
+				ruleType: rule.ruleType || "",
 			},
 			{
 				uniqueId: rule.uniqueId ? rule.uniqueId : rlI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -79,8 +79,8 @@ class VariantRulesPage extends ListPage {
 			it.name,
 			{
 				hash,
-				ruleType: it.ruleType || ""
-			}
+				ruleType: it.ruleType || "",
+			},
 		);
 		return listItem;
 	}

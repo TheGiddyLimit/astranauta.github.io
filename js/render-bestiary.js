@@ -58,22 +58,23 @@ class RenderBestiary {
 			}
 		})();
 
-		const renderedSources = (() => {
+		const htmlSourceAndEnvironment = (() => {
 			const srcCpy = {
 				source: mon.source,
-				sourceSub: mon.sourceSub,
 				page: mon.page,
+				srd: mon.srd,
+				sourceSub: mon.sourceSub,
 				otherSources: mon.otherSources,
 				additionalSources: mon.additionalSources,
-				externalSources: mon.externalSources
+				externalSources: mon.externalSources,
 			};
-			const additional = mon.additionalSources ? JSON.parse(JSON.stringify(mon.additionalSources)) : [];
+			const additional = mon.additionalSources ? MiscUtil.copy(mon.additionalSources) : [];
 			if (mon.variant && mon.variant.length > 1) {
 				mon.variant.forEach(v => {
 					if (v.variantSource) {
 						additional.push({
 							source: v.variantSource.source,
-							page: v.variantSource.page
+							page: v.variantSource.page,
 						})
 					}
 				})
@@ -82,7 +83,7 @@ class RenderBestiary {
 
 			const pageTrInner = Renderer.utils._getPageTrText(srcCpy);
 			if (mon.environment && mon.environment.length) {
-				return [pageTrInner, `<i>Environment: ${mon.environment.sort(SortUtil.ascSortLower).map(it => it.toTitleCase()).join(", ")}</i>`];
+				return [pageTrInner, `<div class="mb-1 mt-2"><b>Environment:</b> ${mon.environment.sort(SortUtil.ascSortLower).map(it => it.toTitleCase()).join(", ")}</div>`];
 			} else {
 				return [pageTrInner];
 			}
@@ -149,9 +150,20 @@ class RenderBestiary {
 
 		${renderedVariants ? `<tr>${renderedVariants}</tr>` : ""}
 		${mon.footer ? `<tr><td colspan=6 class="mon__sect-row-inner">${renderer.render({entries: mon.footer})}</td></tr>` : ""}
-		${renderedSources.length === 2
-		? `<tr><td colspan="4">${renderedSources[0]}</td><td colspan="2" class="text-right mr-2">${renderedSources[1]}</td></tr>`
-		: `<tr><td colspan="6">${renderedSources[0]}</td></tr>`}
+		${htmlSourceAndEnvironment.length === 2 ? `<tr><td colspan="6">${htmlSourceAndEnvironment[1]}</td></tr>` : ""}
+		<tr><td colspan="6">${htmlSourceAndEnvironment[0]}</td></tr>
+		${Renderer.utils.getBorderTr()}`;
+	}
+
+	static $getRenderedLegendaryGroup (legGroup) {
+		return $$`
+		${Renderer.utils.getBorderTr()}
+		${Renderer.utils.getNameTr(legGroup)}
+		<tr class="text"><td colspan="6" class="text">
+			${legGroup.lairActions && legGroup.lairActions.length ? Renderer.get().render({type: "entries", entries: [{type: "entries", name: "Lair Actions", entries: legGroup.lairActions}]}) : ""}
+			${legGroup.regionalEffects && legGroup.regionalEffects.length ? Renderer.get().render({type: "entries", entries: [{type: "entries", name: "Regional Effects", entries: legGroup.regionalEffects}]}) : ""}
+			${legGroup.mythicEncounter && legGroup.mythicEncounter.length ? Renderer.get().render({type: "entries", entries: [{type: "entries", name: `<i title="This will display the creature's name when this legendary group is referenced from a creature statblock." class="help--subtle">&lt;Creature Name&gt;</i> as a Mythic Encounter`, entries: legGroup.mythicEncounter}]}) : ""}
+		</td></tr>
 		${Renderer.utils.getBorderTr()}`;
 	}
 }

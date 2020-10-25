@@ -6,10 +6,11 @@ class PageFilterEquipment extends PageFilter {
 
 		this._typeFilter = new Filter({header: "Type", deselFn: (it) => PageFilterItems._DEFAULT_HIDDEN_TYPES.has(it), displayFn: StrUtil.toTitleCase});
 		this._propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});
-		this._costFilter = new RangeFilter({header: "Cost", min: 0, max: 100, isAllowGreater: true, suffix: "gp"});
+		this._costFilter = new RangeFilter({header: "Cost", min: 0, max: 100, isAllowGreater: true, suffix: " gp"});
+		this._weightFilter = new RangeFilter({header: "Weight", min: 0, max: 100, isAllowGreater: true, suffix: " lb."});
 		this._focusFilter = new Filter({header: "Spellcasting Focus", items: ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"]});
 		this._damageTypeFilter = new Filter({header: "Damage Type", displayFn: it => Parser.dmgTypeToFull(it).uppercaseFirst(), itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.dmgTypeToFull(a), Parser.dmgTypeToFull(b))});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Item Group", "SRD"]});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Item Group", "SRD"], isSrdFilter: true});
 		this._poisonTypeFilter = new Filter({header: "Poison Type", items: ["ingested", "injury", "inhaled", "contact"], displayFn: StrUtil.toTitleCase});
 	}
 
@@ -59,10 +60,11 @@ class PageFilterEquipment extends PageFilter {
 			this._typeFilter,
 			this._propertyFilter,
 			this._costFilter,
+			this._weightFilter,
 			this._focusFilter,
 			this._damageTypeFilter,
 			this._miscFilter,
-			this._poisonTypeFilter
+			this._poisonTypeFilter,
 		];
 	}
 
@@ -72,10 +74,11 @@ class PageFilterEquipment extends PageFilter {
 			it._typeListText,
 			it._fProperties,
 			it._fValue,
+			it.weight,
 			it._fFocus,
 			it.dmgType,
 			it._fMisc,
-			it.poisonTypes
+			it.poisonTypes,
 		);
 	}
 }
@@ -122,23 +125,23 @@ class PageFilterItems extends PageFilterEquipment {
 			displayFn: it => {
 				const [name, sourceJson] = it.split("|");
 				return `${name}${sourceJson ? ` (${Parser.sourceJsonToAbv(sourceJson)})` : ""}`
-			}
+			},
 		});
 		this._rarityFilter = new Filter({
 			header: "Rarity",
 			items: [...Parser.ITEM_RARITIES],
 			itemSortFn: null,
-			displayFn: StrUtil.toTitleCase
+			displayFn: StrUtil.toTitleCase,
 		});
 		this._attunementFilter = new Filter({header: "Attunement", items: ["Yes", "By...", "Optional", "No"], itemSortFn: null});
 		this._categoryFilter = new Filter({
 			header: "Category",
 			items: ["Basic", "Generic Variant", "Specific Variant", "Other"],
 			deselFn: (it) => it === "Specific Variant",
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._bonusFilter = new Filter({header: "Bonus", items: ["Armor Class", "Spell Attacks", "Saving Throws", "Weapon Attack and Damage Rolls", "Weapon Attack Rolls", "Weapon Damage Rolls"]});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Grants Proficiency", "Item Group", "Magic", "Mundane", "Sentient", "SRD"]});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Grants Proficiency", "Item Group", "Magic", "Mundane", "Sentient", "SRD"], isSrdFilter: true});
 		this._baseSourceFilter = new SourceFilter({header: "Base Source", selFn: null});
 	}
 
@@ -189,6 +192,7 @@ class PageFilterItems extends PageFilterEquipment {
 			this._attunementFilter,
 			this._categoryFilter,
 			this._costFilter,
+			this._weightFilter,
 			this._focusFilter,
 			this._damageTypeFilter,
 			this._bonusFilter,
@@ -196,7 +200,7 @@ class PageFilterItems extends PageFilterEquipment {
 			this._lootTableFilter,
 			this._baseSourceFilter,
 			this._poisonTypeFilter,
-			this._attachedSpellsFilter
+			this._attachedSpellsFilter,
 		];
 	}
 
@@ -211,6 +215,7 @@ class PageFilterItems extends PageFilterEquipment {
 			it._attunementCategory,
 			it._category,
 			it._fValue,
+			it.weight,
 			it._fFocus,
 			it.dmgType,
 			it._fBonus,
@@ -218,18 +223,25 @@ class PageFilterItems extends PageFilterEquipment {
 			it.lootTables,
 			it._baseSource,
 			it.poisonTypes,
-			it.attachedSpells
+			it.attachedSpells,
 		);
 	}
 }
 PageFilterItems._DEFAULT_HIDDEN_TYPES = new Set(["Treasure", "Futuristic", "Modern", "Renaissance"]);
 
 class ModalFilterItems extends ModalFilter {
-	constructor (namespace) {
+	/**
+	 * @param opts
+	 * @param opts.namespace
+	 * @param [opts.isRadio]
+	 * @param [opts.allData]
+	 */
+	constructor (opts) {
+		opts = opts || {};
 		super({
+			...opts,
 			modalTitle: "Items",
 			pageFilter: new PageFilterItems(),
-			namespace: namespace
 		})
 	}
 
@@ -237,7 +249,7 @@ class ModalFilterItems extends ModalFilter {
 		const btnMeta = [
 			{sort: "name", text: "Name", width: "5"},
 			{sort: "type", text: "Type", width: "5"},
-			{sort: "source", text: "Source", width: "1"}
+			{sort: "source", text: "Source", width: "1"},
 		];
 		return ModalFilter._$getFilterColumnHeaders(btnMeta);
 	}
@@ -259,35 +271,31 @@ class ModalFilterItems extends ModalFilter {
 		Renderer.item.enhanceItem(item);
 		pageFilter.mutateAndAddToFilters(item);
 
-		const eleLi = document.createElement("li");
-		eleLi.className = "row px-0";
+		const eleLabel = document.createElement("label");
+		eleLabel.className = "row lst--border no-select lst__wrp-cells";
 
 		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
 		const source = Parser.sourceJsonToAbv(item.source);
 		const type = item._typeListText.join(", ");
 
-		eleLi.innerHTML = `<label class="lst--border no-select">
-			<div class="lst__wrp-cells">
-				<div class="col-1 pl-0 flex-vh-center"><input type="checkbox" class="no-events"></div>
-				<span class="col-5 bold">${item.name}</span>
-				<span class="col-5">${type.uppercaseFirst()}</span>
-				<span class="col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
-			</div>
-		</label>`;
+		eleLabel.innerHTML = `<div class="col-1 pl-0 flex-vh-center"><input type="checkbox" class="no-events"></div>
+		<div class="col-5 bold">${item.name}</div>
+		<div class="col-5">${type.uppercaseFirst()}</div>
+		<div class="col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</div>`;
 
 		return new ListItem(
 			itI,
-			eleLi,
+			eleLabel,
 			item.name,
 			{
 				hash,
 				source,
 				sourceJson: item.source,
-				type
+				type,
 			},
 			{
-				cbSel: eleLi.firstElementChild.firstElementChild.firstElementChild.firstElementChild
-			}
+				cbSel: eleLabel.firstElementChild.firstElementChild,
+			},
 		);
 	}
 }

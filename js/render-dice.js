@@ -1,6 +1,6 @@
 Renderer.dice = {
 	SYSTEM_USER: {
-		name: "Avandra" // goddess of luck
+		name: "Avandra", // goddess of luck
 	},
 	POS_INFINITE: 100000000000000000000, // larger than this, and we start to see "e" numbers appear
 
@@ -114,7 +114,7 @@ Renderer.dice = {
 				if (e.which === 13) { // return
 					await Renderer.dice.pRoll2($iptRoll.val(), {
 						isUser: true,
-						name: "Anon"
+						name: "Anon",
 					});
 					$iptRoll.val("");
 				}
@@ -122,8 +122,10 @@ Renderer.dice = {
 			}).on("keydown", (e) => {
 				// arrow keys only work on keydown
 				if (e.which === 38) { // up arrow
-					Renderer.dice._prevHistory()
+					e.preventDefault();
+					Renderer.dice._prevHistory();
 				} else if (e.which === 40) { // down arrow
+					e.preventDefault();
 					Renderer.dice._nextHistory()
 				}
 			});
@@ -142,16 +144,14 @@ Renderer.dice = {
 		Renderer.dice.storage = await StorageUtil.pGet(VeCt.STORAGE_ROLLER_MACRO) || {};
 	},
 
-	_prevHistory: () => {
-		Renderer.dice._histIndex--;
-		Renderer.dice._cleanHistoryIndex();
-		Renderer.dice._$iptRoll.val(Renderer.dice._hist[Renderer.dice._histIndex]);
-	},
+	_prevHistory () { Renderer.dice._histIndex--; Renderer.dice._prevNextHistory_load(); },
+	_nextHistory () { Renderer.dice._histIndex++; Renderer.dice._prevNextHistory_load(); },
 
-	_nextHistory: () => {
-		Renderer.dice._histIndex++;
+	_prevNextHistory_load () {
 		Renderer.dice._cleanHistoryIndex();
-		Renderer.dice._$iptRoll.val(Renderer.dice._hist[Renderer.dice._histIndex]);
+		const nxtVal = Renderer.dice._hist[Renderer.dice._histIndex];
+		Renderer.dice._$iptRoll.val(nxtVal);
+		if (nxtVal) Renderer.dice._$iptRoll[0].selectionStart = Renderer.dice._$iptRoll[0].selectionEnd = nxtVal.length;
 	},
 
 	_cleanHistoryIndex: () => {
@@ -190,7 +190,7 @@ Renderer.dice = {
 				new ContextUtil.Action(
 					"Choose Roll",
 					null,
-					{isDisabled: true}
+					{isDisabled: true},
 				),
 				null,
 				...options.map(it => new ContextUtil.Action(
@@ -200,8 +200,8 @@ Renderer.dice = {
 						ctrlKey = ctrlKey || (evt.ctrlKey || evt.metaKey);
 						cpyRollData.toRoll = it;
 						return cpyRollData
-					}
-				))
+					},
+				)),
 			]);
 
 			chosenRollData = await ContextUtil.pOpenMenu(evt, menu);
@@ -270,9 +270,9 @@ Renderer.dice = {
 									rollDataCpy.toRoll += `+${fromScaling}`;
 									return rollDataCpy;
 								}
-							}
+							},
 						)
-					})
+					}),
 			]);
 
 			rollDataCpyToRoll = await ContextUtil.pOpenMenu(evt, menu);
@@ -408,7 +408,7 @@ Renderer.dice = {
 
 		const rolledBy = {
 			name: attemptToGetNameOfRoller(),
-			label: name != null ? name : attemptToGetNameOfRoll(ele)
+			label: name != null ? name : attemptToGetNameOfRoll(ele),
 		};
 
 		const modRollMeta = Renderer.dice.getEventModifiedRollMeta(evtMock, entry);
@@ -474,7 +474,10 @@ Renderer.dice = {
 	 */
 	async pRoll2 (str, rolledBy, opts) {
 		opts = opts || {};
-		str = str.trim();
+		str = str
+			.trim()
+			.replace(/\/r(?:oll)? /gi, "").trim() // Remove any leading "/r"s, for ease of use
+		;
 		if (!str) return;
 		if (rolledBy.isUser) Renderer.dice._addHistory(str);
 
@@ -591,12 +594,12 @@ Renderer.dice = {
 		if (opts.isResultUsed) {
 			return InputUiUtil.pGetUserNumber({
 				title,
-				$elePre: $dispDice
+				$elePre: $dispDice,
 			});
 		} else {
 			const {$modalInner} = UiUtil.getShowModal({
 				title,
-				isMinHeight0: true
+				isMinHeight0: true,
 			});
 			$dispDice.appendTo($modalInner);
 			return null;
@@ -653,6 +656,8 @@ Renderer.dice = {
 					<li>Count Successes greater; <span class="out-roll-item-code">2d4cs&gt;2</span></li>
 					<li>Count Successes greater equal; <span class="out-roll-item-code">2d4cs&gt;=3</span></li>
 
+					<li>Margin of Success; <span class="out-roll-item-code">2d4ms=4</span></li>
+
 					<li>Dice pools; <span class="out-roll-item-code">{2d8, 1d6}</span></li>
 					<li>Dice pools with modifiers; <span class="out-roll-item-code">{1d20+7, 10}kh1</span></li>
 
@@ -667,7 +672,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 				Use <span class="out-roll-item-code">${PREF_MACRO} remove myName</span> to remove a macro.<br>
 				Use <span class="out-roll-item-code">#myName</span> to roll a macro.<br>
 				Use <span class="out-roll-item-code">/clear</span> to clear the roller.`,
-				Renderer.dice.SYSTEM_USER
+				Renderer.dice.SYSTEM_USER,
 			);
 		} else if (com.startsWith(PREF_MACRO)) {
 			const [_, mode, ...others] = com.split(/\s+/);
@@ -757,10 +762,11 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 			Renderer.dice._$lastRolledBy = $(`<div class="out-roll-wrp"></div>`).data("name", name);
 			Renderer.dice._$outRoll.prepend(Renderer.dice._$lastRolledBy);
 		}
-	}
+	},
 };
 
 Renderer.dice.lang = {
+	// region Public API
 	validate3 (str) {
 		str = str.trim();
 
@@ -798,10 +804,11 @@ Renderer.dice.lang = {
 			return Renderer.dice.lang._parse3(lexed);
 		}
 	},
+	// endregion
 
 	// region Lexer
 	_M_NUMBER_CHAR: /[0-9.]/,
-	_M_SYMBOL_CHAR: /[-+/*^=><florceidhkxunavgs,]/,
+	_M_SYMBOL_CHAR: /[-+/*^=><florceidhkxunavgsm,]/,
 
 	_M_NUMBER: /^[\d.,]+$/,
 	_lex3 (str) {
@@ -810,7 +817,7 @@ Renderer.dice.lang = {
 			parenCount: 0,
 			braceCount: 0,
 			mode: null,
-			token: ""
+			token: "",
 		};
 
 		str = str
@@ -927,6 +934,11 @@ Renderer.dice.lang = {
 			case "cs>=": self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_GTEQ); break;
 			case "cs<": self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_LT); break;
 			case "cs<=": self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_LTEQ); break;
+			case "ms=": self.tokenStack.push(Renderer.dice.tk.MARGIN_SUCCESS_EXACT); break;
+			case "ms>": self.tokenStack.push(Renderer.dice.tk.MARGIN_SUCCESS_GT); break;
+			case "ms>=": self.tokenStack.push(Renderer.dice.tk.MARGIN_SUCCESS_GTEQ); break;
+			case "ms<": self.tokenStack.push(Renderer.dice.tk.MARGIN_SUCCESS_LT); break;
+			case "ms<=": self.tokenStack.push(Renderer.dice.tk.MARGIN_SUCCESS_LTEQ); break;
 			default: {
 				if (Renderer.dice.lang._M_NUMBER.test(self.token)) {
 					if (self.token.split(Parser._decimalSeparator).length > 2) throw new Error(`Syntax error: too many decimal separators <code>${self.token}</code>`);
@@ -945,7 +957,7 @@ Renderer.dice.lang = {
 			ixSym: -1,
 			syms: lexed,
 			sym: null,
-			lastAccepted: null
+			lastAccepted: null,
 		};
 
 		this._parse3_nextSym(self);
@@ -984,14 +996,27 @@ Renderer.dice.lang = {
 
 	_parse3_factor (self) {
 		if (this._parse3_accept(self, Renderer.dice.tk.TYP_NUMBER)) {
-			// Combine comma-separated parts
-			const syms = [self.lastAccepted];
-			while (this._parse3_accept(self, Renderer.dice.tk.COMMA)) {
-				const sym = this._parse3_expect(self, Renderer.dice.tk.TYP_NUMBER);
-				syms.push(sym);
+			// Workaround for comma-separated numbers--if we're inside a dice pool, treat the commas as dice pool separators.
+			//   Otherwise, merge together adjacent numbers.
+			let braceCount = 0;
+			self.syms.find(it => {
+				if (it.type === Renderer.dice.tk.BRACE_OPEN.type) braceCount++;
+				else if (it.type === Renderer.dice.tk.BRACE_CLOSE.type) braceCount--;
+				return it === self.sym;
+			});
+
+			if (braceCount) {
+				return new Renderer.dice.parsed.Factor(self.lastAccepted);
+			} else {
+				// Combine comma-separated parts
+				const syms = [self.lastAccepted];
+				while (this._parse3_accept(self, Renderer.dice.tk.COMMA)) {
+					const sym = this._parse3_expect(self, Renderer.dice.tk.TYP_NUMBER);
+					syms.push(sym);
+				}
+				const sym = Renderer.dice.tk.NUMBER(syms.map(it => it.value).join(""));
+				return new Renderer.dice.parsed.Factor(sym);
 			}
-			const sym = Renderer.dice.tk.NUMBER(syms.map(it => it.value).join(""));
-			return new Renderer.dice.parsed.Factor(sym);
 		} else if (
 			this._parse3_match(self, Renderer.dice.tk.FLOOR)
 			|| this._parse3_match(self, Renderer.dice.tk.CEIL)
@@ -1020,7 +1045,7 @@ Renderer.dice.lang = {
 			const modPart = [];
 			this._parse3__dice_modifiers(self, modPart);
 
-			return new Renderer.dice.parsed.Pool(children, modPart)
+			return new Renderer.dice.parsed.Pool(children, modPart[0])
 		} else {
 			if (self.sym) throw new Error(`Unexpected input: <code>${self.sym}</code>`);
 			else throw new Error(`Unexpected end of input`);
@@ -1043,7 +1068,10 @@ Renderer.dice.lang = {
 	},
 
 	_parse3__dice_modifiers (self, children) { // used in both dice and dice pools
-		if (
+		// Collect together all dice mods
+		const modsMeta = new Renderer.dice.lang.DiceModMeta();
+
+		while (
 			this._parse3_match(self, Renderer.dice.tk.DROP_HIGHEST)
 			|| this._parse3_match(self, Renderer.dice.tk.KEEP_HIGHEST)
 			|| this._parse3_match(self, Renderer.dice.tk.DROP_LOWEST)
@@ -1063,10 +1091,20 @@ Renderer.dice.lang = {
 			|| this._parse3_match(self, Renderer.dice.tk.COUNT_SUCCESS_GTEQ)
 			|| this._parse3_match(self, Renderer.dice.tk.COUNT_SUCCESS_LT)
 			|| this._parse3_match(self, Renderer.dice.tk.COUNT_SUCCESS_LTEQ)
+			|| this._parse3_match(self, Renderer.dice.tk.MARGIN_SUCCESS_EXACT)
+			|| this._parse3_match(self, Renderer.dice.tk.MARGIN_SUCCESS_GT)
+			|| this._parse3_match(self, Renderer.dice.tk.MARGIN_SUCCESS_GTEQ)
+			|| this._parse3_match(self, Renderer.dice.tk.MARGIN_SUCCESS_LT)
+			|| this._parse3_match(self, Renderer.dice.tk.MARGIN_SUCCESS_LTEQ)
 		) {
-			children.push(this._parse3_nextSym(self));
-			children.push(this._parse3_factor(self));
+			const nxtSym = this._parse3_nextSym(self);
+			const nxtFactor = this._parse3_factor(self);
+
+			if (nxtSym.isSuccessMode) modsMeta.isSuccessMode = true;
+			modsMeta.mods.push({modSym: nxtSym, numSym: nxtFactor});
 		}
+
+		if (modsMeta.mods.length) children.push(modsMeta);
 	},
 
 	_parse3_exponent (self) {
@@ -1098,7 +1136,17 @@ Renderer.dice.lang = {
 			children.push(this._parse3_term(self));
 		}
 		return new Renderer.dice.parsed.Expression(children);
-	}
+	},
+	// endregion
+
+	// region Utilities
+	DiceModMeta: class {
+		constructor () {
+			this.isDiceModifierGroup = true;
+			this.isSuccessMode = false;
+			this.mods = [];
+		}
+	},
 	// endregion
 };
 
@@ -1137,7 +1185,7 @@ Renderer.dice.tk = {
 	TYP_DICE: "DICE",
 	TYP_SYMBOL: "SYMBOL", // Cannot be created by lexing, only parsing
 
-	NUMBER (val) { return new Renderer.dice.tk.Token(Renderer.dice.tk.TYP_NUMBER, val); }
+	NUMBER (val) { return new Renderer.dice.tk.Token(Renderer.dice.tk.TYP_NUMBER, val); },
 };
 Renderer.dice.tk.PAREN_OPEN = Renderer.dice.tk._new("PAREN_OPEN", "(");
 Renderer.dice.tk.PAREN_CLOSE = Renderer.dice.tk._new("PAREN_CLOSE", ")");
@@ -1173,6 +1221,11 @@ Renderer.dice.tk.COUNT_SUCCESS_GT = Renderer.dice.tk._new("COUNT_SUCCESS_GT", "c
 Renderer.dice.tk.COUNT_SUCCESS_GTEQ = Renderer.dice.tk._new("COUNT_SUCCESS_GTEQ", "cs>=", {isDiceModifier: true, isSuccessMode: true});
 Renderer.dice.tk.COUNT_SUCCESS_LT = Renderer.dice.tk._new("COUNT_SUCCESS_LT", "cs<", {isDiceModifier: true, isSuccessMode: true});
 Renderer.dice.tk.COUNT_SUCCESS_LTEQ = Renderer.dice.tk._new("COUNT_SUCCESS_LTEQ", "cs<=", {isDiceModifier: true, isSuccessMode: true});
+Renderer.dice.tk.MARGIN_SUCCESS_EXACT = Renderer.dice.tk._new("MARGIN_SUCCESS_EXACT", "ms=", {isDiceModifier: true});
+Renderer.dice.tk.MARGIN_SUCCESS_GT = Renderer.dice.tk._new("MARGIN_SUCCESS_GT", "ms>", {isDiceModifier: true});
+Renderer.dice.tk.MARGIN_SUCCESS_GTEQ = Renderer.dice.tk._new("MARGIN_SUCCESS_GTEQ", "ms>=", {isDiceModifier: true});
+Renderer.dice.tk.MARGIN_SUCCESS_LT = Renderer.dice.tk._new("MARGIN_SUCCESS_LT", "ms<", {isDiceModifier: true});
+Renderer.dice.tk.MARGIN_SUCCESS_LTEQ = Renderer.dice.tk._new("MARGIN_SUCCESS_LTEQ", "ms<=", {isDiceModifier: true});
 
 Renderer.dice.AbstractSymbol = class {
 	constructor () { this.type = Renderer.dice.tk.TYP_SYMBOL; }
@@ -1185,10 +1238,8 @@ Renderer.dice.AbstractSymbol = class {
 	addToMeta (meta, html, text) {
 		if (!meta) return;
 		text = text || html;
-		meta.html = meta.html || [];
-		meta.text = meta.text || [];
-		meta.html.push(html);
-		meta.text.push(text);
+		(meta.html = meta.html || []).push(html);
+		(meta.text = meta.text || []).push(text);
 	}
 };
 
@@ -1203,135 +1254,187 @@ Renderer.dice.parsed = {
 	 * @param fnName
 	 * @param meta
 	 * @param vals
-	 * @param modNodes
+	 * @param nodeMod
 	 * @param opts Options object.
 	 * @param [opts.fnGetRerolls] Function which takes a set of rolls to be rerolled and generates the next set of rolls.
 	 * @param [opts.fnGetExplosions] Function which takes a set of rolls to be exploded and generates the next set of rolls.
+	 * @param [opts.faces]
 	 */
-	_handleModifiers (fnName, meta, vals, modNodes, opts) {
+	_handleModifiers (fnName, meta, vals, nodeMod, opts) {
 		opts = opts || {};
 
 		const displayVals = vals.slice(); // copy the array so we can sort the original
 
-		vals.sort(SortUtil.ascSortProp.bind(null, "val")).reverse();
+		const {mods} = nodeMod;
 
-		const [mod, modNumSym] = modNodes;
-		const modNum = modNumSym[fnName]();
+		for (const mod of mods) {
+			vals.sort(SortUtil.ascSortProp.bind(null, "val")).reverse();
 
-		switch (mod.type) {
-			case Renderer.dice.tk.DROP_HIGHEST.type:
-			case Renderer.dice.tk.KEEP_HIGHEST.type:
-			case Renderer.dice.tk.DROP_LOWEST.type:
-			case Renderer.dice.tk.KEEP_LOWEST.type: {
-				const isHighest = mod.type.endsWith("H");
+			const modNum = mod.numSym[fnName]();
 
-				const splitPoint = isHighest ? modNum : vals.length - modNum;
+			switch (mod.modSym.type) {
+				case Renderer.dice.tk.DROP_HIGHEST.type:
+				case Renderer.dice.tk.KEEP_HIGHEST.type:
+				case Renderer.dice.tk.DROP_LOWEST.type:
+				case Renderer.dice.tk.KEEP_LOWEST.type: {
+					const isHighest = mod.modSym.type.endsWith("H");
 
-				const highSlice = vals.slice(0, splitPoint);
-				const lowSlice = vals.slice(splitPoint, vals.length);
+					const splitPoint = isHighest ? modNum : vals.length - modNum;
 
-				switch (mod.type) {
-					case Renderer.dice.tk.DROP_HIGHEST.type:
-					case Renderer.dice.tk.KEEP_LOWEST.type:
-						highSlice.forEach(val => val.isDropped = true);
-						break;
-					case Renderer.dice.tk.KEEP_HIGHEST.type:
-					case Renderer.dice.tk.DROP_LOWEST.type:
-						lowSlice.forEach(val => val.isDropped = true);
-						break;
-					default: throw new Error(`Unimplemented!`);
-				}
-				break;
-			}
+					const highSlice = vals.slice(0, splitPoint);
+					const lowSlice = vals.slice(splitPoint, vals.length);
 
-			case Renderer.dice.tk.REROLL_EXACT.type:
-			case Renderer.dice.tk.REROLL_GT.type:
-			case Renderer.dice.tk.REROLL_GTEQ.type:
-			case Renderer.dice.tk.REROLL_LT.type:
-			case Renderer.dice.tk.REROLL_LTEQ.type: {
-				let fnPartition;
-				switch (mod.type) {
-					case Renderer.dice.tk.REROLL_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
-					case Renderer.dice.tk.REROLL_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
-					case Renderer.dice.tk.REROLL_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
-					case Renderer.dice.tk.REROLL_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
-					case Renderer.dice.tk.REROLL_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
-					default: throw new Error(`Unimplemented!`);
+					switch (mod.modSym.type) {
+						case Renderer.dice.tk.DROP_HIGHEST.type:
+						case Renderer.dice.tk.KEEP_LOWEST.type:
+							highSlice.forEach(val => val.isDropped = true);
+							break;
+						case Renderer.dice.tk.KEEP_HIGHEST.type:
+						case Renderer.dice.tk.DROP_LOWEST.type:
+							lowSlice.forEach(val => val.isDropped = true);
+							break;
+						default: throw new Error(`Unimplemented!`);
+					}
+					break;
 				}
 
-				const toReroll = vals.filter(val => fnPartition(val.val, modNum));
-				toReroll.forEach(val => val.isDropped = true);
+				case Renderer.dice.tk.REROLL_EXACT.type:
+				case Renderer.dice.tk.REROLL_GT.type:
+				case Renderer.dice.tk.REROLL_GTEQ.type:
+				case Renderer.dice.tk.REROLL_LT.type:
+				case Renderer.dice.tk.REROLL_LTEQ.type: {
+					let fnPartition;
+					switch (mod.modSym.type) {
+						case Renderer.dice.tk.REROLL_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
+						case Renderer.dice.tk.REROLL_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
+						case Renderer.dice.tk.REROLL_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
+						case Renderer.dice.tk.REROLL_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
+						case Renderer.dice.tk.REROLL_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
+						default: throw new Error(`Unimplemented!`);
+					}
 
-				const nuVals = opts.fnGetRerolls(toReroll);
+					const toReroll = vals.filter(val => fnPartition(val.val, modNum));
+					toReroll.forEach(val => val.isDropped = true);
 
-				vals.push(...nuVals);
-				displayVals.push(...nuVals);
-				break;
-			}
-
-			case Renderer.dice.tk.EXPLODE_EXACT.type:
-			case Renderer.dice.tk.EXPLODE_GT.type:
-			case Renderer.dice.tk.EXPLODE_GTEQ.type:
-			case Renderer.dice.tk.EXPLODE_LT.type:
-			case Renderer.dice.tk.EXPLODE_LTEQ.type: {
-				let fnPartition;
-				switch (mod.type) {
-					case Renderer.dice.tk.EXPLODE_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
-					case Renderer.dice.tk.EXPLODE_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
-					case Renderer.dice.tk.EXPLODE_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
-					case Renderer.dice.tk.EXPLODE_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
-					case Renderer.dice.tk.EXPLODE_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
-					default: throw new Error(`Unimplemented!`);
-				}
-
-				let tries = 999; // limit the maximum explosions to a sane amount
-				let lastLen;
-				let toExplodeNext = vals;
-				do {
-					lastLen = vals.length;
-
-					const [toExplode] = toExplodeNext.partition(roll => !roll.isExploded && fnPartition(roll.val, modNum));
-					toExplode.forEach(roll => roll.isExploded = true);
-
-					const nuVals = opts.fnGetExplosions(toExplode);
-
-					// cache the new rolls, to improve performance over massive explosion sets
-					toExplodeNext = nuVals;
+					const nuVals = opts.fnGetRerolls(toReroll);
 
 					vals.push(...nuVals);
 					displayVals.push(...nuVals);
-				} while (tries-- > 0 && vals.length !== lastLen);
-
-				if (!~tries) JqueryUtil.doToast({type: "warning", content: `Stopped exploding after 999 additional rolls.`});
-
-				break;
-			}
-
-			case Renderer.dice.tk.COUNT_SUCCESS_EXACT.type:
-			case Renderer.dice.tk.COUNT_SUCCESS_GT.type:
-			case Renderer.dice.tk.COUNT_SUCCESS_GTEQ.type:
-			case Renderer.dice.tk.COUNT_SUCCESS_LT.type:
-			case Renderer.dice.tk.COUNT_SUCCESS_LTEQ.type: {
-				let fnPartition;
-				switch (mod.type) {
-					case Renderer.dice.tk.COUNT_SUCCESS_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
-					case Renderer.dice.tk.COUNT_SUCCESS_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
-					case Renderer.dice.tk.COUNT_SUCCESS_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
-					case Renderer.dice.tk.COUNT_SUCCESS_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
-					case Renderer.dice.tk.COUNT_SUCCESS_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
-					default: throw new Error(`Unimplemented!`);
+					break;
 				}
 
-				const successes = vals.filter(val => fnPartition(val.val, modNum));
-				successes.forEach(val => val.isSuccess = true);
+				case Renderer.dice.tk.EXPLODE_EXACT.type:
+				case Renderer.dice.tk.EXPLODE_GT.type:
+				case Renderer.dice.tk.EXPLODE_GTEQ.type:
+				case Renderer.dice.tk.EXPLODE_LT.type:
+				case Renderer.dice.tk.EXPLODE_LTEQ.type: {
+					let fnPartition;
+					switch (mod.modSym.type) {
+						case Renderer.dice.tk.EXPLODE_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
+						case Renderer.dice.tk.EXPLODE_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
+						case Renderer.dice.tk.EXPLODE_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
+						case Renderer.dice.tk.EXPLODE_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
+						case Renderer.dice.tk.EXPLODE_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
+						default: throw new Error(`Unimplemented!`);
+					}
 
-				break;
+					let tries = 999; // limit the maximum explosions to a sane amount
+					let lastLen;
+					let toExplodeNext = vals;
+					do {
+						lastLen = vals.length;
+
+						const [toExplode] = toExplodeNext.partition(roll => !roll.isExploded && fnPartition(roll.val, modNum));
+						toExplode.forEach(roll => roll.isExploded = true);
+
+						const nuVals = opts.fnGetExplosions(toExplode);
+
+						// cache the new rolls, to improve performance over massive explosion sets
+						toExplodeNext = nuVals;
+
+						vals.push(...nuVals);
+						displayVals.push(...nuVals);
+					} while (tries-- > 0 && vals.length !== lastLen);
+
+					if (!~tries) JqueryUtil.doToast({type: "warning", content: `Stopped exploding after 999 additional rolls.`});
+
+					break;
+				}
+
+				case Renderer.dice.tk.COUNT_SUCCESS_EXACT.type:
+				case Renderer.dice.tk.COUNT_SUCCESS_GT.type:
+				case Renderer.dice.tk.COUNT_SUCCESS_GTEQ.type:
+				case Renderer.dice.tk.COUNT_SUCCESS_LT.type:
+				case Renderer.dice.tk.COUNT_SUCCESS_LTEQ.type: {
+					let fnPartition;
+					switch (mod.modSym.type) {
+						case Renderer.dice.tk.COUNT_SUCCESS_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
+						case Renderer.dice.tk.COUNT_SUCCESS_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
+						case Renderer.dice.tk.COUNT_SUCCESS_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
+						case Renderer.dice.tk.COUNT_SUCCESS_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
+						case Renderer.dice.tk.COUNT_SUCCESS_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
+						default: throw new Error(`Unimplemented!`);
+					}
+
+					const successes = vals.filter(val => fnPartition(val.val, modNum));
+					successes.forEach(val => val.isSuccess = true);
+
+					break;
+				}
+
+				case Renderer.dice.tk.MARGIN_SUCCESS_EXACT.type:
+				case Renderer.dice.tk.MARGIN_SUCCESS_GT.type:
+				case Renderer.dice.tk.MARGIN_SUCCESS_GTEQ.type:
+				case Renderer.dice.tk.MARGIN_SUCCESS_LT.type:
+				case Renderer.dice.tk.MARGIN_SUCCESS_LTEQ.type: {
+					const total = vals.map(it => it.val).reduce((valA, valB) => valA + valB, 0);
+
+					const subDisplayDice = displayVals.map(r => `[${Renderer.dice.parsed._rollToNumPart(r, opts.faces)}]`).join("+");
+
+					let delta;
+					let subDisplay;
+					switch (mod.modSym.type) {
+						case Renderer.dice.tk.MARGIN_SUCCESS_EXACT.type:
+						case Renderer.dice.tk.MARGIN_SUCCESS_GT.type:
+						case Renderer.dice.tk.MARGIN_SUCCESS_GTEQ.type: {
+							delta = total - modNum;
+
+							subDisplay = `(${subDisplayDice})-${modNum}`;
+
+							break;
+						}
+						case Renderer.dice.tk.MARGIN_SUCCESS_LT.type:
+						case Renderer.dice.tk.MARGIN_SUCCESS_LTEQ.type: {
+							delta = modNum - total;
+
+							subDisplay = `${modNum}-(${subDisplayDice})`;
+
+							break;
+						}
+						default: throw new Error(`Unimplemented!`);
+					}
+
+					while (vals.length) {
+						vals.pop();
+						displayVals.pop();
+					}
+
+					vals.push({val: delta});
+					displayVals.push({val: delta, htmlDisplay: subDisplay});
+
+					break;
+				}
+
+				default: throw new Error(`Unimplemented!`);
 			}
-
-			default: throw new Error(`Unimplemented!`);
 		}
 
 		return displayVals;
+	},
+
+	_rollToNumPart (r, faces) {
+		if (faces == null) return r.val;
+		return r.val === faces ? `<span class="rll__max--muted">${r.val}</span>` : r.val === 1 ? `<span class="rll__min--muted">${r.val}</span>` : r.val;
 	},
 
 	Function: class extends Renderer.dice.AbstractSymbol {
@@ -1389,10 +1492,10 @@ Renderer.dice.parsed = {
 	},
 
 	Pool: class extends Renderer.dice.AbstractSymbol {
-		constructor (nodesPool, nodesMod) {
+		constructor (nodesPool, nodeMod) {
 			super();
 			this._nodesPool = nodesPool;
-			this._nodesMod = nodesMod;
+			this._nodeMod = nodeMod;
 		}
 
 		evl (meta) { return this._invoke("evl", meta) }
@@ -1401,13 +1504,13 @@ Renderer.dice.parsed = {
 		max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
-			const vals = this._nodesPool.map((it, i) => {
+			const vals = this._nodesPool.map(it => {
 				const subMeta = {};
 				return {node: it, val: it[fnName](subMeta), meta: subMeta};
 			});
 
-			if (this._nodesMod.length && vals.length) {
-				const isSuccessMode = this._nodesMod[0].isSuccessMode;
+			if (this._nodeMod && vals.length) {
+				const isSuccessMode = this._nodeMod.isSuccessMode;
 
 				const modOpts = {
 					fnGetRerolls: toReroll => toReroll.map(val => {
@@ -1417,10 +1520,10 @@ Renderer.dice.parsed = {
 					fnGetExplosions: toExplode => toExplode.map(val => {
 						const subMeta = {};
 						return {node: val.node, val: val.node[fnName](subMeta), meta: subMeta};
-					})
+					}),
 				};
 
-				const displayVals = Renderer.dice.parsed._handleModifiers(fnName, meta, vals, this._nodesMod, modOpts);
+				const displayVals = Renderer.dice.parsed._handleModifiers(fnName, meta, vals, this._nodeMod, modOpts);
 
 				const asHtml = displayVals.map(v => {
 					const html = v.meta.html.join("");
@@ -1437,16 +1540,16 @@ Renderer.dice.parsed = {
 				if (isSuccessMode) {
 					return vals.filter(it => !it.isDropped && it.isSuccess).length;
 				} else {
-					return Math.sum(...vals.filter(it => !it.isDropped).map(it => it.val));
+					return vals.filter(it => !it.isDropped).map(it => it.val).sum();
 				}
 			} else {
 				this.addToMeta(meta, `${vals.map(it => `(${it.meta.html.join("")})`).join("+")}`, `${vals.map(it => `(${it.meta.text.join("")})`).join("+")}`);
-				return Math.sum(...vals.map(it => it.val));
+				return vals.map(it => it.val).sum();
 			}
 		}
 
 		toString () {
-			return `{${this._nodesPool.map(it => it.toString()).join(", ")}}${this._nodesMod.map(it => it.toString()).join("")}`
+			return `{${this._nodesPool.map(it => it.toString()).join(", ")}}${this._nodeMod.toString()}`;
 		}
 	},
 
@@ -1518,45 +1621,57 @@ Renderer.dice.parsed = {
 
 			const view = this._nodes.slice();
 			// Shift the first symbol and use that as our initial number of dice
-			//   e.g. the "2" in 2d3d3
+			//   e.g. the "2" in 2d3d5
 			const numSym = view.shift();
-			let num = numSym[fnName]();
+			let tmp = numSym[fnName]();
 
 			while (view.length) {
-				if (Math.round(num) !== num) throw new Error(`Number of dice to roll (${num}) was not an integer!`);
-				const isLast = view.length === 1 || (view.length === 3 && view.slice(-2, -1)[0].isDiceModifier);
-				num = this._invoke_handlePart(fnName, meta, view, num, isLast);
+				if (Math.round(tmp) !== tmp) throw new Error(`Number of dice to roll (${tmp}) was not an integer!`);
+
+				// Use the next symbol as our number of faces
+				//   e.g. the "3" in `2d3d5`
+				// When looping, the number of dice may have been a complex expression with modifiers; take the next
+				//   non-modifier symbol as the faces.
+				//   e.g. the "20" in `(2d3kh1r1)d20` (parentheses for emphasis)
+				const facesSym = view.shift();
+				const faces = facesSym[fnName]();
+				if (Math.round(faces) !== faces) throw new Error(`Dice face count (${faces}) was not an integer!`);
+
+				const isLast = view.length === 0 || (view.length === 1 && view.last().isDiceModifierGroup);
+				tmp = this._invoke_handlePart(fnName, meta, view, tmp, faces, isLast);
 			}
-			return num;
+
+			return tmp;
 		}
 
-		_invoke_handlePart (fnName, meta, view, num, isLast) {
-			const facesSym = view.shift();
-			const faces = facesSym[fnName]();
-			if (Math.round(faces) !== faces) throw new Error(`Dice face count (${faces}) was not an integer!`);
-
+		_invoke_handlePart (fnName, meta, view, num, faces, isLast) {
 			const rolls = [...new Array(num)].map(() => ({val: Renderer.dice.parsed.Dice._facesToValue(faces, fnName)}));
 			let displayRolls;
 			let isSuccessMode = false;
 
-			if (view.length && view[0].isDiceModifier) {
+			if (view.length && view[0].isDiceModifierGroup) {
+				const nodeMod = view[0];
+
 				if (fnName === "evl" || fnName === "min" || fnName === "max") { // avoid handling dice modifiers in "average" mode
-					isSuccessMode = view[0].isSuccessMode;
+					isSuccessMode = nodeMod.isSuccessMode;
 
 					const modOpts = {
+						faces,
 						fnGetRerolls: toReroll => [...new Array(toReroll.length)].map(() => ({val: Renderer.dice.parsed.Dice._facesToValue(faces, fnName)})),
-						fnGetExplosions: toExplode => [...new Array(toExplode.length)].map(() => ({val: Renderer.dice.parsed.Dice._facesToValue(faces, fnName)}))
+						fnGetExplosions: toExplode => [...new Array(toExplode.length)].map(() => ({val: Renderer.dice.parsed.Dice._facesToValue(faces, fnName)})),
 					};
 
-					displayRolls = Renderer.dice.parsed._handleModifiers(fnName, meta, rolls, view, modOpts);
+					displayRolls = Renderer.dice.parsed._handleModifiers(fnName, meta, rolls, nodeMod, modOpts);
 				}
 
-				view.shift(); view.shift();
+				view.shift();
 			} else displayRolls = rolls;
 
 			if (isLast) { // only display the dice for the final roll, e.g. in 2d3d4 show the Xd4
 				const asHtml = displayRolls.map(r => {
-					const numPart = r.val === faces ? `<span class="rll__max--muted">${r.val}</span>` : r.val === 1 ? `<span class="rll__min--muted">${r.val}</span>` : r.val;
+					if (r.htmlDisplay) return r.htmlDisplay;
+
+					const numPart = Renderer.dice.parsed._rollToNumPart(r, faces);
 
 					if (r.isDropped) return `<span class="rll__dropped">[${numPart}]</span>`;
 					else if (r.isExploded) return `<span class="rll__exploded">[</span>${numPart}<span class="rll__exploded">]</span>`;
@@ -1569,7 +1684,7 @@ Renderer.dice.parsed = {
 				this.addToMeta(
 					meta,
 					asHtml,
-					asText
+					asText,
 				);
 			}
 
@@ -1585,7 +1700,7 @@ Renderer.dice.parsed = {
 			if (isSuccessMode) {
 				return rolls.filter(it => !it.isDropped && it.isSuccess).length;
 			} else {
-				return Math.sum(...rolls.filter(it => !it.isDropped).map(it => it.val));
+				return rolls.filter(it => !it.isDropped).map(it => it.val).sum();
 			}
 		}
 
@@ -1595,9 +1710,10 @@ Renderer.dice.parsed = {
 			const [numSym, facesSym] = this._nodes;
 			let out = `${numSym.toString()}d${facesSym.toString()}`;
 
-			if (this._nodes.length === 4) {
-				const [modSym, modNumSym] = this._nodes.slice(2);
-				out += `${modSym.toString()}${modNumSym.toString()}`;
+			for (let i = 2; i < this._nodes.length; ++i) {
+				const n = this._nodes[i];
+				if (n.isDiceModifierGroup) out += n.mods.map(it => `${it.modSym.toString()}${it.numSym.toString()}`).join("");
+				else out += `d${n.toString()}`;
 			}
 
 			return out;
@@ -1725,7 +1841,7 @@ Renderer.dice.parsed = {
 			}
 			return out;
 		}
-	}
+	},
 };
 
 if (!IS_VTT && typeof window !== "undefined") {

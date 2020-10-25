@@ -94,7 +94,7 @@ class CounterRoot extends CounterComponent {
 	getSaveableState () {
 		return {
 			...this.getBaseSaveableState(),
-			rowState: this._childComps.map(r => r.getSaveableState())
+			rowState: this._childComps.map(r => r.getSaveableState()),
 		};
 	}
 }
@@ -159,5 +159,5 @@ class CounterRow extends CounterComponent {
 CounterRow._DEFAULT_STATE = {
 	name: "",
 	current: 0,
-	max: 1
+	max: 1,
 };

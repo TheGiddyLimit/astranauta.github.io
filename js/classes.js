@@ -66,7 +66,7 @@ class ClassesPage extends BaseComponent {
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
-			$btnReset: $(`#reset`)
+			$btnReset: $(`#reset`),
 		});
 
 		this._addData(data);
@@ -75,7 +75,7 @@ class ClassesPage extends BaseComponent {
 			filterBox: this.filterBox,
 			sourceFilter: this._pageFilter.sourceFilter,
 			list: this._list,
-			pHandleBrew: this._pHandleBrew.bind(this)
+			pHandleBrew: this._pHandleBrew.bind(this),
 		});
 
 		const homebrew = await BrewUtil.pAddBrewData();
@@ -134,7 +134,7 @@ class ClassesPage extends BaseComponent {
 
 			ListUtil.setOptions({
 				itemList: this._dataList,
-				primaryLists: [this._list]
+				primaryLists: [this._list],
 			});
 		}
 
@@ -188,7 +188,7 @@ class ClassesPage extends BaseComponent {
 			if (!cls) {
 				JqueryUtil.doToast({
 					content: `Could not add subclass; could not find class with name: ${cls.class} and source ${sc.source || SRC_PHB}`,
-					type: "danger"
+					type: "danger",
 				});
 				return;
 			}
@@ -380,7 +380,7 @@ class ClassesPage extends BaseComponent {
 
 		const hashParts = [
 			primaryHash,
-			stateHash
+			stateHash,
 		].filter(Boolean);
 		return Hist.util.getCleanHash(hashParts.join(HASH_PART_SEP));
 	}
@@ -424,14 +424,14 @@ class ClassesPage extends BaseComponent {
 			cls.name,
 			{
 				hash,
-				source
+				source,
 			},
 			{
 				$lnk,
 				entity: cls,
 				uniqueId: cls.uniqueId ? cls.uniqueId : clsI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 	}
 
@@ -459,7 +459,7 @@ class ClassesPage extends BaseComponent {
 				.filter(sc => !this.filterBox.toDisplay(f, sc.source, sc._fMisc))
 				.map(sc => UrlUtil.getStateKeySubclass(sc))
 				.filter(stateKey => this._state[stateKey])
-				.mergeMap(stateKey => ({[stateKey]: false}))
+				.mergeMap(stateKey => ({[stateKey]: false})),
 		);
 	}
 
@@ -673,7 +673,7 @@ class ClassesPage extends BaseComponent {
 						$wrpLink: $$`<div class="inline-block">${$lnk}${$dispComma}</div>`,
 						$dispComma,
 						source: it.source,
-						isHidden: false
+						isHidden: false,
 					};
 				});
 
@@ -708,7 +708,7 @@ class ClassesPage extends BaseComponent {
 					<td>${metasFeatureLinks.length ? metasFeatureLinks.map(it => it.$wrpLink) : `\u2014`}</td>
 					${$ptTableGroups}
 				</tr>`,
-				metasFeatureLinks
+				metasFeatureLinks,
 			}
 		});
 
@@ -771,7 +771,7 @@ class ClassesPage extends BaseComponent {
 
 			const allEntries = [
 				abilityPart ? `{@b Ability Score Minimum:} ${abilityPart}` : null,
-				...requirements.entries || []
+				...requirements.entries || [],
 			].filter(Boolean);
 
 			return $$`<div>${Renderer.get().setFirstSection(true).render({type: "section", entries: allEntries})}</div>`
@@ -822,7 +822,7 @@ class ClassesPage extends BaseComponent {
 			const rendered = [
 				equip.additionalFromBackground ? "<p>You start with the following items, plus anything provided by your background.</p>" : "",
 				equip.default && equip.default.length ? `<ul class="pl-4"><li>${equip.default.map(it => Renderer.get().render(it)).join("</li><li>")}</ul>` : "",
-				equip.goldAlternative != null ? `<p>Alternatively, you may start with ${Renderer.get().render(equip.goldAlternative)} gp to buy your own equipment.</p>` : ""
+				equip.goldAlternative != null ? `<p>Alternatively, you may start with ${Renderer.get().render(equip.goldAlternative)} gp to buy your own equipment.</p>` : "",
 			].filter(Boolean).join("");
 			const $dispRendered = $(`<div/>`);
 
@@ -958,7 +958,7 @@ class ClassesPage extends BaseComponent {
 			-1,
 			$dispCount,
 			null,
-			{isAlwaysVisible: true}
+			{isAlwaysVisible: true},
 		));
 
 		this._listSubclass.on("updated", () => {
@@ -1014,7 +1014,7 @@ class ClassesPage extends BaseComponent {
 		const filterSets = [
 			{name: "View Official", subHashes: [], isClearSources: false},
 			{name: "View Most Recent", subHashes: [], isClearSources: true},
-			{name: "View All", subHashes: ["flstmiscellaneous:reprinted=0"], isClearSources: true}
+			{name: "View All", subHashes: ["flstmiscellaneous:reprinted=0"], isClearSources: true},
 		];
 		const setFilterSet = ix => {
 			const filterSet = filterSets[ix];
@@ -1032,7 +1032,7 @@ class ClassesPage extends BaseComponent {
 			this.filterBox.setFromSubHashes([
 				...boxSubhashes,
 				...cpySubHashes,
-				`flopsource:extend`
+				`flopsource:extend`,
 			].filter(Boolean), true);
 			$selFilterPreset.val("-1");
 		};
@@ -1092,7 +1092,7 @@ class ClassesPage extends BaseComponent {
 			return this.filterBox.toDisplay(
 				f,
 				li.data.entity.source,
-				li.data.entity._fMisc
+				li.data.entity._fMisc,
 			);
 		});
 	}
@@ -1137,13 +1137,13 @@ class ClassesPage extends BaseComponent {
 				source: sc.source,
 				shortName: sc.shortName,
 				stateKey,
-				mod
+				mod,
 			},
 			{
 				isExcluded,
 				entity: sc,
-				uniqueId: sc.uniqueId ? sc.uniqueId : ix
-			}
+				uniqueId: sc.uniqueId ? sc.uniqueId : ix,
+			},
 		);
 	}
 
@@ -1311,8 +1311,8 @@ class ClassesPage extends BaseComponent {
 											if (!obj.source) return obj;
 											if (this._pageFilter.filterBox.toDisplay(filterValues, obj.source, [])) return obj;
 											return undefined; // If it shouldn't be displayed, delete it
-										}
-									}
+										},
+									},
 								)
 
 								Renderer.get().recursiveRender(cpy, renderStack);
@@ -1339,7 +1339,7 @@ class ClassesPage extends BaseComponent {
 				if (!numShown) $wrpContent.find(".cls-comp__hr-level").addClass("hidden");
 
 				return numShown;
-			}
+			},
 		});
 
 		const hkToggleScOverlay = async () => {
@@ -1496,7 +1496,7 @@ ClassesPage._DEFAULT_STATE = {
 	isShowScSources: false,
 	isViewActiveScComp: false,
 	isViewActiveBook: false,
-	isHideOutline: false
+	isHideOutline: false,
 	// N.b. ensure none of these start with the string "sub" as this prefix is used for subclass state keys e.g.
 	// `"sub Berserker": false`
 };

@@ -12,7 +12,29 @@ Shared UI components
 	}
 
 	&ipt-color {
-		width: $w-ipt-number-3-digit;
+		width: $w-ipt-number-2-digit;
+		padding: 0;
+
+		&::-webkit-color-swatch-wrapper {
+			padding: 3px;
+		}
+
+		&::-webkit-color-swatch {
+			border: 1px solid $rgb-border-grey;
+		}
+	}
+}
+/* endregion */
+
+/* region List */
+.ui-list__ {
+	// TODO refactor all "list" class to use this:
+	//  - add "relative" class to each as required
+	//  - add "overflow-x-hidden" and "overflow-y-auto" classes
+	//  - convert from ul to div
+	&wrp {
+		transform: translateZ(0);
+		font-size: 11.2px;
 	}
 }
 /* endregion */
@@ -98,7 +120,9 @@ Shared UI components
 	}
 
 	&header {
-		border-bottom: 1px solid $rgb-border-grey--trans;
+		&--border {
+			border-bottom: 1px solid $rgb-border-grey--trans;
+		}
 
 		&--fullscreen {
 			@include shadow-2();
@@ -225,7 +249,7 @@ Shared UI components
 		height: 100%;
 		overflow-y: auto;
 		overflow-x: hidden;
-		font-size: 0.8em;
+		font-size: 11.2px;
 	}
 
 	&row {
@@ -255,7 +279,6 @@ Shared UI components
 	&ipt-search {
 		border-radius: 0;
 		width: 100%;
-		border-top: 0;
 	}
 
 	&ipt-search-sub-ipt[type=radio] {
@@ -317,15 +340,34 @@ Shared UI components
 
 /* region Tabs */
 .ui-tab__ {
+	&btn-tab-head {
+		display: inline-block;
+		padding: 2px 4px 0;
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+		cursor: pointer;
+		user-select: none;
+		border-bottom: 0;
+
+		&--active {
+			background-color: #e6e6e6;
+			border-color: #adadad;
+		}
+	}
+
 	&wrp-tab-body {
 		width: 100%;
 		height: 100%;
 		overflow-y: auto;
 		overflow-x: hidden;
-	}
 
-	&wrp-tab-body--border {
-		padding: 3px 0;
+		&--border {
+			padding: 3px 0;
+		}
+
+		&--background {
+			background: $rgb-bg;
+		}
 	}
 
 	&wrp-tab-heads--border {
@@ -437,6 +479,12 @@ Shared UI components
 		display: flex;
 		flex-shrink: 0;
 		padding: 5px 3px;
+		width: 14px;
+		font-size: 14px;
+	}
+
+	&dummy-patch {
+		width: 14px;
 	}
 
 	&patch-col {
@@ -695,6 +743,69 @@ Shared UI components
 	&wrp:hover .ui-ideco__btn-ticker {
 		transition: opacity $time-2-frames;
 		opacity: 1;
+	}
+}
+/* endregion */
+
+/* region Select2 */
+.ui-sel2__ {
+	&ipt-search {
+		top: 0;
+		right: 0;
+		left: 0;
+		opacity: 0;
+		background: transparent;
+	}
+
+	&wrp {
+		&:focus,
+		&:focus-within {
+			> .ui-sel2__ipt-search {
+				opacity: 1;
+			}
+
+			> .ui-sel2__ipt-display {
+				text-align: right;
+				color: $rgb-font--muted;
+				font-weight: bold;
+			}
+
+			> .ui-sel2__wrp-options {
+				display: flex;
+			}
+		}
+	}
+
+	&wrp-options {
+		top: 22px;
+		right: 0;
+		left: 0;
+		display: none;
+		flex-direction: column;
+		background: $rgb-bg;
+		border: 1px solid $rgb-border-grey;
+		border-top: 0;
+		max-height: 160px;
+
+		&:hover,
+		&:active,
+		&:focus,
+		&:focus-within {
+			display: flex;
+		}
+	}
+
+	&disp-option {
+		&.active,
+		&:focus,
+		&:hover {
+			background: $rgb-bg--alt;
+		}
+
+		&:focus.active,
+		&:hover.active {
+			background: darken($rgb-bg--alt, $pct-darken-active);
+		}
 	}
 }
 /* endregion */

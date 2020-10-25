@@ -60,7 +60,7 @@ class LangDemoUi {
 				html: [],
 				text: [],
 				allMax: [],
-				allMin: []
+				allMin: [],
 			};
 			const result = parsed.evl(meta);
 			$dispOutResult.text(result);
@@ -82,28 +82,28 @@ LangDemoUi._SAMPLES = [
 
 
 
-`
+`,
 	},
 	{
 		name: "Number",
-		code: `1`
+		code: `1`,
 	},
 	{
 		name: "Sum",
-		code: `1 + 1`
+		code: `1 + 1`,
 	},
 	{
 		name: "Multiplication",
-		code: `2 * 3`
+		code: `2 * 3`,
 	},
 	{
 		name: "Exponent",
-		code: `3^3^2  # Should equal 19683`
+		code: `3^3^2  # Should equal 19683`,
 	},
 	{
 		name: "Parentheses",
-		code: `(2 + 3) * 4` // 20
-	}
+		code: `(2 + 3) * 4`, // 20
+	},
 ];
 
 window.addEventListener("load", () => LangDemoUi.init());

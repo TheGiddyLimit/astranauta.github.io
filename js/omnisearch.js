@@ -137,7 +137,7 @@ class Omnisearch {
 					hasPageRange: !!mPage,
 					category,
 					source: mSource ? mSource[1].trim() : null,
-					pageRange: mPage ? [Number(mPage[1]), mPage[3] ? Number(mPage[3]) : Number(mPage[1])] : null
+					pageRange: mPage ? [Number(mPage[1]), mPage[3] ? Number(mPage[3]) : Number(mPage[1])] : null,
 				});
 				return false;
 			}
@@ -166,11 +166,11 @@ class Omnisearch {
 						{
 							fields: {
 								n: {boost: 5, expand: true},
-								s: {expand: true}
+								s: {expand: true},
 							},
 							bool: "AND",
-							expand: true
-						}
+							expand: true,
+						},
 					)
 				: Object.values(this._searchIndex.documentStore.docs).map(it => ({doc: it}));
 
@@ -184,11 +184,11 @@ class Omnisearch {
 				{
 					fields: {
 						n: {boost: 5, expand: true},
-						s: {expand: true}
+						s: {expand: true},
 					},
 					bool: "AND",
-					expand: true
-				}
+					expand: true,
+				},
 			);
 		}
 
@@ -480,7 +480,7 @@ class Omnisearch {
 	static doShowHelp () {
 		const {$modalInner} = UiUtil.getShowModal({
 			title: "Help",
-			isMinHeight0: true
+			isMinHeight0: true,
 		});
 
 		$modalInner.append(`

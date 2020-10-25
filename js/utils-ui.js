@@ -25,7 +25,7 @@ class Prx {
 			toString: Prx.toString.bind(toProxy),
 			copy: Prx.copy.bind(toProxy),
 			_hooksAll: [],
-			_hooks: {}
+			_hooks: {},
 		};
 
 		return new Proxy(toProxy, {
@@ -40,7 +40,7 @@ class Prx {
 				toProxy.px._hooksAll.forEach(hook => hook(prop, null));
 				if (toProxy.px._hooks[prop]) toProxy.px._hooks[prop].forEach(hook => hook(prop, null));
 				return true;
-			}
+			},
 		});
 	}
 }
@@ -68,7 +68,7 @@ class ProxyBase {
 				if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, null));
 				if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, null));
 				return true;
-			}
+			},
 		});
 	}
 
@@ -269,7 +269,7 @@ class UiUtil {
 			const slice = lines.join(" \\ ").substring(0, 30);
 			JqueryUtil.doToast({
 				content: `Could not parse entries! Error was: ${e.message}<br>Text was: ${slice}${slice.length === 30 ? "..." : ""}`,
-				type: "danger"
+				type: "danger",
 			});
 			return lines;
 		}
@@ -288,9 +288,10 @@ class UiUtil {
 	 * @param [opts.isMinHeight0] {boolean}
 	 * @param [opts.isMaxWidth640p] {boolean}
 	 * @param [opts.isFullscreenModal] {boolean} An alternate mode.
+	 * @param [opts.isHeaderBorder] {boolean}
 	 *
 	 * @param {function} [opts.cbClose] Callback run when the modal is closed.
-	 * @param {JQuery} [opts.titleSplit] Element to have split alongside the title.
+	 * @param {JQuery} [opts.$titleSplit] Element to have split alongside the title.
 	 * @param {int} [opts.zIndex] Z-index of the modal.
 	 * @param {number} [opts.overlayColor] Overlay color.
 	 * @param {boolean} [opts.isPermanent] If the modal should be impossible to close.
@@ -346,7 +347,7 @@ class UiUtil {
 			opts.isMinHeight0 ? `ui-modal__inner--no-min-height` : "",
 			opts.isMaxWidth640p ? `ui-modal__inner--max-width-640p` : "",
 			opts.isFullscreenModal ? `ui-modal__inner--mode-fullscreen my-0 pt-0` : "",
-			opts.hasFooter ? `pb-0` : ""
+			opts.hasFooter ? `pb-0` : "",
 		].filter(Boolean);
 
 		const $btnCloseModal = opts.isFullscreenModal
@@ -357,8 +358,8 @@ class UiUtil {
 		const $modalFooter = opts.hasFooter ? $(`<div class="no-shrink w-100 flex-col ui-modal__footer ${opts.isFullscreenModal ? `ui-modal__footer--fullscreen mt-1` : ""}"></div>`) : null;
 
 		const $modal = $$`<div class="ui-modal__inner flex-col dropdown-menu ${modalWindowClasses.join(" ")}">
-			${!opts.isEmpty && opts.title ? $$`<div class="split-v-center no-shrink ui-modal__header ${opts.isFullscreenModal ? `ui-modal__header--fullscreen mb-1` : ""}">
-				${opts.title ? `<h4 class="my-2">${opts.title.escapeQuotes()}</h4>` : ""}${opts.titleSplit || ""}${$btnCloseModal}
+			${!opts.isEmpty && opts.title ? $$`<div class="split-v-center no-shrink ${opts.isHeaderBorder ? `ui-modal__header--border` : ""} ${opts.isFullscreenModal ? `ui-modal__header--fullscreen mb-1` : ""}">
+				${opts.title ? `<h4 class="my-2">${opts.title.escapeQuotes()}</h4>` : ""}${opts.$titleSplit || ""}${$btnCloseModal}
 			</div>` : null}
 
 			${!opts.isEmpty ? $scroller : null}
@@ -382,7 +383,7 @@ class UiUtil {
 		const modalStackMeta = {
 			isPermanent: opts.isPermanent,
 			pHandleCloseClick,
-			doTeardown
+			doTeardown,
 		};
 		if (!opts.isClosed) UiUtil._pushToModalStack(modalStackMeta);
 
@@ -391,7 +392,7 @@ class UiUtil {
 			$modalInner: $scroller,
 			$modalFooter,
 			doClose: pHandleCloseClick,
-			doTeardown
+			doTeardown,
 		};
 
 		if (opts.isIndestructible || opts.isClosed) {
@@ -607,18 +608,42 @@ class ListUiUtil {
 				if (opts.fnOnSelectionChange) opts.fnOnSelectionChange(item, cbMaster.checked);
 
 				if (!opts.isNoHighlightSelection) {
-					if (cbMaster.checked) item.ele.classList.add("list-multi-selected");
-					else item.ele.classList.remove("list-multi-selected");
+					if (cbMaster.checked) item.ele instanceof $ ? item.ele.addClass("list-multi-selected") : item.ele.classList.add("list-multi-selected");
+					else item.ele instanceof $ ? item.ele.removeClass("list-multi-selected") : item.ele.classList.remove("list-multi-selected");
 				}
 			} else {
 				if (!opts.isNoHighlightSelection) {
-					item.ele.classList.remove("list-multi-selected");
+					item.ele instanceof $ ? item.ele.removeClass("list-multi-selected") : item.ele.classList.remove("list-multi-selected");
 				}
 			}
 
 			list.__firstListSelection = item;
 			list.__lastListSelection = null;
 		}
+	}
+
+	/**
+	 * Handle doing a radio-based selection toggle on a list.
+	 * @param list
+	 * @param item List item. Must have a "data" property with a "cbSel" (the radio input).
+	 * @param evt Click event.
+	 */
+	static handleSelectClickRadio (list, item, evt) {
+		evt.preventDefault();
+		evt.stopPropagation();
+
+		list.items.forEach(it => {
+			if (it === item) {
+				// Setting this to true *should* cause the browser to update the rest for us, but since list items can
+				//   be filtered/hidden, the browser won't necessarily update them all. Therefore, forcibly set
+				//   `checked = false` below.
+				it.data.cbSel.checked = true;
+				it.ele.classList.add("list-multi-selected");
+			} else {
+				it.data.cbSel.checked = false;
+				it.ele.classList.remove("list-multi-selected");
+			}
+		})
 	}
 
 	static _getCb (item, opts) { return opts.fnGetCb ? opts.fnGetCb(item) : item.data.cbSel; }
@@ -631,8 +656,8 @@ class ListUiUtil {
 		}
 
 		if (!opts.isNoHighlightSelection) {
-			if (toVal) item.ele.classList.add("list-multi-selected");
-			else item.ele.classList.remove("list-multi-selected");
+			if (toVal) item.ele instanceof $ ? item.ele.addClass("list-multi-selected") : item.ele.classList.add("list-multi-selected");
+			else item.ele instanceof $ ? item.ele.removeClass("list-multi-selected") : item.ele.classList.remove("list-multi-selected");
 		}
 	}
 
@@ -642,11 +667,11 @@ class ListUiUtil {
 	static bindSelectAllCheckbox ($cbAll, list) {
 		$cbAll.change(() => {
 			const isChecked = $cbAll.prop("checked");
-			list.visibleItems.forEach(it => {
-				if (it.data.cbSel) it.data.cbSel.checked = isChecked;
+			list.visibleItems.forEach(item => {
+				if (item.data.cbSel) item.data.cbSel.checked = isChecked;
 
-				if (isChecked) it.ele.classList.add("list-multi-selected");
-				else it.ele.classList.remove("list-multi-selected");
+				if (isChecked) item.ele instanceof $ ? item.ele.addClass("list-multi-selected") : item.ele.classList.add("list-multi-selected");
+				else item.ele instanceof $ ? item.ele.removeClass("list-multi-selected") : item.ele.classList.remove("list-multi-selected");
 			});
 		});
 	}
@@ -693,27 +718,27 @@ class ProfUiUtil {
 		return {
 			$ele: $btnCycle,
 			setState,
-			getState: () => state
+			getState: () => state,
 		}
 	}
 }
 ProfUiUtil.PROF_TO_FULL = {
 	"0": {
 		name: "No proficiency",
-		mult: 0
+		mult: 0,
 	},
 	"1": {
 		name: "Proficiency",
-		mult: 1
+		mult: 1,
 	},
 	"2": {
 		name: "Expertise",
-		mult: 2
+		mult: 2,
 	},
 	"3": {
 		name: "Half proficiency",
-		mult: 0.5
-	}
+		mult: 0.5,
+	},
 };
 
 class TabUiUtil {
@@ -727,6 +752,7 @@ class TabUiUtil {
 		 * @param opts.tabGroup User-defined string identifying which group of tabs this belongs to.
 		 * @param opts.stateObj The state object in which this tab should track/set its active status. Usually a proxy.
 		 * @param [opts.hasBorder] True if the tab should compensate for having a top border; i.e. pad itself.
+		 * @param [opts.hasBackground] True if the tab should have a flat-color background.
 		 * @param [opts.cbTabChange] Callback function to call on tab change.
 		 */
 		obj._getTab = function (ix, name, opts) {
@@ -740,19 +766,19 @@ class TabUiUtil {
 
 			const isActive = opts.stateObj[activeProp] === ix;
 
-			const $btnTab = $(`<button class="btn btn-default stat-tab ${isActive ? "stat-tab-sel" : ""}">${name}</button>`)
+			const $btnTab = $(`<button class="btn btn-default ui-tab__btn-tab-head ${isActive ? "ui-tab__btn-tab-head--active" : ""}">${name}</button>`)
 				.click(() => {
 					const prevTab = tabMeta[opts.stateObj[activeProp]];
-					prevTab.$btnTab.removeClass("stat-tab-sel");
-					prevTab.$wrpTab.toggleClass("hidden", true);
+					prevTab.$btnTab.removeClass("ui-tab__btn-tab-head--active");
+					prevTab.$wrpTab.toggleClass("ve-hidden", true);
 
 					opts.stateObj[activeProp] = ix;
-					$btnTab.addClass("stat-tab-sel");
-					$wrpTab.toggleClass("hidden", false);
+					$btnTab.addClass("ui-tab__btn-tab-head--active");
+					$wrpTab.toggleClass("ve-hidden", false);
 					if (opts.cbTabChange) opts.cbTabChange();
 				});
 
-			const $wrpTab = $(`<div class="ui-tab__wrp-tab-body ${isActive ? "" : "hidden"} ${opts.hasBorder ? "ui-tab__wrp-tab-body--border" : ""}"></div>`);
+			const $wrpTab = $(`<div class="ui-tab__wrp-tab-body ${isActive ? "" : "ve-hidden"} ${opts.hasBorder ? "ui-tab__wrp-tab-body--border" : ""} ${opts.hasBackground ? "ui-tab__wrp-tab-body--background" : ""}"></div>`);
 
 			const out = {ix, $btnTab, $wrpTab};
 			tabMeta[ix] = out;
@@ -862,7 +888,8 @@ SearchUiUtil.NO_HOVER_CATEGORIES = new Set([
 	Parser.CAT_ID_ADVENTURE,
 	Parser.CAT_ID_BOOK,
 	Parser.CAT_ID_QUICKREF,
-	Parser.CAT_ID_PAGE
+	Parser.CAT_ID_PAGE,
+	Parser.CAT_ID_LEGENDARY_GROUP,
 ]);
 
 // based on DM screen's AddMenuSearchTab
@@ -927,7 +954,7 @@ class SearchWidget {
 			},
 			fnClick: () => {
 				if (opts.fnSearch && $iptSearch.val() && $iptSearch.val().trim().length) opts.fnSearch();
-			}
+			},
 		});
 	}
 
@@ -987,7 +1014,7 @@ class SearchWidget {
 
 		this._flags = {
 			doClickFirst: false,
-			isWait: false
+			isWait: false,
 		};
 		this._$ptrRows = {_: []};
 
@@ -1011,10 +1038,10 @@ class SearchWidget {
 		return this._searchOptions || {
 			fields: {
 				n: {boost: 5, expand: true},
-				s: {expand: true}
+				s: {expand: true},
 			},
 			bool: "AND",
-			expand: true
+			expand: true,
 		};
 	}
 
@@ -1064,12 +1091,12 @@ class SearchWidget {
 					const filtered = results.filter(it => this._fnFilterResults(it.doc));
 					return {
 						toProcess: filtered.slice(0, UiUtil.SEARCH_RESULTS_CAP),
-						resultCount: filtered.length
+						resultCount: filtered.length,
 					}
 				} else {
 					return {
 						toProcess: results.slice(0, UiUtil.SEARCH_RESULTS_CAP),
-						resultCount: results.length
+						resultCount: results.length,
 					}
 				}
 			} else {
@@ -1077,7 +1104,7 @@ class SearchWidget {
 				if (searchInput.trim()) {
 					return {
 						toProcess: [],
-						resultCount: 0
+						resultCount: 0,
 					};
 				}
 
@@ -1086,12 +1113,12 @@ class SearchWidget {
 					const filtered = Object.values(index.documentStore.docs).filter(it => this._fnFilterResults(it)).map(it => ({doc: it}));
 					return {
 						toProcess: filtered.slice(0, UiUtil.SEARCH_RESULTS_CAP),
-						resultCount: filtered.length
+						resultCount: filtered.length,
 					}
 				} else {
 					return {
 						toProcess: Object.values(index.documentStore.docs).slice(0, UiUtil.SEARCH_RESULTS_CAP).map(it => ({doc: it})),
-						resultCount: Object.values(index.documentStore.docs).length
+						resultCount: Object.values(index.documentStore.docs).length,
 					}
 				}
 			}
@@ -1153,7 +1180,7 @@ class SearchWidget {
 				flags: this._flags,
 				fnSearch: this.__doSearch.bind(this),
 				fnShowWait: this.__showMsgWait.bind(this),
-				$ptrRows: this._$ptrRows
+				$ptrRows: this._$ptrRows,
 			});
 
 			// On the first keypress, switch to loading dots
@@ -1205,7 +1232,7 @@ class SearchWidget {
 				Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
 				cpy.tag = `{@spell ${doc.n.toSpellCase()}${doc.s !== SRC_PHB ? `|${doc.s}` : ""}}`;
 				return cpy;
-			}
+			},
 		};
 		if (opts.level != null) nxtOpts.fnFilterResults = result => result.lvl === opts.level;
 
@@ -1213,7 +1240,24 @@ class SearchWidget {
 		return SearchWidget.pGetUserEntitySearch(
 			title,
 			"alt_Spell",
-			nxtOpts
+			nxtOpts,
+		);
+	}
+
+	static async pGetUserLegendaryGroupSearch () {
+		await SearchWidget.pLoadCustomIndex("entity_LegendaryGroups", `${Renderer.get().baseUrl}data/bestiary/legendarygroups.json`, "legendaryGroup", Parser.CAT_ID_LEGENDARY_GROUP, "legendaryGroup", "legendary groups");
+
+		return SearchWidget.pGetUserEntitySearch(
+			"Select Legendary Group",
+			"entity_LegendaryGroups",
+			{
+				fnTransform: doc => {
+					const cpy = MiscUtil.copy(doc);
+					Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
+					cpy.page = "legendaryGroup";
+					return cpy;
+				},
+			},
 		);
 	}
 
@@ -1230,8 +1274,8 @@ class SearchWidget {
 					Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
 					cpy.tag = `{@feat ${doc.n}${doc.s !== SRC_PHB ? `|${doc.s}` : ""}}`;
 					return cpy;
-				}
-			}
+				},
+			},
 		);
 	}
 
@@ -1248,8 +1292,8 @@ class SearchWidget {
 					Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
 					cpy.tag = `{@background ${doc.n}${doc.s !== SRC_PHB ? `|${doc.s}` : ""}}`;
 					return cpy;
-				}
-			}
+				},
+			},
 		);
 	}
 
@@ -1271,8 +1315,8 @@ class SearchWidget {
 					Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
 					cpy.tag = `{@race ${doc.n}${doc.s !== SRC_PHB ? `|${doc.s}` : ""}}`;
 					return cpy;
-				}
-			}
+				},
+			},
 		);
 	}
 
@@ -1289,8 +1333,8 @@ class SearchWidget {
 					Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
 					cpy.tag = `{@optfeature ${doc.n}${doc.s !== SRC_PHB ? `|${doc.s}` : ""}}`;
 					return cpy;
-				}
-			}
+				},
+			},
 		);
 	}
 
@@ -1308,13 +1352,13 @@ class SearchWidget {
 				Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
 				cpy.tag = `{@creature ${doc.n}${doc.s !== SRC_MM ? `|${doc.s}` : ""}}`;
 				return cpy;
-			}
+			},
 		};
 
 		return SearchWidget.pGetUserEntitySearch(
 			"Select Creature",
 			"Creature",
-			nxtOpts
+			nxtOpts,
 		);
 	}
 
@@ -1327,7 +1371,7 @@ class SearchWidget {
 					if (isBasicIndex == null) return true;
 					const isBasic = it.rarity === "none" || it.rarity === "unknown" || it._category === "basic";
 					return isBasicIndex ? isBasic : !isBasic;
-				})
+				}),
 			};
 		};
 		const indexName = isBasicIndex == null ? "entity_Items" : isBasicIndex ? "entity_ItemsBasic" : "entity_ItemsMagic";
@@ -1345,8 +1389,8 @@ class SearchWidget {
 					Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
 					cpy.tag = `{@item ${doc.n}${doc.s !== SRC_DMG ? `|${doc.s}` : ""}}`;
 					return cpy;
-				}
-			}
+				},
+			},
 		);
 	}
 
@@ -1388,14 +1432,14 @@ class SearchWidget {
 					doClose(false); // "cancel" close
 					resolve(docOrTransformed);
 				},
-				searchOpts
+				searchOpts,
 			);
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title,
 				cbClose: (doResolve) => {
 					searchWidget.$wrpSearch.detach();
 					if (doResolve) resolve(null); // ensure resolution
-				}
+				},
 			});
 			$modalInner.append(searchWidget.$wrpSearch);
 			searchWidget.doFocus();
@@ -1429,7 +1473,7 @@ class SearchWidget {
 
 		const [featJson, homebrew] = await Promise.all([
 			typeof dataSource === "string" ? DataUtil.loadJSON(dataSource) : dataSource(),
-			BrewUtil.pAddBrewData()
+			BrewUtil.pAddBrewData(),
 		]);
 
 		featJson[prop].concat(homebrew[prop] || []).forEach((it, i) => index.addDoc({
@@ -1440,7 +1484,7 @@ class SearchWidget {
 			n: it.name,
 			p: it.page,
 			s: it.source,
-			u: UrlUtil.URL_TO_HASH_BUILDER[page](it)
+			u: UrlUtil.URL_TO_HASH_BUILDER[page](it),
 		}));
 
 		return index;
@@ -1502,7 +1546,7 @@ class InputUiUtil {
 					if (opts.max) num = Math.min(opts.max, num);
 					if (opts.int) return resolve(Math.round(num));
 					else resolve(num);
-				}
+				},
 			});
 
 			if (opts.$elePre) opts.$elePre.appendTo($modalInner);
@@ -1566,7 +1610,7 @@ class InputUiUtil {
 					if (!isDataEntered) return resolve(null);
 					if (value == null) throw new Error(`Callback must receive a value!`); // sanity check
 					resolve(value);
-				}
+				},
 			});
 
 			if (opts.htmlDescription && opts.htmlDescription.trim()) $$`<div class="flex w-100 mb-1">${opts.htmlDescription}</div>`.appendTo($modalInner);
@@ -1623,7 +1667,7 @@ class InputUiUtil {
 						else out.ix = ix;
 						resolve(out)
 					} else resolve(opts.isResolveItem ? opts.values[ix] : ix);
-				}
+				},
 			});
 			$selEnum.appendTo($modalInner);
 			if (opts.$elePost) opts.$elePost.appendTo($modalInner);
@@ -1650,18 +1694,6 @@ class InputUiUtil {
 	 * @return {Promise} A promise which resolves to the indices of the items the user selected, or null otherwise.
 	 */
 	static pGetUserMultipleChoice (opts) {
-		opts = opts || {};
-
-		if ((Number(!!opts.values) + Number(!!opts.valueGroups)) !== 1) throw new Error(`Exactly one of "values" and "valueGroups" must be specified!`);
-
-		if (opts.count != null && (opts.min != null || opts.max != null)) throw new Error(`Chooser must be either in "count" mode or "min/max" mode!`);
-		// If no mode is specified, default to a "count 1" chooser
-		if (opts.count == null && opts.min == null && opts.max == null) opts.count = 1;
-
-		class ChoiceRow extends BaseComponent {
-			_getDefaultState () { return {isActive: false}; }
-		}
-
 		return new Promise(resolve => {
 			const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
 				.click(() => doClose(true));
@@ -1670,82 +1702,18 @@ class InputUiUtil {
 			const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
 				.click(() => doClose(VeCt.SYM_UI_SKIP));
 
-			const rowMetas = [];
-			const $eles = [];
-			const ixsSelectionOrder = [];
+			const prop = "formData";
 
-			const valueGroups = opts.valueGroups || [{values: opts.values}];
-
-			valueGroups.forEach((group, i) => {
-				if (i !== 0) $eles.push($(`<hr class="w-100 hr-1">`));
-
-				if (group.name) $eles.push($(`<div class="flex-v-center row py-1"><span class="mr-2">‒</span><span>${group.name}</span></div>`));
-
-				if (group.text) $eles.push($(`<div class="flex-v-center row py-1"><div class="ml-1 mr-3"></div><i>${group.text}</i></div>`));
-
-				group.values.forEach((v, i) => {
-					const comp = new ChoiceRow();
-					const isRequired = opts.required && opts.required.includes(i);
-					if (opts.defaults || isRequired) {
-						const isDefault = opts.defaults && opts.defaults.includes(i);
-						comp._state.isActive = isDefault || isRequired;
-						if (isDefault) ixsSelectionOrder.push(i);
-					}
-
-					const $cb = isRequired
-						? $(`<input type="checkbox" disabled checked>`)
-						: ComponentUiUtil.$getCbBool(comp, "isActive");
-					const hk = () => {
-						// region Selection order
-						const ixIx = ixsSelectionOrder.findIndex(it => it === i);
-						if (~ixIx) ixsSelectionOrder.splice(ixIx, 1);
-						if (comp._state.isActive) ixsSelectionOrder.push(i);
-						// endregion
-
-						// region Enable/disable
-						const activeRows = rowMetas.filter(it => it.comp._state.isActive);
-
-						if (opts.count != null) {
-							// If we're above the max allowed count, deselect a checkbox in FIFO order
-							if (activeRows.length > opts.count) {
-								// FIFO (`.shift`) makes logical sense, but FILO (`.splice` second-from-last) _feels_ better
-								const ixFirstSelected = ixsSelectionOrder.splice(ixsSelectionOrder.length - 2, 1)[0];
-								rowMetas[ixFirstSelected].comp._state.isActive = false;
-								return;
-							}
-						}
-
-						let isAcceptable = false;
-						if (opts.count != null) {
-							if (activeRows.length === opts.count) isAcceptable = true;
-						} else {
-							if (activeRows.length >= (opts.min || 0) && activeRows.length <= (opts.max || Number.MAX_SAFE_INTEGER)) isAcceptable = true;
-						}
-
-						$btnOk.attr("disabled", !isAcceptable);
-						// endregion
-					};
-					comp._addHookBase("isActive", hk);
-					hk();
-
-					rowMetas.push({
-						$cb,
-						comp,
-						isRequired
-					});
-
-					$eles.push($$`<label class="flex-v-center row py-1">
-						<div class="col-2 flex-vh-center">${$cb}</div>
-						<div class="col-10 flex-v-center">${opts.fnDisplay ? opts.fnDisplay(v, i) : v}</div>
-					</label>`);
+			const initialState = {};
+			if (opts.defaults) opts.defaults.forEach(ix => initialState[ComponentUiUtil.getMetaWrpMultipleChoice_getPropIsActive(prop, ix)] = true);
+			if (opts.required) {
+				opts.required.forEach(ix => {
+					initialState[ComponentUiUtil.getMetaWrpMultipleChoice_getPropIsActive(prop, ix)] = true; // "requires" implies "default"
+					initialState[ComponentUiUtil.getMetaWrpMultipleChoice_getPropIsRequired(prop, ix)] = true;
 				});
-			});
+			}
 
-			// Sort the initial selection order (i.e. that from defaults) by lowest to highest, such that new clicks
-			//   will remove from the first element in visual order
-			ixsSelectionOrder.sort((a, b) => SortUtil.ascSort(a, b));
-
-			const $wrpList = $$`<div class="flex-col w-100 stripe-even mb-1 overflow-y-auto">${$eles}</div>`;
+			const comp = BaseComponent.fromObject(initialState);
 
 			let title = opts.title;
 			if (!title) {
@@ -1754,6 +1722,13 @@ class InputUiUtil {
 				else if (opts.min != null) title = `Choose At Least ${Parser.numberToText(opts.min).uppercaseFirst()}`;
 				else title = `Choose At Most ${Parser.numberToText(opts.max).uppercaseFirst()}`;
 			}
+
+			const {$ele: $wrpList, propIsAcceptable} = ComponentUiUtil.getMetaWrpMultipleChoice(comp, prop, opts);
+			$wrpList.addClass(`mb-1`);
+
+			const hkIsAcceptable = () => $btnOk.attr("disabled", !comp._state[propIsAcceptable]);
+			comp._addHookBase(propIsAcceptable, hkIsAcceptable)
+			hkIsAcceptable();
 
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				...(opts.modalOpts || {}),
@@ -1765,7 +1740,7 @@ class InputUiUtil {
 
 					if (!isDataEntered) return resolve(null);
 
-					const ixs = rowMetas.map((row, ix) => row.comp._state.isActive ? ix : null).filter(it => it != null);
+					const ixs = ComponentUiUtil.getMetaWrpMultipleChoice_getSelectedIxs(comp, prop);
 
 					if (!opts.isResolveItems) resolve(ixs);
 					else if (opts.values) resolve(ixs.map(ix => opts.values[ix]));
@@ -1773,7 +1748,7 @@ class InputUiUtil {
 						const allValues = opts.valueGroups.map(it => it.values).flat();
 						resolve(ixs.map(ix => allValues[ix]))
 					}
-				}
+				},
 			});
 			if (opts.htmlDescription) $modalInner.append(opts.htmlDescription);
 			$wrpList.appendTo($modalInner);
@@ -1805,7 +1780,7 @@ class InputUiUtil {
 					if (typeof isDataEntered === "symbol") return resolve(isDataEntered);
 					if (!isDataEntered) return resolve(null);
 					return resolve(~lastIx ? lastIx : null);
-				}
+				},
 			});
 
 			$$`<div class="flex flex-wrap flex-h-center mb-2">${opts.values.map((v, i) => {
@@ -1883,7 +1858,7 @@ class InputUiUtil {
 					if (!isDataEntered) return resolve(null);
 					const raw = $iptStr.val();
 					return resolve(raw);
-				}
+				},
 			});
 			$iptStr.appendTo($modalInner);
 			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
@@ -1923,7 +1898,7 @@ class InputUiUtil {
 					const raw = $iptStr.val();
 					if (!raw.trim()) return resolve(null);
 					else return resolve(raw);
-				}
+				},
 			});
 			$iptStr.appendTo($modalInner);
 			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
@@ -1958,7 +1933,7 @@ class InputUiUtil {
 					const raw = $iptRgb.val();
 					if (!raw.trim()) return resolve(null);
 					else return resolve(raw);
-				}
+				},
 			});
 			$iptRgb.appendTo($modalInner);
 			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
@@ -2045,25 +2020,25 @@ class InputUiUtil {
 								left: x + CONTROLS_RADIUS - (BTN_STEP_SIZE / 2),
 								width: BTN_STEP_SIZE,
 								height: BTN_STEP_SIZE,
-								zIndex: 1002
+								zIndex: 1002,
 							})
 							.click(() => {
 								curAngle = SEG_ANGLE * i;
 								handleAngle();
-							})
+							}),
 					);
 				}
 
 				const $wrpInner = $$`<div class="flex-vh-center relative">${$btns}${$pad}</div>`
 					.css({
 						width: CONTROLS_RADIUS * 2,
-						height: CONTROLS_RADIUS * 2
+						height: CONTROLS_RADIUS * 2,
 					});
 
 				return $$`<div class="flex-vh-center">${$wrpInner}</div>`
 					.css({
 						width: (CONTROLS_RADIUS * 2) + BTN_STEP_SIZE + BORDER_PAD,
-						height: (CONTROLS_RADIUS * 2) + BTN_STEP_SIZE + BORDER_PAD
+						height: (CONTROLS_RADIUS * 2) + BTN_STEP_SIZE + BORDER_PAD,
 					})
 			})() : null;
 
@@ -2082,7 +2057,7 @@ class InputUiUtil {
 					if (!isDataEntered) return resolve(null);
 					if (curAngle < 0) curAngle += 360;
 					return resolve(curAngle); // TODO returning the step number is more useful if step is specified?
-				}
+				},
 			});
 			$$`<div class="flex-vh-center mb-3">
 				${$padOuter || $pad}
@@ -2104,7 +2079,7 @@ class InputUiUtil {
 			const comp = BaseComponent.fromObject({
 				num: (opts.default && opts.default.num) || 1,
 				faces: (opts.default && opts.default.faces) || 6,
-				bonus: (opts.default && opts.default.bonus) || null
+				bonus: (opts.default && opts.default.bonus) || null,
 			});
 
 			comp.render = function ($parent) {
@@ -2153,7 +2128,7 @@ class InputUiUtil {
 					if (typeof isDataEntered === "symbol") return resolve(isDataEntered);
 					if (!isDataEntered) return resolve(null);
 					return resolve(comp.getAsString());
-				}
+				},
 			});
 
 			comp.render($modalInner);
@@ -2380,7 +2355,7 @@ class SourceUiUtil {
 					full: $iptName.val().trim(),
 					url: $iptUrl.val().trim(),
 					authors: $iptAuthors.val().trim().split(",").map(it => it.trim()).filter(Boolean),
-					convertedBy: $iptConverters.val().trim().split(",").map(it => it.trim()).filter(Boolean)
+					convertedBy: $iptConverters.val().trim().split(",").map(it => it.trim()).filter(Boolean),
 				};
 
 				options.cbConfirm(source, options.mode !== "edit");
@@ -2506,7 +2481,7 @@ class BaseComponent extends ProxyBase {
 			assign: (toObj, isOverwrite) => this._proxyAssign("state", "_state", "__state", toObj, isOverwrite),
 			pLock: lockName => this._pLock(lockName),
 			unlock: lockName => this._unlock(lockName),
-			component: this
+			component: this,
 		};
 		return this.__pod;
 	}
@@ -2516,7 +2491,7 @@ class BaseComponent extends ProxyBase {
 
 	getBaseSaveableState () {
 		return {
-			state: MiscUtil.copy(this.__state)
+			state: MiscUtil.copy(this.__state),
 		};
 	}
 
@@ -2700,7 +2675,7 @@ class BaseComponent extends ProxyBase {
 		const lock = new Promise(resolve => unlock = resolve);
 		this.__locks[lockName] = {
 			lock,
-			unlock
+			unlock,
 		}
 	}
 
@@ -2787,7 +2762,7 @@ class RenderableCollectionBase {
 			fnGetNew: (entity, i) => this.getNewRender(entity, i),
 			fnDeleteExisting: (rendered) => this.doDeleteExistingRender(rendered),
 			namespace: this._namespace,
-			isDiffMode: opts.isDiffMode != null ? opts.isDiffMode : this._isDiffMode
+			isDiffMode: opts.isDiffMode != null ? opts.isDiffMode : this._isDiffMode,
 		});
 	}
 }
@@ -2833,7 +2808,7 @@ class RenderableCollectionAsyncBase {
 			namespace: this._namespace,
 			isDiffMode: opts.isDiffMode != null ? opts.isDiffMode : this._isDiffMode,
 			isMultiRender: this._isMultiRender,
-			additionalCaches: this._additionalCaches
+			additionalCaches: this._additionalCaches,
 		});
 	}
 }
@@ -2902,7 +2877,7 @@ class BaseLayeredComponent extends BaseComponent {
 	getBaseSaveableState () {
 		return {
 			state: MiscUtil.copy(this.__state),
-			layers: MiscUtil.copy(this._layers.map(l => l.getSaveableState()))
+			layers: MiscUtil.copy(this._layers.map(l => l.getSaveableState())),
 		};
 	}
 
@@ -2927,7 +2902,7 @@ class BaseLayeredComponent extends BaseComponent {
 				return l;
 			},
 			removeLayer: (layer) => this._removeLayer(layer),
-			layers: this._layers // FIXME avoid passing this directly to the child
+			layers: this._layers, // FIXME avoid passing this directly to the child
 		};
 		return this.__pod;
 	}
@@ -2953,7 +2928,7 @@ class CompLayer extends ProxyBase {
 	getSaveableState () {
 		return {
 			name: this._name,
-			data: MiscUtil.copy(this.__data)
+			data: MiscUtil.copy(this.__data),
 		}
 	}
 
@@ -3176,7 +3151,7 @@ class ComponentUiUtil {
 			fnKeyup: () => {
 				const nxtVal = opts.isNoTrim ? $ipt.val() : $ipt.val().trim();
 				component._state[prop] = opts.isAllowNull && !nxtVal ? null : nxtVal;
-			}
+			},
 		});
 
 		if (opts.autocomplete && opts.autocomplete.length) $ipt.typeahead({source: opts.autocomplete});
@@ -3310,6 +3285,8 @@ class ComponentUiUtil {
 	 * @param [opts.stateProp] State prop.
 	 * @param [opts.isInverted] If the toggle display should be inverted.
 	 * @param [opts.activeClass] CSS class to use when setting the button as "active."
+	 * @param [opts.activeTitle] Title to use when setting the button as "active."
+	 * @param [opts.inactiveTitle] Title to use when setting the button as "active."
 	 * @return {JQuery}
 	 */
 	static $getBtnBool (component, prop, opts) {
@@ -3329,6 +3306,7 @@ class ComponentUiUtil {
 			});
 		const hook = () => {
 			$btn.toggleClass(activeClass, opts.isInverted ? !component[stateProp][prop] : !!component[stateProp][prop]);
+			if (opts.activeTitle || opts.inactiveTitle) $btn.title(component[stateProp][prop] ? (opts.activeTitle || "") : (opts.inactiveTitle || ""));
 			if (opts.fnHookPost) opts.fnHookPost(component[stateProp][prop]);
 		};
 		component._addHook(stateName, prop, hook);
@@ -3357,6 +3335,145 @@ class ComponentUiUtil {
 		hook();
 
 		return opts.asMeta ? ({$cb, unhook: () => component._removeHookBase(prop, hook)}) : $cb;
+	}
+
+	/**
+	 * A select2-style dropdown.
+	 * @param comp An instance of a class which extends BaseComponent.
+	 * @param prop Component to hook on.
+	 * @param opts Options Object.
+	 * @param opts.values Values to display.
+	 * @param [opts.$ele] Element to use.
+	 * @param [opts.html] HTML to convert to element to use.
+	 * @param [opts.isAllowNull] If null is allowed.
+	 * @param [opts.fnDisplay] Value display function.
+	 * @param [opts.displayNullAs] If null values are allowed, display them as this string.
+	 * @param [opts.asMeta] If a meta-object should be returned containing the hook and the select.
+	 * @return {JQuery}
+	 */
+	static $getSelSearchable (comp, prop, opts) {
+		opts = opts || {};
+
+		const $iptDisplay = (opts.$ele || $(opts.html || `<input class="form-control input-xs form-control--minimal">`))
+			.addClass("ui-sel2__ipt-display pr-1")
+			.attr("tabindex", "-1")
+			.click(() => $iptSearch.focus().select())
+			.disableSpellcheck();
+
+		const handleSearchChange = () => {
+			const cleanTerm = this._$getSelSearchable_getSearchString($iptSearch.val());
+			metaOptions.forEach(it => {
+				it.isVisible = it.searchTerm.includes(cleanTerm);
+				it.$ele.toggleVe(it.isVisible);
+			});
+		};
+		const handleSearchChangeDebounced = MiscUtil.debounce(handleSearchChange, 30);
+
+		const $iptSearch = (opts.$ele || $(opts.html || `<input class="form-control input-xs form-control--minimal">`))
+			.addClass("absolute ui-sel2__ipt-search")
+			.keydown(evt => {
+				switch (evt.key) {
+					case "Escape": evt.stopPropagation(); return $iptSearch.blur();
+
+					case "ArrowDown": {
+						evt.preventDefault();
+						const visibleMetaOptions = metaOptions.filter(it => it.isVisible);
+						if (!visibleMetaOptions.length) return;
+						visibleMetaOptions[0].$ele.focus();
+						break;
+					}
+
+					case "Enter": {
+						const visibleMetaOptions = metaOptions.filter(it => it.isVisible);
+						if (!visibleMetaOptions.length) return;
+						comp._state[prop] = visibleMetaOptions[0].value;
+						break;
+					}
+
+					default: handleSearchChangeDebounced();
+				}
+			})
+			.change(() => handleSearchChangeDebounced())
+			.click(() => $iptSearch.focus().select())
+			.disableSpellcheck();
+
+		const $wrpChoices = $(`<div class="absolute ui-sel2__wrp-options overflow-y-scroll"></div>`);
+
+		const $wrp = $$`<div class="flex relative ui-sel2__wrp w-100">
+			${$iptDisplay}
+			${$iptSearch}
+			${$wrpChoices}
+		</div>`;
+
+		const procValues = opts.isAllowNull ? [null, ...opts.values] : opts.values;
+		const metaOptions = procValues.map((v, i) => {
+			const display = v == null ? (opts.displayNullAs || "\u2014") : opts.fnDisplay ? opts.fnDisplay(v) : v;
+
+			const $ele = $(`<div class="flex-v-center py-1 px-1 clickable ui-sel2__disp-option ${v == null ? `italic` : ""}" tabindex="${i}">${display}</div>`)
+				.click(() => {
+					comp._state[prop] = v;
+					$(document.activeElement).blur();
+				})
+				.keydown(evt => {
+					switch (evt.key) {
+						case "Escape": evt.stopPropagation(); return $ele.blur();
+
+						case "ArrowDown": {
+							evt.preventDefault();
+							const visibleMetaOptions = metaOptions.filter(it => it.isVisible);
+							if (!visibleMetaOptions.length) return;
+							const ixCur = visibleMetaOptions.indexOf(out);
+							const nxt = visibleMetaOptions[ixCur + 1];
+							if (nxt) nxt.$ele.focus();
+							break;
+						}
+
+						case "ArrowUp": {
+							evt.preventDefault();
+							const visibleMetaOptions = metaOptions.filter(it => it.isVisible);
+							if (!visibleMetaOptions.length) return;
+							const ixCur = visibleMetaOptions.indexOf(out);
+							const prev = visibleMetaOptions[ixCur - 1];
+							if (prev) return prev.$ele.focus();
+							$iptSearch.focus();
+							break;
+						}
+
+						case "Enter": {
+							comp._state[prop] = v;
+							$iptSearch.focus();
+							break;
+						}
+					}
+				})
+				.appendTo($wrpChoices);
+
+			const out = {
+				value: v,
+				isVisible: true,
+				searchTerm: this._$getSelSearchable_getSearchString(display),
+				$ele,
+			};
+			return out;
+		});
+
+		const hk = () => {
+			if (comp._state[prop] == null) $iptDisplay.addClass("italic").val(opts.displayNullAs || "\u2014");
+			else $iptDisplay.removeClass("italic").val(opts.fnDisplay ? opts.fnDisplay(comp._state[prop]) : comp._state[prop]);
+
+			metaOptions.forEach(it => it.$ele.removeClass("active"))
+			const metaActive = metaOptions.find(it => it.value == null ? comp._state[prop] == null : it.value === comp._state[prop]);
+			if (metaActive) metaActive.$ele.addClass("active");
+		};
+		comp._addHookBase(prop, hk);
+		hk();
+
+		return opts.asMeta ? ({$wrp, unhook: () => comp._removeHookBase(prop, hk)}) : $wrp;
+	}
+
+	static _$getSelSearchable_getSearchString (str) {
+		if (str == null) return "";
+		return str.trim().toLowerCase().replace(/\s+/g, " ");
 	}
 
 	/**
@@ -3413,7 +3530,7 @@ class ComponentUiUtil {
 
 		const menu = ContextUtil.getMenu(opts.values.map(it => new ContextUtil.Action(
 			opts.fnDisplay ? opts.fnDisplay(it) : it,
-			() => pickComp.getPod().set(it, true)
+			() => pickComp.getPod().set(it, true),
 		)));
 
 		const pickComp = BaseComponent.fromObject(initialVals);
@@ -3487,6 +3604,170 @@ class ComponentUiUtil {
 
 		return opts.asMeta ? {$wrp, unhook: () => component._removeHookBase(prop, hook)} : $wrp;
 	}
+
+	/**
+	 * @param comp
+	 * @param prop Base prop. This will be expanded with `__...`-suffixed sub-props as required.
+	 * @param opts Options.
+	 * @param [opts.values] Array of values. Mutually incompatible with "valueGroups".
+	 * @param [opts.valueGroups] Array of value groups (of the form `{name: "Group Name", values: [...]}`). Mutually incompatible with "values".
+	 * @param [opts.count] Number of choices the user can make (cannot be used with min/max).
+	 * @param [opts.min] Minimum number of choices the user can make (cannot be used with count).
+	 * @param [opts.max] Maximum number of choices the user can make (cannot be used with count).
+	 * @param [opts.isResolveItems] True if the promise should resolve to an array of the items instead of the indices. // TODO maybe remove?
+	 * @param [opts.fnDisplay] Function which takes a value and returns display text.
+	 */
+	static getMetaWrpMultipleChoice (comp, prop, opts) {
+		opts = opts || {};
+		this._getMetaWrpMultipleChoice_doValidateOptions(opts);
+
+		const rowMetas = [];
+		const $eles = [];
+		const ixsSelectionOrder = [];
+
+		const propIsAcceptable = this.getMetaWrpMultipleChoice_getPropIsAcceptable(prop);
+		const propPulse = this.getMetaWrpMultipleChoice_getPropPulse(prop);
+		const propIxMax = this._getMetaWrpMultipleChoice_getPropValuesLength(prop);
+
+		const valueGroups = opts.valueGroups || [{values: opts.values}];
+
+		let ixValue = 0;
+		valueGroups.forEach((group, i) => {
+			if (i !== 0) $eles.push($(`<hr class="w-100 hr-1 hr--dotted">`));
+
+			if (group.name) $eles.push($(`<div class="flex-v-center row py-1"><span class="mr-2">‒</span><span>${group.name}</span></div>`));
+
+			if (group.text) $eles.push($(`<div class="flex-v-center row py-1"><div class="ml-1 mr-3"></div><i>${group.text}</i></div>`));
+
+			group.values.forEach(v => {
+				const ixValueFrozen = ixValue;
+
+				const propIsActive = this.getMetaWrpMultipleChoice_getPropIsActive(prop, ixValueFrozen);
+				const propIsRequired = this.getMetaWrpMultipleChoice_getPropIsRequired(prop, ixValueFrozen);
+
+				// In the case of pre-existing selections, add these to our selection order tracking as they appear
+				if (comp._state[propIsActive] && !comp._state[propIsRequired]) ixsSelectionOrder.push(ixValueFrozen);
+
+				const $cb = comp._state[propIsRequired]
+					? $(`<input type="checkbox" disabled checked>`)
+					: ComponentUiUtil.$getCbBool(comp, propIsActive);
+				const hk = () => {
+					// region Selection order
+					const ixIx = ixsSelectionOrder.findIndex(it => it === ixValueFrozen);
+					if (~ixIx) ixsSelectionOrder.splice(ixIx, 1);
+					if (comp._state[propIsActive]) ixsSelectionOrder.push(ixValueFrozen);
+					// endregion
+
+					// region Enable/disable
+					const activeRows = rowMetas.filter(it => comp._state[it.propIsActive]);
+
+					if (opts.count != null) {
+						// If we're above the max allowed count, deselect a checkbox in FIFO order
+						if (activeRows.length > opts.count) {
+							// FIFO (`.shift`) makes logical sense, but FILO (`.splice` second-from-last) _feels_ better
+							const ixFirstSelected = ixsSelectionOrder.splice(ixsSelectionOrder.length - 2, 1)[0];
+							if (ixFirstSelected != null) {
+								const propIsActiveOther = this.getMetaWrpMultipleChoice_getPropIsActive(prop, ixFirstSelected);
+								comp._state[propIsActiveOther] = false;
+
+								comp._state[propPulse] = !comp._state[propPulse];
+							}
+							return;
+						}
+					}
+
+					let isAcceptable = false;
+					if (opts.count != null) {
+						if (activeRows.length === opts.count) isAcceptable = true;
+					} else {
+						if (activeRows.length >= (opts.min || 0) && activeRows.length <= (opts.max || Number.MAX_SAFE_INTEGER)) isAcceptable = true;
+					}
+
+					// Save this to a flag in the state object that external code can read
+					comp._state[propIsAcceptable] = isAcceptable;
+					// endregion
+
+					comp._state[propPulse] = !comp._state[propPulse];
+				};
+				comp._addHookBase(propIsActive, hk);
+				hk();
+
+				rowMetas.push({
+					$cb,
+					propIsActive,
+					unhook: () => comp._removeHookBase(propIsActive, hk),
+				});
+
+				$eles.push($$`<label class="flex-v-center row py-1 stripe-even">
+					<div class="col-1 flex-vh-center">${$cb}</div>
+					<div class="col-11 flex-v-center">${opts.fnDisplay ? opts.fnDisplay(v, ixValueFrozen) : v}</div>
+				</label>`);
+
+				ixValue++;
+			});
+		});
+
+		// Sort the initial selection order (i.e. that from defaults) by lowest to highest, such that new clicks
+		//   will remove from the first element in visual order
+		ixsSelectionOrder.sort((a, b) => SortUtil.ascSort(a, b));
+
+		comp.__state[propIxMax] = ixValue;
+
+		// Always return this as a "meta" object
+		const unhook = () => rowMetas.forEach(it => it.unhook());
+		return {
+			$ele: $$`<div class="flex-col w-100 overflow-y-auto">${$eles}</div>`,
+			propIsAcceptable,
+			propPulse,
+			unhook,
+			cleanup: () => {
+				unhook();
+				// This will trigger a final "pulse"
+				Object.keys(comp._state)
+					.filter(it => it.startsWith(`${prop}__`))
+					.forEach(it => delete comp._state[it]);
+			},
+		};
+	}
+
+	static getMetaWrpMultipleChoice_getPropIsAcceptable (prop) { return `${prop}__isAcceptable`; }
+	static getMetaWrpMultipleChoice_getPropPulse (prop) { return `${prop}__pulse`; }
+	static _getMetaWrpMultipleChoice_getPropValuesLength (prop) { return `${prop}__length`; }
+	static getMetaWrpMultipleChoice_getPropIsActive (prop, ixValue) { return `${prop}__isActive_${ixValue}`; }
+	static getMetaWrpMultipleChoice_getPropIsRequired (prop, ixValue) { return `${prop}__isRequired_${ixValue}`; }
+
+	static getMetaWrpMultipleChoice_getSelectedIxs (comp, prop) {
+		const out = [];
+		const len = comp._state[this._getMetaWrpMultipleChoice_getPropValuesLength(prop)] || 0;
+		for (let i = 0; i < len; ++i) {
+			if (comp._state[this.getMetaWrpMultipleChoice_getPropIsActive(prop, i)]) out.push(i);
+		}
+		return out;
+	}
+
+	static getMetaWrpMultipleChoice_getSelectedValues (comp, prop, {values, valueGroups}) {
+		const selectedIxs = this.getMetaWrpMultipleChoice_getSelectedIxs(comp, prop);
+		if (values) return selectedIxs.map(ix => values[ix]);
+
+		const selectedIxsSet = new Set(selectedIxs);
+		const out = [];
+		let ixValue = 0;
+		valueGroups.forEach(group => {
+			group.values.forEach(v => {
+				if (selectedIxsSet.has(ixValue)) out.push(v);
+				ixValue++;
+			});
+		});
+		return out;
+	}
+
+	static _getMetaWrpMultipleChoice_doValidateOptions (opts) {
+		if ((Number(!!opts.values) + Number(!!opts.valueGroups)) !== 1) throw new Error(`Exactly one of "values" and "valueGroups" must be specified!`);
+
+		if (opts.count != null && (opts.min != null || opts.max != null)) throw new Error(`Chooser must be either in "count" mode or "min/max" mode!`);
+		// If no mode is specified, default to a "count 1" chooser
+		if (opts.count == null && opts.min == null && opts.max == null) opts.count = 1;
+	}
 }
 
 if (typeof module !== "undefined") {
@@ -3503,6 +3784,6 @@ if (typeof module !== "undefined") {
 		SourceUiUtil,
 		BaseComponent,
 		ComponentUiUtil,
-		RenderableCollectionBase
+		RenderableCollectionBase,
 	}
 }

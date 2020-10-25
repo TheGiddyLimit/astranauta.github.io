@@ -53,7 +53,7 @@ class MultiSource {
 		const hashSourceRaw = Hist.getHashSource();
 		const hashSource = hashSourceRaw ? Object.keys(src2UrlMap).find(it => it.toLowerCase() === hashSourceRaw.toLowerCase()) : null;
 		const userSel = [...new Set(
-			(await filterBox.pGetStoredActiveSources() || []).concat(await ListUtil.pGetSelectedSources() || []).concat(hashSource ? [hashSource] : [])
+			(await filterBox.pGetStoredActiveSources() || []).concat(await ListUtil.pGetSelectedSources() || []).concat(hashSource ? [hashSource] : []),
 		)];
 
 		const allSources = [];

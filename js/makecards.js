@@ -14,9 +14,10 @@ class MakeCards extends BaseComponent {
 
 		this._list = null;
 
-		this._modalFilterItems = new ModalFilterItems("makecards.items");
-		this._modalFilterBestiary = new ModalFilterBestiary("makecards.bestiary");
-		this._modalFilterSpells = new ModalFilterSpells("makecards.spells");
+		this._modalFilterItems = new ModalFilterItems({namespace: "makecards.items"});
+		this._modalFilterBestiary = new ModalFilterBestiary({namespace: "makecards.bestiary"});
+		this._modalFilterSpells = new ModalFilterSpells({namespace: "makecards.spells"});
+		this._modalFilterRaces = new ModalFilterRaces({namespace: "makecards.race"});
 
 		this._doSaveStateDebounced = MiscUtil.debounce(() => this._pDoSaveState(), 50);
 	}
@@ -39,12 +40,24 @@ class MakeCards extends BaseComponent {
 	_render_configSection () {
 		const $wrpConfig = $(`#wrp_config`).empty();
 
-		$(`<h5>New Card Defaults</h5>`).appendTo($wrpConfig);
-		$(`<div class="flex-v-center bold">
+		const $btnResetDefaults = $(`<button class="btn btn-default btn-xs">Reset</button>`)
+			.click(() => {
+				Object.entries(MakeCards._AVAILABLE_TYPES)
+					.forEach(([entityType, typeMeta]) => {
+						const kColor = `color_${entityType}`;
+						const kIcon = `icon_${entityType}`;
+
+						this._state[kColor] = typeMeta.colorDefault;
+						this._state[kIcon] = typeMeta.iconDefault;
+					});
+			});
+
+		$$($wrpConfig)`<h5 class="split-v-center"><div>New Card Defaults</div>${$btnResetDefaults}</h5>
+		<div class="flex-v-center bold">
 			<div class="col-4 text-center pr-2">Type</div>
 			<div class="col-4 text-center p-2">Color</div>
 			<div class="col-4 text-center pl-2">Icon</div>
-		</div>`).appendTo($wrpConfig);
+		</div>`;
 
 		const $getColorIconConfigRow = (entityType) => {
 			const entityMeta = MakeCards._AVAILABLE_TYPES[entityType];
@@ -99,7 +112,7 @@ class MakeCards extends BaseComponent {
 						icon: it.values.icon,
 						icon_back: it.values.icon,
 						contents: entityMeta.fnGetContents(it.values.entity),
-						tags: entityMeta.fnGetTags(it.values.entity)
+						tags: entityMeta.fnGetTags(it.values.entity),
 					}
 				});
 				DataUtil.userDownload("rpg-cards", toDownload);
@@ -125,7 +138,7 @@ class MakeCards extends BaseComponent {
 					if (!sel) return;
 					const rgb = await InputUiUtil.pGetUserColor({default: MiscUtil.randomColor()});
 					if (rgb) sel.forEach(it => it.data.setColor(rgb));
-				}
+				},
 			),
 			new ContextUtil.Action(
 				"Set Icon",
@@ -134,7 +147,7 @@ class MakeCards extends BaseComponent {
 					if (!sel) return;
 					const icon = await MakeCards._pGetUserIcon();
 					if (icon) sel.forEach(it => it.data.setIcon(icon));
-				}
+				},
 			),
 			new ContextUtil.Action(
 				"Remove",
@@ -144,8 +157,8 @@ class MakeCards extends BaseComponent {
 					sel.forEach(it => this._list.removeItem(it.ix));
 					this._list.update();
 					this._doSaveStateDebounced();
-				}
-			)
+				},
+			),
 		]);
 
 		const $btnMass = $(`<button class="btn btn-xs btn-default" title="Carry out actions on selected cards">Mass...</button>`)
@@ -185,7 +198,7 @@ class MakeCards extends BaseComponent {
 			null,
 			...this._render_getContextMenuOptionsFilter(),
 			null,
-			...this._render_getContextMenuOptionsSublist()
+			...this._render_getContextMenuOptionsSublist(),
 		];
 	}
 
@@ -207,7 +220,7 @@ class MakeCards extends BaseComponent {
 				this._list.addItem(listItem);
 				this._list.update();
 				this._doSaveStateDebounced();
-			}
+			},
 		));
 	}
 
@@ -220,6 +233,7 @@ class MakeCards extends BaseComponent {
 						case "creature": return this._modalFilterBestiary;
 						case "item": return this._modalFilterItems;
 						case "spell": return this._modalFilterSpells;
+						case "race": return this._modalFilterRaces;
 						default: throw new Error(`Unhandled branch!`);
 					}
 				})();
@@ -235,7 +249,7 @@ class MakeCards extends BaseComponent {
 				}
 				this._list.update();
 				this._doSaveStateDebounced();
-			}
+			},
 		));
 	}
 
@@ -258,7 +272,7 @@ class MakeCards extends BaseComponent {
 				listItems.forEach(it => this._list.addItem(it));
 				this._list.update();
 				this._doSaveStateDebounced();
-			}
+			},
 		))
 	}
 
@@ -325,7 +339,7 @@ class MakeCards extends BaseComponent {
 					icon: listItem.values.icon,
 					icon_back: listItem.values.icon,
 					contents: entityMeta.fnGetContents(listItem.values.entity),
-					tags: entityMeta.fnGetTags(listItem.values.entity)
+					tags: entityMeta.fnGetTags(listItem.values.entity),
 				};
 
 				if (evt.shiftKey) {
@@ -337,8 +351,8 @@ class MakeCards extends BaseComponent {
 						{
 							title: `Card Data \u2014 ${listItem.name}`,
 							isPermanent: true,
-							isBookContent: true
-						}
+							isBookContent: true,
+						},
 					);
 				} else {
 					await MiscUtil.pCopyTextToClipboard(JSON.stringify(toCopy, null, 2));
@@ -376,14 +390,14 @@ class MakeCards extends BaseComponent {
 				count: cardMeta.count,
 				entityType: cardMeta.entityType,
 
-				entity: loaded
+				entity: loaded,
 			},
 			{
 				$cbSel,
 				$iptCount,
 				setColor,
-				setIcon
-			}
+				setIcon,
+			},
 		);
 		return listItem;
 	}
@@ -445,7 +459,7 @@ class MakeCards extends BaseComponent {
 			...(mon.legendary ? this._ct_renderEntries(mon.legendary, 2) : []),
 			mon.mythic ? this._ct_section("Mythic Actions") : null,
 			mon.mythic ? this._ct_text(this._ct_htmlToText(Renderer.monster.getMythicActionIntro(mon, renderer))) : null,
-			...(mon.mythic ? this._ct_renderEntries(mon.mythic, 2) : [])
+			...(mon.mythic ? this._ct_renderEntries(mon.mythic, 2) : []),
 		].filter(Boolean)
 	}
 
@@ -457,7 +471,7 @@ class MakeCards extends BaseComponent {
 
 			return [
 				this._ct_section("At higher levels"),
-				...this._ct_renderEntries(ents, 2)
+				...this._ct_renderEntries(ents, 2),
 			]
 		})() : null;
 
@@ -470,7 +484,7 @@ class MakeCards extends BaseComponent {
 			this._ct_property("Duration", Parser.spDurationToFull(sp.duration)),
 			this._ct_rule(),
 			...this._ct_renderEntries(sp.entries, 2),
-			...(higherLevel || [])
+			...(higherLevel || []),
 		].filter(Boolean);
 	}
 
@@ -497,7 +511,17 @@ class MakeCards extends BaseComponent {
 			ptDamageProperties ? this._ct_text(ptDamageProperties) : null,
 			itemEntries.length ? this._ct_rule() : null,
 			...this._ct_renderEntries(itemEntries, 2),
-			item.charges ? this._ct_boxes(item.charges) : null
+			item.charges ? this._ct_boxes(item.charges) : null,
+		].filter(Boolean);
+	}
+
+	static _getCardContents_race (race) {
+		return [
+			this._ct_property("Ability Scores", Renderer.getAbilityData(race.ability).asText),
+			this._ct_property("Size", Parser.sizeAbvToFull(race.size)),
+			this._ct_property("Speed", Parser.getSpeedString(race)),
+			this._ct_rule(),
+			...this._ct_renderEntries(race.entries, 2),
 		].filter(Boolean);
 	}
 	// endregion
@@ -527,7 +551,7 @@ class MakeCards extends BaseComponent {
 			"class-rogue",
 			"class-sorcerer",
 			"class-warlock",
-			"class-wizard"
+			"class-wizard",
 		];
 
 		if (classIconNames.includes(iconName)) {
@@ -555,7 +579,7 @@ class MakeCards extends BaseComponent {
 				items: "16",
 				fnGetItemPrefix: (iconName) => {
 					return `<span class="cards__disp-typeahead-icon mr-2" style="background-image: url('${MakeCards._getIconPath(iconName)}')"/> `;
-				}
+				},
 			});
 
 			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
@@ -568,7 +592,7 @@ class MakeCards extends BaseComponent {
 					const raw = $iptStr.val();
 					if (!raw.trim()) return resolve(null);
 					else return resolve(raw);
-				}
+				},
 			});
 			$iptStr.appendTo($modalInner);
 			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
@@ -598,8 +622,8 @@ class MakeCards extends BaseComponent {
 				color: it.values.color,
 				icon: it.values.icon,
 				count: it.values.count,
-				entityType: it.values.entityType
-			}))
+				entityType: it.values.entityType,
+			})),
 		};
 	}
 
@@ -646,7 +670,7 @@ MakeCards._AVAILABLE_TYPES = {
 			const types = Parser.monTypeToFullObj(mon.type);
 			const cr = mon.cr == null ? "unknown CR" : `CR ${(mon.cr.cr || mon.cr)}`;
 			return ["creature", Parser.sourceJsonToAbv(mon.source), types.type, cr, Parser.sizeAbvToFull(mon.size)]
-		}
+		},
 	},
 	item: {
 		searchTitle: "Item",
@@ -659,7 +683,7 @@ MakeCards._AVAILABLE_TYPES = {
 		fnGetTags: (item) => {
 			const [typeListText] = Renderer.item.getHtmlAndTextTypes(item);
 			return ["item", Parser.sourceJsonToAbv(item.source), ...typeListText]
-		}
+		},
 	},
 	spell: {
 		searchTitle: "Spell",
@@ -673,8 +697,20 @@ MakeCards._AVAILABLE_TYPES = {
 			const out = ["spell", Parser.sourceJsonToAbv(spell.source), Parser.spLevelToFullLevelText(spell.level), Parser.spSchoolAbvToFull(spell.school)];
 			if (spell.duration.filter(d => d.concentration).length) out.push("concentration");
 			return out;
-		}
-	}
+		},
+	},
+	race: {
+		searchTitle: "Race",
+		pageTitle: "Races",
+		page: UrlUtil.PG_RACES,
+		colorDefault: "#a7894b",
+		iconDefault: "family-tree",
+		pFnSearch: SearchWidget.pGetUserRaceSearch,
+		fnGetContents: MakeCards._getCardContents_race.bind(MakeCards),
+		fnGetTags: (race) => {
+			return ["race", Parser.sourceJsonToAbv(race.source)];
+		},
+	},
 	// TODO add more entities
 };
 MakeCards._ = null;
@@ -700,7 +736,7 @@ MakeCards.utils = class {
 		if (p.entries) {
 			MakeCards.utils.itemPropertyMap[p.abbreviation] = p.name ? MiscUtil.copy(p) : {
 				name: p.entries[0].name.toLowerCase(),
-				entries: p.entries
+				entries: p.entries,
 			};
 		} else MakeCards.utils.itemPropertyMap[p.abbreviation] = {};
 	}
@@ -709,7 +745,7 @@ MakeCards.utils = class {
 		if (MakeCards.utils.itemTypeMap[t.abbreviation]) return;
 		MakeCards.utils.itemTypeMap[t.abbreviation] = t.name ? MiscUtil.copy(t) : {
 			name: t.entries[0].name.toLowerCase(),
-			entries: t.entries
+			entries: t.entries,
 		};
 	}
 

@@ -3348,9 +3348,15 @@
 				{
 					"name": "Innate Spellcasting (Psionics)",
 					"headerEntries": [
-						"The squidling's innate spellcasting ability is Intelligence (spell save {@dc 7}). It can innately cast levitate at will, requiring no components."
+						"The squidling's innate spellcasting ability is Intelligence (spell save {@dc 7}). It can innately cast {@spell levitate} at will, requiring no components."
 					],
-					"ability": "int"
+					"ability": "int",
+					"will": [
+						"{@spell levitate}"
+					],
+					"hidden": [
+						"will"
+					]
 				}
 			],
 			"trait": [
@@ -5860,9 +5866,6 @@
 				"O",
 				"Y"
 			],
-			"miscTags": [
-				"RNG"
-			],
 			"conditionInflict": [
 				"frightened"
 			]
@@ -6528,7 +6531,7 @@
 				{
 					"name": "Parry",
 					"entries": [
-						"The great warrior adds 3 to its AC against one melee attack that would hit it. To do so, the chieftain must see the attacker and be wielding a melee weapon."
+						"The great warrior adds 3 to its AC against one melee attack that would hit it. To do so, the great warrior must see the attacker and be wielding a melee weapon."
 					]
 				}
 			],

@@ -22,7 +22,7 @@ const booksList = new BooksList({
 	rowBuilderFn: (bk) => {
 		return `<span class="col-10 bold">${bk.name}</span>
 		<span class="col-2">${BooksList.getDateStr(bk)}</span>`;
-	}
+	},
 });
 
 window.addEventListener("load", () => booksList.pOnPageLoad());

@@ -416,29 +416,25 @@
 							"entries": [
 								"You were forged in the fires of Purphoros's forge. Your appearance bears a metallic sheen and visible joints. The Anvilwrought Characteristics table suggests details of your life or origins. Additionally, you gain the following traits.",
 								{
-									"type": "list",
-									"style": "list-hang-notitle",
-									"items": [
-										{
-											"type": "item",
-											"name": "Constructed Resilience",
-											"entry": "You were created to have remarkable fortitude, represented by the following benefits:"
-										}
-									]
-								},
-								{
-									"type": "list",
-									"items": [
-										"You have advantage on saving throws against being {@condition poisoned}, and you have resistance to poison damage.",
-										"You don't need to eat, drink, or breathe.",
-										"You are immune to disease.",
-										"You don't need to sleep, and magic can't put you to sleep."
-									]
-								},
-								{
 									"type": "entries",
 									"id": "017",
 									"entries": [
+										{
+											"type": "entries",
+											"name": "Constructed Resilience",
+											"entries": [
+												"You were created to have remarkable fortitude, represented by the following benefits:",
+												{
+													"type": "list",
+													"items": [
+														"You have advantage on saving throws against being {@condition poisoned}, and you have resistance to poison damage.",
+														"You don't need to eat, drink, or breathe.",
+														"You are immune to disease.",
+														"You don't need to sleep, and magic can't put you to sleep."
+													]
+												}
+											]
+										},
 										{
 											"type": "entries",
 											"name": "Sentry's Rest",
@@ -498,18 +494,21 @@
 							"entries": [
 								"Great deeds lie in your future, and it will take extraordinary effort to kill you before you accomplish those deeds. Choose or roll a random destiny using the Heroic Destiny table. Additionally, you gain the following traits.",
 								{
-									"type": "list",
-									"style": "list-hang-notitle",
-									"items": [
+									"type": "entries",
+									"entries": [
 										{
-											"type": "item",
+											"type": "entries",
 											"name": "Defy Death",
-											"entry": "You have advantage on death saving throws."
+											"entries": [
+												"You have advantage on death saving throws."
+											]
 										},
 										{
-											"type": "item",
+											"type": "entries",
 											"name": "Hard to Kill",
-											"entry": "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. Once you use this trait, you can't use it again until you finish a long rest."
+											"entries": [
+												"When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. Once you use this trait, you can't use it again until you finish a long rest."
+											]
 										}
 									]
 								},
@@ -581,18 +580,14 @@
 											"page": 12,
 											"id": "01c",
 											"entries": [
-												"You can cast {@spell protection from evil and good} with this trait, targeting only yourself and requiring no material components. Once you do so, you can't cast it in this way again until you finish a long rest. Wisdom is your spellcasting ability for this trait.",
-												{
-													"type": "list",
-													"style": "list-hang-notitle",
-													"items": [
-														{
-															"type": "item",
-															"name": "Reject the Gods",
-															"entry": "You can't gain or lose piety to any god. You instead gain the following traits at the character level listed in each one. Wisdom is your spellcasting ability for any spell that you cast through these traits."
-														}
-													]
-												}
+												"You can cast {@spell protection from evil and good} with this trait, targeting only yourself and requiring no material components. Once you do so, you can't cast it in this way again until you finish a long rest. Wisdom is your spellcasting ability for this trait."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Reject the Gods",
+											"entries": [
+												"You can't gain or lose piety to any god. You instead gain the following traits at the character level listed in each one. Wisdom is your spellcasting ability for any spell that you cast through these traits."
 											]
 										}
 									]
@@ -677,20 +672,16 @@
 							"entries": [
 								"Like a sphinx, you have a mind like a maze, impenetrable to mortal scrutiny. This might be a gift or training from an actual sphinx, the blessing (or curse) of a god, or an inexplicable talent. The Inscrutable Characteristics table suggests options for what makes you inscrutable. Additionally, you gain the following trait.",
 								{
-									"type": "list",
-									"style": "list-hang-notitle",
-									"items": [
-										{
-											"type": "item",
-											"name": "Psychic Shield",
-											"entry": "You have resistance to psychic damage."
-										}
-									]
-								},
-								{
 									"type": "entries",
 									"id": "021",
 									"entries": [
+										{
+											"type": "entries",
+											"name": "Psychic Shield",
+											"entries": [
+												"You have resistance to psychic damage."
+											]
+										},
 										{
 											"type": "entries",
 											"name": "Sphinx's Shroud",
@@ -759,85 +750,81 @@
 											"page": 14,
 											"id": "025",
 											"entries": [
-												"Your allies within 5 feet of you have advantage on saving throws against being {@condition frightened} or {@condition charmed}, provided you aren't {@condition incapacitated}.",
-												{
-													"type": "list",
-													"style": "list-hang-notitle",
-													"items": [
-														{
-															"type": "item",
-															"name": "Companion's Protection",
-															"entry": "When a creature you can see within 5 feet of you is hit by an attack roll, you can use your reaction to cause the attack to hit you instead. Once you use this trait, you can't do so again until you finish a long rest."
-														}
-													]
-												},
-												{
-													"type": "table",
-													"caption": "Companion Relationships",
-													"colLabels": [
-														"d6",
-														"Relationship"
-													],
-													"colStyles": [
-														"col-2 text-center",
-														"col-10"
-													],
-													"rows": [
-														[
-															"1",
-															"Another character is my lover or dearest friend."
-														],
-														[
-															"2",
-															"Another character is my sibling."
-														],
-														[
-															"3",
-															"Another character is my parent or child."
-														],
-														[
-															"4",
-															"Another character is a champion of my god."
-														],
-														[
-															"5",
-															"After admiring another character from afar, I've finally won a position by their side."
-														],
-														[
-															"6",
-															"I want nothing more than for another character to recognize my devotion and love me in return."
-														]
-													]
-												},
-												{
-													"type": "inset",
-													"name": "Myths of Theros",
-													"page": 14,
-													"id": "026",
-													"entries": [
-														"The world of Theros is alive with myths. From stories about the deeds of gods that explain the workings of the world to inspirational (or cautionary) tales of heroes, remarkable tales spread in countless ways, be they diversions, lessons, or songs. Just as in Theros, throughout this book you'll find numerous tales of great deeds, magical origins, grim tragedies, and more. In each case, such myths appear in sidebars like \"Myth of the First Kings of Meletis.\" These cues note the legendary places these stories occupy in the minds of Theros's people and their place as tales that endlessly play out among the constellations of Nyx."
-													]
-												},
-												{
-													"type": "image",
-													"href": {
-														"type": "internal",
-														"path": "book/MOT/007-01-03.png"
-													},
-													"title": "Heroes and lifelong companions, Kynaios and Tiro founded Meletis and ruled as its first kings ",
-													"width": 1500,
-													"height": 1002
-												},
-												{
-													"type": "insetReadaloud",
-													"id": "027",
-													"entries": [
-														"Myth of the First Kings of Meletis",
-														"In ages past, the peoples of what would one day become Meletis were ruled by the archon tyrant Agnomakhos. Unchecked for generations, the vicious overlord carved out a mighty empire. Willing to endure the immortal's cruelty no longer, the heroes Kynaios and Tiro\u2014united by their love of freedom and one another\u2014rose to challenge him. The people rallied to their cause, and through strength of arms, magic, and devotion, they defeated Agnomakhos. The polis of Meletis rose from the ruins of the archon's empire, established as a beacon of freedom and enlightenment, and its people chose Kynaios and Tiro to be its first kings."
-													]
-												}
+												"Your allies within 5 feet of you have advantage on saving throws against being {@condition frightened} or {@condition charmed}, provided you aren't {@condition incapacitated}."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Companion's Protection",
+											"entries": [
+												"When a creature you can see within 5 feet of you is hit by an attack roll, you can use your reaction to cause the attack to hit you instead. Once you use this trait, you can't do so again until you finish a long rest."
 											]
 										}
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Companion Relationships",
+									"colLabels": [
+										"d6",
+										"Relationship"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-10"
+									],
+									"rows": [
+										[
+											"1",
+											"Another character is my lover or dearest friend."
+										],
+										[
+											"2",
+											"Another character is my sibling."
+										],
+										[
+											"3",
+											"Another character is my parent or child."
+										],
+										[
+											"4",
+											"Another character is a champion of my god."
+										],
+										[
+											"5",
+											"After admiring another character from afar, I've finally won a position by their side."
+										],
+										[
+											"6",
+											"I want nothing more than for another character to recognize my devotion and love me in return."
+										]
+									]
+								},
+								{
+									"type": "inset",
+									"name": "Myths of Theros",
+									"page": 14,
+									"id": "026",
+									"entries": [
+										"The world of Theros is alive with myths. From stories about the deeds of gods that explain the workings of the world to inspirational (or cautionary) tales of heroes, remarkable tales spread in countless ways, be they diversions, lessons, or songs. Just as in Theros, throughout this book you'll find numerous tales of great deeds, magical origins, grim tragedies, and more. In each case, such myths appear in sidebars like \"Myth of the First Kings of Meletis.\" These cues note the legendary places these stories occupy in the minds of Theros's people and their place as tales that endlessly play out among the constellations of Nyx."
+									]
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "internal",
+										"path": "book/MOT/007-01-03.png"
+									},
+									"title": "Heroes and lifelong companions, Kynaios and Tiro founded Meletis and ruled as its first kings ",
+									"width": 1500,
+									"height": 1002
+								},
+								{
+									"type": "insetReadaloud",
+									"id": "027",
+									"entries": [
+										"Myth of the First Kings of Meletis",
+										"In ages past, the peoples of what would one day become Meletis were ruled by the archon tyrant Agnomakhos. Unchecked for generations, the vicious overlord carved out a mighty empire. Willing to endure the immortal's cruelty no longer, the heroes Kynaios and Tiro\u2014united by their love of freedom and one another\u2014rose to challenge him. The people rallied to their cause, and through strength of arms, magic, and devotion, they defeated Agnomakhos. The polis of Meletis rose from the ruins of the archon's empire, established as a beacon of freedom and enlightenment, and its people chose Kynaios and Tiro to be its first kings."
 									]
 								}
 							]
@@ -853,18 +840,21 @@
 								"These ideas, dreams, memories, and feelings are the stuff Nyx is made of, and a Nyxborn is shaped from that raw material. You might have been specifically crafted by one of the gods to serve a certain purpose. Or your existence could be an accident caused by a confluence of supernatural forces. The Nyxborn Origin table offers a handful of suggestions that might explain how you came to be, and the Nyxborn Quirks table describes some special effects that might linger around your person.",
 								"Additionally, you gain the following traits.",
 								{
-									"type": "list",
-									"style": "list-hang-notitle",
-									"items": [
+									"type": "entries",
+									"entries": [
 										{
-											"type": "item",
+											"type": "entries",
 											"name": "Cloak of Stars",
-											"entry": "As an action, you wrap yourself in a starry cloak, appearing like a silhouette formed of the night sky. When you do, attack rolls have disadvantage against you. This cloak lasts for 1 minute, until you doff it (no action required), or until you die. Once you use this trait, you can't use it again until you finish a long rest."
+											"entries": [
+												"As an action, you wrap yourself in a starry cloak, appearing like a silhouette formed of the night sky. When you do, attack rolls have disadvantage against you. This cloak lasts for 1 minute, until you doff it (no action required), or until you die. Once you use this trait, you can't use it again until you finish a long rest."
+											]
 										},
 										{
-											"type": "item",
+											"type": "entries",
 											"name": "Nyxborn Resistance",
-											"entry": "You have resistance to necrotic and radiant damage."
+											"entries": [
+												"You have resistance to necrotic and radiant damage."
+											]
 										}
 									]
 								},
@@ -966,25 +956,23 @@
 								"The gods seek mortal oracles to act as their agents. As a result, most oracles devote themselves to the service of a single god and learn to ignore the voices of all others. Occasionally, two gods agree to share the services of an oracle. Oracles who try to remain independent often find themselves pursued by the agents of evil gods who would bind them to the god's service, if necessary.",
 								"You gain the following traits.",
 								{
-									"type": "list",
-									"style": "list-hang-notitle",
-									"items": [
-										{
-											"type": "item",
-											"name": "Ears of the Oracle",
-											"entry": "You can speak, read, and write Celestial, the language of the gods. In addition, a god might deliver a message through you, and you can decide whether to use your own voice or to allow the god's voice to come through your mouth to deliver the message, translated into any language you speak."
-										},
-										{
-											"type": "item",
-											"name": "Oracle's Insight",
-											"entry": "The gods give you flashes of insight that help you bring your efforts to fruition. When you make an ability check, you can roll a {@dice d10} and add the number rolled to the check. You can wait until after you roll the {@dice d20} before deciding to add the {@dice d10}, but you must decide before the DM says whether the roll succeeds or fails. Once you use this trait, you can't use it again until you finish a short or long rest."
-										}
-									]
-								},
-								{
 									"type": "entries",
 									"id": "02a",
 									"entries": [
+										{
+											"type": "entries",
+											"name": "Ears of the Oracle",
+											"entries": [
+												"You can speak, read, and write Celestial, the language of the gods. In addition, a god might deliver a message through you, and you can decide whether to use your own voice or to allow the god's voice to come through your mouth to deliver the message, translated into any language you speak."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Oracle's Insight",
+											"entries": [
+												"The gods give you flashes of insight that help you bring your efforts to fruition. When you make an ability check, you can roll a {@dice d10} and add the number rolled to the check. You can wait until after you roll the {@dice d20} before deciding to add the {@dice d10}, but you must decide before the DM says whether the roll succeeds or fails. Once you use this trait, you can't use it again until you finish a short or long rest."
+											]
+										},
 										{
 											"type": "entries",
 											"name": "Oracle's Piety",
@@ -1094,38 +1082,30 @@
 							"entries": [
 								"Born with a particular connection to a deity, you have been winning favor with your god since birth. Consult the Pious Quirks table to determine how your faith might influence your personality. Additionally, you gain the following traits.",
 								{
-									"type": "list",
-									"style": "list-hang-notitle",
-									"items": [
-										{
-											"type": "item",
-											"name": "Pious Protection",
-											"entry": "If you fail a saving throw, you can reroll it, and you must use the new roll. Once you use this trait, you can't do so again until you finish a long rest."
-										}
-									]
-								},
-								{
 									"type": "entries",
 									"id": "031",
 									"entries": [
+										{
+											"type": "entries",
+											"name": "Pious Protection",
+											"entries": [
+												"If you fail a saving throw, you can reroll it, and you must use the new roll. Once you use this trait, you can't do so again until you finish a long rest."
+											]
+										},
 										{
 											"type": "entries",
 											"name": "Religious Study",
 											"page": 17,
 											"id": "032",
 											"entries": [
-												"You have advantage on any Intelligence ({@skill Religion}) check pertaining to your chosen god.",
-												{
-													"type": "list",
-													"style": "list-hang-notitle",
-													"items": [
-														{
-															"type": "item",
-															"name": "Starting Piety",
-															"entry": "You begin with a piety score of 3 with your chosen god."
-														}
-													]
-												},
+												"You have advantage on any Intelligence ({@skill Religion}) check pertaining to your chosen god."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Starting Piety",
+											"entries": [
+												"You begin with a piety score of 3 with your chosen god.",
 												{
 													"type": "table",
 													"caption": "Pious Quirks",
@@ -1178,13 +1158,14 @@
 							"entries": [
 								"Like the great hero Haktos, you are resistant to physical harm. Use the Unscarred Origin table to determine how you gained your legendary invulnerability. Additionally, you gain the following trait.",
 								{
-									"type": "list",
-									"style": "list-hang-notitle",
-									"items": [
+									"type": "entries",
+									"entries": [
 										{
-											"type": "item",
+											"type": "entries",
 											"name": "Unscarred Resilience",
-											"entry": "When you take damage, you can use your reaction to roll a {@dice d12}. Add your Constitution modifier to the number rolled, and reduce the damage by that total. After you use this trait, you can't use it again until you finish a short or long rest."
+											"entries": [
+												"When you take damage, you can use your reaction to roll a {@dice d12}. Add your Constitution modifier to the number rolled, and reduce the damage by that total. After you use this trait, you can't use it again until you finish a short or long rest."
+											]
 										}
 									]
 								},
@@ -4982,7 +4963,7 @@
 												],
 												[
 													"12",
-													"Capture an {@creature Underworld cerberus|MOT} (see{@book chapter 6|MOT|6|Underworld Cerberus})."
+													"Capture an {@creature Underworld cerberus|MOT} (see {@book chapter 6|MOT|6|Underworld Cerberus})."
 												]
 											]
 										}
@@ -5477,7 +5458,7 @@
 												],
 												[
 													"5",
-													"A disgraced priest of Ephara releases a horde of anvilwrought creatures (see{@book chapter 6|MOT|6|Anvilwroughts}) on a crowd gathered at the agora."
+													"A disgraced priest of Ephara releases a horde of anvilwrought creatures (see {@book chapter 6|MOT|6|Anvilwroughts}) on a crowd gathered at the agora."
 												],
 												[
 													"6",
@@ -7337,7 +7318,7 @@
 												]
 											],
 											"footnotes": [
-												"* See{@book chapter 6|MOT|6|Blue Dragons} for details about these creatures in Theros."
+												"* See {@book chapter 6|MOT|6|Blue Dragons} for details about these creatures in Theros."
 											]
 										},
 										{
@@ -11315,7 +11296,7 @@
 											"page": 178,
 											"id": "304",
 											"entries": [
-												"Whenever a spell is cast on the island, the caster must roll on the Wild Magic Surge table from {@class sorcerer|phb|chapter 3|Wild|phb} of the {@book Player's Handbook|PHB}."
+												"Whenever a spell is cast on the island, the caster must roll on the {@table Wild Magic Surge|PHB} table from {@class sorcerer|phb|chapter 3|Wild|phb} of the {@book Player's Handbook|PHB}."
 											]
 										}
 									]
@@ -11441,7 +11422,7 @@
 								"Sometimes the answer to a riddle is lost beyond the inky waters of the Tartyx River. When spells and sages fail to recover some crucial bit of information, how far might heroes go to recover it? One answer is to dare an expedition into the Underworld to find what was lost. Entering the Underworld is arguably one of the easiest feats imaginable\u2014everyone ends up there when they die. Entering while still alive, and in such a way as to be able to walk out again, is another matter entirely.",
 								"Legends tell of places where the boundary between the mortal world and the Underworld is weak. These paths lie beyond lands controlled by the poleis and other civilized beings. Dark caves with tunnels leading down into darkness and rivers quietly lapping at fog-shrouded gravel shores give way to the Underworld's borders. Though Athreos ferries the dead across the Tartyx, he's not above accepting a one-way fare from those who still breathe. Even the other fearsome Underworld guardians that keep watch over the dead often allow the living to enter. Leaving the Underworld isn't so simple, and once beyond the Tartyx River the living find themselves in the same predicament as the dead. Within the Underworld, characters who entered bodily are still fully alive. They age, suffer damage, heal naturally, and require air, food, drink, and sleep as normal. The Underworld isn't conducive to mortal life, though, and between deadly creatures and dangerous otherworldly environments, the living might soon find themselves numbering among the dead.",
 								"Characters can pursue all manner of goals to the Underworld. Many center on finding something that was lost with no other means available to recover it. Perhaps this means rescuing a dead soul when resurrection magic isn't an option or retrieving a vital piece of information from someone who wasn't supposed to die. This might even mean pursuing the soul of a player character, particularly if they're somehow barred from being returned to life through usual magical means. In such a case, consider allowing the player to run a temporary character who assists the party in the rescue or to play their own character as a soul and let them rejoin the party to help effect their own escape.",
-								"Regardless of why living characters might enter the Underworld, those who attempt the undertaking might seek to learn more about the realm of the dead, its various wards (see{@book chapter 3|MOT|3|The Underworld}), and where the object of their quest ended up. Oracles of any of the gods might aid in divining these details, but those likely to be the most precise\u2014followers of Erebos\u2014are also the least likely to be interested in aiding an Underworld escape. How characters turn such an oracle to their side and determine the accuracy of the information they receive are all part of such a momentous quest.",
+								"Regardless of why living characters might enter the Underworld, those who attempt the undertaking might seek to learn more about the realm of the dead, its various wards (see {@book chapter 3|MOT|3|The Underworld}), and where the object of their quest ended up. Oracles of any of the gods might aid in divining these details, but those likely to be the most precise\u2014followers of Erebos\u2014are also the least likely to be interested in aiding an Underworld escape. How characters turn such an oracle to their side and determine the accuracy of the information they receive are all part of such a momentous quest.",
 								"Once characters enter the Underworld and attain their goal, they still face their most daunting challenge: escape. Consult the following \"{@book Paths of Escape|MOT|4|Paths of Escape}\" section for ideas on how the living might ultimately make their way back out of the Underworld."
 							]
 						},
@@ -11640,7 +11621,7 @@
 										],
 										[
 											"2",
-											"Smuggle the puppy of an {@creature Underworld cerberus|MOT} (see{@book chapter 6|MOT|6|Underworld Cerberus}) into the mortal world."
+											"Smuggle the puppy of an {@creature Underworld cerberus|MOT} (see {@book chapter 6|MOT|6|Underworld Cerberus}) into the mortal world."
 										],
 										[
 											"3",
@@ -12878,7 +12859,7 @@
 							"page": 204,
 							"id": "385",
 							"entries": [
-								"The human polis of Akros maintains an outpost in the Katachthon Mountains to keep an eye on the cyclops population around One-Eyed Pass (see{@book chapter 3|MOT|3|The Katachthon Mountains}). From the cyclopes' perspective, the Akroan soldiers provide a reliable source of food, for the soldiers herd approaching enemies into cyclops territory rather than fighting these foes themselves. Thus, the cyclopes attack the Akroans just enough to keep the humans afraid of them, but not so much that they eliminate them or drive them off.",
+								"The human polis of Akros maintains an outpost in the Katachthon Mountains to keep an eye on the cyclops population around One-Eyed Pass (see {@book chapter 3|MOT|3|The Katachthon Mountains}). From the cyclopes' perspective, the Akroan soldiers provide a reliable source of food, for the soldiers herd approaching enemies into cyclops territory rather than fighting these foes themselves. Thus, the cyclopes attack the Akroans just enough to keep the humans afraid of them, but not so much that they eliminate them or drive them off.",
 								"Similarly, cyclopes who prey on sheep learn never to eat the shepherd. Like the pit of a fruit, a discarded shepherd will eventually \"grow\" a new flock to feed the cyclopes.",
 								{
 									"type": "image",

@@ -16,7 +16,7 @@ class ActionsPage extends ListPage {
 
 			sublistClass: "subactions",
 
-			dataProps: ["action"]
+			dataProps: ["action"],
 		});
 	}
 
@@ -43,12 +43,12 @@ class ActionsPage extends ListPage {
 			{
 				hash,
 				source,
-				time
+				time,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -82,8 +82,8 @@ class ActionsPage extends ListPage {
 			it.name,
 			{
 				hash,
-				time
-			}
+				time,
+			},
 		);
 		return listItem;
 	}

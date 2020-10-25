@@ -104,7 +104,7 @@ class UtilGenTables {
 				name: table._tmpMeta.subclassName,
 				source: table._tmpMeta.subclassSource,
 				className: table._tmpMeta.className,
-				classSource: table._tmpMeta.classSource
+				classSource: table._tmpMeta.classSource,
 			};
 			delete table._tmpMeta;
 		}
@@ -141,7 +141,7 @@ class UtilGenTables {
 				section: doc[opts.headProp].name,
 				data: chapter,
 				stacks: stacks,
-				isRequireIncludes: opts.isRequireIncludes
+				isRequireIncludes: opts.isRequireIncludes,
 			});
 		});
 
@@ -198,7 +198,7 @@ class UtilGenTables {
 				metaType: "class",
 				className: cls.name,
 				classSource: cls.source || SRC_PHB,
-				level: lvlI + 1
+				level: lvlI + 1,
 			};
 
 			lvl.forEach(feat => this._doSearch({
@@ -211,7 +211,7 @@ class UtilGenTables {
 				isRequireIncludes: true,
 
 				// Used to deduplicate headers
-				name: cls.name
+				name: cls.name,
 			}));
 		});
 
@@ -232,7 +232,7 @@ class UtilGenTables {
 						subclassSource: sc.source || cls.source || SRC_PHB,
 
 						// Used to deduplicate headers
-						name: sc.name
+						name: sc.name,
 					};
 
 					lvl.forEach(feat => this._doSearch({
@@ -242,7 +242,7 @@ class UtilGenTables {
 						section: cls.name,
 						data: feat,
 						stacks: stacks,
-						isRequireIncludes: true
+						isRequireIncludes: true,
 					}));
 				});
 			});

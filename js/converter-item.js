@@ -72,7 +72,7 @@ class ItemParser extends BaseParser {
 			const ptrI = {_: i};
 			item.entries = EntryConvert.coalesceLines(
 				ptrI,
-				toConvert
+				toConvert,
 			);
 			i = ptrI._;
 		}
@@ -259,6 +259,7 @@ class ItemParser extends BaseParser {
 
 		// Clean unwanted base properties
 		delete stats.armor;
+		delete stats.value;
 
 		stats.baseItem = `${baseItem.name.toLowerCase()}${baseItem.source === SRC_DMG ? "" : `|${baseItem.source}`}`;
 	}
@@ -328,11 +329,11 @@ ItemParser._ALL_ITEMS = null;
 ItemParser._ALL_CLASSES = null;
 ItemParser._MAPPED_ITEM_NAMES = {
 	"studded leather": "studded leather armor",
-	"leather": "leather armor"
+	"leather": "leather armor",
 };
 
 if (typeof module !== "undefined") {
 	module.exports = {
-		ItemParser
+		ItemParser,
 	};
 }

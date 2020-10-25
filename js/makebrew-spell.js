@@ -6,7 +6,7 @@ class SpellBuilder extends Builder {
 			titleSidebarLoadExisting: "Load Existing Spell",
 			titleSidebarDownloadJson: "Download Spells as JSON",
 			prop: "spell",
-			titleSelectDefaultSource: "(Same as Spell)"
+			titleSelectDefaultSource: "(Same as Spell)",
 		});
 
 		this._subclassLookup = {};
@@ -18,16 +18,20 @@ class SpellBuilder extends Builder {
 		const result = await SearchWidget.pGetUserSpellSearch();
 		if (result) {
 			const spell = MiscUtil.copy(await Renderer.hover.pCacheAndGet(result.page, result.source, result.hash));
-			spell.source = this._ui.source;
-
-			delete spell.srd;
-			delete spell.uniqueId;
-
-			this.setStateFromLoaded({s: spell, m: this.getInitialMetaState()});
-
-			this.renderInput();
-			this.renderOutput();
+			return this.pHandleSidebarLoadExistingData(spell);
 		}
+	}
+
+	async pHandleSidebarLoadExistingData (spell) {
+		spell.source = this._ui.source;
+
+		delete spell.srd;
+		delete spell.uniqueId;
+
+		this.setStateFromLoaded({s: spell, m: this.getInitialMetaState()});
+
+		this.renderInput();
+		this.renderOutput();
 	}
 
 	async pInit () {
@@ -42,30 +46,30 @@ class SpellBuilder extends Builder {
 			time: [
 				{
 					number: 1,
-					unit: "action"
-				}
+					unit: "action",
+				},
 			],
 			range: {
 				type: "point",
 				distance: {
-					type: "self"
-				}
+					type: "self",
+				},
 			},
 			duration: [
 				{
-					type: "instant"
-				}
+					type: "instant",
+				},
 			],
 			classes: {
 				fromClassList: [
 					{
 						name: "Wizard",
-						source: SRC_PHB
-					}
-				]
+						source: SRC_PHB,
+					},
+				],
 			},
 			entries: [],
-			source: this._ui ? this._ui.source : ""
+			source: this._ui ? this._ui.source : "",
 		}
 	}
 
@@ -140,9 +144,9 @@ class SpellBuilder extends Builder {
 			this._state,
 			{
 				shortName: "Subschool",
-				title: "Found in some homebrew, for example the 'Clockwork' sub-school."
+				title: "Found in some homebrew, for example the 'Clockwork' sub-school.",
 			},
-			"subschools"
+			"subschools",
 		).appendTo(infoTab.$wrpTab);
 
 		// TEXT
@@ -168,9 +172,9 @@ class SpellBuilder extends Builder {
 			{
 				vals: MiscUtil.copy(Parser.DMG_TYPES),
 				nullable: true,
-				fnDisplay: StrUtil.uppercaseFirst
+				fnDisplay: StrUtil.uppercaseFirst,
 			},
-			"damageInflict"
+			"damageInflict",
 		).appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptBooleanArray(
 			"Conditions Inflicted",
@@ -179,9 +183,9 @@ class SpellBuilder extends Builder {
 			{
 				vals: MiscUtil.copy(Parser.CONDITIONS),
 				nullable: true,
-				fnDisplay: StrUtil.uppercaseFirst
+				fnDisplay: StrUtil.uppercaseFirst,
 			},
-			"conditionInflict"
+			"conditionInflict",
 		).appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptBooleanArray(
 			"Spell Attack Type",
@@ -190,9 +194,9 @@ class SpellBuilder extends Builder {
 			{
 				vals: ["M", "R", "O"],
 				nullable: true,
-				fnDisplay: Parser.spAttackTypeToFull
+				fnDisplay: Parser.spAttackTypeToFull,
 			},
-			"spellAttack"
+			"spellAttack",
 		).appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptBooleanArray(
 			"Saving Throw",
@@ -201,9 +205,9 @@ class SpellBuilder extends Builder {
 			{
 				vals: Object.values(Parser.ATB_ABV_TO_FULL).map(it => it.toLowerCase()),
 				nullable: true,
-				fnDisplay: StrUtil.uppercaseFirst
+				fnDisplay: StrUtil.uppercaseFirst,
 			},
-			"savingThrow"
+			"savingThrow",
 		).appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptBooleanArray(
 			"Ability Check",
@@ -212,9 +216,9 @@ class SpellBuilder extends Builder {
 			{
 				vals: Object.values(Parser.ATB_ABV_TO_FULL).map(it => it.toLowerCase()),
 				nullable: true,
-				fnDisplay: StrUtil.uppercaseFirst
+				fnDisplay: StrUtil.uppercaseFirst,
 			},
-			"abilityCheck"
+			"abilityCheck",
 		).appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptBooleanArray(
 			"Area Type",
@@ -223,9 +227,9 @@ class SpellBuilder extends Builder {
 			{
 				vals: Object.keys(Parser.SPELL_AREA_TYPE_TO_FULL),
 				nullable: true,
-				fnDisplay: Parser.spAreaTypeToFull
+				fnDisplay: Parser.spAreaTypeToFull,
 			},
-			"areaTags"
+			"areaTags",
 		).appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptBooleanArray(
 			"Misc Tags",
@@ -234,9 +238,9 @@ class SpellBuilder extends Builder {
 			{
 				vals: Object.keys(Parser.SP_MISC_TAG_TO_FULL),
 				nullable: true,
-				fnDisplay: Parser.spMiscTagToFull
+				fnDisplay: Parser.spMiscTagToFull,
 			},
-			"miscTags"
+			"miscTags",
 		).appendTo(miscTab.$wrpTab);
 
 		// The following aren't included, as they are not used in the site:
@@ -474,7 +478,7 @@ class SpellBuilder extends Builder {
 				case "1": out.m = $iptMaterial.val().trim() || true; break;
 				case "2": {
 					out.m = {
-						text: $iptMaterial.val().trim() || true
+						text: $iptMaterial.val().trim() || true,
 					};
 					if ($cbConsumed.prop("checked")) out.m.consumed = true;
 					if ($iptCost.val().trim()) {
@@ -613,7 +617,7 @@ class SpellBuilder extends Builder {
 				case "1": {
 					out.duration = {
 						type: AMOUNT_TYPES[$selAmountType.val()],
-						amount: UiUtil.strToInt($iptAmount.val())
+						amount: UiUtil.strToInt($iptAmount.val()),
 					};
 					$iptAmount.val(out.duration.amount);
 					if ($cbConc.prop("checked")) out.concentration = true;
@@ -761,7 +765,7 @@ class SpellBuilder extends Builder {
 		const getClass = () => {
 			return {
 				name: $iptClass.val().trim(),
-				source: $selClassSource.val().unescapeQuotes()
+				source: $selClassSource.val().unescapeQuotes(),
 			}
 		};
 
@@ -793,12 +797,12 @@ class SpellBuilder extends Builder {
 			const out = {
 				class: {
 					name: className,
-					source: $selClassSource.val().unescapeQuotes()
+					source: $selClassSource.val().unescapeQuotes(),
 				},
 				subclass: {
 					name: $iptSubclass.val(),
-					source: $selSubclassSource.val().unescapeQuotes()
-				}
+					source: $selSubclassSource.val().unescapeQuotes(),
+				},
 			};
 			const subSubclassName = $iptSubSubclass.val().trim();
 			if (subSubclassName) out.subclass.subSubclass = subSubclassName;
@@ -869,7 +873,7 @@ class SpellBuilder extends Builder {
 			if (raceName) {
 				const out = {
 					name: raceName,
-					source: $selSource.val().unescapeQuotes()
+					source: $selSource.val().unescapeQuotes(),
 				};
 				const baseRaceName = $iptBaseRace.val().trim();
 				if (baseRaceName) {
@@ -938,7 +942,7 @@ class SpellBuilder extends Builder {
 			if (bgName) {
 				return {
 					name: bgName,
-					source: $selSource.val().unescapeQuotes()
+					source: $selSource.val().unescapeQuotes(),
 				};
 			} else return null;
 		};
@@ -1005,9 +1009,9 @@ class SpellBuilder extends Builder {
 				{
 					type: "code",
 					name: `Data`,
-					preformatted: JSON.stringify(DataUtil.cleanJson(MiscUtil.copy(this._state)), null, "\t")
-				}
-			]
+					preformatted: JSON.stringify(DataUtil.cleanJson(MiscUtil.copy(this._state)), null, "\t"),
+				},
+			],
 		});
 		$tblData.append(Renderer.utils.getBorderTr());
 		$tblData.append(`<tr><td colspan="6">${asCode}</td></tr>`);

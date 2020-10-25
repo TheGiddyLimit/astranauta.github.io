@@ -78,14 +78,14 @@ function isDirectory (path) {
 }
 
 const FILE_EXTENSION_WHITELIST = [
-	".json"
+	".json",
 ];
 
 const FILE_PREFIX_BLACKLIST = [
 	"bookref-",
 	"roll20-",
 	"foundry-",
-	"gendata-"
+	"gendata-",
 ];
 
 /**
@@ -141,5 +141,5 @@ module.exports = {
 	listFiles,
 	FILE_PREFIX_BLACKLIST,
 	patchLoadJson: PatchLoadJson.patchLoadJson,
-	unpatchLoadJson: PatchLoadJson.unpatchLoadJson
+	unpatchLoadJson: PatchLoadJson.unpatchLoadJson,
 };

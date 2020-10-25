@@ -24,10 +24,10 @@ class RenderDeities {
 				{
 					entries: [
 						...deity.customExtensionOf ? [`{@note This deity is a custom extension of {@deity ${deity.customExtensionOf}} with additional information from <i title="${Parser.sourceJsonToFull(deity.source).escapeQuotes()}">${Parser.sourceJsonToAbv(deity.source)}</i>.}`] : [],
-						...deity.entries
-					]
+						...deity.entries,
+					],
 				},
-				renderStack
+				renderStack,
 			);
 		}
 

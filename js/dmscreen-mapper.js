@@ -18,7 +18,7 @@ class DmMapper {
 					return doc.s === SRC_WDMM
 				}
 				return true; // Allow all homebrew through
-			}
+			},
 		});
 
 		if (!chosenDoc) return;
@@ -29,7 +29,7 @@ class DmMapper {
 			title: `Select Map\u2014${chosenDoc.n}`,
 			isWidth100: true,
 			isHeight100: true,
-			isUncappedHeight: true
+			isUncappedHeight: true,
 		});
 
 		$modalInner.append(`<div class="flex-vh-center w-100 h-100"><i class="dnd-font ve-muted">Loading...</i></div>`);
@@ -49,7 +49,7 @@ class DmMapper {
 							...Renderer.get().getMapRegionData(obj),
 							page: UrlUtil.PG_ADVENTURE,
 							source: adventurePack.adventure.source,
-							hash: UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE](adventurePack.adventure)
+							hash: UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE](adventurePack.adventure),
 						};
 						mapDatas.push(out);
 
@@ -63,12 +63,12 @@ class DmMapper {
 					}
 
 					return obj;
-				}
+				},
 			};
 
 			walker.walk(
 				chap,
-				handlers
+				handlers,
 			);
 		});
 

@@ -1,9 +1,85 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.4.4",
+	"version": "1.4.5",
 	"type": "object",
 
 	"definitions": {
+		"resist": {
+			"type": "array",
+			"items": {
+				"oneOf": [
+					{
+						"$ref": "util.json#/definitions/dataDamageType"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"choose": {
+								"type": "object",
+								"properties": {
+									"from": {
+										"$ref": "#/definitions/resist"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["from"]
+							}
+						}
+					}
+				]
+			}
+		},
+		"immune": {
+			"type": "array",
+			"items": {
+				"oneOf": [
+					{
+						"$ref": "util.json#/definitions/dataDamageType"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"choose": {
+								"type": "object",
+								"properties": {
+									"from": {
+										"$ref": "#/definitions/immune"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["from"]
+							}
+						}
+					}
+				]
+			}
+		},
+		"conditionImmune": {
+			"type": "array",
+			"items": {
+				"oneOf": [
+					{
+						"$ref": "util.json#/definitions/dataCondition"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"choose": {
+								"type": "object",
+								"properties": {
+									"from": {
+										"$ref": "#/definitions/conditionImmune"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["from"]
+							}
+						}
+					}
+				]
+			}
+		},
+
 		"raceData": {
 			"type": "object",
 			"properties": {
@@ -133,6 +209,36 @@
 										"$ref": "util.json#/definitions/additionalSpellsArray"
 									}
 								]
+							},
+							"resist": {
+								"oneOf": [
+									{
+										"$ref": "#/definitions/resist"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"immune": {
+								"oneOf": [
+									{
+										"$ref": "#/definitions/immune"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"conditionImmune": {
+								"oneOf": [
+									{
+										"$ref": "#/definitions/conditionImmune"
+									},
+									{
+										"type": "null"
+									}
+								]
 							}
 						},
 						"additionalProperties": false
@@ -228,6 +334,15 @@
 				},
 				"additionalSpells": {
 					"$ref": "util.json#/definitions/additionalSpellsArray"
+				},
+				"resist": {
+					"$ref": "#/definitions/resist"
+				},
+				"immune": {
+					"$ref": "#/definitions/immune"
+				},
+				"conditionImmune": {
+					"$ref": "#/definitions/conditionImmune"
 				}
 			},
 			"additionalProperties": false
@@ -239,8 +354,6 @@
 				"Amphibious",
 				"Armor Proficiency",
 				"Blindsight",
-				"Damage Immunity",
-				"Damage Resistance",
 				"Dragonmark",
 				"Improved Resting",
 				"Magic Resistance",

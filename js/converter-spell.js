@@ -33,7 +33,6 @@ class SpellParser extends BaseParser {
 				"RANGE",
 				"COMPONENTS",
 				"DURATION",
-				"AT HIGHER LEVELS"
 			];
 
 			if (curLine) {
@@ -116,31 +115,21 @@ class SpellParser extends BaseParser {
 				continue;
 			}
 
-			let isHigherLevelPart = false;
-			spell.entries = [];
-			spell.entriesHigherLevel = [];
+			const ptrI = {_: i};
+			spell.entries = EntryConvert.coalesceLines(
+				ptrI,
+				toConvert,
+				{
+					fnStop: (curLine) => /^At Higher Levels/gi.test(curLine),
+				},
+			);
+			i = ptrI._;
 
-			const addTo = (prop) => {
-				const target = spell[prop];
-				if (BaseParser._isContinuationLine(target, curLine)) {
-					target.last(`${target.last().trim()} ${curLine.trim()}`);
-				} else {
-					target.push(curLine.trim());
-				}
-			};
-
-			while (i < toConvert.length) {
-				if (!curLine.indexOf_handleColon("At Higher Levels")) {
-					isHigherLevelPart = true;
-					curLine = curLine.replace(/At Higher Levels\s*\.\s*?/i, "");
-				}
-
-				if (isHigherLevelPart) addTo("entriesHigherLevel");
-				else addTo("entries");
-
-				i++;
-				curLine = toConvert[i];
-			}
+			spell.entriesHigherLevel = EntryConvert.coalesceLines(
+				ptrI,
+				toConvert,
+			);
+			i = ptrI._;
 		}
 
 		if (!spell.entriesHigherLevel.length) delete spell.entriesHigherLevel;
@@ -336,7 +325,7 @@ class SpellParser extends BaseParser {
 				const out = {
 					number: amount,
 					unit: this._getCleanTimeUnit(unit, false, options),
-					condition: conditionParts.join(", ")
+					condition: conditionParts.join(", "),
 				};
 				if (!out.condition) delete out.condition;
 				return out;
@@ -371,13 +360,13 @@ class SpellParser extends BaseParser {
 
 								stats.components.m = {
 									text: materialText,
-									cost: valueNum * valueMult
+									cost: valueNum * valueMult,
 								};
 								if (isConsumed) stats.components.m.consume = true;
 							} else if (isConsumed) {
 								stats.components.m = {
 									text: materialText,
-									consume: true
+									consume: true,
 								};
 							} else {
 								stats.components.m = materialText;
@@ -436,16 +425,16 @@ Object.entries({
 	"enchantment": "E",
 	"evocation": "V",
 	"illusion": "I",
-	"divination": "D"
+	"divination": "D",
 }).forEach(([k, v]) => {
 	SpellParser._RES_SCHOOL.push({
 		output: v,
-		regex: RegExp(k, "i")
+		regex: RegExp(k, "i"),
 	});
 });
 
 if (typeof module !== "undefined") {
 	module.exports = {
-		SpellParser
+		SpellParser,
 	};
 }

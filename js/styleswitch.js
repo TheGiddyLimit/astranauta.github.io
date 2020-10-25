@@ -111,7 +111,7 @@ try {
 			return StyleSwitcher._STYLE_DAY;
 		},
 
-		setItem (k, v) {}
+		setItem (k, v) {},
 	}
 }
 

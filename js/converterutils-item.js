@@ -38,7 +38,7 @@ ConverterUtilsItem.BASIC_WEAPONS = [
 	"hand crossbow",
 	"heavy crossbow",
 	"longbow",
-	"net"
+	"net",
 ];
 ConverterUtilsItem.BASIC_ARMORS = [
 	"padded armor",
@@ -53,7 +53,7 @@ ConverterUtilsItem.BASIC_ARMORS = [
 	"chain mail",
 	"splint armor",
 	"plate armor",
-	"shield"
+	"shield",
 ];
 
 class ChargeTag {
@@ -121,7 +121,7 @@ class SpellTag {
 			/as a(?:n)? \d..-level {@spell ([^}]*)} spell/gi,
 			/cast(?:(?: a version of)? the)? {@spell ([^}]*)}/gi,
 			/cast the \d..-level version of {@spell ([^}]*)}/gi,
-			/{@spell ([^}]*)} \([^)]*\d+ charge(?:s)?\)/gi
+			/{@spell ([^}]*)} \([^)]*\d+ charge(?:s)?\)/gi,
 		];
 
 		const regexpsSeries = [ // uses m[0]
@@ -129,7 +129,7 @@ class SpellTag {
 			/cast one of the following [^.]*/gi,
 			/can be used to cast [^.]*/gi,
 			/you can([^.]*expend[^.]*)? cast [^.]* (and|or) [^.]*/gi,
-			/you can([^.]*)? cast [^.]* (and|or) [^.]* from the weapon/gi
+			/you can([^.]*)? cast [^.]* (and|or) [^.]* from the weapon/gi,
 		];
 
 		const addTaggedSpells = str => str.replace(/{@spell ([^}]*)}/gi, (...m) => outSet.add(m[1].toSpellCase()));
@@ -159,8 +159,8 @@ class SpellTag {
 					});
 
 					return obj
-				}
-			]
+				},
+			],
 		};
 		const cpy = MiscUtil.copy(obj);
 		walker.walk(cpy, walkerHandlers);
@@ -291,7 +291,7 @@ class BasicTextClean {
 
 					return true;
 				})
-			}
+			},
 		})
 	}
 }
@@ -323,6 +323,6 @@ if (typeof module !== "undefined") {
 		SpellTag,
 		BonusTag,
 		BasicTextClean,
-		ItemMiscTag
+		ItemMiscTag,
 	};
 }

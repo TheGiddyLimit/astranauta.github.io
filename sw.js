@@ -8,7 +8,7 @@
 
 importScripts("./js/sw-files.js");
 
-const cacheName = /* 5ETOOLS_VERSION__OPEN */"1.112.2"/* 5ETOOLS_VERSION__CLOSE */;
+const cacheName = /* 5ETOOLS_VERSION__OPEN */"1.113.11"/* 5ETOOLS_VERSION__CLOSE */;
 const cacheableFilenames = new Set(filesToCache);
 
 let isCacheRunning;
@@ -68,6 +68,8 @@ async function getOrCache (url, responseMeta) {
 self.addEventListener("fetch", e => {
 	const url = e.request.url;
 	const path = getPath(url);
+
+	return; // TODO re-enable caching
 
 	if (!cacheableFilenames.has(path)) return;
 	const responseMeta = {};

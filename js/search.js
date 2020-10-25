@@ -105,7 +105,7 @@ class SearchPage {
 						}
 					});
 				},
-				{rootMargin: "150px 0px", threshold: 0.01}
+				{rootMargin: "150px 0px", threshold: 0.01},
 			)
 		}
 		SearchPage._rowMetas = [];
@@ -185,7 +185,7 @@ class SearchPage {
 									Renderer.hover.pCacheAndGet(
 										page,
 										source,
-										hash
+										hash,
 									).then(ent => {
 										// region Render tokens, where available
 										let isImagePopulated = false;
@@ -207,8 +207,8 @@ class SearchPage {
 											.appendTo($dispPreview);
 										// endregion
 									});
-								}
-							}
+								},
+							},
 						);
 						SearchPage._observer.observe(observationTarget);
 

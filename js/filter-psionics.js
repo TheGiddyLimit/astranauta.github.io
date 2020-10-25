@@ -17,7 +17,7 @@ class PageFilterPsionics extends PageFilter {
 		this._typeFilter = new Filter({header: "Type", items: [Parser.PSI_ABV_TYPE_TALENT, Parser.PSI_ABV_TYPE_DISCIPLINE], displayFn: Parser.psiTypeToFull, itemSortFn: PageFilterPsionics._sortFilterTypes});
 		this._orderFilter = new Filter({
 			header: "Order",
-			items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", Parser.PSI_ORDER_NONE]
+			items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", Parser.PSI_ORDER_NONE],
 		});
 	}
 
@@ -36,7 +36,7 @@ class PageFilterPsionics extends PageFilter {
 		opts.filters = [
 			this._sourceFilter,
 			this._typeFilter,
-			this._orderFilter
+			this._orderFilter,
 		];
 	}
 
@@ -45,7 +45,7 @@ class PageFilterPsionics extends PageFilter {
 			values,
 			p.source,
 			p.type,
-			p._fOrder
+			p._fOrder,
 		)
 	}
 }

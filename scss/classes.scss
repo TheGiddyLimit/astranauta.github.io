@@ -523,6 +523,35 @@
 		border-top-right-radius: 4px;
 		border-top-left-radius: 4px;
 	}
+
+	// region TODO are these used?
+	&btn-tab.active {
+		background: $rgb-active-blue;
+		color: white;
+	}
+
+	&btn-tab.active {
+		border-color: darken($rgb-active-blue, $pct-darken-border);
+	}
+
+	&btn-tab.active.spicy-sauce {
+		background: $rgb-subclass-ua;
+		color: white;
+	}
+
+	&btn-tab.active.spicy-sauce {
+		border-color: darken($rgb-subclass-ua, $pct-darken-border);
+	}
+
+	&btn-tab.active.refreshing-brew {
+		background: $rgb-class-brew;
+		color: white;
+	}
+
+	&btn-tab.active.refreshing-brew {
+		border-color: darken($rgb-class-brew, $pct-darken-border);
+	}
+	// endregion
 }
 
 .night-mode .cls-bkmv__ {
@@ -534,6 +563,39 @@
 	&btn-tab {
 		border-color: $rgb-border-grey--night;
 	}
+
+	// region TODO are these used?
+	&btn-tab.active {
+		background-color: $rgb-subclass--night;
+		color: $rgb-off-black;
+	}
+
+	&btn-tab.active {
+		border-color: darken($rgb-subclass--night, $pct-darken-border);
+	}
+
+	&btn-tab.active.spicy-sauce {
+		background-color: $rgb-subclass-ua--night;
+		color: $rgb-off-black;
+	}
+
+	&btn-tab.active.spicy-sauce {
+		border-color: darken($rgb-subclass-ua--night, $pct-darken-border);
+	}
+
+	&btn-tab {
+		background: $rgb-off-black;
+
+		&[data-state='1'] {
+			background: repeating-linear-gradient(135deg, $rgb-subclass-ua--night, $rgb-subclass-ua--night 17px, $rgb-off-black 17px, $rgb-off-black 34px);
+			color: white;
+		}
+
+		&[data-state='2'] {
+			background: $rgb-subclass-ua--night;
+		}
+	}
+	// endregion
 }
 // endregion
 

@@ -103,7 +103,7 @@ class PageFilterClassesRaw extends PageFilterClasses {
 		const walker = MiscUtil.getWalker({
 			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
 			isDepthFirst: true,
-			isNoModification: true
+			isNoModification: true,
 		});
 
 		// Load the data once before diving into nested promises, to avoid needless context switching
@@ -128,7 +128,8 @@ class PageFilterClassesRaw extends PageFilterClasses {
 					entity: entityRoot,
 					page: "classFeature",
 					source: cf.source,
-					hash: cf.hash
+					hash: cf.hash,
+					className: cls.name,
 				};
 
 				const isIgnored = await this._pGetIgnoredAndApplySideData(entityRoot, "classFeature");
@@ -137,7 +138,7 @@ class PageFilterClassesRaw extends PageFilterClasses {
 					return;
 				}
 
-				const subLoadeds = await this._pLoadSubEntries(walker, entityRoot);
+				const subLoadeds = await this._pLoadSubEntries(walker, entityRoot, cls.name);
 
 				cf.loadeds = [loadedRoot, ...subLoadeds];
 			}));
@@ -163,7 +164,9 @@ class PageFilterClassesRaw extends PageFilterClasses {
 						entity: entityRoot,
 						page: "subclassFeature",
 						source: scf.source,
-						hash: scf.hash
+						hash: scf.hash,
+						className: cls.name,
+						subclassName: sc.name,
 					};
 
 					const isIgnored = await this._pGetIgnoredAndApplySideData(entityRoot, "subclassFeature");
@@ -172,7 +175,7 @@ class PageFilterClassesRaw extends PageFilterClasses {
 						return;
 					}
 
-					const subLoadeds = await this._pLoadSubEntries(walker, entityRoot);
+					const subLoadeds = await this._pLoadSubEntries(walker, entityRoot, cls.name, sc.name);
 
 					scf.loadeds = [loadedRoot, ...subLoadeds];
 				}));
@@ -219,7 +222,7 @@ class PageFilterClassesRaw extends PageFilterClasses {
 	/**
 	 * Walk the data, loading references.
 	 */
-	static async _pLoadSubEntries (walker, loadedRoot) {
+	static async _pLoadSubEntries (walker, loadedRoot, ancestorClassName, ancestorSubclassName) {
 		const out = [];
 
 		const pRecurse = async toWalk => {
@@ -250,7 +253,7 @@ class PageFilterClassesRaw extends PageFilterClasses {
 									ent._optionsMeta = {
 										setId: optionSetId,
 										count: obj.count,
-										name: (path.last() || {}).name
+										name: (path.last() || {}).name,
 									};
 								});
 							}
@@ -263,8 +266,8 @@ class PageFilterClassesRaw extends PageFilterClasses {
 					},
 					postObject: (obj) => {
 						if (obj.name) path.pop();
-					}
-				}
+					},
+				},
 			);
 
 			for (const ent of references) {
@@ -286,6 +289,9 @@ class PageFilterClassesRaw extends PageFilterClasses {
 						if (isIgnored) continue;
 						if (ent._displayNamePrefix) entity._displayName = `${ent._displayNamePrefix}${entity.name}`;
 
+						entity._ancestorClassName = ancestorClassName;
+						if (ancestorSubclassName) entity._ancestorSubclassName = ancestorSubclassName;
+
 						out.push({
 							type: "classFeature",
 							entry: `{@classFeature ${ent.classFeature}}`,
@@ -294,7 +300,7 @@ class PageFilterClassesRaw extends PageFilterClasses {
 							page: "classFeature",
 							source,
 							hash,
-							isRequiredOption
+							isRequiredOption,
 						});
 
 						await pRecurse(entity);
@@ -317,6 +323,9 @@ class PageFilterClassesRaw extends PageFilterClasses {
 						if (isIgnored) continue;
 						if (ent._displayNamePrefix) entity._displayName = `${ent._displayNamePrefix}${entity.name}`;
 
+						entity._ancestorClassName = ancestorClassName;
+						if (ancestorSubclassName) entity._ancestorSubclassName = ancestorSubclassName;
+
 						out.push({
 							type: "subclassFeature",
 							entry: `{@subclassFeature ${ent.subclassFeature}}`,
@@ -325,7 +334,7 @@ class PageFilterClassesRaw extends PageFilterClasses {
 							page: "subclassFeature",
 							source,
 							hash,
-							isRequiredOption
+							isRequiredOption,
 						});
 
 						await pRecurse(entity);
@@ -347,8 +356,13 @@ class PageFilterClassesRaw extends PageFilterClasses {
 
 						if (ent._displayNamePrefix) entity._displayName = `${ent._displayNamePrefix}${entity.name}`;
 						entity._foundryData = {
-							requirements: `${loadedRoot.className} ${loadedRoot.level}${loadedRoot.subclassShortName ? ` (${loadedRoot.subclassShortName})` : ""}`
+							requirements: `${loadedRoot.className} ${loadedRoot.level}${loadedRoot.subclassShortName ? ` (${loadedRoot.subclassShortName})` : ""}`,
 						};
+
+						// Cache this so we can determine if this optional feature is from a "classFeature" or a "subclassFeature"
+						entity._ancestorType = ancestorSubclassName ? "subclassFeature" : "classFeature";
+						entity._ancestorClassName = ancestorClassName;
+						if (ancestorSubclassName) entity._ancestorSubclassName = ancestorSubclassName;
 
 						out.push({
 							type: "optionalfeature",
@@ -358,7 +372,7 @@ class PageFilterClassesRaw extends PageFilterClasses {
 							page,
 							source,
 							hash,
-							isRequiredOption
+							isRequiredOption,
 						});
 
 						break;
@@ -385,7 +399,7 @@ class ModalFilterClasses extends ModalFilter {
 			modalTitle: "Class and Subclass",
 			pageFilter: new PageFilterClassesRaw(),
 			namespace: namespace,
-			fnSort: ModalFilterClasses.fnSort
+			fnSort: ModalFilterClasses.fnSort,
 		});
 
 		this._pLoadingAllData = null;
@@ -414,7 +428,7 @@ class ModalFilterClasses extends ModalFilter {
 		if (!cls) throw new Error(`Could not find class with name "${className}" and source "${classSource}"`);
 
 		const out = {
-			class: cls
+			class: cls,
 		};
 
 		if (subclassName && subclassSource) {
@@ -430,104 +444,17 @@ class ModalFilterClasses extends ModalFilter {
 	async pGetUserSelection () {
 		// eslint-disable-next-line no-async-promise-executor
 		return new Promise(async resolve => {
-			let $wrpModalInner;
-
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				isHeight100: true,
 				title: `Filter/Search for ${this._modalTitle}`,
 				cbClose: (isDataEntered) => {
-					$wrpModalInner.detach();
+					this._filterCache.$wrpModalInner.detach();
 					if (!isDataEntered) resolve(null);
 				},
-				isUncappedHeight: true
+				isUncappedHeight: true,
 			});
 
-			if (this._filterCache) {
-				$wrpModalInner = this._filterCache.$wrpModalInner.appendTo($modalInner);
-			} else {
-				await this._pInit();
-
-				const $ovlLoading = $(`<div class="w-100 h-100 flex-vh-center"><i class="dnd-font ve-muted">Loading...</i></div>`).appendTo($modalInner);
-
-				const $iptSearch = $(`<input class="form-control" type="search" placeholder="Search...">`);
-				const $btnReset = $(`<button class="btn btn-default">Reset</button>`);
-				const $wrpFormTop = $$`<div class="flex input-group btn-group w-100 lst__form-top">${$iptSearch}${$btnReset}</div>`;
-
-				const $wrpFormBottom = $(`<div class="w-100"></div>`);
-
-				const $wrpFormHeaders = $(`<div class="sortlabel input-group input-group--bottom flex no-shrink">
-					<div class="btn btn-default disabled col-1 pl-0"></div>
-					<button class="col-9 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-					<button class="col-2 pr-0 sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span class="caret_wrp"></span></button>
-				</div>`);
-
-				const $wrpForm = $$`<div class="flex-col w-100 mb-2">${$wrpFormTop}${$wrpFormBottom}${$wrpFormHeaders}</div>`;
-				const $wrpList = $(`<ul class="list mb-2 h-100"></ul>`);
-
-				const $btnConfirm = $(`<button class="btn btn-default">Confirm</button>`);
-
-				const list = new List({
-					$iptSearch,
-					$wrpList,
-					fnSort: this._fnSort
-				});
-
-				SortUtil.initBtnSortHandlers($wrpFormHeaders, list);
-
-				const allData = await this._pLoadAllData();
-				const pageFilter = this._pageFilter;
-
-				await pageFilter.pInitFilterBox({
-					$wrpFormTop,
-					$btnReset,
-					$wrpMiniPills: $wrpFormBottom,
-					namespace: this._namespace
-				});
-
-				allData.forEach((it, i) => {
-					pageFilter.mutateAndAddToFilters(it);
-					const filterListItems = this._getListItems(pageFilter, it, i);
-					filterListItems.forEach((filterListItem, i) => {
-						list.addItem(filterListItem);
-						filterListItem.ele.addEventListener("click", evt => ModalFilterClasses.handleSelectClick(list, filterListItems, filterListItem, i === 0, evt));
-					});
-				});
-
-				list.init();
-				list.update();
-
-				const handleFilterChange = () => {
-					const f = pageFilter.filterBox.getValues();
-
-					// Find all the classes which have visible subclasses so we can force them to remain visible.
-					const ixsVisibleCls = new Set();
-					list.items.forEach(li => {
-						if (li.data.ixSubclass == null) return;
-						const sc = allData[li.data.ixClass].subclasses[li.data.ixSubclass];
-						const isVisible = pageFilter.toDisplay(f, sc);
-						if (isVisible) ixsVisibleCls.add(li.data.ixClass);
-					});
-
-					list.filter(li => {
-						if (li.data.ixSubclass == null) return ixsVisibleCls.has(li.data.ixClass) || pageFilter.toDisplay(f, allData[li.data.ixClass]);
-						else return pageFilter.toDisplay(f, allData[li.data.ixClass].subclasses[li.data.ixSubclass]);
-					});
-				};
-
-				$(pageFilter.filterBox).on(FilterBox.EVNT_VALCHANGE, handleFilterChange);
-				pageFilter.filterBox.render();
-				handleFilterChange();
-
-				$ovlLoading.remove();
-
-				$wrpModalInner = $$`<div class="flex-col h-100">
-					${$wrpForm}
-					${$wrpList}
-					<div class="flex-vh-center">${$btnConfirm}</div>
-				</div>`.appendTo($modalInner);
-
-				this._filterCache = {$wrpModalInner, $btnConfirm, pageFilter, list, allData};
-			}
+			await this.pPreloadHidden($modalInner);
 
 			this._filterCache.$btnConfirm.off("click").click(async () => {
 				const checked = this._filterCache.list.visibleItems.filter(it => it.data.tglSel.classList.contains("active"));
@@ -543,6 +470,103 @@ class ModalFilterClasses extends ModalFilter {
 				ModalFilterClasses._doListDeselectAll(this._filterCache.list);
 			});
 		});
+	}
+
+	/**
+	 * Pre-heat the modal, thus allowing access to the filter box underneath.
+	 *
+	 * @param [$modalInner]
+	 */
+	async pPreloadHidden ($modalInner) {
+		// If we're rendering in "hidden" mode, create a dummy element to attach the UI to.
+		$modalInner = $modalInner || $(`<div></div>`);
+
+		if (this._filterCache) {
+			this._filterCache.$wrpModalInner.appendTo($modalInner);
+		} else {
+			await this._pInit();
+
+			const $ovlLoading = $(`<div class="w-100 h-100 flex-vh-center"><i class="dnd-font ve-muted">Loading...</i></div>`).appendTo($modalInner);
+
+			const $iptSearch = $(`<input class="form-control" type="search" placeholder="Search...">`);
+			const $btnReset = $(`<button class="btn btn-default">Reset</button>`);
+			const $wrpFormTop = $$`<div class="flex input-group btn-group w-100 lst__form-top">${$iptSearch}${$btnReset}</div>`;
+
+			const $wrpFormBottom = $(`<div class="w-100"></div>`);
+
+			const $wrpFormHeaders = $(`<div class="input-group input-group--bottom flex no-shrink">
+				<div class="btn btn-default disabled col-1 pl-0"></div>
+				<button class="col-9 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+				<button class="col-2 pr-0 sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span class="caret_wrp"></span></button>
+			</div>`);
+
+			const $wrpForm = $$`<div class="flex-col w-100 mb-2">${$wrpFormTop}${$wrpFormBottom}${$wrpFormHeaders}</div>`;
+			const $wrpList = $(`<ul class="list mb-2 h-100"></ul>`);
+
+			const $btnConfirm = $(`<button class="btn btn-default">Confirm</button>`);
+
+			const list = new List({
+				$iptSearch,
+				$wrpList,
+				fnSort: this._fnSort,
+			});
+
+			SortUtil.initBtnSortHandlers($wrpFormHeaders, list);
+
+			const allData = await this._pLoadAllData();
+			const pageFilter = this._pageFilter;
+
+			await pageFilter.pInitFilterBox({
+				$wrpFormTop,
+				$btnReset,
+				$wrpMiniPills: $wrpFormBottom,
+				namespace: this._namespace,
+			});
+
+			allData.forEach((it, i) => {
+				pageFilter.mutateAndAddToFilters(it);
+				const filterListItems = this._getListItems(pageFilter, it, i);
+				filterListItems.forEach((filterListItem, i) => {
+					list.addItem(filterListItem);
+					filterListItem.ele.addEventListener("click", evt => ModalFilterClasses.handleSelectClick(list, filterListItems, filterListItem, i === 0, evt));
+				});
+			});
+
+			list.init();
+			list.update();
+
+			const handleFilterChange = () => {
+				const f = pageFilter.filterBox.getValues();
+
+				// Find all the classes which have visible subclasses so we can force them to remain visible.
+				const ixsVisibleCls = new Set();
+				list.items.forEach(li => {
+					if (li.data.ixSubclass == null) return;
+					const sc = allData[li.data.ixClass].subclasses[li.data.ixSubclass];
+					const isVisible = pageFilter.toDisplay(f, sc);
+					if (isVisible) ixsVisibleCls.add(li.data.ixClass);
+				});
+
+				list.filter(li => {
+					if (li.data.ixSubclass == null) return ixsVisibleCls.has(li.data.ixClass) || pageFilter.toDisplay(f, allData[li.data.ixClass]);
+					else return pageFilter.toDisplay(f, allData[li.data.ixClass].subclasses[li.data.ixSubclass]);
+				});
+			};
+
+			$(pageFilter.filterBox).on(FilterBox.EVNT_VALCHANGE, handleFilterChange);
+			pageFilter.filterBox.render();
+			handleFilterChange();
+
+			$ovlLoading.remove();
+
+			const $wrpModalInner = $$`<div class="flex-col h-100">
+				${$wrpForm}
+				${$wrpList}
+				<div class="flex-vh-center">${$btnConfirm}</div>
+			</div>`.appendTo($modalInner);
+
+			this._filterCache = {$wrpModalInner, $btnConfirm, pageFilter, list, allData};
+		}
 	}
 
 	static _doListDeselectAll (list) {
@@ -582,7 +606,7 @@ class ModalFilterClasses extends ModalFilter {
 		this._pLoadingAllData = this._pLoadingAllData || (async () => {
 			const [data, brew] = await Promise.all([
 				MiscUtil.copy(await DataUtil.class.loadRawJSON()),
-				BrewUtil.pAddBrewData()
+				BrewUtil.pAddBrewData(),
 			]);
 
 			// Combine main data with brew
@@ -599,64 +623,56 @@ class ModalFilterClasses extends ModalFilter {
 	_getListItems (pageFilter, cls, clsI) {
 		return [
 			this._getListItems_getClassItem(pageFilter, cls, clsI),
-			...cls.subclasses.map((sc, scI) => this._getListItems_getSubclassItem(pageFilter, cls, clsI, sc, scI))
+			...cls.subclasses.map((sc, scI) => this._getListItems_getSubclassItem(pageFilter, cls, clsI, sc, scI)),
 		]
 	}
 
 	_getListItems_getClassItem (pageFilter, cls, clsI) {
-		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		const eleLabel = document.createElement("label");
+		eleLabel.className = "row lst--border no-select lst__wrp-cells";
 
 		const source = Parser.sourceJsonToAbv(cls.source);
 
-		eleLi.innerHTML = `<label class="lst--border no-select">
-			<div class="lst__wrp-cells">
-				<div class="col-1 pl-0 flex-vh-center"><div class="fltr-cls__tgl"></div></div>
-				<div class="bold col-9">${cls.name}</div>
-				<div class="col-2 pr-0 text-center ${Parser.sourceJsonToColor(cls.source)}" title="${Parser.sourceJsonToFull(cls.source)}" ${BrewUtil.sourceJsonToStyle(cls.source)}>${source}</div>
-			</div>
-		</label>`;
+		eleLabel.innerHTML = `<div class="col-1 pl-0 flex-vh-center"><div class="fltr-cls__tgl"></div></div>
+		<div class="bold col-9">${cls.name}</div>
+		<div class="col-2 pr-0 text-center ${Parser.sourceJsonToColor(cls.source)}" title="${Parser.sourceJsonToFull(cls.source)}" ${BrewUtil.sourceJsonToStyle(cls.source)}>${source}</div>`;
 
 		return new ListItem(
 			clsI,
-			eleLi,
+			eleLabel,
 			`${cls.name} -- ${cls.source}`,
 			{
-				source: `${source} -- ${cls.name}`
+				source: `${source} -- ${cls.name}`,
 			},
 			{
 				ixClass: clsI,
-				tglSel: eleLi.firstElementChild.firstElementChild.firstElementChild.firstElementChild
-			}
+				tglSel: eleLabel.firstElementChild.firstElementChild,
+			},
 		);
 	}
 
 	_getListItems_getSubclassItem (pageFilter, cls, clsI, sc, scI) {
-		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		const eleLabel = document.createElement("label");
+		eleLabel.className = "row lst--border no-select lst__wrp-cells";
 
 		const source = Parser.sourceJsonToAbv(sc.source);
 
-		eleLi.innerHTML = `<label class="lst--border no-select">
-			<div class="lst__wrp-cells">
-				<div class="col-1 pl-0 flex-vh-center"><div class="fltr-cls__tgl"></div></div>
-				<div class="col-9 pl-1 flex-v-center"><span class="mx-3">\u2014</span> ${sc.name}</div>
-				<div class="col-2 pr-0 text-center ${Parser.sourceJsonToColor(sc.source)}" title="${Parser.sourceJsonToFull(sc.source)}" ${BrewUtil.sourceJsonToStyle(sc.source)}>${source}</div>
-			</div>
-		</label>`;
+		eleLabel.innerHTML = `<div class="col-1 pl-0 flex-vh-center"><div class="fltr-cls__tgl"></div></div>
+		<div class="col-9 pl-1 flex-v-center"><span class="mx-3">\u2014</span> ${sc.name}</div>
+		<div class="col-2 pr-0 text-center ${Parser.sourceJsonToColor(sc.source)}" title="${Parser.sourceJsonToFull(sc.source)}" ${BrewUtil.sourceJsonToStyle(sc.source)}>${source}</div>`;
 
 		return new ListItem(
 			`${clsI}--${scI}`,
-			eleLi,
+			eleLabel,
 			`${cls.name} -- ${cls.source} -- ${sc.name} -- ${sc.source}`,
 			{
-				source: `${cls.source} -- ${cls.name} -- ${source} -- ${sc.name}`
+				source: `${cls.source} -- ${cls.name} -- ${source} -- ${sc.name}`,
 			},
 			{
 				ixClass: clsI,
 				ixSubclass: scI,
-				tglSel: eleLi.firstElementChild.firstElementChild.firstElementChild.firstElementChild
-			}
+				tglSel: eleLabel.firstElementChild.firstElementChild,
+			},
 		);
 	}
 }

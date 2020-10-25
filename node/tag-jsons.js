@@ -37,7 +37,7 @@ const BLACKLIST_FILE_PREFIXES = [
 	...ut.FILE_PREFIX_BLACKLIST,
 
 	// specific files
-	"demo.json"
+	"demo.json",
 ];
 
 const LAST_KEY_WHITELIST = new Set([
@@ -47,7 +47,7 @@ const LAST_KEY_WHITELIST = new Set([
 	"entriesHigherLevel",
 	"rows",
 	"row",
-	"fluff"
+	"fluff",
 ]);
 
 class TagJsons {
@@ -87,11 +87,12 @@ class TagJsons {
 								obj = SenseTag.tryRun(obj);
 								obj = SpellTag.tryRun(obj);
 								obj = ItemTag.tryRun(obj);
+								obj = TableTag.tryRun(obj);
 								obj = DiceConvert.getTaggedEntry(obj);
 
 								return obj;
-							}
-						}
+							},
+						},
 					);
 				});
 
@@ -133,12 +134,12 @@ class SpellTag {
 						0,
 						str,
 						{
-							fnTag: this._fnTag
-						}
+							fnTag: this._fnTag,
+						},
 					);
 					return ptrStack._;
-				}
-			}
+				},
+			},
 		);
 	}
 
@@ -185,12 +186,12 @@ class ItemTag {
 						0,
 						str,
 						{
-							fnTag: this._fnTag
-						}
+							fnTag: this._fnTag,
+						},
 					);
 					return ptrStack._;
-				}
-			}
+				},
+			},
 		);
 	}
 
@@ -205,6 +206,36 @@ class ItemTag {
 }
 ItemTag._ITEM_NAMES_TOOLS = {};
 ItemTag._ITEM_NAMES_REGEX_TOOLS = null;
+
+class TableTag {
+	static tryRun (it) {
+		return TagJsons.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@table"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag,
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (strMod) {
+		return strMod
+			.replace(/Wild Magic Surge table/g, `{@table Wild Magic Surge|PHB} table`)
+		;
+	}
+}
 
 async function main () {
 	ut.patchLoadJson();

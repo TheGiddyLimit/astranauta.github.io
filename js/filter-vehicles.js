@@ -10,10 +10,10 @@ class PageFilterVehicles extends PageFilter {
 			items: [
 				"SHIP",
 				"INFWAR",
-				"CREATURE"
+				"CREATURE",
 			],
 			displayFn: Parser.vehicleTypeToFull,
-			isSortByDisplayItems: true
+			isSortByDisplayItems: true,
 		});
 		this._terrainFilter = new Filter({header: "Terrain", items: ["land", "sea", "air"], displayFn: StrUtil.uppercaseFirst});
 		this._speedFilter = new RangeFilter({header: "Speed"});
@@ -21,7 +21,7 @@ class PageFilterVehicles extends PageFilter {
 		this._hpFilter = new RangeFilter({header: "Hit Points"});
 		this._hpFilter = new RangeFilter({header: "Hit Points"});
 		this._creatureCapacityFilter = new RangeFilter({header: "Creature Capacity"});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"], isSrdFilter: true});
 	}
 
 	mutateForFilters (it) {
@@ -79,7 +79,7 @@ class PageFilterVehicles extends PageFilter {
 			this._acFilter,
 			this._hpFilter,
 			this._creatureCapacityFilter,
-			this._miscFilter
+			this._miscFilter,
 		];
 	}
 
@@ -93,7 +93,7 @@ class PageFilterVehicles extends PageFilter {
 			it._fAc,
 			it._fHp,
 			it._fCreatureCapacity,
-			it._fMisc
+			it._fMisc,
 		)
 	}
 }

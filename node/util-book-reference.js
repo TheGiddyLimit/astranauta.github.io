@@ -10,13 +10,13 @@ UtilBookReference = {
 					"Equipment",
 					"Playing the Game",
 					"Combat",
-					"Adventuring"
+					"Adventuring",
 				];
 			case "bookref-dmscreen":
 				return [
 					"Running the Game",
 					"Combat",
-					"Factions"
+					"Factions",
 				];
 			default:
 				throw new Error(`No sections defined for book id ${refId}`);
@@ -32,13 +32,13 @@ UtilBookReference = {
 
 		const outJson = {
 			reference: {},
-			data: {}
+			data: {},
 		};
 
 		refTypes.forEach(it => outJson.reference[it.id] = {
 			name: it.name,
 			id: it.id,
-			contents: []
+			contents: [],
 		});
 
 		let bookData = [];
@@ -77,7 +77,7 @@ UtilBookReference = {
 					if (!out[sect]) {
 						out[sect] = {
 							sectName: UtilBookReference.getSections(refType.id)[sect - 1],
-							sections: []
+							sections: [],
 						};
 					}
 
@@ -105,11 +105,11 @@ UtilBookReference = {
 				const header = outJson.reference[refType.id];
 				header.contents.push({
 					name: out[i].sectName,
-					headers: sects.map(s => s.name)
+					headers: sects.map(s => s.name),
 				});
 				const toAdd = {
 					type: "entries",
-					entries: sects
+					entries: sects,
 				};
 				if (!outJson.data[refType.id]) outJson.data[refType.id] = [];
 				outJson.data[refType.id].push(toAdd);
@@ -124,12 +124,12 @@ UtilBookReference = {
 				object: (obj) => {
 					delete obj.id; // Remove IDs to avoid duplicates
 					return obj;
-				}
-			}
+				},
+			},
 		);
 
 		return outJson;
-	}
+	},
 };
 
 module.exports.UtilBookReference = UtilBookReference;

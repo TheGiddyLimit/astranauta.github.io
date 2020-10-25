@@ -15,7 +15,7 @@ class EncounterBuilder extends ProxyBase {
 		// Encounter save/load
 		this.__state = {
 			savedEncounters: {},
-			activeKey: null
+			activeKey: null,
 		};
 		this._state = this._getProxy("state", this.__state);
 		this._$iptName = null;
@@ -77,7 +77,7 @@ class EncounterBuilder extends ProxyBase {
 			if (json.items && json.sources) { // if it's a bestiary sublist
 				json.l = {
 					items: json.items,
-					sources: json.sources
+					sources: json.sources,
 				}
 			}
 			this.pDoLoadState(json);
@@ -242,7 +242,7 @@ class EncounterBuilder extends ProxyBase {
 		const out = {
 			p: this.getPartyMeta().levelMetas,
 			l: ListUtil.getExportableSublist(),
-			a: this._advanced
+			a: this._advanced,
 		};
 		if (this._advanced) {
 			out.c = $(`.ecgen__players_head_advanced`).find(`.ecgen__player_advanced_extra_head`).map((i, e) => $(e).val()).get();
@@ -254,7 +254,7 @@ class EncounterBuilder extends ProxyBase {
 				return {
 					n: $e.find(`.ecgen__player_advanced__name`).val(),
 					l: Number($e.find(`.ecgen__player_advanced__level`).val()),
-					x: extras.slice(0, out.c.length) // cap at columns length
+					x: extras.slice(0, out.c.length), // cap at columns length
 				};
 			}).get();
 		}
@@ -298,7 +298,7 @@ class EncounterBuilder extends ProxyBase {
 		// fudge min/max numbers slightly
 		const [targetMin, targetMax] = [
 			Math.floor(partyMeta[EncounterBuilder.TIERS[ixLow]] * 0.9),
-			Math.ceil((partyMeta[EncounterBuilder.TIERS[ixLow + 1]] - 1) * 1.1)
+			Math.ceil((partyMeta[EncounterBuilder.TIERS[ixLow + 1]] - 1) * 1.1),
 		];
 
 		if (encounterXp.adjustedXp > targetMax) {
@@ -375,7 +375,7 @@ class EncounterBuilder extends ProxyBase {
 						if (xp > targetMax) return xp - targetMax;
 						else if (xp < targetMin) return targetMin - xp;
 						else return 0;
-					})()
+					})(),
 				})).sort((a, b) => SortUtil.ascSort(a.distance, b.distance))[0].encounter;
 			}
 
@@ -426,9 +426,9 @@ class EncounterBuilder extends ProxyBase {
 			items: currentEncounter.map(creatureType => ({
 				h: creatureType.hash,
 				c: `${creatureType.count}`,
-				customHashId: creatureType.customHashId || undefined
+				customHashId: creatureType.customHashId || undefined,
 			})),
-			sources: ListUtil.getExportableSublist().sources
+			sources: ListUtil.getExportableSublist().sources,
 		});
 	}
 
@@ -484,7 +484,7 @@ class EncounterBuilder extends ProxyBase {
 
 		const getCurrentEncounterMeta = (encounter) => {
 			const data = encounter.map(it => ({cr: Parser.crToNumber(it.mon.cr), count: it.count}));
-			return EncounterBuilderUtils.calculateEncounterXp(data, partyMeta.cntPlayers);
+			return EncounterBuilderUtils.calculateEncounterXp(data, partyMeta);
 		};
 
 		const calcNextBudget = (encounter) => {
@@ -516,7 +516,7 @@ class EncounterBuilder extends ProxyBase {
 					encounter.push({
 						xp: xp,
 						mon: rolled,
-						count: 1
+						count: 1,
 					});
 				}
 			}
@@ -725,22 +725,22 @@ class EncounterBuilder extends ProxyBase {
 
 	_getApproxDpt (pcLevel) {
 		const approxOutputFighterChampion = [
-			{hit: 0, dmg: 17.38}, {hit: 0, dmg: 17.38}, {hit: 0, dmg: 17.59}, {hit: 0, dmg: 33.34}, {hit: 1, dmg: 50.92}, {hit: 2, dmg: 53.92}, {hit: 2, dmg: 53.92}, {hit: 3, dmg: 56.92}, {hit: 4, dmg: 56.92}, {hit: 4, dmg: 56.92}, {hit: 4, dmg: 76.51}, {hit: 4, dmg: 76.51}, {hit: 5, dmg: 76.51}, {hit: 5, dmg: 76.51}, {hit: 5, dmg: 77.26}, {hit: 5, dmg: 77.26}, {hit: 6, dmg: 77.26}, {hit: 6, dmg: 77.26}, {hit: 6, dmg: 77.26}, {hit: 6, dmg: 97.06}
+			{hit: 0, dmg: 17.38}, {hit: 0, dmg: 17.38}, {hit: 0, dmg: 17.59}, {hit: 0, dmg: 33.34}, {hit: 1, dmg: 50.92}, {hit: 2, dmg: 53.92}, {hit: 2, dmg: 53.92}, {hit: 3, dmg: 56.92}, {hit: 4, dmg: 56.92}, {hit: 4, dmg: 56.92}, {hit: 4, dmg: 76.51}, {hit: 4, dmg: 76.51}, {hit: 5, dmg: 76.51}, {hit: 5, dmg: 76.51}, {hit: 5, dmg: 77.26}, {hit: 5, dmg: 77.26}, {hit: 6, dmg: 77.26}, {hit: 6, dmg: 77.26}, {hit: 6, dmg: 77.26}, {hit: 6, dmg: 97.06},
 		];
 		const approxOutputRogueTrickster = [
-			{hit: 5, dmg: 11.4}, {hit: 5, dmg: 11.4}, {hit: 10, dmg: 15.07}, {hit: 11, dmg: 16.07}, {hit: 12, dmg: 24.02}, {hit: 12, dmg: 24.02}, {hit: 12, dmg: 27.7}, {hit: 13, dmg: 28.7}, {hit: 14, dmg: 32.38}, {hit: 14, dmg: 32.38}, {hit: 14, dmg: 40.33}, {hit: 14, dmg: 40.33}, {hit: 15, dmg: 44}, {hit: 15, dmg: 44}, {hit: 15, dmg: 47.67}, {hit: 15, dmg: 47.67}, {hit: 16, dmg: 55.63}, {hit: 16, dmg: 55.63}, {hit: 16, dmg: 59.3}, {hit: 16, dmg: 59.3}
+			{hit: 5, dmg: 11.4}, {hit: 5, dmg: 11.4}, {hit: 10, dmg: 15.07}, {hit: 11, dmg: 16.07}, {hit: 12, dmg: 24.02}, {hit: 12, dmg: 24.02}, {hit: 12, dmg: 27.7}, {hit: 13, dmg: 28.7}, {hit: 14, dmg: 32.38}, {hit: 14, dmg: 32.38}, {hit: 14, dmg: 40.33}, {hit: 14, dmg: 40.33}, {hit: 15, dmg: 44}, {hit: 15, dmg: 44}, {hit: 15, dmg: 47.67}, {hit: 15, dmg: 47.67}, {hit: 16, dmg: 55.63}, {hit: 16, dmg: 55.63}, {hit: 16, dmg: 59.3}, {hit: 16, dmg: 59.3},
 		];
 		const approxOutputWizard = [
-			{hit: 5, dmg: 14.18}, {hit: 5, dmg: 14.18}, {hit: 5, dmg: 22.05}, {hit: 6, dmg: 22.05}, {hit: 2, dmg: 28}, {hit: 2, dmg: 28}, {hit: 2, dmg: 36}, {hit: 3, dmg: 36}, {hit: 6, dmg: 67.25}, {hit: 6, dmg: 67.25}, {hit: 4, dmg: 75}, {hit: 4, dmg: 75}, {hit: 5, dmg: 85.5}, {hit: 5, dmg: 85.5}, {hit: 5, dmg: 96}, {hit: 5, dmg: 96}, {hit: 6, dmg: 140}, {hit: 6, dmg: 140}, {hit: 6, dmg: 140}, {hit: 6, dmg: 140}
+			{hit: 5, dmg: 14.18}, {hit: 5, dmg: 14.18}, {hit: 5, dmg: 22.05}, {hit: 6, dmg: 22.05}, {hit: 2, dmg: 28}, {hit: 2, dmg: 28}, {hit: 2, dmg: 36}, {hit: 3, dmg: 36}, {hit: 6, dmg: 67.25}, {hit: 6, dmg: 67.25}, {hit: 4, dmg: 75}, {hit: 4, dmg: 75}, {hit: 5, dmg: 85.5}, {hit: 5, dmg: 85.5}, {hit: 5, dmg: 96}, {hit: 5, dmg: 96}, {hit: 6, dmg: 140}, {hit: 6, dmg: 140}, {hit: 6, dmg: 140}, {hit: 6, dmg: 140},
 		];
 		const approxOutputCleric = [
-			{hit: 5, dmg: 17.32}, {hit: 5, dmg: 17.32}, {hit: 5, dmg: 23.1}, {hit: 6, dmg: 23.1}, {hit: 7, dmg: 28.88}, {hit: 7, dmg: 28.88}, {hit: 7, dmg: 34.65}, {hit: 8, dmg: 34.65}, {hit: 9, dmg: 40.42}, {hit: 9, dmg: 40.42}, {hit: 9, dmg: 46.2}, {hit: 9, dmg: 46.2}, {hit: 10, dmg: 51.98}, {hit: 10, dmg: 51.98}, {hit: 11, dmg: 57.75}, {hit: 11, dmg: 57.75}, {hit: 11, dmg: 63.52}, {hit: 11, dmg: 63.52}, {hit: 11, dmg: 63.52}, {hit: 11, dmg: 63.52}
+			{hit: 5, dmg: 17.32}, {hit: 5, dmg: 17.32}, {hit: 5, dmg: 23.1}, {hit: 6, dmg: 23.1}, {hit: 7, dmg: 28.88}, {hit: 7, dmg: 28.88}, {hit: 7, dmg: 34.65}, {hit: 8, dmg: 34.65}, {hit: 9, dmg: 40.42}, {hit: 9, dmg: 40.42}, {hit: 9, dmg: 46.2}, {hit: 9, dmg: 46.2}, {hit: 10, dmg: 51.98}, {hit: 10, dmg: 51.98}, {hit: 11, dmg: 57.75}, {hit: 11, dmg: 57.75}, {hit: 11, dmg: 63.52}, {hit: 11, dmg: 63.52}, {hit: 11, dmg: 63.52}, {hit: 11, dmg: 63.52},
 		];
 
 		const approxOutputs = [approxOutputFighterChampion, approxOutputRogueTrickster, approxOutputWizard, approxOutputCleric];
 
 		const approxOutput = approxOutputs.map(it => it[pcLevel - 1]);
-		return Math.mean(...approxOutput.map(it => it.dmg * ((it.hit + 10.5) / 20))); // 10.5 = average d20
+		return approxOutput.map(it => it.dmg * ((it.hit + 10.5) / 20)).mean(); // 10.5 = average d20
 	}
 
 	updateDifficulty () {
@@ -789,11 +789,11 @@ class EncounterBuilder extends ProxyBase {
 					{
 						type: "quote",
 						entries: [
-							`&dagger; [...] don't count any monsters whose challenge rating is significantly below the average challenge rating of the other monsters in the group [...]`
+							`&dagger; [...] don't count any monsters whose challenge rating is significantly below the average challenge rating of the other monsters in the group [...]`,
 						],
-						"by": "{@book Dungeon Master's Guide, page 82|DMG|3|4 Modify Total XP for Multiple Monsters}"
-					}
-				]
+						"by": "{@book Dungeon Master's Guide, page 82|DMG|3|4 Modify Total XP for Multiple Monsters}",
+					},
+				],
 			};
 
 			if (this._infoHoverId == null) {
@@ -832,7 +832,7 @@ class EncounterBuilder extends ProxyBase {
 				const $e = $(e);
 				return {
 					count: Number($e.find(`.ecgen__player_group__count`).val()),
-					level: Number($e.find(`.ecgen__player_group__level`).val())
+					level: Number($e.find(`.ecgen__player_group__level`).val()),
 				}
 			}).get();
 		}
@@ -864,13 +864,13 @@ class EncounterBuilder extends ProxyBase {
 				type: "image",
 				href: {
 					type: "external",
-					url: Renderer.monster.getTokenUrl(mon)
+					url: Renderer.monster.getTokenUrl(mon),
 				},
 				data: {
-					hoverTitle: `Token \u2014 ${mon.name}`
-				}
+					hoverTitle: `Token \u2014 ${mon.name}`,
+				},
 			},
-			{isBookContent: true}
+			{isBookContent: true},
 		);
 	}
 
@@ -885,13 +885,13 @@ class EncounterBuilder extends ProxyBase {
 				{
 					type: "entries",
 					entries: [
-						Renderer.utils.HTML_NO_IMAGES
+						Renderer.utils.HTML_NO_IMAGES,
 					],
 					data: {
-						hoverTitle: `Image \u2014 ${mon.name}`
-					}
+						hoverTitle: `Image \u2014 ${mon.name}`,
+					},
 				},
-				{isBookContent: true}
+				{isBookContent: true},
 			);
 			$ele.mouseover(evt => hoverMeta.mouseOver(evt, $ele[0]))
 				.mousemove(evt => hoverMeta.mouseMove(evt, $ele[0]))
@@ -906,10 +906,10 @@ class EncounterBuilder extends ProxyBase {
 						type: "image",
 						href: fluff.images[0].href,
 						data: {
-							hoverTitle: `Image \u2014 ${mon.name}`
-						}
+							hoverTitle: `Image \u2014 ${mon.name}`,
+						},
 					},
-					{isBookContent: true}
+					{isBookContent: true},
 				);
 				$ele.mouseover(evt => hoverMeta.mouseOver(evt, $ele[0]))
 					.mousemove(evt => hoverMeta.mouseMove(evt, $ele[0]))
@@ -972,7 +972,7 @@ class EncounterBuilder extends ProxyBase {
 			} else {
 				JqueryUtil.doToast({
 					content: `"${$iptCr.val()}" is not a valid Challenge Rating! Please enter a valid CR (0-30). For fractions, "1/X" should be used.`,
-					type: "danger"
+					type: "danger",
 				});
 				$iptCr.val(Parser.numberToCr(scaledTo || baseCr));
 			}
@@ -1120,7 +1120,7 @@ class EncounterBuilder extends ProxyBase {
 				encounter.name = name;
 				this._state.savedEncounters = {
 					...this._state.savedEncounters,
-					[this._state.activeKey]: encounter
+					[this._state.activeKey]: encounter,
 				};
 				this.pSetSavedEncountersThrottled();
 			});
@@ -1153,7 +1153,7 @@ class EncounterBuilder extends ProxyBase {
 
 					this._state.savedEncounters = {
 						...this._state.savedEncounters,
-						[this._state.activeKey]: encounter
+						[this._state.activeKey]: encounter,
 					};
 					this.pSetSavedEncountersThrottled();
 					JqueryUtil.doToast({type: "success", content: "Saved!"});
@@ -1166,8 +1166,8 @@ class EncounterBuilder extends ProxyBase {
 							...this._state.savedEncounters,
 							[key]: {
 								name,
-								data: this.getSaveableState()
-							}
+								data: this.getSaveableState(),
+							},
 						};
 						this._state.activeKey = key;
 						this.pSetSavedEncountersThrottled();
@@ -1185,12 +1185,12 @@ class EncounterBuilder extends ProxyBase {
 			if (!prev) {
 				return JqueryUtil.doToast({
 					content: `Could not find encounter in storage! Has it been deleted?`,
-					type: "danger"
+					type: "danger",
 				});
 			} else {
 				this._state.savedEncounters = {
 					...this._state.savedEncounters,
-					[this._state.activeKey]: prev
+					[this._state.activeKey]: prev,
 				};
 				await pLoadActiveEncounter();
 			}
@@ -1307,12 +1307,12 @@ class EncounterPartyMeta {
 			this.avgPlayerLevel += meta.level;
 			this.maxPlayerLevel = Math.max(this.maxPlayerLevel, meta.level);
 
-			this.threshEasy = LEVEL_TO_XP_EASY[meta.level] * meta.count;
-			this.threshMedium = LEVEL_TO_XP_MEDIUM[meta.level] * meta.count;
-			this.threshHard = LEVEL_TO_XP_HARD[meta.level] * meta.count;
-			this.threshDeadly = LEVEL_TO_XP_DEADLY[meta.level] * meta.count;
+			this.threshEasy += LEVEL_TO_XP_EASY[meta.level] * meta.count;
+			this.threshMedium += LEVEL_TO_XP_MEDIUM[meta.level] * meta.count;
+			this.threshHard += LEVEL_TO_XP_HARD[meta.level] * meta.count;
+			this.threshDeadly += LEVEL_TO_XP_DEADLY[meta.level] * meta.count;
 
-			this.dailyBudget = LEVEL_TO_XP_DAILY[meta.level] * meta.count;
+			this.dailyBudget += LEVEL_TO_XP_DAILY[meta.level] * meta.count;
 		});
 		this.avgPlayerLevel /= this.cntPlayers;
 

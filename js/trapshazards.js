@@ -16,7 +16,7 @@ class TrapsHazardsPage extends ListPage {
 
 			sublistClass: "subtrapshazards",
 
-			dataProps: ["trap", "hazard"]
+			dataProps: ["trap", "hazard"],
 		});
 	}
 
@@ -43,12 +43,12 @@ class TrapsHazardsPage extends ListPage {
 			{
 				hash,
 				source,
-				trapType
+				trapType,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : thI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -81,8 +81,8 @@ class TrapsHazardsPage extends ListPage {
 			it.name,
 			{
 				hash,
-				trapType
-			}
+				trapType,
+			},
 		);
 		return listItem;
 	}

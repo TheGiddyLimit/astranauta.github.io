@@ -22,10 +22,10 @@ class RenderMap {
 				fnGetPopoutSize: () => {
 					return {
 						width: Math.min(window.innerWidth, Math.round(mapData.getZoom() * mapData.width)),
-						height: Math.min(window.innerHeight, Math.round(mapData.getZoom() * mapData.height) + 32)
+						height: Math.min(window.innerHeight, Math.round(mapData.getZoom() * mapData.height) + 32),
 					}
-				}
-			}
+				},
+			},
 		);
 	}
 
@@ -109,7 +109,7 @@ class RenderMap {
 			// Scroll to offset the zoom, keeping the same region centred
 			eleWrpCvs.scrollTo(
 				scrollLeft + Math.round(diffWidth / 2),
-				scrollTop + Math.round(diffHeight / 2)
+				scrollTop + Math.round(diffHeight / 2),
 			);
 			paint();
 		};
@@ -121,7 +121,7 @@ class RenderMap {
 
 			return [
 				Math.round(pt[X] * zoom),
-				Math.round(pt[Y] * zoom)
+				Math.round(pt[Y] * zoom),
 			];
 		};
 
@@ -165,7 +165,7 @@ class RenderMap {
 
 			return [
 				cvsZoomedSpaceX,
-				cvsZoomedSpaceY
+				cvsZoomedSpaceY,
 			];
 		};
 
@@ -173,7 +173,7 @@ class RenderMap {
 			body: null,
 			point: null,
 			time: null,
-			scrollPos: null
+			scrollPos: null,
 		};
 
 		$cvs
@@ -213,7 +213,7 @@ class RenderMap {
 					Renderer.hover.getWindowPositionExactVisibleBottom(
 						EventUtil.getClientX(evt),
 						EventUtil.getClientY(evt),
-						evt
+						evt,
 					),
 					{
 						title: area.entry.name || "",
@@ -221,8 +221,8 @@ class RenderMap {
 						isBookContent: true,
 						cbClose: () => {
 							delete mapData.activeWindows[area.entry.id];
-						}
-					}
+						},
+					},
 				);
 			})
 			.mousedown(evt => {
@@ -265,7 +265,7 @@ class RenderMap {
 
 						eleWrpCvs.scrollTo(
 							lastRmbMeta.scrollPos[X] + diffX,
-							lastRmbMeta.scrollPos[Y] + diffY
+							lastRmbMeta.scrollPos[Y] + diffY,
 						);
 					})
 					// Bind a document-wide handler to block the context menu at the end of the pan
@@ -291,7 +291,7 @@ class RenderMap {
 			.click(() => {
 				const {$modalInner} = UiUtil.getShowModal({
 					title: "Help",
-					isMinHeight0: true
+					isMinHeight0: true,
 				});
 
 				$modalInner.append(`

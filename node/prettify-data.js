@@ -20,7 +20,7 @@ const FILE_BLACKLIST = new Set([
 	"roll20-tables.json",
 	"foundry.json",
 	"roll20.json",
-	"makebrew-creature.json"
+	"makebrew-creature.json",
 ]);
 
 const KEY_BLACKLIST = new Set(["data", "itemTypeAdditionalEntries", "itemType", "itemProperty"]);

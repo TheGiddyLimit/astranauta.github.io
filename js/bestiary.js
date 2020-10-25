@@ -12,7 +12,7 @@ class BestiaryPage {
 		this._pageFilter = new PageFilterBestiary();
 		this._multiSource = new MultiSource({
 			fnHandleData: addMonsters,
-			prop: "monster"
+			prop: "monster",
 		});
 	}
 
@@ -53,12 +53,12 @@ class BestiaryPage {
 				type,
 				cr,
 				group: mon.group || "",
-				alias: (mon.alias || []).map(it => `"${it}"`).join(",")
+				alias: (mon.alias || []).map(it => `"${it}"`).join(","),
 			},
 			{
 				uniqueId: mon.uniqueId ? mon.uniqueId : mI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		return listItem;
@@ -143,15 +143,15 @@ class BestiaryPage {
 				source: Parser.sourceJsonToAbv(mon.source),
 				type,
 				cr,
-				count
+				count,
 			},
 			{
 				uniqueId: data.uniqueId || "",
 				customHashId: getMonCustomHashId(mon),
 				$elesCount: [$eleCount1, $eleCount2],
 				approxHp: this._getApproxHp(mon),
-				approxAc: this._getApproxAc(mon)
-			}
+				approxAc: this._getApproxAc(mon),
+			},
 		);
 
 		return listItem;
@@ -206,14 +206,14 @@ class BestiaryPage {
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
-			$btnReset: $(`#reset`)
+			$btnReset: $(`#reset`),
 		});
 
 		encounterBuilder = new EncounterBuilder();
 		encounterBuilder.initUi();
 		await Promise.all([
 			ExcludeUtil.pInitialise(),
-			DataUtil.monster.pPreloadMeta()
+			DataUtil.monster.pPreloadMeta(),
 		]);
 		await bestiaryPage._multiSource.pMultisourceLoad("data/bestiary/", this._pageFilter.filterBox, pPageInit, addMonsters, pPostLoad);
 		if (Hist.lastLoadedId == null) Hist._freshLoad();
@@ -221,6 +221,55 @@ class BestiaryPage {
 		bestiaryPage.handleFilterChange();
 		encounterBuilder.initState();
 		window.dispatchEvent(new Event("toolsLoaded"));
+	}
+
+	// TODO refactor this and spell markdown section
+	static popoutHandlerGenerator (toList) {
+		return (evt) => {
+			const mon = toList[Hist.lastLoadedId];
+			const toRender = lastRendered.mon != null && lastRendered.isScaled ? lastRendered.mon : mon;
+
+			if (evt.shiftKey) {
+				const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+				Renderer.hover.getShowWindow(
+					$content,
+					Renderer.hover.getWindowPositionFromEvent(evt),
+					{
+						title: `${toRender._displayName || toRender.name} \u2014 Source Data`,
+						isPermanent: true,
+						isBookContent: true,
+					},
+				);
+			} else if (evt.ctrlKey || evt.metaKey) {
+				const name = `${toRender._displayName || toRender.name} \u2014 Markdown`;
+				const mdText = RendererMarkdown.get().render({entries: [{type: "dataCreature", dataCreature: toRender}]});
+				const $content = Renderer.hover.$getHoverContent_miscCode(name, mdText);
+
+				Renderer.hover.getShowWindow(
+					$content,
+					Renderer.hover.getWindowPositionFromEvent(evt),
+					{
+						title: name,
+						isPermanent: true,
+						isBookContent: true,
+					},
+				);
+			} else {
+				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${toRender._isScaledCr ? `${HASH_PART_SEP}${VeCt.HASH_MON_SCALED}${HASH_SUB_KV_SEP}${toRender._isScaledCr}` : ""}`;
+
+				const renderFn = Renderer.hover._pageToRenderFn(UrlUtil.getCurrentPage());
+				const $content = $$`<table class="stats">${renderFn(toRender)}</table>`;
+				Renderer.hover.getShowWindow(
+					$content,
+					Renderer.hover.getWindowPositionFromEvent(evt),
+					{
+						pageUrl,
+						title: toRender._displayName || toRender.name,
+						isPermanent: true,
+					},
+				);
+			}
+		};
 	}
 }
 
@@ -258,8 +307,8 @@ async function pPageInit (loadedSources) {
 	list = ListUtil.initList(
 		{
 			listClass: "monsters",
-			fnSort: PageFilterBestiary.sortMonsters
-		}
+			fnSort: PageFilterBestiary.sortMonsters,
+		},
 	);
 	ListUtil.setOptions({primaryLists: [list]});
 	SortUtil.initBtnSortHandlers($(`#filtertools`), list);
@@ -272,7 +321,7 @@ async function pPageInit (loadedSources) {
 	// filtering function
 	$(bestiaryPage._pageFilter.filterBox).on(
 		FilterBox.EVNT_VALCHANGE,
-		bestiaryPage.handleFilterChange.bind(bestiaryPage)
+		bestiaryPage.handleFilterChange.bind(bestiaryPage),
 	);
 
 	subList = ListUtil.initSublist({
@@ -280,7 +329,7 @@ async function pPageInit (loadedSources) {
 		fnSort: PageFilterBestiary.sortMonsters,
 		onUpdate: onSublistChange,
 		customHashHandler: (mon, uid) => ScaleCreature.scale(mon, Number(uid.split("_").last())),
-		customHashUnpacker: getUnpackedCustomHashId
+		customHashUnpacker: getUnpackedCustomHashId,
 	});
 	SortUtil.initBtnSortHandlers($("#sublistsort"), subList);
 
@@ -339,6 +388,7 @@ async function pPageInit (loadedSources) {
 			$wrpContent.append(stack.join(""));
 
 			// region Markdown
+			// TODO refactor this and spell markdown section
 			const pGetAsMarkdown = async () => {
 				const toRender = toShow.length ? toShow : [monsters[Hist.lastLoadedId]];
 				return RendererMarkdown.monster.pGetMarkdownDoc(toRender);
@@ -365,7 +415,7 @@ async function pPageInit (loadedSources) {
 
 			return numShown;
 		},
-		hasPrintColumns: true
+		hasPrintColumns: true,
 	});
 	// endregion
 
@@ -409,7 +459,7 @@ class EncounterBuilderUtils {
 					// used for encounter adjuster
 					crScaled: crScaled,
 					customHashId: it.data.customHashId,
-					hash: UrlUtil.autoEncodeHash(mon)
+					hash: UrlUtil.autoEncodeHash(mon),
 				}
 			}
 		}).filter(it => it && it.cr !== 100).sort((a, b) => SortUtil.ascSort(b.cr, a.cr));
@@ -443,13 +493,13 @@ class EncounterBuilderUtils {
 		if (crValues.length === 1) {
 			crMetas.push({
 				mean: crValues[0],
-				deviation: 0
+				deviation: 0,
 			});
 		} else {
 			// Get an average CR for every possible encounter without one of the creatures in the encounter
 			for (let i = 0; i < crValues.length; ++i) {
 				const crValueFilt = crValues.filter((_, j) => i !== j);
-				const crMean = Math.mean(...crValueFilt);
+				const crMean = crValueFilt.mean();
 				const crStdDev = Math.sqrt((1 / crValueFilt.length) * crValueFilt.map(it => (it - crMean) ** 2).reduce((a, b) => a + b, 0));
 				crMetas.push({mean: crMean, deviation: crStdDev});
 			}
@@ -557,62 +607,26 @@ function addMonsters (data) {
 	ListUtil.setOptions({
 		itemList: monsters,
 		getSublistRow: bestiaryPage.pGetSublistItem.bind(bestiaryPage),
-		primaryLists: [list]
+		primaryLists: [list],
 	});
 
-	function popoutHandlerGenerator (toList) {
-		return (evt) => {
-			const mon = toList[Hist.lastLoadedId];
-			const toRender = lastRendered.mon != null && lastRendered.isScaled ? lastRendered.mon : mon;
-
-			if (evt.shiftKey) {
-				const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
-				Renderer.hover.getShowWindow(
-					$content,
-					Renderer.hover.getWindowPositionFromEvent(evt),
-					{
-						title: `${toRender._displayName || toRender.name} \u2014 Source Data`,
-						isPermanent: true,
-						isBookContent: true
-					}
-				);
-			} else if (evt.ctrlKey || evt.metaKey) {
-				const name = `${toRender._displayName || toRender.name} \u2014 Markdown`;
-				const mdText = RendererMarkdown.get().render({entries: [{type: "dataCreature", dataCreature: toRender}]});
-				const $content = Renderer.hover.$getHoverContent_miscCode(name, mdText);
-
-				Renderer.hover.getShowWindow(
-					$content,
-					Renderer.hover.getWindowPositionFromEvent(evt),
-					{
-						title: name,
-						isPermanent: true,
-						isBookContent: true
-					}
-				);
-			} else {
-				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${toRender._isScaledCr ? `${HASH_PART_SEP}${VeCt.HASH_MON_SCALED}${HASH_SUB_KV_SEP}${toRender._isScaledCr}` : ""}`;
-
-				const renderFn = Renderer.hover._pageToRenderFn(UrlUtil.getCurrentPage());
-				const $content = $$`<table class="stats">${renderFn(toRender)}</table>`;
-				Renderer.hover.getShowWindow(
-					$content,
-					Renderer.hover.getWindowPositionFromEvent(evt),
-					{
-						pageUrl,
-						title: toRender._displayName || toRender.name,
-						isPermanent: true
-					}
-				);
-			}
-		};
-	}
-
 	const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
-	Renderer.hover.bindPopoutButton($btnPop, monsters, popoutHandlerGenerator, "Popout Window (SHIFT for Source Data; CTRL for Markdown Render)");
+	Renderer.hover.bindPopoutButton($btnPop, monsters, BestiaryPage.popoutHandlerGenerator.bind(BestiaryPage), "Popout Window (SHIFT for Source Data; CTRL for Markdown Render)");
 	UrlUtil.bindLinkExportButton(bestiaryPage._pageFilter.filterBox);
-	ListUtil.bindDownloadButton();
-	ListUtil.bindUploadButton(pPreloadSublistSources);
+	ListUtil.bindOtherButtons({
+		download: true,
+		upload: {
+			pFnPreLoad: pPreloadSublistSources,
+		},
+		sendToBrew: {
+			mode: "creatureBuilder",
+			fnGetMeta: () => ({
+				page: UrlUtil.getCurrentPage(),
+				source: Hist.getHashSource(),
+				hash: Hist.getHashParts()[0],
+			}),
+		},
+	});
 
 	Renderer.utils.bindPronounceButtons();
 }
@@ -684,7 +698,7 @@ function renderStatblock (mon, isScaled) {
 						.toggle(this.scrollTop < 32)
 						.css({
 							opacity: (32 - this.scrollTop) / 32,
-							top: -this.scrollTop
+							top: -this.scrollTop,
 						});
 				});
 			});
@@ -723,8 +737,8 @@ function renderStatblock (mon, isScaled) {
 											<circle cx="200" cy="200" r="175" fill="#b00"/>
 											<rect x="190" y="40" height="320" width="20" fill="#ddd" transform="rotate(45 200 200)"/>
 											<rect x="190" y="40" height="320" width="20" fill="#ddd" transform="rotate(135 200 200)"/>
-										</svg>`
-									)}`
+										</svg>`,
+									)}`,
 								);
 							});
 						$tokenImages.push($img);
@@ -898,7 +912,7 @@ function renderStatblock (mon, isScaled) {
 						const fluffEntries = await pGetFluffEntries();
 						MiscUtil.pCopyTextToClipboard(JSON.stringify(fluffEntries, null, "\t"));
 						JqueryUtil.showCopiedEffect($btnOptions);
-					}
+					},
 				),
 				new ContextUtil.Action(
 					"Copy as Markdown",
@@ -907,8 +921,8 @@ function renderStatblock (mon, isScaled) {
 						const rendererMd = RendererMarkdown.get().setFirstSection(true);
 						MiscUtil.pCopyTextToClipboard(fluffEntries.map(f => rendererMd.render(f)).join("\n"));
 						JqueryUtil.showCopiedEffect($btnOptions);
-					}
-				)
+					},
+				),
 			]
 			const menu = ContextUtil.getMenu(actions);
 
@@ -923,7 +937,7 @@ function renderStatblock (mon, isScaled) {
 			$content,
 			entity: mon,
 			pFnGetFluff: Renderer.monster.pGetFluff,
-			$headerControls
+			$headerControls,
 		});
 	}
 
@@ -934,7 +948,7 @@ function renderStatblock (mon, isScaled) {
 			$wrpBtnProf.append($btnProf);
 			$(`#float-token`).show();
 		},
-		buildStatsTab
+		buildStatsTab,
 	);
 	const infoTab = Renderer.utils.tabButton(
 		"Info",
@@ -942,7 +956,7 @@ function renderStatblock (mon, isScaled) {
 			$btnProf = $wrpBtnProf.children().length ? $wrpBtnProf.children().detach() : $btnProf;
 			$(`#float-token`).hide();
 		},
-		buildFluffTab
+		buildFluffTab,
 	);
 	const picTab = Renderer.utils.tabButton(
 		"Images",
@@ -950,7 +964,7 @@ function renderStatblock (mon, isScaled) {
 			$btnProf = $wrpBtnProf.children().length ? $wrpBtnProf.children().detach() : $btnProf;
 			$(`#float-token`).hide();
 		},
-		() => buildFluffTab(true)
+		() => buildFluffTab(true),
 	);
 	Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
 }
@@ -970,7 +984,7 @@ function dcRollerClick (event, ele, exp) {
 	const it = {
 		type: "dice",
 		rollable: true,
-		toRoll: exp
+		toRoll: exp,
 	};
 	Renderer.dice.pRollerClick(event, ele, JSON.stringify(it));
 }

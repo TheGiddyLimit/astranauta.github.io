@@ -49,7 +49,7 @@ class FeatParser extends BaseParser {
 			const ptrI = {_: i};
 			feat.entries = EntryConvert.coalesceLines(
 				ptrI,
-				toConvert
+				toConvert,
 			);
 			i = ptrI._;
 		}
@@ -118,7 +118,7 @@ class FeatParser extends BaseParser {
 	static _setAbility (feat, options) {
 		const walker = MiscUtil.getWalker({
 			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
-			isNoModification: true
+			isNoModification: true,
 		});
 		walker.walk(
 			feat.entries,
@@ -139,9 +139,9 @@ class FeatParser extends BaseParser {
 								{
 									choose: {
 										from: abils,
-										amount: 1
-									}
-								}
+										amount: 1,
+									},
+								},
 							]
 						}
 
@@ -151,15 +151,15 @@ class FeatParser extends BaseParser {
 							{
 								choose: {
 									from: [...Parser.ABIL_ABVS],
-									amount: 1
-								}
-							}
+									amount: 1,
+								},
+							},
 						]
 
 						obj.items.shift();
 					}
-				}
-			}
+				},
+			},
 		)
 	}
 }

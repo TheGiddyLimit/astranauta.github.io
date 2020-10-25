@@ -65,10 +65,10 @@ class RenderRaces {
 								<div class="small">lb.</div>
 							</div>
 							<button class="btn btn-default btn-xs my-1 race__btn-roll-height-weight">Roll</button>
-						</div>`
-					]
-				]
-			}
+						</div>`,
+					],
+				],
+			},
 		];
 
 		const $render = $$`${Renderer.get().render({entries})}`;
@@ -127,7 +127,7 @@ class RenderRaces {
 			const mResultHeight = await Renderer.dice.pRoll2(race.heightAndWeight.heightMod, {
 				isUser: false,
 				label: "Height Modifier",
-				name: race.name
+				name: race.name,
 			});
 			if (mResultHeight == null) return;
 			resultHeight = mResultHeight;
@@ -138,7 +138,7 @@ class RenderRaces {
 			const mResultWeightMod = isNaN(weightModRaw) ? await Renderer.dice.pRoll2(weightModRaw, {
 				isUser: false,
 				label: "Weight Modifier",
-				name: race.name
+				name: race.name,
 			}) : Number(weightModRaw);
 			if (mResultWeightMod == null) return;
 			resultWeightMod = mResultWeightMod;

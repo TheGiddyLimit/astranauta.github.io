@@ -199,7 +199,7 @@ Parser.SPEED_TO_PROGRESSIVE = {
 	"burrow": "burrowing",
 	"climb": "climbing",
 	"fly": "flying",
-	"swim": "swimming"
+	"swim": "swimming",
 };
 
 Parser.speedToProgressive = function (prop) {
@@ -293,7 +293,7 @@ Parser.SKILL_TO_ATB_ABV = {
 	"deception": "cha",
 	"intimidation": "cha",
 	"performance": "cha",
-	"persuasion": "cha"
+	"persuasion": "cha",
 };
 
 Parser.skillToAbilityAbv = function (skill) {
@@ -318,7 +318,7 @@ Parser.SKILL_TO_SHORT = {
 	"deception": "decp",
 	"intimidation": "intm",
 	"performance": "perf",
-	"persuasion": "pers"
+	"persuasion": "pers",
 };
 
 Parser.skillToShort = function (skill) {
@@ -333,7 +333,7 @@ Parser.LANGUAGES_STANDARD = [
 	"Gnomish",
 	"Goblin",
 	"Halfling",
-	"Orc"
+	"Orc",
 ];
 
 Parser.LANGUAGES_EXOTIC = [
@@ -348,18 +348,18 @@ Parser.LANGUAGES_EXOTIC = [
 	"Primordial",
 	"Sylvan",
 	"Terran",
-	"Undercommon"
+	"Undercommon",
 ];
 
 Parser.LANGUAGES_SECRET = [
 	"Druidic",
-	"Thieves' cant"
+	"Thieves' cant",
 ];
 
 Parser.LANGUAGES_ALL = [
 	...Parser.LANGUAGES_STANDARD,
 	...Parser.LANGUAGES_EXOTIC,
-	...Parser.LANGUAGES_SECRET
+	...Parser.LANGUAGES_SECRET,
 ].sort();
 
 Parser.dragonColorToFull = function (c) {
@@ -376,7 +376,7 @@ Parser.DRAGON_COLOR_TO_FULL = {
 	Z: "bronze",
 	C: "copper",
 	O: "gold",
-	S: "silver"
+	S: "silver",
 };
 
 Parser.acToFull = function (ac, renderer) {
@@ -528,30 +528,31 @@ Parser.stringToCasedSlug = function (str) {
 	return str.replace(/[^\w ]+/g, "").replace(/ +/g, "-");
 };
 
-Parser.itemValueToFull = function (item, isShortForm) {
-	return Parser._moneyToFull(item, "value", "valueMult", isShortForm);
+Parser.itemValueToFull = function (item, opts = {isShortForm: false, isSmallUnits: false}) {
+	return Parser._moneyToFull(item, "value", "valueMult", opts);
 };
 
-Parser.itemValueToFullMultiCurrency = function (item, isShortForm) {
-	return Parser._moneyToFullMultiCurrency(item, "value", "valueMult", isShortForm);
+Parser.itemValueToFullMultiCurrency = function (item, opts = {isShortForm: false, isSmallUnits: false}) {
+	return Parser._moneyToFullMultiCurrency(item, "value", "valueMult", opts);
 };
 
 Parser.itemVehicleCostsToFull = function (item, isShortForm) {
 	return {
-		travelCostFull: Parser._moneyToFull(item, "travelCost", "travelCostMult", isShortForm),
-		shippingCostFull: Parser._moneyToFull(item, "shippingCost", "shippingCostMult", isShortForm)
+		travelCostFull: Parser._moneyToFull(item, "travelCost", "travelCostMult", {isShortForm}),
+		shippingCostFull: Parser._moneyToFull(item, "shippingCost", "shippingCostMult", {isShortForm}),
 	};
 };
 
 Parser.spellComponentCostToFull = function (item, isShortForm) {
-	return Parser._moneyToFull(item, "cost", "costMult", isShortForm);
+	return Parser._moneyToFull(item, "cost", "costMult", {isShortForm});
 };
 
-Parser._moneyToFull = function (it, prop, propMult, isShortForm) {
-	if (it[prop]) {
+Parser._moneyToFull = function (it, prop, propMult, opts = {isShortForm: false, isSmallUnits: false}) {
+	if (it[prop] == null && it[propMult] == null) return "";
+	if (it[prop] != null) {
 		const {coin, mult} = Parser.getCurrencyAndMultiplier(it[prop], it.currencyConversion);
-		return `${(it[prop] * mult).toLocaleString(undefined, {maximumFractionDigits: 5})} ${coin}`;
-	} else if (it[propMult]) return isShortForm ? `×${it[propMult]}` : `base value ×${it[propMult]}`;
+		return `${(it[prop] * mult).toLocaleString(undefined, {maximumFractionDigits: 5})}${opts.isSmallUnits ? `<span class="small ml-1">${coin}</span>` : ` ${coin}`}`;
+	} else if (it[propMult] != null) return opts.isShortForm ? `×${it[propMult]}` : `base value ×${it[propMult]}`;
 	return "";
 };
 
@@ -559,11 +560,11 @@ Parser._moneyToFullMultiCurrency = function (it, prop, propMult, isShortForm) {
 	if (it[prop]) {
 		const simplified = CurrencyUtil.doSimplifyCoins(
 			{
-				cp: it[prop]
+				cp: it[prop],
 			},
 			{
-				currencyConversionId: it.currencyConversion
-			}
+				currencyConversionId: it.currencyConversion,
+			},
 		);
 
 		const conversionTable = Parser.getCurrencyConversionTable(it.currencyConversion);
@@ -580,40 +581,40 @@ Parser._moneyToFullMultiCurrency = function (it, prop, propMult, isShortForm) {
 Parser.DEFAULT_CURRENCY_CONVERSION_TABLE = [
 	{
 		coin: "cp",
-		mult: 1
+		mult: 1,
 	},
 	{
 		coin: "sp",
-		mult: 0.1
+		mult: 0.1,
 	},
 	{
 		coin: "gp",
 		mult: 0.01,
-		isFallback: true
-	}
+		isFallback: true,
+	},
 ];
 Parser.FULL_CURRENCY_CONVERSION_TABLE = [
 	{
 		coin: "cp",
-		mult: 1
+		mult: 1,
 	},
 	{
 		coin: "sp",
-		mult: 0.1
+		mult: 0.1,
 	},
 	{
 		coin: "ep",
-		mult: 0.02
+		mult: 0.02,
 	},
 	{
 		coin: "gp",
 		mult: 0.01,
-		isFallback: true
+		isFallback: true,
 	},
 	{
 		coin: "pp",
-		mult: 0.001
-	}
+		mult: 0.001,
+	},
 ];
 Parser.getCurrencyConversionTable = function (currencyConversionId) {
 	const fromBrew = currencyConversionId ? MiscUtil.get(BrewUtil.homebrewMeta, "currencyConversions", currencyConversionId) : null;
@@ -641,7 +642,7 @@ Parser.COIN_ABV_TO_FULL = {
 	"sp": "silver pieces",
 	"ep": "electrum pieces",
 	"gp": "gold pieces",
-	"pp": "platinum pieces"
+	"pp": "platinum pieces",
 };
 Parser.COIN_CONVERSIONS = [1, 10, 50, 100, 1000];
 
@@ -812,7 +813,7 @@ Parser.spLevelSchoolMetaToFull = function (level, school, meta, subschools) {
 	if (metaArr.length || (subschools && subschools.length)) {
 		const metaAndSubschoolPart = [
 			(subschools || []).map(sub => Parser.spSchoolAbvToFull(sub)).join(", "),
-			metaArr.join(", ")
+			metaArr.join(", "),
 		].filter(Boolean).join("; ").toLowerCase();
 		return `${levelSchoolStr} (${metaAndSubschoolPart})`;
 	}
@@ -855,7 +856,7 @@ Parser.SP_RANGE_TYPE_TO_FULL = {
 	[RNG_SIGHT]: "Sight",
 	[RNG_UNLIMITED]: "Unlimited",
 	[RNG_UNLIMITED_SAME_PLANE]: "Unlimited on the same plane",
-	[RNG_TOUCH]: "Touch"
+	[RNG_TOUCH]: "Touch",
 };
 
 Parser.spRangeTypeToFull = function (range) {
@@ -871,7 +872,7 @@ Parser.SP_DIST_TYPE_TO_FULL = {
 	[RNG_TOUCH]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_TOUCH],
 	[RNG_SIGHT]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_SIGHT],
 	[RNG_UNLIMITED]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_UNLIMITED],
-	[RNG_UNLIMITED_SAME_PLANE]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_UNLIMITED_SAME_PLANE]
+	[RNG_UNLIMITED_SAME_PLANE]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_UNLIMITED_SAME_PLANE],
 };
 
 Parser.spDistanceTypeToFull = function (range) {
@@ -892,7 +893,7 @@ Parser.SP_RANGE_TO_ICON = {
 	[RNG_SIGHT]: "fa-eye",
 	[RNG_UNLIMITED_SAME_PLANE]: "fa-globe-americas",
 	[RNG_UNLIMITED]: "fa-infinity",
-	[RNG_TOUCH]: "fa-hand-paper"
+	[RNG_TOUCH]: "fa-hand-paper",
 };
 
 Parser.spRangeTypeToIcon = function (range) {
@@ -1004,7 +1005,7 @@ Parser.RANGE_TYPES = [
 	{type: RNG_HEMISPHERE, hasDistance: true, isRequireAmount: true},
 	{type: RNG_CYLINDER, hasDistance: true, isRequireAmount: true},
 
-	{type: RNG_SPECIAL, hasDistance: false, isRequireAmount: false}
+	{type: RNG_SPECIAL, hasDistance: false, isRequireAmount: false},
 ];
 
 Parser.DIST_TYPES = [
@@ -1016,7 +1017,7 @@ Parser.DIST_TYPES = [
 
 	{type: RNG_SIGHT, hasAmount: false},
 	{type: RNG_UNLIMITED_SAME_PLANE, hasAmount: false},
-	{type: RNG_UNLIMITED, hasAmount: false}
+	{type: RNG_UNLIMITED, hasAmount: false},
 ];
 
 Parser.spComponentsToFull = function (comp, level) {
@@ -1032,7 +1033,7 @@ Parser.spComponentsToFull = function (comp, level) {
 Parser.SP_END_TYPE_TO_FULL = {
 	"dispel": "dispelled",
 	"trigger": "triggered",
-	"discharge": "discharged"
+	"discharge": "discharged",
 };
 Parser.spEndTypeToFull = function (type) {
 	return Parser._parse_aToB(Parser.SP_END_TYPE_TO_FULL, type);
@@ -1066,7 +1067,7 @@ Parser.DURATION_TYPES = [
 	{type: "instant", full: "Instantaneous"},
 	{type: "timed", hasAmount: true},
 	{type: "permanent", hasEnds: true},
-	{type: "special"}
+	{type: "special"},
 ];
 
 Parser.DURATION_AMOUNT_TYPES = [
@@ -1076,7 +1077,7 @@ Parser.DURATION_AMOUNT_TYPES = [
 	"hour",
 	"day",
 	"week",
-	"year"
+	"year",
 ];
 
 Parser.spClassesToFull = function (sp, isTextOnly, subclassLookup = {}) {
@@ -1106,7 +1107,7 @@ Parser.spSubclassesToFull = function (fromSubclassList, textOnly, subclassLookup
 			const excludeSubclass = ExcludeUtil.isExcluded(
 				UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: fromLookup.name || mt.subclass.name, source: mt.subclass.source}),
 				"subclass",
-				mt.subclass.source
+				mt.subclass.source,
 			);
 			return !excludeSubclass;
 		})
@@ -1149,7 +1150,7 @@ Parser.SPELL_AREA_TYPE_TO_FULL = {
 	Q: "Square",
 	L: "Line",
 	H: "Hemisphere",
-	W: "Wall"
+	W: "Wall",
 };
 Parser.spAreaTypeToFull = function (type) {
 	return Parser._parse_aToB(Parser.SPELL_AREA_TYPE_TO_FULL, type);
@@ -1161,7 +1162,8 @@ Parser.SP_MISC_TAG_TO_FULL = {
 	SGT: "Requires Sight",
 	PRM: "Permanent Effects",
 	SCL: "Scaling Effects",
-	SMN: "Summons Creature"
+	SMN: "Summons Creature",
+	MAC: "Modifies AC",
 };
 Parser.spMiscTagToFull = function (type) {
 	return Parser._parse_aToB(Parser.SP_MISC_TAG_TO_FULL, type);
@@ -1171,7 +1173,7 @@ Parser.SP_CASTER_PROGRESSION_TO_FULL = {
 	full: "Full",
 	"1/2": "Half",
 	"1/3": "One-Third",
-	"pact": "Pact Magic"
+	"pact": "Pact Magic",
 };
 Parser.spCasterProgressionToFull = function (type) {
 	return Parser._parse_aToB(Parser.SP_CASTER_PROGRESSION_TO_FULL, type);
@@ -1290,7 +1292,7 @@ Parser.MON_SENSE_TAG_TO_FULL = {
 	"D": "darkvision",
 	"SD": "superior darkvision",
 	"T": "tremorsense",
-	"U": "truesight"
+	"U": "truesight",
 };
 Parser.monSenseTagToFull = function (tag) {
 	return Parser._parse_aToB(Parser.MON_SENSE_TAG_TO_FULL, tag);
@@ -1309,7 +1311,7 @@ Parser.MON_SPELLCASTING_TAG_TO_FULL = {
 	"CR": "Class, Ranger",
 	"CS": "Class, Sorcerer",
 	"CL": "Class, Warlock",
-	"CW": "Class, Wizard"
+	"CW": "Class, Wizard",
 };
 Parser.monSpellcastingTagToFull = function (tag) {
 	return Parser._parse_aToB(Parser.MON_SPELLCASTING_TAG_TO_FULL, tag);
@@ -1321,7 +1323,7 @@ Parser.MON_MISC_TAG_TO_FULL = {
 	"RW": "Has Weapon Attacks, Ranged",
 	"RNG": "Has Ranged Weapons",
 	"RCH": "Has Reach Attacks",
-	"THW": "Has Thrown Weapons"
+	"THW": "Has Thrown Weapons",
 };
 Parser.monMiscTagToFull = function (tag) {
 	return Parser._parse_aToB(Parser.MON_MISC_TAG_TO_FULL, tag);
@@ -1356,7 +1358,7 @@ Parser.MON_LANGUAGE_TAG_TO_FULL = {
 	"TP": "Telepathy",
 	"U": "Undercommon",
 	"X": "Any (Choose)",
-	"XX": "All"
+	"XX": "All",
 };
 Parser.monLanguageTagToFull = function (tag) {
 	return Parser._parse_aToB(Parser.MON_LANGUAGE_TAG_TO_FULL, tag);
@@ -1436,7 +1438,7 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 	"IWM:G": "Infernal War Machine Upgrade, Gadget",
 	"OR": "Onomancy Resonant",
 	"RN": "Rune Knight Rune",
-	"AF": "Alchemical Formula"
+	"AF": "Alchemical Formula",
 };
 
 Parser.optFeatureTypeToFull = function (type) {
@@ -1520,7 +1522,7 @@ Parser.weightToFull = function (lbs, isSmallUnit) {
 	lbs = lbs - (2000 * tons);
 	return [
 		tons ? `${tons}${isSmallUnit ? `<span class="ve-small ml-1">` : " "}ton${tons === 1 ? "" : "s"}${isSmallUnit ? `</span>` : ""}` : null,
-		lbs ? `${lbs}${isSmallUnit ? `<span class="ve-small ml-1">` : " "}lb.${isSmallUnit ? `</span>` : ""}` : null
+		lbs ? `${lbs}${isSmallUnit ? `<span class="ve-small ml-1">` : " "}lb.${isSmallUnit ? `</span>` : ""}` : null,
 	].filter(Boolean).join(", ");
 };
 
@@ -1572,6 +1574,7 @@ Parser.CAT_ID_ACTION = 42;
 Parser.CAT_ID_LANGUAGE = 43;
 Parser.CAT_ID_BOOK = 44;
 Parser.CAT_ID_PAGE = 45;
+Parser.CAT_ID_LEGENDARY_GROUP = 46;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1620,6 +1623,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ACTION] = "Action";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LANGUAGE] = "Language";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOOK] = "Book";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PAGE] = "Page";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LEGENDARY_GROUP] = "Legendary Group";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1672,6 +1676,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ACTION] = "action";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LANGUAGE] = "language";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOOK] = "book";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PAGE] = null;
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LEGENDARY_GROUP] = null;
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -1727,7 +1732,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (sp, subclassLookup) {
 				c.class.source,
 				c.class.name,
 				c.subclass.source,
-				c.subclass.name
+				c.subclass.name,
 			);
 
 			if (fromLookup && fromLookup.isReprinted) {
@@ -1782,7 +1787,7 @@ Parser.TRAP_HAZARD_TYPE_TO_FULL = {
 	WTH: "Weather",
 	ENV: "Environmental Hazard",
 	WLD: "Wilderness Hazard",
-	GEN: "Generic"
+	GEN: "Generic",
 };
 
 Parser.tierToFullLevel = function (tier) {
@@ -1855,7 +1860,7 @@ Parser.SKL_ABVS = [
 	SKL_ABV_ILL,
 	SKL_ABV_NEC,
 	SKL_ABV_PSI,
-	SKL_ABV_TRA
+	SKL_ABV_TRA,
 ];
 
 Parser.SP_TM_ACTION = "action";
@@ -1871,7 +1876,7 @@ Parser.SP_TIME_TO_FULL = {
 	[Parser.SP_TM_REACTION]: "Reaction",
 	[Parser.SP_TM_ROUND]: "Rounds",
 	[Parser.SP_TM_MINS]: "Minutes",
-	[Parser.SP_TM_HRS]: "Hours"
+	[Parser.SP_TM_HRS]: "Hours",
 };
 Parser.spTimeUnitToFull = function (timeUnit) {
 	return Parser._parse_aToB(Parser.SP_TIME_TO_FULL, timeUnit);
@@ -1883,7 +1888,7 @@ Parser.SP_TIME_TO_ABV = {
 	[Parser.SP_TM_REACTION]: "R",
 	[Parser.SP_TM_ROUND]: "rnd",
 	[Parser.SP_TM_MINS]: "min",
-	[Parser.SP_TM_HRS]: "hr"
+	[Parser.SP_TM_HRS]: "hr",
 };
 Parser.spTimeUnitToAbv = function (timeUnit) {
 	return Parser._parse_aToB(Parser.SP_TIME_TO_ABV, timeUnit);
@@ -1934,7 +1939,7 @@ Parser.ATB_ABV_TO_FULL = {
 	"con": "Constitution",
 	"int": "Intelligence",
 	"wis": "Wisdom",
-	"cha": "Charisma"
+	"cha": "Charisma",
 };
 
 TP_ABERRATION = "aberration";
@@ -2025,18 +2030,18 @@ Parser.XP_CHART_ALT = {
 	"27": 105000,
 	"28": 120000,
 	"29": 135000,
-	"30": 155000
+	"30": 155000,
 };
 
 Parser.ARMOR_ABV_TO_FULL = {
 	"l.": "light",
 	"m.": "medium",
-	"h.": "heavy"
+	"h.": "heavy",
 };
 
 Parser.WEAPON_ABV_TO_FULL = {
 	"s.": "simple",
-	"m.": "martial"
+	"m.": "martial",
 };
 
 Parser.CONDITION_TO_COLOR = {
@@ -2056,7 +2061,7 @@ Parser.CONDITION_TO_COLOR = {
 	"Stunned": "#a23bcb",
 	"Unconscious": "#3a40ad",
 
-	"Concentration": "#009f7a"
+	"Concentration": "#009f7a",
 };
 
 Parser.RULE_TYPE_TO_FULL = {
@@ -2064,7 +2069,7 @@ Parser.RULE_TYPE_TO_FULL = {
 	"V": "Variant",
 	"VO": "Variant Optional",
 	"VV": "Variant Variant",
-	"U": "Unknown"
+	"U": "Unknown",
 };
 
 Parser.ruleTypeToFull = function (ruleType) {
@@ -2074,7 +2079,7 @@ Parser.ruleTypeToFull = function (ruleType) {
 Parser.VEHICLE_TYPE_TO_FULL = {
 	"SHIP": "Ship",
 	"INFWAR": "Infernal War Machine",
-	"CREATURE": "Creature"
+	"CREATURE": "Creature",
 };
 
 Parser.vehicleTypeToFull = function (vehicleType) {
@@ -2144,6 +2149,7 @@ SRC_EGW_FS = "FS";
 SRC_EGW_US = "US";
 SRC_MOT = "MOT";
 SRC_IDRotF = "IDRotF";
+SRC_TCE = "TCE";
 SRC_SCREEN = "Screen";
 
 SRC_AL_PREFIX = "AL";
@@ -2304,6 +2310,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_EGW_FS] = "Frozen Sick";
 Parser.SOURCE_JSON_TO_FULL[SRC_EGW_US] = "Unwelcome Spirits";
 Parser.SOURCE_JSON_TO_FULL[SRC_MOT] = "Mythic Odysseys of Theros";
 Parser.SOURCE_JSON_TO_FULL[SRC_IDRotF] = "Icewind Dale: Rime of the Frostmaiden";
+Parser.SOURCE_JSON_TO_FULL[SRC_TCE] = "Tasha's Cauldron of Everything";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = `${AL_PREFIX}Curse of Strahd`;
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = `${AL_PREFIX}Elemental Evil`;
@@ -2445,6 +2452,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_EGW_FS] = "FS";
 Parser.SOURCE_JSON_TO_ABV[SRC_EGW_US] = "US";
 Parser.SOURCE_JSON_TO_ABV[SRC_MOT] = "MOT";
 Parser.SOURCE_JSON_TO_ABV[SRC_IDRotF] = "IDRotF";
+Parser.SOURCE_JSON_TO_ABV[SRC_TCE] = "TCE";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
@@ -2584,6 +2592,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_EGW_FS] = "2020-03-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_EGW_US] = "2020-03-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_MOT] = "2020-06-02";
 Parser.SOURCE_JSON_TO_DATE[SRC_IDRotF] = "2020-09-15";
+Parser.SOURCE_JSON_TO_DATE[SRC_TCE] = "2020-11-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN] = "2015-01-20";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALCoS] = "2016-03-15";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALEE] = "2015-04-07";
@@ -2700,7 +2709,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_EGW_US,
 	SRC_IDRotF,
 
-	SRC_AWM
+	SRC_AWM,
 ]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
 Parser.SOURCES_NON_STANDARD_WOTC = new Set([
@@ -2713,7 +2722,23 @@ Parser.SOURCES_NON_STANDARD_WOTC = new Set([
 	SRC_TTP,
 	SRC_AWM,
 	SRC_IMR,
-	SRC_SADS
+	SRC_SADS,
+	SRC_MFF,
+]);
+Parser.SOURCES_VANILLA = new Set([ // An opinionated set of source that could be considered "core-core"
+	SRC_DMG,
+	SRC_MM,
+	SRC_PHB,
+	SRC_SCAG,
+	SRC_TTP,
+	SRC_VGM,
+	SRC_XGE,
+	SRC_MTF,
+	SRC_SAC,
+	SRC_MFF,
+	SRC_SADS,
+	SRC_TCE,
+	SRC_SCREEN,
 ]);
 Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 [
@@ -2729,7 +2754,7 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_ERLW,
 	SRC_RMR,
 	SRC_EGW,
-	SRC_MOT
+	SRC_MOT,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
@@ -2772,7 +2797,7 @@ Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
 	SRC_EGW_DD,
 	SRC_EGW_FS,
 	SRC_EGW_US,
-	SRC_IDRotF
+	SRC_IDRotF,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
@@ -2803,7 +2828,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"classFeature": SRC_PHB,
 	"subclassFeature": SRC_PHB,
 	"table": SRC_DMG,
-	"language": SRC_PHB
+	"language": SRC_PHB,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;
@@ -2847,7 +2872,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"VEH": "vehicle (land)",
 	"SHP": "vehicle (water)",
 	"AIR": "vehicle (air)",
-	"WD": "wand"
+	"WD": "wand",
 };
 
 Parser.DMGTYPE_JSON_TO_FULL = {
@@ -2863,7 +2888,7 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 	"Y": "psychic",
 	"R": "radiant",
 	"S": "slashing",
-	"T": "thunder"
+	"T": "thunder",
 };
 
 Parser.DMG_TYPES = ["acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"];
@@ -2871,13 +2896,13 @@ Parser.CONDITIONS = ["blinded", "charmed", "deafened", "exhaustion", "frightened
 
 Parser.SKILL_JSON_TO_FULL = {
 	"Acrobatics": [
-		"Your Dexterity (Acrobatics) check covers your attempt to stay on your feet in a tricky situation, such as when you're trying to run across a sheet of ice, balance on a tightrope, or stay upright on a rocking ship's deck. The DM might also call for a Dexterity (Acrobatics) check to see if you can perform acrobatic stunts, including dives, rolls, somersaults, and flips."
+		"Your Dexterity (Acrobatics) check covers your attempt to stay on your feet in a tricky situation, such as when you're trying to run across a sheet of ice, balance on a tightrope, or stay upright on a rocking ship's deck. The DM might also call for a Dexterity (Acrobatics) check to see if you can perform acrobatic stunts, including dives, rolls, somersaults, and flips.",
 	],
 	"Animal Handling": [
-		"When there is any question whether you can calm down a domesticated animal, keep a mount from getting spooked, or intuit an animal's intentions, the DM might call for a Wisdom (Animal Handling) check. You also make a Wisdom (Animal Handling) check to control your mount when you attempt a risky maneuver."
+		"When there is any question whether you can calm down a domesticated animal, keep a mount from getting spooked, or intuit an animal's intentions, the DM might call for a Wisdom (Animal Handling) check. You also make a Wisdom (Animal Handling) check to control your mount when you attempt a risky maneuver.",
 	],
 	"Arcana": [
-		"Your Intelligence (Arcana) check measures your ability to recall lore about spells, magic items, eldritch symbols, magical traditions, the planes of existence, and the inhabitants of those planes."
+		"Your Intelligence (Arcana) check measures your ability to recall lore about spells, magic items, eldritch symbols, magical traditions, the planes of existence, and the inhabitants of those planes.",
 	],
 	"Athletics": [
 		"Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming. Examples include the following activities:",
@@ -2886,67 +2911,67 @@ Parser.SKILL_JSON_TO_FULL = {
 			"items": [
 				"You attempt to climb a sheer or slippery cliff, avoid hazards while scaling a wall, or cling to a surface while something is trying to knock you off.",
 				"You try to jump an unusually long distance or pull off a stunt mid jump.",
-				"You struggle to swim or stay afloat in treacherous currents, storm-tossed waves, or areas of thick seaweed. Or another creature tries to push or pull you underwater or otherwise interfere with your swimming."
-			]
-		}
+				"You struggle to swim or stay afloat in treacherous currents, storm-tossed waves, or areas of thick seaweed. Or another creature tries to push or pull you underwater or otherwise interfere with your swimming.",
+			],
+		},
 	],
 	"Deception": [
-		"Your Charisma (Deception) check determines whether you can convincingly hide the truth, either verbally or through your actions. This deception can encompass everything from misleading others through ambiguity to telling outright lies. Typical situations include trying to fast-talk a guard, con a merchant, earn money through gambling, pass yourself off in a disguise, dull someone's suspicions with false assurances, or maintain a straight face while telling a blatant lie."
+		"Your Charisma (Deception) check determines whether you can convincingly hide the truth, either verbally or through your actions. This deception can encompass everything from misleading others through ambiguity to telling outright lies. Typical situations include trying to fast-talk a guard, con a merchant, earn money through gambling, pass yourself off in a disguise, dull someone's suspicions with false assurances, or maintain a straight face while telling a blatant lie.",
 	],
 	"History": [
-		"Your Intelligence (History) check measures your ability to recall lore about historical events, legendary people, ancient kingdoms, past disputes, recent wars, and lost civilizations."
+		"Your Intelligence (History) check measures your ability to recall lore about historical events, legendary people, ancient kingdoms, past disputes, recent wars, and lost civilizations.",
 	],
 	"Insight": [
-		"Your Wisdom (Insight) check decides whether you can determine the true intentions of a creature, such as when searching out a lie or predicting someone's next move. Doing so involves gleaning clues from body language, speech habits, and changes in mannerisms."
+		"Your Wisdom (Insight) check decides whether you can determine the true intentions of a creature, such as when searching out a lie or predicting someone's next move. Doing so involves gleaning clues from body language, speech habits, and changes in mannerisms.",
 	],
 	"Intimidation": [
-		"When you attempt to influence someone through overt threats, hostile actions, and physical violence, the DM might ask you to make a Charisma (Intimidation) check. Examples include trying to pry information out of a prisoner, convincing street thugs to back down from a confrontation, or using the edge of a broken bottle to convince a sneering vizier to reconsider a decision."
+		"When you attempt to influence someone through overt threats, hostile actions, and physical violence, the DM might ask you to make a Charisma (Intimidation) check. Examples include trying to pry information out of a prisoner, convincing street thugs to back down from a confrontation, or using the edge of a broken bottle to convince a sneering vizier to reconsider a decision.",
 	],
 	"Investigation": [
-		"When you look around for clues and make deductions based on those clues, you make an Intelligence (Investigation) check. You might deduce the location of a hidden object, discern from the appearance of a wound what kind of weapon dealt it, or determine the weakest point in a tunnel that could cause it to collapse. Poring through ancient scrolls in search of a hidden fragment of knowledge might also call for an Intelligence (Investigation) check."
+		"When you look around for clues and make deductions based on those clues, you make an Intelligence (Investigation) check. You might deduce the location of a hidden object, discern from the appearance of a wound what kind of weapon dealt it, or determine the weakest point in a tunnel that could cause it to collapse. Poring through ancient scrolls in search of a hidden fragment of knowledge might also call for an Intelligence (Investigation) check.",
 	],
 	"Medicine": [
-		"A Wisdom (Medicine) check lets you try to stabilize a dying companion or diagnose an illness."
+		"A Wisdom (Medicine) check lets you try to stabilize a dying companion or diagnose an illness.",
 	],
 	"Nature": [
-		"Your Intelligence (Nature) check measures your ability to recall lore about terrain, plants and animals, the weather, and natural cycles."
+		"Your Intelligence (Nature) check measures your ability to recall lore about terrain, plants and animals, the weather, and natural cycles.",
 	],
 	"Perception": [
-		"Your Wisdom (Perception) check lets you spot, hear, or otherwise detect the presence of something. It measures your general awareness of your surroundings and the keenness of your senses.", "For example, you might try to hear a conversation through a closed door, eavesdrop under an open window, or hear monsters moving stealthily in the forest. Or you might try to spot things that are obscured or easy to miss, whether they are orcs lying in ambush on a road, thugs hiding in the shadows of an alley, or candlelight under a closed secret door."
+		"Your Wisdom (Perception) check lets you spot, hear, or otherwise detect the presence of something. It measures your general awareness of your surroundings and the keenness of your senses.", "For example, you might try to hear a conversation through a closed door, eavesdrop under an open window, or hear monsters moving stealthily in the forest. Or you might try to spot things that are obscured or easy to miss, whether they are orcs lying in ambush on a road, thugs hiding in the shadows of an alley, or candlelight under a closed secret door.",
 	],
 	"Performance": [
-		"Your Charisma (Performance) check determines how well you can delight an audience with music, dance, acting, storytelling, or some other form of entertainment."
+		"Your Charisma (Performance) check determines how well you can delight an audience with music, dance, acting, storytelling, or some other form of entertainment.",
 	],
 	"Persuasion": [
-		"When you attempt to influence someone or a group of people with tact, social graces, or good nature, the DM might ask you to make a Charisma (Persuasion) check. Typically, you use persuasion when acting in good faith, to foster friendships, make cordial requests, or exhibit proper etiquette. Examples of persuading others include convincing a chamberlain to let your party see the king, negotiating peace between warring tribes, or inspiring a crowd of townsfolk."
+		"When you attempt to influence someone or a group of people with tact, social graces, or good nature, the DM might ask you to make a Charisma (Persuasion) check. Typically, you use persuasion when acting in good faith, to foster friendships, make cordial requests, or exhibit proper etiquette. Examples of persuading others include convincing a chamberlain to let your party see the king, negotiating peace between warring tribes, or inspiring a crowd of townsfolk.",
 	],
 	"Religion": [
-		"Your Intelligence (Religion) check measures your ability to recall lore about deities, rites and prayers, religious hierarchies, holy symbols, and the practices of secret cults."
+		"Your Intelligence (Religion) check measures your ability to recall lore about deities, rites and prayers, religious hierarchies, holy symbols, and the practices of secret cults.",
 	],
 	"Sleight of Hand": [
-		"Whenever you attempt an act of legerdemain or manual trickery, such as planting something on someone else or concealing an object on your person, make a Dexterity (Sleight of Hand) check. The DM might also call for a Dexterity (Sleight of Hand) check to determine whether you can lift a coin purse off another person or slip something out of another person's pocket."
+		"Whenever you attempt an act of legerdemain or manual trickery, such as planting something on someone else or concealing an object on your person, make a Dexterity (Sleight of Hand) check. The DM might also call for a Dexterity (Sleight of Hand) check to determine whether you can lift a coin purse off another person or slip something out of another person's pocket.",
 	],
 	"Stealth": [
-		"Make a Dexterity (Stealth) check when you attempt to conceal yourself from enemies, slink past guards, slip away without being noticed, or sneak up on someone without being seen or heard."
+		"Make a Dexterity (Stealth) check when you attempt to conceal yourself from enemies, slink past guards, slip away without being noticed, or sneak up on someone without being seen or heard.",
 	],
 	"Survival": [
-		"The DM might ask you to make a Wisdom (Survival) check to follow tracks, hunt wild game, guide your group through frozen wastelands, identify signs that owlbears live nearby, predict the weather, or avoid quicksand and other natural hazards."
-	]
+		"The DM might ask you to make a Wisdom (Survival) check to follow tracks, hunt wild game, guide your group through frozen wastelands, identify signs that owlbears live nearby, predict the weather, or avoid quicksand and other natural hazards.",
+	],
 };
 
 Parser.SENSE_JSON_TO_FULL = {
 	"blindsight": [
-		"A creature with blindsight can perceive its surroundings without relying on sight, within a specific radius. Creatures without eyes, such as oozes, and creatures with echolocation or heightened senses, such as bats and true dragons, have this sense."
+		"A creature with blindsight can perceive its surroundings without relying on sight, within a specific radius. Creatures without eyes, such as oozes, and creatures with echolocation or heightened senses, such as bats and true dragons, have this sense.",
 	],
 	"darkvision": [
-		"Many creatures in fantasy gaming worlds, especially those that dwell underground, have darkvision. Within a specified range, a creature with darkvision can see in dim light as if it were bright light and in darkness as if it were dim light, so areas of darkness are only lightly obscured as far as that creature is concerned. However, the creature can't discern color in that darkness, only shades of gray."
+		"Many creatures in fantasy gaming worlds, especially those that dwell underground, have darkvision. Within a specified range, a creature with darkvision can see in dim light as if it were bright light and in darkness as if it were dim light, so areas of darkness are only lightly obscured as far as that creature is concerned. However, the creature can't discern color in that darkness, only shades of gray.",
 	],
 	"tremorsense": [
-		"A creature with tremorsense can detect and pinpoint the origin of vibrations within a specific radius, provided that the creature and the source of the vibrations are in contact with the same ground or substance. Tremorsense can't be used to detect flying or incorporeal creatures. Many burrowing creatures, such as ankhegs and umber hulks, have this special sense."
+		"A creature with tremorsense can detect and pinpoint the origin of vibrations within a specific radius, provided that the creature and the source of the vibrations are in contact with the same ground or substance. Tremorsense can't be used to detect flying or incorporeal creatures. Many burrowing creatures, such as ankhegs and umber hulks, have this special sense.",
 	],
 	"truesight": [
-		"A creature with truesight can, out to a specific range, see in normal and magical darkness, see invisible creatures and objects, automatically detect visual illusions and succeed on saving throws against them, and perceives the original form of a shapechanger or a creature that is transformed by magic. Furthermore, the creature can see into the Ethereal Plane."
-	]
+		"A creature with truesight can, out to a specific range, see in normal and magical darkness, see invisible creatures and objects, automatically detect visual illusions and succeed on saving throws against them, and perceives the original form of a shapechanger or a creature that is transformed by magic. Furthermore, the creature can see into the Ethereal Plane.",
+	],
 };
 
 Parser.NUMBERS_ONES = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];

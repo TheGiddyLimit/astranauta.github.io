@@ -10,12 +10,12 @@ class TablesPage extends ListPage {
 
 			listClass: "tablesdata",
 			listOptions: {
-				sortByInitial: "sortName"
+				sortByInitial: "sortName",
 			},
 
 			sublistClass: "subtablesdata",
 
-			dataProps: ["table", "tableGroup"]
+			dataProps: ["table", "tableGroup"],
 		});
 	}
 
@@ -42,12 +42,12 @@ class TablesPage extends ListPage {
 			{
 				hash,
 				sortName,
-				source
+				source,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : tbI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -73,8 +73,8 @@ class TablesPage extends ListPage {
 			$ele,
 			it.name,
 			{
-				hash
-			}
+				hash,
+			},
 		);
 		return listItem;
 	}

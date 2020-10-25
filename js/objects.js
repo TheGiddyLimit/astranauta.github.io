@@ -12,7 +12,7 @@ class ObjectsPage extends ListPage {
 
 			sublistClass: "subobjects",
 
-			dataProps: ["object"]
+			dataProps: ["object"],
 		});
 	}
 
@@ -39,12 +39,12 @@ class ObjectsPage extends ListPage {
 			{
 				hash,
 				source,
-				size
+				size,
 			},
 			{
 				uniqueId: obj.uniqueId ? obj.uniqueId : obI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -77,8 +77,8 @@ class ObjectsPage extends ListPage {
 			obj.name,
 			{
 				hash,
-				size
-			}
+				size,
+			},
 		);
 		return listItem;
 	}

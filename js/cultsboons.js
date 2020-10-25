@@ -12,7 +12,7 @@ class CultsBoonsPage extends ListPage {
 
 			sublistClass: "subcultsboons",
 
-			dataProps: ["cult", "boon"]
+			dataProps: ["cult", "boon"],
 		});
 	}
 
@@ -43,12 +43,12 @@ class CultsBoonsPage extends ListPage {
 				hash,
 				source,
 				type: it._lType,
-				subType: it._lSubType
+				subType: it._lSubType,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : bcI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -82,8 +82,8 @@ class CultsBoonsPage extends ListPage {
 			{
 				hash,
 				type: it._lType,
-				subType: it._lSubType
-			}
+				subType: it._lSubType,
+			},
 		);
 		return listItem;
 	}

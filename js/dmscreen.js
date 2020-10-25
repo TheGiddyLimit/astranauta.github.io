@@ -143,7 +143,7 @@ class Board {
 			width: `calc(100% - ${this._getWidthAdjustment()}px)`,
 			height: `calc(100% - ${this._getHeightAdjustment()}px)`,
 			gridAutoColumns: `${(1 / this.width) * 100}%`,
-			gridAutoRows: `${(1 / this.height) * 100}%`
+			gridAutoRows: `${(1 / this.height) * 100}%`,
 		});
 	}
 
@@ -162,7 +162,7 @@ class Board {
 		const h = this.$creen.outerHeight() + this._getHeightAdjustment();
 		return {
 			pxWidth: w / this.width,
-			pxHeight: h / this.height
+			pxHeight: h / this.height,
 		};
 	}
 
@@ -171,7 +171,7 @@ class Board {
 			gridColumnStart: "1",
 			gridColumnEnd: String(this.width + 1),
 			gridRowStart: "1",
-			gridRowEnd: String(this.height + 1)
+			gridRowEnd: String(this.height + 1),
 		}).appendTo(this.$creen);
 	}
 
@@ -297,7 +297,7 @@ class Board {
 						n: adventureOrBook.name,
 						c: chap.name,
 						p: i,
-						id: bookOrAdventureId++
+						id: bookOrAdventureId++,
 					};
 					if (chap.ordinal) chapDoc.o = Parser.bookOrdinalToAbv(chap.ordinal, true);
 					if (isBrew) chapDoc.w = true;
@@ -444,7 +444,7 @@ class Board {
 			fs: this.isFullscreen,
 			lk: this.isLocked,
 			ps: Object.values(this.panels).map(p => p.getSaveableState()),
-			ex: this.exiledPanels.map(p => p.getSaveableState())
+			ex: this.exiledPanels.map(p => p.getSaveableState()),
 		};
 	}
 
@@ -484,7 +484,7 @@ class Board {
 			// on error, purge saved data and reset
 			JqueryUtil.doToast({
 				content: "Error when loading DM screen! Purged saved data. (See the log for more information.)",
-				type: "danger"
+				type: "danger",
 			});
 			await StorageUtil.pRemove(VeCt.STORAGE_DMSCREEN);
 			setTimeout(() => { throw e; });
@@ -910,7 +910,7 @@ class Panel {
 			zIndex: zIndex,
 			pointerEvents: "none",
 			transform: "rotate(-4deg)",
-			background: "none"
+			background: "none",
 		});
 	}
 
@@ -924,7 +924,7 @@ class Panel {
 			zIndex: "",
 			pointerEvents: "",
 			transform: "",
-			background: ""
+			background: "",
 		});
 	}
 
@@ -934,7 +934,7 @@ class Panel {
 			board.setVisiblyHoveringPanel(true);
 			$content.css({
 				top: EventUtil.getClientY(e) - offsetY,
-				left: EventUtil.getClientX(e) - offsetX
+				left: EventUtil.getClientX(e) - offsetX,
 			});
 		});
 	}
@@ -952,7 +952,7 @@ class Panel {
 			PANEL_TYP_EMPTY,
 			null,
 			Panel._get$eleLoading(message),
-			TITLE_LOADING
+			TITLE_LOADING,
 		);
 	}
 
@@ -960,12 +960,12 @@ class Panel {
 		const meta = {p: page, s: source, u: hash};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_STATS,
-			meta
+			meta,
 		);
 		Renderer.hover.pCacheAndGet(
 			page,
 			source,
-			hash
+			hash,
 		).then(it => {
 			const fn = Renderer.hover._pageToRenderFn(page);
 
@@ -982,7 +982,7 @@ class Panel {
 				$contentInner,
 				title || it.name,
 				true,
-				!!title
+				!!title,
 			);
 		});
 	}
@@ -1004,7 +1004,7 @@ class Panel {
 
 					const nxtMeta = {
 						...meta,
-						cr: targetCr
+						cr: targetCr,
 					};
 					if (originalCr) delete nxtMeta.cr;
 
@@ -1014,7 +1014,7 @@ class Panel {
 						nxtMeta,
 						$contentInner,
 						toRender._displayName || toRender.name,
-						true
+						true,
 					);
 				};
 
@@ -1033,7 +1033,7 @@ class Panel {
 				meta,
 				$contentInner,
 				mon.name,
-				true
+				true,
 			);
 		});
 	}
@@ -1042,12 +1042,12 @@ class Panel {
 		const meta = {p: page, s: source, u: hash, cr: targetCr};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_CREATURE_SCALED_CR,
-			meta
+			meta,
 		);
 		Renderer.hover.pCacheAndGet(
 			page,
 			source,
-			hash
+			hash,
 		).then(it => {
 			ScaleCreature.scale(it, targetCr).then(initialRender => {
 				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
@@ -1063,7 +1063,7 @@ class Panel {
 					$contentInner,
 					title || initialRender._displayName || initialRender.name,
 					true,
-					!!title
+					!!title,
 				);
 			});
 		});
@@ -1073,7 +1073,7 @@ class Panel {
 		const meta = {b: book, c: chapter, h: header};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_RULES,
-			meta
+			meta,
 		);
 		RuleLoader.pFill(book).then(() => {
 			const rule = RuleLoader.getFromCache(book, chapter, header);
@@ -1085,7 +1085,7 @@ class Panel {
 				$(`<div class="panel-content-wrapper-inner"><table class="stats">${it}</table></div>`),
 				title || rule.name || "",
 				true,
-				!!title
+				!!title,
 			);
 		});
 	}
@@ -1094,7 +1094,7 @@ class Panel {
 		const meta = {a: adventure, c: chapter};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_ADVENTURES,
-			meta
+			meta,
 		);
 		adventureLoader.pFill(adventure).then(() => {
 			const data = adventureLoader.getFromCache(adventure, chapter);
@@ -1106,7 +1106,7 @@ class Panel {
 				$(`<div class="panel-content-wrapper-inner"></div>`).append(view.$getEle()),
 				title || data.name || "",
 				true,
-				!!title
+				!!title,
 			);
 		});
 	}
@@ -1115,7 +1115,7 @@ class Panel {
 		const meta = {b: book, c: chapter};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_BOOKS,
-			meta
+			meta,
 		);
 		bookLoader.pFill(book).then(() => {
 			const data = bookLoader.getFromCache(book, chapter);
@@ -1127,7 +1127,7 @@ class Panel {
 				$(`<div class="panel-content-wrapper-inner"></div>`).append(view.$getEle()),
 				title || data.name || "",
 				true,
-				!!title
+				!!title,
 			);
 		});
 	}
@@ -1144,7 +1144,7 @@ class Panel {
 			$(`<div class="panel-content-wrapper-inner"/>`).append(Renderer.dice.get$Roller().addClass("rollbox-panel")),
 			title || "Dice Roller",
 			true,
-			!!title
+			!!title,
 		);
 	}
 
@@ -1154,7 +1154,7 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTracker.make$Tracker(this.board, state)),
 			title || "Initiative Tracker",
-			true
+			true,
 		);
 	}
 
@@ -1164,7 +1164,7 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTrackerPlayer.make$tracker(this.board, state)),
 			title || "Initiative Tracker",
-			true
+			true,
 		);
 	}
 
@@ -1174,7 +1174,7 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(Counter.$getCounter(this.board, state)),
 			title || "Counter",
-			true
+			true,
 		);
 	}
 
@@ -1184,7 +1184,7 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(UnitConverter.make$Converter(this.board, state)),
 			title || "Unit Converter",
-			true
+			true,
 		);
 	}
 
@@ -1194,7 +1194,7 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(MoneyConverter.make$Converter(this.board, state)),
 			title || "Money Converter",
-			true
+			true,
 		);
 	}
 
@@ -1204,7 +1204,7 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(TimeTracker.$getTracker(this.board, state)),
 			title || "Time Tracker",
-			true
+			true,
 		);
 	}
 
@@ -1214,7 +1214,7 @@ class Panel {
 			null,
 			$(`<div class="panel-content-wrapper-inner overflow-y-hidden"/>`).append(NoteBox.make$Notebox(this.board, content)),
 			title,
-			true
+			true,
 		);
 	}
 
@@ -1225,7 +1225,7 @@ class Panel {
 			meta,
 			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?autoplay=1&enablejsapi=1&modestbranding=1&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen /></div>`),
 			title,
-			true
+			true,
 		);
 	}
 
@@ -1236,7 +1236,7 @@ class Panel {
 			meta,
 			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no" allowfullscreen/></div>`),
 			title,
-			true
+			true,
 		);
 	}
 
@@ -1248,7 +1248,7 @@ class Panel {
 			meta,
 			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?parent=${location.hostname}" frameborder="0" scrolling="no" id="${channelId}"/></div>`),
 			title,
-			true
+			true,
 		);
 	}
 
@@ -1259,7 +1259,7 @@ class Panel {
 			meta,
 			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}"/></div>`),
 			title,
-			true
+			true,
 		);
 	}
 
@@ -1275,14 +1275,14 @@ class Panel {
 			meta,
 			$wrpPanel,
 			title,
-			true
+			true,
 		);
 		$img.panzoom({
 			$reset: $iptReset,
 			$zoomRange: $iptRange,
 			minScale: 0.1,
 			maxScale: 8,
-			duration: 100
+			duration: 100,
 		});
 	}
 
@@ -1292,7 +1292,7 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(DmMapper.$getMapper(this.board, state)),
 			title || "Time Tracker",
-			true
+			true,
 		);
 	}
 
@@ -1303,7 +1303,7 @@ class Panel {
 			meta,
 			$(`<div class="dm-blank__panel"/>`),
 			title,
-			true
+			true,
 		);
 	}
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1477,7 +1477,7 @@ class Panel {
 			tabIndex: this.tabIndex,
 			tabDatas: this.tabDatas,
 			tabCanRename: this.tabCanRename,
-			tabRenamed: this.tabRenamed
+			tabRenamed: this.tabRenamed,
 		}
 	}
 
@@ -1581,7 +1581,7 @@ class Panel {
 				gridColumnEnd: String(this.x + 1 + this.width),
 
 				gridRowStart: String(this.y + 1),
-				gridRowEnd: String(this.y + 1 + this.height)
+				gridRowEnd: String(this.y + 1 + this.height),
 			});
 		};
 
@@ -1666,7 +1666,7 @@ class Panel {
 			top: offset.top,
 			left: offset.left,
 			width: this.$pnl.outerWidth(),
-			height: this.$pnl.outerHeight()
+			height: this.$pnl.outerHeight(),
 		};
 	}
 
@@ -1676,7 +1676,7 @@ class Panel {
 			top: offset.top,
 			left: offset.left,
 			width: this.$btnAddInner.outerWidth(),
-			height: this.$btnAddInner.outerHeight()
+			height: this.$btnAddInner.outerHeight(),
 		};
 	}
 
@@ -1754,7 +1754,7 @@ class Panel {
 			type,
 			contentMeta,
 			Panel._get$eleLoading(),
-			TITLE_LOADING
+			TITLE_LOADING,
 		);
 	}
 
@@ -1820,7 +1820,7 @@ class Panel {
 				$content: $content,
 				title: title,
 				tabCanRename: !!tabCanRename,
-				tabRenamed: !!tabRenamed
+				tabRenamed: !!tabRenamed,
 			};
 			if ($btnOld) this.tabDatas[ix].$tabButton = $btnOld;
 
@@ -1903,7 +1903,7 @@ class Panel {
 			y: this.y,
 			w: this.width,
 			h: this.height,
-			t: this.type
+			t: this.type,
 		};
 
 		function getSaveableContent (type, contentMeta, $content, tabRenamed, tabTitle) {
@@ -1915,7 +1915,7 @@ class Panel {
 				case PANEL_TYP_ROLLBOX:
 					return {
 						t: type,
-						r: toSaveTitle
+						r: toSaveTitle,
 					};
 				case PANEL_TYP_STATS:
 					return {
@@ -1924,8 +1924,8 @@ class Panel {
 						c: {
 							p: contentMeta.p,
 							s: contentMeta.s,
-							u: contentMeta.u
-						}
+							u: contentMeta.u,
+						},
 					};
 				case PANEL_TYP_CREATURE_SCALED_CR:
 					return {
@@ -1935,8 +1935,8 @@ class Panel {
 							p: contentMeta.p,
 							s: contentMeta.s,
 							u: contentMeta.u,
-							cr: contentMeta.cr
-						}
+							cr: contentMeta.cr,
+						},
 					};
 				case PANEL_TYP_RULES:
 					return {
@@ -1945,8 +1945,8 @@ class Panel {
 						c: {
 							b: contentMeta.b,
 							c: contentMeta.c,
-							h: contentMeta.h
-						}
+							h: contentMeta.h,
+						},
 					};
 				case PANEL_TYP_ADVENTURES:
 					return {
@@ -1954,8 +1954,8 @@ class Panel {
 						r: toSaveTitle,
 						c: {
 							a: contentMeta.a,
-							c: contentMeta.c
-						}
+							c: contentMeta.c,
+						},
 					};
 				case PANEL_TYP_BOOKS:
 					return {
@@ -1963,64 +1963,64 @@ class Panel {
 						r: toSaveTitle,
 						c: {
 							b: contentMeta.b,
-							c: contentMeta.c
-						}
+							c: contentMeta.c,
+						},
 					};
 				case PANEL_TYP_TEXTBOX:
 					return {
 						t: type,
 						r: toSaveTitle,
 						s: {
-							x: $content ? $content.find(`textarea`).val() : ""
-						}
+							x: $content ? $content.find(`textarea`).val() : "",
+						},
 					};
 				case PANEL_TYP_INITIATIVE_TRACKER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-init`).data("getState")()
+						s: $content.find(`.dm-init`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_INITIATIVE_TRACKER_PLAYER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: {}
+						s: {},
 					};
 				}
 				case PANEL_TYP_COUNTER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-cnt__root`).data("getState")()
+						s: $content.find(`.dm-cnt__root`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_UNIT_CONVERTER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-unitconv`).data("getState")()
+						s: $content.find(`.dm-unitconv`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_MONEY_CONVERTER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm_money`).data("getState")()
+						s: $content.find(`.dm_money`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_TIME_TRACKER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-time__root`).data("getState")()
+						s: $content.find(`.dm-time__root`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_ADVENTURE_DYNAMIC_MAP: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-map__root`).data("getState")()
+						s: $content.find(`.dm-map__root`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_TUBE:
@@ -2032,8 +2032,8 @@ class Panel {
 						t: type,
 						r: toSaveTitle,
 						c: {
-							u: contentMeta.u
-						}
+							u: contentMeta.u,
+						},
 					};
 				case PANEL_TYP_BLANK:
 					return {r: toSaveTitle};
@@ -2171,7 +2171,7 @@ class JoystickMenu {
 
 			this.panel.$pnl.css({
 				zIndex: 52,
-				boxShadow: "0 0 12px 0 #000000a0"
+				boxShadow: "0 0 12px 0 #000000a0",
 			});
 
 			$(document).off(`mousemove${EVT_NAMESPACE} touchmove${EVT_NAMESPACE}`).off(`mouseup${EVT_NAMESPACE} touchend${EVT_NAMESPACE}`);
@@ -2203,26 +2203,26 @@ class JoystickMenu {
 						if (numPanelsCovered > this.panel.y) numPanelsCovered = this.panel.y;
 						this.panel.$pnl.css({
 							gridRowStart: String(this.panel.y + (1 - numPanelsCovered)),
-							gridRowEnd: String(this.panel.y + 1 + this.panel.height)
+							gridRowEnd: String(this.panel.y + 1 + this.panel.height),
 						});
 						break;
 					case RIGHT:
 						if (numPanelsCovered > (this.panel.board.width - this.panel.width) - this.panel.x) numPanelsCovered = (this.panel.board.width - this.panel.width) - this.panel.x;
 						this.panel.$pnl.css({
-							gridColumnEnd: String(this.panel.x + 1 + this.panel.width + numPanelsCovered)
+							gridColumnEnd: String(this.panel.x + 1 + this.panel.width + numPanelsCovered),
 						});
 						break;
 					case DOWN:
 						if (numPanelsCovered > (this.panel.board.height - this.panel.height) - this.panel.y) numPanelsCovered = (this.panel.board.height - this.panel.height) - this.panel.y;
 						this.panel.$pnl.css({
-							gridRowEnd: String(this.panel.y + 1 + this.panel.height + numPanelsCovered)
+							gridRowEnd: String(this.panel.y + 1 + this.panel.height + numPanelsCovered),
 						});
 						break;
 					case LEFT:
 						if (numPanelsCovered > this.panel.x) numPanelsCovered = this.panel.x;
 						this.panel.$pnl.css({
 							gridColumnStart: String(this.panel.x + (1 - numPanelsCovered)),
-							gridColumnEnd: String(this.panel.x + 1 + this.panel.width)
+							gridColumnEnd: String(this.panel.x + 1 + this.panel.width),
 						});
 						break;
 				}
@@ -2240,7 +2240,7 @@ class JoystickMenu {
 					gridColumnStart: initGCS,
 					gridColumnEnd: initGCE,
 					gridRowStart: initGRS,
-					gridRowEnd: initGRE
+					gridRowEnd: initGRE,
 				});
 
 				const canShrink = axis === AX_X ? this.panel.width - 1 : this.panel.height - 1;
@@ -2438,7 +2438,7 @@ class AddMenu {
 					this.pnl.isTabs = false;
 					this.pnl.doRenderTabs();
 				}
-			}
+			},
 		});
 		this._doClose = doClose;
 		$modalInner.append(this._$menuInner);
@@ -2494,7 +2494,7 @@ class AddMenuVideoTab extends AddMenuTab {
 				} else {
 					JqueryUtil.doToast({
 						content: `Please enter a URL of the form: "https://www.youtube.com/watch?v=XXXXXXX"`,
-						type: "danger"
+						type: "danger",
 					});
 				}
 			});
@@ -2521,7 +2521,7 @@ class AddMenuVideoTab extends AddMenuTab {
 				} else {
 					JqueryUtil.doToast({
 						content: `Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`,
-						type: "danger"
+						type: "danger",
 					});
 				}
 			});
@@ -2537,7 +2537,7 @@ class AddMenuVideoTab extends AddMenuTab {
 				} else {
 					JqueryUtil.doToast({
 						content: `Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`,
-						type: "danger"
+						type: "danger",
 					});
 				}
 			});
@@ -2557,7 +2557,7 @@ class AddMenuVideoTab extends AddMenuTab {
 				} else {
 					JqueryUtil.doToast({
 						content: `Please enter a URL!`,
-						type: "danger"
+						type: "danger",
 					});
 				}
 			});
@@ -2590,11 +2590,11 @@ class AddMenuImageTab extends AddMenuTab {
 						type: "POST",
 						data: {
 							image: base64,
-							type: "base64"
+							type: "base64",
 						},
 						headers: {
 							Accept: "application/json",
-							Authorization: `Client-ID ${IMGUR_CLIENT_ID}`
+							Authorization: `Client-ID ${IMGUR_CLIENT_ID}`,
 						},
 						success: (data) => {
 							this.menu.pnl.doPopulate_Image(data.data.link, ix);
@@ -2603,17 +2603,17 @@ class AddMenuImageTab extends AddMenuTab {
 							try {
 								JqueryUtil.doToast({
 									content: `Failed to upload: ${JSON.parse(error.responseText).data.error}`,
-									type: "danger"
+									type: "danger",
 								});
 							} catch (e) {
 								JqueryUtil.doToast({
 									content: "Failed to upload: Unknown error",
-									type: "danger"
+									type: "danger",
 								});
 								setTimeout(() => { throw e });
 							}
 							this.menu.pnl.doPopulate_Empty(ix);
-						}
+						},
 					});
 				};
 				reader.onerror = () => {
@@ -2646,7 +2646,7 @@ class AddMenuImageTab extends AddMenuTab {
 				} else {
 					JqueryUtil.doToast({
 						content: `Please enter a URL!`,
-						type: "danger"
+						type: "danger",
 					});
 				}
 			});
@@ -2792,27 +2792,27 @@ class AddMenuSearchTab extends AddMenuTab {
 			case "content": return {
 				fields: {
 					n: {boost: 5, expand: true},
-					s: {expand: true}
+					s: {expand: true},
 				},
 				bool: "AND",
-				expand: true
+				expand: true,
 			};
 			case "rule": return {
 				fields: {
 					h: {boost: 5, expand: true},
-					s: {expand: true}
+					s: {expand: true},
 				},
 				bool: "AND",
-				expand: true
+				expand: true,
 			};
 			case "adventure":
 			case "book": return {
 				fields: {
 					c: {boost: 5, expand: true},
-					n: {expand: true}
+					n: {expand: true},
 				},
 				bool: "AND",
-				expand: true
+				expand: true,
 			};
 			default: throw new Error(`Unhandled search tab subtype: "${this.subType}"`);
 		}
@@ -2869,7 +2869,7 @@ class AddMenuSearchTab extends AddMenuTab {
 	render () {
 		const flags = {
 			doClickFirst: false,
-			isWait: false
+			isWait: false,
 		};
 
 		this.showMsgIpt = () => {
@@ -2976,7 +2976,7 @@ class AddMenuSearchTab extends AddMenuTab {
 				flags,
 				fnSearch: this.doSearch,
 				fnShowWait: showMsgDots,
-				$ptrRows: this._$ptrRows
+				$ptrRows: this._$ptrRows,
 			});
 
 			this.$tab = $tab;
@@ -3129,7 +3129,7 @@ class NoteBox {
 							if (/^([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?$/i.exec(str)) {
 								await Renderer.dice.pRoll2(str.replace(`[[`, "").replace(`]]`, ""), {
 									isUser: false,
-									name: "DM Screen"
+									name: "DM Screen",
 								});
 							}
 						} else if (bracesAtPos === 1 && braces === 0) {
@@ -3162,7 +3162,7 @@ class UnitConverter {
 			new UnitConverterUnit("Feet", "0.305", "Metres", "3.28"),
 			new UnitConverterUnit("Miles", "1.61", "Kilometres", "0.620"),
 			new UnitConverterUnit("Pounds", "0.454", "Kilograms", "2.20"),
-			new UnitConverterUnit("Gallons", "3.79", "Litres", "0.264")
+			new UnitConverterUnit("Gallons", "3.79", "Litres", "0.264"),
 		];
 
 		let ixConv = state.c || 0;
@@ -3252,7 +3252,7 @@ class UnitConverter {
 			return {
 				c: ixConv,
 				d: dirConv,
-				i: $iptLeft.val()
+				i: $iptLeft.val(),
 			};
 		});
 

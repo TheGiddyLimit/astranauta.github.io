@@ -50,7 +50,7 @@ class ListPage {
 
 		this._list = ListUtil.initList({
 			$wrpList: $(`ul.list.${this._listClass}`),
-			...this._listOptions
+			...this._listOptions,
 		});
 		ListUtil.setOptions({primaryLists: [this._list]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
@@ -58,7 +58,7 @@ class ListPage {
 		this._filterBox = await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
-			$btnReset: $(`#reset`)
+			$btnReset: $(`#reset`),
 		});
 
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
@@ -69,7 +69,7 @@ class ListPage {
 		this._listSub = ListUtil.initSublist({
 			listClass: this._sublistClass,
 			getSublistRow: this.getSublistItem.bind(this),
-			...this._sublistOptions
+			...this._sublistOptions,
 		});
 		ListUtil.initGenericPinnable();
 		SortUtil.initBtnSortHandlers($("#sublistsort"), this._listSub);
@@ -80,7 +80,7 @@ class ListPage {
 			filterBox: this._filterBox,
 			sourceFilter: this._pageFilter ? this._pageFilter.sourceFilter : this._filterSource,
 			list: this._list,
-			pHandleBrew: this._pHandleBrew.bind(this)
+			pHandleBrew: this._pHandleBrew.bind(this),
 		});
 
 		const homebrew = await BrewUtil.pAddBrewData();
@@ -100,7 +100,7 @@ class ListPage {
 				noneVisibleMsg: this._bookViewOptions.noneVisibleMsg,
 				pageTitle: this._bookViewOptions.pageTitle || "Book View",
 				popTblGetNumShown: this._bookViewOptions.popTblGetNumShown,
-				hasPrintColumns: true
+				hasPrintColumns: true,
 			});
 		}
 
@@ -146,14 +146,16 @@ class ListPage {
 
 		ListUtil.setOptions({
 			itemList: this._dataList,
-			primaryLists: [this._list]
+			primaryLists: [this._list],
 		});
 		ListUtil.bindPinButton();
 		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
 		Renderer.hover.bindPopoutButton($btnPop, this._dataList);
 		UrlUtil.bindLinkExportButton(this._filterBox);
-		ListUtil.bindDownloadButton();
-		ListUtil.bindUploadButton();
+		ListUtil.bindOtherButtons({
+			download: true,
+			upload: true,
+		});
 
 		if (this._tableViewOptions) {
 			ListUtil.bindShowTableButton(
@@ -162,7 +164,7 @@ class ListPage {
 				this._dataList,
 				this._tableViewOptions.colTransforms,
 				this._tableViewOptions.filter,
-				this._tableViewOptions.sorter
+				this._tableViewOptions.sorter,
 			);
 		}
 	}
