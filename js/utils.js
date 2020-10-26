@@ -3697,7 +3697,7 @@ BrewUtil = {
 					dataList.push({
 						download_url: DataUtil.brew.getFileUrl(path, urlRoot),
 						path,
-						name: path.split("/").slice(1).join("/"),
+						name: path.slice(path.indexOf("/")+1),
 						_cat: BrewUtil.dirToProp(dir),
 					})
 				})
