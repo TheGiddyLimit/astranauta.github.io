@@ -1,23 +1,21 @@
 Favicon redesigned by jpcranford (aka ldsmadman), based on the original design(s) by Fantom and Cyanomouss
 
-Filename                         | Resolution      | Design Size   | HTML `<head>` Declaration | Usage
----------------------------------|-----------------|---------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-~~favicon.ico~~                  |                 |               |                           | ~~For any poor saps still browsing with IE.~~ The site doesn't even work in IE, so not really needed.
-`favicon-16x16.png`              | 16px × 16px     | 16pt[^1]      |                           | Used in everything from lists of bookmarks to the icons in tab labels.
-`favicon-32x32.png`              | 32px × 32px     | 16pt @2x      |                           | The above, but adjusted for high-density displays, such as Apple's Retina devices. AFAIK, this is currently only implemented in Safari on macOS.
-`apple-touch-icon-120x120.png`   | 120px × 120px   | 60pt @2x      |                           | Non-"Plus" iPhones (up to 8), iPhone XR, all iPads[^2]
-`apple-touch-icon-152x152.png`   | 152px × 152px   | 76pt @2x      |                           | iPad, iPad mini[^2]
-`apple-touch-icon-167x167.png`   | 167px × 167px   | 83.5pt @2x    |                           | iPad Pro[^2]
-`apple-touch-icon-180x180.png`   | 180px × 180px   | 60pt @3x      |                           | All "Plus"-model iPhones, iPhone X/XS/XS Max.[^2]
-`apple-touch-icon-1024x1024.png` | 1024px × 1024px | 1024pt        |                           | Just in case something else fails, this is a high-res version that they can all use. <!-- QUESTION: Is this one really necessary? -->
-(an SVG file)                    | ???             | ???           |                           | Safari Pinned Tab & Touch Bar[^3]
-`mstile-70x70.png`               | 128px × 128px   | 70px × 70px   |                           | Windows 10 Start Menu tile. Defines the image to use as the small tile for the pinned site.[^4] <!-- COMBAK: Test these as PNG, use alternative if needed to keep file size under spec. -->
-`mstile-150x150.png`             | 270px × 270px   | 150px × 150px |                           | Windows 10 Start Menu tile. Defines the image to use as the medium tile for the pinned site.[^4]
-`mstile-310x150.png`             | 270px × 270px   | 310px × 150px |                           | Windows 10 Start Menu tile. Defines the image to use as the wide tile for the pinned site.[^4]
-`mstile-310x310.png`             | 558px × 558px   | 310px × 310px |                           | Windows 10 Start Menu tile. Defines the image to use as the large tile for the pinned site.[^4]
-                                 |                 |               |                           | Android (Chrome M47+?) icon
-
-<!-- TODO: Add another column listing the HTML declaration to use. -->
+Filename                         | Resolution      | Design Size         | HTML `<head>` Declaration | Usage                                                                                                                                                   | Preview image
+---------------------------------|-----------------|---------------------|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------
+~~favicon.ico~~                  |                 |                     |                           | ~~For any poor saps still browsing with IE.~~ The site doesn't even work in IE, so not really needed.                                                   | ![test]()
+`favicon-16x16.png`              | 16px × 16px     | 16pt[^1]            |                           | Used in everything from lists of bookmarks to the icons in tab labels.                                                                                  |
+`favicon-32x32.png`              | 32px × 32px     | 16pt @2x            |                           | The above, but adjusted for high-density displays, such as Apple's Retina devices. AFAIK, this is currently only implemented in Safari on macOS. Shame. |
+`apple-touch-icon-120x120.png`   | 120px × 120px   | 60pt @2x            |                           | Non-"Plus" iPhones (up to 8), iPhone XR, all iPads[^2]                                                                                                  |
+`apple-touch-icon-152x152.png`   | 152px × 152px   | 76pt @2x            |                           | iPad, iPad mini[^2]                                                                                                                                     |
+`apple-touch-icon-167x167.png`   | 167px × 167px   | 83.5pt @2x          |                           | iPad Pro[^2]                                                                                                                                            |
+`apple-touch-icon-180x180.png`   | 180px × 180px   | 60pt @3x            |                           | All "Plus"-model iPhones, iPhone X/XS/XS Max.[^2]                                                                                                       |
+`apple-touch-icon-1024x1024.png` | 1024px × 1024px | 1024pt              |                           | Just in case something else fails, this is a high-res version that they can all use.                                                                    | ![test]() <!-- QUESTION: Is this one really necessary? -->
+(an SVG file)                    | ???             | ???                 |                           | Safari Pinned Tab & Touch Bar[^3]                                                                                                                       |
+`mstile-70x70.png`               | 128px × 128px   | (any) 70px × 70px   |                           | Windows 10 Start Menu tile, small size.[^4]                                                                                                             | <!-- COMBAK: Test these as PNG, use alternative if needed to keep file size under spec. -->
+`mstile-150x150.png`             | 270px × 270px   | (any) 150px × 150px |                           | Windows 10 Start Menu tile, medium size.[^4]                                                                                                            |
+`mstile-310x150.png`             | 270px × 270px   | (any) 310px × 150px |                           | Windows 10 Start Menu tile, wide size.[^4]                                                                                                              |
+`mstile-310x310.png`             | 558px × 558px   | (any) 310px × 310px |                           | Windows 10 Start Menu tile, large size.[^4]                                                                                                             |
+???                              | ???             | ???                 |                           | Android (Chrome M47+?) icon                                                                                                                             | ![test]()
 
 [^1]: You may ask, why is this? [Tradition](https://youtu.be/kDtabTufxao)!
 
