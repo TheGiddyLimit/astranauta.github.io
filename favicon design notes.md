@@ -6,16 +6,25 @@ Filename                         | Resolution      | Design Size         | HTML 
 `favicon-16x16.png`              | 16px × 16px     | 16pt[^1]            |                           | Used in everything from lists of bookmarks to the icons in tab labels.                                                                                  |
 `favicon-32x32.png`              | 32px × 32px     | 16pt @2x            |                           | The above, but adjusted for high-density displays, such as Apple's Retina devices. AFAIK, this is currently only implemented in Safari on macOS. Shame. |
 `apple-touch-icon-120x120.png`   | 120px × 120px   | 60pt @2x            |                           | Non-"Plus" iPhones (up to 8), iPhone XR, all iPads[^2]                                                                                                  |
+`apple-touch-icon-180x180.png`   | 180px × 180px   | 60pt @3x            |
+                    | All "Plus"-model iPhones, iPhone X/XS/XS Max.[^2]                                                                                                       |
 `apple-touch-icon-152x152.png`   | 152px × 152px   | 76pt @2x            |                           | iPad, iPad mini[^2]                                                                                                                                     |
 `apple-touch-icon-167x167.png`   | 167px × 167px   | 83.5pt @2x          |                           | iPad Pro[^2]                                                                                                                                            |
-`apple-touch-icon-180x180.png`   | 180px × 180px   | 60pt @3x            |                           | All "Plus"-model iPhones, iPhone X/XS/XS Max.[^2]                                                                                                       |
-`apple-touch-icon-1024x1024.png` | 1024px × 1024px | 1024pt              |                           | Just in case something else fails, this is a high-res version that they can all use.                                                                    | ![test]() <!-- QUESTION: Is this one really necessary? -->
 (an SVG file)                    | ???             | ???                 |                           | Safari Pinned Tab & Touch Bar[^3]                                                                                                                       |
 `mstile-70x70.png`               | 128px × 128px   | (any) 70px × 70px   |                           | Windows 10 Start Menu tile, small size.[^4]                                                                                                             | <!-- COMBAK: Test these as PNG, use alternative if needed to keep file size under spec. -->
 `mstile-150x150.png`             | 270px × 270px   | (any) 150px × 150px |                           | Windows 10 Start Menu tile, medium size.[^4]                                                                                                            |
 `mstile-310x150.png`             | 270px × 270px   | (any) 310px × 150px |                           | Windows 10 Start Menu tile, wide size.[^4]                                                                                                              |
 `mstile-310x310.png`             | 558px × 558px   | (any) 310px × 310px |                           | Windows 10 Start Menu tile, large size.[^4]                                                                                                             |
 ???                              | ???             | ???                 |                           | Android (Chrome M47+?) icon                                                                                                                             | ![test]()
+
+#### HTML code to insert
+```html
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+120px
+152px
+167px
+
+```
 
 [^1]: You may ask, why is this? [Tradition](https://youtu.be/kDtabTufxao)!
 
@@ -32,11 +41,12 @@ Filename                         | Resolution      | Design Size         | HTML 
 
 ### Improvements
 <!-- NB: Until marked as "completed," these are just ideas. -->
-- [ ] "5e" part of logo resized to give more spacing around edge
-- [x] The touch icon's background was #2d69be. Don't know where they got that color from, but it's now been updated to match the website's header (#006bc4). It's a more vibrant shade of blue, althought if you have a cheap monitor (one doesn't support 100% of the sRGB gamut) you might not be able to tell. Good thing I've got Apple devices.
-- [ ] favicon's stroke (as far as I've been able to tell, the PSD file didn't have a color profile assigned to it) is #25325f. <!-- QUESTION: Is this even anywhere on the site? --> Possible alternatives:
-  - #23527c - Day mode, text link hover
-  - #4a6898 - Day mode PHB source
-  - #337ab7 - Night mode PHB source
-  - #48637a - Filter view- positive source highlight
-  - $rgb-active-blue--dark: #2a6496
+- [x] Symbol has been resized within the logo to give more spacing around edge.
+- [x] The app icon's background was #2d69be. Don't know where they got that color from, but it's now been updated to match the website's header (#006bc4). It's a more vibrant shade of bl*e, although you might not be able to tell. Good thing I've got Apple devices.
+- [ ] favicon's stroke (as far as I've been able to tell) is #25325f. <!-- QUESTION: Is this even anywhere on the site? --> Possible alternatives:
+  - #004278 - beautiful darker shade
+  - #008dff - lighter shade, same saturation
+  - #1998ff - beautiful lighter shade, leaning slightly towards white
+  - **Complementary colors:** #006BC4, #1DBDA1, #CBBB6B, #C18B45, #BD494E
+  - Color set 2 (less saturated): #006BC4, #27B5B1, #B8AD78, #AE7562, #C8554A
+  - #AF415E - beautiful r*d that fits well with the color
