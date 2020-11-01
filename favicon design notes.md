@@ -15,10 +15,13 @@ Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on
 In rejiggering the icons, I put together a more cohesive color theme. It could also work for the site, if Giddy wants to do that, but for now I'm proud of it and want to show off.
 
 ![color theme]() <!-- TODO: combine this list into an image with swatches -->
+
 - **Adventure Blue #006BC4** This is the color of the site's header in Day Mode, and so considered as the "official" color of the site. As such, it's the background color of the "app icon" design.
 - **Gelatinous Cube #1998FF** More bright than Adventure
 - **Barovian Midnight #004278** A beautiful darker shade of Adventure Blue.
 - #AF415E - A beautiful red that fits well. Don't know where to use this just yet.
+
+
 
 <!-- REVIEW: Remove task marks (last column of table) before final commit and pull request -->
 <!-- TODO: Precomposed (circular?) app logo design -->
@@ -27,19 +30,19 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 | 16x16 | favicon | Only used on Firefox nowadays. Most browsers use the 32px version. | <input type="checkbox" disabled> |
 | 32x32 | favicon | Most frequently used size for tab and bookmark icons, and also search results. | <input type="checkbox" disabled> |
 | 48x48 | favicon | ??? | <input type="checkbox" disabled> |
-| 120x120 | app icon | Apple Touch Icon for iPhones with @2x displays (iPhone SE/6s/7/8/XR) | <input type="checkbox" disabled> |
+| 120x120 | app icon | Apple Touch Icon for iPhones with @2x displays (iPhone SE/6s/7/8/XR) | <input type="checkbox" checked disabled> |
 | 128x128 | white logo | Windows 10 Start Menu tile, Small size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
-| 152x152 | app icon | Apple Touch Icon for iPads & iPad minis | <input type="checkbox" disabled> |
-| 167x167 | app icon | Apple Touch Icon for iPad Pros | <input type="checkbox" disabled> |
-| 180x180 | app icon | Apple Touch Icon for iPhones with @3x displays (iPhone 6s Plus/7 Plus/8 Plus/X/XS/XS Max). Also used by desktop versions of Firefox and Safari for their bookmark and "desktop" icons | <input type="checkbox" disabled> |
+| 152x152 | app icon | Apple Touch Icon for iPads & iPad minis | <input type="checkbox" checked disabled> |
+| 167x167 | app icon | Apple Touch Icon for iPad Pros | <input type="checkbox" checked disabled> |
+| 180x180 | app icon | Apple Touch Icon for iPhones with @3x displays (iPhone 6s Plus/7 Plus/8 Plus/X/XS/XS Max). Also used by desktop versions of Firefox and Safari for their bookmark and "desktop" icons | <input type="checkbox" checked disabled> |
 | 192x192 | favicon | Chrome's Add to Desktop | <input type="checkbox" disabled> |
 | 192x192 | app icon | Android Chrome's Add to Homescreen (see `manifest.webmanifest`) | <input type="checkbox" checked disabled> |
 | 270x270 | white logo | Windows 10 Start Menu tile, Medium size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
 | 512x512 | app icon | Android Chrome's splash screen (see `manifest.webmanifest`) | <input type="checkbox" checked disabled> |
 | 558x270 | white logo | Windows 10 Start Menu tile, Wide size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
 | 558x558 | white logo | Windows 10 Start Menu tile, Large size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
-| SVG | white logo | macOS Safari Pinned Tab and Touch Bar bookmark | <input type="checkbox" disabled> |
 | 1024x1024 | app icon | Chrome web app mode (see `manifest.webmanifest`) | <input type="checkbox" checked disabled> |
+| SVG | white logo | macOS Safari Pinned Tab and Touch Bar bookmark | <input type="checkbox" checked disabled> |
 
 This is the code that should now be in every page's `<head>` section. Just in case, I've duplicated it here.
 ```html
@@ -49,6 +52,9 @@ This is the code that should now be in every page's `<head>` section. Just in ca
 <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png?v=1.115">
 <link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png?v=1.115">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png?v=1.115">
+
+<!-- macOS Safari Pinned Tab and Touch Bar -->
+<link rel="mask-icon" href="safari-pinned-tab.svg?v=1.115" color="#006bc4">
 
 <!-- Favicons -->
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1.115">
