@@ -77,9 +77,7 @@ self.addEventListener("fetch", e => {
 	e.respondWith((async () => {
 		const toReturn = await getOrCache(url, responseMeta);
 		if (responseMeta.fromCache) {
-			// TODO if we grabbed the result from the cache, we could here asynchronously launch a hard fetch to
-			//    update the cache? Currently is of no relevance, as the user can simply refresh to have the service
-			//    worker realise it is outdated and flush everything.
+			// TODO if we grabbed the result from the cache, we could here asynchronously launch a hard fetch to update the cache? Currently is of no relevance, as the user can simply refresh to have the service worker realise it is outdated and flush everything.
 		}
 		return toReturn;
 	})());
