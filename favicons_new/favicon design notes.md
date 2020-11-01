@@ -29,7 +29,7 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 | Resolution | Design | Device/Browser | Generated and filed in folder? |
 |-|-|-|-|
 | 16x16 | favicon | Only used on Firefox nowadays. Most browsers use the 32px version. | <input type="checkbox" checked disabled> |
-| 32x32 | favicon | Most frequently used size for tab and bookmark icons, and also search results. | <input type="checkbox"checked  disabled> |
+| 32x32 | favicon | Most frequently used size for tab and bookmark icons, and also search results. | <input type="checkbox" checked readonly> |
 | 48x48 | favicon | ??? | <input type="checkbox" disabled> |
 | 120x120 | app icon | Apple Touch Icon for iPhones with @2x displays (iPhone SE/6s/7/8/XR) | <input type="checkbox" checked disabled> |
 | 128x128 | white logo | Windows 10 Start Menu tile, Small size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" checked disabled> |
