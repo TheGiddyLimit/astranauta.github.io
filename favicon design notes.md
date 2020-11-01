@@ -3,6 +3,7 @@ Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on
 
 - New color theme <!-- REVIEW: possibly to be used in v2.0 of the site? -->
 - 5e Logo: The text has been resized within the logo to give more spacing around edge. Apple's "official" app design grid came in handy here.
+- Web App Icon: The icon with the pirate hat has been replaced. It was cheeky, but definitely not the impression we want to give off. <!-- TODO: Delete the /icon folder, wherever it is -->
 - Favicon: The blue has been changed to match the app icon. This has the added benefit of making it easier to see while in your browser's Dark Mode.
 - New favicons created:
   - Apple Touch Icons, used by both desktop & mobile versions of Safari, Chrome, and many more
@@ -32,9 +33,9 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 | 167x167 | app icon | Apple Touch Icon for iPad Pros | <input type="checkbox" disabled> |
 | 180x180 | app icon | Apple Touch Icon for iPhones with @3x displays (iPhone 6s Plus/7 Plus/8 Plus/X/XS/XS Max). Also used by desktop versions of Firefox and Safari for their bookmark and "desktop" icons | <input type="checkbox" disabled> |
 | 192x192 | favicon | Chrome's Add to Desktop | <input type="checkbox" disabled> |
-| 192x192 | app icon | Android Chrome's Add to Homescreen (see `manifest.webmanifest`) | <input type="checkbox" disabled> |
+| 192x192 | app icon | Android Chrome's Add to Homescreen (see `manifest.webmanifest`) | <input type="checkbox" checked disabled> |
 | 270x270 | white logo | Windows 10 Start Menu tile, Medium size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
-| 512x512 | app icon | Android Chrome's splash screen (see `manifest.webmanifest`) | <input type="checkbox" disabled> |
+| 512x512 | app icon | Android Chrome's splash screen (see `manifest.webmanifest`) | <input type="checkbox" checked disabled> |
 | 558x270 | white logo | Windows 10 Start Menu tile, Wide size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
 | 558x558 | white logo | Windows 10 Start Menu tile, Large size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
 | SVG | white logo | macOS Safari Pinned Tab and Touch Bar bookmark | <input type="checkbox" disabled> |
@@ -52,12 +53,11 @@ This is the code that should now be in every page's `<head>` section. Just in ca
 <!-- Favicons -->
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1.115">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1.115">
+<!-- <link rel="shortcut icon" href="favicon.ico?v=1.115"> -->
 
 <!-- Android Chrome  App Icons -->
 <link rel="manifest" href="/manifest.webmanifest?v=1.115">
 
-<!-- macOS Safari Pinned Tab and Touch Bar -->
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#006bc4">
 
 <!-- Windows Start Menu tiles -->
 <meta name="msapplication-TileColor" content="#006bc4">
