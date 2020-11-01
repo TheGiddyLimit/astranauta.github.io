@@ -32,16 +32,16 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 | 32x32 | favicon | Most frequently used size for tab and bookmark icons, and also search results. | <input type="checkbox"checked  disabled> |
 | 48x48 | favicon | ??? | <input type="checkbox" disabled> |
 | 120x120 | app icon | Apple Touch Icon for iPhones with @2x displays (iPhone SE/6s/7/8/XR) | <input type="checkbox" checked disabled> |
-| 128x128 | white logo | Windows 10 Start Menu tile, Small size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
+| 128x128 | white logo | Windows 10 Start Menu tile, Small size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" checked disabled> |
 | 152x152 | app icon | Apple Touch Icon for iPads & iPad minis | <input type="checkbox" checked disabled> |
 | 167x167 | app icon | Apple Touch Icon for iPad Pros | <input type="checkbox" checked disabled> |
 | 180x180 | app icon | Apple Touch Icon for iPhones with @3x displays (iPhone 6s Plus/7 Plus/8 Plus/X/XS/XS Max). Also used by desktop versions of Firefox and Safari for their bookmark and "desktop" icons | <input type="checkbox" checked disabled> |
 | 192x192 | favicon | Chrome's Add to Desktop | <input type="checkbox" disabled> |
 | 192x192 | app icon | Android Chrome's Add to Homescreen (see `manifest.webmanifest`) | <input type="checkbox" checked disabled> |
-| 270x270 | white logo | Windows 10 Start Menu tile, Medium size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
+| 270x270 | white logo | Windows 10 Start Menu tile, Medium size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" checked disabled> |
 | 512x512 | app icon | Android Chrome's splash screen (see `manifest.webmanifest`) | <input type="checkbox" checked disabled> |
-| 558x270 | white logo | Windows 10 Start Menu tile, Wide size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
-| 558x558 | white logo | Windows 10 Start Menu tile, Large size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
+| 558x270 | white logo | Windows 10 Start Menu tile, Wide size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" checked disabled> |
+| 558x558 | white logo | Windows 10 Start Menu tile, Large size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" checked disabled> |
 | 1024x1024 | app icon | Chrome web app mode (see `manifest.webmanifest`) | <input type="checkbox" checked disabled> |
 | SVG | white logo | macOS Safari Pinned Tab and Touch Bar bookmark | <input type="checkbox" checked disabled> |
 
