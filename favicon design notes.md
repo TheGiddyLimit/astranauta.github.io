@@ -1,5 +1,4 @@
 ## Favicon update
-Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on the original design(s) by Fantom and Cyanomouss. SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here]() <!-- REVIEW: insert zip file of source docs here -->, with the changes detailed below for the curious.
 
 #### Now Supported… and not
 - [x] iOS/iPadOS: Apple Touch Icons
