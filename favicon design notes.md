@@ -1,9 +1,9 @@
 ## Favicon update - 1.115?
-Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on the original logo by Fantom and Cyanomouss. SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious.
-<!-- TODO insert link to zip file of source docs into link holder above -->
+Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on the original logo by Fantom and Cyanomouss. SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
 
-- New color theme (to be implemented later?)
+- New color theme <!-- REVIEW: possibly to be used in v2.0 of the site? -->
 - 5e Logo: The text has been resized within the logo to give more spacing around edge. Apple's "official" app design grid came in handy here.
+- Favicon: The blue has been changed to match the app icon. This has the added benefit of making it easier to see while in your browser's Dark Mode.
 - New favicons created:
   - Apple Touch Icons, used by both desktop & mobile versions of Safari, Chrome, and many more
   - Android Chrome Homescreen Icon & Splash screen
@@ -36,7 +36,7 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 | 512x512 | app icon | Android Chrome's splash screen | <input type="checkbox" disabled> |
 | 558x270 | white logo | Windows 10 Start Menu tile, Wide size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
 | 558x558 | white logo | Windows 10 Start Menu tile, Large size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
-| SVG | black logo | macOS Safari Pinned Tab and Touch Bar bookmark | <input type="checkbox" disabled> |
+| SVG | white logo | macOS Safari Pinned Tab and Touch Bar bookmark | <input type="checkbox" disabled> |
 
 This is the code that should now be in every page's `<head>` section. Just in case, I've duplicated it here.
 ```html
