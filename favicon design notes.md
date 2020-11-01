@@ -17,10 +17,11 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 - **Adventure Blue #006BC4** This is the color of the site's header in Day Mode, and so considered as the "official" color of the site. As such, it's the background color of the "app icon" design.
 - **Gelatinous Cube #1998FF** More bright than Adventure
 - **Barovian Midnight #004278** A beautiful darker shade of Adventure Blue.
-- #AF415E - A beautiful red that fits well. Don't know how to use this yet.
+- #AF415E - A beautiful red that fits well. Don't know where to use this just yet.
 
 <!-- REVIEW: Remove task marks (last column of table) before final commit and pull request -->
-| Resolution | Design | Device/Browser | Generated? |
+<!-- TODO: Precomposed (circular?) app logo design -->
+| Resolution | Design | Device/Browser | Generated and filed in folder? |
 |-|-|-|-|
 | 16x16 | favicon | Only used on Firefox nowadays. Most browsers use the 32px version. | <input type="checkbox" disabled> |
 | 32x32 | favicon | Most frequently used size for tab and bookmark icons, and also search results. | <input type="checkbox" disabled> |
@@ -31,27 +32,29 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 | 167x167 | app icon | Apple Touch Icon for iPad Pros | <input type="checkbox" disabled> |
 | 180x180 | app icon | Apple Touch Icon for iPhones with @3x displays (iPhone 6s Plus/7 Plus/8 Plus/X/XS/XS Max). Also used by desktop versions of Firefox and Safari for their bookmark and "desktop" icons | <input type="checkbox" disabled> |
 | 192x192 | favicon | Chrome's Add to Desktop | <input type="checkbox" disabled> |
-| 192x192 | app icon | Android Chrome's Add to Homescreen (`*.webmanifest` for declaration) | <input type="checkbox" disabled> |
+| 192x192 | app icon | Android Chrome's Add to Homescreen (see `manifest.webmanifest`) | <input type="checkbox" disabled> |
 | 270x270 | white logo | Windows 10 Start Menu tile, Medium size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
-| 512x512 | app icon | Android Chrome's splash screen | <input type="checkbox" disabled> |
+| 512x512 | app icon | Android Chrome's splash screen (see `manifest.webmanifest`) | <input type="checkbox" disabled> |
 | 558x270 | white logo | Windows 10 Start Menu tile, Wide size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
 | 558x558 | white logo | Windows 10 Start Menu tile, Large size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
 | SVG | white logo | macOS Safari Pinned Tab and Touch Bar bookmark | <input type="checkbox" disabled> |
+| 1024x1024 | app icon | Chrome web app mode (see `manifest.webmanifest`) | <input type="checkbox" checked disabled> |
 
 This is the code that should now be in every page's `<head>` section. Just in case, I've duplicated it here.
 ```html
-<!-- Favicon -->
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<!-- TODO: Replace the version references with correct version as this favicon project gets closer to release. -->
+<!-- Apple Touch Icons -->
+<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png?v=1.115">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png?v=1.115">
+<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png?v=1.115">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png?v=1.115">
 
-<!-- iOS App Icons -->
-<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1.115">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1.115">
 
 <!-- Android Chrome  App Icons -->
-<link rel="manifest" href="/site.webmanifest">
+<link rel="manifest" href="/manifest.webmanifest?v=1.115">
 
 <!-- macOS Safari Pinned Tab and Touch Bar -->
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#006bc4">
@@ -59,8 +62,12 @@ This is the code that should now be in every page's `<head>` section. Just in ca
 <!-- Windows Start Menu tiles -->
 <meta name="msapplication-TileColor" content="#006bc4">
 
+<!-- TODO Coast by Opera -->
+<link rel="icon" href="$URL" sizes="228x228">
+
 <!-- REVIEW What is this for? -->
 <meta name="theme-color" content="#ffffff">
+
 <!--  -->
 ```
 
