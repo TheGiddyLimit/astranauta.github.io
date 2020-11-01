@@ -25,9 +25,9 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 
 <!-- REVIEW: Remove task marks (last column of table) before final commit and pull request -->
 <!-- TODO: Precomposed (circular?) app logo design -->
+<!-- | multiple | favicon | The (in)famous `favicon.ico`. Very few, if any, browsers still use this. | <input type="checkbox" disabled> | -->
 | Resolution | Design | Device/Browser | Generated and filed in folder? |
 |-|-|-|-|
-<!-- | multiple | favicon | The (in)famous `favicon.ico`. Very few, if any, browsers still use this. | <input type="checkbox" disabled> | -->
 | 16x16 | favicon | Only used on Firefox nowadays. Most browsers use the 32px version. | <input type="checkbox" checked disabled> |
 | 32x32 | favicon | Most frequently used size for tab and bookmark icons, and also search results. | <input type="checkbox"checked  disabled> |
 | 48x48 | favicon | ??? | <input type="checkbox" disabled> |
