@@ -33,6 +33,7 @@ const baseSitemapData = (() => {
 // QUESTION: Where does the /icons/ folder come from? It's in the release ZIP, but not the repo.
 // QUESTION: Where are the icons in the /icons folder used?
 // QUESTION: What does the code below, which mentions "favicon.png", do exactly?
+// FIXME: Favicon declarations
 const getTemplate = (page, source, hash, textStyle) => `<!DOCTYPE html><html lang="en"><head>
 <!--5ETOOLS_CMP-->
 <!--5ETOOLS_ANALYTICS-->

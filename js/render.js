@@ -6446,6 +6446,7 @@ Renderer.hover = {
 							<title>${opts.title}</title>
 							<link rel="manifest" href="manifest.webmanifest">
 							${$(`link[rel="stylesheet"][href]`).map((i, e) => e.outerHTML).get().join("\n")}
+							// FIXME: Favicon declarations
 							<link rel="icon" href="favicon.png">
 							<link rel="apple-touch-icon" href="icon-320.png">
 
