@@ -27,8 +27,9 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 <!-- TODO: Precomposed (circular?) app logo design -->
 | Resolution | Design | Device/Browser | Generated and filed in folder? |
 |-|-|-|-|
-| 16x16 | favicon | Only used on Firefox nowadays. Most browsers use the 32px version. | <input type="checkbox" disabled> |
-| 32x32 | favicon | Most frequently used size for tab and bookmark icons, and also search results. | <input type="checkbox" disabled> |
+<!-- | multiple | favicon | The (in)famous `favicon.ico`. Very few, if any, browsers still use this. | <input type="checkbox" disabled> | -->
+| 16x16 | favicon | Only used on Firefox nowadays. Most browsers use the 32px version. | <input type="checkbox" checked disabled> |
+| 32x32 | favicon | Most frequently used size for tab and bookmark icons, and also search results. | <input type="checkbox"checked  disabled> |
 | 48x48 | favicon | ??? | <input type="checkbox" disabled> |
 | 120x120 | app icon | Apple Touch Icon for iPhones with @2x displays (iPhone SE/6s/7/8/XR) | <input type="checkbox" checked disabled> |
 | 128x128 | white logo | Windows 10 Start Menu tile, Small size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" disabled> |
@@ -52,6 +53,7 @@ This is the code that should now be in every page's `<head>` section. Just in ca
 <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png?v=1.115">
 <link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png?v=1.115">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png?v=1.115">
+<meta name="apple-mobile-web-app-title" content="5eTools"> <!-- COMBAK: I'm not so sure if this tag is necessary. Must test. -->
 
 <!-- macOS Safari Pinned Tab and Touch Bar -->
 <link rel="mask-icon" href="safari-pinned-tab.svg?v=1.115" color="#006bc4">
@@ -61,18 +63,18 @@ This is the code that should now be in every page's `<head>` section. Just in ca
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1.115">
 <!-- <link rel="shortcut icon" href="favicon.ico?v=1.115"> -->
 
-<!-- Android Chrome  App Icons -->
-<link rel="manifest" href="/manifest.webmanifest?v=1.115">
-
+<!-- Chrome Web App Icons -->
+<link rel="manifest" href="manifest.webmanifest?v=1.115">
+<meta name="application-name" content="5eTools">
 
 <!-- Windows Start Menu tiles -->
 <meta name="msapplication-TileColor" content="#006bc4">
 
-<!-- TODO Coast by Opera -->
-<link rel="icon" href="$URL" sizes="228x228">
+<!-- TODO Coast by Opera icon (228x228) -->
+<!-- <link rel="icon" href="$URL" sizes="228x228"> -->
 
 <!-- REVIEW What is this for? -->
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#006bc4">
 
 <!--  -->
 ```
