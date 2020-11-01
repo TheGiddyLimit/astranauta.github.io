@@ -25,25 +25,25 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 
 <!-- REVIEW: Remove task marks (last column of table) before final commit and pull request -->
 <!-- TODO: Precomposed (circular?) app logo design -->
-<!-- | multiple | favicon | The (in)famous `favicon.ico`. Very few, if any, browsers still use this. | <input type="checkbox" disabled> | -->
+<!-- | multiple | favicon | The (in)famous `favicon.ico`. Very few, if any, browsers still use this. | ☐ | -->
 | Resolution | Design | Device/Browser | Generated and filed in folder? |
 |-|-|-|-|
-| 16x16 | favicon | Only used on Firefox nowadays. Most browsers use the 32px version. | <input type="checkbox" checked disabled> |
+| 16x16 | favicon | Only used on Firefox nowadays. Most browsers use the 32px version. | ☑︎ |
 | 32x32 | favicon | Most frequently used size for tab and bookmark icons, and also search results. | <input type="checkbox" checked readonly> |
-| 48x48 | favicon | ??? | <input type="checkbox" disabled> |
-| 120x120 | app icon | Apple Touch Icon for iPhones with @2x displays (iPhone SE/6s/7/8/XR) | <input type="checkbox" checked disabled> |
-| 128x128 | white logo | Windows 10 Start Menu tile, Small size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" checked disabled> |
-| 152x152 | app icon | Apple Touch Icon for iPads & iPad minis | <input type="checkbox" checked disabled> |
-| 167x167 | app icon | Apple Touch Icon for iPad Pros | <input type="checkbox" checked disabled> |
-| 180x180 | app icon | Apple Touch Icon for iPhones with @3x displays (iPhone 6s Plus/7 Plus/8 Plus/X/XS/XS Max). Also used by desktop versions of Firefox and Safari for their bookmark and "desktop" icons | <input type="checkbox" checked disabled> |
-| 192x192 | favicon | Chrome's Add to Desktop | <input type="checkbox" disabled> |
-| 192x192 | app icon | Android Chrome's Add to Homescreen (see `manifest.webmanifest`) | <input type="checkbox" checked disabled> |
-| 270x270 | white logo | Windows 10 Start Menu tile, Medium size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" checked disabled> |
-| 512x512 | app icon | Android Chrome's splash screen (see `manifest.webmanifest`) | <input type="checkbox" checked disabled> |
-| 558x270 | white logo | Windows 10 Start Menu tile, Wide size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" checked disabled> |
-| 558x558 | white logo | Windows 10 Start Menu tile, Large size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | <input type="checkbox" checked disabled> |
-| 1024x1024 | app icon | Chrome web app mode (see `manifest.webmanifest`) | <input type="checkbox" checked disabled> |
-| SVG | white logo | macOS Safari Pinned Tab and Touch Bar bookmark | <input type="checkbox" checked disabled> |
+| 48x48 | favicon | ??? | ☐ |
+| 120x120 | app icon | Apple Touch Icon for iPhones with @2x displays (iPhone SE/6s/7/8/XR) | ☑︎ |
+| 128x128 | white logo | Windows 10 Start Menu tile, Small size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | ☑︎ |
+| 152x152 | app icon | Apple Touch Icon for iPads & iPad minis | ☑︎ |
+| 167x167 | app icon | Apple Touch Icon for iPad Pros | ☑︎ |
+| 180x180 | app icon | Apple Touch Icon for iPhones with @3x displays (iPhone 6s Plus/7 Plus/8 Plus/X/XS/XS Max). Also used by desktop versions of Firefox and Safari for their bookmark and "desktop" icons | ☑︎ |
+| 192x192 | favicon | Chrome's Add to Desktop | ☐ |
+| 192x192 | app icon | Android Chrome's Add to Homescreen (see `manifest.webmanifest`) | ☑︎ |
+| 270x270 | white logo | Windows 10 Start Menu tile, Medium size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | ☑︎ |
+| 512x512 | app icon | Android Chrome's splash screen (see `manifest.webmanifest`) | ☑︎ |
+| 558x270 | white logo | Windows 10 Start Menu tile, Wide size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | ☑︎ |
+| 558x558 | white logo | Windows 10 Start Menu tile, Large size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | ☑︎ |
+| 1024x1024 | app icon | Chrome web app mode (see `manifest.webmanifest`) | ☑︎ |
+| SVG | white logo | macOS Safari Pinned Tab and Touch Bar bookmark | ☑︎ |
 
 This is the code that should now be in every page's `<head>` section. Just in case, I've duplicated it here.
 ```html
@@ -98,31 +98,31 @@ It should be noted that several browsers on both desktop and mobile platforms us
 #### Files
 | Complete? | Filename | Dimensions | Resolution (if >1x) | Usage |
 |-|-|-|-|-|
-| <input type="checkbox" checked disabled> | `favicon-16x16.png` | 16px × 16px |  | Used in everything from lists of bookmarks to the tab icons. |
-| <input type="checkbox" checked disabled> | `favicon-32x32.png` | 32px × 32px | @2x | Same as above, but adjusted for high-density displays. AFAIK, this is currently only implemented in Safari on macOS. Shame. |
-| <input type="checkbox" checked disabled> | `favicon-96x96.png` | 96px × 96px |  | GoogleTV icon |
-| <input type="checkbox" checked disabled> | `favicon-128x128.png` | 128px × 128px |  | ??? |
-| <input type="checkbox" checked disabled> | `favicon-196x196.png` | 196px × 196px |  | ??? |
+| ☑︎ | `favicon-16x16.png` | 16px × 16px |  | Used in everything from lists of bookmarks to the tab icons. |
+| ☑︎ | `favicon-32x32.png` | 32px × 32px | @2x | Same as above, but adjusted for high-density displays. AFAIK, this is currently only implemented in Safari on macOS. Shame. |
+| ☑︎ | `favicon-96x96.png` | 96px × 96px |  | GoogleTV icon |
+| ☑︎ | `favicon-128x128.png` | 128px × 128px |  | ??? |
+| ☑︎ | `favicon-196x196.png` | 196px × 196px |  | ??? |
 |  | `apple-touch-icon-57x57.png` |  |  | *No longer listed as current on Apple's website.* |
 |  | `apple-touch-icon-60x60.png` |  |  | *No longer listed as current on Apple's website.* |
 |  | `apple-touch-icon-72x72.png` |  |  | *No longer listed as current on Apple's website.* |
 |  | `apple-touch-icon-76x76.png` |  |  | *No longer listed as current on Apple's website.* |
 |  | `apple-touch-icon-114x114.png` |  |  | *No longer listed as current on Apple's website.* |
-| <input type="checkbox" disabled> | `apple-touch-icon-120x120.png` | 120px × 120px | @2x | Non-"Plus" iPhones (up to 8), iPhone XR, all iPads |
-| <input type="checkbox" disabled> | `apple-touch-icon-152x152.png` | 152px × 152px | @2x | iPad, iPad mini |
-| <input type="checkbox" disabled> | `apple-touch-icon-167x167.png` | 167px × 167px | @3x | iPad Pro |
-| <input type="checkbox" disabled> | `apple-touch-icon-180x180.png` | 180px × 180px | @3x | All "Plus"-model iPhones, iPhone X/XS/XS Max. |
+| ☐ | `apple-touch-icon-120x120.png` | 120px × 120px | @2x | Non-"Plus" iPhones (up to 8), iPhone XR, all iPads |
+| ☐ | `apple-touch-icon-152x152.png` | 152px × 152px | @2x | iPad, iPad mini |
+| ☐ | `apple-touch-icon-167x167.png` | 167px × 167px | @3x | iPad Pro |
+| ☐ | `apple-touch-icon-180x180.png` | 180px × 180px | @3x | All "Plus"-model iPhones, iPhone X/XS/XS Max. |
 |  | `apple-touch-icon-1024x1024.png` |  |  | Fallback for Apple devices. If the device's preferred size isn't found, it'll use the next size up. This one pretty much future-proofs it. |
 |  | `android-chrome-192x192.png` |  |  |  |
 |  | `android-chrome-256x256.png` |  |  |  |
 |  | `android-chrome-512x512.png` |  |  |  |
 |  | `site.webmanifest` |  |  | Neat little JSON file to let Android Chrome know which icons to use. |
 |  | (Safari pinned tab) |  |  |  |
-| <input type="checkbox" disabled> | `mstile-70x70.png` | 128px × 128px |  | Windows 10 Start Menu tile, small size. <!-- COMBAK: Test these as PNG, use alternative if needed to keep file size under spec. --> |
-| <input type="checkbox" disabled> | `mstile-150x150.png` | 270px × 270px |  | Windows 10 Start Menu tile, medium size. |
+| ☐ | `mstile-70x70.png` | 128px × 128px |  | Windows 10 Start Menu tile, small size. <!-- COMBAK: Test these as PNG, use alternative if needed to keep file size under spec. --> |
+| ☐ | `mstile-150x150.png` | 270px × 270px |  | Windows 10 Start Menu tile, medium size. |
 |  | `mstile-310x150.png` | 270px × 270px |  | Windows 10 Start Menu tile, wide size. |
 |  | `mstile-310x310.png` | 558px × 558px |  | Windows 10 Start Menu tile, large size. |
-| <input type="checkbox" checked disabled> |  |  |  |  |
+| ☑︎ |  |  |  |  |
 
 # (WIP stuff)
 [^2]: Official documentation for the Apple icons is located [here](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html#//apple_ref/doc/uid/TP40002051-CH3-SW6), and their style guidelines and recommendations for app icons can be found [here](https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/app-icon/).
