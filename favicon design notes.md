@@ -17,7 +17,7 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 ![color theme]() <!-- TODO: combine this list into an image with swatches -->
 
 - **Adventure Blue #006BC4** This is the color of the site's header in Day Mode, and so considered as the "official" color of the site. As such, it's the background color of the "app icon" design.
-- **Gelatinous Cube #1998FF** More bright than Adventure
+- **Gelatinous Cube #1998FF** More bright than Adventure Blue
 - **Barovian Midnight #004278** A beautiful darker shade of Adventure Blue.
 - #AF415E - A beautiful red that fits well. Don't know where to use this just yet.
 
