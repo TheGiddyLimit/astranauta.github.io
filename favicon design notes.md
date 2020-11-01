@@ -1,4 +1,6 @@
 ## Favicon update
+Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on the original design(s) by Fantom and Cyanomouss. SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious.
+<!-- TODO insert link to zip file of source docs into link holder above -->
 
 #### Now Supported… and not
 - [x] iOS/iPadOS: Apple Touch Icons
@@ -66,6 +68,7 @@ It should be noted that several browsers on both desktop and mobile platforms us
 This is the code that should now be in every page's `<head>` section.
 ```html
 <!-- Favicon -->
+<!-- TODO: Figure these out -->
 
 <!-- iOS App Icons -->
 <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
@@ -82,8 +85,10 @@ This is the code that should now be in every page's `<head>` section.
 <!-- macOS Safari Pinned Tab and Touch Bar -->
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#006bc4">
 
-<!-- TODO: Unknown??? -->
+<!-- Windows Start Menu tiles -->
 <meta name="msapplication-TileColor" content="#006bc4">
+
+<!-- REVIEW What is this for? -->
 <meta name="theme-color" content="#ffffff">
 <!--  -->
 ```
@@ -115,9 +120,3 @@ Possible Color names:
   - Dragon blue: a darker one, leaning towards electric
   - Slaad blue: a more vibrant one than "official". ![blue slaad](https://5e.tools/img/bestiary/MM/Blue%20Slaad.jpg?v=1.114.1)
   - Salamander blue: ![frost salamander](https://5e.tools/img/bestiary/MTF/Frost%20Salamander.jpg?v=1.114.1)
-
-  | Complete? | Filename      | Resolution | Usage                                           |
-  |-----------|---------------|------------|-------------------------------------------------|
-  | <input type="checkbox" disabled> aadf     | `favicon.ico` | multiple   | Classic .ico file, mostly for use as a fallback |
-  | <input type="checkbox" checked disabled>          |               |            |                                                 |
-  |           |               |            |                                                 |
