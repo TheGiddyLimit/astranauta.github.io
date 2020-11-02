@@ -24,6 +24,7 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 
 
 <!-- REVIEW: Remove task marks (last column of table) before final commit and pull request -->
+<!-- TODO: Test all icons, on all platforms -->
 <!-- TODO: Precomposed (circular?) app logo design -->
 <!-- | multiple | favicon | The (in)famous `favicon.ico`. Very few, if any, browsers still use this. | ☐ | -->
 | Resolution | Design | Device/Browser | Generated and filed in folder? |
@@ -36,7 +37,7 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 | 152x152 | app icon | Apple Touch Icon for iPads & iPad minis | ☑︎ |
 | 167x167 | app icon | Apple Touch Icon for iPad Pros | ☑︎ |
 | 180x180 | app icon | Apple Touch Icon for iPhones with @3x displays (iPhone 6s Plus/7 Plus/8 Plus/X/XS/XS Max). Also used by desktop versions of Firefox and Safari for their bookmark and "desktop" icons | ☑︎ |
-| 192x192 | favicon | Chrome's Add to Desktop | ☐ |
+| 192x192 | favicon | Desktop Chrome's Add to Desktop icon | ☐ |
 | 192x192 | app icon | Android Chrome's Add to Homescreen (see `manifest.webmanifest`) | ☑︎ |
 | 270x270 | white logo | Windows 10 Start Menu tile, Medium size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | ☑︎ |
 | 512x512 | app icon | Android Chrome's splash screen (see `manifest.webmanifest`) | ☑︎ |
