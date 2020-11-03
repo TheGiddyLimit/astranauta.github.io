@@ -74,32 +74,32 @@ This is the code that should now be in every page's `<head>` section. Just in ca
 
 ```html
 <!-- Apple Touch Icons -->
-<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png?v=1.115.2">
-<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png?v=1.115.2">
-<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png?v=1.115.2">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png?v=1.115.2">
-<link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png?v=1.115.2">
-<link rel="apple-touch-icon" href="apple-touch-icon-precomposed.png?v=1.115.2">
-<meta name="apple-mobile-web-app-title" content="5eTools"> <!-- COMBAK: I'm not so sure if this tag is necessary. Must test. -->
+<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png?v=1.115">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png?v=1.115">
+<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png?v=1.115">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png?v=1.115">
+<link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png?v=1.115">
+<link rel="apple-touch-icon" href="apple-touch-icon-precomposed.png?v=1.115">
+<meta name="apple-mobile-web-app-title" content="5eTools">
 
 <!-- macOS Safari Pinned Tab and Touch Bar -->
 <link rel="mask-icon" href="safari-pinned-tab.svg?v=1.115" color="#006bc4">
 
 <!-- Favicons -->
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1.115.2">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1.115.2">
-<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png?v=1.115.2">
-<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png?v=1.115.2">
-<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png?v=1.115.2">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1.115">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1.115">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png?v=1.115">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png?v=1.115">
+<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png?v=1.115">
 <!-- <link rel="shortcut icon" href="favicon.ico?v=1.115"> -->
 
 <!-- Chrome Web App Icons -->
 <link rel="manifest" href="manifest.webmanifest?v=1.115">
 <meta name="application-name" content="5eTools">
+<meta name="theme-color" content="#006bc4">
 
 <!-- Windows Start Menu tiles -->
 <meta name="msapplication-TileColor" content="#006bc4">
-<meta name="theme-color" content="#006bc4">
 
 <!-- TODO Coast by Opera icon (228x228) -->
 <!-- <link rel="icon" href="$URL" sizes="228x228"> -->
