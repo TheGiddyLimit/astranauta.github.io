@@ -1,14 +1,17 @@
 ## Favicon update - 1.115?
 Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on the original logo by Fantom and Cyanomouss. SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
 
-- New color theme <!-- REVIEW: possibly to be used in v2.0 of the site? -->
-- 5e Logo: The text has been resized within the logo to give more spacing around edge. Apple's "official" app design grid came in handy here.
+- App Icon: The text has been resized within the logo to give more spacing around edge. Apple's "official" app design grid came in handy here. Also, a *slight* gradient was applied, only to avoid it looking too flat and to give it some pop.
 - Web App Icon: The icon with the pirate hat has been replaced. It was cheeky, but definitely not the impression we want to give off. <!-- TODO: Delete the /icon folder, wherever it is -->
-- Favicon: The blue has been changed to match the app icon. This has the added benefit of making it easier to see while in your browser's Dark Mode.
+- Favicon: The blue has been changed to match the app icon. This has the added benefit of making it easier to see while in dark mode.
 - New favicons created:
   - Apple Touch Icons, used by both desktop & mobile versions of Safari, Chrome, and many more
   - Android Chrome Homescreen Icon & Splash screen
-  - Safari for macOS Pinned Tab logo and Touch Bar bookmark
+  - Safari for macOS Pinned Tab logo and Touch Bar bookmark ![example image](./example-safari pinned tab.png)
+
+Non-Icon Updates
+  - Standalone mode: After adding 5eTools to your mobile device's home screen, it now behaves like its own app, including showing up in your app switcher as "5eTools." Incidentally, this means it technically supports Multitasking on the iPad. Time to splitscreen your notes and the monster's stat block, hell yeah! <!-- REVIEW: Only include this in the update if needed -->
+  - Android splash screen: When launching it from the home screen, 5eTools now gets a fancy splash screen.
 <!-- QUESTION: Should I also make a iOS splash screen? The code does declare that it's a web app, and therefore doesn't open in a new Safari tab. -->
 
 ### Unified Color Theme
@@ -21,47 +24,73 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 - **Barovian Midnight #004278** A beautiful darker shade of Adventure Blue.
 - #AF415E - A beautiful red that fits well. Don't know where to use this just yet.
 
-
-
+### New Icons
 <!-- REVIEW: Remove task marks (last column of table) before final commit and pull request -->
 <!-- TODO: Test all icons, on all platforms -->
+
+#### New Files
 <!-- TODO: Precomposed (circular?) app logo design -->
 <!-- | multiple | favicon | The (in)famous `favicon.ico`. Very few, if any, browsers still use this. | ☐ | -->
-| Resolution | Design | Device/Browser | Generated and filed in folder? |
-|-|-|-|-|
-| 16x16 | favicon | Only used on Firefox nowadays. Most browsers use the 32px version. | ☑︎ |
-| 32x32 | favicon | Most frequently used size for tab and bookmark icons, and also search results. | <input type="checkbox" checked readonly> |
-| 48x48 | favicon | ??? | ☐ |
-| 120x120 | app icon | Apple Touch Icon for iPhones with @2x displays (iPhone SE/6s/7/8/XR) | ☑︎ |
-| 128x128 | white logo | Windows 10 Start Menu tile, Small size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | ☑︎ |
-| 152x152 | app icon | Apple Touch Icon for iPads & iPad minis | ☑︎ |
-| 167x167 | app icon | Apple Touch Icon for iPad Pros | ☑︎ |
-| 180x180 | app icon | Apple Touch Icon for iPhones with @3x displays (iPhone 6s Plus/7 Plus/8 Plus/X/XS/XS Max). Also used by desktop versions of Firefox and Safari for their bookmark and "desktop" icons | ☑︎ |
-| 192x192 | favicon | Desktop Chrome's Add to Desktop icon | ☐ |
-| 192x192 | app icon | Android Chrome's Add to Homescreen (see `manifest.webmanifest`) | ☑︎ |
-| 270x270 | white logo | Windows 10 Start Menu tile, Medium size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | ☑︎ |
-| 512x512 | app icon | Android Chrome's splash screen (see `manifest.webmanifest`) | ☑︎ |
-| 558x270 | white logo | Windows 10 Start Menu tile, Wide size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | ☑︎ |
-| 558x558 | white logo | Windows 10 Start Menu tile, Large size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | ☑︎ |
-| 1024x1024 | app icon | Chrome web app mode (see `manifest.webmanifest`) | ☑︎ |
-| SVG | white logo | macOS Safari Pinned Tab and Touch Bar bookmark | ☑︎ |
+| Resolution | Design | Device/Browser | Generated? | Tested? |
+|-|-|-|-|-|-|
+| 16x16 | favicon | Only used on Firefox nowadays. Most browsers use the 32px version. | ☑︎ | ☐ |
+| 32x32 | favicon | Most frequently used size for tab and bookmark icons, and also search results. | ☑︎ | ☐ |
+| 48x48 | favicon | ??? | ☐ | ☐ |
+| 120x120 | app icon | Apple Touch Icon for iPhones with @2x displays (iPhone SE/6s/7/8/XR) | ☑︎ | ☐ |
+| 128x128 | white logo | Windows 10 Start Menu tile, Small size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | ☑︎ | ☐ |
+| 152x152 | app icon | Apple Touch Icon for iPads & iPad minis | ☑︎ | ☐ |
+| 167x167 | app icon | Apple Touch Icon for iPad Pros | ☑︎ | ☐ |
+| 180x180 | app icon | Apple Touch Icon for iPhones with @3x displays (iPhone 6s Plus/7 Plus/8 Plus/X/XS/XS Max). Also used by desktop versions of Firefox and Safari for their bookmark and "desktop" icons | ☑︎ | ☐ |
+| 192x192 | favicon | Desktop Chrome's Add to Desktop icon | ☐ | ☐ |
+| 192x192 | app icon | Android Chrome's Add to Homescreen (see `manifest.webmanifest`) | ☑︎ | ☑︎ |
+| 270x270 | white logo | Windows 10 Start Menu tile, Medium size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | ☑︎ | ☐ |
+| 512x512 | app icon | Android Chrome's splash screen (see `manifest.webmanifest`) | ☑︎ | ☑︎ |
+| 558x270 | white logo | Windows 10 Start Menu tile, Wide size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | ☑︎ | ☐ |
+| 558x558 | white logo | Windows 10 Start Menu tile, Large size (`browserconfig.xml` for declaration, and `msapplication-TileColor` in HTML for background color) | ☑︎ | ☐ |
+| 1024x1024 | app icon | Chrome web app mode (see `manifest.webmanifest`) | ☑︎ | ☑︎ |
+| SVG | white logo | macOS Safari Pinned Tab and Touch Bar bookmark | ☑︎ | ☑︎ |
 
+#### Testing Results
+All tests were done off a locally downloaded (and obviously modified) fork, running Apache Web Server 2.4.41 (included with macOS Catalina) which was symlink'd into the clone directory.
+
+Icon Testing                                                | Platform                                                | Result
+------------------------------------------------------------|---------------------------------------------------------|-------
+Safari Pinned Tab icon                                      | Safari 14.0, macOS 10.15.7, MacBook Pro (15-inch, 2016) | ☑︎
+Safari Touch Bar bookmark                                   | Safari 14.0, macOS 10.15.7, MacBook Pro (15-inch, 2016) | ☑︎
+Apple Touch Icon - 152px - Add to Home Screen               | iPadOS 14.0.1, iPad (6th-gen)*                          | ☑︎
+Apple Touch Icon - Safari Favorites/Bookmarks (unknown res) | tested on Apple devices, models specified in other rows | ☑︎
+Apple Touch Icon - 120px - Add to Home Screen               | iPhone 7, iOS 14.0.1*                                   | ☑︎
+Browser - Favicon - Bookmarks Bar and Tab Icon              | Edge (Chromium) 86.0.62258, Windows 10 2004             | ☑︎
+Pin to Taskbar & Start Menu - Edge**                                     | Edge (Chromium) 86.0.62258, Windows 10 2004             | ☑︎
+Pin to Taskbar & Start Menu - Chrome**  |   |
+
+* Safari is updated with the operating system, so no need to specify version here.
+** Uses app icon, unknown which
+All Windows 10 tests were done with a 4k display set to @2x.
+
+#### New HTML code
 This is the code that should now be in every page's `<head>` section. Just in case, I've duplicated it here.
-```html
 <!-- TODO: Replace the version references with correct version as this favicon project gets closer to release. -->
+
+```html
 <!-- Apple Touch Icons -->
-<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png?v=1.115">
-<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png?v=1.115">
-<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png?v=1.115">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png?v=1.115">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png?v=1.115.2">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png?v=1.115.2">
+<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png?v=1.115.2">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png?v=1.115.2">
+<link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png?v=1.115.2">
+<link rel="apple-touch-icon" href="apple-touch-icon-precomposed.png?v=1.115.2">
 <meta name="apple-mobile-web-app-title" content="5eTools"> <!-- COMBAK: I'm not so sure if this tag is necessary. Must test. -->
 
 <!-- macOS Safari Pinned Tab and Touch Bar -->
 <link rel="mask-icon" href="safari-pinned-tab.svg?v=1.115" color="#006bc4">
 
 <!-- Favicons -->
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1.115">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1.115">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1.115.2">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1.115.2">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png?v=1.115.2">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png?v=1.115.2">
+<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png?v=1.115.2">
 <!-- <link rel="shortcut icon" href="favicon.ico?v=1.115"> -->
 
 <!-- Chrome Web App Icons -->
@@ -70,15 +99,12 @@ This is the code that should now be in every page's `<head>` section. Just in ca
 
 <!-- Windows Start Menu tiles -->
 <meta name="msapplication-TileColor" content="#006bc4">
+<meta name="theme-color" content="#006bc4">
 
 <!-- TODO Coast by Opera icon (228x228) -->
 <!-- <link rel="icon" href="$URL" sizes="228x228"> -->
-
-<!-- REVIEW What is this for? -->
-<meta name="theme-color" content="#006bc4">
-
-<!--  -->
 ```
+<!--  -->
 
 #### Not Supported
 The following otherwise commonly supported platforms/browsers have specifically *not* had icons rendered for them, mostly because the site doesn't work on them and/or they're older than HTML5. I've also included the dates they were released, to ease any panic that may happen:
