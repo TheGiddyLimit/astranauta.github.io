@@ -32,7 +32,7 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 <!-- TODO: Precomposed (circular?) app logo design -->
 <!-- | multiple | favicon | The (in)famous `favicon.ico`. Very few, if any, browsers still use this. | ☐ | -->
 | Resolution | Design | Device/Browser | Generated? | Tested? |
-|-|-|-|-|-|-|
+|-|-|-|-|-|
 | 16x16 | favicon | Only used on Firefox nowadays. Most browsers use the 32px version. | ☑︎ | ☐ |
 | 32x32 | favicon | Most frequently used size for tab and bookmark icons, and also search results. | ☑︎ | ☐ |
 | 48x48 | favicon | ??? | ☐ | ☐ |
