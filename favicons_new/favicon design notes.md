@@ -1,10 +1,13 @@
-## Favicon update - 1.115?
+## Favicon update - 1.114.2
 Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on the original logo by Fantom and Cyanomouss.
 
 Here's a quick breakdown of what the new icons look like:
 
 ![](../favicon-128x128.png)
+
 *Favicon*
+
+
 
 SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
 
@@ -84,7 +87,6 @@ This is the code that should now be in every page's `<head>` section. Just in ca
 <meta name="msapplication-TileColor" content="#006bc4">
 
 <!-- Apple Touch Icons -->
-<link rel="apple-touch-icon" sizes="512x512" href="apple-touch-icon-precomposed.png?v=1.114.2">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png?v=1.114.2">
 <link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png?v=1.114.2">
 <link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png?v=1.114.2">
