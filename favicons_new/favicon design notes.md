@@ -7,7 +7,7 @@ Here's a quick breakdown of what the new icons look like:
 
 *Favicon*
 
-![](../apple-touch-icon-120x120.png)
+![](../android-chrome-192x192.png)
 
 *App icon*
 
@@ -24,16 +24,11 @@ Here's a quick breakdown of what the new icons look like:
 SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
 
 ### Icon Changes
-- The text has been resized within the logo to give more spacing around edge. (Apple's "official" app icon design grid came in handy here.) Also, a *slight* gradient was applied to give it some nearly-imperceptible pop.
+- The text has been resized within the app logo to give more spacing around edge. (Apple's "official" app icon design grid came in handy here.) Also, a *slight* gradient was applied to give it some nearly-imperceptible pop.
 - The icon with the pirate hat has been replaced. It was cheeky, but definitely not the impression we want to give off. <!-- TODO: Delete the /icon folder, wherever it is, since it's not used anymore -->
 - Favicon: The stroke color has been changed to match the app icon. This has the added benefit of making it easier to see while in dark mode.
-- New favicons created:
-  - Apple Touch Icons, used by both desktop & mobile versions of Safari, Chrome, and many more
-  - Android Chrome Homescreen Icon & Splash screen
-  - Safari for macOS Pinned Tab logo and Touch Bar bookmark
-- Non-Icon Updates
-  - **Better standalone mode:** After adding 5eTools to your mobile device's home screen, it now behaves like its own app, including showing up in your app switcher as "5eTools." (It did this before, but now it should behave a little better.) Depending on your platform, it may even show a back/forward button. Incidentally, this means it technically supports Multitasking on the iPad. Time to splitscreen your notes and the monster's stat block!
-  - **Android splash screen:** When launching it from the home screen, 5eTools now gets a fancy splash screen.
+- **Better standalone mode:** After adding 5eTools to your mobile device's home screen, it now behaves like its own app, including showing up in your app switcher as "5eTools." (It did this before, but now it should behave a little better.) Depending on your platform, it may even show a back/forward button. Incidentally, this means it technically supports Multitasking on the iPad. Time to splitscreen your notes and the monster's stat block!
+- **Android splash screen:** When launching it from the home screen, 5eTools now gets a fancy splash screen.
 
 ### Unified Color Theme
 In rejiggering the icons, I put together a more cohesive color theme. It could also work for the site, if Giddy wants to do that, but for now I'm proud of it and want to show off.
