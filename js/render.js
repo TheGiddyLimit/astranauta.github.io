@@ -6444,12 +6444,36 @@ Renderer.hover = {
 						<html lang="en" class="${typeof styleSwitcher !== "undefined" && styleSwitcher.getActiveDayNight() === StyleSwitcher.STYLE_NIGHT ? StyleSwitcher.NIGHT_CLASS : ""}"><head>
 							<meta name="viewport" content="width=device-width, initial-scale=1">
 							<title>${opts.title}</title>
-							<link rel="manifest" href="manifest.webmanifest">
 							${$(`link[rel="stylesheet"][href]`).map((i, e) => e.outerHTML).get().join("\n")}
-							// FIXME: Favicon declarations
-							// QUESTION: What does this even do?
-							<link rel="icon" href="favicon.png">
-							<link rel="apple-touch-icon" href="icon-320.png">
+							<!-- Favicons -->
+							<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
+							<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png?v=1.114.2">
+							<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png?v=1.114.2">
+							<link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png?v=1.114.2">
+							<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png?v=1.114.2">
+							<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png?v=1.114.2">
+							<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1.114.2">
+							<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1.114.2">
+
+							<!-- Chrome Web App Icons -->
+							<link rel="manifest" href="manifest.webmanifest?v=1.114.2">
+							<meta name="application-name" content="5eTools">
+							<meta name="theme-color" content="#006bc4">
+
+							<!-- Windows Start Menu tiles -->
+							<meta name="msapplication-config" content="browserconfig.xml?v=1.114.2" />
+							<meta name="msapplication-TileColor" content="#006bc4">
+
+							<!-- Apple Touch Icons -->
+							<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png?v=1.114.2">
+							<link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png?v=1.114.2">
+							<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png?v=1.114.2">
+							<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png?v=1.114.2">
+							<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png?v=1.114.2">
+							<meta name="apple-mobile-web-app-title" content="5eTools">
+
+							<!-- macOS Safari Pinned Tab and Touch Bar -->
+							<link rel="mask-icon" href="safari-pinned-tab.svg?v=1.114.2" color="#006bc4">
 
 							<style>
 								html, body { width: 100%; height: 100%; }
