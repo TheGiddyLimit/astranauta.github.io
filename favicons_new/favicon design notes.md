@@ -1,4 +1,4 @@
-## Favicon update - 1.114.2
+## Favicon update - 1.114.2 (probably)
 Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on the original logo by Fantom and Cyanomouss.
 
 Here's a quick breakdown of what the new icons look like:
@@ -8,6 +8,14 @@ Here's a quick breakdown of what the new icons look like:
 *Favicon*
 
 
+![](./apple_icon.png)
+
+*Apple icon*
+
+
+![](./android_icon.png)
+
+*Android icon*
 
 SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
 
