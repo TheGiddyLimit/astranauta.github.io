@@ -21,7 +21,7 @@ Here's a quick breakdown of what the new icons look like:
 
 _**Not pictured, but updated:** Android splash screen, Windows Start Menu tiles, standalone app mode_
 
-SVG designs were completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](./favicon_source_files.zip), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
+SVG designs were completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](./favicon_source_files.zip), with the changes detailed below for the curious.
 
 ### New HTML code
 This is the code that should now be in every page's `<head>` section.
