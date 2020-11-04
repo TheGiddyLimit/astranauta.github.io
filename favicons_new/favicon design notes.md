@@ -3,6 +3,8 @@ Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on
 
 Here's a quick breakdown of what the new icons look like:
 
+<img src="../favicon.svg" style="max-height: 7rem;">
+
 SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
 
 The text has been resized within the logo to give more spacing around edge. Apple's "official" app design grid came in handy here. Also, a *slight* gradient was applied, only to avoid it looking too flat and to give it some pop.
@@ -63,46 +65,39 @@ This is the code that should now be in every page's `<head>` section. Just in ca
 ```html
 <!-- Favicons -->
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
-<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png?v=1.115">
-<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png?v=1.115">
-<link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png?v=1.115">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png?v=1.115">
-<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png?v=1.115">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1.115">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1.115">
+<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png?v=1.114.2">
+<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png?v=1.114.2">
+<link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png?v=1.114.2">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png?v=1.114.2">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png?v=1.114.2">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1.114.2">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1.114.2">
 
 <!-- Chrome Web App Icons -->
-<link rel="manifest" href="manifest.webmanifest?v=1.115">
+<link rel="manifest" href="manifest.webmanifest?v=1.114.2">
 <meta name="application-name" content="5eTools">
 <meta name="theme-color" content="#006bc4">
 
 <!-- Windows Start Menu tiles -->
-<meta name="msapplication-config" content="browserconfig.xml" />
+<meta name="msapplication-config" content="browserconfig.xml?v=1.114.2" />
 <meta name="msapplication-TileColor" content="#006bc4">
 
 <!-- Apple Touch Icons -->
-<link rel="apple-touch-icon" sizes="512x512" href="apple-touch-icon-precomposed.png?v=1.115">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png?v=1.115">
-<link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png?v=1.115">
-<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png?v=1.115">
-<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png?v=1.115">
-<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png?v=1.115">
+<link rel="apple-touch-icon" sizes="512x512" href="apple-touch-icon-precomposed.png?v=1.114.2">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png?v=1.114.2">
+<link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png?v=1.114.2">
+<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png?v=1.114.2">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png?v=1.114.2">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png?v=1.114.2">
 <meta name="apple-mobile-web-app-title" content="5eTools">
 
 <!-- macOS Safari Pinned Tab and Touch Bar -->
-<link rel="mask-icon" href="safari-pinned-tab.svg?v=1.115" color="#006bc4">
+<link rel="mask-icon" href="safari-pinned-tab.svg?v=1.114.2" color="#006bc4">
 
 <!-- TODO Coast by Opera icon (228x228) -->
 <!-- <link rel="icon" href="$URL" sizes="228x228"> -->
 ```
 <!--  -->
-
-#### Not Supported
-The following otherwise commonly supported platforms/browsers have specifically *not* had icons rendered for them, mostly because the site doesn't work on them and/or they're older than HTML5. I've also included the dates they were released, to ease any panic that may happen:
-
-  - IE 10 (2012) and below (i.e. `favicon.ico`)
-  - Apple Touch Icons for pre-iOS 7, non-Retina sizes (Apple switched to Retina everything in 2014)
-  - Windows 8 (2012) or below
 
 ### Warning: Don't use a favicon.ico!
 ICO is a dated format, and nearly all browsers within use today support PNG favicons, according to [Can I Use…?](caniuse.com). In fact, some modern browsers will always prefer the ICO, even if there are better PNG options available.
