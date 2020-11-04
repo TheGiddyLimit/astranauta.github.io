@@ -26,6 +26,10 @@ Here's a quick breakdown of what the apps should look like:
             <p>Touch Bar bookmark</p>
         </div>
     </div>
+	
+	| Favicon                    | Apple icon                                         |   |   |
+|---------------------------|----------------------------------------------------|---|---|--
+| ![Favicon](../favicon.svg) | ![Apple icon](../apple-touch-icon-precomposed.png) |   |   |
 
 SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
 
