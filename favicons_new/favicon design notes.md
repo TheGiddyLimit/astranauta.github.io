@@ -19,9 +19,9 @@ Here's a quick breakdown of what the new icons look like:
 
 *MacBook Touch Bar Bookmark*
 
-**Not pictured, but updated:** Standalone app mode, Android splash screen
+**Not pictured, but updated:** Android splash screen, Windows Start Menu tiles, standalone app mode
 
-SVG designs was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
+SVG designs were completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
 
 ### Summary of Changes
 - The text has been resized within the app logo to give more spacing around edge. (Apple's "official" app icon design grid came in handy here.) Also, a *slight* gradient was applied to give it some nearly-imperceptible pop.
@@ -29,16 +29,6 @@ SVG designs was completed within Illustrator, and final sizes generated with Ske
 - Favicon: The stroke color has been changed to match the app icon. This has the added benefit of making it easier to see while in dark mode.
 - **Better standalone mode:** After adding 5eTools to your mobile device's home screen, it now behaves like its own app, including showing up in your app switcher as "5eTools." (It did this before, but now it should behave a little better.) Depending on your platform, it may even show a back/forward button. Incidentally, this means it technically supports Multitasking on the iPad. Time to splitscreen your notes and the monster's stat block!
 - **Android splash screen:** When launching it from the home screen, 5eTools now gets a fancy splash screen.
-
-### Unified Color Theme
-In rejiggering the icons, I put together a more cohesive color theme. It could also work for the site, if Giddy wants to do that, but for now I'm proud of it and want to show off.
-
-![color theme]() <!-- TODO: combine this list into an image with swatches -->
-
-- **Adventure Blue #006BC4** This is the color of the site's header in Day Mode, and so considered as the "official" color of the site. As such, it's the background color of the "app icon" design.
-- **Gelatinous Cube #1998FF** More bright than Adventure Blue
-- **Barovian Midnight #004278** A beautiful darker shade of Adventure Blue.
-- #AF415E - A beautiful red that fits well. Don't know where to use this just yet.
 
 ### New Icons
 <!-- REVIEW: Remove task marks (last column of table) before final commit and pull request -->
@@ -159,17 +149,3 @@ It should be noted that several browsers on both desktop and mobile platforms us
 - Apple's touch icon [documentation](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html#//apple_ref/doc/uid/TP40002051-CH3-SW6) was followed to the letter, and their app icon style [guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/app-icon/) were also consulted.
 - The [FAQ page](https://realfavicongenerator.net/faq) over at RealFaviconGenerator.net was very helpful in locating the source documentation for so many of these browsers and operating systems.
 
-### Improvements
-  - _#006BC4_  #1DBDA1   #CBBB6B   #C18B45   #BD494E
-  - _#006BC4_  #27B5B1   #B8AD78   #AE7562   #C8554A
-  - _#006BC4_  #3CBCC2   #E3C18A   #E4966F  _#AF415E_
-  - _#006BC4_  #42ADB8   #E1D7BF   #ECA682  _#AF415E_
-  - _#006BC4_ _#AF415E_  #C5615B   #D4C5A1   #E1CA89
-  - _#006BC4_ _#AF415E_  #DE7E3D   #D7AC65   #C7C549
-  - _#006BC4_ _#AF415E_ _#004278_  #E9833A   #E6DA5C
-
-Possible Color names:
-  - Stormy night - a dark grey?
-  - Dragon blue: a darker one, leaning towards electric
-  - Slaad blue: a more vibrant one than "official". ![blue slaad](https://5e.tools/img/bestiary/MM/Blue%20Slaad.jpg?v=1.114.1)
-  - Salamander blue: ![frost salamander](https://5e.tools/img/bestiary/MTF/Frost%20Salamander.jpg?v=1.114.1)
