@@ -58,7 +58,7 @@ This is the code that should now be in every page's `<head>` section.
 <link rel="mask-icon" href="safari-pinned-tab.svg?v=1.114.2" color="#006bc4">
 ```
 
-### More detail
+### More changes
 - **Favicon:** The stroke color has been changed to match the app icon. This has the added benefit of making it easier to see while in dark mode.
 - **App icon:** The text has been resized within the app icon to give more spacing around edge. (Apple's "official" app icon design grid came in handy here.) Also, a *slight* gradient was applied to give it some almost-imperceptible pop.
 - **Goodbye, pirate hat:** The icon with the pirate hat has been replaced. It was cheeky, but definitely not the impression we want to give off. <!-- TODO: Delete the /icon folder, wherever it is, since it's not used anymore -->
