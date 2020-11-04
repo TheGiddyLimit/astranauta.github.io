@@ -3,7 +3,8 @@ Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on
 
 Here's a quick breakdown of what the new icons look like:
 
-<img src="../favicon.svg" style="max-height: 10%;">
+![](../favicon-128x128.png)
+*Favicon*
 
 SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
 
