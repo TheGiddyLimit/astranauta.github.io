@@ -1,7 +1,7 @@
 ## Favicon update - 1.115?
 Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on the original logo by Fantom and Cyanomouss.
 
-Here's a quick breakdown of what the apps should look like:
+Here's a quick breakdown of what the new icons look like:
 
 SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
 
