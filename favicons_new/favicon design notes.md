@@ -7,6 +7,10 @@ Here's a quick breakdown of what the new icons look like:
 
 *Favicon*
 
+![](../favicon_preview.png)
+
+*Favicon preview*
+
 ![](../android-chrome-192x192.png)
 
 *App icon*
@@ -21,9 +25,9 @@ Here's a quick breakdown of what the new icons look like:
 
 **Not pictured, but updated:** Standalone app mode, Android splash screen
 
-SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
+SVG designs was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
 
-### Icon Changes
+### Summary of Changes
 - The text has been resized within the app logo to give more spacing around edge. (Apple's "official" app icon design grid came in handy here.) Also, a *slight* gradient was applied to give it some nearly-imperceptible pop.
 - The icon with the pirate hat has been replaced. It was cheeky, but definitely not the impression we want to give off. <!-- TODO: Delete the /icon folder, wherever it is, since it's not used anymore -->
 - Favicon: The stroke color has been changed to match the app icon. This has the added benefit of making it easier to see while in dark mode.
