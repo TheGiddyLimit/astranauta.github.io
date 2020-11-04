@@ -65,12 +65,22 @@
         }
 
         .icon-display>div {
-            max-width: 25%;
-            min-width: 10%;
+            display: flex;
+            flex-flow: column nowrap;
+            /* max-width: 25%;
+            min-width: 10%; */
             text-align: center;
+            align-items: center;
+            justify-content: center;
+            align-content: space-around;
             color: gray;
             font-style: italic;
             font-size: .85rem;
+            margin: 1rem;
+        }
+
+        .icon-display>div>p {
+
         }
     </style>
 </head>
@@ -86,17 +96,22 @@
             <p>Apple icon</p>
         </div>
         <div>
-            <img src="../android-chrome.svg" style="display: block; height: 7rem">
+            <img src="../android-chrome.png" style="display: block; height: 7rem">
             <p>Android icon</p>
         </div>
         <div>
-            <img src="../Safari%20Pinned%20Tab%20-%20Unfocused.png" style="display: block; height: 3rem; padding-top: .25rem; padding-bottom: .5rem;">
-            <img src="../Safari%20Pinned%20Tab%20-%20Focused.png" style="display: block; height: 3rem; padding-bottom: .25rem">
+            <img src="../Safari%20Pinned%20Tab%20-%20Unfocused.png" style="max-height: 3rem; padding-bottom: .5rem;">
+            <img src="../Safari%20Pinned%20Tab%20-%20Focused.png" style="max-height: 3rem; padding-bottom: .5rem;">
             <p>Safari Pinned Tab</p>
         </div>
         <div>
             <img src="../Touch%20Bar%20Preview.png" style="display: block; height: 4rem; padding: 1.5rem 0px;">
             <p>Touch Bar bookmark</p>
+        </div>
+        <div>
+            <img src="../Favicon%20light.png" style="display: block; max-height: 3rem; padding-top: .25rem; padding-bottom: .5rem;">
+            <img src="../Favicon%20dark.png" style="display: block; height: 3rem; padding-bottom: .25rem">
+            <p>Browser Tab</p>
         </div>
     </div>
 
@@ -119,5 +134,3 @@
         </div>
     </div>
 </body></html>
-   
-
