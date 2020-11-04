@@ -3,13 +3,9 @@ Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on
 
 Here's a quick breakdown of what the new icons look like:
 
-![](../favicon-128x128.png)
+![](../favicon-128x128.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../favicon_preview.png)
 
-*Favicon*
-
-![](../favicon_preview.png)
-
-*Favicon preview*
+*New favicon and preview*
 
 ![](../android-chrome-192x192.png)
 
