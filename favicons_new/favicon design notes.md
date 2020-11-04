@@ -3,30 +3,6 @@ Website favicons have been subtly redone by jpcranford (aka ldsmadman), based on
 
 Here's a quick breakdown of what the apps should look like:
 
-<div class="icon-display" style="display: flex; flex-flow: row wrap; justify-content: space-evenly; align-content: center; margin: 20px auto;">
-        <div style="max-width: 25%; min-width: 10%; text-align: center; color: gray; font-style: italic; font-size: .85rem;">
-            <img src="../favicon.svg" style="display: block; height: 7rem;">
-            <p>Favicon</p>
-        </div>
-        <div style="max-width: 25%; min-width: 10%; text-align: center; color: gray; font-style: italic; font-size: .85rem;">
-            <img src="../apple-touch-icon-precomposed.png" style="display: block; height: 7rem">
-            <p>Apple icon</p>
-        </div>
-        <div style="max-width: 25%; min-width: 10%; text-align: center; color: gray; font-style: italic; font-size: .85rem;">
-            <img src="../android-chrome.svg" style="display: block; height: 7rem">
-            <p>Android icon</p>
-        </div>
-        <div style="max-width: 25%; min-width: 10%; text-align: center; color: gray; font-style: italic; font-size: .85rem;">
-            <img src="../Safari%20Pinned%20Tab%20-%20Unfocused.png" style="display: block; height: 3rem; padding-top: .25rem; padding-bottom: .5rem;">
-            <img src="../Safari%20Pinned%20Tab%20-%20Focused.png" style="display: block; height: 3rem; padding-bottom: .25rem">
-            <p>Safari Pinned Tab</p>
-        </div>
-        <div style="max-width: 25%; min-width: 10%; text-align: center; color: gray; font-style: italic; font-size: .85rem;">
-            <img src="../Touch%20Bar%20Preview.png" style="display: block; height: 4rem; padding: 1.5rem 0px;">
-            <p>Touch Bar bookmark</p>
-        </div>
-    </div>
-
 SVG design was completed within Illustrator, and final sizes generated with Sketch. All source files have been included in a ZIP file [here](), with the changes detailed below for the curious. <!-- TODO insert link to zip file of source docs into link holder above -->
 
 The text has been resized within the logo to give more spacing around edge. Apple's "official" app design grid came in handy here. Also, a *slight* gradient was applied, only to avoid it looking too flat and to give it some pop.
@@ -80,49 +56,20 @@ In rejiggering the icons, I put together a more cohesive color theme. It could a
 #### Testing Results
 All tests were done off a locally downloaded (and obviously modified) fork, running Apache Web Server 2.4.41 (included with macOS Catalina) which was symlink'd into the clone directory.
 
-Icon Testing                                                      | Platform                                                | Result
-------------------------------------------------------------------|---------------------------------------------------------|-------
-Safari Pinned Tab icon                                            | Safari 14.0, macOS 10.15.7, MacBook Pro (15-inch, 2016) | ☑︎
-Safari Touch Bar bookmark                                         | Safari 14.0, macOS 10.15.7, MacBook Pro (15-inch, 2016) | ☑︎
-iOS - Apple Touch Icon - 152px - Add to Home Screen               | iPadOS 14.0.1, iPad (6th-gen)[^12]                          | ☑︎
-iOS - Apple Touch Icon - Safari Favorites/Bookmarks (unknown res) | tested on Apple devices, models specified in other rows | ☑︎
-iOS - Apple Touch Icon - 120px - Add to Home Screen               | iPhone 7, iOS 14.0.1[^12]                                   | ☑︎
-Favicon - Bookmarks Bar and Tab Icon                              | Edge (Chromium) 86.0.62258, Windows 10 2004             | ☑︎
-Edge - Pin to Taskbar[^11]                                        | Edge (Chromium) 86.0.62258, Windows 10 2004             | ☑︎
-Pinned Taskbar Icon (from Edge) - Add to Start Menu               |                                                         |
-Edge - Web App - Pin to Taskbar[^10]                              |                                                         |
-Pin to Taskbar & Start Menu - Chrome**                            |                                                         |
-
-
-[^12]: Safari is updated with the operating system, so no need to specify version here.
-[^11]: Uses favicon, with Android icon as fallback
-[^10]: Web app uses higher resolution favicon than regular Pin to Taskbar
-All Windows 10 tests were done with a 4k display set to @2x.
-
 #### New HTML code
 This is the code that should now be in every page's `<head>` section. Just in case, I've duplicated it here.
 <!-- TODO: Replace the version references with correct version as this favicon project gets closer to release. -->
 
 ```html
-<!-- Apple Touch Icons -->
-<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png?v=1.115">
-<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png?v=1.115">
-<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png?v=1.115">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png?v=1.115">
-<link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png?v=1.115">
-<link rel="apple-touch-icon" href="apple-touch-icon-precomposed.png?v=1.115">
-<meta name="apple-mobile-web-app-title" content="5eTools">
-
-<!-- macOS Safari Pinned Tab and Touch Bar -->
-<link rel="mask-icon" href="safari-pinned-tab.svg?v=1.115" color="#006bc4">
-
 <!-- Favicons -->
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1.115">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1.115">
-<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png?v=1.115">
-<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png?v=1.115">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
+<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png?v=1.115">
 <link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png?v=1.115">
-<!-- <link rel="shortcut icon" href="favicon.ico?v=1.115"> -->
+<link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png?v=1.115">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png?v=1.115">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png?v=1.115">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1.115">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1.115">
 
 <!-- Chrome Web App Icons -->
 <link rel="manifest" href="manifest.webmanifest?v=1.115">
@@ -130,7 +77,20 @@ This is the code that should now be in every page's `<head>` section. Just in ca
 <meta name="theme-color" content="#006bc4">
 
 <!-- Windows Start Menu tiles -->
+<meta name="msapplication-config" content="browserconfig.xml" />
 <meta name="msapplication-TileColor" content="#006bc4">
+
+<!-- Apple Touch Icons -->
+<link rel="apple-touch-icon" sizes="512x512" href="apple-touch-icon-precomposed.png?v=1.115">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png?v=1.115">
+<link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png?v=1.115">
+<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png?v=1.115">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png?v=1.115">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png?v=1.115">
+<meta name="apple-mobile-web-app-title" content="5eTools">
+
+<!-- macOS Safari Pinned Tab and Touch Bar -->
+<link rel="mask-icon" href="safari-pinned-tab.svg?v=1.115" color="#006bc4">
 
 <!-- TODO Coast by Opera icon (228x228) -->
 <!-- <link rel="icon" href="$URL" sizes="228x228"> -->

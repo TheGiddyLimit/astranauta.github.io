@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        html {
+            font-size: 16px;
+            font-family: sans-serif;
+        }
+
+        .flex-container {
+            display: flex;
+            height: 20rem;
+            flex-flow: row wrap;
+            justify-content: space-evenly;
+            align-content: space-evenly;
+        }
+
+        .flex-container>div {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            background-color: #f1f1f1;
+            width: 6rem;
+            height: 6rem;
+            padding: 1rem;
+            margin: 1rem;
+            color: #fff;
+        }
+
+        @media (max-width: 800px) {
+            .flex-container {
+                flex-direction: column;
+            }
+        }
+
+        .color-name {
+            font-size: .9rem;
+            font-weight: 600;
+            margin: .25rem;
+            text-align: center;
+            /*            color: #E0E0E0;*/
+        }
+
+        p.invert {
+            filter: invert(100%);
+        }
+
+        .color-hex {
+            /*            color: #B0B0B0;*/
+            font-size: 0.6rem;
+            text-align: center;
+            margin: .125rem;
+
+        }
+
+        .icon-display {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-evenly;
+            align-content: center;
+            margin: 20px auto;
+        }
+
+        .icon-display>div {
+            max-width: 25%;
+            min-width: 10%;
+            text-align: center;
+            color: gray;
+            font-style: italic;
+            font-size: .85rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="icon-display">
+        <div>
+            <img src="../favicon.svg" style="display: block; height: 7rem;">
+            <p>Favicon</p>
+        </div>
+        <div>
+            <img src="../apple-touch-icon-precomposed.png" style="display: block; height: 7rem">
+            <p>Apple icon</p>
+        </div>
+        <div>
+            <img src="../android-chrome.svg" style="display: block; height: 7rem">
+            <p>Android icon</p>
+        </div>
+        <div>
+            <img src="../Safari%20Pinned%20Tab%20-%20Unfocused.png" style="display: block; height: 3rem; padding-top: .25rem; padding-bottom: .5rem;">
+            <img src="../Safari%20Pinned%20Tab%20-%20Focused.png" style="display: block; height: 3rem; padding-bottom: .25rem">
+            <p>Safari Pinned Tab</p>
+        </div>
+        <div>
+            <img src="../Touch%20Bar%20Preview.png" style="display: block; height: 4rem; padding: 1.5rem 0px;">
+            <p>Touch Bar bookmark</p>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div style="background-color:#006bc4">
+            <p class="color-name">Adventure Blue</p>
+            <p class="color-hex">#006BC4</p>
+        </div>
+        <div style="background-color:#1998FF">
+            <p class="invert color-name">Gelatinous Cube</p>
+            <p class="invert color-hex">#1998FF</p>
+        </div>
+        <div style="background-color:#004278">
+            <p class="color-name">Barovian Midnight</p>
+            <p class="color-hex">#004278</p>
+        </div>
+        <div style="background-color:#AF415E">
+            <p class="color-name">???</p>
+            <p class="color-hex">#AF415E</p>
+        </div>
+    </div>
+</body></html>
+   
+
