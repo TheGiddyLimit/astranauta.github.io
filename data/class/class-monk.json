@@ -619,17 +619,6 @@
 					]
 				},
 				{
-					"name": "Way of the Soul Knife (Livestream)",
-					"shortName": "Soul Knife (Stream)",
-					"source": "Stream",
-					"subclassFeatures": [
-						"Way of the Soul Knife (Livestream)|Monk||Soul Knife (Stream)|Stream|3",
-						"Aura Sight|Monk||Soul Knife (Stream)|Stream|6",
-						"Spectral Blades|Monk||Soul Knife (Stream)|Stream|11",
-						"Psychic Form|Monk||Soul Knife (Stream)|Stream|17"
-					]
-				},
-				{
 					"name": "Way of the Astral Self (UA)",
 					"shortName": "Astral Self (UA)",
 					"source": "UABarbarianAndMonk",
@@ -653,6 +642,18 @@
 						"Noxious Aura|Monk||Mercy (UA)|UA2020SubclassesPt1|6",
 						"Healing Technique|Monk||Mercy (UA)|UA2020SubclassesPt1|11",
 						"Hand of Mercy|Monk||Mercy (UA)|UA2020SubclassesPt1|17"
+					]
+				},
+				{
+					"name": "Way of the Ascendant Dragon (UA)",
+					"shortName": "Ascendant Dragon (UA)",
+					"source": "UA2020SubclassesPt5",
+					"page": 1,
+					"subclassFeatures": [
+						"Way of the Ascendant Dragon|Monk||Ascendant Dragon (UA)|UA2020SubclassesPt5|3",
+						"Wings Unfurled|Monk||Ascendant Dragon (UA)|UA2020SubclassesPt5|6",
+						"Aspect of the Wyrm|Monk||Ascendant Dragon (UA)|UA2020SubclassesPt5|11",
+						"Ascendant Aspect|Monk||Ascendant Dragon (UA)|UA2020SubclassesPt5|17"
 					]
 				}
 			],
@@ -1985,139 +1986,6 @@
 			]
 		},
 		{
-			"name": "Way of the Soul Knife (Livestream)",
-			"source": "Stream",
-			"page": 76,
-			"className": "Monk",
-			"classSource": "PHB",
-			"subclassShortName": "Soul Knife (Stream)",
-			"subclassSource": "Stream",
-			"level": 3,
-			"entries": [
-				"{@i Transcribed on 2018-10-13. [Square bracketed text] denotes transcriber's annotations.}",
-				"Monks of the Way of the Soul Knife are deadly assassins and bounty hunters. They use their psionic talents to manifest psionic blades that tear through their enemies' bodies and psychic auras. Their talents extend beyond combat, as their ability to perceive auras allows them to track down foes and see through their deceptions.",
-				{
-					"type": "refSubclassFeature",
-					"subclassFeature": "Soul Knife|Monk||Soul Knife (Stream)|Stream|3"
-				},
-				{
-					"type": "refSubclassFeature",
-					"subclassFeature": "Psychic Slash|Monk||Soul Knife (Stream)|Stream|3"
-				}
-			]
-		},
-		{
-			"name": "Psychic Slash",
-			"source": "Stream",
-			"page": 76,
-			"className": "Monk",
-			"classSource": "PHB",
-			"subclassShortName": "Soul Knife (Stream)",
-			"subclassSource": "Stream",
-			"level": 3,
-			"header": 1,
-			"entries": [
-				"At 3rd level, when you channel ki into your attacks you augment your soul knives to inflict devastating psionic attacks.",
-				"Whenever you hit a creature with one of the attacks granted by your Flurry of Blows and that attack inflicts psychic damage, you can impose one of the following effects on the target:",
-				{
-					"type": "entries",
-					"name": "Life Drain",
-					"entries": [
-						"You gain temporary hit points equal to half the damage your attack deals."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Invoke Terror",
-					"entries": [
-						"The target must succeed on a Wisdom saving throw or become {@condition frightened} of you until the end of your next turn."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Invoke Wrath",
-					"entries": [
-						"The target suffers disadvantage on all attack rolls against targets other than you until the end of your next turn."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Astral Slide",
-					"entries": [
-						"You teleport the target up to 10 feet to a destination you can see."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Synaptic Overload",
-					"entries": [
-						"The target gains vulnerability to psychic damage until the end of your next turn."
-					]
-				}
-			]
-		},
-		{
-			"name": "Soul Knife",
-			"source": "Stream",
-			"page": 76,
-			"className": "Monk",
-			"classSource": "PHB",
-			"subclassShortName": "Soul Knife (Stream)",
-			"subclassSource": "Stream",
-			"level": 3,
-			"header": 1,
-			"entries": [
-				"Starting when you choose this tradition at 3rd level, you can use your psionic energy to manifest blades that disrupt your foes' minds.",
-				"Your unarmed strikes deal your choice of psychic, piercing, slashing, or bludgeoning damage each time you hit.",
-				"In addition, you can use a bonus action to increase the reach of your unarmed strikes by 30 feet until the end of your turn."
-			]
-		},
-		{
-			"name": "Aura Sight",
-			"source": "Stream",
-			"page": 76,
-			"className": "Monk",
-			"classSource": "PHB",
-			"subclassShortName": "Soul Knife (Stream)",
-			"subclassSource": "Stream",
-			"level": 6,
-			"header": 2,
-			"entries": [
-				"At 6th level, you gain the ability to perceive the auras of other creatures.",
-				"As an action, select a creature that you can see. That creature makes a Wisdom saving throw, though it has no knowledge that you forced it to attempt this saving throw. On a failed save, you learn if the creature shares any aspects of its alignment with you, its current hit points, and its current attitude and intentions toward you or one other creature, object, or location of your choice. In addition, for the next 24 hours or until you use this ability again, you can use an action to determine the creature's distance and direction from you.",
-				"If a creature succeeds on its saving throw against this ability, you cannot use this ability against that creature again until you complete a long rest."
-			]
-		},
-		{
-			"name": "Spectral Blades",
-			"source": "Stream",
-			"page": 76,
-			"className": "Monk",
-			"classSource": "PHB",
-			"subclassShortName": "Soul Knife (Stream)",
-			"subclassSource": "Stream",
-			"level": 11,
-			"header": 2,
-			"entries": [
-				"At 11th level, you can cause your blades to phase through physical objects and defenses.",
-				"Once during your turn, you can choose to forego one unarmed strike in place of forcing a creature within the reach of that attack to make a Dexterity saving throw. On a failed saving throw, it takes your unarmed strike's damage, or half that damage if it succeeds."
-			]
-		},
-		{
-			"name": "Psychic Form",
-			"source": "Stream",
-			"page": 76,
-			"className": "Monk",
-			"classSource": "PHB",
-			"subclassShortName": "Soul Knife (Stream)",
-			"subclassSource": "Stream",
-			"level": 17,
-			"header": 2,
-			"entries": [
-				"At 17th level, you can transform your physical body into the same psychic energy that comprises your soul knives. As a bonus action, you gain resistance to all types of damage, a fly speed of 30 feet, and the ability to pass through solid objects but not end your movement within them. This benefit lasts for 1 minute. You cannot use it again until you complete a long rest."
-			]
-		},
-		{
 			"name": "Way of Mercy",
 			"source": "UA2020SubclassesPt1",
 			"page": 2,
@@ -2272,6 +2140,162 @@
 				"{@i 17th-level Way of Mercy feature}",
 				"Your mastery of life energy opens the door to the ultimate respite technique. As an action, you can touch a creature, expend 4 ki points, and force the creature to make a Constitution saving throw (a creature can willingly fail this save). Unless the save succeeds, the creature enters a state of suspended animation for a number of days equal to your monk level or until you end the effect early (no action required). During this time, the creature is {@condition paralyzed}, has immunity to all damage, and any curse, disease, or poison affecting it is suspended. The creature appears dead to all outward inspection and to spells used to determine the creature's status.",
 				"You can have only one creature under the effect of this feature at a time."
+			]
+		},
+		{
+			"name": "Way of the Ascendant Dragon",
+			"source": "UA2020SubclassesPt5",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"entries": [
+				"Monks who follow the Way of the Ascendant Dragon revere the power and grandeur of dragons. They alter their own ki to resonate with draconic might, channeling it to augment their prowess in battle, soar through the air, and to bolster their allies.",
+				"As a follower of this Monastic Tradition, you decide how you unlocked the power of dragons through your ki. The Ascendant Dragon Origin table offers some possibilities.",
+				{
+					"type": "table",
+					"caption": "Ascendant Dragon Origin",
+					"colLabels": [
+						"d6",
+						"Origin"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"You honed your abilities by observing a dragon and aligning your ki with their world-altering power."
+						],
+						[
+							"2",
+							"A dragon personally took an active role in shaping your inner energy."
+						],
+						[
+							"3",
+							"You studied at a monastery that traces its teachings back centuries or more to a single dragon's instruction."
+						],
+						[
+							"4",
+							"You spent long stretches meditating in the region of influence of an ancient dragon's lair, absorbing its ambient magic."
+						],
+						[
+							"5",
+							"You found a scroll written in Draconic that contained inspiring new techniques."
+						],
+						[
+							"6",
+							"After a dream that featured a five-handed dragonborn you awoke with altered ki, reflecting the breaths of dragons."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Draconic Disciple|Monk||Ascendant Dragon (UA)|UA2020SubclassesPt5|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Breath of the Dragon|Monk||Ascendant Dragon (UA)|UA2020SubclassesPt5|3"
+				}
+			]
+		},
+		{
+			"name": "Breath of the Dragon",
+			"source": "UA2020SubclassesPt5",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Way of the Ascendant Dragon feature}",
+				"You can channel your ki into destructive waves of energy like the dragons you emulate. When you take the {@action Attack} action on your turn, you can replace one of the attacks with an exhalation of draconic energy in either a 20-foot cone or a 30-foot line that is 5 feet wide (your choice). Choose a damage type: acid, cold, fire, lightning, or poison. Each creature in the area must make a Dexterity saving throw against your ki save DC, taking damage of the chosen type equal to two rolls of your Martial Arts die on a failure, or half as much damage on a success.",
+				"At 11th level, the damage of your breath increases to three rolls of your Martial Arts die.",
+				"You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. While you have no uses available, you can spend 1 ki point to use this feature again."
+			]
+		},
+		{
+			"name": "Draconic Disciple",
+			"source": "UA2020SubclassesPt5",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Way of the Ascendant Dragon feature}",
+				"You can channel your draconic ki to imbue your unarmed strikes with the essence of a dragon's breath and to use your connection with draconic creatures to magnify your presence. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"When you damage a target with an unarmed strike, you can change the damage type to acid, cold, fire, lightning, or poison.",
+						"If you can't already, you learn to speak, read, and write {@language Draconic}.",
+						"If you fail a Charisma ({@skill Intimidation}) or Charisma ({@skill Persuasion}) check, you can use your reaction to reroll the check, as you tap into the mighty presence of dragons. Once this feature turns a failure into a success, you can't use it again until you finish a long rest."
+					]
+				}
+			]
+		},
+		{
+			"name": "Wings Unfurled",
+			"source": "UA2020SubclassesPt5",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Way of the Ascendant Dragon feature}",
+				"When you use your Step of the Wind, you can unfurl spectral draconic wings from your back that vanish at the end of your turn. While the wings exist, you have a flying speed equal to your walking speed.",
+				"You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. While you have no uses available, you can spend 1 additional ki point when you activate Step of the Wind to use this feature again."
+			]
+		},
+		{
+			"name": "Aspect of the Wyrm",
+			"source": "UA2020SubclassesPt5",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"{@i 11th-level Way of the Ascendant Dragon feature}",
+				"The power of your draconic ki now radiates from you, protecting your allies from harm and punishing any who raise arms against them. As a bonus action, you can create an aura of draconic power that radiates 30 feet from you for 1 minute. Choose acid, cold, fire, lightning, or poison damage, and for the duration, you gain the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"You and your allies within your aura gain resistance to the chosen damage type.",
+						"Waves of destructive energy flow out from you and your allies when any of you are attacked. When you or one of your allies in the aura is hit by an attack made by another creature within the aura, the target that was hit can use their reaction to deal an amount of damage of the chosen type equal to one roll of your Martial Arts die to the attacker."
+					]
+				},
+				"Once you use this bonus action, you can't use it again until you finish a long rest, unless you expend 4 ki points to use it again."
+			]
+		},
+		{
+			"name": "Ascendant Aspect",
+			"source": "UA2020SubclassesPt5",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"{@i 17th-level Way of the Ascendant Dragon feature}",
+				"Your draconic ki reaches its peak. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain {@sense blindsight} out to 30 feet. Within that range, you can effectively see anything that isn't behind total cover, even if you're {@condition blinded} or in darkness. Moreover, you can see an {@condition invisible} creature within that range, unless the creature successfully hides from you.",
+						"When you damage a creature with your Breath of the Dragon, the energy clings to the target. At the start of each of the creature's turns, it takes damage of the type your breath dealt equal to one roll of your Martial Arts die. At the end of its turn, the creature can repeat the save, ending the effect on itself on a success.",
+						"When you activate your Aspect of the Wyrm, draconic fury explodes from you. Choose any number of creatures you can see within your aura. Those creatures each take {@dice 4d10} acid, cold, fire, lightning, or poison damage (your choice)."
+					]
+				}
 			]
 		},
 		{

@@ -11,6 +11,7 @@ const ARGS = {};
  * Args:
  * file="./data/my-file.json"
  * filePrefix="./data/dir/"
+ * inplace
  */
 class ArgParser {
 	static parse () {
@@ -57,14 +58,15 @@ class TagJsons {
 	}
 
 	static run () {
-		let files = ut.listFiles({dir: `./data`, blacklistFilePrefixes: BLACKLIST_FILE_PREFIXES});
+		let files;
 		if (ARGS.file) {
-			files = files.filter(f => f === ARGS.file);
-			if (!files.length) throw new Error(`File "${ARGS.file}" not found!`);
-		}
-		if (ARGS.filePrefix) {
-			files = files.filter(f => f.startsWith(ARGS.filePrefix));
-			if (!files.length) throw new Error(`No file with prefix "${ARGS.filePrefix}" found!`);
+			files = [ARGS.file];
+		} else {
+			files = ut.listFiles({dir: `./data`, blacklistFilePrefixes: BLACKLIST_FILE_PREFIXES});
+			if (ARGS.filePrefix) {
+				files = files.filter(f => f.startsWith(ARGS.filePrefix));
+				if (!files.length) throw new Error(`No file with prefix "${ARGS.filePrefix}" found!`);
+			}
 		}
 
 		files.forEach(file => {
@@ -96,9 +98,11 @@ class TagJsons {
 					);
 				});
 
-			const outPath = file.replace("./data/", "./trash/");
-			const dirPart = outPath.split("/").slice(0, -1).join("/");
-			fs.mkdirSync(dirPart, {recursive: true});
+			const outPath = ARGS.inplace ? file : file.replace("./data/", "./trash/");
+			if (!ARGS.inplace) {
+				const dirPart = outPath.split("/").slice(0, -1).join("/");
+				fs.mkdirSync(dirPart, {recursive: true});
+			}
 			fs.writeFileSync(outPath, CleanUtil.getCleanJson(json));
 		});
 	}

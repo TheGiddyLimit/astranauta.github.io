@@ -132,11 +132,10 @@ class SpellParser extends BaseParser {
 			i = ptrI._;
 		}
 
-		if (!spell.entriesHigherLevel.length) delete spell.entriesHigherLevel;
-		else spell.entriesHigherLevel = [{type: "entries", name: "At Higher Levels", entries: spell.entriesHigherLevel}];
+		if (!spell.entriesHigherLevel || !spell.entriesHigherLevel.length) delete spell.entriesHigherLevel;
 
-		this._doSpellPostProcess(spell, options);
-		const statsOut = PropOrder.getOrdered(spell, "spell");
+		const statsOut = this._getFinalState(spell, options);
+
 		options.cbOutput(statsOut, options.isAppend);
 	}
 
@@ -414,6 +413,11 @@ class SpellParser extends BaseParser {
 		// TODO handle splitting "or"'d durations up as required
 
 		options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Duration part "${dur}" requires manual conversion`);
+	}
+
+	static _getFinalState (spell, options) {
+		this._doSpellPostProcess(spell, options);
+		return PropOrder.getOrdered(spell, "spell");
 	}
 }
 SpellParser._RES_SCHOOL = [];

@@ -203,6 +203,7 @@ class PageFilterBestiary extends PageFilter {
 		}
 
 		mon._fAc = mon.ac.map(it => it.special ? null : (it.ac || it)).filter(it => it !== null);
+		if (!mon._fAc.length) mon._fAc = null;
 		mon._fHp = mon.hp.average;
 		if (mon.alignment) {
 			const tempAlign = typeof mon.alignment[0] === "object"

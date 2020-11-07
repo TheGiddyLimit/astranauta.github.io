@@ -24,7 +24,7 @@ const MSG = {
 	SpellDataCheck: "",
 	EscapeCharacterCheck: "",
 	DuplicateEntityCheck: "",
-	ClassDataCheck: ""
+	ClassDataCheck: "",
 };
 
 const TAG_TO_PAGE = {
@@ -50,7 +50,7 @@ const TAG_TO_PAGE = {
 	"action": UrlUtil.PG_ACTIONS,
 	"language": UrlUtil.PG_LANGUAGES,
 	"classFeature": UrlUtil.PG_CLASSES,
-	"subclassFeature": UrlUtil.PG_CLASSES
+	"subclassFeature": UrlUtil.PG_CLASSES,
 };
 
 const VALID_SKILLS = new Set([
@@ -71,7 +71,7 @@ const VALID_SKILLS = new Set([
 	"Religion",
 	"Sleight of Hand",
 	"Stealth",
-	"Survival"
+	"Survival",
 ]);
 
 const ALL_URLS = new Set();
@@ -99,7 +99,7 @@ const PRIMITIVE_HANDLERS = {
 	boolean: [],
 	number: [],
 	string: [],
-	object: []
+	object: [],
 };
 
 // Runs multiple handlers on each file, to avoid re-reading each file for each handler
@@ -652,7 +652,7 @@ class SpellDataCheck {
 		});
 	}
 }
-SpellDataCheck._IGNORED_CLASSES = [{name: "Psion", source: "Stream"}];
+SpellDataCheck._IGNORED_CLASSES = []; // This can be pre-loaded with any exotic UA (see history)
 SpellDataCheck._FILE_CLASS_INDEX = `data/class/index.json`;
 SpellDataCheck._FILE_SPELL_INDEX = `data/spells/index.json`;
 SpellDataCheck._CLASS_LIST = [];
@@ -661,7 +661,7 @@ class ClassDataCheck {
 	static _doCheckClass (file, data, cls) {
 		const walker = MiscUtil.getWalker({
 			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
-			isNoModification: true
+			isNoModification: true,
 		});
 
 		// region Check `classFeatures` -> `classFeature` links
@@ -690,7 +690,7 @@ class ClassDataCheck {
 					if (!featureLookup[hash]) MSG.ClassDataCheck += `Missing class feature: ${uid} in file ${file} not found in the files "classFeature" array\n`;
 				});
 				return arr;
-			}
+			},
 		};
 		(data.classFeature || []).forEach(cf => {
 			walker.walk(cf.entries, handlersNestedRefsClass);
@@ -719,7 +719,7 @@ class ClassDataCheck {
 						if (!subclassFeatureLookup[hash]) MSG.ClassDataCheck += `Missing subclass feature in "refSubclassFeature": ${it.subclassFeature} in file ${file} not found in the files "subclassFeature" array\n`;
 					});
 					return arr;
-				}
+				},
 			};
 			(data.subclassFeature || []).forEach(scf => {
 				walker.walk(scf.entries, handlersNestedRefsSubclass);
@@ -737,7 +737,7 @@ class ClassDataCheck {
 					if (!ALL_URLS.has(url)) MSG.ClassDataCheck += `Missing optional feature: ${it.optionalfeature} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
 				});
 				return arr;
-			}
+			},
 		};
 		(data.classFeature || []).forEach(cf => {
 			walker.walk(cf.entries, handlersNestedRefsOptionalFeatures);
@@ -923,6 +923,7 @@ async function main () {
 	ClassDataCheck.run();
 
 	let outMessage = "";
+	// MSG.LinkCheck = ""; // FIXME remove
 	Object.entries(MSG).forEach(([k, v]) => {
 		if (v) outMessage += `Error messages for ${k}:\n\n${v}`;
 		else console.log(`##### ${k} passed! #####`)

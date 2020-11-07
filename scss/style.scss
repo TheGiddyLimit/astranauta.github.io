@@ -10,36 +10,6 @@
 		flex-shrink: 0;
 	}
 
-	&header--pride {
-		@media (min-width: $width-screen-lg) {
-			> .container {
-				position: relative;
-
-				&::after {
-					position: absolute;
-					content: '';
-					display: block;
-					width: 22px;
-					height: 22px;
-					background: url('https://static-cdn.jtvnw.net/emoticons/v1/160327/1.0') no-repeat;
-					background-size: 22px;
-					z-index: 1;
-					top: 4px;
-					left: -7px;
-					pointer-events: none;
-					opacity: 0.6;
-					transition: opacity 84ms;
-					transform: rotate(-35deg);
-				}
-
-				&:hover::after {
-					transition: opacity $time-5-frames;
-					opacity: 1;
-				}
-			}
-		}
-	}
-
 	&title {
 		margin-right: 10px;
 		display: inline;

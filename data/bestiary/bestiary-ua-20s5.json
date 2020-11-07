@@ -1,0 +1,76 @@
+{
+	"monster": [
+		{
+			"name": "Drake Companion",
+			"source": "UA2020SubclassesPt5",
+			"page": 3,
+			"size": "S",
+			"type": "dragon",
+			"ac": [
+				{
+					"special": "14 + PB (natural armor)"
+				}
+			],
+			"hp": {
+				"special": "5 + five times your ranger level (the drake has a number of hit dice [d10s] equal to your ranger level)"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 16,
+			"dex": 12,
+			"con": 15,
+			"int": 8,
+			"wis": 14,
+			"cha": 8,
+			"save": {
+				"special": "Dex {@d20 +2} plus PB, Wis {@d20 +2} plus PB"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 12,
+			"immune": [
+				{
+					"special": "determined by the drake's draconic essence trait"
+				}
+			],
+			"languages": [
+				"Draconic"
+			],
+			"trait": [
+				{
+					"name": "Draconic Essence",
+					"entries": [
+						"When you summon the drake, choose a damage type: acid, cold, fire, lightning, or poison. The chosen type determines the drake's damage immunity, the damage of its bite, and the damage of its Infused Strikes trait."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 3} plus PB to hit, reach 5 ft., one target. {@h}{@damage 1d6} piercing damage plus PB damage of a type determined by the drake's Draconic Essence."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Infused Strikes",
+					"entries": [
+						"When another creature within 30 feet of the drake that it can see hits with a weapon attack, the drake infuses the strike with its essence, causing the attack to deal an extra {@damage 1d6} damage of the type determined by its Draconic Essence."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"DR"
+			],
+			"miscTags": [
+				"MW"
+			]
+		}
+	]
+}

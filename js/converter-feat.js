@@ -1,5 +1,11 @@
 "use strict";
 
+if (typeof module !== "undefined") {
+	const cv = require("./converterutils.js");
+	Object.assign(global, cv);
+	global.PropOrder = require("./utils-proporder.js");
+}
+
 class FeatParser extends BaseParser {
 	/**
 	 * Parses feats from raw text pastes
@@ -57,9 +63,14 @@ class FeatParser extends BaseParser {
 		if (!feat.entries.length) delete feat.entries;
 		else this._setAbility(feat, options);
 
-		this._doFeatPostProcess(feat, options);
-		const statsOut = PropOrder.getOrdered(feat, feat.__prop || "feat");
+		const statsOut = this._getFinalState(feat, options);
+
 		options.cbOutput(statsOut, options.isAppend);
+	}
+
+	static _getFinalState (feat, options) {
+		this._doFeatPostProcess(feat, options);
+		return PropOrder.getOrdered(feat, feat.__prop || "feat");
 	}
 
 	// SHARED UTILITY FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
@@ -73,7 +84,6 @@ class FeatParser extends BaseParser {
 			feat.entries = ActionTag.tryRun(feat.entries);
 			feat.entries = SenseTag.tryRun(feat.entries);
 		}
-		BasicTextClean.tryRun(feat);
 	}
 
 	// SHARED PARSING FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
@@ -162,4 +172,10 @@ class FeatParser extends BaseParser {
 			},
 		)
 	}
+}
+
+if (typeof module !== "undefined") {
+	module.exports = {
+		FeatParser,
+	};
 }

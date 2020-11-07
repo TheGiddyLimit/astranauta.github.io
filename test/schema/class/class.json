@@ -214,6 +214,9 @@
 				"source": {
 					"type": "string"
 				},
+				"otherSources": {
+					"$ref": "util.json#/definitions/otherSources"
+				},
 				"additionalSpells": { "$ref": "util.json#/definitions/additionalSpellsArray" },
 				"subclassSpells": {
 					"description": "Homebrew use only",
@@ -301,6 +304,9 @@
 				},
 				"source": {
 					"type": "string"
+				},
+				"otherSources": {
+					"$ref": "util.json#/definitions/otherSources"
 				},
 				"srd": {
 					"type": "boolean"

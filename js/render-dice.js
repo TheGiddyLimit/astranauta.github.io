@@ -1549,7 +1549,7 @@ Renderer.dice.parsed = {
 		}
 
 		toString () {
-			return `{${this._nodesPool.map(it => it.toString()).join(", ")}}${this._nodeMod.toString()}`;
+			return `{${this._nodesPool.map(it => it.toString()).join(", ")}}${this._nodeMod ? this._nodeMod.toString() : ""}`;
 		}
 	},
 

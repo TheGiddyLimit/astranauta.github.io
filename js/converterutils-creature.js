@@ -291,7 +291,7 @@ class AlignmentConvert {
 
 		orParts.forEach(part => {
 			Object.values(AlignmentConvert.ALIGNMENTS).forEach(it => {
-				if (it.regex.test(part)) out.push(it.output);
+				if (it.regex.test(part)) out.push({alignment: it.output});
 				else {
 					const mChange = it.regexChance.exec(part);
 					if (mChange) {
@@ -461,6 +461,7 @@ TraitActionTag.tags = { // true = map directly; string = map to this string
 		"sunlight sensitivity": "Sunlight Sensitivity",
 		"sunlight hypersensitivity": "Sunlight Sensitivity",
 		"light sensitivity": "Light Sensitivity",
+		"vampire weaknesses": "Light Sensitivity",
 
 		"amphibious": "Amphibious",
 

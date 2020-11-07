@@ -1223,7 +1223,7 @@ class Panel {
 		this.set$ContentTab(
 			PANEL_TYP_TUBE,
 			meta,
-			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?autoplay=1&enablejsapi=1&modestbranding=1&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen /></div>`),
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?autoplay=1&enablejsapi=1&modestbranding=1&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen/></div>`),
 			title,
 			true,
 		);

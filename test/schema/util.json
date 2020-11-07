@@ -1193,6 +1193,24 @@
 			]
 		},
 
+		"fluffObject": {
+			"type": "object",
+			"properties": {
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					}
+				},
+				"images": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json#/definitions/entryImage"
+					}
+				}
+			}
+		},
+
 		"_additionalSpellObject": {
 			"patternProperties": {
 				"^\\d+$": {

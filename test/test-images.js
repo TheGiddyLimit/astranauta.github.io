@@ -39,14 +39,14 @@ if (fs.existsSync("./img")) {
 
 	const IGNORED_PREFIXES = [
 		".",
-		"_"
+		"_",
 	];
 
 	const IGNORED_EXTENSIONS = [
 		".git",
 		".gitignore",
 		".png",
-		".txt"
+		".txt",
 	];
 
 	const IGNORED_DIRS = new Set([
@@ -68,7 +68,7 @@ if (fs.existsSync("./img")) {
 		"languages",
 		"plutonium",
 		"covers",
-		"spells"
+		"spells",
 	]);
 
 	fs.readdirSync("./img")

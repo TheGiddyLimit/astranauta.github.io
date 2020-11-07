@@ -2039,7 +2039,7 @@ class CreatureBuilder extends Builder {
 			},
 			{
 				display: "\uD835\uDC65/week (/each) spells",
-				type: "week",
+				type: "weekly",
 				mode: "frequency",
 			},
 		];

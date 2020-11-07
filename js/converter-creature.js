@@ -918,9 +918,12 @@ class CreatureParser extends BaseParser {
 		} else {
 			// regular creatures
 			stats.size = line[0].toUpperCase();
-			stats.type = line.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX)[0].split(" ").splice(1).join(" ");
 
-			stats.alignment = line.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX)[1].toLowerCase();
+			const spl = line.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX);
+
+			stats.type = spl[0].split(" ").splice(1).join(" ");
+
+			stats.alignment = (spl[1] || "").toLowerCase();
 			AlignmentConvert.tryConvertAlignment(stats, (ali) => options.cbWarning(`Alignment "${ali}" requires manual conversion`));
 		}
 

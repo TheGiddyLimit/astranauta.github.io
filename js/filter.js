@@ -269,7 +269,6 @@ class FilterBox extends ProxyBase {
 		this._minisHidden = this._getProxy("minisHidden", this.__minisHidden);
 		this.__combineAs = {};
 		this._combineAs = this._getProxy("combineAs", this.__combineAs);
-		this._$body = $(`body`);
 		this._modalMeta = null;
 
 		this._cachedState = null;
@@ -281,7 +280,10 @@ class FilterBox extends ProxyBase {
 
 	get filters () { return this._filters; }
 
-	teardown () { if (this._modalMeta) this._modalMeta.doTeardown(); }
+	teardown () {
+		this._filters.forEach(f => f._doTeardown());
+		if (this._modalMeta) this._modalMeta.doTeardown();
+	}
 
 	_getNamespacedStorageKey () { return `${FilterBox._STORAGE_KEY}${this._namespace ? `.${this._namespace}` : ""}` }
 	getNamespacedHashKey (k) { return `${k || "_".repeat(FilterUtil.SUB_HASH_PREFIX_LENGTH)}${this._namespace ? `.${this._namespace}` : ""}`; }
@@ -984,6 +986,7 @@ class FilterBase extends BaseComponent {
 	setFromSubHashState () { throw new Error(`Unimplemented!`); }
 	setFromValues () { throw new Error(`Unimplemented!`); }
 	handleSearch () { throw new Error(`Unimplemented`); }
+	_doTeardown () { /* No-op */ }
 }
 FilterBase._DEFAULT_META = {
 	isHidden: false,
@@ -1500,35 +1503,42 @@ class Filter extends FilterBase {
 	}
 
 	_doRenderPills_doRenderWrpGroup (group) {
-		if (!this._pillGroupsMeta[group]) {
-			this._pillGroupsMeta[group] = {
-				$hrDivider: this._doRenderPills_doRenderWrpGroup_$getHrDivider(group).appendTo(this.__$wrpPills),
-				$wrpPills: this._doRenderPills_doRenderWrpGroup_$getWrpPillsSub(group).appendTo(this.__$wrpPills),
+		const existingMeta = this._pillGroupsMeta[group];
+		if (existingMeta && !existingMeta.isAttached) {
+			existingMeta.$hrDivider.appendTo(this.__$wrpPills);
+			existingMeta.$wrpPills.appendTo(this.__$wrpPills);
+			existingMeta.isAttached = true;
+		}
+		if (existingMeta) return
+
+		this._pillGroupsMeta[group] = {
+			$hrDivider: this._doRenderPills_doRenderWrpGroup_$getHrDivider(group).appendTo(this.__$wrpPills),
+			$wrpPills: this._doRenderPills_doRenderWrpGroup_$getWrpPillsSub(group).appendTo(this.__$wrpPills),
+			isAttached: true,
+		};
+
+		Object.entries(this._pillGroupsMeta)
+			.sort((a, b) => SortUtil.ascSortLower(a[0], b[0]))
+			.forEach(([groupKey, groupMeta], i) => {
+				groupMeta.$hrDivider.appendTo(this.__$wrpPills);
+				groupMeta.$hrDivider.toggleVe(!(i === 0 && this._nests == null));
+				groupMeta.$wrpPills.appendTo(this.__$wrpPills);
+			});
+
+		if (this._nests) {
+			this._pillGroupsMeta[group].toggleDividerFromNestVisibility = () => {
+				const groupItems = this._items.filter(it => this._groupFn(it) === group);
+				const hiddenGroupItems = groupItems.filter(it => this._nestsHidden[it.nest]);
+				this._pillGroupsMeta[group].$hrDivider.toggleVe(groupItems.length !== hiddenGroupItems.length);
 			};
 
-			Object.entries(this._pillGroupsMeta)
-				.sort((a, b) => SortUtil.ascSortLower(a[0], b[0]))
-				.forEach(([groupKey, groupMeta], i) => {
-					groupMeta.$hrDivider.appendTo(this.__$wrpPills);
-					groupMeta.$hrDivider.toggleVe(!(i === 0 && this._nests == null));
-					groupMeta.$wrpPills.appendTo(this.__$wrpPills);
-				});
-
-			if (this._nests) {
-				this._pillGroupsMeta[group].toggleDividerFromNestVisibility = () => {
-					const groupItems = this._items.filter(it => this._groupFn(it) === group);
-					const hiddenGroupItems = groupItems.filter(it => this._nestsHidden[it.nest]);
-					this._pillGroupsMeta[group].$hrDivider.toggleVe(groupItems.length !== hiddenGroupItems.length);
-				};
-
-				// bind group dividers to show/hide depending on nest visibility state
-				Object.keys(this._nests).forEach(nestName => {
-					const hook = () => this._pillGroupsMeta[group].toggleDividerFromNestVisibility();
-					this._addHook("nestsHidden", nestName, hook);
-					hook();
-					this._pillGroupsMeta[group].toggleDividerFromNestVisibility();
-				});
-			}
+			// bind group dividers to show/hide depending on nest visibility state
+			Object.keys(this._nests).forEach(nestName => {
+				const hook = () => this._pillGroupsMeta[group].toggleDividerFromNestVisibility();
+				this._addHook("nestsHidden", nestName, hook);
+				hook();
+				this._pillGroupsMeta[group].toggleDividerFromNestVisibility();
+			});
 		}
 	}
 
@@ -1799,6 +1809,24 @@ class Filter extends FilterBase {
 		if (ix === -1) ix = (Filter._COMBINE_MODES.length - 1);
 		if (++ix === Filter._COMBINE_MODES.length) ix = 0;
 		return Filter._COMBINE_MODES[ix];
+	}
+
+	_doTeardown () {
+		this._items.forEach(it => {
+			if (it.$rendered) it.$rendered.detach();
+			if (it.$mini) it.$mini.detach();
+		});
+
+		Object.values(this._nests || {})
+			.filter(nestMeta => nestMeta._$btnNest)
+			.forEach(nestMeta => nestMeta._$btnNest.detach());
+
+		Object.values(this._pillGroupsMeta || {})
+			.forEach(it => {
+				it.$hrDivider.detach();
+				it.$wrpPills.detach();
+				it.isAttached = false;
+			});
 	}
 }
 Filter._DEFAULT_META = {

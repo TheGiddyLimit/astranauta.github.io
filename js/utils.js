@@ -6,7 +6,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.113.11"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.114.1"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -221,7 +221,7 @@ StrUtil = {
 		return string.uppercaseFirst();
 	},
 	// Certain minor words should be left lowercase unless they are the first or last words in the string
-	TITLE_LOWER_WORDS: ["a", "an", "the", "and", "but", "or", "for", "nor", "as", "at", "by", "for", "from", "in", "into", "near", "of", "on", "onto", "to", "with"],
+	TITLE_LOWER_WORDS: ["a", "an", "the", "and", "but", "or", "for", "nor", "as", "at", "by", "for", "from", "in", "into", "near", "of", "on", "onto", "to", "with", "over"],
 	// Certain words such as initialisms or acronyms should be left uppercase
 	TITLE_UPPER_WORDS: ["Id", "Tv", "Dm", "Ok"],
 
@@ -1983,10 +1983,12 @@ DataUtil = {
 			}
 
 			if (data._meta.internalCopies) {
-				Promise.all(data._meta.internalCopies.map(async prop => {
-					if (!data[prop]) return;
-					await Promise.all(data[prop].map(entry => DataUtil._pDoMetaMerge_handleCopyProp(prop, data[prop], entry, options)));
-				}));
+				for (const prop of data._meta.internalCopies) {
+					if (!data[prop]) continue;
+					for (const entry of data[prop]) {
+						await DataUtil._pDoMetaMerge_handleCopyProp(prop, data[prop], entry, options);
+					}
+				}
 				delete data._meta.internalCopies;
 			}
 		}
@@ -3697,7 +3699,7 @@ BrewUtil = {
 					dataList.push({
 						download_url: DataUtil.brew.getFileUrl(path, urlRoot),
 						path,
-						name: path.split("/").slice(1).join("/"),
+						name: path.slice(path.indexOf("/") + 1),
 						_cat: BrewUtil.dirToProp(dir),
 					})
 				})
@@ -5527,8 +5529,6 @@ if (!IS_VTT && typeof window !== "undefined") {
 		const ivsCancer = [];
 
 		window.addEventListener("load", () => {
-			$(`.page__header`).addClass(`page__header--pride`);
-
 			let isPadded = false;
 			let anyFound = false;
 			[

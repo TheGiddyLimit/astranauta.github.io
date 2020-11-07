@@ -273,21 +273,7 @@
 					"description": "Homebrew use only.",
 					"oneOf": [
 						{
-							"type": "object",
-							"properties": {
-								"entries": {
-									"type": "array",
-									"items": {
-										"$ref": "entry.json"
-									}
-								},
-								"images": {
-									"type": "array",
-									"items": {
-										"$ref": "entry.json#/definitions/entryImage"
-									}
-								}
-							}
+							"$ref": "util.json#/definitions/fluffObject"
 						},
 						{
 							"description": "References \"raceFluff\" array items",

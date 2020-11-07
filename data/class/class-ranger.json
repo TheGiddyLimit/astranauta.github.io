@@ -722,6 +722,18 @@
 						"Beguiling Twist|Ranger||Fey Wanderer (UA)|UA2020SubclassesPt3|11",
 						"Misty Presence|Ranger||Fey Wanderer (UA)|UA2020SubclassesPt3|15"
 					]
+				},
+				{
+					"name": "Drakewarden (UA)",
+					"shortName": "Drakewarden (UA)",
+					"source": "UA2020SubclassesPt5",
+					"page": 2,
+					"subclassFeatures": [
+						"Drakewarden|Ranger||Drakewarden (UA)|UA2020SubclassesPt5|3",
+						"Bond of Fang and Scale|Ranger||Drakewarden (UA)|UA2020SubclassesPt5|7",
+						"Drake's Breath|Ranger||Drakewarden (UA)|UA2020SubclassesPt5|11",
+						"Perfected Bond|Ranger||Drakewarden (UA)|UA2020SubclassesPt5|15"
+					]
 				}
 			],
 			"fluff": [
@@ -1363,6 +1375,18 @@
 						"Blessings of the Courts|Ranger (Spell-less)|UAModifyingClasses|Fey Wanderer (UA)|UA2020SubclassesPt3|7",
 						"Beguiling Twist|Ranger (Spell-less)|UAModifyingClasses|Fey Wanderer (UA)|UA2020SubclassesPt3|11",
 						"Misty Presence|Ranger (Spell-less)|UAModifyingClasses|Fey Wanderer (UA)|UA2020SubclassesPt3|15"
+					]
+				},
+				{
+					"name": "Drakewarden (UA)",
+					"shortName": "Drakewarden (UA)",
+					"source": "UA2020SubclassesPt5",
+					"page": 2,
+					"subclassFeatures": [
+						"Drakewarden|Ranger (Spell-less)|UAModifyingClasses|Drakewarden (UA)|UA2020SubclassesPt5|3",
+						"Bond of Fang and Scale|Ranger (Spell-less)|UAModifyingClasses|Drakewarden (UA)|UA2020SubclassesPt5|7",
+						"Drake's Breath|Ranger (Spell-less)|UAModifyingClasses|Drakewarden (UA)|UA2020SubclassesPt5|11",
+						"Perfected Bond|Ranger (Spell-less)|UAModifyingClasses|Drakewarden (UA)|UA2020SubclassesPt5|15"
 					]
 				}
 			],
@@ -2488,6 +2512,19 @@
 						"Blessings of the Courts|Ranger (Revised)|UATheRangerRevised|Fey Wanderer (UA)|UA2020SubclassesPt3|7",
 						"Beguiling Twist|Ranger (Revised)|UATheRangerRevised|Fey Wanderer (UA)|UA2020SubclassesPt3|11",
 						"Misty Presence|Ranger (Revised)|UATheRangerRevised|Fey Wanderer (UA)|UA2020SubclassesPt3|15"
+					]
+				},
+				{
+					"name": "Drakewarden (UA)",
+					"shortName": "Drakewarden (UA)",
+					"source": "UA2020SubclassesPt5",
+					"page": 2,
+					"subclassFeatures": [
+						"Drakewarden|Ranger (Revised)|UATheRangerRevised|Drakewarden (UA)|UA2020SubclassesPt5|3",
+						"Extra Attack|Ranger (Revised)|UATheRangerRevised|Drakewarden (UA)|UA2020SubclassesPt5|5",
+						"Bond of Fang and Scale|Ranger (Revised)|UATheRangerRevised|Drakewarden (UA)|UA2020SubclassesPt5|7",
+						"Drake's Breath|Ranger (Revised)|UATheRangerRevised|Drakewarden (UA)|UA2020SubclassesPt5|11",
+						"Perfected Bond|Ranger (Revised)|UATheRangerRevised|Drakewarden (UA)|UA2020SubclassesPt5|15"
 					]
 				}
 			],
@@ -5199,6 +5236,164 @@
 			]
 		},
 		{
+			"name": "Drakewarden",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"entries": [
+				"Drakewardens are rangers who use their magical connection with nature to form an enduring bond with a minor dragon, a drake. This bond allows the ranger to summon the",
+				"drake to their side and to share in the awe-inspiring power wielded by dragons. Consider how your ranger gained their bond with the drake. The Drakewarden Origin table offers some examples.",
+				{
+					"type": "table",
+					"caption": "",
+					"colLabels": [
+						"d6",
+						"Origin"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"You studied a dragon's scale or claw, or a trinket from its hoard, and created your bond through the token's lingering draconic magic."
+						],
+						[
+							"2",
+							"A secret order of rangers who collect and guard draconic lore taught you their ways."
+						],
+						[
+							"3",
+							"A true dragon gave you a drake egg to care for. When it hatched, the drake bonded to you."
+						],
+						[
+							"4",
+							"You drank a few drops of dragon blood, forever infusing your nature magic with draconic power."
+						],
+						[
+							"5",
+							"An ancient Draconic inscription on a standing stone empowered you when you read it aloud."
+						],
+						[
+							"6",
+							"You had a vivid dream of a mysterious man, accompanied by seven yellow canaries, who warned you of impending doom. When you awoke, your drake was there, watching you."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Draconic Gift|Ranger||Drakewarden (UA)|UA2020SubclassesPt5|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Drake Companion|Ranger||Drakewarden (UA)|UA2020SubclassesPt5|3"
+				}
+			]
+		},
+		{
+			"name": "Draconic Gift",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Drakewarden feature}",
+				"The bond you share with your drake creates a deeper connection to dragon kind, granting you understanding and empowering your presence. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"If you can't already, you learn to speak, read, and write {@language Draconic}.",
+						"You learn the {@spell thaumaturgy} cantrip, which is a ranger spell for you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Drake Companion",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Drakewarden feature}",
+				"You can magically summon the drake bound to you. As an action, you can summon the drake, which appears in an unoccupied space of your choice that you can see within 30 feet of you.",
+				"The drake is friendly to you and your companions and obeys your commands. See its game statistics in the {@creature Drake Companion|UA2020SubclassesPt5} stat block, which uses your proficiency bonus (PB) in several places. When you summon the drake, choose a damage type listed in its Draconic Essence trait. You can determine the cosmetic characteristics of the drake such as its color, scale texture, or any visible effect of its Draconic Essence; your choice has no effect on its game statistics.",
+				"In combat, the drake shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the {@action Dodge} action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. If you are {@condition incapacitated}, the drake can take any action of its choice, not just {@action Dodge}.",
+				"Once you summon the drake, you can't do so again until you finish a long rest, unless you expend a spell slot of 1st level or higher to summon it.",
+				"The drake remains for a number of hours equal to your proficiency bonus, until it is reduced to 0 hit points, until you use this feature to summon the drake again, or until you die. Anything the drake was wearing or carrying is left behind when the drake vanishes."
+			]
+		},
+		{
+			"name": "Bond of Fang and Scale",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"{@i 7th-level Drakewarden feature}",
+				"The bond you share with your drake intensifies, protecting you and stoking the drake's fury. While your drake is summoned, you and the drake gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain resistance to the damage type chosen for the drake's Draconic Essence.",
+						"Choose one of the following: the drake gains a swimming speed of 40 feet and can breathe both air and water, or the drake grows wings and gains a flying speed of 40 feet.",
+						"The drake's bite attack deals an extra {@dice 1d6} damage of the type chosen for its Draconic Essence."
+					]
+				}
+			]
+		},
+		{
+			"name": "Drake's Breath",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"{@i 11th-level Drakewarden feature}",
+				"As an action, you can exhale a 30-foot cone of damaging breath or cause your drake to exhale it. Choose acid, cold, fire, lightning, or poison damage. Each creature in the cone must make a Dexterity saving throw against your spell save DC, taking {@dice 6d6} damage on a failed save, or half as much damage on a successful one.",
+				"This damage increases to {@dice 8d6} when you reach 15th level in this class.",
+				"Once you use this feature, you can't do so again until you finish a long rest, unless you expend a spell slot of 3rd level or higher to use it again."
+			]
+		},
+		{
+			"name": "Perfected Bond",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Drakewarden feature}",
+				"Your bond to your drake reaches the pinnacle of its power. While your drake is summoned, you and the drake gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The drake grows to Large size.",
+						"The drake's bite attack deals an extra {@dice 1d6} damage of the type chosen for its Draconic Essence (for a total of {@dice 2d6} extra damage).",
+						"When either you or the drake takes damage while you're within 30 feet of each other, you can use your reaction to give yourself or the drake resistance to that instance of damage."
+					]
+				}
+			]
+		},
+		{
 			"name": "Monster Slayer",
 			"source": "UAATrioOfSubclasses",
 			"page": 3,
@@ -6903,6 +7098,164 @@
 			]
 		},
 		{
+			"name": "Drakewarden",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger (Spell-less)",
+			"classSource": "UAModifyingClasses",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"entries": [
+				"Drakewardens are rangers who use their magical connection with nature to form an enduring bond with a minor dragon, a drake. This bond allows the ranger to summon the",
+				"drake to their side and to share in the awe-inspiring power wielded by dragons. Consider how your ranger gained their bond with the drake. The Drakewarden Origin table offers some examples.",
+				{
+					"type": "table",
+					"caption": "",
+					"colLabels": [
+						"d6",
+						"Origin"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"You studied a dragon's scale or claw, or a trinket from its hoard, and created your bond through the token's lingering draconic magic."
+						],
+						[
+							"2",
+							"A secret order of rangers who collect and guard draconic lore taught you their ways."
+						],
+						[
+							"3",
+							"A true dragon gave you a drake egg to care for. When it hatched, the drake bonded to you."
+						],
+						[
+							"4",
+							"You drank a few drops of dragon blood, forever infusing your nature magic with draconic power."
+						],
+						[
+							"5",
+							"An ancient Draconic inscription on a standing stone empowered you when you read it aloud."
+						],
+						[
+							"6",
+							"You had a vivid dream of a mysterious man, accompanied by seven yellow canaries, who warned you of impending doom. When you awoke, your drake was there, watching you."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Draconic Gift|Ranger (Spell-less)|UAModifyingClasses|Drakewarden (UA)|UA2020SubclassesPt5|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Drake Companion|Ranger (Spell-less)|UAModifyingClasses|Drakewarden (UA)|UA2020SubclassesPt5|3"
+				}
+			]
+		},
+		{
+			"name": "Draconic Gift",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger (Spell-less)",
+			"classSource": "UAModifyingClasses",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Drakewarden feature}",
+				"The bond you share with your drake creates a deeper connection to dragon kind, granting you understanding and empowering your presence. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"If you can't already, you learn to speak, read, and write {@language Draconic}.",
+						"You learn the {@spell thaumaturgy} cantrip, which is a ranger spell for you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Drake Companion",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger (Spell-less)",
+			"classSource": "UAModifyingClasses",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Drakewarden feature}",
+				"You can magically summon the drake bound to you. As an action, you can summon the drake, which appears in an unoccupied space of your choice that you can see within 30 feet of you.",
+				"The drake is friendly to you and your companions and obeys your commands. See its game statistics in the {@creature Drake Companion|UA2020SubclassesPt5} stat block, which uses your proficiency bonus (PB) in several places. When you summon the drake, choose a damage type listed in its Draconic Essence trait. You can determine the cosmetic characteristics of the drake such as its color, scale texture, or any visible effect of its Draconic Essence; your choice has no effect on its game statistics.",
+				"In combat, the drake shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the {@action Dodge} action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. If you are {@condition incapacitated}, the drake can take any action of its choice, not just {@action Dodge}.",
+				"Once you summon the drake, you can't do so again until you finish a long rest, unless you expend a spell slot of 1st level or higher to summon it.",
+				"The drake remains for a number of hours equal to your proficiency bonus, until it is reduced to 0 hit points, until you use this feature to summon the drake again, or until you die. Anything the drake was wearing or carrying is left behind when the drake vanishes."
+			]
+		},
+		{
+			"name": "Bond of Fang and Scale",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger (Spell-less)",
+			"classSource": "UAModifyingClasses",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"{@i 7th-level Drakewarden feature}",
+				"The bond you share with your drake intensifies, protecting you and stoking the drake's fury. While your drake is summoned, you and the drake gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain resistance to the damage type chosen for the drake's Draconic Essence.",
+						"Choose one of the following: the drake gains a swimming speed of 40 feet and can breathe both air and water, or the drake grows wings and gains a flying speed of 40 feet.",
+						"The drake's bite attack deals an extra {@dice 1d6} damage of the type chosen for its Draconic Essence."
+					]
+				}
+			]
+		},
+		{
+			"name": "Drake's Breath",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger (Spell-less)",
+			"classSource": "UAModifyingClasses",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"{@i 11th-level Drakewarden feature}",
+				"As an action, you can exhale a 30-foot cone of damaging breath or cause your drake to exhale it. Choose acid, cold, fire, lightning, or poison damage. Each creature in the cone must make a Dexterity saving throw against your spell save DC, taking {@dice 6d6} damage on a failed save, or half as much damage on a successful one.",
+				"This damage increases to {@dice 8d6} when you reach 15th level in this class.",
+				"Once you use this feature, you can't do so again until you finish a long rest, unless you expend a spell slot of 3rd level or higher to use it again."
+			]
+		},
+		{
+			"name": "Perfected Bond",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger (Spell-less)",
+			"classSource": "UAModifyingClasses",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Drakewarden feature}",
+				"Your bond to your drake reaches the pinnacle of its power. While your drake is summoned, you and the drake gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The drake grows to Large size.",
+						"The drake's bite attack deals an extra {@dice 1d6} damage of the type chosen for its Draconic Essence (for a total of {@dice 2d6} extra damage).",
+						"When either you or the drake takes damage while you're within 30 feet of each other, you can use your reaction to give yourself or the drake resistance to that instance of damage."
+					]
+				}
+			]
+		},
+		{
 			"name": "Monster Slayer",
 			"source": "UAATrioOfSubclasses",
 			"page": 3,
@@ -7952,6 +8305,178 @@
 				"{@i 15th-level Fey Wanderer feature}",
 				"You can magically remove yourself from one creature's perception: you gain a bonus action that you can use to force a creature you can see within 30 feet of you to make a Wisdom saving throw against your spell save DC. On a failed save, the target can't see or hear you for 24 hours. The target can repeat the saving throw at the end of any turn during which you hit it with an attack roll, forced it to make a saving throw, or dealt damage to it. The effect ends early if you use this bonus action again. On a successful save, the target is immune to this feature for 7 days.",
 				"Once you've used this bonus action, you can't use it again until you finish a long rest or until you expend a spell slot of 4th level or higher to use it again."
+			]
+		},
+		{
+			"name": "Drakewarden",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger (Revised)",
+			"classSource": "UATheRangerRevised",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"entries": [
+				"{@note Note that this subclass is intended for use with the Ranger class presented in the Player's Handbook. It is presented here for convenience, and may be unsuitable for use as a Spell-less Ranger subclass.}",
+				"Drakewardens are rangers who use their magical connection with nature to form an enduring bond with a minor dragon, a drake. This bond allows the ranger to summon the",
+				"drake to their side and to share in the awe-inspiring power wielded by dragons. Consider how your ranger gained their bond with the drake. The Drakewarden Origin table offers some examples.",
+				{
+					"type": "table",
+					"caption": "",
+					"colLabels": [
+						"d6",
+						"Origin"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"You studied a dragon's scale or claw, or a trinket from its hoard, and created your bond through the token's lingering draconic magic."
+						],
+						[
+							"2",
+							"A secret order of rangers who collect and guard draconic lore taught you their ways."
+						],
+						[
+							"3",
+							"A true dragon gave you a drake egg to care for. When it hatched, the drake bonded to you."
+						],
+						[
+							"4",
+							"You drank a few drops of dragon blood, forever infusing your nature magic with draconic power."
+						],
+						[
+							"5",
+							"An ancient Draconic inscription on a standing stone empowered you when you read it aloud."
+						],
+						[
+							"6",
+							"You had a vivid dream of a mysterious man, accompanied by seven yellow canaries, who warned you of impending doom. When you awoke, your drake was there, watching you."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Draconic Gift|Ranger (Revised)|UATheRangerRevised|Drakewarden (UA)|UA2020SubclassesPt5|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Drake Companion|Ranger (Revised)|UATheRangerRevised|Drakewarden (UA)|UA2020SubclassesPt5|3"
+				}
+			]
+		},
+		{
+			"name": "Draconic Gift",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger (Revised)",
+			"classSource": "UATheRangerRevised",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Drakewarden feature}",
+				"The bond you share with your drake creates a deeper connection to dragon kind, granting you understanding and empowering your presence. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"If you can't already, you learn to speak, read, and write {@language Draconic}.",
+						"You learn the {@spell thaumaturgy} cantrip, which is a ranger spell for you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Drake Companion",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger (Revised)",
+			"classSource": "UATheRangerRevised",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Drakewarden feature}",
+				"You can magically summon the drake bound to you. As an action, you can summon the drake, which appears in an unoccupied space of your choice that you can see within 30 feet of you.",
+				"The drake is friendly to you and your companions and obeys your commands. See its game statistics in the {@creature Drake Companion|UA2020SubclassesPt5} stat block, which uses your proficiency bonus (PB) in several places. When you summon the drake, choose a damage type listed in its Draconic Essence trait. You can determine the cosmetic characteristics of the drake such as its color, scale texture, or any visible effect of its Draconic Essence; your choice has no effect on its game statistics.",
+				"In combat, the drake shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the {@action Dodge} action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. If you are {@condition incapacitated}, the drake can take any action of its choice, not just {@action Dodge}.",
+				"Once you summon the drake, you can't do so again until you finish a long rest, unless you expend a spell slot of 1st level or higher to summon it.",
+				"The drake remains for a number of hours equal to your proficiency bonus, until it is reduced to 0 hit points, until you use this feature to summon the drake again, or until you die. Anything the drake was wearing or carrying is left behind when the drake vanishes."
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger (Revised)",
+			"classSource": "UATheRangerRevised",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 5,
+			"header": 2,
+			"entries": [
+				"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
+			]
+		},
+		{
+			"name": "Bond of Fang and Scale",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger (Revised)",
+			"classSource": "UATheRangerRevised",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"{@i 7th-level Drakewarden feature}",
+				"The bond you share with your drake intensifies, protecting you and stoking the drake's fury. While your drake is summoned, you and the drake gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain resistance to the damage type chosen for the drake's Draconic Essence.",
+						"Choose one of the following: the drake gains a swimming speed of 40 feet and can breathe both air and water, or the drake grows wings and gains a flying speed of 40 feet.",
+						"The drake's bite attack deals an extra {@dice 1d6} damage of the type chosen for its Draconic Essence."
+					]
+				}
+			]
+		},
+		{
+			"name": "Drake's Breath",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger (Revised)",
+			"classSource": "UATheRangerRevised",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"{@i 11th-level Drakewarden feature}",
+				"As an action, you can exhale a 30-foot cone of damaging breath or cause your drake to exhale it. Choose acid, cold, fire, lightning, or poison damage. Each creature in the cone must make a Dexterity saving throw against your spell save DC, taking {@dice 6d6} damage on a failed save, or half as much damage on a successful one.",
+				"This damage increases to {@dice 8d6} when you reach 15th level in this class.",
+				"Once you use this feature, you can't do so again until you finish a long rest, unless you expend a spell slot of 3rd level or higher to use it again."
+			]
+		},
+		{
+			"name": "Perfected Bond",
+			"source": "UA2020SubclassesPt5",
+			"className": "Ranger (Revised)",
+			"classSource": "UATheRangerRevised",
+			"subclassShortName": "Drakewarden (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Drakewarden feature}",
+				"Your bond to your drake reaches the pinnacle of its power. While your drake is summoned, you and the drake gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The drake grows to Large size.",
+						"The drake's bite attack deals an extra {@dice 1d6} damage of the type chosen for its Draconic Essence (for a total of {@dice 2d6} extra damage).",
+						"When either you or the drake takes damage while you're within 30 feet of each other, you can use your reaction to give yourself or the drake resistance to that instance of damage."
+					]
+				}
 			]
 		},
 		{

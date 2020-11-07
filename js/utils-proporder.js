@@ -359,6 +359,8 @@ PropOrder._CLASS = [
 	"srd",
 	"isReprinted",
 
+	"otherSources",
+
 	"requirements",
 	"hd",
 	"proficiency",
@@ -377,6 +379,7 @@ PropOrder._CLASS = [
 
 	"subclassTitle",
 	new PropOrder._ArrayKey("subclasses", {
+		fnSort: (a, b) => SortUtil.ascSortDateString(Parser.sourceJsonToDate(a.source, Parser.sourceJsonToDate(b.source))) || SortUtil.ascSortLower(a.name, b.name),
 		fnGetOrder: () => PropOrder._CLASS__SUBCLASS,
 	}),
 
@@ -390,6 +393,8 @@ PropOrder._CLASS__SUBCLASS = [
 	"page",
 	"srd",
 	"isReprinted",
+
+	"otherSources",
 
 	"spellcastingAbility",
 	"casterProgression",

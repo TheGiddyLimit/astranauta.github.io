@@ -120,8 +120,8 @@ class BaseParser {
 
 		// A lowercase word
 		if (/^[a-z]/.test(cleanLine) && !opts.noLowercase) return true;
-		// An ordinal (e.g. 3rd)
-		if (/^\d[a-z][a-z]/.test(cleanLine)) return true;
+		// An ordinal (e.g. "3rd"), but not a spell level (e.g. "1st level")
+		if (/^\d[a-z][a-z]/.test(cleanLine) && !/^\d[a-z][a-z] level/gi.test(cleanLine)) return true;
 		// A number (e.g. damage; "5 (1d6 + 2)")
 		if (/^\d+\s+/.test(cleanLine) && !opts.noNumber) return true;
 		// Opening brackets (e.g. damage; "(1d6 + 2)")
@@ -565,24 +565,27 @@ class ActionTag {
 	}
 
 	static _fnTag (strMod) {
-		const mAction = /(^|[ "(\u2013\u2014])(Attack|Dash|Disengage|Dodge|Help|Hide|Ready|Search|Use an Object|shove a creature)([ "',.:;)\u2013\u2014]|$)/g.exec(strMod);
-		if (!mAction) return strMod;
+		// Avoid tagging text within titles
+		if (strMod.toTitleCase() === strMod) return strMod;
 
-		const ixMatchEnd = mAction.index + mAction[0].length;
+		const reAction = /(^|[ "(\u2013\u2014])(Attack|Dash|Disengage|Dodge|Help|Hide|Ready|Search|Use an Object|shove a creature)([ "',.:;)\u2013\u2014]|$)/g
+		let mAction;
 
-		const reSplitTokens = /[ \u2013\u2014]/g;
-		const reCleanTokenStart = /^["'\u2013\u2014]/g;
+		while ((mAction = reAction.exec(strMod))) {
+			const ixMatchEnd = mAction.index + mAction[0].length;
 
-		const prevWord = (strMod.slice(0, mAction.index).split(reSplitTokens).last() || "").replace(reCleanTokenStart, "");
-		const nxtWord = (strMod.slice(ixMatchEnd, strMod.length).split(reSplitTokens)[0] || "").replace(reCleanTokenStart, "");
-		if ((prevWord && /^[A-Z]/.test(prevWord)) || (nxtWord && /^[A-Z]/.test(nxtWord))) return strMod; // Avoid tagging words in titles
+			const ptTag = mAction[2] === "shove a creature" ? "shove" : mAction[2];
+			const ptTrailing = mAction[2] === "shove a creature" ? ` a creature${mAction[3]}` : mAction[3];
+			const replaceAs = `${mAction[1]}{@action ${ptTag}}${ptTrailing}`;
 
-		const ptTag = mAction[2] === "shove a creature" ? "shove" : mAction[2];
-		const ptTrailing = mAction[2] === "shove a creature" ? ` a creature${mAction[3]}` : mAction[3];
-		const replaceAs = `${mAction[1]}{@action ${ptTag}}${ptTrailing}`;
-		return `${strMod.slice(0, mAction.index)}${replaceAs}${strMod.slice(ixMatchEnd, strMod.length)}`
-			.replace(/{@action Attack} (and|or) damage roll/g, "Attack $1 damage roll")
-		;
+			strMod = `${strMod.slice(0, mAction.index)}${replaceAs}${strMod.slice(ixMatchEnd, strMod.length)}`
+				.replace(/{@action Attack} (and|or) damage roll/g, "Attack $1 damage roll")
+			;
+
+			mAction.index += replaceAs.length - 1;
+		}
+
+		return strMod;
 	}
 }
 
