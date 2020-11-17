@@ -100,3 +100,106 @@
 	}
 }
 // endregion
+
+// Auto-set dark mode for users who prefer dark mode at the OS level
+@media (prefers-color-scheme: dark) {
+	&__ {
+		&h--0,
+		&h--1,
+		&h--2 {
+			color: $rgb-name-red--night;
+		}
+
+		&h--1 {
+			border-bottom-color: $rgb-name-red--night;
+		}
+
+		&h--4 {
+			color: $rgb-name-alt--night;
+		}
+
+		&h--3 {
+			color: $rgb-name-alt--night;
+		}
+
+		&-image-title-inner {
+			border-color: $rgb-border-grey--night;
+		}
+
+		&b-inset {
+			background-color: #323431;
+
+			&--readaloud {
+				background-color: #28303a;
+			}
+		}
+
+		&b-flow {
+			background-color: #38352f;
+		}
+
+		&comic {
+			color: #95aaea;
+		}
+
+		&stats-name-page {
+			color: $rgb-font--night;
+		}
+
+		&highlight {
+			background-color: $rgb-bg-highlight--night;
+			color: $rgb-bg--night;
+		}
+	}
+
+	&-item__ {
+		&type-rarity-attunement {
+			color: $rgb-font--night;
+		}
+	}
+
+	&-spell__ {
+		&level-school-ritual {
+			color: $rgb-font--night;
+		}
+	}
+
+
+    // region Source colors
+    .subclass-feature {
+    	.rd__h--0,
+    	.rd__h--1,
+    	.rd__h--2 {
+    		color: $rgb-subclass--night;
+    		border-bottom-color: $rgb-subclass--night;
+    	}
+    }
+
+    .spicy-sauce {
+    	.rd__h--0,
+    	.rd__h--1,
+    	.rd__h--2 {
+    		color: $rgb-subclass-ua--night;
+    		border-bottom-color: $rgb-subclass-ua--night;
+    	}
+    }
+
+    .spicy-sauce:not(.subclass-feature):not(.subclass-feature--sub) {
+    	.rd__h--0,
+    	.rd__h--1,
+    	.rd__h--2 {
+    		color: $rgb-class-ua--night;
+    		border-bottom-color: $rgb-class-ua--night;
+    	}
+    }
+
+    .refreshing-brew {
+    	.rd__h--0,
+    	.rd__h--1,
+    	.rd__h--2 {
+    		color: $rgb-class-brew--night;
+    		border-bottom-color: $rgb-class-brew--night;
+    	}
+    }
+    // endregion
+}
