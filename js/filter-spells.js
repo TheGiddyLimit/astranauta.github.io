@@ -192,7 +192,7 @@ class PageFilterSpells extends PageFilter {
 	static getTblTimeStr (time) {
 		return (time.number === 1 && Parser.SP_TIME_SINGLETONS.includes(time.unit))
 			? `${time.unit.uppercaseFirst()}${time.unit === Parser.SP_TM_B_ACTION ? " acn." : ""}`
-			: `${time.number} ${time.unit === Parser.SP_TM_B_ACTION ? "Bonus acn." : time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
+			: `${time.number ? `${time.number} ` : ""}${time.unit === Parser.SP_TM_B_ACTION ? "Bonus acn." : time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
 	}
 
 	static getClassFilterItem (c) {
