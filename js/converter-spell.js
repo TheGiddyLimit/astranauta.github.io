@@ -110,15 +110,8 @@ class SpellParser extends BaseParser {
 
 			// duration
 			if (!curLine.indexOf_handleColon("Duration")) {
-				// noinspection StatementWithEmptyBodyJS
-				this._setCleanDuration(spell, curLine, options);
-				continue;
-			}
-
-            // class spell lists
-			if (!curLine.indexOf_handleColon("Classes")) {
 				// avoid absorbing main body text
-				this._setCleanClasses(spell, curLine, options);
+				this._setCleanDuration(spell, curLine, options);
 				continue;
 			}
 
@@ -140,7 +133,13 @@ class SpellParser extends BaseParser {
 				},
 			);
 			i = ptrI._;
-            i--;
+
+            // class spell lists
+			if (!toConvert[i].trim().indexOf_handleColon("Classes")) {
+				// avoid absorbing main body text
+				this._setCleanClasses(spell, toConvert[i].trim(), options);
+				continue;
+			}
 		}
 
 		if (!spell.entriesHigherLevel || !spell.entriesHigherLevel.length) delete spell.entriesHigherLevel;
