@@ -1,193 +1,498 @@
 "use strict";
 
-class DamageTagger {
-	static _addDamageTypeToArray (arr, str, options) {
-		str = str.toLowerCase().trim();
-		if (str === "all" || str === "one" || str === "a") arr.push(...Parser.DMG_TYPES);
-		else if (Parser.DMG_TYPES.includes(str)) arr.push(str);
-		else options.cbWarning(`Unknown damage type "${str}"`)
-	}
+if (typeof module !== "undefined") {
+	const cv = require("./converterutils.js");
+	Object.assign(global, cv);
+	const cvSpells = require("./converterutils-spell.js");
+	Object.assign(global, cvSpells);
+	global.PropOrder = require("./utils-proporder.js");
 }
 
-class DamageInflictTagger extends DamageTagger {
-	static tryRun (sp, options) {
-		sp.damageInflict = [];
-		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/(?:{@damage [^}]+}|\d+) (\w+)((?:, \w+)*)(,? or \w+)? damage/ig, (...m) => {
-			if (m[1]) this._addDamageTypeToArray(sp.damageInflict, m[1], options);
-			if (m[2]) m[2].split(",").map(it => it.trim()).filter(Boolean).forEach(str => this._addDamageTypeToArray(sp.damageInflict, str, options));
-			if (m[3]) this._addDamageTypeToArray(sp.damageInflict, m[3].split(" ").last(), options);
-		});
-		if (!sp.damageInflict.length) delete sp.damageInflict;
-		else sp.damageInflict = [...new Set(sp.damageInflict)].sort(SortUtil.ascSort);
-	}
-}
+class SpellParser extends BaseParser {
+	/**
+	 * Parses spells from raw text pastes
+	 * @param inText Input text.
+	 * @param options Options object.
+	 * @param options.cbWarning Warning callback.
+	 * @param options.cbOutput Output callback.
+	 * @param options.isAppend Default output append mode.
+	 * @param options.source Entity source.
+	 * @param options.page Entity page.
+	 * @param options.titleCaseFields Array of fields to be title-cased in this entity (if enabled).
+	 * @param options.isTitleCase Whether title-case fields should be title-cased in this entity.
+	 */
+	static doParseText (inText, options) {
+		options = this._getValidOptions(options);
 
-class DamageResVulnImmuneTagger extends DamageTagger {
-	static tryRun (sp, prop, options) {
-		sp[prop] = [];
-		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/resistance to (\w+)((?:, \w+)*)(,? or \w+)? damage/ig, (...m) => {
-			if (m[1]) this._addDamageTypeToArray(sp[prop], m[1], options);
-			if (m[2]) m[2].split(",").map(it => it.trim()).filter(Boolean).forEach(str => this._addDamageTypeToArray(sp[prop], str, options));
-			if (m[3]) this._addDamageTypeToArray(sp[prop], m[3].split(" ").last(), options);
-		});
-		if (!sp[prop].length) delete sp[prop];
-		else sp[prop] = [...new Set(sp[prop])].sort(SortUtil.ascSort);
-	}
-}
+		/**
+		 * If the current line ends in a comma, we can assume the next line is a broken/wrapped part of the current line
+		 */
+		function absorbBrokenLine () {
+			const NO_ABSORB_SUBTITLES = [
+				"CASTING TIME",
+				"RANGE",
+				"COMPONENTS",
+				"DURATION",
+			];
 
-class ConditionInflictTagger {
-	static tryRun (sp, options) {
-		sp.conditionInflict = [];
-		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/{@condition ([^}]+)}/ig, (...m) => sp.conditionInflict.push(m[1].toLowerCase()));
-		if (!sp.conditionInflict.length) delete sp.conditionInflict;
-		else sp.conditionInflict = [...new Set(sp.conditionInflict)].sort(SortUtil.ascSort);
-	}
-}
-
-class SavingThrowTagger {
-	static tryRun (sp, options) {
-		sp.savingThrow = [];
-		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma) saving throw/ig, (...m) => sp.savingThrow.push(m[1].toLowerCase()));
-		if (!sp.savingThrow.length) delete sp.savingThrow;
-		else sp.savingThrow = [...new Set(sp.savingThrow)].sort(SortUtil.ascSort);
-	}
-}
-
-class AbilityCheckTagger {
-	static tryRun (sp, options) {
-		sp.abilityCheck = [];
-		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/a (Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma) check/ig, (...m) => sp.abilityCheck.push(m[1].toLowerCase()));
-		if (!sp.abilityCheck.length) delete sp.abilityCheck;
-		else sp.abilityCheck = [...new Set(sp.abilityCheck)].sort(SortUtil.ascSort);
-	}
-}
-
-class SpellAttackTagger {
-	static tryRun (sp, options) {
-		sp.spellAttack = [];
-		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/make (?:a|up to [^ ]+) (ranged|melee) spell attack/ig, (...m) => sp.spellAttack.push(m[1][0].toUpperCase()));
-		if (!sp.spellAttack.length) delete sp.spellAttack;
-		else sp.spellAttack = [...new Set(sp.spellAttack)].sort(SortUtil.ascSort);
-	}
-}
-
-// TODO areaTags
-
-class MiscTagsTagger {
-	static tryRun (sp, options) {
-		const tags = new Set(sp.miscTags || []);
-
-		MiscTagsTagger._WALKER = MiscTagsTagger._WALKER || MiscUtil.getWalker({isNoModification: true, keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
-		MiscTagsTagger._WALKER.walk(
-			[sp.entries, sp.entriesHigherLevel],
-			{
-				string: (str) => {
-					if (/becomes permanent/ig.test(str)) tags.add("PRM");
-					if (/when you reach/ig.test(str)) tags.add("SCL");
-					if ((/regain|restore/ig.test(str) && /hit point/ig.test(str)) || /heal/ig.test(str)) tags.add("HL");
-					if (/temporary hit points/ig.test(str)) tags.add("THP");
-					if (/you summon/ig.test(str)) tags.add("SMN");
-					if (/you can see/ig.test(str)) tags.add("SGT");
-					if (/you (?:can then )?teleport/i.test(str) || /instantly (?:transports you|teleport)/i.test(str) || /enters(?:[^.]+)portal instantly/i.test(str) || /entering the portal exits from the other portal/i.test(str)) tags.add("TP");
-
-					if ((str.includes("bonus") || str.includes("penalty")) && str.includes("AC")) tags.add("MAC");
-					if (/target's (?:base )?AC becomes/.exec(str)) tags.add("MAC");
-					if (/target's AC can't be less than/.exec(str)) tags.add("MAC");
-
-					if (/(?:^|\W)(?:pull(?:|ed|s)|push(?:|ed|s)) [^.!?:]*\d+\s+(?:ft|feet|foot|mile|square)/ig.test(str)) tags.add("FMV");
-				},
-			},
-		);
-
-		sp.miscTags = [...tags].sort(SortUtil.ascSortLower);
-		if (!sp.miscTags.length) delete sp.miscTags;
-	}
-}
-MiscTagsTagger._WALKER = null;
-
-class ScalingLevelDiceTagger {
-	static tryRun (sp, options) {
-		if (sp.level !== 0) return;
-
-		const strEntries = JSON.stringify(sp.entries);
-		const rolls = [];
-		strEntries.replace(/{@(?:damage|dice) ([^}]+)}/g, (...m) => {
-			rolls.push(m[1].split("|")[0]);
-		});
-
-		const getLabel = () => {
-			let label;
-
-			const mDamageType = ConverterConst.RE_DAMAGE_TYPE.exec(strEntries);
-			if (mDamageType) {
-				label = `${mDamageType[2]} damage`
-			}
-
-			ConverterConst.RE_DAMAGE_TYPE.lastIndex = 0;
-
-			if (!label) options.cbWarning(`${sp.name ? `(${sp.name}) ` : ""}Could not create scalingLevelDice label!`);
-			return label || "NO_LABEL";
-		};
-
-		if ((rolls.length === 4 && strEntries.includes("one die")) || rolls.length === 5) {
-			if (rolls.length === 5 && rolls[0] !== rolls[1]) options.cbWarning(`${sp.name ? `(${sp.name}) ` : ""}scalingLevelDice rolls may require manual checking--mismatched roll number of rolls!`);
-
-			sp.scalingLevelDice = {
-				label: getLabel(),
-				scaling: rolls.length === 4
-					? {
-						1: rolls[0],
-						5: rolls[1],
-						11: rolls[2],
-						17: rolls[3],
-					} : {
-						1: rolls[0],
-						5: rolls[2],
-						11: rolls[3],
-						17: rolls[4],
-					},
-			}
-		} else if (sp.entries.length === 2 && sp.entries.filter(it => typeof it === "string").length === 2) {
-			const rollsFirstLine = [];
-			const rollsSecondLine = [];
-
-			sp.entries[0].replace(/{@(?:damage|dice) ([^}]+)}/g, (...m) => {
-				rollsFirstLine.push(m[1].split("|")[0]);
-			});
-
-			sp.entries[1].replace(/\({@(?:damage|dice) ([^}]+)}\)/g, (...m) => {
-				rollsSecondLine.push(m[1].split("|")[0]);
-			});
-
-			if (rollsFirstLine.length >= 1 && rollsSecondLine.length >= 3) {
-				if (rollsFirstLine.length > 1 || rollsSecondLine.length > 3) {
-					options.cbWarning(`${sp.name ? `(${sp.name}) ` : ""}scalingLevelDice rolls may require manual checking--too many dice parts!`);
+			if (curLine) {
+				if (curLine.trim().endsWith(",")) {
+					const nxtLine = toConvert[++i];
+					if (!nxtLine) return false;
+					curLine = `${curLine.trim()} ${nxtLine.trim()}`;
+					return true;
 				}
 
-				const label = getLabel();
-				sp.scalingLevelDice = {
-					label: label,
-					scaling: {
-						1: rollsFirstLine[0],
-						5: rollsSecondLine[0],
-						11: rollsSecondLine[1],
-						17: rollsSecondLine[2],
-					},
-				};
+				const nxtLine = toConvert[i + 1];
+				if (!nxtLine) return false;
+
+				if (ConvertUtil.isNameLine(nxtLine)) return false; // avoid absorbing the start of traits
+				if (NO_ABSORB_SUBTITLES.some(it => nxtLine.toUpperCase().startsWith(it))) return false;
+
+				i++;
+				curLine = `${curLine.trim()} ${nxtLine.trim()}`;
+				return true;
 			}
+			return false;
+		}
+
+		if (!inText || !inText.trim()) return options.cbWarning("No input!");
+		const toConvert = this._getCleanInput(inText)
+			.split("\n")
+			.filter(it => it && it.trim());
+		const spell = {};
+		spell.source = options.source;
+		// for the user to fill out
+		spell.page = options.page;
+
+		let prevLine = null;
+		let curLine = null;
+		let i;
+		for (i = 0; i < toConvert.length; i++) {
+			prevLine = curLine;
+			curLine = toConvert[i].trim();
+
+			if (curLine === "") continue;
+
+			// name of spell
+			if (i === 0) {
+				spell.name = this._getAsTitle("name", curLine, options.titleCaseFields, options.isTitleCase);
+				continue;
+			}
+
+			// spell level, and school plus ritual
+			if (i === 1) {
+				this._setCleanLevelSchoolRitual(spell, curLine, options);
+				continue;
+			}
+
+			// casting time
+			if (i === 2) {
+				this._setCleanCastingTime(spell, curLine, options);
+				continue;
+			}
+
+			// range
+			if (!curLine.indexOf_handleColon("Range")) {
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine(true)) ;
+				this._setCleanRange(spell, curLine, options);
+				continue;
+			}
+
+			// components
+			if (!curLine.indexOf_handleColon("Components")) {
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine(true)) ;
+				this._setCleanComponents(spell, curLine, options);
+				continue;
+			}
+
+			// duration
+			if (!curLine.indexOf_handleColon("Duration")) {
+				// avoid absorbing main body text
+				this._setCleanDuration(spell, curLine, options);
+				continue;
+			}
+
+            // class spell lists
+			if (!curLine.indexOf_handleColon("Classes")) {
+				// avoid absorbing main body text
+				this._setCleanClasses(spell, curLine, options);
+				continue;
+			}
+
+			const ptrI = {_: i};
+			spell.entries = EntryConvert.coalesceLines(
+				ptrI,
+				toConvert,
+				{
+					fnStop: (curLine) => /^(At Higher Levels|Classes)/gi.test(curLine),
+				},
+			);
+			i = ptrI._;
+
+			spell.entriesHigherLevel = EntryConvert.coalesceLines(
+				ptrI,
+				toConvert,
+                {
+					fnStop: (curLine) => /^Classes/gi.test(curLine),
+				},
+			);
+			i = ptrI._;
+
+            // class spell lists
+            if(i < toConvert.length){ // The fnStop appears to set i to the line after the spell entry (or the "At Higher Levels" if it exists), which means that when the for loop increments i again, the class lists are skipped if included at the end of the spell description
+                let testLine = toConvert[i].trim();
+    			if (!testLine.indexOf_handleColon("Classes")) {
+    				this._setCleanClasses(spell, testLine, options);
+    			}
+            }
+		}
+
+		if (!spell.entriesHigherLevel || !spell.entriesHigherLevel.length) delete spell.entriesHigherLevel;
+
+		const statsOut = this._getFinalState(spell, options);
+
+		options.cbOutput(statsOut, options.isAppend);
+	}
+
+	// SHARED UTILITY FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
+	static _tryConvertSchool (s, cbMan) {
+		const school = (s.school || "").toLowerCase().trim();
+		if (!school) return cbMan ? cbMan(s.school, "Spell school requires manual conversion") : null;
+
+		const out = SpellParser._RES_SCHOOL.find(it => it.regex.test(school));
+		if (out) s.school = out.output;
+		else cbMan(s.school, "Spell school requires manual conversion");
+	}
+
+	static _doSpellPostProcess (stats, options) {
+		const doCleanup = () => {
+			// remove any empty arrays
+			Object.keys(stats).forEach(k => {
+				if (stats[k] instanceof Array && stats[k].length === 0) {
+					delete stats[k];
+				}
+			});
+		};
+		TagCondition.tryTagConditions(stats, true);
+		if (stats.entries) {
+			stats.entries = stats.entries.map(it => DiceConvert.getTaggedEntry(it));
+			EntryConvert.tryRun(stats, "entries");
+			stats.entries = SkillTag.tryRun(stats.entries);
+			stats.entries = ActionTag.tryRun(stats.entries);
+			stats.entries = SenseTag.tryRun(stats.entries);
+		}
+		if (stats.entriesHigherLevel) {
+			stats.entriesHigherLevel = stats.entriesHigherLevel.map(it => DiceConvert.getTaggedEntry(it))
+			EntryConvert.tryRun(stats, "entriesHigherLevel");
+			stats.entriesHigherLevel = SkillTag.tryRun(stats.entriesHigherLevel);
+			stats.entriesHigherLevel = ActionTag.tryRun(stats.entriesHigherLevel);
+			stats.entriesHigherLevel = SenseTag.tryRun(stats.entriesHigherLevel);
+		}
+		this._addTags(stats, options);
+		doCleanup();
+	}
+
+	static _addTags (stats, options) {
+		DamageInflictTagger.tryRun(stats, options);
+		DamageResVulnImmuneTagger.tryRun(stats, "damageResist", options);
+		DamageResVulnImmuneTagger.tryRun(stats, "damageImmune", options);
+		DamageResVulnImmuneTagger.tryRun(stats, "damageVulnerable", options);
+		ConditionInflictTagger.tryRun(stats, options);
+		SavingThrowTagger.tryRun(stats, options);
+		AbilityCheckTagger.tryRun(stats, options);
+		SpellAttackTagger.tryRun(stats, options);
+		// TODO areaTags
+		MiscTagsTagger.tryRun(stats, options);
+		ScalingLevelDiceTagger.tryRun(stats, options);
+	}
+
+	// SHARED PARSING FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
+	static _setCleanLevelSchoolRitual (stats, line, options) {
+		const rawLine = line;
+		line = ConvertUtil.cleanDashes(line).toLowerCase().trim();
+
+		const mCantrip = /cantrip/i.exec(line);
+		const mSpellLevel = /^(\d+)(?:st|nd|rd|th)-level/i.exec(line);
+
+		if (mCantrip) {
+			const trailing = line.slice(mCantrip.index + "cantrip".length, line.length);
+			line = line.slice(0, mCantrip.index).trim();
+
+			// TODO implement as required (see at e.g. Deep Magic series)
+			if (trailing) {
+				options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Level/school/ritual trailing part "${trailing}" requires manual conversion`);
+			}
+
+			stats.level = 0;
+			stats.school = line;
+
+			this._tryConvertSchool(stats);
+		} else if (mSpellLevel) {
+			line = line.slice(mSpellLevel.index + mSpellLevel[1].length);
+
+			let isRitual = false;
+			line = line.replace(/\((.*?)(?:[,;]\s*)?ritual(?:[,;]\s*)?(.*?)\)/i, (...m) => {
+				isRitual = true;
+				// preserve any extra info inside the brackets
+				return m[1] || m[2] ? `(${m[1]}${m[2]})` : "";
+			}).trim();
+
+			if (isRitual) {
+				stats.meta = stats.meta || {};
+				stats.meta.ritual = true;
+			}
+
+			stats.level = Number(mSpellLevel[1]);
+
+			// TODO further handling of non-school text (see e.g. Deep Magic series)
+			stats.school = line.trim();
+
+			this._tryConvertSchool(stats);
+		} else {
+			options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Level/school/ritual part "${rawLine}" requires manual conversion`);
 		}
 	}
+
+	static _setCleanRange (stats, line, options) {
+		const getUnit = (str) => str.toLowerCase().includes("mile") ? "miles" : "feet";
+
+		const range = ConvertUtil.cleanDashes(line.split_handleColon("Range", 1)[1].trim());
+
+		if (range.toLowerCase() === "self") return stats.range = {type: "point", distance: {type: "self"}};
+		if (range.toLowerCase() === "special") return stats.range = {type: "special"};
+		if (range.toLowerCase() === "unlimited") return stats.range = {type: "point", distance: {type: "unlimited"}};
+		if (range.toLowerCase() === "unlimited on the same plane") return stats.range = {type: "point", distance: {type: "plane"}};
+		if (range.toLowerCase() === "sight") return stats.range = {type: "point", distance: {type: "sight"}};
+		if (range.toLowerCase() === "touch") return stats.range = {type: "point", distance: {type: "touch"}};
+
+		const cleanRange = range.replace(/(\d),(\d)/g, "$1$2");
+
+		const mFeetMiles = /^(\d+) (feet|foot|miles?)$/i.exec(cleanRange);
+		if (mFeetMiles) return stats.range = {type: "point", distance: {type: getUnit(mFeetMiles[2]), amount: Number(mFeetMiles[1])}};
+
+		const mSelfRadius = /^self \((\d+)-(foot|mile) radius\)$/i.exec(cleanRange);
+		if (mSelfRadius) return stats.range = {type: "radius", distance: {type: getUnit(mSelfRadius[2]), amount: Number(mSelfRadius[1])}};
+
+		const mSelfSphere = /^self \((\d+)-(foot|mile)-radius sphere\)$/i.exec(cleanRange);
+		if (mSelfSphere) return stats.range = {type: "sphere", distance: {type: getUnit(mSelfSphere[2]), amount: Number(mSelfSphere[1])}};
+
+		const mSelfCone = /^self \((\d+)-(foot|mile) cone\)$/i.exec(cleanRange);
+		if (mSelfCone) return stats.range = {type: "cone", distance: {type: getUnit(mSelfCone[2]), amount: Number(mSelfCone[1])}};
+
+		const mSelfLine = /^self \((\d+)-(foot|mile) line\)$/i.exec(cleanRange);
+		if (mSelfLine) return stats.range = {type: "line", distance: {type: getUnit(mSelfLine[2]), amount: Number(mSelfLine[1])}};
+
+		const mSelfCube = /^self \((\d+)-(foot|mile) cube\)$/i.exec(cleanRange);
+		if (mSelfCube) return stats.range = {type: "cube", distance: {type: getUnit(mSelfCube[2]), amount: Number(mSelfCube[1])}};
+
+		const mSelfHemisphere = /^self \((\d+)-(foot|mile)-radius hemisphere\)$/i.exec(cleanRange);
+		if (mSelfHemisphere) return stats.range = {type: "hemisphere", distance: {type: getUnit(mSelfHemisphere[2]), amount: Number(mSelfHemisphere[1])}};
+
+		options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Range part "${range}" requires manual conversion`);
+	}
+
+	static _getCleanTimeUnit (unit, isDuration, options) {
+		unit = unit.toLowerCase().trim();
+		switch (unit) {
+			case "days":
+			case "years":
+			case "hours":
+			case "minutes":
+			case "actions":
+			case "rounds": return unit.slice(0, -1);
+
+			case "day":
+			case "year":
+			case "hour":
+			case "minute":
+			case "action":
+			case "round":
+			case "reaction": return unit;
+
+			case "bonus action": return "bonus";
+
+			default:
+				options.cbWarning(`Unit part "${unit}" requires manual conversion`);
+				return unit;
+		}
+	}
+
+	static _setCleanCastingTime (stats, line, options) {
+		const allParts = line.split_handleColon("Casting Time", 1)[1].trim();
+		const parts = allParts.toLowerCase().includes("reaction")
+			? [allParts]
+			: allParts.split(/; | or /gi);
+
+		stats.time = parts
+			.map(it => it.trim())
+			.filter(Boolean)
+			.map(str => {
+				const mNumber = /^(\d+)(.*?)$/.exec(str);
+
+				if (!mNumber) {
+					options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Casting time part "${str}" requires manual conversion`);
+					return str;
+				}
+
+				const amount = Number(mNumber[1].trim());
+				const [unit, ...conditionParts] = mNumber[2].split(", ");
+				const out = {
+					number: amount,
+					unit: this._getCleanTimeUnit(unit, false, options),
+					condition: conditionParts.join(", "),
+				};
+				if (!out.condition) delete out.condition;
+				return out;
+			})
+		;
+	}
+
+	static _setCleanComponents (stats, line, options) {
+		const components = line.split_handleColon("Components", 1)[1].trim();
+		const parts = components.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX);
+
+		stats.components = {};
+
+		parts
+			.map(it => it.trim())
+			.filter(Boolean)
+			.forEach(pt => {
+				pt = pt.trim();
+				const lowerPt = pt.toLowerCase();
+				switch (lowerPt) {
+					case "v": stats.components.v = true; break;
+					case "s": stats.components.s = true; break;
+					default: {
+						if (lowerPt.startsWith("m ")) {
+							const materialText = pt.replace(/^m\s*\((.*)\)$/i, "$1").trim();
+							const mCost = /(\d*,?\d+)\s?(cp|sp|ep|gp|pp)/gi.exec(materialText);
+							const isConsumed = pt.toLowerCase().includes("consume");
+
+							if (mCost) {
+								const valueMult = Parser.COIN_CONVERSIONS[Parser.COIN_ABVS.indexOf(mCost[2].toLowerCase())];
+								const valueNum = Number(mCost[1].replace(/,/g, ""));
+
+								stats.components.m = {
+									text: materialText,
+									cost: valueNum * valueMult,
+								};
+								if (isConsumed) stats.components.m.consume = true;
+							} else if (isConsumed) {
+								stats.components.m = {
+									text: materialText,
+									consume: true,
+								};
+							} else {
+								stats.components.m = materialText;
+							}
+						} else if (lowerPt.startsWith("r ")) stats.components.r = true;
+						else options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Components part "${pt}" requires manual conversion`);
+					}
+				}
+			});
+	}
+
+    static _setCleanClasses (stats, line, options) {
+		const components = line.split_handleColon("Classes", 1)[1].trim();
+		const parts = components.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX);
+
+		stats.classes = {fromClassList:[]};
+
+		parts
+			.map(it => it.trim())
+			.filter(Boolean)
+			.forEach(pt => {
+				pt = pt.trim();
+				const lowerPt = pt.toLowerCase();
+				switch (lowerPt) {
+					case "artificer":
+                    case "artificers": stats.classes.fromClassList.push({"name": "Artificer","source": "TCE"}); break;
+                    case "bard":
+                    case "bards": stats.classes.fromClassList.push({"name": "Bard","source": "PHB"}); break;
+                    case "cleric":
+                    case "clerics": stats.classes.fromClassList.push({"name": "Cleric","source": "PHB"}); break;
+                    case "druid":
+                    case "druids": stats.classes.fromClassList.push({"name": "Druid","source": "PHB"}); break;
+                    case "paladin":
+                    case "paladins": stats.classes.fromClassList.push({"name": "Paladin","source": "PHB"}); break;
+                    case "ranger":
+                    case "rangers": stats.classes.fromClassList.push({"name": "Ranger","source": "PHB"}); break;
+                    case "sorcerer":
+                    case "sorcerers": stats.classes.fromClassList.push({"name": "Sorcerer","source": "PHB"}); break;
+                    case "warlock":
+                    case "warlocks": stats.classes.fromClassList.push({"name": "Warlock","source": "PHB"}); break;
+                    case "wizard":
+                    case "wizards": stats.classes.fromClassList.push({"name": "Wizard","source": "PHB"}); break;
+                    default: options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Class "${lowerPt}" requires manual conversion`); break;
+				}
+			});
+	}
+
+	static _setCleanDuration (stats, line, options) {
+		const dur = line.split_handleColon("Duration", 1)[1].trim();
+
+		if (dur.toLowerCase() === "instantaneous") return stats.duration = [{type: "instant"}];
+		if (dur.toLowerCase() === "instantaneous (see text)") return stats.duration = [{type: "instant", condition: "see text"}];
+		if (dur.toLowerCase() === "special") return stats.duration = [{type: "special"}];
+		if (dur.toLowerCase() === "permanent") return stats.duration = [{type: "permanent"}];
+
+		const mConcOrUpTo = /^(concentration, )?up to (\d+|an?) (hour|minute|turn|round|week|day|year)(?:s)?$/i.exec(dur);
+		if (mConcOrUpTo) {
+			const amount = mConcOrUpTo[2].toLowerCase().startsWith("a") ? 1 : Number(mConcOrUpTo[2]);
+			const out = {type: "timed", duration: {type: this._getCleanTimeUnit(mConcOrUpTo[3], true, options), amount}, concentration: true};
+			if (mConcOrUpTo[1]) out.concentration = true;
+			else out.upTo = true;
+			return stats.duration = [out];
+		}
+
+		const mTimed = /^(\d+) (hour|minute|turn|round|week|day|year)(?:s)?$/i.exec(dur);
+		if (mTimed) return stats.duration = [{type: "timed", duration: {type: this._getCleanTimeUnit(mTimed[2], true, options), amount: Number(mTimed[1])}}];
+
+		const mDispelledTriggered = /^until dispelled( or triggered)?$/i.exec(dur);
+		if (mDispelledTriggered) {
+			const out = {type: "permanent", ends: ["dispel"]};
+			if (mDispelledTriggered[1]) out.ends.push("trigger");
+			return stats.duration = [out];
+		}
+
+		const mPermDischarged = /^permanent until discharged$/i.exec(dur);
+		if (mPermDischarged) {
+			const out = {type: "permanent", ends: ["discharge"]};
+			return stats.duration = [out];
+		}
+
+		// TODO handle splitting "or"'d durations up as required
+
+		options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Duration part "${dur}" requires manual conversion`);
+	}
+
+	static _getFinalState (spell, options) {
+		this._doSpellPostProcess(spell, options);
+		return PropOrder.getOrdered(spell, "spell");
+	}
 }
+SpellParser._RES_SCHOOL = [];
+Object.entries({
+	"transmutation": "T",
+	"necromancy": "N",
+	"conjuration": "C",
+	"abjuration": "A",
+	"enchantment": "E",
+	"evocation": "V",
+	"illusion": "I",
+	"divination": "D",
+}).forEach(([k, v]) => {
+	SpellParser._RES_SCHOOL.push({
+		output: v,
+		regex: RegExp(k, "i"),
+	});
+});
 
 if (typeof module !== "undefined") {
 	module.exports = {
-		DamageInflictTagger,
-		DamageResVulnImmuneTagger,
-		ConditionInflictTagger,
-		SavingThrowTagger,
-		AbilityCheckTagger,
-		SpellAttackTagger,
-		MiscTagsTagger,
-		ScalingLevelDiceTagger,
+		SpellParser,
 	};
 }
