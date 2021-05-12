@@ -115,12 +115,19 @@ class SpellParser extends BaseParser {
 				continue;
 			}
 
+            // class spell lists
+			if (!curLine.indexOf_handleColon("Classes")) {
+				// avoid absorbing main body text
+				this._setCleanClasses(spell, curLine, options);
+				continue;
+			}
+
 			const ptrI = {_: i};
 			spell.entries = EntryConvert.coalesceLines(
 				ptrI,
 				toConvert,
 				{
-					fnStop: (curLine) => /^At Higher Levels/gi.test(curLine),
+					fnStop: (curLine) => /^(At Higher Levels|Classes)/gi.test(curLine),
 				},
 			);
 			i = ptrI._;
@@ -135,11 +142,12 @@ class SpellParser extends BaseParser {
 			i = ptrI._;
 
             // class spell lists
-			if (!toConvert[i].trim().indexOf_handleColon("Classes")) {
-				// avoid absorbing main body text
-				this._setCleanClasses(spell, toConvert[i].trim(), options);
-				continue;
-			}
+            if(i < toConvert.length){ // The fnStop appears to set i to the line after the spell entry (or the "At Higher Levels" if it exists), which means that when the for loop increments i again, the class lists are skipped if included at the end of the spell description
+                let testLine = toConvert[i].trim();
+    			if (!testLine.indexOf_handleColon("Classes")) {
+    				this._setCleanClasses(spell, testLine, options);
+    			}
+            }
 		}
 
 		if (!spell.entriesHigherLevel || !spell.entriesHigherLevel.length) delete spell.entriesHigherLevel;
