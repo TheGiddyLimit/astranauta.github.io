@@ -110,8 +110,15 @@ class SpellParser extends BaseParser {
 
 			// duration
 			if (!curLine.indexOf_handleColon("Duration")) {
-				// avoid absorbing main body text
+				// noinspection StatementWithEmptyBodyJS
 				this._setCleanDuration(spell, curLine, options);
+				continue;
+			}
+
+            // class spell lists
+			if (!curLine.indexOf_handleColon("Classes")) {
+				// avoid absorbing main body text
+				this._setCleanClasses(spell, curLine, options);
 				continue;
 			}
 
@@ -128,8 +135,12 @@ class SpellParser extends BaseParser {
 			spell.entriesHigherLevel = EntryConvert.coalesceLines(
 				ptrI,
 				toConvert,
+                {
+					fnStop: (curLine) => /^Classes/gi.test(curLine),
+				},
 			);
 			i = ptrI._;
+            i--;
 		}
 
 		if (!spell.entriesHigherLevel || !spell.entriesHigherLevel.length) delete spell.entriesHigherLevel;
@@ -373,6 +384,42 @@ class SpellParser extends BaseParser {
 						} else if (lowerPt.startsWith("r ")) stats.components.r = true;
 						else options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Components part "${pt}" requires manual conversion`);
 					}
+				}
+			});
+	}
+
+    static _setCleanClasses (stats, line, options) {
+		const components = line.split_handleColon("Classes", 1)[1].trim();
+		const parts = components.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX);
+
+		stats.classes = {fromClassList:[]};
+
+		parts
+			.map(it => it.trim())
+			.filter(Boolean)
+			.forEach(pt => {
+				pt = pt.trim();
+				const lowerPt = pt.toLowerCase();
+				switch (lowerPt) {
+					case "artificer":
+                    case "artificers": stats.classes.fromClassList.push({"name": "Artificer","source": "TCE"}); break;
+                    case "bard":
+                    case "bards": stats.classes.fromClassList.push({"name": "Bard","source": "PHB"}); break;
+                    case "cleric":
+                    case "clerics": stats.classes.fromClassList.push({"name": "Cleric","source": "PHB"}); break;
+                    case "druid":
+                    case "druids": stats.classes.fromClassList.push({"name": "Druid","source": "PHB"}); break;
+                    case "paladin":
+                    case "paladins": stats.classes.fromClassList.push({"name": "Paladin","source": "PHB"}); break;
+                    case "ranger":
+                    case "rangers": stats.classes.fromClassList.push({"name": "Ranger","source": "PHB"}); break;
+                    case "sorcerer":
+                    case "sorcerers": stats.classes.fromClassList.push({"name": "Sorcerer","source": "PHB"}); break;
+                    case "warlock":
+                    case "warlocks": stats.classes.fromClassList.push({"name": "Warlock","source": "PHB"}); break;
+                    case "wizard":
+                    case "wizards": stats.classes.fromClassList.push({"name": "Wizard","source": "PHB"}); break;
+                    default: options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Class "${lowerPt}" requires manual conversion`); break;
 				}
 			});
 	}
