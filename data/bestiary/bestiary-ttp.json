@@ -393,6 +393,90 @@
 			],
 			"hasFluff": true,
 			"hasFluffImages": true
+		},
+		{
+			"name": "Two-Headed Plesiosaurus",
+			"group": "Dinosaurs",
+			"source": "TTP",
+			"size": "L",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 100,
+				"formula": "8d10 + 24"
+			},
+			"speed": {
+				"walk": 20,
+				"swim": 40
+			},
+			"str": 18,
+			"dex": 15,
+			"con": 16,
+			"int": 2,
+			"wis": 12,
+			"cha": 5,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"passive": 13,
+			"cr": "4",
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The plesiosaurus can hold its breath for 1 hour."
+					]
+				},
+				{
+					"name": "Two Heads",
+					"entries": [
+						"The two-headed plesiosaurus has advantage on Wisdom ({@skill Perception}) checks and on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, and knocked {@condition unconscious}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The two-headed plesiosaurus makes two bite attacks."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. {@h}14 ({@damage 3d6 + 4}) piercing damage."
+					]
+				}
+			],
+			"environment": [
+				"underwater",
+				"coastal"
+			],
+			"hasToken": true,
+			"traitTags": [
+				"Hold Breath",
+				"Two Heads"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		}
 	]
 }
