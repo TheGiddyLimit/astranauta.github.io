@@ -626,6 +626,381 @@
 					"{@bold Dryad}. The item is exquisitely crafted from wood, leaves, or vines. It is adorned with symbols of nature: leaves, vines, stars, and the like. It glows with a pale radiance in moonlight, shedding dim light in a 5-foot radius."
 				]
 			]
+		},
+		{
+			"name": "Snout of Omgar Encounters; Land",
+			"source": "TTP",
+			"page": 5,
+			"caption": "Snout of Omgar Encounters; Land",
+			"colLabels": [
+				"d100",
+				"Encounter"
+			],
+			"colStyles": [
+				"col-2 text-center",
+				"col-10"
+			],
+			"rows": [
+				[
+					"01\u201305",
+					"Almiraj"
+				],
+				[
+					"06\u201310",
+					"Axe beaks"
+				],
+				[
+					"11\u201315",
+					"Baboons"
+				],
+				[
+					"16\u201320",
+					"Blood hawks"
+				],
+				[
+					"21\u201325",
+					"Cannibals"
+				],
+				[
+					"26\u201330",
+					"Chwinga"
+				],
+				[
+					"31\u201335",
+					"Dimetrodons"
+				],
+				[
+					"36\u201340",
+					"Eblis"
+				],
+				[
+					"41\u201345",
+					"Flail snail"
+				],
+				[
+					"46\u201350",
+					"Flying snakes"
+				],
+				[
+					"51\u201355",
+					"Geonids"
+				],
+				[
+					"56\u201360",
+					"Giant lizards"
+				],
+				[
+					"61\u201365",
+					"Giant snapping turtle"
+				],
+				[
+					"66\u201370",
+					"Jaculis"
+				],
+				[
+					"71\u201375",
+					"Pteranodons"
+				],
+				[
+					"76\u201380",
+					"Stirges"
+				],
+				[
+					"81\u201385",
+					"Topis"
+				],
+				[
+					"86\u201300",
+					"Tortle"
+				]
+				
+			],
+			"footnotes": [
+				{
+					"type": "entries",
+					"name": "Almiraj",
+					"id": "008",
+					"page": 5,
+					"entries": [
+						"The characters spot an {@creature almiraj|toa} (see {@adventure Tomb of Annihilation|ToA}) roughly 60 feet away. The almiraj runs from any creature that approaches within 30 feet of it. Any character who successfully traps the almiraj can use an action to make a DC 14 Wisdom ({@skill Animal Handling}) check. If the check succeeds, the almiraj becomes calm and doesn't attack the character or run away unless it feels threatened or is harmed."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Axe Beaks",
+					"id": "009",
+					"page": 5,
+					"entries": [
+						"A flock of {@dice 1d6+3} {@creature axe beak||axe beaks} stampede toward the characters, slashing at anyone they can reach."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Baboons",
+					"id": "00a",
+					"page": 5,
+					"entries": [
+						"A pack of {@dice 3d6} {@creature baboon||baboons} has adapted to living in small mountain caves but scurry down to the tree line in search of food. The baboons can be placated by tossing each of them a day's supply of food. Otherwise, they attack, fleeing once their numbers are reduced by half."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Blood Hawks",
+					"id": "00b",
+					"page": 6,
+					"entries": [
+						"These bright red birds are common sights on the island. They feed on {@creature flying snake|MM|flying snakes}, and tortles hunt them for sport. {@creature blood hawk||Blood hawks} appear only during the day, and a typical encounter consists of {@dice 2d6} {@creature blood hawk||blood hawks} that attack until half of them are slain. If this encounter is rolled at night, treat it as no encounter."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Cannibals",
+					"id": "00c",
+					"page": 6,
+					"entries": [
+						"Human cannibals from the mainland use {@item canoe|toa|canoes} to reach the island. They come in search of shipwreck survivors to hunt and eat. The characters encounter {@dice 3d6} hostile cannibals (CE male and female Chultan human {@creature tribal warrior||tribal warriors}) who fight to the death. They wear leather masks made from skinned human faces and crude jewelry made from human bones and teeth."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Chwinga",
+					"id": "00d",
+					"page": 6,
+					"entries": [
+						"A {@creature chwinga|toa} (see {@adventure Tomb of Annihilation|ToA}) takes an interest in the characters. It attempts to steal something valuable from an unguarded pack, but is noticed by any character who has a passive Wisdom ({@skill Perception}) score of 17 or higher. The chwinga always leaves something else in exchange: a pretty shell, a handful of nuts, or an uncut gemstone (10 gp)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dimetrodons",
+					"id": "00e",
+					"page": 6,
+					"entries": [
+						"If the characters are traveling near the shore, they see {@dice 1d4} {@creature dimetrodon|vgm|dimetrodons} (see {@adventure Tomb of Annihilation|ToA} or {@book Volo's Guide to Monsters|vgm}) wallowing in shallow pools of water. These creatures turn hostile if disturbed. If the characters are nowhere near water or camped for the night, the dimetrodons are on the move and attack anything in their path."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Eblis",
+					"id": "010",
+					"page": 6,
+					"entries": [
+						"If the characters are on the move when this encounter occurs, they stumble across {@dice 1d4+2} {@creature eblis|toa} (see {@adventure Tomb of Annihilation|ToA}) on the hunt for {@creature lizard|MM|lizards} or {@creature flying snake|MM|flying snakes} to eat. The eblis politely offer to trade information for treasure. For 50 gp worth of treasure, they will point the adventurers in the direction of nearby landmarks. The eblis attack if the characters refuse to trade and are outnumbered. They flee if half of them are killed or incapacitated. If this encounter occurs while the party is camped, the eblis sneak into the camp and try to drag one character away."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Flail Snail",
+					"id": "011",
+					"page": 6,
+					"entries": [
+						"Characters spot the slimy trail of a {@creature flail snail|vgm} (see {@adventure Tomb of Annihilation|ToA} or {@book Volo's Guide to Monsters|vgm}). If they decide to follow it, a successful DC 10 Wisdom ({@skill Survival}) check correctly deduces which direction the snail was traveling. The snail wants to be left alone and attacks only those who antagonize it."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Flying Snakes",
+					"id": "012",
+					"page": 6,
+					"entries": [
+						"The party encounters {@dice 1d6} {@creature flying snake||flying snakes}. These snakes attack only when threatened. A flying snake that is successfully grappled can be stuffed in a sack or other soft container. After 1 hour of confinement, the snake settles down. A character who succeeds on a DC 13 Wisdom ({@skill Animal Handling}) check can remove a calm snake from the container without causing it to attack or fly away."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Geonids",
+					"id": "013",
+					"page": 6,
+					"entries": [
+						"Geonids live in mountain caves, but they can be encountered anywhere on the island. If the encounter occurs during the day, the characters are ambushed by {@dice 2d4} {@creature geonid|ttp|geonids} disguised as small boulders. They demand at least 25 gp worth of treasure for safe passage throughout their territory. If the encounter occurs at night, {@dice 3d6} {@creature geonid|ttp|geonids} attempt to sneak into the party's camp and steal food."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Giant Lizards",
+					"id": "014",
+					"page": 6,
+					"entries": [
+						"The characters encounter {@dice 1d6} {@creature giant lizard||giant lizards}. During the day, the lizards are well fed and flee if attacked; at night, they turn aggressive and attack characters who come within 30 feet of them. The Snout of Omgar is home to hundreds of giant lizards. Tortles hunt them for their leather and meat, and they use the lizards' bones and teeth to make crude jewelry."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Giant Snapping Turtle",
+					"id": "015",
+					"page": 6,
+					"entries": [
+						"These aggressive monsters like to bask on the island's warm rocks and shores, but occasionally one will venture inland to find food. The characters encounter a lone {@creature giant snapping turtle|toa} (see {@adventure Tomb of Annihilation|ToA}) and can avoid it by keeping their distance."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Jaculis",
+					"id": "016",
+					"page": 6,
+					"entries": [
+						"Without warning, {@dice 1d6} {@creature jaculi|toa|jaculis} (see {@adventure Tomb of Annihilation|ToA}) launch themselves at the party from trees or mountain ledges. Any character with a passive Wisdom ({@skill Perception}) score of 14 or higher spots the jaculis before they strike, but all others are surprised."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Pteranodons",
+					"id": "019",
+					"page": 6,
+					"entries": [
+						"{@creature pteranodon||Pteranodons} roost atop the mountains and gather in flocks to fish along the island's shores. The characters spot {@dice 1d6} {@creature pteranodon||pteranodons} nearby. The pteranodons keep their distance and attack only if threatened."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Stirges",
+					"id": "01b",
+					"page": 8,
+					"entries": [
+						"The Snout of Omgar has plenty of caves, ruins, and trees in which {@creature stirge||stirges} can hide. By day, the characters disturb {@dice 2d6} {@creature stirge||stirges} as they move through the jungle. At night, the same number of stirges descend on the party's camp."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Topis",
+					"id": "01c",
+					"page": 8,
+					"entries": [
+						"The characters are attacked by {@dice 1d4+2} {@creature topi|ttp|topis} (see \"{@creature topi|ttp|Topi}\") that escaped from the {@adventure Typhoon Palace|ttp|3|Dangwaru (The Typhoon Palace)}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tortle",
+					"id": "01d",
+					"page": 8,
+					"entries": [
+						"The characters encounter a {@creature tortle|mtf} (see \"{@race tortle|ttp|Tortles}\"). For suggested tortle names, see \"{@race tortle|ttp|Tortle Names}\". If this encounter occurs near the coast, the tortle is a fisher with a {@item fishing tackle|phb|fishing pole}, a {@item net|phb}, and a fish basket. If the encounter occurs inland, the tortle is hunting snakes, {@creature lizard|MM|lizards}, {@creature axe beak||axe beaks}, or {@creature blood hawk||blood hawks}. The tortle tries to be helpful. If the characters are looking for a settlement where they can rest and trade, the tortle points them in the direction of {@adventure Ahoyhoy|ttp|3|Ahoyhoy}. If they're looking for adventure, it points them in the direction of the {@adventure Typhoon Palace|ttp|3|Dangwaru (The Typhoon Palace)}. If a mystery is what they seek, it points them in the direction of the {@adventure Shrine of Fangs|ttp|3|Shrine of Fangs}. If they're looking for shipwrecks to plunder, it directs them toward {@adventure High Horn|ttp|3|High Horn}. If they're looking for a good time, the tortle gives them directions to the {@adventure Mud Pits of Florrb|ttp|3|Mud Pits of Florrb}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Snout of Omgar Encounters; Water",
+			"source": "TTP",
+			"page": 5,
+			"caption": "Snout of Omgar Encounters; Water",
+			"colLabels": [
+				"d100",
+				"Encounter"
+			],
+			"colStyles": [
+				"col-2 text-center",
+				"col-10"
+			],
+			"rows": [
+				[
+					"01-15",
+					"Cannibals"
+				],
+				[
+					"16-30",
+					"Dolphins"
+				],
+				[
+					"31-40",
+					"Flying snakes"
+				],
+				[
+					"41-50",
+					"Giant snapping turtle"
+				],
+				[
+					"51-60",
+					"Marine Decapus"
+				],
+				[
+					"61-75",
+					"Plesiosaurus"
+				],
+				[
+					"76-85",
+					"Pteranodons"
+				],
+				[
+					"86-00",
+					"Reef sharks"
+				]				
+			],
+			"footnotes": [
+				{
+					"type": "entries",
+					"name": "Cannibals",
+					"id": "00c",
+					"page": 6,
+					"entries": [
+						"Human cannibals from the mainland use {@item canoe|toa|canoes} to reach the island. They come in search of shipwreck survivors to hunt and eat. The characters encounter {@dice 3d6} hostile cannibals (CE male and female Chultan human {@creature tribal warrior||tribal warriors}) who fight to the death. They wear leather masks made from skinned human faces and crude jewelry made from human bones and teeth."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dolphins",
+					"id": "00f",
+					"page": 6,
+					"entries": [
+						"The party encounters {@dice 2d4} {@creature dolphin|vgm|dolphins} (see {@book Volo's Guide to Monsters|vgm}) or 1 {@creature killer whale} if you prefer. If the characters use magic to speak with the creatures, they can receive directions to the nearest coastal settlement."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Flying Snakes",
+					"id": "012",
+					"page": 6,
+					"entries": [
+						"The party encounters {@dice 1d6} {@creature flying snake||flying snakes}. These snakes attack only when threatened. A flying snake that is successfully grappled can be stuffed in a sack or other soft container. After 1 hour of confinement, the snake settles down. A character who succeeds on a DC 13 Wisdom ({@skill Animal Handling}) check can remove a calm snake from the container without causing it to attack or fly away."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Giant Snapping Turtle",
+					"id": "015",
+					"page": 6,
+					"entries": [
+						"These aggressive monsters like to bask on the island's warm rocks and shores, but occasionally one will venture inland to find food. The characters encounter a lone {@creature giant snapping turtle|toa} (see {@adventure Tomb of Annihilation|ToA}) and can avoid it by keeping their distance."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Marine Decapus",
+					"id": "017",
+					"page": 6,
+					"entries": [
+						"This marine {@creature decapus|ttp} preys on swimmers and will even snatch a rower from a {@item canoe|toa} (though it must use half of its tentacles to grab hold of the vessel before doing so). The decapus withdraws into the depths if it loses more than half of its hit points."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Plesiosaurus",
+					"id": "018",
+					"page": 6,
+					"entries": [
+						"The characters blunder into the hunting ground of a hungry {@creature plesiosaurus} that attacks passing {@item canoe|toa|canoes} or anything else it can wrap its jaws around."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Pteranodons",
+					"id": "019",
+					"page": 6,
+					"entries": [
+						"{@creature pteranodon||Pteranodons} roost atop the mountains and gather in flocks to fish along the island's shores. The characters spot {@dice 1d6} {@creature pteranodon||pteranodons} nearby. The pteranodons keep their distance and attack only if threatened."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Reef Sharks",
+					"id": "01a",
+					"page": 8,
+					"entries": [
+						"The water surrounding the island is home to thousands of {@creature reef shark||reef sharks} that are drawn by the scent of blood in the water. A swimmer with an open, bleeding wound is accosted by {@dice 1d6} {@creature reef shark||reef sharks} if it spends more than 1 minute in the water."
+					]
+				}
+			]
 		}
 	]
 }
